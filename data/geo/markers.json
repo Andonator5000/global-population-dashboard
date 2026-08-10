@@ -223,16 +223,6 @@
       "contested": false
     },
     {
-      "iso3": "GUF",
-      "name": "French Guiana",
-      "continent": "SA",
-      "coordinates": [
-        -53.0,
-        4.0
-      ],
-      "contested": false
-    },
-    {
       "iso3": "GUM",
       "name": "Guam",
       "continent": "OC",

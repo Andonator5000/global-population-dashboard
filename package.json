@@ -13,7 +13,8 @@
     "check:palette": "node scripts/build-map-palette.mjs",
     "check:biome-areas": "node scripts/check-biome-areas.mjs",
     "check:theme-parity": "node scripts/check-theme-parity.mjs",
-    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas",
+    "check:polygons": "node scripts/check-polygon-ownership.mjs",
+    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas && npm run check:polygons",
     "flags": "node scripts/extract-flag-colors.mjs",
     "palette": "node scripts/build-map-palette.mjs"
   },

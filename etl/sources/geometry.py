@@ -47,6 +47,146 @@ NULL_ID_ASSIGNMENTS: dict[str, str] = {
 }
 
 
+# A split only happens when the containing part's measured area is this close
+# to the territory's published land area -- i.e. when the part IS the
+# territory, not merely a landmass that encloses it.
+_DETACH_AREA_RATIO = (0.7, 1.4)
+
+
+def _detach_embedded_territories(
+    topology: dict[str, Any],
+    registry: dict[str, Entity],
+    assigned: dict[str, list[int]],
+    out_dir: Any,
+) -> list[str]:
+    """Split territories that Natural Earth draws inside their parent state.
+
+    Natural Earth models France's overseas departments as part of the France
+    geometry, which is constitutionally right and cartographically standard.
+    But this project keys on ISO 3166-1, where French Guiana is a separate
+    entity with its own population, economy and biome data. Left alone, an
+    85,596 km2 landmass -- larger than Ireland -- renders and responds to
+    clicks as France, while a marker dot for the real entity sits on top of it.
+
+    THE TEST IS AREA, NOT POSITION
+    ------------------------------
+    Plenty of entities legitimately sit inside a neighbour's polygon and must
+    NOT be split out: Vatican City (0.49 km2), Monaco, Gibraltar, Singapore,
+    Hong Kong. At 110m those pixels genuinely ARE the surrounding country, and
+    the marker is the honest way to reach them.
+
+    What separates the two cases is whether the containing part *is* the
+    territory:
+
+        French Guiana  part 85,596 km2 vs published 83,534 km2  -> ratio 1.02
+        Singapore      part 135,269 km2 vs published    710 km2 -> ratio 190
+
+    So a part is only detached when its measured area is within
+    _DETACH_AREA_RATIO of the entity's published land area. That keeps the rule
+    general -- it will catch a comparable case if Natural Earth bundles another
+    territory later -- without ever carving a microstate out of its neighbour.
+
+    Operates on the TopoJSON arc indices directly, so no geometry is
+    re-encoded: a MultiPolygon part is simply moved into its own geometry
+    object referencing the same arcs.
+    """
+    import geopandas as gpd
+    from shapely.geometry import Point
+
+    collection = topology["objects"]["countries"]
+    geometries = collection["geometries"]
+
+    # Decode once so we can measure and hit-test parts. Written to a scratch
+    # file because the geospatial readers want a path.
+    scratch = out_dir / ".topology-scratch.json"
+    scratch.write_text(json.dumps(topology), encoding="utf-8", newline="\n")
+    try:
+        frame = gpd.read_file(scratch, layer="countries")
+    finally:
+        scratch.unlink(missing_ok=True)
+
+    # TopoJSON carries no CRS metadata, so the reader hands back naive
+    # geometries. The coordinates are lon/lat, so state that before projecting
+    # -- guessing would be exactly the kind of silent assumption that makes
+    # area maths wrong.
+    if frame.crs is None:
+        frame = frame.set_crs(config.SOURCE_CRS)
+    equal_area = frame.to_crs(config.EQUAL_AREA_CRS)
+
+    # Candidates: entities with published area and coordinates but no polygon.
+    candidates = [
+        entity
+        for iso3, entity in registry.items()
+        if iso3 not in assigned and entity.latlng and entity.area_km2
+    ]
+
+    detached: list[str] = []
+    for entity in candidates:
+        lat, lon = entity.latlng  # type: ignore[misc]
+        point = Point(lon, lat)
+
+        for row_index, row in frame.iterrows():
+            parent_iso3 = row["iso3"]
+            if parent_iso3 == entity.iso3:
+                continue
+            shape = row.geometry
+            if shape is None or shape.geom_type != "MultiPolygon":
+                continue
+            if not shape.contains(point):
+                continue
+
+            parts = list(shape.geoms)
+            projected = list(equal_area.geometry.iloc[row_index].geoms)
+            for part_index, part in enumerate(parts):
+                if not part.contains(point):
+                    continue
+                area_km2 = projected[part_index].area / 1e6
+                ratio = area_km2 / entity.area_km2  # type: ignore[operator]
+                if not (_DETACH_AREA_RATIO[0] <= ratio <= _DETACH_AREA_RATIO[1]):
+                    # A much larger landmass that merely encloses this entity.
+                    # Correct to leave alone -- see the docstring.
+                    continue
+
+                parent_geometry = next(
+                    (g for g in geometries if g.get("id") == parent_iso3
+                     and g.get("type") == "MultiPolygon"),
+                    None,
+                )
+                if parent_geometry is None:
+                    continue
+                arcs = parent_geometry["arcs"]
+                if part_index >= len(arcs) or len(arcs) < 2:
+                    continue
+
+                moved = arcs.pop(part_index)
+                geometries.append({
+                    "type": "Polygon",
+                    "arcs": moved,
+                    "id": entity.iso3,
+                    "properties": {
+                        "iso3": entity.iso3,
+                        "name": entity.name_common,
+                        "continent": entity.continent,
+                        "contested": entity.is_contested,
+                    },
+                })
+                if len(arcs) == 1:
+                    parent_geometry["type"] = "Polygon"
+                    parent_geometry["arcs"] = arcs[0]
+                detached.append(entity.iso3)
+                print(
+                    f"      detached {entity.iso3} ({entity.name_common}) from "
+                    f"{parent_iso3}: part measured {area_km2:,.0f} km2 vs "
+                    f"published {entity.area_km2:,.0f} km2",
+                    flush=True,
+                )
+                break
+            if entity.iso3 in detached:
+                break
+
+    return detached
+
+
 def ingest(
     registry: dict[str, Entity],
     *,
@@ -124,6 +264,10 @@ def ingest(
     multi_polygon = {iso3: idx for iso3, idx in assigned.items() if len(idx) > 1}
 
     topology["objects"]["countries"]["geometries"] = geometries
+    detached = _detach_embedded_territories(topology, registry, assigned, out_dir)
+    for iso3 in detached:
+        assigned.setdefault(iso3, []).append(-1)
+
     (out_dir / "countries-110m.json").write_text(
         json.dumps(topology, separators=(",", ":")) + "\n",
         encoding="utf-8", newline="\n",
