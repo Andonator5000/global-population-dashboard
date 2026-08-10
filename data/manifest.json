@@ -1,0 +1,33 @@
+{
+  "manifest_version": 1,
+  "generated_at": "2026-08-10T02:41:02+00:00",
+  "pipeline_version": "0.1.0",
+  "editorial_decisions_doc": "DATA_DECISIONS.md",
+  "sources": {
+    "country_metadata": {
+      "title": "mledoze/countries",
+      "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
+      "licence": "ODbL-1.0",
+      "fetched_at": "2026-08-10T02:41:02+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "mledoze/countries (github.com/mledoze/countries)",
+      "files": [],
+      "notes": "Replaces REST Countries v3.1, which was deprecated in favour of a key-gated v5 (see DATA_DECISIONS.md #1). This is the dataset REST Countries is built from. Used only for country metadata (names, ISO codes, borders, capital, area, currencies, languages). Never used for population or economic figures -- its population field is undated and disagrees with UN WPP. One documented upstream correction is applied (Vatican City UN membership)."
+    }
+  },
+  "artifacts": {
+    "entities.json": {
+      "description": "Canonical entity registry. The ISO3 join key for every other artifact, including editorial rulings on contested entities and continent assignment.",
+      "sources": [
+        "country_metadata",
+        "editorial"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    }
+  },
+  "warnings": [
+    "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe."
+  ]
+}

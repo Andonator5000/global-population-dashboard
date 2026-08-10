@@ -1,0 +1,24 @@
+# Raw upstream downloads. Regenerable via `python etl/run.py --refresh`, and
+# large (WPP single-age CSVs and the ecoregions shapefile are hundreds of MB).
+# /data, by contrast, IS committed -- it is the versioned pipeline output.
+.cache/
+
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+.DS_Store
+Thumbs.db
+
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp

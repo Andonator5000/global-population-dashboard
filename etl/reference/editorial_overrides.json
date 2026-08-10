@@ -1,0 +1,167 @@
+{
+  "_README": [
+    "Hand-curated editorial rulings. This file is the ONLY place where a human",
+    "decision overrides what upstream sources say. Everything else in the",
+    "crosswalk is derived automatically from REST Countries + UN M49 + the",
+    "source files themselves.",
+    "",
+    "Kept small on purpose: each entry is a decision someone has to defend, and",
+    "every one of them is mirrored in DATA_DECISIONS.md with its reasoning.",
+    "Do not add a row here to paper over a join bug -- fix the join."
+  ],
+
+  "_schema": {
+    "contested_entities": "Entities whose existence, recognition, or coding is disputed. `render` decides whether they get their own polygon and country page.",
+    "continent_assignments": "Entities that are transcontinental or whose continent placement differs between UN M49 and the conventional 7-continent model. Our value wins.",
+    "iso3_aliases": "Non-standard codes seen in upstream files, mapped to our canonical ISO3.",
+    "excluded_aggregates": "Codes that look like countries in upstream files but are regional/income aggregates. Excluded from all country-level output."
+  },
+
+  "contested_entities": [
+    {
+      "iso3": "XKX",
+      "m49": null,
+      "name_common": "Kosovo",
+      "name_formal": "Republic of Kosovo",
+      "continent": "EU",
+      "un_member": false,
+      "render": "separate",
+      "status_label": "Partially recognised",
+      "note": "Has no ISO 3166-1 code. XKX is a user-assigned code adopted by the World Bank and IMF; REST Countries uses XKX, UN M49 has no entry. Recognised by roughly half of UN member states. UN WPP publishes Kosovo within Serbia for some series -- where that happens we report the Serbia figure as covering Kosovo and say so, rather than subtracting an estimate.",
+      "label_on_map": "Kosovo"
+    },
+    {
+      "iso3": "TWN",
+      "m49": 158,
+      "name_common": "Taiwan",
+      "name_formal": "Taiwan",
+      "continent": "AS",
+      "un_member": false,
+      "render": "separate",
+      "status_label": "Disputed status",
+      "note": "ISO 3166-1 assigns TWN. Not a UN member. UN WPP publishes it as 'China, Taiwan Province of China' -- we use that series but label the entity 'Taiwan', which is the common English name and the one readers will search for. World Bank does not publish most indicators for Taiwan, so many Economy/Education fields will legitimately render 'not available from World Bank'.",
+      "label_on_map": "Taiwan"
+    },
+    {
+      "iso3": "PSE",
+      "m49": 275,
+      "name_common": "Palestine",
+      "name_formal": "State of Palestine",
+      "continent": "AS",
+      "un_member": false,
+      "render": "separate",
+      "status_label": "UN non-member observer State",
+      "note": "UN General Assembly granted non-member observer State status in 2012. UN WPP publishes as 'State of Palestine'. Natural Earth splits West Bank and Gaza into separate polygons; we dissolve them into one PSE entity so the geometry matches the single data row, and note the discontiguity.",
+      "label_on_map": "Palestine"
+    },
+    {
+      "iso3": "ESH",
+      "m49": 732,
+      "name_common": "Western Sahara",
+      "name_formal": "Western Sahara",
+      "continent": "AF",
+      "un_member": false,
+      "render": "separate",
+      "status_label": "Non-self-governing territory",
+      "note": "Listed by the UN as a non-self-governing territory; sovereignty unresolved between Morocco and the Sahrawi Arab Democratic Republic. UN WPP publishes a separate population series. Most World Bank indicators are absent. Rendered as its own polygon with a distinct hatch, not merged into Morocco.",
+      "label_on_map": "Western Sahara"
+    },
+    {
+      "iso3": "HKG",
+      "m49": 344,
+      "name_common": "Hong Kong",
+      "name_formal": "Hong Kong Special Administrative Region of China",
+      "continent": "AS",
+      "un_member": false,
+      "render": "separate",
+      "status_label": "Special Administrative Region of China",
+      "note": "Not a sovereign state, but both UN WPP and the World Bank publish full separate series, and its demographics differ sharply from mainland China. Gets a country page; its population is NOT double-counted into the China total or the Asia total.",
+      "label_on_map": "Hong Kong"
+    },
+    {
+      "iso3": "MAC",
+      "m49": 446,
+      "name_common": "Macao",
+      "name_formal": "Macao Special Administrative Region of China",
+      "continent": "AS",
+      "un_member": false,
+      "render": "separate",
+      "status_label": "Special Administrative Region of China",
+      "note": "Same treatment as Hong Kong. Too small to be visible at 110m map resolution; appears in tables and via search, with a minimum-size marker on the map.",
+      "label_on_map": "Macao"
+    },
+    {
+      "iso3": "ATA",
+      "m49": 10,
+      "name_common": "Antarctica",
+      "name_formal": "Antarctica",
+      "continent": "AN",
+      "un_member": false,
+      "render": "separate",
+      "status_label": "No permanent population",
+      "note": "Rendered on the map for geographic completeness but carries no population, economy, or people data. Its continent page states plainly that it has no permanent inhabitants and shows only land area and biome data. Excluded from all per-capita and density rankings so it cannot distort them.",
+      "label_on_map": "Antarctica"
+    }
+  ],
+
+  "continent_assignments": [
+    { "iso3": "RUS", "continent": "EU", "note": "Transcontinental. Assigned to Europe: roughly three-quarters of the population lives west of the Urals, and conventional atlases place it in Europe. Its Asian landmass means Europe's land-area figure is inflated relative to a strict geographic split -- flagged on the Europe continent page." },
+    { "iso3": "TUR", "continent": "AS", "note": "Transcontinental. Assigned to Asia, matching UN M49 (Western Asia); about 95% of its land area is in Anatolia. Reasonable people place it in Europe; documented here so the choice is visible." },
+    { "iso3": "KAZ", "continent": "AS", "note": "Transcontinental. Assigned to Asia per UN M49 (Central Asia)." },
+    { "iso3": "AZE", "continent": "AS", "note": "UN M49 Western Asia. Frequently placed in Europe by other schemes." },
+    { "iso3": "GEO", "continent": "AS", "note": "UN M49 Western Asia. Frequently placed in Europe by other schemes." },
+    { "iso3": "ARM", "continent": "AS", "note": "UN M49 Western Asia. Frequently placed in Europe by other schemes." },
+    { "iso3": "CYP", "continent": "EU", "note": "DEPARTS from UN M49, which places Cyprus in Western Asia. Assigned to Europe because it is an EU member state and is conventionally treated as European. This is the clearest case where we override M49." },
+    { "iso3": "EGY", "continent": "AF", "note": "Transcontinental (Sinai is in Asia). Assigned to Africa, where the overwhelming majority of land and population sits." },
+    { "iso3": "GRL", "continent": "NA", "note": "Autonomous territory of Denmark; geographically North American. Appears on the North America page, not Europe." },
+    { "iso3": "IDN", "continent": "AS", "note": "Transcontinental (Papua provinces are in Oceania). Assigned to Asia." },
+    { "iso3": "TLS", "continent": "AS", "note": "Assigned to Asia (M49 South-Eastern Asia), though sometimes grouped with Oceania." },
+    { "iso3": "PNG", "continent": "OC", "note": "Assigned to Oceania (M49 Melanesia)." },
+    { "iso3": "UMI", "continent": "OC", "note": "US Minor Outlying Islands are scattered across the Pacific and Caribbean. Assigned to Oceania as the least-wrong single bucket; noted as an approximation." },
+    { "iso3": "MEX", "continent": "NA", "note": "Assigned to North America, the conventional placement. UN M49 places it in 'Latin America and the Caribbean' within the Americas." },
+    { "iso3": "PAN", "continent": "NA", "note": "Isthmus state. Assigned to North America; the Darien Gap is the conventional NA/SA divide." },
+    { "iso3": "TTO", "continent": "NA", "note": "Caribbean. In the 7-continent model the Caribbean falls under North America despite sitting on the South American shelf." },
+    { "iso3": "ATF", "continent": "AN", "note": "French Southern and Antarctic Lands. Uninhabited apart from research staff. Kept in Antarctica because it includes the Adelie Land claim, though its island groups sit in the southern Indian Ocean." },
+    { "iso3": "BVT", "continent": "AN", "note": "Bouvet Island (Norway). Uninhabited sub-Antarctic island in the South Atlantic. Assigned to Antarctica rather than Africa or South America, neither of which is a good fit." },
+    { "iso3": "HMD", "continent": "AN", "note": "Heard Island and McDonald Islands (Australia). Uninhabited sub-Antarctic. Assigned to Antarctica rather than Oceania." },
+    { "iso3": "SGS", "continent": "AN", "note": "South Georgia and the South Sandwich Islands. Uninhabited apart from research staff. Commonly grouped with South America; assigned to Antarctica here for consistency with the other uninhabited sub-Antarctic territories. This is the weakest of the four assignments and is worth revisiting." }
+  ],
+
+  "source_corrections": [
+    {
+      "iso3": "VAT",
+      "field": "un_member",
+      "upstream_value": true,
+      "corrected_value": false,
+      "note": "mledoze/countries flags Vatican City as unMember:true. This is an upstream error. The Holy See is a UN NON-MEMBER OBSERVER STATE, the same status as Palestine; there are exactly 193 UN member states. Left uncorrected this inflates our UN member count to 194 and would make the 'is a UN member' badge wrong on the Vatican City page. Detected 2026-08-09 by the crosswalk validator's 193-member assertion."
+    }
+  ],
+
+  "iso3_aliases": {
+    "_note": "Left-hand codes appear in upstream files; right-hand is our canonical ISO3.",
+    "UNK": "XKX",
+    "KSV": "XKX",
+    "XK": "XKX",
+    "ROM": "ROU",
+    "ZAR": "COD",
+    "TMP": "TLS",
+    "WBG": "PSE",
+    "PSX": "PSE",
+    "SDN": "SDN",
+    "ADO": "AND",
+    "IMY": "IMN"
+  },
+
+  "excluded_aggregates": {
+    "_note": "World Bank returns these alongside countries in an all-countries query. They are regional or income-group aggregates and must never appear as countries. Detected primarily via the World Bank /country endpoint's region.id == 'NA', with this list as an explicit backstop.",
+    "codes": [
+      "WLD", "EAS", "ECS", "LCN", "MEA", "NAC", "SAS", "SSF",
+      "EAP", "ECA", "LAC", "MNA", "SSA",
+      "HIC", "LIC", "LMC", "MIC", "UMC", "LMY", "HPC", "IBD", "IBT",
+      "IDA", "IDB", "IDX", "OED", "OSS", "PSS", "PST", "PRE",
+      "ARB", "CEB", "CSS", "EMU", "EUU", "FCS", "LDC", "LTE", "MIC",
+      "SST", "TEA", "TEC", "TLA", "TMN", "TSA", "TSS",
+      "AFE", "AFW", "EAR", "INX", "EAE", "ECE", "LCR", "NAF"
+    ]
+  }
+}

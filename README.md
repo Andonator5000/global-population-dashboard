@@ -1,0 +1,118 @@
+# Global Population Dashboard
+
+World population statistics on an equal-area map, built as a **static site fed
+by a versioned ETL pipeline**. The browser never calls an upstream API — it
+reads committed artifacts from `/data`, each carrying its own provenance.
+
+> **Status: Phase 1 of 9 complete** (scaffold, dependencies, ETL skeleton, ISO3
+> crosswalk, data manifest). The map, population figures, and country detail
+> sections are not built yet. See [Build phases](#build-phases).
+
+## Layout
+
+```
+etl/        ingestion pipeline (Python) — run monthly, emits /data
+  reference/  hand-curated editorial rulings (the ONLY human overrides)
+  sources/    one module per upstream source
+data/       committed, versioned pipeline output + provenance manifest
+src/        the app (Vite + React + TypeScript + Tailwind v4)
+scripts/    flag colour extraction, biome precomputation
+```
+
+## Prerequisites
+
+Node 24+ and Python 3.12+. Both are already installed and the dependencies are
+in place; these are the commands to reproduce the environment elsewhere.
+
+```bash
+npm install
+python -m venv .venv
+.venv/Scripts/python -m pip install requests pandas pyarrow geopandas shapely pyproj pyogrio topojson tqdm
+```
+
+## Commands
+
+```bash
+# --- data ---
+python etl/run.py --refresh              # re-fetch everything, rebuild /data
+python etl/run.py                        # rebuild from the raw download cache
+python etl/run.py --only crosswalk       # run a single stage
+python etl/run.py --check-sources        # probe every upstream, write nothing
+python etl/run.py --validate-indicators  # verify World Bank codes still resolve
+
+# --- app ---
+npm run dev        # dev server (serves /data via middleware)
+npm run build      # typecheck + production build, copies /data into dist/
+npm run typecheck
+```
+
+`/data` is committed; `.cache/` (raw downloads) is not, and is fully
+regenerable with `--refresh`.
+
+## Principles this codebase enforces
+
+**Every figure carries provenance.** Source, indicator code, and the *vintage
+year of the observation*. The `Sourced<T>` type in `src/types.ts` makes an
+unattributed number awkward to construct on purpose.
+
+**Three dates, never conflated.** `vintage` (what year the observation
+describes) ≠ `upstream_release` (when the publisher cut it) ≠ `fetched_at`
+(when we downloaded it). The freshness panel shows all three.
+
+**Missing data is a state, not a zero.** `value: null` renders as "not
+available from *source*" — never a zero, never a blank chart.
+
+**"Real time" is honest.** No source publishes live population. The ticking
+counter is a client-side interpolation between annual UN WPP points, labelled
+as a modelled estimate with its method in a tooltip.
+
+**Fail loudly.** The ETL aborts rather than emitting partial data, because the
+app cannot distinguish "absent upstream" from "our fetch broke" — and those
+must render differently.
+
+**Equal-area only.** `d3.geoEqualEarth()`, swappable to Mollweide or Eckert IV.
+Area math happens in EPSG:6933. Mercator is not an option.
+
+## Data sources
+
+| Domain | Source | Notes |
+|---|---|---|
+| Population, fertility, mortality, projections | UN World Population Prospects 2024 | Bulk CSV. Medium variant headline; low/high for bands. |
+| Economy, education, health, urbanisation | World Bank Indicators API v2 | Codes centralised in `etl/config.py`. |
+| Government, ethnicity, religion, languages | CIA World Factbook (`factbook.json` mirror) | Public domain. |
+| Country metadata, borders, area | `mledoze/countries` | **Substituted for REST Countries v3.1** — see below. |
+| Geometry | Natural Earth via TopoJSON | 110m render, 50m for biome math. |
+| Biomes | RESOLVE Ecoregions 2017 | Build-time overlay, never runtime. |
+| Cross-checks | Our World in Data | Sanity check only, never primary. |
+
+Joined on **ISO 3166-1 alpha-3**.
+
+### Two substitutions were required
+
+Both because the brief's specified source now needs an API key, which would
+break the acceptance criterion that `--refresh` rebuilds `/data` from a fresh
+checkout with no manual steps:
+
+1. **REST Countries v3.1 → `mledoze/countries`.** v3.1 is deprecated (it
+   answers HTTP 200 with an error body); v5 requires a bearer token.
+   `mledoze/countries` is the dataset REST Countries is built from.
+2. **UN WPP Data Portal API → bulk CSV.** The `/data/` endpoints return 401
+   without a registered token. The CSVs carry the same figures.
+
+Full reasoning in **[DATA_DECISIONS.md](DATA_DECISIONS.md)**, which also
+documents every editorial call about disputed entities and continent
+assignment.
+
+## Build phases
+
+| # | Phase | Status |
+|---|---|---|
+| 1 | Scaffold, deps, ETL skeleton, ISO3 crosswalk, manifest | **done** |
+| 2 | UN WPP + World Bank ingestion, hand-verified against source | next |
+| 3 | Equal-area map, static fill, routing | |
+| 4 | Flag colour extraction, OKLCH normalisation, adjacency colouring | |
+| 5 | Country detail pages, Factbook ingestion | |
+| 6 | Biome precomputation, continent detail pages | |
+| 7 | Interpolating counters, time scrubber | |
+| 8 | Monthly GitHub Action, freshness panel | |
+| 9 | Accessibility, responsive layout, map performance | |
