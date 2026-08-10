@@ -357,6 +357,13 @@ export function CountryPage() {
                   coveredShare={biome.coveredShare}
                   landAreaKm2={biome.landAreaKm2}
                   ecoregions={biome.topEcoregions}
+                  {...(biome.areaDiffersFromPublishedPct !== undefined
+                    ? {
+                        areaDiffersFromPublishedPct:
+                          biome.areaDiffersFromPublishedPct,
+                        publishedAreaKm2: entity?.area_km2 ?? null,
+                      }
+                    : {})}
                 />
               </div>
             </div>

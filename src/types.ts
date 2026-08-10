@@ -314,6 +314,11 @@ export interface BiomeEntity {
   /** Sum of shares. Below 100 means part of the polygon has no ecoregion. */
   coveredShare: number
   withinTolerance: boolean
+  /**
+   * Set when the drawn polygon disagrees with the published land area by more
+   * than 25% — a boundary-definition difference, not a measurement error.
+   */
+  areaDiffersFromPublishedPct?: number
 }
 
 export interface BiomeContinent {

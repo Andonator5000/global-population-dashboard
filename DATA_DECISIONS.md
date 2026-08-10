@@ -116,19 +116,42 @@ Caribbean fold into North America.
 
 ### 2.2 The Antarctica bucket
 
-Five entities land in Antarctica: **ATA** plus four uninhabited sub-Antarctic
+Four entities land in Antarctica: **ATA** plus three uninhabited sub-Antarctic
 island territories — **ATF** (French Southern and Antarctic Lands), **BVT**
-(Bouvet Island), **HMD** (Heard and McDonald Islands), **SGS** (South Georgia
-and the South Sandwich Islands).
+(Bouvet Island), **HMD** (Heard and McDonald Islands).
 
-All five are uninhabited apart from research staff. They are **excluded from
+All four are uninhabited apart from research staff. They are **excluded from
 every per-capita, density, and population ranking** so they cannot distort
 them, and the Antarctica continent page shows only land area and biome data,
 stating plainly that there is no permanent population.
 
-**SGS is the weakest of these calls** — it is commonly grouped with South
-America. Assigned to Antarctica for consistency with the other uninhabited
-sub-Antarctic territories. Worth revisiting.
+### 2.3 South Georgia moved to South America (resolved 2026-08-10)
+
+South Georgia and the South Sandwich Islands (`SGS`) was originally assigned to
+Antarctica alongside the other uninhabited sub-Antarctic territories, and
+flagged here as the weakest call. **Reversed on evidence.**
+
+| authority | says |
+|---|---|
+| **UN M49** | World → Americas → Latin America and the Caribbean → **South America** (code 239) |
+| nearest neighbour | Falkland Islands, **1,493 km**, itself South America |
+| **RESOLVE ecoregions** | realm **Antarctica**, ecoregion "Scotia Sea Islands tundra" |
+
+M49 is the authority this project follows for every other transcontinental
+case, with Cyprus (§2.1) the single documented override, so consistency decides
+it: **SGS is South America.**
+
+**The tension is real and is recorded rather than hidden.** Biogeographically
+SGS is *not* South American — its ecoregion sits in the Antarctica realm, while
+the neighbouring Falklands' "Patagonian steppe" is Neotropic, which shows the
+realm boundary is a genuine feature and not an artefact. We follow the
+political classification because these are groupings of *countries*, not of
+biomes.
+
+Effect: SGS is uninhabited, so **no population figure changes**. It adds
+3,684 km² of land and 3,361 km² of Antarctic-realm tundra to South America —
+a **0.019%** share of that continent's biome mix, correctly attributed to land
+that really is inside it.
 
 ---
 
@@ -584,18 +607,36 @@ about what those countries *are*. The 50m resolver now applies the **same**
 editorial rulings by name. Only Siachen Glacier remains unresolved, which is
 correct — it is disputed territory belonging to no entity in our registry.
 
-### 9.5 Western Sahara: the map and the biome maths disagree, by construction
+### 9.5 Western Sahara: correcting a claim this document got wrong
 
-At 50m, **Natural Earth attributes most of Western Sahara to Morocco.**
-Measured against published figures: Morocco **+30.3%**, Western Sahara
-**−65.9%**.
+An earlier version of this section stated that *"Morocco's biome shares include
+territory the map renders as Western Sahara"* — implying the 50m biome layer
+and the 110m map disagreed. **That was wrong.** Measured directly:
 
-We do not re-cut that boundary — doing so would be taking a sovereignty
-position in geometry rather than in prose. The consequence is stated instead,
-in the manifest and on the page: **Morocco's biome shares include territory the
-map renders as Western Sahara, and Western Sahara's shares cover only the
-remainder.** Any entity whose measured area differs from its published area by
-more than 25% is flagged the same way.
+| entity | 110m (map) | 50m (biomes) | published |
+|---|---|---|---|
+| Morocco | 592,381 km² | 581,713 km² | 446,550 km² |
+| Western Sahara | 96,452 km² | 90,593 km² | 266,000 km² |
+
+Natural Earth draws the **de facto administered boundary at both
+resolutions**, so the map and the biome maths **agree with each other**. There
+is no internal inconsistency to fix.
+
+What is true, and what the pages now say, is this: **both** give Western Sahara
+roughly a third of its internationally recognised extent, with the remainder
+drawn inside Morocco.
+
+**Decision: keep Natural Earth's geometry.** Sourcing and asserting an
+alternative boundary line would be a *larger* sovereignty statement than
+adopting a widely used public-domain cartographic standard and disclosing its
+convention. Re-cutting the polygon would embed the claim in geometry, where a
+reader cannot see it; disclosing it puts the claim in prose, where they can.
+
+Any entity whose drawn polygon differs from its published land area by more
+than 25% is flagged the same way, and now renders a **boundary note on its own
+page** rather than only in the manifest. Five qualify: `ESH` −66%, `ALA` −52%,
+`PYF` −38%, `MAR` +30%, `FRO` −25%. The last three are small-island coastline
+definitions, not disputed territory.
 
 ---
 
@@ -886,8 +927,20 @@ build on any WCAG AA violation in either theme.
 
 ---
 
+## Resolved questions
+
+- **SGS continent assignment** — resolved 2026-08-10 in favour of South
+  America, following UN M49, with the biogeographic tension recorded (§2.3).
+- **Morocco / Western Sahara boundary** — resolved 2026-08-10. The premise of
+  the question was wrong: the map and the biome maths do not disagree. Natural
+  Earth's de facto boundary is kept and disclosed on the affected pages (§9.5).
+
 ## Open questions
 
-- **SGS continent assignment** (§2.2) — Antarctica vs South America.
 - Whether to surface UN WPP's own regional aggregates alongside our computed
   seven-continent ones, given they will not match (§2).
+- **Åland, French Polynesia and the Faroe Islands** each measure 25–52% below
+  their published land area (§9.5). Unlike Western Sahara these are not
+  disputed — they are small-island coastline definitions, and the gap is
+  probably Natural Earth omitting minor islands. Worth confirming against a
+  finer resolution if island-level accuracy ever matters.

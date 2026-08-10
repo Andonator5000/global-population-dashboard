@@ -19,11 +19,16 @@ export function BiomeBar({
   coveredShare,
   landAreaKm2,
   ecoregions,
+  areaDiffersFromPublishedPct,
+  publishedAreaKm2,
 }: {
   biomes: BiomeShare[]
   coveredShare: number
   landAreaKm2: number
   ecoregions?: { name: string; share: number }[]
+  /** Set when the drawn polygon disagrees with the published land area. */
+  areaDiffersFromPublishedPct?: number | undefined
+  publishedAreaKm2?: number | null | undefined
 }) {
   const [showTable, setShowTable] = useState(false)
   const tableId = useId()
@@ -135,6 +140,26 @@ export function BiomeBar({
         )}{' '}
         Source: RESOLVE Ecoregions 2017.
       </p>
+
+      {areaDiffersFromPublishedPct !== undefined && (
+        <p
+          className="mt-2 rounded border border-dashed px-3 py-2 text-xs"
+          style={{ borderColor: 'var(--border)', color: 'var(--text-muted)' }}
+        >
+          <strong style={{ fontWeight: 500 }}>Boundary note.</strong> The
+          polygon used here measures{' '}
+          {Math.round(landAreaKm2).toLocaleString()} km²
+          {publishedAreaKm2
+            ? `, against a published land area of ${Math.round(publishedAreaKm2).toLocaleString()} km²`
+            : ''}{' '}
+          ({areaDiffersFromPublishedPct > 0 ? '+' : ''}
+          {areaDiffersFromPublishedPct.toFixed(0)}%). Natural Earth draws the
+          de facto administered boundary here, at both the map and biome
+          resolutions, so the two agree with each other but differ from the
+          internationally recognised extent. These shares describe the land
+          inside the drawn polygon.
+        </p>
+      )}
 
       {ecoregions && ecoregions.length > 0 && (
         <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>

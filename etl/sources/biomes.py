@@ -350,12 +350,26 @@ def ingest(
         )
 
     # ---- flag entities whose measured area contradicts the published one --
-    # A large gap here is not a maths error; it means the 50m polygon draws a
-    # different territory than the published figure describes. The Morocco /
-    # Western Sahara pair is the significant case: Natural Earth attributes
-    # most of Western Sahara to Morocco at this resolution, so Morocco's biome
-    # shares cover land the MAP shows as Western Sahara. Readers deserve to
-    # know that before comparing the two.
+    # A large gap here is not a maths error; it means the polygon draws a
+    # different territory than the published figure describes.
+    #
+    # The Morocco / Western Sahara pair is the significant case, and an earlier
+    # version of this comment got it WRONG. It claimed Morocco's biome shares
+    # covered land the map renders as Western Sahara -- implying the 50m biome
+    # layer and the 110m map disagreed. Measured, they do not:
+    #
+    #     entity   110m (map)    50m (biomes)   published
+    #     MAR       592,381 km2   581,713 km2    446,550 km2
+    #     ESH        96,452 km2    90,593 km2    266,000 km2
+    #
+    # Natural Earth draws the DE FACTO administered boundary at BOTH
+    # resolutions, so the map and the biome maths agree with each other. What
+    # they both do is give Western Sahara roughly a third of its
+    # internationally recognised extent, with the remainder inside Morocco.
+    #
+    # We do not re-cut that boundary. Sourcing and asserting an alternative
+    # line would be a larger sovereignty statement than adopting a widely used
+    # public-domain cartographic standard and disclosing its convention.
     area_conflicts = []
     for iso3, record in entities.items():
         published_area = registry[iso3].area_km2 if iso3 in registry else None
@@ -384,10 +398,13 @@ def ingest(
             f"{len(document_extra_conflicts)} entities' measured polygon area "
             f"differs from their published land area by more than 25% "
             f"({worst}). These are boundary-definition differences, not "
-            f"measurement errors. Most significant: at 50m resolution Natural "
-            f"Earth attributes most of Western Sahara to Morocco, so Morocco's "
-            f"biome shares include territory the map renders as Western "
-            f"Sahara, and Western Sahara's cover only the remainder."
+            f"measurement errors. Most significant: Natural Earth draws the "
+            f"de facto administered boundary in Western Sahara at both the "
+            f"110m map and 50m biome resolutions, which agree with each other. "
+            f"Both give Western Sahara roughly a third of its internationally "
+            f"recognised extent (about 96,000 of 266,000 sq km), with the "
+            f"remainder drawn inside Morocco. Area and biome figures for both "
+            f"entities should be read with that in mind."
         )
     document["areaConflicts"] = document_extra_conflicts
     (out_dir / "biomes.json").write_text(
