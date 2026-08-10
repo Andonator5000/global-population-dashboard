@@ -76,3 +76,79 @@ export interface Sourced<T> {
   vintage: string | null
   note?: string
 }
+
+/** One row of data/population/summary.json. */
+export interface PopulationRow {
+  iso3: string
+  name: string
+  continent: ContinentKey
+  year: number
+  available: boolean
+  unavailableReason?: string
+  population?: number | null
+  growthRate?: number | null
+  density?: number | null
+  medianAge?: number | null
+  fertilityRate?: number | null
+  lifeExpectancy?: number | null
+  births?: number | null
+  deaths?: number | null
+  netMigration?: number | null
+}
+
+export interface PopulationSummary {
+  source: string
+  revision: number
+  variant: string
+  year: number
+  estimatesThrough: number
+  latestProjectionYear: number
+  units: Record<string, string>
+  entities: PopulationRow[]
+}
+
+/** Properties the ETL stamps onto each TopoJSON geometry. */
+export interface CountryGeometryProperties {
+  iso3: string
+  name: string
+  continent: ContinentKey
+  contested: boolean
+}
+
+/**
+ * Minimal TopoJSON shape. topojson-client's own types are permissive about the
+ * `properties` payload, so this narrows it to what the geometry stage writes.
+ */
+export interface CountryTopology {
+  type: 'Topology'
+  arcs: number[][][]
+  transform?: { scale: [number, number]; translate: [number, number] }
+  objects: {
+    countries: {
+      type: 'GeometryCollection'
+      geometries: {
+        type: string
+        id?: string
+        arcs: unknown
+        properties: CountryGeometryProperties
+      }[]
+    }
+    land: { type: string; arcs?: unknown }
+  }
+}
+
+/** Populated entities too small to draw as polygons at 110m. */
+export interface MapMarker {
+  iso3: string
+  name: string
+  continent: ContinentKey
+  /** GeoJSON order: [longitude, latitude]. */
+  coordinates: [number, number]
+  contested: boolean
+}
+
+export interface MarkerFile {
+  note: string
+  resolution: string
+  markers: MapMarker[]
+}

@@ -263,7 +263,74 @@ artifacts buried the one finding that mattered.
 
 ---
 
-## 6. Provenance model
+## 6. Map geometry (Phase 3)
+
+### 6.1 Three polygons with no country code
+
+The 110m Natural Earth topology keys geometries by **UN M49 numeric code**, and
+three carry `id: null` because the entity has no M49 code at all. Each needed
+an explicit ruling; none could be resolved by a join.
+
+| Natural Earth polygon | Assigned to | Reasoning |
+|---|---|---|
+| Kosovo | **`XKX`** | Our Kosovo entity. Straightforward. |
+| N. Cyprus | **`CYP`** | Not a separate entity for us — no ISO 3166-1 code, and both UN WPP and the World Bank report its territory within Cyprus. Colouring Cyprus while leaving a hole where Northern Cyprus sits would imply we hold a figure for one and not the other, which is false. |
+| Somaliland | **`SOM`** | Same reasoning as Northern Cyprus. |
+
+Consequence: Cyprus and Somalia are each drawn by **two** polygons, so their
+fill paints multiple paths. Recorded as a manifest warning.
+
+### 6.2 Sixty-four countries too small to draw
+
+Only **175 of 250** entities have a polygon at 110m. The missing ones are
+islands and city-states — but that set includes **Singapore, Malta, Bahrain,
+Mauritius, Hong Kong, and Macao**: real places with millions of residents that
+would otherwise be simply absent from a population map.
+
+**Decision: keep 110m for rendering (per the brief, and because 50m roughly
+quadruples the payload for detail invisible at world zoom) and emit a POINT
+MARKER for every entity that has population data but no polygon.** 64 markers
+result.
+
+A marker is honest — it says "this exists, here, and is too small to draw at
+this scale" — where omission silently implies the country does not exist. The
+readout states plainly that a marker's size is **not to scale**, so it is never
+mistaken for an area encoding. Markers also carry a 24px hit target, which a
+sub-pixel polygon never could.
+
+The remaining **11** entities have neither polygon nor population data (the
+uninhabited Antarctic and outlying territories); they appear only in the table.
+
+### 6.3 Continent fill uses emphasis, not seven colours
+
+The obvious design — one hue per continent — **fails colour-blind validation**.
+Running the seven-slot palette through the validator on the all-pairs list
+(which is what a choropleth demands, since any two continents can be compared):
+
+```
+[FAIL] CVD separation      worst #008300 ↔ #eb6834  ΔE 3.2 (protan)
+[FAIL] Normal-vision floor worst #e87ba4 ↔ #eb6834  ΔE 12.9  (floor 15)
+```
+
+Repeating hues across non-adjacent continents (the four-colour-map trick) was
+rejected too: it breaks the legend, where Africa and North America sharing a
+swatch is unreadable.
+
+**Decision: the emphasis pattern.** Land is neutral; continents are identified
+by **direct labels on the map plus position**; a single accent hue marks the
+hovered or selected continent and the rest dim. For continents, label and
+geography are far more reliable identifiers than hue ever was.
+
+### 6.4 Contested entities are hatched, not just coloured
+
+Contested and special-status entities carry a 45° hatch overlay in addition to
+any fill. Status is never conveyed by colour alone — this is what keeps the
+distinction legible for colour-blind readers, in print, and under
+`forced-colors`.
+
+---
+
+## 7. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -281,7 +348,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 7. Composition data (ethnicity, religion, language)
+## 8. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -296,7 +363,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 8. Equal-area requirement
+## 9. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of
@@ -306,6 +373,25 @@ distort every biome share.
 The map uses **`d3.geoEqualEarth()`**, swappable via config to Mollweide or
 Eckert IV. Mercator is not an option: Greenland must read visibly smaller than
 Africa.
+
+This is **measured, not asserted**. `npm run check:equal-area` computes the
+projected planar area of Greenland and of all African polygons and compares
+their ratio to the true surface-area ratio:
+
+```
+Expected Africa:Greenland ratio 14.02:1 (±15%)
+  PASS  Equal Earth   ratio 13.72:1  (off by 2.2%)
+  PASS  Mollweide     ratio 13.72:1  (off by 2.2%)
+  PASS  Eckert IV     ratio 13.72:1  (off by 2.2%)
+```
+
+All three agree to the same figure, which is what equal-area means. The
+residual 2.2% is 110m coastline generalisation. The test deliberately checks
+the *ratio*, not merely "Greenland is smaller" — the latter is true on Mercator
+too at world zoom, so it would not catch a projection regression.
+
+Theme contrast is likewise gated by `npm run check:contrast`, which fails the
+build on any WCAG AA violation in either theme.
 
 ---
 

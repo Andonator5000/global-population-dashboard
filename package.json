@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
-    "lint": "eslint . --ext ts,tsx",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "check:equal-area": "node scripts/check-equal-area.mjs",
+    "check": "npm run typecheck && npm run check:contrast && npm run check:equal-area",
     "flags": "node scripts/extract-flag-colors.mjs"
   },
   "dependencies": {

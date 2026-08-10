@@ -53,6 +53,10 @@ class Entity:
     independent: bool | None
     area_km2: float | None
     capital: str | None
+    # [lat, lon] centroid. Used to place a point marker for entities too small
+    # to appear in the 110m geometry -- Singapore, Malta, Hong Kong and 70-odd
+    # others -- so a populated country is never silently absent from the map.
+    latlng: list[float] | None = None
     borders: list[str] = field(default_factory=list)
     # Editorial
     render: str = "separate"            # 'separate' | 'merged' | 'hidden'
@@ -80,6 +84,7 @@ class Entity:
             "independent": self.independent,
             "area_km2": self.area_km2,
             "capital": self.capital,
+            "latlng": self.latlng,
             "borders": self.borders,
             "render": self.render,
             "status_label": self.status_label,
@@ -287,6 +292,11 @@ def build_registry(
             independent=row.get("independent"),
             area_km2=row.get("area"),
             capital=capitals[0] if capitals else None,
+            latlng=(
+                [float(v) for v in row["latlng"]]
+                if isinstance(row.get("latlng"), list) and len(row["latlng"]) == 2
+                else None
+            ),
             # Borders arrive as upstream codes and must be canonicalised too,
             # or Kosovo's neighbours would point at a 'UNK' node that does not
             # exist in the registry and the Phase 4 adjacency colouring would

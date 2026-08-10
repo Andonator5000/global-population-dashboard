@@ -181,6 +181,16 @@ def stage_worldbank(ctx: dict[str, Any]) -> None:
     )
 
 
+def stage_geometry(ctx: dict[str, Any]) -> None:
+    from etl.sources import geometry
+
+    _require_registry(ctx)
+    stage("geometry")
+    geometry.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
 def stage_owid(ctx: dict[str, Any]) -> None:
     from etl.sources import owid
 
@@ -195,7 +205,7 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "crosswalk": stage_crosswalk,
     "wpp": stage_wpp,
     "worldbank": stage_worldbank,
-    "geometry": _not_yet(3, "geometry"),
+    "geometry": stage_geometry,
     "flags": _not_yet(4, "flags"),
     "factbook": _not_yet(5, "factbook"),
     "biomes": _not_yet(6, "biomes"),

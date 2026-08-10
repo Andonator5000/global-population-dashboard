@@ -16,24 +16,46 @@
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 }
 
+/*
+ * These values are mirrored in scripts/check-contrast.mjs, which gates them
+ * against WCAG AA in both themes. Change one, change the other, and re-run
+ * `npm run check:contrast`.
+ */
 :root {
   --surface: oklch(99% 0.002 250);
   --surface-raised: oklch(100% 0 0);
   --border: oklch(90% 0.004 250);
   --text: oklch(22% 0.008 250);
-  --text-muted: oklch(48% 0.008 250);
+  --text-muted: oklch(45% 0.008 250);
   --accent: oklch(52% 0.13 250);
+
+  /* Map. Land/water is a shape boundary rather than text, so these carry
+     perceptual minimums rather than WCAG text ratios. */
+  --map-water: oklch(98% 0.010 235);
+  --map-land: oklch(84% 0.014 250);
+  --map-land-stroke: oklch(98% 0.010 235);
+  --map-accent-fill: oklch(70% 0.13 250);
+  --map-no-data: oklch(92% 0.003 250);
+
   color-scheme: light;
 }
 
+/* Dark is a SELECTED palette stepped for the dark surface, not an inversion. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --surface: oklch(17% 0.006 250);
     --surface-raised: oklch(21% 0.007 250);
     --border: oklch(31% 0.008 250);
     --text: oklch(94% 0.003 250);
-    --text-muted: oklch(70% 0.006 250);
+    --text-muted: oklch(72% 0.006 250);
     --accent: oklch(76% 0.11 250);
+
+    --map-water: oklch(13% 0.010 235);
+    --map-land: oklch(34% 0.014 250);
+    --map-land-stroke: oklch(13% 0.010 235);
+    --map-accent-fill: oklch(60% 0.13 250);
+    --map-no-data: oklch(22% 0.004 250);
+
     color-scheme: dark;
   }
 }
@@ -43,8 +65,15 @@
   --surface-raised: oklch(21% 0.007 250);
   --border: oklch(31% 0.008 250);
   --text: oklch(94% 0.003 250);
-  --text-muted: oklch(70% 0.006 250);
+  --text-muted: oklch(72% 0.006 250);
   --accent: oklch(76% 0.11 250);
+
+  --map-water: oklch(13% 0.010 235);
+  --map-land: oklch(34% 0.014 250);
+  --map-land-stroke: oklch(13% 0.010 235);
+  --map-accent-fill: oklch(60% 0.13 250);
+  --map-no-data: oklch(22% 0.004 250);
+
   color-scheme: dark;
 }
 
@@ -68,6 +97,46 @@ body {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/*
+ * Map hit targets.
+ *
+ * SVG shapes cannot rely on the outline rule above: an `outline` on an
+ * irregular path is drawn around its bounding BOX, which for a country like
+ * Chile or Indonesia is a huge rectangle covering half a continent and reads
+ * as a bug. So focus is expressed as a heavy stroke on the shape itself, which
+ * traces the actual geometry.
+ *
+ * `paint-order: stroke` keeps the focus stroke outside the fill so it is not
+ * half-swallowed by neighbouring countries drawn afterwards.
+ */
+.map-target {
+  cursor: pointer;
+  outline: none;
+}
+
+.map-target:focus-visible {
+  stroke: var(--accent) !important;
+  stroke-width: 2.5px !important;
+  paint-order: stroke fill;
+}
+
+.map-target:focus-visible circle {
+  stroke: var(--accent);
+  stroke-width: 2.5px;
+}
+
+/*
+ * Forced-colors / high-contrast: system colors replace ours entirely, so the
+ * fills collapse. The contested hatch and the focus stroke are what keep the
+ * map readable there.
+ */
+@media (forced-colors: active) {
+  .map-target:focus-visible {
+    stroke: Highlight !important;
+    stroke-width: 3px !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -11,6 +11,10 @@
     "independent": false,
     "area_km2": 180,
     "capital": "Oranjestad",
+    "latlng": [
+      12.5,
+      -69.96666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -32,6 +36,10 @@
     "independent": true,
     "area_km2": 652230,
     "capital": "Kabul",
+    "latlng": [
+      33.0,
+      65.0
+    ],
     "borders": [
       "CHN",
       "IRN",
@@ -60,6 +68,10 @@
     "independent": true,
     "area_km2": 1246700,
     "capital": "Luanda",
+    "latlng": [
+      -12.5,
+      18.5
+    ],
     "borders": [
       "COD",
       "COG",
@@ -86,6 +98,10 @@
     "independent": false,
     "area_km2": 91,
     "capital": "The Valley",
+    "latlng": [
+      18.25,
+      -63.16666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -107,6 +123,10 @@
     "independent": false,
     "area_km2": 1580,
     "capital": "Mariehamn",
+    "latlng": [
+      60.116667,
+      19.9
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -128,6 +148,10 @@
     "independent": true,
     "area_km2": 28748,
     "capital": "Tirana",
+    "latlng": [
+      41.0,
+      20.0
+    ],
     "borders": [
       "GRC",
       "MKD",
@@ -154,6 +178,10 @@
     "independent": true,
     "area_km2": 468,
     "capital": "Andorra la Vella",
+    "latlng": [
+      42.5,
+      1.5
+    ],
     "borders": [
       "ESP",
       "FRA"
@@ -178,6 +206,10 @@
     "independent": true,
     "area_km2": 83600,
     "capital": "Abu Dhabi",
+    "latlng": [
+      24.0,
+      54.0
+    ],
     "borders": [
       "OMN",
       "SAU"
@@ -202,6 +234,10 @@
     "independent": true,
     "area_km2": 2780400,
     "capital": "Buenos Aires",
+    "latlng": [
+      -34.0,
+      -64.0
+    ],
     "borders": [
       "BOL",
       "BRA",
@@ -229,6 +265,10 @@
     "independent": true,
     "area_km2": 29743,
     "capital": "Yerevan",
+    "latlng": [
+      40.0,
+      45.0
+    ],
     "borders": [
       "AZE",
       "GEO",
@@ -255,6 +295,10 @@
     "independent": false,
     "area_km2": 199,
     "capital": "Pago Pago",
+    "latlng": [
+      -14.33333333,
+      -170.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -276,6 +320,10 @@
     "independent": false,
     "area_km2": 14000000,
     "capital": null,
+    "latlng": [
+      -90.0,
+      0.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": "No permanent population",
@@ -297,6 +345,10 @@
     "independent": false,
     "area_km2": 7747,
     "capital": "Port-aux-Français",
+    "latlng": [
+      -49.25,
+      69.167
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -318,6 +370,10 @@
     "independent": true,
     "area_km2": 442,
     "capital": "Saint John's",
+    "latlng": [
+      17.05,
+      -61.8
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -339,6 +395,10 @@
     "independent": true,
     "area_km2": 7692024,
     "capital": "Canberra",
+    "latlng": [
+      -27.0,
+      133.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -360,6 +420,10 @@
     "independent": true,
     "area_km2": 83871,
     "capital": "Vienna",
+    "latlng": [
+      47.33333333,
+      13.33333333
+    ],
     "borders": [
       "CHE",
       "CZE",
@@ -390,6 +454,10 @@
     "independent": true,
     "area_km2": 86600,
     "capital": "Baku",
+    "latlng": [
+      40.5,
+      47.5
+    ],
     "borders": [
       "ARM",
       "GEO",
@@ -417,6 +485,10 @@
     "independent": true,
     "area_km2": 27834,
     "capital": "Gitega",
+    "latlng": [
+      -3.5,
+      30.0
+    ],
     "borders": [
       "COD",
       "RWA",
@@ -442,6 +514,10 @@
     "independent": true,
     "area_km2": 30528,
     "capital": "Brussels",
+    "latlng": [
+      50.83333333,
+      4.0
+    ],
     "borders": [
       "DEU",
       "FRA",
@@ -468,6 +544,10 @@
     "independent": true,
     "area_km2": 112622,
     "capital": "Porto-Novo",
+    "latlng": [
+      9.5,
+      2.25
+    ],
     "borders": [
       "BFA",
       "NER",
@@ -494,6 +574,10 @@
     "independent": false,
     "area_km2": 328,
     "capital": "Kralendijk",
+    "latlng": [
+      12.18,
+      -68.25
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -515,6 +599,10 @@
     "independent": true,
     "area_km2": 272967,
     "capital": "Ouagadougou",
+    "latlng": [
+      13.0,
+      -2.0
+    ],
     "borders": [
       "BEN",
       "CIV",
@@ -543,6 +631,10 @@
     "independent": true,
     "area_km2": 147570,
     "capital": "Dhaka",
+    "latlng": [
+      24.0,
+      90.0
+    ],
     "borders": [
       "IND",
       "MMR"
@@ -567,6 +659,10 @@
     "independent": true,
     "area_km2": 110879,
     "capital": "Sofia",
+    "latlng": [
+      43.0,
+      25.0
+    ],
     "borders": [
       "GRC",
       "MKD",
@@ -594,6 +690,10 @@
     "independent": true,
     "area_km2": 765,
     "capital": "Manama",
+    "latlng": [
+      26.0,
+      50.55
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -615,6 +715,10 @@
     "independent": true,
     "area_km2": 13943,
     "capital": "Nassau",
+    "latlng": [
+      24.25,
+      -76.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -636,6 +740,10 @@
     "independent": true,
     "area_km2": 51209,
     "capital": "Sarajevo",
+    "latlng": [
+      44.0,
+      18.0
+    ],
     "borders": [
       "HRV",
       "MNE",
@@ -661,6 +769,10 @@
     "independent": false,
     "area_km2": 21,
     "capital": "Gustavia",
+    "latlng": [
+      18.5,
+      -63.41666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -682,6 +794,10 @@
     "independent": true,
     "area_km2": 207600,
     "capital": "Minsk",
+    "latlng": [
+      53.0,
+      28.0
+    ],
     "borders": [
       "LTU",
       "LVA",
@@ -709,6 +825,10 @@
     "independent": true,
     "area_km2": 22966,
     "capital": "Belmopan",
+    "latlng": [
+      17.25,
+      -88.75
+    ],
     "borders": [
       "GTM",
       "MEX"
@@ -733,6 +853,10 @@
     "independent": false,
     "area_km2": 54,
     "capital": "Hamilton",
+    "latlng": [
+      32.33333333,
+      -64.75
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -754,6 +878,10 @@
     "independent": true,
     "area_km2": 1098581,
     "capital": "Sucre",
+    "latlng": [
+      -17.0,
+      -65.0
+    ],
     "borders": [
       "ARG",
       "BRA",
@@ -781,6 +909,10 @@
     "independent": true,
     "area_km2": 8515767,
     "capital": "Brasília",
+    "latlng": [
+      -10.0,
+      -55.0
+    ],
     "borders": [
       "ARG",
       "BOL",
@@ -813,6 +945,10 @@
     "independent": true,
     "area_km2": 430,
     "capital": "Bridgetown",
+    "latlng": [
+      13.16666666,
+      -59.53333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -834,6 +970,10 @@
     "independent": true,
     "area_km2": 5765,
     "capital": "Bandar Seri Begawan",
+    "latlng": [
+      4.5,
+      114.66666666
+    ],
     "borders": [
       "MYS"
     ],
@@ -857,6 +997,10 @@
     "independent": true,
     "area_km2": 38394,
     "capital": "Thimphu",
+    "latlng": [
+      27.5,
+      90.5
+    ],
     "borders": [
       "CHN",
       "IND"
@@ -881,6 +1025,10 @@
     "independent": false,
     "area_km2": 49,
     "capital": null,
+    "latlng": [
+      -54.43333333,
+      3.4
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -902,6 +1050,10 @@
     "independent": true,
     "area_km2": 582000,
     "capital": "Gaborone",
+    "latlng": [
+      -22.0,
+      24.0
+    ],
     "borders": [
       "NAM",
       "ZAF",
@@ -928,6 +1080,10 @@
     "independent": true,
     "area_km2": 622984,
     "capital": "Bangui",
+    "latlng": [
+      7.0,
+      21.0
+    ],
     "borders": [
       "CMR",
       "COD",
@@ -956,6 +1112,10 @@
     "independent": true,
     "area_km2": 9984670,
     "capital": "Ottawa",
+    "latlng": [
+      60.0,
+      -95.0
+    ],
     "borders": [
       "USA"
     ],
@@ -979,6 +1139,10 @@
     "independent": false,
     "area_km2": 14,
     "capital": "West Island",
+    "latlng": [
+      -12.5,
+      96.83333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1000,6 +1164,10 @@
     "independent": true,
     "area_km2": 41284,
     "capital": "Bern",
+    "latlng": [
+      47.0,
+      8.0
+    ],
     "borders": [
       "AUT",
       "DEU",
@@ -1027,6 +1195,10 @@
     "independent": true,
     "area_km2": 756102,
     "capital": "Santiago",
+    "latlng": [
+      -30.0,
+      -71.0
+    ],
     "borders": [
       "ARG",
       "BOL",
@@ -1052,6 +1224,10 @@
     "independent": true,
     "area_km2": 9706961,
     "capital": "Beijing",
+    "latlng": [
+      35.0,
+      105.0
+    ],
     "borders": [
       "AFG",
       "BTN",
@@ -1090,6 +1266,10 @@
     "independent": true,
     "area_km2": 322463,
     "capital": "Yamoussoukro",
+    "latlng": [
+      8.0,
+      -5.0
+    ],
     "borders": [
       "BFA",
       "GHA",
@@ -1117,6 +1297,10 @@
     "independent": true,
     "area_km2": 475442,
     "capital": "Yaoundé",
+    "latlng": [
+      6.0,
+      12.0
+    ],
     "borders": [
       "CAF",
       "COG",
@@ -1145,6 +1329,10 @@
     "independent": true,
     "area_km2": 2344858,
     "capital": "Kinshasa",
+    "latlng": [
+      0.0,
+      25.0
+    ],
     "borders": [
       "AGO",
       "BDI",
@@ -1176,6 +1364,10 @@
     "independent": true,
     "area_km2": 342000,
     "capital": "Brazzaville",
+    "latlng": [
+      -1.0,
+      15.0
+    ],
     "borders": [
       "AGO",
       "CAF",
@@ -1203,6 +1395,10 @@
     "independent": false,
     "area_km2": 236,
     "capital": "Avarua",
+    "latlng": [
+      -21.23333333,
+      -159.76666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1224,6 +1420,10 @@
     "independent": true,
     "area_km2": 1141748,
     "capital": "Bogotá",
+    "latlng": [
+      4.0,
+      -72.0
+    ],
     "borders": [
       "BRA",
       "ECU",
@@ -1251,6 +1451,10 @@
     "independent": true,
     "area_km2": 1862,
     "capital": "Moroni",
+    "latlng": [
+      -12.16666666,
+      44.25
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1272,6 +1476,10 @@
     "independent": true,
     "area_km2": 4033,
     "capital": "Praia",
+    "latlng": [
+      16.0,
+      -24.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1293,6 +1501,10 @@
     "independent": true,
     "area_km2": 51100,
     "capital": "San José",
+    "latlng": [
+      10.0,
+      -84.0
+    ],
     "borders": [
       "NIC",
       "PAN"
@@ -1317,6 +1529,10 @@
     "independent": true,
     "area_km2": 109884,
     "capital": "Havana",
+    "latlng": [
+      21.5,
+      -80.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1338,6 +1554,10 @@
     "independent": false,
     "area_km2": 444,
     "capital": "Willemstad",
+    "latlng": [
+      12.116667,
+      -68.933333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1359,6 +1579,10 @@
     "independent": false,
     "area_km2": 135,
     "capital": "Flying Fish Cove",
+    "latlng": [
+      -10.5,
+      105.66666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1380,6 +1604,10 @@
     "independent": false,
     "area_km2": 264,
     "capital": "George Town",
+    "latlng": [
+      19.5,
+      -80.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1401,6 +1629,10 @@
     "independent": true,
     "area_km2": 9251,
     "capital": "Nicosia",
+    "latlng": [
+      35.0,
+      33.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1422,6 +1654,10 @@
     "independent": true,
     "area_km2": 78865,
     "capital": "Prague",
+    "latlng": [
+      49.75,
+      15.5
+    ],
     "borders": [
       "AUT",
       "DEU",
@@ -1448,6 +1684,10 @@
     "independent": true,
     "area_km2": 357114,
     "capital": "Berlin",
+    "latlng": [
+      51.0,
+      9.0
+    ],
     "borders": [
       "AUT",
       "BEL",
@@ -1479,6 +1719,10 @@
     "independent": true,
     "area_km2": 23200,
     "capital": "Djibouti",
+    "latlng": [
+      11.5,
+      43.0
+    ],
     "borders": [
       "ERI",
       "ETH",
@@ -1504,6 +1748,10 @@
     "independent": true,
     "area_km2": 751,
     "capital": "Roseau",
+    "latlng": [
+      15.41666666,
+      -61.33333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1525,6 +1773,10 @@
     "independent": true,
     "area_km2": 43094,
     "capital": "Copenhagen",
+    "latlng": [
+      56.0,
+      10.0
+    ],
     "borders": [
       "DEU"
     ],
@@ -1548,6 +1800,10 @@
     "independent": true,
     "area_km2": 48671,
     "capital": "Santo Domingo",
+    "latlng": [
+      19.0,
+      -70.66666666
+    ],
     "borders": [
       "HTI"
     ],
@@ -1571,6 +1827,10 @@
     "independent": true,
     "area_km2": 2381741,
     "capital": "Algiers",
+    "latlng": [
+      28.0,
+      3.0
+    ],
     "borders": [
       "ESH",
       "LBY",
@@ -1600,6 +1860,10 @@
     "independent": true,
     "area_km2": 276841,
     "capital": "Quito",
+    "latlng": [
+      -2.0,
+      -77.5
+    ],
     "borders": [
       "COL",
       "PER"
@@ -1624,6 +1888,10 @@
     "independent": true,
     "area_km2": 1002450,
     "capital": "Cairo",
+    "latlng": [
+      27.0,
+      30.0
+    ],
     "borders": [
       "ISR",
       "LBY",
@@ -1650,6 +1918,10 @@
     "independent": true,
     "area_km2": 117600,
     "capital": "Asmara",
+    "latlng": [
+      15.0,
+      39.0
+    ],
     "borders": [
       "DJI",
       "ETH",
@@ -1675,6 +1947,10 @@
     "independent": false,
     "area_km2": 266000,
     "capital": "El Aaiún",
+    "latlng": [
+      24.5,
+      -13.0
+    ],
     "borders": [
       "DZA",
       "MAR",
@@ -1700,6 +1976,10 @@
     "independent": true,
     "area_km2": 505992,
     "capital": "Madrid",
+    "latlng": [
+      40.0,
+      -4.0
+    ],
     "borders": [
       "AND",
       "FRA",
@@ -1727,6 +2007,10 @@
     "independent": true,
     "area_km2": 45227,
     "capital": "Tallinn",
+    "latlng": [
+      59.0,
+      26.0
+    ],
     "borders": [
       "LVA",
       "RUS"
@@ -1751,6 +2035,10 @@
     "independent": true,
     "area_km2": 1104300,
     "capital": "Addis Ababa",
+    "latlng": [
+      8.0,
+      38.0
+    ],
     "borders": [
       "DJI",
       "ERI",
@@ -1779,6 +2067,10 @@
     "independent": true,
     "area_km2": 338424,
     "capital": "Helsinki",
+    "latlng": [
+      64.0,
+      26.0
+    ],
     "borders": [
       "NOR",
       "RUS",
@@ -1804,6 +2096,10 @@
     "independent": true,
     "area_km2": 18272,
     "capital": "Suva",
+    "latlng": [
+      -18.0,
+      175.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1825,6 +2121,10 @@
     "independent": false,
     "area_km2": 12173,
     "capital": "Stanley",
+    "latlng": [
+      -51.75,
+      -59.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1846,6 +2146,10 @@
     "independent": true,
     "area_km2": 551695,
     "capital": "Paris",
+    "latlng": [
+      46.0,
+      2.0
+    ],
     "borders": [
       "AND",
       "BEL",
@@ -1876,6 +2180,10 @@
     "independent": false,
     "area_km2": 1393,
     "capital": "Tórshavn",
+    "latlng": [
+      62.0,
+      -7.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1897,6 +2205,10 @@
     "independent": true,
     "area_km2": 702,
     "capital": "Palikir",
+    "latlng": [
+      6.91666666,
+      158.25
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -1918,6 +2230,10 @@
     "independent": true,
     "area_km2": 267668,
     "capital": "Libreville",
+    "latlng": [
+      -1.0,
+      11.75
+    ],
     "borders": [
       "CMR",
       "COG",
@@ -1943,6 +2259,10 @@
     "independent": true,
     "area_km2": 242900,
     "capital": "London",
+    "latlng": [
+      54.0,
+      -2.0
+    ],
     "borders": [
       "IRL"
     ],
@@ -1966,6 +2286,10 @@
     "independent": true,
     "area_km2": 69700,
     "capital": "Tbilisi",
+    "latlng": [
+      42.0,
+      43.5
+    ],
     "borders": [
       "ARM",
       "AZE",
@@ -1992,6 +2316,10 @@
     "independent": false,
     "area_km2": 78,
     "capital": "St. Peter Port",
+    "latlng": [
+      49.46666666,
+      -2.58333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2013,6 +2341,10 @@
     "independent": true,
     "area_km2": 238533,
     "capital": "Accra",
+    "latlng": [
+      8.0,
+      -2.0
+    ],
     "borders": [
       "BFA",
       "CIV",
@@ -2038,6 +2370,10 @@
     "independent": false,
     "area_km2": 6,
     "capital": "Gibraltar",
+    "latlng": [
+      36.13333333,
+      -5.35
+    ],
     "borders": [
       "ESP"
     ],
@@ -2061,6 +2397,10 @@
     "independent": true,
     "area_km2": 245857,
     "capital": "Conakry",
+    "latlng": [
+      11.0,
+      -10.0
+    ],
     "borders": [
       "CIV",
       "GNB",
@@ -2089,6 +2429,10 @@
     "independent": false,
     "area_km2": 1628,
     "capital": "Basse-Terre",
+    "latlng": [
+      16.25,
+      -61.583333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2110,6 +2454,10 @@
     "independent": true,
     "area_km2": 10689,
     "capital": "Banjul",
+    "latlng": [
+      13.46666666,
+      -16.56666666
+    ],
     "borders": [
       "SEN"
     ],
@@ -2133,6 +2481,10 @@
     "independent": true,
     "area_km2": 36125,
     "capital": "Bissau",
+    "latlng": [
+      12.0,
+      -15.0
+    ],
     "borders": [
       "GIN",
       "SEN"
@@ -2157,6 +2509,10 @@
     "independent": true,
     "area_km2": 28051,
     "capital": "Malabo",
+    "latlng": [
+      2.0,
+      10.0
+    ],
     "borders": [
       "CMR",
       "GAB"
@@ -2181,6 +2537,10 @@
     "independent": true,
     "area_km2": 131990,
     "capital": "Athens",
+    "latlng": [
+      39.0,
+      22.0
+    ],
     "borders": [
       "ALB",
       "BGR",
@@ -2207,6 +2567,10 @@
     "independent": true,
     "area_km2": 344,
     "capital": "St. George's",
+    "latlng": [
+      12.11666666,
+      -61.66666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2228,6 +2592,10 @@
     "independent": false,
     "area_km2": 2166086,
     "capital": "Nuuk",
+    "latlng": [
+      72.0,
+      -40.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2249,6 +2617,10 @@
     "independent": true,
     "area_km2": 108889,
     "capital": "Guatemala City",
+    "latlng": [
+      15.5,
+      -90.25
+    ],
     "borders": [
       "BLZ",
       "HND",
@@ -2275,6 +2647,10 @@
     "independent": false,
     "area_km2": 83534,
     "capital": "Cayenne",
+    "latlng": [
+      4.0,
+      -53.0
+    ],
     "borders": [
       "BRA",
       "SUR"
@@ -2299,6 +2675,10 @@
     "independent": false,
     "area_km2": 549,
     "capital": "Hagåtña",
+    "latlng": [
+      13.46666666,
+      144.78333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2320,6 +2700,10 @@
     "independent": true,
     "area_km2": 214969,
     "capital": "Georgetown",
+    "latlng": [
+      5.0,
+      -59.0
+    ],
     "borders": [
       "BRA",
       "SUR",
@@ -2345,6 +2729,10 @@
     "independent": false,
     "area_km2": 1104,
     "capital": "City of Victoria",
+    "latlng": [
+      22.267,
+      114.188
+    ],
     "borders": [
       "CHN"
     ],
@@ -2368,6 +2756,10 @@
     "independent": false,
     "area_km2": 412,
     "capital": null,
+    "latlng": [
+      -53.1,
+      72.51666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2389,6 +2781,10 @@
     "independent": true,
     "area_km2": 112492,
     "capital": "Tegucigalpa",
+    "latlng": [
+      15.0,
+      -86.5
+    ],
     "borders": [
       "GTM",
       "NIC",
@@ -2414,6 +2810,10 @@
     "independent": true,
     "area_km2": 56594,
     "capital": "Zagreb",
+    "latlng": [
+      45.16666666,
+      15.5
+    ],
     "borders": [
       "BIH",
       "HUN",
@@ -2441,6 +2841,10 @@
     "independent": true,
     "area_km2": 27750,
     "capital": "Port-au-Prince",
+    "latlng": [
+      19.0,
+      -72.41666666
+    ],
     "borders": [
       "DOM"
     ],
@@ -2464,6 +2868,10 @@
     "independent": true,
     "area_km2": 93028,
     "capital": "Budapest",
+    "latlng": [
+      47.0,
+      20.0
+    ],
     "borders": [
       "AUT",
       "HRV",
@@ -2493,6 +2901,10 @@
     "independent": true,
     "area_km2": 1904569,
     "capital": "Jakarta",
+    "latlng": [
+      -5.0,
+      120.0
+    ],
     "borders": [
       "MYS",
       "PNG",
@@ -2518,6 +2930,10 @@
     "independent": false,
     "area_km2": 572,
     "capital": "Douglas",
+    "latlng": [
+      54.25,
+      -4.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2539,6 +2955,10 @@
     "independent": true,
     "area_km2": 3287590,
     "capital": "New Delhi",
+    "latlng": [
+      20.0,
+      77.0
+    ],
     "borders": [
       "BGD",
       "BTN",
@@ -2568,6 +2988,10 @@
     "independent": false,
     "area_km2": 60,
     "capital": "Diego Garcia",
+    "latlng": [
+      -6.0,
+      71.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2589,6 +3013,10 @@
     "independent": true,
     "area_km2": 70273,
     "capital": "Dublin",
+    "latlng": [
+      53.0,
+      -8.0
+    ],
     "borders": [
       "GBR"
     ],
@@ -2612,6 +3040,10 @@
     "independent": true,
     "area_km2": 1648195,
     "capital": "Tehran",
+    "latlng": [
+      32.0,
+      53.0
+    ],
     "borders": [
       "AFG",
       "ARM",
@@ -2641,6 +3073,10 @@
     "independent": true,
     "area_km2": 438317,
     "capital": "Baghdad",
+    "latlng": [
+      33.0,
+      44.0
+    ],
     "borders": [
       "IRN",
       "JOR",
@@ -2669,6 +3105,10 @@
     "independent": true,
     "area_km2": 103000,
     "capital": "Reykjavik",
+    "latlng": [
+      65.0,
+      -18.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2690,6 +3130,10 @@
     "independent": true,
     "area_km2": 20770,
     "capital": "Jerusalem",
+    "latlng": [
+      31.47,
+      35.13
+    ],
     "borders": [
       "EGY",
       "JOR",
@@ -2717,6 +3161,10 @@
     "independent": true,
     "area_km2": 301336,
     "capital": "Rome",
+    "latlng": [
+      42.83333333,
+      12.83333333
+    ],
     "borders": [
       "AUT",
       "CHE",
@@ -2745,6 +3193,10 @@
     "independent": true,
     "area_km2": 10991,
     "capital": "Kingston",
+    "latlng": [
+      18.25,
+      -77.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2766,6 +3218,10 @@
     "independent": false,
     "area_km2": 116,
     "capital": "Saint Helier",
+    "latlng": [
+      49.25,
+      -2.16666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2787,6 +3243,10 @@
     "independent": true,
     "area_km2": 89342,
     "capital": "Amman",
+    "latlng": [
+      31.0,
+      36.0
+    ],
     "borders": [
       "IRQ",
       "ISR",
@@ -2814,6 +3274,10 @@
     "independent": true,
     "area_km2": 377930,
     "capital": "Tokyo",
+    "latlng": [
+      36.0,
+      138.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2835,6 +3299,10 @@
     "independent": true,
     "area_km2": 2724900,
     "capital": "Astana",
+    "latlng": [
+      48.0,
+      68.0
+    ],
     "borders": [
       "CHN",
       "KGZ",
@@ -2862,6 +3330,10 @@
     "independent": true,
     "area_km2": 580367,
     "capital": "Nairobi",
+    "latlng": [
+      1.0,
+      38.0
+    ],
     "borders": [
       "ETH",
       "SOM",
@@ -2889,6 +3361,10 @@
     "independent": true,
     "area_km2": 199951,
     "capital": "Bishkek",
+    "latlng": [
+      41.0,
+      75.0
+    ],
     "borders": [
       "CHN",
       "KAZ",
@@ -2915,6 +3391,10 @@
     "independent": true,
     "area_km2": 181035,
     "capital": "Phnom Penh",
+    "latlng": [
+      13.0,
+      105.0
+    ],
     "borders": [
       "LAO",
       "THA",
@@ -2940,6 +3420,10 @@
     "independent": true,
     "area_km2": 811,
     "capital": "South Tarawa",
+    "latlng": [
+      1.41666666,
+      173.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2961,6 +3445,10 @@
     "independent": true,
     "area_km2": 261,
     "capital": "Basseterre",
+    "latlng": [
+      17.33333333,
+      -62.75
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -2982,6 +3470,10 @@
     "independent": true,
     "area_km2": 100210,
     "capital": "Seoul",
+    "latlng": [
+      37.0,
+      127.5
+    ],
     "borders": [
       "PRK"
     ],
@@ -3005,6 +3497,10 @@
     "independent": true,
     "area_km2": 17818,
     "capital": "Kuwait City",
+    "latlng": [
+      29.5,
+      45.75
+    ],
     "borders": [
       "IRQ",
       "SAU"
@@ -3029,6 +3525,10 @@
     "independent": true,
     "area_km2": 236800,
     "capital": "Vientiane",
+    "latlng": [
+      18.0,
+      105.0
+    ],
     "borders": [
       "CHN",
       "KHM",
@@ -3056,6 +3556,10 @@
     "independent": true,
     "area_km2": 10452,
     "capital": "Beirut",
+    "latlng": [
+      33.83333333,
+      35.83333333
+    ],
     "borders": [
       "ISR",
       "SYR"
@@ -3080,6 +3584,10 @@
     "independent": true,
     "area_km2": 111369,
     "capital": "Monrovia",
+    "latlng": [
+      6.5,
+      -9.5
+    ],
     "borders": [
       "CIV",
       "GIN",
@@ -3105,6 +3613,10 @@
     "independent": true,
     "area_km2": 1759540,
     "capital": "Tripoli",
+    "latlng": [
+      25.0,
+      17.0
+    ],
     "borders": [
       "DZA",
       "EGY",
@@ -3133,6 +3645,10 @@
     "independent": true,
     "area_km2": 616,
     "capital": "Castries",
+    "latlng": [
+      13.88333333,
+      -60.96666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3154,6 +3670,10 @@
     "independent": true,
     "area_km2": 160,
     "capital": "Vaduz",
+    "latlng": [
+      47.26666666,
+      9.53333333
+    ],
     "borders": [
       "AUT",
       "CHE"
@@ -3178,6 +3698,10 @@
     "independent": true,
     "area_km2": 65610,
     "capital": "Colombo",
+    "latlng": [
+      7.0,
+      81.0
+    ],
     "borders": [
       "IND"
     ],
@@ -3201,6 +3725,10 @@
     "independent": true,
     "area_km2": 30355,
     "capital": "Maseru",
+    "latlng": [
+      -29.5,
+      28.5
+    ],
     "borders": [
       "ZAF"
     ],
@@ -3224,6 +3752,10 @@
     "independent": true,
     "area_km2": 65300,
     "capital": "Vilnius",
+    "latlng": [
+      56.0,
+      24.0
+    ],
     "borders": [
       "BLR",
       "LVA",
@@ -3250,6 +3782,10 @@
     "independent": true,
     "area_km2": 2586,
     "capital": "Luxembourg",
+    "latlng": [
+      49.75,
+      6.16666666
+    ],
     "borders": [
       "BEL",
       "DEU",
@@ -3275,6 +3811,10 @@
     "independent": true,
     "area_km2": 64559,
     "capital": "Riga",
+    "latlng": [
+      57.0,
+      25.0
+    ],
     "borders": [
       "BLR",
       "EST",
@@ -3301,6 +3841,10 @@
     "independent": false,
     "area_km2": 30,
     "capital": null,
+    "latlng": [
+      22.16666666,
+      113.55
+    ],
     "borders": [
       "CHN"
     ],
@@ -3324,6 +3868,10 @@
     "independent": false,
     "area_km2": 53,
     "capital": "Marigot",
+    "latlng": [
+      18.08333333,
+      -63.95
+    ],
     "borders": [
       "SXM"
     ],
@@ -3347,6 +3895,10 @@
     "independent": true,
     "area_km2": 446550,
     "capital": "Rabat",
+    "latlng": [
+      32.0,
+      -5.0
+    ],
     "borders": [
       "DZA",
       "ESH",
@@ -3372,6 +3924,10 @@
     "independent": true,
     "area_km2": 2.02,
     "capital": "Monaco",
+    "latlng": [
+      43.73333333,
+      7.4
+    ],
     "borders": [
       "FRA"
     ],
@@ -3395,6 +3951,10 @@
     "independent": true,
     "area_km2": 33846,
     "capital": "Chișinău",
+    "latlng": [
+      47.0,
+      29.0
+    ],
     "borders": [
       "ROU",
       "UKR"
@@ -3419,6 +3979,10 @@
     "independent": true,
     "area_km2": 587041,
     "capital": "Antananarivo",
+    "latlng": [
+      -20.0,
+      47.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3440,6 +4004,10 @@
     "independent": true,
     "area_km2": 300,
     "capital": "Malé",
+    "latlng": [
+      3.25,
+      73.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3461,6 +4029,10 @@
     "independent": true,
     "area_km2": 1964375,
     "capital": "Mexico City",
+    "latlng": [
+      23.0,
+      -102.0
+    ],
     "borders": [
       "BLZ",
       "GTM",
@@ -3486,6 +4058,10 @@
     "independent": true,
     "area_km2": 181,
     "capital": "Majuro",
+    "latlng": [
+      9.0,
+      168.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3507,6 +4083,10 @@
     "independent": true,
     "area_km2": 25713,
     "capital": "Skopje",
+    "latlng": [
+      41.83333333,
+      22.0
+    ],
     "borders": [
       "ALB",
       "BGR",
@@ -3534,6 +4114,10 @@
     "independent": true,
     "area_km2": 1240192,
     "capital": "Bamako",
+    "latlng": [
+      17.0,
+      -4.0
+    ],
     "borders": [
       "BFA",
       "CIV",
@@ -3563,6 +4147,10 @@
     "independent": true,
     "area_km2": 316,
     "capital": "Valletta",
+    "latlng": [
+      35.83333333,
+      14.58333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3584,6 +4172,10 @@
     "independent": true,
     "area_km2": 676578,
     "capital": "Naypyidaw",
+    "latlng": [
+      22.0,
+      98.0
+    ],
     "borders": [
       "BGD",
       "CHN",
@@ -3611,6 +4203,10 @@
     "independent": true,
     "area_km2": 13812,
     "capital": "Podgorica",
+    "latlng": [
+      42.5,
+      19.3
+    ],
     "borders": [
       "ALB",
       "BIH",
@@ -3638,6 +4234,10 @@
     "independent": true,
     "area_km2": 1564110,
     "capital": "Ulan Bator",
+    "latlng": [
+      46.0,
+      105.0
+    ],
     "borders": [
       "CHN",
       "RUS"
@@ -3662,6 +4262,10 @@
     "independent": false,
     "area_km2": 464,
     "capital": "Saipan",
+    "latlng": [
+      15.2,
+      145.75
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3683,6 +4287,10 @@
     "independent": true,
     "area_km2": 801590,
     "capital": "Maputo",
+    "latlng": [
+      -18.25,
+      35.0
+    ],
     "borders": [
       "MWI",
       "SWZ",
@@ -3711,6 +4319,10 @@
     "independent": true,
     "area_km2": 1030700,
     "capital": "Nouakchott",
+    "latlng": [
+      20.0,
+      -12.0
+    ],
     "borders": [
       "DZA",
       "ESH",
@@ -3737,6 +4349,10 @@
     "independent": false,
     "area_km2": 102,
     "capital": "Plymouth",
+    "latlng": [
+      16.75,
+      -62.2
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3758,6 +4374,10 @@
     "independent": false,
     "area_km2": 1128,
     "capital": "Fort-de-France",
+    "latlng": [
+      14.666667,
+      -61.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3779,6 +4399,10 @@
     "independent": true,
     "area_km2": 2040,
     "capital": "Port Louis",
+    "latlng": [
+      -20.28333333,
+      57.55
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3800,6 +4424,10 @@
     "independent": true,
     "area_km2": 118484,
     "capital": "Lilongwe",
+    "latlng": [
+      -13.5,
+      34.0
+    ],
     "borders": [
       "MOZ",
       "TZA",
@@ -3825,6 +4453,10 @@
     "independent": true,
     "area_km2": 330803,
     "capital": "Kuala Lumpur",
+    "latlng": [
+      2.5,
+      112.5
+    ],
     "borders": [
       "BRN",
       "IDN",
@@ -3850,6 +4482,10 @@
     "independent": false,
     "area_km2": 374,
     "capital": "Mamoudzou",
+    "latlng": [
+      -12.83333333,
+      45.16666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3871,6 +4507,10 @@
     "independent": true,
     "area_km2": 825615,
     "capital": "Windhoek",
+    "latlng": [
+      -22.0,
+      17.0
+    ],
     "borders": [
       "AGO",
       "BWA",
@@ -3897,6 +4537,10 @@
     "independent": false,
     "area_km2": 18575,
     "capital": "Nouméa",
+    "latlng": [
+      -21.5,
+      165.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3918,6 +4562,10 @@
     "independent": true,
     "area_km2": 1267000,
     "capital": "Niamey",
+    "latlng": [
+      16.0,
+      8.0
+    ],
     "borders": [
       "BEN",
       "BFA",
@@ -3947,6 +4595,10 @@
     "independent": false,
     "area_km2": 36,
     "capital": "Kingston",
+    "latlng": [
+      -29.03333333,
+      167.95
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -3968,6 +4620,10 @@
     "independent": true,
     "area_km2": 923768,
     "capital": "Abuja",
+    "latlng": [
+      10.0,
+      8.0
+    ],
     "borders": [
       "BEN",
       "CMR",
@@ -3994,6 +4650,10 @@
     "independent": true,
     "area_km2": 130373,
     "capital": "Managua",
+    "latlng": [
+      13.0,
+      -85.0
+    ],
     "borders": [
       "CRI",
       "HND"
@@ -4018,6 +4678,10 @@
     "independent": false,
     "area_km2": 260,
     "capital": "Alofi",
+    "latlng": [
+      -19.03333333,
+      -169.86666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4039,6 +4703,10 @@
     "independent": true,
     "area_km2": 41850,
     "capital": "Amsterdam",
+    "latlng": [
+      52.5,
+      5.75
+    ],
     "borders": [
       "BEL",
       "DEU"
@@ -4063,6 +4731,10 @@
     "independent": true,
     "area_km2": 323802,
     "capital": "Oslo",
+    "latlng": [
+      62.0,
+      10.0
+    ],
     "borders": [
       "FIN",
       "RUS",
@@ -4088,6 +4760,10 @@
     "independent": true,
     "area_km2": 147181,
     "capital": "Kathmandu",
+    "latlng": [
+      28.0,
+      84.0
+    ],
     "borders": [
       "CHN",
       "IND"
@@ -4112,6 +4788,10 @@
     "independent": true,
     "area_km2": 21,
     "capital": "Yaren",
+    "latlng": [
+      -0.53333333,
+      166.91666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4133,6 +4813,10 @@
     "independent": true,
     "area_km2": 270467,
     "capital": "Wellington",
+    "latlng": [
+      -41.0,
+      174.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4154,6 +4838,10 @@
     "independent": true,
     "area_km2": 309500,
     "capital": "Muscat",
+    "latlng": [
+      21.0,
+      57.0
+    ],
     "borders": [
       "ARE",
       "SAU",
@@ -4179,6 +4867,10 @@
     "independent": true,
     "area_km2": 881912,
     "capital": "Islamabad",
+    "latlng": [
+      30.0,
+      70.0
+    ],
     "borders": [
       "AFG",
       "CHN",
@@ -4205,6 +4897,10 @@
     "independent": true,
     "area_km2": 75417,
     "capital": "Panama City",
+    "latlng": [
+      9.0,
+      -80.0
+    ],
     "borders": [
       "COL",
       "CRI"
@@ -4229,6 +4925,10 @@
     "independent": false,
     "area_km2": 47,
     "capital": "Adamstown",
+    "latlng": [
+      -25.06666666,
+      -130.1
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4250,6 +4950,10 @@
     "independent": true,
     "area_km2": 1285216,
     "capital": "Lima",
+    "latlng": [
+      -10.0,
+      -76.0
+    ],
     "borders": [
       "BOL",
       "BRA",
@@ -4277,6 +4981,10 @@
     "independent": true,
     "area_km2": 342353,
     "capital": "Manila",
+    "latlng": [
+      13.0,
+      122.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4298,6 +5006,10 @@
     "independent": true,
     "area_km2": 459,
     "capital": "Ngerulmud",
+    "latlng": [
+      7.5,
+      134.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4319,6 +5031,10 @@
     "independent": true,
     "area_km2": 462840,
     "capital": "Port Moresby",
+    "latlng": [
+      -6.0,
+      147.0
+    ],
     "borders": [
       "IDN"
     ],
@@ -4342,6 +5058,10 @@
     "independent": true,
     "area_km2": 312679,
     "capital": "Warsaw",
+    "latlng": [
+      52.0,
+      20.0
+    ],
     "borders": [
       "BLR",
       "CZE",
@@ -4371,6 +5091,10 @@
     "independent": false,
     "area_km2": 8870,
     "capital": "San Juan",
+    "latlng": [
+      18.25,
+      -66.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4392,6 +5116,10 @@
     "independent": true,
     "area_km2": 120538,
     "capital": "Pyongyang",
+    "latlng": [
+      40.0,
+      127.0
+    ],
     "borders": [
       "CHN",
       "KOR",
@@ -4417,6 +5145,10 @@
     "independent": true,
     "area_km2": 92090,
     "capital": "Lisbon",
+    "latlng": [
+      39.5,
+      -8.0
+    ],
     "borders": [
       "ESP"
     ],
@@ -4440,6 +5172,10 @@
     "independent": true,
     "area_km2": 406752,
     "capital": "Asunción",
+    "latlng": [
+      -23.0,
+      -58.0
+    ],
     "borders": [
       "ARG",
       "BOL",
@@ -4465,6 +5201,10 @@
     "independent": false,
     "area_km2": 6220,
     "capital": "Ramallah",
+    "latlng": [
+      31.9,
+      35.2
+    ],
     "borders": [
       "EGY",
       "ISR",
@@ -4490,6 +5230,10 @@
     "independent": false,
     "area_km2": 4167,
     "capital": "Papeetē",
+    "latlng": [
+      -15.0,
+      -140.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4511,6 +5255,10 @@
     "independent": true,
     "area_km2": 11586,
     "capital": "Doha",
+    "latlng": [
+      25.5,
+      51.25
+    ],
     "borders": [
       "SAU"
     ],
@@ -4534,6 +5282,10 @@
     "independent": false,
     "area_km2": 2511,
     "capital": "Saint-Denis",
+    "latlng": [
+      -21.15,
+      55.5
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4555,6 +5307,10 @@
     "independent": true,
     "area_km2": 238391,
     "capital": "Bucharest",
+    "latlng": [
+      46.0,
+      25.0
+    ],
     "borders": [
       "BGR",
       "HUN",
@@ -4582,6 +5338,10 @@
     "independent": true,
     "area_km2": 17098242,
     "capital": "Moscow",
+    "latlng": [
+      60.0,
+      100.0
+    ],
     "borders": [
       "AZE",
       "BLR",
@@ -4618,6 +5378,10 @@
     "independent": true,
     "area_km2": 26338,
     "capital": "Kigali",
+    "latlng": [
+      -2.0,
+      30.0
+    ],
     "borders": [
       "BDI",
       "COD",
@@ -4644,6 +5408,10 @@
     "independent": true,
     "area_km2": 2149690,
     "capital": "Riyadh",
+    "latlng": [
+      25.0,
+      45.0
+    ],
     "borders": [
       "ARE",
       "IRQ",
@@ -4673,6 +5441,10 @@
     "independent": true,
     "area_km2": 1886068,
     "capital": "Khartoum",
+    "latlng": [
+      15.0,
+      30.0
+    ],
     "borders": [
       "CAF",
       "EGY",
@@ -4702,6 +5474,10 @@
     "independent": true,
     "area_km2": 196722,
     "capital": "Dakar",
+    "latlng": [
+      14.0,
+      -14.0
+    ],
     "borders": [
       "GIN",
       "GMB",
@@ -4729,6 +5505,10 @@
     "independent": true,
     "area_km2": 710,
     "capital": "Singapore",
+    "latlng": [
+      1.36666666,
+      103.8
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4750,6 +5530,10 @@
     "independent": false,
     "area_km2": 3903,
     "capital": "King Edward Point",
+    "latlng": [
+      -54.5,
+      -37.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4771,6 +5555,10 @@
     "independent": false,
     "area_km2": 394,
     "capital": "Jamestown",
+    "latlng": [
+      -15.95,
+      -5.72
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4792,6 +5580,10 @@
     "independent": false,
     "area_km2": -1,
     "capital": "Longyearbyen",
+    "latlng": [
+      78.0,
+      20.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4813,6 +5605,10 @@
     "independent": true,
     "area_km2": 28896,
     "capital": "Honiara",
+    "latlng": [
+      -8.0,
+      159.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4834,6 +5630,10 @@
     "independent": true,
     "area_km2": 71740,
     "capital": "Freetown",
+    "latlng": [
+      8.5,
+      -11.5
+    ],
     "borders": [
       "GIN",
       "LBR"
@@ -4858,6 +5658,10 @@
     "independent": true,
     "area_km2": 21041,
     "capital": "San Salvador",
+    "latlng": [
+      13.83333333,
+      -88.91666666
+    ],
     "borders": [
       "GTM",
       "HND"
@@ -4882,6 +5686,10 @@
     "independent": true,
     "area_km2": 61,
     "capital": "City of San Marino",
+    "latlng": [
+      43.76666666,
+      12.41666666
+    ],
     "borders": [
       "ITA"
     ],
@@ -4905,6 +5713,10 @@
     "independent": true,
     "area_km2": 637657,
     "capital": "Mogadishu",
+    "latlng": [
+      10.0,
+      49.0
+    ],
     "borders": [
       "DJI",
       "ETH",
@@ -4930,6 +5742,10 @@
     "independent": false,
     "area_km2": 242,
     "capital": "Saint-Pierre",
+    "latlng": [
+      46.83333333,
+      -56.33333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -4951,6 +5767,10 @@
     "independent": true,
     "area_km2": 88361,
     "capital": "Belgrade",
+    "latlng": [
+      44.0,
+      21.0
+    ],
     "borders": [
       "BGR",
       "BIH",
@@ -4981,6 +5801,10 @@
     "independent": true,
     "area_km2": 619745,
     "capital": "Juba",
+    "latlng": [
+      7.0,
+      30.0
+    ],
     "borders": [
       "CAF",
       "COD",
@@ -5009,6 +5833,10 @@
     "independent": true,
     "area_km2": 964,
     "capital": "São Tomé",
+    "latlng": [
+      1.0,
+      7.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5030,6 +5858,10 @@
     "independent": true,
     "area_km2": 163820,
     "capital": "Paramaribo",
+    "latlng": [
+      4.0,
+      -56.0
+    ],
     "borders": [
       "BRA",
       "GUF",
@@ -5055,6 +5887,10 @@
     "independent": true,
     "area_km2": 49037,
     "capital": "Bratislava",
+    "latlng": [
+      48.66666666,
+      19.5
+    ],
     "borders": [
       "AUT",
       "CZE",
@@ -5082,6 +5918,10 @@
     "independent": true,
     "area_km2": 20273,
     "capital": "Ljubljana",
+    "latlng": [
+      46.11666666,
+      14.81666666
+    ],
     "borders": [
       "AUT",
       "HRV",
@@ -5108,6 +5948,10 @@
     "independent": true,
     "area_km2": 450295,
     "capital": "Stockholm",
+    "latlng": [
+      62.0,
+      15.0
+    ],
     "borders": [
       "FIN",
       "NOR"
@@ -5132,6 +5976,10 @@
     "independent": true,
     "area_km2": 17364,
     "capital": "Lobamba",
+    "latlng": [
+      -26.5,
+      31.5
+    ],
     "borders": [
       "MOZ",
       "ZAF"
@@ -5156,6 +6004,10 @@
     "independent": false,
     "area_km2": 34,
     "capital": "Philipsburg",
+    "latlng": [
+      18.033333,
+      -63.05
+    ],
     "borders": [
       "MAF"
     ],
@@ -5179,6 +6031,10 @@
     "independent": true,
     "area_km2": 452,
     "capital": "Victoria",
+    "latlng": [
+      -4.58333333,
+      55.66666666
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5200,6 +6056,10 @@
     "independent": true,
     "area_km2": 185180,
     "capital": "Damascus",
+    "latlng": [
+      35.0,
+      38.0
+    ],
     "borders": [
       "IRQ",
       "ISR",
@@ -5227,6 +6087,10 @@
     "independent": false,
     "area_km2": 948,
     "capital": "Cockburn Town",
+    "latlng": [
+      21.75,
+      -71.58333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5248,6 +6112,10 @@
     "independent": true,
     "area_km2": 1284000,
     "capital": "N'Djamena",
+    "latlng": [
+      15.0,
+      19.0
+    ],
     "borders": [
       "CAF",
       "CMR",
@@ -5276,6 +6144,10 @@
     "independent": true,
     "area_km2": 56785,
     "capital": "Lomé",
+    "latlng": [
+      8.0,
+      1.16666666
+    ],
     "borders": [
       "BEN",
       "BFA",
@@ -5301,6 +6173,10 @@
     "independent": true,
     "area_km2": 513120,
     "capital": "Bangkok",
+    "latlng": [
+      15.0,
+      100.0
+    ],
     "borders": [
       "KHM",
       "LAO",
@@ -5327,6 +6203,10 @@
     "independent": true,
     "area_km2": 143100,
     "capital": "Dushanbe",
+    "latlng": [
+      39.0,
+      71.0
+    ],
     "borders": [
       "AFG",
       "CHN",
@@ -5353,6 +6233,10 @@
     "independent": false,
     "area_km2": 12,
     "capital": "Fakaofo",
+    "latlng": [
+      -9.0,
+      -172.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5374,6 +6258,10 @@
     "independent": true,
     "area_km2": 488100,
     "capital": "Ashgabat",
+    "latlng": [
+      40.0,
+      60.0
+    ],
     "borders": [
       "AFG",
       "IRN",
@@ -5400,6 +6288,10 @@
     "independent": true,
     "area_km2": 14874,
     "capital": "Dili",
+    "latlng": [
+      -8.83333333,
+      125.91666666
+    ],
     "borders": [
       "IDN"
     ],
@@ -5423,6 +6315,10 @@
     "independent": true,
     "area_km2": 747,
     "capital": "Nuku'alofa",
+    "latlng": [
+      -20.0,
+      -175.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5444,6 +6340,10 @@
     "independent": true,
     "area_km2": 5130,
     "capital": "Port of Spain",
+    "latlng": [
+      11.0,
+      -61.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5465,6 +6365,10 @@
     "independent": true,
     "area_km2": 163610,
     "capital": "Tunis",
+    "latlng": [
+      34.0,
+      9.0
+    ],
     "borders": [
       "DZA",
       "LBY"
@@ -5489,6 +6393,10 @@
     "independent": true,
     "area_km2": 783562,
     "capital": "Ankara",
+    "latlng": [
+      39.0,
+      35.0
+    ],
     "borders": [
       "ARM",
       "AZE",
@@ -5519,6 +6427,10 @@
     "independent": true,
     "area_km2": 26,
     "capital": "Funafuti",
+    "latlng": [
+      -8.0,
+      178.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5540,6 +6452,10 @@
     "independent": false,
     "area_km2": 36193,
     "capital": "Taipei",
+    "latlng": [
+      23.5,
+      121.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": "Disputed status",
@@ -5561,6 +6477,10 @@
     "independent": true,
     "area_km2": 945087,
     "capital": "Dodoma",
+    "latlng": [
+      -6.0,
+      35.0
+    ],
     "borders": [
       "BDI",
       "COD",
@@ -5591,6 +6511,10 @@
     "independent": true,
     "area_km2": 241550,
     "capital": "Kampala",
+    "latlng": [
+      1.0,
+      32.0
+    ],
     "borders": [
       "COD",
       "KEN",
@@ -5618,6 +6542,10 @@
     "independent": true,
     "area_km2": 603500,
     "capital": "Kyiv",
+    "latlng": [
+      49.0,
+      32.0
+    ],
     "borders": [
       "BLR",
       "HUN",
@@ -5647,6 +6575,10 @@
     "independent": false,
     "area_km2": 34.2,
     "capital": null,
+    "latlng": [
+      19.3,
+      166.633333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5668,6 +6600,10 @@
     "independent": true,
     "area_km2": 181034,
     "capital": "Montevideo",
+    "latlng": [
+      -33.0,
+      -56.0
+    ],
     "borders": [
       "ARG",
       "BRA"
@@ -5692,6 +6628,10 @@
     "independent": true,
     "area_km2": 9372610,
     "capital": "Washington D.C.",
+    "latlng": [
+      38.0,
+      -97.0
+    ],
     "borders": [
       "CAN",
       "MEX"
@@ -5716,6 +6656,10 @@
     "independent": true,
     "area_km2": 447400,
     "capital": "Tashkent",
+    "latlng": [
+      41.0,
+      64.0
+    ],
     "borders": [
       "AFG",
       "KAZ",
@@ -5743,6 +6687,10 @@
     "independent": true,
     "area_km2": 0.44,
     "capital": "Vatican City",
+    "latlng": [
+      41.9,
+      12.45
+    ],
     "borders": [
       "ITA"
     ],
@@ -5766,6 +6714,10 @@
     "independent": true,
     "area_km2": 389,
     "capital": "Kingstown",
+    "latlng": [
+      13.25,
+      -61.2
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5787,6 +6739,10 @@
     "independent": true,
     "area_km2": 916445,
     "capital": "Caracas",
+    "latlng": [
+      8.0,
+      -66.0
+    ],
     "borders": [
       "BRA",
       "COL",
@@ -5812,6 +6768,10 @@
     "independent": false,
     "area_km2": 151,
     "capital": "Road Town",
+    "latlng": [
+      18.431383,
+      -64.62305
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5833,6 +6793,10 @@
     "independent": false,
     "area_km2": 347,
     "capital": "Charlotte Amalie",
+    "latlng": [
+      18.35,
+      -64.933333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5854,6 +6818,10 @@
     "independent": true,
     "area_km2": 331212,
     "capital": "Hanoi",
+    "latlng": [
+      16.16666666,
+      107.83333333
+    ],
     "borders": [
       "CHN",
       "KHM",
@@ -5879,6 +6847,10 @@
     "independent": true,
     "area_km2": 12189,
     "capital": "Port Vila",
+    "latlng": [
+      -16.0,
+      167.0
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5900,6 +6872,10 @@
     "independent": false,
     "area_km2": 142,
     "capital": "Mata-Utu",
+    "latlng": [
+      -13.3,
+      -176.2
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5921,6 +6897,10 @@
     "independent": true,
     "area_km2": 2842,
     "capital": "Apia",
+    "latlng": [
+      -13.58333333,
+      -172.33333333
+    ],
     "borders": [],
     "render": "separate",
     "status_label": null,
@@ -5942,6 +6922,10 @@
     "independent": null,
     "area_km2": 10908,
     "capital": "Pristina",
+    "latlng": [
+      42.666667,
+      21.166667
+    ],
     "borders": [
       "ALB",
       "MKD",
@@ -5968,6 +6952,10 @@
     "independent": true,
     "area_km2": 527968,
     "capital": "Sana'a",
+    "latlng": [
+      15.0,
+      48.0
+    ],
     "borders": [
       "OMN",
       "SAU"
@@ -5992,6 +6980,10 @@
     "independent": true,
     "area_km2": 1221037,
     "capital": "Pretoria",
+    "latlng": [
+      -29.0,
+      24.0
+    ],
     "borders": [
       "BWA",
       "LSO",
@@ -6020,6 +7012,10 @@
     "independent": true,
     "area_km2": 752612,
     "capital": "Lusaka",
+    "latlng": [
+      -15.0,
+      30.0
+    ],
     "borders": [
       "AGO",
       "BWA",
@@ -6050,6 +7046,10 @@
     "independent": true,
     "area_km2": 390757,
     "capital": "Harare",
+    "latlng": [
+      -20.0,
+      30.0
+    ],
     "borders": [
       "BWA",
       "MOZ",

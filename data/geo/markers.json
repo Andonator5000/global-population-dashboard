@@ -1,0 +1,646 @@
+{
+  "note": "Entities with population data but no polygon in the 110m Natural Earth geometry. Rendered as point markers so a populated country is never silently absent from the map.",
+  "resolution": "110m",
+  "markers": [
+    {
+      "iso3": "ABW",
+      "name": "Aruba",
+      "continent": "NA",
+      "coordinates": [
+        -69.96666666,
+        12.5
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "AIA",
+      "name": "Anguilla",
+      "continent": "NA",
+      "coordinates": [
+        -63.16666666,
+        18.25
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "AND",
+      "name": "Andorra",
+      "continent": "EU",
+      "coordinates": [
+        1.5,
+        42.5
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "ASM",
+      "name": "American Samoa",
+      "continent": "OC",
+      "coordinates": [
+        -170.0,
+        -14.33333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "ATG",
+      "name": "Antigua and Barbuda",
+      "continent": "NA",
+      "coordinates": [
+        -61.8,
+        17.05
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "BES",
+      "name": "Caribbean Netherlands",
+      "continent": "NA",
+      "coordinates": [
+        -68.25,
+        12.18
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "BHR",
+      "name": "Bahrain",
+      "continent": "AS",
+      "coordinates": [
+        50.55,
+        26.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "BLM",
+      "name": "Saint Barthélemy",
+      "continent": "NA",
+      "coordinates": [
+        -63.41666666,
+        18.5
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "BMU",
+      "name": "Bermuda",
+      "continent": "NA",
+      "coordinates": [
+        -64.75,
+        32.33333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "BRB",
+      "name": "Barbados",
+      "continent": "NA",
+      "coordinates": [
+        -59.53333333,
+        13.16666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "COK",
+      "name": "Cook Islands",
+      "continent": "OC",
+      "coordinates": [
+        -159.76666666,
+        -21.23333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "COM",
+      "name": "Comoros",
+      "continent": "AF",
+      "coordinates": [
+        44.25,
+        -12.16666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "CPV",
+      "name": "Cape Verde",
+      "continent": "AF",
+      "coordinates": [
+        -24.0,
+        16.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "CUW",
+      "name": "Curaçao",
+      "continent": "NA",
+      "coordinates": [
+        -68.933333,
+        12.116667
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "CYM",
+      "name": "Cayman Islands",
+      "continent": "NA",
+      "coordinates": [
+        -80.5,
+        19.5
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "DMA",
+      "name": "Dominica",
+      "continent": "NA",
+      "coordinates": [
+        -61.33333333,
+        15.41666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "FRO",
+      "name": "Faroe Islands",
+      "continent": "EU",
+      "coordinates": [
+        -7.0,
+        62.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "FSM",
+      "name": "Micronesia",
+      "continent": "OC",
+      "coordinates": [
+        158.25,
+        6.91666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "GGY",
+      "name": "Guernsey",
+      "continent": "EU",
+      "coordinates": [
+        -2.58333333,
+        49.46666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "GIB",
+      "name": "Gibraltar",
+      "continent": "EU",
+      "coordinates": [
+        -5.35,
+        36.13333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "GLP",
+      "name": "Guadeloupe",
+      "continent": "NA",
+      "coordinates": [
+        -61.583333,
+        16.25
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "GRD",
+      "name": "Grenada",
+      "continent": "NA",
+      "coordinates": [
+        -61.66666666,
+        12.11666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "GUF",
+      "name": "French Guiana",
+      "continent": "SA",
+      "coordinates": [
+        -53.0,
+        4.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "GUM",
+      "name": "Guam",
+      "continent": "OC",
+      "coordinates": [
+        144.78333333,
+        13.46666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "HKG",
+      "name": "Hong Kong",
+      "continent": "AS",
+      "coordinates": [
+        114.188,
+        22.267
+      ],
+      "contested": true
+    },
+    {
+      "iso3": "IMN",
+      "name": "Isle of Man",
+      "continent": "EU",
+      "coordinates": [
+        -4.5,
+        54.25
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "JEY",
+      "name": "Jersey",
+      "continent": "EU",
+      "coordinates": [
+        -2.16666666,
+        49.25
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "KIR",
+      "name": "Kiribati",
+      "continent": "OC",
+      "coordinates": [
+        173.0,
+        1.41666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "KNA",
+      "name": "Saint Kitts and Nevis",
+      "continent": "NA",
+      "coordinates": [
+        -62.75,
+        17.33333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "LCA",
+      "name": "Saint Lucia",
+      "continent": "NA",
+      "coordinates": [
+        -60.96666666,
+        13.88333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "LIE",
+      "name": "Liechtenstein",
+      "continent": "EU",
+      "coordinates": [
+        9.53333333,
+        47.26666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MAC",
+      "name": "Macau",
+      "continent": "AS",
+      "coordinates": [
+        113.55,
+        22.16666666
+      ],
+      "contested": true
+    },
+    {
+      "iso3": "MAF",
+      "name": "Saint Martin",
+      "continent": "NA",
+      "coordinates": [
+        -63.95,
+        18.08333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MCO",
+      "name": "Monaco",
+      "continent": "EU",
+      "coordinates": [
+        7.4,
+        43.73333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MDV",
+      "name": "Maldives",
+      "continent": "AS",
+      "coordinates": [
+        73.0,
+        3.25
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MHL",
+      "name": "Marshall Islands",
+      "continent": "OC",
+      "coordinates": [
+        168.0,
+        9.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MLT",
+      "name": "Malta",
+      "continent": "EU",
+      "coordinates": [
+        14.58333333,
+        35.83333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MNP",
+      "name": "Northern Mariana Islands",
+      "continent": "OC",
+      "coordinates": [
+        145.75,
+        15.2
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MSR",
+      "name": "Montserrat",
+      "continent": "NA",
+      "coordinates": [
+        -62.2,
+        16.75
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MTQ",
+      "name": "Martinique",
+      "continent": "NA",
+      "coordinates": [
+        -61.0,
+        14.666667
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MUS",
+      "name": "Mauritius",
+      "continent": "AF",
+      "coordinates": [
+        57.55,
+        -20.28333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "MYT",
+      "name": "Mayotte",
+      "continent": "AF",
+      "coordinates": [
+        45.16666666,
+        -12.83333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "NIU",
+      "name": "Niue",
+      "continent": "OC",
+      "coordinates": [
+        -169.86666666,
+        -19.03333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "NRU",
+      "name": "Nauru",
+      "continent": "OC",
+      "coordinates": [
+        166.91666666,
+        -0.53333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "PLW",
+      "name": "Palau",
+      "continent": "OC",
+      "coordinates": [
+        134.5,
+        7.5
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "PYF",
+      "name": "French Polynesia",
+      "continent": "OC",
+      "coordinates": [
+        -140.0,
+        -15.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "REU",
+      "name": "Réunion",
+      "continent": "AF",
+      "coordinates": [
+        55.5,
+        -21.15
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "SGP",
+      "name": "Singapore",
+      "continent": "AS",
+      "coordinates": [
+        103.8,
+        1.36666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "SHN",
+      "name": "Saint Helena, Ascension and Tristan da Cunha",
+      "continent": "AF",
+      "coordinates": [
+        -5.72,
+        -15.95
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "SMR",
+      "name": "San Marino",
+      "continent": "EU",
+      "coordinates": [
+        12.41666666,
+        43.76666666
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "SPM",
+      "name": "Saint Pierre and Miquelon",
+      "continent": "NA",
+      "coordinates": [
+        -56.33333333,
+        46.83333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "STP",
+      "name": "São Tomé and Príncipe",
+      "continent": "AF",
+      "coordinates": [
+        7.0,
+        1.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "SXM",
+      "name": "Sint Maarten",
+      "continent": "NA",
+      "coordinates": [
+        -63.05,
+        18.033333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "SYC",
+      "name": "Seychelles",
+      "continent": "AF",
+      "coordinates": [
+        55.66666666,
+        -4.58333333
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "TCA",
+      "name": "Turks and Caicos Islands",
+      "continent": "NA",
+      "coordinates": [
+        -71.58333333,
+        21.75
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "TKL",
+      "name": "Tokelau",
+      "continent": "OC",
+      "coordinates": [
+        -172.0,
+        -9.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "TON",
+      "name": "Tonga",
+      "continent": "OC",
+      "coordinates": [
+        -175.0,
+        -20.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "TUV",
+      "name": "Tuvalu",
+      "continent": "OC",
+      "coordinates": [
+        178.0,
+        -8.0
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "VAT",
+      "name": "Vatican City",
+      "continent": "EU",
+      "coordinates": [
+        12.45,
+        41.9
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "VCT",
+      "name": "Saint Vincent and the Grenadines",
+      "continent": "NA",
+      "coordinates": [
+        -61.2,
+        13.25
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "VGB",
+      "name": "British Virgin Islands",
+      "continent": "NA",
+      "coordinates": [
+        -64.62305,
+        18.431383
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "VIR",
+      "name": "United States Virgin Islands",
+      "continent": "NA",
+      "coordinates": [
+        -64.933333,
+        18.35
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "WLF",
+      "name": "Wallis and Futuna",
+      "continent": "OC",
+      "coordinates": [
+        -176.2,
+        -13.3
+      ],
+      "contested": false
+    },
+    {
+      "iso3": "WSM",
+      "name": "Samoa",
+      "continent": "OC",
+      "coordinates": [
+        -172.33333333,
+        -13.58333333
+      ],
+      "contested": false
+    }
+  ]
+}

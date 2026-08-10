@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
 
 import { DATA_BASE_URL } from '../config'
-import type { Entity, Manifest } from '../types'
+import type {
+  CountryTopology,
+  Entity,
+  Manifest,
+  MarkerFile,
+  PopulationSummary,
+} from '../types'
 
 /**
  * Loads a committed ETL artifact from /data.
@@ -65,3 +71,12 @@ export const useEntities = (): AsyncState<Entity[]> =>
 
 export const useManifest = (): AsyncState<Manifest> =>
   useArtifact<Manifest>('manifest.json')
+
+export const usePopulationSummary = (): AsyncState<PopulationSummary> =>
+  useArtifact<PopulationSummary>('population/summary.json')
+
+export const useCountryTopology = (): AsyncState<CountryTopology> =>
+  useArtifact<CountryTopology>('geo/countries-110m.json')
+
+export const useMapMarkers = (): AsyncState<MarkerFile> =>
+  useArtifact<MarkerFile>('geo/markers.json')
