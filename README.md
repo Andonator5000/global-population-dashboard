@@ -73,6 +73,12 @@ When nothing changed, `fetched_at` is deliberately **not** advanced: it
 describes when the committed bytes were retrieved, not when they were last
 checked. The check is recorded in the workflow run summary.
 
+**Verified on a real runner** (2026-08-10): a manual dispatch against live
+upstreams reproduced this repository's `/data` byte-identically on Ubuntu —
+same 237 WPP series, same 1765 biome intersection pieces, same palette
+ΔE 5.32 — and correctly opened **no** pull request, because the fingerprint had
+not moved.
+
 ## Principles this codebase enforces
 
 **Every figure carries provenance.** Source, indicator code, and the *vintage

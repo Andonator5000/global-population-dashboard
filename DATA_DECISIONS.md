@@ -811,6 +811,29 @@ A separate `ci.yml` runs the same verification on every push and PR without
 touching the network, plus a fingerprint check that catches `/data` being
 edited by hand without re-running the ETL.
 
+#### Verified end to end on a real runner (2026-08-10)
+
+Not "written and plausible" — executed. A `workflow_dispatch` run against live
+upstreams reproduced this machine's output **exactly**:
+
+| stage | Ubuntu runner | local (Windows) |
+|---|---|---|
+| WPP series / pyramids | 237 / 237 | 237 / 237 |
+| World Bank indicator files | 250 | 250 |
+| Palette bordering pairs | 325, min ΔE 5.32 | 325, min ΔE 5.32 |
+| Factbook | 242 matched, 16 unmatched, 8 absent | identical |
+| Biome overlay | 1765 intersection pieces, 235 entities | identical |
+| OWID cross-check | 1180 compared, 4 material | identical |
+
+All eight upstreams reachable, all 26 World Bank indicator codes resolving,
+every verification gate passing, and — the point of the whole design — the
+fingerprint came out **unchanged**, so the "Discard timestamp-only manifest
+churn" step ran and **no pull request was opened**. That is the spurious-PR
+problem of §11.1 demonstrably solved rather than merely argued.
+
+This also settles the reproducibility criterion: `python etl/run.py --refresh`
+rebuilds `/data` byte-identically on a different operating system.
+
 ### 11.4 The freshness panel shows opaque version tags as such
 
 Several servers offer an ETag rather than a `Last-Modified` date. Rendering
