@@ -1,0 +1,21 @@
+# Normalise line endings to LF in the repository.
+#
+# This matters more than usual here: /data is committed pipeline output, and
+# the monthly refresh Action regenerates it on a Linux runner. Without this,
+# artifacts committed from Windows (CRLF) would differ from the Linux-generated
+# ones (LF) on every single line, so the "diff the output and open a PR if
+# anything changed" job would open a spurious full-tree PR every month and
+# genuine data changes would be invisible inside the noise.
+* text=auto eol=lf
+
+# Binary artifacts must never be line-ending converted.
+*.parquet binary
+*.png      binary
+*.zip      binary
+*.gz       binary
+*.ico      binary
+*.woff     binary
+*.woff2    binary
+
+# Generated -- collapse in PR reviews so real changes stay visible.
+package-lock.json linguist-generated=true -diff
