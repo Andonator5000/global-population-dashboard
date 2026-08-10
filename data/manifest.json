@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-10T02:41:02+00:00",
+  "generated_at": "2026-08-10T03:02:01+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "sources": {
@@ -8,12 +8,83 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-10T02:41:02+00:00",
+      "fetched_at": "2026-08-10T03:02:01+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
       "files": [],
       "notes": "Replaces REST Countries v3.1, which was deprecated in favour of a key-gated v5 (see DATA_DECISIONS.md #1). This is the dataset REST Countries is built from. Used only for country metadata (names, ISO codes, borders, capital, area, currencies, languages). Never used for population or economic figures -- its population field is undated and disagrees with UN WPP. One documented upstream correction is applied (Vatican City UN membership)."
+    },
+    "un_wpp": {
+      "title": "UN World Population Prospects 2024",
+      "url": "https://population.un.org/wpp/",
+      "licence": "CC BY 3.0 IGO",
+      "fetched_at": "2026-08-10T02:54:33+00:00",
+      "upstream_release": "Fri, 13 Dec 2024 19:11:17 GMT",
+      "vintage": "estimates 1950-2023; projections 2024-2100",
+      "citation": "United Nations, Department of Economic and Social Affairs, Population Division (2024). World Population Prospects 2024, Online Edition. Medium variant.",
+      "files": [
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
+          "sha256": "286ac36bb1415e2e1ade03acfef0a29f0e4c087e2f78e38c48f50c5df89082bc",
+          "size_bytes": 16557272,
+          "fetched_at": "2026-08-10T02:51:14+00:00"
+        },
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_OtherVariants.csv.gz",
+          "sha256": "a860504df54877e4c19788bf6e16920d6017d021b4c149eaf8b5662674180a54",
+          "size_bytes": 75342445,
+          "fetched_at": "2026-08-10T02:54:33+00:00"
+        },
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_PopulationByAge5GroupSex_Medium.csv.gz",
+          "sha256": "a04d7d1486a5eb2832cc812d599448f0a71e8ac9e1e7e6fa4066673d6a2487cd",
+          "size_bytes": 29948947,
+          "fetched_at": "2026-08-10T02:52:06+00:00"
+        }
+      ],
+      "notes": "Counts converted from the published thousands to persons. Estimates run through 2023; later years are the medium-variant projection, with low/high variants supplied as bands. Bulk CSV rather than the Data Portal API, which requires a token (see DATA_DECISIONS.md)."
+    },
+    "world_bank": {
+      "title": "World Bank World Development Indicators",
+      "url": "https://api.worldbank.org/v2",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-10T02:56:25+00:00",
+      "upstream_release": "2026-07-13",
+      "vintage": "per indicator and country; newest observation 2025",
+      "citation": "World Bank, World Development Indicators (api.worldbank.org/v2)",
+      "files": [
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&page=1",
+          "sha256": "337b37071281a128340331068a39abae870868ab49c4032b56e17b89871deed1",
+          "size_bytes": 3675128,
+          "fetched_at": "2026-08-10T02:55:48+00:00"
+        },
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.CD?format=json&per_page=20000&page=1",
+          "sha256": "ddd7c4777b51f18262a2a67db60e1bdd0b1f850e2a84e1b18f141b57868bcaa5",
+          "size_bytes": 4152536,
+          "fetched_at": "2026-08-10T02:55:50+00:00"
+        },
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&page=1",
+          "sha256": "d95fabbb5731225261778b7febda96eceadd66a557ce81a9f3255520703ad0b6",
+          "size_bytes": 3803123,
+          "fetched_at": "2026-08-10T02:55:51+00:00"
+        }
+      ],
+      "notes": "26 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
+    },
+    "owid": {
+      "title": "Our World in Data — Population",
+      "url": "https://ourworldindata.org/grapher/population",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-10T02:57:43+00:00",
+      "upstream_release": "Mon, 10 Aug 2026 01:48:29 GMT",
+      "vintage": "10,000 BCE - 2023",
+      "citation": "HYDE (2023); Gapminder (2022); UN WPP (2024), via Our World in Data",
+      "files": [],
+      "notes": "Cross-check only, never a primary source. Its modern series is UN WPP 2024, so this validates our parsing rather than the underlying estimates."
     }
   },
   "artifacts": {
@@ -25,9 +96,60 @@
       ],
       "row_count": null,
       "entity_count": 250
+    },
+    "population/summary.json": {
+      "description": "Per-entity population snapshot for 2023.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "population/series/<ISO3>.json": {
+      "description": "Full 1950-2100 demographic series per entity, medium variant with low/high projection bands.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "population/pyramids/<ISO3>.json": {
+      "description": "Age x sex population by five-year age group, every 5th year.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "indicators/catalogue.json": {
+      "description": "Indicator metadata, units, sections, and entity coverage.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": 26,
+      "entity_count": null
+    },
+    "indicators/by-country/<ISO3>.json": {
+      "description": "Full World Bank indicator series per entity, each value carrying its own observation year.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "crosscheck_owid.json": {
+      "description": "WPP-vs-OWID parsing cross-check results.",
+      "sources": [
+        "un_wpp",
+        "owid"
+      ],
+      "row_count": 1180,
+      "entity_count": null
     }
   },
   "warnings": [
-    "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe."
+    "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe.",
+    "UN WPP 2024 publishes no population series for 13 registry entities (ALA, ATA, ATF, BVT, CCK, CXR, HMD, IOT, NFK, PCN, SGS, SJM, UMI); these render as unavailable rather than zero. Most are uninhabited territories, but Aland Islands and Svalbard are inhabited and are reported within Finland and Norway respectively.",
+    "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ]
 }

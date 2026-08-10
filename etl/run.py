@@ -149,15 +149,57 @@ def _not_yet(phase: int, what: str) -> Callable[[dict[str, Any]], None]:
     return run
 
 
+def _require_registry(ctx: dict[str, Any]) -> dict[str, Any]:
+    """Stages after `crosswalk` need its registry; build it if run standalone."""
+    if "registry" not in ctx:
+        stage_crosswalk(ctx)
+    return ctx
+
+
+def stage_wpp(ctx: dict[str, Any]) -> None:
+    from etl.sources import wpp
+
+    _require_registry(ctx)
+    stage("wpp")
+    revision = discover_wpp_revision()
+    info(f"revision {revision} (newest published)")
+    wpp.ingest(
+        ctx["registry"],
+        refresh=ctx["refresh"],
+        manifest=ctx["manifest"],
+        revision=revision,
+    )
+
+
+def stage_worldbank(ctx: dict[str, Any]) -> None:
+    from etl.sources import worldbank
+
+    _require_registry(ctx)
+    stage("worldbank")
+    worldbank.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
+def stage_owid(ctx: dict[str, Any]) -> None:
+    from etl.sources import owid
+
+    _require_registry(ctx)
+    stage("owid_crosscheck")
+    owid.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
 STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "crosswalk": stage_crosswalk,
-    "wpp": _not_yet(2, "wpp"),
-    "worldbank": _not_yet(2, "worldbank"),
+    "wpp": stage_wpp,
+    "worldbank": stage_worldbank,
     "geometry": _not_yet(3, "geometry"),
     "flags": _not_yet(4, "flags"),
     "factbook": _not_yet(5, "factbook"),
     "biomes": _not_yet(6, "biomes"),
-    "owid_crosscheck": _not_yet(2, "owid_crosscheck"),
+    "owid_crosscheck": stage_owid,
 }
 
 

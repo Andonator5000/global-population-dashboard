@@ -77,27 +77,37 @@ WPP_CSV_BASE = (
 class WppFile(NamedTuple):
     key: str
     filename_template: str
+    approx_mb: int
     description: str
 
 
-# Medium variant is the headline series; low/high are kept for the projection
-# bands on the trend charts, per the brief.
+# Filenames verified live 2026-08-09. Note the single-age files are split
+# 1950-2023 / 2024-2100 rather than carrying one 1950-2100 range -- a
+# 1950-2100 single-age filename 404s.
+#
+# We take FIVE-YEAR age groups for the pyramids, not single-year ages: five-year
+# groups are the conventional pyramid granularity, arrive in one 30 MB file
+# covering the whole 1950-2100 range, and cost a quarter of the ~129 MB the two
+# single-age files would. Swap to single-age only if a chart genuinely needs it.
 WPP_FILES: tuple[WppFile, ...] = (
     WppFile(
         "demographic_indicators_medium",
         "WPP{rev}_Demographic_Indicators_Medium.csv.gz",
-        "Totals, growth rate, TFR, CBR, CDR, net migration, median age, "
-        "life expectancy. Estimates 1950-2023 + medium projection 2024-2100.",
+        16,
+        "Totals, growth rate, TFR, CBR, CDR, net migration, median age, life "
+        "expectancy. Estimates 1950-2023 + medium projection 2024-2100.",
     ),
     WppFile(
-        "demographic_indicators_other",
+        "demographic_indicators_othervariants",
         "WPP{rev}_Demographic_Indicators_OtherVariants.csv.gz",
-        "Low / high / constant-fertility variants, for projection bands.",
+        75,
+        "Low / high / constant-fertility variants, for the projection bands.",
     ),
     WppFile(
-        "population_by_age_sex_medium",
-        "WPP{rev}_PopulationBySingleAgeSex_Medium_1950-2100.csv.gz",
-        "Single-year age x sex population, for the age/sex pyramid.",
+        "population_age5group_medium",
+        "WPP{rev}_PopulationByAge5GroupSex_Medium.csv.gz",
+        30,
+        "Population by five-year age group x sex, for the age/sex pyramid.",
     ),
 )
 

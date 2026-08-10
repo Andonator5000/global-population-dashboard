@@ -1,0 +1,191 @@
+{
+  "source": "world_bank",
+  "lastUpdated": "2026-07-13",
+  "indicators": {
+    "NY.GDP.MKTP.CD": {
+      "label": "GDP (current US$)",
+      "section": "economy",
+      "unit": "USD",
+      "latestYearAnywhere": 2025
+    },
+    "NY.GDP.PCAP.PP.CD": {
+      "label": "GDP per capita, PPP (current int'l $)",
+      "section": "economy",
+      "unit": "USD_PPP",
+      "latestYearAnywhere": 2025
+    },
+    "NY.GDP.MKTP.KD.ZG": {
+      "label": "GDP growth (annual %)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "NV.AGR.TOTL.ZS": {
+      "label": "Agriculture, value added (% of GDP)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "NV.IND.TOTL.ZS": {
+      "label": "Industry, value added (% of GDP)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "NV.SRV.TOTL.ZS": {
+      "label": "Services, value added (% of GDP)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SL.UEM.TOTL.ZS": {
+      "label": "Unemployment (% of labour force, ILO est.)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SI.POV.GINI": {
+      "label": "Gini index",
+      "section": "economy",
+      "unit": "index",
+      "latestYearAnywhere": 2025
+    },
+    "SL.AGR.EMPL.ZS": {
+      "label": "Employment in agriculture (% of employment)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SL.IND.EMPL.ZS": {
+      "label": "Employment in industry (% of employment)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SL.SRV.EMPL.ZS": {
+      "label": "Employment in services (% of employment)",
+      "section": "economy",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SE.ADT.LITR.ZS": {
+      "label": "Literacy rate, adult total (% 15+)",
+      "section": "education",
+      "unit": "percent",
+      "latestYearAnywhere": 2024
+    },
+    "SE.ADT.LITR.MA.ZS": {
+      "label": "Literacy rate, adult male (% 15+)",
+      "section": "education",
+      "unit": "percent",
+      "latestYearAnywhere": 2024
+    },
+    "SE.ADT.LITR.FE.ZS": {
+      "label": "Literacy rate, adult female (% 15+)",
+      "section": "education",
+      "unit": "percent",
+      "latestYearAnywhere": 2024
+    },
+    "SE.XPD.TOTL.GD.ZS": {
+      "label": "Government expenditure on education (% of GDP)",
+      "section": "education",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SE.PRM.ENRR": {
+      "label": "School enrolment, primary (% gross)",
+      "section": "education",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SE.SEC.ENRR": {
+      "label": "School enrolment, secondary (% gross)",
+      "section": "education",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SE.TER.ENRR": {
+      "label": "School enrolment, tertiary (% gross)",
+      "section": "education",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "SP.URB.TOTL.IN.ZS": {
+      "label": "Urban population (% of total)",
+      "section": "population",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "EN.POP.DNST": {
+      "label": "Population density (people per sq km of land)",
+      "section": "population",
+      "unit": "per_sqkm",
+      "latestYearAnywhere": 2023
+    },
+    "AG.LND.TOTL.K2": {
+      "label": "Land area (sq. km)",
+      "section": "land",
+      "unit": "sq_km",
+      "latestYearAnywhere": 2023
+    },
+    "AG.LND.FRST.ZS": {
+      "label": "Forest area (% of land area)",
+      "section": "land",
+      "unit": "percent",
+      "latestYearAnywhere": 2023
+    },
+    "AG.LND.AGRI.ZS": {
+      "label": "Agricultural land (% of land area)",
+      "section": "land",
+      "unit": "percent",
+      "latestYearAnywhere": 2023
+    },
+    "SP.DYN.LE00.IN": {
+      "label": "Life expectancy at birth (years)",
+      "section": "health",
+      "unit": "years",
+      "latestYearAnywhere": 2024
+    },
+    "SH.XPD.CHEX.GD.ZS": {
+      "label": "Current health expenditure (% of GDP)",
+      "section": "health",
+      "unit": "percent",
+      "latestYearAnywhere": 2024
+    },
+    "SH.DYN.MORT": {
+      "label": "Under-5 mortality (per 1,000 live births)",
+      "section": "health",
+      "unit": "per_1000",
+      "latestYearAnywhere": 2024
+    }
+  },
+  "entityCoverage": {
+    "NY.GDP.MKTP.CD": 213,
+    "NY.GDP.PCAP.PP.CD": 203,
+    "NY.GDP.MKTP.KD.ZG": 213,
+    "NV.AGR.TOTL.ZS": 205,
+    "NV.IND.TOTL.ZS": 207,
+    "NV.SRV.TOTL.ZS": 204,
+    "SL.UEM.TOTL.ZS": 186,
+    "SI.POV.GINI": 171,
+    "SL.AGR.EMPL.ZS": 186,
+    "SL.IND.EMPL.ZS": 186,
+    "SL.SRV.EMPL.ZS": 186,
+    "SE.ADT.LITR.ZS": 170,
+    "SE.ADT.LITR.MA.ZS": 170,
+    "SE.ADT.LITR.FE.ZS": 171,
+    "SE.XPD.TOTL.GD.ZS": 203,
+    "SE.PRM.ENRR": 209,
+    "SE.SEC.ENRR": 208,
+    "SE.TER.ENRR": 203,
+    "SP.URB.TOTL.IN.ZS": 216,
+    "EN.POP.DNST": 215,
+    "AG.LND.TOTL.K2": 215,
+    "AG.LND.FRST.ZS": 213,
+    "AG.LND.AGRI.ZS": 209,
+    "SP.DYN.LE00.IN": 216,
+    "SH.XPD.CHEX.GD.ZS": 193,
+    "SH.DYN.MORT": 196
+  },
+  "entityCount": 250
+}

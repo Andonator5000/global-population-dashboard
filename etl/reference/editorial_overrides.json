@@ -154,7 +154,9 @@
 
   "excluded_aggregates": {
     "_note": "World Bank returns these alongside countries in an all-countries query. They are regional or income-group aggregates and must never appear as countries. Detected primarily via the World Bank /country endpoint's region.id == 'NA', with this list as an explicit backstop.",
+    "_chi_note": "CHI ('Channel Islands') is not flagged as an aggregate by the World Bank API, but it is one from our ISO3-keyed perspective: ISO 3166-1 assigns separate codes to Jersey (JEY) and Guernsey (GGY), which are the entities on our map. We exclude CHI rather than apportion it, because splitting a combined figure between two jurisdictions would be fabrication. Consequence, stated honestly: Jersey and Guernsey render 'not available from World Bank' for every indicator, since the World Bank does not publish them separately.",
     "codes": [
+      "CHI",
       "WLD", "EAS", "ECS", "LCN", "MEA", "NAC", "SAS", "SSF",
       "EAP", "ECA", "LAC", "MNA", "SSA",
       "HIC", "LIC", "LMC", "MIC", "UMC", "LMY", "HPC", "IBD", "IBT",

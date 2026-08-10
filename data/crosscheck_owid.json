@@ -1,0 +1,59 @@
+{
+  "check": "un_wpp population vs Our World in Data",
+  "purpose": "Validates OUR parsing (thousands-to-persons conversion, ISO3 join, Country/Area filter), NOT the UN's estimates. OWID's modern population series is itself UN WPP 2024, so agreement is expected by construction and disagreement indicates a pipeline bug.",
+  "owidCitation": "HYDE (2023); Gapminder (2022); UN WPP (2024)",
+  "relativeTolerance": 0.005,
+  "absoluteFloorPersons": 1000,
+  "years": [
+    1960,
+    1990,
+    2010,
+    2020,
+    2023
+  ],
+  "comparisons": 1180,
+  "roundingOnlyCount": 25,
+  "roundingOnlyNote": "25 comparisons exceeded the relative tolerance but differed by fewer than 1000 people. These are microstates where WPP's thousands-precision publication makes sub-2% relative agreement unattainable, and are not defects.",
+  "discrepancyCount": 4,
+  "discrepancies": [
+    {
+      "iso3": "TGO",
+      "name": "Togo",
+      "year": 2023,
+      "ours": 9304338.0,
+      "owid": 8223853.0,
+      "relativeDelta": 0.131384,
+      "absoluteDelta": 1080485
+    },
+    {
+      "iso3": "TGO",
+      "name": "Togo",
+      "year": 2020,
+      "ours": 8669720.0,
+      "owid": 7788058.0,
+      "relativeDelta": 0.113207,
+      "absoluteDelta": 881662
+    },
+    {
+      "iso3": "TGO",
+      "name": "Togo",
+      "year": 1990,
+      "ours": 3998761.0,
+      "owid": 3714023.0,
+      "relativeDelta": 0.076666,
+      "absoluteDelta": 284738
+    },
+    {
+      "iso3": "TGO",
+      "name": "Togo",
+      "year": 2010,
+      "ours": 6732590.0,
+      "owid": 6325791.0,
+      "relativeDelta": 0.064308,
+      "absoluteDelta": 406799
+    }
+  ],
+  "entitiesNotInOwid": [
+    "XKX"
+  ]
+}

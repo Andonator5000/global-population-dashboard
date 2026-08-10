@@ -145,7 +145,7 @@ name who disputes what; they do not adjudicate.
 
 | Entity | ISO3 | Status shown | Notes |
 |---|---|---|---|
-| Kosovo | `XKX` | Partially recognised | No ISO 3166-1 code. `XKX` is user-assigned; the World Bank and IMF use it. The metadata source ships it as `UNK`/`XK`, aliased on ingest. Where UN WPP reports Kosovo *within* Serbia, we say so rather than subtracting an estimate. |
+| Kosovo | `XKX` | Partially recognised | No ISO 3166-1 code. `XKX` is user-assigned; the World Bank and IMF use it. The metadata source ships it as `UNK`/`XK`, aliased on ingest. **UN WPP publishes Kosovo as its own series** (`ISO3_code = XKX`, "Kosovo (under UNSC res. 1244)") — see §4.3. |
 | Taiwan | `TWN` | Disputed status | ISO assigns `TWN`. UN WPP publishes it as "China, Taiwan Province of China"; we use that series but label it **Taiwan**, the common English name. The World Bank publishes few indicators for it, so many Economy/Education fields will legitimately read "not available from World Bank". |
 | Palestine | `PSE` | UN non-member observer State | Natural Earth splits West Bank and Gaza; we dissolve them into one `PSE` entity so geometry matches the single data row, and note the discontiguity. |
 | Western Sahara | `ESH` | Non-self-governing territory | Sovereignty unresolved. Own polygon with a distinct hatch, **not** merged into Morocco. |
@@ -191,9 +191,79 @@ costs one hue nudge. The asymmetry is recorded as a manifest warning and
 surfaces in the app's data-freshness panel rather than being silently
 swallowed.
 
+### 4.3 Correction to a Phase 1 claim: Kosovo in UN WPP
+
+Phase 1 recorded that "UN WPP publishes Kosovo within Serbia". **That was
+wrong**, and Phase 2 disproved it against the source file.
+
+WPP 2024 publishes Kosovo as its **own Country/Area series** under
+`ISO3_code = XKX`, named "Kosovo (under UNSC res. 1244)", with 152 rows
+covering the full 1950–2100 range. The two series are **disjoint**: Serbia is
+6,773k for 2023 and Kosovo 1,700k, so Serbia's WPP figure *excludes* Kosovo and
+there is no double-counting to correct for.
+
+No subtraction, estimation, or apportionment is needed anywhere.
+
 ---
 
-## 5. Provenance model
+## 5. Cross-check findings (Phase 2)
+
+### 5.1 What the OWID cross-check does and does not prove
+
+Our World in Data's population series cites "HYDE (2023); Gapminder (2022);
+**UN WPP (2024)**". For modern years it *is* the same data we ingest, so
+agreement does **not** independently corroborate the UN's estimates.
+
+What it validates is **our own parsing** — the thousands→persons conversion,
+the ISO3 join, and the Country/Area filter. A disagreement means we broke
+something. The report states this limitation explicitly rather than implying
+broader verification than it delivers.
+
+### 5.2 Togo: an OWID-side source substitution, not our bug
+
+Of 1,180 compared country-years, Togo is the **only** material disagreement —
+9,304,338 (ours) vs 8,223,853 (OWID) for 2023, a 13.1% gap that persists across
+the whole 1990–2023 range.
+
+Evidence that our figure is right:
+
+- It equals the raw `WPP2024_Demographic_Indicators_Medium.csv` value
+  (9304.338 thousand) exactly.
+- Every neighbouring country matches OWID to **0.00%** — Ghana, Benin, Burkina
+  Faso, Côte d'Ivoire, Niger all agree to within 2 people in 33 million.
+- Our 237 country rows sum to **8,091,734,931**, matching WPP's own published
+  World aggregate exactly.
+
+A pipeline bug cannot be Togo-specific while every neighbour agrees to
+floating-point precision. OWID has substituted a non-WPP source for Togo.
+Recorded as a manifest warning; no change to our figures.
+
+### 5.3 Channel Islands: excluded, not apportioned
+
+The World Bank publishes `CHI` ("Channel Islands") and does **not** publish
+Jersey or Guernsey separately. ISO 3166-1 assigns them separate codes (`JEY`,
+`GGY`) and both appear on our map.
+
+**Decision: exclude `CHI` entirely.** Splitting a combined figure between two
+jurisdictions would be fabrication, and there is no published basis for a
+split. The honest consequence, stated plainly: **Jersey and Guernsey render
+"not available from World Bank" for every economic indicator.**
+
+### 5.4 Microstate rounding is not a discrepancy
+
+25 comparisons exceeded the 0.5% relative tolerance while differing by **fewer
+than 1,000 people** — Tokelau (≈1,600 residents), Vatican City (≈500), Niue,
+the Falklands, Montserrat. WPP publishes counts in thousands, so for an entity
+of 2,000 people the published precision *is* roughly ±1 person and sub-2%
+relative agreement is unattainable in principle.
+
+The cross-check therefore requires a discrepancy to exceed **both** a relative
+tolerance and a 1,000-person absolute floor. Without the floor, 25 rounding
+artifacts buried the one finding that mattered.
+
+---
+
+## 6. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -211,7 +281,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 6. Composition data (ethnicity, religion, language)
+## 7. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -226,7 +296,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 7. Equal-area requirement
+## 8. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of
