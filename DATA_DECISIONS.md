@@ -330,7 +330,103 @@ distinction legible for colour-blind readers, in print, and under
 
 ---
 
-## 7. Provenance model
+## 7. Flag-derived map colour (Phase 4)
+
+### 7.1 The brief's hue-nudge cannot work, and the reason is geometric
+
+The brief prescribes clamping lightness and chroma to a narrow band, then
+"nudging hue within a small tolerance" so no two bordering countries share a
+swatch. **That cannot separate neighbours**, and it is not a tuning problem.
+
+Two fills sharing lightness and chroma sit on a circle of radius *C* in the
+OKLab a/b plane, so their perceptual separation is the chord:
+
+```
+ΔE = 2 · C · sin(Δhue / 2)
+```
+
+At the prescribed chroma of 0.055:
+
+| hue nudge | 12° | 18° | 30° | 60° | 180° (max) |
+|---|---|---|---|---|---|
+| ΔE (OKLab ×100) | **1.15** | **1.72** | 2.8 | 5.5 | **11.0** |
+
+Roughly **ΔE 2–3 is the just-noticeable difference for large adjacent colour
+fields**. So a 12–18° nudge is invisible, and the separation is *capped at 2·C*
+however far the hue travels. Reaching the dataviz guidance's ΔE 8 target would
+need a ~93° hue shift — which is no longer that country's flag colour.
+
+Raising chroma until hue differences read was rejected separately: the dataviz
+anti-patterns rule out saturated fills on large marks ("thick saturated blocks
+… reads loud"), and country polygons are the largest marks on the page.
+
+### 7.2 What we do instead
+
+**Lightness is the efficient channel** — ΔE equals ΔL×100 directly, so a single
+0.055 step buys ΔE 5.5, more than opposite hues can buy at low chroma.
+
+```
+hue        ← the flag's dominant hue, UNMODIFIED   (carries identity)
+chroma     ← constant and low                       (one coherent system)
+lightness  ← one of four tiers, graph-coloured      (guarantees separation)
+```
+
+Four tiers is not arbitrary. The **four-colour theorem** guarantees any planar
+map is 4-colourable, so "no country renders the same fill as a country it
+borders" becomes a **property of the construction**, not something we hope the
+data allows.
+
+**The cost, stated plainly:** lightness now varies for reasons unrelated to any
+value. A reader could infer that darker means more populous. The legend says
+outright that fill encodes identity and that lightness carries no magnitude.
+If you would rather have literal hue-only fills and accept indistinguishable
+neighbours, that is a one-line change to the tier count.
+
+### 7.3 Greedy colouring was not good enough
+
+Welsh-Powell (order by descending degree, take the lowest free tier) **failed
+on the real border graph** — Czechia, Georgia and Nigeria came out uncoloured
+and collided with neighbours at ΔE 0.14. The four-colour theorem promises a
+solution *exists*; it does not promise a greedy pass will find it.
+
+Replaced with **DSATUR ordering plus backtracking**, which is exact. On ~250
+vertices and 325 edges it solves in milliseconds.
+
+Verified over all 325 bordering pairs:
+
+| theme | min ΔE | median ΔE | pairs below floor | min fill/water contrast |
+|---|---|---|---|---|
+| light | 5.32 | 11.09 | **0** | 1.48 |
+| dark | 4.71 | 11.42 | **0** | 1.43 |
+
+Gated by `npm run check:palette`, which exits non-zero on any violation.
+
+### 7.4 The flag hue distribution justifies the whole exercise
+
+Dominant hues across 250 flags:
+
+| band | blue | green | red | orange | yellow | cyan | purple | magenta |
+|---|---|---|---|---|---|---|---|---|
+| count | 76 | 52 | 51 | 46 | 19 | 6 | **0** | **0** |
+
+90% of the world's flags fall in four bands and two bands are empty — exactly
+the clustering that makes naive flag colouring produce an unreadable map.
+
+### 7.5 Raw flag colour is accent-only where it fails contrast
+
+**91 of 250 raw flag colours fail WCAG AA as text on the light surface** —
+yellows and light blues especially. Each entity therefore stores both the raw
+colour *and* a guaranteed-AA text step. The country page uses the raw colour
+for rules and swatches only; text always uses the safe step. Colour that cannot
+carry text never carries text.
+
+Continent accents are the **circular mean** of member flag hues. An arithmetic
+mean would place a continent straddling 350° and 10° at 180° — cyan, which is
+nobody's flag.
+
+---
+
+## 8. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -348,7 +444,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 8. Composition data (ethnicity, religion, language)
+## 9. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -363,7 +459,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 9. Equal-area requirement
+## 10. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of

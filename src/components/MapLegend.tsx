@@ -37,17 +37,23 @@ export function MapLegend({
         <h3 className="mb-2 font-medium" style={{ color: 'var(--text)' }}>
           Legend
         </h3>
-        <ul className="space-y-1.5">
-          <li>
+        <p className="mb-2">
+          Each country's <strong>hue</strong> is the dominant colour of its
+          flag.
+        </p>
+        <ul className="mb-2 flex gap-1" aria-hidden="true">
+          {['BRA', 'FRA', 'JPN', 'ZAF', 'IND', 'CHN'].map((iso3) => (
             <span
-              className={SWATCH}
+              key={iso3}
+              className="h-4 flex-1 rounded-sm"
               style={{
-                background: 'var(--map-land)',
+                background: `var(--fill-${iso3}, var(--map-land))`,
                 outline: '1px solid var(--border)',
               }}
-            />{' '}
-            Population data available
-          </li>
+            />
+          ))}
+        </ul>
+        <ul className="space-y-1.5">
           <li>
             <span
               className={SWATCH}
@@ -91,8 +97,10 @@ export function MapLegend({
           </li>
         </ul>
         <p className="mt-3">
-          Fill does not yet encode a value. Flag-derived country colours arrive
-          in a later phase.
+          <strong>Fill encodes identity, not magnitude.</strong> Lightness
+          varies only so that no two bordering countries share a fill — it does
+          not mean a larger or smaller population. A small hue shift is
+          invisible at this chroma, so lightness does the separating.
         </p>
       </div>
     )

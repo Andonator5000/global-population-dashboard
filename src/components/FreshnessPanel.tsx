@@ -42,13 +42,13 @@ export function FreshnessPanel() {
                     {source.title}
                   </a>
                   <span>
-                    {' '}
-                    — observations{' '}
-                    {source.vintage ?? 'vintage not stated by publisher'};
-                    {' '}released{' '}
-                    {source.upstream_release ??
-                      'release date not published upstream'};
-                    {' '}retrieved {source.fetched_at.slice(0, 10)}
+                    {source.vintage
+                      ? ` — observations ${source.vintage}`
+                      : ' — observation vintage not stated by the publisher'}
+                    {source.upstream_release
+                      ? `; released ${source.upstream_release}`
+                      : '; no upstream release date published'}
+                    {`; retrieved ${source.fetched_at.slice(0, 10)}`}
                   </span>
                 </li>
               ))}

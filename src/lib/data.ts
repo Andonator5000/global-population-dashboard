@@ -5,6 +5,7 @@ import type {
   CountryTopology,
   Entity,
   Manifest,
+  MapPalette,
   MarkerFile,
   PopulationSummary,
 } from '../types'
@@ -80,3 +81,6 @@ export const useCountryTopology = (): AsyncState<CountryTopology> =>
 
 export const useMapMarkers = (): AsyncState<MarkerFile> =>
   useArtifact<MarkerFile>('geo/markers.json')
+
+export const useMapPalette = (): AsyncState<MapPalette> =>
+  useArtifact<MapPalette>('flags/map-palette.json')

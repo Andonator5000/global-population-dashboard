@@ -1,14 +1,23 @@
 import { Link, useParams } from 'react-router'
 
 import { CONTINENTS, type ContinentKey } from '../config'
-import { useEntities } from '../lib/data'
+import { useEntities, useMapPalette } from '../lib/data'
 
 /** Phase 1 stub. Full continent detail lands in Phase 6. */
 export function ContinentPage() {
   const { id } = useParams<{ id: string }>()
   const state = useEntities()
+  const paletteState = useMapPalette()
   const key = id as ContinentKey | undefined
   const name = key && key in CONTINENTS ? CONTINENTS[key] : null
+
+  // Continent accent is the circular mean of member flag hues. A plain
+  // arithmetic mean would drop a continent straddling 350 and 10 degrees at
+  // 180 (cyan), which is nobody's flag.
+  const accent =
+    paletteState.status === 'ready' && key
+      ? paletteState.data.continentAccent[key]
+      : undefined
 
   if (!name) {
     return (
@@ -34,7 +43,21 @@ export function ContinentPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12">
+      {accent && (
+        <div
+          className="mb-4 h-1.5 w-24 rounded-full"
+          aria-hidden="true"
+          style={{ background: accent.light }}
+          title={`Accent derived from the aggregate hue of ${accent.memberFlags} member flags`}
+        />
+      )}
       <h1 className="text-2xl font-semibold tracking-tight">{name}</h1>
+      {accent && (
+        <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+          Accent derived from the aggregate hue of {accent.memberFlags} member
+          flags.
+        </p>
+      )}
       <p className="mt-2 max-w-2xl" style={{ color: 'var(--text-muted)' }}>
         Population totals, growth trend, density, median age, urbanisation, and
         the biome breakdown are not built yet (Phase 6). This lists the member

@@ -145,14 +145,28 @@ export function WorldMap({
   const isDimmed = (continent: ContinentKey) =>
     mode === 'continent' && activeContinent !== null && continent !== activeContinent
 
+  /**
+   * Country fill.
+   *
+   * `--fill-<ISO3>` comes from src/generated/flag-fills.css: the flag's hue at
+   * a graph-coloured lightness tier. Reading it as a CSS variable rather than
+   * an inline colour means the light/dark swap costs no re-render and cannot
+   * flash the wrong palette on first paint.
+   *
+   * Continent mode deliberately drops the flag fills and returns to neutral
+   * land: showing 250 flag hues while trying to read seven continental blocks
+   * is two encodings fighting for the same channel.
+   */
   function fillFor(shape: CountryShape): string {
     const row = populationByIso3.get(shape.iso3)
     if (!row?.available) return 'var(--map-no-data)'
     if (hovered?.iso3 === shape.iso3) return 'var(--map-accent-fill)'
-    if (mode === 'continent' && activeContinent === shape.continent) {
-      return 'var(--map-accent-fill)'
+    if (mode === 'continent') {
+      return activeContinent === shape.continent
+        ? 'var(--map-accent-fill)'
+        : 'var(--map-land)'
     }
-    return 'var(--map-land)'
+    return `var(--fill-${shape.iso3}, var(--map-land))`
   }
 
   return (

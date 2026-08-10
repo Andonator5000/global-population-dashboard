@@ -1,0 +1,7230 @@
+{
+  "note": "Map fills derived from flag hues. Hue is the flag's dominant hue, unmodified. Lightness is one of four graph-coloured tiers so that no two bordering countries share a fill -- a small hue nudge cannot achieve that at low chroma (see scripts/build-map-palette.mjs). Lightness carries NO value meaning.",
+  "bands": {
+    "light": {
+      "surface": "oklch(98% 0.010 235)",
+      "stroke": "oklch(98% 0.010 235)",
+      "chroma": 0.055,
+      "tiers": [
+        0.68,
+        0.735,
+        0.79,
+        0.845
+      ]
+    },
+    "dark": {
+      "surface": "oklch(13% 0.010 235)",
+      "stroke": "oklch(13% 0.010 235)",
+      "chroma": 0.06,
+      "tiers": [
+        0.3,
+        0.35,
+        0.4,
+        0.45
+      ]
+    }
+  },
+  "minNeighbourDeltaE": 4,
+  "verification": {
+    "light": {
+      "borderPairs": 325,
+      "minDeltaE": 5.32,
+      "medianDeltaE": 11.09,
+      "violations": [],
+      "minSurfaceContrast": 1.48,
+      "lowContrastEntities": []
+    },
+    "dark": {
+      "borderPairs": 325,
+      "minDeltaE": 4.71,
+      "medianDeltaE": 11.42,
+      "violations": [],
+      "minSurfaceContrast": 1.43,
+      "lowContrastEntities": []
+    }
+  },
+  "graphColouringFailures": [],
+  "continentAccent": {
+    "NA": {
+      "hue": 258.78,
+      "memberFlags": 41,
+      "light": "#2b5ca6",
+      "dark": "#88b9ff"
+    },
+    "AS": {
+      "hue": 53.39,
+      "memberFlags": 50,
+      "light": "#944400",
+      "dark": "#f3a16b"
+    },
+    "AF": {
+      "hue": 126.91,
+      "memberFlags": 59,
+      "light": "#4a6a00",
+      "dark": "#a3c66f"
+    },
+    "EU": {
+      "hue": 7.85,
+      "memberFlags": 53,
+      "light": "#973750",
+      "dark": "#f996a9"
+    },
+    "SA": {
+      "hue": 101.37,
+      "memberFlags": 14,
+      "light": "#6e5e00",
+      "dark": "#c8ba58"
+    },
+    "OC": {
+      "hue": 272.31,
+      "memberFlags": 28,
+      "light": "#4655a6",
+      "dark": "#9db2ff"
+    },
+    "AN": {
+      "hue": 269.44,
+      "memberFlags": 5,
+      "light": "#4157a6",
+      "dark": "#99b4ff"
+    }
+  },
+  "entities": {
+    "ABW": {
+      "iso3": "ABW",
+      "name": "Aruba",
+      "hasFlagColour": true,
+      "flagHue": 251.24,
+      "flag": {
+        "dominant": "#428fde",
+        "accents": [
+          "#428fde",
+          "#fdd003",
+          "#589ad7",
+          "#cbbf3d"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#809bba",
+        "dark": "#152f4b"
+      },
+      "accent": {
+        "raw": "#428fde",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#00569f",
+        "textDark": "#7cc3ff",
+        "textLightContrast": 7.21,
+        "textDarkContrast": 10.11
+      }
+    },
+    "AFG": {
+      "iso3": "AFG",
+      "name": "Afghanistan",
+      "hasFlagColour": true,
+      "flagHue": 150.66,
+      "flag": {
+        "dominant": "#137f3e",
+        "accents": [
+          "#137f3e",
+          "#d74d40",
+          "#237035",
+          "#a05d41"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#91b498",
+        "dark": "#21432a"
+      },
+      "accent": {
+        "raw": "#137f3e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006929",
+        "textDark": "#7bd592",
+        "textLightContrast": 6.69,
+        "textDarkContrast": 10.72
+      }
+    },
+    "AGO": {
+      "iso3": "AGO",
+      "name": "Angola",
+      "hasFlagColour": true,
+      "flagHue": 21.9,
+      "flag": {
+        "dominant": "#cb092f",
+        "accents": [
+          "#cb092f",
+          "#fec900",
+          "#8e7200",
+          "#660518"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfbc",
+        "dark": "#734846"
+      },
+      "accent": {
+        "raw": "#cb092f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a30",
+        "textDark": "#ff9b98",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "AIA": {
+      "iso3": "AIA",
+      "name": "Anguilla",
+      "hasFlagColour": true,
+      "flagHue": 262.32,
+      "flag": {
+        "dominant": "#02226a",
+        "accents": [
+          "#02226a",
+          "#c8102e",
+          "#9eceff",
+          "#f1c2c9"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02226a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519d",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.38,
+        "textDarkContrast": 9.93
+      }
+    },
+    "ALA": {
+      "iso3": "ALA",
+      "name": "Åland Islands",
+      "hasFlagColour": true,
+      "flagHue": 249.7,
+      "flag": {
+        "dominant": "#0265ad",
+        "accents": [
+          "#0265ad",
+          "#fdd201",
+          "#da0e15",
+          "#e54b0e"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7f9bb9",
+        "dark": "#132f4b"
+      },
+      "accent": {
+        "raw": "#0265ad",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00579e",
+        "textDark": "#79c4ff",
+        "textLightContrast": 7.14,
+        "textDarkContrast": 10.15
+      }
+    },
+    "ALB": {
+      "iso3": "ALB",
+      "name": "Albania",
+      "hasFlagColour": true,
+      "flagHue": 29.2,
+      "flag": {
+        "dominant": "#f80101",
+        "accents": [
+          "#f80101"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea6",
+        "dark": "#643b35"
+      },
+      "accent": {
+        "raw": "#f80101",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "AND": {
+      "iso3": "AND",
+      "name": "Andorra",
+      "hasFlagColour": true,
+      "flagHue": 21.53,
+      "flag": {
+        "dominant": "#d50532",
+        "accents": [
+          "#d50532",
+          "#10069f",
+          "#fbda05",
+          "#b69465"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c9a",
+        "dark": "#562d2c"
+      },
+      "accent": {
+        "raw": "#d50532",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a31",
+        "textDark": "#ff9a98",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.4
+      }
+    },
+    "ARE": {
+      "iso3": "ARE",
+      "name": "United Arab Emirates",
+      "hasFlagColour": true,
+      "flagHue": 150.86,
+      "flag": {
+        "dominant": "#068640",
+        "accents": [
+          "#068640",
+          "#c8102e"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a2c5a9",
+        "dark": "#2e5137"
+      },
+      "accent": {
+        "raw": "#068640",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006927",
+        "textDark": "#7ad592",
+        "textLightContrast": 6.69,
+        "textDarkContrast": 10.71
+      }
+    },
+    "ARG": {
+      "iso3": "ARG",
+      "name": "Argentina",
+      "hasFlagColour": true,
+      "flagHue": 246.98,
+      "flag": {
+        "dominant": "#74acdf",
+        "accents": [
+          "#74acdf",
+          "#d8a865",
+          "#c99358",
+          "#f5b30e"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#8eadcb",
+        "dark": "#1e3d58"
+      },
+      "accent": {
+        "raw": "#74acdf",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#215987",
+        "textDark": "#8bc4f8",
+        "textLightContrast": 7.18,
+        "textDarkContrast": 10.33
+      }
+    },
+    "ARM": {
+      "iso3": "ARM",
+      "name": "Armenia",
+      "hasFlagColour": true,
+      "flagHue": 27.67,
+      "flag": {
+        "dominant": "#d90012",
+        "accents": [
+          "#d90012",
+          "#0033a0",
+          "#f2a800",
+          "#921141"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfb9",
+        "dark": "#734843"
+      },
+      "accent": {
+        "raw": "#d90012",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c25",
+        "textDark": "#ff9c8f",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "ASM": {
+      "iso3": "ASM",
+      "name": "American Samoa",
+      "hasFlagColour": true,
+      "flagHue": 264.05,
+      "flag": {
+        "dominant": "#000066",
+        "accents": [
+          "#000066",
+          "#bc1223",
+          "#b08a2c",
+          "#6c371c"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8798bb",
+        "dark": "#1e2d4c"
+      },
+      "accent": {
+        "raw": "#000066",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.9
+      }
+    },
+    "ATA": {
+      "iso3": "ATA",
+      "name": "Antarctica",
+      "hasFlagColour": true,
+      "flagHue": 234.89,
+      "flag": {
+        "dominant": "#029edb",
+        "accents": [
+          "#029edb",
+          "#81ceed"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#779eb6",
+        "dark": "#043247"
+      },
+      "accent": {
+        "raw": "#029edb",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005e97",
+        "textDark": "#5dcaff",
+        "textLightContrast": 6.7,
+        "textDarkContrast": 10.34
+      }
+    },
+    "ATF": {
+      "iso3": "ATF",
+      "name": "French Southern and Antarctic Lands",
+      "hasFlagColour": true,
+      "flagHue": 260.88,
+      "flag": {
+        "dominant": "#244f9c",
+        "accents": [
+          "#244f9c",
+          "#eb2e2e",
+          "#f2bec0"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8599bb",
+        "dark": "#1c2d4c"
+      },
+      "accent": {
+        "raw": "#244f9c",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#26519f",
+        "textDark": "#8ebeff",
+        "textLightContrast": 7.39,
+        "textDarkContrast": 9.98
+      }
+    },
+    "ATG": {
+      "iso3": "ATG",
+      "name": "Antigua and Barbuda",
+      "hasFlagColour": true,
+      "flagHue": 24.77,
+      "flag": {
+        "dominant": "#cd1126",
+        "accents": [
+          "#cd1126",
+          "#0072c6",
+          "#e0bb15",
+          "#c84855"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c87",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#cd1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "AUS": {
+      "iso3": "AUS",
+      "name": "Australia",
+      "hasFlagColour": true,
+      "flagHue": 262.35,
+      "flag": {
+        "dominant": "#02236a",
+        "accents": [
+          "#02236a",
+          "#e4002b",
+          "#f8bdc8",
+          "#eb4261"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02236a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "AUT": {
+      "iso3": "AUT",
+      "name": "Austria",
+      "hasFlagColour": true,
+      "flagHue": 22.32,
+      "flag": {
+        "dominant": "#c8102e",
+        "accents": [
+          "#c8102e",
+          "#d4455c"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcadab",
+        "dark": "#643a39"
+      },
+      "accent": {
+        "raw": "#c8102e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a2f",
+        "textDark": "#ff9b97",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "AZE": {
+      "iso3": "AZE",
+      "name": "Azerbaijan",
+      "hasFlagColour": true,
+      "flagHue": 223.94,
+      "flag": {
+        "dominant": "#00b5e2",
+        "accents": [
+          "#00b5e2",
+          "#509e2f",
+          "#ef3340",
+          "#4f8aad"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#95c3d5",
+        "dark": "#1c4f60"
+      },
+      "accent": {
+        "raw": "#00b5e2",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#00628c",
+        "textDark": "#47cffb",
+        "textLightContrast": 6.53,
+        "textDarkContrast": 10.55
+      }
+    },
+    "BDI": {
+      "iso3": "BDI",
+      "name": "Burundi",
+      "hasFlagColour": true,
+      "flagHue": 140.43,
+      "flag": {
+        "dominant": "#44b02c",
+        "accents": [
+          "#44b02c",
+          "#c8102e",
+          "#a7d598",
+          "#d54a60"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a8c4a3",
+        "dark": "#365031"
+      },
+      "accent": {
+        "raw": "#44b02c",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#1d670a",
+        "textDark": "#8fd282",
+        "textLightContrast": 6.81,
+        "textDarkContrast": 10.66
+      }
+    },
+    "BEL": {
+      "iso3": "BEL",
+      "name": "Belgium",
+      "hasFlagColour": true,
+      "flagHue": 23.43,
+      "flag": {
+        "dominant": "#ef3440",
+        "accents": [
+          "#ef3440",
+          "#fbd925",
+          "#886b1b",
+          "#f9a32e"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b88",
+        "dark": "#47201f"
+      },
+      "accent": {
+        "raw": "#ef3440",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932b2d",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "BEN": {
+      "iso3": "BEN",
+      "name": "Benin",
+      "hasFlagColour": true,
+      "flagHue": 156.99,
+      "flag": {
+        "dominant": "#018751",
+        "accents": [
+          "#018751",
+          "#fcd116",
+          "#e8112d",
+          "#f8b71e"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#9ec6ad",
+        "dark": "#2a513b"
+      },
+      "accent": {
+        "raw": "#018751",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006936",
+        "textDark": "#6ed79c",
+        "textLightContrast": 6.64,
+        "textDarkContrast": 10.8
+      }
+    },
+    "BES": {
+      "iso3": "BES",
+      "name": "Caribbean Netherlands",
+      "hasFlagColour": true,
+      "flagHue": 261.35,
+      "flag": {
+        "dominant": "#023288",
+        "accents": [
+          "#023288",
+          "#ffd809",
+          "#d50032",
+          "#eb829a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1c2d4c"
+      },
+      "accent": {
+        "raw": "#023288",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2551a2",
+        "textDark": "#8ebeff",
+        "textLightContrast": 7.35,
+        "textDarkContrast": 9.98
+      }
+    },
+    "BFA": {
+      "iso3": "BFA",
+      "name": "Burkina Faso",
+      "hasFlagColour": true,
+      "flagHue": 150.34,
+      "flag": {
+        "dominant": "#019e4a",
+        "accents": [
+          "#019e4a",
+          "#ee2c2d",
+          "#fbd016",
+          "#816b3b"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#91b497",
+        "dark": "#21432a"
+      },
+      "accent": {
+        "raw": "#019e4a",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006926",
+        "textDark": "#7bd591",
+        "textLightContrast": 6.69,
+        "textDarkContrast": 10.71
+      }
+    },
+    "BGD": {
+      "iso3": "BGD",
+      "name": "Bangladesh",
+      "hasFlagColour": true,
+      "flagHue": 166.95,
+      "flag": {
+        "dominant": "#016a4e",
+        "accents": [
+          "#016a4e",
+          "#f22b41",
+          "#3b8b76",
+          "#a73f45"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#78a491",
+        "dark": "#023727"
+      },
+      "accent": {
+        "raw": "#016a4e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00664a",
+        "textDark": "#7ed2b1",
+        "textLightContrast": 6.8,
+        "textDarkContrast": 10.69
+      }
+    },
+    "BGR": {
+      "iso3": "BGR",
+      "name": "Bulgaria",
+      "hasFlagColour": true,
+      "flagHue": 166,
+      "flag": {
+        "dominant": "#00966e",
+        "accents": [
+          "#00966e",
+          "#d62612"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#78a490",
+        "dark": "#033727"
+      },
+      "accent": {
+        "raw": "#00966e",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006a45",
+        "textDark": "#63d7ab",
+        "textLightContrast": 6.48,
+        "textDarkContrast": 10.78
+      }
+    },
+    "BHR": {
+      "iso3": "BHR",
+      "name": "Bahrain",
+      "hasFlagColour": true,
+      "flagHue": 29.48,
+      "flag": {
+        "dominant": "#da2c1f",
+        "accents": [
+          "#da2c1f"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211b"
+      },
+      "accent": {
+        "raw": "#da2c1f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "BHS": {
+      "iso3": "BHS",
+      "name": "Bahamas",
+      "hasFlagColour": true,
+      "flagHue": 214.78,
+      "flag": {
+        "dominant": "#00778b",
+        "accents": [
+          "#00778b",
+          "#fdc62c",
+          "#55916c",
+          "#00262c"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#71a1ad",
+        "dark": "#003540"
+      },
+      "accent": {
+        "raw": "#00778b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006175",
+        "textDark": "#72cde3",
+        "textLightContrast": 6.88,
+        "textDarkContrast": 10.52
+      }
+    },
+    "BIH": {
+      "iso3": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "hasFlagColour": true,
+      "flagHue": 263.85,
+      "flag": {
+        "dominant": "#022595",
+        "accents": [
+          "#022595",
+          "#fdcb00",
+          "#9ba9d6"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#bacdf1",
+        "dark": "#445577"
+      },
+      "accent": {
+        "raw": "#022595",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.44,
+        "textDarkContrast": 9.9
+      }
+    },
+    "BLM": {
+      "iso3": "BLM",
+      "name": "Saint Barthélemy",
+      "hasFlagColour": true,
+      "flagHue": 98.05,
+      "flag": {
+        "dominant": "#d5bc39",
+        "accents": [
+          "#d5bc39",
+          "#1554b2",
+          "#cc1527",
+          "#eedcb8"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a19972",
+        "dark": "#362e02"
+      },
+      "accent": {
+        "raw": "#d5bc39",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#6b5300",
+        "textDark": "#d4be52",
+        "textLightContrast": 7.13,
+        "textDarkContrast": 10.27
+      }
+    },
+    "BLR": {
+      "iso3": "BLR",
+      "name": "Belarus",
+      "hasFlagColour": true,
+      "flagHue": 26.45,
+      "flag": {
+        "dominant": "#ce1922",
+        "accents": [
+          "#ce1922",
+          "#007c30",
+          "#ea989b",
+          "#455c2c"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfb9",
+        "dark": "#734843"
+      },
+      "accent": {
+        "raw": "#ce1922",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b28",
+        "textDark": "#ff9b91",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.42
+      }
+    },
+    "BLZ": {
+      "iso3": "BLZ",
+      "name": "Belize",
+      "hasFlagColour": true,
+      "flagHue": 269.21,
+      "flag": {
+        "dominant": "#171696",
+        "accents": [
+          "#171696",
+          "#d90f19",
+          "#71a957",
+          "#8b134b"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#acbadf",
+        "dark": "#3a4668"
+      },
+      "accent": {
+        "raw": "#171696",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#374da2",
+        "textDark": "#9cb9ff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.83
+      }
+    },
+    "BMU": {
+      "iso3": "BMU",
+      "name": "Bermuda",
+      "hasFlagColour": true,
+      "flagHue": 22.32,
+      "flag": {
+        "dominant": "#c8102e",
+        "accents": [
+          "#c8102e",
+          "#06266c",
+          "#3f9336",
+          "#d9a7af"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#c8102e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a2f",
+        "textDark": "#ff9b97",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "BOL": {
+      "iso3": "BOL",
+      "name": "Bolivia",
+      "hasFlagColour": true,
+      "flagHue": 29.94,
+      "flag": {
+        "dominant": "#d32011",
+        "accents": [
+          "#d32011",
+          "#01702d",
+          "#eee33e",
+          "#d1d65d"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea6",
+        "dark": "#643b34"
+      },
+      "accent": {
+        "raw": "#d32011",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c21",
+        "textDark": "#ff9c8b",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "BRA": {
+      "iso3": "BRA",
+      "name": "Brazil",
+      "hasFlagColour": true,
+      "flagHue": 149.29,
+      "flag": {
+        "dominant": "#009440",
+        "accents": [
+          "#009440",
+          "#feca02",
+          "#332a83",
+          "#f2c709"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#81a286",
+        "dark": "#15361d"
+      },
+      "accent": {
+        "raw": "#009440",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006924",
+        "textDark": "#7ed58f",
+        "textLightContrast": 6.7,
+        "textDarkContrast": 10.74
+      }
+    },
+    "BRB": {
+      "iso3": "BRB",
+      "name": "Barbados",
+      "hasFlagColour": true,
+      "flagHue": 262.65,
+      "flag": {
+        "dominant": "#01277f",
+        "accents": [
+          "#01277f",
+          "#f7c126",
+          "#aa9143"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#01277f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2850a2",
+        "textDark": "#91bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.95
+      }
+    },
+    "BRN": {
+      "iso3": "BRN",
+      "name": "Brunei",
+      "hasFlagColour": true,
+      "flagHue": 101.73,
+      "flag": {
+        "dominant": "#f5df19",
+        "accents": [
+          "#f5df19",
+          "#b31423",
+          "#c96770",
+          "#d34521"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#9f9a73",
+        "dark": "#342e03"
+      },
+      "accent": {
+        "raw": "#f5df19",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#665500",
+        "textDark": "#cfc154",
+        "textLightContrast": 7.13,
+        "textDarkContrast": 10.39
+      }
+    },
+    "BTN": {
+      "iso3": "BTN",
+      "name": "Bhutan",
+      "hasFlagColour": true,
+      "flagHue": 91.07,
+      "flag": {
+        "dominant": "#fecd13",
+        "accents": [
+          "#fecd13",
+          "#fd6b26",
+          "#fabb1e",
+          "#ff9d0f"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#c8ba93",
+        "dark": "#54461e"
+      },
+      "accent": {
+        "raw": "#fecd13",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#724f00",
+        "textDark": "#ddba50",
+        "textLightContrast": 7.2,
+        "textDarkContrast": 10.21
+      }
+    },
+    "BVT": {
+      "iso3": "BVT",
+      "name": "Bouvet Island",
+      "hasFlagColour": true,
+      "flagHue": 20.61,
+      "flag": {
+        "dominant": "#ba0c2f",
+        "accents": [
+          "#ba0c2f",
+          "#062760",
+          "#c63d55",
+          "#e399a8"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8a",
+        "dark": "#472021"
+      },
+      "accent": {
+        "raw": "#ba0c2f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a32",
+        "textDark": "#ff9a9a",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "BWA": {
+      "iso3": "BWA",
+      "name": "Botswana",
+      "hasFlagColour": true,
+      "flagHue": 239.47,
+      "flag": {
+        "dominant": "#6ea9d2",
+        "accents": [
+          "#6ea9d2"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#8aafc9",
+        "dark": "#183e56"
+      },
+      "accent": {
+        "raw": "#6ea9d2",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#1e5b80",
+        "textDark": "#8ac6f0",
+        "textLightContrast": 7.13,
+        "textDarkContrast": 10.39
+      }
+    },
+    "CAF": {
+      "iso3": "CAF",
+      "name": "Central African Republic",
+      "hasFlagColour": true,
+      "flagHue": 91.44,
+      "flag": {
+        "dominant": "#ffce04",
+        "accents": [
+          "#ffce04",
+          "#2e992d",
+          "#033384",
+          "#d21034"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#c7ba93",
+        "dark": "#54461e"
+      },
+      "accent": {
+        "raw": "#ffce04",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#724f00",
+        "textDark": "#ddba50",
+        "textLightContrast": 7.2,
+        "textDarkContrast": 10.21
+      }
+    },
+    "CAN": {
+      "iso3": "CAN",
+      "name": "Canada",
+      "hasFlagColour": true,
+      "flagHue": 29.15,
+      "flag": {
+        "dominant": "#ff0605",
+        "accents": [
+          "#ff0605",
+          "#ffbebe"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d95",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#ff0605",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.46
+      }
+    },
+    "CCK": {
+      "iso3": "CCK",
+      "name": "Cocos (Keeling) Islands",
+      "hasFlagColour": true,
+      "flagHue": 142.48,
+      "flag": {
+        "dominant": "#008000",
+        "accents": [
+          "#008000",
+          "#ffe000",
+          "#4d9c00",
+          "#e4d500"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#85a182",
+        "dark": "#1a3518"
+      },
+      "accent": {
+        "raw": "#008000",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#156712",
+        "textDark": "#8bd385",
+        "textLightContrast": 6.85,
+        "textDarkContrast": 10.7
+      }
+    },
+    "CHE": {
+      "iso3": "CHE",
+      "name": "Switzerland",
+      "hasFlagColour": true,
+      "flagHue": 29.23,
+      "flag": {
+        "dominant": "#ff0000",
+        "accents": [
+          "#ff0000"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#ff0000",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "CHL": {
+      "iso3": "CHL",
+      "name": "Chile",
+      "hasFlagColour": true,
+      "flagHue": 29.47,
+      "flag": {
+        "dominant": "#da2c1f",
+        "accents": [
+          "#da2c1f",
+          "#0738a3",
+          "#6d2e5e",
+          "#c2727d"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#da2c1f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "CHN": {
+      "iso3": "CHN",
+      "name": "China",
+      "hasFlagColour": true,
+      "flagHue": 26.78,
+      "flag": {
+        "dominant": "#ee1d26",
+        "accents": [
+          "#ee1d26",
+          "#f1451e",
+          "#fcd505",
+          "#feec01"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c86",
+        "dark": "#47211d"
+      },
+      "accent": {
+        "raw": "#ee1d26",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b27",
+        "textDark": "#ff9c90",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.48
+      }
+    },
+    "CIV": {
+      "iso3": "CIV",
+      "name": "Ivory Coast",
+      "hasFlagColour": true,
+      "flagHue": 54.4,
+      "flag": {
+        "dominant": "#f77f00",
+        "accents": [
+          "#f77f00",
+          "#009e60",
+          "#72c6a3",
+          "#f7b470"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b49078",
+        "dark": "#45250d"
+      },
+      "accent": {
+        "raw": "#f77f00",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#8d3800",
+        "textDark": "#fea669",
+        "textLightContrast": 7.56,
+        "textDarkContrast": 9.9
+      }
+    },
+    "CMR": {
+      "iso3": "CMR",
+      "name": "Cameroon",
+      "hasFlagColour": true,
+      "flagHue": 93.47,
+      "flag": {
+        "dominant": "#fcd116",
+        "accents": [
+          "#fcd116",
+          "#007a5e",
+          "#cd1327",
+          "#f4b31d"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a49872",
+        "dark": "#382d02"
+      },
+      "accent": {
+        "raw": "#fcd116",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#705000",
+        "textDark": "#dabc50",
+        "textLightContrast": 7.2,
+        "textDarkContrast": 10.28
+      }
+    },
+    "COD": {
+      "iso3": "COD",
+      "name": "DR Congo",
+      "hasFlagColour": true,
+      "flagHue": 256.32,
+      "flag": {
+        "dominant": "#007fff",
+        "accents": [
+          "#007fff",
+          "#ce1121",
+          "#f7d618",
+          "#d7cb36"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#839aba",
+        "dark": "#192e4b"
+      },
+      "accent": {
+        "raw": "#007fff",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#1453a1",
+        "textDark": "#85c0ff",
+        "textLightContrast": 7.34,
+        "textDarkContrast": 10
+      }
+    },
+    "COG": {
+      "iso3": "COG",
+      "name": "Congo",
+      "hasFlagColour": true,
+      "flagHue": 149.91,
+      "flag": {
+        "dominant": "#009543",
+        "accents": [
+          "#009543",
+          "#dc241f",
+          "#fbde4a",
+          "#2aa561"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#91b497",
+        "dark": "#224329"
+      },
+      "accent": {
+        "raw": "#009543",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006925",
+        "textDark": "#7cd590",
+        "textLightContrast": 6.7,
+        "textDarkContrast": 10.72
+      }
+    },
+    "COK": {
+      "iso3": "COK",
+      "name": "Cook Islands",
+      "hasFlagColour": true,
+      "flagHue": 262.4,
+      "flag": {
+        "dominant": "#03246b",
+        "accents": [
+          "#03246b",
+          "#c8102e",
+          "#f1c1c9",
+          "#d64e64"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#03246b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.38,
+        "textDarkContrast": 9.93
+      }
+    },
+    "COL": {
+      "iso3": "COL",
+      "name": "Colombia",
+      "hasFlagColour": true,
+      "flagHue": 90.89,
+      "flag": {
+        "dominant": "#ffcd01",
+        "accents": [
+          "#ffcd01",
+          "#003087",
+          "#c8102e",
+          "#aa163b"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#c8ba93",
+        "dark": "#54461e"
+      },
+      "accent": {
+        "raw": "#ffcd01",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#724f00",
+        "textDark": "#ddba50",
+        "textLightContrast": 7.2,
+        "textDarkContrast": 10.21
+      }
+    },
+    "COM": {
+      "iso3": "COM",
+      "name": "Comoros",
+      "hasFlagColour": true,
+      "flagHue": 92.68,
+      "flag": {
+        "dominant": "#ffd100",
+        "accents": [
+          "#ffd100",
+          "#003da5",
+          "#019639",
+          "#ef3340"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a49872",
+        "dark": "#382d01"
+      },
+      "accent": {
+        "raw": "#ffd100",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#705000",
+        "textDark": "#dbbb50",
+        "textLightContrast": 7.2,
+        "textDarkContrast": 10.23
+      }
+    },
+    "CPV": {
+      "iso3": "CPV",
+      "name": "Cape Verde",
+      "hasFlagColour": true,
+      "flagHue": 260.68,
+      "flag": {
+        "dominant": "#003893",
+        "accents": [
+          "#003893",
+          "#cf2127",
+          "#6b8abc",
+          "#df696e"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8599bb",
+        "dark": "#1c2d4c"
+      },
+      "accent": {
+        "raw": "#003893",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2351a1",
+        "textDark": "#8dbeff",
+        "textLightContrast": 7.39,
+        "textDarkContrast": 9.96
+      }
+    },
+    "CRI": {
+      "iso3": "CRI",
+      "name": "Costa Rica",
+      "hasFlagColour": true,
+      "flagHue": 264.15,
+      "flag": {
+        "dominant": "#001589",
+        "accents": [
+          "#001589",
+          "#da2b1e",
+          "#bfa167",
+          "#a1793b"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#98aacd",
+        "dark": "#2a3a5a"
+      },
+      "accent": {
+        "raw": "#001589",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.9
+      }
+    },
+    "CUB": {
+      "iso3": "CUB",
+      "name": "Cuba",
+      "hasFlagColour": true,
+      "flagHue": 262.88,
+      "flag": {
+        "dominant": "#002a8f",
+        "accents": [
+          "#002a8f",
+          "#cb1918",
+          "#d78a8c",
+          "#242679"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#002a8f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2950a2",
+        "textDark": "#91bdff",
+        "textLightContrast": 7.39,
+        "textDarkContrast": 9.95
+      }
+    },
+    "CUW": {
+      "iso3": "CUW",
+      "name": "Curaçao",
+      "hasFlagColour": true,
+      "flagHue": 261.72,
+      "flag": {
+        "dominant": "#012c80",
+        "accents": [
+          "#012c80",
+          "#f9e814",
+          "#2a4b6d"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#012c80",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2650a2",
+        "textDark": "#8fbdff",
+        "textLightContrast": 7.42,
+        "textDarkContrast": 9.91
+      }
+    },
+    "CXR": {
+      "iso3": "CXR",
+      "name": "Christmas Island",
+      "hasFlagColour": true,
+      "flagHue": 262.33,
+      "flag": {
+        "dominant": "#02226a",
+        "accents": [
+          "#02226a",
+          "#0db02b",
+          "#f6d116",
+          "#61bc23"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02226a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519d",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.38,
+        "textDarkContrast": 9.93
+      }
+    },
+    "CYM": {
+      "iso3": "CYM",
+      "name": "Cayman Islands",
+      "hasFlagColour": true,
+      "flagHue": 262.34,
+      "flag": {
+        "dominant": "#02236a",
+        "accents": [
+          "#02236a",
+          "#c6122e",
+          "#d6c173",
+          "#ca465b"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02236a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "CYP": {
+      "iso3": "CYP",
+      "name": "Cyprus",
+      "hasFlagColour": true,
+      "flagHue": 61,
+      "flag": {
+        "dominant": "#d67a02",
+        "accents": [
+          "#d67a02",
+          "#637048",
+          "#ebbf85"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b29176",
+        "dark": "#432609"
+      },
+      "accent": {
+        "raw": "#d67a02",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#8a3c00",
+        "textDark": "#faa961",
+        "textLightContrast": 7.48,
+        "textDarkContrast": 9.93
+      }
+    },
+    "CZE": {
+      "iso3": "CZE",
+      "name": "Czechia",
+      "hasFlagColour": true,
+      "flagHue": 27.48,
+      "flag": {
+        "dominant": "#d7161b",
+        "accents": [
+          "#d7161b",
+          "#12467f",
+          "#eb8a8d",
+          "#6d2f50"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfb9",
+        "dark": "#734843"
+      },
+      "accent": {
+        "raw": "#d7161b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c25",
+        "textDark": "#ff9c8f",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "DEU": {
+      "iso3": "DEU",
+      "name": "Germany",
+      "hasFlagColour": true,
+      "flagHue": 29.23,
+      "flag": {
+        "dominant": "#dd0000",
+        "accents": [
+          "#dd0000",
+          "#ffce00"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d95",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#dd0000",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "DJI": {
+      "iso3": "DJI",
+      "name": "Djibouti",
+      "hasFlagColour": true,
+      "flagHue": 144.34,
+      "flag": {
+        "dominant": "#16ae2e",
+        "accents": [
+          "#16ae2e",
+          "#6bb2e7",
+          "#d9272a",
+          "#3eb089"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#84a283",
+        "dark": "#19351a"
+      },
+      "accent": {
+        "raw": "#16ae2e",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#096818",
+        "textDark": "#87d488",
+        "textLightContrast": 6.79,
+        "textDarkContrast": 10.74
+      }
+    },
+    "DMA": {
+      "iso3": "DMA",
+      "name": "Dominica",
+      "hasFlagColour": true,
+      "flagHue": 153.58,
+      "flag": {
+        "dominant": "#046a38",
+        "accents": [
+          "#046a38",
+          "#f2c300",
+          "#d10631",
+          "#931d30"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7ea389",
+        "dark": "#11361f"
+      },
+      "accent": {
+        "raw": "#046a38",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006735",
+        "textDark": "#7fd49b",
+        "textLightContrast": 6.82,
+        "textDarkContrast": 10.74
+      }
+    },
+    "DNK": {
+      "iso3": "DNK",
+      "name": "Denmark",
+      "hasFlagColour": true,
+      "flagHue": 22.29,
+      "flag": {
+        "dominant": "#c8102e",
+        "accents": [
+          "#c8102e",
+          "#d0344d"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#c8102e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a2f",
+        "textDark": "#ff9b97",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "DOM": {
+      "iso3": "DOM",
+      "name": "Dominican Republic",
+      "hasFlagColour": true,
+      "flagHue": 256.03,
+      "flag": {
+        "dominant": "#022f63",
+        "accents": [
+          "#022f63",
+          "#ce1126",
+          "#d95a65",
+          "#42904b"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#829aba",
+        "dark": "#182e4b"
+      },
+      "accent": {
+        "raw": "#022f63",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b568d",
+        "textDark": "#92c1ff",
+        "textLightContrast": 7.24,
+        "textDarkContrast": 10.28
+      }
+    },
+    "DZA": {
+      "iso3": "DZA",
+      "name": "Algeria",
+      "hasFlagColour": true,
+      "flagHue": 152.79,
+      "flag": {
+        "dominant": "#016634",
+        "accents": [
+          "#016634",
+          "#cf1334",
+          "#cb384f",
+          "#efa5b3"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#90b499",
+        "dark": "#1f432b"
+      },
+      "accent": {
+        "raw": "#016634",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#036735",
+        "textDark": "#81d39a",
+        "textLightContrast": 6.81,
+        "textDarkContrast": 10.67
+      }
+    },
+    "ECU": {
+      "iso3": "ECU",
+      "name": "Ecuador",
+      "hasFlagColour": true,
+      "flagHue": 97.83,
+      "flag": {
+        "dominant": "#fedc01",
+        "accents": [
+          "#fedc01",
+          "#eb1f27",
+          "#044ea2",
+          "#d2c132"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a19972",
+        "dark": "#362e02"
+      },
+      "accent": {
+        "raw": "#fedc01",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#6b5300",
+        "textDark": "#d4be52",
+        "textLightContrast": 7.13,
+        "textDarkContrast": 10.27
+      }
+    },
+    "EGY": {
+      "iso3": "EGY",
+      "name": "Egypt",
+      "hasFlagColour": true,
+      "flagHue": 24.66,
+      "flag": {
+        "dominant": "#ce1227",
+        "accents": [
+          "#ce1227",
+          "#e1cc8a",
+          "#db5262",
+          "#c39711"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c98",
+        "dark": "#562d2b"
+      },
+      "accent": {
+        "raw": "#ce1227",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b94",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.44
+      }
+    },
+    "ERI": {
+      "iso3": "ERI",
+      "name": "Eritrea",
+      "hasFlagColour": true,
+      "flagHue": 24.02,
+      "flag": {
+        "dominant": "#e4022b",
+        "accents": [
+          "#e4022b",
+          "#43b02a",
+          "#418fde",
+          "#f3bd2d"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c98",
+        "dark": "#562d2b"
+      },
+      "accent": {
+        "raw": "#e4022b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2c",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "ESH": {
+      "iso3": "ESH",
+      "name": "Western Sahara",
+      "hasFlagColour": true,
+      "flagHue": 152.26,
+      "flag": {
+        "dominant": "#007a3d",
+        "accents": [
+          "#007a3d",
+          "#c2121b",
+          "#55a67e",
+          "#e28b90"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7fa388",
+        "dark": "#12361e"
+      },
+      "accent": {
+        "raw": "#007a3d",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00692d",
+        "textDark": "#78d694",
+        "textLightContrast": 6.67,
+        "textDarkContrast": 10.78
+      }
+    },
+    "ESP": {
+      "iso3": "ESP",
+      "name": "Spain",
+      "hasFlagColour": true,
+      "flagHue": 26.78,
+      "flag": {
+        "dominant": "#ad171b",
+        "accents": [
+          "#ad171b",
+          "#f8bc01",
+          "#b33317",
+          "#a2893a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c86",
+        "dark": "#47211d"
+      },
+      "accent": {
+        "raw": "#ad171b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b27",
+        "textDark": "#ff9c90",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.48
+      }
+    },
+    "EST": {
+      "iso3": "EST",
+      "name": "Estonia",
+      "hasFlagColour": true,
+      "flagHue": 252.23,
+      "flag": {
+        "dominant": "#0072ce",
+        "accents": [
+          "#0072ce",
+          "#167dd1"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a2bdde",
+        "dark": "#2f4a67"
+      },
+      "accent": {
+        "raw": "#0072ce",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00559f",
+        "textDark": "#7ec2ff",
+        "textLightContrast": 7.29,
+        "textDarkContrast": 10.06
+      }
+    },
+    "ETH": {
+      "iso3": "ETH",
+      "name": "Ethiopia",
+      "hasFlagColour": true,
+      "flagHue": 146.77,
+      "flag": {
+        "dominant": "#088930",
+        "accents": [
+          "#088930",
+          "#da121a",
+          "#fcdd09",
+          "#1047af"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a4c5a6",
+        "dark": "#315034"
+      },
+      "accent": {
+        "raw": "#088930",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00681e",
+        "textDark": "#83d48b",
+        "textLightContrast": 6.81,
+        "textDarkContrast": 10.7
+      }
+    },
+    "FIN": {
+      "iso3": "FIN",
+      "name": "Finland",
+      "hasFlagColour": true,
+      "flagHue": 257.69,
+      "flag": {
+        "dominant": "#01306d",
+        "accents": [
+          "#01306d"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#839abb",
+        "dark": "#1a2e4c"
+      },
+      "accent": {
+        "raw": "#01306d",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#285495",
+        "textDark": "#8ec0ff",
+        "textLightContrast": 7.31,
+        "textDarkContrast": 10.14
+      }
+    },
+    "FJI": {
+      "iso3": "FJI",
+      "name": "Fiji",
+      "hasFlagColour": true,
+      "flagHue": 236.05,
+      "flag": {
+        "dominant": "#62b5e5",
+        "accents": [
+          "#62b5e5",
+          "#c7102e",
+          "#06266c",
+          "#c2485b"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#789eb6",
+        "dark": "#063248"
+      },
+      "accent": {
+        "raw": "#62b5e5",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005d88",
+        "textDark": "#75c8f9",
+        "textLightContrast": 6.99,
+        "textDarkContrast": 10.36
+      }
+    },
+    "FLK": {
+      "iso3": "FLK",
+      "name": "Falkland Islands",
+      "hasFlagColour": true,
+      "flagHue": 262.34,
+      "flag": {
+        "dominant": "#02236a",
+        "accents": [
+          "#02236a",
+          "#c8122e",
+          "#3a84f4",
+          "#efbfc7"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02236a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "FRA": {
+      "iso3": "FRA",
+      "name": "France",
+      "hasFlagColour": true,
+      "flagHue": 255.95,
+      "flag": {
+        "dominant": "#012754",
+        "accents": [
+          "#012754",
+          "#ce1126",
+          "#e57a83"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a4bdde",
+        "dark": "#324968"
+      },
+      "accent": {
+        "raw": "#012754",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#305687",
+        "textDark": "#96c1f9",
+        "textLightContrast": 7.27,
+        "textDarkContrast": 10.28
+      }
+    },
+    "FRO": {
+      "iso3": "FRO",
+      "name": "Faroe Islands",
+      "hasFlagColour": true,
+      "flagHue": 23.47,
+      "flag": {
+        "dominant": "#ef3340",
+        "accents": [
+          "#ef3340",
+          "#005eb8",
+          "#6da2d6",
+          "#3c539a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b88",
+        "dark": "#47201f"
+      },
+      "accent": {
+        "raw": "#ef3340",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932b2d",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "FSM": {
+      "iso3": "FSM",
+      "name": "Micronesia",
+      "hasFlagColour": true,
+      "flagHue": 240.25,
+      "flag": {
+        "dominant": "#75b2dd",
+        "accents": [
+          "#75b2dd",
+          "#92c2e4"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7a9db7",
+        "dark": "#0a3149"
+      },
+      "accent": {
+        "raw": "#75b2dd",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#1c5b81",
+        "textDark": "#88c6f2",
+        "textLightContrast": 7.13,
+        "textDarkContrast": 10.38
+      }
+    },
+    "GAB": {
+      "iso3": "GAB",
+      "name": "Gabon",
+      "hasFlagColour": true,
+      "flagHue": 157.11,
+      "flag": {
+        "dominant": "#009e60",
+        "accents": [
+          "#009e60",
+          "#fcd116",
+          "#3a75c4"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#9ec6ad",
+        "dark": "#2a513b"
+      },
+      "accent": {
+        "raw": "#009e60",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006b33",
+        "textDark": "#6ed79c",
+        "textLightContrast": 6.48,
+        "textDarkContrast": 10.8
+      }
+    },
+    "GBR": {
+      "iso3": "GBR",
+      "name": "United Kingdom",
+      "hasFlagColour": true,
+      "flagHue": 22.32,
+      "flag": {
+        "dominant": "#c8102e",
+        "accents": [
+          "#c8102e",
+          "#08286e",
+          "#d85469",
+          "#f1c3ca"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#c8102e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a2f",
+        "textDark": "#ff9b97",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "GEO": {
+      "iso3": "GEO",
+      "name": "Georgia",
+      "hasFlagColour": true,
+      "flagHue": 28.94,
+      "flag": {
+        "dominant": "#ff110f",
+        "accents": [
+          "#ff110f",
+          "#ffcccb"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#ff110f",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c23",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.46
+      }
+    },
+    "GGY": {
+      "iso3": "GGY",
+      "name": "Guernsey",
+      "hasFlagColour": true,
+      "flagHue": 24.41,
+      "flag": {
+        "dominant": "#e8112d",
+        "accents": [
+          "#e8112d",
+          "#f9dc16",
+          "#f26876",
+          "#ef6c23"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c88",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#e8112d",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2c",
+        "textDark": "#ff9b94",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "GHA": {
+      "iso3": "GHA",
+      "name": "Ghana",
+      "hasFlagColour": true,
+      "flagHue": 24.9,
+      "flag": {
+        "dominant": "#ce1226",
+        "accents": [
+          "#ce1226",
+          "#006b3f",
+          "#f9ce16",
+          "#da4522"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea9",
+        "dark": "#643a37"
+      },
+      "accent": {
+        "raw": "#ce1226",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "GIB": {
+      "iso3": "GIB",
+      "name": "Gibraltar",
+      "hasFlagColour": true,
+      "flagHue": 28.1,
+      "flag": {
+        "dominant": "#d1020e",
+        "accents": [
+          "#d1020e",
+          "#c57c81",
+          "#ae950a",
+          "#94730a"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d96",
+        "dark": "#562e29"
+      },
+      "accent": {
+        "raw": "#d1020e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c24",
+        "textDark": "#ff9c8e",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "GIN": {
+      "iso3": "GIN",
+      "name": "Guinea",
+      "hasFlagColour": true,
+      "flagHue": 159.63,
+      "flag": {
+        "dominant": "#019460",
+        "accents": [
+          "#019460",
+          "#ce1126",
+          "#fcd116",
+          "#ed921c"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#8cb49d",
+        "dark": "#1a442f"
+      },
+      "accent": {
+        "raw": "#019460",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006a3a",
+        "textDark": "#69d7a0",
+        "textLightContrast": 6.54,
+        "textDarkContrast": 10.77
+      }
+    },
+    "GLP": {
+      "iso3": "GLP",
+      "name": "Guadeloupe",
+      "hasFlagColour": true,
+      "flagHue": 263.31,
+      "flag": {
+        "dominant": "#012486",
+        "accents": [
+          "#012486",
+          "#f2d409",
+          "#004700",
+          "#897f20"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8799bb",
+        "dark": "#1e2d4c"
+      },
+      "accent": {
+        "raw": "#012486",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2a50a2",
+        "textDark": "#92bcff",
+        "textLightContrast": 7.37,
+        "textDarkContrast": 9.89
+      }
+    },
+    "GMB": {
+      "iso3": "GMB",
+      "name": "Gambia",
+      "hasFlagColour": true,
+      "flagHue": 139.24,
+      "flag": {
+        "dominant": "#3c792b",
+        "accents": [
+          "#3c792b",
+          "#ce1126",
+          "#0c1c8c",
+          "#d84556"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#98b291",
+        "dark": "#2a4223"
+      },
+      "accent": {
+        "raw": "#3c792b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#286514",
+        "textDark": "#91d281",
+        "textLightContrast": 6.89,
+        "textDarkContrast": 10.69
+      }
+    },
+    "GNB": {
+      "iso3": "GNB",
+      "name": "Guinea-Bissau",
+      "hasFlagColour": true,
+      "flagHue": 93.47,
+      "flag": {
+        "dominant": "#fcd116",
+        "accents": [
+          "#fcd116",
+          "#009e49",
+          "#cd1126",
+          "#ed911c"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#c6ba93",
+        "dark": "#53471f"
+      },
+      "accent": {
+        "raw": "#fcd116",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#705000",
+        "textDark": "#dabc50",
+        "textLightContrast": 7.2,
+        "textDarkContrast": 10.28
+      }
+    },
+    "GNQ": {
+      "iso3": "GNQ",
+      "name": "Equatorial Guinea",
+      "hasFlagColour": true,
+      "flagHue": 137.82,
+      "flag": {
+        "dominant": "#419b05",
+        "accents": [
+          "#419b05",
+          "#e3251c",
+          "#0073ce",
+          "#3fa43f"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#99b290",
+        "dark": "#2b4222"
+      },
+      "accent": {
+        "raw": "#419b05",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#276600",
+        "textDark": "#94d17d",
+        "textLightContrast": 6.83,
+        "textDarkContrast": 10.63
+      }
+    },
+    "GRC": {
+      "iso3": "GRC",
+      "name": "Greece",
+      "hasFlagColour": true,
+      "flagHue": 253.98,
+      "flag": {
+        "dominant": "#0f5faf",
+        "accents": [
+          "#0f5faf",
+          "#74a3d1"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#b4cff0",
+        "dark": "#3e5776"
+      },
+      "accent": {
+        "raw": "#0f5faf",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#0454a0",
+        "textDark": "#81c1ff",
+        "textLightContrast": 7.34,
+        "textDarkContrast": 10.02
+      }
+    },
+    "GRD": {
+      "iso3": "GRD",
+      "name": "Grenada",
+      "hasFlagColour": true,
+      "flagHue": 24.83,
+      "flag": {
+        "dominant": "#ce1226",
+        "accents": [
+          "#ce1226",
+          "#f7cd19",
+          "#007a5e",
+          "#da4421"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c87",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#ce1226",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "GRL": {
+      "iso3": "GRL",
+      "name": "Greenland",
+      "hasFlagColour": true,
+      "flagHue": 22.31,
+      "flag": {
+        "dominant": "#c8102e",
+        "accents": [
+          "#c8102e",
+          "#d75368",
+          "#e89ba7"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#c8102e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a2f",
+        "textDark": "#ff9b97",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "GTM": {
+      "iso3": "GTM",
+      "name": "Guatemala",
+      "hasFlagColour": true,
+      "flagHue": 242.99,
+      "flag": {
+        "dominant": "#4997d0",
+        "accents": [
+          "#4997d0",
+          "#7e9e67",
+          "#e5d386",
+          "#efe7a1"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7b9db8",
+        "dark": "#0d3149"
+      },
+      "accent": {
+        "raw": "#4997d0",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005a8f",
+        "textDark": "#78c6ff",
+        "textLightContrast": 7.14,
+        "textDarkContrast": 10.3
+      }
+    },
+    "GUF": {
+      "iso3": "GUF",
+      "name": "French Guiana",
+      "hasFlagColour": true,
+      "flagHue": 146.76,
+      "flag": {
+        "dominant": "#078930",
+        "accents": [
+          "#078930",
+          "#fcdd09",
+          "#d9131a",
+          "#fae236"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a4c5a6",
+        "dark": "#315034"
+      },
+      "accent": {
+        "raw": "#078930",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00681e",
+        "textDark": "#83d48b",
+        "textLightContrast": 6.81,
+        "textDarkContrast": 10.7
+      }
+    },
+    "GUM": {
+      "iso3": "GUM",
+      "name": "Guam",
+      "hasFlagColour": true,
+      "flagHue": 261.79,
+      "flag": {
+        "dominant": "#00297b",
+        "accents": [
+          "#00297b",
+          "#c62139",
+          "#c12841",
+          "#91d9f9"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#00297b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2650a2",
+        "textDark": "#8fbdff",
+        "textLightContrast": 7.42,
+        "textDarkContrast": 9.91
+      }
+    },
+    "GUY": {
+      "iso3": "GUY",
+      "name": "Guyana",
+      "hasFlagColour": true,
+      "flagHue": 162.67,
+      "flag": {
+        "dominant": "#2a936a",
+        "accents": [
+          "#2a936a",
+          "#bc1e2d",
+          "#ffc211",
+          "#fbe59c"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#9bc6b0",
+        "dark": "#26523e"
+      },
+      "accent": {
+        "raw": "#2a936a",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006842",
+        "textDark": "#73d5a8",
+        "textLightContrast": 6.67,
+        "textDarkContrast": 10.75
+      }
+    },
+    "HKG": {
+      "iso3": "HKG",
+      "name": "Hong Kong",
+      "hasFlagColour": true,
+      "flagHue": 26.73,
+      "flag": {
+        "dominant": "#ee1e26",
+        "accents": [
+          "#ee1e26",
+          "#faabae"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d97",
+        "dark": "#562d29"
+      },
+      "accent": {
+        "raw": "#ee1e26",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b27",
+        "textDark": "#ff9c90",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.48
+      }
+    },
+    "HMD": {
+      "iso3": "HMD",
+      "name": "Heard Island and McDonald Islands",
+      "hasFlagColour": true,
+      "flagHue": 264.07,
+      "flag": {
+        "dominant": "#00008b",
+        "accents": [
+          "#00008b",
+          "#ff0d0c",
+          "#a7a8d8",
+          "#3536a3"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8798bb",
+        "dark": "#1e2d4c"
+      },
+      "accent": {
+        "raw": "#00008b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.9
+      }
+    },
+    "HND": {
+      "iso3": "HND",
+      "name": "Honduras",
+      "hasFlagColour": true,
+      "flagHue": 220.39,
+      "flag": {
+        "dominant": "#00bce4",
+        "accents": [
+          "#00bce4",
+          "#5ad3ed"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#83b2c2",
+        "dark": "#084150"
+      },
+      "accent": {
+        "raw": "#00bce4",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006388",
+        "textDark": "#40d0f8",
+        "textLightContrast": 6.5,
+        "textDarkContrast": 10.56
+      }
+    },
+    "HRV": {
+      "iso3": "HRV",
+      "name": "Croatia",
+      "hasFlagColour": true,
+      "flagHue": 28.8,
+      "flag": {
+        "dominant": "#ff1614",
+        "accents": [
+          "#ff1614",
+          "#171796",
+          "#6262b7",
+          "#1c94dc"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d96",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#ff1614",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c23",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.46
+      }
+    },
+    "HTI": {
+      "iso3": "HTI",
+      "name": "Haiti",
+      "hasFlagColour": true,
+      "flagHue": 264.03,
+      "flag": {
+        "dominant": "#00209f",
+        "accents": [
+          "#00209f",
+          "#d21134",
+          "#247330",
+          "#c49e40"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#98aacd",
+        "dark": "#2a3a5a"
+      },
+      "accent": {
+        "raw": "#00209f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.9
+      }
+    },
+    "HUN": {
+      "iso3": "HUN",
+      "name": "Hungary",
+      "hasFlagColour": true,
+      "flagHue": 150.35,
+      "flag": {
+        "dominant": "#497252",
+        "accents": [
+          "#497252",
+          "#ce2939",
+          "#de6f7a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#80a287",
+        "dark": "#14361d"
+      },
+      "accent": {
+        "raw": "#497252",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#386041",
+        "textDark": "#9fcba7",
+        "textLightContrast": 7,
+        "textDarkContrast": 10.54
+      }
+    },
+    "IDN": {
+      "iso3": "IDN",
+      "name": "Indonesia",
+      "hasFlagColour": true,
+      "flagHue": 29.06,
+      "flag": {
+        "dominant": "#ff0b09",
+        "accents": [
+          "#ff0b09"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#ff0b09",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.46
+      }
+    },
+    "IMN": {
+      "iso3": "IMN",
+      "name": "Isle of Man",
+      "hasFlagColour": true,
+      "flagHue": 23.85,
+      "flag": {
+        "dominant": "#cf142b",
+        "accents": [
+          "#cf142b",
+          "#91464e",
+          "#aea24e",
+          "#bca433"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b88",
+        "dark": "#47201f"
+      },
+      "accent": {
+        "raw": "#cf142b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2c",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "IND": {
+      "iso3": "IND",
+      "name": "India",
+      "hasFlagColour": true,
+      "flagHue": 41.85,
+      "flag": {
+        "dominant": "#ff6a24",
+        "accents": [
+          "#ff6a24",
+          "#066b39",
+          "#8f8dcc",
+          "#49936f"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#c89e8f",
+        "dark": "#552f21"
+      },
+      "accent": {
+        "raw": "#ff6a24",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#913100",
+        "textDark": "#ffa07a",
+        "textLightContrast": 7.72,
+        "textDarkContrast": 9.61
+      }
+    },
+    "IOT": {
+      "iso3": "IOT",
+      "name": "British Indian Ocean Territory",
+      "hasFlagColour": true,
+      "flagHue": 262.77,
+      "flag": {
+        "dominant": "#0e2e71",
+        "accents": [
+          "#0e2e71",
+          "#c8102e",
+          "#3b883b",
+          "#efbec6"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#0e2e71",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2f5298",
+        "textDark": "#93bdff",
+        "textLightContrast": 7.34,
+        "textDarkContrast": 9.98
+      }
+    },
+    "IRL": {
+      "iso3": "IRL",
+      "name": "Ireland",
+      "hasFlagColour": true,
+      "flagHue": 157.86,
+      "flag": {
+        "dominant": "#169b62",
+        "accents": [
+          "#169b62",
+          "#ff883e",
+          "#b2decb",
+          "#ffd7bf"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#8db49c",
+        "dark": "#1b442e"
+      },
+      "accent": {
+        "raw": "#169b62",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006a35",
+        "textDark": "#6cd79d",
+        "textLightContrast": 6.56,
+        "textDarkContrast": 10.78
+      }
+    },
+    "IRN": {
+      "iso3": "IRN",
+      "name": "Iran",
+      "hasFlagColour": true,
+      "flagHue": 28.4,
+      "flag": {
+        "dominant": "#dc1d1a",
+        "accents": [
+          "#dc1d1a",
+          "#29a144",
+          "#99d2a6",
+          "#f4b2b2"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#dc1d1a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c24",
+        "textDark": "#ff9c8e",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "IRQ": {
+      "iso3": "IRQ",
+      "name": "Iraq",
+      "hasFlagColour": true,
+      "flagHue": 24.98,
+      "flag": {
+        "dominant": "#cd1125",
+        "accents": [
+          "#cd1125",
+          "#178248",
+          "#d84555",
+          "#92c6ac"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea9",
+        "dark": "#643a37"
+      },
+      "accent": {
+        "raw": "#cd1125",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2a",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "ISL": {
+      "iso3": "ISL",
+      "name": "Iceland",
+      "hasFlagColour": true,
+      "flagHue": 253.69,
+      "flag": {
+        "dominant": "#03539c",
+        "accents": [
+          "#03539c",
+          "#dc2137",
+          "#5289bc",
+          "#e35163"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#819bba",
+        "dark": "#172f4b"
+      },
+      "accent": {
+        "raw": "#03539c",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#06559e",
+        "textDark": "#80c2ff",
+        "textLightContrast": 7.29,
+        "textDarkContrast": 10.08
+      }
+    },
+    "ISR": {
+      "iso3": "ISR",
+      "name": "Israel",
+      "hasFlagColour": true,
+      "flagHue": 263.04,
+      "flag": {
+        "dominant": "#063dba",
+        "accents": [
+          "#063dba"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a8bbdf",
+        "dark": "#364768"
+      },
+      "accent": {
+        "raw": "#063dba",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2950a2",
+        "textDark": "#91bdff",
+        "textLightContrast": 7.39,
+        "textDarkContrast": 9.95
+      }
+    },
+    "ITA": {
+      "iso3": "ITA",
+      "name": "Italy",
+      "hasFlagColour": true,
+      "flagHue": 151.13,
+      "flag": {
+        "dominant": "#019247",
+        "accents": [
+          "#019247",
+          "#ce2b37",
+          "#e18388",
+          "#abdbc2"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#91b498",
+        "dark": "#21432a"
+      },
+      "accent": {
+        "raw": "#019247",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006a28",
+        "textDark": "#7ad693",
+        "textLightContrast": 6.6,
+        "textDarkContrast": 10.8
+      }
+    },
+    "JAM": {
+      "iso3": "JAM",
+      "name": "Jamaica",
+      "hasFlagColour": true,
+      "flagHue": 158.06,
+      "flag": {
+        "dominant": "#007749",
+        "accents": [
+          "#007749",
+          "#ffb81c",
+          "#70510d",
+          "#328440"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7ca38b",
+        "dark": "#0c3722"
+      },
+      "accent": {
+        "raw": "#007749",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00683b",
+        "textDark": "#77d5a1",
+        "textLightContrast": 6.71,
+        "textDarkContrast": 10.76
+      }
+    },
+    "JEY": {
+      "iso3": "JEY",
+      "name": "Jersey",
+      "hasFlagColour": true,
+      "flagHue": 23.79,
+      "flag": {
+        "dominant": "#cf152c",
+        "accents": [
+          "#cf152c",
+          "#e37783",
+          "#f6d544",
+          "#efb609"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b88",
+        "dark": "#47201f"
+      },
+      "accent": {
+        "raw": "#cf152c",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2d",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "JOR": {
+      "iso3": "JOR",
+      "name": "Jordan",
+      "hasFlagColour": true,
+      "flagHue": 152.49,
+      "flag": {
+        "dominant": "#057b3f",
+        "accents": [
+          "#057b3f",
+          "#cc1126",
+          "#e6848d",
+          "#375e37"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#90b499",
+        "dark": "#1f432b"
+      },
+      "accent": {
+        "raw": "#057b3f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00692e",
+        "textDark": "#77d695",
+        "textLightContrast": 6.67,
+        "textDarkContrast": 10.78
+      }
+    },
+    "JPN": {
+      "iso3": "JPN",
+      "name": "Japan",
+      "hasFlagColour": true,
+      "flagHue": 20.72,
+      "flag": {
+        "dominant": "#bc002d",
+        "accents": [
+          "#bc002d",
+          "#e38fa2",
+          "#c21a40"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8a",
+        "dark": "#472021"
+      },
+      "accent": {
+        "raw": "#bc002d",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a32",
+        "textDark": "#ff9a9a",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "KAZ": {
+      "iso3": "KAZ",
+      "name": "Kazakhstan",
+      "hasFlagColour": true,
+      "flagHue": 211.52,
+      "flag": {
+        "dominant": "#00abc2",
+        "accents": [
+          "#00abc2",
+          "#fceb2f",
+          "#d2e148",
+          "#afd85c"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#92c5cf",
+        "dark": "#16505a"
+      },
+      "accent": {
+        "raw": "#00abc2",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#00657b",
+        "textDark": "#4cd2e9",
+        "textLightContrast": 6.48,
+        "textDarkContrast": 10.65
+      }
+    },
+    "KEN": {
+      "iso3": "KEN",
+      "name": "Kenya",
+      "hasFlagColour": true,
+      "flagHue": 28.59,
+      "flag": {
+        "dominant": "#bb1713",
+        "accents": [
+          "#bb1713",
+          "#026702",
+          "#e4abab",
+          "#9a4c37"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#bb1713",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c23",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.46
+      }
+    },
+    "KGZ": {
+      "iso3": "KGZ",
+      "name": "Kyrgyzstan",
+      "hasFlagColour": true,
+      "flagHue": 29.24,
+      "flag": {
+        "dominant": "#ff0000",
+        "accents": [
+          "#ff0000",
+          "#ff3900",
+          "#ff6900",
+          "#ffef00"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d95",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#ff0000",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "KHM": {
+      "iso3": "KHM",
+      "name": "Cambodia",
+      "hasFlagColour": true,
+      "flagHue": 263.57,
+      "flag": {
+        "dominant": "#042fa1",
+        "accents": [
+          "#042fa1",
+          "#e00025",
+          "#711763",
+          "#ab3c5a"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a9bbdf",
+        "dark": "#374768"
+      },
+      "accent": {
+        "raw": "#042fa1",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b50a2",
+        "textDark": "#92bcff",
+        "textLightContrast": 7.36,
+        "textDarkContrast": 9.89
+      }
+    },
+    "KIR": {
+      "iso3": "KIR",
+      "name": "Kiribati",
+      "hasFlagColour": true,
+      "flagHue": 28.51,
+      "flag": {
+        "dominant": "#c81111",
+        "accents": [
+          "#c81111",
+          "#233a77",
+          "#edc708",
+          "#b32d0a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#c81111",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c24",
+        "textDark": "#ff9c8e",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "KNA": {
+      "iso3": "KNA",
+      "name": "Saint Kitts and Nevis",
+      "hasFlagColour": true,
+      "flagHue": 147.59,
+      "flag": {
+        "dominant": "#009739",
+        "accents": [
+          "#009739",
+          "#c8102e",
+          "#efc100",
+          "#33ab60"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#82a285",
+        "dark": "#16361c"
+      },
+      "accent": {
+        "raw": "#009739",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006920",
+        "textDark": "#81d58d",
+        "textLightContrast": 6.71,
+        "textDarkContrast": 10.77
+      }
+    },
+    "KOR": {
+      "iso3": "KOR",
+      "name": "South Korea",
+      "hasFlagColour": true,
+      "flagHue": 258.18,
+      "flag": {
+        "dominant": "#064ba2",
+        "accents": [
+          "#064ba2",
+          "#cd2e3a",
+          "#da7a82",
+          "#214390"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#849abb",
+        "dark": "#1a2e4c"
+      },
+      "accent": {
+        "raw": "#064ba2",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#1b52a1",
+        "textDark": "#88bfff",
+        "textLightContrast": 7.37,
+        "textDarkContrast": 9.96
+      }
+    },
+    "KWT": {
+      "iso3": "KWT",
+      "name": "Kuwait",
+      "hasFlagColour": true,
+      "flagHue": 152.28,
+      "flag": {
+        "dominant": "#00793d",
+        "accents": [
+          "#00793d",
+          "#cd1126",
+          "#54a57d",
+          "#dd5e6c"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#90b499",
+        "dark": "#20432b"
+      },
+      "accent": {
+        "raw": "#00793d",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00692e",
+        "textDark": "#77d694",
+        "textLightContrast": 6.67,
+        "textDarkContrast": 10.77
+      }
+    },
+    "LAO": {
+      "iso3": "LAO",
+      "name": "Laos",
+      "hasFlagColour": true,
+      "flagHue": 24.79,
+      "flag": {
+        "dominant": "#ce1126",
+        "accents": [
+          "#ce1126",
+          "#002968",
+          "#c0273d",
+          "#6079a2"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c98",
+        "dark": "#562d2b"
+      },
+      "accent": {
+        "raw": "#ce1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "LBN": {
+      "iso3": "LBN",
+      "name": "Lebanon",
+      "hasFlagColour": true,
+      "flagHue": 25.49,
+      "flag": {
+        "dominant": "#d41a27",
+        "accents": [
+          "#d41a27",
+          "#008c3e",
+          "#45a86e",
+          "#afdbc2"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c98",
+        "dark": "#562d2a"
+      },
+      "accent": {
+        "raw": "#d41a27",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b29",
+        "textDark": "#ff9b92",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.43
+      }
+    },
+    "LBR": {
+      "iso3": "LBR",
+      "name": "Liberia",
+      "hasFlagColour": true,
+      "flagHue": 20.62,
+      "flag": {
+        "dominant": "#bf0a30",
+        "accents": [
+          "#bf0a30",
+          "#022a6a",
+          "#cb3956",
+          "#dc7a8e"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcadac",
+        "dark": "#643a3a"
+      },
+      "accent": {
+        "raw": "#bf0a30",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a32",
+        "textDark": "#ff9a9a",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "LBY": {
+      "iso3": "LBY",
+      "name": "Libya",
+      "hasFlagColour": true,
+      "flagHue": 27.77,
+      "flag": {
+        "dominant": "#e70013",
+        "accents": [
+          "#e70013",
+          "#239e46"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea7",
+        "dark": "#643b35"
+      },
+      "accent": {
+        "raw": "#e70013",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c25",
+        "textDark": "#ff9c8f",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "LCA": {
+      "iso3": "LCA",
+      "name": "Saint Lucia",
+      "hasFlagColour": true,
+      "flagHue": 232.68,
+      "flag": {
+        "dominant": "#66ccff",
+        "accents": [
+          "#66ccff",
+          "#f5cc19",
+          "#bbe9ff",
+          "#badcc3"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#769fb5",
+        "dark": "#023247"
+      },
+      "accent": {
+        "raw": "#66ccff",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005e8c",
+        "textDark": "#65cbfe",
+        "textLightContrast": 6.85,
+        "textDarkContrast": 10.49
+      }
+    },
+    "LIE": {
+      "iso3": "LIE",
+      "name": "Liechtenstein",
+      "hasFlagColour": true,
+      "flagHue": 24.79,
+      "flag": {
+        "dominant": "#ce1126",
+        "accents": [
+          "#ce1126",
+          "#002b7f",
+          "#af952c",
+          "#585431"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c98",
+        "dark": "#562d2b"
+      },
+      "accent": {
+        "raw": "#ce1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "LKA": {
+      "iso3": "LKA",
+      "name": "Sri Lanka",
+      "hasFlagColour": true,
+      "flagHue": 81.96,
+      "flag": {
+        "dominant": "#fbbb28",
+        "accents": [
+          "#fbbb28",
+          "#8c1539",
+          "#e47208",
+          "#00534e"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a99572",
+        "dark": "#3d2a02"
+      },
+      "accent": {
+        "raw": "#fbbb28",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#7b4900",
+        "textDark": "#e7b551",
+        "textLightContrast": 7.3,
+        "textDarkContrast": 10.13
+      }
+    },
+    "LSO": {
+      "iso3": "LSO",
+      "name": "Lesotho",
+      "hasFlagColour": true,
+      "flagHue": 264.35,
+      "flag": {
+        "dominant": "#01168a",
+        "accents": [
+          "#01168a",
+          "#009a44",
+          "#29aa62"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8798bb",
+        "dark": "#1e2d4c"
+      },
+      "accent": {
+        "raw": "#01168a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.9
+      }
+    },
+    "LTU": {
+      "iso3": "LTU",
+      "name": "Lithuania",
+      "hasFlagColour": true,
+      "flagHue": 81.3,
+      "flag": {
+        "dominant": "#fdb913",
+        "accents": [
+          "#fdb913",
+          "#006a44",
+          "#c1272d"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#cdb893",
+        "dark": "#58441f"
+      },
+      "accent": {
+        "raw": "#fdb913",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#7b4900",
+        "textDark": "#e8b451",
+        "textLightContrast": 7.3,
+        "textDarkContrast": 10.08
+      }
+    },
+    "LUX": {
+      "iso3": "LUX",
+      "name": "Luxembourg",
+      "hasFlagColour": true,
+      "flagHue": 23.89,
+      "flag": {
+        "dominant": "#ed2939",
+        "accents": [
+          "#ed2939",
+          "#00a1de"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfbb",
+        "dark": "#734845"
+      },
+      "accent": {
+        "raw": "#ed2939",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932b2c",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "LVA": {
+      "iso3": "LVA",
+      "name": "Latvia",
+      "hasFlagColour": true,
+      "flagHue": 18.01,
+      "flag": {
+        "dominant": "#9d2235",
+        "accents": [
+          "#9d2235"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8b",
+        "dark": "#472022"
+      },
+      "accent": {
+        "raw": "#9d2235",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a37",
+        "textDark": "#ff9a9e",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.44
+      }
+    },
+    "MAC": {
+      "iso3": "MAC",
+      "name": "Macau",
+      "hasFlagColour": true,
+      "flagHue": 175.7,
+      "flag": {
+        "dominant": "#117663",
+        "accents": [
+          "#117663",
+          "#74aea3",
+          "#fddd23",
+          "#ddcf2c"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#85b5a8",
+        "dark": "#0b4539"
+      },
+      "accent": {
+        "raw": "#117663",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006553",
+        "textDark": "#7ad1bb",
+        "textLightContrast": 6.83,
+        "textDarkContrast": 10.62
+      }
+    },
+    "MAF": {
+      "iso3": "MAF",
+      "name": "Saint Martin",
+      "hasFlagColour": true,
+      "flagHue": 255.95,
+      "flag": {
+        "dominant": "#012754",
+        "accents": [
+          "#012754",
+          "#ce1126",
+          "#e57a83"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#829aba",
+        "dark": "#182e4b"
+      },
+      "accent": {
+        "raw": "#012754",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#305687",
+        "textDark": "#96c1f9",
+        "textLightContrast": 7.27,
+        "textDarkContrast": 10.28
+      }
+    },
+    "MAR": {
+      "iso3": "MAR",
+      "name": "Morocco",
+      "hasFlagColour": true,
+      "flagHue": 24.91,
+      "flag": {
+        "dominant": "#c1282e",
+        "accents": [
+          "#c1282e",
+          "#066133",
+          "#2f5431",
+          "#7b3d2f"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea9",
+        "dark": "#643a37"
+      },
+      "accent": {
+        "raw": "#c1282e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "MCO": {
+      "iso3": "MCO",
+      "name": "Monaco",
+      "hasFlagColour": true,
+      "flagHue": 24.79,
+      "flag": {
+        "dominant": "#ce1126",
+        "accents": [
+          "#ce1126"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c87",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#ce1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "MDA": {
+      "iso3": "MDA",
+      "name": "Moldova",
+      "hasFlagColour": true,
+      "flagHue": 21.92,
+      "flag": {
+        "dominant": "#cb092f",
+        "accents": [
+          "#cb092f",
+          "#0046ae",
+          "#f9cd01",
+          "#8b6448"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#cb092f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a30",
+        "textDark": "#ff9b98",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "MDG": {
+      "iso3": "MDG",
+      "name": "Madagascar",
+      "hasFlagColour": true,
+      "flagHue": 150.76,
+      "flag": {
+        "dominant": "#027f3b",
+        "accents": [
+          "#027f3b",
+          "#fc3e33",
+          "#7e5e37",
+          "#d84a38"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#80a287",
+        "dark": "#13361e"
+      },
+      "accent": {
+        "raw": "#027f3b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006927",
+        "textDark": "#7bd592",
+        "textLightContrast": 6.69,
+        "textDarkContrast": 10.72
+      }
+    },
+    "MDV": {
+      "iso3": "MDV",
+      "name": "Maldives",
+      "hasFlagColour": true,
+      "flagHue": 21.32,
+      "flag": {
+        "dominant": "#d11234",
+        "accents": [
+          "#d11234",
+          "#017e3b",
+          "#d83654",
+          "#a7d2bb"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#d11234",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a31",
+        "textDark": "#ff9a99",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "MEX": {
+      "iso3": "MEX",
+      "name": "Mexico",
+      "hasFlagColour": true,
+      "flagHue": 163.06,
+      "flag": {
+        "dominant": "#046948",
+        "accents": [
+          "#046948",
+          "#ce1226",
+          "#e47e89",
+          "#7a4f32"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#8ab59f",
+        "dark": "#174431"
+      },
+      "accent": {
+        "raw": "#046948",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006645",
+        "textDark": "#7fd2ab",
+        "textLightContrast": 6.83,
+        "textDarkContrast": 10.66
+      }
+    },
+    "MHL": {
+      "iso3": "MHL",
+      "name": "Marshall Islands",
+      "hasFlagColour": true,
+      "flagHue": 260.7,
+      "flag": {
+        "dominant": "#033a93",
+        "accents": [
+          "#033a93",
+          "#db7504",
+          "#5076b5",
+          "#da9a57"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8599bb",
+        "dark": "#1c2d4c"
+      },
+      "accent": {
+        "raw": "#033a93",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2351a1",
+        "textDark": "#8dbeff",
+        "textLightContrast": 7.39,
+        "textDarkContrast": 9.96
+      }
+    },
+    "MKD": {
+      "iso3": "MKD",
+      "name": "North Macedonia",
+      "hasFlagColour": true,
+      "flagHue": 26.66,
+      "flag": {
+        "dominant": "#d82126",
+        "accents": [
+          "#d82126",
+          "#f8e92e",
+          "#df4c27",
+          "#f4cf2c"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d97",
+        "dark": "#562d29"
+      },
+      "accent": {
+        "raw": "#d82126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b27",
+        "textDark": "#ff9c90",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.48
+      }
+    },
+    "MLI": {
+      "iso3": "MLI",
+      "name": "Mali",
+      "hasFlagColour": true,
+      "flagHue": 145.45,
+      "flag": {
+        "dominant": "#15b53a",
+        "accents": [
+          "#15b53a",
+          "#ce1126",
+          "#fcd116",
+          "#ed921c"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a5c4a6",
+        "dark": "#325033"
+      },
+      "accent": {
+        "raw": "#15b53a",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#00681b",
+        "textDark": "#85d489",
+        "textLightContrast": 6.81,
+        "textDarkContrast": 10.72
+      }
+    },
+    "MLT": {
+      "iso3": "MLT",
+      "name": "Malta",
+      "hasFlagColour": true,
+      "flagHue": 23.85,
+      "flag": {
+        "dominant": "#cf142b",
+        "accents": [
+          "#cf142b",
+          "#dd6571",
+          "#d0abb0"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b88",
+        "dark": "#47201f"
+      },
+      "accent": {
+        "raw": "#cf142b",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2c",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "MMR": {
+      "iso3": "MMR",
+      "name": "Myanmar",
+      "hasFlagColour": true,
+      "flagHue": 90.4,
+      "flag": {
+        "dominant": "#fecb03",
+        "accents": [
+          "#fecb03",
+          "#e92939",
+          "#36b335",
+          "#c6c516"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#c8ba93",
+        "dark": "#54461e"
+      },
+      "accent": {
+        "raw": "#fecb03",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#734e00",
+        "textDark": "#deba50",
+        "textLightContrast": 7.24,
+        "textDarkContrast": 10.24
+      }
+    },
+    "MNE": {
+      "iso3": "MNE",
+      "name": "Montenegro",
+      "hasFlagColour": true,
+      "flagHue": 29.24,
+      "flag": {
+        "dominant": "#e30000",
+        "accents": [
+          "#e30000",
+          "#febe02",
+          "#eda20f",
+          "#df360b"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#e30000",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "MNG": {
+      "iso3": "MNG",
+      "name": "Mongolia",
+      "hasFlagColour": true,
+      "flagHue": 24.03,
+      "flag": {
+        "dominant": "#da2031",
+        "accents": [
+          "#da2031",
+          "#0066b2",
+          "#ffd300",
+          "#484f87"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcada9",
+        "dark": "#643a38"
+      },
+      "accent": {
+        "raw": "#da2031",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2c",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "MNP": {
+      "iso3": "MNP",
+      "name": "Northern Mariana Islands",
+      "hasFlagColour": true,
+      "flagHue": 262.62,
+      "flag": {
+        "dominant": "#0336a2",
+        "accents": [
+          "#0336a2",
+          "#ca524b",
+          "#e3aaca",
+          "#ac682e"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#0336a2",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2850a2",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "MOZ": {
+      "iso3": "MOZ",
+      "name": "Mozambique",
+      "hasFlagColour": true,
+      "flagHue": 100.64,
+      "flag": {
+        "dominant": "#fae011",
+        "accents": [
+          "#fae011",
+          "#09736a",
+          "#d11134",
+          "#630e1f"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#9f9a72",
+        "dark": "#352e03"
+      },
+      "accent": {
+        "raw": "#fae011",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#675500",
+        "textDark": "#d0c053",
+        "textLightContrast": 7.1,
+        "textDarkContrast": 10.33
+      }
+    },
+    "MRT": {
+      "iso3": "MRT",
+      "name": "Mauritania",
+      "hasFlagColour": true,
+      "flagHue": 153.63,
+      "flag": {
+        "dominant": "#00a95c",
+        "accents": [
+          "#00a95c",
+          "#d01e21",
+          "#ffd700",
+          "#736d3d"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#b1d7bc",
+        "dark": "#3a5f46"
+      },
+      "accent": {
+        "raw": "#00a95c",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006a2d",
+        "textDark": "#75d696",
+        "textLightContrast": 6.58,
+        "textDarkContrast": 10.76
+      }
+    },
+    "MSR": {
+      "iso3": "MSR",
+      "name": "Montserrat",
+      "hasFlagColour": true,
+      "flagHue": 262.33,
+      "flag": {
+        "dominant": "#02226a",
+        "accents": [
+          "#02226a",
+          "#c8102e",
+          "#03a0da",
+          "#a24111"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02226a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519d",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.38,
+        "textDarkContrast": 9.93
+      }
+    },
+    "MTQ": {
+      "iso3": "MTQ",
+      "name": "Martinique",
+      "hasFlagColour": true,
+      "flagHue": 151.01,
+      "flag": {
+        "dominant": "#00a550",
+        "accents": [
+          "#00a550",
+          "#ed1a23",
+          "#308a47",
+          "#7f5a38"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#80a287",
+        "dark": "#13361e"
+      },
+      "accent": {
+        "raw": "#00a550",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006928",
+        "textDark": "#7ad592",
+        "textLightContrast": 6.69,
+        "textDarkContrast": 10.71
+      }
+    },
+    "MUS": {
+      "iso3": "MUS",
+      "name": "Mauritius",
+      "hasFlagColour": true,
+      "flagHue": 94.46,
+      "flag": {
+        "dominant": "#fbd10a",
+        "accents": [
+          "#fbd10a",
+          "#e92839",
+          "#1a206d",
+          "#02a652"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a39872",
+        "dark": "#382d02"
+      },
+      "accent": {
+        "raw": "#fbd10a",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#6f5100",
+        "textDark": "#d9bc50",
+        "textLightContrast": 7.15,
+        "textDarkContrast": 10.25
+      }
+    },
+    "MWI": {
+      "iso3": "MWI",
+      "name": "Malawi",
+      "hasFlagColour": true,
+      "flagHue": 24.6,
+      "flag": {
+        "dominant": "#c51025",
+        "accents": [
+          "#c51025",
+          "#339e35",
+          "#240307",
+          "#5e7830"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfba",
+        "dark": "#734845"
+      },
+      "accent": {
+        "raw": "#c51025",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b94",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.44
+      }
+    },
+    "MYS": {
+      "iso3": "MYS",
+      "name": "Malaysia",
+      "hasFlagColour": true,
+      "flagHue": 28.66,
+      "flag": {
+        "dominant": "#ce1412",
+        "accents": [
+          "#ce1412",
+          "#000066",
+          "#eca2a1",
+          "#f8c704"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d96",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#ce1412",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c23",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.46
+      }
+    },
+    "MYT": {
+      "iso3": "MYT",
+      "name": "Mayotte",
+      "hasFlagColour": true,
+      "flagHue": 31.8,
+      "flag": {
+        "dominant": "#d14029",
+        "accents": [
+          "#d14029",
+          "#171795",
+          "#dea49b",
+          "#232475"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c83",
+        "dark": "#47211a"
+      },
+      "accent": {
+        "raw": "#d14029",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932d1d",
+        "textDark": "#ff9d89",
+        "textLightContrast": 7.75,
+        "textDarkContrast": 9.5
+      }
+    },
+    "NAM": {
+      "iso3": "NAM",
+      "name": "Namibia",
+      "hasFlagColour": true,
+      "flagHue": 149.91,
+      "flag": {
+        "dominant": "#009543",
+        "accents": [
+          "#009543",
+          "#033881",
+          "#d21034",
+          "#f7ca06"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#81a287",
+        "dark": "#14361d"
+      },
+      "accent": {
+        "raw": "#009543",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006925",
+        "textDark": "#7cd590",
+        "textLightContrast": 6.7,
+        "textDarkContrast": 10.72
+      }
+    },
+    "NCL": {
+      "iso3": "NCL",
+      "name": "New Caledonia",
+      "hasFlagColour": true,
+      "flagHue": 149.89,
+      "flag": {
+        "dominant": "#009543",
+        "accents": [
+          "#009543",
+          "#0035ad",
+          "#ed4135",
+          "#ebd901"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#81a287",
+        "dark": "#14361d"
+      },
+      "accent": {
+        "raw": "#009543",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006925",
+        "textDark": "#7cd590",
+        "textLightContrast": 6.7,
+        "textDarkContrast": 10.72
+      }
+    },
+    "NER": {
+      "iso3": "NER",
+      "name": "Niger",
+      "hasFlagColour": true,
+      "flagHue": 41.08,
+      "flag": {
+        "dominant": "#e0540c",
+        "accents": [
+          "#e0540c",
+          "#11b12d",
+          "#f3bd9f"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b78e7e",
+        "dark": "#472215"
+      },
+      "accent": {
+        "raw": "#e0540c",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#923100",
+        "textDark": "#ffa07b",
+        "textLightContrast": 7.67,
+        "textDarkContrast": 9.62
+      }
+    },
+    "NFK": {
+      "iso3": "NFK",
+      "name": "Norfolk Island",
+      "hasFlagColour": true,
+      "flagHue": 149.6,
+      "flag": {
+        "dominant": "#007934",
+        "accents": [
+          "#007934",
+          "#55a476",
+          "#b2d7c2"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#81a286",
+        "dark": "#14361d"
+      },
+      "accent": {
+        "raw": "#007934",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006924",
+        "textDark": "#7dd590",
+        "textLightContrast": 6.7,
+        "textDarkContrast": 10.73
+      }
+    },
+    "NGA": {
+      "iso3": "NGA",
+      "name": "Nigeria",
+      "hasFlagColour": true,
+      "flagHue": 156.98,
+      "flag": {
+        "dominant": "#008751",
+        "accents": [
+          "#008751",
+          "#abd7c6"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#b0d8be",
+        "dark": "#375f48"
+      },
+      "accent": {
+        "raw": "#008751",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006936",
+        "textDark": "#6ed79c",
+        "textLightContrast": 6.64,
+        "textDarkContrast": 10.8
+      }
+    },
+    "NIC": {
+      "iso3": "NIC",
+      "name": "Nicaragua",
+      "hasFlagColour": true,
+      "flagHue": 254.5,
+      "flag": {
+        "dominant": "#0067c6",
+        "accents": [
+          "#0067c6",
+          "#efe5b5",
+          "#a0ca4d",
+          "#ade6f4"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#819bba",
+        "dark": "#172f4b"
+      },
+      "accent": {
+        "raw": "#0067c6",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#0954a0",
+        "textDark": "#82c1ff",
+        "textLightContrast": 7.32,
+        "textDarkContrast": 10.03
+      }
+    },
+    "NIU": {
+      "iso3": "NIU",
+      "name": "Niue",
+      "hasFlagColour": true,
+      "flagHue": 98.21,
+      "flag": {
+        "dominant": "#fedd00",
+        "accents": [
+          "#fedd00",
+          "#05266c",
+          "#c8112e",
+          "#edbac2"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a19972",
+        "dark": "#362e02"
+      },
+      "accent": {
+        "raw": "#fedd00",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#6a5300",
+        "textDark": "#d4be52",
+        "textLightContrast": 7.16,
+        "textDarkContrast": 10.27
+      }
+    },
+    "NLD": {
+      "iso3": "NLD",
+      "name": "Netherlands",
+      "hasFlagColour": true,
+      "flagHue": 261.54,
+      "flag": {
+        "dominant": "#24488c",
+        "accents": [
+          "#24488c",
+          "#ae1c28",
+          "#bd4b55"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a7bbdf",
+        "dark": "#354868"
+      },
+      "accent": {
+        "raw": "#24488c",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2e5297",
+        "textDark": "#92beff",
+        "textLightContrast": 7.37,
+        "textDarkContrast": 10.04
+      }
+    },
+    "NOR": {
+      "iso3": "NOR",
+      "name": "Norway",
+      "hasFlagColour": true,
+      "flagHue": 20.61,
+      "flag": {
+        "dominant": "#ba0c2f",
+        "accents": [
+          "#ba0c2f",
+          "#062760",
+          "#c63d55",
+          "#e399a8"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcadac",
+        "dark": "#643a3a"
+      },
+      "accent": {
+        "raw": "#ba0c2f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a32",
+        "textDark": "#ff9a9a",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "NPL": {
+      "iso3": "NPL",
+      "name": "Nepal",
+      "hasFlagColour": true,
+      "flagHue": 20.09,
+      "flag": {
+        "dominant": "#dc143c",
+        "accents": [
+          "#dc143c",
+          "#083d96",
+          "#2e3081",
+          "#da2d4f"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcadac",
+        "dark": "#643a3a"
+      },
+      "accent": {
+        "raw": "#dc143c",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a33",
+        "textDark": "#ff9a9b",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.42
+      }
+    },
+    "NRU": {
+      "iso3": "NRU",
+      "name": "Nauru",
+      "hasFlagColour": true,
+      "flagHue": 262.3,
+      "flag": {
+        "dominant": "#012269",
+        "accents": [
+          "#012269",
+          "#ffc72c"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#012269",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "NZL": {
+      "iso3": "NZL",
+      "name": "New Zealand",
+      "hasFlagColour": true,
+      "flagHue": 262.33,
+      "flag": {
+        "dominant": "#02226a",
+        "accents": [
+          "#02226a",
+          "#c8102e",
+          "#f0bec6",
+          "#d74f65"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02226a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519d",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.38,
+        "textDarkContrast": 9.93
+      }
+    },
+    "OMN": {
+      "iso3": "OMN",
+      "name": "Oman",
+      "hasFlagColour": true,
+      "flagHue": 26.62,
+      "flag": {
+        "dominant": "#df1e25",
+        "accents": [
+          "#df1e25",
+          "#027e3d",
+          "#f0888d",
+          "#963b2b"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d97",
+        "dark": "#562d29"
+      },
+      "accent": {
+        "raw": "#df1e25",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b27",
+        "textDark": "#ff9c90",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.48
+      }
+    },
+    "PAK": {
+      "iso3": "PAK",
+      "name": "Pakistan",
+      "hasFlagColour": true,
+      "flagHue": 151.34,
+      "flag": {
+        "dominant": "#03421e",
+        "accents": [
+          "#03421e",
+          "#80a08e"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a1c5a9",
+        "dark": "#2e5137"
+      },
+      "accent": {
+        "raw": "#03421e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b633c",
+        "textDark": "#94cea2",
+        "textLightContrast": 6.91,
+        "textDarkContrast": 10.57
+      }
+    },
+    "PAN": {
+      "iso3": "PAN",
+      "name": "Panama",
+      "hasFlagColour": true,
+      "flagHue": 261.34,
+      "flag": {
+        "dominant": "#082458",
+        "accents": [
+          "#082458",
+          "#da141c",
+          "#ed8a8e"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1c2d4c"
+      },
+      "accent": {
+        "raw": "#082458",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#35548c",
+        "textDark": "#9abeff",
+        "textLightContrast": 7.29,
+        "textDarkContrast": 10.18
+      }
+    },
+    "PCN": {
+      "iso3": "PCN",
+      "name": "Pitcairn Islands",
+      "hasFlagColour": true,
+      "flagHue": 262.3,
+      "flag": {
+        "dominant": "#012269",
+        "accents": [
+          "#012269",
+          "#c8102e",
+          "#d8c820",
+          "#387324"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#012269",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "PER": {
+      "iso3": "PER",
+      "name": "Peru",
+      "hasFlagColour": true,
+      "flagHue": 25.71,
+      "flag": {
+        "dominant": "#d91124",
+        "accents": [
+          "#d91124",
+          "#f2b0b7"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c97",
+        "dark": "#562d2a"
+      },
+      "accent": {
+        "raw": "#d91124",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b29",
+        "textDark": "#ff9b92",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.43
+      }
+    },
+    "PHL": {
+      "iso3": "PHL",
+      "name": "Philippines",
+      "hasFlagColour": true,
+      "flagHue": 262.25,
+      "flag": {
+        "dominant": "#0139a8",
+        "accents": [
+          "#0139a8",
+          "#ce1126",
+          "#fcda52",
+          "#e88993"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#0139a8",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2750a2",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.41,
+        "textDarkContrast": 9.93
+      }
+    },
+    "PLW": {
+      "iso3": "PLW",
+      "name": "Palau",
+      "hasFlagColour": true,
+      "flagHue": 248.8,
+      "flag": {
+        "dominant": "#0099ff",
+        "accents": [
+          "#0099ff",
+          "#b9e347",
+          "#e2f420",
+          "#18a3e7"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7e9cb9",
+        "dark": "#13304a"
+      },
+      "accent": {
+        "raw": "#0099ff",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#00579e",
+        "textDark": "#77c4ff",
+        "textLightContrast": 7.14,
+        "textDarkContrast": 10.13
+      }
+    },
+    "PNG": {
+      "iso3": "PNG",
+      "name": "Papua New Guinea",
+      "hasFlagColour": true,
+      "flagHue": 24.8,
+      "flag": {
+        "dominant": "#cd1126",
+        "accents": [
+          "#cd1126",
+          "#fcd116",
+          "#f7bd17",
+          "#db4721"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9c98",
+        "dark": "#562d2a"
+      },
+      "accent": {
+        "raw": "#cd1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "POL": {
+      "iso3": "POL",
+      "name": "Poland",
+      "hasFlagColour": true,
+      "flagHue": 20.09,
+      "flag": {
+        "dominant": "#dc143c",
+        "accents": [
+          "#dc143c"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8a",
+        "dark": "#472021"
+      },
+      "accent": {
+        "raw": "#dc143c",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a33",
+        "textDark": "#ff9a9b",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.42
+      }
+    },
+    "PRI": {
+      "iso3": "PRI",
+      "name": "Puerto Rico",
+      "hasFlagColour": true,
+      "flagHue": 28.9,
+      "flag": {
+        "dominant": "#ee110f",
+        "accents": [
+          "#ee110f",
+          "#0547ff",
+          "#f9cccc",
+          "#5e72dd"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#ee110f",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c23",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.46
+      }
+    },
+    "PRK": {
+      "iso3": "PRK",
+      "name": "North Korea",
+      "hasFlagColour": true,
+      "flagHue": 26.84,
+      "flag": {
+        "dominant": "#ec1e26",
+        "accents": [
+          "#ec1e26",
+          "#1556a7",
+          "#f89ea2"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea8",
+        "dark": "#643b36"
+      },
+      "accent": {
+        "raw": "#ec1e26",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b27",
+        "textDark": "#ff9c90",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.48
+      }
+    },
+    "PRT": {
+      "iso3": "PRT",
+      "name": "Portugal",
+      "hasFlagColour": true,
+      "flagHue": 29.18,
+      "flag": {
+        "dominant": "#ff0303",
+        "accents": [
+          "#ff0303",
+          "#006600",
+          "#ccc90e",
+          "#2d6109"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d95",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#ff0303",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.46
+      }
+    },
+    "PRY": {
+      "iso3": "PRY",
+      "name": "Paraguay",
+      "hasFlagColour": true,
+      "flagHue": 29.33,
+      "flag": {
+        "dominant": "#d63226",
+        "accents": [
+          "#d63226",
+          "#073daa",
+          "#5b916e",
+          "#e3d991"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfb8",
+        "dark": "#734842"
+      },
+      "accent": {
+        "raw": "#d63226",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.46
+      }
+    },
+    "PSE": {
+      "iso3": "PSE",
+      "name": "Palestine",
+      "hasFlagColour": true,
+      "flagHue": 147.69,
+      "flag": {
+        "dominant": "#009639",
+        "accents": [
+          "#009639",
+          "#eb2e38",
+          "#55b97b",
+          "#f18c91"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#82a285",
+        "dark": "#16361c"
+      },
+      "accent": {
+        "raw": "#009639",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006920",
+        "textDark": "#81d58d",
+        "textLightContrast": 6.71,
+        "textDarkContrast": 10.77
+      }
+    },
+    "PYF": {
+      "iso3": "PYF",
+      "name": "French Polynesia",
+      "hasFlagColour": true,
+      "flagHue": 24.77,
+      "flag": {
+        "dominant": "#ce1126",
+        "accents": [
+          "#ce1126",
+          "#cb4351",
+          "#3d66b1",
+          "#ff9e1c"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c87",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#ce1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "QAT": {
+      "iso3": "QAT",
+      "name": "Qatar",
+      "hasFlagColour": true,
+      "flagHue": 10.48,
+      "flag": {
+        "dominant": "#8a1538",
+        "accents": [
+          "#8a1538",
+          "#a1455f",
+          "#d1a4b1"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#c99ba1",
+        "dark": "#552d33"
+      },
+      "accent": {
+        "raw": "#8a1538",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#922942",
+        "textDark": "#ff99aa",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.46
+      }
+    },
+    "REU": {
+      "iso3": "REU",
+      "name": "Réunion",
+      "hasFlagColour": true,
+      "flagHue": 265.29,
+      "flag": {
+        "dominant": "#3467fe",
+        "accents": [
+          "#3467fe",
+          "#fd0106",
+          "#d4df3f",
+          "#a0b976"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8898bb",
+        "dark": "#1f2d4c"
+      },
+      "accent": {
+        "raw": "#3467fe",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2f4fa2",
+        "textDark": "#95bcff",
+        "textLightContrast": 7.39,
+        "textDarkContrast": 9.94
+      }
+    },
+    "ROU": {
+      "iso3": "ROU",
+      "name": "Romania",
+      "hasFlagColour": true,
+      "flagHue": 261.71,
+      "flag": {
+        "dominant": "#012c7f",
+        "accents": [
+          "#012c7f",
+          "#ce1226",
+          "#fbd117",
+          "#a99a39"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#96aacd",
+        "dark": "#293a5a"
+      },
+      "accent": {
+        "raw": "#012c7f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2651a2",
+        "textDark": "#8fbdff",
+        "textLightContrast": 7.34,
+        "textDarkContrast": 9.91
+      }
+    },
+    "RUS": {
+      "iso3": "RUS",
+      "name": "Russia",
+      "hasFlagColour": true,
+      "flagHue": 262.01,
+      "flag": {
+        "dominant": "#063ea8",
+        "accents": [
+          "#063ea8",
+          "#d52c1f",
+          "#9a2f44"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#97aacd",
+        "dark": "#293a5a"
+      },
+      "accent": {
+        "raw": "#063ea8",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2650a2",
+        "textDark": "#8fbdff",
+        "textLightContrast": 7.42,
+        "textDarkContrast": 9.91
+      }
+    },
+    "RWA": {
+      "iso3": "RWA",
+      "name": "Rwanda",
+      "hasFlagColour": true,
+      "flagHue": 234.26,
+      "flag": {
+        "dominant": "#00a3e0",
+        "accents": [
+          "#00a3e0",
+          "#fad201",
+          "#20603d",
+          "#619957"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#aad3eb",
+        "dark": "#315b72"
+      },
+      "accent": {
+        "raw": "#00a3e0",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005e96",
+        "textDark": "#5bcbff",
+        "textLightContrast": 6.71,
+        "textDarkContrast": 10.41
+      }
+    },
+    "SAU": {
+      "iso3": "SAU",
+      "name": "Saudi Arabia",
+      "hasFlagColour": true,
+      "flagHue": 156.7,
+      "flag": {
+        "dominant": "#005430",
+        "accents": [
+          "#005430",
+          "#4b856c"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7da38b",
+        "dark": "#0e3721"
+      },
+      "accent": {
+        "raw": "#005430",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#1b643f",
+        "textDark": "#8ad0a5",
+        "textLightContrast": 6.94,
+        "textDarkContrast": 10.6
+      }
+    },
+    "SDN": {
+      "iso3": "SDN",
+      "name": "Sudan",
+      "hasFlagColour": true,
+      "flagHue": 21.35,
+      "flag": {
+        "dominant": "#d21034",
+        "accents": [
+          "#d21034",
+          "#007229",
+          "#e15f77",
+          "#376d4a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#d21034",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a31",
+        "textDark": "#ff9a99",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "SEN": {
+      "iso3": "SEN",
+      "name": "Senegal",
+      "hasFlagColour": true,
+      "flagHue": 151.01,
+      "flag": {
+        "dominant": "#00853f",
+        "accents": [
+          "#00853f",
+          "#e31c24",
+          "#fdef42",
+          "#31953f"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#80a287",
+        "dark": "#13361e"
+      },
+      "accent": {
+        "raw": "#00853f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006927",
+        "textDark": "#7ad592",
+        "textLightContrast": 6.69,
+        "textDarkContrast": 10.71
+      }
+    },
+    "SGP": {
+      "iso3": "SGP",
+      "name": "Singapore",
+      "hasFlagColour": true,
+      "flagHue": 23.79,
+      "flag": {
+        "dominant": "#ed2a3a",
+        "accents": [
+          "#ed2a3a",
+          "#f7929a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b88",
+        "dark": "#47201f"
+      },
+      "accent": {
+        "raw": "#ed2a3a",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932b2d",
+        "textDark": "#ff9b95",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.44
+      }
+    },
+    "SGS": {
+      "iso3": "SGS",
+      "name": "South Georgia",
+      "hasFlagColour": true,
+      "flagHue": 262.37,
+      "flag": {
+        "dominant": "#02226a",
+        "accents": [
+          "#02226a",
+          "#c7102e",
+          "#c7940d",
+          "#eebdc5"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02226a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519d",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.38,
+        "textDarkContrast": 9.93
+      }
+    },
+    "SHN": {
+      "iso3": "SHN",
+      "name": "Saint Helena, Ascension and Tristan da Cunha",
+      "hasFlagColour": true,
+      "flagHue": 262.33,
+      "flag": {
+        "dominant": "#02236a",
+        "accents": [
+          "#02236a",
+          "#c8102e",
+          "#dfc149",
+          "#f0c1c9"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02236a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "SJM": {
+      "iso3": "SJM",
+      "name": "Svalbard and Jan Mayen",
+      "hasFlagColour": true,
+      "flagHue": 20.61,
+      "flag": {
+        "dominant": "#ba0c2f",
+        "accents": [
+          "#ba0c2f",
+          "#062760",
+          "#c63d55",
+          "#e399a8"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8a",
+        "dark": "#472021"
+      },
+      "accent": {
+        "raw": "#ba0c2f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a32",
+        "textDark": "#ff9a9a",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "SLB": {
+      "iso3": "SLB",
+      "name": "Solomon Islands",
+      "hasFlagColour": true,
+      "flagHue": 150.87,
+      "flag": {
+        "dominant": "#215b33",
+        "accents": [
+          "#215b33",
+          "#0453bb",
+          "#fcd116",
+          "#c3b431"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#80a287",
+        "dark": "#13361e"
+      },
+      "accent": {
+        "raw": "#215b33",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2a633b",
+        "textDark": "#93cfa0",
+        "textLightContrast": 6.93,
+        "textDarkContrast": 10.63
+      }
+    },
+    "SLE": {
+      "iso3": "SLE",
+      "name": "Sierra Leone",
+      "hasFlagColour": true,
+      "flagHue": 145.22,
+      "flag": {
+        "dominant": "#22b63d",
+        "accents": [
+          "#22b63d",
+          "#0072c6",
+          "#3991d2"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#83a284",
+        "dark": "#18361a"
+      },
+      "accent": {
+        "raw": "#22b63d",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#01681a",
+        "textDark": "#86d489",
+        "textLightContrast": 6.81,
+        "textDarkContrast": 10.73
+      }
+    },
+    "SLV": {
+      "iso3": "SLV",
+      "name": "El Salvador",
+      "hasFlagColour": true,
+      "flagHue": 259.66,
+      "flag": {
+        "dominant": "#0148ab",
+        "accents": [
+          "#0148ab",
+          "#52a451",
+          "#f8e491",
+          "#4a93ce"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a6bcdf",
+        "dark": "#344868"
+      },
+      "accent": {
+        "raw": "#0148ab",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2052a1",
+        "textDark": "#8bbeff",
+        "textLightContrast": 7.33,
+        "textDarkContrast": 9.93
+      }
+    },
+    "SMR": {
+      "iso3": "SMR",
+      "name": "San Marino",
+      "hasFlagColour": true,
+      "flagHue": 233.62,
+      "flag": {
+        "dominant": "#5fb6e3",
+        "accents": [
+          "#5fb6e3",
+          "#927325",
+          "#5f8255",
+          "#435f40"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#779fb5",
+        "dark": "#033247"
+      },
+      "accent": {
+        "raw": "#5fb6e3",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005d86",
+        "textDark": "#73c9f7",
+        "textLightContrast": 7.01,
+        "textDarkContrast": 10.4
+      }
+    },
+    "SOM": {
+      "iso3": "SOM",
+      "name": "Somalia",
+      "hasFlagColour": true,
+      "flagHue": 251.24,
+      "flag": {
+        "dominant": "#428fde",
+        "accents": [
+          "#428fde",
+          "#98c2ed"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#90accb",
+        "dark": "#213c59"
+      },
+      "accent": {
+        "raw": "#428fde",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#00569f",
+        "textDark": "#7cc3ff",
+        "textLightContrast": 7.21,
+        "textDarkContrast": 10.11
+      }
+    },
+    "SPM": {
+      "iso3": "SPM",
+      "name": "Saint Pierre and Miquelon",
+      "hasFlagColour": true,
+      "flagHue": 233.85,
+      "flag": {
+        "dominant": "#0191c8",
+        "accents": [
+          "#0191c8",
+          "#cba601",
+          "#cc1412",
+          "#59accd"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#779fb5",
+        "dark": "#033247"
+      },
+      "accent": {
+        "raw": "#0191c8",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005e92",
+        "textDark": "#5bcbff",
+        "textLightContrast": 6.77,
+        "textDarkContrast": 10.41
+      }
+    },
+    "SRB": {
+      "iso3": "SRB",
+      "name": "Serbia",
+      "hasFlagColour": true,
+      "flagHue": 23.26,
+      "flag": {
+        "dominant": "#c5373d",
+        "accents": [
+          "#c5373d",
+          "#0c4076",
+          "#b66067",
+          "#c89f40"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcadaa",
+        "dark": "#643a38"
+      },
+      "accent": {
+        "raw": "#c5373d",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a2e",
+        "textDark": "#ff9b96",
+        "textLightContrast": 7.82,
+        "textDarkContrast": 9.45
+      }
+    },
+    "SSD": {
+      "iso3": "SSD",
+      "name": "South Sudan",
+      "hasFlagColour": true,
+      "flagHue": 153.03,
+      "flag": {
+        "dominant": "#05914d",
+        "accents": [
+          "#05914d",
+          "#01b6f1",
+          "#e2222a",
+          "#fde51c"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#8fb499",
+        "dark": "#1f442b"
+      },
+      "accent": {
+        "raw": "#05914d",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006a2c",
+        "textDark": "#76d696",
+        "textLightContrast": 6.59,
+        "textDarkContrast": 10.77
+      }
+    },
+    "STP": {
+      "iso3": "STP",
+      "name": "São Tomé and Príncipe",
+      "hasFlagColour": true,
+      "flagHue": 147.47,
+      "flag": {
+        "dominant": "#029739",
+        "accents": [
+          "#029739",
+          "#fbce00",
+          "#ef3340",
+          "#f78021"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#82a285",
+        "dark": "#16361c"
+      },
+      "accent": {
+        "raw": "#029739",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#006920",
+        "textDark": "#81d58d",
+        "textLightContrast": 6.71,
+        "textDarkContrast": 10.77
+      }
+    },
+    "SUR": {
+      "iso3": "SUR",
+      "name": "Suriname",
+      "hasFlagColour": true,
+      "flagHue": 146,
+      "flag": {
+        "dominant": "#3d8245",
+        "accents": [
+          "#3d8245",
+          "#b40a2d",
+          "#ecc81d",
+          "#c03250"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#94b395",
+        "dark": "#254327"
+      },
+      "accent": {
+        "raw": "#3d8245",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#1e662a",
+        "textDark": "#8bd290",
+        "textLightContrast": 6.83,
+        "textDarkContrast": 10.67
+      }
+    },
+    "SVK": {
+      "iso3": "SVK",
+      "name": "Slovakia",
+      "hasFlagColour": true,
+      "flagHue": 26.66,
+      "flag": {
+        "dominant": "#ed1d26",
+        "accents": [
+          "#ed1d26",
+          "#0d4fa3",
+          "#d56b76",
+          "#264894"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d97",
+        "dark": "#562d29"
+      },
+      "accent": {
+        "raw": "#ed1d26",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b27",
+        "textDark": "#ff9c90",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.48
+      }
+    },
+    "SVN": {
+      "iso3": "SVN",
+      "name": "Slovenia",
+      "hasFlagColour": true,
+      "flagHue": 264.06,
+      "flag": {
+        "dominant": "#0000ff",
+        "accents": [
+          "#0000ff",
+          "#ff0000",
+          "#a9aafe",
+          "#aa0055"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#bacdf1",
+        "dark": "#445577"
+      },
+      "accent": {
+        "raw": "#0000ff",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.9
+      }
+    },
+    "SWE": {
+      "iso3": "SWE",
+      "name": "Sweden",
+      "hasFlagColour": true,
+      "flagHue": 251.03,
+      "flag": {
+        "dominant": "#005293",
+        "accents": [
+          "#005293",
+          "#fecb00"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#90accb",
+        "dark": "#213c59"
+      },
+      "accent": {
+        "raw": "#005293",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#085798",
+        "textDark": "#7ec3ff",
+        "textLightContrast": 7.22,
+        "textDarkContrast": 10.14
+      }
+    },
+    "SWZ": {
+      "iso3": "SWZ",
+      "name": "Eswatini",
+      "hasFlagColour": true,
+      "flagHue": 266.56,
+      "flag": {
+        "dominant": "#3f5fb8",
+        "accents": [
+          "#3f5fb8",
+          "#b00e0e",
+          "#f9d408",
+          "#f0b504"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#99a9cd",
+        "dark": "#2c395a"
+      },
+      "accent": {
+        "raw": "#3f5fb8",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#314ea2",
+        "textDark": "#97bbff",
+        "textLightContrast": 7.44,
+        "textDarkContrast": 9.89
+      }
+    },
+    "SXM": {
+      "iso3": "SXM",
+      "name": "Sint Maarten",
+      "hasFlagColour": true,
+      "flagHue": 28.49,
+      "flag": {
+        "dominant": "#ba0f0f",
+        "accents": [
+          "#ba0f0f",
+          "#183e8a",
+          "#e4c949",
+          "#8ebadd"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d96",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#ba0f0f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c24",
+        "textDark": "#ff9c8e",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "SYC": {
+      "iso3": "SYC",
+      "name": "Seychelles",
+      "hasFlagColour": true,
+      "flagHue": 24.77,
+      "flag": {
+        "dominant": "#d22830",
+        "accents": [
+          "#d22830",
+          "#002f6c",
+          "#007a33",
+          "#fdd041"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c87",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#d22830",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2a",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "SYR": {
+      "iso3": "SYR",
+      "name": "Syria",
+      "hasFlagColour": true,
+      "flagHue": 152.56,
+      "flag": {
+        "dominant": "#047b3f",
+        "accents": [
+          "#047b3f",
+          "#ce1428",
+          "#e57e88",
+          "#f5cfd4"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#7fa388",
+        "dark": "#12361f"
+      },
+      "accent": {
+        "raw": "#047b3f",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00692e",
+        "textDark": "#77d695",
+        "textLightContrast": 6.67,
+        "textDarkContrast": 10.78
+      }
+    },
+    "TCA": {
+      "iso3": "TCA",
+      "name": "Turks and Caicos Islands",
+      "hasFlagColour": true,
+      "flagHue": 259.77,
+      "flag": {
+        "dominant": "#012968",
+        "accents": [
+          "#012968",
+          "#cd1226",
+          "#f2cb30",
+          "#eb9199"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8599bb",
+        "dark": "#1b2e4c"
+      },
+      "accent": {
+        "raw": "#012968",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2a5396",
+        "textDark": "#90bfff",
+        "textLightContrast": 7.35,
+        "textDarkContrast": 10.09
+      }
+    },
+    "TCD": {
+      "iso3": "TCD",
+      "name": "Chad",
+      "hasFlagColour": true,
+      "flagHue": 259.72,
+      "flag": {
+        "dominant": "#002764",
+        "accents": [
+          "#002764",
+          "#fcca01",
+          "#c60c30",
+          "#f4b10e"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#95aacd",
+        "dark": "#273b5a"
+      },
+      "accent": {
+        "raw": "#002764",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b5495",
+        "textDark": "#91bfff",
+        "textLightContrast": 7.28,
+        "textDarkContrast": 10.1
+      }
+    },
+    "TGO": {
+      "iso3": "TGO",
+      "name": "Togo",
+      "hasFlagColour": true,
+      "flagHue": 167.05,
+      "flag": {
+        "dominant": "#006a4e",
+        "accents": [
+          "#006a4e",
+          "#fecd01",
+          "#d21034",
+          "#2a7b41"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#78a491",
+        "dark": "#023727"
+      },
+      "accent": {
+        "raw": "#006a4e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00664a",
+        "textDark": "#7ed2b1",
+        "textLightContrast": 6.8,
+        "textDarkContrast": 10.69
+      }
+    },
+    "THA": {
+      "iso3": "THA",
+      "name": "Thailand",
+      "hasFlagColour": true,
+      "flagHue": 18.67,
+      "flag": {
+        "dominant": "#a61c34",
+        "accents": [
+          "#a61c34",
+          "#2d2a4a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8b",
+        "dark": "#472022"
+      },
+      "accent": {
+        "raw": "#a61c34",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a36",
+        "textDark": "#ff9a9d",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.43
+      }
+    },
+    "TJK": {
+      "iso3": "TJK",
+      "name": "Tajikistan",
+      "hasFlagColour": true,
+      "flagHue": 29.15,
+      "flag": {
+        "dominant": "#cc0202",
+        "accents": [
+          "#cc0202",
+          "#026702",
+          "#fbdc72",
+          "#f8c403"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea6",
+        "dark": "#643b35"
+      },
+      "accent": {
+        "raw": "#cc0202",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8d",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.46
+      }
+    },
+    "TKL": {
+      "iso3": "TKL",
+      "name": "Tokelau",
+      "hasFlagColour": true,
+      "flagHue": 262.3,
+      "flag": {
+        "dominant": "#022269",
+        "accents": [
+          "#022269",
+          "#fccf02",
+          "#7f7936",
+          "#253a5a"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#022269",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.38,
+        "textDarkContrast": 9.93
+      }
+    },
+    "TKM": {
+      "iso3": "TKM",
+      "name": "Turkmenistan",
+      "hasFlagColour": true,
+      "flagHue": 150.72,
+      "flag": {
+        "dominant": "#02843e",
+        "accents": [
+          "#02843e",
+          "#c42f32",
+          "#b54c34",
+          "#cfa33e"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#b3d7ba",
+        "dark": "#3c5f44"
+      },
+      "accent": {
+        "raw": "#02843e",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#006927",
+        "textDark": "#7bd592",
+        "textLightContrast": 6.69,
+        "textDarkContrast": 10.72
+      }
+    },
+    "TLS": {
+      "iso3": "TLS",
+      "name": "Timor-Leste",
+      "hasFlagColour": true,
+      "flagHue": 29.55,
+      "flag": {
+        "dominant": "#da291c",
+        "accents": [
+          "#da291c",
+          "#f1bc2a",
+          "#e45321",
+          "#f3a028"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d95",
+        "dark": "#562e28"
+      },
+      "accent": {
+        "raw": "#da291c",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c21",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "TON": {
+      "iso3": "TON",
+      "name": "Tonga",
+      "hasFlagColour": true,
+      "flagHue": 29.22,
+      "flag": {
+        "dominant": "#c10100",
+        "accents": [
+          "#c10100",
+          "#ebabab"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#c10100",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "TTO": {
+      "iso3": "TTO",
+      "name": "Trinidad and Tobago",
+      "hasFlagColour": true,
+      "flagHue": 22.36,
+      "flag": {
+        "dominant": "#da1a35",
+        "accents": [
+          "#da1a35",
+          "#e66373",
+          "#f5bdc5"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#da1a35",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a2f",
+        "textDark": "#ff9b97",
+        "textLightContrast": 7.81,
+        "textDarkContrast": 9.46
+      }
+    },
+    "TUN": {
+      "iso3": "TUN",
+      "name": "Tunisia",
+      "hasFlagColour": true,
+      "flagHue": 27.66,
+      "flag": {
+        "dominant": "#e70215",
+        "accents": [
+          "#e70215",
+          "#f7989f"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c86",
+        "dark": "#47211d"
+      },
+      "accent": {
+        "raw": "#e70215",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c25",
+        "textDark": "#ff9c8f",
+        "textLightContrast": 7.77,
+        "textDarkContrast": 9.47
+      }
+    },
+    "TUR": {
+      "iso3": "TUR",
+      "name": "Türkiye",
+      "hasFlagColour": true,
+      "flagHue": 27.54,
+      "flag": {
+        "dominant": "#e30c19",
+        "accents": [
+          "#e30c19",
+          "#f5999e"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#ca9d96",
+        "dark": "#562e29"
+      },
+      "accent": {
+        "raw": "#e30c19",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932c26",
+        "textDark": "#ff9c8f",
+        "textLightContrast": 7.76,
+        "textDarkContrast": 9.47
+      }
+    },
+    "TUV": {
+      "iso3": "TUV",
+      "name": "Tuvalu",
+      "hasFlagColour": true,
+      "flagHue": 237.44,
+      "flag": {
+        "dominant": "#009cde",
+        "accents": [
+          "#009cde",
+          "#c8102e",
+          "#06266c",
+          "#fedd00"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#789eb7",
+        "dark": "#073248"
+      },
+      "accent": {
+        "raw": "#009cde",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#005c98",
+        "textDark": "#61c9ff",
+        "textLightContrast": 6.84,
+        "textDarkContrast": 10.29
+      }
+    },
+    "TWN": {
+      "iso3": "TWN",
+      "name": "Taiwan",
+      "hasFlagColour": true,
+      "flagHue": 29.2,
+      "flag": {
+        "dominant": "#fe0101",
+        "accents": [
+          "#fe0101",
+          "#000094",
+          "#6867b6",
+          "#3436aa"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c85",
+        "dark": "#47211c"
+      },
+      "accent": {
+        "raw": "#fe0101",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "TZA": {
+      "iso3": "TZA",
+      "name": "Tanzania",
+      "hasFlagColour": true,
+      "flagHue": 145.09,
+      "flag": {
+        "dominant": "#20b53b",
+        "accents": [
+          "#20b53b",
+          "#00a3dd",
+          "#e9c215",
+          "#2cb0df"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#94b394",
+        "dark": "#254326"
+      },
+      "accent": {
+        "raw": "#20b53b",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#02681a",
+        "textDark": "#86d489",
+        "textLightContrast": 6.81,
+        "textDarkContrast": 10.73
+      }
+    },
+    "UGA": {
+      "iso3": "UGA",
+      "name": "Uganda",
+      "hasFlagColour": true,
+      "flagHue": 98.5,
+      "flag": {
+        "dominant": "#fada04",
+        "accents": [
+          "#fada04",
+          "#d60302",
+          "#f29f03",
+          "#d81e01"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#c3bc93",
+        "dark": "#50481f"
+      },
+      "accent": {
+        "raw": "#fada04",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#6a5300",
+        "textDark": "#d3be52",
+        "textLightContrast": 7.16,
+        "textDarkContrast": 10.25
+      }
+    },
+    "UKR": {
+      "iso3": "UKR",
+      "name": "Ukraine",
+      "hasFlagColour": true,
+      "flagHue": 256.38,
+      "flag": {
+        "dominant": "#015cbb",
+        "accents": [
+          "#015cbb",
+          "#ffd500",
+          "#80985d",
+          "#dbc520"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a4bdde",
+        "dark": "#324968"
+      },
+      "accent": {
+        "raw": "#015cbb",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#1353a1",
+        "textDark": "#85c0ff",
+        "textLightContrast": 7.34,
+        "textDarkContrast": 10
+      }
+    },
+    "UMI": {
+      "iso3": "UMI",
+      "name": "United States Minor Outlying Islands",
+      "hasFlagColour": true,
+      "flagHue": 13.72,
+      "flag": {
+        "dominant": "#b31942",
+        "accents": [
+          "#b31942",
+          "#153a68",
+          "#e3a8b7",
+          "#2d3461"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8e",
+        "dark": "#472025"
+      },
+      "accent": {
+        "raw": "#b31942",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#92293d",
+        "textDark": "#ff99a5",
+        "textLightContrast": 7.83,
+        "textDarkContrast": 9.42
+      }
+    },
+    "URY": {
+      "iso3": "URY",
+      "name": "Uruguay",
+      "hasFlagColour": true,
+      "flagHue": 262.36,
+      "flag": {
+        "dominant": "#1144ad",
+        "accents": [
+          "#1144ad",
+          "#ad7f3b",
+          "#cb9f39",
+          "#f7cc15"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a8bbdf",
+        "dark": "#364868"
+      },
+      "accent": {
+        "raw": "#1144ad",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2850a2",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "USA": {
+      "iso3": "USA",
+      "name": "United States",
+      "hasFlagColour": true,
+      "flagHue": 13.72,
+      "flag": {
+        "dominant": "#b31942",
+        "accents": [
+          "#b31942",
+          "#153a68",
+          "#e3a8b7",
+          "#2d3461"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b8e",
+        "dark": "#472025"
+      },
+      "accent": {
+        "raw": "#b31942",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#92293d",
+        "textDark": "#ff99a5",
+        "textLightContrast": 7.83,
+        "textDarkContrast": 9.42
+      }
+    },
+    "UZB": {
+      "iso3": "UZB",
+      "name": "Uzbekistan",
+      "hasFlagColour": true,
+      "flagHue": 144.87,
+      "flag": {
+        "dominant": "#308738",
+        "accents": [
+          "#308738",
+          "#3383f7",
+          "#ee162e",
+          "#fcd1d6"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#84a284",
+        "dark": "#19361a"
+      },
+      "accent": {
+        "raw": "#308738",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#046819",
+        "textDark": "#86d488",
+        "textLightContrast": 6.8,
+        "textDarkContrast": 10.73
+      }
+    },
+    "VAT": {
+      "iso3": "VAT",
+      "name": "Vatican City",
+      "hasFlagColour": true,
+      "flagHue": 105.69,
+      "flag": {
+        "dominant": "#fff200",
+        "accents": [
+          "#fff200",
+          "#af984f",
+          "#82282b",
+          "#884f51"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#9d9b73",
+        "dark": "#322f04"
+      },
+      "accent": {
+        "raw": "#fff200",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#615700",
+        "textDark": "#c9c356",
+        "textLightContrast": 7.11,
+        "textDarkContrast": 10.4
+      }
+    },
+    "VCT": {
+      "iso3": "VCT",
+      "name": "Saint Vincent and the Grenadines",
+      "hasFlagColour": true,
+      "flagHue": 92.74,
+      "flag": {
+        "dominant": "#fcd023",
+        "accents": [
+          "#fcd023",
+          "#027c2e",
+          "#002674",
+          "#29436c"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a49872",
+        "dark": "#382d01"
+      },
+      "accent": {
+        "raw": "#fcd023",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#715000",
+        "textDark": "#dbbb50",
+        "textLightContrast": 7.16,
+        "textDarkContrast": 10.23
+      }
+    },
+    "VEN": {
+      "iso3": "VEN",
+      "name": "Venezuela",
+      "hasFlagColour": true,
+      "flagHue": 90.53,
+      "flag": {
+        "dominant": "#fcca03",
+        "accents": [
+          "#fcca03",
+          "#cf142b",
+          "#02277e",
+          "#951842"
+        ]
+      },
+      "tier": 1,
+      "fill": {
+        "light": "#b6a882",
+        "dark": "#463910"
+      },
+      "accent": {
+        "raw": "#fcca03",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#734f00",
+        "textDark": "#deba50",
+        "textLightContrast": 7.17,
+        "textDarkContrast": 10.24
+      }
+    },
+    "VGB": {
+      "iso3": "VGB",
+      "name": "British Virgin Islands",
+      "hasFlagColour": true,
+      "flagHue": 262.33,
+      "flag": {
+        "dominant": "#02236a",
+        "accents": [
+          "#02236a",
+          "#c8102e",
+          "#096128",
+          "#cda22b"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#8699bb",
+        "dark": "#1d2d4c"
+      },
+      "accent": {
+        "raw": "#02236a",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2b519c",
+        "textDark": "#90bdff",
+        "textLightContrast": 7.4,
+        "textDarkContrast": 9.93
+      }
+    },
+    "VIR": {
+      "iso3": "VIR",
+      "name": "United States Virgin Islands",
+      "hasFlagColour": true,
+      "flagHue": 88.84,
+      "flag": {
+        "dominant": "#d7ae38",
+        "accents": [
+          "#d7ae38",
+          "#0179b9",
+          "#162666",
+          "#3c7e46"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#a69771",
+        "dark": "#3a2c01"
+      },
+      "accent": {
+        "raw": "#d7ae38",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#744e00",
+        "textDark": "#e0b950",
+        "textLightContrast": 7.21,
+        "textDarkContrast": 10.22
+      }
+    },
+    "VNM": {
+      "iso3": "VNM",
+      "name": "Vietnam",
+      "hasFlagColour": true,
+      "flagHue": 29.2,
+      "flag": {
+        "dominant": "#ff0201",
+        "accents": [
+          "#ff0201",
+          "#ffeb00",
+          "#ff3d00",
+          "#ff6200"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#eebfb8",
+        "dark": "#734842"
+      },
+      "accent": {
+        "raw": "#ff0201",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": true,
+        "textLight": "#932c22",
+        "textDark": "#ff9c8c",
+        "textLightContrast": 7.78,
+        "textDarkContrast": 9.45
+      }
+    },
+    "VUT": {
+      "iso3": "VUT",
+      "name": "Vanuatu",
+      "hasFlagColour": true,
+      "flagHue": 21.33,
+      "flag": {
+        "dominant": "#d21034",
+        "accents": [
+          "#d21034",
+          "#009543",
+          "#d4ad10",
+          "#004921"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88b89",
+        "dark": "#472020"
+      },
+      "accent": {
+        "raw": "#d21034",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932a31",
+        "textDark": "#ff9a99",
+        "textLightContrast": 7.8,
+        "textDarkContrast": 9.41
+      }
+    },
+    "WLF": {
+      "iso3": "WLF",
+      "name": "Wallis and Futuna",
+      "hasFlagColour": true,
+      "flagHue": 24.78,
+      "flag": {
+        "dominant": "#ce1126",
+        "accents": [
+          "#ce1126",
+          "#012755",
+          "#e3737e"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c87",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#ce1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "WSM": {
+      "iso3": "WSM",
+      "name": "Samoa",
+      "hasFlagColour": true,
+      "flagHue": 24.79,
+      "flag": {
+        "dominant": "#ce1126",
+        "accents": [
+          "#ce1126",
+          "#022d80"
+        ]
+      },
+      "tier": 0,
+      "fill": {
+        "light": "#b88c87",
+        "dark": "#47211e"
+      },
+      "accent": {
+        "raw": "#ce1126",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b93",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.43
+      }
+    },
+    "XKX": {
+      "iso3": "XKX",
+      "name": "Kosovo",
+      "hasFlagColour": true,
+      "flagHue": 264.05,
+      "flag": {
+        "dominant": "#264ba5",
+        "accents": [
+          "#264ba5",
+          "#cea551",
+          "#616a87"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#bacdf1",
+        "dark": "#445577"
+      },
+      "accent": {
+        "raw": "#264ba5",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#2c4fa2",
+        "textDark": "#93bcff",
+        "textLightContrast": 7.43,
+        "textDarkContrast": 9.9
+      }
+    },
+    "YEM": {
+      "iso3": "YEM",
+      "name": "Yemen",
+      "hasFlagColour": true,
+      "flagHue": 24.66,
+      "flag": {
+        "dominant": "#ce1227",
+        "accents": [
+          "#ce1227",
+          "#db5262"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#dcaea9",
+        "dark": "#643a37"
+      },
+      "accent": {
+        "raw": "#ce1227",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#932b2b",
+        "textDark": "#ff9b94",
+        "textLightContrast": 7.79,
+        "textDarkContrast": 9.44
+      }
+    },
+    "ZAF": {
+      "iso3": "ZAF",
+      "name": "South Africa",
+      "hasFlagColour": true,
+      "flagHue": 158.01,
+      "flag": {
+        "dominant": "#007749",
+        "accents": [
+          "#007749",
+          "#e14035",
+          "#001489",
+          "#fdb71c"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#9ec6ad",
+        "dark": "#29523b"
+      },
+      "accent": {
+        "raw": "#007749",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#00683b",
+        "textDark": "#77d5a1",
+        "textLightContrast": 6.71,
+        "textDarkContrast": 10.76
+      }
+    },
+    "ZMB": {
+      "iso3": "ZMB",
+      "name": "Zambia",
+      "hasFlagColour": true,
+      "flagHue": 141.36,
+      "flag": {
+        "dominant": "#198a00",
+        "accents": [
+          "#198a00",
+          "#e87a00",
+          "#db2111",
+          "#357705"
+        ]
+      },
+      "tier": 2,
+      "fill": {
+        "light": "#a8c4a3",
+        "dark": "#355031"
+      },
+      "accent": {
+        "raw": "#198a00",
+        "rawSafeAsTextLight": false,
+        "rawSafeAsTextDark": false,
+        "textLight": "#1a670e",
+        "textDark": "#8dd383",
+        "textLightContrast": 6.83,
+        "textDarkContrast": 10.72
+      }
+    },
+    "ZWE": {
+      "iso3": "ZWE",
+      "name": "Zimbabwe",
+      "hasFlagColour": true,
+      "flagHue": 142.5,
+      "flag": {
+        "dominant": "#006400",
+        "accents": [
+          "#006400",
+          "#c70504",
+          "#fbcf03",
+          "#91a200"
+        ]
+      },
+      "tier": 3,
+      "fill": {
+        "light": "#b8d6b5",
+        "dark": "#425e3f"
+      },
+      "accent": {
+        "raw": "#006400",
+        "rawSafeAsTextLight": true,
+        "rawSafeAsTextDark": false,
+        "textLight": "#156712",
+        "textDark": "#8bd385",
+        "textLightContrast": 6.85,
+        "textDarkContrast": 10.7
+      }
+    }
+  }
+}

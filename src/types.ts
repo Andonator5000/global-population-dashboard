@@ -152,3 +152,55 @@ export interface MarkerFile {
   resolution: string
   markers: MapMarker[]
 }
+
+/**
+ * Per-entity colour, from data/flags/map-palette.json.
+ *
+ * `fill` is the clamped map colour (flag hue at a graph-coloured lightness
+ * tier). `accent` is the UNCLAMPED flag colour for the country detail page,
+ * paired with a guaranteed-AA text step — 91 of 250 raw flag colours cannot
+ * carry text at AA on the light surface, so `raw` is accent-only for those.
+ */
+export interface EntityPalette {
+  iso3: string
+  name: string
+  hasFlagColour: boolean
+  flagHue: number | null
+  flag: { dominant: string; accents: string[] } | null
+  tier: number
+  fill: { light: string; dark: string }
+  accent: {
+    raw: string
+    rawSafeAsTextLight: boolean
+    rawSafeAsTextDark: boolean
+    textLight: string
+    textDark: string
+    textLightContrast: number
+    textDarkContrast: number
+  } | null
+}
+
+export interface ContinentAccent {
+  hue: number
+  memberFlags: number
+  light: string
+  dark: string
+}
+
+export interface MapPalette {
+  note: string
+  minNeighbourDeltaE: number
+  verification: Record<
+    string,
+    {
+      borderPairs: number
+      minDeltaE: number
+      medianDeltaE: number
+      violations: { pair: string; deltaE: number }[]
+      minSurfaceContrast: number
+      lowContrastEntities: string[]
+    }
+  >
+  continentAccent: Record<string, ContinentAccent>
+  entities: Record<string, EntityPalette>
+}
