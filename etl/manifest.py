@@ -118,29 +118,45 @@ def content_fingerprint() -> str:
     timestamps, and a real data change would be indistinguishable from that
     noise.
 
-    LINE ENDINGS ARE NORMALISED, AND THAT IS LOAD-BEARING
-    -----------------------------------------------------
-    The first version hashed raw bytes and was NOT portable. Python's text-mode
-    write turns "\\n" into "\\r\\n" on Windows, while .gitattributes stores LF
-    in the repository and the Linux runner checks LF out. Identical committed
-    content therefore hashed differently on the two platforms, and CI failed on
-    the very first push:
+    TWO THINGS MAKE IT PORTABLE, AND BOTH ARE LOAD-BEARING
+    ------------------------------------------------------
+    The first version was not portable at all, and CI caught it on the very
+    first push to GitHub. Two independent causes:
 
-        recorded (Windows): ddc7561bc1f4df48...
-        actual   (Linux):   ff4de8615d99a91b...
+    1. **Line endings.** Python's text-mode write turns "\\n" into "\\r\\n" on
+       Windows, while .gitattributes stores LF and the Linux runner checks LF
+       out. Hashing raw bytes measured the newline convention as well as the
+       content. Text suffixes are therefore normalised to LF before hashing;
+       everything else is hashed byte-for-byte so a future .parquet is never
+       corrupted.
 
-    Hashing normalised text makes the fingerprint describe CONTENT rather than
-    a platform's newline convention, which is the only thing it was ever meant
-    to measure.
+    2. **Sort order.** This one was subtler and was the actual blocker.
+       `sorted()` on `Path` objects compares via `_str_normcase`, which is
+       CASE-FOLDED on Windows and case-SENSITIVE on POSIX. Our tree mixes
+       lowercase names with UPPERCASE ISO3 filenames, so the orders genuinely
+       diverge -- `factbook/coverage.json` sorts between COM and CPV on
+       Windows, but after every uppercase file on Linux. **194 of 977
+       positions differed.** Since the hash folds in each path followed by its
+       content, a different order gives a different digest for identical data.
+
+       Sorting by the POSIX-style relative path STRING fixes it: Python string
+       comparison is case-sensitive by codepoint on every platform.
+
+    The general lesson, recorded because it was learned the hard way: a value
+    whose whole purpose is to be compared across machines must be verified
+    across machines. Verifying it twice on one machine proves nothing.
     """
     digest = hashlib.sha256()
-    files = sorted(
-        path
-        for path in config.DATA_DIR.rglob("*")
-        if path.is_file() and path != config.MANIFEST_PATH
+    entries = sorted(
+        (
+            (path.relative_to(config.DATA_DIR).as_posix(), path)
+            for path in config.DATA_DIR.rglob("*")
+            if path.is_file() and path != config.MANIFEST_PATH
+        ),
+        key=lambda item: item[0],
     )
-    for path in files:
-        digest.update(path.relative_to(config.DATA_DIR).as_posix().encode())
+    for relative, path in entries:
+        digest.update(relative.encode("utf-8"))
         raw = path.read_bytes()
         if path.suffix.lower() in _TEXT_SUFFIXES:
             raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")

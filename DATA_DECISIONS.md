@@ -736,34 +736,48 @@ stays clean. `python etl/run.py --fingerprint` prints it.
 
 Phase 8 claimed the fingerprint was "verified stable". It was verified on **one
 platform**, where stability is trivially true — which is not the property that
-matters. The first push to GitHub failed CI in 25 seconds:
+matters. The first push to GitHub failed CI in 25 seconds, on identical
+committed content. **Two independent causes**, found in that order:
+
+**Cause 1 — line endings.** Python's text-mode write turns `\n` into `\r\n` on
+Windows, while `.gitattributes` stores LF and the Linux runner checks LF out.
+Hashing raw working-tree bytes measured the newline convention alongside the
+content.
+
+**Cause 2 — sort order.** This was the actual blocker, and it survived the
+first fix. `sorted()` on `Path` objects compares via `_str_normcase`, which is
+**case-folded on Windows and case-sensitive on POSIX**. Our tree mixes
+lowercase names with UPPERCASE ISO3 filenames, so the orders genuinely diverge:
 
 ```
-recorded (Windows): ddc7561bc1f4df487ff866364accb976...
-actual   (Linux):   ff4de8615d99a91b69d076c544140882...
+        windows order            posix order
+  ...   factbook/COM.json        factbook/COM.json
+  →     factbook/coverage.json   factbook/CPV.json
+        factbook/CPV.json        factbook/CRI.json
+
+  194 of 977 positions differed
 ```
 
-Identical committed content, different hash. Cause: Python's text-mode write
-turns `\n` into `\r\n` on Windows, `.gitattributes` stores LF in the
-repository, and the Linux runner checks LF out. The fingerprint hashed **raw
-working-tree bytes**, so it was measuring the platform's newline convention as
-well as the content.
+Because the digest folds in each path followed by its content, a different
+traversal order yields a different hash for byte-identical data.
 
-That would have made the whole change-detection mechanism unreliable in exactly
-the situation it exists for: data committed from a Windows machine could never
-match what the monthly Linux job computed.
+Fixed on three fronts:
 
-Fixed on both sides:
+1. `content_fingerprint()` sorts by the **POSIX relative-path string**, which
+   Python compares case-sensitively on every platform.
+2. It normalises CRLF→LF for known text suffixes, so the hash describes content
+   rather than encoding. Other suffixes are hashed byte-for-byte, so a future
+   `.parquet` is never corrupted by newline substitution.
+3. All 16 ETL `write_text` calls pass `newline="\n"`, so the working tree stops
+   diverging from the repository at source.
 
-1. `content_fingerprint()` normalises CRLF→LF for known text suffixes before
-   hashing, so the hash describes content rather than encoding. Non-text
-   suffixes are still hashed byte-for-byte, so a future `.parquet` is never
-   corrupted by newline substitution.
-2. All 16 ETL `write_text` calls pass `newline="\n"`, so the working tree stops
-   diverging from the repository in the first place.
+Verified the right way this time: after the fix, this Windows machine computes
+`ff4de861…`, **the exact hash the Linux runner had reported** — confirmed
+before pushing rather than by another round trip.
 
-The lesson is general: **"verified" on one platform is not verified** for
-anything whose whole purpose is to compare across machines.
+The lesson, recorded because it was learned the hard way: **a value whose whole
+purpose is to be compared across machines must be verified across machines.**
+Verifying it twice on one machine proves nothing at all.
 
 **Consequence, stated honestly:** when nothing changes upstream, `fetched_at`
 is not advanced. That is correct — it describes when the *committed bytes* were
