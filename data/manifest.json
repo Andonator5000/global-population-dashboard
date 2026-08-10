@@ -1,14 +1,15 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-10T06:02:12+00:00",
+  "generated_at": "2026-08-10T06:30:08+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
+  "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
   "sources": {
     "country_metadata": {
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-10T06:02:12+00:00",
+      "fetched_at": "2026-08-10T06:30:08+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -85,6 +86,17 @@
       "citation": "Natural Earth, 1:110m Cultural Vectors (public domain)",
       "files": [],
       "notes": "Re-keyed from UN M49 to ISO3. Kosovo, Northern Cyprus and Somaliland carry no M49 code and are assigned explicitly (Kosovo to XKX; the other two to Cyprus and Somalia, matching how UN WPP and the World Bank report that territory). 64 populated entities are too small to appear at 110m and are emitted as point markers instead."
+    },
+    "flagcdn": {
+      "title": "flagcdn.com flag SVGs",
+      "url": "https://flagcdn.com",
+      "licence": "Public domain / free to use",
+      "fetched_at": "2026-08-10T06:30:08+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "flagcdn.com",
+      "files": [],
+      "notes": "Flag SVGs rasterised and quantised to a dominant non-neutral colour for 250 entities. Map fills take the flag hue at one of four graph-coloured lightness tiers so no two bordering countries share a fill."
     },
     "cia_factbook": {
       "title": "CIA World Factbook (factbook.json mirror)",
@@ -195,6 +207,14 @@
       "row_count": null,
       "entity_count": 64
     },
+    "flags/map-palette.json": {
+      "description": "Normalised map fills, continent accents, and per-entity flag accent colours with AA-safe text steps.",
+      "sources": [
+        "flagcdn"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
     "factbook/<ISO3>.json": {
       "description": "Qualitative country facts: government, people composition, industries and trade, each field with its own vintage.",
       "sources": [
@@ -233,5 +253,6 @@
     "5 entities' measured polygon area differs from their published land area by more than 25% (ESH -66%, ALA -52%, PYF -38%, MAR +30%, FRO -25%). These are boundary-definition differences, not measurement errors. Most significant: at 50m resolution Natural Earth attributes most of Western Sahara to Morocco, so Morocco's biome shares include territory the map renders as Western Sahara, and Western Sahara's cover only the remainder.",
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
-  ]
+  ],
+  "content_fingerprint": "b2229dab2614b8c7a4973327cba7a212e9f33e5a68b2c456ab5e3d8cbd02d352"
 }

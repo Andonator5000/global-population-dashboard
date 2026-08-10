@@ -39,6 +39,8 @@ python etl/run.py                        # rebuild from the raw download cache
 python etl/run.py --only crosswalk       # run a single stage
 python etl/run.py --check-sources        # probe every upstream, write nothing
 python etl/run.py --validate-indicators  # verify World Bank codes still resolve
+python etl/run.py --fingerprint          # hash of /data excluding the manifest
+python etl/run.py --skip-flags           # skip the Node palette stage
 
 # --- app ---
 npm run dev        # dev server (serves /data via middleware)
@@ -47,7 +49,24 @@ npm run typecheck
 ```
 
 `/data` is committed; `.cache/` (raw downloads) is not, and is fully
-regenerable with `--refresh`.
+regenerable with `--refresh`. The ETL shells out to `npm run flags && npm run
+palette` for the flag colours, so `--refresh` genuinely rebuilds everything
+from one command — Node must be on PATH.
+
+## Monthly refresh
+
+`.github/workflows/refresh-data.yml` re-runs the ETL on the 3rd of each month,
+and on demand via `workflow_dispatch`.
+
+It opens a pull request **only when the data actually changed**. The manifest
+carries `generated_at` and a per-source `fetched_at`, so it differs on every
+run; diffing `/data` naively would open a PR every month containing nothing but
+timestamps. The ETL therefore stamps a `content_fingerprint` — a hash of every
+artifact except the manifest — and the workflow compares that instead.
+
+When nothing changed, `fetched_at` is deliberately **not** advanced: it
+describes when the committed bytes were retrieved, not when they were last
+checked. The check is recorded in the workflow run summary.
 
 ## Principles this codebase enforces
 
@@ -108,11 +127,24 @@ assignment.
 | # | Phase | Status |
 |---|---|---|
 | 1 | Scaffold, deps, ETL skeleton, ISO3 crosswalk, manifest | **done** |
-| 2 | UN WPP + World Bank ingestion, hand-verified against source | next |
-| 3 | Equal-area map, static fill, routing | |
-| 4 | Flag colour extraction, OKLCH normalisation, adjacency colouring | |
-| 5 | Country detail pages, Factbook ingestion | |
-| 6 | Biome precomputation, continent detail pages | |
-| 7 | Interpolating counters, time scrubber | |
-| 8 | Monthly GitHub Action, freshness panel | |
-| 9 | Accessibility, responsive layout, map performance | |
+| 2 | UN WPP + World Bank ingestion, hand-verified against source | **done** |
+| 3 | Equal-area map, static fill, routing | **done** |
+| 4 | Flag colour extraction, OKLCH normalisation, adjacency colouring | **done** |
+| 5 | Country detail pages, Factbook ingestion | **done** |
+| 6 | Biome precomputation, continent detail pages | **done** |
+| 7 | Interpolating counters, time scrubber | **done** |
+| 8 | Monthly GitHub Action, freshness panel | **done** |
+| 9 | Accessibility, responsive layout, map performance | next |
+
+## Verification gates
+
+`npm run check` runs all of these and exits non-zero on any failure. The
+monthly refresh workflow will not open a pull request unless they pass.
+
+| Gate | What it proves |
+|---|---|
+| `check:contrast` | Every theme token clears WCAG AA in **both** light and dark. |
+| `check:equal-area` | The Africa:Greenland **ratio** matches reality (13.72:1 vs 14.02 expected). Checking only "Greenland is smaller" would pass on Mercator too. |
+| `check:palette` | All 325 bordering country pairs are perceptibly distinct, and the 4-tier graph colouring solved exactly. |
+| `check:biome-areas` | Polygon areas match published figures with **no latitude trend** — the signature a non-equal-area CRS would leave. |
+| `typecheck` | Strict TS, including `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess`. |

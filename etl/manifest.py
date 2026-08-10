@@ -9,6 +9,7 @@ log -- so it is written last, only after every source has succeeded.
 
 from __future__ import annotations
 
+import hashlib
 import json
 from datetime import datetime, timezone
 from typing import Any
@@ -24,9 +25,18 @@ def new_manifest() -> dict[str, Any]:
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "pipeline_version": "0.1.0",
         "editorial_decisions_doc": "DATA_DECISIONS.md",
+        "refresh_policy": (
+            "Re-run monthly by .github/workflows/refresh-data.yml. A pull "
+            "request is opened only when content_fingerprint changes; a run "
+            "that finds nothing new leaves the committed data untouched, so "
+            "fetched_at reflects when these bytes were retrieved rather than "
+            "when they were last checked."
+        ),
         "sources": {},
         "artifacts": {},
         "warnings": [],
+        # Filled in by write(); hash of every artifact except this file.
+        "content_fingerprint": None,
     }
 
 
@@ -92,8 +102,36 @@ def add_warning(manifest: dict[str, Any], message: str) -> None:
     manifest["warnings"].append(message)
 
 
+def content_fingerprint() -> str:
+    """SHA-256 over every artifact in /data EXCEPT the manifest itself.
+
+    This exists to solve a specific operational problem. The manifest embeds
+    `generated_at` and a `fetched_at` per source, so it changes on every run
+    even when nothing upstream moved. A monthly job that diffs /data would
+    therefore open a pull request every single month containing nothing but new
+    timestamps, and a real data change would be indistinguishable from that
+    noise.
+    """
+    digest = hashlib.sha256()
+    files = sorted(
+        path
+        for path in config.DATA_DIR.rglob("*")
+        if path.is_file() and path != config.MANIFEST_PATH
+    )
+    for path in files:
+        digest.update(path.relative_to(config.DATA_DIR).as_posix().encode())
+        digest.update(path.read_bytes())
+    return digest.hexdigest()
+
+
 def write(manifest: dict[str, Any]) -> None:
+    """Write the manifest, stamping it with the content fingerprint.
+
+    Called last, after every artifact is on disk, so the fingerprint covers the
+    finished output.
+    """
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
+    manifest["content_fingerprint"] = content_fingerprint()
     config.MANIFEST_PATH.write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False, sort_keys=False) + "\n",
         encoding="utf-8",

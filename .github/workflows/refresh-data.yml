@@ -1,0 +1,157 @@
+name: Refresh data
+
+# Monthly re-run of the full ETL against live upstreams, plus a manual trigger.
+#
+# The job opens a pull request ONLY when the data actually changed. That is not
+# a nicety: the manifest embeds `generated_at` and a `fetched_at` per source, so
+# it differs on every single run. Diffing /data naively would open a PR every
+# month containing nothing but new timestamps, and a genuine data change would
+# be indistinguishable from that noise. The ETL therefore stamps a
+# `content_fingerprint` -- a hash of every artifact EXCEPT the manifest -- and
+# this workflow compares that.
+
+on:
+  schedule:
+    # 04:00 UTC on the 3rd of each month. Not the 1st: several upstreams
+    # publish month-start updates and a same-day run can catch them mid-write.
+    - cron: '0 4 3 * *'
+  workflow_dispatch:
+    inputs:
+      force_pr:
+        description: 'Open a PR even if the data is unchanged'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    # The biome overlay is the long pole (~5 minutes locally) and the raw
+    # downloads run to roughly 250 MB.
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Record the fingerprint we start from
+        id: before
+        run: echo "fingerprint=$(jq -r '.content_fingerprint // "none"' data/manifest.json)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          python -m pip install --upgrade pip
+          python -m pip install requests pandas pyarrow geopandas shapely pyproj pyogrio topojson tqdm
+
+      # Raw downloads are cached so an unchanged 149 MB ecoregions archive is
+      # not re-fetched every month. The key rotates monthly so the cache cannot
+      # go stale indefinitely, and --refresh below still re-fetches the
+      # volatile sources.
+      - name: Cache raw downloads
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: etl-cache-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            etl-cache-${{ runner.os }}-
+
+      - name: Check every upstream is reachable
+        run: python etl/run.py --check-sources
+
+      - name: Verify World Bank indicator codes still resolve
+        run: python etl/run.py --validate-indicators
+
+      - name: Run the ETL against live sources
+        run: python etl/run.py --refresh
+
+      - name: Verify the built artifacts
+        run: npm run check
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Compare fingerprints
+        id: after
+        run: |
+          AFTER=$(python etl/run.py --fingerprint)
+          echo "fingerprint=$AFTER" >> "$GITHUB_OUTPUT"
+          if [ "$AFTER" = "${{ steps.before.outputs.fingerprint }}" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Summarise the run
+        run: |
+          {
+            echo "## Data refresh"
+            echo ""
+            echo "- Checked at: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo "- Fingerprint before: \`${{ steps.before.outputs.fingerprint }}\`"
+            echo "- Fingerprint after:  \`${{ steps.after.outputs.fingerprint }}\`"
+            echo "- Data changed: **${{ steps.after.outputs.changed }}**"
+            echo ""
+            if [ "${{ steps.after.outputs.changed }}" = "false" ]; then
+              echo "No upstream change. Nothing committed, so the recorded"
+              echo "\`fetched_at\` still describes when the committed bytes"
+              echo "were retrieved."
+            fi
+            WARNINGS=$(jq -r '.warnings | length' data/manifest.json)
+            echo "- Manifest warnings: $WARNINGS"
+            jq -r '.warnings[] | "  - " + .' data/manifest.json || true
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Discard a manifest that only carries new timestamps, so the working
+      # tree is genuinely clean when nothing changed.
+      - name: Discard timestamp-only manifest churn
+        if: steps.after.outputs.changed == 'false' && inputs.force_pr != true
+        run: git checkout -- data/manifest.json
+
+      - name: Open a pull request
+        if: steps.after.outputs.changed == 'true' || inputs.force_pr == true
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: data/monthly-refresh
+          base: main
+          commit-message: |
+            Monthly data refresh
+
+            Fingerprint ${{ steps.before.outputs.fingerprint }}
+                     -> ${{ steps.after.outputs.fingerprint }}
+          title: 'Monthly data refresh'
+          body: |
+            Automated re-run of `python etl/run.py --refresh`.
+
+            | | |
+            |---|---|
+            | fingerprint before | `${{ steps.before.outputs.fingerprint }}` |
+            | fingerprint after | `${{ steps.after.outputs.fingerprint }}` |
+
+            All upstreams were reachable, every World Bank indicator code
+            still resolved, and `npm run check` passed — which gates WCAG AA
+            contrast in both themes, the equal-area projection ratio, the
+            adjacency colouring (no two bordering countries sharing a fill),
+            and the polygon-area sanity check.
+
+            **Review the diff for figures that moved unexpectedly**, and check
+            the manifest warnings in the run summary. A new UN WPP revision
+            would show up here as a large, broad diff.
+          labels: data-refresh
+          delete-branch: true

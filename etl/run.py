@@ -201,6 +201,16 @@ def stage_factbook(ctx: dict[str, Any]) -> None:
     )
 
 
+def stage_flags(ctx: dict[str, Any]) -> None:
+    from etl.sources import flags
+
+    _require_registry(ctx)
+    stage("flags")
+    flags.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
 def stage_biomes(ctx: dict[str, Any]) -> None:
     from etl.sources import biomes
 
@@ -226,7 +236,7 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "wpp": stage_wpp,
     "worldbank": stage_worldbank,
     "geometry": stage_geometry,
-    "flags": _not_yet(4, "flags (run `npm run flags && npm run palette`)"),
+    "flags": stage_flags,
     "factbook": stage_factbook,
     "biomes": stage_biomes,
     "owid_crosscheck": stage_owid,
@@ -342,12 +352,21 @@ def main(argv: list[str] | None = None) -> int:
                         help="probe every upstream for liveness and exit")
     parser.add_argument("--validate-indicators", action="store_true",
                         help="verify World Bank indicator codes and exit")
+    parser.add_argument("--skip-flags", action="store_true",
+                        help="skip the Node flag/palette stage (needs npm)")
+    parser.add_argument("--fingerprint", action="store_true",
+                        help="print the current /data content fingerprint and exit")
     args = parser.parse_args(argv)
 
     if args.check_sources:
         return check_sources()
     if args.validate_indicators:
         return validate_indicators()
+    if args.fingerprint:
+        # Used by the monthly workflow to tell a real data change from a
+        # manifest that only carries new timestamps.
+        print(manifest_mod.content_fingerprint())
+        return 0
 
     ctx: dict[str, Any] = {
         "refresh": args.refresh,
@@ -355,6 +374,8 @@ def main(argv: list[str] | None = None) -> int:
     }
 
     selected = args.only or list(STAGES)
+    if args.skip_flags:
+        selected = [name for name in selected if name != "flags"]
     print(f"Global Population Dashboard ETL "
           f"({'refresh' if args.refresh else 'cached'} mode)")
     print(f"stages: {', '.join(selected)}")
@@ -365,7 +386,13 @@ def main(argv: list[str] | None = None) -> int:
         except (FetchError, crosswalk.CrosswalkError) as exc:
             fail(f"stage '{name}': {exc}")
             return 1
-        except Exception:  # noqa: BLE001 - we want the traceback, then abort
+        except Exception as exc:  # noqa: BLE001 - abort loudly either way
+            # FlagStageError lives behind a lazy import (it pulls in the Node
+            # bridge), so it is matched by name rather than by type. Its
+            # message is already actionable, so no traceback is printed.
+            if type(exc).__name__ == "FlagStageError":
+                fail(f"stage '{name}': {exc}")
+                return 1
             fail(f"stage '{name}' raised an unexpected error:")
             traceback.print_exc()
             return 1

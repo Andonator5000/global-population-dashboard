@@ -56,6 +56,14 @@ export interface Manifest {
   generated_at: string
   pipeline_version: string
   editorial_decisions_doc: string
+  /** How often the data is re-checked, and when a change is committed. */
+  refresh_policy?: string
+  /**
+   * SHA-256 of every artifact except the manifest itself. Lets the monthly
+   * refresh distinguish a real data change from a manifest carrying nothing
+   * but new timestamps.
+   */
+  content_fingerprint?: string | null
   sources: Record<string, SourceRecord>
   artifacts: Record<string, ArtifactRecord>
   /** Non-fatal data-quality notes, surfaced in the freshness panel. */

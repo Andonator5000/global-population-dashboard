@@ -665,7 +665,74 @@ alongside it — an `aria-live` region updating ten times a second is unusable.
 
 ---
 
-## 11. Provenance model
+## 11. Monthly refresh (Phase 8)
+
+### 11.1 The manifest churns, so the diff cannot be naive
+
+`.github/workflows/refresh-data.yml` re-runs the full ETL on the 3rd of each
+month (and on demand). The obvious implementation — diff `/data`, open a PR if
+anything changed — **does not work**, and this was flagged as a risk back in
+Phase 2.
+
+The manifest embeds `generated_at` and a `fetched_at` per source, so it differs
+on **every** run. Verified by running the ETL twice back to back:
+
+```
+content fingerprint  run 1: b2229dab2614b8c7…   run 2: b2229dab2614b8c7…   identical
+manifest.json sha256 run 1: 73983C3D2361…       run 2: 097B375289A0…       DIFFERENT
+```
+
+A naive diff would therefore open a pull request every month containing nothing
+but new timestamps, and a real data change would be invisible inside that
+noise.
+
+**Fix:** the ETL stamps a `content_fingerprint` — SHA-256 over every artifact
+*except* the manifest. The workflow compares that, opens a PR only when it
+moves, and otherwise discards the timestamp-only manifest change so the tree
+stays clean. `python etl/run.py --fingerprint` prints it.
+
+**Consequence, stated honestly:** when nothing changes upstream, `fetched_at`
+is not advanced. That is correct — it describes when the *committed bytes* were
+retrieved, not when we last checked. The check itself is recorded in the
+workflow run summary, and the manifest carries a `refresh_policy` string that
+the freshness panel displays.
+
+### 11.2 `--refresh` really does reproduce everything now
+
+Flag extraction and the palette build are Node scripts (SVG rasterising needs a
+real renderer; `sharp` has one). Leaving them as separate `npm run` steps made
+the acceptance criterion — *"`python etl/run.py --refresh` reproduces `/data`
+from scratch with no manual steps"* — **false**: a fresh checkout would have
+built a map with no country colours.
+
+`etl/sources/flags.py` now bridges to them, resolving `npm` across platforms
+and failing with an actionable message if Node is absent (`--skip-flags` opts
+out). The stage also re-reads the palette verification and **refuses to
+publish** if any bordering pair shares a fill.
+
+### 11.3 What the workflow gates before opening a PR
+
+1. every upstream reachable (`--check-sources`)
+2. every World Bank indicator code still resolves (`--validate-indicators`)
+3. full ETL against live sources (`--refresh`)
+4. `npm run check` — WCAG AA contrast in both themes, the equal-area
+   projection ratio, the adjacency colouring, the polygon-area sanity check
+5. `npm run build`
+
+A separate `ci.yml` runs the same verification on every push and PR without
+touching the network, plus a fingerprint check that catches `/data` being
+edited by hand without re-running the ETL.
+
+### 11.4 The freshness panel shows opaque version tags as such
+
+Several servers offer an ETag rather than a `Last-Modified` date. Rendering
+`W/"1a4f1-8dtjGzlGpmC8r8Twr0B+StMP8nE"` in a reader-facing column looks like a
+bug and communicates nothing, so those render as *"version tag only, no date"*
+with the raw value in the title attribute. Real dates render as dates.
+
+---
+
+## 12. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -683,7 +750,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 12. Composition data (ethnicity, religion, language)
+## 13. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -698,7 +765,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 13. Equal-area requirement
+## 14. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of

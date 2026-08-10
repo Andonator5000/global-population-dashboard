@@ -1,0 +1,56 @@
+name: CI
+
+# Verifies the committed artifacts and the app on every push and PR.
+#
+# Deliberately does NOT hit the network: it checks the data already in the
+# repo. Upstream liveness is the monthly refresh job's concern, and folding it
+# in here would make ordinary PRs fail whenever a third-party server had a bad
+# afternoon.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - run: npm ci
+
+      # Typecheck, WCAG AA contrast in both themes, the equal-area projection
+      # ratio, the adjacency colouring, and the polygon-area sanity check.
+      - name: Verify
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Catches a /data change committed without re-running the ETL, which
+      # would leave the manifest describing artifacts that no longer exist.
+      # Only `requests` is needed: --fingerprint hashes files and never
+      # imports the pandas-backed source modules.
+      - name: Confirm the manifest fingerprint matches the committed data
+        run: |
+          python -m pip install --quiet requests
+          RECORDED=$(jq -r '.content_fingerprint // "none"' data/manifest.json)
+          ACTUAL=$(python etl/run.py --fingerprint)
+          echo "recorded: $RECORDED"
+          echo "actual:   $ACTUAL"
+          if [ "$RECORDED" != "$ACTUAL" ]; then
+            echo "::error::data/ does not match the fingerprint in manifest.json."
+            echo "Re-run 'python etl/run.py' and commit the updated manifest."
+            exit 1
+          fi
