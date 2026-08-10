@@ -1,5 +1,7 @@
 # Global Population Dashboard
 
+**Live site: https://andonator5000.github.io/global-population-dashboard/**
+
 World population statistics on an equal-area map, built as a **static site fed
 by a versioned ETL pipeline**. The browser never calls an upstream API — it
 reads committed artifacts from `/data`, each carrying its own provenance.
