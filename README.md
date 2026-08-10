@@ -27,8 +27,13 @@ in place; these are the commands to reproduce the environment elsewhere.
 ```bash
 npm install
 python -m venv .venv
-.venv/Scripts/python -m pip install requests pandas pyarrow geopandas shapely pyproj pyogrio topojson tqdm
+.venv/Scripts/python -m pip install -r requirements.txt   # .venv/bin/python on POSIX
 ```
+
+ETL dependencies are pinned exactly in `requirements.txt`, because `/data` is
+committed output reviewed in diffs — an unannounced pandas or geopandas bump
+could shift the figures and arrive in a PR looking like an upstream data
+change.
 
 ## Commands
 

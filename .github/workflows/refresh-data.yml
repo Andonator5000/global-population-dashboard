@@ -58,7 +58,7 @@ jobs:
         run: |
           npm ci
           python -m pip install --upgrade pip
-          python -m pip install requests pandas pyarrow geopandas shapely pyproj pyogrio topojson tqdm
+          python -m pip install -r requirements.txt
 
       # Raw downloads are cached so an unchanged 149 MB ecoregions archive is
       # not re-fetched every month. The key rotates monthly so the cache cannot

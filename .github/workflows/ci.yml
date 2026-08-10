@@ -44,6 +44,8 @@ jobs:
       # imports the pandas-backed source modules.
       - name: Confirm the manifest fingerprint matches the committed data
         run: |
+          # Only `requests` is needed here; --fingerprint hashes files and
+          # never imports the geospatial stack.
           python -m pip install --quiet requests
           RECORDED=$(jq -r '.content_fingerprint // "none"' data/manifest.json)
           ACTUAL=$(python etl/run.py --fingerprint)

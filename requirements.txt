@@ -1,0 +1,28 @@
+# ETL dependencies.
+#
+# Pinned exactly, on purpose. "python etl/run.py --refresh reproduces /data
+# from scratch" is an acceptance criterion, and /data is committed output that
+# gets reviewed in diffs. A silent pandas or geopandas major bump could shift
+# the numbers or the geometry and land in a pull request looking like an
+# upstream data change. Pinning keeps the pipeline the only thing that varies.
+#
+# The monthly refresh will not pick up new versions on its own; bump these
+# deliberately, re-run the ETL, and check the diff.
+#
+# Versions verified working on 2026-08-10 (Windows 11 + Ubuntu runner).
+
+# HTTP + tabular
+requests==2.34.2
+pandas==3.0.5
+pyarrow==25.0.0
+
+# Geospatial. geopandas pulls shapely/pyproj/pyogrio, but they are pinned
+# explicitly because the biome overlay depends on all four agreeing.
+geopandas==1.1.4
+shapely==2.1.2
+pyproj==3.7.2
+pyogrio==0.13.0
+
+# TopoJSON handling and progress output
+topojson==1.10
+tqdm==4.70.0
