@@ -298,7 +298,7 @@ def ingest(
     }
     (out_dir / "biomes.json").write_text(
         json.dumps(document, separators=(",", ":"), ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     manifest_mod.record_source(
@@ -409,7 +409,7 @@ def ingest(
     document["areaConflicts"] = document_extra_conflicts
     (out_dir / "biomes.json").write_text(
         json.dumps(document, separators=(",", ":"), ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     missing = sorted(set(registry) - set(entities))

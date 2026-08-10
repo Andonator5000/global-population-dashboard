@@ -226,7 +226,7 @@ def ingest(
 
         (country_dir / f"{iso3}.json").write_text(
             json.dumps(document, separators=(",", ":"), ensure_ascii=False) + "\n",
-            encoding="utf-8",
+            encoding="utf-8", newline="\n",
         )
         written += 1
 
@@ -242,7 +242,7 @@ def ingest(
     }
     (out_dir / "catalogue.json").write_text(
         json.dumps(catalogue, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     manifest_mod.record_source(

@@ -98,7 +98,7 @@ def stage_crosswalk(ctx: dict[str, Any]) -> None:
     out_path.write_text(
         json.dumps(crosswalk.registry_to_records(registry), indent=2,
                    ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
     info(f"wrote {out_path.relative_to(config.REPO_ROOT)}")
 

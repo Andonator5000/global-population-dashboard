@@ -126,7 +126,7 @@ def ingest(
     topology["objects"]["countries"]["geometries"] = geometries
     (out_dir / "countries-110m.json").write_text(
         json.dumps(topology, separators=(",", ":")) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     # ---- markers for entities with data but no polygon -------------------
@@ -171,7 +171,7 @@ def ingest(
     }
     (out_dir / "markers.json").write_text(
         json.dumps(marker_document, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     manifest_mod.record_source(

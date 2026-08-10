@@ -102,6 +102,12 @@ def add_warning(manifest: dict[str, Any], message: str) -> None:
     manifest["warnings"].append(message)
 
 
+# Artifact types hashed as TEXT (line endings normalised). Anything else is
+# hashed byte-for-byte, so a future .parquet or image is never corrupted by
+# newline substitution.
+_TEXT_SUFFIXES = frozenset({".json", ".csv", ".md", ".txt", ".geojson"})
+
+
 def content_fingerprint() -> str:
     """SHA-256 over every artifact in /data EXCEPT the manifest itself.
 
@@ -111,6 +117,21 @@ def content_fingerprint() -> str:
     therefore open a pull request every single month containing nothing but new
     timestamps, and a real data change would be indistinguishable from that
     noise.
+
+    LINE ENDINGS ARE NORMALISED, AND THAT IS LOAD-BEARING
+    -----------------------------------------------------
+    The first version hashed raw bytes and was NOT portable. Python's text-mode
+    write turns "\\n" into "\\r\\n" on Windows, while .gitattributes stores LF
+    in the repository and the Linux runner checks LF out. Identical committed
+    content therefore hashed differently on the two platforms, and CI failed on
+    the very first push:
+
+        recorded (Windows): ddc7561bc1f4df48...
+        actual   (Linux):   ff4de8615d99a91b...
+
+    Hashing normalised text makes the fingerprint describe CONTENT rather than
+    a platform's newline convention, which is the only thing it was ever meant
+    to measure.
     """
     digest = hashlib.sha256()
     files = sorted(
@@ -120,7 +141,10 @@ def content_fingerprint() -> str:
     )
     for path in files:
         digest.update(path.relative_to(config.DATA_DIR).as_posix().encode())
-        digest.update(path.read_bytes())
+        raw = path.read_bytes()
+        if path.suffix.lower() in _TEXT_SUFFIXES:
+            raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        digest.update(raw)
     return digest.hexdigest()
 
 
@@ -134,7 +158,7 @@ def write(manifest: dict[str, Any]) -> None:
     manifest["content_fingerprint"] = content_fingerprint()
     config.MANIFEST_PATH.write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False, sort_keys=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
 

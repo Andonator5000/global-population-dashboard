@@ -482,7 +482,7 @@ def ingest(
 
         (out_dir / f"{iso3}.json").write_text(
             json.dumps(record, separators=(",", ":"), ensure_ascii=False) + "\n",
-            encoding="utf-8",
+            encoding="utf-8", newline="\n",
         )
 
     # Registry entities the Factbook has no file for.
@@ -508,7 +508,7 @@ def ingest(
             ensure_ascii=False,
         )
         + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     latest_fetch = max(r.fetched_at for r in responses) if responses else None

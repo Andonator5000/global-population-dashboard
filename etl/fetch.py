@@ -179,7 +179,7 @@ def fetch(
         "etag": response.headers.get("ETag"),
         "last_modified": response.headers.get("Last-Modified"),
     }
-    sidecar.write_text(json.dumps(meta, indent=2), encoding="utf-8")
+    sidecar.write_text(json.dumps(meta, indent=2), encoding="utf-8", newline="\n")
 
     return CachedResponse(
         url=meta["url"],

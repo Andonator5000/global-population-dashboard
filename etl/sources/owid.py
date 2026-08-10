@@ -174,7 +174,7 @@ def ingest(
     out_path = config.DATA_DIR / "crosscheck_owid.json"
     out_path.write_text(
         json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     manifest_mod.record_source(

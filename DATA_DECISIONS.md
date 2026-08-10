@@ -732,6 +732,39 @@ noise.
 moves, and otherwise discards the timestamp-only manifest change so the tree
 stays clean. `python etl/run.py --fingerprint` prints it.
 
+#### The first version was not portable, and CI caught it immediately
+
+Phase 8 claimed the fingerprint was "verified stable". It was verified on **one
+platform**, where stability is trivially true — which is not the property that
+matters. The first push to GitHub failed CI in 25 seconds:
+
+```
+recorded (Windows): ddc7561bc1f4df487ff866364accb976...
+actual   (Linux):   ff4de8615d99a91b69d076c544140882...
+```
+
+Identical committed content, different hash. Cause: Python's text-mode write
+turns `\n` into `\r\n` on Windows, `.gitattributes` stores LF in the
+repository, and the Linux runner checks LF out. The fingerprint hashed **raw
+working-tree bytes**, so it was measuring the platform's newline convention as
+well as the content.
+
+That would have made the whole change-detection mechanism unreliable in exactly
+the situation it exists for: data committed from a Windows machine could never
+match what the monthly Linux job computed.
+
+Fixed on both sides:
+
+1. `content_fingerprint()` normalises CRLF→LF for known text suffixes before
+   hashing, so the hash describes content rather than encoding. Non-text
+   suffixes are still hashed byte-for-byte, so a future `.parquet` is never
+   corrupted by newline substitution.
+2. All 16 ETL `write_text` calls pass `newline="\n"`, so the working tree stops
+   diverging from the repository in the first place.
+
+The lesson is general: **"verified" on one platform is not verified** for
+anything whose whole purpose is to compare across machines.
+
 **Consequence, stated honestly:** when nothing changes upstream, `fetched_at`
 is not advanced. That is correct — it describes when the *committed bytes* were
 retrieved, not when we last checked. The check itself is recorded in the

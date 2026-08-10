@@ -243,7 +243,7 @@ def ingest(
 
         (series_dir / f"{iso3}.json").write_text(
             json.dumps(document, separators=(",", ":"), ensure_ascii=False) + "\n",
-            encoding="utf-8",
+            encoding="utf-8", newline="\n",
         )
         written += 1
 
@@ -277,7 +277,7 @@ def ingest(
     }
     (out_dir / "summary.json").write_text(
         json.dumps(summary, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     # ---- timeline, for the time scrubber ---------------------------------
@@ -345,7 +345,7 @@ def ingest(
     }
     (out_dir / "timeline.json").write_text(
         json.dumps(timeline, separators=(",", ":")) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
 
     # ---- age/sex pyramids -----------------------------------------------
@@ -601,7 +601,7 @@ def _write_pyramids(
         }
         (out_dir / f"{iso3}.json").write_text(
             json.dumps(document, separators=(",", ":"), ensure_ascii=False) + "\n",
-            encoding="utf-8",
+            encoding="utf-8", newline="\n",
         )
 
     return len(collected)
