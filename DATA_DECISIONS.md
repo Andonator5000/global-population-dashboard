@@ -732,7 +732,96 @@ with the raw value in the title attribute. Real dates render as dates.
 
 ---
 
-## 12. Provenance model
+## 12. Accessibility and performance (Phase 9)
+
+### 12.1 The map had 241 tab stops
+
+Measured, not estimated. Every country polygon and marker carried
+`tabindex=0`, so a keyboard user had to press Tab **241 times** to get past the
+map — 763 tab stops on the page in total. Technically not a keyboard trap;
+practically unusable.
+
+Replaced with a **roving tabindex**: the map is one tab stop, and the arrow
+keys move between countries by nearest centroid in the pressed direction, with
+Home/End for the westernmost and easternmost and Enter to open. Verified —
+pressing Right repeatedly walks Wallis and Futuna → Samoa → American Samoa →
+Niue → Cook Islands → French Polynesia, a genuine west-to-east traverse of the
+South Pacific.
+
+Map tab stops: **241 → 1**. Page total: **763 → 524**.
+
+The remaining 524 are mostly the 250-row entity table (two links per row). That
+is inherent to a table of links, and the mitigations are the standard ones: a
+skip link past the map, proper landmarks, and the table's own search filter.
+
+**A note on focus timing:** focusing the newly-active country from the key
+handler — even inside `requestAnimationFrame` — races React's commit. The
+tabindex moved but the browser kept focus on the old element. Focus is now
+applied in an effect, after the DOM is committed.
+
+### 12.2 Contrast verified on rendered elements, not just tokens
+
+`check-contrast.mjs` gates the token values, but tokens are not what a reader
+sees. An in-browser audit sampled **1,090 rendered text elements** and computed
+each one's contrast against its true effective background:
+
+```
+light: 1090 checked, 0 failures
+dark:  1090 checked, 0 failures
+```
+
+That audit caught one real defect the token check could not: the active
+**Country** toggle sat at **3.3:1** in dark mode, because it reused
+`--map-accent-fill` as a button background. That token is tuned for large map
+polygons carrying no text. Selected controls now have their own
+`--control-selected-bg` / `--control-selected-text` pair (11.19:1 light,
+8.89:1 dark), and the pair is gated by the contrast script.
+
+*(The first version of the audit reported 1090/1090 failures — the script, not
+the page. Chrome serialises these colours as `oklch(...)`, and the naive regex
+parsed those numbers as RGB. Fixed by converting through a canvas.)*
+
+### 12.3 The duplicated dark block bit three times, so it is now gated
+
+The dark palette must be declared twice — once under
+`@media (prefers-color-scheme: dark)`, once under `:root[data-theme="dark"]` —
+because CSS cannot OR a media query with a selector. The two blocks are
+indented differently, so a replace-across-"the dark block" updates only one.
+
+That happened **three separate times**, and the last instance was not cosmetic:
+the `--series-*` chart colours were missing from the explicit-toggle block, so
+every composition bar and pyramid would have rendered **light-mode hues on a
+dark surface** for anyone using the theme toggle rather than an OS setting.
+
+`npm run check:theme-parity` now parses `src/index.css` and fails the build
+unless both dark blocks declare identical tokens and every themed token in
+`:root` has a dark counterpart.
+
+### 12.4 Performance: SVG is comfortably sufficient
+
+The brief allowed a canvas fallback "if the country count hurts interaction
+latency". Measured on the real map — 183 paths, transform mutation plus forced
+layout, 30 iterations:
+
+```
+median 0 ms · max 0.5 ms
+```
+
+No canvas fallback. It would also have cost every per-country accessibility
+affordance (focus, labels, roving tabindex), which is a steep price for a
+problem that does not exist.
+
+### 12.5 Responsive
+
+Wide content scrolls inside its own container and the page body never scrolls
+sideways: `overflow-x: hidden` on `body`, `overflow-x: auto` wrappers on every
+table (two were missing — the composition and biome detail tables), and
+`overflow-wrap: break-word` on cells so long ecoregion names cannot force a
+table wider than a phone screen. Grids collapse to one column below `sm`.
+
+---
+
+## 13. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -750,7 +839,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 13. Composition data (ethnicity, religion, language)
+## 14. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -765,7 +854,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 14. Equal-area requirement
+## 15. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of

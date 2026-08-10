@@ -51,7 +51,9 @@ export function MapReadout({ target, row, year, revision }: MapReadoutProps) {
       aria-live="polite"
     >
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="font-medium">{target.name}</h3>
+        {/* h2, not h3: this sits at section level beside the map, and jumping
+            h1 -> h3 breaks heading-based screen reader navigation. */}
+        <h2 className="font-medium">{target.name}</h2>
         <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
           {CONTINENTS[target.continent]}
         </span>

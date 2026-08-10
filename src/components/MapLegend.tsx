@@ -34,9 +34,9 @@ export function MapLegend({
         className="rounded-lg border px-4 py-3 text-xs"
         style={{ borderColor: 'var(--border)', color: 'var(--text-muted)' }}
       >
-        <h3 className="mb-2 font-medium" style={{ color: 'var(--text)' }}>
+        <h2 className="mb-2 font-medium" style={{ color: 'var(--text)' }}>
           Legend
-        </h3>
+        </h2>
         <p className="mb-2">
           Each country's <strong>hue</strong> is the dominant colour of its
           flag.
@@ -111,7 +111,7 @@ export function MapLegend({
       className="rounded-lg border px-4 py-3 text-xs"
       style={{ borderColor: 'var(--border)' }}
     >
-      <h3 className="mb-2 font-medium">Continents</h3>
+      <h2 className="mb-2 font-medium">Continents</h2>
       <ul className="space-y-0.5">
         {(Object.keys(CONTINENTS) as ContinentKey[]).map((key) => {
           const active = activeContinent === key
@@ -121,8 +121,10 @@ export function MapLegend({
                 type="button"
                 className="flex w-full items-center justify-between rounded px-1.5 py-1 text-left"
                 style={{
-                  background: active ? 'var(--map-accent-fill)' : 'transparent',
-                  color: active ? 'var(--text)' : 'inherit',
+                  background: active
+                    ? 'var(--control-selected-bg)'
+                    : 'transparent',
+                  color: active ? 'var(--control-selected-text)' : 'inherit',
                 }}
                 aria-pressed={active}
                 onClick={() => onActiveContinentChange(active ? null : key)}

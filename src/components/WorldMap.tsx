@@ -1,7 +1,7 @@
 import { geoPath, type GeoPermissibleObjects } from 'd3-geo'
 import { select } from 'd3-selection'
 import { zoom, zoomIdentity, type D3ZoomEvent } from 'd3-zoom'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { feature } from 'topojson-client'
 
 import { CONTINENTS, type ContinentKey, type ProjectionKey } from '../config'
@@ -56,6 +56,52 @@ interface CountryShape {
   centroid: [number, number]
 }
 
+interface FocusTarget extends HoverTarget {
+  x: number
+  y: number
+}
+
+type Direction = 'up' | 'down' | 'left' | 'right'
+
+/**
+ * Nearest target in a compass direction, by centroid.
+ *
+ * Candidates must lie in the requested direction; among those, the score
+ * favours a small step along the axis of travel and penalises drift across it,
+ * so pressing Right from Spain reaches France rather than something far north.
+ */
+function nearestInDirection(
+  targets: FocusTarget[],
+  fromIndex: number,
+  direction: Direction,
+): number {
+  const origin = targets[fromIndex]
+  if (!origin) return fromIndex
+  let best = fromIndex
+  let bestScore = Infinity
+
+  targets.forEach((candidate, index) => {
+    if (index === fromIndex) return
+    const dx = candidate.x - origin.x
+    const dy = candidate.y - origin.y
+    const along =
+      direction === 'right' ? dx
+      : direction === 'left' ? -dx
+      : direction === 'down' ? dy
+      : -dy
+    if (along <= 0) return
+    const across = Math.abs(
+      direction === 'left' || direction === 'right' ? dy : dx,
+    )
+    const score = along + across * 2.5
+    if (score < bestScore) {
+      bestScore = score
+      best = index
+    }
+  })
+  return best
+}
+
 export function WorldMap({
   topology,
   markers,
@@ -69,7 +115,17 @@ export function WorldMap({
   onActiveContinentChange,
 }: WorldMapProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
+  const nodeRefs = useRef(new Map<string, SVGGraphicsElement>())
   const [transform, setTransform] = useState(() => zoomIdentity)
+  /**
+   * Roving tabindex.
+   *
+   * Only ONE country carries tabindex=0 at a time; the rest are -1 and are
+   * reached with the arrow keys. Before this, the map exposed 241 tab stops
+   * and a keyboard user had to press Tab 241 times to get past it — measured,
+   * not estimated. A composite widget is one stop; you navigate inside it.
+   */
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const { shapes, sphere, markerPoints } = useMemo(() => {
     const projection = fitProjection(
@@ -83,10 +139,7 @@ export function WorldMap({
       topology as never,
       topology.objects.countries as never,
     ) as unknown as {
-      features: {
-        properties: CountryGeometryProperties
-        geometry: unknown
-      }[]
+      features: { properties: CountryGeometryProperties; geometry: unknown }[]
     }
 
     const built: CountryShape[] = []
@@ -118,6 +171,102 @@ export function WorldMap({
     }
   }, [topology, markers, projectionKey])
 
+  /** Every focusable entity, ordered west-to-east so Tab order is sensible. */
+  const focusTargets: FocusTarget[] = useMemo(() => {
+    const list: FocusTarget[] = [
+      ...shapes.map((shape) => ({
+        iso3: shape.iso3,
+        name: shape.name,
+        continent: shape.continent,
+        contested: shape.contested,
+        isMarker: false,
+        x: shape.centroid[0],
+        y: shape.centroid[1],
+      })),
+      ...markerPoints.map(({ marker, x, y }) => ({
+        iso3: marker.iso3,
+        name: marker.name,
+        continent: marker.continent,
+        contested: marker.contested,
+        isMarker: true,
+        x,
+        y,
+      })),
+    ].filter((t) => Number.isFinite(t.x) && Number.isFinite(t.y))
+    list.sort((a, b) => a.x - b.x || a.y - b.y)
+    return list
+  }, [shapes, markerPoints])
+
+  const indexByIso3 = useMemo(() => {
+    const map = new Map<string, number>()
+    focusTargets.forEach((target, index) => {
+      if (!map.has(target.iso3)) map.set(target.iso3, index)
+    })
+    return map
+  }, [focusTargets])
+
+  /**
+   * Set by keyboard navigation, consumed by the effect below.
+   *
+   * Focusing straight from the handler (even inside requestAnimationFrame)
+   * races React's commit: the tabindex moves to the new country but the
+   * browser keeps focus on the old one. Deferring to an effect guarantees the
+   * DOM is committed before we move focus.
+   */
+  const pendingFocus = useRef<string | null>(null)
+
+  const moveTo = useCallback(
+    (index: number) => {
+      const target = focusTargets[index]
+      if (!target) return
+      setActiveIndex(index)
+      pendingFocus.current = target.iso3
+      onHover(target)
+      if (mode === 'continent') onActiveContinentChange(target.continent)
+    },
+    [focusTargets, mode, onHover, onActiveContinentChange],
+  )
+
+  useEffect(() => {
+    const iso3 = pendingFocus.current
+    if (!iso3) return
+    pendingFocus.current = null
+    nodeRefs.current.get(iso3)?.focus()
+  })
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      const directions: Record<string, Direction> = {
+        ArrowUp: 'up',
+        ArrowDown: 'down',
+        ArrowLeft: 'left',
+        ArrowRight: 'right',
+      }
+      const direction = directions[event.key]
+      if (direction) {
+        event.preventDefault()
+        moveTo(nearestInDirection(focusTargets, activeIndex, direction))
+        return
+      }
+      if (event.key === 'Home') {
+        event.preventDefault()
+        moveTo(0)
+        return
+      }
+      if (event.key === 'End') {
+        event.preventDefault()
+        moveTo(focusTargets.length - 1)
+        return
+      }
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        const target = focusTargets[activeIndex]
+        if (target) onSelect(target)
+      }
+    },
+    [activeIndex, focusTargets, moveTo, onSelect],
+  )
+
   // Zoom and pan. d3-zoom owns the gesture; React owns the rendered transform.
   useEffect(() => {
     const svg = svgRef.current
@@ -133,8 +282,6 @@ export function WorldMap({
       })
     const selection = select(svg)
     selection.call(behaviour)
-    // The SVG is keyboard-navigable through its child paths; d3-zoom's own
-    // dblclick handler would otherwise swallow a double activation.
     selection.on('dblclick.zoom', null)
     return () => {
       selection.on('.zoom', null)
@@ -145,18 +292,6 @@ export function WorldMap({
   const isDimmed = (continent: ContinentKey) =>
     mode === 'continent' && activeContinent !== null && continent !== activeContinent
 
-  /**
-   * Country fill.
-   *
-   * `--fill-<ISO3>` comes from src/generated/flag-fills.css: the flag's hue at
-   * a graph-coloured lightness tier. Reading it as a CSS variable rather than
-   * an inline colour means the light/dark swap costs no re-render and cannot
-   * flash the wrong palette on first paint.
-   *
-   * Continent mode deliberately drops the flag fills and returns to neutral
-   * land: showing 250 flag hues while trying to read seven continental blocks
-   * is two encodings fighting for the same channel.
-   */
   function fillFor(shape: CountryShape): string {
     const row = populationByIso3.get(shape.iso3)
     if (!row?.available) return 'var(--map-no-data)'
@@ -169,6 +304,15 @@ export function WorldMap({
     return `var(--fill-${shape.iso3}, var(--map-land))`
   }
 
+  const activeIso3 = focusTargets[activeIndex]?.iso3
+  const tabIndexFor = (iso3: string) =>
+    indexByIso3.get(iso3) === activeIndex ? 0 : -1
+
+  const registerNode = (iso3: string) => (node: SVGGraphicsElement | null) => {
+    if (node) nodeRefs.current.set(iso3, node)
+    else nodeRefs.current.delete(iso3)
+  }
+
   return (
     <svg
       ref={svgRef}
@@ -176,12 +320,13 @@ export function WorldMap({
       className="h-auto w-full touch-none"
       role="group"
       aria-label={
-        mode === 'country'
-          ? 'World map, equal-area projection. Each country is focusable; press Enter to open its page.'
-          : 'World map, equal-area projection, grouped by continent.'
+        `World map, equal-area projection, ${focusTargets.length} entities. ` +
+        `Use the arrow keys to move between countries and Enter to open one. ` +
+        `Home and End jump to the westernmost and easternmost.`
       }
       style={{ background: 'var(--map-water)' }}
       onPointerLeave={() => onHover(null)}
+      onKeyDown={handleKeyDown}
     >
       <defs>
         {/* Hatch marks contested entities so their status is never carried by
@@ -195,10 +340,7 @@ export function WorldMap({
         >
           <rect width="6" height="6" fill="transparent" />
           <line
-            x1="0"
-            y1="0"
-            x2="0"
-            y2="6"
+            x1="0" y1="0" x2="0" y2="6"
             stroke="var(--map-land-stroke)"
             strokeWidth="1.6"
             opacity="0.75"
@@ -212,16 +354,24 @@ export function WorldMap({
         {shapes.map((shape) => {
           const row = populationByIso3.get(shape.iso3)
           const dimmed = isDimmed(shape.continent)
+          const target: HoverTarget = {
+            iso3: shape.iso3,
+            name: shape.name,
+            continent: shape.continent,
+            contested: shape.contested,
+            isMarker: false,
+          }
           return (
             <path
               key={`${shape.iso3}-${shape.d.length}`}
+              ref={registerNode(shape.iso3)}
               d={shape.d}
               fill={fillFor(shape)}
               stroke="var(--map-land-stroke)"
               strokeWidth={strokeWidth}
               strokeLinejoin="round"
               opacity={dimmed ? 0.45 : 1}
-              tabIndex={0}
+              tabIndex={tabIndexFor(shape.iso3)}
               role="link"
               aria-label={
                 row?.available
@@ -229,47 +379,14 @@ export function WorldMap({
                   : `${shape.name}. No population data available. Open country page.`
               }
               className="map-target"
-              onPointerEnter={() =>
-                onHover({
-                  iso3: shape.iso3,
-                  name: shape.name,
-                  continent: shape.continent,
-                  contested: shape.contested,
-                  isMarker: false,
-                })
-              }
+              onPointerEnter={() => onHover(target)}
               onFocus={() => {
-                onHover({
-                  iso3: shape.iso3,
-                  name: shape.name,
-                  continent: shape.continent,
-                  contested: shape.contested,
-                  isMarker: false,
-                })
+                const index = indexByIso3.get(shape.iso3)
+                if (index !== undefined) setActiveIndex(index)
+                onHover(target)
                 if (mode === 'continent') onActiveContinentChange(shape.continent)
               }}
-              onBlur={() => onHover(null)}
-              onClick={() =>
-                onSelect({
-                  iso3: shape.iso3,
-                  name: shape.name,
-                  continent: shape.continent,
-                  contested: shape.contested,
-                  isMarker: false,
-                })
-              }
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault()
-                  onSelect({
-                    iso3: shape.iso3,
-                    name: shape.name,
-                    continent: shape.continent,
-                    contested: shape.contested,
-                    isMarker: false,
-                  })
-                }
-              }}
+              onClick={() => onSelect(target)}
             />
           )
         })}
@@ -291,54 +408,29 @@ export function WorldMap({
 
         {markerPoints.map(({ marker, x, y }) => {
           const focused = hovered?.iso3 === marker.iso3
+          const target: HoverTarget = {
+            iso3: marker.iso3,
+            name: marker.name,
+            continent: marker.continent,
+            contested: marker.contested,
+            isMarker: true,
+          }
           return (
             <g
               key={marker.iso3}
+              ref={registerNode(marker.iso3)}
               transform={`translate(${x},${y})`}
-              tabIndex={0}
+              tabIndex={tabIndexFor(marker.iso3)}
               role="link"
               aria-label={`${marker.name}. Too small to draw at this scale; shown as a marker. Open country page.`}
               className="map-target"
-              onPointerEnter={() =>
-                onHover({
-                  iso3: marker.iso3,
-                  name: marker.name,
-                  continent: marker.continent,
-                  contested: marker.contested,
-                  isMarker: true,
-                })
-              }
-              onFocus={() =>
-                onHover({
-                  iso3: marker.iso3,
-                  name: marker.name,
-                  continent: marker.continent,
-                  contested: marker.contested,
-                  isMarker: true,
-                })
-              }
-              onBlur={() => onHover(null)}
-              onClick={() =>
-                onSelect({
-                  iso3: marker.iso3,
-                  name: marker.name,
-                  continent: marker.continent,
-                  contested: marker.contested,
-                  isMarker: true,
-                })
-              }
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault()
-                  onSelect({
-                    iso3: marker.iso3,
-                    name: marker.name,
-                    continent: marker.continent,
-                    contested: marker.contested,
-                    isMarker: true,
-                  })
-                }
+              onPointerEnter={() => onHover(target)}
+              onFocus={() => {
+                const index = indexByIso3.get(marker.iso3)
+                if (index !== undefined) setActiveIndex(index)
+                onHover(target)
               }}
+              onClick={() => onSelect(target)}
             >
               <circle
                 r={MARKER_HIT_RADIUS / transform.k}
@@ -389,6 +481,8 @@ export function WorldMap({
             )
           })}
       </g>
+
+      <title>{`World map with ${focusTargets.length} entities. Currently focused: ${activeIso3 ?? 'none'}.`}</title>
     </svg>
   )
 }

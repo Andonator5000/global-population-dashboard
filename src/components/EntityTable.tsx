@@ -107,9 +107,12 @@ export function EntityTable({ rows, year, revision, note }: EntityTableProps) {
   )
 
   return (
-    <section className="mt-10">
+    <section className="mt-10" id="all-entities" aria-labelledby="all-entities-heading">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h2 className="text-sm font-medium uppercase tracking-wide">
+        <h2
+          id="all-entities-heading"
+          className="text-sm font-medium uppercase tracking-wide"
+        >
           All entities
         </h2>
         <label className="text-sm">

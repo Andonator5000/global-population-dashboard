@@ -159,7 +159,8 @@ export function BiomeBar({
       </button>
 
       {showTable && (
-        <table id={tableId} className="mt-2 w-full text-xs">
+        <div className="overflow-x-auto">
+        <table id={tableId} className="mt-2 w-full min-w-[20rem] text-xs">
           <caption className="sr-only">Biome shares of land area</caption>
           <thead>
             <tr style={{ color: 'var(--text-muted)' }}>
@@ -188,6 +189,7 @@ export function BiomeBar({
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   )

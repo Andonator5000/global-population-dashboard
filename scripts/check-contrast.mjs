@@ -46,6 +46,8 @@ const THEMES = {
     mapLandStroke: 'oklch(98% 0.010 235)',
     mapAccentFill: 'oklch(70% 0.13 250)',
     mapNoData: 'oklch(92% 0.003 250)',
+    controlSelectedBg: 'oklch(88% 0.065 250)',
+    controlSelectedText: 'oklch(25% 0.02 250)',
   },
   dark: {
     surface: 'oklch(17% 0.006 250)',
@@ -59,6 +61,8 @@ const THEMES = {
     mapLandStroke: 'oklch(13% 0.010 235)',
     mapAccentFill: 'oklch(60% 0.13 250)',
     mapNoData: 'oklch(22% 0.004 250)',
+    controlSelectedBg: 'oklch(38% 0.075 250)',
+    controlSelectedText: 'oklch(96% 0.005 250)',
   },
 }
 
@@ -86,6 +90,11 @@ const checks = (t) => [
   ['map hover fill vs water', t.mapAccentFill, t.mapWater, 1.5],
   ['map no-data vs water', t.mapNoData, t.mapWater, 1.08],
   ['map no-data vs land', t.mapNoData, t.mapLand, 1.08],
+  // Selected toggle state. Added after an in-browser audit caught the active
+  // "Country" button at 3.3:1 in dark mode -- it was reusing the map fill
+  // token, which is tuned for polygons that carry no text.
+  ['selected control label', t.controlSelectedText, t.controlSelectedBg, 4.5],
+  ['selected control vs surface', t.controlSelectedBg, t.surface, 1.2],
 ]
 
 let failures = 0

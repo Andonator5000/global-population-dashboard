@@ -134,7 +134,7 @@ assignment.
 | 6 | Biome precomputation, continent detail pages | **done** |
 | 7 | Interpolating counters, time scrubber | **done** |
 | 8 | Monthly GitHub Action, freshness panel | **done** |
-| 9 | Accessibility, responsive layout, map performance | next |
+| 9 | Accessibility, responsive layout, map performance | **done** |
 
 ## Verification gates
 
@@ -147,4 +147,19 @@ monthly refresh workflow will not open a pull request unless they pass.
 | `check:equal-area` | The Africa:Greenland **ratio** matches reality (13.72:1 vs 14.02 expected). Checking only "Greenland is smaller" would pass on Mercator too. |
 | `check:palette` | All 325 bordering country pairs are perceptibly distinct, and the 4-tier graph colouring solved exactly. |
 | `check:biome-areas` | Polygon areas match published figures with **no latitude trend** — the signature a non-equal-area CRS would leave. |
+| `check:theme-parity` | The two duplicated dark-mode CSS blocks declare identical tokens. This trap silently shipped light-mode chart colours to the dark toggle three times before it was gated. |
 | `typecheck` | Strict TS, including `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess`. |
+
+## Accessibility
+
+- **The map is one tab stop.** Arrow keys move between countries by nearest
+  centroid; Home/End jump to the westernmost and easternmost; Enter opens a
+  country. It previously exposed 241 tab stops.
+- **Contrast is verified on rendered elements**, not only on tokens: 1,090 text
+  elements audited in-browser, zero failures in light *and* dark.
+- Hover and keyboard focus produce identical readouts; nothing is reachable
+  only by pointer.
+- Contested status is carried by a hatch pattern as well as colour, so it
+  survives colour-blindness, print, and `forced-colors`.
+- `prefers-reduced-motion` stops the ticking counter and scrubber playback.
+- Every chart has a table view; no value is tooltip-only.

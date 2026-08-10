@@ -233,7 +233,8 @@ export function CompositionBar({
       </button>
 
       {showTable && (
-        <table id={tableId} className="mt-2 w-full text-xs">
+        <div className="overflow-x-auto">
+        <table id={tableId} className="mt-2 w-full min-w-[18rem] text-xs">
           <caption className="sr-only">
             {title}, {field.vintageYear ?? 'year not stated'}
           </caption>
@@ -274,6 +275,7 @@ export function CompositionBar({
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   )

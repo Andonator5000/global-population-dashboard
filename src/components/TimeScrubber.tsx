@@ -65,7 +65,8 @@ export function TimeScrubber({
           className="rounded border px-2.5 py-1 text-sm"
           style={{
             borderColor: 'var(--border)',
-            background: playing ? 'var(--map-accent-fill)' : 'transparent',
+            background: playing ? 'var(--control-selected-bg)' : 'transparent',
+            color: playing ? 'var(--control-selected-text)' : 'inherit',
           }}
         >
           {playing ? 'Pause' : 'Play'}

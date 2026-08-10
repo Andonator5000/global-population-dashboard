@@ -236,7 +236,9 @@ export function HomePage() {
               style={{
                 borderColor: 'var(--border)',
                 background:
-                  mode === value ? 'var(--map-accent-fill)' : 'transparent',
+                  mode === value ? 'var(--control-selected-bg)' : 'transparent',
+                color:
+                  mode === value ? 'var(--control-selected-text)' : 'inherit',
               }}
             >
               {value === 'country' ? 'Country' : 'Continent'}
@@ -267,8 +269,8 @@ export function HomePage() {
         </label>
 
         <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-          Scroll or pinch to zoom, drag to pan. Tab to move between countries,
-          Enter to open one.
+          Scroll or pinch to zoom, drag to pan. Tab into the map, then use the
+          arrow keys to move between countries and Enter to open one.
         </span>
       </div>
 
@@ -318,6 +320,16 @@ export function HomePage() {
 
       {!loading && !error && topologyState.status === 'ready' && (
         <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1fr)_17rem]">
+          {/* Escape hatch for keyboard users. The map is a single tab stop
+              with arrow-key navigation inside, but someone who tabs INTO it
+              still wants a one-key way back out to the table. */}
+          <a
+            href="#all-entities"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:rounded focus:px-3 focus:py-2"
+            style={{ background: 'var(--surface-raised)', color: 'var(--text)' }}
+          >
+            Skip the map and go to the entity table
+          </a>
           <div
             className="overflow-hidden rounded-lg border"
             style={{ borderColor: 'var(--border)' }}

@@ -12,7 +12,8 @@
     "check:equal-area": "node scripts/check-equal-area.mjs",
     "check:palette": "node scripts/build-map-palette.mjs",
     "check:biome-areas": "node scripts/check-biome-areas.mjs",
-    "check": "npm run typecheck && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas",
+    "check:theme-parity": "node scripts/check-theme-parity.mjs",
+    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas",
     "flags": "node scripts/extract-flag-colors.mjs",
     "palette": "node scripts/build-map-palette.mjs"
   },

@@ -40,6 +40,13 @@
   --map-accent-fill: oklch(70% 0.13 250);
   --map-no-data: oklch(92% 0.003 250);
 
+  /* Selected toggle/segmented-control state.
+     Distinct from --map-accent-fill: that token is tuned for large polygons
+     with no text on them, and reusing it behind button labels produced a
+     3.3:1 contrast failure in dark mode. */
+  --control-selected-bg: oklch(88% 0.065 250);
+  --control-selected-text: oklch(25% 0.02 250);
+
   /*
    * Categorical chart series. Fixed order, assigned by slot and never cycled.
    * Validated for the ADJACENT pairlist (stacked bars, which is what the
@@ -78,6 +85,9 @@
     --map-accent-fill: oklch(60% 0.13 250);
     --map-no-data: oklch(22% 0.004 250);
 
+    --control-selected-bg: oklch(38% 0.075 250);
+    --control-selected-text: oklch(96% 0.005 250);
+
     /* Dark is a SELECTED set stepped for the dark surface, not an inversion.
        All eight clear 3:1 against it. */
     --series-1: #3987e5;
@@ -108,6 +118,19 @@
   --map-accent-fill: oklch(60% 0.13 250);
   --map-no-data: oklch(22% 0.004 250);
 
+  --control-selected-bg: oklch(38% 0.075 250);
+  --control-selected-text: oklch(96% 0.005 250);
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --series-other: oklch(60% 0.01 250);
+
   color-scheme: dark;
 }
 
@@ -123,6 +146,16 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* Wide content (tables, the map) scrolls inside its own overflow container.
+     The page itself must never scroll sideways. */
+  overflow-x: hidden;
+}
+
+/* Long entity names and ecoregion labels would otherwise force a table wider
+   than a phone screen before its overflow container could catch it. */
+th,
+td {
+  overflow-wrap: break-word;
 }
 
 /* Keyboard focus must stay clearly visible -- full keyboard navigation of the
