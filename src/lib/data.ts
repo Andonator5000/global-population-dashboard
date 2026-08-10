@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { DATA_BASE_URL } from '../config'
 import type {
+  BiomeFile,
   CountryIndicators,
   CountryPyramid,
   CountrySeries,
@@ -88,6 +89,9 @@ export const useMapMarkers = (): AsyncState<MarkerFile> =>
 
 export const useMapPalette = (): AsyncState<MapPalette> =>
   useArtifact<MapPalette>('flags/map-palette.json')
+
+export const useBiomes = (): AsyncState<BiomeFile> =>
+  useArtifact<BiomeFile>('biomes/biomes.json')
 
 /**
  * Per-country artifacts, loaded on demand.

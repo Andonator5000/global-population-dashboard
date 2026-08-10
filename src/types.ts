@@ -268,6 +268,50 @@ export interface FactbookRecord {
   }
 }
 
+/** data/biomes/biomes.json */
+export interface BiomeShare {
+  biome: string
+  areaKm2: number
+  share: number
+}
+
+export interface BiomeEntity {
+  iso3: string
+  name: string
+  landAreaKm2: number
+  biomes: BiomeShare[]
+  topEcoregions: { name: string; areaKm2: number; share: number }[]
+  /** Sum of shares. Below 100 means part of the polygon has no ecoregion. */
+  coveredShare: number
+  withinTolerance: boolean
+}
+
+export interface BiomeContinent {
+  continent: string
+  name: string
+  landAreaKm2: number
+  biomes: BiomeShare[]
+  coveredShare: number
+  memberEntitiesWithBiomeData: number
+}
+
+export interface BiomeFile {
+  note: string
+  equalAreaCrs: string
+  simplifyToleranceM: number
+  shareTolerancePct: number
+  biomeNames: string[]
+  entitiesWithData: number
+  validationFailures: {
+    iso3: string
+    name: string
+    coveredShare: number
+    gap: number
+  }[]
+  entities: Record<string, BiomeEntity>
+  continents: Record<string, BiomeContinent>
+}
+
 export interface MapPalette {
   note: string
   minNeighbourDeltaE: number

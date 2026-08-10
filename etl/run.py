@@ -201,6 +201,16 @@ def stage_factbook(ctx: dict[str, Any]) -> None:
     )
 
 
+def stage_biomes(ctx: dict[str, Any]) -> None:
+    from etl.sources import biomes
+
+    _require_registry(ctx)
+    stage("biomes")
+    biomes.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
 def stage_owid(ctx: dict[str, Any]) -> None:
     from etl.sources import owid
 
@@ -218,7 +228,7 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "geometry": stage_geometry,
     "flags": _not_yet(4, "flags (run `npm run flags && npm run palette`)"),
     "factbook": stage_factbook,
-    "biomes": _not_yet(6, "biomes"),
+    "biomes": stage_biomes,
     "owid_crosscheck": stage_owid,
 }
 

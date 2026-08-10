@@ -518,7 +518,88 @@ and **143 entities have no language data at all**.
 
 ---
 
-## 9. Provenance model
+## 9. Biome computation (Phase 6)
+
+RESOLVE Ecoregions 2017 (847 polygons) intersected with Natural Earth 50m
+country polygons, both reprojected to **EPSG:6933** before any area
+arithmetic, summed by (country, biome), normalised to each country's land area,
+then aggregated to continents by **summing areas before dividing** — averaging
+member percentages would let Vatican City count as much as Russia.
+
+### 9.1 The equal-area step, validated independently
+
+Country land area is measured from the projected polygon, so it can be checked
+against a completely separate published figure (`npm run check:biome-areas`):
+
+```
+183 countries over 1,000 km²
+  median absolute error : 1.14%
+  within 5%             : 79%
+  mean signed error by latitude band:
+    equatorial  |lat| < 23   -2.78%
+    temperate  23-50         -1.94%
+    high latitude  >= 50     -4.31%
+```
+
+**The absence of a latitude trend is the point.** An unprojected, degree-based
+area collapses toward the poles, so high-latitude countries would show a huge
+negative error while equatorial ones stayed near zero. A flat profile across
+all three bands is direct evidence the CRS is doing its job. Greenland comes
+out at 2,171,413 km² against a published 2,166,086 km² — 0.25% apart.
+
+### 9.2 Shares do not sum to 100, and that is reported rather than hidden
+
+`share` is a percentage of the country's **own** land area, not of its
+ecoregion coverage. That makes the ±1% validation mean something: a sum of 94%
+says 6% of the polygon carries no terrestrial ecoregion. **114 of 235 entities**
+fall outside tolerance, with two distinct causes:
+
+- **Large countries with inland water or ice** — Tanzania 94.6% (Lakes Victoria
+  and Tanganyika), Canada 98.5% (Great Lakes), Greenland 97.7% (ice sheet).
+  Terrestrial ecoregions correctly exclude open water.
+- **Small island territories the source does not resolve** — Maldives 1.3%,
+  Marshall Islands 6.2%, Kiribati 8.2%. 78 of the 114 are under 50,000 km².
+
+The bar renders the shortfall as a visible gap, labelled "no ecoregion
+assigned", instead of stretching to full width. Stretching would erase real
+information.
+
+### 9.3 Simplification was tested, not assumed
+
+Small-island under-coverage looks like simplification damage. **It is not.**
+Re-running at a 4× finer tolerance (1000 m → 250 m) moved the failure count
+from 114 to 117 and the Maldives from 1.3% to 4.9% — i.e. nothing, for roughly
+five minutes of extra compute. RESOLVE Ecoregions simply does not resolve small
+oceanic islands. The coarser tolerance is kept and the gap reported honestly.
+
+### 9.4 A resolution inconsistency the area check caught
+
+The 50m layer initially dropped Northern Cyprus and Somaliland, because their
+`ADM0_A3` codes are not in our registry. Cyprus measured **38% below** and
+Somalia **26% below** their published areas.
+
+This mattered beyond the numbers: at 110m the map assigns both polygons to
+their parent state (§6.1), so the map and the biome maths would have disagreed
+about what those countries *are*. The 50m resolver now applies the **same**
+editorial rulings by name. Only Siachen Glacier remains unresolved, which is
+correct — it is disputed territory belonging to no entity in our registry.
+
+### 9.5 Western Sahara: the map and the biome maths disagree, by construction
+
+At 50m, **Natural Earth attributes most of Western Sahara to Morocco.**
+Measured against published figures: Morocco **+30.3%**, Western Sahara
+**−65.9%**.
+
+We do not re-cut that boundary — doing so would be taking a sovereignty
+position in geometry rather than in prose. The consequence is stated instead,
+in the manifest and on the page: **Morocco's biome shares include territory the
+map renders as Western Sahara, and Western Sahara's shares cover only the
+remainder.** Any entity whose measured area differs from its published area by
+more than 25% is flagged the same way.
+
+---
+
+## 10. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -536,7 +617,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 10. Composition data (ethnicity, religion, language)
+## 11. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -551,7 +632,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 11. Equal-area requirement
+## 12. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of

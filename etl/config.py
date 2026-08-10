@@ -239,6 +239,14 @@ NATURAL_EARTH_ADMIN0_110M = (
 ECOREGIONS_URL = "https://storage.googleapis.com/teow2016/Ecoregions2017.zip"
 # Geometry is simplified to this tolerance (in EQUAL_AREA_CRS metres) before
 # the overlay, or the intersection is intractably slow.
+#
+# Set empirically, and the test mattered: small island territories come out of
+# the overlay with very low ecoregion coverage (Maldives ~1%, Marshall Islands
+# ~6%), which looks like simplification damage. It is not. Re-running at 250 m
+# -- a 4x finer tolerance -- moved the failure count from 114 to 117 and the
+# Maldives from 1.3% to 4.9%, i.e. nothing. RESOLVE Ecoregions simply does not
+# resolve small oceanic islands. So we keep the coarser, faster tolerance and
+# report the coverage gap honestly instead. See DATA_DECISIONS.md.
 ECOREGION_SIMPLIFY_TOLERANCE_M = 1000
 
 # --------------------------------------------------------------------------

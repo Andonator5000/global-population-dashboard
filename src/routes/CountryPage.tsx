@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router'
 
 import { AgePyramid } from '../components/viz/AgePyramid'
+import { BiomeBar } from '../components/viz/BiomeBar'
 import { CompositionBar } from '../components/viz/CompositionBar'
 import { PopulationTrend } from '../components/viz/PopulationTrend'
 import {
@@ -11,6 +12,7 @@ import {
   seriesColour,
 } from '../components/viz/primitives'
 import {
+  useBiomes,
   useCountryFactbook,
   useCountryIndicators,
   useCountryPyramid,
@@ -117,6 +119,7 @@ export function CountryPage() {
   const pyramidState = useCountryPyramid(iso3)
   const indicatorsState = useCountryIndicators(iso3)
   const factbookState = useCountryFactbook(iso3)
+  const biomeState = useBiomes()
 
   const entity =
     entitiesState.status === 'ready'
@@ -133,6 +136,10 @@ export function CountryPage() {
   const indicators =
     indicatorsState.status === 'ready' ? indicatorsState.data : null
   const factbook = factbookState.status === 'ready' ? factbookState.data : null
+  const biome =
+    biomeState.status === 'ready' && iso3
+      ? biomeState.data.entities[iso3]
+      : undefined
 
   if (entitiesState.status === 'ready' && !entity) {
     return (
@@ -341,11 +348,25 @@ export function CountryPage() {
               )}
             </p>
           </div>
-          <Unavailable
-            what="Biome breakdown"
-            source="RESOLVE Ecoregions 2017"
-            reason="Computed in a later build phase."
-          />
+          {biome ? (
+            <div>
+              <h3 className="text-sm font-medium">Biome breakdown</h3>
+              <div className="mt-2">
+                <BiomeBar
+                  biomes={biome.biomes}
+                  coveredShare={biome.coveredShare}
+                  landAreaKm2={biome.landAreaKm2}
+                  ecoregions={biome.topEcoregions}
+                />
+              </div>
+            </div>
+          ) : (
+            <Unavailable
+              what="Biome breakdown"
+              source="RESOLVE Ecoregions 2017"
+              reason="This entity is not resolved in the ecoregion layer."
+            />
+          )}
         </Section>
 
         {/* ------------------------------------------------------- People */}
