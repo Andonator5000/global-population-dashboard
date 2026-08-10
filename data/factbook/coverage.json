@@ -1,0 +1,33 @@
+{
+  "note": "Factbook files are named by GEC code, which is not ISO 3166-1 alpha-2. The join reads each file's own country name rather than relying on a hardcoded code table.",
+  "matched": 242,
+  "filesUnmatched": 16,
+  "entitiesWithoutFactbook": [
+    "ALA",
+    "BES",
+    "GLP",
+    "GUF",
+    "MTQ",
+    "MYT",
+    "REU",
+    "UMI"
+  ],
+  "unmatchedFiles": [
+    "australia-oceania/at.json (Ashmore and Cartier Islands)",
+    "europe/ax.json (Akrotiri)",
+    "central-america-n-caribbean/bq.json (Navassa Island)",
+    "australia-oceania/cr.json (Coral Sea Islands)",
+    "europe/dx.json (Dhekelia)",
+    "middle-east/gz.json (Gaza, Gaza Strip)",
+    "north-america/ip.json (Clipperton Island)",
+    "europe/jn.json (Jan Mayen)",
+    "east-n-southeast-asia/pf.json (Paracel Islands)",
+    "east-n-southeast-asia/pg.json (Spratly Islands)",
+    "australia-oceania/um.json (Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Palmyra Atoll)",
+    "australia-oceania/wq.json (Wake Island)",
+    "oceans/xo.json (no name)",
+    "oceans/xq.json (no name)",
+    "oceans/zh.json (no name)",
+    "oceans/zn.json (no name)"
+  ]
+}

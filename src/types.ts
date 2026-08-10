@@ -187,6 +187,87 @@ export interface ContinentAccent {
   dark: string
 }
 
+/** data/population/series/<ISO3>.json */
+export interface CountrySeries {
+  iso3: string
+  name: string
+  wppLocationName: string
+  revision: number
+  variant: string
+  estimatesThrough: number
+  units: Record<string, string>
+  years: number[]
+  series: Record<string, (number | null)[]>
+  bands?: {
+    years: number[]
+    low: (number | null)[]
+    high: (number | null)[]
+  }
+}
+
+/** data/population/pyramids/<ISO3>.json */
+export interface CountryPyramid {
+  iso3: string
+  name: string
+  revision: number
+  variant: string
+  units: string
+  ageGroups: string[]
+  years: number[]
+  frames: Record<string, { male: (number | null)[]; female: (number | null)[] }>
+}
+
+/** One indicator inside data/indicators/by-country/<ISO3>.json */
+export interface IndicatorSeries {
+  label: string
+  section: string
+  unit: string
+  available: boolean
+  unavailableReason?: string
+  /** `year` is THIS indicator's vintage; it differs across indicators. */
+  latest: { year: number; value: number } | null
+  years: number[]
+  values: number[]
+}
+
+export interface CountryIndicators {
+  iso3: string
+  name: string
+  source: string
+  indicators: Record<string, IndicatorSeries>
+}
+
+/** data/factbook/<ISO3>.json */
+export interface FactbookField {
+  available: boolean
+  unavailableReason?: string
+  text?: string
+  vintageYear?: number | null
+  vintageQualifier?: string | null
+  note?: string | null
+  items?: string[]
+}
+
+export interface FactbookRecord {
+  iso3: string
+  name: string
+  source: string
+  factbookGec: string
+  people: {
+    ethnicGroups: import('./components/viz/CompositionBar').CompositionField
+    religions: import('./components/viz/CompositionBar').CompositionField
+    languages: import('./components/viz/CompositionBar').CompositionField
+  }
+  government: Record<string, FactbookField>
+  economy: {
+    industries: FactbookField
+    agriculturalProducts: FactbookField
+    exportCommodities: FactbookField
+    exportPartners: import('./components/viz/CompositionBar').CompositionField
+    importPartners: import('./components/viz/CompositionBar').CompositionField
+  }
+}
+
 export interface MapPalette {
   note: string
   minNeighbourDeltaE: number

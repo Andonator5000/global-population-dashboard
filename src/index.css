@@ -40,6 +40,25 @@
   --map-accent-fill: oklch(70% 0.13 250);
   --map-no-data: oklch(92% 0.003 250);
 
+  /*
+   * Categorical chart series. Fixed order, assigned by slot and never cycled.
+   * Validated for the ADJACENT pairlist (stacked bars, which is what the
+   * composition charts are): worst adjacent CVD dE 9.1, normal-vision 19.6.
+   *
+   * Three light slots sit below 3:1 against the surface, so the relief rule
+   * applies -- every chart using them ships visible direct labels AND a table
+   * listing. Neither is optional.
+   */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #4a3aa7;
+  --series-8: #e34948;
+  --series-other: oklch(62% 0.01 250);
+
   color-scheme: light;
 }
 
@@ -58,6 +77,18 @@
     --map-land-stroke: oklch(13% 0.010 235);
     --map-accent-fill: oklch(60% 0.13 250);
     --map-no-data: oklch(22% 0.004 250);
+
+    /* Dark is a SELECTED set stepped for the dark surface, not an inversion.
+       All eight clear 3:1 against it. */
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-7: #9085e9;
+    --series-8: #e66767;
+    --series-other: oklch(60% 0.01 250);
 
     color-scheme: dark;
   }

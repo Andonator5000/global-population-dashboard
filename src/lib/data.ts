@@ -2,8 +2,12 @@ import { useEffect, useState } from 'react'
 
 import { DATA_BASE_URL } from '../config'
 import type {
+  CountryIndicators,
+  CountryPyramid,
+  CountrySeries,
   CountryTopology,
   Entity,
+  FactbookRecord,
   Manifest,
   MapPalette,
   MarkerFile,
@@ -84,3 +88,57 @@ export const useMapMarkers = (): AsyncState<MarkerFile> =>
 
 export const useMapPalette = (): AsyncState<MapPalette> =>
   useArtifact<MapPalette>('flags/map-palette.json')
+
+/**
+ * Per-country artifacts, loaded on demand.
+ *
+ * These are deliberately NOT bundled into one file: the map only needs the
+ * summary, and pulling 14 MB of per-country detail to paint the home page
+ * would blow the interaction budget.
+ *
+ * A 404 here is an expected state, not a failure -- 8 entities have no
+ * Factbook entry and 13 have no WPP series. The hook resolves to `null` so the
+ * page can render an explicit "not published" section rather than an error.
+ */
+function useOptionalArtifact<T>(path: string | null): AsyncState<T | null> {
+  const [state, setState] = useState<AsyncState<T | null>>({ status: 'loading' })
+
+  useEffect(() => {
+    if (!path) {
+      setState({ status: 'ready', data: null })
+      return
+    }
+    let cancelled = false
+    loadArtifact<T>(path)
+      .then((data) => {
+        if (!cancelled) setState({ status: 'ready', data })
+      })
+      .catch(() => {
+        // Absent upstream, not broken. The caller renders it as such.
+        if (!cancelled) setState({ status: 'ready', data: null })
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [path])
+
+  return state
+}
+
+export const useCountrySeries = (iso3: string | undefined) =>
+  useOptionalArtifact<CountrySeries>(
+    iso3 ? `population/series/${iso3}.json` : null,
+  )
+
+export const useCountryPyramid = (iso3: string | undefined) =>
+  useOptionalArtifact<CountryPyramid>(
+    iso3 ? `population/pyramids/${iso3}.json` : null,
+  )
+
+export const useCountryIndicators = (iso3: string | undefined) =>
+  useOptionalArtifact<CountryIndicators>(
+    iso3 ? `indicators/by-country/${iso3}.json` : null,
+  )
+
+export const useCountryFactbook = (iso3: string | undefined) =>
+  useOptionalArtifact<FactbookRecord>(iso3 ? `factbook/${iso3}.json` : null)

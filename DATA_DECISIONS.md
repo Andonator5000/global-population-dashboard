@@ -426,7 +426,99 @@ nobody's flag.
 
 ---
 
-## 8. Provenance model
+## 8. Factbook ingestion (Phase 5)
+
+### 8.1 The GEC code trap, and a name-matching bug it exposed
+
+Factbook files are named by **GEC code**, which is *not* ISO 3166-1 alpha-2:
+`ch` is China (Switzerland is `sz`), `ja` is Japan (Jamaica is `jm`), `gm` is
+Germany (the Gambia is `ga`). We therefore join on each file's own
+`Government > Country name` rather than any code table.
+
+That join initially produced **three silent mis-assignments**, all caused by
+`normalise_name()` stripping constitutional boilerplate:
+
+| collapsed to | entities merged | consequence |
+|---|---|---|
+| `united` | United **States** / United **Kingdom** | **the US got no Factbook data at all** |
+| `congo` | DR Congo / Republic of the Congo | Republic of the Congo got none |
+| `virgin islands` | US / British Virgin Islands | US Virgin Islands got none |
+
+The aggressive fold is now **fallback-only and collision-aware**: matching
+tries a strict normaliser (accents, case, punctuation — no word dropping)
+first, and the loose index deliberately excludes any key that more than one
+entity folds onto, so an ambiguous name is a **miss rather than a wrong
+answer**. Coverage went from 236 to 242 entities.
+
+Svalbard and Jan Mayen are two Factbook files for one ISO entity (`SJM`);
+Svalbard wins because it holds essentially the whole population, and Jan Mayen
+is reported unmatched rather than overwriting it. West Bank and Gaza Strip are
+likewise two files for `PSE`.
+
+**8 entities have no Factbook entry** (Åland, Caribbean Netherlands, the French
+overseas departments, US Minor Outlying Islands) — the Factbook covers them
+inside their parent state. Their People and Government sections say so.
+
+### 8.2 Two parsing bugs that silently deleted the largest category
+
+**Bug 1 — trailing qualifiers.** The percentage matcher anchored `%` to
+end-of-segment, so any category with an annotation lost its number entirely:
+
+```
+"Muslim 97.1% (official; predominantly Sunni)"  ->  percent = null
+```
+
+This hit the **largest** group every time, because that is the one editors
+annotate. Jordan's religions summed to 0.9%, Mozambique's ethnic groups to
+1.0%, Comoros' religions to 2.0%. Parentheticals are now lifted off each
+segment before matching (and preserved as a qualifier). The same fix stops
+nested breakdowns — `"Protestant 5% (Evangelical 4.6%, Adventist 0.2%)"` —
+being double-counted as extra top-level categories.
+
+After the fix, fields summing to ~100% rose from **310 to 423**.
+
+**Bug 2 — two surveys concatenated in the source.** Uruguay's religions field
+runs two separate surveys together with no separator:
+
+```
+"... none 47.3%, unspecified 3.4% Roman Catholic 42%, Protestant 15%, ..."
+```
+
+Parsing that yields nonsense (`"unspecified 3.4% Roman Catholic" = 42%`). Any
+segment containing more than one percentage is now flagged as malformed, and
+such a field is **never charted** — the published wording is shown with an
+explanation instead. This is §0's "never blend categories from different
+sources" rule, tripped inside the source itself.
+
+### 8.3 Sums above 100% are not always errors
+
+Sri Lanka's languages total 139.3% (Sinhala 87, Tamil 28.5, English 23.8) and
+Cook Islands' 170.9%. **This is correct** — respondents speak more than one
+language. Language fields carry `sharesMayOverlap`, and the app explains the
+overlap rather than reporting an error. Ethnicity and religion totals away
+from 100% are surfaced as unreconciled, still never rescaled.
+
+### 8.4 Vintage spread is the norm, not the exception
+
+Across 242 entities:
+
+- **170** have two or more dated People fields
+- **52** span 5+ years within one country
+- **26** span 10+ years
+- Jersey spans **20 years** (ethnicity 2021, languages 2001)
+- **India's ethnic composition is from 2000** — 26 years old
+
+A single "as of" date for the People section would misrepresent most countries,
+so each figure carries its own year in a prominent badge, and anything 15+
+years old is additionally flagged **dated**.
+
+Fields published as prose without percentages are never charted:
+**35** ethnic-group, **22** religion and **55** language fields are prose-only,
+and **143 entities have no language data at all**.
+
+---
+
+## 9. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -444,7 +536,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 9. Composition data (ethnicity, religion, language)
+## 10. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -459,7 +551,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 10. Equal-area requirement
+## 11. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of

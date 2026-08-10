@@ -105,6 +105,7 @@ class CrosswalkError(RuntimeError):
 # --------------------------------------------------------------------------
 
 _PUNCT = re.compile(r"[^a-z0-9]+")
+_WS = re.compile(r"\s+")
 _NOISE_WORDS = {
     "the", "of", "and", "republic", "kingdom", "state", "states",
     "democratic", "people", "peoples", "federal", "federation",
@@ -113,18 +114,62 @@ _NOISE_WORDS = {
 }
 
 
-def normalise_name(name: str) -> str:
-    """Fold a country name to a comparable key.
+def normalise_name_strict(name: str) -> str:
+    """Fold a name for comparison, WITHOUT discarding any words.
 
-    Strips accents, punctuation, and the boilerplate that distinguishes
-    'Republic of X' from 'X' -- because Factbook and REST Countries disagree on
-    exactly that boilerplate for dozens of entries.
+    Accents, case and punctuation only. This is the primary matching key.
     """
     decomposed = unicodedata.normalize("NFKD", name)
     ascii_only = "".join(c for c in decomposed if not unicodedata.combining(c))
-    lowered = _PUNCT.sub(" ", ascii_only.lower()).strip()
-    tokens = [t for t in lowered.split() if t not in _NOISE_WORDS]
-    return " ".join(tokens) if tokens else lowered
+    return _WS.sub(" ", _PUNCT.sub(" ", ascii_only.lower())).strip()
+
+
+def normalise_name(name: str) -> str:
+    """Fold a name aggressively, dropping constitutional boilerplate.
+
+    DANGEROUS ON ITS OWN -- it is lossy enough to merge distinct countries:
+
+        "United States"  -> "united"   }  collide
+        "United Kingdom" -> "united"   }
+        "Democratic Republic of the Congo" -> "congo"  }  collide
+        "Republic of the Congo"            -> "congo"  }
+
+    Both collisions were real: an early Factbook join silently gave the United
+    States' entry to the United Kingdom's ISO3 and left the US with no
+    qualitative data at all. Only ever use this as a FALLBACK, and only when
+    the resulting key maps to exactly one entity -- `build_name_index` below
+    enforces that.
+    """
+    stripped = normalise_name_strict(name)
+    tokens = [t for t in stripped.split() if t not in _NOISE_WORDS]
+    return " ".join(tokens) if tokens else stripped
+
+
+def build_name_index(
+    registry: dict[str, Entity],
+) -> tuple[dict[str, str], dict[str, str]]:
+    """Return (strict index, unambiguous loose index) of name -> ISO3.
+
+    The loose index deliberately EXCLUDES any key that more than one entity
+    folds onto, so an ambiguous match is a miss rather than a wrong answer.
+    """
+    strict: dict[str, str] = {}
+    loose_candidates: dict[str, set[str]] = {}
+
+    for iso3, entity in registry.items():
+        names = [entity.name_common]
+        if entity.name_official:
+            names.append(entity.name_official)
+        for name in names:
+            strict.setdefault(normalise_name_strict(name), iso3)
+            loose_candidates.setdefault(normalise_name(name), set()).add(iso3)
+
+    loose = {
+        key: next(iter(owners))
+        for key, owners in loose_candidates.items()
+        if len(owners) == 1
+    }
+    return strict, loose
 
 
 # --------------------------------------------------------------------------
@@ -457,17 +502,22 @@ def build_alias_map(registry: dict[str, Entity]) -> dict[str, str]:
     overrides = load_overrides()
     aliases: dict[str, str] = {}
 
+    strict, loose = build_name_index(registry)
+
     for iso3, entity in registry.items():
         aliases[iso3.upper()] = iso3
         if entity.iso2:
             aliases[f"ISO2:{entity.iso2.upper()}"] = iso3
         if entity.m49 is not None:
             aliases[f"M49:{entity.m49}"] = iso3
-        aliases[f"NAME:{normalise_name(entity.name_common)}"] = iso3
-        if entity.name_official:
-            aliases.setdefault(
-                f"NAME:{normalise_name(entity.name_official)}", iso3
-            )
+
+    # Strict names first, then only the loose keys that are unambiguous. The
+    # loose folding merges United States with United Kingdom and the two
+    # Congos, so an ambiguous key is omitted entirely rather than guessed.
+    for key, iso3 in strict.items():
+        aliases[f"NAME:{key}"] = iso3
+    for key, iso3 in loose.items():
+        aliases.setdefault(f"NAMELOOSE:{key}", iso3)
 
     for raw, canonical in overrides["iso3_aliases"].items():
         if raw.startswith("_"):
@@ -502,7 +552,10 @@ def resolve_iso3(
         if hit:
             return hit
     if name:
-        hit = aliases.get(f"NAME:{normalise_name(name)}")
+        hit = aliases.get(f"NAME:{normalise_name_strict(name)}")
+        if hit:
+            return hit
+        hit = aliases.get(f"NAMELOOSE:{normalise_name(name)}")
         if hit:
             return hit
     return None
@@ -571,6 +624,8 @@ __all__ = [
     "excluded_aggregate_codes",
     "resolve_iso3",
     "normalise_name",
+    "normalise_name_strict",
+    "build_name_index",
     "validate",
     "registry_to_records",
 ]
