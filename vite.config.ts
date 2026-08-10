@@ -44,8 +44,41 @@ function dataArtifacts(): Plugin {
   }
 }
 
-export default defineConfig({
-  plugins: [react(), tailwindcss(), dataArtifacts()],
+/**
+ * GitHub Pages serves a project site from /<repo>/, not from the domain root.
+ * Everything the app requests — the JS bundle, the CSS, and crucially the
+ * /data artifacts — has to be prefixed with that, or the page loads and then
+ * 404s on every fetch, giving a blank map with no error a reader can see.
+ *
+ * Dev keeps a root base so `npm run dev` behaves normally; the value is
+ * overridable via BASE_PATH for anyone deploying somewhere else.
+ */
+const REPO_BASE = process.env.BASE_PATH ?? '/global-population-dashboard/'
+
+/**
+ * Copy index.html to 404.html.
+ *
+ * GitHub Pages has no SPA rewrite rule. A deep link like /country/USA is a
+ * client-side route with no matching file, so Pages would serve its own 404.
+ * Pages does serve a repo's own 404.html for unmatched paths, so shipping a
+ * copy of the app there makes deep links boot the router instead.
+ */
+function spaFallback(): Plugin {
+  return {
+    name: 'spa-fallback',
+    closeBundle() {
+      const dist = resolve(import.meta.dirname, 'dist')
+      const index = resolve(dist, 'index.html')
+      if (existsSync(index)) {
+        cpSync(index, resolve(dist, '404.html'))
+      }
+    },
+  }
+}
+
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? REPO_BASE : '/',
+  plugins: [react(), tailwindcss(), dataArtifacts(), spaFallback()],
   build: {
     outDir: 'dist',
     sourcemap: true,
@@ -53,4 +86,4 @@ export default defineConfig({
   server: {
     port: 5173,
   },
-})
+}))

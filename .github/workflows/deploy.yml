@@ -1,0 +1,75 @@
+name: Deploy to Pages
+
+# Publishes the built site to GitHub Pages.
+#
+# Runs on every push to main, which matters for freshness: the monthly refresh
+# job opens a pull request rather than committing to main, so merging that PR
+# is what triggers a redeploy. Without this the published site would freeze at
+# whatever /data looked like on the first deploy while the repository moved on.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; queue instead of cancelling, so a deploy that is
+# already uploading finishes rather than leaving Pages in a half-updated state.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - run: npm ci
+
+      # Same gates as CI. A broken palette or a contrast regression should not
+      # reach the public site just because it arrived via a merge.
+      - name: Verify
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      # Fail loudly rather than publishing a shell with no data: the app fetches
+      # /data at runtime, so an empty dist/data yields a page that renders its
+      # chrome and then shows nothing, with no visible error.
+      - name: Confirm data artifacts were bundled
+        run: |
+          COUNT=$(find dist/data -type f | wc -l)
+          echo "dist/data contains $COUNT files"
+          if [ "$COUNT" -lt 900 ]; then
+            echo "::error::dist/data has only $COUNT files; expected 900+."
+            exit 1
+          fi
+          test -f dist/404.html || { echo "::error::404.html missing; deep links would break."; exit 1; }
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
