@@ -16,6 +16,8 @@ interface EntityTableProps {
   rows: PopulationRow[]
   year: number
   revision: number
+  /** Shown under the heading; used to explain a scrubbed historical year. */
+  note?: string | undefined
 }
 
 /**
@@ -26,7 +28,7 @@ interface EntityTableProps {
  * and reachable with a screen reader -- and it is the practical way to find a
  * microstate that is three pixels wide on the map.
  */
-export function EntityTable({ rows, year, revision }: EntityTableProps) {
+export function EntityTable({ rows, year, revision, note }: EntityTableProps) {
   const [query, setQuery] = useState('')
   const [sortKey, setSortKey] = useState<SortKey>('population')
   const [ascending, setAscending] = useState(false)
@@ -128,9 +130,9 @@ export function EntityTable({ rows, year, revision }: EntityTableProps) {
       </div>
 
       <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
-        {visible.length} of {rows.length} entities. Population and growth rate
-        from UN World Population Prospects {revision}, medium variant, {year}{' '}
-        estimate.
+        {visible.length} of {rows.length} entities. Population from UN World
+        Population Prospects {revision}, medium variant, {year}.
+        {note ? ` ${note}` : ''}
       </p>
 
       <div className="mt-3 overflow-x-auto">

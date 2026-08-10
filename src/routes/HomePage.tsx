@@ -2,8 +2,10 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import { EntityTable } from '../components/EntityTable'
+import { LiveCounter } from '../components/LiveCounter'
 import { MapLegend } from '../components/MapLegend'
 import { MapReadout } from '../components/MapReadout'
+import { TimeScrubber } from '../components/TimeScrubber'
 import { WorldMap, type HoverTarget } from '../components/WorldMap'
 import {
   DEFAULT_PROJECTION,
@@ -12,7 +14,12 @@ import {
   type ContinentKey,
   type ProjectionKey,
 } from '../config'
-import { useCountryTopology, useMapMarkers, usePopulationSummary } from '../lib/data'
+import {
+  useCountryTopology,
+  useMapMarkers,
+  usePopulationSummary,
+  usePopulationTimeline,
+} from '../lib/data'
 import { formatExact, formatPopulation } from '../lib/format'
 import { PROJECTION_LABELS } from '../lib/projection'
 import type { PopulationRow } from '../types'
@@ -29,13 +36,96 @@ export function HomePage() {
   const [hovered, setHovered] = useState<HoverTarget | null>(null)
   const [activeContinent, setActiveContinent] = useState<ContinentKey | null>(null)
 
+  // null means "now" -- the live counter runs. A number pins every figure to
+  // that year and stops the ticking, because a running count only means
+  // anything for the present.
+  const [scrubYear, setScrubYear] = useState<number | null>(null)
+  const [playing, setPlaying] = useState(false)
+  const timelineState = usePopulationTimeline(true)
+  const timeline =
+    timelineState.status === 'ready' ? timelineState.data : null
+
+  /** Present calendar year, clamped into the published range. */
+  const liveYear = useMemo(() => {
+    if (!timeline) return new Date().getFullYear()
+    const first = timeline.years[0] ?? 1950
+    const last = timeline.years[timeline.years.length - 1] ?? 2100
+    return Math.min(Math.max(new Date().getFullYear(), first), last)
+  }, [timeline])
+
+  /** World series converted from WPP thousands to persons. */
+  const worldSeriesPersons = useMemo(
+    () => (timeline ? timeline.world.map((v) => v * 1000) : []),
+    [timeline],
+  )
+
+  const worldComponentSeries = useMemo(() => {
+    if (!timeline?.worldComponents) return undefined
+    const out: Record<string, (number | null)[]> = {}
+    for (const [key, values] of Object.entries(timeline.worldComponents)) {
+      out[key] = values.map((v) => v * 1000)
+    }
+    return out
+  }, [timeline])
+
+  const worldAtScrubYear = useMemo(() => {
+    if (!timeline || scrubYear === null) return null
+    const index = timeline.years.indexOf(scrubYear)
+    return index >= 0 ? (timeline.world[index] ?? 0) * 1000 : null
+  }, [timeline, scrubYear])
+
+  /** Per-entity population for the scrubbed year, in persons. */
+  const scrubPopulation = useMemo(() => {
+    if (!timeline || scrubYear === null) return null
+    const index = timeline.years.indexOf(scrubYear)
+    if (index < 0) return null
+    const map = new Map<string, number | null>()
+    for (const [iso3, values] of Object.entries(timeline.entities)) {
+      const value = values[index]
+      map.set(iso3, value === null || value === undefined ? null : value * 1000)
+    }
+    return map
+  }, [timeline, scrubYear])
+
   const rows: PopulationRow[] =
     summaryState.status === 'ready' ? summaryState.data.entities : []
 
-  const byIso3 = useMemo(
-    () => new Map(rows.map((row) => [row.iso3, row])),
-    [rows],
-  )
+  /**
+   * Population rows for whatever year is displayed.
+   *
+   * When the scrubber is engaged, the population figure is swapped for that
+   * year's value and the rate fields are cleared. Leaving a 2023 growth rate
+   * beside a 1960 population would silently mix vintages, which is exactly
+   * what this project refuses to do elsewhere.
+   */
+  const byIso3 = useMemo(() => {
+    const base = new Map(rows.map((row) => [row.iso3, row]))
+    if (!scrubPopulation || scrubYear === null) return base
+    const merged = new Map<string, PopulationRow>()
+    for (const [iso3, row] of base) {
+      const population = scrubPopulation.get(iso3) ?? null
+      merged.set(iso3, {
+        ...row,
+        year: scrubYear,
+        available: population !== null,
+        population,
+        growthRate: null,
+        density: null,
+        medianAge: null,
+        fertilityRate: null,
+        lifeExpectancy: null,
+        births: null,
+        deaths: null,
+        netMigration: null,
+        ...(population === null
+          ? {
+              unavailableReason: `UN WPP publishes no ${scrubYear} figure for this entity.`,
+            }
+          : {}),
+      })
+    }
+    return merged
+  }, [rows, scrubPopulation, scrubYear])
 
   const continentCounts = useMemo(() => {
     const counts = new Map<ContinentKey, number>()
@@ -79,23 +169,54 @@ export function HomePage() {
         <h1 className="text-2xl font-semibold tracking-tight">
           World population
         </h1>
-        {summaryState.status === 'ready' && (
-          <p className="mt-2">
-            <span className="text-3xl font-semibold tracking-tight">
-              {formatPopulation(worldTotal)}
-            </span>{' '}
-            <span style={{ color: 'var(--text-muted)' }}>
-              people in {year} — {formatExact(worldTotal)}, summed from{' '}
-              {rows.filter((row) => row.available).length} entities.
-            </span>
-          </p>
+
+        {timeline ? (
+          scrubYear === null ? (
+            <div className="mt-2">
+              <LiveCounter
+                years={timeline.years}
+                values={worldSeriesPersons}
+                {...(worldComponentSeries ? { series: worldComponentSeries } : {})}
+                estimatesThrough={timeline.estimatesThrough}
+                revision={timeline.revision}
+                label="World population"
+              />
+            </div>
+          ) : (
+            <div className="mt-2">
+              <span className="text-4xl font-semibold tracking-tight">
+                {formatExact(worldAtScrubYear)}
+              </span>
+              <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
+                World population in {scrubYear} —{' '}
+                {scrubYear > timeline.estimatesThrough
+                  ? `medium-variant projection from UN WPP ${timeline.revision}`
+                  : `estimate from UN WPP ${timeline.revision}`}
+                . Summed from {timeline.worldEntityCount[
+                  timeline.years.indexOf(scrubYear)
+                ] ?? 0}{' '}
+                entities.
+              </p>
+            </div>
+          )
+        ) : (
+          summaryState.status === 'ready' && (
+            <p className="mt-2">
+              <span className="text-3xl font-semibold tracking-tight">
+                {formatPopulation(worldTotal)}
+              </span>{' '}
+              <span style={{ color: 'var(--text-muted)' }}>
+                people in {year} — {formatExact(worldTotal)}, summed from{' '}
+                {rows.filter((row) => row.available).length} entities.
+              </span>
+            </p>
+          )
         )}
-        <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+
+        <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
+          Equal-area projection, so land areas are shown in true relative size.
           Source: UN World Population Prospects {revision || '—'}, medium
-          variant, {year || '—'} estimate. Equal-area projection, so land areas
-          are shown in true relative size. The live-ticking counter arrives in a
-          later phase; this is the published annual estimate, not a modelled
-          instantaneous figure.
+          variant.
         </p>
       </header>
 
@@ -151,6 +272,38 @@ export function HomePage() {
         </span>
       </div>
 
+      {timeline && (
+        <div
+          className="mt-4 rounded-lg border px-4 py-3"
+          style={{ borderColor: 'var(--border)' }}
+        >
+          <TimeScrubber
+            years={timeline.years}
+            // In live mode the slider rests on the CURRENT year, so it agrees
+            // with the counter above it. Resting it on the last estimate year
+            // instead made the header read 2026 while the slider said 2023.
+            value={scrubYear ?? liveYear}
+            onChange={setScrubYear}
+            estimatesThrough={timeline.estimatesThrough}
+            playing={playing}
+            onPlayingChange={setPlaying}
+          />
+          {scrubYear !== null && (
+            <button
+              type="button"
+              className="mt-2 text-xs underline underline-offset-2"
+              style={{ color: 'var(--text-muted)' }}
+              onClick={() => {
+                setPlaying(false)
+                setScrubYear(null)
+              }}
+            >
+              Return to the live estimate
+            </button>
+          )}
+        </div>
+      )}
+
       {error && (
         <p className="mt-8" style={{ color: 'var(--text-muted)' }}>
           {error.message}
@@ -189,7 +342,7 @@ export function HomePage() {
             <MapReadout
               target={hovered}
               row={hovered ? byIso3.get(hovered.iso3) : undefined}
-              year={year}
+              year={scrubYear ?? year}
               revision={revision}
             />
             <MapLegend
@@ -209,7 +362,16 @@ export function HomePage() {
       )}
 
       {summaryState.status === 'ready' && (
-        <EntityTable rows={rows} year={year} revision={revision} />
+        <EntityTable
+          rows={[...byIso3.values()]}
+          year={scrubYear ?? year}
+          revision={revision}
+          note={
+            scrubYear === null
+              ? undefined
+              : `Only population varies with the selected year. Growth rate and density are left blank rather than carried over from ${year}, which would pair a ${year} rate with a ${scrubYear} population.`
+          }
+        />
       )}
     </div>
   )

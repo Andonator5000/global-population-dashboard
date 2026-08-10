@@ -268,6 +268,28 @@ export interface FactbookRecord {
   }
 }
 
+/**
+ * data/population/timeline.json
+ *
+ * Values are in THOUSANDS (UN WPP's publication precision) to keep the payload
+ * small; multiply by 1000 for persons. Lazy-loaded — the map's first paint
+ * does not need it.
+ */
+export interface PopulationTimeline {
+  note: string
+  revision: number
+  variant: string
+  unit: string
+  estimatesThrough: number
+  years: number[]
+  world: number[]
+  worldEntityCount: number[]
+  /** Births, deaths and net migration summed worldwide, in thousands/year. */
+  worldComponents: Record<string, number[]>
+  continents: Record<string, number[]>
+  entities: Record<string, (number | null)[]>
+}
+
 /** data/biomes/biomes.json */
 export interface BiomeShare {
   biome: string

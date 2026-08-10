@@ -280,6 +280,74 @@ def ingest(
         encoding="utf-8",
     )
 
+    # ---- timeline, for the time scrubber ---------------------------------
+    # A compact year-by-year matrix, lazy-loaded by the app only when the
+    # scrubber is used. Values are kept in THOUSANDS (WPP's own publication
+    # precision), which roughly halves the payload and loses nothing.
+    timeline_years = sorted({int(y) for y in frame["Time"].unique()})
+    year_index = {year: i for i, year in enumerate(timeline_years)}
+
+    timeline_entities: dict[str, list[int | None]] = {}
+    world_totals = [0.0] * len(timeline_years)
+    world_counts = [0] * len(timeline_years)
+    continent_totals: dict[str, list[float]] = {}
+    # World component flows, summed from countries. Net migration sums to
+    # ~zero globally by construction, which is itself a useful check.
+    world_components: dict[str, list[float]] = {
+        key: [0.0] * len(timeline_years)
+        for key in ("births", "deaths", "netMigration")
+    }
+
+    for iso3, group in frame.groupby("ISO3_code", sort=True):
+        row: list[int | None] = [None] * len(timeline_years)
+        continent = registry[iso3].continent
+        bucket = continent_totals.setdefault(
+            continent, [0.0] * len(timeline_years)
+        )
+        for record in group.itertuples(index=False):
+            slot = year_index[int(record.Time)]
+            for key in world_components:
+                component = _clean(getattr(record, key, None))
+                if component is not None:
+                    world_components[key][slot] += component
+            value = _clean(record.population)
+            if value is None:
+                continue
+            row[slot] = int(round(value))          # thousands
+            world_totals[slot] += value
+            world_counts[slot] += 1
+            bucket[slot] += value
+        timeline_entities[iso3] = row
+
+    timeline = {
+        "note": (
+            "Population by year in THOUSANDS, the publication precision of "
+            "UN WPP. Multiply by 1000 for persons. Loaded on demand by the "
+            "time scrubber, not on first paint."
+        ),
+        "source": "un_wpp",
+        "revision": revision,
+        "variant": "medium",
+        "unit": "thousands of persons",
+        "estimatesThrough": estimates_through,
+        "years": timeline_years,
+        "world": [int(round(v)) for v in world_totals],
+        "worldEntityCount": world_counts,
+        "worldComponents": {
+            key: [int(round(v)) for v in values]
+            for key, values in world_components.items()
+        },
+        "continents": {
+            key: [int(round(v)) for v in values]
+            for key, values in sorted(continent_totals.items())
+        },
+        "entities": timeline_entities,
+    }
+    (out_dir / "timeline.json").write_text(
+        json.dumps(timeline, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+
     # ---- age/sex pyramids -----------------------------------------------
     pyramid_count = _write_pyramids(
         registry, revision, refresh=refresh, out_dir=pyramid_dir,
@@ -327,6 +395,14 @@ def ingest(
             f"entity, medium variant with low/high projection bands."
         ),
         sources=["un_wpp"], entity_count=written,
+    )
+    manifest_mod.record_artifact(
+        manifest, "population/timeline.json",
+        description=(
+            "Population by year for every entity, continent and the world, in "
+            "thousands. Feeds the time scrubber; lazy-loaded."
+        ),
+        sources=["un_wpp"], entity_count=len(timeline_entities),
     )
     manifest_mod.record_artifact(
         manifest, "population/pyramids/<ISO3>.json",

@@ -599,7 +599,73 @@ more than 25% is flagged the same way.
 
 ---
 
-## 10. Provenance model
+## 10. The "live" counter (Phase 7)
+
+### 10.1 It is a model, and it says so
+
+No source publishes live population. UN WPP publishes one figure per year,
+dated **1 July**. The counter interpolates between the two nearest annual
+points and advances continuously. Every figure it shows is a modelled
+estimate, labelled in the UI as **"Modelled estimate, interpolated from UN WPP
+2024"**, with an expandable explanation of the method.
+
+### 10.2 We anchor on the annual figures rather than tick on births and deaths
+
+The brief specifies advancing the count using "that country's implied
+births/deaths/net-migration per second". Implemented literally, that drifts
+away from the UN's own numbers, because **the components do not reconcile with
+the published year-on-year change**:
+
+| | published Δ population | births − deaths + migration | gap |
+|---|---|---|---|
+| India 2026 | 12,539,098 | 12,659,731 | +1.0% |
+| China 2026 | −3,234,683 | −3,088,918 | −4.5% |
+| **Germany 2023** | **4,011** | **294,662** | **×73** |
+
+Median gap ≈1.4% of the annual change. The cause is structural: population is
+a **1 July snapshot** while births and deaths are **calendar-year totals**, so
+the two are measured over different intervals.
+
+**Decision:** interpolate between the published anchors — exact at both ends by
+construction — and derive the per-second rate from that same interpolation. The
+component flows are still shown, because they are the demographic explanation
+of the movement, but they are labelled as annual totals and the UI states
+plainly that the two rates differ and which one drives the counter.
+
+At world level the two agree closely (components +2.18/s vs anchors +2.17/s),
+and world net migration sums to **+0.00/s** — a useful internal check, since
+migration must net to zero globally.
+
+### 10.3 Today's counter is inside a projection
+
+WPP 2024 carries estimates only through **2023**. A counter running in 2026
+therefore interpolates between two *projected* figures. The label says so
+explicitly: *"because UN WPP 2024 carries estimates only through 2023, both
+ends of that interpolation are projections, not measurements."*
+
+### 10.4 Scrubbing pins the year and stops the ticking
+
+A running count only means anything for the present, so selecting a year with
+the scrubber freezes the counter and shows that year's published figure,
+badged **estimate** or **projection**, with the boundary drawn on the slider
+track.
+
+When a historical year is selected, **only population changes**. Growth rate
+and density are blanked rather than carried over, because showing a 2023 growth
+rate beside a 1960 population would mix vintages — the exact failure this
+project avoids everywhere else. The table says so in words.
+
+### 10.5 Motion is opt-out
+
+A figure changing ten times a second is precisely what
+`prefers-reduced-motion` exists to suppress. Under that setting the counter
+holds a static interpolated value and scrubber playback refuses to start. The
+ticking figure is also `aria-hidden`, with a stable screen-reader description
+alongside it — an `aria-live` region updating ten times a second is unusable.
+
+---
+
+## 11. Provenance model
 
 Three dates are tracked **separately** and must never be conflated, because
 collapsing them is the most common way a dashboard implies its data is fresher
@@ -617,7 +683,7 @@ The "data freshness" panel shows all three. A figure is never labelled with
 
 ---
 
-## 11. Composition data (ethnicity, religion, language)
+## 12. Composition data (ethnicity, religion, language)
 
 Per the brief, and restated here because it is the easiest rule to erode:
 
@@ -632,7 +698,7 @@ Per the brief, and restated here because it is the easiest rule to erode:
 
 ---
 
-## 12. Equal-area requirement
+## 13. Equal-area requirement
 
 All area math is done in **EPSG:6933** (NSIDC EASE-Grid 2.0 Global, cylindrical
 equal-area). Computing area from EPSG:4326 degrees is wrong — a degree of

@@ -13,6 +13,7 @@ import type {
   MapPalette,
   MarkerFile,
   PopulationSummary,
+  PopulationTimeline,
 } from '../types'
 
 /**
@@ -92,6 +93,47 @@ export const useMapPalette = (): AsyncState<MapPalette> =>
 
 export const useBiomes = (): AsyncState<BiomeFile> =>
   useArtifact<BiomeFile>('biomes/biomes.json')
+
+/**
+ * Year-by-year population, fetched when `enabled` becomes true.
+ *
+ * The home page passes `true` immediately, because the live counter needs two
+ * annual anchors to interpolate between and the summary artifact only carries
+ * one year. At 181 KB (about 60 KB over the wire) that is an acceptable cost
+ * for the hero figure; the `enabled` flag remains so other callers can defer
+ * it.
+ */
+export function usePopulationTimeline(
+  enabled: boolean,
+): AsyncState<PopulationTimeline | null> {
+  const [state, setState] = useState<AsyncState<PopulationTimeline | null>>({
+    status: 'ready',
+    data: null,
+  })
+
+  useEffect(() => {
+    if (!enabled) return
+    let cancelled = false
+    setState({ status: 'loading' })
+    loadArtifact<PopulationTimeline>('population/timeline.json')
+      .then((data) => {
+        if (!cancelled) setState({ status: 'ready', data })
+      })
+      .catch((error: unknown) => {
+        if (!cancelled) {
+          setState({
+            status: 'error',
+            error: error instanceof Error ? error : new Error(String(error)),
+          })
+        }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [enabled])
+
+  return state
+}
 
 /**
  * Per-country artifacts, loaded on demand.
