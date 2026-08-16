@@ -14,6 +14,8 @@ export interface Entity {
   area_km2: number | null
   capital: string | null
   borders: string[]
+  /** [{code, name, symbol}] from the metadata source; may be empty. */
+  currencies: { code: string; name: string | null; symbol: string | null }[]
   render: 'separate' | 'merged' | 'hidden'
   /** Non-null iff the entity's recognition status is contested. */
   status_label: string | null
@@ -175,6 +177,8 @@ export interface EntityPalette {
   hasFlagColour: boolean
   flagHue: number | null
   flag: { dominant: string; accents: string[] } | null
+  /** Path of the committed flag SVG relative to /data, or null if none. */
+  flagSvg: string | null
   tier: number
   fill: { light: string; dark: string }
   accent: {
@@ -243,6 +247,43 @@ export interface CountryIndicators {
   name: string
   source: string
   indicators: Record<string, IndicatorSeries>
+}
+
+/**
+ * One series inside data/owid/by-country/<ISO3>.json.
+ *
+ * Same shape as IndicatorSeries plus provenance that names the underlying
+ * producer (V-Dem, Global Carbon Budget, ...) — OWID is the distribution
+ * channel, and the citation must say who made the measurement.
+ */
+export interface OwidIndicatorSeries extends IndicatorSeries {
+  kind: 'number' | 'category'
+  citation: string
+}
+
+export interface CountryOwid {
+  iso3: string
+  name: string
+  source: string
+  indicators: Record<string, OwidIndicatorSeries>
+}
+
+/** One property in data/heritage/sites.json. */
+export interface HeritageSite {
+  name: string
+  category: 'Cultural' | 'Natural' | 'Mixed' | null
+  year: number | null
+  danger: boolean
+  /** Shared across several states; appears under each of them. */
+  transnational: boolean
+  url: string | null
+}
+
+export interface HeritageFile {
+  note: string
+  source: string
+  totalSites: number
+  entities: Record<string, { count: number; sites: HeritageSite[] }>
 }
 
 /** data/factbook/<ISO3>.json */

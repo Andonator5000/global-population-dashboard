@@ -58,6 +58,10 @@ class Entity:
     # others -- so a populated country is never silently absent from the map.
     latlng: list[float] | None = None
     borders: list[str] = field(default_factory=list)
+    # [{code, name, symbol}] from the metadata source. Metadata only -- the
+    # exchange rate itself comes from the World Bank (PA.NUS.FCRF) with its
+    # own vintage, never from here.
+    currencies: list[dict[str, Any]] = field(default_factory=list)
     # Editorial
     render: str = "separate"            # 'separate' | 'merged' | 'hidden'
     status_label: str | None = None     # e.g. 'Partially recognised'
@@ -86,6 +90,7 @@ class Entity:
             "capital": self.capital,
             "latlng": self.latlng,
             "borders": self.borders,
+            "currencies": self.currencies,
             "render": self.render,
             "status_label": self.status_label,
             "editorial_note": self.editorial_note,
@@ -349,6 +354,15 @@ def build_registry(
             borders=[
                 code_aliases.get(b.upper(), b.upper())
                 for b in (row.get("borders") or [])
+            ],
+            currencies=[
+                {
+                    "code": code,
+                    "name": (detail or {}).get("name"),
+                    "symbol": (detail or {}).get("symbol"),
+                }
+                for code, detail in (row.get("currencies") or {}).items()
+                if isinstance(code, str)
             ],
         )
 

@@ -115,7 +115,9 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Country metadata, borders, area | `mledoze/countries` | **Substituted for REST Countries v3.1** — see below. |
 | Geometry | Natural Earth via TopoJSON | 110m render, 50m for biome math. |
 | Biomes | RESOLVE Ecoregions 2017 | Build-time overlay, never runtime. |
-| Cross-checks | Our World in Data | Sanity check only, never primary. |
+| Democracy, human rights, governance, CO₂ per capita | V-Dem / Regimes of the World / Hanson & Sigman / Global Carbon Budget, via Our World in Data | Primary source for the Freedom and governance measures; citations name the underlying producer. |
+| World Heritage sites | UNESCO World Heritage List | Official syndication XML — see DATA_DECISIONS.md §16.3 on the WAF workaround. |
+| Cross-checks | Our World in Data (population) | Sanity check only — OWID's modern population series is UN WPP re-published, so it validates our parsing, not the estimates. |
 
 Joined on **ISO 3166-1 alpha-3**.
 

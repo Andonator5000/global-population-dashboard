@@ -4,7 +4,7 @@
     "light": {
       "surface": "oklch(98% 0.010 235)",
       "stroke": "oklch(98% 0.010 235)",
-      "chroma": 0.055,
+      "chroma": 0.1,
       "tiers": [
         0.68,
         0.735,
@@ -15,12 +15,12 @@
     "dark": {
       "surface": "oklch(13% 0.010 235)",
       "stroke": "oklch(13% 0.010 235)",
-      "chroma": 0.06,
+      "chroma": 0.11,
       "tiers": [
-        0.3,
-        0.35,
+        0.34,
         0.4,
-        0.45
+        0.46,
+        0.52
       ]
     }
   },
@@ -28,18 +28,18 @@
   "verification": {
     "light": {
       "borderPairs": 325,
-      "minDeltaE": 5.32,
-      "medianDeltaE": 11.09,
+      "minDeltaE": 5.28,
+      "medianDeltaE": 16.46,
       "violations": [],
-      "minSurfaceContrast": 1.48,
+      "minSurfaceContrast": 1.46,
       "lowContrastEntities": []
     },
     "dark": {
       "borderPairs": 325,
-      "minDeltaE": 4.71,
-      "medianDeltaE": 11.42,
+      "minDeltaE": 5.79,
+      "medianDeltaE": 17.84,
       "violations": [],
-      "minSurfaceContrast": 1.43,
+      "minSurfaceContrast": 1.62,
       "lowContrastEntities": []
     }
   },
@@ -103,10 +103,11 @@
           "#cbbf3d"
         ]
       },
+      "flagSvg": "flags/svg/ABW.svg",
       "tier": 0,
       "fill": {
-        "light": "#809bba",
-        "dark": "#152f4b"
+        "light": "#689cd4",
+        "dark": "#003969"
       },
       "accent": {
         "raw": "#428fde",
@@ -132,10 +133,11 @@
           "#a05d41"
         ]
       },
+      "flagSvg": "flags/svg/AFG.svg",
       "tier": 1,
       "fill": {
-        "light": "#91b498",
-        "dark": "#21432a"
+        "light": "#79bb88",
+        "dark": "#005726"
       },
       "accent": {
         "raw": "#137f3e",
@@ -161,10 +163,11 @@
           "#660518"
         ]
       },
+      "flagSvg": "flags/svg/AGO.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfbc",
-        "dark": "#734846"
+        "light": "#ffb7b3",
+        "dark": "#9f4c4c"
       },
       "accent": {
         "raw": "#cb092f",
@@ -190,10 +193,11 @@
           "#f1c2c9"
         ]
       },
+      "flagSvg": "flags/svg/AIA.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02226a",
@@ -219,10 +223,11 @@
           "#e54b0e"
         ]
       },
+      "flagSvg": "flags/svg/ALA.svg",
       "tier": 0,
       "fill": {
-        "light": "#7f9bb9",
-        "dark": "#132f4b"
+        "light": "#679dd4",
+        "dark": "#003967"
       },
       "accent": {
         "raw": "#0265ad",
@@ -245,10 +250,11 @@
           "#f80101"
         ]
       },
+      "flagSvg": "flags/svg/ALB.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea6",
-        "dark": "#643b35"
+        "light": "#f4a295",
+        "dark": "#8b3c32"
       },
       "accent": {
         "raw": "#f80101",
@@ -274,10 +280,11 @@
           "#b69465"
         ]
       },
+      "flagSvg": "flags/svg/AND.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c9a",
-        "dark": "#562d2c"
+        "light": "#e1908d",
+        "dark": "#78292c"
       },
       "accent": {
         "raw": "#d50532",
@@ -301,10 +308,11 @@
           "#c8102e"
         ]
       },
+      "flagSvg": "flags/svg/ARE.svg",
       "tier": 2,
       "fill": {
-        "light": "#a2c5a9",
-        "dark": "#2e5137"
+        "light": "#8acd9a",
+        "dark": "#1a6936"
       },
       "accent": {
         "raw": "#068640",
@@ -330,10 +338,11 @@
           "#f5b30e"
         ]
       },
+      "flagSvg": "flags/svg/ARG.svg",
       "tier": 1,
       "fill": {
-        "light": "#8eadcb",
-        "dark": "#1e3d58"
+        "light": "#74afe5",
+        "dark": "#004b7d"
       },
       "accent": {
         "raw": "#74acdf",
@@ -359,10 +368,11 @@
           "#921141"
         ]
       },
+      "flagSvg": "flags/svg/ARM.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfb9",
-        "dark": "#734843"
+        "light": "#ffb7ae",
+        "dark": "#9e4d44"
       },
       "accent": {
         "raw": "#d90012",
@@ -388,10 +398,11 @@
           "#6c371c"
         ]
       },
+      "flagSvg": "flags/svg/ASM.svg",
       "tier": 0,
       "fill": {
-        "light": "#8798bb",
-        "dark": "#1e2d4c"
+        "light": "#7997d6",
+        "dark": "#193370"
       },
       "accent": {
         "raw": "#000066",
@@ -415,10 +426,11 @@
           "#81ceed"
         ]
       },
+      "flagSvg": "flags/svg/ATA.svg",
       "tier": 0,
       "fill": {
-        "light": "#779eb6",
-        "dark": "#043247"
+        "light": "#54a2cd",
+        "dark": "#003d58"
       },
       "accent": {
         "raw": "#029edb",
@@ -443,10 +455,11 @@
           "#f2bec0"
         ]
       },
+      "flagSvg": "flags/svg/ATF.svg",
       "tier": 0,
       "fill": {
-        "light": "#8599bb",
-        "dark": "#1c2d4c"
+        "light": "#7599d6",
+        "dark": "#133470"
       },
       "accent": {
         "raw": "#244f9c",
@@ -472,10 +485,11 @@
           "#c84855"
         ]
       },
+      "flagSvg": "flags/svg/ATG.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c87",
-        "dark": "#47211e"
+        "light": "#cf7f79",
+        "dark": "#651819"
       },
       "accent": {
         "raw": "#cd1126",
@@ -501,10 +515,11 @@
           "#eb4261"
         ]
       },
+      "flagSvg": "flags/svg/AUS.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02236a",
@@ -528,10 +543,11 @@
           "#d4455c"
         ]
       },
+      "flagSvg": "flags/svg/AUT.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcadab",
-        "dark": "#643a39"
+        "light": "#f4a19d",
+        "dark": "#8b3b3b"
       },
       "accent": {
         "raw": "#c8102e",
@@ -557,10 +573,11 @@
           "#4f8aad"
         ]
       },
+      "flagSvg": "flags/svg/AZE.svg",
       "tier": 2,
       "fill": {
-        "light": "#95c3d5",
-        "dark": "#1c4f60"
+        "light": "#6cc9ea",
+        "dark": "#00627b"
       },
       "accent": {
         "raw": "#00b5e2",
@@ -586,10 +603,11 @@
           "#d54a60"
         ]
       },
+      "flagSvg": "flags/svg/BDI.svg",
       "tier": 2,
       "fill": {
-        "light": "#a8c4a3",
-        "dark": "#365031"
+        "light": "#98cb8e",
+        "dark": "#326627"
       },
       "accent": {
         "raw": "#44b02c",
@@ -615,10 +633,11 @@
           "#f9a32e"
         ]
       },
+      "flagSvg": "flags/svg/BEL.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b88",
-        "dark": "#47201f"
+        "light": "#cf7f7b",
+        "dark": "#65181a"
       },
       "accent": {
         "raw": "#ef3440",
@@ -644,10 +663,11 @@
           "#f8b71e"
         ]
       },
+      "flagSvg": "flags/svg/BEN.svg",
       "tier": 2,
       "fill": {
-        "light": "#9ec6ad",
-        "dark": "#2a513b"
+        "light": "#82cea1",
+        "dark": "#006a3e"
       },
       "accent": {
         "raw": "#018751",
@@ -673,10 +693,11 @@
           "#eb829a"
         ]
       },
+      "flagSvg": "flags/svg/BES.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1c2d4c"
+        "light": "#7598d6",
+        "dark": "#143470"
       },
       "accent": {
         "raw": "#023288",
@@ -702,10 +723,11 @@
           "#816b3b"
         ]
       },
+      "flagSvg": "flags/svg/BFA.svg",
       "tier": 1,
       "fill": {
-        "light": "#91b497",
-        "dark": "#21432a"
+        "light": "#7abb88",
+        "dark": "#005725"
       },
       "accent": {
         "raw": "#019e4a",
@@ -731,10 +753,11 @@
           "#a73f45"
         ]
       },
+      "flagSvg": "flags/svg/BGD.svg",
       "tier": 0,
       "fill": {
-        "light": "#78a491",
-        "dark": "#023727"
+        "light": "#53ac8b",
+        "dark": "#004330"
       },
       "accent": {
         "raw": "#016a4e",
@@ -758,10 +781,11 @@
           "#d62612"
         ]
       },
+      "flagSvg": "flags/svg/BGR.svg",
       "tier": 0,
       "fill": {
-        "light": "#78a490",
-        "dark": "#033727"
+        "light": "#54ac8a",
+        "dark": "#00432f"
       },
       "accent": {
         "raw": "#00966e",
@@ -784,10 +808,11 @@
           "#da2c1f"
         ]
       },
+      "flagSvg": "flags/svg/BHR.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211b"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#da2c1f",
@@ -813,10 +838,11 @@
           "#00262c"
         ]
       },
+      "flagSvg": "flags/svg/BHS.svg",
       "tier": 0,
       "fill": {
-        "light": "#71a1ad",
-        "dark": "#003540"
+        "light": "#3ea8bf",
+        "dark": "#003f4b"
       },
       "accent": {
         "raw": "#00778b",
@@ -841,10 +867,11 @@
           "#9ba9d6"
         ]
       },
+      "flagSvg": "flags/svg/BIH.svg",
       "tier": 3,
       "fill": {
-        "light": "#bacdf1",
-        "dark": "#445577"
+        "light": "#b3ccff",
+        "dark": "#4867a8"
       },
       "accent": {
         "raw": "#022595",
@@ -870,10 +897,11 @@
           "#eedcb8"
         ]
       },
+      "flagSvg": "flags/svg/BLM.svg",
       "tier": 0,
       "fill": {
-        "light": "#a19972",
-        "dark": "#362e02"
+        "light": "#a9994c",
+        "dark": "#423800"
       },
       "accent": {
         "raw": "#d5bc39",
@@ -899,10 +927,11 @@
           "#455c2c"
         ]
       },
+      "flagSvg": "flags/svg/BLR.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfb9",
-        "dark": "#734843"
+        "light": "#ffb7af",
+        "dark": "#9f4d46"
       },
       "accent": {
         "raw": "#ce1922",
@@ -928,10 +957,11 @@
           "#8b134b"
         ]
       },
+      "flagSvg": "flags/svg/BLZ.svg",
       "tier": 2,
       "fill": {
-        "light": "#acbadf",
-        "dark": "#3a4668"
+        "light": "#a0b8fc",
+        "dark": "#3f5395"
       },
       "accent": {
         "raw": "#171696",
@@ -957,10 +987,11 @@
           "#d9a7af"
         ]
       },
+      "flagSvg": "flags/svg/BMU.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7c",
+        "dark": "#65171c"
       },
       "accent": {
         "raw": "#c8102e",
@@ -986,10 +1017,11 @@
           "#d1d65d"
         ]
       },
+      "flagSvg": "flags/svg/BOL.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea6",
-        "dark": "#643b34"
+        "light": "#f4a294",
+        "dark": "#8b3c31"
       },
       "accent": {
         "raw": "#d32011",
@@ -1015,10 +1047,11 @@
           "#f2c709"
         ]
       },
+      "flagSvg": "flags/svg/BRA.svg",
       "tier": 0,
       "fill": {
-        "light": "#81a286",
-        "dark": "#15361d"
+        "light": "#6aaa76",
+        "dark": "#00451a"
       },
       "accent": {
         "raw": "#009440",
@@ -1043,10 +1076,11 @@
           "#aa9143"
         ]
       },
+      "flagSvg": "flags/svg/BRB.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#173470"
       },
       "accent": {
         "raw": "#01277f",
@@ -1072,10 +1106,11 @@
           "#d34521"
         ]
       },
+      "flagSvg": "flags/svg/BRN.svg",
       "tier": 0,
       "fill": {
-        "light": "#9f9a73",
-        "dark": "#342e03"
+        "light": "#a59a4d",
+        "dark": "#403900"
       },
       "accent": {
         "raw": "#f5df19",
@@ -1101,10 +1136,11 @@
           "#ff9d0f"
         ]
       },
+      "flagSvg": "flags/svg/BTN.svg",
       "tier": 2,
       "fill": {
-        "light": "#c8ba93",
-        "dark": "#54461e"
+        "light": "#d2b86d",
+        "dark": "#6c5500"
       },
       "accent": {
         "raw": "#fecd13",
@@ -1130,10 +1166,11 @@
           "#e399a8"
         ]
       },
+      "flagSvg": "flags/svg/BVT.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8a",
-        "dark": "#472021"
+        "light": "#cf7f7e",
+        "dark": "#65171e"
       },
       "accent": {
         "raw": "#ba0c2f",
@@ -1156,10 +1193,11 @@
           "#6ea9d2"
         ]
       },
+      "flagSvg": "flags/svg/BWA.svg",
       "tier": 1,
       "fill": {
-        "light": "#8aafc9",
-        "dark": "#183e56"
+        "light": "#6bb2e2",
+        "dark": "#004d73"
       },
       "accent": {
         "raw": "#6ea9d2",
@@ -1185,10 +1223,11 @@
           "#d21034"
         ]
       },
+      "flagSvg": "flags/svg/CAF.svg",
       "tier": 2,
       "fill": {
-        "light": "#c7ba93",
-        "dark": "#54461e"
+        "light": "#d2b96d",
+        "dark": "#6b5500"
       },
       "accent": {
         "raw": "#ffce04",
@@ -1212,10 +1251,11 @@
           "#ffbebe"
         ]
       },
+      "flagSvg": "flags/svg/CAN.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d95",
-        "dark": "#562e28"
+        "light": "#e19185",
+        "dark": "#782b22"
       },
       "accent": {
         "raw": "#ff0605",
@@ -1241,10 +1281,11 @@
           "#e4d500"
         ]
       },
+      "flagSvg": "flags/svg/CCK.svg",
       "tier": 0,
       "fill": {
-        "light": "#85a182",
-        "dark": "#1a3518"
+        "light": "#73a86f",
+        "dark": "#064505"
       },
       "accent": {
         "raw": "#008000",
@@ -1267,10 +1308,11 @@
           "#ff0000"
         ]
       },
+      "flagSvg": "flags/svg/CHE.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#ff0000",
@@ -1296,10 +1338,11 @@
           "#c2727d"
         ]
       },
+      "flagSvg": "flags/svg/CHL.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#da2c1f",
@@ -1325,10 +1368,11 @@
           "#feec01"
         ]
       },
+      "flagSvg": "flags/svg/CHN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c86",
-        "dark": "#47211d"
+        "light": "#cf8077",
+        "dark": "#651816"
       },
       "accent": {
         "raw": "#ee1d26",
@@ -1354,10 +1398,11 @@
           "#f7b470"
         ]
       },
+      "flagSvg": "flags/svg/CIV.svg",
       "tier": 0,
       "fill": {
-        "light": "#b49078",
-        "dark": "#45250d"
+        "light": "#c8875b",
+        "dark": "#582900"
       },
       "accent": {
         "raw": "#f77f00",
@@ -1383,10 +1428,11 @@
           "#f4b31d"
         ]
       },
+      "flagSvg": "flags/svg/CMR.svg",
       "tier": 0,
       "fill": {
-        "light": "#a49872",
-        "dark": "#382d02"
+        "light": "#ad974b",
+        "dark": "#443700"
       },
       "accent": {
         "raw": "#fcd116",
@@ -1412,10 +1458,11 @@
           "#d7cb36"
         ]
       },
+      "flagSvg": "flags/svg/COD.svg",
       "tier": 0,
       "fill": {
-        "light": "#839aba",
-        "dark": "#192e4b"
+        "light": "#6f9ad5",
+        "dark": "#06366f"
       },
       "accent": {
         "raw": "#007fff",
@@ -1441,10 +1488,11 @@
           "#2aa561"
         ]
       },
+      "flagSvg": "flags/svg/COG.svg",
       "tier": 1,
       "fill": {
-        "light": "#91b497",
-        "dark": "#224329"
+        "light": "#7abb88",
+        "dark": "#015724"
       },
       "accent": {
         "raw": "#009543",
@@ -1470,10 +1518,11 @@
           "#d64e64"
         ]
       },
+      "flagSvg": "flags/svg/COK.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#03246b",
@@ -1499,10 +1548,11 @@
           "#aa163b"
         ]
       },
+      "flagSvg": "flags/svg/COL.svg",
       "tier": 2,
       "fill": {
-        "light": "#c8ba93",
-        "dark": "#54461e"
+        "light": "#d3b86d",
+        "dark": "#6c5500"
       },
       "accent": {
         "raw": "#ffcd01",
@@ -1528,10 +1578,11 @@
           "#ef3340"
         ]
       },
+      "flagSvg": "flags/svg/COM.svg",
       "tier": 0,
       "fill": {
-        "light": "#a49872",
-        "dark": "#382d01"
+        "light": "#ae974a",
+        "dark": "#453600"
       },
       "accent": {
         "raw": "#ffd100",
@@ -1557,10 +1608,11 @@
           "#df696e"
         ]
       },
+      "flagSvg": "flags/svg/CPV.svg",
       "tier": 0,
       "fill": {
-        "light": "#8599bb",
-        "dark": "#1c2d4c"
+        "light": "#7599d6",
+        "dark": "#133570"
       },
       "accent": {
         "raw": "#003893",
@@ -1586,10 +1638,11 @@
           "#a1793b"
         ]
       },
+      "flagSvg": "flags/svg/CRI.svg",
       "tier": 1,
       "fill": {
-        "light": "#98aacd",
-        "dark": "#2a3a5a"
+        "light": "#89a9e9",
+        "dark": "#284482"
       },
       "accent": {
         "raw": "#001589",
@@ -1615,10 +1668,11 @@
           "#242679"
         ]
       },
+      "flagSvg": "flags/svg/CUB.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#173470"
       },
       "accent": {
         "raw": "#002a8f",
@@ -1643,10 +1697,11 @@
           "#2a4b6d"
         ]
       },
+      "flagSvg": "flags/svg/CUW.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7698d6",
+        "dark": "#153470"
       },
       "accent": {
         "raw": "#012c80",
@@ -1672,10 +1727,11 @@
           "#61bc23"
         ]
       },
+      "flagSvg": "flags/svg/CXR.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02226a",
@@ -1701,10 +1757,11 @@
           "#ca465b"
         ]
       },
+      "flagSvg": "flags/svg/CYM.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02236a",
@@ -1729,10 +1786,11 @@
           "#ebbf85"
         ]
       },
+      "flagSvg": "flags/svg/CYP.svg",
       "tier": 0,
       "fill": {
-        "light": "#b29176",
-        "dark": "#432609"
+        "light": "#c58955",
+        "dark": "#542c00"
       },
       "accent": {
         "raw": "#d67a02",
@@ -1758,10 +1816,11 @@
           "#6d2f50"
         ]
       },
+      "flagSvg": "flags/svg/CZE.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfb9",
-        "dark": "#734843"
+        "light": "#ffb7ae",
+        "dark": "#9e4d45"
       },
       "accent": {
         "raw": "#d7161b",
@@ -1785,10 +1844,11 @@
           "#ffce00"
         ]
       },
+      "flagSvg": "flags/svg/DEU.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d95",
-        "dark": "#562e28"
+        "light": "#e19185",
+        "dark": "#782b22"
       },
       "accent": {
         "raw": "#dd0000",
@@ -1814,10 +1874,11 @@
           "#3eb089"
         ]
       },
+      "flagSvg": "flags/svg/DJI.svg",
       "tier": 0,
       "fill": {
-        "light": "#84a283",
-        "dark": "#19351a"
+        "light": "#71a971",
+        "dark": "#00450a"
       },
       "accent": {
         "raw": "#16ae2e",
@@ -1843,10 +1904,11 @@
           "#931d30"
         ]
       },
+      "flagSvg": "flags/svg/DMA.svg",
       "tier": 0,
       "fill": {
-        "light": "#7ea389",
-        "dark": "#11361f"
+        "light": "#64aa7b",
+        "dark": "#004422"
       },
       "accent": {
         "raw": "#046a38",
@@ -1870,10 +1932,11 @@
           "#d0344d"
         ]
       },
+      "flagSvg": "flags/svg/DNK.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7c",
+        "dark": "#65171c"
       },
       "accent": {
         "raw": "#c8102e",
@@ -1899,10 +1962,11 @@
           "#42904b"
         ]
       },
+      "flagSvg": "flags/svg/DOM.svg",
       "tier": 0,
       "fill": {
-        "light": "#829aba",
-        "dark": "#182e4b"
+        "light": "#6f9ad5",
+        "dark": "#05366f"
       },
       "accent": {
         "raw": "#022f63",
@@ -1928,10 +1992,11 @@
           "#efa5b3"
         ]
       },
+      "flagSvg": "flags/svg/DZA.svg",
       "tier": 1,
       "fill": {
-        "light": "#90b499",
-        "dark": "#1f432b"
+        "light": "#76bc8b",
+        "dark": "#00572b"
       },
       "accent": {
         "raw": "#016634",
@@ -1957,10 +2022,11 @@
           "#d2c132"
         ]
       },
+      "flagSvg": "flags/svg/ECU.svg",
       "tier": 0,
       "fill": {
-        "light": "#a19972",
-        "dark": "#362e02"
+        "light": "#a9994c",
+        "dark": "#423800"
       },
       "accent": {
         "raw": "#fedc01",
@@ -1986,10 +2052,11 @@
           "#c39711"
         ]
       },
+      "flagSvg": "flags/svg/EGY.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c98",
-        "dark": "#562d2b"
+        "light": "#e1908a",
+        "dark": "#782a28"
       },
       "accent": {
         "raw": "#ce1227",
@@ -2015,10 +2082,11 @@
           "#f3bd2d"
         ]
       },
+      "flagSvg": "flags/svg/ERI.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c98",
-        "dark": "#562d2b"
+        "light": "#e1908a",
+        "dark": "#782a29"
       },
       "accent": {
         "raw": "#e4022b",
@@ -2044,10 +2112,11 @@
           "#e28b90"
         ]
       },
+      "flagSvg": "flags/svg/ESH.svg",
       "tier": 0,
       "fill": {
-        "light": "#7fa388",
-        "dark": "#12361e"
+        "light": "#66aa7a",
+        "dark": "#00441f"
       },
       "accent": {
         "raw": "#007a3d",
@@ -2073,10 +2142,11 @@
           "#a2893a"
         ]
       },
+      "flagSvg": "flags/svg/ESP.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c86",
-        "dark": "#47211d"
+        "light": "#cf8077",
+        "dark": "#651816"
       },
       "accent": {
         "raw": "#ad171b",
@@ -2100,10 +2170,11 @@
           "#167dd1"
         ]
       },
+      "flagSvg": "flags/svg/EST.svg",
       "tier": 2,
       "fill": {
-        "light": "#a2bdde",
-        "dark": "#2f4a67"
+        "light": "#8bbff9",
+        "dark": "#235a93"
       },
       "accent": {
         "raw": "#0072ce",
@@ -2129,10 +2200,11 @@
           "#1047af"
         ]
       },
+      "flagSvg": "flags/svg/ETH.svg",
       "tier": 2,
       "fill": {
-        "light": "#a4c5a6",
-        "dark": "#315034"
+        "light": "#8fcc95",
+        "dark": "#256830"
       },
       "accent": {
         "raw": "#088930",
@@ -2155,10 +2227,11 @@
           "#01306d"
         ]
       },
+      "flagSvg": "flags/svg/FIN.svg",
       "tier": 0,
       "fill": {
-        "light": "#839abb",
-        "dark": "#1a2e4c"
+        "light": "#719ad6",
+        "dark": "#0b366f"
       },
       "accent": {
         "raw": "#01306d",
@@ -2184,10 +2257,11 @@
           "#c2485b"
         ]
       },
+      "flagSvg": "flags/svg/FJI.svg",
       "tier": 0,
       "fill": {
-        "light": "#789eb6",
-        "dark": "#063248"
+        "light": "#55a2ce",
+        "dark": "#003d58"
       },
       "accent": {
         "raw": "#62b5e5",
@@ -2213,10 +2287,11 @@
           "#efbfc7"
         ]
       },
+      "flagSvg": "flags/svg/FLK.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02236a",
@@ -2241,10 +2316,11 @@
           "#e57a83"
         ]
       },
+      "flagSvg": "flags/svg/FRA.svg",
       "tier": 2,
       "fill": {
-        "light": "#a4bdde",
-        "dark": "#324968"
+        "light": "#90bdfa",
+        "dark": "#2a5894"
       },
       "accent": {
         "raw": "#012754",
@@ -2270,10 +2346,11 @@
           "#3c539a"
         ]
       },
+      "flagSvg": "flags/svg/FRO.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b88",
-        "dark": "#47201f"
+        "light": "#cf7f7b",
+        "dark": "#65181a"
       },
       "accent": {
         "raw": "#ef3340",
@@ -2297,10 +2374,11 @@
           "#92c2e4"
         ]
       },
+      "flagSvg": "flags/svg/FSM.svg",
       "tier": 0,
       "fill": {
-        "light": "#7a9db7",
-        "dark": "#0a3149"
+        "light": "#5aa0d0",
+        "dark": "#003c5c"
       },
       "accent": {
         "raw": "#75b2dd",
@@ -2325,10 +2403,11 @@
           "#3a75c4"
         ]
       },
+      "flagSvg": "flags/svg/GAB.svg",
       "tier": 2,
       "fill": {
-        "light": "#9ec6ad",
-        "dark": "#2a513b"
+        "light": "#82cea1",
+        "dark": "#006a3e"
       },
       "accent": {
         "raw": "#009e60",
@@ -2354,10 +2433,11 @@
           "#f1c3ca"
         ]
       },
+      "flagSvg": "flags/svg/GBR.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7c",
+        "dark": "#65171c"
       },
       "accent": {
         "raw": "#c8102e",
@@ -2381,10 +2461,11 @@
           "#ffcccb"
         ]
       },
+      "flagSvg": "flags/svg/GEO.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#ff110f",
@@ -2410,10 +2491,11 @@
           "#ef6c23"
         ]
       },
+      "flagSvg": "flags/svg/GGY.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c88",
-        "dark": "#47211e"
+        "light": "#cf7f7a",
+        "dark": "#651819"
       },
       "accent": {
         "raw": "#e8112d",
@@ -2439,10 +2521,11 @@
           "#da4522"
         ]
       },
+      "flagSvg": "flags/svg/GHA.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea9",
-        "dark": "#643a37"
+        "light": "#f4a19a",
+        "dark": "#8b3b38"
       },
       "accent": {
         "raw": "#ce1226",
@@ -2468,10 +2551,11 @@
           "#94730a"
         ]
       },
+      "flagSvg": "flags/svg/GIB.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d96",
-        "dark": "#562e29"
+        "light": "#e19186",
+        "dark": "#782b24"
       },
       "accent": {
         "raw": "#d1020e",
@@ -2497,10 +2581,11 @@
           "#ed921c"
         ]
       },
+      "flagSvg": "flags/svg/GIN.svg",
       "tier": 1,
       "fill": {
-        "light": "#8cb49d",
-        "dark": "#1a442f"
+        "light": "#6dbd93",
+        "dark": "#005636"
       },
       "accent": {
         "raw": "#019460",
@@ -2526,10 +2611,11 @@
           "#897f20"
         ]
       },
+      "flagSvg": "flags/svg/GLP.svg",
       "tier": 0,
       "fill": {
-        "light": "#8799bb",
-        "dark": "#1e2d4c"
+        "light": "#7898d6",
+        "dark": "#183470"
       },
       "accent": {
         "raw": "#012486",
@@ -2555,10 +2641,11 @@
           "#d84556"
         ]
       },
+      "flagSvg": "flags/svg/GMB.svg",
       "tier": 1,
       "fill": {
-        "light": "#98b291",
-        "dark": "#2a4223"
+        "light": "#88b97c",
+        "dark": "#235513"
       },
       "accent": {
         "raw": "#3c792b",
@@ -2584,10 +2671,11 @@
           "#ed911c"
         ]
       },
+      "flagSvg": "flags/svg/GNB.svg",
       "tier": 2,
       "fill": {
-        "light": "#c6ba93",
-        "dark": "#53471f"
+        "light": "#d0b96d",
+        "dark": "#6a5600"
       },
       "accent": {
         "raw": "#fcd116",
@@ -2613,10 +2701,11 @@
           "#3fa43f"
         ]
       },
+      "flagSvg": "flags/svg/GNQ.svg",
       "tier": 1,
       "fill": {
-        "light": "#99b290",
-        "dark": "#2b4222"
+        "light": "#8ab87a",
+        "dark": "#265510"
       },
       "accent": {
         "raw": "#419b05",
@@ -2640,10 +2729,11 @@
           "#74a3d1"
         ]
       },
+      "flagSvg": "flags/svg/GRC.svg",
       "tier": 3,
       "fill": {
-        "light": "#b4cff0",
-        "dark": "#3e5776"
+        "light": "#a9d0ff",
+        "dark": "#386ba7"
       },
       "accent": {
         "raw": "#0f5faf",
@@ -2669,10 +2759,11 @@
           "#da4421"
         ]
       },
+      "flagSvg": "flags/svg/GRD.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c87",
-        "dark": "#47211e"
+        "light": "#cf7f79",
+        "dark": "#651818"
       },
       "accent": {
         "raw": "#ce1226",
@@ -2697,10 +2788,11 @@
           "#e89ba7"
         ]
       },
+      "flagSvg": "flags/svg/GRL.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7c",
+        "dark": "#65171c"
       },
       "accent": {
         "raw": "#c8102e",
@@ -2726,10 +2818,11 @@
           "#efe7a1"
         ]
       },
+      "flagSvg": "flags/svg/GTM.svg",
       "tier": 0,
       "fill": {
-        "light": "#7b9db8",
-        "dark": "#0d3149"
+        "light": "#5e9fd1",
+        "dark": "#003b5f"
       },
       "accent": {
         "raw": "#4997d0",
@@ -2755,10 +2848,11 @@
           "#fae236"
         ]
       },
+      "flagSvg": "flags/svg/GUF.svg",
       "tier": 2,
       "fill": {
-        "light": "#a4c5a6",
-        "dark": "#315034"
+        "light": "#8fcc95",
+        "dark": "#256830"
       },
       "accent": {
         "raw": "#078930",
@@ -2784,10 +2878,11 @@
           "#91d9f9"
         ]
       },
+      "flagSvg": "flags/svg/GUM.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7698d6",
+        "dark": "#153470"
       },
       "accent": {
         "raw": "#00297b",
@@ -2813,10 +2908,11 @@
           "#fbe59c"
         ]
       },
+      "flagSvg": "flags/svg/GUY.svg",
       "tier": 2,
       "fill": {
-        "light": "#9bc6b0",
-        "dark": "#26523e"
+        "light": "#7bcfa8",
+        "dark": "#006947"
       },
       "accent": {
         "raw": "#2a936a",
@@ -2840,10 +2936,11 @@
           "#faabae"
         ]
       },
+      "flagSvg": "flags/svg/HKG.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d97",
-        "dark": "#562d29"
+        "light": "#e19087",
+        "dark": "#782a25"
       },
       "accent": {
         "raw": "#ee1e26",
@@ -2869,10 +2966,11 @@
           "#3536a3"
         ]
       },
+      "flagSvg": "flags/svg/HMD.svg",
       "tier": 0,
       "fill": {
-        "light": "#8798bb",
-        "dark": "#1e2d4c"
+        "light": "#7997d6",
+        "dark": "#193370"
       },
       "accent": {
         "raw": "#00008b",
@@ -2896,10 +2994,11 @@
           "#5ad3ed"
         ]
       },
+      "flagSvg": "flags/svg/HND.svg",
       "tier": 1,
       "fill": {
-        "light": "#83b2c2",
-        "dark": "#084150"
+        "light": "#57b8d5",
+        "dark": "#005063"
       },
       "accent": {
         "raw": "#00bce4",
@@ -2925,10 +3024,11 @@
           "#1c94dc"
         ]
       },
+      "flagSvg": "flags/svg/HRV.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d96",
-        "dark": "#562e28"
+        "light": "#e19185",
+        "dark": "#782b23"
       },
       "accent": {
         "raw": "#ff1614",
@@ -2954,10 +3054,11 @@
           "#c49e40"
         ]
       },
+      "flagSvg": "flags/svg/HTI.svg",
       "tier": 1,
       "fill": {
-        "light": "#98aacd",
-        "dark": "#2a3a5a"
+        "light": "#89a9e9",
+        "dark": "#284482"
       },
       "accent": {
         "raw": "#00209f",
@@ -2982,10 +3083,11 @@
           "#de6f7a"
         ]
       },
+      "flagSvg": "flags/svg/HUN.svg",
       "tier": 0,
       "fill": {
-        "light": "#80a287",
-        "dark": "#14361d"
+        "light": "#69aa78",
+        "dark": "#00451c"
       },
       "accent": {
         "raw": "#497252",
@@ -3008,10 +3110,11 @@
           "#ff0b09"
         ]
       },
+      "flagSvg": "flags/svg/IDN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#ff0b09",
@@ -3037,10 +3140,11 @@
           "#bca433"
         ]
       },
+      "flagSvg": "flags/svg/IMN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b88",
-        "dark": "#47201f"
+        "light": "#cf7f7a",
+        "dark": "#65181a"
       },
       "accent": {
         "raw": "#cf142b",
@@ -3066,10 +3170,11 @@
           "#49936f"
         ]
       },
+      "flagSvg": "flags/svg/IND.svg",
       "tier": 1,
       "fill": {
-        "light": "#c89e8f",
-        "dark": "#552f21"
+        "light": "#df9477",
+        "dark": "#762e0d"
       },
       "accent": {
         "raw": "#ff6a24",
@@ -3095,10 +3200,11 @@
           "#efbec6"
         ]
       },
+      "flagSvg": "flags/svg/IOT.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#173470"
       },
       "accent": {
         "raw": "#0e2e71",
@@ -3124,10 +3230,11 @@
           "#ffd7bf"
         ]
       },
+      "flagSvg": "flags/svg/IRL.svg",
       "tier": 1,
       "fill": {
-        "light": "#8db49c",
-        "dark": "#1b442e"
+        "light": "#70bd91",
+        "dark": "#005633"
       },
       "accent": {
         "raw": "#169b62",
@@ -3153,10 +3260,11 @@
           "#f4b2b2"
         ]
       },
+      "flagSvg": "flags/svg/IRN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8075",
+        "dark": "#651913"
       },
       "accent": {
         "raw": "#dc1d1a",
@@ -3182,10 +3290,11 @@
           "#92c6ac"
         ]
       },
+      "flagSvg": "flags/svg/IRQ.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea9",
-        "dark": "#643a37"
+        "light": "#f4a19a",
+        "dark": "#8b3b38"
       },
       "accent": {
         "raw": "#cd1125",
@@ -3211,10 +3320,11 @@
           "#e35163"
         ]
       },
+      "flagSvg": "flags/svg/ISL.svg",
       "tier": 0,
       "fill": {
-        "light": "#819bba",
-        "dark": "#172f4b"
+        "light": "#6c9bd5",
+        "dark": "#00376d"
       },
       "accent": {
         "raw": "#03539c",
@@ -3237,10 +3347,11 @@
           "#063dba"
         ]
       },
+      "flagSvg": "flags/svg/ISR.svg",
       "tier": 2,
       "fill": {
-        "light": "#a8bbdf",
-        "dark": "#364768"
+        "light": "#99bbfb",
+        "dark": "#365695"
       },
       "accent": {
         "raw": "#063dba",
@@ -3266,10 +3377,11 @@
           "#abdbc2"
         ]
       },
+      "flagSvg": "flags/svg/ITA.svg",
       "tier": 1,
       "fill": {
-        "light": "#91b498",
-        "dark": "#21432a"
+        "light": "#79bb89",
+        "dark": "#005727"
       },
       "accent": {
         "raw": "#019247",
@@ -3295,10 +3407,11 @@
           "#328440"
         ]
       },
+      "flagSvg": "flags/svg/JAM.svg",
       "tier": 0,
       "fill": {
-        "light": "#7ca38b",
-        "dark": "#0c3722"
+        "light": "#5eab81",
+        "dark": "#004428"
       },
       "accent": {
         "raw": "#007749",
@@ -3324,10 +3437,11 @@
           "#efb609"
         ]
       },
+      "flagSvg": "flags/svg/JEY.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b88",
-        "dark": "#47201f"
+        "light": "#cf7f7a",
+        "dark": "#65181a"
       },
       "accent": {
         "raw": "#cf152c",
@@ -3353,10 +3467,11 @@
           "#375e37"
         ]
       },
+      "flagSvg": "flags/svg/JOR.svg",
       "tier": 1,
       "fill": {
-        "light": "#90b499",
-        "dark": "#1f432b"
+        "light": "#77bc8b",
+        "dark": "#00572a"
       },
       "accent": {
         "raw": "#057b3f",
@@ -3381,10 +3496,11 @@
           "#c21a40"
         ]
       },
+      "flagSvg": "flags/svg/JPN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8a",
-        "dark": "#472021"
+        "light": "#cf7f7e",
+        "dark": "#65171e"
       },
       "accent": {
         "raw": "#bc002d",
@@ -3410,10 +3526,11 @@
           "#afd85c"
         ]
       },
+      "flagSvg": "flags/svg/KAZ.svg",
       "tier": 2,
       "fill": {
-        "light": "#92c5cf",
-        "dark": "#16505a"
+        "light": "#64ccdf",
+        "dark": "#006372"
       },
       "accent": {
         "raw": "#00abc2",
@@ -3439,10 +3556,11 @@
           "#9a4c37"
         ]
       },
+      "flagSvg": "flags/svg/KEN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8075",
+        "dark": "#651913"
       },
       "accent": {
         "raw": "#bb1713",
@@ -3468,10 +3586,11 @@
           "#ffef00"
         ]
       },
+      "flagSvg": "flags/svg/KGZ.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d95",
-        "dark": "#562e28"
+        "light": "#e19185",
+        "dark": "#782b22"
       },
       "accent": {
         "raw": "#ff0000",
@@ -3497,10 +3616,11 @@
           "#ab3c5a"
         ]
       },
+      "flagSvg": "flags/svg/KHM.svg",
       "tier": 2,
       "fill": {
-        "light": "#a9bbdf",
-        "dark": "#374768"
+        "light": "#99bafb",
+        "dark": "#375595"
       },
       "accent": {
         "raw": "#042fa1",
@@ -3526,10 +3646,11 @@
           "#b32d0a"
         ]
       },
+      "flagSvg": "flags/svg/KIR.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8075",
+        "dark": "#651913"
       },
       "accent": {
         "raw": "#c81111",
@@ -3555,10 +3676,11 @@
           "#33ab60"
         ]
       },
+      "flagSvg": "flags/svg/KNA.svg",
       "tier": 0,
       "fill": {
-        "light": "#82a285",
-        "dark": "#16361c"
+        "light": "#6ca974",
+        "dark": "#004516"
       },
       "accent": {
         "raw": "#009739",
@@ -3584,10 +3706,11 @@
           "#214390"
         ]
       },
+      "flagSvg": "flags/svg/KOR.svg",
       "tier": 0,
       "fill": {
-        "light": "#849abb",
-        "dark": "#1a2e4c"
+        "light": "#719ad6",
+        "dark": "#0c356f"
       },
       "accent": {
         "raw": "#064ba2",
@@ -3613,10 +3736,11 @@
           "#dd5e6c"
         ]
       },
+      "flagSvg": "flags/svg/KWT.svg",
       "tier": 1,
       "fill": {
-        "light": "#90b499",
-        "dark": "#20432b"
+        "light": "#77bc8a",
+        "dark": "#00572a"
       },
       "accent": {
         "raw": "#00793d",
@@ -3642,10 +3766,11 @@
           "#6079a2"
         ]
       },
+      "flagSvg": "flags/svg/LAO.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c98",
-        "dark": "#562d2b"
+        "light": "#e1908a",
+        "dark": "#782a28"
       },
       "accent": {
         "raw": "#ce1126",
@@ -3671,10 +3796,11 @@
           "#afdbc2"
         ]
       },
+      "flagSvg": "flags/svg/LBN.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c98",
-        "dark": "#562d2a"
+        "light": "#e19089",
+        "dark": "#782a27"
       },
       "accent": {
         "raw": "#d41a27",
@@ -3700,10 +3826,11 @@
           "#dc7a8e"
         ]
       },
+      "flagSvg": "flags/svg/LBR.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcadac",
-        "dark": "#643a3a"
+        "light": "#f4a19f",
+        "dark": "#8b3b3d"
       },
       "accent": {
         "raw": "#bf0a30",
@@ -3727,10 +3854,11 @@
           "#239e46"
         ]
       },
+      "flagSvg": "flags/svg/LBY.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea7",
-        "dark": "#643b35"
+        "light": "#f4a297",
+        "dark": "#8b3c34"
       },
       "accent": {
         "raw": "#e70013",
@@ -3756,10 +3884,11 @@
           "#badcc3"
         ]
       },
+      "flagSvg": "flags/svg/LCA.svg",
       "tier": 0,
       "fill": {
-        "light": "#769fb5",
-        "dark": "#023247"
+        "light": "#51a3cc",
+        "dark": "#003d56"
       },
       "accent": {
         "raw": "#66ccff",
@@ -3785,10 +3914,11 @@
           "#585431"
         ]
       },
+      "flagSvg": "flags/svg/LIE.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c98",
-        "dark": "#562d2b"
+        "light": "#e1908a",
+        "dark": "#782a28"
       },
       "accent": {
         "raw": "#ce1126",
@@ -3814,10 +3944,11 @@
           "#00534e"
         ]
       },
+      "flagSvg": "flags/svg/LKA.svg",
       "tier": 0,
       "fill": {
-        "light": "#a99572",
-        "dark": "#3d2a02"
+        "light": "#b7924b",
+        "dark": "#4a3400"
       },
       "accent": {
         "raw": "#fbbb28",
@@ -3842,10 +3973,11 @@
           "#29aa62"
         ]
       },
+      "flagSvg": "flags/svg/LSO.svg",
       "tier": 0,
       "fill": {
-        "light": "#8798bb",
-        "dark": "#1e2d4c"
+        "light": "#7997d6",
+        "dark": "#1a3370"
       },
       "accent": {
         "raw": "#01168a",
@@ -3870,10 +4002,11 @@
           "#c1272d"
         ]
       },
+      "flagSvg": "flags/svg/LTU.svg",
       "tier": 2,
       "fill": {
-        "light": "#cdb893",
-        "dark": "#58441f"
+        "light": "#dbb46d",
+        "dark": "#735100"
       },
       "accent": {
         "raw": "#fdb913",
@@ -3897,10 +4030,11 @@
           "#00a1de"
         ]
       },
+      "flagSvg": "flags/svg/LUX.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfbb",
-        "dark": "#734845"
+        "light": "#ffb7b1",
+        "dark": "#9f4c49"
       },
       "accent": {
         "raw": "#ed2939",
@@ -3923,10 +4057,11 @@
           "#9d2235"
         ]
       },
+      "flagSvg": "flags/svg/LVA.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8b",
-        "dark": "#472022"
+        "light": "#cf7e81",
+        "dark": "#651721"
       },
       "accent": {
         "raw": "#9d2235",
@@ -3952,10 +4087,11 @@
           "#ddcf2c"
         ]
       },
+      "flagSvg": "flags/svg/MAC.svg",
       "tier": 1,
       "fill": {
-        "light": "#85b5a8",
-        "dark": "#0b4539"
+        "light": "#5bbea6",
+        "dark": "#005546"
       },
       "accent": {
         "raw": "#117663",
@@ -3980,10 +4116,11 @@
           "#e57a83"
         ]
       },
+      "flagSvg": "flags/svg/MAF.svg",
       "tier": 0,
       "fill": {
-        "light": "#829aba",
-        "dark": "#182e4b"
+        "light": "#6f9bd5",
+        "dark": "#05366f"
       },
       "accent": {
         "raw": "#012754",
@@ -4009,10 +4146,11 @@
           "#7b3d2f"
         ]
       },
+      "flagSvg": "flags/svg/MAR.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea9",
-        "dark": "#643a37"
+        "light": "#f4a19a",
+        "dark": "#8b3b38"
       },
       "accent": {
         "raw": "#c1282e",
@@ -4035,10 +4173,11 @@
           "#ce1126"
         ]
       },
+      "flagSvg": "flags/svg/MCO.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c87",
-        "dark": "#47211e"
+        "light": "#cf7f79",
+        "dark": "#651819"
       },
       "accent": {
         "raw": "#ce1126",
@@ -4064,10 +4203,11 @@
           "#8b6448"
         ]
       },
+      "flagSvg": "flags/svg/MDA.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7c",
+        "dark": "#65171c"
       },
       "accent": {
         "raw": "#cb092f",
@@ -4093,10 +4233,11 @@
           "#d84a38"
         ]
       },
+      "flagSvg": "flags/svg/MDG.svg",
       "tier": 0,
       "fill": {
-        "light": "#80a287",
-        "dark": "#13361e"
+        "light": "#68aa78",
+        "dark": "#00451d"
       },
       "accent": {
         "raw": "#027f3b",
@@ -4122,10 +4263,11 @@
           "#a7d2bb"
         ]
       },
+      "flagSvg": "flags/svg/MDV.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7d",
+        "dark": "#65171d"
       },
       "accent": {
         "raw": "#d11234",
@@ -4151,10 +4293,11 @@
           "#7a4f32"
         ]
       },
+      "flagSvg": "flags/svg/MEX.svg",
       "tier": 1,
       "fill": {
-        "light": "#8ab59f",
-        "dark": "#174431"
+        "light": "#69bd97",
+        "dark": "#00563a"
       },
       "accent": {
         "raw": "#046948",
@@ -4180,10 +4323,11 @@
           "#da9a57"
         ]
       },
+      "flagSvg": "flags/svg/MHL.svg",
       "tier": 0,
       "fill": {
-        "light": "#8599bb",
-        "dark": "#1c2d4c"
+        "light": "#7599d6",
+        "dark": "#133570"
       },
       "accent": {
         "raw": "#033a93",
@@ -4209,10 +4353,11 @@
           "#f4cf2c"
         ]
       },
+      "flagSvg": "flags/svg/MKD.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d97",
-        "dark": "#562d29"
+        "light": "#e19087",
+        "dark": "#782a26"
       },
       "accent": {
         "raw": "#d82126",
@@ -4238,10 +4383,11 @@
           "#ed921c"
         ]
       },
+      "flagSvg": "flags/svg/MLI.svg",
       "tier": 2,
       "fill": {
-        "light": "#a5c4a6",
-        "dark": "#325033"
+        "light": "#91cc93",
+        "dark": "#28682f"
       },
       "accent": {
         "raw": "#15b53a",
@@ -4266,10 +4412,11 @@
           "#d0abb0"
         ]
       },
+      "flagSvg": "flags/svg/MLT.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b88",
-        "dark": "#47201f"
+        "light": "#cf7f7a",
+        "dark": "#65181a"
       },
       "accent": {
         "raw": "#cf142b",
@@ -4295,10 +4442,11 @@
           "#c6c516"
         ]
       },
+      "flagSvg": "flags/svg/MMR.svg",
       "tier": 2,
       "fill": {
-        "light": "#c8ba93",
-        "dark": "#54461e"
+        "light": "#d3b86d",
+        "dark": "#6c5500"
       },
       "accent": {
         "raw": "#fecb03",
@@ -4324,10 +4472,11 @@
           "#df360b"
         ]
       },
+      "flagSvg": "flags/svg/MNE.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#e30000",
@@ -4353,10 +4502,11 @@
           "#484f87"
         ]
       },
+      "flagSvg": "flags/svg/MNG.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcada9",
-        "dark": "#643a38"
+        "light": "#f4a19b",
+        "dark": "#8b3b39"
       },
       "accent": {
         "raw": "#da2031",
@@ -4382,10 +4532,11 @@
           "#ac682e"
         ]
       },
+      "flagSvg": "flags/svg/MNP.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#173470"
       },
       "accent": {
         "raw": "#0336a2",
@@ -4411,10 +4562,11 @@
           "#630e1f"
         ]
       },
+      "flagSvg": "flags/svg/MOZ.svg",
       "tier": 0,
       "fill": {
-        "light": "#9f9a72",
-        "dark": "#352e03"
+        "light": "#a69a4c",
+        "dark": "#403800"
       },
       "accent": {
         "raw": "#fae011",
@@ -4440,10 +4592,11 @@
           "#736d3d"
         ]
       },
+      "flagSvg": "flags/svg/MRT.svg",
       "tier": 3,
       "fill": {
-        "light": "#b1d7bc",
-        "dark": "#3a5f46"
+        "light": "#98e0ae",
+        "dark": "#297b4a"
       },
       "accent": {
         "raw": "#00a95c",
@@ -4469,10 +4622,11 @@
           "#a24111"
         ]
       },
+      "flagSvg": "flags/svg/MSR.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02226a",
@@ -4498,10 +4652,11 @@
           "#7f5a38"
         ]
       },
+      "flagSvg": "flags/svg/MTQ.svg",
       "tier": 0,
       "fill": {
-        "light": "#80a287",
-        "dark": "#13361e"
+        "light": "#68aa78",
+        "dark": "#00451d"
       },
       "accent": {
         "raw": "#00a550",
@@ -4527,10 +4682,11 @@
           "#02a652"
         ]
       },
+      "flagSvg": "flags/svg/MUS.svg",
       "tier": 0,
       "fill": {
-        "light": "#a39872",
-        "dark": "#382d02"
+        "light": "#ac974b",
+        "dark": "#443700"
       },
       "accent": {
         "raw": "#fbd10a",
@@ -4556,10 +4712,11 @@
           "#5e7830"
         ]
       },
+      "flagSvg": "flags/svg/MWI.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfba",
-        "dark": "#734845"
+        "light": "#ffb7b1",
+        "dark": "#9f4d48"
       },
       "accent": {
         "raw": "#c51025",
@@ -4585,10 +4742,11 @@
           "#f8c704"
         ]
       },
+      "flagSvg": "flags/svg/MYS.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d96",
-        "dark": "#562e28"
+        "light": "#e19185",
+        "dark": "#782b23"
       },
       "accent": {
         "raw": "#ce1412",
@@ -4614,10 +4772,11 @@
           "#232475"
         ]
       },
+      "flagSvg": "flags/svg/MYT.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c83",
-        "dark": "#47211a"
+        "light": "#ce8171",
+        "dark": "#65190d"
       },
       "accent": {
         "raw": "#d14029",
@@ -4643,10 +4802,11 @@
           "#f7ca06"
         ]
       },
+      "flagSvg": "flags/svg/NAM.svg",
       "tier": 0,
       "fill": {
-        "light": "#81a287",
-        "dark": "#14361d"
+        "light": "#69aa77",
+        "dark": "#00451b"
       },
       "accent": {
         "raw": "#009543",
@@ -4672,10 +4832,11 @@
           "#ebd901"
         ]
       },
+      "flagSvg": "flags/svg/NCL.svg",
       "tier": 0,
       "fill": {
-        "light": "#81a287",
-        "dark": "#14361d"
+        "light": "#69aa77",
+        "dark": "#00451b"
       },
       "accent": {
         "raw": "#009543",
@@ -4700,10 +4861,11 @@
           "#f3bd9f"
         ]
       },
+      "flagSvg": "flags/svg/NER.svg",
       "tier": 0,
       "fill": {
-        "light": "#b78e7e",
-        "dark": "#472215"
+        "light": "#cd8367",
+        "dark": "#621f00"
       },
       "accent": {
         "raw": "#e0540c",
@@ -4728,10 +4890,11 @@
           "#b2d7c2"
         ]
       },
+      "flagSvg": "flags/svg/NFK.svg",
       "tier": 0,
       "fill": {
-        "light": "#81a286",
-        "dark": "#14361d"
+        "light": "#6aaa77",
+        "dark": "#00451a"
       },
       "accent": {
         "raw": "#007934",
@@ -4755,10 +4918,11 @@
           "#abd7c6"
         ]
       },
+      "flagSvg": "flags/svg/NGA.svg",
       "tier": 3,
       "fill": {
-        "light": "#b0d8be",
-        "dark": "#375f48"
+        "light": "#94e0b2",
+        "dark": "#217b4f"
       },
       "accent": {
         "raw": "#008751",
@@ -4784,10 +4948,11 @@
           "#ade6f4"
         ]
       },
+      "flagSvg": "flags/svg/NIC.svg",
       "tier": 0,
       "fill": {
-        "light": "#819bba",
-        "dark": "#172f4b"
+        "light": "#6d9bd5",
+        "dark": "#00376f"
       },
       "accent": {
         "raw": "#0067c6",
@@ -4813,10 +4978,11 @@
           "#edbac2"
         ]
       },
+      "flagSvg": "flags/svg/NIU.svg",
       "tier": 0,
       "fill": {
-        "light": "#a19972",
-        "dark": "#362e02"
+        "light": "#a8994c",
+        "dark": "#423800"
       },
       "accent": {
         "raw": "#fedd00",
@@ -4841,10 +5007,11 @@
           "#bd4b55"
         ]
       },
+      "flagSvg": "flags/svg/NLD.svg",
       "tier": 2,
       "fill": {
-        "light": "#a7bbdf",
-        "dark": "#354868"
+        "light": "#97bbfb",
+        "dark": "#345695"
       },
       "accent": {
         "raw": "#24488c",
@@ -4870,10 +5037,11 @@
           "#e399a8"
         ]
       },
+      "flagSvg": "flags/svg/NOR.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcadac",
-        "dark": "#643a3a"
+        "light": "#f4a19f",
+        "dark": "#8b3b3d"
       },
       "accent": {
         "raw": "#ba0c2f",
@@ -4899,10 +5067,11 @@
           "#da2d4f"
         ]
       },
+      "flagSvg": "flags/svg/NPL.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcadac",
-        "dark": "#643a3a"
+        "light": "#f4a1a0",
+        "dark": "#8b3b3e"
       },
       "accent": {
         "raw": "#dc143c",
@@ -4926,10 +5095,11 @@
           "#ffc72c"
         ]
       },
+      "flagSvg": "flags/svg/NRU.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#012269",
@@ -4955,10 +5125,11 @@
           "#d74f65"
         ]
       },
+      "flagSvg": "flags/svg/NZL.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02226a",
@@ -4984,10 +5155,11 @@
           "#963b2b"
         ]
       },
+      "flagSvg": "flags/svg/OMN.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d97",
-        "dark": "#562d29"
+        "light": "#e19087",
+        "dark": "#782a26"
       },
       "accent": {
         "raw": "#df1e25",
@@ -5011,10 +5183,11 @@
           "#80a08e"
         ]
       },
+      "flagSvg": "flags/svg/PAK.svg",
       "tier": 2,
       "fill": {
-        "light": "#a1c5a9",
-        "dark": "#2e5137"
+        "light": "#89cd9a",
+        "dark": "#196937"
       },
       "accent": {
         "raw": "#03421e",
@@ -5039,10 +5212,11 @@
           "#ed8a8e"
         ]
       },
+      "flagSvg": "flags/svg/PAN.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1c2d4c"
+        "light": "#7598d6",
+        "dark": "#143470"
       },
       "accent": {
         "raw": "#082458",
@@ -5068,10 +5242,11 @@
           "#387324"
         ]
       },
+      "flagSvg": "flags/svg/PCN.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#012269",
@@ -5095,10 +5270,11 @@
           "#f2b0b7"
         ]
       },
+      "flagSvg": "flags/svg/PER.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c97",
-        "dark": "#562d2a"
+        "light": "#e19088",
+        "dark": "#782a27"
       },
       "accent": {
         "raw": "#d91124",
@@ -5124,10 +5300,11 @@
           "#e88993"
         ]
       },
+      "flagSvg": "flags/svg/PHL.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#0139a8",
@@ -5153,10 +5330,11 @@
           "#18a3e7"
         ]
       },
+      "flagSvg": "flags/svg/PLW.svg",
       "tier": 0,
       "fill": {
-        "light": "#7e9cb9",
-        "dark": "#13304a"
+        "light": "#659dd3",
+        "dark": "#003a65"
       },
       "accent": {
         "raw": "#0099ff",
@@ -5182,10 +5360,11 @@
           "#db4721"
         ]
       },
+      "flagSvg": "flags/svg/PNG.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9c98",
-        "dark": "#562d2a"
+        "light": "#e1908a",
+        "dark": "#782a28"
       },
       "accent": {
         "raw": "#cd1126",
@@ -5208,10 +5387,11 @@
           "#dc143c"
         ]
       },
+      "flagSvg": "flags/svg/POL.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8a",
-        "dark": "#472021"
+        "light": "#cf7f7e",
+        "dark": "#65171f"
       },
       "accent": {
         "raw": "#dc143c",
@@ -5237,10 +5417,11 @@
           "#5e72dd"
         ]
       },
+      "flagSvg": "flags/svg/PRI.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#ee110f",
@@ -5265,10 +5446,11 @@
           "#f89ea2"
         ]
       },
+      "flagSvg": "flags/svg/PRK.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea8",
-        "dark": "#643b36"
+        "light": "#f4a298",
+        "dark": "#8b3c35"
       },
       "accent": {
         "raw": "#ec1e26",
@@ -5294,10 +5476,11 @@
           "#2d6109"
         ]
       },
+      "flagSvg": "flags/svg/PRT.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d95",
-        "dark": "#562e28"
+        "light": "#e19185",
+        "dark": "#782b22"
       },
       "accent": {
         "raw": "#ff0303",
@@ -5323,10 +5506,11 @@
           "#e3d991"
         ]
       },
+      "flagSvg": "flags/svg/PRY.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfb8",
-        "dark": "#734842"
+        "light": "#ffb8ac",
+        "dark": "#9e4d42"
       },
       "accent": {
         "raw": "#d63226",
@@ -5352,10 +5536,11 @@
           "#f18c91"
         ]
       },
+      "flagSvg": "flags/svg/PSE.svg",
       "tier": 0,
       "fill": {
-        "light": "#82a285",
-        "dark": "#16361c"
+        "light": "#6ca975",
+        "dark": "#004516"
       },
       "accent": {
         "raw": "#009639",
@@ -5381,10 +5566,11 @@
           "#ff9e1c"
         ]
       },
+      "flagSvg": "flags/svg/PYF.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c87",
-        "dark": "#47211e"
+        "light": "#cf7f79",
+        "dark": "#651819"
       },
       "accent": {
         "raw": "#ce1126",
@@ -5409,10 +5595,11 @@
           "#d1a4b1"
         ]
       },
+      "flagSvg": "flags/svg/QAT.svg",
       "tier": 1,
       "fill": {
-        "light": "#c99ba1",
-        "dark": "#552d33"
+        "light": "#e08f9a",
+        "dark": "#772839"
       },
       "accent": {
         "raw": "#8a1538",
@@ -5438,10 +5625,11 @@
           "#a0b976"
         ]
       },
+      "flagSvg": "flags/svg/REU.svg",
       "tier": 0,
       "fill": {
-        "light": "#8898bb",
-        "dark": "#1f2d4c"
+        "light": "#7a97d7",
+        "dark": "#1c3370"
       },
       "accent": {
         "raw": "#3467fe",
@@ -5467,10 +5655,11 @@
           "#a99a39"
         ]
       },
+      "flagSvg": "flags/svg/ROU.svg",
       "tier": 1,
       "fill": {
-        "light": "#96aacd",
-        "dark": "#293a5a"
+        "light": "#86aae9",
+        "dark": "#244582"
       },
       "accent": {
         "raw": "#012c7f",
@@ -5495,10 +5684,11 @@
           "#9a2f44"
         ]
       },
+      "flagSvg": "flags/svg/RUS.svg",
       "tier": 1,
       "fill": {
-        "light": "#97aacd",
-        "dark": "#293a5a"
+        "light": "#87a9e9",
+        "dark": "#254582"
       },
       "accent": {
         "raw": "#063ea8",
@@ -5524,10 +5714,11 @@
           "#619957"
         ]
       },
+      "flagSvg": "flags/svg/RWA.svg",
       "tier": 3,
       "fill": {
-        "light": "#aad3eb",
-        "dark": "#315b72"
+        "light": "#8fd6ff",
+        "dark": "#00729e"
       },
       "accent": {
         "raw": "#00a3e0",
@@ -5551,10 +5742,11 @@
           "#4b856c"
         ]
       },
+      "flagSvg": "flags/svg/SAU.svg",
       "tier": 0,
       "fill": {
-        "light": "#7da38b",
-        "dark": "#0e3721"
+        "light": "#60ab7f",
+        "dark": "#004426"
       },
       "accent": {
         "raw": "#005430",
@@ -5580,10 +5772,11 @@
           "#376d4a"
         ]
       },
+      "flagSvg": "flags/svg/SDN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7d",
+        "dark": "#65171d"
       },
       "accent": {
         "raw": "#d21034",
@@ -5609,10 +5802,11 @@
           "#31953f"
         ]
       },
+      "flagSvg": "flags/svg/SEN.svg",
       "tier": 0,
       "fill": {
-        "light": "#80a287",
-        "dark": "#13361e"
+        "light": "#68aa78",
+        "dark": "#00451d"
       },
       "accent": {
         "raw": "#00853f",
@@ -5636,10 +5830,11 @@
           "#f7929a"
         ]
       },
+      "flagSvg": "flags/svg/SGP.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b88",
-        "dark": "#47201f"
+        "light": "#cf7f7a",
+        "dark": "#65181a"
       },
       "accent": {
         "raw": "#ed2a3a",
@@ -5665,10 +5860,11 @@
           "#eebdc5"
         ]
       },
+      "flagSvg": "flags/svg/SGS.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02226a",
@@ -5694,10 +5890,11 @@
           "#f0c1c9"
         ]
       },
+      "flagSvg": "flags/svg/SHN.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02236a",
@@ -5723,10 +5920,11 @@
           "#e399a8"
         ]
       },
+      "flagSvg": "flags/svg/SJM.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8a",
-        "dark": "#472021"
+        "light": "#cf7f7e",
+        "dark": "#65171e"
       },
       "accent": {
         "raw": "#ba0c2f",
@@ -5752,10 +5950,11 @@
           "#c3b431"
         ]
       },
+      "flagSvg": "flags/svg/SLB.svg",
       "tier": 0,
       "fill": {
-        "light": "#80a287",
-        "dark": "#13361e"
+        "light": "#68aa78",
+        "dark": "#00451d"
       },
       "accent": {
         "raw": "#215b33",
@@ -5780,10 +5979,11 @@
           "#3991d2"
         ]
       },
+      "flagSvg": "flags/svg/SLE.svg",
       "tier": 0,
       "fill": {
-        "light": "#83a284",
-        "dark": "#18361a"
+        "light": "#70a972",
+        "dark": "#00450e"
       },
       "accent": {
         "raw": "#22b63d",
@@ -5809,10 +6009,11 @@
           "#4a93ce"
         ]
       },
+      "flagSvg": "flags/svg/SLV.svg",
       "tier": 2,
       "fill": {
-        "light": "#a6bcdf",
-        "dark": "#344868"
+        "light": "#95bcfb",
+        "dark": "#315795"
       },
       "accent": {
         "raw": "#0148ab",
@@ -5838,10 +6039,11 @@
           "#435f40"
         ]
       },
+      "flagSvg": "flags/svg/SMR.svg",
       "tier": 0,
       "fill": {
-        "light": "#779fb5",
-        "dark": "#033247"
+        "light": "#52a2cc",
+        "dark": "#003d57"
       },
       "accent": {
         "raw": "#5fb6e3",
@@ -5865,10 +6067,11 @@
           "#98c2ed"
         ]
       },
+      "flagSvg": "flags/svg/SOM.svg",
       "tier": 1,
       "fill": {
-        "light": "#90accb",
-        "dark": "#213c59"
+        "light": "#79aee6",
+        "dark": "#0a4980"
       },
       "accent": {
         "raw": "#428fde",
@@ -5894,10 +6097,11 @@
           "#59accd"
         ]
       },
+      "flagSvg": "flags/svg/SPM.svg",
       "tier": 0,
       "fill": {
-        "light": "#779fb5",
-        "dark": "#033247"
+        "light": "#52a2cc",
+        "dark": "#003d57"
       },
       "accent": {
         "raw": "#0191c8",
@@ -5923,10 +6127,11 @@
           "#c89f40"
         ]
       },
+      "flagSvg": "flags/svg/SRB.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcadaa",
-        "dark": "#643a38"
+        "light": "#f4a19c",
+        "dark": "#8b3b3a"
       },
       "accent": {
         "raw": "#c5373d",
@@ -5952,10 +6157,11 @@
           "#fde51c"
         ]
       },
+      "flagSvg": "flags/svg/SSD.svg",
       "tier": 1,
       "fill": {
-        "light": "#8fb499",
-        "dark": "#1f442b"
+        "light": "#76bc8b",
+        "dark": "#00572b"
       },
       "accent": {
         "raw": "#05914d",
@@ -5981,10 +6187,11 @@
           "#f78021"
         ]
       },
+      "flagSvg": "flags/svg/STP.svg",
       "tier": 0,
       "fill": {
-        "light": "#82a285",
-        "dark": "#16361c"
+        "light": "#6da974",
+        "dark": "#004515"
       },
       "accent": {
         "raw": "#029739",
@@ -6010,10 +6217,11 @@
           "#c03250"
         ]
       },
+      "flagSvg": "flags/svg/SUR.svg",
       "tier": 1,
       "fill": {
-        "light": "#94b395",
-        "dark": "#254327"
+        "light": "#7fba83",
+        "dark": "#12561f"
       },
       "accent": {
         "raw": "#3d8245",
@@ -6039,10 +6247,11 @@
           "#264894"
         ]
       },
+      "flagSvg": "flags/svg/SVK.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d97",
-        "dark": "#562d29"
+        "light": "#e19087",
+        "dark": "#782a26"
       },
       "accent": {
         "raw": "#ed1d26",
@@ -6068,10 +6277,11 @@
           "#aa0055"
         ]
       },
+      "flagSvg": "flags/svg/SVN.svg",
       "tier": 3,
       "fill": {
-        "light": "#bacdf1",
-        "dark": "#445577"
+        "light": "#b3ccff",
+        "dark": "#4867a8"
       },
       "accent": {
         "raw": "#0000ff",
@@ -6095,10 +6305,11 @@
           "#fecb00"
         ]
       },
+      "flagSvg": "flags/svg/SWE.svg",
       "tier": 1,
       "fill": {
-        "light": "#90accb",
-        "dark": "#213c59"
+        "light": "#79aee6",
+        "dark": "#094980"
       },
       "accent": {
         "raw": "#005293",
@@ -6124,10 +6335,11 @@
           "#f0b504"
         ]
       },
+      "flagSvg": "flags/svg/SWZ.svg",
       "tier": 1,
       "fill": {
-        "light": "#99a9cd",
-        "dark": "#2c395a"
+        "light": "#8ca8e9",
+        "dark": "#2c4382"
       },
       "accent": {
         "raw": "#3f5fb8",
@@ -6153,10 +6365,11 @@
           "#8ebadd"
         ]
       },
+      "flagSvg": "flags/svg/SXM.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d96",
-        "dark": "#562e28"
+        "light": "#e19185",
+        "dark": "#782b23"
       },
       "accent": {
         "raw": "#ba0f0f",
@@ -6182,10 +6395,11 @@
           "#fdd041"
         ]
       },
+      "flagSvg": "flags/svg/SYC.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c87",
-        "dark": "#47211e"
+        "light": "#cf7f79",
+        "dark": "#651819"
       },
       "accent": {
         "raw": "#d22830",
@@ -6211,10 +6425,11 @@
           "#f5cfd4"
         ]
       },
+      "flagSvg": "flags/svg/SYR.svg",
       "tier": 0,
       "fill": {
-        "light": "#7fa388",
-        "dark": "#12361f"
+        "light": "#66aa7a",
+        "dark": "#004420"
       },
       "accent": {
         "raw": "#047b3f",
@@ -6240,10 +6455,11 @@
           "#eb9199"
         ]
       },
+      "flagSvg": "flags/svg/TCA.svg",
       "tier": 0,
       "fill": {
-        "light": "#8599bb",
-        "dark": "#1b2e4c"
+        "light": "#7399d6",
+        "dark": "#103570"
       },
       "accent": {
         "raw": "#012968",
@@ -6269,10 +6485,11 @@
           "#f4b10e"
         ]
       },
+      "flagSvg": "flags/svg/TCD.svg",
       "tier": 1,
       "fill": {
-        "light": "#95aacd",
-        "dark": "#273b5a"
+        "light": "#84aae8",
+        "dark": "#214682"
       },
       "accent": {
         "raw": "#002764",
@@ -6298,10 +6515,11 @@
           "#2a7b41"
         ]
       },
+      "flagSvg": "flags/svg/TGO.svg",
       "tier": 0,
       "fill": {
-        "light": "#78a491",
-        "dark": "#023727"
+        "light": "#52ac8b",
+        "dark": "#004330"
       },
       "accent": {
         "raw": "#006a4e",
@@ -6325,10 +6543,11 @@
           "#2d2a4a"
         ]
       },
+      "flagSvg": "flags/svg/THA.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8b",
-        "dark": "#472022"
+        "light": "#cf7e80",
+        "dark": "#651721"
       },
       "accent": {
         "raw": "#a61c34",
@@ -6354,10 +6573,11 @@
           "#f8c403"
         ]
       },
+      "flagSvg": "flags/svg/TJK.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea6",
-        "dark": "#643b35"
+        "light": "#f4a295",
+        "dark": "#8b3c32"
       },
       "accent": {
         "raw": "#cc0202",
@@ -6383,10 +6603,11 @@
           "#253a5a"
         ]
       },
+      "flagSvg": "flags/svg/TKL.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#022269",
@@ -6412,10 +6633,11 @@
           "#cfa33e"
         ]
       },
+      "flagSvg": "flags/svg/TKM.svg",
       "tier": 3,
       "fill": {
-        "light": "#b3d7ba",
-        "dark": "#3c5f44"
+        "light": "#9cdfab",
+        "dark": "#307a46"
       },
       "accent": {
         "raw": "#02843e",
@@ -6441,10 +6663,11 @@
           "#f3a028"
         ]
       },
+      "flagSvg": "flags/svg/TLS.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d95",
-        "dark": "#562e28"
+        "light": "#e19184",
+        "dark": "#782b22"
       },
       "accent": {
         "raw": "#da291c",
@@ -6468,10 +6691,11 @@
           "#ebabab"
         ]
       },
+      "flagSvg": "flags/svg/TON.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#c10100",
@@ -6496,10 +6720,11 @@
           "#f5bdc5"
         ]
       },
+      "flagSvg": "flags/svg/TTO.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7c",
+        "dark": "#65171c"
       },
       "accent": {
         "raw": "#da1a35",
@@ -6523,10 +6748,11 @@
           "#f7989f"
         ]
       },
+      "flagSvg": "flags/svg/TUN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c86",
-        "dark": "#47211d"
+        "light": "#cf8076",
+        "dark": "#651814"
       },
       "accent": {
         "raw": "#e70215",
@@ -6550,10 +6776,11 @@
           "#f5999e"
         ]
       },
+      "flagSvg": "flags/svg/TUR.svg",
       "tier": 1,
       "fill": {
-        "light": "#ca9d96",
-        "dark": "#562e29"
+        "light": "#e19186",
+        "dark": "#782a24"
       },
       "accent": {
         "raw": "#e30c19",
@@ -6579,10 +6806,11 @@
           "#fedd00"
         ]
       },
+      "flagSvg": "flags/svg/TUV.svg",
       "tier": 0,
       "fill": {
-        "light": "#789eb7",
-        "dark": "#073248"
+        "light": "#57a1ce",
+        "dark": "#003d5a"
       },
       "accent": {
         "raw": "#009cde",
@@ -6608,10 +6836,11 @@
           "#3436aa"
         ]
       },
+      "flagSvg": "flags/svg/TWN.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c85",
-        "dark": "#47211c"
+        "light": "#cf8074",
+        "dark": "#651912"
       },
       "accent": {
         "raw": "#fe0101",
@@ -6637,10 +6866,11 @@
           "#2cb0df"
         ]
       },
+      "flagSvg": "flags/svg/TZA.svg",
       "tier": 1,
       "fill": {
-        "light": "#94b394",
-        "dark": "#254326"
+        "light": "#81ba82",
+        "dark": "#15561d"
       },
       "accent": {
         "raw": "#20b53b",
@@ -6666,10 +6896,11 @@
           "#d81e01"
         ]
       },
+      "flagSvg": "flags/svg/UGA.svg",
       "tier": 2,
       "fill": {
-        "light": "#c3bc93",
-        "dark": "#50481f"
+        "light": "#cbbc6e",
+        "dark": "#665800"
       },
       "accent": {
         "raw": "#fada04",
@@ -6695,10 +6926,11 @@
           "#dbc520"
         ]
       },
+      "flagSvg": "flags/svg/UKR.svg",
       "tier": 2,
       "fill": {
-        "light": "#a4bdde",
-        "dark": "#324968"
+        "light": "#90bdfa",
+        "dark": "#2b5894"
       },
       "accent": {
         "raw": "#015cbb",
@@ -6724,10 +6956,11 @@
           "#2d3461"
         ]
       },
+      "flagSvg": "flags/svg/UMI.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8e",
-        "dark": "#472025"
+        "light": "#ce7e86",
+        "dark": "#641726"
       },
       "accent": {
         "raw": "#b31942",
@@ -6753,10 +6986,11 @@
           "#f7cc15"
         ]
       },
+      "flagSvg": "flags/svg/URY.svg",
       "tier": 2,
       "fill": {
-        "light": "#a8bbdf",
-        "dark": "#364868"
+        "light": "#98bbfb",
+        "dark": "#355695"
       },
       "accent": {
         "raw": "#1144ad",
@@ -6782,10 +7016,11 @@
           "#2d3461"
         ]
       },
+      "flagSvg": "flags/svg/USA.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b8e",
-        "dark": "#472025"
+        "light": "#ce7e86",
+        "dark": "#641726"
       },
       "accent": {
         "raw": "#b31942",
@@ -6811,10 +7046,11 @@
           "#fcd1d6"
         ]
       },
+      "flagSvg": "flags/svg/UZB.svg",
       "tier": 0,
       "fill": {
-        "light": "#84a284",
-        "dark": "#19361a"
+        "light": "#70a971",
+        "dark": "#00450c"
       },
       "accent": {
         "raw": "#308738",
@@ -6840,10 +7076,11 @@
           "#884f51"
         ]
       },
+      "flagSvg": "flags/svg/VAT.svg",
       "tier": 0,
       "fill": {
-        "light": "#9d9b73",
-        "dark": "#322f04"
+        "light": "#a19c4f",
+        "dark": "#3d3a00"
       },
       "accent": {
         "raw": "#fff200",
@@ -6869,10 +7106,11 @@
           "#29436c"
         ]
       },
+      "flagSvg": "flags/svg/VCT.svg",
       "tier": 0,
       "fill": {
-        "light": "#a49872",
-        "dark": "#382d01"
+        "light": "#ae974a",
+        "dark": "#443600"
       },
       "accent": {
         "raw": "#fcd023",
@@ -6898,10 +7136,11 @@
           "#951842"
         ]
       },
+      "flagSvg": "flags/svg/VEN.svg",
       "tier": 1,
       "fill": {
-        "light": "#b6a882",
-        "dark": "#463910"
+        "light": "#c1a75c",
+        "dark": "#584500"
       },
       "accent": {
         "raw": "#fcca03",
@@ -6927,10 +7166,11 @@
           "#cda22b"
         ]
       },
+      "flagSvg": "flags/svg/VGB.svg",
       "tier": 0,
       "fill": {
-        "light": "#8699bb",
-        "dark": "#1d2d4c"
+        "light": "#7798d6",
+        "dark": "#163470"
       },
       "accent": {
         "raw": "#02236a",
@@ -6956,10 +7196,11 @@
           "#3c7e46"
         ]
       },
+      "flagSvg": "flags/svg/VIR.svg",
       "tier": 0,
       "fill": {
-        "light": "#a69771",
-        "dark": "#3a2c01"
+        "light": "#b1954a",
+        "dark": "#463500"
       },
       "accent": {
         "raw": "#d7ae38",
@@ -6985,10 +7226,11 @@
           "#ff6200"
         ]
       },
+      "flagSvg": "flags/svg/VNM.svg",
       "tier": 3,
       "fill": {
-        "light": "#eebfb8",
-        "dark": "#734842"
+        "light": "#ffb8ac",
+        "dark": "#9e4d43"
       },
       "accent": {
         "raw": "#ff0201",
@@ -7014,10 +7256,11 @@
           "#004921"
         ]
       },
+      "flagSvg": "flags/svg/VUT.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88b89",
-        "dark": "#472020"
+        "light": "#cf7f7d",
+        "dark": "#65171d"
       },
       "accent": {
         "raw": "#d21034",
@@ -7042,10 +7285,11 @@
           "#e3737e"
         ]
       },
+      "flagSvg": "flags/svg/WLF.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c87",
-        "dark": "#47211e"
+        "light": "#cf7f79",
+        "dark": "#651819"
       },
       "accent": {
         "raw": "#ce1126",
@@ -7069,10 +7313,11 @@
           "#022d80"
         ]
       },
+      "flagSvg": "flags/svg/WSM.svg",
       "tier": 0,
       "fill": {
-        "light": "#b88c87",
-        "dark": "#47211e"
+        "light": "#cf7f79",
+        "dark": "#651819"
       },
       "accent": {
         "raw": "#ce1126",
@@ -7097,10 +7342,11 @@
           "#616a87"
         ]
       },
+      "flagSvg": "flags/svg/XKX.svg",
       "tier": 3,
       "fill": {
-        "light": "#bacdf1",
-        "dark": "#445577"
+        "light": "#b3ccff",
+        "dark": "#4867a8"
       },
       "accent": {
         "raw": "#264ba5",
@@ -7124,10 +7370,11 @@
           "#db5262"
         ]
       },
+      "flagSvg": "flags/svg/YEM.svg",
       "tier": 2,
       "fill": {
-        "light": "#dcaea9",
-        "dark": "#643a37"
+        "light": "#f4a19a",
+        "dark": "#8b3b38"
       },
       "accent": {
         "raw": "#ce1227",
@@ -7153,10 +7400,11 @@
           "#fdb71c"
         ]
       },
+      "flagSvg": "flags/svg/ZAF.svg",
       "tier": 2,
       "fill": {
-        "light": "#9ec6ad",
-        "dark": "#29523b"
+        "light": "#81cea2",
+        "dark": "#006940"
       },
       "accent": {
         "raw": "#007749",
@@ -7182,10 +7430,11 @@
           "#357705"
         ]
       },
+      "flagSvg": "flags/svg/ZMB.svg",
       "tier": 2,
       "fill": {
-        "light": "#a8c4a3",
-        "dark": "#355031"
+        "light": "#96cb8f",
+        "dark": "#306729"
       },
       "accent": {
         "raw": "#198a00",
@@ -7211,10 +7460,11 @@
           "#91a200"
         ]
       },
+      "flagSvg": "flags/svg/ZWE.svg",
       "tier": 3,
       "fill": {
-        "light": "#b8d6b5",
-        "dark": "#425e3f"
+        "light": "#a6dda1",
+        "dark": "#40793c"
       },
       "accent": {
         "raw": "#006400",

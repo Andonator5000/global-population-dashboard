@@ -16,6 +16,13 @@
       -69.96666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AWG",
+        "name": "Aruban florin",
+        "symbol": "ƒ"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -48,6 +55,13 @@
       "TKM",
       "UZB"
     ],
+    "currencies": [
+      {
+        "code": "AFN",
+        "name": "Afghan afghani",
+        "symbol": "؋"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -78,6 +92,13 @@
       "NAM",
       "ZMB"
     ],
+    "currencies": [
+      {
+        "code": "AOA",
+        "name": "Angolan kwanza",
+        "symbol": "Kz"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -103,6 +124,13 @@
       -63.16666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -128,6 +156,13 @@
       19.9
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -158,6 +193,13 @@
       "MNE",
       "XKX"
     ],
+    "currencies": [
+      {
+        "code": "ALL",
+        "name": "Albanian lek",
+        "symbol": "L"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -186,6 +228,13 @@
       "ESP",
       "FRA"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -213,6 +262,13 @@
     "borders": [
       "OMN",
       "SAU"
+    ],
+    "currencies": [
+      {
+        "code": "AED",
+        "name": "United Arab Emirates dirham",
+        "symbol": "د.إ"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -245,6 +301,13 @@
       "PRY",
       "URY"
     ],
+    "currencies": [
+      {
+        "code": "ARS",
+        "name": "Argentine peso",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -275,6 +338,13 @@
       "IRN",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "AMD",
+        "name": "Armenian dram",
+        "symbol": "֏"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -300,6 +370,13 @@
       -170.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -325,6 +402,7 @@
       0.0
     ],
     "borders": [],
+    "currencies": [],
     "render": "separate",
     "status_label": "No permanent population",
     "editorial_note": "Rendered on the map for geographic completeness but carries no population, economy, or people data. Its continent page states plainly that it has no permanent inhabitants and shows only land area and biome data. Excluded from all per-capita and density rankings so it cannot distort them.",
@@ -350,6 +428,13 @@
       69.167
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -375,6 +460,13 @@
       -61.8
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -400,6 +492,13 @@
       133.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AUD",
+        "name": "Australian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -434,6 +533,13 @@
       "SVK",
       "SVN"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -465,6 +571,13 @@
       "RUS",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "AZN",
+        "name": "Azerbaijani manat",
+        "symbol": "₼"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -493,6 +606,13 @@
       "COD",
       "RWA",
       "TZA"
+    ],
+    "currencies": [
+      {
+        "code": "BIF",
+        "name": "Burundian franc",
+        "symbol": "Fr"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -524,6 +644,13 @@
       "LUX",
       "NLD"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -554,6 +681,13 @@
       "NGA",
       "TGO"
     ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -579,6 +713,13 @@
       -68.25
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -611,6 +752,13 @@
       "NER",
       "TGO"
     ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -638,6 +786,13 @@
     "borders": [
       "IND",
       "MMR"
+    ],
+    "currencies": [
+      {
+        "code": "BDT",
+        "name": "Bangladeshi taka",
+        "symbol": "৳"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -670,6 +825,13 @@
       "SRB",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -695,6 +857,13 @@
       50.55
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "BHD",
+        "name": "Bahraini dinar",
+        "symbol": ".د.ب"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -720,6 +889,18 @@
       -76.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "BSD",
+        "name": "Bahamian dollar",
+        "symbol": "$"
+      },
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -749,6 +930,13 @@
       "MNE",
       "SRB"
     ],
+    "currencies": [
+      {
+        "code": "BAM",
+        "name": "Bosnia and Herzegovina convertible mark",
+        "symbol": "KM"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -774,6 +962,13 @@
       -63.41666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -805,6 +1000,13 @@
       "RUS",
       "UKR"
     ],
+    "currencies": [
+      {
+        "code": "BYN",
+        "name": "Belarusian ruble",
+        "symbol": "Br"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -833,6 +1035,13 @@
       "GTM",
       "MEX"
     ],
+    "currencies": [
+      {
+        "code": "BZD",
+        "name": "Belize dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -858,6 +1067,13 @@
       -64.75
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "BMD",
+        "name": "Bermudian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -888,6 +1104,13 @@
       "CHL",
       "PER",
       "PRY"
+    ],
+    "currencies": [
+      {
+        "code": "BOB",
+        "name": "Bolivian boliviano",
+        "symbol": "Bs."
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -925,6 +1148,13 @@
       "URY",
       "VEN"
     ],
+    "currencies": [
+      {
+        "code": "BRL",
+        "name": "Brazilian real",
+        "symbol": "R$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -950,6 +1180,13 @@
       -59.53333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "BBD",
+        "name": "Barbadian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -976,6 +1213,18 @@
     ],
     "borders": [
       "MYS"
+    ],
+    "currencies": [
+      {
+        "code": "BND",
+        "name": "Brunei dollar",
+        "symbol": "$"
+      },
+      {
+        "code": "SGD",
+        "name": "Singapore dollar",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1005,6 +1254,18 @@
       "CHN",
       "IND"
     ],
+    "currencies": [
+      {
+        "code": "BTN",
+        "name": "Bhutanese ngultrum",
+        "symbol": "Nu."
+      },
+      {
+        "code": "INR",
+        "name": "Indian rupee",
+        "symbol": "₹"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1030,6 +1291,7 @@
       3.4
     ],
     "borders": [],
+    "currencies": [],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1059,6 +1321,13 @@
       "ZAF",
       "ZMB",
       "ZWE"
+    ],
+    "currencies": [
+      {
+        "code": "BWP",
+        "name": "Botswana pula",
+        "symbol": "P"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1092,6 +1361,13 @@
       "SSD",
       "TCD"
     ],
+    "currencies": [
+      {
+        "code": "XAF",
+        "name": "Central African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1119,6 +1395,13 @@
     "borders": [
       "USA"
     ],
+    "currencies": [
+      {
+        "code": "CAD",
+        "name": "Canadian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1144,6 +1427,13 @@
       96.83333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AUD",
+        "name": "Australian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1175,6 +1465,13 @@
       "ITA",
       "LIE"
     ],
+    "currencies": [
+      {
+        "code": "CHF",
+        "name": "Swiss franc",
+        "symbol": "Fr."
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1203,6 +1500,13 @@
       "ARG",
       "BOL",
       "PER"
+    ],
+    "currencies": [
+      {
+        "code": "CLP",
+        "name": "Chilean peso",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1246,6 +1550,13 @@
       "TJK",
       "VNM"
     ],
+    "currencies": [
+      {
+        "code": "CNY",
+        "name": "Chinese yuan",
+        "symbol": "¥"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1276,6 +1587,13 @@
       "GIN",
       "LBR",
       "MLI"
+    ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1308,6 +1626,13 @@
       "GNQ",
       "NGA",
       "TCD"
+    ],
+    "currencies": [
+      {
+        "code": "XAF",
+        "name": "Central African CFA franc",
+        "symbol": "Fr"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1344,6 +1669,13 @@
       "UGA",
       "ZMB"
     ],
+    "currencies": [
+      {
+        "code": "CDF",
+        "name": "Congolese franc",
+        "symbol": "FC"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1375,6 +1707,13 @@
       "COD",
       "GAB"
     ],
+    "currencies": [
+      {
+        "code": "XAF",
+        "name": "Central African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1400,6 +1739,18 @@
       -159.76666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "CKD",
+        "name": "Cook Islands dollar",
+        "symbol": "$"
+      },
+      {
+        "code": "NZD",
+        "name": "New Zealand dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1431,6 +1782,13 @@
       "PER",
       "VEN"
     ],
+    "currencies": [
+      {
+        "code": "COP",
+        "name": "Colombian peso",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1456,6 +1814,13 @@
       44.25
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "KMF",
+        "name": "Comorian franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1481,6 +1846,13 @@
       -24.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "CVE",
+        "name": "Cape Verdean escudo",
+        "symbol": "Esc"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1509,6 +1881,13 @@
       "NIC",
       "PAN"
     ],
+    "currencies": [
+      {
+        "code": "CRC",
+        "name": "Costa Rican colón",
+        "symbol": "₡"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1534,6 +1913,18 @@
       -80.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "CUC",
+        "name": "Cuban convertible peso",
+        "symbol": "$"
+      },
+      {
+        "code": "CUP",
+        "name": "Cuban peso",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1559,6 +1950,13 @@
       -68.933333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "ANG",
+        "name": "Netherlands Antillean guilder",
+        "symbol": "ƒ"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1584,6 +1982,13 @@
       105.66666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AUD",
+        "name": "Australian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1609,6 +2014,13 @@
       -80.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "KYD",
+        "name": "Cayman Islands dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1634,6 +2046,13 @@
       33.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1663,6 +2082,13 @@
       "DEU",
       "POL",
       "SVK"
+    ],
+    "currencies": [
+      {
+        "code": "CZK",
+        "name": "Czech koruna",
+        "symbol": "Kč"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1699,6 +2125,13 @@
       "NLD",
       "POL"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1728,6 +2161,13 @@
       "ETH",
       "SOM"
     ],
+    "currencies": [
+      {
+        "code": "DJF",
+        "name": "Djiboutian franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1753,6 +2193,13 @@
       -61.33333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1780,6 +2227,13 @@
     "borders": [
       "DEU"
     ],
+    "currencies": [
+      {
+        "code": "DKK",
+        "name": "Danish krone",
+        "symbol": "kr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1806,6 +2260,13 @@
     ],
     "borders": [
       "HTI"
+    ],
+    "currencies": [
+      {
+        "code": "DOP",
+        "name": "Dominican peso",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1840,6 +2301,13 @@
       "NER",
       "TUN"
     ],
+    "currencies": [
+      {
+        "code": "DZD",
+        "name": "Algerian dinar",
+        "symbol": "د.ج"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1867,6 +2335,13 @@
     "borders": [
       "COL",
       "PER"
+    ],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -1898,6 +2373,13 @@
       "PSE",
       "SDN"
     ],
+    "currencies": [
+      {
+        "code": "EGP",
+        "name": "Egyptian pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1927,6 +2409,13 @@
       "ETH",
       "SDN"
     ],
+    "currencies": [
+      {
+        "code": "ERN",
+        "name": "Eritrean nakfa",
+        "symbol": "Nfk"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -1955,6 +2444,23 @@
       "DZA",
       "MAR",
       "MRT"
+    ],
+    "currencies": [
+      {
+        "code": "DZD",
+        "name": "Algerian dinar",
+        "symbol": "دج"
+      },
+      {
+        "code": "MAD",
+        "name": "Moroccan dirham",
+        "symbol": "DH"
+      },
+      {
+        "code": "MRU",
+        "name": "Mauritanian ouguiya",
+        "symbol": "UM"
+      }
     ],
     "render": "separate",
     "status_label": "Non-self-governing territory",
@@ -1987,6 +2493,13 @@
       "MAR",
       "PRT"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2014,6 +2527,13 @@
     "borders": [
       "LVA",
       "RUS"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -2047,6 +2567,13 @@
       "SOM",
       "SSD"
     ],
+    "currencies": [
+      {
+        "code": "ETB",
+        "name": "Ethiopian birr",
+        "symbol": "Br"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2076,6 +2603,13 @@
       "RUS",
       "SWE"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2101,6 +2635,13 @@
       175.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "FJD",
+        "name": "Fijian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2126,6 +2667,13 @@
       -59.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "FKP",
+        "name": "Falkland Islands pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2160,6 +2708,13 @@
       "LUX",
       "MCO"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2185,6 +2740,18 @@
       -7.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "DKK",
+        "name": "Danish krone",
+        "symbol": "kr"
+      },
+      {
+        "code": "FOK",
+        "name": "Faroese króna",
+        "symbol": "kr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2210,6 +2777,7 @@
       158.25
     ],
     "borders": [],
+    "currencies": [],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2239,6 +2807,13 @@
       "COG",
       "GNQ"
     ],
+    "currencies": [
+      {
+        "code": "XAF",
+        "name": "Central African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2265,6 +2840,13 @@
     ],
     "borders": [
       "IRL"
+    ],
+    "currencies": [
+      {
+        "code": "GBP",
+        "name": "British pound",
+        "symbol": "£"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -2296,6 +2878,13 @@
       "RUS",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "GEL",
+        "name": "lari",
+        "symbol": "₾"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2321,6 +2910,18 @@
       -2.58333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "GBP",
+        "name": "British pound",
+        "symbol": "£"
+      },
+      {
+        "code": "GGP",
+        "name": "Guernsey pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2350,6 +2951,13 @@
       "CIV",
       "TGO"
     ],
+    "currencies": [
+      {
+        "code": "GHS",
+        "name": "Ghanaian cedi",
+        "symbol": "₵"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2376,6 +2984,13 @@
     ],
     "borders": [
       "ESP"
+    ],
+    "currencies": [
+      {
+        "code": "GIP",
+        "name": "Gibraltar pound",
+        "symbol": "£"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -2409,6 +3024,13 @@
       "SEN",
       "SLE"
     ],
+    "currencies": [
+      {
+        "code": "GNF",
+        "name": "Guinean franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2434,6 +3056,13 @@
       -61.583333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2460,6 +3089,13 @@
     ],
     "borders": [
       "SEN"
+    ],
+    "currencies": [
+      {
+        "code": "GMD",
+        "name": "dalasi",
+        "symbol": "D"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -2489,6 +3125,13 @@
       "GIN",
       "SEN"
     ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2516,6 +3159,13 @@
     "borders": [
       "CMR",
       "GAB"
+    ],
+    "currencies": [
+      {
+        "code": "XAF",
+        "name": "Central African CFA franc",
+        "symbol": "Fr"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -2547,6 +3197,13 @@
       "MKD",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2572,6 +3229,13 @@
       -61.66666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2597,6 +3261,13 @@
       -40.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "DKK",
+        "name": "krone",
+        "symbol": "kr."
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2627,6 +3298,13 @@
       "MEX",
       "SLV"
     ],
+    "currencies": [
+      {
+        "code": "GTQ",
+        "name": "Guatemalan quetzal",
+        "symbol": "Q"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2655,6 +3333,13 @@
       "BRA",
       "SUR"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2680,6 +3365,13 @@
       144.78333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2709,6 +3401,13 @@
       "SUR",
       "VEN"
     ],
+    "currencies": [
+      {
+        "code": "GYD",
+        "name": "Guyanese dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2736,6 +3435,13 @@
     "borders": [
       "CHN"
     ],
+    "currencies": [
+      {
+        "code": "HKD",
+        "name": "Hong Kong dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": "Special Administrative Region of China",
     "editorial_note": "Not a sovereign state, but both UN WPP and the World Bank publish full separate series, and its demographics differ sharply from mainland China. Gets a country page; its population is NOT double-counted into the China total or the Asia total.",
@@ -2761,6 +3467,7 @@
       72.51666666
     ],
     "borders": [],
+    "currencies": [],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2789,6 +3496,13 @@
       "GTM",
       "NIC",
       "SLV"
+    ],
+    "currencies": [
+      {
+        "code": "HNL",
+        "name": "Honduran lempira",
+        "symbol": "L"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -2821,6 +3535,13 @@
       "SRB",
       "SVN"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2847,6 +3568,13 @@
     ],
     "borders": [
       "DOM"
+    ],
+    "currencies": [
+      {
+        "code": "HTG",
+        "name": "Haitian gourde",
+        "symbol": "G"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -2881,6 +3609,13 @@
       "SVN",
       "UKR"
     ],
+    "currencies": [
+      {
+        "code": "HUF",
+        "name": "Hungarian forint",
+        "symbol": "Ft"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2910,6 +3645,13 @@
       "PNG",
       "TLS"
     ],
+    "currencies": [
+      {
+        "code": "IDR",
+        "name": "Indonesian rupiah",
+        "symbol": "Rp"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2935,6 +3677,18 @@
       -4.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "GBP",
+        "name": "British pound",
+        "symbol": "£"
+      },
+      {
+        "code": "IMP",
+        "name": "Manx pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2968,6 +3722,13 @@
       "NPL",
       "PAK"
     ],
+    "currencies": [
+      {
+        "code": "INR",
+        "name": "Indian rupee",
+        "symbol": "₹"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -2993,6 +3754,13 @@
       71.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3019,6 +3787,13 @@
     ],
     "borders": [
       "GBR"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3053,6 +3828,13 @@
       "TKM",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "IRR",
+        "name": "Iranian rial",
+        "symbol": "﷼"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3085,6 +3867,13 @@
       "SYR",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "IQD",
+        "name": "Iraqi dinar",
+        "symbol": "ع.د"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3110,6 +3899,13 @@
       -18.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "ISK",
+        "name": "Icelandic króna",
+        "symbol": "kr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3140,6 +3936,13 @@
       "LBN",
       "PSE",
       "SYR"
+    ],
+    "currencies": [
+      {
+        "code": "ILS",
+        "name": "Israeli new shekel",
+        "symbol": "₪"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3173,6 +3976,13 @@
       "SVN",
       "VAT"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3198,6 +4008,13 @@
       -77.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "JMD",
+        "name": "Jamaican dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3223,6 +4040,18 @@
       -2.16666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "GBP",
+        "name": "British pound",
+        "symbol": "£"
+      },
+      {
+        "code": "JEP",
+        "name": "Jersey pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3254,6 +4083,13 @@
       "SAU",
       "SYR"
     ],
+    "currencies": [
+      {
+        "code": "JOD",
+        "name": "Jordanian dinar",
+        "symbol": "د.ا"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3279,6 +4115,13 @@
       138.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "JPY",
+        "name": "Japanese yen",
+        "symbol": "¥"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3309,6 +4152,13 @@
       "RUS",
       "TKM",
       "UZB"
+    ],
+    "currencies": [
+      {
+        "code": "KZT",
+        "name": "Kazakhstani tenge",
+        "symbol": "₸"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3341,6 +4191,13 @@
       "TZA",
       "UGA"
     ],
+    "currencies": [
+      {
+        "code": "KES",
+        "name": "Kenyan shilling",
+        "symbol": "Sh"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3371,6 +4228,13 @@
       "TJK",
       "UZB"
     ],
+    "currencies": [
+      {
+        "code": "KGS",
+        "name": "Kyrgyzstani som",
+        "symbol": "с"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3400,6 +4264,18 @@
       "THA",
       "VNM"
     ],
+    "currencies": [
+      {
+        "code": "KHR",
+        "name": "Cambodian riel",
+        "symbol": "៛"
+      },
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3425,6 +4301,18 @@
       173.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AUD",
+        "name": "Australian dollar",
+        "symbol": "$"
+      },
+      {
+        "code": "KID",
+        "name": "Kiribati dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3450,6 +4338,13 @@
       -62.75
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3476,6 +4371,13 @@
     ],
     "borders": [
       "PRK"
+    ],
+    "currencies": [
+      {
+        "code": "KRW",
+        "name": "South Korean won",
+        "symbol": "₩"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3504,6 +4406,13 @@
     "borders": [
       "IRQ",
       "SAU"
+    ],
+    "currencies": [
+      {
+        "code": "KWD",
+        "name": "Kuwaiti dinar",
+        "symbol": "د.ك"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3536,6 +4445,13 @@
       "THA",
       "VNM"
     ],
+    "currencies": [
+      {
+        "code": "LAK",
+        "name": "Lao kip",
+        "symbol": "₭"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3563,6 +4479,13 @@
     "borders": [
       "ISR",
       "SYR"
+    ],
+    "currencies": [
+      {
+        "code": "LBP",
+        "name": "Lebanese pound",
+        "symbol": "ل.ل"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3592,6 +4515,13 @@
       "CIV",
       "GIN",
       "SLE"
+    ],
+    "currencies": [
+      {
+        "code": "LRD",
+        "name": "Liberian dollar",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3625,6 +4555,13 @@
       "TCD",
       "TUN"
     ],
+    "currencies": [
+      {
+        "code": "LYD",
+        "name": "Libyan dinar",
+        "symbol": "ل.د"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3650,6 +4587,13 @@
       -60.96666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3678,6 +4622,13 @@
       "AUT",
       "CHE"
     ],
+    "currencies": [
+      {
+        "code": "CHF",
+        "name": "Swiss franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3705,6 +4656,13 @@
     "borders": [
       "IND"
     ],
+    "currencies": [
+      {
+        "code": "LKR",
+        "name": "Sri Lankan rupee",
+        "symbol": "Rs රු"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3731,6 +4689,18 @@
     ],
     "borders": [
       "ZAF"
+    ],
+    "currencies": [
+      {
+        "code": "LSL",
+        "name": "Lesotho loti",
+        "symbol": "L"
+      },
+      {
+        "code": "ZAR",
+        "name": "South African rand",
+        "symbol": "R"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3762,6 +4732,13 @@
       "POL",
       "RUS"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3790,6 +4767,13 @@
       "BEL",
       "DEU",
       "FRA"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3821,6 +4805,13 @@
       "LTU",
       "RUS"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3848,6 +4839,13 @@
     "borders": [
       "CHN"
     ],
+    "currencies": [
+      {
+        "code": "MOP",
+        "name": "Macanese pataca",
+        "symbol": "P"
+      }
+    ],
     "render": "separate",
     "status_label": "Special Administrative Region of China",
     "editorial_note": "Same treatment as Hong Kong. Too small to be visible at 110m map resolution; appears in tables and via search, with a minimum-size marker on the map.",
@@ -3874,6 +4872,13 @@
     ],
     "borders": [
       "SXM"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3904,6 +4909,13 @@
       "ESH",
       "ESP"
     ],
+    "currencies": [
+      {
+        "code": "MAD",
+        "name": "Moroccan dirham",
+        "symbol": "د.م."
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3930,6 +4942,13 @@
     ],
     "borders": [
       "FRA"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -3959,6 +4978,13 @@
       "ROU",
       "UKR"
     ],
+    "currencies": [
+      {
+        "code": "MDL",
+        "name": "Moldovan leu",
+        "symbol": "L"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -3984,6 +5010,13 @@
       47.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "MGA",
+        "name": "Malagasy ariary",
+        "symbol": "Ar"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4009,6 +5042,13 @@
       73.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "MVR",
+        "name": "Maldivian rufiyaa",
+        "symbol": ".ރ"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4038,6 +5078,13 @@
       "GTM",
       "USA"
     ],
+    "currencies": [
+      {
+        "code": "MXN",
+        "name": "Mexican peso",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4063,6 +5110,13 @@
       168.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4093,6 +5147,13 @@
       "GRC",
       "SRB",
       "XKX"
+    ],
+    "currencies": [
+      {
+        "code": "MKD",
+        "name": "denar",
+        "symbol": "den"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -4127,6 +5188,13 @@
       "NER",
       "SEN"
     ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4152,6 +5220,13 @@
       14.58333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4182,6 +5257,13 @@
       "IND",
       "LAO",
       "THA"
+    ],
+    "currencies": [
+      {
+        "code": "MMK",
+        "name": "Burmese kyat",
+        "symbol": "Ks"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -4214,6 +5296,13 @@
       "SRB",
       "XKX"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4242,6 +5331,13 @@
       "CHN",
       "RUS"
     ],
+    "currencies": [
+      {
+        "code": "MNT",
+        "name": "Mongolian tögrög",
+        "symbol": "₮"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4267,6 +5363,13 @@
       145.75
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4299,6 +5402,13 @@
       "ZMB",
       "ZWE"
     ],
+    "currencies": [
+      {
+        "code": "MZN",
+        "name": "Mozambican metical",
+        "symbol": "MT"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4329,6 +5439,13 @@
       "MLI",
       "SEN"
     ],
+    "currencies": [
+      {
+        "code": "MRU",
+        "name": "Mauritanian ouguiya",
+        "symbol": "UM"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4354,6 +5471,13 @@
       -62.2
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4379,6 +5503,13 @@
       -61.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4404,6 +5535,13 @@
       57.55
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "MUR",
+        "name": "Mauritian rupee",
+        "symbol": "₨"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4432,6 +5570,13 @@
       "MOZ",
       "TZA",
       "ZMB"
+    ],
+    "currencies": [
+      {
+        "code": "MWK",
+        "name": "Malawian kwacha",
+        "symbol": "MK"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -4462,6 +5607,13 @@
       "IDN",
       "THA"
     ],
+    "currencies": [
+      {
+        "code": "MYR",
+        "name": "Malaysian ringgit",
+        "symbol": "RM"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4487,6 +5639,13 @@
       45.16666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4517,6 +5676,18 @@
       "ZAF",
       "ZMB"
     ],
+    "currencies": [
+      {
+        "code": "NAD",
+        "name": "Namibian dollar",
+        "symbol": "$"
+      },
+      {
+        "code": "ZAR",
+        "name": "South African rand",
+        "symbol": "R"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4542,6 +5713,13 @@
       165.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XPF",
+        "name": "CFP franc",
+        "symbol": "₣"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4575,6 +5753,13 @@
       "NGA",
       "TCD"
     ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4600,6 +5785,13 @@
       167.95
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AUD",
+        "name": "Australian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4630,6 +5822,13 @@
       "NER",
       "TCD"
     ],
+    "currencies": [
+      {
+        "code": "NGN",
+        "name": "Nigerian naira",
+        "symbol": "₦"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4658,6 +5857,13 @@
       "CRI",
       "HND"
     ],
+    "currencies": [
+      {
+        "code": "NIO",
+        "name": "Nicaraguan córdoba",
+        "symbol": "C$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4683,6 +5889,13 @@
       -169.86666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "NZD",
+        "name": "New Zealand dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4710,6 +5923,13 @@
     "borders": [
       "BEL",
       "DEU"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -4740,6 +5960,13 @@
       "RUS",
       "SWE"
     ],
+    "currencies": [
+      {
+        "code": "NOK",
+        "name": "Norwegian krone",
+        "symbol": "kr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4768,6 +5995,13 @@
       "CHN",
       "IND"
     ],
+    "currencies": [
+      {
+        "code": "NPR",
+        "name": "Nepalese rupee",
+        "symbol": "₨"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4793,6 +6027,13 @@
       166.91666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AUD",
+        "name": "Australian dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4818,6 +6059,13 @@
       174.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "NZD",
+        "name": "New Zealand dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4846,6 +6094,13 @@
       "ARE",
       "SAU",
       "YEM"
+    ],
+    "currencies": [
+      {
+        "code": "OMR",
+        "name": "Omani rial",
+        "symbol": "ر.ع."
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -4877,6 +6132,13 @@
       "IND",
       "IRN"
     ],
+    "currencies": [
+      {
+        "code": "PKR",
+        "name": "Pakistani rupee",
+        "symbol": "₨"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4905,6 +6167,18 @@
       "COL",
       "CRI"
     ],
+    "currencies": [
+      {
+        "code": "PAB",
+        "name": "Panamanian balboa",
+        "symbol": "B/."
+      },
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4930,6 +6204,13 @@
       -130.1
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "NZD",
+        "name": "New Zealand dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4961,6 +6242,13 @@
       "COL",
       "ECU"
     ],
+    "currencies": [
+      {
+        "code": "PEN",
+        "name": "Peruvian sol",
+        "symbol": "S/."
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -4986,6 +6274,13 @@
       122.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "PHP",
+        "name": "Philippine peso",
+        "symbol": "₱"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5011,6 +6306,13 @@
       134.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5037,6 +6339,13 @@
     ],
     "borders": [
       "IDN"
+    ],
+    "currencies": [
+      {
+        "code": "PGK",
+        "name": "Papua New Guinean kina",
+        "symbol": "K"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5071,6 +6380,13 @@
       "SVK",
       "UKR"
     ],
+    "currencies": [
+      {
+        "code": "PLN",
+        "name": "Polish złoty",
+        "symbol": "zł"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5096,6 +6412,13 @@
       -66.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5125,6 +6448,13 @@
       "KOR",
       "RUS"
     ],
+    "currencies": [
+      {
+        "code": "KPW",
+        "name": "North Korean won",
+        "symbol": "₩"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5151,6 +6481,13 @@
     ],
     "borders": [
       "ESP"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5181,6 +6518,13 @@
       "BOL",
       "BRA"
     ],
+    "currencies": [
+      {
+        "code": "PYG",
+        "name": "Paraguayan guaraní",
+        "symbol": "₲"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5210,6 +6554,23 @@
       "ISR",
       "JOR"
     ],
+    "currencies": [
+      {
+        "code": "EGP",
+        "name": "Egyptian pound",
+        "symbol": "E£"
+      },
+      {
+        "code": "ILS",
+        "name": "Israeli new shekel",
+        "symbol": "₪"
+      },
+      {
+        "code": "JOD",
+        "name": "Jordanian dinar",
+        "symbol": "JD"
+      }
+    ],
     "render": "separate",
     "status_label": "UN non-member observer State",
     "editorial_note": "UN General Assembly granted non-member observer State status in 2012. UN WPP publishes as 'State of Palestine'. Natural Earth splits West Bank and Gaza into separate polygons; we dissolve them into one PSE entity so the geometry matches the single data row, and note the discontiguity.",
@@ -5235,6 +6596,13 @@
       -140.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XPF",
+        "name": "CFP franc",
+        "symbol": "₣"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5262,6 +6630,13 @@
     "borders": [
       "SAU"
     ],
+    "currencies": [
+      {
+        "code": "QAR",
+        "name": "Qatari riyal",
+        "symbol": "ر.ق"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5287,6 +6662,13 @@
       55.5
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5317,6 +6699,13 @@
       "MDA",
       "SRB",
       "UKR"
+    ],
+    "currencies": [
+      {
+        "code": "RON",
+        "name": "Romanian leu",
+        "symbol": "lei"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5358,6 +6747,13 @@
       "PRK",
       "UKR"
     ],
+    "currencies": [
+      {
+        "code": "RUB",
+        "name": "Russian ruble",
+        "symbol": "₽"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5387,6 +6783,13 @@
       "COD",
       "TZA",
       "UGA"
+    ],
+    "currencies": [
+      {
+        "code": "RWF",
+        "name": "Rwandan franc",
+        "symbol": "Fr"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5421,6 +6824,13 @@
       "QAT",
       "YEM"
     ],
+    "currencies": [
+      {
+        "code": "SAR",
+        "name": "Saudi riyal",
+        "symbol": "ر.س"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5454,6 +6864,13 @@
       "SSD",
       "TCD"
     ],
+    "currencies": [
+      {
+        "code": "SDG",
+        "name": "Sudanese pound",
+        "symbol": "PT"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5485,6 +6902,13 @@
       "MLI",
       "MRT"
     ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5510,6 +6934,13 @@
       103.8
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "SGD",
+        "name": "Singapore dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5535,6 +6966,13 @@
       -37.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "SHP",
+        "name": "Saint Helena pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5560,6 +6998,18 @@
       -5.72
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "GBP",
+        "name": "Pound sterling",
+        "symbol": "£"
+      },
+      {
+        "code": "SHP",
+        "name": "Saint Helena pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5585,6 +7035,13 @@
       20.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "NOK",
+        "name": "krone",
+        "symbol": "kr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5610,6 +7067,13 @@
       159.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "SBD",
+        "name": "Solomon Islands dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5637,6 +7101,13 @@
     "borders": [
       "GIN",
       "LBR"
+    ],
+    "currencies": [
+      {
+        "code": "SLE",
+        "name": "Sierra Leonean leone",
+        "symbol": "Le"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5666,6 +7137,13 @@
       "GTM",
       "HND"
     ],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5692,6 +7170,13 @@
     ],
     "borders": [
       "ITA"
+    ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5722,6 +7207,13 @@
       "ETH",
       "KEN"
     ],
+    "currencies": [
+      {
+        "code": "SOS",
+        "name": "Somali shilling",
+        "symbol": "Sh"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5747,6 +7239,13 @@
       -56.33333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5781,6 +7280,13 @@
       "ROU",
       "XKX"
     ],
+    "currencies": [
+      {
+        "code": "RSD",
+        "name": "Serbian dinar",
+        "symbol": "дин."
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5813,6 +7319,13 @@
       "SDN",
       "UGA"
     ],
+    "currencies": [
+      {
+        "code": "SSP",
+        "name": "South Sudanese pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5838,6 +7351,13 @@
       7.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "STN",
+        "name": "São Tomé and Príncipe dobra",
+        "symbol": "Db"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5866,6 +7386,13 @@
       "BRA",
       "GUF",
       "GUY"
+    ],
+    "currencies": [
+      {
+        "code": "SRD",
+        "name": "Surinamese dollar",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5898,6 +7425,13 @@
       "POL",
       "UKR"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5928,6 +7462,13 @@
       "HUN",
       "ITA"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -5955,6 +7496,13 @@
     "borders": [
       "FIN",
       "NOR"
+    ],
+    "currencies": [
+      {
+        "code": "SEK",
+        "name": "Swedish krona",
+        "symbol": "kr"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -5984,6 +7532,18 @@
       "MOZ",
       "ZAF"
     ],
+    "currencies": [
+      {
+        "code": "SZL",
+        "name": "Swazi lilangeni",
+        "symbol": "L"
+      },
+      {
+        "code": "ZAR",
+        "name": "South African rand",
+        "symbol": "R"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6011,6 +7571,13 @@
     "borders": [
       "MAF"
     ],
+    "currencies": [
+      {
+        "code": "ANG",
+        "name": "Netherlands Antillean guilder",
+        "symbol": "ƒ"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6036,6 +7603,13 @@
       55.66666666
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "SCR",
+        "name": "Seychellois rupee",
+        "symbol": "₨"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6067,6 +7641,13 @@
       "LBN",
       "TUR"
     ],
+    "currencies": [
+      {
+        "code": "SYP",
+        "name": "Syrian pound",
+        "symbol": "£"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6092,6 +7673,13 @@
       -71.58333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6124,6 +7712,13 @@
       "NGA",
       "SDN"
     ],
+    "currencies": [
+      {
+        "code": "XAF",
+        "name": "Central African CFA franc",
+        "symbol": "Fr"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6152,6 +7747,13 @@
       "BEN",
       "BFA",
       "GHA"
+    ],
+    "currencies": [
+      {
+        "code": "XOF",
+        "name": "West African CFA franc",
+        "symbol": "Fr"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -6183,6 +7785,13 @@
       "MMR",
       "MYS"
     ],
+    "currencies": [
+      {
+        "code": "THB",
+        "name": "Thai baht",
+        "symbol": "฿"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6213,6 +7822,13 @@
       "KGZ",
       "UZB"
     ],
+    "currencies": [
+      {
+        "code": "TJS",
+        "name": "Tajikistani somoni",
+        "symbol": "ЅМ"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6238,6 +7854,13 @@
       -172.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "NZD",
+        "name": "New Zealand dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6268,6 +7891,13 @@
       "KAZ",
       "UZB"
     ],
+    "currencies": [
+      {
+        "code": "TMT",
+        "name": "Turkmenistan manat",
+        "symbol": "m"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6295,6 +7925,13 @@
     "borders": [
       "IDN"
     ],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6320,6 +7957,13 @@
       -175.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "TOP",
+        "name": "Tongan paʻanga",
+        "symbol": "T$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6345,6 +7989,13 @@
       -61.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "TTD",
+        "name": "Trinidad and Tobago dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6372,6 +8023,13 @@
     "borders": [
       "DZA",
       "LBY"
+    ],
+    "currencies": [
+      {
+        "code": "TND",
+        "name": "Tunisian dinar",
+        "symbol": "د.ت"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -6407,6 +8065,13 @@
       "IRQ",
       "SYR"
     ],
+    "currencies": [
+      {
+        "code": "TRY",
+        "name": "Turkish lira",
+        "symbol": "₺"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6432,6 +8097,18 @@
       178.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "AUD",
+        "name": "Australian dollar",
+        "symbol": "$"
+      },
+      {
+        "code": "TVD",
+        "name": "Tuvaluan dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6457,6 +8134,13 @@
       121.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "TWD",
+        "name": "New Taiwan dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": "Disputed status",
     "editorial_note": "ISO 3166-1 assigns TWN. Not a UN member. UN WPP publishes it as 'China, Taiwan Province of China' -- we use that series but label the entity 'Taiwan', which is the common English name and the one readers will search for. World Bank does not publish most indicators for Taiwan, so many Economy/Education fields will legitimately render 'not available from World Bank'.",
@@ -6491,6 +8175,13 @@
       "UGA",
       "ZMB"
     ],
+    "currencies": [
+      {
+        "code": "TZS",
+        "name": "Tanzanian shilling",
+        "symbol": "Sh"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6521,6 +8212,13 @@
       "RWA",
       "SSD",
       "TZA"
+    ],
+    "currencies": [
+      {
+        "code": "UGX",
+        "name": "Ugandan shilling",
+        "symbol": "Sh"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -6555,6 +8253,13 @@
       "RUS",
       "SVK"
     ],
+    "currencies": [
+      {
+        "code": "UAH",
+        "name": "Ukrainian hryvnia",
+        "symbol": "₴"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6580,6 +8285,13 @@
       166.633333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6608,6 +8320,13 @@
       "ARG",
       "BRA"
     ],
+    "currencies": [
+      {
+        "code": "UYU",
+        "name": "Uruguayan peso",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6635,6 +8354,13 @@
     "borders": [
       "CAN",
       "MEX"
+    ],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -6667,6 +8393,13 @@
       "TJK",
       "TKM"
     ],
+    "currencies": [
+      {
+        "code": "UZS",
+        "name": "Uzbekistani soʻm",
+        "symbol": "so'm"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6694,6 +8427,13 @@
     "borders": [
       "ITA"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6719,6 +8459,13 @@
       -61.2
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XCD",
+        "name": "Eastern Caribbean dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6748,6 +8495,13 @@
       "COL",
       "GUY"
     ],
+    "currencies": [
+      {
+        "code": "VES",
+        "name": "Venezuelan bolívar soberano",
+        "symbol": "Bs.S."
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6773,6 +8527,13 @@
       -64.62305
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6798,6 +8559,13 @@
       -64.933333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6827,6 +8595,13 @@
       "KHM",
       "LAO"
     ],
+    "currencies": [
+      {
+        "code": "VND",
+        "name": "Vietnamese đồng",
+        "symbol": "₫"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6852,6 +8627,13 @@
       167.0
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "VUV",
+        "name": "Vanuatu vatu",
+        "symbol": "Vt"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6877,6 +8659,13 @@
       -176.2
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "XPF",
+        "name": "CFP franc",
+        "symbol": "₣"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6902,6 +8691,13 @@
       -172.33333333
     ],
     "borders": [],
+    "currencies": [
+      {
+        "code": "WST",
+        "name": "Samoan tālā",
+        "symbol": "T"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -6932,6 +8728,13 @@
       "MNE",
       "SRB"
     ],
+    "currencies": [
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      }
+    ],
     "render": "separate",
     "status_label": "Partially recognised",
     "editorial_note": "Has no ISO 3166-1 code. XKX is a user-assigned code adopted by the World Bank and IMF; REST Countries uses XKX, UN M49 has no entry. Recognised by roughly half of UN member states. UN WPP publishes Kosovo within Serbia for some series -- where that happens we report the Serbia figure as covering Kosovo and say so, rather than subtracting an estimate.",
@@ -6959,6 +8762,13 @@
     "borders": [
       "OMN",
       "SAU"
+    ],
+    "currencies": [
+      {
+        "code": "YER",
+        "name": "Yemeni rial",
+        "symbol": "﷼"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -6991,6 +8801,13 @@
       "NAM",
       "SWZ",
       "ZWE"
+    ],
+    "currencies": [
+      {
+        "code": "ZAR",
+        "name": "South African rand",
+        "symbol": "R"
+      }
     ],
     "render": "separate",
     "status_label": null,
@@ -7026,6 +8843,13 @@
       "TZA",
       "ZWE"
     ],
+    "currencies": [
+      {
+        "code": "ZMW",
+        "name": "Zambian kwacha",
+        "symbol": "ZK"
+      }
+    ],
     "render": "separate",
     "status_label": null,
     "editorial_note": null,
@@ -7055,6 +8879,53 @@
       "MOZ",
       "ZAF",
       "ZMB"
+    ],
+    "currencies": [
+      {
+        "code": "BWP",
+        "name": "Botswana pula",
+        "symbol": "P"
+      },
+      {
+        "code": "CNY",
+        "name": "Chinese yuan",
+        "symbol": "¥"
+      },
+      {
+        "code": "EUR",
+        "name": "Euro",
+        "symbol": "€"
+      },
+      {
+        "code": "GBP",
+        "name": "British pound",
+        "symbol": "£"
+      },
+      {
+        "code": "INR",
+        "name": "Indian rupee",
+        "symbol": "₹"
+      },
+      {
+        "code": "JPY",
+        "name": "Japanese yen",
+        "symbol": "¥"
+      },
+      {
+        "code": "USD",
+        "name": "United States dollar",
+        "symbol": "$"
+      },
+      {
+        "code": "ZAR",
+        "name": "South African rand",
+        "symbol": "Rs"
+      },
+      {
+        "code": "ZWB",
+        "name": "Zimbabwean bonds",
+        "symbol": "$"
+      }
     ],
     "render": "separate",
     "status_label": null,

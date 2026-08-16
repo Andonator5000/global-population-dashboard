@@ -1,0 +1,103 @@
+{
+  "source": "owid",
+  "note": "Series trimmed to 1900 onward. Citations name the underlying producer via Our World in Data and come from each grapher's metadata endpoint.",
+  "regimeLabels": {
+    "0": "Closed autocracy",
+    "1": "Electoral autocracy",
+    "2": "Electoral democracy",
+    "3": "Liberal democracy"
+  },
+  "indicators": {
+    "owid.vdem.electdem": {
+      "slug": "electoral-democracy-index",
+      "label": "Electoral democracy index",
+      "section": "freedom",
+      "unit": "index_0_1",
+      "kind": "number",
+      "citation": "V-Dem (2026)",
+      "subtitle": "Data by V-Dem. Expert estimates of the extent to which political leaders are elected under comprehensive voting rights in free and fair elections, and freedoms of association and expression are guaranteed. The index ranges from 0 to 1 (most democratic).",
+      "latestYearAnywhere": 2025
+    },
+    "owid.vdem.libdem": {
+      "slug": "liberal-democracy-index",
+      "label": "Liberal democracy index",
+      "section": "freedom",
+      "unit": "index_0_1",
+      "kind": "number",
+      "citation": "V-Dem (2026)",
+      "subtitle": "Data by V-Dem. Expert estimates of the extent of voting rights, the freedom and fairness of elections, freedoms of association and expression, civil liberties, and executive constraints. The index ranges from 0 to 1 (most democratic).",
+      "latestYearAnywhere": 2025
+    },
+    "owid.vdem.rights": {
+      "slug": "human-rights-index-vdem",
+      "label": "Human rights index",
+      "section": "freedom",
+      "unit": "index_0_1",
+      "kind": "number",
+      "citation": "V-Dem (2026)",
+      "subtitle": "Data by V-Dem. Expert estimates of the extent to which people are free from government torture, political killings, and forced labor, have property rights, and enjoy the freedoms of movement, religion, expression, and association. The index ranges from 0 to 1 (most rights).",
+      "latestYearAnywhere": 2025
+    },
+    "owid.row.regime": {
+      "slug": "political-regime",
+      "label": "Political regime (Regimes of the World)",
+      "section": "freedom",
+      "unit": "category",
+      "kind": "category",
+      "citation": "V-Dem (2026)",
+      "subtitle": "Classification by Lührmann et al. (2018) based on expert estimates by V-Dem.",
+      "latestYearAnywhere": 2025
+    },
+    "owid.vdem.corruption": {
+      "slug": "political-corruption-index",
+      "label": "Political corruption index",
+      "section": "government",
+      "unit": "index_0_1",
+      "kind": "number",
+      "citation": "V-Dem (2026)",
+      "subtitle": "Data by V-Dem. Expert estimates of the extent to which the executive, legislative, judiciary, and bureaucracy engage in bribery and theft, and the making and implementation of laws are susceptible to corruption. The index ranges from 0 to 1 (highly corrupt).",
+      "latestYearAnywhere": 2025
+    },
+    "owid.vdem.ruleoflaw": {
+      "slug": "rule-of-law-index",
+      "label": "Rule of law index",
+      "section": "government",
+      "unit": "index_0_1",
+      "kind": "number",
+      "citation": "V-Dem (2026)",
+      "subtitle": "Data by V-Dem. Expert estimates of the extent to which the government complies with the law, courts are independent, laws transparent, justice accessible, corruption absent, and the bureaucracy is impartial. The index ranges from 0 to 1 (most rule-based).",
+      "latestYearAnywhere": 2025
+    },
+    "owid.hanson.statecap": {
+      "slug": "state-capacity-index",
+      "label": "State capacity index",
+      "section": "government",
+      "unit": "score",
+      "kind": "number",
+      "citation": "Jonathan Hanson and Rachel Sigman (2021); Population based on various sources (2023)",
+      "subtitle": "The index captures the extent to which the state controls its territory, sustainably raises sufficient resources, and has skilled and impartial security forces and public servants. Higher scores mean more capacity.",
+      "latestYearAnywhere": 2015
+    },
+    "owid.co2.percapita": {
+      "slug": "co-emissions-per-capita",
+      "label": "CO₂ emissions per capita",
+      "section": "environment",
+      "unit": "t_per_person",
+      "kind": "number",
+      "citation": "Global Carbon Budget (2025); Population based on various sources (2024)",
+      "subtitle": null,
+      "latestYearAnywhere": 2024
+    }
+  },
+  "entityCoverage": {
+    "owid.vdem.electdem": 175,
+    "owid.vdem.libdem": 175,
+    "owid.vdem.rights": 175,
+    "owid.row.regime": 175,
+    "owid.vdem.corruption": 175,
+    "owid.vdem.ruleoflaw": 175,
+    "owid.hanson.statecap": 165,
+    "owid.co2.percapita": 213
+  },
+  "entityCount": 250
+}

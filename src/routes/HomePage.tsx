@@ -214,7 +214,9 @@ export function HomePage() {
         )}
 
         <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-          Equal-area projection, so land areas are shown in true relative size.
+          {projectionKey === 'globe'
+            ? 'Globe view — drag to spin it. Shapes foreshorten toward the horizon as on a physical globe; the flat views use equal-area projections.'
+            : 'Equal-area projection, so land areas are shown in true relative size.'}{' '}
           Source: UN World Population Prospects {revision || '—'}, medium
           variant.
         </p>
@@ -269,8 +271,11 @@ export function HomePage() {
         </label>
 
         <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-          Scroll or pinch to zoom, drag to pan. Tab into the map, then use the
-          arrow keys to move between countries and Enter to open one.
+          {projectionKey === 'globe'
+            ? 'Drag to spin the globe; scroll or pinch to zoom.'
+            : 'Scroll or pinch to zoom, drag to pan.'}{' '}
+          Tab into the map, then use the arrow keys to move between countries
+          and Enter to open one.
         </span>
       </div>
 

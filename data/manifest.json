@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-10T08:55:48+00:00",
+  "generated_at": "2026-08-16T04:19:56+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-10T08:55:48+00:00",
+      "fetched_at": "2026-08-16T04:19:56+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -50,7 +50,7 @@
       "title": "World Bank World Development Indicators",
       "url": "https://api.worldbank.org/v2",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-08-10T02:56:25+00:00",
+      "fetched_at": "2026-08-16T04:11:01+00:00",
       "upstream_release": "2026-07-13",
       "vintage": "per indicator and country; newest observation 2025",
       "citation": "World Bank, World Development Indicators (api.worldbank.org/v2)",
@@ -74,7 +74,67 @@
           "fetched_at": "2026-08-10T02:55:51+00:00"
         }
       ],
-      "notes": "26 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
+      "notes": "40 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
+    },
+    "owid_indicators": {
+      "title": "Our World in Data — curated indicators",
+      "url": "https://ourworldindata.org/grapher",
+      "licence": "CC BY 4.0 (underlying producers' terms apply)",
+      "fetched_at": "2026-08-16T04:01:47+00:00",
+      "upstream_release": null,
+      "vintage": "per indicator and country; newest observation 2025",
+      "citation": "Global Carbon Budget (2025); Population based on various sources (2024); Jonathan Hanson and Rachel Sigman (2021); Population based on various sources (2023); V-Dem (2026), via Our World in Data",
+      "files": [
+        {
+          "url": "https://ourworldindata.org/grapher/electoral-democracy-index.csv",
+          "sha256": "b10099af07ae1c4900edb9e7cd8d2d3876bbca5b3bb1bae69e70932fcdb4bd7e",
+          "size_bytes": 1115469,
+          "fetched_at": "2026-08-16T03:29:57+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/liberal-democracy-index.csv",
+          "sha256": "d6c331b8ea80027599e1bca8e28aab544382c1625b2536ea62f4df4fcb122de6",
+          "size_bytes": 1073845,
+          "fetched_at": "2026-08-16T03:29:58+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/human-rights-index-vdem.csv",
+          "sha256": "6303ce0a230c707b9e05e5248ee7c462494eda19ba71bbd2e3204ef25378cd97",
+          "size_bytes": 1137721,
+          "fetched_at": "2026-08-16T03:30:00+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/political-regime.csv",
+          "sha256": "1e0d045bc702591c95c9885a6dbe5e8bed13bcca9b2a236464caa7c6098851ff",
+          "size_bytes": 647110,
+          "fetched_at": "2026-08-16T03:30:02+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/political-corruption-index.csv",
+          "sha256": "fd1733e084221ec2a6e6a8b01b9f6b4baeedfa179c25d9e3d3d57348d2b4df8f",
+          "size_bytes": 930777,
+          "fetched_at": "2026-08-16T04:01:43+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/rule-of-law-index.csv",
+          "sha256": "20aa91fad74cbd3c5ef2db1abf6f4d69b9abf0f03fbe6ee0461080d02bd8372b",
+          "size_bytes": 1137564,
+          "fetched_at": "2026-08-16T04:01:45+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/state-capacity-index.csv",
+          "sha256": "cfd0cab19277043fccdda3f5e16d42b4a936ae3787d6dceb99664cc54f6b4a40",
+          "size_bytes": 237821,
+          "fetched_at": "2026-08-16T04:01:47+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/co-emissions-per-capita.csv",
+          "sha256": "11a3a3531e4d814f96c5b6ce1ce4888be554cab5a48fe1394ba72f1b590e976e",
+          "size_bytes": 801498,
+          "fetched_at": "2026-08-16T03:30:03+00:00"
+        }
+      ],
+      "notes": "8 series, primary source for the Freedom section (V-Dem democracy and human-rights indices, Regimes of the World classification) and CO2 per capita (Global Carbon Budget). Distinct from the population cross-check, which remains validation-only."
     },
     "natural_earth": {
       "title": "Natural Earth 110m Admin 0 (via world-atlas TopoJSON)",
@@ -91,7 +151,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-10T08:55:48+00:00",
+      "fetched_at": "2026-08-16T04:19:56+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -108,6 +168,24 @@
       "citation": "Central Intelligence Agency, The World Factbook",
       "files": [],
       "notes": "Joined to ISO3 by country name read from each file, not by GEC code. 242 entities matched. Composition percentages are passed through exactly as published -- never rescaled to 100, never interpolated, never projected. Fields with no published percentage are marked non-chartable and render as prose."
+    },
+    "unesco_whc": {
+      "title": "UNESCO World Heritage List",
+      "url": "https://whc.unesco.org/en/list/xml",
+      "licence": "© UNESCO World Heritage Centre; syndication feed",
+      "fetched_at": "2026-08-16T04:18:43+00:00",
+      "upstream_release": null,
+      "vintage": "inscription years 1978 onward",
+      "citation": "UNESCO World Heritage Centre, World Heritage List",
+      "files": [
+        {
+          "url": "https://whc.unesco.org/en/list/xml",
+          "sha256": "2577b64e7105180eb174111b99ae36f9f894b97fe5bdac26fef7b713b3ba1514",
+          "size_bytes": 2496451,
+          "fetched_at": "2026-08-16T04:18:43+00:00"
+        }
+      ],
+      "notes": "1272 inscribed properties across 173 entities. Transboundary sites listed under every member state."
     },
     "resolve_ecoregions": {
       "title": "RESOLVE Ecoregions 2017",
@@ -179,13 +257,29 @@
       "sources": [
         "world_bank"
       ],
-      "row_count": 26,
+      "row_count": 40,
       "entity_count": null
     },
     "indicators/by-country/<ISO3>.json": {
       "description": "Full World Bank indicator series per entity, each value carrying its own observation year.",
       "sources": [
         "world_bank"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "owid/catalogue.json": {
+      "description": "OWID indicator metadata, citations, and coverage.",
+      "sources": [
+        "owid_indicators"
+      ],
+      "row_count": 8,
+      "entity_count": null
+    },
+    "owid/by-country/<ISO3>.json": {
+      "description": "Our World in Data indicator series per entity (V-Dem democracy and rights indices, regime classification, CO2 per capita), each value carrying its own observation year.",
+      "sources": [
+        "owid_indicators"
       ],
       "row_count": null,
       "entity_count": 250
@@ -215,6 +309,14 @@
       "row_count": null,
       "entity_count": 250
     },
+    "flags/svg/": {
+      "description": "The flag SVGs themselves, one per entity keyed by ISO3, shown on country detail pages. Committed because the app never calls an upstream at render time.",
+      "sources": [
+        "flagcdn"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
     "factbook/<ISO3>.json": {
       "description": "Qualitative country facts: government, people composition, industries and trade, each field with its own vintage.",
       "sources": [
@@ -222,6 +324,14 @@
       ],
       "row_count": null,
       "entity_count": 242
+    },
+    "heritage/sites.json": {
+      "description": "World Heritage properties per entity: name, category, inscription year, in-danger and transboundary flags.",
+      "sources": [
+        "unesco_whc"
+      ],
+      "row_count": 1272,
+      "entity_count": 173
     },
     "biomes/biomes.json": {
       "description": "Biome and ecoregion shares by entity and by continent.",
@@ -254,5 +364,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "747b93cc3c97a3374338fcebdf773f9adb38a7466d70d49f35b04269492ceb1c"
+  "content_fingerprint": "7cdddd4efd0e4bd343d358c52b2840e8aa5dc4c07d282305cbb4dc6860601b0b"
 }

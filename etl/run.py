@@ -231,13 +231,35 @@ def stage_owid(ctx: dict[str, Any]) -> None:
     )
 
 
+def stage_heritage(ctx: dict[str, Any]) -> None:
+    from etl.sources import heritage
+
+    _require_registry(ctx)
+    stage("heritage")
+    heritage.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
+def stage_owid_indicators(ctx: dict[str, Any]) -> None:
+    from etl.sources import owid_indicators
+
+    _require_registry(ctx)
+    stage("owid_indicators")
+    owid_indicators.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
 STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "crosswalk": stage_crosswalk,
     "wpp": stage_wpp,
     "worldbank": stage_worldbank,
+    "owid_indicators": stage_owid_indicators,
     "geometry": stage_geometry,
     "flags": stage_flags,
     "factbook": stage_factbook,
+    "heritage": stage_heritage,
     "biomes": stage_biomes,
     "owid_crosscheck": stage_owid,
 }
@@ -259,6 +281,8 @@ def check_sources() -> int:
         ("Natural Earth 110m TopoJSON", config.NATURAL_EARTH_TOPOJSON_110M),
         ("RESOLVE Ecoregions 2017", config.ECOREGIONS_URL),
         ("Our World in Data", config.OWID_POPULATION_CSV),
+        ("Our World in Data grapher",
+         config.OWID_GRAPHER_CSV.format(slug=config.OWID_INDICATORS[0].slug)),
         ("flagcdn", config.FLAGCDN_SVG.format(cca2_lower="us")),
     ]
     rev = discover_wpp_revision()

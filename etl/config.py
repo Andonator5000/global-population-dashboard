@@ -127,10 +127,13 @@ class Indicator(NamedTuple):
     unit: str
 
 
-# Grouped by the country-page section they serve (brief section 5).
+# Grouped by the country-page section they serve. Section keys follow the
+# nine-section page layout introduced 2026-08-15: economy, demographics,
+# government, environment, technology, security, healthcare, culture, freedom
+# (education figures sit inside demographics; freedom is fed by OWID below).
 # Codes verified live against the World Bank catalogue -- see run.py.
 WORLD_BANK_INDICATORS: tuple[Indicator, ...] = (
-    # -- Economy -----------------------------------------------------------
+    # -- Economic Data -----------------------------------------------------
     Indicator("NY.GDP.MKTP.CD", "GDP (current US$)", "economy", "USD"),
     Indicator("NY.GDP.PCAP.PP.CD", "GDP per capita, PPP (current int'l $)", "economy", "USD_PPP"),
     Indicator("NY.GDP.MKTP.KD.ZG", "GDP growth (annual %)", "economy", "percent"),
@@ -142,25 +145,50 @@ WORLD_BANK_INDICATORS: tuple[Indicator, ...] = (
     Indicator("SL.AGR.EMPL.ZS", "Employment in agriculture (% of employment)", "economy", "percent"),
     Indicator("SL.IND.EMPL.ZS", "Employment in industry (% of employment)", "economy", "percent"),
     Indicator("SL.SRV.EMPL.ZS", "Employment in services (% of employment)", "economy", "percent"),
-    # -- Education ---------------------------------------------------------
-    Indicator("SE.ADT.LITR.ZS", "Literacy rate, adult total (% 15+)", "education", "percent"),
-    Indicator("SE.ADT.LITR.MA.ZS", "Literacy rate, adult male (% 15+)", "education", "percent"),
-    Indicator("SE.ADT.LITR.FE.ZS", "Literacy rate, adult female (% 15+)", "education", "percent"),
-    Indicator("SE.XPD.TOTL.GD.ZS", "Government expenditure on education (% of GDP)", "education", "percent"),
-    Indicator("SE.PRM.ENRR", "School enrolment, primary (% gross)", "education", "percent"),
-    Indicator("SE.SEC.ENRR", "School enrolment, secondary (% gross)", "education", "percent"),
-    Indicator("SE.TER.ENRR", "School enrolment, tertiary (% gross)", "education", "percent"),
-    # -- Population / urbanisation ----------------------------------------
-    Indicator("SP.URB.TOTL.IN.ZS", "Urban population (% of total)", "population", "percent"),
-    Indicator("EN.POP.DNST", "Population density (people per sq km of land)", "population", "per_sqkm"),
-    # -- Land --------------------------------------------------------------
-    Indicator("AG.LND.TOTL.K2", "Land area (sq. km)", "land", "sq_km"),
-    Indicator("AG.LND.FRST.ZS", "Forest area (% of land area)", "land", "percent"),
-    Indicator("AG.LND.AGRI.ZS", "Agricultural land (% of land area)", "land", "percent"),
-    # -- Health ------------------------------------------------------------
-    Indicator("SP.DYN.LE00.IN", "Life expectancy at birth (years)", "health", "years"),
-    Indicator("SH.XPD.CHEX.GD.ZS", "Current health expenditure (% of GDP)", "health", "percent"),
-    Indicator("SH.DYN.MORT", "Under-5 mortality (per 1,000 live births)", "health", "per_1000"),
+    # Official exchange rate, annual average. No keyless source publishes live
+    # FX, so the page shows this with its year rather than pretending to be a
+    # currency converter.
+    Indicator("PA.NUS.FCRF", "Official exchange rate (LCU per US$, period average)", "economy", "lcu_per_usd"),
+    # -- Demographics and People (incl. education) -------------------------
+    Indicator("SE.ADT.LITR.ZS", "Literacy rate, adult total (% 15+)", "demographics", "percent"),
+    Indicator("SE.ADT.LITR.MA.ZS", "Literacy rate, adult male (% 15+)", "demographics", "percent"),
+    Indicator("SE.ADT.LITR.FE.ZS", "Literacy rate, adult female (% 15+)", "demographics", "percent"),
+    Indicator("SE.XPD.TOTL.GD.ZS", "Government expenditure on education (% of GDP)", "demographics", "percent"),
+    Indicator("SE.PRM.ENRR", "School enrolment, primary (% gross)", "demographics", "percent"),
+    Indicator("SE.PRM.NENR", "School enrolment, primary (% net)", "demographics", "percent"),
+    Indicator("SE.SEC.ENRR", "School enrolment, secondary (% gross)", "demographics", "percent"),
+    Indicator("SE.SEC.NENR", "School enrolment, secondary (% net)", "demographics", "percent"),
+    Indicator("SE.TER.ENRR", "School enrolment, tertiary (% gross)", "demographics", "percent"),
+    Indicator("SP.URB.TOTL.IN.ZS", "Urban population (% of total)", "demographics", "percent"),
+    Indicator("EN.POP.DNST", "Population density (people per sq km of land)", "demographics", "per_sqkm"),
+    # -- Environment and Geography -----------------------------------------
+    Indicator("AG.LND.TOTL.K2", "Land area (sq. km)", "environment", "sq_km"),
+    Indicator("AG.LND.FRST.ZS", "Forest area (% of land area)", "environment", "percent"),
+    Indicator("AG.LND.AGRI.ZS", "Agricultural land (% of land area)", "environment", "percent"),
+    Indicator("EG.FEC.RNEW.ZS", "Renewable energy consumption (% of total final energy)", "environment", "percent"),
+    # -- Government and Stability ------------------------------------------
+    # NOTE (2026-08-15): the Worldwide Governance Indicators (PV.EST, GE.EST,
+    # RL.EST, CC.EST) were tried first and REJECTED: the codes resolve in the
+    # v2 /indicator catalogue but their data endpoint answers "deleted or
+    # archived", and the WGI database (source=3) hangs outright -- the WB
+    # migrated it off the v2 API. Governance measures come from V-Dem via
+    # OWID instead; see OWID_INDICATORS below.
+    # -- Technology and Infrastructure -------------------------------------
+    Indicator("IT.NET.USER.ZS", "Individuals using the Internet (% of population)", "technology", "percent"),
+    Indicator("IT.CEL.SETS.P2", "Mobile cellular subscriptions (per 100 people)", "technology", "per_100"),
+    Indicator("EG.ELC.ACCS.ZS", "Access to electricity (% of population)", "technology", "percent"),
+    # -- Security and Defense ----------------------------------------------
+    Indicator("MS.MIL.XPND.GD.ZS", "Military expenditure (% of GDP)", "security", "percent"),
+    Indicator("MS.MIL.TOTL.P1", "Armed forces personnel, total", "security", "count"),
+    Indicator("VC.IHR.PSRC.P5", "Intentional homicides (per 100,000 people)", "security", "per_100k"),
+    # -- Healthcare and Public Health --------------------------------------
+    Indicator("SP.DYN.LE00.IN", "Life expectancy at birth (years)", "healthcare", "years"),
+    Indicator("SH.XPD.CHEX.GD.ZS", "Current health expenditure (% of GDP)", "healthcare", "percent"),
+    Indicator("SH.DYN.MORT", "Under-5 mortality (per 1,000 live births)", "healthcare", "per_1000"),
+    Indicator("SH.STA.MMRT", "Maternal mortality ratio (per 100,000 live births)", "healthcare", "per_100k"),
+    Indicator("SH.MED.PHYS.ZS", "Physicians (per 1,000 people)", "healthcare", "per_1000"),
+    Indicator("SH.MED.BEDS.ZS", "Hospital beds (per 1,000 people)", "healthcare", "per_1000"),
+    Indicator("SH.IMM.MEAS", "Measles immunisation (% of children 12-23 months)", "healthcare", "percent"),
 )
 
 # --------------------------------------------------------------------------
@@ -250,10 +278,94 @@ ECOREGIONS_URL = "https://storage.googleapis.com/teow2016/Ecoregions2017.zip"
 ECOREGION_SIMPLIFY_TOLERANCE_M = 1000
 
 # --------------------------------------------------------------------------
-# Our World in Data (cross-check only, never a primary source)
+# Our World in Data
 # --------------------------------------------------------------------------
+#
+# Two distinct roles, deliberately kept separate:
+#
+# 1. POPULATION CROSS-CHECK (owid_crosscheck stage). OWID's modern population
+#    series is itself UN WPP, so it can only validate our parsing, never the
+#    estimates. It remains a cross-check and never feeds a rendered figure.
+#
+# 2. PRIMARY SOURCE for series no other keyless upstream carries
+#    (owid_indicators stage, added 2026-08-15). The country pages' "Freedom"
+#    section needs democracy and human-rights measures; V-Dem publishes them
+#    but not as a stable no-auth API, and OWID redistributes them under
+#    CC BY with clean ISO3 keys. Here OWID is the distribution channel and
+#    the citation names the underlying producer (V-Dem etc.).
 
 OWID_POPULATION_CSV = "https://ourworldindata.org/grapher/population.csv"
+
+OWID_GRAPHER_CSV = "https://ourworldindata.org/grapher/{slug}.csv"
+OWID_GRAPHER_METADATA = "https://ourworldindata.org/grapher/{slug}.metadata.json"
+
+# Democracy-index series start in 1789; the Freedom section's trend does not
+# need the age of sail, and trimming keeps 250 committed artifacts lean.
+OWID_START_YEAR = 1900
+
+
+class OwidIndicator(NamedTuple):
+    slug: str         # ourworldindata.org/grapher/<slug>
+    code: str         # stable key in our artifacts (never the slug, which OWID may rename)
+    label: str
+    section: str      # which country-page section it feeds
+    unit: str
+    kind: str         # "number" | "category"
+
+
+OWID_INDICATORS: tuple[OwidIndicator, ...] = (
+    # -- Freedom -----------------------------------------------------------
+    OwidIndicator("electoral-democracy-index", "owid.vdem.electdem",
+                  "Electoral democracy index", "freedom", "index_0_1", "number"),
+    OwidIndicator("liberal-democracy-index", "owid.vdem.libdem",
+                  "Liberal democracy index", "freedom", "index_0_1", "number"),
+    OwidIndicator("human-rights-index-vdem", "owid.vdem.rights",
+                  "Human rights index", "freedom", "index_0_1", "number"),
+    OwidIndicator("political-regime", "owid.row.regime",
+                  "Political regime (Regimes of the World)", "freedom",
+                  "category", "category"),
+    # -- Government and Stability ------------------------------------------
+    # Replaces the archived World Bank WGI codes -- see the note above
+    # WORLD_BANK_INDICATORS. Mind the direction of the corruption index:
+    # HIGHER means MORE corruption, the opposite of WGI's "control of
+    # corruption", and the page must say so.
+    OwidIndicator("political-corruption-index", "owid.vdem.corruption",
+                  "Political corruption index", "government",
+                  "index_0_1", "number"),
+    OwidIndicator("rule-of-law-index", "owid.vdem.ruleoflaw",
+                  "Rule of law index", "government", "index_0_1", "number"),
+    OwidIndicator("state-capacity-index", "owid.hanson.statecap",
+                  "State capacity index", "government", "score", "number"),
+    # -- Environment -------------------------------------------------------
+    OwidIndicator("co-emissions-per-capita", "owid.co2.percapita",
+                  "CO₂ emissions per capita", "environment",
+                  "t_per_person", "number"),
+)
+
+# Regimes of the World categories, as encoded in the political-regime series.
+OWID_REGIME_LABELS: dict[int, str] = {
+    0: "Closed autocracy",
+    1: "Electoral autocracy",
+    2: "Electoral democracy",
+    3: "Liberal democracy",
+}
+
+# --------------------------------------------------------------------------
+# UNESCO World Heritage List
+# --------------------------------------------------------------------------
+#
+# The official syndication feed: every inscribed property with category,
+# inscription year, and ISO2 state codes (comma-separated for transboundary
+# sites). Keyless — but fronted by a WAF that answers 403 to non-browser user
+# agents, including our honest ETL UA. The feed exists explicitly for reuse
+# (whc.unesco.org/en/syndication), so the fetch identifies as a browser for
+# this one source. If UNESCO ever gates it properly, the stage fails loudly.
+
+WHC_LIST_XML = "https://whc.unesco.org/en/list/xml"
+WHC_BROWSER_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+)
 
 # --------------------------------------------------------------------------
 # Flags
