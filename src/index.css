@@ -35,7 +35,7 @@
 
   --surface: oklch(99% 0.002 250);
   --surface-raised: oklch(100% 0 0);
-  --page-tint: oklch(96.5% 0.02 250);
+  --page-tint: oklch(95.5% 0.035 250);
   --border: oklch(90% 0.004 250);
   --text: oklch(22% 0.008 250);
   --text-muted: oklch(45% 0.008 250);
@@ -83,7 +83,7 @@
   :root:not([data-theme='light']) {
     --surface: oklch(17% 0.006 250);
     --surface-raised: oklch(21% 0.007 250);
-    --page-tint: oklch(20% 0.015 250);
+    --page-tint: oklch(21% 0.025 250);
     --border: oklch(31% 0.008 250);
     --text: oklch(94% 0.003 250);
     --text-muted: oklch(72% 0.006 250);
@@ -117,7 +117,7 @@
 :root[data-theme='dark'] {
   --surface: oklch(17% 0.006 250);
   --surface-raised: oklch(21% 0.007 250);
-  --page-tint: oklch(20% 0.015 250);
+  --page-tint: oklch(21% 0.025 250);
   --border: oklch(31% 0.008 250);
   --text: oklch(94% 0.003 250);
   --text-muted: oklch(72% 0.006 250);
@@ -234,6 +234,21 @@ td {
 
 .section-disclosure[open] > summary .section-chevron {
   transform: rotate(180deg);
+}
+
+/*
+ * Landscape phones: a rotated phone is short and wide, and the desktop
+ * two-column grid (map + readout) leaves the map a letterboxed sliver.
+ * Collapse to a single column so the map takes the full width -- combined
+ * with the fullscreen button this makes sideways viewing genuinely usable.
+ */
+@media (orientation: landscape) and (max-height: 500px) {
+  .map-layout {
+    display: block !important;
+  }
+  .map-layout > aside {
+    margin-top: 1rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -89,7 +89,20 @@ const PRODUCT_RULES: [RegExp, string][] = [
   [/\brubber/, '🌳'],
   [/\btimber|lumber|\bwood\b|forestry/, '🪵'],
   [/\bsunflower|rapeseed|sesame|oilseed/, '🌻'],
+  [/\bspice|vanilla|clove|cinnamon|cardamom|turmeric|nutmeg|saffron/, '🌿'],
+  [/\bginger\b/, '🫚'],
+  [/\blivestock|\bcattle ranching/, '🐄'],
+  [/\bhorse/, '🐎'],
+  [/\bdonkey|mule/, '🫏'],
+  [/\bseaweed|algae/, '🌿'],
+  [/\bpearl/, '🦪'],
+  [/\bsalt\b/, '🧂'],
+  [/\bflower|horticulture/, '💐'],
+  [/\bcork\b/, '🪵'],
+  [/\btomato paste|canned/, '🥫'],
   // -- industries ----------------------------------------------------------
+  [/consumer goods|consumer products/, '🛒'],
+  [/\bcars?\b|motor vehicle/, '🚗'],
   [/petroleum|crude|\boil\b|refin/, '🛢️'],
   [/natural gas|\bgas\b|lng/, '🔥'],
   [/\bmining|\bore\b|coal|bauxite|phosphate/, '⛏️'],
@@ -117,7 +130,40 @@ const PRODUCT_RULES: [RegExp, string][] = [
   [/remittance/, '💸'],
   [/defen[cs]e|arms|weapons/, '🛡️'],
   [/agricult|farming|agro/, '🌾'],
+  [/\bfurniture\b/, '🪑'],
+  [/\bjewel|gemstone cutting/, '💍'],
+  [/\bwatch(es)?\b|clock/, '⌚'],
+  [/\btoys?\b/, '🧸'],
+  [/\bglass\b/, '🪟'],
+  [/\bcarpet|rug ?weav|handicraft|weaving|embroider/, '🧶'],
+  [/\bmedical (?:equipment|instrument|device)|optical|precision instrument/, '🩺'],
+  [/\buranium/, '☢️'],
+  [/\brum\b|spirits|distill|whisk|vodka|liquor/, '🥃'],
+  [/\bbeer|brewer/, '🍺'],
+  [/\bcigarette|cigar\b/, '🚬'],
+  [/\bfootwear|shoes?\b/, '👟'],
+  [/\bsoap|cosmetic|perfume/, '🧴'],
+  [/\belectrical (?:appliance|equipment)|household appliance/, '🔌'],
+  [/\bsatellite|space\b/, '🛰️'],
+  [/\bgambling|casino/, '🎰'],
+  [/\bmovie|film|entertainment|media/, '🎬'],
+  [/\bcall cent|business process|outsourc/, '📞'],
+  [/\beducation\b/, '🎓'],
+  [/\brailway|locomotive/, '🚆'],
+  [/\bboat ?building|yacht/, '⛵'],
 ]
+
+/**
+ * Display renames for individual list items, applied AT RENDER only -- the
+ * committed artifact keeps the source wording. Keys are lowercase.
+ */
+const ITEM_RENAMES: Record<string, string> = {
+  cars: 'motor vehicles',
+}
+
+export function itemDisplayName(item: string): string {
+  return ITEM_RENAMES[item.toLowerCase()] ?? item
+}
 
 export function productIcon(item: string): string | null {
   const needle = item.toLowerCase()
@@ -140,6 +186,9 @@ const RELIGION_RULES: [RegExp, string][] = [
   [/baha'?i/, '✴️'],
   [/folk|animis|traditional|indigenous|spiritis|vodou|voodoo|shaman/, '🪘'],
   [/\bnone\b|atheis|agnosti|unaffiliated|no religion|secular/, '⚪'],
+  // Catch-alls LAST: "Other Christian" must match the Christian rule above
+  // before "other" can claim it.
+  [/unspecified|don'?t know|refused|no answer|undeclared|\bother\b|smaller categories/, '❓'],
 ]
 
 export function religionIcon(label: string): string | null {

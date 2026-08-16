@@ -439,15 +439,17 @@ export function WorldMap({
   const isDimmed = (continent: ContinentKey) =>
     mode === 'continent' && activeContinent !== null && continent !== activeContinent
 
-  // Globe-view colour system: black space, dark blue ocean, and the LIGHT
-  // fills for land in both themes -- land sits tiers of lightness above the
-  // ocean (min contrast 4.36, gated in build-map-palette.mjs), so a blue
-  // country can never be mistaken for water.
-  const waterFill = isGlobe ? 'var(--map-ocean)' : 'var(--map-water)'
-  const backgroundFill = isGlobe ? 'var(--map-space)' : 'var(--map-water)'
-  const landStroke = isGlobe ? 'var(--map-ocean)' : 'var(--map-land-stroke)'
-  const landNeutral = isGlobe ? GLOBE_LAND_NEUTRAL : 'var(--map-land)'
-  const noDataFill = isGlobe ? 'oklch(92% 0.003 250)' : 'var(--map-no-data)'
+  // One colour system for EVERY projection (2026-08-16): dark blue ocean
+  // with sunlit light land fills in both themes -- land sits tiers of
+  // lightness above the ocean (min contrast 4.36, gated in
+  // build-map-palette.mjs), so a blue country can never be mistaken for
+  // water. Only the area outside the projected sphere differs: black space
+  // behind the globe, ocean edge-to-edge on the flat views.
+  const waterFill = 'var(--map-ocean)'
+  const backgroundFill = isGlobe ? 'var(--map-space)' : 'var(--map-ocean)'
+  const landStroke = 'var(--map-ocean)'
+  const landNeutral = GLOBE_LAND_NEUTRAL
+  const noDataFill = 'oklch(92% 0.003 250)'
 
   function fillFor(shape: CountryShape): string {
     const row = populationByIso3.get(shape.iso3)
@@ -458,9 +460,7 @@ export function WorldMap({
         ? 'var(--map-accent-fill)'
         : landNeutral
     }
-    return isGlobe
-      ? `var(--fill-globe-${shape.iso3}, ${GLOBE_LAND_NEUTRAL})`
-      : `var(--fill-${shape.iso3}, var(--map-land))`
+    return `var(--fill-globe-${shape.iso3}, ${GLOBE_LAND_NEUTRAL})`
   }
 
   const activeIso3 = focusTargets[activeIndex]?.iso3
@@ -475,6 +475,9 @@ export function WorldMap({
    * includes markers, which have no area).
    */
   const visibleLabels = useMemo(() => {
+    // Continent mode carries continent labels instead; per-country names
+    // would fight them and imply country-level interaction.
+    if (mode === 'continent') return []
     const k2 = transform.k * transform.k
     const labels: { iso3: string; name: string; x: number; y: number; emphasized: boolean }[] = []
     for (const shape of shapes) {
@@ -502,7 +505,7 @@ export function WorldMap({
       }
     }
     return labels
-  }, [shapes, markerPoints, hovered, transform.k])
+  }, [shapes, markerPoints, hovered, transform.k, mode])
 
   const registerNode = (iso3: string) => (node: SVGGraphicsElement | null) => {
     if (node) nodeRefs.current.set(iso3, node)
@@ -602,11 +605,11 @@ export function WorldMap({
         </pattern>
       </defs>
 
-      {/* On the globe this disc IS the ocean; flat views paint water
-          edge-to-edge so it matches the background. */}
-      <path d={sphere} fill={waterFill} />
-
       <g transform={`translate(${transform.x},${transform.y}) scale(${transform.k})`}>
+        {/* The ocean disc/outline lives INSIDE the zoom transform: outside
+            it, zooming scaled the landmasses while the globe's blue circle
+            stayed fixed -- land visibly outgrew its own planet. */}
+        <path d={sphere} fill={waterFill} />
         {shapes.map((shape) => {
           const row = populationByIso3.get(shape.iso3)
           const dimmed = isDimmed(shape.continent)
@@ -630,9 +633,11 @@ export function WorldMap({
               tabIndex={tabIndexFor(shape.iso3)}
               role="link"
               aria-label={
-                row?.available
-                  ? `${shape.name}. Open country page.`
-                  : `${shape.name}. No population data available. Open country page.`
+                mode === 'continent'
+                  ? `${shape.name}, ${CONTINENTS[shape.continent]}. Open continent page.`
+                  : row?.available
+                    ? `${shape.name}. Open country page.`
+                    : `${shape.name}. No population data available. Open country page.`
               }
               className="map-target"
               onPointerEnter={() => onHover(target)}
@@ -718,12 +723,20 @@ export function WorldMap({
             textAnchor="middle"
             pointerEvents="none"
             aria-hidden="true"
-            fontSize={(label.emphasized ? 13 : 10) / transform.k}
+            // Dividing by k would hold labels at a constant on-screen size
+            // while the land grows under them, which reads as "the names
+            // stay tiny" on a phone. Dividing by sqrt(k) instead lets the
+            // on-screen size grow with the square root of the zoom: at 4x
+            // zoom names are twice as big, at 9x three times -- larger, but
+            // never billboard-sized.
+            fontSize={(label.emphasized ? 13 : 10) / Math.sqrt(transform.k)}
             style={{
-              fill: isGlobe ? 'oklch(20% 0.01 250)' : 'var(--text)',
+              // Land is light in every view now, so labels are dark text
+              // with a light halo regardless of theme.
+              fill: 'oklch(20% 0.01 250)',
               paintOrder: 'stroke',
-              stroke: isGlobe ? GLOBE_LAND_NEUTRAL : 'var(--map-water)',
-              strokeWidth: (label.emphasized ? 3.5 : 2.5) / transform.k,
+              stroke: GLOBE_LAND_NEUTRAL,
+              strokeWidth: (label.emphasized ? 3.5 : 2.5) / Math.sqrt(transform.k),
               strokeLinejoin: 'round',
               fontWeight: label.emphasized ? 600 : 500,
             }}
@@ -751,14 +764,14 @@ export function WorldMap({
                 y={y}
                 textAnchor="middle"
                 pointerEvents="none"
-                fontSize={11 / transform.k}
+                fontSize={12 / Math.sqrt(transform.k)}
                 style={{
-                  fill: 'var(--text)',
+                  fill: 'oklch(20% 0.01 250)',
                   paintOrder: 'stroke',
-                  stroke: 'var(--map-water)',
-                  strokeWidth: 3 / transform.k,
+                  stroke: GLOBE_LAND_NEUTRAL,
+                  strokeWidth: 3 / Math.sqrt(transform.k),
                   strokeLinejoin: 'round',
-                  fontWeight: 500,
+                  fontWeight: 600,
                 }}
               >
                 {CONTINENTS[key]}

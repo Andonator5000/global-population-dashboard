@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router'
 
 import { EntityTable } from '../components/EntityTable'
 import { LiveCounter } from '../components/LiveCounter'
-import { MapLegend } from '../components/MapLegend'
 import { MapReadout } from '../components/MapReadout'
 import { TimeScrubber } from '../components/TimeScrubber'
 import { WorldMap, type HoverTarget } from '../components/WorldMap'
@@ -17,6 +16,8 @@ import {
 import {
   useCountryTopology,
   useMapMarkers,
+  useGdpSummary,
+  useMapPalette,
   usePopulationSummary,
   usePopulationTimeline,
 } from '../lib/data'
@@ -26,6 +27,8 @@ import type { PopulationRow } from '../types'
 
 export function HomePage() {
   const summaryState = usePopulationSummary()
+  const paletteState = useMapPalette()
+  const gdpState = useGdpSummary()
   const topologyState = useCountryTopology()
   const markersState = useMapMarkers()
   const navigate = useNavigate()
@@ -126,14 +129,6 @@ export function HomePage() {
     }
     return merged
   }, [rows, scrubPopulation, scrubYear])
-
-  const continentCounts = useMemo(() => {
-    const counts = new Map<ContinentKey, number>()
-    for (const row of rows) {
-      counts.set(row.continent, (counts.get(row.continent) ?? 0) + 1)
-    }
-    return counts
-  }, [rows])
 
   const worldTotal = useMemo(
     () =>
@@ -325,7 +320,7 @@ export function HomePage() {
       )}
 
       {!loading && !error && topologyState.status === 'ready' && (
-        <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1fr)_17rem]">
+        <div className="map-layout mt-4 grid gap-6 lg:grid-cols-[minmax(0,1fr)_17rem]">
           {/* Escape hatch for keyboard users. The map is a single tab stop
               with arrow-key navigation inside, but someone who tabs INTO it
               still wants a one-key way back out to the table. */}
@@ -350,10 +345,32 @@ export function HomePage() {
               mode={mode}
               hovered={hovered}
               onHover={setHovered}
-              onSelect={(target) => navigate(`/country/${target.iso3}`)}
+              onSelect={(target) =>
+                // In continent mode a click opens the CONTINENT the country
+                // belongs to, not the country under the pointer.
+                navigate(
+                  mode === 'continent'
+                    ? `/continent/${target.continent}`
+                    : `/country/${target.iso3}`,
+                )
+              }
               activeContinent={activeContinent}
               onActiveContinentChange={setActiveContinent}
             />
+            {UNINHABITED_CONTINENTS.length > 0 && (
+              <p
+                className="border-t px-4 py-2 text-xs"
+                style={{
+                  color: 'var(--text-muted)',
+                  borderColor: 'var(--border)',
+                  background: 'var(--surface-raised)',
+                }}
+              >
+                <strong style={{ fontWeight: 600 }}>Note:</strong> Antarctica
+                has no permanent population and is excluded from per-capita and
+                density rankings.
+              </p>
+            )}
           </div>
 
           <aside className="space-y-4">
@@ -362,19 +379,11 @@ export function HomePage() {
               row={hovered ? byIso3.get(hovered.iso3) : undefined}
               year={scrubYear ?? year}
               revision={revision}
+              topology={topologyState.data}
+              palette={
+                paletteState.status === 'ready' ? paletteState.data : null
+              }
             />
-            <MapLegend
-              mode={mode}
-              activeContinent={activeContinent}
-              onActiveContinentChange={setActiveContinent}
-              continentCounts={continentCounts}
-            />
-            {UNINHABITED_CONTINENTS.length > 0 && (
-              <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                Antarctica has no permanent population and is excluded from
-                per-capita and density rankings.
-              </p>
-            )}
           </aside>
         </div>
       )}
@@ -384,6 +393,7 @@ export function HomePage() {
           rows={[...byIso3.values()]}
           year={scrubYear ?? year}
           revision={revision}
+          gdp={gdpState.status === 'ready' ? gdpState.data : null}
           note={
             scrubYear === null
               ? undefined

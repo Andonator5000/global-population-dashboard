@@ -21,6 +21,7 @@ import {
   useCountrySeries,
   useEntities,
   useHeritage,
+  useLeaders,
   useMapPalette,
 } from '../lib/data'
 import {
@@ -32,7 +33,12 @@ import {
   normaliseFactbookCaps,
   titleCase,
 } from '../lib/format'
-import { productIcon, religionIcon, sectorIcon } from '../lib/icons'
+import {
+  itemDisplayName,
+  productIcon,
+  religionIcon,
+  sectorIcon,
+} from '../lib/icons'
 import type {
   CountryIndicators,
   CountryOwid,
@@ -231,7 +237,7 @@ function ItemList({
               <span aria-hidden="true" className="w-5 shrink-0 text-center">
                 {productIcon(item) ?? '•'}
               </span>
-              <span>{capitalizeFirst(item)}</span>
+              <span>{capitalizeFirst(itemDisplayName(item))}</span>
             </li>
           ))}
         </ul>
@@ -245,6 +251,52 @@ function ItemList({
         note={field.note}
       />
     </div>
+  )
+}
+
+/**
+ * A leader's portrait beside the Factbook office-holder prose.
+ *
+ * The photo and its caption name come from Wikidata; the Factbook text
+ * remains the authoritative prose. Rendered ONLY when the office has exactly
+ * one holder (the ETL enforces this), and every image links its Wikimedia
+ * Commons file page for author and licence attribution.
+ */
+function LeaderPortrait({
+  record,
+}: {
+  record: import('../types').LeaderRecord | undefined
+}) {
+  if (!record?.image) return null
+  return (
+    <figure className="m-0 shrink-0">
+      <img
+        src={`${DATA_BASE_URL}/${record.image}`}
+        alt={record.name ? `Portrait of ${record.name}` : 'Portrait'}
+        className="h-24 w-20 rounded object-cover"
+        style={{ boxShadow: '0 0 0 1px var(--border)' }}
+        loading="lazy"
+      />
+      <figcaption
+        className="mt-1 w-20 text-xs"
+        style={{ color: 'var(--text-muted)' }}
+      >
+        {record.name}
+        {record.commonsPage && (
+          <>
+            {' · '}
+            <a
+              href={record.commonsPage}
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2"
+            >
+              photo
+            </a>
+          </>
+        )}
+      </figcaption>
+    </figure>
   )
 }
 
@@ -274,6 +326,7 @@ export function CountryPage() {
   const owidState = useCountryOwid(iso3)
   const biomeState = useBiomes()
   const heritageState = useHeritage()
+  const leadersState = useLeaders()
 
   const entity =
     entitiesState.status === 'ready'
@@ -298,6 +351,10 @@ export function CountryPage() {
   const heritage =
     heritageState.status === 'ready' && iso3
       ? (heritageState.data.entities[iso3] ?? { count: 0, sites: [] })
+      : undefined
+  const leaders =
+    leadersState.status === 'ready' && iso3
+      ? leadersState.data.entities[iso3]
       : undefined
 
   if (entitiesState.status === 'ready' && !entity) {
@@ -410,6 +467,7 @@ export function CountryPage() {
               indicator={indicatorValue(indicators, 'SI.POV.GINI')}
               label="Gini index"
               format={(v) => v.toFixed(1)}
+              note="Measures income inequality: 0 means every household earns the same; 100 means one household earns everything. Most countries fall between 25 (very equal) and 55 (very unequal)."
             />
             <StatTile
               label="Currency"
@@ -594,24 +652,24 @@ export function CountryPage() {
               />
               <IndicatorTile
                 indicator={indicatorValue(indicators, 'SE.PRM.NENR')}
-                label="Primary enrolment (net)"
+                label="Primary enrollment (net)"
                 format={(v) => `${v.toFixed(1)}%`}
                 note="Share of primary-age children enrolled at primary level."
               />
               <IndicatorTile
                 indicator={indicatorValue(indicators, 'SE.PRM.ENRR')}
-                label="Primary enrolment (gross)"
+                label="Primary enrollment (gross)"
                 format={(v) => `${v.toFixed(1)}%`}
-                note="Can exceed 100%: total enrolment of any age, divided by the primary-age population, so repeaters and over- or under-age pupils push it past 100."
+                note="Can exceed 100%: total enrollment of any age, divided by the primary-age population, so repeaters and over- or under-age pupils push it past 100."
               />
               <IndicatorTile
                 indicator={indicatorValue(indicators, 'SE.SEC.NENR')}
-                label="Secondary enrolment (net)"
+                label="Secondary enrollment (net)"
                 format={(v) => `${v.toFixed(1)}%`}
               />
               <IndicatorTile
                 indicator={indicatorValue(indicators, 'SE.TER.ENRR')}
-                label="Tertiary enrolment (gross)"
+                label="Tertiary enrollment (gross)"
                 format={(v) => `${v.toFixed(1)}%`}
               />
             </div>
@@ -668,19 +726,30 @@ export function CountryPage() {
                 field={factbook.government.legislativeStructure}
                 label="Legislature"
                 source={FB}
+                transform={capitalizeFirst}
               />
-              <ProseField
-                field={factbook.government.chiefOfState}
-                label="Chief of State"
-                source={FB}
-                transform={normaliseFactbookCaps}
-              />
-              <ProseField
-                field={factbook.government.headOfGovernment}
-                label="Head of Government"
-                source={FB}
-                transform={normaliseFactbookCaps}
-              />
+              <div className="flex items-start gap-4">
+                <div className="min-w-0 flex-1">
+                  <ProseField
+                    field={factbook.government.chiefOfState}
+                    label="Chief of State"
+                    source={FB}
+                    transform={normaliseFactbookCaps}
+                  />
+                </div>
+                <LeaderPortrait record={leaders?.hos} />
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="min-w-0 flex-1">
+                  <ProseField
+                    field={factbook.government.headOfGovernment}
+                    label="Head of Government"
+                    source={FB}
+                    transform={normaliseFactbookCaps}
+                  />
+                </div>
+                <LeaderPortrait record={leaders?.hog} />
+              </div>
               <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
                 Office-holders are as recorded in the Factbook edition retrieved
                 for this build — see the data freshness panel below for the
@@ -731,6 +800,11 @@ export function CountryPage() {
                 entity?.area_km2
                   ? `${new Intl.NumberFormat('en').format(entity.area_km2)} km²`
                   : 'not available'
+              }
+              detail={
+                entity?.area_km2
+                  ? `${new Intl.NumberFormat('en').format(Math.round(entity.area_km2 * 0.386102))} sq mi`
+                  : undefined
               }
               source="mledoze/countries"
             />

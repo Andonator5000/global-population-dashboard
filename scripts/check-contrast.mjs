@@ -45,7 +45,7 @@ const THEMES = {
   light: {
     surface: 'oklch(99% 0.002 250)',
     raised: 'oklch(100% 0 0)',
-    pageTint: 'oklch(96.5% 0.02 250)',
+    pageTint: 'oklch(95.5% 0.035 250)',
     border: 'oklch(90% 0.004 250)',
     text: 'oklch(22% 0.008 250)',
     textMuted: 'oklch(45% 0.008 250)',
@@ -61,7 +61,7 @@ const THEMES = {
   dark: {
     surface: 'oklch(17% 0.006 250)',
     raised: 'oklch(21% 0.007 250)',
-    pageTint: 'oklch(20% 0.015 250)',
+    pageTint: 'oklch(21% 0.025 250)',
     border: 'oklch(31% 0.008 250)',
     text: 'oklch(94% 0.003 250)',
     textMuted: 'oklch(72% 0.006 250)',

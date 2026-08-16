@@ -268,6 +268,31 @@ export interface CountryOwid {
   indicators: Record<string, OwidIndicatorSeries>
 }
 
+/** data/indicators/gdp-summary.json — latest GDP per entity for the table. */
+export interface GdpSummary {
+  source: string
+  indicator: string
+  label: string
+  note: string
+  entities: Record<string, { value: number; year: number } | null>
+}
+
+/** data/leaders/leaders.json — heads of state/government with portraits. */
+export interface LeaderRecord {
+  name: string | null
+  /** Number of truthy office-holders; >1 means a collective office, no photo. */
+  holders: number
+  image: string | null
+  commonsPage: string | null
+}
+
+export interface LeadersFile {
+  note: string
+  source: string
+  imageWidth: number
+  entities: Record<string, { hos?: LeaderRecord; hog?: LeaderRecord }>
+}
+
 /** One property in data/heritage/sites.json. */
 export interface HeritageSite {
   name: string
