@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-16T06:19:56+00:00",
+  "generated_at": "2026-08-16T09:29:05+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-16T06:19:56+00:00",
+      "fetched_at": "2026-08-16T09:29:05+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -151,7 +151,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-16T06:19:56+00:00",
+      "fetched_at": "2026-08-16T09:29:05+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -168,6 +168,24 @@
       "citation": "Central Intelligence Agency, The World Factbook",
       "files": [],
       "notes": "Joined to ISO3 by country name read from each file, not by GEC code. 242 entities matched. Composition percentages are passed through exactly as published -- never rescaled to 100, never interpolated, never projected. Fields with no published percentage are marked non-chartable and render as prose."
+    },
+    "wikidata_leaders": {
+      "title": "Wikidata heads of state and government, portraits via Wikimedia Commons",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "Wikidata: CC0. Portraits: individual Commons licences, attributed via the linked file page.",
+      "fetched_at": "2026-08-16T08:01:46+00:00",
+      "upstream_release": null,
+      "vintage": "current incumbents at fetch time",
+      "citation": "Wikidata (P35/P6/P18); Wikimedia Commons",
+      "files": [
+        {
+          "url": "https://query.wikidata.org/sparql?format=json&query=%0ASELECT%20%3Fiso3%20%3Frole%20%3Fperson%20%3FpersonLabel%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fcountry%20wdt%3AP298%20%3Fiso3%20.%0A%20%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP35%20%3Fperson%20.%20BIND%28%22hos%22%20AS%20%3Frole%29%0A%20%20%7D%20UNION%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP6%20%3Fperson%20.%20BIND%28%22hog%22%20AS%20%3Frole%29%0A%20%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP18%20%3Fimage%20.%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0A",
+          "sha256": "522000297d7cca5fe8b1fb222b6a5310c54cd2763599cfa4c4539c6defa422f7",
+          "size_bytes": 324026,
+          "fetched_at": "2026-08-16T08:01:46+00:00"
+        }
+      ],
+      "notes": "233 entities, 351 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(3), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
     },
     "unesco_whc": {
       "title": "UNESCO World Heritage List",
@@ -252,6 +270,14 @@
       "row_count": null,
       "entity_count": 237
     },
+    "indicators/gdp-summary.json": {
+      "description": "Latest GDP (current US$) per entity, for the entity table.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": null,
+      "entity_count": 213
+    },
     "indicators/catalogue.json": {
       "description": "Indicator metadata, units, sections, and entity coverage.",
       "sources": [
@@ -325,6 +351,14 @@
       "row_count": null,
       "entity_count": 242
     },
+    "leaders/leaders.json": {
+      "description": "Heads of state and government with portrait paths and Commons attribution links.",
+      "sources": [
+        "wikidata_leaders"
+      ],
+      "row_count": null,
+      "entity_count": 233
+    },
     "heritage/sites.json": {
       "description": "World Heritage properties per entity: name, category, inscription year, in-danger and transboundary flags.",
       "sources": [
@@ -364,5 +398,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "45638efe98c9e3c4fab272d313f0cae62c65ef1e102483d31f0a58a3b56b32db"
+  "content_fingerprint": "497efbac14751c00081821aa740245c8a050b9868fbd6edb4a61a6e33e07861f"
 }

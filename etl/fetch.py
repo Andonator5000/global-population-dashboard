@@ -137,6 +137,24 @@ def fetch(
                 timeout=config.HTTP_TIMEOUT_SECONDS,
                 stream=True,
             )
+            # Rate limiting and transient overload are RETRYABLE, honouring
+            # Retry-After. They used to raise immediately, which silently
+            # cost half the Commons portrait downloads: the retry loop below
+            # only caught network exceptions, never HTTP status.
+            if response.status_code in (429, 503):
+                if attempt == config.HTTP_MAX_RETRIES:
+                    raise FetchError(
+                        f"{url} still returning HTTP "
+                        f"{response.status_code} after "
+                        f"{config.HTTP_MAX_RETRIES} attempts."
+                    )
+                retry_after = response.headers.get("Retry-After")
+                try:
+                    delay = float(retry_after) if retry_after else 0.0
+                except ValueError:
+                    delay = 0.0
+                time.sleep(max(delay, config.HTTP_BACKOFF_SECONDS * attempt * 2))
+                continue
             if response.status_code != 200:
                 raise FetchError(
                     f"{url} returned HTTP {response.status_code}. "

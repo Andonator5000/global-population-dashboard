@@ -10,7 +10,9 @@ import type {
   CountryTopology,
   Entity,
   FactbookRecord,
+  GdpSummary,
   HeritageFile,
+  LeadersFile,
   Manifest,
   MapPalette,
   MarkerFile,
@@ -98,6 +100,12 @@ export const useBiomes = (): AsyncState<BiomeFile> =>
 
 export const useHeritage = (): AsyncState<HeritageFile> =>
   useArtifact<HeritageFile>('heritage/sites.json')
+
+export const useGdpSummary = (): AsyncState<GdpSummary> =>
+  useArtifact<GdpSummary>('indicators/gdp-summary.json')
+
+export const useLeaders = (): AsyncState<LeadersFile> =>
+  useArtifact<LeadersFile>('leaders/leaders.json')
 
 /**
  * Year-by-year population, fetched when `enabled` becomes true.

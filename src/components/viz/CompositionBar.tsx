@@ -177,6 +177,10 @@ export function CompositionBar({
         ))}
       </div>
 
+      {/* Icon-led legends list EVERY category individually -- the bar folds
+          the tail into one "Smaller categories" segment to stay at 8 hues,
+          but a reader wants each category named with its symbol. Non-icon
+          legends keep the folded inline form. */}
       <ul
         className={
           iconFor
@@ -184,7 +188,13 @@ export function CompositionBar({
             : 'mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs'
         }
       >
-        {segments.map((segment, index) => (
+        {(iconFor
+          ? sorted.map((item, index) => ({
+              ...item,
+              colour: index < MAX_SLOTS ? seriesColour(index) : OTHER_TOKEN,
+            }))
+          : segments
+        ).map((segment, index) => (
           <li key={`${segment.label}-legend-${index}`} className="flex items-center gap-1.5">
             <span
               className="inline-block h-2.5 w-2.5 shrink-0 rounded-sm"

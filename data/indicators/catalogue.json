@@ -99,31 +99,31 @@
       "latestYearAnywhere": 2025
     },
     "SE.PRM.ENRR": {
-      "label": "School enrolment, primary (% gross)",
+      "label": "School enrollment, primary (% gross)",
       "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "SE.PRM.NENR": {
-      "label": "School enrolment, primary (% net)",
+      "label": "School enrollment, primary (% net)",
       "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2019
     },
     "SE.SEC.ENRR": {
-      "label": "School enrolment, secondary (% gross)",
+      "label": "School enrollment, secondary (% gross)",
       "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "SE.SEC.NENR": {
-      "label": "School enrolment, secondary (% net)",
+      "label": "School enrollment, secondary (% net)",
       "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2019
     },
     "SE.TER.ENRR": {
-      "label": "School enrolment, tertiary (% gross)",
+      "label": "School enrollment, tertiary (% gross)",
       "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
