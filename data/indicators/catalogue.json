@@ -68,94 +68,178 @@
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
+    "PA.NUS.FCRF": {
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "section": "economy",
+      "unit": "lcu_per_usd",
+      "latestYearAnywhere": 2025
+    },
     "SE.ADT.LITR.ZS": {
       "label": "Literacy rate, adult total (% 15+)",
-      "section": "education",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2024
     },
     "SE.ADT.LITR.MA.ZS": {
       "label": "Literacy rate, adult male (% 15+)",
-      "section": "education",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2024
     },
     "SE.ADT.LITR.FE.ZS": {
       "label": "Literacy rate, adult female (% 15+)",
-      "section": "education",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2024
     },
     "SE.XPD.TOTL.GD.ZS": {
       "label": "Government expenditure on education (% of GDP)",
-      "section": "education",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "SE.PRM.ENRR": {
       "label": "School enrolment, primary (% gross)",
-      "section": "education",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
+    },
+    "SE.PRM.NENR": {
+      "label": "School enrolment, primary (% net)",
+      "section": "demographics",
+      "unit": "percent",
+      "latestYearAnywhere": 2019
     },
     "SE.SEC.ENRR": {
       "label": "School enrolment, secondary (% gross)",
-      "section": "education",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
+    "SE.SEC.NENR": {
+      "label": "School enrolment, secondary (% net)",
+      "section": "demographics",
+      "unit": "percent",
+      "latestYearAnywhere": 2019
+    },
     "SE.TER.ENRR": {
       "label": "School enrolment, tertiary (% gross)",
-      "section": "education",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "SP.URB.TOTL.IN.ZS": {
       "label": "Urban population (% of total)",
-      "section": "population",
+      "section": "demographics",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "EN.POP.DNST": {
       "label": "Population density (people per sq km of land)",
-      "section": "population",
+      "section": "demographics",
       "unit": "per_sqkm",
       "latestYearAnywhere": 2023
     },
     "AG.LND.TOTL.K2": {
       "label": "Land area (sq. km)",
-      "section": "land",
+      "section": "environment",
       "unit": "sq_km",
       "latestYearAnywhere": 2023
     },
     "AG.LND.FRST.ZS": {
       "label": "Forest area (% of land area)",
-      "section": "land",
+      "section": "environment",
       "unit": "percent",
       "latestYearAnywhere": 2023
     },
     "AG.LND.AGRI.ZS": {
       "label": "Agricultural land (% of land area)",
-      "section": "land",
+      "section": "environment",
       "unit": "percent",
+      "latestYearAnywhere": 2023
+    },
+    "EG.FEC.RNEW.ZS": {
+      "label": "Renewable energy consumption (% of total final energy)",
+      "section": "environment",
+      "unit": "percent",
+      "latestYearAnywhere": 2022
+    },
+    "IT.NET.USER.ZS": {
+      "label": "Individuals using the Internet (% of population)",
+      "section": "technology",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
+    "IT.CEL.SETS.P2": {
+      "label": "Mobile cellular subscriptions (per 100 people)",
+      "section": "technology",
+      "unit": "per_100",
+      "latestYearAnywhere": 2024
+    },
+    "EG.ELC.ACCS.ZS": {
+      "label": "Access to electricity (% of population)",
+      "section": "technology",
+      "unit": "percent",
+      "latestYearAnywhere": 2024
+    },
+    "MS.MIL.XPND.GD.ZS": {
+      "label": "Military expenditure (% of GDP)",
+      "section": "security",
+      "unit": "percent",
+      "latestYearAnywhere": 2024
+    },
+    "MS.MIL.TOTL.P1": {
+      "label": "Armed forces personnel, total",
+      "section": "security",
+      "unit": "count",
+      "latestYearAnywhere": 2020
+    },
+    "VC.IHR.PSRC.P5": {
+      "label": "Intentional homicides (per 100,000 people)",
+      "section": "security",
+      "unit": "per_100k",
       "latestYearAnywhere": 2023
     },
     "SP.DYN.LE00.IN": {
       "label": "Life expectancy at birth (years)",
-      "section": "health",
+      "section": "healthcare",
       "unit": "years",
       "latestYearAnywhere": 2024
     },
     "SH.XPD.CHEX.GD.ZS": {
       "label": "Current health expenditure (% of GDP)",
-      "section": "health",
+      "section": "healthcare",
       "unit": "percent",
       "latestYearAnywhere": 2024
     },
     "SH.DYN.MORT": {
       "label": "Under-5 mortality (per 1,000 live births)",
-      "section": "health",
+      "section": "healthcare",
       "unit": "per_1000",
+      "latestYearAnywhere": 2024
+    },
+    "SH.STA.MMRT": {
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "section": "healthcare",
+      "unit": "per_100k",
+      "latestYearAnywhere": 2023
+    },
+    "SH.MED.PHYS.ZS": {
+      "label": "Physicians (per 1,000 people)",
+      "section": "healthcare",
+      "unit": "per_1000",
+      "latestYearAnywhere": 2023
+    },
+    "SH.MED.BEDS.ZS": {
+      "label": "Hospital beds (per 1,000 people)",
+      "section": "healthcare",
+      "unit": "per_1000",
+      "latestYearAnywhere": 2023
+    },
+    "SH.IMM.MEAS": {
+      "label": "Measles immunisation (% of children 12-23 months)",
+      "section": "healthcare",
+      "unit": "percent",
       "latestYearAnywhere": 2024
     }
   },
@@ -171,21 +255,35 @@
     "SL.AGR.EMPL.ZS": 186,
     "SL.IND.EMPL.ZS": 186,
     "SL.SRV.EMPL.ZS": 186,
+    "PA.NUS.FCRF": 213,
     "SE.ADT.LITR.ZS": 170,
     "SE.ADT.LITR.MA.ZS": 170,
     "SE.ADT.LITR.FE.ZS": 171,
     "SE.XPD.TOTL.GD.ZS": 203,
     "SE.PRM.ENRR": 209,
+    "SE.PRM.NENR": 197,
     "SE.SEC.ENRR": 208,
+    "SE.SEC.NENR": 188,
     "SE.TER.ENRR": 203,
     "SP.URB.TOTL.IN.ZS": 216,
     "EN.POP.DNST": 215,
     "AG.LND.TOTL.K2": 215,
     "AG.LND.FRST.ZS": 213,
     "AG.LND.AGRI.ZS": 209,
+    "EG.FEC.RNEW.ZS": 212,
+    "IT.NET.USER.ZS": 213,
+    "IT.CEL.SETS.P2": 214,
+    "EG.ELC.ACCS.ZS": 215,
+    "MS.MIL.XPND.GD.ZS": 164,
+    "MS.MIL.TOTL.P1": 174,
+    "VC.IHR.PSRC.P5": 195,
     "SP.DYN.LE00.IN": 216,
     "SH.XPD.CHEX.GD.ZS": 193,
-    "SH.DYN.MORT": 196
+    "SH.DYN.MORT": 196,
+    "SH.STA.MMRT": 194,
+    "SH.MED.PHYS.ZS": 207,
+    "SH.MED.BEDS.ZS": 200,
+    "SH.IMM.MEAS": 193
   },
   "entityCount": 250
 }

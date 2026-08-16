@@ -997,6 +997,80 @@ build on any WCAG AA violation in either theme.
 
 ---
 
+## 16. The 2026-08-15 overhaul (maintainer-requested)
+
+### 16.1 Our World in Data promoted to a primary source
+
+The brief-era rule was "OWID is a cross-check, never primary" (§5). That rule
+was written about OWID's *population* series, which is UN WPP re-published and
+therefore cannot corroborate itself. It still holds for population.
+
+The new **Freedom** and governance measures are a different situation: V-Dem
+publishes no stable keyless API, and OWID redistributes its indices under
+CC BY with clean ISO3 keys. There, OWID is the distribution channel and the
+citation names the producer — pulled from each grapher's own metadata endpoint
+so a producer change upstream lands in our manifest rather than going stale.
+Series ingested: electoral/liberal democracy, human rights, political
+corruption, rule of law (all V-Dem), Regimes of the World classification,
+state capacity (Hanson & Sigman), CO₂ per capita (Global Carbon Budget).
+Democracy series are trimmed to 1900+ (`OWID_START_YEAR`).
+
+**Direction trap, recorded:** V-Dem's political corruption index runs HIGHER =
+MORE corrupt — the opposite sense to WGI's "control of corruption". The tile
+note says so explicitly.
+
+### 16.2 World Bank WGI codes are archived
+
+PV.EST / GE.EST / RL.EST / CC.EST resolve in the v2 `/indicator` catalogue but
+their data endpoints answer "deleted or archived", and the WGI database
+(`source=3`) hangs outright. `--validate-indicators` alone would NOT have
+caught this — it checks the catalogue, not the data envelope. Governance
+measures moved to V-Dem via OWID (§16.1).
+
+### 16.3 UNESCO World Heritage and the WAF
+
+whc.unesco.org fronts its own syndication feed with bot mitigation that 403s
+any non-browser user agent, including our honest ETL UA. The feed exists
+explicitly for reuse, so the heritage stage identifies as a browser for this
+one source (`WHC_BROWSER_UA`). If UNESCO gates the feed properly, the stage
+fails loudly rather than shipping a stale list.
+
+### 16.4 Exchange rates are annual, on purpose
+
+"Show how each currency relates to the US Dollar" is served by World Bank
+PA.NUS.FCRF (official rate, period average) with its year on the tile. No
+keyless source publishes live FX; showing a dated official rate honestly beats
+scraping one covertly.
+
+### 16.5 The globe view and the equal-area rule
+
+§15 declares equal-area only. The orthographic globe added at the maintainer's
+request is a PERSPECTIVE view: it foreshortens toward the horizon exactly as a
+physical globe does, and it never produces Mercator's systematic
+latitude-dependent inflation, which is what §15 exists to prevent. It is
+opt-in; every flat projection remains equal-area and the `check:equal-area`
+gate still runs against the flat math.
+
+### 16.6 Map palette brightened
+
+The original band (chroma 0.055/0.06) was a deliberate restraint choice
+(§7). The maintainer overrode it: chroma is now 0.10 light / 0.11 dark with
+the dark tiers lifted to 0.34–0.52. Two facts made this safe: hue-chord
+separation scales linearly with chroma, so neighbour ΔE improved (min 5.28
+light / 5.79 dark against the 4.0 floor), and fills are clamped into sRGB
+gamut per hue with `clampChroma`, so no channel-clipping can silently break
+the tier guarantee.
+
+### 16.7 Factbook ALL-CAPS surnames
+
+The Factbook renders surnames in ALL CAPS ("President Emmanuel MACRON"). This
+is normalised at the DISPLAY layer only, with a Roman-numeral guard
+(ABDULLAH II keeps its II); the committed artifact preserves the Factbook's
+own text. Applied only to the chief-of-state and head-of-government fields,
+where the convention is systematic.
+
+---
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

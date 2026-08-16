@@ -124,6 +124,22 @@ def ingest(
         entity_count=len(palette.get("entities", {})),
     )
 
+    svg_count = sum(
+        1
+        for entry in palette.get("entities", {}).values()
+        if entry.get("flagSvg")
+    )
+    manifest_mod.record_artifact(
+        manifest, "flags/svg/",
+        description=(
+            "The flag SVGs themselves, one per entity keyed by ISO3, shown "
+            "on country detail pages. Committed because the app never calls "
+            "an upstream at render time."
+        ),
+        sources=["flagcdn"],
+        entity_count=svg_count,
+    )
+
     for theme in ("light", "dark"):
         report = verification.get(theme)
         if not report:

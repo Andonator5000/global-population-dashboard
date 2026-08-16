@@ -41,10 +41,10 @@
  *
  * Run: npm run palette
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-import { converter, formatHex, parse } from 'culori'
+import { clampChroma, converter, formatHex, parse } from 'culori'
 
 const ROOT = resolve(import.meta.dirname, '..')
 const OUT_DIR = resolve(ROOT, 'data/flags')
@@ -62,7 +62,13 @@ const THEMES = {
   light: {
     surface: 'oklch(98% 0.010 235)', // map water
     stroke: 'oklch(98% 0.010 235)',
-    chroma: 0.055,
+    // Raised from 0.055 (2026-08): the muted band read as drab, and the
+    // maintainer asked for a brighter map. Higher chroma also WIDENS
+    // neighbour separation -- the hue chord is 2*C*sin(dHue/2), so it scales
+    // linearly with chroma. Fills are clamped into sRGB gamut per hue, so a
+    // hue that cannot carry this chroma at its tier degrades to the most
+    // saturated displayable colour instead of channel-clipping.
+    chroma: 0.1,
     // Four tiers, 0.055 apart -> dE 5.5 minimum between adjacent tiers.
     // The TOP tier is capped at 0.845 because anything lighter drifts too
     // close to the water and drops below the fill/water contrast floor --
@@ -72,8 +78,11 @@ const THEMES = {
   dark: {
     surface: 'oklch(13% 0.010 235)',
     stroke: 'oklch(13% 0.010 235)',
-    chroma: 0.06,
-    tiers: [0.3, 0.35, 0.4, 0.45],
+    chroma: 0.11, // raised from 0.06 -- see the light-theme note
+    // Lifted from [0.30..0.45] (2026-08) for the same brightening pass:
+    // more lightness against the near-black water, and 0.06 steps -> dE 6
+    // minimum between adjacent tiers, up from 5.
+    tiers: [0.34, 0.4, 0.46, 0.52],
   },
 }
 
@@ -109,12 +118,22 @@ function contrast(a, b) {
 
 const fillFor = (theme, tierIndex, hue) =>
   formatHex(
-    toRgb({
-      mode: 'oklch',
-      l: THEMES[theme].tiers[tierIndex],
-      c: THEMES[theme].chroma,
-      h: hue,
-    }),
+    toRgb(
+      // clampChroma walks chroma down (holding L and H) until the colour is
+      // displayable in sRGB. Without it, formatHex would clip channels
+      // independently, shifting both hue and lightness -- and a shifted
+      // lightness silently breaks the tier guarantee the graph colouring
+      // depends on.
+      clampChroma(
+        {
+          mode: 'oklch',
+          l: THEMES[theme].tiers[tierIndex],
+          c: THEMES[theme].chroma,
+          h: hue,
+        },
+        'oklch',
+      ),
+    ),
   )
 
 // ---------------------------------------------------------------------------
@@ -229,6 +248,12 @@ for (const entity of entities) {
     // Unclamped flag palette, for the country detail page.
     flag: flag
       ? { dominant: flag.dominant.hex, accents: flag.accents.map((a) => a.hex) }
+      : null,
+    // Path (relative to /data) of the committed flag SVG, written by
+    // extract-flag-colors.mjs. Checked on disk rather than inferred from the
+    // raw palette, because an achromatic flag has an SVG but no colour entry.
+    flagSvg: existsSync(resolve(ROOT, 'data/flags/svg', `${entity.iso3}.svg`))
+      ? `flags/svg/${entity.iso3}.svg`
       : null,
     tier: tierIndex,
     fill: {

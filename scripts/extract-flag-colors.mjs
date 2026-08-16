@@ -30,6 +30,13 @@ const ENTITIES = resolve(ROOT, 'data/entities.json')
 const CACHE_DIR = resolve(ROOT, '.cache/flags')
 const OUT_DIR = resolve(ROOT, 'data/flags')
 const OUT_FILE = resolve(OUT_DIR, 'raw-palette.json')
+/**
+ * Committed copies of the flag SVGs themselves, keyed by ISO3 so the app can
+ * address them with its join key. The browser never calls flagcdn (or any
+ * upstream) at render time, so showing a flag on a country page requires the
+ * artifact to live in /data like everything else. ~4 MB for all 250.
+ */
+const SVG_DIR = resolve(OUT_DIR, 'svg')
 
 const RASTER_WIDTH = 160
 /** Pixels below this OKLCH chroma are neutral (white/black/grey) and skipped. */
@@ -146,6 +153,10 @@ async function processEntity(entity) {
   }
   if (!buffer) return { iso3: entity.iso3, status: 'no-flag' }
 
+  // Commit the SVG itself, even when no colour can be extracted from it — an
+  // achromatic flag is still a flag the country page should show.
+  writeFileSync(resolve(SVG_DIR, `${entity.iso3}.svg`), buffer)
+
   let raster
   try {
     raster = await sharp(buffer, { density: 200 })
@@ -202,6 +213,7 @@ async function processEntity(entity) {
 async function main() {
   mkdirSync(CACHE_DIR, { recursive: true })
   mkdirSync(OUT_DIR, { recursive: true })
+  mkdirSync(SVG_DIR, { recursive: true })
 
   const entities = JSON.parse(readFileSync(ENTITIES, 'utf-8'))
   console.log(`Extracting flag colours for ${entities.length} entities…`)
