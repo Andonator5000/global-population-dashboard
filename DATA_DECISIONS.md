@@ -1071,6 +1071,43 @@ where the convention is systematic.
 
 ---
 
+## 17. The 2026-08-16 batch (maintainer-requested)
+
+### 17.1 One map colour system
+
+The globe's palette (dark blue ocean, sunlit light land in both themes,
+black space behind the sphere) now applies to every projection. The old
+per-theme land tiers still exist in the palette artifact but the map renders
+the light set everywhere; the land-vs-ocean floor (contrast ≥ 2.0, actual
+minimum 4.36) is what makes "blue country vs blue sea" confusion impossible
+without banning blue land.
+
+### 17.2 Leader portraits (Wikidata + Commons)
+
+The Factbook names office-holders but has no photographs. Portraits come
+from Wikidata's truthy P35/P6 with P18 images, committed at build time like
+every other artifact. Two guardrails: a portrait ships ONLY when the office
+has exactly one truthy holder (Bosnia's presidency, San Marino's captains
+regent and the Swiss federal council get none rather than one misleading
+face), and every image links its Commons file page for author and licence
+attribution. The Factbook prose remains the authoritative text; the Wikidata
+name rides with the photo as a caption so a disagreement is visible.
+
+### 17.3 GDP summary artifact
+
+The entity table needed one GDP figure per entity; fetching 250 per-country
+indicator files for it would have blown the home page's load. The worldbank
+stage now also emits `indicators/gdp-summary.json` — latest NY.GDP.MKTP.CD
+per entity, each value carrying its own year.
+
+### 17.4 "Smaller categories", not "other"
+
+The composition fold bucket collided with sources' own "other" categories
+(two "other" rows on the US religions). The bar keeps the fold at 8 hues;
+icon-led legends now list every tail category individually.
+
+---
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

@@ -154,11 +154,11 @@ WORLD_BANK_INDICATORS: tuple[Indicator, ...] = (
     Indicator("SE.ADT.LITR.MA.ZS", "Literacy rate, adult male (% 15+)", "demographics", "percent"),
     Indicator("SE.ADT.LITR.FE.ZS", "Literacy rate, adult female (% 15+)", "demographics", "percent"),
     Indicator("SE.XPD.TOTL.GD.ZS", "Government expenditure on education (% of GDP)", "demographics", "percent"),
-    Indicator("SE.PRM.ENRR", "School enrolment, primary (% gross)", "demographics", "percent"),
-    Indicator("SE.PRM.NENR", "School enrolment, primary (% net)", "demographics", "percent"),
-    Indicator("SE.SEC.ENRR", "School enrolment, secondary (% gross)", "demographics", "percent"),
-    Indicator("SE.SEC.NENR", "School enrolment, secondary (% net)", "demographics", "percent"),
-    Indicator("SE.TER.ENRR", "School enrolment, tertiary (% gross)", "demographics", "percent"),
+    Indicator("SE.PRM.ENRR", "School enrollment, primary (% gross)", "demographics", "percent"),
+    Indicator("SE.PRM.NENR", "School enrollment, primary (% net)", "demographics", "percent"),
+    Indicator("SE.SEC.ENRR", "School enrollment, secondary (% gross)", "demographics", "percent"),
+    Indicator("SE.SEC.NENR", "School enrollment, secondary (% net)", "demographics", "percent"),
+    Indicator("SE.TER.ENRR", "School enrollment, tertiary (% gross)", "demographics", "percent"),
     Indicator("SP.URB.TOTL.IN.ZS", "Urban population (% of total)", "demographics", "percent"),
     Indicator("EN.POP.DNST", "Population density (people per sq km of land)", "demographics", "per_sqkm"),
     # -- Environment and Geography -----------------------------------------
@@ -349,6 +349,34 @@ OWID_REGIME_LABELS: dict[int, str] = {
     2: "Electoral democracy",
     3: "Liberal democracy",
 }
+
+# --------------------------------------------------------------------------
+# Heads of state and government (Wikidata + Wikimedia Commons)
+# --------------------------------------------------------------------------
+#
+# The Factbook names office-holders but ships no photographs. Wikidata's
+# truthy P35 (head of state) / P6 (head of government) statements provide the
+# incumbent and a Commons portrait (P18), keyless via the public SPARQL
+# endpoint. A photo is committed ONLY when the country has exactly one truthy
+# holder for the role -- collective heads (Bosnia's presidency, San Marino's
+# captains regent, the Swiss federal council) get no photo rather than a
+# misleading single face. Portraits are Commons thumbnails; the app links
+# each to its Commons file page for author and licence attribution.
+
+WIKIDATA_SPARQL = "https://query.wikidata.org/sparql"
+WIKIDATA_LEADERS_QUERY = """
+SELECT ?iso3 ?role ?person ?personLabel ?image WHERE {
+  ?country wdt:P298 ?iso3 .
+  {
+    ?country wdt:P35 ?person . BIND("hos" AS ?role)
+  } UNION {
+    ?country wdt:P6 ?person . BIND("hog" AS ?role)
+  }
+  OPTIONAL { ?person wdt:P18 ?image . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+"""
+LEADER_IMAGE_WIDTH = 384  # px; displayed small, sharp on 2-4x screens
 
 # --------------------------------------------------------------------------
 # UNESCO World Heritage List

@@ -230,6 +230,41 @@ def ingest(
         )
         written += 1
 
+    # Compact GDP summary for the home-page entity table: one small artifact
+    # instead of the table fetching 250 per-country files for one figure.
+    gdp_summary: dict[str, Any] = {}
+    for iso3 in sorted(registry):
+        series = observations.get(iso3, {}).get("NY.GDP.MKTP.CD", {})
+        if series:
+            latest_year = max(series)
+            gdp_summary[iso3] = {
+                "value": series[latest_year], "year": latest_year,
+            }
+        else:
+            gdp_summary[iso3] = None
+    (out_dir / "gdp-summary.json").write_text(
+        json.dumps(
+            {
+                "source": "world_bank",
+                "indicator": "NY.GDP.MKTP.CD",
+                "label": "GDP (current US$)",
+                "note": (
+                    "Latest observation per entity; the year differs across "
+                    "entities and rides with each value."
+                ),
+                "entities": gdp_summary,
+            },
+            separators=(",", ":"), ensure_ascii=False,
+        ) + "\n",
+        encoding="utf-8", newline="\n",
+    )
+    manifest_mod.record_artifact(
+        manifest, "indicators/gdp-summary.json",
+        description="Latest GDP (current US$) per entity, for the entity table.",
+        sources=["world_bank"],
+        entity_count=sum(1 for v in gdp_summary.values() if v),
+    )
+
     catalogue = {
         "source": "world_bank",
         "lastUpdated": last_updated,

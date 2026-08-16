@@ -231,6 +231,16 @@ def stage_owid(ctx: dict[str, Any]) -> None:
     )
 
 
+def stage_leaders(ctx: dict[str, Any]) -> None:
+    from etl.sources import leaders
+
+    _require_registry(ctx)
+    stage("leaders")
+    leaders.ingest(
+        ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+    )
+
+
 def stage_heritage(ctx: dict[str, Any]) -> None:
     from etl.sources import heritage
 
@@ -259,6 +269,7 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "geometry": stage_geometry,
     "flags": stage_flags,
     "factbook": stage_factbook,
+    "leaders": stage_leaders,
     "heritage": stage_heritage,
     "biomes": stage_biomes,
     "owid_crosscheck": stage_owid,
