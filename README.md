@@ -6,9 +6,9 @@ World population statistics on an equal-area map, built as a **static site fed
 by a versioned ETL pipeline**. The browser never calls an upstream API — it
 reads committed artifacts from `/data`, each carrying its own provenance.
 
-> **Status: Phase 1 of 9 complete** (scaffold, dependencies, ETL skeleton, ISO3
-> crosswalk, data manifest). The map, population figures, and country detail
-> sections are not built yet. See [Build phases](#build-phases).
+> **Status: all 9 build phases complete.** The site is live, the verification
+> gates pass, and the monthly refresh is verified end to end on a real runner.
+> See [Build phases](#build-phases).
 
 ## Layout
 
