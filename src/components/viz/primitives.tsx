@@ -135,6 +135,9 @@ export function Section({
   const frame = {
     borderColor: 'var(--border)',
     borderLeftColor: accent ?? 'var(--border)',
+    // Raised card on the tinted page background, so sections read as
+    // surfaces rather than outlines floating on the wash.
+    background: 'var(--surface-raised)',
   }
 
   if (!collapsible) {

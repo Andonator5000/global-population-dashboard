@@ -41,6 +41,12 @@
       "violations": [],
       "minSurfaceContrast": 1.62,
       "lowContrastEntities": []
+    },
+    "globe": {
+      "ocean": "oklch(31% 0.06 255)",
+      "minContrast": 4.36,
+      "floor": 2,
+      "failures": []
     }
   },
   "graphColouringFailures": [],

@@ -24,8 +24,18 @@ import { resolve } from 'node:path'
 const CSS_PATH = resolve(import.meta.dirname, '../src/index.css')
 const css = readFileSync(CSS_PATH, 'utf-8')
 
-/** Tokens that are intentionally light-only (no dark counterpart needed). */
-const LIGHT_ONLY = new Set()
+/**
+ * Tokens that are intentionally THEME-INVARIANT: declared once in :root and
+ * deliberately not overridden for dark. Space is space in both themes, and
+ * the brand button keeps a single identity everywhere. Listing one here is a
+ * statement that its single declaration is a decision, not an omission.
+ */
+const LIGHT_ONLY = new Set([
+  '--brand-bg',
+  '--brand-text',
+  '--map-space',
+  '--map-ocean',
+])
 
 function blockAfter(marker, from = 0) {
   const start = css.indexOf(marker, from)

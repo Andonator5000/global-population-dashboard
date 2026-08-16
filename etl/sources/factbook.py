@@ -208,6 +208,15 @@ def parse_composition(raw_text: str, *, kind: str = "generic") -> dict[str, Any]
         match = _PERCENT.match(cleaned)
         if match:
             label = match.group("label").strip(" ,;:")
+            # A bare percentage with no label is almost always a source typo
+            # that split a category from its figure ("atheist, 0.4%" in
+            # Venezuela's religions). Reattach it to the immediately
+            # preceding unquantified label instead of minting a phantom
+            # "unspecified" item.
+            if not label and items and items[-1]["percent"] is None:
+                items[-1]["percent"] = float(match.group("value"))
+                items[-1]["isUpperBound"] = bool(match.group("lt"))
+                continue
             items.append({
                 "label": label or "unspecified",
                 "percent": float(match.group("value")),
@@ -317,8 +326,28 @@ def _plain_field(section: dict[str, Any], key: str, label: str) -> dict[str, Any
     }
 
 
+_DESCRIPTOR_ITEM = re.compile(
+    r"diversifi|world[ -]lead|world[- ]class|largest|smallest|leading\b|"
+    r"innovator|dominat|rapidly|fast[- ]growing|growing economy|among the|"
+    r"[a-z]+-driven|[a-z]+[- ]dependent|[- ]based econom|backbone|mainstay|"
+    r"accounts? for|well[- ]developed|highly developed|major (?:economic|"
+    r"source|contributor)|important (?:source|sector)|significant\b|"
+    r"principal (?:source|earner)|state[- ]controlled econom",
+    re.IGNORECASE,
+)
+
+
 def _list_field(section: dict[str, Any], key: str, label: str) -> dict[str, Any]:
-    """A comma-separated prose list (industries, crops, commodities)."""
+    """A comma-separated prose list (industries, crops, commodities).
+
+    The Factbook mixes DESCRIPTIONS into these lists — the United States'
+    industries open with "highly diversified, world leading, high-technology
+    innovator, second-largest industrial output in the world" before naming a
+    single industry. Splitting naively shipped those as bullet items beside
+    "petroleum" and "steel". Each split item is therefore classified: items
+    matching the descriptor patterns move into a `summary` string the page
+    renders as prose, and only the genuine items stay in `items`.
+    """
     node = section.get(key)
     raw = _text_of(node)
     if not raw:
@@ -326,10 +355,21 @@ def _list_field(section: dict[str, Any], key: str, label: str) -> dict[str, Any]
     text = strip_html(raw)
     year, qualifier = extract_vintage(text)
     body = _VINTAGE.sub("", text).strip().rstrip(",;").strip()
+    items: list[str] = []
+    descriptors: list[str] = []
+    for segment in split_segments(body):
+        (descriptors if _DESCRIPTOR_ITEM.search(segment) else items).append(
+            segment
+        )
+    summary = None
+    if descriptors:
+        joined = ", ".join(descriptors)
+        summary = joined[0].upper() + joined[1:] + "."
     return {
         "available": True,
         "text": text,
-        "items": split_segments(body),
+        "items": items,
+        "summary": summary,
         "vintageYear": year,
         "vintageQualifier": qualifier,
         "note": _note_of(node),

@@ -54,7 +54,24 @@ interface CountryShape {
   contested: boolean
   d: string
   centroid: [number, number]
+  /** Projected on-screen area in px² at zoom 1, for label visibility. */
+  areaPx: number
 }
+
+/**
+ * A shape's name label is visible without hover once its projected area,
+ * scaled by the square of the zoom factor, clears this. At world zoom that
+ * shows the large countries; zooming in reveals progressively smaller ones,
+ * so the map never turns into 250 overlapping strings.
+ */
+const LABEL_MIN_AREA_PX2 = 900
+
+/**
+ * Neutral land colour for the globe view, mirroring the LIGHT --map-land.
+ * The globe is sunlit land on a dark ocean in BOTH themes, so the dark
+ * theme's land neutral (L 0.34) would sink into the ocean (L 0.31).
+ */
+const GLOBE_LAND_NEUTRAL = 'oklch(84% 0.014 250)'
 
 interface FocusTarget extends HoverTarget {
   x: number
@@ -115,8 +132,11 @@ export function WorldMap({
   onActiveContinentChange,
 }: WorldMapProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const behaviourRef = useRef<ReturnType<typeof zoom<SVGSVGElement, unknown>> | null>(null)
   const nodeRefs = useRef(new Map<string, SVGGraphicsElement>())
   const [transform, setTransform] = useState(() => zoomIdentity)
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   const isGlobe = projectionKey === 'globe'
   /**
@@ -169,6 +189,7 @@ export function WorldMap({
         contested: item.properties.contested,
         d,
         centroid: [centroid[0], centroid[1]],
+        areaPx: path.area(item as unknown as GeoPermissibleObjects),
       })
     }
 
@@ -311,13 +332,42 @@ export function WorldMap({
       .on('zoom', (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
         setTransform(event.transform)
       })
+    behaviourRef.current = behaviour
     const selection = select(svg)
     selection.call(behaviour)
     selection.on('dblclick.zoom', null)
     return () => {
       selection.on('.zoom', null)
+      behaviourRef.current = null
     }
   }, [isGlobe])
+
+  /** The +/- buttons drive the same d3-zoom behaviour as wheel and pinch. */
+  const zoomBy = useCallback((factor: number) => {
+    const svg = svgRef.current
+    const behaviour = behaviourRef.current
+    if (!svg || !behaviour) return
+    behaviour.scaleBy(select(svg), factor)
+  }, [])
+
+  // Fullscreen state tracks the DOM, not a local boolean, so Esc (which
+  // exits fullscreen without clicking our button) stays in sync.
+  useEffect(() => {
+    const onChange = () =>
+      setIsFullscreen(document.fullscreenElement === containerRef.current)
+    document.addEventListener('fullscreenchange', onChange)
+    return () => document.removeEventListener('fullscreenchange', onChange)
+  }, [])
+
+  const toggleFullscreen = useCallback(() => {
+    const container = containerRef.current
+    if (!container) return
+    if (document.fullscreenElement === container) {
+      void document.exitFullscreen()
+    } else {
+      void container.requestFullscreen()
+    }
+  }, [])
 
   /**
    * Globe rotation by dragging -- pointer events, so mouse and touch share
@@ -389,16 +439,28 @@ export function WorldMap({
   const isDimmed = (continent: ContinentKey) =>
     mode === 'continent' && activeContinent !== null && continent !== activeContinent
 
+  // Globe-view colour system: black space, dark blue ocean, and the LIGHT
+  // fills for land in both themes -- land sits tiers of lightness above the
+  // ocean (min contrast 4.36, gated in build-map-palette.mjs), so a blue
+  // country can never be mistaken for water.
+  const waterFill = isGlobe ? 'var(--map-ocean)' : 'var(--map-water)'
+  const backgroundFill = isGlobe ? 'var(--map-space)' : 'var(--map-water)'
+  const landStroke = isGlobe ? 'var(--map-ocean)' : 'var(--map-land-stroke)'
+  const landNeutral = isGlobe ? GLOBE_LAND_NEUTRAL : 'var(--map-land)'
+  const noDataFill = isGlobe ? 'oklch(92% 0.003 250)' : 'var(--map-no-data)'
+
   function fillFor(shape: CountryShape): string {
     const row = populationByIso3.get(shape.iso3)
-    if (!row?.available) return 'var(--map-no-data)'
+    if (!row?.available) return noDataFill
     if (hovered?.iso3 === shape.iso3) return 'var(--map-accent-fill)'
     if (mode === 'continent') {
       return activeContinent === shape.continent
         ? 'var(--map-accent-fill)'
-        : 'var(--map-land)'
+        : landNeutral
     }
-    return `var(--fill-${shape.iso3}, var(--map-land))`
+    return isGlobe
+      ? `var(--fill-globe-${shape.iso3}, ${GLOBE_LAND_NEUTRAL})`
+      : `var(--fill-${shape.iso3}, var(--map-land))`
   }
 
   const activeIso3 = focusTargets[activeIndex]?.iso3
@@ -406,41 +468,108 @@ export function WorldMap({
     indexByIso3.get(iso3) === activeIndex ? 0 : -1
 
   /**
-   * Where to anchor the hovered/focused country's name label. Polygon labels
-   * sit at the shape centroid; marker labels sit just above the dot so the
-   * text never covers it.
+   * Name labels visible WITHOUT hover: every shape whose zoom-scaled area
+   * clears the threshold gets its name drawn at its centroid, so the world
+   * view labels the large countries and zooming in reveals smaller ones.
+   * The hovered/focused entity is always labelled regardless of size (that
+   * includes markers, which have no area).
    */
-  const hoveredLabel = useMemo(() => {
-    if (!hovered) return null
-    const shape = shapes.find((s) => s.iso3 === hovered.iso3)
-    if (shape) {
-      return { name: shape.name, x: shape.centroid[0], y: shape.centroid[1] }
+  const visibleLabels = useMemo(() => {
+    const k2 = transform.k * transform.k
+    const labels: { iso3: string; name: string; x: number; y: number; emphasized: boolean }[] = []
+    for (const shape of shapes) {
+      const isHovered = hovered?.iso3 === shape.iso3
+      if (!isHovered && shape.areaPx * k2 < LABEL_MIN_AREA_PX2) continue
+      if (!Number.isFinite(shape.centroid[0])) continue
+      labels.push({
+        iso3: shape.iso3,
+        name: shape.name,
+        x: shape.centroid[0],
+        y: shape.centroid[1],
+        emphasized: isHovered,
+      })
     }
-    const point = markerPoints.find(({ marker }) => marker.iso3 === hovered.iso3)
-    if (point) {
-      return { name: point.marker.name, x: point.x, y: point.y - 6 }
+    if (hovered && !labels.some((l) => l.iso3 === hovered.iso3)) {
+      const point = markerPoints.find(({ marker }) => marker.iso3 === hovered.iso3)
+      if (point) {
+        labels.push({
+          iso3: hovered.iso3,
+          name: point.marker.name,
+          x: point.x,
+          y: point.y - 6,
+          emphasized: true,
+        })
+      }
     }
-    return null
-  }, [hovered, shapes, markerPoints])
+    return labels
+  }, [shapes, markerPoints, hovered, transform.k])
 
   const registerNode = (iso3: string) => (node: SVGGraphicsElement | null) => {
     if (node) nodeRefs.current.set(iso3, node)
     else nodeRefs.current.delete(iso3)
   }
 
+  const controlButtonStyle: React.CSSProperties = {
+    background: 'var(--surface-raised)',
+    color: 'var(--text)',
+    border: '1px solid var(--border)',
+  }
+
   return (
+    <div
+      ref={containerRef}
+      className="relative"
+      style={{ background: backgroundFill }}
+    >
+      {/* Map controls: zoom without a wheel or pinch, and fullscreen. They
+          live OUTSIDE the svg so they are ordinary buttons for keyboard and
+          screen reader users. */}
+      <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
+        <button
+          type="button"
+          aria-label="Zoom in"
+          className="h-8 w-8 rounded text-lg leading-none"
+          style={controlButtonStyle}
+          onClick={() => zoomBy(1.5)}
+        >
+          +
+        </button>
+        <button
+          type="button"
+          aria-label="Zoom out"
+          className="h-8 w-8 rounded text-lg leading-none"
+          style={controlButtonStyle}
+          onClick={() => zoomBy(1 / 1.5)}
+        >
+          −
+        </button>
+        <button
+          type="button"
+          aria-label={isFullscreen ? 'Exit full screen' : 'View full screen'}
+          aria-pressed={isFullscreen}
+          className="h-8 w-8 rounded text-sm leading-none"
+          style={controlButtonStyle}
+          onClick={toggleFullscreen}
+        >
+          {isFullscreen ? '🡼' : '⛶'}
+        </button>
+      </div>
+
     <svg
       ref={svgRef}
       viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
-      className="h-auto w-full touch-none"
+      className={
+        isFullscreen ? 'h-full w-full touch-none' : 'h-auto w-full touch-none'
+      }
       role="group"
       aria-label={
-        `World map, equal-area projection, ${focusTargets.length} entities. ` +
+        `World map, ${isGlobe ? 'globe view' : 'equal-area projection'}, ` +
+        `${focusTargets.length} entities. ` +
         `Use the arrow keys to move between countries and Enter to open one. ` +
         `Home and End jump to the westernmost and easternmost.`
       }
       style={{
-        background: 'var(--map-water)',
+        background: backgroundFill,
         cursor: isGlobe ? 'grab' : undefined,
       }}
       onPointerLeave={(event) => {
@@ -466,14 +595,16 @@ export function WorldMap({
           <rect width="6" height="6" fill="transparent" />
           <line
             x1="0" y1="0" x2="0" y2="6"
-            stroke="var(--map-land-stroke)"
+            stroke={landStroke}
             strokeWidth="1.6"
             opacity="0.75"
           />
         </pattern>
       </defs>
 
-      <path d={sphere} fill="var(--map-water)" />
+      {/* On the globe this disc IS the ocean; flat views paint water
+          edge-to-edge so it matches the background. */}
+      <path d={sphere} fill={waterFill} />
 
       <g transform={`translate(${transform.x},${transform.y}) scale(${transform.k})`}>
         {shapes.map((shape) => {
@@ -492,7 +623,7 @@ export function WorldMap({
               ref={registerNode(shape.iso3)}
               d={shape.d}
               fill={fillFor(shape)}
-              stroke="var(--map-land-stroke)"
+              stroke={landStroke}
               strokeWidth={strokeWidth}
               strokeLinejoin="round"
               opacity={dimmed ? 0.45 : 1}
@@ -564,38 +695,42 @@ export function WorldMap({
               />
               <circle
                 r={(focused ? MARKER_RADIUS + 1.5 : MARKER_RADIUS) / transform.k}
-                fill={focused ? 'var(--map-accent-fill)' : 'var(--map-land)'}
-                stroke="var(--map-land-stroke)"
+                fill={focused ? 'var(--map-accent-fill)' : landNeutral}
+                stroke={landStroke}
                 strokeWidth={strokeWidth}
               />
             </g>
           )
         })}
 
-        {/* Name label for the hovered or keyboard-focused entity, drawn on the
-            map itself. The side readout panel remains the accessible surface
-            (aria-live, keyboard parity); this text is a visual duplicate and
-            is aria-hidden so screen readers do not announce the name twice. */}
-        {hoveredLabel && (
+        {/* Country name labels, visible by default for shapes large enough
+            at the current zoom; the hovered entity is always labelled and
+            emphasized. The side readout panel remains the accessible surface
+            (aria-live, keyboard parity); these are visual duplicates and are
+            aria-hidden so screen readers do not hear every name twice.
+            On the globe (light land in both themes) labels are dark text
+            with a light halo; flat views follow the theme. */}
+        {visibleLabels.map((label) => (
           <text
-            x={hoveredLabel.x}
-            y={hoveredLabel.y}
+            key={`name-${label.iso3}`}
+            x={label.x}
+            y={label.y}
             textAnchor="middle"
             pointerEvents="none"
             aria-hidden="true"
-            fontSize={13 / transform.k}
+            fontSize={(label.emphasized ? 13 : 10) / transform.k}
             style={{
-              fill: 'var(--text)',
+              fill: isGlobe ? 'oklch(20% 0.01 250)' : 'var(--text)',
               paintOrder: 'stroke',
-              stroke: 'var(--map-water)',
-              strokeWidth: 3.5 / transform.k,
+              stroke: isGlobe ? GLOBE_LAND_NEUTRAL : 'var(--map-water)',
+              strokeWidth: (label.emphasized ? 3.5 : 2.5) / transform.k,
               strokeLinejoin: 'round',
-              fontWeight: 600,
+              fontWeight: label.emphasized ? 600 : 500,
             }}
           >
-            {hoveredLabel.name}
+            {label.name}
           </text>
-        )}
+        ))}
 
         {/* Continent labels. Identity comes from label + position, never hue --
             seven categorical fills cannot clear the all-pairs CVD floors, so
@@ -634,5 +769,6 @@ export function WorldMap({
 
       <title>{`World map with ${focusTargets.length} entities. Currently focused: ${activeIso3 ?? 'none'}.`}</title>
     </svg>
+    </div>
   )
 }
