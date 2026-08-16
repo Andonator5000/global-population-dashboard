@@ -36,7 +36,9 @@ export type ContinentKey = keyof typeof CONTINENTS
 export const PROJECTIONS = ['equalEarth', 'mollweide', 'eckert4', 'globe'] as const
 export type ProjectionKey = (typeof PROJECTIONS)[number]
 
-export const DEFAULT_PROJECTION: ProjectionKey = 'equalEarth'
+// Globe by default (2026-08-16, maintainer request); the equal-area flat
+// projections remain one click away and keep their acceptance gates.
+export const DEFAULT_PROJECTION: ProjectionKey = 'globe'
 
 /** Continents excluded from per-capita, density, and population rankings. */
 export const UNINHABITED_CONTINENTS: readonly ContinentKey[] = ['AN']

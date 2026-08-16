@@ -291,6 +291,12 @@ export interface FactbookField {
   available: boolean
   unavailableReason?: string
   text?: string
+  /**
+   * Descriptive phrases the source mixed into a list field ("highly
+   * diversified, world leading..."), separated by the ETL so they render as
+   * prose instead of bullet items.
+   */
+  summary?: string | null
   vintageYear?: number | null
   vintageQualifier?: string | null
   note?: string | null

@@ -1,5 +1,6 @@
 import { useId, useState } from 'react'
 
+import { capitalizeFirst, formatShare } from '../../lib/format'
 import { OTHER_TOKEN, VintageBadge, seriesColour } from './primitives'
 
 export interface CompositionItem {
@@ -127,7 +128,10 @@ export function CompositionBar({
     ...(tail.length
       ? [
           {
-            label: `other (${tail.length} smaller categories)`,
+            // NOT called "other": several sources publish their own "other"
+            // category, and the United States' religions showed two "other"
+            // rows side by side -- one from the source, one from this fold.
+            label: `Smaller categories (${tail.length})`,
             percent: tailTotal,
             isUpperBound: false,
             official: false,
@@ -157,7 +161,7 @@ export function CompositionBar({
         className="mt-2 flex h-6 w-full overflow-hidden rounded"
         role="img"
         aria-label={`${title}: ${segments
-          .map((s) => `${s.label} ${s.percent}%`)
+          .map((s) => `${capitalizeFirst(s.label)} ${formatShare(s.percent)}%`)
           .join(', ')}`}
       >
         {segments.map((segment, index) => (
@@ -168,7 +172,7 @@ export function CompositionBar({
               background: segment.colour,
               marginRight: index < segments.length - 1 ? 2 : 0,
             }}
-            title={`${segment.label}: ${segment.percent}%`}
+            title={`${capitalizeFirst(segment.label)}: ${formatShare(segment.percent)}%`}
           />
         ))}
       </div>
@@ -191,7 +195,7 @@ export function CompositionBar({
               <span aria-hidden="true">{iconFor(segment.label)}</span>
             )}
             <span>
-              {segment.label}
+              {capitalizeFirst(segment.label)}
               {segment.official && ' (official)'}
             </span>
             <span
@@ -201,7 +205,7 @@ export function CompositionBar({
               }}
             >
               {segment.isUpperBound ? '<' : ''}
-              {segment.percent}%
+              {formatShare(segment.percent)}%
             </span>
           </li>
         ))}
@@ -227,7 +231,7 @@ export function CompositionBar({
       {unquantified.length > 0 && (
         <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
           Listed without a published share:{' '}
-          {unquantified.map((item) => item.label).join(', ')}.
+          {unquantified.map((item) => capitalizeFirst(item.label)).join(', ')}.
         </p>
       )}
 
@@ -272,7 +276,7 @@ export function CompositionBar({
                 style={{ borderColor: 'var(--border)' }}
               >
                 <th scope="row" className="py-1 text-left font-normal">
-                  {item.label}
+                  {capitalizeFirst(item.label)}
                   {item.official && ' (official)'}
                   {item.qualifier && (
                     <span style={{ color: 'var(--text-muted)' }}>
@@ -285,7 +289,7 @@ export function CompositionBar({
                   style={{ fontVariantNumeric: 'tabular-nums' }}
                 >
                   {item.isUpperBound ? '<' : ''}
-                  {item.percent}%
+                  {formatShare(item.percent)}%
                 </td>
               </tr>
             ))}

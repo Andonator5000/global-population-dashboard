@@ -164,6 +164,7 @@ export function HomePage() {
     summaryState.status === 'ready' ? summaryState.data.revision : 0
 
   return (
+    <div className="min-h-full" style={{ background: 'var(--page-tint)' }}>
     <div className="mx-auto max-w-[110rem] px-6 py-8">
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">
@@ -390,6 +391,7 @@ export function HomePage() {
           }
         />
       )}
+    </div>
     </div>
   )
 }

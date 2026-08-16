@@ -21,11 +21,20 @@ export function App() {
         className="border-b"
         style={{ borderColor: 'var(--border)' }}
       >
+        {/* Left-aligned deliberately (no mx-auto): the site title should sit
+            at the left edge of the viewport at 100% zoom. */}
         <nav
-          className="mx-auto flex max-w-7xl items-baseline gap-6 px-6 py-4"
+          className="flex items-baseline gap-6 px-6 py-3"
           aria-label="Primary"
         >
-          <Link to="/" className="text-sm font-medium tracking-tight">
+          <Link
+            to="/"
+            className="rounded-md px-3 py-1.5 text-sm font-medium tracking-tight"
+            style={{
+              background: 'var(--brand-bg)',
+              color: 'var(--brand-text)',
+            }}
+          >
             Global Population Dashboard
           </Link>
         </nav>

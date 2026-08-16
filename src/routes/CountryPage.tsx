@@ -24,11 +24,13 @@ import {
   useMapPalette,
 } from '../lib/data'
 import {
+  capitalizeFirst,
   formatDecimal,
   formatExact,
   formatGrowthRate,
   formatPopulation,
   normaliseFactbookCaps,
+  titleCase,
 } from '../lib/format'
 import { productIcon, religionIcon, sectorIcon } from '../lib/icons'
 import type {
@@ -218,6 +220,10 @@ function ItemList({
   return (
     <div>
       <h3 className="text-sm font-medium">{label}</h3>
+      {/* Descriptive phrases the source mixed into its list ("highly
+          diversified, world leading...") arrive separated by the ETL and
+          render as prose, not as bullet items beside "petroleum". */}
+      {field.summary && <p className="mt-1 text-sm">{field.summary}</p>}
       {field.items?.length ? (
         <ul className="mt-1 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
           {field.items.map((item) => (
@@ -225,7 +231,7 @@ function ItemList({
               <span aria-hidden="true" className="w-5 shrink-0 text-center">
                 {productIcon(item) ?? '•'}
               </span>
-              <span>{item}</span>
+              <span>{capitalizeFirst(item)}</span>
             </li>
           ))}
         </ul>
@@ -317,7 +323,19 @@ export function CountryPage() {
 
   const regime = owidValue(owid, 'owid.row.regime')
 
+  /**
+   * The page is washed with a light shade of the flag's dominant hue -- the
+   * same lightness/chroma band as the gated --page-tint token, so text
+   * contrast holds for every hue. light-dark() follows the theme via the
+   * root's color-scheme; entities without a flag colour get the neutral tint.
+   */
+  const pageTint =
+    palette?.flagHue != null
+      ? `light-dark(oklch(96.5% 0.03 ${palette.flagHue}), oklch(20% 0.02 ${palette.flagHue}))`
+      : 'var(--page-tint)'
+
   return (
+    <div className="min-h-full" style={{ background: pageTint }}>
     <div className="mx-auto max-w-4xl px-6 py-10">
       <div className="flex items-start gap-5">
         {/* The flag itself, from the committed SVG artifact. No fixed width:
@@ -424,21 +442,21 @@ export function CountryPage() {
             <>
               <ItemList
                 field={factbook.economy.industries}
-                label="Major industries"
+                label="Major Industries"
                 source={FB}
               />
               <ItemList
                 field={factbook.economy.agriculturalProducts}
-                label="Principal agricultural products"
+                label="Principal Agricultural Products"
                 source={FB}
               />
-              <ProseField
+              <ItemList
                 field={factbook.economy.exportCommodities}
-                label="Main export commodities"
+                label="Main Export Commodities"
                 source={FB}
               />
               <CompositionBar
-                title="Export partners"
+                title="Export Partners"
                 field={factbook.economy.exportPartners}
                 sourceName={FB}
               />
@@ -600,12 +618,12 @@ export function CountryPage() {
           </div>
 
           <div>
-            <h3 className="text-sm font-medium">Ethnic composition</h3>
+            <h3 className="text-sm font-medium">Ethnic Composition</h3>
             <div className="mt-2 space-y-4">
               <CompositionCaveat />
               {factbook ? (
                 <CompositionBar
-                  title="Ethnic groups"
+                  title="Ethnic Groups"
                   field={factbook.people.ethnicGroups}
                   sourceName={FB}
                 />
@@ -632,8 +650,9 @@ export function CountryPage() {
             <div className="space-y-4">
               <ProseField
                 field={factbook.government.governmentType}
-                label="Government type"
+                label="Government Type"
                 source={FB}
+                transform={titleCase}
               />
               <ProseField
                 field={factbook.government.capital}
@@ -652,13 +671,13 @@ export function CountryPage() {
               />
               <ProseField
                 field={factbook.government.chiefOfState}
-                label="Chief of state"
+                label="Chief of State"
                 source={FB}
                 transform={normaliseFactbookCaps}
               />
               <ProseField
                 field={factbook.government.headOfGovernment}
-                label="Head of government"
+                label="Head of Government"
                 source={FB}
                 transform={normaliseFactbookCaps}
               />
@@ -673,7 +692,7 @@ export function CountryPage() {
           )}
 
           <div>
-            <h3 className="text-sm font-medium">Governance measures</h3>
+            <h3 className="text-sm font-medium">Governance Measures</h3>
             <div className="mt-2 grid gap-4 sm:grid-cols-2">
               <OwidTile
                 series={owidValue(owid, 'owid.vdem.ruleoflaw')}
@@ -737,7 +756,7 @@ export function CountryPage() {
             />
           </div>
           <div>
-            <h3 className="text-sm font-medium">Land borders</h3>
+            <h3 className="text-sm font-medium">Land Borders</h3>
             <p className="mt-1 text-sm">
               {entity?.borders.length ? (
                 entity.borders.map((code, index) => (
@@ -760,7 +779,7 @@ export function CountryPage() {
           </div>
           {biome ? (
             <div>
-              <h3 className="text-sm font-medium">Biome breakdown</h3>
+              <h3 className="text-sm font-medium">Biome Breakdown</h3>
               <div className="mt-2">
                 <BiomeBar
                   biomes={biome.biomes}
@@ -919,7 +938,7 @@ export function CountryPage() {
           )}
 
           <div>
-            <h3 className="text-sm font-medium">UNESCO World Heritage sites</h3>
+            <h3 className="text-sm font-medium">UNESCO World Heritage Sites</h3>
             {heritage && heritage.count > 0 ? (
               <>
                 <ul className="mt-2 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
@@ -1044,6 +1063,7 @@ export function CountryPage() {
         </Section>
       </div>
     </div>
+    </div>
   )
 }
 
@@ -1089,7 +1109,7 @@ function SectorComposition({
 
   return (
     <div>
-      <h3 className="text-sm font-medium">GDP composition by sector</h3>
+      <h3 className="text-sm font-medium">GDP Composition by Sector</h3>
       <div className="mt-2 flex h-6 w-full overflow-hidden rounded">
         {values.map((entry, index) => (
           <div

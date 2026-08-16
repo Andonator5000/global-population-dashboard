@@ -55,6 +55,43 @@ export function formatDecimal(
   return unit ? `${oneDecimal.format(value)} ${unit}` : oneDecimal.format(value)
 }
 
+/** Words kept lowercase inside a title unless they lead it. */
+const TITLE_SMALL_WORDS = new Set([
+  'a', 'an', 'and', 'as', 'at', 'by', 'for', 'in', 'of', 'on', 'or',
+  'the', 'to', 'under', 'with',
+])
+
+/**
+ * Title Case for headings and official designations:
+ * "constitutional federal republic" -> "Constitutional Federal Republic".
+ * Small words stay lowercase unless they open the phrase; words that already
+ * carry an interior capital (McDonald, UNESCO, GDP) are left alone.
+ */
+export function titleCase(text: string): string {
+  return text
+    .split(/(\s+|-|\/)/)
+    .map((part, index, parts) => {
+      if (!/^[a-zà-öø-ÿ]/.test(part)) return part
+      const isFirstWord = parts.slice(0, index).every((p) => /^(\s|-|\/)*$/.test(p))
+      if (!isFirstWord && TITLE_SMALL_WORDS.has(part.toLowerCase())) return part
+      return part.charAt(0).toUpperCase() + part.slice(1)
+    })
+    .join('')
+}
+
+/** Capitalise the first letter only, leaving the rest as published. */
+export function capitalizeFirst(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+/**
+ * A composition share for display: at most two decimals, so floating-point
+ * sums never leak ("2.8000000000000003%"), and whole numbers stay whole.
+ */
+export function formatShare(value: number): string {
+  return Number.isInteger(value) ? String(value) : value.toFixed(2)
+}
+
 /**
  * Normalise the CIA Factbook's ALL-CAPS surname convention to ordinary case:
  * "President Emmanuel MACRON" -> "President Emmanuel Macron".

@@ -25,8 +25,17 @@
  * `npm run check:contrast`.
  */
 :root {
+  /* Theme-INVARIANT tokens, declared only here so the dark-block parity gate
+     stays meaningful. Space is space in both themes; the brand button keeps
+     one identity everywhere. */
+  --brand-bg: oklch(44% 0.12 155);
+  --brand-text: oklch(100% 0 0);
+  --map-space: oklch(8% 0.005 260);
+  --map-ocean: oklch(31% 0.06 255);
+
   --surface: oklch(99% 0.002 250);
   --surface-raised: oklch(100% 0 0);
+  --page-tint: oklch(96.5% 0.02 250);
   --border: oklch(90% 0.004 250);
   --text: oklch(22% 0.008 250);
   --text-muted: oklch(45% 0.008 250);
@@ -74,6 +83,7 @@
   :root:not([data-theme='light']) {
     --surface: oklch(17% 0.006 250);
     --surface-raised: oklch(21% 0.007 250);
+    --page-tint: oklch(20% 0.015 250);
     --border: oklch(31% 0.008 250);
     --text: oklch(94% 0.003 250);
     --text-muted: oklch(72% 0.006 250);
@@ -107,6 +117,7 @@
 :root[data-theme='dark'] {
   --surface: oklch(17% 0.006 250);
   --surface-raised: oklch(21% 0.007 250);
+  --page-tint: oklch(20% 0.015 250);
   --border: oklch(31% 0.008 250);
   --text: oklch(94% 0.003 250);
   --text-muted: oklch(72% 0.006 250);

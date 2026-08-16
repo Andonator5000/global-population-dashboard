@@ -90,6 +90,14 @@ const THEMES = {
 const MIN_NEIGHBOUR_DE = 4.0
 /** Every fill must stay at least this distinguishable from the water. */
 const MIN_SURFACE_CONTRAST = 1.35
+/**
+ * The globe view's ocean (MUST mirror --map-ocean in src/index.css). Every
+ * LIGHT fill doubles as a globe fill, so each must clear the ocean too --
+ * this is what makes "blue land vs blue ocean" confusion impossible: land
+ * blues sit tiers of lightness above this.
+ */
+const GLOBE_OCEAN = 'oklch(31% 0.06 255)'
+const MIN_OCEAN_CONTRAST = 2.0
 
 // ---------------------------------------------------------------------------
 // Colour maths
@@ -297,6 +305,25 @@ for (const theme of ['light', 'dark']) {
   }))
   const lowContrast = contrasts.filter((c) => c.ratio < MIN_SURFACE_CONTRAST)
 
+  // Light fills double as the globe's land colours; check them against the
+  // globe ocean once (during the light pass).
+  if (theme === 'light') {
+    const oceanFailures = entities.filter(
+      (e) => contrast(palette[e.iso3].fill.light, GLOBE_OCEAN) < MIN_OCEAN_CONTRAST,
+    )
+    report.globe = {
+      ocean: GLOBE_OCEAN,
+      minContrast: Number(
+        Math.min(
+          ...entities.map((e) => contrast(palette[e.iso3].fill.light, GLOBE_OCEAN)),
+        ).toFixed(2),
+      ),
+      floor: MIN_OCEAN_CONTRAST,
+      failures: oceanFailures.map((e) => e.iso3),
+    }
+    if (oceanFailures.length > 0) hardFailures += 1
+  }
+
   pairDeltas.sort((a, b) => a - b)
   report[theme] = {
     borderPairs: pairDeltas.length,
@@ -388,9 +415,17 @@ const cssLines = [
   ' * One custom property per entity, in both themes. Hue comes from the',
   ' * flag; lightness is a graph-coloured tier that guarantees no two',
   ' * bordering countries share a fill. Lightness carries NO value meaning.',
+  ' *',
+  ' * --fill-globe-* are the LIGHT fills, theme-invariant: the globe view is',
+  ' * sunlit land on a dark ocean against space in both themes, so its land',
+  ' * colours must not swap to the dark tiers, which would sink into the',
+  ' * ocean colour.',
   ' */',
   ':root {',
   ...entities.map((e) => `  --fill-${e.iso3}: ${palette[e.iso3].fill.light};`),
+  ...entities.map(
+    (e) => `  --fill-globe-${e.iso3}: ${palette[e.iso3].fill.light};`,
+  ),
   '}',
   '',
   '@media (prefers-color-scheme: dark) {',

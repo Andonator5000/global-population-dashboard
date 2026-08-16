@@ -33,10 +33,19 @@ function contrast(a, b) {
 
 const hex = (value) => formatHex(rgb(parse(value)))
 
+// Theme-invariant tokens (declared once in :root, inherited by dark).
+const INVARIANT = {
+  brandBg: 'oklch(44% 0.12 155)',
+  brandText: 'oklch(100% 0 0)',
+  mapSpace: 'oklch(8% 0.005 260)',
+  mapOcean: 'oklch(31% 0.06 255)',
+}
+
 const THEMES = {
   light: {
     surface: 'oklch(99% 0.002 250)',
     raised: 'oklch(100% 0 0)',
+    pageTint: 'oklch(96.5% 0.02 250)',
     border: 'oklch(90% 0.004 250)',
     text: 'oklch(22% 0.008 250)',
     textMuted: 'oklch(45% 0.008 250)',
@@ -52,6 +61,7 @@ const THEMES = {
   dark: {
     surface: 'oklch(17% 0.006 250)',
     raised: 'oklch(21% 0.007 250)',
+    pageTint: 'oklch(20% 0.015 250)',
     border: 'oklch(31% 0.008 250)',
     text: 'oklch(94% 0.003 250)',
     textMuted: 'oklch(72% 0.006 250)',
@@ -71,6 +81,13 @@ const checks = (t) => [
   // WCAG AA text
   ['body text on surface', t.text, t.surface, 4.5],
   ['body text on raised', t.text, t.raised, 4.5],
+  // Tinted page backgrounds (home page and flag-tinted country pages sit at
+  // the same lightness/chroma band as this token).
+  ['body text on page tint', t.text, t.pageTint, 4.5],
+  ['muted text on page tint', t.textMuted, t.pageTint, 4.5],
+  // Brand button and globe-view tokens are theme-invariant.
+  ['brand button label', INVARIANT.brandText, INVARIANT.brandBg, 4.5],
+  ['globe ocean vs space', INVARIANT.mapOcean, INVARIANT.mapSpace, 1.5],
   ['muted text on surface', t.textMuted, t.surface, 4.5],
   ['muted text on raised', t.textMuted, t.raised, 4.5],
   ['link/accent text on surface', t.accent, t.surface, 4.5],
