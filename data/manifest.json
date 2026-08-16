@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-16T06:06:55+00:00",
+  "generated_at": "2026-08-16T06:19:56+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,12 +9,154 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-16T06:06:55+00:00",
+      "fetched_at": "2026-08-16T06:19:56+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
       "files": [],
       "notes": "Replaces REST Countries v3.1, which was deprecated in favour of a key-gated v5 (see DATA_DECISIONS.md #1). This is the dataset REST Countries is built from. Used only for country metadata (names, ISO codes, borders, capital, area, currencies, languages). Never used for population or economic figures -- its population field is undated and disagrees with UN WPP. One documented upstream correction is applied (Vatican City UN membership)."
+    },
+    "un_wpp": {
+      "title": "UN World Population Prospects 2024",
+      "url": "https://population.un.org/wpp/",
+      "licence": "CC BY 3.0 IGO",
+      "fetched_at": "2026-08-10T02:54:33+00:00",
+      "upstream_release": "Fri, 13 Dec 2024 19:11:17 GMT",
+      "vintage": "estimates 1950-2023; projections 2024-2100",
+      "citation": "United Nations, Department of Economic and Social Affairs, Population Division (2024). World Population Prospects 2024, Online Edition. Medium variant.",
+      "files": [
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
+          "sha256": "286ac36bb1415e2e1ade03acfef0a29f0e4c087e2f78e38c48f50c5df89082bc",
+          "size_bytes": 16557272,
+          "fetched_at": "2026-08-10T02:51:14+00:00"
+        },
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_OtherVariants.csv.gz",
+          "sha256": "a860504df54877e4c19788bf6e16920d6017d021b4c149eaf8b5662674180a54",
+          "size_bytes": 75342445,
+          "fetched_at": "2026-08-10T02:54:33+00:00"
+        },
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_PopulationByAge5GroupSex_Medium.csv.gz",
+          "sha256": "a04d7d1486a5eb2832cc812d599448f0a71e8ac9e1e7e6fa4066673d6a2487cd",
+          "size_bytes": 29948947,
+          "fetched_at": "2026-08-10T02:52:06+00:00"
+        }
+      ],
+      "notes": "Counts converted from the published thousands to persons. Estimates run through 2023; later years are the medium-variant projection, with low/high variants supplied as bands. Bulk CSV rather than the Data Portal API, which requires a token (see DATA_DECISIONS.md)."
+    },
+    "world_bank": {
+      "title": "World Bank World Development Indicators",
+      "url": "https://api.worldbank.org/v2",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-16T04:11:01+00:00",
+      "upstream_release": "2026-07-13",
+      "vintage": "per indicator and country; newest observation 2025",
+      "citation": "World Bank, World Development Indicators (api.worldbank.org/v2)",
+      "files": [
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&page=1",
+          "sha256": "337b37071281a128340331068a39abae870868ab49c4032b56e17b89871deed1",
+          "size_bytes": 3675128,
+          "fetched_at": "2026-08-10T02:55:48+00:00"
+        },
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.CD?format=json&per_page=20000&page=1",
+          "sha256": "ddd7c4777b51f18262a2a67db60e1bdd0b1f850e2a84e1b18f141b57868bcaa5",
+          "size_bytes": 4152536,
+          "fetched_at": "2026-08-10T02:55:50+00:00"
+        },
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&page=1",
+          "sha256": "d95fabbb5731225261778b7febda96eceadd66a557ce81a9f3255520703ad0b6",
+          "size_bytes": 3803123,
+          "fetched_at": "2026-08-10T02:55:51+00:00"
+        }
+      ],
+      "notes": "40 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
+    },
+    "owid_indicators": {
+      "title": "Our World in Data — curated indicators",
+      "url": "https://ourworldindata.org/grapher",
+      "licence": "CC BY 4.0 (underlying producers' terms apply)",
+      "fetched_at": "2026-08-16T04:01:47+00:00",
+      "upstream_release": null,
+      "vintage": "per indicator and country; newest observation 2025",
+      "citation": "Global Carbon Budget (2025); Population based on various sources (2024); Jonathan Hanson and Rachel Sigman (2021); Population based on various sources (2023); V-Dem (2026), via Our World in Data",
+      "files": [
+        {
+          "url": "https://ourworldindata.org/grapher/electoral-democracy-index.csv",
+          "sha256": "b10099af07ae1c4900edb9e7cd8d2d3876bbca5b3bb1bae69e70932fcdb4bd7e",
+          "size_bytes": 1115469,
+          "fetched_at": "2026-08-16T03:29:57+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/liberal-democracy-index.csv",
+          "sha256": "d6c331b8ea80027599e1bca8e28aab544382c1625b2536ea62f4df4fcb122de6",
+          "size_bytes": 1073845,
+          "fetched_at": "2026-08-16T03:29:58+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/human-rights-index-vdem.csv",
+          "sha256": "6303ce0a230c707b9e05e5248ee7c462494eda19ba71bbd2e3204ef25378cd97",
+          "size_bytes": 1137721,
+          "fetched_at": "2026-08-16T03:30:00+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/political-regime.csv",
+          "sha256": "1e0d045bc702591c95c9885a6dbe5e8bed13bcca9b2a236464caa7c6098851ff",
+          "size_bytes": 647110,
+          "fetched_at": "2026-08-16T03:30:02+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/political-corruption-index.csv",
+          "sha256": "fd1733e084221ec2a6e6a8b01b9f6b4baeedfa179c25d9e3d3d57348d2b4df8f",
+          "size_bytes": 930777,
+          "fetched_at": "2026-08-16T04:01:43+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/rule-of-law-index.csv",
+          "sha256": "20aa91fad74cbd3c5ef2db1abf6f4d69b9abf0f03fbe6ee0461080d02bd8372b",
+          "size_bytes": 1137564,
+          "fetched_at": "2026-08-16T04:01:45+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/state-capacity-index.csv",
+          "sha256": "cfd0cab19277043fccdda3f5e16d42b4a936ae3787d6dceb99664cc54f6b4a40",
+          "size_bytes": 237821,
+          "fetched_at": "2026-08-16T04:01:47+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/co-emissions-per-capita.csv",
+          "sha256": "11a3a3531e4d814f96c5b6ce1ce4888be554cab5a48fe1394ba72f1b590e976e",
+          "size_bytes": 801498,
+          "fetched_at": "2026-08-16T03:30:03+00:00"
+        }
+      ],
+      "notes": "8 series, primary source for the Freedom section (V-Dem democracy and human-rights indices, Regimes of the World classification) and CO2 per capita (Global Carbon Budget). Distinct from the population cross-check, which remains validation-only."
+    },
+    "natural_earth": {
+      "title": "Natural Earth 110m Admin 0 (via world-atlas TopoJSON)",
+      "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+      "licence": "Public domain",
+      "fetched_at": "2026-08-10T03:17:51+00:00",
+      "upstream_release": "W/\"1a4f1-8dtjGzlGpmC8r8Twr0B+StMP8nE\"",
+      "vintage": null,
+      "citation": "Natural Earth, 1:110m Cultural Vectors (public domain)",
+      "files": [],
+      "notes": "Re-keyed from UN M49 to ISO3. Kosovo, Northern Cyprus and Somaliland carry no M49 code and are assigned explicitly (Kosovo to XKX; the other two to Cyprus and Somalia, matching how UN WPP and the World Bank report that territory). 63 populated entities are too small to appear at 110m and are emitted as point markers instead."
+    },
+    "flagcdn": {
+      "title": "flagcdn.com flag SVGs",
+      "url": "https://flagcdn.com",
+      "licence": "Public domain / free to use",
+      "fetched_at": "2026-08-16T06:19:56+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "flagcdn.com",
+      "files": [],
+      "notes": "Flag SVGs rasterised and quantised to a dominant non-neutral colour for 250 entities. Map fills take the flag hue at one of four graph-coloured lightness tiers so no two bordering countries share a fill."
     },
     "cia_factbook": {
       "title": "CIA World Factbook (factbook.json mirror)",
@@ -26,6 +168,46 @@
       "citation": "Central Intelligence Agency, The World Factbook",
       "files": [],
       "notes": "Joined to ISO3 by country name read from each file, not by GEC code. 242 entities matched. Composition percentages are passed through exactly as published -- never rescaled to 100, never interpolated, never projected. Fields with no published percentage are marked non-chartable and render as prose."
+    },
+    "unesco_whc": {
+      "title": "UNESCO World Heritage List",
+      "url": "https://whc.unesco.org/en/list/xml",
+      "licence": "© UNESCO World Heritage Centre; syndication feed",
+      "fetched_at": "2026-08-16T04:18:43+00:00",
+      "upstream_release": null,
+      "vintage": "inscription years 1978 onward",
+      "citation": "UNESCO World Heritage Centre, World Heritage List",
+      "files": [
+        {
+          "url": "https://whc.unesco.org/en/list/xml",
+          "sha256": "2577b64e7105180eb174111b99ae36f9f894b97fe5bdac26fef7b713b3ba1514",
+          "size_bytes": 2496451,
+          "fetched_at": "2026-08-16T04:18:43+00:00"
+        }
+      ],
+      "notes": "1272 inscribed properties across 173 entities. Transboundary sites listed under every member state."
+    },
+    "resolve_ecoregions": {
+      "title": "RESOLVE Ecoregions 2017",
+      "url": "https://storage.googleapis.com/teow2016/Ecoregions2017.zip",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-10T04:53:58+00:00",
+      "upstream_release": "Tue, 07 May 2019 00:52:59 GMT",
+      "vintage": "2017",
+      "citation": "Dinerstein et al. (2017), An Ecoregion-Based Approach to Protecting Half the Terrestrial Realm, BioScience 67(6)",
+      "files": [],
+      "notes": "Intersected with Natural Earth 50m country polygons in EPSG:6933. Ecoregion geometry simplified at 1000 m in projected metres before the overlay. Shares are percentages of each entity's own land area."
+    },
+    "owid": {
+      "title": "Our World in Data — Population",
+      "url": "https://ourworldindata.org/grapher/population",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-10T02:57:43+00:00",
+      "upstream_release": "Mon, 10 Aug 2026 01:48:29 GMT",
+      "vintage": "10,000 BCE - 2023",
+      "citation": "HYDE (2023); Gapminder (2022); UN WPP (2024), via Our World in Data",
+      "files": [],
+      "notes": "Cross-check only, never a primary source. Its modern series is UN WPP 2024, so this validates our parsing rather than the underlying estimates."
     }
   },
   "artifacts": {
@@ -38,6 +220,103 @@
       "row_count": null,
       "entity_count": 250
     },
+    "population/summary.json": {
+      "description": "Per-entity population snapshot for 2023.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "population/series/<ISO3>.json": {
+      "description": "Full 1950-2100 demographic series per entity, medium variant with low/high projection bands.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "population/timeline.json": {
+      "description": "Population by year for every entity, continent and the world, in thousands. Feeds the time scrubber; lazy-loaded.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "population/pyramids/<ISO3>.json": {
+      "description": "Age x sex population by five-year age group, every 5th year.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "indicators/catalogue.json": {
+      "description": "Indicator metadata, units, sections, and entity coverage.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": 40,
+      "entity_count": null
+    },
+    "indicators/by-country/<ISO3>.json": {
+      "description": "Full World Bank indicator series per entity, each value carrying its own observation year.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "owid/catalogue.json": {
+      "description": "OWID indicator metadata, citations, and coverage.",
+      "sources": [
+        "owid_indicators"
+      ],
+      "row_count": 8,
+      "entity_count": null
+    },
+    "owid/by-country/<ISO3>.json": {
+      "description": "Our World in Data indicator series per entity (V-Dem democracy and rights indices, regime classification, CO2 per capita), each value carrying its own observation year.",
+      "sources": [
+        "owid_indicators"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "geo/countries-110m.json": {
+      "description": "Country polygons keyed by ISO3, for map rendering.",
+      "sources": [
+        "natural_earth"
+      ],
+      "row_count": null,
+      "entity_count": 176
+    },
+    "geo/markers.json": {
+      "description": "Point markers for populated entities with no polygon at 110m.",
+      "sources": [
+        "natural_earth",
+        "country_metadata"
+      ],
+      "row_count": null,
+      "entity_count": 63
+    },
+    "flags/map-palette.json": {
+      "description": "Normalised map fills, continent accents, and per-entity flag accent colours with AA-safe text steps.",
+      "sources": [
+        "flagcdn"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "flags/svg/": {
+      "description": "The flag SVGs themselves, one per entity keyed by ISO3, shown on country detail pages. Committed because the app never calls an upstream at render time.",
+      "sources": [
+        "flagcdn"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
     "factbook/<ISO3>.json": {
       "description": "Qualitative country facts: government, people composition, industries and trade, each field with its own vintage.",
       "sources": [
@@ -45,12 +324,45 @@
       ],
       "row_count": null,
       "entity_count": 242
+    },
+    "heritage/sites.json": {
+      "description": "World Heritage properties per entity: name, category, inscription year, in-danger and transboundary flags.",
+      "sources": [
+        "unesco_whc"
+      ],
+      "row_count": 1272,
+      "entity_count": 173
+    },
+    "biomes/biomes.json": {
+      "description": "Biome and ecoregion shares by entity and by continent.",
+      "sources": [
+        "resolve_ecoregions",
+        "natural_earth"
+      ],
+      "row_count": null,
+      "entity_count": 235
+    },
+    "crosscheck_owid.json": {
+      "description": "WPP-vs-OWID parsing cross-check results.",
+      "sources": [
+        "un_wpp",
+        "owid"
+      ],
+      "row_count": 1180,
+      "entity_count": null
     }
   },
   "warnings": [
     "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe.",
+    "UN WPP 2024 publishes no population series for 13 registry entities (ALA, ATA, ATF, BVT, CCK, CXR, HMD, IOT, NFK, PCN, SGS, SJM, UMI); these render as unavailable rather than zero. Most are uninhabited territories, but Aland Islands and Svalbard are inhabited and are reported within Finland and Norway respectively.",
+    "63 populated entities are too small to render as polygons at 110m resolution and appear as point markers instead, among them Singapore, Malta, Hong Kong and Macao. Their area is not to scale on the map.",
+    "Entities drawn by more than one Natural Earth polygon: CYP, SOM (Cyprus includes Northern Cyprus; Somalia includes Somaliland). Their fills paint multiple paths.",
     "16 Factbook files could not be joined to a registry entity and were skipped: australia-oceania/at.json (Ashmore and Cartier Islands), europe/ax.json (Akrotiri), central-america-n-caribbean/bq.json (Navassa Island), australia-oceania/cr.json (Coral Sea Islands), europe/dx.json (Dhekelia), middle-east/gz.json (Gaza, Gaza Strip), north-america/ip.json (Clipperton Island), europe/jn.json (Jan Mayen), east-n-southeast-asia/pf.json (Paracel Islands), east-n-southeast-asia/pg.json (Spratly Islands), australia-oceania/um.json (Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Palmyra Atoll), australia-oceania/wq.json (Wake Island)...",
-    "8 entities have no Factbook entry; their People, Government and industry sections render as not published: ALA, BES, GLP, GUF, MTQ, MYT, REU, UMI"
+    "8 entities have no Factbook entry; their People, Government and industry sections render as not published: ALA, BES, GLP, GUF, MTQ, MYT, REU, UMI",
+    "Biome shares fall outside 1.0% of 100 for 114 entities. 78 are small territories under 50,000 km2 that RESOLVE Ecoregions does not resolve (verified: a 4x finer simplification tolerance did not improve them). 36 are larger countries whose polygons include substantial inland water or ice that carries no terrestrial ecoregion -- Tanzania's great lakes, Canada's Great Lakes, the Greenland ice sheet. Shares are reported as computed and never rescaled to 100.",
+    "5 entities' measured polygon area differs from their published land area by more than 25% (ESH -66%, ALA -52%, PYF -38%, MAR +30%, FRO -25%). These are boundary-definition differences, not measurement errors. Most significant: Natural Earth draws the de facto administered boundary in Western Sahara at both the 110m map and 50m biome resolutions, which agree with each other. Both give Western Sahara roughly a third of its internationally recognised extent (about 96,000 of 266,000 sq km), with the remainder drawn inside Morocco. Area and biome figures for both entities should be read with that in mind.",
+    "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
+    "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "155a990ac465c91ef414bea9aaacdcb58a2627e023338bee3920aa5258c97224"
+  "content_fingerprint": "45638efe98c9e3c4fab272d313f0cae62c65ef1e102483d31f0a58a3b56b32db"
 }
