@@ -55,6 +55,29 @@ export function formatDecimal(
   return unit ? `${oneDecimal.format(value)} ${unit}` : oneDecimal.format(value)
 }
 
+/**
+ * Normalise the CIA Factbook's ALL-CAPS surname convention to ordinary case:
+ * "President Emmanuel MACRON" -> "President Emmanuel Macron".
+ *
+ * Display-layer only -- the committed artifact keeps the Factbook's own text.
+ * Roman numerals (ABDULLAH II, RAMA X) are preserved, and hyphenated or
+ * apostrophised names (AL-SISI, D'ESTAING) title-case each segment. This is a
+ * heuristic: a genuine acronym inside a name field would be lowercased too,
+ * which is why it is applied only to fields known to use the convention.
+ */
+export function normaliseFactbookCaps(text: string): string {
+  return text.replace(/[\p{Lu}][\p{Lu}'’-]+/gu, (word) =>
+    word
+      .split(/([-'’])/)
+      .map((part) => {
+        if (!/^\p{Lu}+$/u.test(part)) return part
+        if (/^[IVXLCDM]+$/.test(part) && part.length <= 4) return part
+        return part.charAt(0) + part.slice(1).toLowerCase()
+      })
+      .join(''),
+  )
+}
+
 /** Direction word for a growth rate, used alongside (never instead of) sign. */
 export function growthDirection(
   value: number | null | undefined,

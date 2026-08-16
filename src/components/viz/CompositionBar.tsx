@@ -50,10 +50,17 @@ export function CompositionBar({
   title,
   field,
   sourceName,
+  iconFor,
 }: {
   title: string
   field: CompositionField
   sourceName: string
+  /**
+   * Decorative icon per category label (e.g. religion symbols). When set, the
+   * legend renders as a vertical bulleted list instead of an inline wrap, so
+   * each category reads as its own line with its symbol.
+   */
+  iconFor?: (label: string) => string | null
 }) {
   const [showTable, setShowTable] = useState(false)
   const tableId = useId()
@@ -166,7 +173,13 @@ export function CompositionBar({
         ))}
       </div>
 
-      <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+      <ul
+        className={
+          iconFor
+            ? 'mt-2 space-y-1 text-xs'
+            : 'mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs'
+        }
+      >
         {segments.map((segment, index) => (
           <li key={`${segment.label}-legend-${index}`} className="flex items-center gap-1.5">
             <span
@@ -174,6 +187,9 @@ export function CompositionBar({
               style={{ background: segment.colour }}
               aria-hidden="true"
             />
+            {iconFor && iconFor(segment.label) && (
+              <span aria-hidden="true">{iconFor(segment.label)}</span>
+            )}
             <span>
               {segment.label}
               {segment.official && ' (official)'}

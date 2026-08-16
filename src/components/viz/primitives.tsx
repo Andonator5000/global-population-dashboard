@@ -115,28 +115,74 @@ export function Section({
   id,
   title,
   accent,
+  collapsible = false,
+  defaultOpen = true,
   children,
 }: {
   id: string
   title: string
   accent?: string | null | undefined
+  /**
+   * Renders as a native <details>/<summary> disclosure. Native, not a
+   * button-plus-state, because <details> gives keyboard toggling, screen
+   * reader expanded/collapsed announcement, and find-in-page auto-expansion
+   * for free — and there is nothing to get out of sync on re-render.
+   */
+  collapsible?: boolean
+  defaultOpen?: boolean
   children: ReactNode
 }) {
+  const frame = {
+    borderColor: 'var(--border)',
+    borderLeftColor: accent ?? 'var(--border)',
+  }
+
+  if (!collapsible) {
+    return (
+      <section
+        id={id}
+        className="rounded-lg border border-l-4 px-5 py-4"
+        style={frame}
+        aria-labelledby={`${id}-heading`}
+      >
+        <h2 id={`${id}-heading`} className="text-lg font-medium tracking-tight">
+          {title}
+        </h2>
+        <div className="mt-3 space-y-5">{children}</div>
+      </section>
+    )
+  }
+
   return (
-    <section
+    <details
       id={id}
-      className="rounded-lg border border-l-4 px-5 py-4"
-      style={{
-        borderColor: 'var(--border)',
-        borderLeftColor: accent ?? 'var(--border)',
-      }}
-      aria-labelledby={`${id}-heading`}
+      className="section-disclosure rounded-lg border border-l-4 px-5 py-4"
+      style={frame}
+      open={defaultOpen}
     >
-      <h2 id={`${id}-heading`} className="text-lg font-medium tracking-tight">
-        {title}
-      </h2>
+      {/* The heading lives INSIDE the summary so the accessible tree keeps
+          its h2 landmarks while the whole header row stays the toggle. */}
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3">
+        <h2 id={`${id}-heading`} className="text-lg font-medium tracking-tight">
+          {title}
+        </h2>
+        <svg
+          className="section-chevron h-4 w-4 shrink-0"
+          viewBox="0 0 16 16"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 6l4 4 4-4"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </summary>
       <div className="mt-3 space-y-5">{children}</div>
-    </section>
+    </details>
   )
 }
 

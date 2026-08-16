@@ -22,11 +22,18 @@ export type ContinentKey = keyof typeof CONTINENTS
 
 /**
  * Map projection. Equal Earth is the default and the only one the design has
- * been checked against; the others are equal-area alternatives kept swappable
- * per the brief. Mercator is deliberately absent -- it is not equal-area, and
- * "Greenland reads visibly smaller than Africa" is an acceptance criterion.
+ * been checked against; mollweide and eckert4 are equal-area alternatives
+ * kept swappable per the brief. Mercator is deliberately absent -- it is not
+ * equal-area, and "Greenland reads visibly smaller than Africa" is an
+ * acceptance criterion.
+ *
+ * 'globe' (orthographic, drag to rotate) is a PERSPECTIVE view, not an
+ * equal-area projection: shapes foreshorten toward the horizon exactly as a
+ * physical globe does. It was added on request (2026-08-15) as an optional
+ * view; the flat defaults remain equal-area and the equal-area gates are
+ * checked against them.
  */
-export const PROJECTIONS = ['equalEarth', 'mollweide', 'eckert4'] as const
+export const PROJECTIONS = ['equalEarth', 'mollweide', 'eckert4', 'globe'] as const
 export type ProjectionKey = (typeof PROJECTIONS)[number]
 
 export const DEFAULT_PROJECTION: ProjectionKey = 'equalEarth'

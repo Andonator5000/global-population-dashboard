@@ -1,6 +1,7 @@
 import { useId, useState } from 'react'
 
 import { OTHER_TOKEN, seriesColour } from './primitives'
+import { biomeIcon } from '../../lib/icons'
 import type { BiomeShare } from '../../types'
 
 const MAX_SLOTS = 8
@@ -96,6 +97,9 @@ export function BiomeBar({
               style={{ background: segment.colour }}
               aria-hidden="true"
             />
+            {biomeIcon(segment.biome) && (
+              <span aria-hidden="true">{biomeIcon(segment.biome)}</span>
+            )}
             <span>{segment.biome}</span>
             <span
               style={{
@@ -202,6 +206,9 @@ export function BiomeBar({
                 style={{ borderColor: 'var(--border)' }}
               >
                 <th scope="row" className="py-1 text-left font-normal">
+                  {biomeIcon(biome.biome) && (
+                    <span aria-hidden="true">{biomeIcon(biome.biome)} </span>
+                  )}
                   {biome.biome}
                 </th>
                 <td className="py-1 text-right" style={{ fontVariantNumeric: 'tabular-nums' }}>

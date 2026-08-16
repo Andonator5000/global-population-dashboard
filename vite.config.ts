@@ -76,8 +76,11 @@ function spaFallback(): Plugin {
   }
 }
 
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? REPO_BASE : '/',
+export default defineConfig(({ command, isPreview }) => ({
+  // Build AND preview use the Pages base; `vite preview` serves the built
+  // dist, which has the base baked into every asset URL, so previewing at
+  // root produced a blank page whose assets all fell into the SPA fallback.
+  base: command === 'build' || isPreview ? REPO_BASE : '/',
   plugins: [react(), tailwindcss(), dataArtifacts(), spaFallback()],
   build: {
     outDir: 'dist',

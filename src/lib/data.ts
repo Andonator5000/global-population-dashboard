@@ -4,11 +4,13 @@ import { DATA_BASE_URL } from '../config'
 import type {
   BiomeFile,
   CountryIndicators,
+  CountryOwid,
   CountryPyramid,
   CountrySeries,
   CountryTopology,
   Entity,
   FactbookRecord,
+  HeritageFile,
   Manifest,
   MapPalette,
   MarkerFile,
@@ -93,6 +95,9 @@ export const useMapPalette = (): AsyncState<MapPalette> =>
 
 export const useBiomes = (): AsyncState<BiomeFile> =>
   useArtifact<BiomeFile>('biomes/biomes.json')
+
+export const useHeritage = (): AsyncState<HeritageFile> =>
+  useArtifact<HeritageFile>('heritage/sites.json')
 
 /**
  * Year-by-year population, fetched when `enabled` becomes true.
@@ -188,3 +193,6 @@ export const useCountryIndicators = (iso3: string | undefined) =>
 
 export const useCountryFactbook = (iso3: string | undefined) =>
   useOptionalArtifact<FactbookRecord>(iso3 ? `factbook/${iso3}.json` : null)
+
+export const useCountryOwid = (iso3: string | undefined) =>
+  useOptionalArtifact<CountryOwid>(iso3 ? `owid/by-country/${iso3}.json` : null)

@@ -206,6 +206,25 @@ td {
   }
 }
 
+/*
+ * Collapsible country-page sections (<details>-based, see primitives.tsx).
+ * The default disclosure triangle is suppressed in favour of the chevron in
+ * the summary row, which rotates to carry the open/closed state visually --
+ * the state itself lives on the <details> element for assistive tech.
+ */
+.section-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.section-disclosure > summary .section-chevron {
+  color: var(--text-muted);
+  transition: transform 150ms ease;
+}
+
+.section-disclosure[open] > summary .section-chevron {
+  transform: rotate(180deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

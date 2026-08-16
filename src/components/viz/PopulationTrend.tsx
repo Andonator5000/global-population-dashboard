@@ -1,13 +1,21 @@
 import { area, line } from 'd3-shape'
 import { scaleLinear } from 'd3-scale'
-import { useMemo } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
-import { formatPopulation } from '../../lib/format'
+import { formatExact, formatPopulation } from '../../lib/format'
 import type { CountrySeries } from '../../types'
 
 const WIDTH = 720
 const HEIGHT = 260
 const MARGIN = { top: 12, right: 12, bottom: 26, left: 56 }
+
+interface HoverPoint {
+  year: number
+  value: number
+  low: number | null
+  high: number | null
+  isProjection: boolean
+}
 
 /**
  * Population 1950-2100: estimates, then the medium projection with a low/high
@@ -20,8 +28,18 @@ const MARGIN = { top: 12, right: 12, bottom: 26, left: 56 }
  * The estimate/projection boundary is drawn explicitly because the difference
  * matters more than any styling nicety: everything left of it is measured,
  * everything right is modelled.
+ *
+ * INTERACTION: pointer events, not mouse events, so hovering with a mouse and
+ * dragging a finger are the same code path. The readout snaps to the nearest
+ * year. `touch-action: pan-y` keeps vertical page scrolling alive on phones --
+ * only horizontal movement is captured for scrubbing. The readout is a visual
+ * convenience and is aria-hidden; the chart's aria-label and the figures
+ * elsewhere on the page remain the accessible surface.
  */
 export function PopulationTrend({ series }: { series: CountrySeries }) {
+  const svgRef = useRef<SVGSVGElement | null>(null)
+  const [hover, setHover] = useState<HoverPoint | null>(null)
+
   const geometry = useMemo(() => {
     const years = series.years
     const values = series.series.population ?? []
@@ -46,6 +64,7 @@ export function PopulationTrend({ series }: { series: CountrySeries }) {
               p.low !== null && p.high !== null,
           )
       : []
+    const bandByYear = new Map(bandPoints.map((p) => [p.year, p]))
 
     const maxValue = Math.max(
       ...points.map((p) => p.value),
@@ -75,6 +94,8 @@ export function PopulationTrend({ series }: { series: CountrySeries }) {
     return {
       x,
       y,
+      points,
+      bandByYear,
       estimatePath: lineOf(estimates) ?? '',
       projectionPath: lineOf(projection) ?? '',
       bandPath: bandPoints.length ? (bandPath(bandPoints) ?? '') : '',
@@ -94,11 +115,59 @@ export function PopulationTrend({ series }: { series: CountrySeries }) {
     )
   }
 
+  /** Snap a pointer event to the nearest year that has a value. */
+  function readoutAt(event: React.PointerEvent<SVGSVGElement>) {
+    const svg = svgRef.current
+    const g = geometry
+    if (!svg || !g) return
+    const rect = svg.getBoundingClientRect()
+    // Client px -> viewBox units. The SVG scales responsively, so the ratio
+    // matters; the y coordinate is not needed because the readout snaps to
+    // the series.
+    const xView = ((event.clientX - rect.left) / rect.width) * WIDTH
+    const targetYear = g.x.invert(xView)
+    let nearest = g.points[0]
+    if (!nearest) return
+    for (const p of g.points) {
+      if (Math.abs(p.year - targetYear) < Math.abs(nearest.year - targetYear)) {
+        nearest = p
+      }
+    }
+    const band = g.bandByYear.get(nearest.year)
+    setHover({
+      year: nearest.year,
+      value: nearest.value,
+      low: band?.low ?? null,
+      high: band?.high ?? null,
+      isProjection: nearest.year > series.estimatesThrough,
+    })
+  }
+
+  // Tooltip box geometry, flipped to the left near the right edge so it
+  // never leaves the chart.
+  const tooltip = hover
+    ? (() => {
+        const boxWidth = 168
+        const boxHeight = hover.low !== null ? 62 : 46
+        const px = geometry.x(hover.year)
+        const py = geometry.y(hover.value)
+        const boxX =
+          px + 12 + boxWidth > WIDTH - MARGIN.right ? px - 12 - boxWidth : px + 12
+        const boxY = Math.max(
+          MARGIN.top,
+          Math.min(py - boxHeight / 2, HEIGHT - MARGIN.bottom - boxHeight),
+        )
+        return { px, py, boxX, boxY, boxWidth, boxHeight }
+      })()
+    : null
+
   return (
     <figure className="m-0">
       <svg
+        ref={svgRef}
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         className="h-auto w-full"
+        style={{ touchAction: 'pan-y' }}
         role="img"
         aria-label={
           `Population from ${series.years[0]} to ${series.years[series.years.length - 1]}. ` +
@@ -106,6 +175,9 @@ export function PopulationTrend({ series }: { series: CountrySeries }) {
           `with a low-to-high variant band. Peaks at ${formatPopulation(geometry.peak.value)} ` +
           `in ${geometry.peak.year}.`
         }
+        onPointerMove={readoutAt}
+        onPointerDown={readoutAt}
+        onPointerLeave={() => setHover(null)}
       >
         {geometry.ticksY.map((tick) => (
           <g key={tick}>
@@ -184,12 +256,73 @@ export function PopulationTrend({ series }: { series: CountrySeries }) {
         >
           projection →
         </text>
+
+        {hover && tooltip && (
+          <g aria-hidden="true" pointerEvents="none">
+            <line
+              x1={tooltip.px}
+              x2={tooltip.px}
+              y1={MARGIN.top}
+              y2={HEIGHT - MARGIN.bottom}
+              stroke="var(--text-muted)"
+              strokeWidth={1}
+              opacity={0.5}
+            />
+            <circle
+              cx={tooltip.px}
+              cy={tooltip.py}
+              r={4}
+              fill="var(--series-1)"
+              stroke="var(--surface-raised)"
+              strokeWidth={1.5}
+            />
+            <rect
+              x={tooltip.boxX}
+              y={tooltip.boxY}
+              width={tooltip.boxWidth}
+              height={tooltip.boxHeight}
+              rx={6}
+              fill="var(--surface-raised)"
+              stroke="var(--border)"
+            />
+            <text
+              x={tooltip.boxX + 10}
+              y={tooltip.boxY + 17}
+              fontSize={11}
+              style={{ fill: 'var(--text-muted)', fontVariantNumeric: 'tabular-nums' }}
+            >
+              {hover.year}
+              {hover.isProjection ? ' · projected' : ''}
+            </text>
+            <text
+              x={tooltip.boxX + 10}
+              y={tooltip.boxY + 34}
+              fontSize={13}
+              fontWeight={600}
+              style={{ fill: 'var(--text)', fontVariantNumeric: 'tabular-nums' }}
+            >
+              {formatExact(hover.value)}
+            </text>
+            {hover.low !== null && hover.high !== null && (
+              <text
+                x={tooltip.boxX + 10}
+                y={tooltip.boxY + 51}
+                fontSize={10}
+                style={{ fill: 'var(--text-muted)', fontVariantNumeric: 'tabular-nums' }}
+              >
+                {formatPopulation(hover.low)} – {formatPopulation(hover.high)}{' '}
+                (low–high)
+              </text>
+            )}
+          </g>
+        )}
       </svg>
 
       <figcaption className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
         Solid line: estimates through {series.estimatesThrough}. Dashed line:
-        medium-variant projection. Shaded band: low to high variant. Source: UN
-        World Population Prospects {series.revision}.
+        medium-variant projection. Shaded band: low to high variant. Hover or
+        touch the chart to read a specific year. Source: UN World Population
+        Prospects {series.revision}.
       </figcaption>
     </figure>
   )
