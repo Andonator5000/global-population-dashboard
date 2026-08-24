@@ -1,0 +1,35 @@
+{
+  "iso3": "IRL",
+  "name": "Ireland",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "chicken fillet roll",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20fillet%20baguette%20%28with%20lettuce%20and%20tomato%29%20bought%20from%20spar%20liffey%20street%20dublin%202023%202%20public%20domain%20alan%20butler.tif?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20fillet%20baguette%20%28with%20lettuce%20and%20tomato%29%20bought%20from%20spar%20liffey%20street%20dublin%202023%202%20public%20domain%20alan%20butler.tif",
+        "license": "CC0",
+        "author": "ALANBUTLERcommons"
+      }
+    },
+    {
+      "name": "Paddy Whiskey",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Paddy%20Whiskey.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Paddy%20Whiskey.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Gambiteer"
+      }
+    },
+    {
+      "name": "croffle",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Croffle%201.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Croffle%201.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Scudsvlad"
+      }
+    }
+  ]
+}

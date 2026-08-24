@@ -1,0 +1,36 @@
+{
+  "iso3": "SEN",
+  "name": "Senegal",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Blaise Diagne International Airport",
+      "iata": "DSS",
+      "municipality": "Dakar",
+      "large": true,
+      "passengers": 2491185
+    },
+    {
+      "name": "Léopold Sédar Senghor International Airport",
+      "iata": "DKR",
+      "municipality": "Dakar",
+      "large": true,
+      "passengers": 1965223
+    },
+    {
+      "name": "Cap Skirring Airport",
+      "iata": "CSK",
+      "municipality": "Cap Skirring",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Ziguinchor Airport",
+      "iata": "ZIG",
+      "municipality": "Ziguinchor",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

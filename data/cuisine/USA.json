@@ -1,0 +1,80 @@
+{
+  "iso3": "USA",
+  "name": "United States",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "hamburger",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/NCI%20Visuals%20Food%20Hamburger.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:NCI%20Visuals%20Food%20Hamburger.jpg",
+        "license": "Public domain",
+        "author": "Len Rizzi (photographer)"
+      }
+    },
+    {
+      "name": "pancake",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApe%20opened%20up.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cr%C3%AApe%20opened%20up.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    },
+    {
+      "name": "carbonara",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Espaguetis%20carbonara.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Espaguetis%20carbonara.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Javier Somoza"
+      }
+    },
+    {
+      "name": "cheeseburger",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheeseburger.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheeseburger.jpg",
+        "license": "Public domain",
+        "author": "Renee Comet (photographer)"
+      }
+    },
+    {
+      "name": "sundae",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/StrawberrySundae.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:StrawberrySundae.jpg",
+        "license": "Public domain",
+        "author": "USDA photo by: Ken Hammond"
+      }
+    },
+    {
+      "name": "corn dog",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Corn%20dog%20001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Corn%20dog%20001.jpg",
+        "license": "CC0",
+        "author": "Ocdp"
+      }
+    },
+    {
+      "name": "red velvet cake",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20Velvet%20Cake%20Waldorf%20Astoria.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red%20Velvet%20Cake%20Waldorf%20Astoria.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Hennem08"
+      }
+    },
+    {
+      "name": "s'more",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HersheySmore.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:HersheySmore.jpg",
+        "license": "GFDL 1.2",
+        "author": "Jonathunder"
+      }
+    }
+  ]
+}

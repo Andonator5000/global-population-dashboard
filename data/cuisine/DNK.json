@@ -1,0 +1,35 @@
+{
+  "iso3": "DNK",
+  "name": "Denmark",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Stegt flæsk",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stegt%20fl%C3%A6sk.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stegt%20fl%C3%A6sk.jpg",
+        "license": "CC BY 2.0",
+        "author": "Original uploader was ChildofMidnight at en.wikipedia"
+      }
+    },
+    {
+      "name": "Sol over Gudhjem",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sol%20over%20Gudhjem%20p%C3%A5%20Snogeb%C3%A6k%20R%C3%B8geri%20-%2020240819%20-%2016.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sol%20over%20Gudhjem%20p%C3%A5%20Snogeb%C3%A6k%20R%C3%B8geri%20-%2020240819%20-%2016.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "AleWi"
+      }
+    },
+    {
+      "name": "Dyrlægens natmad",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ida%20Davidsen%20-%20Dyrl%C3%A6gens%20Natmad.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ida%20Davidsen%20-%20Dyrl%C3%A6gens%20Natmad.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "User:Nillerdk"
+      }
+    }
+  ]
+}

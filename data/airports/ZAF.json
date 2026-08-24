@@ -1,0 +1,148 @@
+{
+  "iso3": "ZAF",
+  "name": "South Africa",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "O.R. Tambo International Airport",
+      "iata": "JNB",
+      "municipality": "Johannesburg",
+      "large": true,
+      "passengers": 21237208
+    },
+    {
+      "name": "Cape Town International Airport",
+      "iata": "CPT",
+      "municipality": "Cape Town",
+      "large": true,
+      "passengers": 10693063
+    },
+    {
+      "name": "King Shaka International Airport",
+      "iata": "DUR",
+      "municipality": "Durban",
+      "large": true,
+      "passengers": 5527890
+    },
+    {
+      "name": "Lanseria International Airport",
+      "iata": "HLA",
+      "municipality": "Johannesburg",
+      "large": true,
+      "passengers": 1900000
+    },
+    {
+      "name": "Chief Dawid Stuurman International Airport",
+      "iata": "PLZ",
+      "municipality": "Gqeberha (Port Elizabeth)",
+      "large": true,
+      "passengers": 1689914
+    },
+    {
+      "name": "King Phalo Airport",
+      "iata": "ELS",
+      "municipality": "East London",
+      "large": true,
+      "passengers": 681695
+    },
+    {
+      "name": "George Airport",
+      "iata": "GRJ",
+      "municipality": "George",
+      "large": true,
+      "passengers": 564370
+    },
+    {
+      "name": "Bram Fischer International Airport",
+      "iata": "BFN",
+      "municipality": "Bloemfontein",
+      "large": true,
+      "passengers": 39296
+    },
+    {
+      "name": "Kimberley Airport",
+      "iata": "KIM",
+      "municipality": "Kimberley",
+      "large": true,
+      "passengers": 17068
+    },
+    {
+      "name": "Upington Airport",
+      "iata": "UTN",
+      "municipality": "Upington",
+      "large": false,
+      "passengers": 7096
+    },
+    {
+      "name": "Kruger Mpumalanga International Airport",
+      "iata": "MQP",
+      "municipality": "Mbombela",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Polokwane International Airport",
+      "iata": "PTG",
+      "municipality": "Polokwane",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Eastgate Airport / Air Force Base Hoedspruit",
+      "iata": "HDS",
+      "municipality": "Hoedspruit",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Hendrik Van Eck Airport",
+      "iata": "PHW",
+      "municipality": "Phalaborwa",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "K. D. Matanzima Airport",
+      "iata": "UTT",
+      "municipality": "Mthatha",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Margate Airport",
+      "iata": "MGH",
+      "municipality": "Margate",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mkuze Airport",
+      "iata": "MZQ",
+      "municipality": "Mkuze",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mmabatho International Airport",
+      "iata": "MBD",
+      "municipality": "Mafeking",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Pietermaritzburg Airport",
+      "iata": "PZB",
+      "municipality": "Pietermaritzburg",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Pietersburg Municipal Airport",
+      "iata": null,
+      "municipality": "Polokwane",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

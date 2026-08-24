@@ -1,0 +1,29 @@
+{
+  "iso3": "NIC",
+  "name": "Nicaragua",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Augusto C. Sandino (Managua) International Airport",
+      "iata": "MGA",
+      "municipality": "Managua",
+      "large": true,
+      "passengers": 1627527
+    },
+    {
+      "name": "Bluefields Airport",
+      "iata": "BEF",
+      "municipality": "Bluefields",
+      "large": false,
+      "passengers": 63200
+    },
+    {
+      "name": "Puerto Cabezas Airport",
+      "iata": "PUZ",
+      "municipality": "Puerto Cabezas",
+      "large": false,
+      "passengers": 42346
+    }
+  ]
+}

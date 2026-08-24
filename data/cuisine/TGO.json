@@ -1,0 +1,17 @@
+{
+  "iso3": "TGO",
+  "name": "Togo",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Eba",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/African%20dish%2C%2CEgusi%20Soup%20and%20Eba.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:African%20dish%2C%2CEgusi%20Soup%20and%20Eba.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Kethsa Kingsley"
+      }
+    }
+  ]
+}

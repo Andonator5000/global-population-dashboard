@@ -1,0 +1,17 @@
+{
+  "iso3": "SYR",
+  "name": "Syria",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Halawet el Jibn",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%AD%D9%84%D8%A7%D9%88%D8%A9%20%D8%A7%D9%84%D8%AC%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D9%88%D9%8A%D8%A9.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%AD%D9%84%D8%A7%D9%88%D8%A9%20%D8%A7%D9%84%D8%AC%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D9%88%D9%8A%D8%A9.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Mahmood ALsalama"
+      }
+    }
+  ]
+}

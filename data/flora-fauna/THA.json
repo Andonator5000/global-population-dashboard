@@ -1,0 +1,50 @@
+{
+  "iso3": "THA",
+  "name": "Thailand",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Asian elephant",
+      "type": "national animal",
+      "scientificName": "Elephas maximus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Elephas%20maximus%20%28Bandipur%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Elephas%20maximus%20%28Bandipur%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Yathin S Krishnappa"
+      }
+    },
+    {
+      "name": "Siamese fighting fish",
+      "type": "national aquatic animal",
+      "scientificName": "Betta splendens",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Male%20Betta%20-34245661920.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Male%20Betta%20-34245661920.jpg",
+        "license": "CC0",
+        "author": "ivabalk https://pixabay.com/pt/users/ivabalk-782511/"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Ratchaphruek",
+    "type": "national tree",
+    "scientificName": "Cassia fistula",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Konnamaram.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Konnamaram.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Original uploader was Suniltg at en.wikipedia"
+    }
+  },
+  "flower": {
+    "name": "Thai",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Idioma%20tailand%C3%A9s.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Idioma%20tailand%C3%A9s.png",
+      "license": "CC BY-SA 3.0",
+      "author": "Fobos92"
+    }
+  }
+}

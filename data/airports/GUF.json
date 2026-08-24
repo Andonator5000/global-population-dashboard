@@ -1,0 +1,29 @@
+{
+  "iso3": "GUF",
+  "name": "French Guiana",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Cayenne – Félix Eboué Airport",
+      "iata": "CAY",
+      "municipality": "Matoury",
+      "large": true,
+      "passengers": 559777
+    },
+    {
+      "name": "Maripasoula Airport",
+      "iata": "MPY",
+      "municipality": "Maripasoula",
+      "large": false,
+      "passengers": 41714
+    },
+    {
+      "name": "Saint-Laurent-du-Maroni Airport",
+      "iata": "LDX",
+      "municipality": "Saint-Laurent-du-Maroni",
+      "large": false,
+      "passengers": 6399
+    }
+  ]
+}

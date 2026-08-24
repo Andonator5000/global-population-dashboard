@@ -1,0 +1,83 @@
+{
+  "iso3": "PAK",
+  "name": "Pakistan",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Markhor",
+      "type": "national animal",
+      "scientificName": "Capra falconeri",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Markhor%20Schraubenziege%20Capra%20falconeri%20Zoo%20Augsburg-02.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Markhor%20Schraubenziege%20Capra%20falconeri%20Zoo%20Augsburg-02.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Rufus46"
+      }
+    },
+    {
+      "name": "Shaheen falcon",
+      "type": "national animal",
+      "scientificName": "Falco peregrinus peregrinator",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%AC%D9%8A%D8%B1%20%D8%B4%D8%A7%D9%87%D9%8A%D9%86.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%AC%D9%8A%D8%B1%20%D8%B4%D8%A7%D9%87%D9%8A%D9%86.jpg",
+        "license": "Public domain",
+        "author": "إماراتي 1971"
+      }
+    },
+    {
+      "name": "Chukar",
+      "type": "national bird",
+      "scientificName": "Alectoris chukar",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Alectoris-chukar-001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Alectoris-chukar-001.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Mdf"
+      }
+    },
+    {
+      "name": "Indus river dolphin",
+      "type": "national aquatic mammal",
+      "scientificName": "Platanista minor",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A-Platanista-gangetica-showing-the-body-shape-and-especially-the-head-with-a-long-beak.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:A-Platanista-gangetica-showing-the-body-shape-and-especially-the-head-with-a-long-beak.png",
+        "license": "CC BY 3.0",
+        "author": "Christina H Lockyer and Gill T Braulik"
+      }
+    },
+    {
+      "name": "Mugger crocodile",
+      "type": "national reptile",
+      "scientificName": "Crocodylus palustris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PK%20Kirthar%20NP%20asv2020-02%20img25.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:PK%20Kirthar%20NP%20asv2020-02%20img25.jpg",
+        "license": "FAL",
+        "author": "A.Savin"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Deodar",
+    "type": "national tree",
+    "scientificName": "Cedrus deodara",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pedrengo%20cedro%20nel%20parco%20Frizzoni.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Pedrengo%20cedro%20nel%20parco%20Frizzoni.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Luigi Chiesa"
+    }
+  },
+  "flower": {
+    "name": "common jasmine",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jasminum%20officinale%20-%20Bot.%20Mag.%2031%2C%201787.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Jasminum%20officinale%20-%20Bot.%20Mag.%2031%2C%201787.jpg",
+      "license": "Public domain",
+      "author": "Botanical Magazine"
+    }
+  }
+}

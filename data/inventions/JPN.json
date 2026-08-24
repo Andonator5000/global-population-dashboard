@@ -1,0 +1,125 @@
+{
+  "iso3": "JPN",
+  "name": "Japan",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "judo",
+      "inventors": [
+        "Kanō Jigorō"
+      ],
+      "year": 1882,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KOCIS%20Korea%20Judo%20Kim%20Jaebum%20London%2036%20%287696361164%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:KOCIS%20Korea%20Judo%20Kim%20Jaebum%20London%2036%20%287696361164%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Korea.net / Korean Culture and Information Service (Korean Olympic Committee)"
+      }
+    },
+    {
+      "name": "aikido",
+      "inventors": [
+        "Morihei Ueshiba"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shihonage.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Shihonage.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Magyar Balázs"
+      }
+    },
+    {
+      "name": "emoji",
+      "inventors": [
+        "Shigetaka Kurita"
+      ],
+      "year": 1999,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Emoji%20u263a.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emoji%20u263a.svg",
+        "license": "Apache License 2.0",
+        "author": "Google"
+      }
+    },
+    {
+      "name": "QR code",
+      "inventors": [
+        "Denso Wave",
+        "Masahiro Hara"
+      ],
+      "year": 1994,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/QR%20code%20for%20mobile%20English%20Wikipedia.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:QR%20code%20for%20mobile%20English%20Wikipedia.svg",
+        "license": "Public domain",
+        "author": "Brdall"
+      }
+    },
+    {
+      "name": "kickboxing",
+      "inventors": [
+        "Osamu Noguchi"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/WKA%20World%20Championship%202012%20Munich%20444.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:WKA%20World%20Championship%202012%20Munich%20444.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "Claus Michelfelder"
+      }
+    },
+    {
+      "name": "Tamagotchi",
+      "inventors": [
+        "Aki Maita"
+      ],
+      "year": 1996,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tamagotchi%200124%20ubt.jpeg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tamagotchi%200124%20ubt.jpeg",
+        "license": "CC BY-SA 3.0",
+        "author": "Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com]"
+      }
+    },
+    {
+      "name": "instant noodles",
+      "inventors": [
+        "Momofuku Ando"
+      ],
+      "year": 1950,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mama%20instant%20noodle%20block.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mama%20instant%20noodle%20block.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Takeaway"
+      }
+    },
+    {
+      "name": "maneki-neko",
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Maneki-neko-ja.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Maneki-neko-ja.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Searobin"
+      }
+    },
+    {
+      "name": "takoyaki",
+      "inventors": [
+        "Aidu-ya"
+      ],
+      "year": 1935,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Takoyaki%20by%20yomi955.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Takoyaki%20by%20yomi955.jpg",
+        "license": "CC BY 2.0",
+        "author": "heiwa4126"
+      }
+    },
+    {
+      "name": "original video animation",
+      "year": 1983
+    }
+  ]
+}

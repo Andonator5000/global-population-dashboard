@@ -1,0 +1,35 @@
+{
+  "iso3": "MDG",
+  "name": "Madagascar",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Romazava",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Madagaskar%20stew%202019-10-01.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Madagaskar%20stew%202019-10-01.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Z thomas"
+      }
+    },
+    {
+      "name": "Koba",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kobandravina%20dessert%20snack%20food%20Antananarivo%20Madagascar.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kobandravina%20dessert%20snack%20food%20Antananarivo%20Madagascar.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Salym Fayad"
+      }
+    },
+    {
+      "name": "Mofo gasy",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mokary%20Vary-anivorano%20nord%20Madagascar.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mokary%20Vary-anivorano%20nord%20Madagascar.jpg",
+        "license": "CC0",
+        "author": "Chirocca77"
+      }
+    }
+  ]
+}

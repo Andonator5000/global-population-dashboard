@@ -1,0 +1,26 @@
+{
+  "iso3": "NOR",
+  "name": "Norway",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "sautéed reindeer",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Poronk%C3%A4ristys.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Poronk%C3%A4ristys.jpg",
+        "license": "Public domain",
+        "author": "Htm"
+      }
+    },
+    {
+      "name": "Espresso and tonic",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Espresso%20and%20tonic%2020150418%202.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Espresso%20and%20tonic%2020150418%202.jpg",
+        "license": "CC BY 2.0",
+        "author": "Bex Walton"
+      }
+    }
+  ]
+}

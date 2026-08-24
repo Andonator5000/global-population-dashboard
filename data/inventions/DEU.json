@@ -1,0 +1,103 @@
+{
+  "iso3": "DEU",
+  "name": "Germany",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Chinese checkers",
+      "year": 1892,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Halma-Spielfeld.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Halma-Spielfeld.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "The original uploader was Splattne at German Wikipedia."
+      }
+    },
+    {
+      "name": "Volksempfänger",
+      "inventors": [
+        "Otto Griessing"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Volksempfaenger%2002%20KMJ.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Volksempfaenger%2002%20KMJ.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "KMJ"
+      }
+    },
+    {
+      "name": "Western concert flute",
+      "inventors": [
+        "Theobald Boehm"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Western%20concert%20flute%20%28Yamaha%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Western%20concert%20flute%20%28Yamaha%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Petar Milošević"
+      }
+    },
+    {
+      "name": "learning by teaching",
+      "inventors": [
+        "Jean-Pol Martin"
+      ],
+      "year": 1980
+    },
+    {
+      "name": "Capri-Sun",
+      "inventors": [
+        "Rudolf Wild"
+      ],
+      "year": 1969
+    },
+    {
+      "name": "Fischertechnik",
+      "inventors": [
+        "Artur Fischer"
+      ],
+      "year": 1964,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fischertechnik-DaVinci-Feilenhaumaschine.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fischertechnik-DaVinci-Feilenhaumaschine.jpg",
+        "license": "CC BY 3.0",
+        "author": "fischertechnik GmbH"
+      }
+    },
+    {
+      "name": "German ju-jutsu",
+      "inventors": [
+        "Franz Josef Gresch",
+        "Werner Heim"
+      ]
+    },
+    {
+      "name": "Pinova",
+      "year": 1965,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pinova%20%28apple%29%20jm26295.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pinova%20%28apple%29%20jm26295.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "joergens.mi"
+      }
+    },
+    {
+      "name": "Perle",
+      "year": 1950
+    },
+    {
+      "name": "Raytheon Lectron",
+      "inventors": [
+        "Georg Greger"
+      ],
+      "year": 1966,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lectron%20electronics%20construction%20system%2C%20invented%20by%20Georg%20Greger%2C%20designed%20by%20Dieter%20Rams%20and%20Jurgen%20Geubel%2C%20manufactured%20by%20Braun%2C%201967-1972%20-%20Design%20Museum%2C%20Kensington%20-%20London%20-%20DSC01559.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lectron%20electronics%20construction%20system%2C%20invented%20by%20Georg%20Greger%2C%20designed%20by%20Dieter%20Rams%20and%20Jurgen%20Geubel%2C%20manufactured%20by%20Braun%2C%201967-1972%20-%20Design%20Museum%2C%20Kensington%20-%20London%20-%20DSC01559.jpg",
+        "license": "CC0",
+        "author": "Daderot"
+      }
+    }
+  ]
+}

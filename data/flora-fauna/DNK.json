@@ -1,0 +1,52 @@
+{
+  "iso3": "DNK",
+  "name": "Denmark",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Mute swan",
+      "type": "national bird",
+      "scientificName": "Cygnus olor",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cygnus%20olor%202%20%28Marek%20Szczepanek%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cygnus%20olor%202%20%28Marek%20Szczepanek%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Marek Szczepanek"
+      }
+    },
+    {
+      "name": "Red squirrel",
+      "type": "national mammal",
+      "scientificName": "Sciurus vulgaris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20Squirrel%201c.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red%20Squirrel%201c.jpg",
+        "license": "CC BY 2.0",
+        "author": "Tony Hisgett"
+      }
+    },
+    {
+      "name": "Small tortoiseshell",
+      "type": "national butterfly",
+      "scientificName": "Aglais urticae",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aglais%20urticae%20LC0310.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aglais%20urticae%20LC0310.jpg",
+        "license": "CC BY-SA 3.0 de",
+        "author": "Jörg Hempel"
+      }
+    }
+  ],
+  "tree": {
+    "name": "European beech",
+    "type": "national tree",
+    "scientificName": "Fagus sylvatica",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grib%20skov.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Grib%20skov.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Malene Thyssen"
+    }
+  }
+}

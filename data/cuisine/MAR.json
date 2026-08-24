@@ -1,0 +1,38 @@
+{
+  "iso3": "MAR",
+  "name": "Morocco",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Pastilla",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bisteeya.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bisteeya.jpg",
+        "license": "CC BY 2.0",
+        "author": "Krista"
+      }
+    },
+    {
+      "name": "Taktouka"
+    },
+    {
+      "name": "Ahriche",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tahricht.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tahricht.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Alexdevil"
+      }
+    },
+    {
+      "name": "tfaya",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tfaya.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tfaya.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Miznate"
+      }
+    }
+  ]
+}

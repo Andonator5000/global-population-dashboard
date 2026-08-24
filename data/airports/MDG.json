@@ -1,0 +1,99 @@
+{
+  "iso3": "MDG",
+  "name": "Madagascar",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Ivato International Airport",
+      "iata": "TNR",
+      "municipality": "Antananarivo",
+      "large": true,
+      "passengers": 890632
+    },
+    {
+      "name": "Nosy Be International Airport",
+      "iata": "NOS",
+      "municipality": "Nosy Be",
+      "large": true,
+      "passengers": 184000
+    },
+    {
+      "name": "Toamasina Ambalamanasy Airport",
+      "iata": "TMM",
+      "municipality": "Toamasina",
+      "large": true,
+      "passengers": 80781
+    },
+    {
+      "name": "Sambava Airport",
+      "iata": "SVB",
+      "municipality": "Sambava",
+      "large": false,
+      "passengers": 80170
+    },
+    {
+      "name": "Toliara Airport",
+      "iata": "TLE",
+      "municipality": "Toliara",
+      "large": false,
+      "passengers": 77547
+    },
+    {
+      "name": "Arrachart Airport",
+      "iata": "DIE",
+      "municipality": "Antisiranana",
+      "large": false,
+      "passengers": 68505
+    },
+    {
+      "name": "Tôlanaro Airport",
+      "iata": "FTU",
+      "municipality": "Tôlanaro",
+      "large": false,
+      "passengers": 62740
+    },
+    {
+      "name": "Amborovy Airport",
+      "iata": "MJN",
+      "municipality": "Mahajanga",
+      "large": true,
+      "passengers": 39450
+    },
+    {
+      "name": "Sainte Marie Airport",
+      "iata": "SMS",
+      "municipality": "Vohilava",
+      "large": false,
+      "passengers": 25334
+    },
+    {
+      "name": "Morondava Airport",
+      "iata": "MOQ",
+      "municipality": "Morondava",
+      "large": false,
+      "passengers": 14755
+    },
+    {
+      "name": "Besalampy Airport",
+      "iata": "BPY",
+      "municipality": "Besalampy",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mananjary Airport",
+      "iata": "MNJ",
+      "municipality": "Mananjary",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Maroantsetra Airport",
+      "iata": "WMN",
+      "municipality": "Maroantsetra",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

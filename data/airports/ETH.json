@@ -1,0 +1,113 @@
+{
+  "iso3": "ETH",
+  "name": "Ethiopia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Addis Ababa Bole International Airport",
+      "iata": "ADD",
+      "municipality": "Addis Ababa",
+      "large": true,
+      "passengers": 12143938
+    },
+    {
+      "name": "Aba Tenna Dejazmach Yilma International Airport",
+      "iata": "DIR",
+      "municipality": "Dire Dawa",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Gerad Wilwal International Airport",
+      "iata": "JIJ",
+      "municipality": "Jijiga",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Hawassa International Airport",
+      "iata": "AWA",
+      "municipality": "Hawassa",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Arba Minch Airport",
+      "iata": "AMH",
+      "municipality": "Arba Minch",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Asosa Airport",
+      "iata": "ASO",
+      "municipality": "Asosa",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Axum Airport",
+      "iata": "AXU",
+      "municipality": "Axum",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Bahir Dar Airport",
+      "iata": "BJR",
+      "municipality": "Bahir Dar",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gambela Airport",
+      "iata": "GMB",
+      "municipality": "Gambela",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gode Airport",
+      "iata": "GDE",
+      "municipality": "Gode",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gondar Airport",
+      "iata": "GDQ",
+      "municipality": "Azezo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Jimma Airport",
+      "iata": "JIM",
+      "municipality": "Jimma",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Jinka Airport",
+      "iata": "BCO",
+      "municipality": "Jinka",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kebri Dahar Airport",
+      "iata": "ABK",
+      "municipality": "Kebri Dahar",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mekele Alula Aba Nega Airport",
+      "iata": "MQX",
+      "municipality": "Mekele",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "iso3": "PRY",
+  "name": "Paraguay",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "tree": {
+    "name": "Lapacho",
+    "type": "national tree",
+    "scientificName": "Handroanthus (whole genus)",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tabebuia%20impetiginosa%20h%C3%A1bito%202.jpeg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Tabebuia%20impetiginosa%20h%C3%A1bito%202.jpeg",
+      "license": "CC BY-SA 2.5 ar",
+      "author": "© 2006 Carla Antonini"
+    }
+  },
+  "flower": {
+    "name": "Passiflora caerulea",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Passiflora%20caerulea%20%282019-06-24%29%20frontal-view.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Passiflora%20caerulea%20%282019-06-24%29%20frontal-view.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Franz van Duns"
+    }
+  }
+}

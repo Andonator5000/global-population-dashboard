@@ -1,0 +1,72 @@
+{
+  "iso3": "IND",
+  "name": "India",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Bengal tiger",
+      "type": "national animal",
+      "scientificName": "Panthera tigris tigris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Panthera%20tigris%20tigris.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Panthera%20tigris%20tigris.jpg",
+        "license": "Public domain",
+        "author": "Hollingsworth, John and Karen, retouched by Zwoenitzer"
+      }
+    },
+    {
+      "name": "Ganges river dolphin",
+      "type": "national aquatic animal",
+      "scientificName": "Platanista gangetica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ganges%20River%20Dolphin%20cropped.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ganges%20River%20Dolphin%20cropped.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Kukil Gogoi"
+      }
+    },
+    {
+      "name": "Indian elephant",
+      "type": "national heritage animal",
+      "scientificName": "Elephas maximus indicus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/IndianElephant.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:IndianElephant.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Jayanand Govindaraj"
+      }
+    },
+    {
+      "name": "Indian peafowl",
+      "type": "national bird",
+      "scientificName": "Pavo cristatus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Carnavalesco.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Carnavalesco.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Gabriel Castaldini"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Indian banyan",
+    "type": "national tree",
+    "scientificName": "Ficus benghalensis",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banyantree.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Banyantree.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Ahoerstemeier"
+    }
+  },
+  "flower": {
+    "name": "Nelumbo nucifera",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sacred%20lotus%20Nelumbo%20nucifera.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sacred%20lotus%20Nelumbo%20nucifera.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "T.Voekler"
+    }
+  }
+}

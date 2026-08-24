@@ -1,0 +1,148 @@
+{
+  "iso3": "THA",
+  "name": "Thailand",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Suvarnabhumi Airport",
+      "iata": "BKK",
+      "municipality": "Bangkok",
+      "large": true,
+      "passengers": 65424564
+    },
+    {
+      "name": "Don Mueang International Airport",
+      "iata": "DMK",
+      "municipality": "Bangkok",
+      "large": true,
+      "passengers": 41312443
+    },
+    {
+      "name": "Phuket International Airport",
+      "iata": "HKT",
+      "municipality": "Phuket",
+      "large": true,
+      "passengers": 18221764
+    },
+    {
+      "name": "Chiang Mai International Airport",
+      "iata": "CNX",
+      "municipality": "Chiang Mai",
+      "large": true,
+      "passengers": 11335293
+    },
+    {
+      "name": "Hat Yai International Airport",
+      "iata": "HDY",
+      "municipality": "Hat Yai",
+      "large": true,
+      "passengers": 4367364
+    },
+    {
+      "name": "Krabi International Airport",
+      "iata": "KBV",
+      "municipality": "Krabi",
+      "large": true,
+      "passengers": 4344238
+    },
+    {
+      "name": "Samui International Airport",
+      "iata": "USM",
+      "municipality": "Na Thon (Ko Samui Island)",
+      "large": true,
+      "passengers": 2996045
+    },
+    {
+      "name": "Mae Fah Luang - Chiang Rai International Airport",
+      "iata": "CEI",
+      "municipality": "Chiang Rai",
+      "large": true,
+      "passengers": 2928884
+    },
+    {
+      "name": "Udon Thani International Airport",
+      "iata": "UTH",
+      "municipality": "Udon Thani",
+      "large": true,
+      "passengers": 2687277
+    },
+    {
+      "name": "Surat Thani Airport",
+      "iata": "URT",
+      "municipality": "Surat Thani",
+      "large": false,
+      "passengers": 2247344
+    },
+    {
+      "name": "Ubon Ratchathani Airport",
+      "iata": "UBP",
+      "municipality": "Ubon Ratchathani",
+      "large": false,
+      "passengers": 1885875
+    },
+    {
+      "name": "Khon Kaen Airport",
+      "iata": "KKC",
+      "municipality": "Khon Kaen",
+      "large": false,
+      "passengers": 1881446
+    },
+    {
+      "name": "U-Tapao–Rayong–Pattaya International Airport",
+      "iata": "UTP",
+      "municipality": "Rayong",
+      "large": true,
+      "passengers": 1860786
+    },
+    {
+      "name": "Nakhon Si Thammarat Airport",
+      "iata": "NST",
+      "municipality": "Nakhon Si Thammarat",
+      "large": false,
+      "passengers": 1517935
+    },
+    {
+      "name": "Trang Airport",
+      "iata": "TST",
+      "municipality": "Trang",
+      "large": false,
+      "passengers": 799279
+    },
+    {
+      "name": "Phitsanulok Airport",
+      "iata": "PHS",
+      "municipality": "Phitsanulok",
+      "large": false,
+      "passengers": 689392
+    },
+    {
+      "name": "Nakhon Phanom Airport",
+      "iata": "KOP",
+      "municipality": "Nakhon Phanom",
+      "large": false,
+      "passengers": 455163
+    },
+    {
+      "name": "Roi Et Airport",
+      "iata": "ROI",
+      "municipality": "Roi Et",
+      "large": false,
+      "passengers": 442773
+    },
+    {
+      "name": "Nan Airport",
+      "iata": "NNT",
+      "municipality": null,
+      "large": false,
+      "passengers": 442655
+    },
+    {
+      "name": "Sakon Nakhon Airport",
+      "iata": "SNO",
+      "municipality": null,
+      "large": false,
+      "passengers": 425453
+    }
+  ]
+}

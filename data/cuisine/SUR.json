@@ -1,0 +1,26 @@
+{
+  "iso3": "SUR",
+  "name": "Suriname",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Pholourie",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MISC%20Pholourie%20with%20Curry%20Dip.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:MISC%20Pholourie%20with%20Curry%20Dip.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Grueslayer"
+      }
+    },
+    {
+      "name": "Pom",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pom%20gerecht.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pom%20gerecht.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "No machine-readable author provided. Alfredo1980 assumed (based on copyright claims)."
+      }
+    }
+  ]
+}

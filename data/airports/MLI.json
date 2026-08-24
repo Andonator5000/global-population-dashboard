@@ -1,0 +1,43 @@
+{
+  "iso3": "MLI",
+  "name": "Mali",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Modibo Keita International Airport",
+      "iata": "BKO",
+      "municipality": "Bamako",
+      "large": true,
+      "passengers": 686431
+    },
+    {
+      "name": "Tombouktou Airport",
+      "iata": "TOM",
+      "municipality": "Timbuktu",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Gao International Airport",
+      "iata": "GAQ",
+      "municipality": "Gao",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kayes Dag Dag Airport",
+      "iata": "KYS",
+      "municipality": "Kayes",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mopti Airport",
+      "iata": "MZI",
+      "municipality": "Sévaré",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

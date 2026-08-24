@@ -1,0 +1,17 @@
+{
+  "iso3": "SEN",
+  "name": "Senegal",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "tree": {
+    "name": "Baobab",
+    "type": "national tree",
+    "scientificName": "Adansonia digitata",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KayesBaobab.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:KayesBaobab.jpg",
+      "license": "Public domain",
+      "author": "NOAA. This image is a work of the National Oceanic and Atmospheric Administration, taken or made during the course of an employee's official duties. As works of the U.S. federal government, all NOAA images are in the public domain."
+    }
+  }
+}

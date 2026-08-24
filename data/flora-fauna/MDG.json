@@ -1,0 +1,41 @@
+{
+  "iso3": "MDG",
+  "name": "Madagascar",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Ring-tailed lemur",
+      "type": "national animal",
+      "scientificName": "Lemur catta",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lemur%20catta%20001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lemur%20catta%20001.jpg",
+        "license": "CC BY 3.0",
+        "author": "Alex Dunkel (Maky)"
+      }
+    },
+    {
+      "name": "Zebu",
+      "type": "national animal",
+      "scientificName": "Bos primigenius indicus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Z%C3%A9bu.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Z%C3%A9bu.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Marius CONJEAUD"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Baobab",
+    "type": "national tree",
+    "scientificName": "Adansonia",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KayesBaobab.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:KayesBaobab.jpg",
+      "license": "Public domain",
+      "author": "NOAA. This image is a work of the National Oceanic and Atmospheric Administration, taken or made during the course of an employee's official duties. As works of the U.S. federal government, all NOAA images are in the public domain."
+    }
+  }
+}

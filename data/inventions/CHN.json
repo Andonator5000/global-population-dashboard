@@ -1,0 +1,67 @@
+{
+  "iso3": "CHN",
+  "name": "China",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "acupuncture",
+      "year": -10,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acupuncture1-1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Acupuncture1-1.jpg",
+        "license": "Public domain",
+        "author": "Kyle Hunter (= original uploader Kphunter at en.wikipedia)"
+      }
+    },
+    {
+      "name": "Labubu",
+      "inventors": [
+        "Kasing Lung"
+      ],
+      "year": 2015
+    },
+    {
+      "name": "Kung Pao chicken",
+      "year": 1900,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kung%20Pao%20Chicken%20at%20Yujiayan%20Restaurant%20%2820230510123120%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kung%20Pao%20Chicken%20at%20Yujiayan%20Restaurant%20%2820230510123120%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "N509FZ"
+      }
+    },
+    {
+      "name": "xiao",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E7%90%B4%E8%95%AD%E8%88%87%E6%B4%9E%E8%95%AD.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%E7%90%B4%E8%95%AD%E8%88%87%E6%B4%9E%E8%95%AD.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Victortsang"
+      }
+    },
+    {
+      "name": "Hong Kong-style milk tea",
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hong%20Kong-style%20Milk%20Tea.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hong%20Kong-style%20Milk%20Tea.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "WiNG"
+      }
+    },
+    {
+      "name": "Lao Gan Ma",
+      "inventors": [
+        "Tao Huabi"
+      ],
+      "year": 1996,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E8%80%81%E5%B9%B2%E5%A6%88%203.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%E8%80%81%E5%B9%B2%E5%A6%88%203.jpg",
+        "license": "CC0",
+        "author": "Mx. Granger"
+      }
+    }
+  ]
+}

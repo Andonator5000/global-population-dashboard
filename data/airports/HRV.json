@@ -1,0 +1,64 @@
+{
+  "iso3": "HRV",
+  "name": "Croatia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Zagreb Franjo Tuđman International Airport",
+      "iata": "ZAG",
+      "municipality": "Velika Gorica",
+      "large": true,
+      "passengers": 3435531
+    },
+    {
+      "name": "Split Saint Jerome Airport",
+      "iata": "SPU",
+      "municipality": "Split",
+      "large": true,
+      "passengers": 3301930
+    },
+    {
+      "name": "Dubrovnik Ruđer Bošković Airport",
+      "iata": "DBV",
+      "municipality": "Dubrovnik",
+      "large": true,
+      "passengers": 2896227
+    },
+    {
+      "name": "Zadar Airport",
+      "iata": "ZAD",
+      "municipality": "Zadar",
+      "large": true,
+      "passengers": 1102381
+    },
+    {
+      "name": "Pula Airport",
+      "iata": "PUY",
+      "municipality": "Pula",
+      "large": true,
+      "passengers": 777568
+    },
+    {
+      "name": "Rijeka Airport",
+      "iata": "RJK",
+      "municipality": "Rijeka(Omišalj)",
+      "large": true,
+      "passengers": 200841
+    },
+    {
+      "name": "Osijek Airport",
+      "iata": "OSI",
+      "municipality": "Osijek(Klisa)",
+      "large": false,
+      "passengers": 67235
+    },
+    {
+      "name": "Brač Airport",
+      "iata": "BWK",
+      "municipality": "Gornji Humac",
+      "large": false,
+      "passengers": 30170
+    }
+  ]
+}

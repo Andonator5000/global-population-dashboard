@@ -1,0 +1,18 @@
+{
+  "iso3": "ZAF",
+  "name": "South Africa",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Jubilee Diamond",
+      "year": 1895,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jubilee%20Diamond%20copy.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jubilee%20Diamond%20copy.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    }
+  ]
+}

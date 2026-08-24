@@ -1,0 +1,52 @@
+{
+  "iso3": "POL",
+  "name": "Poland",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "European bison",
+      "type": "national animal",
+      "scientificName": "Bison bonasus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wisent.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wisent.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Henryk Kotowski at English Wikipedia"
+      }
+    },
+    {
+      "name": "White stork",
+      "type": "national bird",
+      "scientificName": "Ciconia ciconia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ciconia%20ciconia%20-%2001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ciconia%20ciconia%20-%2001.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Carlos Delgado"
+      }
+    },
+    {
+      "name": "White-tailed eagle",
+      "type": "national bird",
+      "scientificName": "Haliaeetus albicilla",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/White-tailed%20Eagle%20Head%20detail.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:White-tailed%20Eagle%20Head%20detail.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Eprdox"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Oak, Pedunculate oak",
+    "type": "national tree",
+    "scientificName": "Quercus, Quercus robur",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Raunkiaer.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Raunkiaer.jpg",
+      "license": "Public domain",
+      "author": "No machine-readable author provided. Haabet assumed (based on copyright claims)."
+    }
+  }
+}

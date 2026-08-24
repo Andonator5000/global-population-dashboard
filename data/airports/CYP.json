@@ -1,0 +1,29 @@
+{
+  "iso3": "CYP",
+  "name": "Cyprus",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Larnaca International Airport",
+      "iata": "LCA",
+      "municipality": "Larnaca",
+      "large": true,
+      "passengers": 8062043
+    },
+    {
+      "name": "Ercan International Airport",
+      "iata": "ECN",
+      "municipality": "Tymbou (Kirklar)",
+      "large": true,
+      "passengers": 4842120
+    },
+    {
+      "name": "Paphos International Airport",
+      "iata": "PFO",
+      "municipality": "Paphos",
+      "large": true,
+      "passengers": 3179776
+    }
+  ]
+}

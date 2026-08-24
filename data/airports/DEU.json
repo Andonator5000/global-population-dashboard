@@ -1,0 +1,148 @@
+{
+  "iso3": "DEU",
+  "name": "Germany",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Frankfurt Main Airport",
+      "iata": "FRA",
+      "municipality": "Frankfurt am Main",
+      "large": true,
+      "passengers": 70560987
+    },
+    {
+      "name": "Munich Airport",
+      "iata": "MUC",
+      "municipality": "Munich",
+      "large": true,
+      "passengers": 47959885
+    },
+    {
+      "name": "Düsseldorf Airport",
+      "iata": "DUS",
+      "municipality": "Düsseldorf",
+      "large": true,
+      "passengers": 25507566
+    },
+    {
+      "name": "Berlin Brandenburg Airport",
+      "iata": "BER",
+      "municipality": "Berlin",
+      "large": true,
+      "passengers": 25465872
+    },
+    {
+      "name": "Hamburg Helmut Schmidt Airport",
+      "iata": "HAM",
+      "municipality": "Hamburg",
+      "large": true,
+      "passengers": 17622997
+    },
+    {
+      "name": "Cologne Bonn Airport",
+      "iata": "CGN",
+      "municipality": "Köln (Cologne)",
+      "large": true,
+      "passengers": 12958200
+    },
+    {
+      "name": "Stuttgart Airport",
+      "iata": "STR",
+      "municipality": "Stuttgart",
+      "large": true,
+      "passengers": 12721441
+    },
+    {
+      "name": "Hannover Airport",
+      "iata": "HAJ",
+      "municipality": "Hannover",
+      "large": true,
+      "passengers": 6324634
+    },
+    {
+      "name": "Nuremberg Airport",
+      "iata": "NUE",
+      "municipality": "Nuremberg",
+      "large": true,
+      "passengers": 4508700
+    },
+    {
+      "name": "Frankfurt-Hahn Airport",
+      "iata": "HHN",
+      "municipality": "Frankfurt am Main (Lautzenhausen)",
+      "large": true,
+      "passengers": 4014898
+    },
+    {
+      "name": "Memmingen Allgau Airport",
+      "iata": "FMM",
+      "municipality": "Memmingen",
+      "large": true,
+      "passengers": 3200000
+    },
+    {
+      "name": "Weeze (Niederrhein) Airport",
+      "iata": "NRN",
+      "municipality": "Weeze",
+      "large": true,
+      "passengers": 2896730
+    },
+    {
+      "name": "Bremen Airport",
+      "iata": "BRE",
+      "municipality": "Bremen",
+      "large": true,
+      "passengers": 2773129
+    },
+    {
+      "name": "Dortmund Airport",
+      "iata": "DTM",
+      "municipality": "Dortmund",
+      "large": true,
+      "passengers": 2719566
+    },
+    {
+      "name": "Leipzig/Halle Airport",
+      "iata": "LEJ",
+      "municipality": "Schkeuditz",
+      "large": true,
+      "passengers": 2719256
+    },
+    {
+      "name": "Dresden Airport",
+      "iata": "DRS",
+      "municipality": "Dresden",
+      "large": true,
+      "passengers": 1917915
+    },
+    {
+      "name": "Karlsruhe Baden-Baden Airport",
+      "iata": "FKB",
+      "municipality": "Rheinmünster",
+      "large": true,
+      "passengers": 1801400
+    },
+    {
+      "name": "Münster Osnabrück Airport",
+      "iata": "FMO",
+      "municipality": "Greven",
+      "large": true,
+      "passengers": 1764885
+    },
+    {
+      "name": "Paderborn Lippstadt Airport",
+      "iata": "PAD",
+      "municipality": "Büren",
+      "large": true,
+      "passengers": 1363236
+    },
+    {
+      "name": "Lübeck Blankensee Airport",
+      "iata": "LBC",
+      "municipality": "Lübeck",
+      "large": false,
+      "passengers": 715731
+    }
+  ]
+}

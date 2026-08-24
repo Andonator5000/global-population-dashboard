@@ -1,0 +1,30 @@
+{
+  "iso3": "NIC",
+  "name": "Nicaragua",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Turquoise-browed motmot",
+      "type": "national bird",
+      "scientificName": "Eumomota superciliosa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turquoise-browed%20Motmot%20%2816423222357%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turquoise-browed%20Motmot%20%2816423222357%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Katja Schulz from Washington, D. C., USA"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Lemonwood",
+    "type": "national tree",
+    "scientificName": "Calycophyllum candidissimum",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Calycophyllum%20candidissimum%20%28Vahl.%29%20DC..JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Calycophyllum%20candidissimum%20%28Vahl.%29%20DC..JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "JorgeAlejandro"
+    }
+  }
+}

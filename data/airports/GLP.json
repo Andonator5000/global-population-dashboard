@@ -1,0 +1,22 @@
+{
+  "iso3": "GLP",
+  "name": "Guadeloupe",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Maryse Condé International Airport",
+      "iata": "PTP",
+      "municipality": "Pointe-à-Pitre",
+      "large": true,
+      "passengers": 2488782
+    },
+    {
+      "name": "Marie-Galante Airport",
+      "iata": "GBJ",
+      "municipality": "Grand-Bourg",
+      "large": false,
+      "passengers": 24038
+    }
+  ]
+}

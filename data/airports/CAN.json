@@ -1,0 +1,148 @@
+{
+  "iso3": "CAN",
+  "name": "Canada",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Toronto Pearson International Airport",
+      "iata": "YYZ",
+      "municipality": "Toronto",
+      "large": true,
+      "passengers": 50499431
+    },
+    {
+      "name": "Vancouver International Airport",
+      "iata": "YVR",
+      "municipality": "Vancouver",
+      "large": true,
+      "passengers": 26913561
+    },
+    {
+      "name": "Montreal / Pierre Elliott Trudeau International Airport",
+      "iata": "YUL",
+      "municipality": "Montréal",
+      "large": true,
+      "passengers": 21550764
+    },
+    {
+      "name": "Calgary International Airport",
+      "iata": "YYC",
+      "municipality": "Calgary",
+      "large": true,
+      "passengers": 18488330
+    },
+    {
+      "name": "Edmonton International Airport",
+      "iata": "YEG",
+      "municipality": "Edmonton",
+      "large": true,
+      "passengers": 8254121
+    },
+    {
+      "name": "Ottawa Macdonald-Cartier International Airport",
+      "iata": "YOW",
+      "municipality": "Ottawa",
+      "large": true,
+      "passengers": 5110801
+    },
+    {
+      "name": "Winnipeg / James Armstrong Richardson International Airport",
+      "iata": "YWG",
+      "municipality": "Winnipeg",
+      "large": true,
+      "passengers": 4484343
+    },
+    {
+      "name": "Halifax / Stanfield International Airport",
+      "iata": "YHZ",
+      "municipality": "Halifax",
+      "large": true,
+      "passengers": 4316079
+    },
+    {
+      "name": "Billy Bishop Toronto City Airport",
+      "iata": "YTZ",
+      "municipality": "Toronto",
+      "large": false,
+      "passengers": 2800000
+    },
+    {
+      "name": "Kelowna International Airport",
+      "iata": "YLW",
+      "municipality": "Kelowna",
+      "large": true,
+      "passengers": 2315432
+    },
+    {
+      "name": "Victoria International Airport",
+      "iata": "YYJ",
+      "municipality": "Victoria",
+      "large": true,
+      "passengers": 2048627
+    },
+    {
+      "name": "Quebec Jean Lesage International Airport",
+      "iata": "YQB",
+      "municipality": "Quebec",
+      "large": true,
+      "passengers": 1789005
+    },
+    {
+      "name": "St. John's International Airport",
+      "iata": "YYT",
+      "municipality": "St. John's",
+      "large": true,
+      "passengers": 1600000
+    },
+    {
+      "name": "Saskatoon John G. Diefenbaker International Airport",
+      "iata": "YXE",
+      "municipality": "Saskatoon",
+      "large": true,
+      "passengers": 1518980
+    },
+    {
+      "name": "Montreal Mirabel International Airport",
+      "iata": "YMX",
+      "municipality": "Montréal",
+      "large": false,
+      "passengers": 1424697
+    },
+    {
+      "name": "Fort McMurray International Airport",
+      "iata": "YMM",
+      "municipality": "Fort McMurray",
+      "large": false,
+      "passengers": 1308416
+    },
+    {
+      "name": "Abbotsford International Airport",
+      "iata": "YXX",
+      "municipality": "Abbotsford",
+      "large": false,
+      "passengers": 1275484
+    },
+    {
+      "name": "Regina International Airport",
+      "iata": "YQR",
+      "municipality": "Regina",
+      "large": false,
+      "passengers": 1262899
+    },
+    {
+      "name": "John C. Munro Hamilton International Airport",
+      "iata": "YHM",
+      "municipality": "Hamilton",
+      "large": false,
+      "passengers": 1041204
+    },
+    {
+      "name": "Thunder Bay International Airport",
+      "iata": "YQT",
+      "municipality": "Thunder Bay",
+      "large": false,
+      "passengers": 807041
+    }
+  ]
+}

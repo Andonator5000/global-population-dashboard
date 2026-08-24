@@ -1,0 +1,43 @@
+{
+  "iso3": "UGA",
+  "name": "Uganda",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Entebbe International Airport",
+      "iata": "EBB",
+      "municipality": "Entebbe",
+      "large": true,
+      "passengers": 2008230
+    },
+    {
+      "name": "Arua Airport",
+      "iata": "RUA",
+      "municipality": "Arua",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gulu Airport",
+      "iata": "ULU",
+      "municipality": "Gulu",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Savannah Airstrip",
+      "iata": "KHX",
+      "municipality": "Kihihi",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Soroti Airport",
+      "iata": "SRT",
+      "municipality": "Soroti",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

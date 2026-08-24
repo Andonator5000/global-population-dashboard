@@ -1,0 +1,148 @@
+{
+  "iso3": "SWE",
+  "name": "Sweden",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Stockholm-Arlanda Airport",
+      "iata": "ARN",
+      "municipality": "Stockholm",
+      "large": true,
+      "passengers": 26846720
+    },
+    {
+      "name": "Göteborg Landvetter Airport",
+      "iata": "GOT",
+      "municipality": "Göteborg",
+      "large": true,
+      "passengers": 6807631
+    },
+    {
+      "name": "Stockholm Skavsta Airport",
+      "iata": "NYO",
+      "municipality": "Nyköping",
+      "large": true,
+      "passengers": 2583935
+    },
+    {
+      "name": "Stockholm-Bromma Airport",
+      "iata": "BMA",
+      "municipality": "Stockholm",
+      "large": false,
+      "passengers": 2540859
+    },
+    {
+      "name": "Malmö Sturup Airport",
+      "iata": "MMX",
+      "municipality": "Malmö",
+      "large": true,
+      "passengers": 2219958
+    },
+    {
+      "name": "Luleå Airport",
+      "iata": "LLA",
+      "municipality": "Luleå",
+      "large": true,
+      "passengers": 1204535
+    },
+    {
+      "name": "Umeå Airport",
+      "iata": "UME",
+      "municipality": "Umeå",
+      "large": true,
+      "passengers": 1059254
+    },
+    {
+      "name": "Åre Östersund Airport",
+      "iata": "OSD",
+      "municipality": "Östersund",
+      "large": false,
+      "passengers": 531305
+    },
+    {
+      "name": "Visby Airport",
+      "iata": "VBY",
+      "municipality": "Visby",
+      "large": true,
+      "passengers": 491658
+    },
+    {
+      "name": "Skellefteå Airport",
+      "iata": "SFT",
+      "municipality": "Skellefteå",
+      "large": false,
+      "passengers": 421849
+    },
+    {
+      "name": "Ängelholm-Helsingborg Airport",
+      "iata": "AGH",
+      "municipality": "Ängelholm",
+      "large": false,
+      "passengers": 418027
+    },
+    {
+      "name": "Sundsvall-Härnösand Airport",
+      "iata": "SDL",
+      "municipality": "Sundsvall/ Härnösand",
+      "large": false,
+      "passengers": 290703
+    },
+    {
+      "name": "Kiruna Airport",
+      "iata": "KRN",
+      "municipality": "Kiruna",
+      "large": true,
+      "passengers": 282508
+    },
+    {
+      "name": "Växjö Kronoberg Airport",
+      "iata": "VXO",
+      "municipality": "Växjö",
+      "large": false,
+      "passengers": 278397
+    },
+    {
+      "name": "Kalmar Airport",
+      "iata": "KLR",
+      "municipality": "Kalmar",
+      "large": false,
+      "passengers": 250112
+    },
+    {
+      "name": "Ronneby Airport",
+      "iata": "RNB",
+      "municipality": "Ronneby",
+      "large": false,
+      "passengers": 237815
+    },
+    {
+      "name": "Linköping City Airport",
+      "iata": "LPI",
+      "municipality": "Linköping",
+      "large": true,
+      "passengers": 157780
+    },
+    {
+      "name": "Stockholm Västerås Airport",
+      "iata": "VST",
+      "municipality": "Stockholm / Västerås",
+      "large": true,
+      "passengers": 143553
+    },
+    {
+      "name": "Halmstad Airport",
+      "iata": "HAD",
+      "municipality": "Halmstad",
+      "large": false,
+      "passengers": 134033
+    },
+    {
+      "name": "Jönköping Airport",
+      "iata": "JKG",
+      "municipality": "Jönköping",
+      "large": false,
+      "passengers": 114269
+    }
+  ]
+}

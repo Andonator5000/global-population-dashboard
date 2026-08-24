@@ -1,0 +1,19 @@
+{
+  "iso3": "RWA",
+  "name": "Rwanda",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Leopard",
+      "type": "national animal",
+      "scientificName": "Panthera pardus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Leopard%20africa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Leopard%20africa.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "JanErkamp at English Wikipedia"
+      }
+    }
+  ]
+}

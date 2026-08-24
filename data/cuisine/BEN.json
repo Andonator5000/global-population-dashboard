@@ -1,0 +1,17 @@
+{
+  "iso3": "BEN",
+  "name": "Benin",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Amiwô",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Un%20plats%20d%27amiwo%20au%20poisson%20au%20benin.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Un%20plats%20d%27amiwo%20au%20poisson%20au%20benin.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Adoscam"
+      }
+    }
+  ]
+}

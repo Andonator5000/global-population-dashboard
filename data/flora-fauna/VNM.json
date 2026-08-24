@@ -1,0 +1,28 @@
+{
+  "iso3": "VNM",
+  "name": "Vietnam",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Water buffalo",
+      "type": "national animal",
+      "scientificName": "Bubalus bubalis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BinhQuoiWaterBuffalo%20Jun2005.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:BinhQuoiWaterBuffalo%20Jun2005.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Rdivilbiss"
+      }
+    }
+  ],
+  "flower": {
+    "name": "lotus flower",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sacred%20lotus%20Nelumbo%20nucifera.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sacred%20lotus%20Nelumbo%20nucifera.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "T.Voekler"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "iso3": "IRN",
+  "name": "Iran",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "ayran",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fresh%20ayran.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fresh%20ayran.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Mavigogun"
+      }
+    },
+    {
+      "name": "laksa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20curry%20served%20in%20an%20Indonesian%20restaurant%3B%20February%202010.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20curry%20served%20in%20an%20Indonesian%20restaurant%3B%20February%202010.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Alpha from Melbourne, Australia"
+      }
+    },
+    {
+      "name": "samanu",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Samanu%20for%207%20sin.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Samanu%20for%207%20sin.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Myone63"
+      }
+    },
+    {
+      "name": "mehallabiyya",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20muhallebi.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turkish%20muhallebi.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "E4024"
+      }
+    },
+    {
+      "name": "Fesenjān",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Khoresht-e%20fesenjan.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Khoresht-e%20fesenjan.jpg",
+        "license": "CC BY 2.0",
+        "author": "stringparts"
+      }
+    },
+    {
+      "name": "Rogan josh",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rogan%20josh02.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rogan%20josh02.jpg",
+        "license": "CC BY 2.0",
+        "author": "gahdjun"
+      }
+    },
+    {
+      "name": "Gaz",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gaz%20Candy%20From%20Iran.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gaz%20Candy%20From%20Iran.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Sidster"
+      }
+    },
+    {
+      "name": "Borani",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Boran%C4%B1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Boran%C4%B1.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Maderibeyza"
+      }
+    }
+  ]
+}

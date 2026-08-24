@@ -1,0 +1,26 @@
+{
+  "iso3": "URY",
+  "name": "Uruguay",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "tree": {
+    "name": "Ceibo",
+    "type": "national tree",
+    "scientificName": "Erythrina crista-galli",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Erythrina%20crista-galli%20flowers%207th%20Brigade%20Park%20Chermside%20P1190186.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Erythrina%20crista-galli%20flowers%207th%20Brigade%20Park%20Chermside%20P1190186.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "John Robert McPherson"
+    }
+  },
+  "flower": {
+    "name": "ceibo",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Corticeira%20em%20Bag%C3%A9%2004.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Corticeira%20em%20Bag%C3%A9%2004.jpg",
+      "license": "CC BY 4.0",
+      "author": "O Tupinólogo"
+    }
+  }
+}

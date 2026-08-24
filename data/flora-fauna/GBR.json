@@ -1,0 +1,74 @@
+{
+  "iso3": "GBR",
+  "name": "United Kingdom",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Bulldog",
+      "type": "national animal",
+      "scientificName": "Canis lupus familiaris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Clyde%20The%20Bulldog.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Clyde%20The%20Bulldog.jpg",
+        "license": "Public domain",
+        "author": "Asmadeus"
+      }
+    },
+    {
+      "name": "Lion",
+      "type": "national animal",
+      "scientificName": "Panthera leo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Giles Laurent"
+      }
+    },
+    {
+      "name": "Red kite",
+      "type": "national animal",
+      "scientificName": "Milvus milvus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Milvus%20milvus%20R%28ThKraft%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Milvus%20milvus%20R%28ThKraft%29.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Thomas Kraft (ThKraft)"
+      }
+    },
+    {
+      "name": "Unicorn",
+      "type": "national animal",
+      "scientificName": "Mythical",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Oftheunicorn.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Oftheunicorn.jpg",
+        "license": "Public domain",
+        "author": "Conrad Gessner"
+      }
+    },
+    {
+      "name": "Y Ddraig Goch",
+      "type": "national animal",
+      "scientificName": "Mythical",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Welsh%20Dragon%20%28Y%20Ddraig%20Goch%29.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Welsh%20Dragon%20%28Y%20Ddraig%20Goch%29.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Sodacan"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Oak, Pedunculate oak",
+    "type": "national tree",
+    "scientificName": "Quercus, Quercus robur",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Baginton%20oak%20tree%20july06.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Baginton%20oak%20tree%20july06.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "The original uploader was Snowmanradio at English Wikipedia.\n\n(Original text: snowmanradio)"
+    }
+  }
+}

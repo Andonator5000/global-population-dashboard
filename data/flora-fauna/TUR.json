@@ -1,0 +1,50 @@
+{
+  "iso3": "TUR",
+  "name": "Türkiye",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Gray wolf",
+      "type": "national animal",
+      "scientificName": "Canis lupus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Front%20view%20of%20a%20resting%20Canis%20lupus%20ssp.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Front%20view%20of%20a%20resting%20Canis%20lupus%20ssp.jpg",
+        "license": "Public domain",
+        "author": "Gary Kramer"
+      }
+    },
+    {
+      "name": "Kangal Shepherd Dog",
+      "type": "national dog",
+      "scientificName": "Canis lupus familiaris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kangal%20front%20on.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kangal%20front%20on.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Kangalshepherddog"
+      }
+    },
+    {
+      "name": "Turkish Angora",
+      "type": "national cat",
+      "scientificName": "Felis catus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20Angora%20Odd-Eyed.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turkish%20Angora%20Odd-Eyed.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Franzioseph"
+      }
+    }
+  ],
+  "flower": {
+    "name": "tulip",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG",
+      "license": "CC0",
+      "author": "Dina L"
+    }
+  }
+}

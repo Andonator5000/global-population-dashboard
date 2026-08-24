@@ -1,0 +1,26 @@
+{
+  "iso3": "EST",
+  "name": "Estonia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Mulgikapsad",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mulgikapsad%20with%20potatoes.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mulgikapsad%20with%20potatoes.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "M0d3M"
+      }
+    },
+    {
+      "name": "kiluvõileib",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kiluv%C3%B5ileib.IMG%204378.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kiluv%C3%B5ileib.IMG%204378.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Ave Maria Mõistlik"
+      }
+    }
+  ]
+}

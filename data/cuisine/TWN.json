@@ -1,0 +1,80 @@
+{
+  "iso3": "TWN",
+  "name": "Taiwan",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "bubble tea",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bubble%20Tea.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bubble%20Tea.png",
+        "license": "CC BY-SA 3.0",
+        "author": "Howief"
+      }
+    },
+    {
+      "name": "Kuih",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jajan%20Pasar%20in%20Jakarta.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jajan%20Pasar%20in%20Jakarta.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Gunawan Kartapranata"
+      }
+    },
+    {
+      "name": "Ló͘-bah-pn̄g",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cubed%20Pork%20with%20Rice.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cubed%20Pork%20with%20Rice.jpg",
+        "license": "CC BY 2.0",
+        "author": "kawanet"
+      }
+    },
+    {
+      "name": "Small sausage in large sausage",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Small%20sausage%20in%20large%20sausage%202004-09-05.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Small%20sausage%20in%20large%20sausage%202004-09-05.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Kaihsu Tai"
+      }
+    },
+    {
+      "name": "khong bah png",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Braised%20pork%20rice%20in%20Taichung.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Braised%20pork%20rice%20in%20Taichung.jpg",
+        "license": "CC BY 2.0",
+        "author": "Mori Chan from 台中市 (Taichung)"
+      }
+    },
+    {
+      "name": "Chiayi turkey rice",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiayi%20turkey%20pilaf.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chiayi%20turkey%20pilaf.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Neville Wang"
+      }
+    },
+    {
+      "name": "a-gei",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Agei.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Agei.JPG",
+        "license": "CC BY-SA 2.0",
+        "author": "The original uploader was Seasurfer at Chinese Wikipedia."
+      }
+    },
+    {
+      "name": "Danbing",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/D%C3%A0nb%C7%90ng.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:D%C3%A0nb%C7%90ng.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Đậu tương"
+      }
+    }
+  ]
+}

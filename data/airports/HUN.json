@@ -1,0 +1,43 @@
+{
+  "iso3": "HUN",
+  "name": "Hungary",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Budapest Liszt Ferenc International Airport",
+      "iata": "BUD",
+      "municipality": "Budapest",
+      "large": true,
+      "passengers": 17574413
+    },
+    {
+      "name": "Debrecen International Airport",
+      "iata": "DEB",
+      "municipality": "Debrecen",
+      "large": true,
+      "passengers": 601236
+    },
+    {
+      "name": "Hévíz–Balaton Airport",
+      "iata": "SOB",
+      "municipality": "Sármellék",
+      "large": false,
+      "passengers": 105697
+    },
+    {
+      "name": "Pécs-Pogány International Airport",
+      "iata": "PEV",
+      "municipality": "Pécs",
+      "large": true,
+      "passengers": 15008
+    },
+    {
+      "name": "Győr-Pér Airport",
+      "iata": null,
+      "municipality": "Győr",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

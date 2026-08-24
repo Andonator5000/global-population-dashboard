@@ -1,0 +1,148 @@
+{
+  "iso3": "MYS",
+  "name": "Malaysia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Kuala Lumpur International Airport",
+      "iata": "KUL",
+      "municipality": "Sepang",
+      "large": true,
+      "passengers": 62257101
+    },
+    {
+      "name": "Kota Kinabalu International Airport",
+      "iata": "BKI",
+      "municipality": "Kota Kinabalu",
+      "large": true,
+      "passengers": 9443275
+    },
+    {
+      "name": "Penang International Airport",
+      "iata": "PEN",
+      "municipality": "Penang",
+      "large": true,
+      "passengers": 8316050
+    },
+    {
+      "name": "Kuching International Airport",
+      "iata": "KCH",
+      "municipality": "Kuching",
+      "large": true,
+      "passengers": 5947478
+    },
+    {
+      "name": "Senai International Airport",
+      "iata": "JHB",
+      "municipality": "Johor Bahru",
+      "large": true,
+      "passengers": 4254922
+    },
+    {
+      "name": "Sultan Abdul Aziz Shah International Airport",
+      "iata": "SZB",
+      "municipality": "Subang",
+      "large": true,
+      "passengers": 3059144
+    },
+    {
+      "name": "Langkawi International Airport",
+      "iata": "LGK",
+      "municipality": "Langkawi",
+      "large": true,
+      "passengers": 2945963
+    },
+    {
+      "name": "Miri Airport",
+      "iata": "MYY",
+      "municipality": "Miri",
+      "large": false,
+      "passengers": 2435493
+    },
+    {
+      "name": "Sultan Ismail Petra Airport",
+      "iata": "KBR",
+      "municipality": "Kota Baharu",
+      "large": false,
+      "passengers": 2063747
+    },
+    {
+      "name": "Tawau Airport",
+      "iata": "TWU",
+      "municipality": "Tawau",
+      "large": false,
+      "passengers": 1832368
+    },
+    {
+      "name": "Sibu Airport",
+      "iata": "SBW",
+      "municipality": "Sibu",
+      "large": false,
+      "passengers": 1750876
+    },
+    {
+      "name": "Bintulu Airport",
+      "iata": "BTU",
+      "municipality": "Bintulu",
+      "large": false,
+      "passengers": 1114326
+    },
+    {
+      "name": "Sandakan Airport",
+      "iata": "SDK",
+      "municipality": "Sandakan",
+      "large": false,
+      "passengers": 1083090
+    },
+    {
+      "name": "Sultan Mahmud Airport",
+      "iata": "TGG",
+      "municipality": "Kuala Terengganu",
+      "large": false,
+      "passengers": 943660
+    },
+    {
+      "name": "Sultan Abdul Halim Airport",
+      "iata": "AOR",
+      "municipality": "Alor Satar",
+      "large": false,
+      "passengers": 919887
+    },
+    {
+      "name": "Labuan Airport",
+      "iata": "LBU",
+      "municipality": "Labuan",
+      "large": false,
+      "passengers": 789494
+    },
+    {
+      "name": "Kuantan Airport",
+      "iata": "KUA",
+      "municipality": "Kuantan",
+      "large": false,
+      "passengers": 317440
+    },
+    {
+      "name": "Sultan Azlan Shah Airport",
+      "iata": "IPH",
+      "municipality": "Ipoh",
+      "large": true,
+      "passengers": 315673
+    },
+    {
+      "name": "Lahad Datu Airport",
+      "iata": "LDU",
+      "municipality": "Lahad Datu",
+      "large": false,
+      "passengers": 161230
+    },
+    {
+      "name": "Limbang Airport",
+      "iata": "LMN",
+      "municipality": "Limbang",
+      "large": false,
+      "passengers": 85417
+    }
+  ]
+}

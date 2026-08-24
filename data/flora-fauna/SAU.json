@@ -1,0 +1,39 @@
+{
+  "iso3": "SAU",
+  "name": "Saudi Arabia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Arabian camel",
+      "type": "national animal",
+      "scientificName": "Camelus dromedarius",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Camel%20in%20Al%20Ula%202023.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Camel%20in%20Al%20Ula%202023.jpg",
+        "license": "CC0",
+        "author": "Chuck Lennox"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Phoenix palm",
+    "type": "national tree",
+    "scientificName": "Phoenix dactylifera",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Phoenix%20dactylifera100%204209.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Phoenix%20dactylifera100%204209.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Mmcknight4"
+    }
+  },
+  "flower": {
+    "name": "Jasminum grandiflorum",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jasminum%20grandiflorum%20%28Oleaceae%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Jasminum%20grandiflorum%20%28Oleaceae%29.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Juan Carlos Fonseca Mata"
+    }
+  }
+}

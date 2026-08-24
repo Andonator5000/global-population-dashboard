@@ -1,0 +1,36 @@
+{
+  "iso3": "TLS",
+  "name": "Timor-Leste",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Presidente Nicolau Lobato International Airport",
+      "iata": "DIL",
+      "municipality": "Dili",
+      "large": true,
+      "passengers": 246600
+    },
+    {
+      "name": "Oecusse Route of the Sandalwood International Airport",
+      "iata": "OEC",
+      "municipality": "Oecussi-Ambeno",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Baucau Airport",
+      "iata": "BCH",
+      "municipality": "Baucau",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Commander in Chief of FALINTIL, Kay Rala Xanana Gusmão, International Airport",
+      "iata": "UAI",
+      "municipality": "Suai",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

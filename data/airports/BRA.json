@@ -1,0 +1,148 @@
+{
+  "iso3": "BRA",
+  "name": "Brazil",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "São Paulo/Guarulhos–Governor André Franco Montoro International Airport",
+      "iata": "GRU",
+      "municipality": "São Paulo",
+      "large": true,
+      "passengers": 42946931
+    },
+    {
+      "name": "Congonhas–Deputado Freitas Nobre Airport",
+      "iata": "CGH",
+      "municipality": "São Paulo",
+      "large": true,
+      "passengers": 22835006
+    },
+    {
+      "name": "Presidente Juscelino Kubitschek International Airport",
+      "iata": "BSB",
+      "municipality": "Brasília",
+      "large": true,
+      "passengers": 19575945
+    },
+    {
+      "name": "Rio Galeão – Tom Jobim International Airport",
+      "iata": "GIG",
+      "municipality": "Rio De Janeiro",
+      "large": true,
+      "passengers": 17328100
+    },
+    {
+      "name": "Viracopos International Airport",
+      "iata": "VCP",
+      "municipality": "Campinas",
+      "large": true,
+      "passengers": 11917144
+    },
+    {
+      "name": "Tancredo Neves International Airport",
+      "iata": "CNF",
+      "municipality": "Belo Horizonte",
+      "large": true,
+      "passengers": 11164243
+    },
+    {
+      "name": "Santos Dumont Airport",
+      "iata": "SDU",
+      "municipality": "Rio de Janeiro",
+      "large": true,
+      "passengers": 10187401
+    },
+    {
+      "name": "Deputado Luiz Eduardo Magalhães International Airport",
+      "iata": "SSA",
+      "municipality": "Salvador",
+      "large": true,
+      "passengers": 9371905
+    },
+    {
+      "name": "Recife/Guararapes - Gilberto Freyre International Airport",
+      "iata": "REC",
+      "municipality": "Recife",
+      "large": true,
+      "passengers": 8783566
+    },
+    {
+      "name": "Porto Alegre-Salgado Filho International Airport",
+      "iata": "POA",
+      "municipality": "Porto Alegre",
+      "large": true,
+      "passengers": 8347316
+    },
+    {
+      "name": "Curitiba-Afonso Pena International Airport",
+      "iata": "CWB",
+      "municipality": "Curitiba",
+      "large": true,
+      "passengers": 7330262
+    },
+    {
+      "name": "Pinto Martins International Airport",
+      "iata": "FOR",
+      "municipality": "Fortaleza",
+      "large": true,
+      "passengers": 7218697
+    },
+    {
+      "name": "Hercílio Luz International Airport",
+      "iata": "FLN",
+      "municipality": "Florianópolis",
+      "large": true,
+      "passengers": 3823250
+    },
+    {
+      "name": "Val de Cans/Júlio Cezar Ribeiro International Airport",
+      "iata": "BEL",
+      "municipality": "Belém",
+      "large": true,
+      "passengers": 3788217
+    },
+    {
+      "name": "Eurico de Aguiar Salles International Airport",
+      "iata": "VIX",
+      "municipality": "Vitória",
+      "large": true,
+      "passengers": 3465836
+    },
+    {
+      "name": "Eduardo Gomes International Airport",
+      "iata": "MAO",
+      "municipality": "Manaus",
+      "large": true,
+      "passengers": 3419893
+    },
+    {
+      "name": "Santa Genoveva International Airport",
+      "iata": "GYN",
+      "municipality": "Goiânia",
+      "large": true,
+      "passengers": 3232798
+    },
+    {
+      "name": "Várzea Grande–Marechal Rondon International Airport",
+      "iata": "CGB",
+      "municipality": "Cuiabá",
+      "large": true,
+      "passengers": 3212173
+    },
+    {
+      "name": "Rio Grande do Norte/São Gonçalo do Amarante–Governador Aluízio Alves International Airport",
+      "iata": "NAT",
+      "municipality": "Natal",
+      "large": true,
+      "passengers": 2600286
+    },
+    {
+      "name": "Cataratas International Airport",
+      "iata": "IGU",
+      "municipality": "Foz do Iguaçu",
+      "large": true,
+      "passengers": 2342489
+    }
+  ]
+}

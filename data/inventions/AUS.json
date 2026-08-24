@@ -1,0 +1,34 @@
+{
+  "iso3": "AUS",
+  "name": "Australia",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "frog cake",
+      "inventors": [
+        "Balfours"
+      ],
+      "year": 1922,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Frog%20cakes.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Frog%20cakes.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Bilby"
+      }
+    },
+    {
+      "name": "Chiko Roll",
+      "inventors": [
+        "Frank McEncroe"
+      ],
+      "year": 1951,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiko%20roll%20in%20bag%20handheld.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chiko%20roll%20in%20bag%20handheld.jpg",
+        "license": "Public domain",
+        "author": "IanBailey at English Wikipedia"
+      }
+    }
+  ]
+}

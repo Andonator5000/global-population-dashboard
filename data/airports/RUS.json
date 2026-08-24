@@ -1,0 +1,148 @@
+{
+  "iso3": "RUS",
+  "name": "Russia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Sheremetyevo International Airport",
+      "iata": "SVO",
+      "municipality": "Moscow",
+      "large": true,
+      "passengers": 49933000
+    },
+    {
+      "name": "Domodedovo International Airport",
+      "iata": "DME",
+      "municipality": "Moscow",
+      "large": true,
+      "passengers": 33039501
+    },
+    {
+      "name": "Vnukovo International Airport",
+      "iata": "VKO",
+      "municipality": "Moscow",
+      "large": true,
+      "passengers": 24000000
+    },
+    {
+      "name": "Pulkovo Airport",
+      "iata": "LED",
+      "municipality": "St. Petersburg",
+      "large": true,
+      "passengers": 20900000
+    },
+    {
+      "name": "Sochi International Airport",
+      "iata": "AER",
+      "municipality": "Sochi",
+      "large": true,
+      "passengers": 13900000
+    },
+    {
+      "name": "Novosibirsk Tolmachevo Airport",
+      "iata": "OVB",
+      "municipality": "Novosibirsk",
+      "large": true,
+      "passengers": 9680000
+    },
+    {
+      "name": "Koltsovo Airport",
+      "iata": "SVX",
+      "municipality": "Yekaterinburg",
+      "large": true,
+      "passengers": 8300000
+    },
+    {
+      "name": "Kazan International Airport",
+      "iata": "KZN",
+      "municipality": "Kazan",
+      "large": true,
+      "passengers": 5380000
+    },
+    {
+      "name": "Krasnodar Pashkovsky International Airport",
+      "iata": "KRR",
+      "municipality": "Krasnodar",
+      "large": true,
+      "passengers": 5022243
+    },
+    {
+      "name": "Khrabrovo Airport",
+      "iata": "KGD",
+      "municipality": "Kaliningrad",
+      "large": true,
+      "passengers": 5000000
+    },
+    {
+      "name": "Ufa International Airport",
+      "iata": "UFA",
+      "municipality": "Ufa",
+      "large": true,
+      "passengers": 4900000
+    },
+    {
+      "name": "Mineralnye Vody Airport",
+      "iata": "MRV",
+      "municipality": "Mineralnyye Vody",
+      "large": true,
+      "passengers": 4860000
+    },
+    {
+      "name": "Krasnoyarsk International Airport",
+      "iata": "KJA",
+      "municipality": "Krasnoyarsk",
+      "large": true,
+      "passengers": 4282721
+    },
+    {
+      "name": "Irkutsk International Airport",
+      "iata": "IKT",
+      "municipality": "Irkutsk",
+      "large": true,
+      "passengers": 4000000
+    },
+    {
+      "name": "Khabarovsk Novy Airport",
+      "iata": "KHV",
+      "municipality": "Khabarovsk",
+      "large": false,
+      "passengers": 3854000
+    },
+    {
+      "name": "Kurumoch International Airport",
+      "iata": "KUF",
+      "municipality": "Samara",
+      "large": true,
+      "passengers": 3700000
+    },
+    {
+      "name": "Vladivostok International Airport",
+      "iata": "VVO",
+      "municipality": "Artyom",
+      "large": true,
+      "passengers": 3260000
+    },
+    {
+      "name": "Platov International Airport",
+      "iata": "ROV",
+      "municipality": "Rostov-on-Don",
+      "large": true,
+      "passengers": 3236000
+    },
+    {
+      "name": "Makhachkala Uytash International Airport",
+      "iata": "MCX",
+      "municipality": "Makhachkala",
+      "large": true,
+      "passengers": 3000000
+    },
+    {
+      "name": "Roshchino International Airport",
+      "iata": "TJM",
+      "municipality": "Tyumen",
+      "large": true,
+      "passengers": 2776417
+    }
+  ]
+}

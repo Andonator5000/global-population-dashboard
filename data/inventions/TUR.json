@@ -1,0 +1,21 @@
+{
+  "iso3": "TUR",
+  "name": "Türkiye",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "cümbüş",
+      "inventors": [
+        "Zeynel Abidin Cümbüş"
+      ],
+      "year": 1929,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/TurkishMandolinBanjo.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:TurkishMandolinBanjo.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "User:Arent"
+      }
+    }
+  ]
+}

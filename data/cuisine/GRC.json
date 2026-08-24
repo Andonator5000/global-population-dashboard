@@ -1,0 +1,71 @@
+{
+  "iso3": "GRC",
+  "name": "Greece",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "lokma",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lokma%20Galata%20Bridge.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lokma%20Galata%20Bridge.JPG",
+        "license": "CC BY 3.0",
+        "author": "Benreis"
+      }
+    },
+    {
+      "name": "Saganaki",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Saganaki.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Saganaki.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Tammy Green from Chicago, USA"
+      }
+    },
+    {
+      "name": "sarma",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Japrak%201.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Japrak%201.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Tizilohja25"
+      }
+    },
+    {
+      "name": "skordalia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Skordalia.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Skordalia.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Amymoni"
+      }
+    },
+    {
+      "name": "tirokafteri",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tirokafteri.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tirokafteri.jpg",
+        "license": "CC BY 2.0",
+        "author": "Alexander Baxevanis"
+      }
+    },
+    {
+      "name": "Strapatsada",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Strapatsada.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Strapatsada.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Saintfevrier"
+      }
+    },
+    {
+      "name": "Spanakorizo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Spanakorizo.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Spanakorizo.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "KaterinaStrak"
+      }
+    }
+  ]
+}

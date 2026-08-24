@@ -1,0 +1,21 @@
+{
+  "iso3": "CMR",
+  "name": "Cameroon",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Bamum script",
+      "inventors": [
+        "Ibrahim Njoya"
+      ],
+      "year": 1896,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bamum%20syllabary.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bamum%20syllabary.png",
+        "license": "Public domain",
+        "author": "kwami (talk)\n\nUploaded by Kwamikagami at en.wikipedia"
+      }
+    }
+  ]
+}

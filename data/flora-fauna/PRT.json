@@ -1,0 +1,55 @@
+{
+  "iso3": "PRT",
+  "name": "Portugal",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Iberian Wolf",
+      "type": "national animal",
+      "scientificName": "Canis lupus signatus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Canis%20lupus%20signatus%20%28Kerkrade%20Zoo%29%2020.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Canis%20lupus%20signatus%20%28Kerkrade%20Zoo%29%2020.jpg",
+        "license": "CC BY 2.0",
+        "author": "Gérard van Drunen"
+      }
+    },
+    {
+      "name": "Cock of Barcelos",
+      "type": "national bird",
+      "scientificName": "Mythical",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PA2900302%20galo%20emiliarocha%20medio.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:PA2900302%20galo%20emiliarocha%20medio.jpg",
+        "license": "Public domain",
+        "author": "Adriculas"
+      }
+    },
+    {
+      "name": "Dragon",
+      "type": "traditional coat of arms / national animal",
+      "scientificName": "Mythical",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Brasao%20d%27armas.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Brasao%20d%27armas.png",
+        "license": "CC BY-SA 3.0",
+        "author": "Lumastan"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Cork oak",
+    "type": "national tree",
+    "scientificName": "Quercus suber"
+  },
+  "flower": {
+    "name": "lavender",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Single%20lavender%20flower02.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Single%20lavender%20flower02.jpg",
+      "license": "GFDL 1.2",
+      "author": "User:Fir0002"
+    }
+  }
+}

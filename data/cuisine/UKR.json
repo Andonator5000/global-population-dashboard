@@ -1,0 +1,20 @@
+{
+  "iso3": "UKR",
+  "name": "Ukraine",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Syrniki",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Syrniki6.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Syrniki6.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Tatyana Morozyuk, color processing by Off-shell"
+      }
+    },
+    {
+      "name": "Grechanyky"
+    }
+  ]
+}

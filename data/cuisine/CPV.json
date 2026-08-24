@@ -1,0 +1,17 @@
+{
+  "iso3": "CPV",
+  "name": "Cape Verde",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Cachupa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cachupa%202.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cachupa%202.jpg",
+        "license": "Public domain",
+        "author": "Xandu"
+      }
+    }
+  ]
+}

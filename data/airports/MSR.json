@@ -1,0 +1,15 @@
+{
+  "iso3": "MSR",
+  "name": "Montserrat",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "John A. Osborne Airport",
+      "iata": "MNI",
+      "municipality": "Gerald's Park",
+      "large": true,
+      "passengers": 24995
+    }
+  ]
+}

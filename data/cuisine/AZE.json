@@ -1,0 +1,17 @@
+{
+  "iso3": "AZE",
+  "name": "Azerbaijan",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Lula kebab",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lula%20kebab.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lula%20kebab.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Lesya Dolyk"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "iso3": "CAN",
+  "name": "Canada",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "North American beaver",
+      "type": "national animal",
+      "scientificName": "Castor canadensis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/American%20Beaver.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:American%20Beaver.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Steve from Washington, DC, USA"
+      }
+    },
+    {
+      "name": "Canadian horse",
+      "type": "national horse",
+      "scientificName": "Equus ferus caballus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheval%20canadien%20au%20trot%203372.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheval%20canadien%20au%20trot%203372.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "No machine-readable author provided. David Campbell assumed (based on copyright claims)."
+      }
+    }
+  ],
+  "tree": {
+    "name": "Maple",
+    "type": "national tree",
+    "scientificName": "Acer",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acer%20saccharum.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acer%20saccharum.jpg",
+      "license": "CC BY-SA 2.5",
+      "author": "Bruce Marlin"
+    }
+  },
+  "flower": {
+    "name": "maple leaf",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acer%20pseudoplatanus%20002.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acer%20pseudoplatanus%20002.jpg",
+      "license": "CC BY-SA 2.5",
+      "author": "Willow"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "iso3": "BDI",
+  "name": "Burundi",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Bujumbura Melchior Ndadaye International Airport",
+      "iata": "BJM",
+      "municipality": "Bujumbura",
+      "large": true,
+      "passengers": 261010
+    },
+    {
+      "name": "Gitega Airport",
+      "iata": "GID",
+      "municipality": "Gitega",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

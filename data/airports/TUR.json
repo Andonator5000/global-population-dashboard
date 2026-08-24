@@ -1,0 +1,148 @@
+{
+  "iso3": "TUR",
+  "name": "Türkiye",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "İstanbul Airport",
+      "iata": "IST",
+      "municipality": "Istanbul",
+      "large": true,
+      "passengers": 84457421
+    },
+    {
+      "name": "İstanbul Atatürk Airport",
+      "iata": "ISL",
+      "municipality": "Istanbul(Bakırköy)",
+      "large": true,
+      "passengers": 67981446
+    },
+    {
+      "name": "Istanbul Sabiha Gökçen International Airport",
+      "iata": "SAW",
+      "municipality": "Pendik, Istanbul",
+      "large": true,
+      "passengers": 48420757
+    },
+    {
+      "name": "Antalya International Airport",
+      "iata": "AYT",
+      "municipality": "Antalya",
+      "large": true,
+      "passengers": 39000177
+    },
+    {
+      "name": "Esenboğa International Airport",
+      "iata": "ESB",
+      "municipality": "Ankara",
+      "large": true,
+      "passengers": 16732651
+    },
+    {
+      "name": "Adnan Menderes International Airport",
+      "iata": "ADB",
+      "municipality": "Gaziemir",
+      "large": true,
+      "passengers": 13425547
+    },
+    {
+      "name": "Dalaman International Airport",
+      "iata": "DLM",
+      "municipality": "Dalaman",
+      "large": true,
+      "passengers": 5637067
+    },
+    {
+      "name": "Çukurova International Airport",
+      "iata": "COV",
+      "municipality": "Tarsus",
+      "large": true,
+      "passengers": 5434070
+    },
+    {
+      "name": "Milas Bodrum International Airport",
+      "iata": "BJV",
+      "municipality": "Bodrum",
+      "large": true,
+      "passengers": 4344767
+    },
+    {
+      "name": "Trabzon International Airport",
+      "iata": "TZX",
+      "municipality": "Trabzon",
+      "large": false,
+      "passengers": 4148956
+    },
+    {
+      "name": "Gaziantep Oğuzeli International Airport",
+      "iata": "GZT",
+      "municipality": "Gaziantep",
+      "large": true,
+      "passengers": 3068220
+    },
+    {
+      "name": "Kayseri Erkilet International Airport",
+      "iata": "ASR",
+      "municipality": "Kayseri",
+      "large": true,
+      "passengers": 2326192
+    },
+    {
+      "name": "Diyarbakır Airport",
+      "iata": "DIY",
+      "municipality": "Diyarbakır",
+      "large": false,
+      "passengers": 2292693
+    },
+    {
+      "name": "Samsun-Çarşamba Airport",
+      "iata": "SZF",
+      "municipality": "Samsun",
+      "large": false,
+      "passengers": 1783839
+    },
+    {
+      "name": "Van Ferit Melen Airport",
+      "iata": "VAN",
+      "municipality": "Van",
+      "large": false,
+      "passengers": 1661535
+    },
+    {
+      "name": "Erzurum International Airport",
+      "iata": "ERZ",
+      "municipality": "Erzurum",
+      "large": false,
+      "passengers": 1365450
+    },
+    {
+      "name": "Hatay Airport",
+      "iata": "HTY",
+      "municipality": "Antakya",
+      "large": false,
+      "passengers": 1325009
+    },
+    {
+      "name": "Konya Airport",
+      "iata": "KYA",
+      "municipality": "Konya",
+      "large": true,
+      "passengers": 1247805
+    },
+    {
+      "name": "Gazipaşa-Alanya Airport",
+      "iata": "GZP",
+      "municipality": "Gazipaşa",
+      "large": false,
+      "passengers": 1215627
+    },
+    {
+      "name": "Ordu–Giresun Airport",
+      "iata": "OGU",
+      "municipality": "Ordu",
+      "large": false,
+      "passengers": 1187798
+    }
+  ]
+}

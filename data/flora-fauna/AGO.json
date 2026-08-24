@@ -1,0 +1,41 @@
+{
+  "iso3": "AGO",
+  "name": "Angola",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Giant sable antelope",
+      "type": "national animal",
+      "scientificName": "Hippotragus niger variani",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Giant%20Sable%20Bull.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Giant%20Sable%20Bull.png",
+        "license": "CC0",
+        "author": "Marcus Frazão"
+      }
+    },
+    {
+      "name": "Red-crested turaco",
+      "type": "national bird",
+      "scientificName": "Tauraco erythrolophus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/RedcrestedTuraco.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:RedcrestedTuraco.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Daniel Demczuk"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Baobab",
+    "type": "national tree",
+    "scientificName": "Adansonia digitata",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Baobab%20and%20elephant%2C%20Tanzania.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Baobab%20and%20elephant%2C%20Tanzania.jpg",
+      "license": "CC BY-SA 2.0",
+      "author": "Ferdinand Reus from Arnhem, Holland"
+    }
+  }
+}

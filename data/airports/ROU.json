@@ -1,0 +1,120 @@
+{
+  "iso3": "ROU",
+  "name": "Romania",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Bucharest Henri Coandă International Airport",
+      "iata": "OTP",
+      "municipality": "Otopeni",
+      "large": true,
+      "passengers": 17001578
+    },
+    {
+      "name": "Avram Iancu Cluj International Airport",
+      "iata": "CLJ",
+      "municipality": "Cluj-Napoca",
+      "large": true,
+      "passengers": 3582134
+    },
+    {
+      "name": "Bucharest Băneasa Aurel Vlaicu International Airport",
+      "iata": "BBU",
+      "municipality": "Bucharest",
+      "large": true,
+      "passengers": 2398911
+    },
+    {
+      "name": "Iaşi International Airport",
+      "iata": "IAS",
+      "municipality": "Iaşi",
+      "large": true,
+      "passengers": 2338377
+    },
+    {
+      "name": "Timișoara Traian Vuia International Airport",
+      "iata": "TSR",
+      "municipality": "Timişoara",
+      "large": true,
+      "passengers": 1621529
+    },
+    {
+      "name": "Suceava Ștefan cel Mare International Airport",
+      "iata": "SCV",
+      "municipality": "Suceava",
+      "large": true,
+      "passengers": 801617
+    },
+    {
+      "name": "Sibiu International Airport",
+      "iata": "SBZ",
+      "municipality": "Sibiu",
+      "large": true,
+      "passengers": 729160
+    },
+    {
+      "name": "Craiova International Airport",
+      "iata": "CRA",
+      "municipality": "Craiova",
+      "large": true,
+      "passengers": 597990
+    },
+    {
+      "name": "Bacău George Enescu International  Airport",
+      "iata": "BCM",
+      "municipality": "Bacău",
+      "large": true,
+      "passengers": 559644
+    },
+    {
+      "name": "Târgu Mureş Transilvania International Airport",
+      "iata": "TGM",
+      "municipality": "Recea",
+      "large": false,
+      "passengers": 363389
+    },
+    {
+      "name": "Brașov-Ghimbav International Airport",
+      "iata": "GHV",
+      "municipality": "Brașov (Ghimbav)",
+      "large": true,
+      "passengers": 227900
+    },
+    {
+      "name": "Oradea International Airport",
+      "iata": "OMR",
+      "municipality": "Oradea",
+      "large": true,
+      "passengers": 220012
+    },
+    {
+      "name": "Mihail Kogălniceanu International Airport",
+      "iata": "CND",
+      "municipality": "Constanța",
+      "large": true,
+      "passengers": 129235
+    },
+    {
+      "name": "Maramureș International Airport",
+      "iata": "BAY",
+      "municipality": "Tăuții-Măgherăuș",
+      "large": false,
+      "passengers": 89940
+    },
+    {
+      "name": "Satu Mare International Airport",
+      "iata": "SUJ",
+      "municipality": "Satu Mare",
+      "large": false,
+      "passengers": 84171
+    },
+    {
+      "name": "Arad International Airport",
+      "iata": "ARW",
+      "municipality": "Arad",
+      "large": false,
+      "passengers": 78047
+    }
+  ]
+}

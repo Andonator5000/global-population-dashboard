@@ -1,0 +1,19 @@
+{
+  "iso3": "SDN",
+  "name": "Sudan",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Secretarybird",
+      "type": "national bird",
+      "scientificName": "Sagittarius serpentarius",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sagittarius%20serpentarius%20portrait.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sagittarius%20serpentarius%20portrait.jpg",
+        "license": "CC BY 2.0",
+        "author": "Flickr user belgianchocolate"
+      }
+    }
+  ]
+}

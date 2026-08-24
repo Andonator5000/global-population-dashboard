@@ -1,0 +1,51 @@
+{
+  "iso3": "LKA",
+  "name": "Sri Lanka",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Grizzled giant squirrel",
+      "type": "national animal",
+      "scientificName": "Ratufa macroura",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grizzled%20sqirrel%20Chinnar%20WLS%20Kerala%20%2868%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Grizzled%20sqirrel%20Chinnar%20WLS%20Kerala%20%2868%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Firos AK"
+      }
+    },
+    {
+      "name": "Sri Lankan junglefowl",
+      "type": "national bird",
+      "scientificName": "Gallus lafayettii",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Thimindu%202009%2009%2004%20Yala%20Sri%20Lanka%20Junglefowl%201.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Thimindu%202009%2009%2004%20Yala%20Sri%20Lanka%20Junglefowl%201.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Thimindu"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Sri Lankan ironwood",
+    "type": "national tree",
+    "scientificName": "Mesua nagassarium",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MesuaFerrea%20IronWood.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:MesuaFerrea%20IronWood.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Benvda"
+    }
+  },
+  "flower": {
+    "name": "Sinhala",
+    "scientificName": "Nymphaea stellata",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/South%20Vietnam%27s%20Water%20Lily.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:South%20Vietnam%27s%20Water%20Lily.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Nguyễn Tấn Phát"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "iso3": "MYS",
+  "name": "Malaysia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "bak kut teh",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bakutteh.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bakutteh.jpg",
+        "license": "CC BY 2.5",
+        "author": "Indradi Soemardjan http://www.indrani.net"
+      }
+    },
+    {
+      "name": "Teh Tarik",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Teh%20Tarik.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Teh%20Tarik.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Jonathan Lin"
+      }
+    }
+  ]
+}

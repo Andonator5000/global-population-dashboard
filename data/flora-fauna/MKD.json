@@ -1,0 +1,15 @@
+{
+  "iso3": "MKD",
+  "name": "North Macedonia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "flower": {
+    "name": "poppy",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papaver%20rhoeas%20-%20K%C3%B6hler%E2%80%93s%20Medizinal-Pflanzen-101.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Papaver%20rhoeas%20-%20K%C3%B6hler%E2%80%93s%20Medizinal-Pflanzen-101.jpg",
+      "license": "Public domain",
+      "author": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen"
+    }
+  }
+}

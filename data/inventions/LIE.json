@@ -1,0 +1,21 @@
+{
+  "iso3": "LIE",
+  "name": "Liechtenstein",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Curta",
+      "inventors": [
+        "Curt Herzstark"
+      ],
+      "year": 1947,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Curta%20II%20Mechanical%20Calculator.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Curta%20II%20Mechanical%20Calculator.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "Oldsoft"
+      }
+    }
+  ]
+}

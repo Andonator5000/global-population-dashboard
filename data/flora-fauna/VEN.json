@@ -1,0 +1,39 @@
+{
+  "iso3": "VEN",
+  "name": "Venezuela",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Venezuelan troupial",
+      "type": "national bird",
+      "scientificName": "Icterus icterus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Curacao-Icterus-Icterus-2013.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Curacao-Icterus-Icterus-2013.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Bjørn Christian Tørrissen"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Araguaney",
+    "type": "national tree",
+    "scientificName": "Tabebuia chrysantha",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Araguaney.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Araguaney.jpg",
+      "license": "Public domain",
+      "author": "No machine-readable author provided. Fev assumed (based on copyright claims)."
+    }
+  },
+  "flower": {
+    "name": "Cattleya mossiae",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cattleya%20mossiae%20%28dew%20in%20Venezuela%29.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cattleya%20mossiae%20%28dew%20in%20Venezuela%29.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Wilfredor"
+    }
+  }
+}

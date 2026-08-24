@@ -1,0 +1,29 @@
+{
+  "iso3": "BES",
+  "name": "Caribbean Netherlands",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Flamingo International Airport",
+      "iata": "BON",
+      "municipality": "Kralendijk",
+      "large": true,
+      "passengers": 573487
+    },
+    {
+      "name": "F. D. Roosevelt Airport",
+      "iata": "EUX",
+      "municipality": "Oranjestad",
+      "large": false,
+      "passengers": 46470
+    },
+    {
+      "name": "Juancho E. Yrausquin Airport",
+      "iata": "SAB",
+      "municipality": "Zion's Hill",
+      "large": false,
+      "passengers": 32420
+    }
+  ]
+}

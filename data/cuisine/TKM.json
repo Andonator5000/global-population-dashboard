@@ -1,0 +1,17 @@
+{
+  "iso3": "TKM",
+  "name": "Turkmenistan",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "chal",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shubat.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Shubat.jpg",
+        "license": "CC BY 2.0",
+        "author": "Upyernoz on Flickr"
+      }
+    }
+  ]
+}

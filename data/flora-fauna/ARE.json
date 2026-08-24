@@ -1,0 +1,44 @@
+{
+  "iso3": "ARE",
+  "name": "United Arab Emirates",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Arabian oryx",
+      "type": "national animal",
+      "scientificName": "Oryx leucoryx",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arabian%20oryx%20%28oryx%20leucoryx%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Arabian%20oryx%20%28oryx%20leucoryx%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Charles J. Sharp"
+      }
+    },
+    {
+      "name": "Saker falcon",
+      "type": "national bird",
+      "scientificName": "Falco cherrug",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Marek Szczepanek"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Ghaf tree",
+    "type": "national tree",
+    "scientificName": "Prosopis cineraria",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jhand%20%28Prosopis%20cineraria%29%20at%20Hodal%20W%20IMG%201191.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Jhand%20%28Prosopis%20cineraria%29%20at%20Hodal%20W%20IMG%201191.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "J.M.Garg"
+    }
+  },
+  "flower": {
+    "name": "Tribulus omanense"
+  }
+}

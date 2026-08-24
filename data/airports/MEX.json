@@ -1,0 +1,148 @@
+{
+  "iso3": "MEX",
+  "name": "Mexico",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Mexico City Benito Juárez International Airport",
+      "iata": "MEX",
+      "municipality": "Mexico City",
+      "large": true,
+      "passengers": 50308049
+    },
+    {
+      "name": "Cancún International Airport",
+      "iata": "CUN",
+      "municipality": "Cancún",
+      "large": true,
+      "passengers": 32750413
+    },
+    {
+      "name": "Guadalajara International Airport",
+      "iata": "GDL",
+      "municipality": "Guadalajara",
+      "large": true,
+      "passengers": 17710200
+    },
+    {
+      "name": "Monterrey International Airport",
+      "iata": "MTY",
+      "municipality": "Monterrey",
+      "large": true,
+      "passengers": 13326936
+    },
+    {
+      "name": "General Abelardo L. Rodriguez International Airport",
+      "iata": "TIJ",
+      "municipality": "Tijuana",
+      "large": true,
+      "passengers": 12324600
+    },
+    {
+      "name": "Los Cabos International Airport",
+      "iata": "SJD",
+      "municipality": "San José del Cabo",
+      "large": true,
+      "passengers": 7459841
+    },
+    {
+      "name": "Puerto Vallarta International Airport",
+      "iata": "PVR",
+      "municipality": "Puerto Vallarta",
+      "large": true,
+      "passengers": 6726336
+    },
+    {
+      "name": "Adolfo López Mateos International Airport",
+      "iata": "TLC",
+      "municipality": "Toluca",
+      "large": true,
+      "passengers": 3949611
+    },
+    {
+      "name": "Manuel Crescencio Rejón International Airport",
+      "iata": "MID",
+      "municipality": "Mérida",
+      "large": true,
+      "passengers": 3674103
+    },
+    {
+      "name": "Guanajuato International Airport",
+      "iata": "BJX",
+      "municipality": "Silao",
+      "large": true,
+      "passengers": 3195946
+    },
+    {
+      "name": "Felipe Ángeles International Airport",
+      "iata": "NLU",
+      "municipality": "Mexico City",
+      "large": true,
+      "passengers": 2630437
+    },
+    {
+      "name": "Bachigualato Federal International Airport",
+      "iata": "CUL",
+      "municipality": "Culiacán",
+      "large": true,
+      "passengers": 2612249
+    },
+    {
+      "name": "Abraham González International Airport",
+      "iata": "CJS",
+      "municipality": "Ciudad Juárez",
+      "large": true,
+      "passengers": 2275153
+    },
+    {
+      "name": "General Ignacio L. Pesqueira International Airport",
+      "iata": "HMO",
+      "municipality": "Hermosillo",
+      "large": true,
+      "passengers": 2155149
+    },
+    {
+      "name": "General Roberto Fierro Villalobos International Airport",
+      "iata": "CUU",
+      "municipality": "Chihuahua",
+      "large": true,
+      "passengers": 1905714
+    },
+    {
+      "name": "Angel Albino Corzo International Airport",
+      "iata": "TGZ",
+      "municipality": "Tuxtla Gutiérrez",
+      "large": false,
+      "passengers": 1784010
+    },
+    {
+      "name": "Querétaro Intercontinental Airport",
+      "iata": "QRO",
+      "municipality": "Querétaro",
+      "large": true,
+      "passengers": 1767376
+    },
+    {
+      "name": "Xoxocotlán International Airport",
+      "iata": "OAX",
+      "municipality": "Oaxaca",
+      "large": true,
+      "passengers": 1693042
+    },
+    {
+      "name": "General Heriberto Jara International Airport",
+      "iata": "VER",
+      "municipality": "Veracruz",
+      "large": true,
+      "passengers": 1665694
+    },
+    {
+      "name": "General Rafael Buelna International Airport",
+      "iata": "MZT",
+      "municipality": "Mazatlàn",
+      "large": true,
+      "passengers": 1621740
+    }
+  ]
+}

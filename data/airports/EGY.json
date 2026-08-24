@@ -1,0 +1,134 @@
+{
+  "iso3": "EGY",
+  "name": "Egypt",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Cairo International Airport",
+      "iata": "CAI",
+      "municipality": "Cairo",
+      "large": true,
+      "passengers": 31137557
+    },
+    {
+      "name": "Hurghada International Airport",
+      "iata": "HRG",
+      "municipality": "Hurghada",
+      "large": true,
+      "passengers": 11425529
+    },
+    {
+      "name": "Sharm El Sheikh International Airport",
+      "iata": "SSH",
+      "municipality": "Sharm El Sheikh",
+      "large": true,
+      "passengers": 9046690
+    },
+    {
+      "name": "Marsa Alam International Airport",
+      "iata": "RMF",
+      "municipality": "Marsa Alam",
+      "large": true,
+      "passengers": 2817308
+    },
+    {
+      "name": "Aswan International Airport",
+      "iata": "ASW",
+      "municipality": "Aswan",
+      "large": true,
+      "passengers": 2355531
+    },
+    {
+      "name": "Luxor International Airport",
+      "iata": "LXR",
+      "municipality": "Luxor",
+      "large": true,
+      "passengers": 2313339
+    },
+    {
+      "name": "Abu Simbel Airport",
+      "iata": "ABS",
+      "municipality": "Abu Simbel",
+      "large": false,
+      "passengers": 1238585
+    },
+    {
+      "name": "Suhaj International Airport",
+      "iata": "HMB",
+      "municipality": "Suhaj",
+      "large": true,
+      "passengers": 715605
+    },
+    {
+      "name": "Taba International Airport",
+      "iata": "TCP",
+      "municipality": "Taba",
+      "large": false,
+      "passengers": 452710
+    },
+    {
+      "name": "Asyut International Airport",
+      "iata": "ATZ",
+      "municipality": "Asyut",
+      "large": true,
+      "passengers": 396939
+    },
+    {
+      "name": "Mersa Matruh International Airport",
+      "iata": "MUH",
+      "municipality": "Marsa Matruh",
+      "large": true,
+      "passengers": 115297
+    },
+    {
+      "name": "Port Said International Airport",
+      "iata": "PSD",
+      "municipality": "Port Said",
+      "large": true,
+      "passengers": 53779
+    },
+    {
+      "name": "El Alamein International Airport",
+      "iata": "DBB",
+      "municipality": "El Alamein",
+      "large": true,
+      "passengers": 39228
+    },
+    {
+      "name": "El Arish International Airport",
+      "iata": "AAC",
+      "municipality": "El Arish",
+      "large": true,
+      "passengers": 33010
+    },
+    {
+      "name": "Sphinx International Airport",
+      "iata": "SPX",
+      "municipality": "Al Jiza",
+      "large": true,
+      "passengers": 5414
+    },
+    {
+      "name": "Capital International Airport",
+      "iata": "CCE",
+      "municipality": "New Cairo",
+      "large": false,
+      "passengers": 34
+    },
+    {
+      "name": "Alexandria International Airport",
+      "iata": "HBE",
+      "municipality": "Alexandria",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Berenice International Airport / Banas Cape Air Base",
+      "iata": "EES",
+      "municipality": "Berenice Troglodytica",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

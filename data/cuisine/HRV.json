@@ -1,0 +1,26 @@
+{
+  "iso3": "HRV",
+  "name": "Croatia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Zagorski štrukli",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuhane%20strukle%200210%201.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kuhane%20strukle%200210%201.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Roberta F."
+      }
+    },
+    {
+      "name": "Soparnik",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Soparnik.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Soparnik.jpg",
+        "license": "CC0",
+        "author": "Popo le Chien"
+      }
+    }
+  ]
+}

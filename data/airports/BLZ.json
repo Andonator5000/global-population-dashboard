@@ -1,0 +1,64 @@
+{
+  "iso3": "BLZ",
+  "name": "Belize",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Philip S. W. Goldson International Airport",
+      "iata": "BZE",
+      "municipality": "Belize City",
+      "large": true,
+      "passengers": 1040000
+    },
+    {
+      "name": "Caye Caulker Airport",
+      "iata": "CUK",
+      "municipality": "Caye Caulker",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Caye Chapel Airport",
+      "iata": "CYC",
+      "municipality": "Caye Chapel",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Corozal Airport",
+      "iata": "CZH",
+      "municipality": "Corozal",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Dangriga Airport",
+      "iata": "DGA",
+      "municipality": "Dangriga",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "John Greif II Airport",
+      "iata": "SPR",
+      "municipality": "San Pedro",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Placencia Airport",
+      "iata": "PLJ",
+      "municipality": "Placencia",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Sir Barry Bowen Municipal Airport",
+      "iata": "TZA",
+      "municipality": "Belize City",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

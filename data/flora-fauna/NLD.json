@@ -1,0 +1,39 @@
+{
+  "iso3": "NLD",
+  "name": "Netherlands",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Lion",
+      "type": "national animal",
+      "scientificName": "Panthera leo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal%20coat%20of%20arms%20of%20the%20Netherlands.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Royal%20coat%20of%20arms%20of%20the%20Netherlands.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Sodacan"
+      }
+    },
+    {
+      "name": "Black-tailed godwit",
+      "type": "national bird",
+      "scientificName": "Limosa limosa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Limosa%20limosa%20%28Uitkerke%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Limosa%20limosa%20%28Uitkerke%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Hans Hillewaert"
+      }
+    }
+  ],
+  "flower": {
+    "name": "tulip",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG",
+      "license": "CC0",
+      "author": "Dina L"
+    }
+  }
+}

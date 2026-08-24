@@ -1,0 +1,17 @@
+{
+  "iso3": "SRB",
+  "name": "Serbia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Mućkalica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mu%C4%87kalica%20%288838976124%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mu%C4%87kalica%20%288838976124%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Darko Mareš from Croatia"
+      }
+    }
+  ]
+}

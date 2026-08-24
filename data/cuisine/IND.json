@@ -1,0 +1,80 @@
+{
+  "iso3": "IND",
+  "name": "India",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "chutney",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chutneykarnataka.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chutneykarnataka.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Charles Haynes"
+      }
+    },
+    {
+      "name": "lassi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fatfreelassi.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fatfreelassi.jpg",
+        "license": "CC BY 2.0",
+        "author": "Swami Stream"
+      }
+    },
+    {
+      "name": "appam",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Paalappam.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Paalappam.JPG",
+        "license": "CC BY 3.0",
+        "author": "Jomesh at Malayalam Wikipedia"
+      }
+    },
+    {
+      "name": "korma",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20Korma.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20Korma.JPG",
+        "license": "CC0",
+        "author": "Miansari66"
+      }
+    },
+    {
+      "name": "chana masala",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Choleindia.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Choleindia.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "kspoddar"
+      }
+    },
+    {
+      "name": "Pav bhaji",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pav%20Bhaji.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pav%20Bhaji.jpg",
+        "license": "CC BY 2.0",
+        "author": "Rishika Palvankar"
+      }
+    },
+    {
+      "name": "Idiyappam",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E0%B2%B6%E0%B3%8D%E0%B2%AF%E0%B2%BE%E0%B2%B5%E0%B2%BF%E0%B2%97%E0%B3%86%20%E0%B2%95%E0%B2%BE%E0%B2%AF%E0%B2%BF%20%E0%B2%B9%E0%B2%BE%E0%B2%B2%E0%B3%81.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%E0%B2%B6%E0%B3%8D%E0%B2%AF%E0%B2%BE%E0%B2%B5%E0%B2%BF%E0%B2%97%E0%B3%86%20%E0%B2%95%E0%B2%BE%E0%B2%AF%E0%B2%BF%20%E0%B2%B9%E0%B2%BE%E0%B2%B2%E0%B3%81.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Yakshitha"
+      }
+    },
+    {
+      "name": "Vada pav",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vada%20Paav-The%20Mumbai%20Burger.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vada%20Paav-The%20Mumbai%20Burger.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Kaushiki Prabhudesai"
+      }
+    }
+  ]
+}

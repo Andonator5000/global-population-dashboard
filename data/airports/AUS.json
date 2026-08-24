@@ -1,0 +1,148 @@
+{
+  "iso3": "AUS",
+  "name": "Australia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Sydney Kingsford Smith International Airport",
+      "iata": "SYD",
+      "municipality": "Sydney (Mascot)",
+      "large": true,
+      "passengers": 44429758
+    },
+    {
+      "name": "Melbourne Airport",
+      "iata": "MEL",
+      "municipality": "Melbourne",
+      "large": true,
+      "passengers": 37134291
+    },
+    {
+      "name": "Brisbane International Airport",
+      "iata": "BNE",
+      "municipality": "Brisbane",
+      "large": true,
+      "passengers": 24006025
+    },
+    {
+      "name": "Perth International Airport",
+      "iata": "PER",
+      "municipality": "Perth",
+      "large": true,
+      "passengers": 16900000
+    },
+    {
+      "name": "Adelaide International Airport",
+      "iata": "ADL",
+      "municipality": "Adelaide",
+      "large": true,
+      "passengers": 8516171
+    },
+    {
+      "name": "Gold Coast Airport",
+      "iata": "OOL",
+      "municipality": "Gold Coast",
+      "large": true,
+      "passengers": 6486382
+    },
+    {
+      "name": "Cairns International Airport",
+      "iata": "CNS",
+      "municipality": "Cairns",
+      "large": true,
+      "passengers": 4945798
+    },
+    {
+      "name": "Canberra Airport",
+      "iata": "CBR",
+      "municipality": "Canberra",
+      "large": false,
+      "passengers": 3304010
+    },
+    {
+      "name": "Hobart International Airport",
+      "iata": "HBA",
+      "municipality": "Hobart (Cambridge)",
+      "large": true,
+      "passengers": 2781739
+    },
+    {
+      "name": "Darwin International Airport / RAAF Darwin",
+      "iata": "DRW",
+      "municipality": "Darwin",
+      "large": true,
+      "passengers": 2117132
+    },
+    {
+      "name": "Townsville Airport / RAAF Base Townsville",
+      "iata": "TSV",
+      "municipality": "Townsville",
+      "large": false,
+      "passengers": 1616883
+    },
+    {
+      "name": "Sunshine Coast Airport",
+      "iata": "MCY",
+      "municipality": "Maroochydore",
+      "large": true,
+      "passengers": 1493435
+    },
+    {
+      "name": "Launceston Airport",
+      "iata": "LST",
+      "municipality": "Launceston (Western Junction)",
+      "large": false,
+      "passengers": 1395304
+    },
+    {
+      "name": "Newcastle Airport",
+      "iata": "NTL",
+      "municipality": "Williamtown",
+      "large": true,
+      "passengers": 1278058
+    },
+    {
+      "name": "Mackay Airport",
+      "iata": "MKY",
+      "municipality": "Mackay",
+      "large": false,
+      "passengers": 1126243
+    },
+    {
+      "name": "Alice Springs Airport",
+      "iata": "ASP",
+      "municipality": "Alice Springs",
+      "large": false,
+      "passengers": 933049
+    },
+    {
+      "name": "Karratha Airport",
+      "iata": "KTA",
+      "municipality": "Karratha",
+      "large": false,
+      "passengers": 818415
+    },
+    {
+      "name": "Rockhampton Airport",
+      "iata": "ROK",
+      "municipality": "Rockhampton",
+      "large": false,
+      "passengers": 777212
+    },
+    {
+      "name": "Ballina Byron Gateway Airport",
+      "iata": "BNK",
+      "municipality": "Ballina",
+      "large": false,
+      "passengers": 639313
+    },
+    {
+      "name": "Hamilton Island Airport",
+      "iata": "HTI",
+      "municipality": "Hamilton Island",
+      "large": false,
+      "passengers": 549822
+    }
+  ]
+}

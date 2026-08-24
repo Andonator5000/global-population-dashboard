@@ -1,0 +1,113 @@
+{
+  "iso3": "POL",
+  "name": "Poland",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Warsaw Chopin Airport",
+      "iata": "WAW",
+      "municipality": "Warsaw",
+      "large": true,
+      "passengers": 21261806
+    },
+    {
+      "name": "Kraków John Paul II International Airport",
+      "iata": "KRK",
+      "municipality": "Balice",
+      "large": true,
+      "passengers": 11080830
+    },
+    {
+      "name": "Gdańsk Lech Wałęsa Airport",
+      "iata": "GDN",
+      "municipality": "Gdańsk",
+      "large": true,
+      "passengers": 7393016
+    },
+    {
+      "name": "Katowice Wojciech Korfanty International Airport",
+      "iata": "KTW",
+      "municipality": "Katowice",
+      "large": true,
+      "passengers": 5297247
+    },
+    {
+      "name": "Copernicus Wrocław Airport",
+      "iata": "WRO",
+      "municipality": "Wrocław",
+      "large": true,
+      "passengers": 4907527
+    },
+    {
+      "name": "Poznań-Ławica Airport",
+      "iata": "POZ",
+      "municipality": "Poznań",
+      "large": true,
+      "passengers": 4144827
+    },
+    {
+      "name": "Warsaw Modlin Airport",
+      "iata": "WMI",
+      "municipality": "Nowy Dwór Mazowiecki",
+      "large": true,
+      "passengers": 3126428
+    },
+    {
+      "name": "Rzeszów-Jasionka Airport",
+      "iata": "RZE",
+      "municipality": "Jasionka",
+      "large": true,
+      "passengers": 772238
+    },
+    {
+      "name": "Solidarity Szczecin–Goleniów Airport",
+      "iata": "SZZ",
+      "municipality": "Szczecin(Glewice)",
+      "large": true,
+      "passengers": 598971
+    },
+    {
+      "name": "Łódź Władysław Reymont Airport",
+      "iata": "LCJ",
+      "municipality": "Łódź",
+      "large": true,
+      "passengers": 463459
+    },
+    {
+      "name": "Ignacy Jan Paderewski Bydgoszcz Airport",
+      "iata": "BZG",
+      "municipality": "Bydgoszcz",
+      "large": false,
+      "passengers": 439632
+    },
+    {
+      "name": "Olsztyn-Mazury Airport",
+      "iata": "SZY",
+      "municipality": "Szymany",
+      "large": false,
+      "passengers": 154499
+    },
+    {
+      "name": "Lublin Airport",
+      "iata": "LUZ",
+      "municipality": "Lublin",
+      "large": true,
+      "passengers": 124199
+    },
+    {
+      "name": "Warsaw Radom Airport",
+      "iata": "RDO",
+      "municipality": "Radom",
+      "large": false,
+      "passengers": 103048
+    },
+    {
+      "name": "Zielona Góra-Babimost Airport",
+      "iata": "IEG",
+      "municipality": "Nowe Kramsko",
+      "large": false,
+      "passengers": 53963
+    }
+  ]
+}

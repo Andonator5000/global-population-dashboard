@@ -1,0 +1,64 @@
+{
+  "iso3": "YEM",
+  "name": "Yemen",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Aden International Airport",
+      "iata": "ADE",
+      "municipality": "Aden",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Mokha International Airport",
+      "iata": null,
+      "municipality": "Mokha",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Riyan International Airport",
+      "iata": "RIY",
+      "municipality": "Mukalla(Riyan)",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Sanaa International Airport",
+      "iata": "SAH",
+      "municipality": "Sanaa",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Seiyun Hadhramaut International Airport",
+      "iata": "GXF",
+      "municipality": "Seiyun",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Al Ghaydah International Airport",
+      "iata": "AAY",
+      "municipality": "Al Ghaydah",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Socotra Airport",
+      "iata": "SCT",
+      "municipality": "Mori",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Taiz International Airport",
+      "iata": "TAI",
+      "municipality": "Taiz",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

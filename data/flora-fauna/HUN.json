@@ -1,0 +1,30 @@
+{
+  "iso3": "HUN",
+  "name": "Hungary",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Turul",
+      "type": "national mythical creature",
+      "scientificName": "Mythical (most probably Falco cherrug)",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turul-Tb-front.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turul-Tb-front.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Gajárszki László"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Elm",
+    "type": "national tree",
+    "scientificName": "Ulmus",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Blismes%20elm%202007.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Blismes%20elm%202007.jpg",
+      "license": "GFDL",
+      "author": "Eric Collin.\n\nOriginal uploader was Ptelea at en.wikipedia"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "iso3": "CHE",
+  "name": "Switzerland",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Zürich Airport",
+      "iata": "ZRH",
+      "municipality": "Zurich",
+      "large": true,
+      "passengers": 32593966
+    },
+    {
+      "name": "Geneva International Airport",
+      "iata": "GVA",
+      "municipality": "Geneva",
+      "large": true,
+      "passengers": 17926629
+    },
+    {
+      "name": "Lugano Airport",
+      "iata": "LUG",
+      "municipality": "Agno",
+      "large": false,
+      "passengers": 383585
+    },
+    {
+      "name": "Bern Airport",
+      "iata": "BRN",
+      "municipality": "Bern",
+      "large": false,
+      "passengers": 258543
+    },
+    {
+      "name": "Sankt Gallen Altenrhein Airport",
+      "iata": "ACH",
+      "municipality": "St. Gallen",
+      "large": false,
+      "passengers": 115710
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "iso3": "ARG",
+  "name": "Argentina",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Rufous hornero",
+      "type": "national bird",
+      "scientificName": "Furnarius rufus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rufous%20hornero%20%28Red%20ovenbird%29%28Furnarius%20rufus%29.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rufous%20hornero%20%28Red%20ovenbird%29%28Furnarius%20rufus%29.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "Charles J. Sharp"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Ceibo",
+    "type": "national tree",
+    "scientificName": "Erythrina crista-galli",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Erythrina%20crista-galli%202-3.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Erythrina%20crista-galli%202-3.jpg",
+      "license": "CC BY-SA 2.5",
+      "author": null
+    }
+  },
+  "flower": {
+    "name": "ceibo",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Corticeira%20em%20Bag%C3%A9%2004.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Corticeira%20em%20Bag%C3%A9%2004.jpg",
+      "license": "CC BY 4.0",
+      "author": "O Tupinólogo"
+    }
+  }
+}

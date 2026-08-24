@@ -1,0 +1,57 @@
+{
+  "iso3": "LBY",
+  "name": "Libya",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Al Abraq International Airport",
+      "iata": "LAQ",
+      "municipality": "Al Albraq",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Benina International Airport",
+      "iata": "BEN",
+      "municipality": "Benina",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Mitiga International Airport",
+      "iata": "MJI",
+      "municipality": "Tripoli",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Sirt International Airport / Ghardabiya Airbase",
+      "iata": "SRX",
+      "municipality": "Sirt",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Ghadames Airport",
+      "iata": "LTD",
+      "municipality": "Ghadames",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kufra Airport",
+      "iata": "AKF",
+      "municipality": "Kufra",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Sabha Airport",
+      "iata": "SEB",
+      "municipality": "Sabha",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

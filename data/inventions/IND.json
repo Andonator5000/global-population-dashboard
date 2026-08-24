@@ -1,0 +1,50 @@
+{
+  "iso3": "IND",
+  "name": "India",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Canai bread",
+      "inventors": [
+        "Tamil"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Roti%20Prata%20Curry%20Large.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Roti%20Prata%20Curry%20Large.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "No machine-readable author provided. Jpatokal assumed (based on copyright claims)."
+      }
+    },
+    {
+      "name": "Pompeii Lakshmi",
+      "year": 1938,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statuetta%20indiana%20di%20Lakshmi%2C%20avorio%2C%20da%20pompei%2C%201-50%20dc%20ca.%2C%20149425%2C%2001.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Statuetta%20indiana%20di%20Lakshmi%2C%20avorio%2C%20da%20pompei%2C%201-50%20dc%20ca.%2C%20149425%2C%2001.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Sailko"
+      }
+    },
+    {
+      "name": "Chicken 65",
+      "year": 1965,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%2065%20%28Dish%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%2065%20%28Dish%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Amiyashrivastava"
+      }
+    },
+    {
+      "name": "Nassak Diamond",
+      "year": 1500,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nassak%20Diamond%20copy.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nassak%20Diamond%20copy.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    }
+  ]
+}

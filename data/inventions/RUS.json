@@ -1,0 +1,62 @@
+{
+  "iso3": "RUS",
+  "name": "Russia",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Olivier salad",
+      "inventors": [
+        "Lucien Olivier"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Jacek Halicki"
+      }
+    },
+    {
+      "name": "3M-54 Kalibr",
+      "year": 1983,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/3M-54E%20Sketch.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:3M-54E%20Sketch.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Allocer"
+      }
+    },
+    {
+      "name": "Orlov Trotter",
+      "inventors": [
+        "Alexei Grigoryevich Orlov"
+      ],
+      "year": 1784,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grey%20Orlov%20Trotter.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Grey%20Orlov%20Trotter.jpg",
+        "license": "CC BY 2.0",
+        "author": "Alexander"
+      }
+    },
+    {
+      "name": "2S42 Lotos",
+      "inventors": [
+        "TsNIITochMash"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2S42%20Lotos.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:2S42%20Lotos.jpg",
+        "license": "CC BY 4.0",
+        "author": "Ministry of Defence of the Russian Federation"
+      }
+    },
+    {
+      "name": "Matryoshka",
+      "inventors": [
+        "ALROSA"
+      ],
+      "year": 2019
+    }
+  ]
+}

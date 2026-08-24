@@ -1,0 +1,18 @@
+{
+  "iso3": "PRT",
+  "name": "Portugal",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Pergaminho Sharrer",
+      "year": 1990,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pergamino%20Sharrer.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pergamino%20Sharrer.jpg",
+        "license": "Public domain",
+        "author": null
+      }
+    }
+  ]
+}

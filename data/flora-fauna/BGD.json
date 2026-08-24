@@ -1,0 +1,61 @@
+{
+  "iso3": "BGD",
+  "name": "Bangladesh",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Bengal tiger",
+      "type": "national animal",
+      "scientificName": "Panthera tigris tigris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Panthera%20tigris%20tigris.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Panthera%20tigris%20tigris.jpg",
+        "license": "Public domain",
+        "author": "Hollingsworth, John and Karen, retouched by Zwoenitzer"
+      }
+    },
+    {
+      "name": "Ilish",
+      "type": "national fish",
+      "scientificName": "Tenualosa ilisha",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ilish.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ilish.JPG",
+        "license": "CC BY-SA 2.5",
+        "author": "No machine-readable author provided. Mamun2a assumed (based on copyright claims)."
+      }
+    },
+    {
+      "name": "Magpie robin",
+      "type": "national bird",
+      "scientificName": "Copsychus saularis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Magpie%20robin.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Magpie%20robin.jpg",
+        "license": "CC BY 2.5",
+        "author": null
+      }
+    }
+  ],
+  "tree": {
+    "name": "Mango tree",
+    "type": "national tree",
+    "scientificName": "Mangifera indica",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango%20blossoms.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Mango%20blossoms.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Amar"
+    }
+  },
+  "flower": {
+    "name": "water lily",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nymphaea%20nouchali5.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Nymphaea%20nouchali5.JPG",
+      "license": "CC BY 3.0",
+      "author": "TC Tao"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "iso3": "SYC",
+  "name": "Seychelles",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Shark chutney",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SeychellesSharkChutney.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:SeychellesSharkChutney.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Ian Taylor"
+      }
+    },
+    {
+      "name": "Ladob"
+    }
+  ]
+}

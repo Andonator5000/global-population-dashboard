@@ -1,0 +1,36 @@
+{
+  "iso3": "BGR",
+  "name": "Bulgaria",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Sofia Airport",
+      "iata": "SOF",
+      "municipality": "Sofia",
+      "large": true,
+      "passengers": 7992702
+    },
+    {
+      "name": "Burgas Airport",
+      "iata": "BOJ",
+      "municipality": "Burgas",
+      "large": true,
+      "passengers": 3277229
+    },
+    {
+      "name": "Varna Airport",
+      "iata": "VAR",
+      "municipality": "Varna",
+      "large": true,
+      "passengers": 2281134
+    },
+    {
+      "name": "Plovdiv International Airport",
+      "iata": "PDV",
+      "municipality": "Plovdiv",
+      "large": true,
+      "passengers": 221721
+    }
+  ]
+}

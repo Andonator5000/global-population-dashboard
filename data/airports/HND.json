@@ -1,0 +1,50 @@
+{
+  "iso3": "HND",
+  "name": "Honduras",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Ramón Villeda Morales International Airport",
+      "iata": "SAP",
+      "municipality": "San Pedro Sula",
+      "large": true,
+      "passengers": 1270997
+    },
+    {
+      "name": "Toncontín Airport",
+      "iata": "TGU",
+      "municipality": "Tegucigalpa",
+      "large": false,
+      "passengers": 697925
+    },
+    {
+      "name": "Juan Manuel Gálvez International Airport",
+      "iata": "RTB",
+      "municipality": "Coxen Hole",
+      "large": true,
+      "passengers": 371657
+    },
+    {
+      "name": "Golosón International Airport",
+      "iata": "LCE",
+      "municipality": "La Ceiba",
+      "large": false,
+      "passengers": 254554
+    },
+    {
+      "name": "Palmerola International Airport",
+      "iata": "XPL",
+      "municipality": "Palmerola",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "La Laguna Airport",
+      "iata": "GJA",
+      "municipality": "Guanaja",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

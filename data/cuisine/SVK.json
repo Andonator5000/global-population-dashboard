@@ -1,0 +1,26 @@
+{
+  "iso3": "SVK",
+  "name": "Slovakia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "lokša",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lokse.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lokse.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Maciarka"
+      }
+    },
+    {
+      "name": "strapačky",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Strapa%C4%8Dky.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Strapa%C4%8Dky.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Maciarka"
+      }
+    }
+  ]
+}

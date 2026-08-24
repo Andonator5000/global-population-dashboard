@@ -1,0 +1,62 @@
+{
+  "iso3": "PRT",
+  "name": "Portugal",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "pastel de nata",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pastel%20de%20nata%20septembre%202015.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pastel%20de%20nata%20septembre%202015.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Photo Claude TRUONG-NGOC"
+      }
+    },
+    {
+      "name": "Açorda",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A%C3%A7orda%20%C3%A0%20Alentejana.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:A%C3%A7orda%20%C3%A0%20Alentejana.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Filipe Fortes"
+      }
+    },
+    {
+      "name": "Serradura",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Serradura.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Serradura.JPG",
+        "license": "CC0",
+        "author": "Popo le Chien"
+      }
+    },
+    {
+      "name": "Xerém",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Xar%C3%A9m%20algarvio.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Xar%C3%A9m%20algarvio.jpg",
+        "license": "CC BY 3.0",
+        "author": "Adriao"
+      }
+    },
+    {
+      "name": "espetada",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zum%20Grill%20umgebautes%20Fass%20mit%20Espetada-Spie%C3%9Fen%20II.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Zum%20Grill%20umgebautes%20Fass%20mit%20Espetada-Spie%C3%9Fen%20II.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "GerritR"
+      }
+    },
+    {
+      "name": "Molotof",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Molotof%20%2848144427677%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Molotof%20%2848144427677%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "David Ceballos from Madrid, España"
+      }
+    }
+  ]
+}

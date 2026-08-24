@@ -1,0 +1,53 @@
+{
+  "iso3": "EGY",
+  "name": "Egypt",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "kofta",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/EgFoodKofta.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:EgFoodKofta.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Roland Unger"
+      }
+    },
+    {
+      "name": "ful medames",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Foul%20Mdammis%2C%20Tunisie.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Foul%20Mdammis%2C%20Tunisie.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Habib M'henni"
+      }
+    },
+    {
+      "name": "koshari",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20food%20Koshary.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Egyptian%20food%20Koshary.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Dina Said"
+      }
+    },
+    {
+      "name": "basbousa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Basboosa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Basboosa.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "stu_spivack"
+      }
+    },
+    {
+      "name": "Hawawshi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20meatloaf.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Egyptian%20meatloaf.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Mkevy"
+      }
+    }
+  ]
+}

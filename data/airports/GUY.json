@@ -1,0 +1,36 @@
+{
+  "iso3": "GUY",
+  "name": "Guyana",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Cheddi Jagan International Airport",
+      "iata": "GEO",
+      "municipality": "Georgetown",
+      "large": true,
+      "passengers": 657433
+    },
+    {
+      "name": "Eugene F. Correia International Airport",
+      "iata": "OGL",
+      "municipality": "Ogle",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kaieteur Airport",
+      "iata": "KAI",
+      "municipality": "Kaieteur Falls",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Lethem Airport",
+      "iata": "LTM",
+      "municipality": "Lethem",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

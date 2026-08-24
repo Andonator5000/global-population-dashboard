@@ -1,0 +1,148 @@
+{
+  "iso3": "ITA",
+  "name": "Italy",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Rome–Fiumicino Leonardo da Vinci International Airport",
+      "iata": "FCO",
+      "municipality": "Rome",
+      "large": true,
+      "passengers": 51306744
+    },
+    {
+      "name": "Milan Malpensa International Airport",
+      "iata": "MXP",
+      "municipality": "Ferno (VA)",
+      "large": true,
+      "passengers": 31385585
+    },
+    {
+      "name": "Il Caravaggio International Airport",
+      "iata": "BGY",
+      "municipality": "Orio al Serio (BG)",
+      "large": true,
+      "passengers": 17353573
+    },
+    {
+      "name": "Milano Linate Airport",
+      "iata": "LIN",
+      "municipality": "Segrate (MI)",
+      "large": true,
+      "passengers": 14291578
+    },
+    {
+      "name": "Naples International Airport",
+      "iata": "NAP",
+      "municipality": "Napoli",
+      "large": true,
+      "passengers": 13271522
+    },
+    {
+      "name": "Catania-Fontanarossa Airport",
+      "iata": "CTA",
+      "municipality": "Catania",
+      "large": true,
+      "passengers": 12369485
+    },
+    {
+      "name": "Venice Marco Polo Airport",
+      "iata": "VCE",
+      "municipality": "Venezia (VE)",
+      "large": true,
+      "passengers": 11850336
+    },
+    {
+      "name": "Bologna Guglielmo Marconi Airport",
+      "iata": "BLQ",
+      "municipality": "Bologna",
+      "large": true,
+      "passengers": 11138013
+    },
+    {
+      "name": "Bari Karol Wojtyła International Airport",
+      "iata": "BRI",
+      "municipality": "Bari",
+      "large": true,
+      "passengers": 7977881
+    },
+    {
+      "name": "Falcone–Borsellino Airport",
+      "iata": "PMO",
+      "municipality": "Palermo",
+      "large": true,
+      "passengers": 7117822
+    },
+    {
+      "name": "Pisa International Airport",
+      "iata": "PSA",
+      "municipality": "Pisa (PI)",
+      "large": true,
+      "passengers": 5944769
+    },
+    {
+      "name": "Ciampino–G. B. Pastine International Airport",
+      "iata": "CIA",
+      "municipality": "Rome",
+      "large": true,
+      "passengers": 5885812
+    },
+    {
+      "name": "Cagliari Elmas Airport",
+      "iata": "CAG",
+      "municipality": "Cagliari",
+      "large": true,
+      "passengers": 5254433
+    },
+    {
+      "name": "Turin Airport",
+      "iata": "TRN",
+      "municipality": "Caselle Torinese (TO)",
+      "large": true,
+      "passengers": 5006169
+    },
+    {
+      "name": "Verona Villafranca Valerio Catullo Airport",
+      "iata": "VRN",
+      "municipality": "Caselle (VR)",
+      "large": true,
+      "passengers": 3638088
+    },
+    {
+      "name": "Florence Airport, Peretola",
+      "iata": "FLR",
+      "municipality": "Firenze (FI)",
+      "large": true,
+      "passengers": 3516925
+    },
+    {
+      "name": "Treviso Airport",
+      "iata": "TSF",
+      "municipality": "Treviso (TV)",
+      "large": true,
+      "passengers": 3308955
+    },
+    {
+      "name": "Brindisi Airport",
+      "iata": "BDS",
+      "municipality": "Brindisi",
+      "large": true,
+      "passengers": 3168786
+    },
+    {
+      "name": "Olbia Costa Smeralda Airport",
+      "iata": "OLB",
+      "municipality": "Olbia (SS)",
+      "large": true,
+      "passengers": 3167368
+    },
+    {
+      "name": "Lamezia Terme Sant'Eufemia International Airport",
+      "iata": "SUF",
+      "municipality": "Lamezia Terme (CZ)",
+      "large": true,
+      "passengers": 2978110
+    }
+  ]
+}

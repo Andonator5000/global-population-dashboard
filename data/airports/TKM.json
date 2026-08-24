@@ -1,0 +1,50 @@
+{
+  "iso3": "TKM",
+  "name": "Turkmenistan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Ashgabat International Airport",
+      "iata": "ASB",
+      "municipality": "Ashgabat",
+      "large": true,
+      "passengers": 2450000
+    },
+    {
+      "name": "Dashoguz International Airport",
+      "iata": "TAZ",
+      "municipality": "Daşoguz",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Türkmenabat International Airport",
+      "iata": "CRZ",
+      "municipality": "Türkmenabat",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Balkanabat International Airport",
+      "iata": "BKN",
+      "municipality": "Balkanabat",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mary International Airport",
+      "iata": "MYP",
+      "municipality": "Mary",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Turkmenbaşy International Airport",
+      "iata": "KRW",
+      "municipality": "Turkmenbaşy",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

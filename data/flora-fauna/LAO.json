@@ -1,0 +1,39 @@
+{
+  "iso3": "LAO",
+  "name": "Laos",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Asian elephant",
+      "type": "national animal",
+      "scientificName": "Elephas maximus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Elephas%20maximus%20Kobe%2002.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Elephas%20maximus%20Kobe%2002.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Corpse Reviver"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Frangipani",
+    "type": "national tree",
+    "scientificName": "Plumeria",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Frangipani%20flowers.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Frangipani%20flowers.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Renesis"
+    }
+  },
+  "flower": {
+    "name": "plumeria",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Plumeria%20rubra-4.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Plumeria%20rubra-4.JPG",
+      "license": "CC BY-SA 4.0",
+      "author": "Varun Pabrai"
+    }
+  }
+}

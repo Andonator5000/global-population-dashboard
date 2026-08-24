@@ -1,0 +1,132 @@
+{
+  "iso3": "USA",
+  "name": "United States",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "basketball",
+      "inventors": [
+        "James Naismith"
+      ],
+      "year": 1891,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dream%20Team%20at%20the%201992%20Summer%20Olympics.JPEG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dream%20Team%20at%20the%201992%20Summer%20Olympics.JPEG",
+        "license": "Public domain",
+        "author": "Ken Hackman, U.S. Air Force"
+      }
+    },
+    {
+      "name": "volleyball",
+      "inventors": [
+        "William G. Morgan"
+      ],
+      "year": 1895,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Triple%20block%20%28Serbia%20vs%20China%2C%20Grand%20Prix%202017%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Triple%20block%20%28Serbia%20vs%20China%2C%20Grand%20Prix%202017%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Jeffrey Ng from Hong Kong"
+      }
+    },
+    {
+      "name": "baseball",
+      "year": 1900,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zack%20Greinke%20on%20July%2029%2C%202009.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Zack%20Greinke%20on%20July%2029%2C%202009.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Keith Allison on Flickr"
+      }
+    },
+    {
+      "name": "Coca-Cola",
+      "inventors": [
+        "John Pemberton"
+      ],
+      "year": 1886,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/15-09-26-RalfR-WLC-0098%20-%20Coca-Cola%20glass%20bottle%20%28Germany%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0098%20-%20Coca-Cola%20glass%20bottle%20%28Germany%29.jpg",
+        "license": "Public domain",
+        "author": "Ralf Roletschek"
+      }
+    },
+    {
+      "name": "ChatGPT",
+      "inventors": [
+        "OpenAI"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png",
+        "license": "Public domain",
+        "author": "Gio Antonio"
+      }
+    },
+    {
+      "name": "Pepsi",
+      "inventors": [
+        "Caleb Bradham"
+      ],
+      "year": 1893,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pepsi%20Blue.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pepsi%20Blue.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Fieldafar"
+      }
+    },
+    {
+      "name": "hot dog",
+      "inventors": [
+        "Charles Feltman"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hotdog%20-%20Evan%20Swigart.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hotdog%20-%20Evan%20Swigart.jpg",
+        "license": "CC BY 2.0",
+        "author": "Evan Swigart from Chicago, USA"
+      }
+    },
+    {
+      "name": "USB flash drive",
+      "inventors": [
+        "IBM",
+        "Pua Khein-Seng",
+        "Amir Ban"
+      ],
+      "year": 1996,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kingston%20Technology%20USB%20flash%20drives.%20USB%203.0.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kingston%20Technology%20USB%20flash%20drives.%20USB%203.0.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Dmitry Makeev"
+      }
+    },
+    {
+      "name": "electric guitar",
+      "inventors": [
+        "George Beauchamp"
+      ],
+      "year": 1932,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Yngwie%20Malmsteen%27s%20electric%20guitar.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Yngwie%20Malmsteen%27s%20electric%20guitar.jpg",
+        "license": "CC BY 2.0",
+        "author": "francesco from Italia"
+      }
+    },
+    {
+      "name": "beach volleyball",
+      "year": 1920,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/USMC-111007-M-UV915-234.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:USMC-111007-M-UV915-234.jpg",
+        "license": "Public domain",
+        "author": null
+      }
+    }
+  ]
+}

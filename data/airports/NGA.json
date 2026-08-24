@@ -1,0 +1,148 @@
+{
+  "iso3": "NGA",
+  "name": "Nigeria",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Murtala Muhammed International Airport",
+      "iata": "LOS",
+      "municipality": "Lagos",
+      "large": true,
+      "passengers": 7496318
+    },
+    {
+      "name": "Nnamdi Azikiwe International Airport",
+      "iata": "ABV",
+      "municipality": "Abuja",
+      "large": true,
+      "passengers": 5554302
+    },
+    {
+      "name": "Port Harcourt International Airport",
+      "iata": "PHC",
+      "municipality": "Port Harcourt",
+      "large": true,
+      "passengers": 1337477
+    },
+    {
+      "name": "Mallam Aminu Kano International Airport",
+      "iata": "KAN",
+      "municipality": "Kano",
+      "large": true,
+      "passengers": 606221
+    },
+    {
+      "name": "Sam Mbakwe International Cargo Airport",
+      "iata": "QOW",
+      "municipality": "Owerri",
+      "large": false,
+      "passengers": 547295
+    },
+    {
+      "name": "Akanu Ibiam International Airport",
+      "iata": "ENU",
+      "municipality": "Enegu",
+      "large": true,
+      "passengers": 524859
+    },
+    {
+      "name": "Kaduna International Airport",
+      "iata": "KAD",
+      "municipality": "Kaduna",
+      "large": true,
+      "passengers": 400921
+    },
+    {
+      "name": "Benin Airport",
+      "iata": "BNI",
+      "municipality": "Benin",
+      "large": false,
+      "passengers": 350324
+    },
+    {
+      "name": "Yola Airport",
+      "iata": "YOL",
+      "municipality": "Yola",
+      "large": false,
+      "passengers": 228326
+    },
+    {
+      "name": "Maiduguri International Airport",
+      "iata": "MIU",
+      "municipality": "Maiduguri",
+      "large": true,
+      "passengers": 213458
+    },
+    {
+      "name": "Warri Airport",
+      "iata": "QRW",
+      "municipality": "Okpe",
+      "large": false,
+      "passengers": 210773
+    },
+    {
+      "name": "Margaret Ekpo International Airport",
+      "iata": "CBQ",
+      "municipality": "Calabar",
+      "large": false,
+      "passengers": 202780
+    },
+    {
+      "name": "Sadiq Abubakar III International Airport",
+      "iata": "SKO",
+      "municipality": "Sokoto",
+      "large": true,
+      "passengers": 156134
+    },
+    {
+      "name": "General Tunde Idiagbon International Airport",
+      "iata": "ILR",
+      "municipality": "Ilorin/Ogbomosho",
+      "large": true,
+      "passengers": 99892
+    },
+    {
+      "name": "Ibadan Airport",
+      "iata": "IBA",
+      "municipality": "Ibadan",
+      "large": false,
+      "passengers": 80712
+    },
+    {
+      "name": "Yakubu Gowon Airport",
+      "iata": "JOS",
+      "municipality": "Jos",
+      "large": false,
+      "passengers": 62570
+    },
+    {
+      "name": "Akure Airport",
+      "iata": "AKR",
+      "municipality": "Akure",
+      "large": false,
+      "passengers": 26384
+    },
+    {
+      "name": "Umaru Musa Yar'adua Airport",
+      "iata": "DKA",
+      "municipality": "Katsina",
+      "large": false,
+      "passengers": 13782
+    },
+    {
+      "name": "Makurdi Airport",
+      "iata": "MDI",
+      "municipality": "Makurdi",
+      "large": false,
+      "passengers": 2132
+    },
+    {
+      "name": "Asaba International Airport",
+      "iata": "ABB",
+      "municipality": "Asaba",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "iso3": "VNM",
+  "name": "Vietnam",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Tan Son Nhat International Airport",
+      "iata": "SGN",
+      "municipality": "Ho Chi Minh City",
+      "large": true,
+      "passengers": 41243240
+    },
+    {
+      "name": "Noi Bai International Airport",
+      "iata": "HAN",
+      "municipality": "Hanoi (Soc Son)",
+      "large": true,
+      "passengers": 29200000
+    },
+    {
+      "name": "Da Nang International Airport",
+      "iata": "DAD",
+      "municipality": "Da Nang",
+      "large": true,
+      "passengers": 15504650
+    },
+    {
+      "name": "Cam Ranh International Airport / Cam Ranh Air Base",
+      "iata": "CXR",
+      "municipality": "Nha Trang/nha Trang aiurportCam Ranh",
+      "large": true,
+      "passengers": 10000000
+    },
+    {
+      "name": "Phú Quốc International Airport",
+      "iata": "PQC",
+      "municipality": "Phu Quoc Island",
+      "large": true,
+      "passengers": 3400000
+    },
+    {
+      "name": "Cat Bi International Airport",
+      "iata": "HPH",
+      "municipality": "Haiphong (Hai An)",
+      "large": true,
+      "passengers": 2373700
+    },
+    {
+      "name": "Phu Bai International Airport",
+      "iata": "HUI",
+      "municipality": "Huế",
+      "large": false,
+      "passengers": 1831000
+    },
+    {
+      "name": "Vinh Airport",
+      "iata": "VII",
+      "municipality": "Vinh",
+      "large": false,
+      "passengers": 1800000
+    },
+    {
+      "name": "Lien Khuong Airport",
+      "iata": "DLI",
+      "municipality": "Da Lat",
+      "large": false,
+      "passengers": 1750000
+    },
+    {
+      "name": "Phu Cat Airport",
+      "iata": "UIH",
+      "municipality": "Quy Nohn",
+      "large": false,
+      "passengers": 1500000
+    },
+    {
+      "name": "Buon Ma Thuot Airport",
+      "iata": "BMV",
+      "municipality": "Buon Ma Thuot",
+      "large": false,
+      "passengers": 1220000
+    },
+    {
+      "name": "Can Tho International Airport",
+      "iata": "VCA",
+      "municipality": "Can Tho",
+      "large": true,
+      "passengers": 815000
+    },
+    {
+      "name": "Pleiku Airport",
+      "iata": "PXU",
+      "municipality": "Pleiku",
+      "large": false,
+      "passengers": 797509
+    },
+    {
+      "name": "Dong Hoi Airport",
+      "iata": "VDH",
+      "municipality": "Dong Hoi",
+      "large": false,
+      "passengers": 700000
+    },
+    {
+      "name": "Dong Tac Airport",
+      "iata": "TBB",
+      "municipality": "Tuy Hoa",
+      "large": false,
+      "passengers": 403000
+    },
+    {
+      "name": "Con Dao Airport",
+      "iata": "VCS",
+      "municipality": "Con Dao",
+      "large": false,
+      "passengers": 400000
+    },
+    {
+      "name": "Van Don International Airport",
+      "iata": "VDO",
+      "municipality": "Van Don",
+      "large": false,
+      "passengers": 260434
+    },
+    {
+      "name": "Dien Bien Phu Airport",
+      "iata": "DIN",
+      "municipality": "Dien Bien Phu",
+      "large": false,
+      "passengers": 81564
+    },
+    {
+      "name": "Rach Gia Airport",
+      "iata": "VKG",
+      "municipality": "Rach Gia",
+      "large": false,
+      "passengers": 60180
+    },
+    {
+      "name": "Cà Mau Airport",
+      "iata": "CAH",
+      "municipality": "Ca Mau City",
+      "large": false,
+      "passengers": 37995
+    }
+  ]
+}

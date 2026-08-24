@@ -1,0 +1,53 @@
+{
+  "iso3": "FIN",
+  "name": "Finland",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "kalakukko",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kalakukko%20%28opened%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kalakukko%20%28opened%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Rst2000"
+      }
+    },
+    {
+      "name": "sahti",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Finlandia%20sahti.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Finlandia%20sahti.jpg",
+        "license": "Public domain",
+        "author": "User:Mahlum"
+      }
+    },
+    {
+      "name": "Lohikeitto",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lohikeitto.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lohikeitto.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Tuijasal"
+      }
+    },
+    {
+      "name": "Porkkanalaatikko",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Carrot%20casserole.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Carrot%20casserole.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Tiia Monto"
+      }
+    },
+    {
+      "name": "Salmiakki Koskenkorva",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lakritzlikoer.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lakritzlikoer.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Superbass"
+      }
+    }
+  ]
+}

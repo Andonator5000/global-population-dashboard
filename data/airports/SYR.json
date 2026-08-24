@@ -1,0 +1,36 @@
+{
+  "iso3": "SYR",
+  "name": "Syria",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Damascus International Airport",
+      "iata": "DAM",
+      "municipality": "Damascus",
+      "large": true,
+      "passengers": 5500000
+    },
+    {
+      "name": "Aleppo International Airport",
+      "iata": "ALP",
+      "municipality": "Aleppo",
+      "large": true,
+      "passengers": 226260
+    },
+    {
+      "name": "Latakia International Airport",
+      "iata": "LTK",
+      "municipality": "Latakia",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Qamishli International Airport",
+      "iata": "KAC",
+      "municipality": "Qamishli",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

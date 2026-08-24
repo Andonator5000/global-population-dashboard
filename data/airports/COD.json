@@ -1,0 +1,120 @@
+{
+  "iso3": "COD",
+  "name": "DR Congo",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Bangoka International Airport",
+      "iata": "FKI",
+      "municipality": "Kisangani",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Goma International Airport",
+      "iata": "GOM",
+      "municipality": "Goma",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Lubumbashi International Airport",
+      "iata": "FBM",
+      "municipality": "Lubumbashi",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Ndjili International Airport",
+      "iata": "FIH",
+      "municipality": "Kinshasa",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Bandundu Airport",
+      "iata": "FDU",
+      "municipality": "Bandundu",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Bunia Airport",
+      "iata": "BUX",
+      "municipality": "Bunia",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gbadolite Airport",
+      "iata": "BDT",
+      "municipality": "Gbadolite",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gemena Airport",
+      "iata": "GMA",
+      "municipality": "Gemena",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kalemie Airport",
+      "iata": "FMI",
+      "municipality": "Kalemie",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kananga Airport",
+      "iata": "KGA",
+      "municipality": "Kananga",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kikwit Airport",
+      "iata": "KKW",
+      "municipality": "Kikwit",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kindu Airport",
+      "iata": "KND",
+      "municipality": "Kindu",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kolwezi Airport",
+      "iata": "KWZ",
+      "municipality": "Kolwezi",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Matari Airport",
+      "iata": "IRP",
+      "municipality": "Isiro",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mbandaka Airport",
+      "iata": "MDK",
+      "municipality": "Mbandaka",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mbuji Mayi Airport",
+      "iata": "MJM",
+      "municipality": "Mbuji Mayi",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

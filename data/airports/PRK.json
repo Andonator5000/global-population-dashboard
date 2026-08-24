@@ -1,0 +1,36 @@
+{
+  "iso3": "PRK",
+  "name": "North Korea",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Pyongyang Sunan International Airport",
+      "iata": "FNJ",
+      "municipality": "Pyongyang",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Orang (Chongjin) Airport",
+      "iata": "RGO",
+      "municipality": "Hoemun-ri",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Sondok Airport",
+      "iata": "DSO",
+      "municipality": "Sŏndŏng-ni",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Wonsan Kalma Airport",
+      "iata": "WOS",
+      "municipality": "Wonsan",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

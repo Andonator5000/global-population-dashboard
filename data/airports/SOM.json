@@ -1,0 +1,36 @@
+{
+  "iso3": "SOM",
+  "name": "Somalia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Egal International Airport",
+      "iata": "HGA",
+      "municipality": "Hargeisa",
+      "large": true,
+      "passengers": 85800
+    },
+    {
+      "name": "Aden Adde International Airport",
+      "iata": "MGQ",
+      "municipality": "Mogadishu",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Bender Qassim International Airport",
+      "iata": "BSA",
+      "municipality": "Bosaso",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Berbera Airport",
+      "iata": "BBO",
+      "municipality": "Berbera",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

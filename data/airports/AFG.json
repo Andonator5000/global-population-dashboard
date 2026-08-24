@@ -1,0 +1,43 @@
+{
+  "iso3": "AFG",
+  "name": "Afghanistan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Ahmad Shah Baba International Airport",
+      "iata": "KDH",
+      "municipality": "Kandahar",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Herat - Khwaja Abdullah Ansari International Airport",
+      "iata": "HEA",
+      "municipality": "Guzara",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Kabul International Airport",
+      "iata": "KBL",
+      "municipality": "Kabul",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Mazar-i-Sharif International Airport",
+      "iata": "MZR",
+      "municipality": "Mazar-i-Sharif",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Khost International Airport",
+      "iata": "KHT",
+      "municipality": "Khost",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "iso3": "MMR",
+  "name": "Myanmar",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Mandalay International Airport",
+      "iata": "MDL",
+      "municipality": "Mandalay",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Nay Pyi Taw International Airport",
+      "iata": "NYT",
+      "municipality": "Naypyitaw",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Yangon International Airport",
+      "iata": "RGN",
+      "municipality": "Yangon",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Dawei Airport",
+      "iata": "TVY",
+      "municipality": "Dawei",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Heho Airport",
+      "iata": "HEH",
+      "municipality": "Heho",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kawthoung Airport",
+      "iata": "KAW",
+      "municipality": "Kawthoung",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kengtung Airport",
+      "iata": "KET",
+      "municipality": "Kengtung",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kyaukpyu Airport",
+      "iata": "KYP",
+      "municipality": "Kyaukpyu",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Lashio Airport",
+      "iata": "LSH",
+      "municipality": "Lashio",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Loikaw Airport",
+      "iata": "LIW",
+      "municipality": "Loikaw",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mong Hsat Airport",
+      "iata": "MOG",
+      "municipality": "Mong Hsat",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Myeik Airport",
+      "iata": "MGZ",
+      "municipality": "Mkeik",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Myitkyina Airport",
+      "iata": "MYT",
+      "municipality": "Myitkyina",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Putao Airport",
+      "iata": "PBU",
+      "municipality": "Putao",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Sittwe Airport",
+      "iata": "AKY",
+      "municipality": "Sittwe",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Tachileik Airport",
+      "iata": "THL",
+      "municipality": "Tachileik",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Thandwe Airport",
+      "iata": "SNW",
+      "municipality": "Thandwe",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

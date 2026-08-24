@@ -1,0 +1,71 @@
+{
+  "iso3": "NPL",
+  "name": "Nepal",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Tribhuvan International Airport",
+      "iata": "KTM",
+      "municipality": "Kathmandu",
+      "large": true,
+      "passengers": 7327042
+    },
+    {
+      "name": "Pokhara Domestic Airport",
+      "iata": "PKR",
+      "municipality": "Pokhara",
+      "large": false,
+      "passengers": 720714
+    },
+    {
+      "name": "Biratnagar Airport",
+      "iata": "BIR",
+      "municipality": "Biratnagar",
+      "large": false,
+      "passengers": 596453
+    },
+    {
+      "name": "Nepalgunj Airport",
+      "iata": "KEP",
+      "municipality": "Nepalgunj",
+      "large": false,
+      "passengers": 453433
+    },
+    {
+      "name": "Gautam Buddha International Airport",
+      "iata": "BWA",
+      "municipality": "Siddharthanagar (Bhairahawa)",
+      "large": true,
+      "passengers": 388378
+    },
+    {
+      "name": "Tenzing-Hillary Airport",
+      "iata": "LUA",
+      "municipality": "Lukla",
+      "large": false,
+      "passengers": 146879
+    },
+    {
+      "name": "Janakpur Airport",
+      "iata": "JKR",
+      "municipality": "Janakpur",
+      "large": false,
+      "passengers": 136678
+    },
+    {
+      "name": "Taplejung Airport",
+      "iata": "TPJ",
+      "municipality": "Taplejung",
+      "large": false,
+      "passengers": 2691
+    },
+    {
+      "name": "Pokhara International Airport",
+      "iata": "PHH",
+      "municipality": "Pokhara",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

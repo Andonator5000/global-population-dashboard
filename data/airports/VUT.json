@@ -1,0 +1,29 @@
+{
+  "iso3": "VUT",
+  "name": "Vanuatu",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Bauerfield International Airport",
+      "iata": "VLI",
+      "municipality": "Port Vila",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Santo Pekoa International Airport",
+      "iata": "SON",
+      "municipality": "Luganville",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Whitegrass Airport",
+      "iata": "TAH",
+      "municipality": "Tanna Island",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

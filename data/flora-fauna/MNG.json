@@ -1,0 +1,51 @@
+{
+  "iso3": "MNG",
+  "name": "Mongolia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Przewalski's horse",
+      "type": "national animal",
+      "scientificName": "Equus ferus przewalskii",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Przewalski%27s%20Horse%20%2802710137%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Przewalski%27s%20Horse%20%2802710137%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "IAEA Imagebank"
+      }
+    },
+    {
+      "name": "Gobi bear",
+      "type": "national pride animal",
+      "scientificName": "Ursus arctos gobiensis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ursus%20arctos%20gobiensis.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ursus%20arctos%20gobiensis.jpg",
+        "license": "CC BY-SA 1.0",
+        "author": "Hunter J. Causey"
+      }
+    },
+    {
+      "name": "Saker falcon",
+      "type": "national bird",
+      "scientificName": "Falco cherrug",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Marek Szczepanek"
+      }
+    }
+  ],
+  "flower": {
+    "name": "Mongolian",
+    "scientificName": "Scabiosa comosa",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Scabiosa%20comosa%2058515197.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Scabiosa%20comosa%2058515197.jpg",
+      "license": "CC BY 4.0",
+      "author": "yvesbas"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "iso3": "SDN",
+  "name": "Sudan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Khartoum International Airport",
+      "iata": "KRT",
+      "municipality": "Khartoum",
+      "large": true,
+      "passengers": 3501512
+    },
+    {
+      "name": "Port Sudan New International Airport",
+      "iata": "PZU",
+      "municipality": "Port Sudan",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Dongola Airport",
+      "iata": "DOG",
+      "municipality": "Dongola",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "El Fasher Airport",
+      "iata": "ELF",
+      "municipality": "El Fasher",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "El-Obeid Airport",
+      "iata": "EBD",
+      "municipality": "El-Obeid",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kassala Airport",
+      "iata": "KSL",
+      "municipality": "Kassala",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Nyala Airport",
+      "iata": "UYL",
+      "municipality": "Nyala",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

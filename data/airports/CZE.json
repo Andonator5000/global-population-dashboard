@@ -1,0 +1,50 @@
+{
+  "iso3": "CZE",
+  "name": "Czechia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Václav Havel Airport Prague",
+      "iata": "PRG",
+      "municipality": "Prague",
+      "large": true,
+      "passengers": 17804900
+    },
+    {
+      "name": "Brno-Tuřany Airport",
+      "iata": "BRQ",
+      "municipality": "Brno",
+      "large": false,
+      "passengers": 557952
+    },
+    {
+      "name": "Leoš Janáček Airport Ostrava",
+      "iata": "OSR",
+      "municipality": "Mošnov",
+      "large": true,
+      "passengers": 377936
+    },
+    {
+      "name": "Pardubice Airport",
+      "iata": "PED",
+      "municipality": "Pardubice",
+      "large": true,
+      "passengers": 184140
+    },
+    {
+      "name": "Karlovy Vary Airport",
+      "iata": "KLV",
+      "municipality": "Karlovy Vary",
+      "large": true,
+      "passengers": 100872
+    },
+    {
+      "name": "České Budějovice South Bohemian Airport",
+      "iata": "JCL",
+      "municipality": "České Budějovice",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

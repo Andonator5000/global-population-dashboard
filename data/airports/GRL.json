@@ -1,0 +1,71 @@
+{
+  "iso3": "GRL",
+  "name": "Greenland",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Nuuk International Airport",
+      "iata": "GOH",
+      "municipality": "Nuuk",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Aasiaat Airport",
+      "iata": "JEG",
+      "municipality": "Aasiaat",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Ilulissat Airport",
+      "iata": "JAV",
+      "municipality": "Ilulissat",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kangerlussuaq International Airport",
+      "iata": "SFJ",
+      "municipality": "Kangerlussuaq",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kulusuk Airport",
+      "iata": "KUS",
+      "municipality": "Kulusuk",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Neerlerit Inaat Airport",
+      "iata": "CNP",
+      "municipality": "Neerlerit Inaat",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Qaanaaq Airport",
+      "iata": "NAQ",
+      "municipality": "Qaanaaq",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Qaqortoq Airport",
+      "iata": "JJU",
+      "municipality": "Qaqortoq",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Sisimiut Airport",
+      "iata": "JHS",
+      "municipality": "Sisimiut",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

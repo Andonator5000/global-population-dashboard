@@ -1,0 +1,29 @@
+{
+  "iso3": "MNP",
+  "name": "Northern Mariana Islands",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Saipan International Airport",
+      "iata": "SPN",
+      "municipality": "I Fadang, Saipan",
+      "large": false,
+      "passengers": 1371284
+    },
+    {
+      "name": "Francisco Manglona Borja / Tinian International Airport",
+      "iata": "TIQ",
+      "municipality": "Tinian Island",
+      "large": false,
+      "passengers": 82508
+    },
+    {
+      "name": "Rota International Airport",
+      "iata": "ROP",
+      "municipality": "Rota Island",
+      "large": true,
+      "passengers": 42428
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "iso3": "PRK",
+  "name": "North Korea",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Qianlima",
+      "type": "national animal",
+      "scientificName": "Mythical",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chollima%20statue%2005.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chollima%20statue%2005.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Nicor"
+      }
+    },
+    {
+      "name": "Siberian tiger",
+      "type": "national animal",
+      "scientificName": "Panthera tigris altaica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Siberischer%20tiger%20de.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Siberischer%20tiger%20de.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "S. Taheri"
+      }
+    },
+    {
+      "name": "Korean magpie",
+      "type": "national bird",
+      "scientificName": "Pica serica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20magpie%20in%20Daejeon%20%28side%20profile%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korean%20magpie%20in%20Daejeon%20%28side%20profile%29.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Yoo Chung"
+      }
+    },
+    {
+      "name": "Pungsan dog",
+      "type": "national dog",
+      "scientificName": "Canis familiaris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Poongsandogs.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Poongsandogs.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Maeng9981"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Pine",
+    "type": "national tree",
+    "scientificName": "Pinus",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pinus%20densiflora%20Kumgangsan.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Pinus%20densiflora%20Kumgangsan.jpg",
+      "license": "CC BY 2.0",
+      "author": "yeowatzup at Flickr"
+    }
+  },
+  "flower": {
+    "name": "Korean",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hangugeo-Chosono.svg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Hangugeo-Chosono.svg",
+      "license": "Public domain",
+      "author": "Great Brightstar"
+    }
+  }
+}

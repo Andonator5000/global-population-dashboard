@@ -1,0 +1,17 @@
+{
+  "iso3": "CAF",
+  "name": "Central African Republic",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Maboké",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mabok%C3%A9%203.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mabok%C3%A9%203.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Zakalingba"
+      }
+    }
+  ]
+}

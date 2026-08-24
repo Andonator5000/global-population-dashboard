@@ -1,0 +1,64 @@
+{
+  "iso3": "PRI",
+  "name": "Puerto Rico",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Luis Munoz Marin International Airport",
+      "iata": "SJU",
+      "municipality": "San Juan",
+      "large": true,
+      "passengers": 12197553
+    },
+    {
+      "name": "Rafael Hernández International Airport",
+      "iata": "BQN",
+      "municipality": "Aguadilla",
+      "large": false,
+      "passengers": 739848
+    },
+    {
+      "name": "Mercedita International Airport",
+      "iata": "PSE",
+      "municipality": "Ponce",
+      "large": false,
+      "passengers": 211608
+    },
+    {
+      "name": "Antonio Rivera Rodriguez Airport",
+      "iata": "VQS",
+      "municipality": "Vieques",
+      "large": false,
+      "passengers": 126208
+    },
+    {
+      "name": "José Aponte de la Torre Airport",
+      "iata": "NRR",
+      "municipality": "Ceiba",
+      "large": false,
+      "passengers": 86010
+    },
+    {
+      "name": "Benjamin Rivera Noriega Airport",
+      "iata": "CPX",
+      "municipality": "Culebra",
+      "large": false,
+      "passengers": 62282
+    },
+    {
+      "name": "Fernando Luis Ribas Dominicci Airport",
+      "iata": "SIG",
+      "municipality": "San Juan",
+      "large": false,
+      "passengers": 48108
+    },
+    {
+      "name": "Eugenio Maria De Hostos Airport",
+      "iata": "MAZ",
+      "municipality": "Mayaguez",
+      "large": false,
+      "passengers": 15352
+    }
+  ]
+}

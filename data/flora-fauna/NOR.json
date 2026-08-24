@@ -1,0 +1,52 @@
+{
+  "iso3": "NOR",
+  "name": "Norway",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Eurasian elk/moose",
+      "type": "national animal",
+      "scientificName": "Alces alces",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moose-Gustav.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Moose-Gustav.jpg",
+        "license": "CC BY 2.5",
+        "author": null
+      }
+    },
+    {
+      "name": "Fjord horse",
+      "type": "national horse",
+      "scientificName": "Equus ferus caballus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fjording%2C%20mother%20and%20daughter.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fjording%2C%20mother%20and%20daughter.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "GoogleMe"
+      }
+    },
+    {
+      "name": "Lion",
+      "type": "royal national animal",
+      "scientificName": "Panthera leo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Norway.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Coat%20of%20arms%20of%20Norway.svg",
+        "license": "Public domain",
+        "author": "Emblazonment by Sverre Morken (1992), redrawn by Jonas Madsen Rogne (2023) on behalf of the Norwegian Government Design Programme."
+      }
+    },
+    {
+      "name": "White-throated dipper",
+      "type": "national bird",
+      "scientificName": "Cinclus cinclus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cinclus%20cinclus%20R%28ThKraft%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cinclus%20cinclus%20R%28ThKraft%29.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Thomas Kraft (ThKraft)"
+      }
+    }
+  ]
+}

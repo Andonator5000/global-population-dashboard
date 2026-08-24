@@ -1,0 +1,15 @@
+{
+  "iso3": "GUY",
+  "name": "Guyana",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "flower": {
+    "name": "Victoria regia lily",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20amazonica%20edit%201.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Victoria%20amazonica%20edit%201.jpg",
+      "license": "CC BY 3.0",
+      "author": "Bilby"
+    }
+  }
+}

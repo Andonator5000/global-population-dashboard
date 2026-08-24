@@ -1,0 +1,18 @@
+{
+  "iso3": "VNM",
+  "name": "Vietnam",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "nón lá",
+      "year": 1300,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeune%20vietnamienne%20%C3%A0%20C%E1%BA%A7n%20Th%C6%A1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jeune%20vietnamienne%20%C3%A0%20C%E1%BA%A7n%20Th%C6%A1.jpg",
+        "license": "CC0",
+        "author": "Hisu Lee"
+      }
+    }
+  ]
+}

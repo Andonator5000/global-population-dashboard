@@ -1,0 +1,41 @@
+{
+  "iso3": "BHS",
+  "name": "Bahamas",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Blue marlin",
+      "type": "national fish",
+      "scientificName": "Makaira nigricans",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Atlantic%20blue%20marlin.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Atlantic%20blue%20marlin.jpg",
+        "license": "Public domain",
+        "author": "NOAA"
+      }
+    },
+    {
+      "name": "Flamingo",
+      "type": "national bird",
+      "scientificName": "Phoenicopterus ruber",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/American%20flamingo%20%28Phoenicopterus%20ruber%29.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:American%20flamingo%20%28Phoenicopterus%20ruber%29.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "Charles J. Sharp"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Lignum Vitae",
+    "type": "national tree",
+    "scientificName": "Guaiacum sanctum",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Guaiacum%20sanctum.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Guaiacum%20sanctum.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Mangostar"
+    }
+  }
+}

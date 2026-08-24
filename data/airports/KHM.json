@@ -1,0 +1,50 @@
+{
+  "iso3": "KHM",
+  "name": "Cambodia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Phnom Penh International Airport",
+      "iata": "PNH",
+      "municipality": "Phnom Penh (Pou Senchey)",
+      "large": true,
+      "passengers": 6252568
+    },
+    {
+      "name": "Sihanouk International Airport",
+      "iata": "KOS",
+      "municipality": "Preah Sihanouk",
+      "large": true,
+      "passengers": 1680000
+    },
+    {
+      "name": "Dara Sakor International Airport",
+      "iata": "DSY",
+      "municipality": "Ta Noun",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Siem Reap-Angkor International Airport",
+      "iata": "SAI",
+      "municipality": "Siem Reap",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Techo International Airport",
+      "iata": "KTI",
+      "municipality": "Phnom Penh (Boeng Khyang)",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Battambang Airport",
+      "iata": "BBM",
+      "municipality": "Battambang",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

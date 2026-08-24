@@ -1,0 +1,39 @@
+{
+  "iso3": "NGA",
+  "name": "Nigeria",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Eagle",
+      "type": "national animal",
+      "scientificName": "Accipitridae",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Martial%20eagle%20%28Polemaetus%20bellicosus%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Martial%20eagle%20%28Polemaetus%20bellicosus%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Charles J. Sharp"
+      }
+    },
+    {
+      "name": "Black crowned crane",
+      "type": "national bird",
+      "scientificName": "Balearica pavonina",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Balearica%20pavonina%20-%20Maroparque%2001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Balearica%20pavonina%20-%20Maroparque%2001.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "H. Zell"
+      }
+    }
+  ],
+  "flower": {
+    "name": "Costus spectabilis",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Costus%20spectabilis00%2C%20white%20background.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Costus%20spectabilis00%2C%20white%20background.jpg",
+      "license": "Public domain",
+      "author": "Matilda Smith (1854–1926)"
+    }
+  }
+}

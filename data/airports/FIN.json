@@ -1,0 +1,148 @@
+{
+  "iso3": "FIN",
+  "name": "Finland",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Helsinki Vantaa Airport",
+      "iata": "HEL",
+      "municipality": "Helsinki (Vantaa)",
+      "large": true,
+      "passengers": 21861082
+    },
+    {
+      "name": "Oulu Airport",
+      "iata": "OUL",
+      "municipality": "Oulu / Oulunsalo",
+      "large": true,
+      "passengers": 1105333
+    },
+    {
+      "name": "Rovaniemi Airport",
+      "iata": "RVN",
+      "municipality": "Rovaniemi",
+      "large": true,
+      "passengers": 735078
+    },
+    {
+      "name": "Tampere-Pirkkala Airport",
+      "iata": "TMP",
+      "municipality": "Tampere / Pirkkala",
+      "large": true,
+      "passengers": 709356
+    },
+    {
+      "name": "Turku Airport",
+      "iata": "TKU",
+      "municipality": "Turku",
+      "large": true,
+      "passengers": 454948
+    },
+    {
+      "name": "Vaasa Airport",
+      "iata": "VAA",
+      "municipality": "Vaasa",
+      "large": true,
+      "passengers": 374139
+    },
+    {
+      "name": "Kittilä International Airport",
+      "iata": "KTT",
+      "municipality": "Kittilä",
+      "large": true,
+      "passengers": 363161
+    },
+    {
+      "name": "Kuopio Airport",
+      "iata": "KUO",
+      "municipality": "Kuopio / Siilinjärvi",
+      "large": true,
+      "passengers": 332202
+    },
+    {
+      "name": "Ivalo Airport",
+      "iata": "IVL",
+      "municipality": "Ivalo",
+      "large": true,
+      "passengers": 243443
+    },
+    {
+      "name": "Jyväskylä Airport",
+      "iata": "JYV",
+      "municipality": "Jyväskylän Maalaiskunta",
+      "large": false,
+      "passengers": 235229
+    },
+    {
+      "name": "Joensuu Airport",
+      "iata": "JOE",
+      "municipality": "Joensuu",
+      "large": false,
+      "passengers": 185943
+    },
+    {
+      "name": "Kokkola-Pietarsaari Airport",
+      "iata": "KOK",
+      "municipality": "Kokkola / Kruunupyy",
+      "large": false,
+      "passengers": 131895
+    },
+    {
+      "name": "Kajaani Airport",
+      "iata": "KAJ",
+      "municipality": "Kajaani",
+      "large": false,
+      "passengers": 128533
+    },
+    {
+      "name": "Kemi-Tornio Airport",
+      "iata": "KEM",
+      "municipality": "Kemi / Tornio",
+      "large": false,
+      "passengers": 124643
+    },
+    {
+      "name": "Mariehamn Airport",
+      "iata": "MHQ",
+      "municipality": "Mariehamn",
+      "large": false,
+      "passengers": 118324
+    },
+    {
+      "name": "Kuusamo Airport",
+      "iata": "KAO",
+      "municipality": "Kuusamo",
+      "large": false,
+      "passengers": 117104
+    },
+    {
+      "name": "Pori Airport",
+      "iata": "POR",
+      "municipality": "Pori",
+      "large": false,
+      "passengers": 90618
+    },
+    {
+      "name": "Savonlinna Airport",
+      "iata": "SVL",
+      "municipality": "Savonlinna",
+      "large": false,
+      "passengers": 58258
+    },
+    {
+      "name": "Lappeenranta Airport",
+      "iata": "LPP",
+      "municipality": "Lappeenranta",
+      "large": true,
+      "passengers": 35792
+    },
+    {
+      "name": "Enontekio Airport",
+      "iata": "ENF",
+      "municipality": "Enontekio",
+      "large": false,
+      "passengers": 27979
+    }
+  ]
+}

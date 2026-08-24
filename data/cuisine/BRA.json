@@ -1,0 +1,53 @@
+{
+  "iso3": "BRA",
+  "name": "Brazil",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "akara",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Beans%20Ball-Akara.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Beans%20Ball-Akara.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "AkinkuotuFunmi"
+      }
+    },
+    {
+      "name": "farofa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Farofa%20brazil.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Farofa%20brazil.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "User Carioca"
+      }
+    },
+    {
+      "name": "Cajuína",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Caju%C3%ADnas%20do%20Brasil%20em%202019%20idem.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Caju%C3%ADnas%20do%20Brasil%20em%202019%20idem.jpg",
+        "license": "Public domain",
+        "author": "Moacir Ximenes"
+      }
+    },
+    {
+      "name": "Virado",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Virado%20a%20paulista.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Virado%20a%20paulista.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "edsonaoki"
+      }
+    },
+    {
+      "name": "Beirut sandwich",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Beirute%20sande.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Beirute%20sande.jpg",
+        "license": "Public domain",
+        "author": "“E Sortica (Sortica)”"
+      }
+    }
+  ]
+}

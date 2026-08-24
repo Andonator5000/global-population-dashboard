@@ -1,0 +1,30 @@
+{
+  "iso3": "GTM",
+  "name": "Guatemala",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Resplendent quetzal",
+      "type": "national bird",
+      "scientificName": "Pharomachrus mocinno",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pharomachrus%20mocinno%20Monteverde%2005.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pharomachrus%20mocinno%20Monteverde%2005.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Cephas"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Ceiba",
+    "type": "national tree",
+    "scientificName": "Ceiba pentandra",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kapok%20tree%20Honolulu.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kapok%20tree%20Honolulu.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Alexandre"
+    }
+  }
+}

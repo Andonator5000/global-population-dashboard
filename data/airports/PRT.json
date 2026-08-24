@@ -1,0 +1,134 @@
+{
+  "iso3": "PRT",
+  "name": "Portugal",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Lisbon Humberto Delgado Airport",
+      "iata": "LIS",
+      "municipality": "Lisbon",
+      "large": true,
+      "passengers": 31173000
+    },
+    {
+      "name": "Francisco de Sá Carneiro Airport",
+      "iata": "OPO",
+      "municipality": "Porto",
+      "large": true,
+      "passengers": 13105000
+    },
+    {
+      "name": "Faro - Gago Coutinho International Airport",
+      "iata": "FAO",
+      "municipality": "Faro",
+      "large": true,
+      "passengers": 8728876
+    },
+    {
+      "name": "Cristiano Ronaldo International Airport",
+      "iata": "FNC",
+      "municipality": "Funchal",
+      "large": true,
+      "passengers": 3204474
+    },
+    {
+      "name": "João Paulo II Airport",
+      "iata": "PDL",
+      "municipality": "Ponta Delgada",
+      "large": true,
+      "passengers": 1853237
+    },
+    {
+      "name": "Lajes Airport",
+      "iata": "TER",
+      "municipality": "Praia da Vitória",
+      "large": false,
+      "passengers": 604577
+    },
+    {
+      "name": "Horta Airport",
+      "iata": "HOR",
+      "municipality": "Horta",
+      "large": false,
+      "passengers": 238590
+    },
+    {
+      "name": "Porto Santo Airport",
+      "iata": "PXO",
+      "municipality": "Vila Baleira",
+      "large": false,
+      "passengers": 178428
+    },
+    {
+      "name": "Pico Airport",
+      "iata": "PIX",
+      "municipality": "Pico Island",
+      "large": false,
+      "passengers": 127258
+    },
+    {
+      "name": "Flores Airport",
+      "iata": "FLW",
+      "municipality": "Santa Cruz das Flores",
+      "large": false,
+      "passengers": 110760
+    },
+    {
+      "name": "Santa Maria Airport",
+      "iata": "SMA",
+      "municipality": "Vila do Porto",
+      "large": false,
+      "passengers": 99728
+    },
+    {
+      "name": "São Jorge Airport",
+      "iata": "SJZ",
+      "municipality": "Velas",
+      "large": false,
+      "passengers": 71215
+    },
+    {
+      "name": "Graciosa Airport",
+      "iata": "GRW",
+      "municipality": "Santa Cruz da Graciosa",
+      "large": false,
+      "passengers": 51707
+    },
+    {
+      "name": "Cascais Airport",
+      "iata": "CAT",
+      "municipality": "Cascais",
+      "large": false,
+      "passengers": 9602
+    },
+    {
+      "name": "Aerodromo Goncalves Lobato (Viseu Airport)",
+      "iata": "VSE",
+      "municipality": "Viseu",
+      "large": false,
+      "passengers": 8497
+    },
+    {
+      "name": "Vila Real Airport",
+      "iata": "VRL",
+      "municipality": "Vila Real",
+      "large": false,
+      "passengers": 6782
+    },
+    {
+      "name": "Bragança Airport",
+      "iata": "BGC",
+      "municipality": "Bragança",
+      "large": false,
+      "passengers": 3154
+    },
+    {
+      "name": "Portimão Airport",
+      "iata": "PRM",
+      "municipality": "Portimão",
+      "large": false,
+      "passengers": 36
+    }
+  ]
+}

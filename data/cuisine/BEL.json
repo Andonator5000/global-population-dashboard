@@ -1,0 +1,74 @@
+{
+  "iso3": "BEL",
+  "name": "Belgium",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "mitraillette",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mitraillette%20%28fast%20food%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mitraillette%20%28fast%20food%29.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Renatus"
+      }
+    },
+    {
+      "name": "moules-frites",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moules%20Frites.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Moules%20Frites.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "dennis and aimee jonez"
+      }
+    },
+    {
+      "name": "Actimel",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Actimel.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Actimel.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Pancrat"
+      }
+    },
+    {
+      "name": "rijstevlaai",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tarte%20au%20riz.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tarte%20au%20riz.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "No machine-readable author provided. Frinck51~commonswiki assumed (based on copyright claims)."
+      }
+    },
+    {
+      "name": "Belgian waffle",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Waffle%20with%20strawberries%20and%20confectioner%27s%20sugar.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Waffle%20with%20strawberries%20and%20confectioner%27s%20sugar.jpg",
+        "license": "CC BY 2.0",
+        "author": "Ralph Daily"
+      }
+    },
+    {
+      "name": "stoemp",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cod%20and%20stoemp.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cod%20and%20stoemp.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Simon Aughton"
+      }
+    },
+    {
+      "name": "Potjevleesch",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jielbeaumadier%20potjevleesch%202010.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jielbeaumadier%20potjevleesch%202010.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Jiel Beaumadier"
+      }
+    },
+    {
+      "name": "dagobert"
+    }
+  ]
+}

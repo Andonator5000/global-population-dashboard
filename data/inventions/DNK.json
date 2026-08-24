@@ -1,0 +1,34 @@
+{
+  "iso3": "DNK",
+  "name": "Denmark",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Lego",
+      "inventors": [
+        "Ole Kirk Christiansen"
+      ],
+      "year": 1949,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lego%20bricks.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lego%20bricks.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Benjamin D. Esham (bdesham)"
+      }
+    },
+    {
+      "name": "Danish Blue",
+      "inventors": [
+        "Marius Boel"
+      ],
+      "year": 1920,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Danish%20Blue%20cheese.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Danish%20Blue%20cheese.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "No machine-readable author provided. Brookie assumed (based on copyright claims)."
+      }
+    }
+  ]
+}

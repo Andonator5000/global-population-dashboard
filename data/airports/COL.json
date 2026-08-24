@@ -1,0 +1,148 @@
+{
+  "iso3": "COL",
+  "name": "Colombia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "El Dorado International Airport",
+      "iata": "BOG",
+      "municipality": "Bogota",
+      "large": true,
+      "passengers": 36478591
+    },
+    {
+      "name": "Jose Maria Córdova International Airport",
+      "iata": "MDE",
+      "municipality": "Medellín",
+      "large": true,
+      "passengers": 13214155
+    },
+    {
+      "name": "Alfonso Bonilla Aragon International Airport",
+      "iata": "CLO",
+      "municipality": "Cali",
+      "large": true,
+      "passengers": 7217373
+    },
+    {
+      "name": "Rafael Nuñez International Airport",
+      "iata": "CTG",
+      "municipality": "Cartagena",
+      "large": true,
+      "passengers": 7087788
+    },
+    {
+      "name": "Simón Bolívar International Airport",
+      "iata": "SMR",
+      "municipality": "Santa Marta",
+      "large": false,
+      "passengers": 3745615
+    },
+    {
+      "name": "Ernesto Cortissoz International Airport",
+      "iata": "BAQ",
+      "municipality": "Barranquilla",
+      "large": true,
+      "passengers": 3030937
+    },
+    {
+      "name": "Gustavo Rojas Pinilla International Airport",
+      "iata": "ADZ",
+      "municipality": "San Andrés",
+      "large": true,
+      "passengers": 3001923
+    },
+    {
+      "name": "Matecaña International Airport",
+      "iata": "PEI",
+      "municipality": "Pereira",
+      "large": false,
+      "passengers": 2656011
+    },
+    {
+      "name": "Palonegro Airport",
+      "iata": "BGA",
+      "municipality": "Bucaramanga",
+      "large": false,
+      "passengers": 2101787
+    },
+    {
+      "name": "Camilo Daza International Airport",
+      "iata": "CUC",
+      "municipality": "Cúcuta",
+      "large": false,
+      "passengers": 1640339
+    },
+    {
+      "name": "Los Garzones Airport",
+      "iata": "MTR",
+      "municipality": "Montería",
+      "large": false,
+      "passengers": 1556749
+    },
+    {
+      "name": "Enrique Olaya Herrera Airport",
+      "iata": "EOH",
+      "municipality": "Medellín",
+      "large": false,
+      "passengers": 1317319
+    },
+    {
+      "name": "Antonio Nariño Airport",
+      "iata": "PSO",
+      "municipality": "Chachagüí",
+      "large": false,
+      "passengers": 695492
+    },
+    {
+      "name": "El Eden Airport",
+      "iata": "AXM",
+      "municipality": "Armenia",
+      "large": false,
+      "passengers": 637844
+    },
+    {
+      "name": "Alfonso López Pumarejo Airport",
+      "iata": "VUP",
+      "municipality": "Valledupar",
+      "large": false,
+      "passengers": 507343
+    },
+    {
+      "name": "El Alcaravan - Yopal Airport",
+      "iata": "EYP",
+      "municipality": "Yopal",
+      "large": false,
+      "passengers": 477728
+    },
+    {
+      "name": "Vanguardia Airport",
+      "iata": "VVC",
+      "municipality": "Villavicencio",
+      "large": false,
+      "passengers": 471149
+    },
+    {
+      "name": "Almirante Padilla Airport",
+      "iata": "RCH",
+      "municipality": "Riohacha",
+      "large": false,
+      "passengers": 447352
+    },
+    {
+      "name": "Benito Salas Airport",
+      "iata": "NVA",
+      "municipality": "Neiva",
+      "large": false,
+      "passengers": 426861
+    },
+    {
+      "name": "El Caraño Airport",
+      "iata": "UIB",
+      "municipality": "Quibdó",
+      "large": false,
+      "passengers": 401326
+    }
+  ]
+}

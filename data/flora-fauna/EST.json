@@ -1,0 +1,63 @@
+{
+  "iso3": "EST",
+  "name": "Estonia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Wolf",
+      "type": "national animal",
+      "scientificName": "Canis lupus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Loup%20gris%20%28Canis%20lupus%20%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Loup%20gris%20%28Canis%20lupus%20%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Clément Bardot"
+      }
+    },
+    {
+      "name": "Baltic herring",
+      "type": "national fish",
+      "scientificName": "Clupea harengus membras",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Silakka.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Silakka.jpg",
+        "license": "Public domain",
+        "author": "Arto Alanenpää"
+      }
+    },
+    {
+      "name": "Barn swallow",
+      "type": "national bird",
+      "scientificName": "Hirundo rustica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Barn%20swallow%20in%20Montezuma%20%2814460%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Barn%20swallow%20in%20Montezuma%20%2814460%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Rhododendrites"
+      }
+    },
+    {
+      "name": "Swallowtail",
+      "type": "national butterfly",
+      "scientificName": "Papilio machaon",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papilio%20machaon%20Mitterbach%2001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Papilio%20machaon%20Mitterbach%2001.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Uoaei1"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Oak, Pedunculate oak",
+    "type": "national tree",
+    "scientificName": "Quercus, Quercus robur",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Baginton%20oak%20tree%20july06.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Baginton%20oak%20tree%20july06.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "The original uploader was Snowmanradio at English Wikipedia.\n\n(Original text: snowmanradio)"
+    }
+  }
+}

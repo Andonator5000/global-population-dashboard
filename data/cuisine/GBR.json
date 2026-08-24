@@ -1,0 +1,44 @@
+{
+  "iso3": "GBR",
+  "name": "United Kingdom",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "coronation chicken",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coronation%20Chicken.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Coronation%20Chicken.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "James F. Carter"
+      }
+    },
+    {
+      "name": "cheese on toast",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese%20on%20toast-11.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheese%20on%20toast-11.jpg",
+        "license": "CC BY 2.0",
+        "author": "jules"
+      }
+    },
+    {
+      "name": "cucumber sandwich",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flickr%20bitboy%20204619671--Cucumber%20sandwiches%20with%20tea.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Flickr%20bitboy%20204619671--Cucumber%20sandwiches%20with%20tea.jpg",
+        "license": "CC BY 2.0",
+        "author": "Bit Boy from Los Angeles, California, USA"
+      }
+    },
+    {
+      "name": "Cheese and pickle sandwich",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese%20and%20Pickle%20Sandwich%20Step%204%20%288576760021%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheese%20and%20Pickle%20Sandwich%20Step%204%20%288576760021%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "LearningLark from United States"
+      }
+    }
+  ]
+}

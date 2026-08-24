@@ -1,0 +1,113 @@
+{
+  "iso3": "KOR",
+  "name": "South Korea",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Incheon International Airport",
+      "iata": "ICN",
+      "municipality": "Seoul",
+      "large": true,
+      "passengers": 74071475
+    },
+    {
+      "name": "Seoul Gimpo International Airport",
+      "iata": "GMP",
+      "municipality": "Seoul",
+      "large": true,
+      "passengers": 36727124
+    },
+    {
+      "name": "Jeju International Airport",
+      "iata": "CJU",
+      "municipality": "Jeju City",
+      "large": true,
+      "passengers": 31316394
+    },
+    {
+      "name": "Gimhae International Airport",
+      "iata": "PUS",
+      "municipality": "Busan",
+      "large": true,
+      "passengers": 17064613
+    },
+    {
+      "name": "Daegu International Airport",
+      "iata": "TAE",
+      "municipality": "Daegu",
+      "large": true,
+      "passengers": 4669057
+    },
+    {
+      "name": "Cheongju International Airport/Cheongju Air Base (K-59/G-513)",
+      "iata": "CJJ",
+      "municipality": "Cheongju",
+      "large": true,
+      "passengers": 3174649
+    },
+    {
+      "name": "Gwangju Airport",
+      "iata": "KWJ",
+      "municipality": "Gwangju",
+      "large": false,
+      "passengers": 2861998
+    },
+    {
+      "name": "Ulsan Airport",
+      "iata": "USN",
+      "municipality": "Ulsan",
+      "large": false,
+      "passengers": 1691279
+    },
+    {
+      "name": "Pohang Airport (G-815/K-3)",
+      "iata": "KPO",
+      "municipality": "Pohang",
+      "large": false,
+      "passengers": 1124781
+    },
+    {
+      "name": "Yeosu Airport",
+      "iata": "RSU",
+      "municipality": "Yeosu",
+      "large": false,
+      "passengers": 1115699
+    },
+    {
+      "name": "Sacheon Airport / Sacheon Air Base",
+      "iata": "HIN",
+      "municipality": "Sacheon",
+      "large": false,
+      "passengers": 966727
+    },
+    {
+      "name": "Muan International Airport",
+      "iata": "MWX",
+      "municipality": "Muan (Piseo-ri)",
+      "large": true,
+      "passengers": 895410
+    },
+    {
+      "name": "Gunsan Airport / Gunsan Air Base",
+      "iata": "KUV",
+      "municipality": "Gunsan",
+      "large": false,
+      "passengers": 456926
+    },
+    {
+      "name": "Yangyang International Airport",
+      "iata": "YNY",
+      "municipality": "Gonghang-ro",
+      "large": true,
+      "passengers": 384642
+    },
+    {
+      "name": "Wonju Airport / Hoengseong Air Base (K-38/K-46)",
+      "iata": "WJU",
+      "municipality": "Wonju",
+      "large": false,
+      "passengers": 193239
+    }
+  ]
+}

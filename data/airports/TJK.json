@@ -1,0 +1,36 @@
+{
+  "iso3": "TJK",
+  "name": "Tajikistan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Dushanbe International Airport",
+      "iata": "DYU",
+      "municipality": "Dushanbe",
+      "large": true,
+      "passengers": 1422204
+    },
+    {
+      "name": "Bokhtar International Airport",
+      "iata": "KQT",
+      "municipality": "Bokhtar",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Khujand International Airport",
+      "iata": "LBD",
+      "municipality": "Khujand",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Kulob International Airport",
+      "iata": "TJU",
+      "municipality": "Kulob",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

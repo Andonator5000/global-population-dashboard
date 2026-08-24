@@ -1,0 +1,80 @@
+{
+  "iso3": "IDN",
+  "name": "Indonesia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "palm wine",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Refreshing%20palm%20wine.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Refreshing%20palm%20wine.jpg",
+        "license": "CC BY 2.0",
+        "author": "Nick Hobgood Peace Corps Zaire"
+      }
+    },
+    {
+      "name": "Tempeh",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tempeh%20tempe.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tempeh%20tempe.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Sakurai Midori"
+      }
+    },
+    {
+      "name": "gado-gado",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gado-gado%20in%20Jakarta.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gado-gado%20in%20Jakarta.JPG",
+        "license": "CC BY 3.0",
+        "author": "Sakurai Midori"
+      }
+    },
+    {
+      "name": "rendang",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lamb%20rendang.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lamb%20rendang.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": null
+      }
+    },
+    {
+      "name": "rojak",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mamak%20rojak.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mamak%20rojak.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": null
+      }
+    },
+    {
+      "name": "Cendol",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cendol%20Durian.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cendol%20Durian.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Gunawan Kartapranata"
+      }
+    },
+    {
+      "name": "lemang",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Piece%20of%20Lemang.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Piece%20of%20Lemang.jpg",
+        "license": "Attribution",
+        "author": "Ezagren (bicara / talk)"
+      }
+    },
+    {
+      "name": "Jin deui",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Onde-onde%20isi%20kacang.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Onde-onde%20isi%20kacang.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "PL09Puryono"
+      }
+    }
+  ]
+}

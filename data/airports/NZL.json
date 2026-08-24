@@ -1,0 +1,148 @@
+{
+  "iso3": "NZL",
+  "name": "New Zealand",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Auckland International Airport",
+      "iata": "AKL",
+      "municipality": "Auckland",
+      "large": true,
+      "passengers": 21111613
+    },
+    {
+      "name": "Christchurch International Airport",
+      "iata": "CHC",
+      "municipality": "Christchurch",
+      "large": true,
+      "passengers": 6931441
+    },
+    {
+      "name": "Wellington International Airport",
+      "iata": "WLG",
+      "municipality": "Wellington",
+      "large": true,
+      "passengers": 6441935
+    },
+    {
+      "name": "Queenstown Airport",
+      "iata": "ZQN",
+      "municipality": "Queenstown",
+      "large": true,
+      "passengers": 2321347
+    },
+    {
+      "name": "Dunedin International Airport",
+      "iata": "DUD",
+      "municipality": "Dunedin",
+      "large": false,
+      "passengers": 1077475
+    },
+    {
+      "name": "Nelson Airport",
+      "iata": "NSN",
+      "municipality": "Nelson",
+      "large": false,
+      "passengers": 1076686
+    },
+    {
+      "name": "Hawke's Bay Airport",
+      "iata": "NPE",
+      "municipality": "Napier",
+      "large": false,
+      "passengers": 750357
+    },
+    {
+      "name": "Palmerston North Airport",
+      "iata": "PMR",
+      "municipality": "Palmerston North",
+      "large": false,
+      "passengers": 687142
+    },
+    {
+      "name": "Tauranga Airport",
+      "iata": "TRG",
+      "municipality": "Tauranga",
+      "large": false,
+      "passengers": 475000
+    },
+    {
+      "name": "New Plymouth Airport",
+      "iata": "NPL",
+      "municipality": "New Plymouth",
+      "large": false,
+      "passengers": 455000
+    },
+    {
+      "name": "Hamilton International Airport",
+      "iata": "HLZ",
+      "municipality": "Hamilton",
+      "large": false,
+      "passengers": 382000
+    },
+    {
+      "name": "Woodbourne Airport",
+      "iata": "BHE",
+      "municipality": "Blenheim",
+      "large": false,
+      "passengers": 322139
+    },
+    {
+      "name": "Invercargill Airport",
+      "iata": "IVC",
+      "municipality": "Invercargill",
+      "large": false,
+      "passengers": 321000
+    },
+    {
+      "name": "Rotorua Regional Airport",
+      "iata": "ROT",
+      "municipality": "Rotorua",
+      "large": false,
+      "passengers": 265443
+    },
+    {
+      "name": "Gisborne Airport",
+      "iata": "GIS",
+      "municipality": "Gisborne",
+      "large": false,
+      "passengers": 196500
+    },
+    {
+      "name": "Hokitika Airfield",
+      "iata": "HKK",
+      "municipality": null,
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Inia William Tuuta Memorial Airport",
+      "iata": "CHT",
+      "municipality": "Te One",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kaitaia Airport",
+      "iata": "KAT",
+      "municipality": "Awanui",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kerikeri Airport",
+      "iata": "KKE",
+      "municipality": "Kerikeri",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Taupo Airport",
+      "iata": "TUO",
+      "municipality": "Taupo",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

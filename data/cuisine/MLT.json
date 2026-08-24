@@ -1,0 +1,17 @@
+{
+  "iso3": "MLT",
+  "name": "Malta",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Stuffat tal-fenek",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20national%20dish%20of%20Malta%20%E2%80%93%20Stuffat%20tal-Fenek%20%28rabbit%20stew%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:The%20national%20dish%20of%20Malta%20%E2%80%93%20Stuffat%20tal-Fenek%20%28rabbit%20stew%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Renata Apan"
+      }
+    }
+  ]
+}

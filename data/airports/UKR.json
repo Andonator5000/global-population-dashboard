@@ -1,0 +1,36 @@
+{
+  "iso3": "UKR",
+  "name": "Ukraine",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Boryspil International Airport",
+      "iata": "KBP",
+      "municipality": "Boryspil",
+      "large": true,
+      "passengers": 15260281
+    },
+    {
+      "name": "Simferopol International Airport",
+      "iata": "SIP",
+      "municipality": "Simferopol",
+      "large": true,
+      "passengers": 6830000
+    },
+    {
+      "name": "Lviv International Airport",
+      "iata": "LWO",
+      "municipality": "Lviv",
+      "large": true,
+      "passengers": 2217400
+    },
+    {
+      "name": "Odesa International Airport",
+      "iata": "ODS",
+      "municipality": "Odesa",
+      "large": true,
+      "passengers": 1694022
+    }
+  ]
+}

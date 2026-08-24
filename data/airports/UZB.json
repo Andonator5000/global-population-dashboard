@@ -1,0 +1,92 @@
+{
+  "iso3": "UZB",
+  "name": "Uzbekistan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Tashkent International Airport",
+      "iata": "TAS",
+      "municipality": "Tashkent",
+      "large": true,
+      "passengers": 4430000
+    },
+    {
+      "name": "Samarkand International Airport",
+      "iata": "SKD",
+      "municipality": "Samarkand",
+      "large": true,
+      "passengers": 500000
+    },
+    {
+      "name": "Urgench International Airport",
+      "iata": "UGC",
+      "municipality": "Urgench",
+      "large": true,
+      "passengers": 360000
+    },
+    {
+      "name": "Bukhara International Airport",
+      "iata": "BHK",
+      "municipality": "Bukhara",
+      "large": true,
+      "passengers": 290000
+    },
+    {
+      "name": "Namangan International Airport",
+      "iata": "NMA",
+      "municipality": "Namangan",
+      "large": true,
+      "passengers": 240000
+    },
+    {
+      "name": "Fergana International Airport",
+      "iata": "FEG",
+      "municipality": "Fergana",
+      "large": false,
+      "passengers": 240000
+    },
+    {
+      "name": "Nukus International Airport",
+      "iata": "NCU",
+      "municipality": "Nukus",
+      "large": true,
+      "passengers": 170000
+    },
+    {
+      "name": "Termez Airport",
+      "iata": "TMJ",
+      "municipality": "Termez",
+      "large": false,
+      "passengers": 130000
+    },
+    {
+      "name": "Navoi International Airport",
+      "iata": "NVI",
+      "municipality": "Navoi",
+      "large": false,
+      "passengers": 65000
+    },
+    {
+      "name": "Andijan International Airport",
+      "iata": "AZN",
+      "municipality": "Andijan",
+      "large": false,
+      "passengers": 4
+    },
+    {
+      "name": "Tashkent-Khumo International Airport",
+      "iata": "TVT",
+      "municipality": "Tashkent",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Zomin Airport",
+      "iata": "OMN",
+      "municipality": "Zomin",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

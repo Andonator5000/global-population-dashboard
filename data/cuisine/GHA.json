@@ -1,0 +1,65 @@
+{
+  "iso3": "GHA",
+  "name": "Ghana",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "fufu",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wrapped%20fufu.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wrapped%20fufu.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "daSupremo"
+      }
+    },
+    {
+      "name": "omo tuo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Omo%20Tuo%20at%20a%20Ghanaian%20restaurant%20in%20Colorado.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Omo%20Tuo%20at%20a%20Ghanaian%20restaurant%20in%20Colorado.jpg",
+        "license": "CC0",
+        "author": "Thomson200"
+      }
+    },
+    {
+      "name": "Brukina"
+    },
+    {
+      "name": "wasawasa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wasawasa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wasawasa.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Mumuni Y Yunus"
+      }
+    },
+    {
+      "name": "Asaana",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Asaana.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Asaana.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Xibitgh"
+      }
+    },
+    {
+      "name": "yam pottage",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Yam%20pottage.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Yam%20pottage.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "secretlondon123"
+      }
+    },
+    {
+      "name": "Lamugin",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lamugin.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lamugin.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Kwameghana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "iso3": "BOL",
+  "name": "Bolivia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Jorge Wilsterman International Airport",
+      "iata": "CBB",
+      "municipality": "Cochabamba",
+      "large": true,
+      "passengers": 2631862
+    },
+    {
+      "name": "Viru Viru International Airport",
+      "iata": "VVI",
+      "municipality": "Santa Cruz",
+      "large": true,
+      "passengers": 2384746
+    },
+    {
+      "name": "El Alto International Airport",
+      "iata": "LPB",
+      "municipality": "La Paz / El Alto",
+      "large": true,
+      "passengers": 950000
+    },
+    {
+      "name": "Alcantarí International Airport",
+      "iata": "SRE",
+      "municipality": "Sucre",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Joya Andina International Airport",
+      "iata": "UYU",
+      "municipality": "Quijarro",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Juan Mendoza International Airport",
+      "iata": "ORU",
+      "municipality": "Oruro",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Capitan Oriel Lea Plaza Airport",
+      "iata": "TJA",
+      "municipality": "Tarija",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Capitán Aníbal Arab Airport",
+      "iata": "CIJ",
+      "municipality": "Cobija",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Capitán Av. Salvador Ogaya G. airport",
+      "iata": "PSZ",
+      "municipality": "Puerto Suárez",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Capitán Av. Selin Zeitun Lopez Airport",
+      "iata": "RIB",
+      "municipality": "Riberalta",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "El Trompillo Airport",
+      "iata": "SRZ",
+      "municipality": "Santa Cruz",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Guayaramerín Airport",
+      "iata": "GYA",
+      "municipality": "Guayaramerín",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Teniente Av. Jorge Henrich Arauz Airport",
+      "iata": "TDD",
+      "municipality": "Trinidad",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

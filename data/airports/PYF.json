@@ -1,0 +1,148 @@
+{
+  "iso3": "PYF",
+  "name": "French Polynesia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Fa'a'ā International Airport",
+      "iata": "PPT",
+      "municipality": "Papeete",
+      "large": true,
+      "passengers": 1564270
+    },
+    {
+      "name": "Bora Bora Airport",
+      "iata": "BOB",
+      "municipality": "Motu Mute",
+      "large": false,
+      "passengers": 338326
+    },
+    {
+      "name": "Moorea Temae Airport",
+      "iata": "MOZ",
+      "municipality": "Moorea-Maiao",
+      "large": false,
+      "passengers": 306582
+    },
+    {
+      "name": "Raiatea Airport",
+      "iata": "RFP",
+      "municipality": "Uturoa",
+      "large": false,
+      "passengers": 264752
+    },
+    {
+      "name": "Huahine-Fare Airport",
+      "iata": "HUH",
+      "municipality": "Fare",
+      "large": false,
+      "passengers": 221477
+    },
+    {
+      "name": "Rangiroa Airport",
+      "iata": "RGI",
+      "municipality": null,
+      "large": false,
+      "passengers": 112407
+    },
+    {
+      "name": "Tikehau Airport",
+      "iata": "TIH",
+      "municipality": "Tuherahera",
+      "large": false,
+      "passengers": 49913
+    },
+    {
+      "name": "Nuku Hiva Airport",
+      "iata": "NHV",
+      "municipality": "Nuku Hiva",
+      "large": false,
+      "passengers": 46196
+    },
+    {
+      "name": "Fakarava Airport",
+      "iata": "FAV",
+      "municipality": null,
+      "large": false,
+      "passengers": 41907
+    },
+    {
+      "name": "Hiva Oa-Atuona Airport",
+      "iata": "AUQ",
+      "municipality": "Hiva Oa Island",
+      "large": false,
+      "passengers": 38726
+    },
+    {
+      "name": "Maupiti Airport",
+      "iata": "MAU",
+      "municipality": null,
+      "large": false,
+      "passengers": 32294
+    },
+    {
+      "name": "Rurutu Airport",
+      "iata": "RUR",
+      "municipality": null,
+      "large": false,
+      "passengers": 29714
+    },
+    {
+      "name": "Tubuai Airport",
+      "iata": "TUB",
+      "municipality": null,
+      "large": false,
+      "passengers": 28574
+    },
+    {
+      "name": "Manihi Airport",
+      "iata": "XMH",
+      "municipality": null,
+      "large": false,
+      "passengers": 23258
+    },
+    {
+      "name": "Hao Airport",
+      "iata": "HOI",
+      "municipality": "Otepa",
+      "large": false,
+      "passengers": 17172
+    },
+    {
+      "name": "Takaroa Airport",
+      "iata": "TKX",
+      "municipality": null,
+      "large": false,
+      "passengers": 13869
+    },
+    {
+      "name": "Makemo Airport",
+      "iata": "MKP",
+      "municipality": "Makemo",
+      "large": false,
+      "passengers": 12034
+    },
+    {
+      "name": "Arutua Airport",
+      "iata": "AXR",
+      "municipality": null,
+      "large": false,
+      "passengers": 11409
+    },
+    {
+      "name": "Ahe Airport",
+      "iata": "AHE",
+      "municipality": "Ahe Atoll",
+      "large": false,
+      "passengers": 10318
+    },
+    {
+      "name": "Mataiva Airport",
+      "iata": "MVT",
+      "municipality": null,
+      "large": false,
+      "passengers": 10039
+    }
+  ]
+}
