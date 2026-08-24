@@ -1,0 +1,46 @@
+{
+  "iso3": "CUB",
+  "name": "Cuba",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Daiquiri",
+      "inventors": [
+        "Jennings Cox"
+      ],
+      "year": 1900,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Daiquiri%2C%20Floridita%20bar%2C%20Havana%2C%20Cuba.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Daiquiri%2C%20Floridita%20bar%2C%20Havana%2C%20Cuba.jpg",
+        "license": "CC BY 2.0",
+        "author": "Mike Fleming from London, England"
+      }
+    },
+    {
+      "name": "son montuno",
+      "inventors": [
+        "Arsenio Rodríguez"
+      ],
+      "year": 1900,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Conjunto%20de%20Arsenio%20Rodr%C3%ADguez.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Conjunto%20de%20Arsenio%20Rodr%C3%ADguez.JPG",
+        "license": "Public domain",
+        "author": "Unknown authorUnknown author"
+      }
+    },
+    {
+      "name": "Armónico",
+      "inventors": [
+        "Compay Segundo"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Buena%20Vista%20Social%20Club%20%28503812561%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Buena%20Vista%20Social%20Club%20%28503812561%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Brian Snelson from Hockley, Essex, England"
+      }
+    }
+  ]
+}

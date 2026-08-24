@@ -1,0 +1,50 @@
+{
+  "iso3": "CPV",
+  "name": "Cape Verde",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Amílcar Cabral International Airport",
+      "iata": "SID",
+      "municipality": "Espargos",
+      "large": true,
+      "passengers": 1336994
+    },
+    {
+      "name": "Nelson Mandela International Airport",
+      "iata": "RAI",
+      "municipality": "Praia",
+      "large": true,
+      "passengers": 669697
+    },
+    {
+      "name": "Aristides Pereira International Airport",
+      "iata": "BVC",
+      "municipality": "Rabil",
+      "large": true,
+      "passengers": 617595
+    },
+    {
+      "name": "Cesaria Evora International Airport",
+      "iata": "VXE",
+      "municipality": "São Pedro",
+      "large": true,
+      "passengers": 300681
+    },
+    {
+      "name": "Preguiça Airport",
+      "iata": "SNE",
+      "municipality": "Preguiça",
+      "large": false,
+      "passengers": 27038
+    },
+    {
+      "name": "Maio Airport",
+      "iata": "MMO",
+      "municipality": "Vila do Maio",
+      "large": false,
+      "passengers": 19209
+    }
+  ]
+}

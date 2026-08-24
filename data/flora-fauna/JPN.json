@@ -1,0 +1,50 @@
+{
+  "iso3": "JPN",
+  "name": "Japan",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Green pheasant",
+      "type": "national bird",
+      "scientificName": "Phasianus versicolor",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Phasianus%20versicolor%20in%20field.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Phasianus%20versicolor%20in%20field.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Alpsdake"
+      }
+    },
+    {
+      "name": "Koi",
+      "type": "national fish",
+      "scientificName": "Cyprinus carpio",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Koi%20at%20Japanese%20Garden%20-%20UH%20Manoa%20%285674161714-c%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Koi%20at%20Japanese%20Garden%20-%20UH%20Manoa%20%285674161714-c%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Daniel Ramirez from Honolulu, USA"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Japanese cherry blossom",
+    "type": "national tree",
+    "scientificName": "Prunus serrulata",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg",
+      "license": "CC BY 2.0",
+      "author": "TANAKA Juuyoh (田中十洋)"
+    }
+  },
+  "flower": {
+    "name": "Cherry Blossom",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg",
+      "license": "CC BY 2.0",
+      "author": "TANAKA Juuyoh (田中十洋)"
+    }
+  }
+}

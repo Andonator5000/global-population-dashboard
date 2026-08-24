@@ -1,0 +1,36 @@
+{
+  "iso3": "BIH",
+  "name": "Bosnia and Herzegovina",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Sarajevo International Airport",
+      "iata": "SJJ",
+      "municipality": "Sarajevo",
+      "large": true,
+      "passengers": 1377348
+    },
+    {
+      "name": "Tuzla International Airport",
+      "iata": "TZL",
+      "municipality": "Dubrave Gornje",
+      "large": true,
+      "passengers": 593050
+    },
+    {
+      "name": "Banja Luka International Airport",
+      "iata": "BNX",
+      "municipality": "Mahovljani",
+      "large": true,
+      "passengers": 343009
+    },
+    {
+      "name": "Mostar International Airport",
+      "iata": "OMO",
+      "municipality": "Mostar",
+      "large": true,
+      "passengers": 78055
+    }
+  ]
+}

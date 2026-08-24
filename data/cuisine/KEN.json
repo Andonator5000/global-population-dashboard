@@ -1,0 +1,26 @@
+{
+  "iso3": "KEN",
+  "name": "Kenya",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "ugali",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ugali%20%26%20Sukuma%20Wiki.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ugali%20%26%20Sukuma%20Wiki.jpg",
+        "license": "CC BY 2.0",
+        "author": "Paresh Jai from Nairobi, Kenya"
+      }
+    },
+    {
+      "name": "Githeri",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Githeri.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Githeri.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Mukuba"
+      }
+    }
+  ]
+}

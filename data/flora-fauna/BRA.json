@@ -1,0 +1,51 @@
+{
+  "iso3": "BRA",
+  "name": "Brazil",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Jaguar",
+      "type": "national animal",
+      "scientificName": "Panthera onca",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Standing%20jaguar.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Standing%20jaguar.jpg",
+        "license": "Public domain",
+        "author": "USFWS"
+      }
+    },
+    {
+      "name": "Rufous-bellied thrush",
+      "type": "national bird",
+      "scientificName": "Turdus rufiventris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turdus-rufiventris.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turdus-rufiventris.jpg",
+        "license": "CC BY-SA 2.0 br",
+        "author": "Flávio Cruvinel Brandão"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Brazilwood",
+    "type": "national tree",
+    "scientificName": "Paubrasilia echinata",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Caesalpinia-echinata.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Caesalpinia-echinata.jpg",
+      "license": "CC BY 2.5",
+      "author": "Der Kolonist"
+    }
+  },
+  "flower": {
+    "name": "Portuguese",
+    "scientificName": "Handroanthus chrysotrichus",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ip%C3%AA%20%28Avar%C3%A9%29%20REFON.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ip%C3%AA%20%28Avar%C3%A9%29%20REFON.jpg",
+      "license": "CC BY 2.5",
+      "author": "José Reynaldo da Fonseca"
+    }
+  }
+}

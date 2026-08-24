@@ -1,0 +1,18 @@
+{
+  "iso3": "GIN",
+  "name": "Guinea",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Adlam",
+      "year": 1989,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Adlam%20acronym.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Adlam%20acronym.png",
+        "license": "CC BY-SA 4.0",
+        "author": "Immanuel Giel"
+      }
+    }
+  ]
+}

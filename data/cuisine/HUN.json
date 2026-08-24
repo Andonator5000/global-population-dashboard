@@ -1,0 +1,44 @@
+{
+  "iso3": "HUN",
+  "name": "Hungary",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "lángos",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hungarian%20L%C3%A1ngos.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hungarian%20L%C3%A1ngos.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "MichalPL"
+      }
+    },
+    {
+      "name": "paprikash",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Paprikahuhn.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Paprikahuhn.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Kobako"
+      }
+    },
+    {
+      "name": "gulyásleves",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gulyas080.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gulyas080.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Lily15"
+      }
+    },
+    {
+      "name": "Rakott krumpli",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rakott%20krumpli.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rakott%20krumpli.jpg",
+        "license": "CC BY 2.0",
+        "author": "zolakoma"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "iso3": "JAM",
+  "name": "Jamaica",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Sangster International Airport",
+      "iata": "MBJ",
+      "municipality": "Montego Bay",
+      "large": true,
+      "passengers": 5267823
+    },
+    {
+      "name": "Norman Manley International Airport",
+      "iata": "KIN",
+      "municipality": "Kingston",
+      "large": true,
+      "passengers": 1748100
+    },
+    {
+      "name": "Ian Fleming International Airport",
+      "iata": "OCJ",
+      "municipality": "Boscobel",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Tinson Pen Airport",
+      "iata": "KTP",
+      "municipality": "Tinson Pen",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

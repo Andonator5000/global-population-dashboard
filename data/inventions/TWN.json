@@ -1,0 +1,18 @@
+{
+  "iso3": "TWN",
+  "name": "Taiwan",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Mongolian barbecue",
+      "year": 1951,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mongolianbbq.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mongolianbbq.jpg",
+        "license": "CC BY 2.0",
+        "author": "Matthew Levine from San Francisco, CA, USA"
+      }
+    }
+  ]
+}

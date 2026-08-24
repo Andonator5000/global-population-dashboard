@@ -1,0 +1,36 @@
+{
+  "iso3": "BWA",
+  "name": "Botswana",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Sir Seretse Khama International Airport",
+      "iata": "GBE",
+      "municipality": "Gaborone",
+      "large": true,
+      "passengers": 470972
+    },
+    {
+      "name": "Maun International Airport",
+      "iata": "MUB",
+      "municipality": "Maun",
+      "large": true,
+      "passengers": 271414
+    },
+    {
+      "name": "Kasane International Airport",
+      "iata": "BBK",
+      "municipality": "Kasane",
+      "large": true,
+      "passengers": 107078
+    },
+    {
+      "name": "Phillip Gaonwe Matante International Airport",
+      "iata": "FRW",
+      "municipality": "Francistown",
+      "large": true,
+      "passengers": 37486
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "iso3": "GNQ",
+  "name": "Equatorial Guinea",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Malabo International Airport",
+      "iata": "SSG",
+      "municipality": "Malabo",
+      "large": true,
+      "passengers": 886559
+    },
+    {
+      "name": "Bata International Airport",
+      "iata": "BSG",
+      "municipality": "Bata",
+      "large": true,
+      "passengers": 403420
+    },
+    {
+      "name": "Corisco International Airport",
+      "iata": "OCS",
+      "municipality": "Corisco Island",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "President Obiang Nguema International Airport",
+      "iata": "GEM",
+      "municipality": "Mengomeyén",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

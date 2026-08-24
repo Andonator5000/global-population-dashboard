@@ -1,0 +1,148 @@
+{
+  "iso3": "PER",
+  "name": "Peru",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Jorge Chávez International Airport",
+      "iata": "LIM",
+      "municipality": "Lima",
+      "large": true,
+      "passengers": 25402742
+    },
+    {
+      "name": "Alejandro Velasco Astete International Airport",
+      "iata": "CUZ",
+      "municipality": "Cusco",
+      "large": true,
+      "passengers": 3906169
+    },
+    {
+      "name": "Rodríguez Ballón International Airport",
+      "iata": "AQP",
+      "municipality": "Arequipa",
+      "large": true,
+      "passengers": 1990820
+    },
+    {
+      "name": "Coronel FAP Francisco Secada Vignetta International Airport",
+      "iata": "IQT",
+      "municipality": "Iquitos",
+      "large": true,
+      "passengers": 1167702
+    },
+    {
+      "name": "PAF Captain Guillermo Concha Iberico International Airport",
+      "iata": "PIU",
+      "municipality": "Piura",
+      "large": false,
+      "passengers": 1131485
+    },
+    {
+      "name": "Cadete FAP Guillermo Del Castillo Paredes Airport",
+      "iata": "TPP",
+      "municipality": "Tarapoto",
+      "large": false,
+      "passengers": 905294
+    },
+    {
+      "name": "Capitán FAP Carlos Martínez de Pinillos International Airport",
+      "iata": "TRU",
+      "municipality": "Trujillo",
+      "large": true,
+      "passengers": 759526
+    },
+    {
+      "name": "Cap FAP David Abenzur Rengifo International Airport",
+      "iata": "PCL",
+      "municipality": "Pucallpa",
+      "large": true,
+      "passengers": 712014
+    },
+    {
+      "name": "Capitán FAP José A. Quiñones González International Airport",
+      "iata": "CIX",
+      "municipality": "Chiclayo",
+      "large": true,
+      "passengers": 678698
+    },
+    {
+      "name": "Inca Manco Capac International Airport",
+      "iata": "JUL",
+      "municipality": "Juliaca",
+      "large": true,
+      "passengers": 482971
+    },
+    {
+      "name": "Coronel FAP Carlos Ciriani Santa Rosa International Airport",
+      "iata": "TCQ",
+      "municipality": "Tacna",
+      "large": false,
+      "passengers": 478765
+    },
+    {
+      "name": "Mayor General FAP Armando Revoredo Iglesias Airport",
+      "iata": "CJA",
+      "municipality": "Cajamarca",
+      "large": false,
+      "passengers": 473567
+    },
+    {
+      "name": "Captain Pedro Canga Rodríguez International Airport",
+      "iata": "TBP",
+      "municipality": "Tumbes",
+      "large": false,
+      "passengers": 401336
+    },
+    {
+      "name": "Padre Aldamiz International Airport",
+      "iata": "PEM",
+      "municipality": "Puerto Maldonado",
+      "large": false,
+      "passengers": 336763
+    },
+    {
+      "name": "Captain Victor Montes Arias International Airport",
+      "iata": "TYL",
+      "municipality": "Talara",
+      "large": false,
+      "passengers": 318985
+    },
+    {
+      "name": "Air Force Colonel Alfredo Mendivil Duarte Airport",
+      "iata": "AYP",
+      "municipality": "Ayacucho",
+      "large": false,
+      "passengers": 312128
+    },
+    {
+      "name": "Shumba Airport",
+      "iata": "JAE",
+      "municipality": "Jaén",
+      "large": false,
+      "passengers": 283672
+    },
+    {
+      "name": "Maria Reiche Neuman Airport",
+      "iata": "NZC",
+      "municipality": "Nazca",
+      "large": false,
+      "passengers": 249020
+    },
+    {
+      "name": "Francisco Carle Airport",
+      "iata": "JAU",
+      "municipality": "Jauja",
+      "large": false,
+      "passengers": 228423
+    },
+    {
+      "name": "Alferez Fap David Figueroa Fernandini Airport",
+      "iata": "HUU",
+      "municipality": "Huánuco",
+      "large": false,
+      "passengers": 174321
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "iso3": "ETH",
+  "name": "Ethiopia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Lion",
+      "type": "national animal",
+      "scientificName": "Panthera leo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Giles Laurent"
+      }
+    }
+  ],
+  "flower": {
+    "name": "calla lily",
+    "scientificName": "Zantedeschia aethiopica",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zantedeschia%20aethiopica%20-1.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Zantedeschia%20aethiopica%20-1.jpg",
+      "license": "CC BY-SA 2.5",
+      "author": "Eric Hunt"
+    }
+  }
+}

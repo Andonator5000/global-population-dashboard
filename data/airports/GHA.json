@@ -1,0 +1,50 @@
+{
+  "iso3": "GHA",
+  "name": "Ghana",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Kotoka International Airport",
+      "iata": "ACC",
+      "municipality": "Accra",
+      "large": true,
+      "passengers": 3019000
+    },
+    {
+      "name": "Prempeh I International Airport",
+      "iata": "KMS",
+      "municipality": "Kumasi",
+      "large": true,
+      "passengers": 476266
+    },
+    {
+      "name": "Yakubu Tali International Airport",
+      "iata": "TML",
+      "municipality": "Tamale",
+      "large": true,
+      "passengers": 217958
+    },
+    {
+      "name": "Ho Airport",
+      "iata": null,
+      "municipality": "Ho",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Sunyani Airport",
+      "iata": "NYI",
+      "municipality": "Sunyani",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Takoradi Airport",
+      "iata": "TKD",
+      "municipality": "Sekondi-Takoradi",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

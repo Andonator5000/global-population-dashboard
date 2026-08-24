@@ -1,0 +1,36 @@
+{
+  "iso3": "HTI",
+  "name": "Haiti",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Toussaint Louverture International Airport",
+      "iata": "PAP",
+      "municipality": "Port-au-Prince",
+      "large": true,
+      "passengers": 1893470
+    },
+    {
+      "name": "Cap Haitien International Airport",
+      "iata": "CAP",
+      "municipality": "Cap Haitien",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Antoine-Simon International Airport",
+      "iata": "CYA",
+      "municipality": "Les Cayes",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Jérémie Airport",
+      "iata": "JEE",
+      "municipality": "Carrefour Sanon",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

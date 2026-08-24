@@ -1,0 +1,14 @@
+{
+  "iso3": "MDG",
+  "name": "Madagascar",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Covid Organics",
+      "inventors": [
+        "Malagasy Institute of Applied Research"
+      ]
+    }
+  ]
+}

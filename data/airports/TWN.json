@@ -1,0 +1,106 @@
+{
+  "iso3": "TWN",
+  "name": "Taiwan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Taiwan Taoyuan International Airport",
+      "iata": "TPE",
+      "municipality": "Taoyuan",
+      "large": true,
+      "passengers": 48689372
+    },
+    {
+      "name": "Taipei Songshan International Airport",
+      "iata": "TSA",
+      "municipality": "Taipei (Songshan)",
+      "large": true,
+      "passengers": 15204650
+    },
+    {
+      "name": "Kaohsiung International Airport",
+      "iata": "KHH",
+      "municipality": "Kaohsiung (Xiaogang)",
+      "large": true,
+      "passengers": 12158144
+    },
+    {
+      "name": "Taichung International Airport / Ching Chuang Kang Air Base",
+      "iata": "RMQ",
+      "municipality": "Taichung (Qingshui)",
+      "large": true,
+      "passengers": 2821967
+    },
+    {
+      "name": "Penghu Magong Airport",
+      "iata": "MZG",
+      "municipality": "Huxi",
+      "large": true,
+      "passengers": 2743876
+    },
+    {
+      "name": "Kinmen Airport",
+      "iata": "KNH",
+      "municipality": "Shang-I",
+      "large": false,
+      "passengers": 2543492
+    },
+    {
+      "name": "Tainan International Airport / Tainan Air Base",
+      "iata": "TNN",
+      "municipality": "Tainan (Rende)",
+      "large": true,
+      "passengers": 2356349
+    },
+    {
+      "name": "Hualien Chiashan Airport",
+      "iata": "HUN",
+      "municipality": "Hualien City",
+      "large": true,
+      "passengers": 1595466
+    },
+    {
+      "name": "Taitung Airport",
+      "iata": "TTT",
+      "municipality": "Taitung City",
+      "large": false,
+      "passengers": 1173420
+    },
+    {
+      "name": "Chiayi Airport",
+      "iata": "CYI",
+      "municipality": "Shuishang",
+      "large": false,
+      "passengers": 1002069
+    },
+    {
+      "name": "Matsu Nangan Airport",
+      "iata": "LZN",
+      "municipality": "Matsu (Nangan)",
+      "large": false,
+      "passengers": 371238
+    },
+    {
+      "name": "Matsu Beigan Airport",
+      "iata": "MFK",
+      "municipality": "Matsu (Beigan)",
+      "large": false,
+      "passengers": 102428
+    },
+    {
+      "name": "Lanyu Airport",
+      "iata": "KYD",
+      "municipality": "Orchid Island",
+      "large": false,
+      "passengers": 75006
+    },
+    {
+      "name": "Pingtung Air Force Base North",
+      "iata": null,
+      "municipality": "Pingtung",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

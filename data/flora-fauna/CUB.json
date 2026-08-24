@@ -1,0 +1,30 @@
+{
+  "iso3": "CUB",
+  "name": "Cuba",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Cuban trogon",
+      "type": "national bird",
+      "scientificName": "Priotelus temnurus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Priotelus%20temnurus%20-Camaguey%2C%20Camaguey%20Province%2C%20Cuba-8.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Priotelus%20temnurus%20-Camaguey%2C%20Camaguey%20Province%2C%20Cuba-8.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Laura Gooch"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Cuban royal palm",
+    "type": "national tree",
+    "scientificName": "Roystonea regia",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Roystonea%20regia.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Roystonea%20regia.jpg",
+      "license": "Public domain",
+      "author": null
+    }
+  }
+}

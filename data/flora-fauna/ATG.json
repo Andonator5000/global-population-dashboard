@@ -1,0 +1,52 @@
+{
+  "iso3": "ATG",
+  "name": "Antigua and Barbuda",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "European fallow deer",
+      "type": "national animal",
+      "scientificName": "Dama dama",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fallow%20deer%20in%20field%20%28cropped%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fallow%20deer%20in%20field%20%28cropped%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Johann-Nikolaus Andreae"
+      }
+    },
+    {
+      "name": "Frigate",
+      "type": "national bird",
+      "scientificName": "Fregata magnificens",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fregata%20magnificens%20Islas%20Gal%C3%A1pagos.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fregata%20magnificens%20Islas%20Gal%C3%A1pagos.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "macraegi"
+      }
+    },
+    {
+      "name": "Hawksbill turtle",
+      "type": "national sea creature",
+      "scientificName": "Eretmochelys imbricata",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hawksbill%20Turtle.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hawksbill%20Turtle.jpg",
+        "license": "Public domain",
+        "author": "Hoffryan at English Wikipedia"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Whitewood",
+    "type": "national tree",
+    "scientificName": "Bucida buceras",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Starr%20080530-4639%20Bucida%20buceras.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Starr%20080530-4639%20Bucida%20buceras.jpg",
+      "license": "CC BY 3.0",
+      "author": "Forest &amp; Kim Starr"
+    }
+  }
+}

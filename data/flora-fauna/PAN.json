@@ -1,0 +1,35 @@
+{
+  "iso3": "PAN",
+  "name": "Panama",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Panamanian golden frog",
+      "type": "national animal",
+      "scientificName": "Atelopus zeteki",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Atelopus%20zeteki%20IMG%203668.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Atelopus%20zeteki%20IMG%203668.jpg",
+        "license": "CC BY 2.0",
+        "author": "brian.gratwicke"
+      }
+    },
+    {
+      "name": "Harpy eagle",
+      "type": "national bird",
+      "scientificName": "Harpia harpyja",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Harpia%20harpyja%20001%20800.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Harpia%20harpyja%20001%20800.jpg",
+        "license": "CC BY 3.0",
+        "author": "http://www.birdphotos.com"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Panama tree",
+    "type": "national tree",
+    "scientificName": "Sterculia apetala"
+  }
+}

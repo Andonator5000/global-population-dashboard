@@ -1,0 +1,113 @@
+{
+  "iso3": "GBR",
+  "name": "United Kingdom",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "netball",
+      "inventors": [
+        "Martina Bergman-Österberg"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MalawiFijiNetball.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:MalawiFijiNetball.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Grant Williamson"
+      }
+    },
+    {
+      "name": "rugby sevens",
+      "year": 1833,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Germany%20England%20Oktoberfest%207s%202931.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Germany%20England%20Oktoberfest%207s%202931.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Henning Schlottmann (User:H-stt)"
+      }
+    },
+    {
+      "name": "chicken tikka masala",
+      "inventors": [
+        "Ali Ahmed Aslam"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20tikka%20masala.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20tikka%20masala.jpg",
+        "license": "CC BY 2.0",
+        "author": "Michael Hays"
+      }
+    },
+    {
+      "name": "Cluedo",
+      "inventors": [
+        "Anthony E. Pratt",
+        "Elva Rosalie Pratt"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hry%20a%20hlavolamy%202009%20-%20Cluedo%200173u.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hry%20a%20hlavolamy%202009%20-%20Cluedo%200173u.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Matěj \"Dědek\" Baťha"
+      }
+    },
+    {
+      "name": "difference engine",
+      "inventors": [
+        "Charles Babbage"
+      ],
+      "year": 1822,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Babbage%20difference%20engine%20drawing.gif?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Babbage%20difference%20engine%20drawing.gif",
+        "license": "Public domain",
+        "author": "Benjamin Herschel Babbage, printed in Harper's new monthly magazine"
+      }
+    },
+    {
+      "name": "Adolescence",
+      "inventors": [
+        "Stephen Graham",
+        "Jack Thorne"
+      ]
+    },
+    {
+      "name": "Marmite",
+      "inventors": [
+        "Justus von Liebig"
+      ],
+      "year": 1902,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Marmite.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Marmite.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    },
+    {
+      "name": "Battenberg cake",
+      "inventors": [
+        "English people"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Battenbergcake.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Battenbergcake.jpg",
+        "license": "CC BY 3.0",
+        "author": "Henrycooksey"
+      }
+    },
+    {
+      "name": "ammonal",
+      "inventors": [
+        "Richard Escales"
+      ]
+    },
+    {
+      "name": "spaghetti-tree",
+      "inventors": [
+        "Panorama"
+      ],
+      "year": 1957
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "iso3": "ISR",
+  "name": "Israel",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Ptitim",
+      "inventors": [
+        "Osem"
+      ],
+      "year": 1950,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Israeli%20couscous.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Israeli%20couscous.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Nsaum75"
+      }
+    }
+  ]
+}

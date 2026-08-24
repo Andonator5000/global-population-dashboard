@@ -1,0 +1,80 @@
+{
+  "iso3": "JPN",
+  "name": "Japan",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "sushi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Various%20sushi%2C%20beautiful%20October%20night%20at%20midnight.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Various%20sushi%2C%20beautiful%20October%20night%20at%20midnight.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Yumi Kimura"
+      }
+    },
+    {
+      "name": "instant noodles",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mama%20instant%20noodle%20block.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mama%20instant%20noodle%20block.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Takeaway"
+      }
+    },
+    {
+      "name": "takoyaki",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Takoyaki%20by%20yomi955.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Takoyaki%20by%20yomi955.jpg",
+        "license": "CC BY 2.0",
+        "author": "heiwa4126"
+      }
+    },
+    {
+      "name": "nattō",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Natto%20mixed.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Natto%20mixed.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "User:Gleam"
+      }
+    },
+    {
+      "name": "tonkatsu",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tonkatsu%20of%20Kimukatsu.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tonkatsu%20of%20Kimukatsu.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Minseong Kim"
+      }
+    },
+    {
+      "name": "donburi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tendon%20and%20unadon%20by%20avlxyz.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tendon%20and%20unadon%20by%20avlxyz.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "avlxyz"
+      }
+    },
+    {
+      "name": "osechi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20Osechi.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Japanese%20Osechi.jpg",
+        "license": "Public domain",
+        "author": null
+      }
+    },
+    {
+      "name": "kamaboko",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamaboko.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kamaboko.jpg",
+        "license": "Public domain",
+        "author": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "iso3": "VCT",
+  "name": "Saint Vincent and the Grenadines",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Argyle International Airport",
+      "iata": "SVD",
+      "municipality": "Kingstown",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Canouan Airport",
+      "iata": "CIW",
+      "municipality": "Canouan",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "J F Mitchell Airport",
+      "iata": "BQU",
+      "municipality": "Bequia",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mustique Airport",
+      "iata": "MQS",
+      "municipality": "Lovell",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Union Island International Airport",
+      "iata": "UNI",
+      "municipality": "Union Island",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

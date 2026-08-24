@@ -1,0 +1,43 @@
+{
+  "iso3": "OMN",
+  "name": "Oman",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Muscat International Airport",
+      "iata": "MCT",
+      "municipality": "Muscat/Seeb",
+      "large": true,
+      "passengers": 6479860
+    },
+    {
+      "name": "Suhar International Airport",
+      "iata": "OHS",
+      "municipality": "Suhar",
+      "large": true,
+      "passengers": 336235
+    },
+    {
+      "name": "Salalah International Airport",
+      "iata": "SLL",
+      "municipality": "Salalah",
+      "large": true,
+      "passengers": 221170
+    },
+    {
+      "name": "Duqm International Airport",
+      "iata": "DQM",
+      "municipality": "Duqm",
+      "large": true,
+      "passengers": 50505
+    },
+    {
+      "name": "Khasab Airport",
+      "iata": "KHS",
+      "municipality": "Khasab",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

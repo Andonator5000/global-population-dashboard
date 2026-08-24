@@ -1,0 +1,148 @@
+{
+  "iso3": "PNG",
+  "name": "Papua New Guinea",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Nadzab Tomodachi International Airport",
+      "iata": "LAE",
+      "municipality": "Lae",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Port Moresby Jacksons International Airport",
+      "iata": "POM",
+      "municipality": "Port Moresby",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Baimuru Airport",
+      "iata": "VMU",
+      "municipality": "Baimuru",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Balimo Airport",
+      "iata": "OPU",
+      "municipality": "Balimo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Buka Airport",
+      "iata": "BUA",
+      "municipality": "Buka Island",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Chimbu Airport",
+      "iata": "CMU",
+      "municipality": "Kundiawa",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Daru Airport",
+      "iata": "DAU",
+      "municipality": "Daru",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Girua Airport",
+      "iata": "PNP",
+      "municipality": "Popondetta",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Goroka Airport",
+      "iata": "GKA",
+      "municipality": "Goronka",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gurney Airport",
+      "iata": "GUR",
+      "municipality": "Gurney",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Hoskins Airport",
+      "iata": "HKN",
+      "municipality": "Kimbe",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kavieng Airport",
+      "iata": "KVG",
+      "municipality": "Kavieng",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kerema Airport",
+      "iata": "KMA",
+      "municipality": "Kerema",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Madang Airport",
+      "iata": "MAG",
+      "municipality": "Madang",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mendi Airport",
+      "iata": "MDU",
+      "municipality": "Mendi",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Momote Airport",
+      "iata": "MAS",
+      "municipality": "Manus Island",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mount Hagen Kagamuga Airport",
+      "iata": "HGU",
+      "municipality": "Mount Hagen",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Tokua Airport",
+      "iata": "RAB",
+      "municipality": "Kokopo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Vanimo Airport",
+      "iata": "VAI",
+      "municipality": "Vanimo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Wapenamanda Airport",
+      "iata": "WBM",
+      "municipality": "Wapenamanda",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

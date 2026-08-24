@@ -1,0 +1,36 @@
+{
+  "iso3": "TCA",
+  "name": "Turks and Caicos Islands",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Providenciales International Airport",
+      "iata": "PLS",
+      "municipality": "Providenciales",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "JAGS McCartney International Airport",
+      "iata": "GDT",
+      "municipality": "Cockburn Town",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "North Caicos Airport",
+      "iata": "NCA",
+      "municipality": "North Caicos",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "South Caicos Airport",
+      "iata": "XSC",
+      "municipality": "South Caicos",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

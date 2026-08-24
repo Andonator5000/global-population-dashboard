@@ -1,0 +1,78 @@
+{
+  "iso3": "CRI",
+  "name": "Costa Rica",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Juan Santamaría International Airport",
+      "iata": "SJO",
+      "municipality": "San José (Alajuela)",
+      "large": true,
+      "passengers": 6456750
+    },
+    {
+      "name": "Daniel Oduber Quirós International Airport",
+      "iata": "LIR",
+      "municipality": "Liberia",
+      "large": true,
+      "passengers": 1182123
+    },
+    {
+      "name": "Tobías Bolaños International Airport",
+      "iata": "SYQ",
+      "municipality": "San Jose",
+      "large": false,
+      "passengers": 128106
+    },
+    {
+      "name": "Quepos Managua Airport",
+      "iata": "XQP",
+      "municipality": "Quepos",
+      "large": false,
+      "passengers": 56020
+    },
+    {
+      "name": "Puerto Jimenez Airport",
+      "iata": "PJM",
+      "municipality": "Puerto Jimenez",
+      "large": false,
+      "passengers": 38165
+    },
+    {
+      "name": "Golfito Airport",
+      "iata": "GLF",
+      "municipality": "Golfito",
+      "large": false,
+      "passengers": 18024
+    },
+    {
+      "name": "Aerotortuguero Airport",
+      "iata": null,
+      "municipality": "Roxana",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "La Fortuna Arenal Airport",
+      "iata": "FON",
+      "municipality": "La Fortuna",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Limón International Airport",
+      "iata": "LIO",
+      "municipality": "Limón",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Nosara Airport",
+      "iata": "NOB",
+      "municipality": "Nicoya",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

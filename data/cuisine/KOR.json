@@ -1,0 +1,26 @@
+{
+  "iso3": "KOR",
+  "name": "South Korea",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "corn tea",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Oksusu-cha.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Oksusu-cha.jpg",
+        "license": "CC BY 4.0",
+        "author": "연두씨네"
+      }
+    },
+    {
+      "name": "dwaeji-gukbap",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dwaeji-gukbap.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dwaeji-gukbap.jpg",
+        "license": "CC BY 2.0 kr",
+        "author": "http://blog.daum.net/wjlee4284 사이팔사]"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "iso3": "SEN",
+  "name": "Senegal",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Dibi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dibi%20accompagn%C3%A9%20de%20salades%20et%20frites.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dibi%20accompagn%C3%A9%20de%20salades%20et%20frites.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Kalsoum17"
+      }
+    }
+  ]
+}

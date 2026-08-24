@@ -1,0 +1,16 @@
+{
+  "iso3": "TON",
+  "name": "Tonga",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "flower": {
+    "name": "Tonga",
+    "scientificName": "Garcinia sessilis",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Garcinia%20sessilis%2C%20flower.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Garcinia%20sessilis%2C%20flower.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Tauʻolunga"
+    }
+  }
+}

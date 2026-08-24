@@ -1,0 +1,17 @@
+{
+  "iso3": "PSE",
+  "name": "Palestine",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "freekeh",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Freekeh%20with%20roasted%20vegetables.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Freekeh%20with%20roasted%20vegetables.jpg",
+        "license": "CC BY 2.0",
+        "author": "Kristen Taylor"
+      }
+    }
+  ]
+}

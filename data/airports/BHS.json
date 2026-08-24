@@ -1,0 +1,148 @@
+{
+  "iso3": "BHS",
+  "name": "Bahamas",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Lynden Pindling International Airport",
+      "iata": "NAS",
+      "municipality": "Nassau",
+      "large": true,
+      "passengers": 4100000
+    },
+    {
+      "name": "Grand Bahama International Airport",
+      "iata": "FPO",
+      "municipality": "Freeport",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "San Salvador International Airport",
+      "iata": "ZSA",
+      "municipality": "San Salvador",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Andros Town Airport",
+      "iata": "ASD",
+      "municipality": "Andros Town",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Arthur's Town Airport",
+      "iata": "ATC",
+      "municipality": "Arthur's Town",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Chub Cay Airport",
+      "iata": "CCZ",
+      "municipality": "Chub Cay",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Colonel Hill Airport",
+      "iata": "CRI",
+      "municipality": "Colonel Hill",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Congo Town Airport",
+      "iata": "TZN",
+      "municipality": "Andros",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Deadman's Cay Airport",
+      "iata": "LGI",
+      "municipality": "Deadman's Cay",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Exuma International Airport",
+      "iata": "GGT",
+      "municipality": "Moss Town",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Governor's Harbour Airport",
+      "iata": "GHB",
+      "municipality": "Governor's Harbour",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Inagua Airport",
+      "iata": "IGA",
+      "municipality": "Matthew Town",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Leonard M. Thompson International Airport",
+      "iata": "MHH",
+      "municipality": "Marsh Harbour",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mayaguana Airport",
+      "iata": "MYG",
+      "municipality": "Abraham Bay Settlement",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "New Bight Airport",
+      "iata": "TBI",
+      "municipality": "Cat Island",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "North Eleuthera Airport",
+      "iata": "ELH",
+      "municipality": "North Eleuthera",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Rock Sound International Airport",
+      "iata": "RSD",
+      "municipality": "Rock Sound",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "San Andros Airport",
+      "iata": "SAQ",
+      "municipality": "Andros Island",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "South Bimini Airport",
+      "iata": "BIM",
+      "municipality": "South Bimini",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Spring Point Airport",
+      "iata": "AXP",
+      "municipality": "Spring Point",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

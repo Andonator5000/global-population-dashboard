@@ -1,0 +1,50 @@
+{
+  "iso3": "AUS",
+  "name": "Australia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Red kangaroo",
+      "type": "national animal",
+      "scientificName": "Macropus rufus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20kangaroo%20-%20melbourne%20zoo.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red%20kangaroo%20-%20melbourne%20zoo.jpg",
+        "license": "GFDL 1.2",
+        "author": "fir0002  flagstaffotos [at] gmail.com\n\t\tCanon 20D + Canon 70-200mm f/2.8 L"
+      }
+    },
+    {
+      "name": "Emu",
+      "type": "national bird",
+      "scientificName": "Dromaius novaehollandiae",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Emoe.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emoe.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "J. Folmer, nl:Gebruiker:Jcwf"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Golden wattle",
+    "type": "national tree",
+    "scientificName": "Acacia pycnantha",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acacia%20pycnantha%20Golden%20Wattle.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acacia%20pycnantha%20Golden%20Wattle.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Melburnian"
+    }
+  },
+  "flower": {
+    "name": "Acacia pycnantha",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acacia%20pycnantha%20Golden%20Wattle.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acacia%20pycnantha%20Golden%20Wattle.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Melburnian"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "iso3": "TZA",
+  "name": "Tanzania",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Julius Nyerere International Airport",
+      "iata": "DAR",
+      "municipality": "Dar es Salaam",
+      "large": true,
+      "passengers": 2496394
+    },
+    {
+      "name": "Abeid Amani Karume International Airport",
+      "iata": "ZNZ",
+      "municipality": "Zanzibar",
+      "large": true,
+      "passengers": 934337
+    },
+    {
+      "name": "Kilimanjaro International Airport",
+      "iata": "JRO",
+      "municipality": "Arusha",
+      "large": true,
+      "passengers": 665149
+    },
+    {
+      "name": "Mwanza International Airport",
+      "iata": "MWZ",
+      "municipality": "Mwanza",
+      "large": true,
+      "passengers": 400457
+    },
+    {
+      "name": "Arusha Airport",
+      "iata": "ARK",
+      "municipality": "Arusha",
+      "large": false,
+      "passengers": 164419
+    },
+    {
+      "name": "Tanga Airport",
+      "iata": "TGT",
+      "municipality": "Tanga",
+      "large": false,
+      "passengers": 30967
+    },
+    {
+      "name": "Mtwara Airport",
+      "iata": "MYW",
+      "municipality": "Mtwara",
+      "large": false,
+      "passengers": 22681
+    },
+    {
+      "name": "Dodoma Airport",
+      "iata": "DOD",
+      "municipality": "Dodoma",
+      "large": false,
+      "passengers": 11868
+    },
+    {
+      "name": "Songwe Airport",
+      "iata": "MBI",
+      "municipality": "Mbeya",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

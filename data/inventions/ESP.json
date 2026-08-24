@@ -1,0 +1,43 @@
+{
+  "iso3": "ESP",
+  "name": "Spain",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "madeleine",
+      "inventors": [
+        "Madeleine Paulmier"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Madeleines%20de%20Commercy.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Madeleines%20de%20Commercy.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "myself (Bernard Leprêtre)"
+      }
+    },
+    {
+      "name": "bossaball",
+      "inventors": [
+        "Filip Eyckmans"
+      ],
+      "year": 2004
+    },
+    {
+      "name": "paranoiac-critical method",
+      "inventors": [
+        "Salvador Dalí"
+      ]
+    },
+    {
+      "name": "Catànies",
+      "year": 1946,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CataloniaCatanies.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:CataloniaCatanies.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Friviere"
+      }
+    }
+  ]
+}

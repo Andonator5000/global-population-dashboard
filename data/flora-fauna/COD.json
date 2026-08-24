@@ -1,0 +1,19 @@
+{
+  "iso3": "COD",
+  "name": "DR Congo",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Okapi",
+      "type": "national animal",
+      "scientificName": "Okapia johnstoni",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Okapi2.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Okapi2.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Raul654"
+      }
+    }
+  ]
+}

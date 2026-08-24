@@ -1,0 +1,80 @@
+{
+  "iso3": "CHN",
+  "name": "China",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "fried rice",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried%20rice%20by%20Adonis%20Chen%20in%20Keelung%2C%20Taiwan.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fried%20rice%20by%20Adonis%20Chen%20in%20Keelung%2C%20Taiwan.jpg",
+        "license": "CC BY 2.0",
+        "author": "Adonis Chen from Keelung, Taiwan"
+      }
+    },
+    {
+      "name": "dim sum",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinesische%20K%C3%BCche.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chinesische%20K%C3%BCche.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Kolumbusjogger"
+      }
+    },
+    {
+      "name": "sugarcane juice",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sugarcanejuice.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sugarcanejuice.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Food Trails"
+      }
+    },
+    {
+      "name": "grass jelly",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/GrassJellyBlocks.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:GrassJellyBlocks.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Sjschen"
+      }
+    },
+    {
+      "name": "biangbiang noodles",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Biang%20Biang%20Mian.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Biang%20Biang%20Mian.jpg",
+        "license": "CC BY 2.0",
+        "author": "Gary Soup"
+      }
+    },
+    {
+      "name": "stinky tofu",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stinky%20Tofu%20Fried.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stinky%20Tofu%20Fried.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "The original uploader was Richy at Chinese Wikipedia."
+      }
+    },
+    {
+      "name": "gunpowder tea",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Th%C3%A9%20vert%20gunpowder%20entass%C3%A9%2001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%20vert%20gunpowder%20entass%C3%A9%2001.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Zantastik"
+      }
+    },
+    {
+      "name": "lamian",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20noodles.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chinese%20noodles.JPG",
+        "license": "CC BY 3.0",
+        "author": "Youngjediboy at English Wikipedia"
+      }
+    }
+  ]
+}

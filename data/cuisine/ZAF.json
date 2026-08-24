@@ -1,0 +1,44 @@
+{
+  "iso3": "ZAF",
+  "name": "South Africa",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "bobotie",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bobotie-01.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bobotie-01.jpg",
+        "license": "CC BY 2.0",
+        "author": "cherrylet"
+      }
+    },
+    {
+      "name": "chakalaka",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chakalaka.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chakalaka.jpg",
+        "license": "CC BY 2.0",
+        "author": "philipp from cape town, south africa"
+      }
+    },
+    {
+      "name": "Gatsby",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Root44%203%20cropped.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Root44%203%20cropped.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "HelenOnline"
+      }
+    },
+    {
+      "name": "boeber",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Boeber.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Boeber.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Craigfraser"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "iso3": "PER",
+  "name": "Peru",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Vicuña",
+      "type": "national animal",
+      "scientificName": "Vicugna vicugna",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vicunacrop.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vicunacrop.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Alexandre Buisse (Nattfodd)"
+      }
+    },
+    {
+      "name": "Andean cock-of-the-rock",
+      "type": "national bird",
+      "scientificName": "Rupicola peruviana",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rupicola%20peruviana%20%28male%29%20-San%20Diego%20Zoo-8a.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rupicola%20peruviana%20%28male%29%20-San%20Diego%20Zoo-8a.jpg",
+        "license": "CC BY 2.0",
+        "author": "Jerry Thompson"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Cinchona officinalis",
+    "type": "national tree",
+    "scientificName": "Cinchona",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cinchona%20officinalis%20%28DITSL%29.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cinchona%20officinalis%20%28DITSL%29.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "James Steakley"
+    }
+  },
+  "flower": {
+    "name": "Cantua buxifolia",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kantutas%20Cuzco.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kantutas%20Cuzco.jpg",
+      "license": "GFDL",
+      "author": "No machine-readable author provided. Ghiz~commonswiki assumed (based on copyright claims)."
+    }
+  }
+}

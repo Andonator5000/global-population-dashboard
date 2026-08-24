@@ -1,0 +1,26 @@
+{
+  "iso3": "CRI",
+  "name": "Costa Rica",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Casado",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Casado%20Tico.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Casado%20Tico.jpg",
+        "license": "CC BY 2.0",
+        "author": "Richie Diesterheft from Chicago, IL, USA"
+      }
+    },
+    {
+      "name": "panela con limón",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papel%C3%B3n%20con%20lim%C3%B3n.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Papel%C3%B3n%20con%20lim%C3%B3n.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "LittleT889"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "iso3": "GMB",
+  "name": "Gambia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Spotted hyena",
+      "type": "national animal",
+      "scientificName": "Crocuta crocuta",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Spotted%20hyena%20%28Crocuta%20crocuta%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Spotted%20hyena%20%28Crocuta%20crocuta%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Charles J. Sharp"
+      }
+    }
+  ]
+}

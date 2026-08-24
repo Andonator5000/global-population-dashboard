@@ -1,0 +1,11 @@
+{
+  "iso3": "NCL",
+  "name": "New Caledonia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Bougna"
+    }
+  ]
+}

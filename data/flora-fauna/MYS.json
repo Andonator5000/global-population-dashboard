@@ -1,0 +1,39 @@
+{
+  "iso3": "MYS",
+  "name": "Malaysia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Malayan tiger",
+      "type": "national animal",
+      "scientificName": "Panthera tigris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MalayanTiger%20PantheraTigrisJacksoni.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:MalayanTiger%20PantheraTigrisJacksoni.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Ltshears"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Borneo/Malacca teak, Merbau",
+    "type": "national tree",
+    "scientificName": "Intsia palembanica",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Malacca%20Teak%2C%20William%20Farquhar%20Collection%20of%20Natural%20History%20Drawings.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Malacca%20Teak%2C%20William%20Farquhar%20Collection%20of%20Natural%20History%20Drawings.jpg",
+      "license": "Public domain",
+      "author": "Unknown authorUnknown author (anonymous Chinese artist)."
+    }
+  },
+  "flower": {
+    "name": "Hibiscus rosa-sinensis",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hibiscus%20Brilliant.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Hibiscus%20Brilliant.jpg",
+      "license": "CC BY 2.0",
+      "author": "Andy / Andrew Fogg from near Cambridge, UK"
+    }
+  }
+}

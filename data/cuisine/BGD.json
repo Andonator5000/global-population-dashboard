@@ -1,0 +1,29 @@
+{
+  "iso3": "BGD",
+  "name": "Bangladesh",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Pithali"
+    },
+    {
+      "name": "Borhani",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Glass%20of%20Borhani.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:A%20Glass%20of%20Borhani.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "DarkSpartan"
+      }
+    },
+    {
+      "name": "Soft Khichuri",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%EA%A0%81%EA%A0%8D%EA%A0%94%EA%A0%A3%EA%A0%9E%EA%A0%A4%20%E0%A7%A7%E0%A7%A7.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%EA%A0%81%EA%A0%8D%EA%A0%94%EA%A0%A3%EA%A0%9E%EA%A0%A4%20%E0%A7%A7%E0%A7%A7.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "এম আবু সাঈদ"
+      }
+    }
+  ]
+}

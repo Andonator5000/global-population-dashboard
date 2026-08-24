@@ -1,0 +1,106 @@
+{
+  "iso3": "AGO",
+  "name": "Angola",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Quatro de Fevereiro International Airport",
+      "iata": "LAD",
+      "municipality": "Luanda",
+      "large": true,
+      "passengers": 2430794
+    },
+    {
+      "name": "Dr. Antonio Agostinho Neto International Airport",
+      "iata": "NBJ",
+      "municipality": "Luanda (Ícolo e Bengo)",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Albano Machado Airport",
+      "iata": "NOV",
+      "municipality": "Huambo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Cabinda Airport",
+      "iata": "CAB",
+      "municipality": "Cabinda",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Catumbela Airport",
+      "iata": "CBT",
+      "municipality": "Catumbela",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Dundo Airport",
+      "iata": "DUE",
+      "municipality": "Chitato",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Lubango Mukanka International Airport",
+      "iata": "SDD",
+      "municipality": "Lubango",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Malanje Airport",
+      "iata": "MEG",
+      "municipality": "Malanje",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mbanza Congo Airport",
+      "iata": "SSY",
+      "municipality": "Mbanza Congo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Menongue Airport",
+      "iata": "SPP",
+      "municipality": "Menongue",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Negage Airport",
+      "iata": "GXG",
+      "municipality": "Negage",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Ngjiva Pereira Airport",
+      "iata": "VPE",
+      "municipality": "Ngiva",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Soyo Airport",
+      "iata": "SZA",
+      "municipality": "Soyo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Welwitschia Mirabilis International Airport",
+      "iata": "MSZ",
+      "municipality": "Moçâmedes",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

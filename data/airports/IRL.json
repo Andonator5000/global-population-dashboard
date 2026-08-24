@@ -1,0 +1,50 @@
+{
+  "iso3": "IRL",
+  "name": "Ireland",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Dublin Airport",
+      "iata": "DUB",
+      "municipality": "Dublin",
+      "large": true,
+      "passengers": 34645335
+    },
+    {
+      "name": "Shannon Airport",
+      "iata": "SNN",
+      "municipality": "Shannon",
+      "large": true,
+      "passengers": 3639046
+    },
+    {
+      "name": "Cork International Airport",
+      "iata": "ORK",
+      "municipality": "Cork",
+      "large": true,
+      "passengers": 3258639
+    },
+    {
+      "name": "Ireland West Airport Knock",
+      "iata": "NOC",
+      "municipality": "Charlestown",
+      "large": true,
+      "passengers": 775063
+    },
+    {
+      "name": "Kerry Airport",
+      "iata": "KIR",
+      "municipality": "Farranfore",
+      "large": false,
+      "passengers": 365339
+    },
+    {
+      "name": "Donegal Airport",
+      "iata": "CFN",
+      "municipality": "Donegal",
+      "large": false,
+      "passengers": 65539
+    }
+  ]
+}

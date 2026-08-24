@@ -1,0 +1,36 @@
+{
+  "iso3": "LAO",
+  "name": "Laos",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Luang Phabang International Airport",
+      "iata": "LPQ",
+      "municipality": "Luang Phabang",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Pakse International Airport",
+      "iata": "PKZ",
+      "municipality": "Pakse",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Wattay International Airport",
+      "iata": "VTE",
+      "municipality": "Vientiane",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Bokeo International Airport",
+      "iata": "BOR",
+      "municipality": "Ton Phueng",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

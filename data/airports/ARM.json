@@ -1,0 +1,22 @@
+{
+  "iso3": "ARM",
+  "name": "Armenia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Zvartnots International Airport",
+      "iata": "EVN",
+      "municipality": "Yerevan",
+      "large": true,
+      "passengers": 3649764
+    },
+    {
+      "name": "Shirak International Airport",
+      "iata": "LWN",
+      "municipality": "Gyumri",
+      "large": true,
+      "passengers": 165946
+    }
+  ]
+}

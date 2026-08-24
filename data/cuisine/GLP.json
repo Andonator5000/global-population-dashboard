@@ -1,0 +1,17 @@
+{
+  "iso3": "GLP",
+  "name": "Guadeloupe",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Pelau",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MISC%20Pelau.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:MISC%20Pelau.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Grueslayer"
+      }
+    }
+  ]
+}

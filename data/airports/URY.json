@@ -1,0 +1,29 @@
+{
+  "iso3": "URY",
+  "name": "Uruguay",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Carrasco General Cesáreo L. Berisso International Airport",
+      "iata": "MVD",
+      "municipality": "Ciudad de la Costa",
+      "large": true,
+      "passengers": 2180029
+    },
+    {
+      "name": "Capitan Corbeta CA Curbelo International Airport",
+      "iata": "PDP",
+      "municipality": "Punta del Este",
+      "large": false,
+      "passengers": 119000
+    },
+    {
+      "name": "Pres. Gral. Óscar D. Gestido Binational Airport",
+      "iata": "RVY",
+      "municipality": "Rivera/Santana do Livramento",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "iso3": "LTU",
+  "name": "Lithuania",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Vilnius International Airport",
+      "iata": "VNO",
+      "municipality": "Vilnius",
+      "large": true,
+      "passengers": 5004922
+    },
+    {
+      "name": "Kaunas International Airport",
+      "iata": "KUN",
+      "municipality": "Kaunas",
+      "large": true,
+      "passengers": 1186081
+    },
+    {
+      "name": "Palanga International Airport",
+      "iata": "PLQ",
+      "municipality": "Palanga",
+      "large": true,
+      "passengers": 338309
+    }
+  ]
+}

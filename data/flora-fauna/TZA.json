@@ -1,0 +1,30 @@
+{
+  "iso3": "TZA",
+  "name": "Tanzania",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Giraffe",
+      "type": "national animal",
+      "scientificName": "Giraffa sp.",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Giraffe%20Mikumi%20National%20Park.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Giraffe%20Mikumi%20National%20Park.jpg",
+        "license": "GFDL 1.2",
+        "author": "Muhammad Mahdi Karim Facebook\n\n\n\n\n\nThe making of this document was supported by Wikimedia CH. (Submit your project!)\nFor all the files concerned, please see the category Supported by Wikimedia CH.\n\n\nالعربية ∙ বাংলা ∙ čeština ∙ Deutsch ∙ English ∙ Esperanto ∙ español ∙ français ∙ galego ∙ हिन्दी ∙ magyar ∙ italiano ∙ 日本語 ∙ македонски ∙ Nederlands ∙ português do Brasil ∙ rumantsch ∙ русский ∙ sicilianu ∙ slovenščina ∙ தமிழ் ∙ українська ∙ 中文 ∙ +/−"
+      }
+    }
+  ],
+  "tree": {
+    "name": "African blackwood",
+    "type": "national tree",
+    "scientificName": "Dalbergia melanoxylon",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dalbergia%20melanoxylon%20%28tree%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Dalbergia%20melanoxylon%20%28tree%29.jpg",
+      "license": "Public domain",
+      "author": "Marie-Elisabeth GORGE"
+    }
+  }
+}

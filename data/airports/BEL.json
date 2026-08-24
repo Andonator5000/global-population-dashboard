@@ -1,0 +1,43 @@
+{
+  "iso3": "BEL",
+  "name": "Belgium",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Brussels Airport",
+      "iata": "BRU",
+      "municipality": "Zaventem",
+      "large": true,
+      "passengers": 26360003
+    },
+    {
+      "name": "Brussels South Charleroi Airport",
+      "iata": "CRL",
+      "municipality": "Charleroi",
+      "large": true,
+      "passengers": 8272000
+    },
+    {
+      "name": "Ostend-Bruges International Airport",
+      "iata": "OST",
+      "municipality": "Oostende",
+      "large": true,
+      "passengers": 457644
+    },
+    {
+      "name": "Liège Airport",
+      "iata": "LGG",
+      "municipality": "Grâce-Hollogne",
+      "large": false,
+      "passengers": 400281
+    },
+    {
+      "name": "Antwerp International Airport (Deurne)",
+      "iata": "ANR",
+      "municipality": "Antwerp",
+      "large": false,
+      "passengers": 306330
+    }
+  ]
+}

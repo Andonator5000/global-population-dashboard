@@ -1,0 +1,35 @@
+{
+  "iso3": "VEN",
+  "name": "Venezuela",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "arepa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arepitas%20Food%20Macro.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Arepitas%20Food%20Macro.jpg",
+        "license": "CC BY 2.0",
+        "author": "Steven Depolo from Grand Rapids, MI, USA"
+      }
+    },
+    {
+      "name": "hallaca",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hallacas%20con%20pan%20de%20jamon%2C%20plato%20Venezuelano.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hallacas%20con%20pan%20de%20jamon%2C%20plato%20Venezuelano.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Wilfredor"
+      }
+    },
+    {
+      "name": "Tequeño",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Teque%C3%B1os%20v%C3%A9n%C3%A9zu%C3%A9liens%20%C3%A0%20Arepado%20%28Lyon%29%2C%20avril%202019%20%282%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Teque%C3%B1os%20v%C3%A9n%C3%A9zu%C3%A9liens%20%C3%A0%20Arepado%20%28Lyon%29%2C%20avril%202019%20%282%29.jpg",
+        "license": "CC0",
+        "author": "Benoît Prieur"
+      }
+    }
+  ]
+}

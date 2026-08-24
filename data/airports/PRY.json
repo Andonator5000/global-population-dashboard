@@ -1,0 +1,29 @@
+{
+  "iso3": "PRY",
+  "name": "Paraguay",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Silvio Pettirossi International Airport",
+      "iata": "ASU",
+      "municipality": "Asunción",
+      "large": true,
+      "passengers": 1239403
+    },
+    {
+      "name": "Guaraní International Airport",
+      "iata": "AGT",
+      "municipality": "Ciudad del Este",
+      "large": true,
+      "passengers": 77822
+    },
+    {
+      "name": "Teniente Ramon A. Ayub Gonzalez International Airport",
+      "iata": "ENO",
+      "municipality": "Encarnación",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

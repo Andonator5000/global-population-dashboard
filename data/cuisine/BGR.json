@@ -1,0 +1,35 @@
+{
+  "iso3": "BGR",
+  "name": "Bulgaria",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "mish-mash",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cuisinebg%20mishmash.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cuisinebg%20mishmash.jpg",
+        "license": "Public domain",
+        "author": "Ikonact"
+      }
+    },
+    {
+      "name": "Snow White salad",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Snezhanka.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Snezhanka.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "ShockD"
+      }
+    },
+    {
+      "name": "torpedo dessert",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rurki%20z%20kremem.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rurki%20z%20kremem.jpg",
+        "license": "CC BY 3.0",
+        "author": "Jos."
+      }
+    }
+  ]
+}

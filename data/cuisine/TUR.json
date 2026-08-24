@@ -1,0 +1,80 @@
+{
+  "iso3": "TUR",
+  "name": "Türkiye",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "sujuk",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sucuk-1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sucuk-1.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Rainer Zenz"
+      }
+    },
+    {
+      "name": "dondurma",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dondurma%20with%20kabak.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dondurma%20with%20kabak.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "E4024"
+      }
+    },
+    {
+      "name": "pastırma",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Iraqi%20Pastirma-Mosul%2002.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Iraqi%20Pastirma-Mosul%2002.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Abdulsalam Al Dabbagh"
+      }
+    },
+    {
+      "name": "menemen",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Menemen%20%2849657982813%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Menemen%20%2849657982813%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "やましこ"
+      }
+    },
+    {
+      "name": "nettle soup",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/St%20John%20Restaurant%2C%20Smithfield%2C%20London%20%283445306202%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:St%20John%20Restaurant%2C%20Smithfield%2C%20London%20%283445306202%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Ewan Munro from London, UK"
+      }
+    },
+    {
+      "name": "vine leaf roll",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Etli%20yaprak%20sarma%20in%20Turkey.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Etli%20yaprak%20sarma%20in%20Turkey.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "E4024"
+      }
+    },
+    {
+      "name": "pişmaniye",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pismaniye%201%20%28Piotr%20Kuczynski%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pismaniye%201%20%28Piotr%20Kuczynski%29.jpg",
+        "license": "CC BY 3.0",
+        "author": "Pkuczynski"
+      }
+    },
+    {
+      "name": "tavukgöğsü",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tavuk%20G%C3%B6%C4%9Fs%C3%BC.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tavuk%20G%C3%B6%C4%9Fs%C3%BC.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Maderibeyza"
+      }
+    }
+  ]
+}

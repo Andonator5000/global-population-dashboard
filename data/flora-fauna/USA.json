@@ -1,0 +1,50 @@
+{
+  "iso3": "USA",
+  "name": "United States",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "American bison",
+      "type": "national mammal",
+      "scientificName": "Bison bison",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/American%20bison%20k5680-1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:American%20bison%20k5680-1.jpg",
+        "license": "Public domain",
+        "author": "Jack Dykinga"
+      }
+    },
+    {
+      "name": "Bald eagle",
+      "type": "national bird",
+      "scientificName": "Haliaeetus leucocephalus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Haliaeetus%20leucocephalus.jpeg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Haliaeetus%20leucocephalus.jpeg",
+        "license": "CC BY-SA 3.0",
+        "author": "The original uploader was Cactus.man at English Wikipedia."
+      }
+    }
+  ],
+  "tree": {
+    "name": "Oak",
+    "type": "national tree",
+    "scientificName": "Quercus",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Raunkiaer.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Raunkiaer.jpg",
+      "license": "Public domain",
+      "author": "No machine-readable author provided. Haabet assumed (based on copyright claims)."
+    }
+  },
+  "flower": {
+    "name": "rose",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rosa%20rubiginosa%201.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rosa%20rubiginosa%201.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Stan Shebs"
+    }
+  }
+}

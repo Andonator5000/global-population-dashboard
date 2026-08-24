@@ -1,0 +1,148 @@
+{
+  "iso3": "ESP",
+  "name": "Spain",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Adolfo Suárez Madrid–Barajas Airport",
+      "iata": "MAD",
+      "municipality": "Madrid",
+      "large": true,
+      "passengers": 66197066
+    },
+    {
+      "name": "Josep Tarradellas Barcelona-El Prat Airport",
+      "iata": "BCN",
+      "municipality": "Barcelona",
+      "large": true,
+      "passengers": 57483036
+    },
+    {
+      "name": "Palma de Mallorca Airport",
+      "iata": "PMI",
+      "municipality": "Palma de Mallorca",
+      "large": true,
+      "passengers": 33806427
+    },
+    {
+      "name": "Málaga-Costa del Sol Airport",
+      "iata": "AGP",
+      "municipality": "Málaga",
+      "large": true,
+      "passengers": 26760549
+    },
+    {
+      "name": "Alicante-Elche Miguel Hernández Airport",
+      "iata": "ALC",
+      "municipality": "Alicante",
+      "large": true,
+      "passengers": 19950394
+    },
+    {
+      "name": "Gran Canaria Airport",
+      "iata": "LPA",
+      "municipality": "Gran Canaria Island",
+      "large": true,
+      "passengers": 15826553
+    },
+    {
+      "name": "Valencia Airport",
+      "iata": "VLC",
+      "municipality": "Valencia",
+      "large": true,
+      "passengers": 11847527
+    },
+    {
+      "name": "Tenerife Sur Airport",
+      "iata": "TFS",
+      "municipality": "Tenerife",
+      "large": true,
+      "passengers": 11248882
+    },
+    {
+      "name": "Seville Airport",
+      "iata": "SVQ",
+      "municipality": "Seville",
+      "large": true,
+      "passengers": 9686487
+    },
+    {
+      "name": "Ibiza Airport",
+      "iata": "IBZ",
+      "municipality": "Ibiza (Eivissa)",
+      "large": true,
+      "passengers": 9138224
+    },
+    {
+      "name": "César Manrique-Lanzarote Airport",
+      "iata": "ACE",
+      "municipality": "San Bartolomé",
+      "large": true,
+      "passengers": 8920901
+    },
+    {
+      "name": "Bilbao Airport",
+      "iata": "BIO",
+      "municipality": "Bilbao",
+      "large": true,
+      "passengers": 7062681
+    },
+    {
+      "name": "Fuerteventura Airport",
+      "iata": "FUE",
+      "municipality": "El Matorral",
+      "large": true,
+      "passengers": 6886935
+    },
+    {
+      "name": "Tenerife Norte-Ciudad de La Laguna Airport",
+      "iata": "TFN",
+      "municipality": "Tenerife",
+      "large": true,
+      "passengers": 5840483
+    },
+    {
+      "name": "Girona-Costa Brava Airport",
+      "iata": "GRO",
+      "municipality": "Girona",
+      "large": true,
+      "passengers": 5510970
+    },
+    {
+      "name": "Menorca Airport",
+      "iata": "MAH",
+      "municipality": "Mahón (Maó)",
+      "large": true,
+      "passengers": 3900935
+    },
+    {
+      "name": "Santiago-Rosalía de Castro Airport",
+      "iata": "SCQ",
+      "municipality": "Santiago de Compostela",
+      "large": true,
+      "passengers": 3236619
+    },
+    {
+      "name": "Asturias Airport",
+      "iata": "OVD",
+      "municipality": "Ranón",
+      "large": true,
+      "passengers": 2051342
+    },
+    {
+      "name": "Reus Airport",
+      "iata": "REU",
+      "municipality": "Reus",
+      "large": true,
+      "passengers": 1706615
+    },
+    {
+      "name": "Jerez Airport",
+      "iata": "XRY",
+      "municipality": "Jerez de la Frontera",
+      "large": false,
+      "passengers": 1607968
+    }
+  ]
+}

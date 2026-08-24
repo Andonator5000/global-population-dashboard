@@ -1,0 +1,22 @@
+{
+  "iso3": "SLE",
+  "name": "Sierra Leone",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "palm-wine music",
+      "year": 1920
+    },
+    {
+      "name": "Star of Sierra Leone",
+      "year": 1972,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Star%20of%20Sierra%20Leone.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Star%20of%20Sierra%20Leone.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Z Jason from Sydney, Australia"
+      }
+    }
+  ]
+}

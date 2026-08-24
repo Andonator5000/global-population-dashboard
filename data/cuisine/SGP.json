@@ -1,0 +1,17 @@
+{
+  "iso3": "SGP",
+  "name": "Singapore",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Roti john",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Roti%20John%20-%20served.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Roti%20John%20-%20served.jpg",
+        "license": "CC BY 2.0",
+        "author": "stef yau from Seattle, USA"
+      }
+    }
+  ]
+}

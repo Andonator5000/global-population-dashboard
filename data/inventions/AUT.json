@@ -1,0 +1,79 @@
+{
+  "iso3": "AUT",
+  "name": "Austria",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Sachertorte",
+      "inventors": [
+        "Franz Sacher"
+      ],
+      "year": 1832,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Caf%C3%A9%20Sabarsky%20Sachertorte.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Caf%C3%A9%20Sabarsky%20Sachertorte.jpg",
+        "license": "CC BY 2.5",
+        "author": "Hellokitty893112 at en.wikipedia"
+      }
+    },
+    {
+      "name": "goalball",
+      "inventors": [
+        "Natalie Örnkvist"
+      ],
+      "year": 1946,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Goalball%20vid%20Paralympics%20i%20Aten.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Goalball%20vid%20Paralympics%20i%20Aten.jpg",
+        "license": "Copyrighted free use",
+        "author": "Helene Stjernlöf"
+      }
+    },
+    {
+      "name": "Glock",
+      "inventors": [
+        "Gaston Glock"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glock%2017-removebg-preview.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Glock%2017-removebg-preview.png",
+        "license": "CC BY 2.0",
+        "author": "Asklid Antonsen"
+      }
+    },
+    {
+      "name": "Glock 17",
+      "inventors": [
+        "Gaston Glock"
+      ],
+      "year": 1980,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glock%2017%20%286825676904%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Glock%2017%20%286825676904%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Askild Antonsen"
+      }
+    },
+    {
+      "name": "Neapolitan wafer",
+      "year": 1898,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Neapolitaner%20Waffel.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Neapolitaner%20Waffel.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Pilettes"
+      }
+    },
+    {
+      "name": "Käsekrainer",
+      "year": 1960,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C3%A4sekrainer.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:K%C3%A4sekrainer.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Kobako"
+      }
+    }
+  ]
+}

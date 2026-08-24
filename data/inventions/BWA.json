@@ -1,0 +1,19 @@
+{
+  "iso3": "BWA",
+  "name": "Botswana",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Lesedi La Rona",
+      "year": 2015
+    },
+    {
+      "name": "Motswedi",
+      "inventors": [
+        "Lucara Diamond"
+      ],
+      "year": 2024
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "iso3": "DEU",
+  "name": "Germany",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Bundesadler",
+      "type": "national animal",
+      "scientificName": "Mythical",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Germany.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Coat%20of%20arms%20of%20Germany.svg",
+        "license": "Public domain",
+        "author": "Karl-Tobias Schwab"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Oak, Pedunculate oak",
+    "type": "national tree",
+    "scientificName": "Quercus, Quercus robur",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ivenacker%20Eik.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ivenacker%20Eik.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Jeroen Philippona"
+    }
+  }
+}

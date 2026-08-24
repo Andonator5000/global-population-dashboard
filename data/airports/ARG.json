@@ -1,0 +1,148 @@
+{
+  "iso3": "ARG",
+  "name": "Argentina",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Aeroparque Jorge Newbery",
+      "iata": "AEP",
+      "municipality": "Buenos Aires",
+      "large": true,
+      "passengers": 13797710
+    },
+    {
+      "name": "Ezeiza International Airport - Ministro Pistarini",
+      "iata": "EZE",
+      "municipality": "Buenos Aires (Ezeiza)",
+      "large": true,
+      "passengers": 12708446
+    },
+    {
+      "name": "Ingeniero Aeronáutico Ambrosio L.V. Taravella International Airport",
+      "iata": "COR",
+      "municipality": "Cordoba",
+      "large": true,
+      "passengers": 3387530
+    },
+    {
+      "name": "Governor Francisco Gabrielli International Airport",
+      "iata": "MDZ",
+      "municipality": "Mendoza",
+      "large": true,
+      "passengers": 2032195
+    },
+    {
+      "name": "Teniente Luis Candelaria International Airport",
+      "iata": "BRC",
+      "municipality": "San Carlos de Bariloche",
+      "large": true,
+      "passengers": 1559455
+    },
+    {
+      "name": "Martín Miguel de Güemes International Airport",
+      "iata": "SLA",
+      "municipality": "Salta",
+      "large": true,
+      "passengers": 1110587
+    },
+    {
+      "name": "Cataratas Del Iguazú International Airport",
+      "iata": "IGR",
+      "municipality": "Puerto Iguazu",
+      "large": false,
+      "passengers": 1089011
+    },
+    {
+      "name": "Presidente Perón International Airport",
+      "iata": "NQN",
+      "municipality": "Neuquén",
+      "large": true,
+      "passengers": 1018948
+    },
+    {
+      "name": "Teniente Benjamín Matienzo International Airport",
+      "iata": "TUC",
+      "municipality": "San Miguel de Tucumán",
+      "large": true,
+      "passengers": 933472
+    },
+    {
+      "name": "Rosario Islas Malvinas International Airport",
+      "iata": "ROS",
+      "municipality": "Rosario",
+      "large": true,
+      "passengers": 847855
+    },
+    {
+      "name": "Ushuaia - Malvinas Argentinas International Airport",
+      "iata": "USH",
+      "municipality": "Ushuaia",
+      "large": false,
+      "passengers": 798709
+    },
+    {
+      "name": "General Enrique Mosconi International Airport",
+      "iata": "CRD",
+      "municipality": "Comodoro Rivadavia",
+      "large": true,
+      "passengers": 672772
+    },
+    {
+      "name": "El Calafate - Commander Armando Tola International Airport",
+      "iata": "FTE",
+      "municipality": "El Calafate",
+      "large": false,
+      "passengers": 625938
+    },
+    {
+      "name": "Ástor Piazzola International Airport",
+      "iata": "MDQ",
+      "municipality": "Mar del Plata",
+      "large": false,
+      "passengers": 453251
+    },
+    {
+      "name": "Comandante Espora Airport",
+      "iata": "BHI",
+      "municipality": "Bahía Blanca",
+      "large": false,
+      "passengers": 402862
+    },
+    {
+      "name": "Gobernador Horacio Guzman International Airport",
+      "iata": "JUJ",
+      "municipality": "San Salvador de Jujuy",
+      "large": true,
+      "passengers": 394594
+    },
+    {
+      "name": "Domingo Faustino Sarmiento Airport",
+      "iata": "UAQ",
+      "municipality": "San Juan",
+      "large": false,
+      "passengers": 364182
+    },
+    {
+      "name": "Almirante Marco Andres Zar Airport",
+      "iata": "REL",
+      "municipality": "Rawson",
+      "large": false,
+      "passengers": 332807
+    },
+    {
+      "name": "Resistencia International Airport",
+      "iata": "RES",
+      "municipality": "Resistencia",
+      "large": true,
+      "passengers": 316082
+    },
+    {
+      "name": "Libertador Gral D Jose De San Martin Airport",
+      "iata": "PSS",
+      "municipality": "Posadas",
+      "large": false,
+      "passengers": 293833
+    }
+  ]
+}

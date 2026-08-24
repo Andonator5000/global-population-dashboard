@@ -1,0 +1,92 @@
+{
+  "iso3": "ECU",
+  "name": "Ecuador",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "José Joaquín de Olmedo International Airport",
+      "iata": "GYE",
+      "municipality": "Guayaquil",
+      "large": true,
+      "passengers": 6015347
+    },
+    {
+      "name": "Mariscal Sucre International Airport",
+      "iata": "UIO",
+      "municipality": "Quito",
+      "large": true,
+      "passengers": 5574019
+    },
+    {
+      "name": "Seymour Galapagos Ecological Airport",
+      "iata": "GPS",
+      "municipality": "Isla Baltra",
+      "large": false,
+      "passengers": 262647
+    },
+    {
+      "name": "Mariscal Lamar Airport",
+      "iata": "CUE",
+      "municipality": "Cuenca",
+      "large": false,
+      "passengers": 179384
+    },
+    {
+      "name": "Eloy Alfaro International Airport",
+      "iata": "MEC",
+      "municipality": "Manta",
+      "large": false,
+      "passengers": 83134
+    },
+    {
+      "name": "Francisco De Orellana Airport",
+      "iata": "OCC",
+      "municipality": "Coca",
+      "large": false,
+      "passengers": 57225
+    },
+    {
+      "name": "Carlos Concha Torres International Airport",
+      "iata": "ESM",
+      "municipality": "Tachina",
+      "large": true,
+      "passengers": 47876
+    },
+    {
+      "name": "Santa Rosa - Artillery Colonel Victor Larrea International Airport",
+      "iata": "ETR",
+      "municipality": "Santa Rosa",
+      "large": false,
+      "passengers": 19171
+    },
+    {
+      "name": "General Ulpiano Paez International Airport",
+      "iata": "SNC",
+      "municipality": "Salinas/La Libertad",
+      "large": true,
+      "passengers": 1131
+    },
+    {
+      "name": "Coronel E Carvajal Airport",
+      "iata": "XMS",
+      "municipality": "Macas",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Cotopaxi International Airport",
+      "iata": "LTX",
+      "municipality": "Latacunga",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Lieutenant Colonel Luis A. Mantilla International Airport",
+      "iata": "TUA",
+      "municipality": "Tulcán",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

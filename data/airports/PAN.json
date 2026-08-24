@@ -1,0 +1,57 @@
+{
+  "iso3": "PAN",
+  "name": "Panama",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Tocumen International Airport",
+      "iata": "PTY",
+      "municipality": "Tocumen",
+      "large": true,
+      "passengers": 16242679
+    },
+    {
+      "name": "Enrique Malek International Airport",
+      "iata": "DAV",
+      "municipality": "David",
+      "large": false,
+      "passengers": 323465
+    },
+    {
+      "name": "Marcos A. Gelabert International Airport",
+      "iata": "PAC",
+      "municipality": "Albrook",
+      "large": false,
+      "passengers": 315000
+    },
+    {
+      "name": "Bocas del Toro \"Isla Colón\" International Airport",
+      "iata": "BOC",
+      "municipality": "Isla Colón",
+      "large": false,
+      "passengers": 80378
+    },
+    {
+      "name": "Changuinola Captain Manuel Niño International Airport",
+      "iata": "CHX",
+      "municipality": "Changuinola",
+      "large": false,
+      "passengers": 19010
+    },
+    {
+      "name": "Alonso Valderrama Airport",
+      "iata": "CTD",
+      "municipality": "Chitré",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Enrique Adolfo Jimenez Airport",
+      "iata": "ONX",
+      "municipality": "Colón",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

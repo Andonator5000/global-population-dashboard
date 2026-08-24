@@ -1,0 +1,40 @@
+{
+  "iso3": "COL",
+  "name": "Colombia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Andean condor",
+      "type": "national bird",
+      "scientificName": "Vultur gryphus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Colca-condor-c03.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Colca-condor-c03.jpg",
+        "license": "CC BY-SA 2.5 es",
+        "author": "Colegota"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Quindio wax palm",
+    "type": "national tree",
+    "scientificName": "Ceroxylon quindiuense",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceroxylon%20quindiuense%202.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ceroxylon%20quindiuense%202.png",
+      "license": "CC BY-SA 2.0",
+      "author": "Ángela Quintero"
+    }
+  },
+  "flower": {
+    "name": "Colombia",
+    "scientificName": "Cattleya trianae",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cattleya%20trianae.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cattleya%20trianae.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Arne Larsen (?)"
+    }
+  }
+}

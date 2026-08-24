@@ -1,0 +1,148 @@
+{
+  "iso3": "VEN",
+  "name": "Venezuela",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Maiquetía Simón Bolívar International Airport",
+      "iata": "CCS",
+      "municipality": "Maiquetía",
+      "large": true,
+      "passengers": 25705201
+    },
+    {
+      "name": "Arturo Michelena International Airport",
+      "iata": "VLN",
+      "municipality": "Valencia",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Del Caribe Santiago Mariño International Airport",
+      "iata": "PMV",
+      "municipality": "Isla Margarita",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "General José Antonio Anzoategui International Airport",
+      "iata": "BLA",
+      "municipality": "Barcelona",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "General Manuel Carlos Piar International Airport",
+      "iata": "PZO",
+      "municipality": "Guyana City",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Jacinto Lara International Airport",
+      "iata": "BRM",
+      "municipality": "Barquisimeto",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "La Chinita International Airport",
+      "iata": "MAR",
+      "municipality": "Maracaibo",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Antonio José de Sucre Airport",
+      "iata": "CUM",
+      "municipality": "Cumaná",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Barinas Airport",
+      "iata": "BNS",
+      "municipality": "Barinas",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Canaima Airport",
+      "iata": "CAJ",
+      "municipality": "Canaima",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Dr. Antonio Nicolás Briceño Airport",
+      "iata": "VLV",
+      "municipality": "Valera",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "General Francisco Bermúdez Airport",
+      "iata": "CUP",
+      "municipality": "Carúpano",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Josefa Camejo International Airport",
+      "iata": "LSP",
+      "municipality": "Paraguaná",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "José Leonardo Chirinos Airport",
+      "iata": "CZE",
+      "municipality": "Coro",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "José Tadeo Monagas International Airport",
+      "iata": "MUN",
+      "municipality": "Maturín",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Juan Pablo Pérez Alfonso Airport",
+      "iata": "VIG",
+      "municipality": "El Vigía",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Juan Vicente Gómez International Airport",
+      "iata": "SVZ",
+      "municipality": "San Antonio del Tachira",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mayor Buenaventura Vivas International Airport",
+      "iata": "STD",
+      "municipality": "Santo Domingo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "San Tomé Airport",
+      "iata": "SOM",
+      "municipality": "El Tigre",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Santa Elena de Uairén Airport",
+      "iata": "SNV",
+      "municipality": "Santa Elena de Uairén",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

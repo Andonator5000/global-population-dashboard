@@ -1,0 +1,64 @@
+{
+  "iso3": "ARE",
+  "name": "United Arab Emirates",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Dubai International Airport",
+      "iata": "DXB",
+      "municipality": "Dubai",
+      "large": true,
+      "passengers": 95200000
+    },
+    {
+      "name": "Zayed International Airport",
+      "iata": "AUH",
+      "municipality": "Abu Dhabi",
+      "large": true,
+      "passengers": 25869000
+    },
+    {
+      "name": "Sharjah International Airport",
+      "iata": "SHJ",
+      "municipality": "Sharjah",
+      "large": true,
+      "passengers": 13615053
+    },
+    {
+      "name": "Al Maktoum International Airport",
+      "iata": "DWC",
+      "municipality": "Dubai(Jebel Ali)",
+      "large": true,
+      "passengers": 1634058
+    },
+    {
+      "name": "Al Ain International Airport",
+      "iata": "AAN",
+      "municipality": "Al Ain",
+      "large": true,
+      "passengers": 302766
+    },
+    {
+      "name": "Al Bateen Executive Airport",
+      "iata": "AZI",
+      "municipality": "Abu Dhabi",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Fujairah International Airport",
+      "iata": "FJR",
+      "municipality": "Fujairah",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Ras Al Khaimah International Airport",
+      "iata": "RKT",
+      "municipality": "Ras Al Khaimah",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "iso3": "THA",
+  "name": "Thailand",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "red curry",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kaeng%20phet%20mu.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kaeng%20phet%20mu.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Takeaway"
+      }
+    },
+    {
+      "name": "phat kaphrao",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Basil%20fried%20crispy%20pork%20with%20rice%20-%20Chiang%20Mai%20-%202017-07-11%20%28002%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Basil%20fried%20crispy%20pork%20with%20rice%20-%20Chiang%20Mai%20-%202017-07-11%20%28002%29.jpg",
+        "license": "CC0",
+        "author": "Iudexvivorum"
+      }
+    },
+    {
+      "name": "khao kha mu",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20kha%20mu%2002.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Khao%20kha%20mu%2002.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Takeaway"
+      }
+    },
+    {
+      "name": "mi krop",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mee%20krob%20%28%E0%B8%AB%E0%B8%A1%E0%B8%B5%E0%B9%88%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%9A%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mee%20krob%20%28%E0%B8%AB%E0%B8%A1%E0%B8%B5%E0%B9%88%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%9A%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Aron Danburg"
+      }
+    },
+    {
+      "name": "Roti sai mai",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Roti%20sai%20mai%202.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Roti%20sai%20mai%202.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Takeaway"
+      }
+    },
+    {
+      "name": "Khao mu daeng",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Khao%20mu%20krop%20mu%20daeng.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Khao%20mu%20krop%20mu%20daeng.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Takeaway"
+      }
+    }
+  ]
+}

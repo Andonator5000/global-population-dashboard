@@ -1,0 +1,30 @@
+{
+  "iso3": "CYP",
+  "name": "Cyprus",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Cypriot mouflon",
+      "type": "national animal",
+      "scientificName": "Ovis orientalis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cyprus%20mouflon%20%28Ovis%20gmelini%20ophion%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cyprus%20mouflon%20%28Ovis%20gmelini%20ophion%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Charles J. Sharp"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Golden oak",
+    "type": "national tree",
+    "scientificName": "Quercus alnifolia",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Golden%20oak.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Golden%20oak.JPG",
+      "license": "CC BY-SA 4.0",
+      "author": "Chneophytou"
+    }
+  }
+}

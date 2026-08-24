@@ -1,0 +1,85 @@
+{
+  "iso3": "MOZ",
+  "name": "Mozambique",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Maputo Airport",
+      "iata": "MPM",
+      "municipality": "Maputo",
+      "large": true,
+      "passengers": 1103000
+    },
+    {
+      "name": "Beira International Airport",
+      "iata": "BEW",
+      "municipality": "Beira",
+      "large": true,
+      "passengers": 283000
+    },
+    {
+      "name": "Nampula Airport",
+      "iata": "APL",
+      "municipality": "Nampula",
+      "large": true,
+      "passengers": 261000
+    },
+    {
+      "name": "Tete Airport",
+      "iata": "TET",
+      "municipality": "Tete",
+      "large": true,
+      "passengers": 153600
+    },
+    {
+      "name": "Pemba Airport",
+      "iata": "POL",
+      "municipality": "Pemba",
+      "large": false,
+      "passengers": 153000
+    },
+    {
+      "name": "Quelimane Airport",
+      "iata": "UEL",
+      "municipality": "Quelimane",
+      "large": false,
+      "passengers": 77000
+    },
+    {
+      "name": "Chimoio Airport",
+      "iata": "VPY",
+      "municipality": "Chimoio",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Inhambane Airport",
+      "iata": "INH",
+      "municipality": "Inhambane",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Lichinga Airport",
+      "iata": "VXC",
+      "municipality": "Lichinga",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Nacala International Airport",
+      "iata": "MNC",
+      "municipality": "Nacala",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Vilankulo Airport",
+      "iata": "VNX",
+      "municipality": "Vilanculo",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

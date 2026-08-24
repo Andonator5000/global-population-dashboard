@@ -1,0 +1,72 @@
+{
+  "iso3": "KHM",
+  "name": "Cambodia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Giant barb",
+      "type": "national fish",
+      "scientificName": "Catlocarpio siamensis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Giant%20Barb.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Giant%20Barb.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "User:Lerdsuwa"
+      }
+    },
+    {
+      "name": "Giant ibis",
+      "type": "national bird",
+      "scientificName": "Pseudibis gigantea",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ThaumantibisGiganteaGronvold.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:ThaumantibisGiganteaGronvold.jpg",
+        "license": "Public domain",
+        "author": "Henrik Grønvold"
+      }
+    },
+    {
+      "name": "Kouprey",
+      "type": "national mammal",
+      "scientificName": "Bos sauveli",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Saen%20Monourom%20Mondul%20Kiri%20Cambodia%20crop.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Saen%20Monourom%20Mondul%20Kiri%20Cambodia%20crop.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Christian Pirkl"
+      }
+    },
+    {
+      "name": "Northern river terrapin",
+      "type": "national reptile",
+      "scientificName": "Batagur baska",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Batagur%20baska.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Batagur%20baska.jpg",
+        "license": "Public domain",
+        "author": "Philbert Charles Berjeau"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Palmyra palm",
+    "type": "national tree",
+    "scientificName": "Borassus flabellifer",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Borassus%20flabellifer%20fruit%20on%20the%20tree.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Borassus%20flabellifer%20fruit%20on%20the%20tree.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Gak"
+    }
+  },
+  "flower": {
+    "name": "Khmer",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PhiesaKhmae.svg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:PhiesaKhmae.svg",
+      "license": "Public domain",
+      "author": "1234qwer1234qwer4"
+    }
+  }
+}

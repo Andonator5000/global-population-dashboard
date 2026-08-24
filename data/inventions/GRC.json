@@ -1,0 +1,28 @@
+{
+  "iso3": "GRC",
+  "name": "Greece",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Venus de Milo",
+      "year": 1820,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A9nus%20de%20Milo%20-%20Mus%C3%A9e%20du%20Louvre%20AGER%20LL%20299%20%3B%20N%20527%20%3B%20Ma%20399.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:V%C3%A9nus%20de%20Milo%20-%20Mus%C3%A9e%20du%20Louvre%20AGER%20LL%20299%20%3B%20N%20527%20%3B%20Ma%20399.jpg",
+        "license": "CC0",
+        "author": "Shonagon"
+      }
+    },
+    {
+      "name": "frappé coffee",
+      "year": 1957,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cafe-frape-glas-holztisch-unscharf.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cafe-frape-glas-holztisch-unscharf.jpg",
+        "license": "CC0",
+        "author": "philleb"
+      }
+    }
+  ]
+}

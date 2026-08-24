@@ -2,12 +2,16 @@ import { useEffect, useState } from 'react'
 
 import { StatTile, Unavailable } from '../components/viz/primitives'
 import {
+  useAirports,
   useCapitals,
   useClimate,
+  useCuisine,
   useCurrencyImages,
   useDeathPenalty,
   useDebt,
   useEducationExtras,
+  useFloraFauna,
+  useInventions,
   usePressFreedom,
   useSubdivisions,
   useUnodcPrisons,
@@ -20,7 +24,7 @@ import {
   useLiveRates,
   useLiveWeather,
 } from '../lib/live'
-import type { Entity } from '../types'
+import type { CommonsImage, Entity, FloraFaunaSymbol } from '../types'
 
 /**
  * Country-page tiles and section bodies added in the 2026-08-23 batch.
@@ -167,25 +171,28 @@ export function PublicDebtTiles({ iso3 }: { iso3: string }) {
     pctNow !== null && gdpNow !== null ? (pctNow / 100) * gdpNow * 1e9 : null
   const isProjected = nowYear >= debtState.data.projectionsFrom
 
+  // Presentation per maintainer spec (2026-08-24): the dollar amount is the
+  // headline line, the %-of-GDP reading sits on its own line beneath it.
   return (
-    <>
-      <div>
-        <StatTile
-          label="Public debt"
-          value={pctNow !== null ? `${pctNow.toFixed(1)}% of GDP` : 'n/a'}
-          detail={
-            debtUsd !== null ? `≈ ${usdCompact.format(debtUsd)}` : undefined
-          }
-          source="IMF World Economic Outlook"
-        />
-        <MutedNote>
-          Modelled estimate, interpolated between IMF annual figures
-          {isProjected ? ' (currently in the projection range)' : ''}; the
-          US-dollar figure is derived from the same source’s nominal GDP. Not
-          a measured live number — no such number exists.
-        </MutedNote>
+    <div>
+      <div className="text-xl font-semibold tracking-tight">
+        Public Debt:{' '}
+        {debtUsd !== null ? `≈ ${usdCompact.format(debtUsd)}` : 'not available'}
       </div>
-    </>
+      <div className="mt-0.5 text-sm">
+        Public Debt as a % of GDP:{' '}
+        {pctNow !== null ? `${pctNow.toFixed(1)}%` : 'not available'}
+      </div>
+      <div className="text-xs" style={{ color: 'var(--text-muted)' }}>
+        IMF World Economic Outlook
+      </div>
+      <MutedNote>
+        Modelled estimate, interpolated between IMF annual figures
+        {isProjected ? ' (currently in the projection range)' : ''}; the
+        US-dollar figure is derived from the same source’s nominal GDP. Not a
+        measured live number — no such number exists.
+      </MutedNote>
+    </div>
   )
 }
 
@@ -496,6 +503,244 @@ export function SubdivisionsBody({ iso3 }: { iso3: string }) {
           </li>
         ))}
       </ul>
+    </div>
+  )
+}
+
+// ------------------------------------------------------------ Batch 6 (2026-08-24) --
+
+/**
+ * A Commons image inside a FIXED-SIZE frame with the attribution its
+ * licence requires. Every visual section of the 2026-08-24 batch uses the
+ * same frame with object-cover, so images of wildly different native sizes
+ * render at identical dimensions (an explicit maintainer requirement for
+ * the cuisine grid, applied uniformly).
+ */
+function CommonsFigure({
+  image,
+  alt,
+  caption,
+  tall = false,
+}: {
+  image: CommonsImage | undefined
+  alt: string
+  caption: React.ReactNode
+  tall?: boolean
+}) {
+  return (
+    <figure
+      className="m-0 flex flex-col overflow-hidden rounded-lg border"
+      style={{ borderColor: 'var(--border)' }}
+    >
+      {image ? (
+        <a href={image.commonsPage} target="_blank" rel="noreferrer">
+          <img
+            src={image.imageUrl}
+            alt={alt}
+            loading="lazy"
+            className={`${tall ? 'h-48' : 'h-36'} w-full object-cover`}
+          />
+        </a>
+      ) : (
+        <div
+          className={`${tall ? 'h-48' : 'h-36'} flex w-full items-center justify-center text-xs`}
+          style={{ background: 'var(--page-tint)', color: 'var(--text-muted)' }}
+        >
+          no free image
+        </div>
+      )}
+      <figcaption className="px-2.5 py-2 text-xs">
+        {caption}
+        {image && (
+          <span className="block" style={{ color: 'var(--text-muted)' }}>
+            <a
+              href={image.commonsPage}
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2"
+            >
+              Commons
+            </a>
+            {image.license ? ` · ${image.license}` : ''}
+            {image.author ? ` · ${image.author}` : ''}
+          </span>
+        )}
+      </figcaption>
+    </figure>
+  )
+}
+
+// ---------------------------------------------------------------- Inventions --
+
+export function NotableInventionsBody({ iso3 }: { iso3: string }) {
+  const state = useInventions(iso3)
+  if (state.status === 'loading') return null
+  const data = state.status === 'ready' ? state.data : null
+  if (!data || data.inventions.length === 0) {
+    return (
+      <Unavailable
+        what="Notable inventions"
+        source="Wikidata"
+        reason="Wikidata records no notable inventions with this country as their origin — a coverage gap, not a judgment on the country's inventiveness."
+      />
+    )
+  }
+  return (
+    <div>
+      <MutedNote>{data.note}</MutedNote>
+      <div className="mt-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {data.inventions.map((invention) => (
+          <CommonsFigure
+            key={invention.name}
+            image={invention.image}
+            alt={invention.name}
+            caption={
+              <>
+                <strong style={{ fontWeight: 600 }}>{invention.name}</strong>
+                <span className="block" style={{ color: 'var(--text-muted)' }}>
+                  {invention.inventors?.length
+                    ? invention.inventors.join(', ')
+                    : 'inventor not recorded'}
+                  {invention.year ? ` · c. ${invention.year}` : ''}
+                </span>
+              </>
+            }
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ------------------------------------------------------------------ Airports --
+
+export function AirportsBody({ iso3 }: { iso3: string }) {
+  const state = useAirports(iso3)
+  if (state.status === 'loading') return null
+  const data = state.status === 'ready' ? state.data : null
+  if (!data || data.airports.length === 0) {
+    return (
+      <Unavailable
+        what="Airports"
+        source="OurAirports"
+        reason="No large or scheduled-service airports are recorded for this entity."
+      />
+    )
+  }
+  return (
+    <div>
+      <MutedNote>{data.note}</MutedNote>
+      <ol className="mt-2 grid list-decimal gap-x-8 gap-y-1.5 pl-6 text-sm sm:grid-cols-2">
+        {data.airports.map((airport) => (
+          <li key={`${airport.name}-${airport.iata ?? ''}`}>
+            {airport.name}
+            {airport.iata ? ` (${airport.iata})` : ''}
+            <span className="block text-xs" style={{ color: 'var(--text-muted)' }}>
+              {airport.municipality ?? '—'}
+              {airport.passengers
+                ? ` · ${number.format(airport.passengers)} passengers/yr`
+                : ''}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <MutedNote>
+        Source: OurAirports (public domain); passenger figures from Wikidata
+        where recorded.
+      </MutedNote>
+    </div>
+  )
+}
+
+// ------------------------------------------------------------- Flora & Fauna --
+
+function symbolCaption(symbol: FloraFaunaSymbol, fallbackType: string) {
+  return (
+    <>
+      <strong style={{ fontWeight: 600 }}>{symbol.name}</strong>
+      <span className="block" style={{ color: 'var(--text-muted)' }}>
+        {symbol.type ?? fallbackType}
+        {symbol.scientificName ? ` · ${symbol.scientificName}` : ''}
+      </span>
+    </>
+  )
+}
+
+export function FloraFaunaBody({ iso3 }: { iso3: string }) {
+  const state = useFloraFauna(iso3)
+  if (state.status === 'loading') return null
+  const data = state.status === 'ready' ? state.data : null
+  if (!data || (!data.animals?.length && !data.tree && !data.flower)) {
+    return (
+      <Unavailable
+        what="National flora and fauna"
+        source="Wikipedia national-symbol lists"
+        reason="The lists record no national animal, tree, or flower for this entity."
+      />
+    )
+  }
+  return (
+    <div>
+      <MutedNote>{data.note}</MutedNote>
+      <div className="mt-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {data.flower && (
+          <CommonsFigure
+            image={data.flower.image}
+            alt={data.flower.name}
+            tall
+            caption={symbolCaption(data.flower, 'national flower')}
+          />
+        )}
+        {data.tree && (
+          <CommonsFigure
+            image={data.tree.image}
+            alt={data.tree.name}
+            tall
+            caption={symbolCaption(data.tree, 'national tree')}
+          />
+        )}
+        {data.animals?.map((animal) => (
+          <CommonsFigure
+            key={`${animal.type}-${animal.name}`}
+            image={animal.image}
+            alt={animal.name}
+            tall
+            caption={symbolCaption(animal, 'national animal')}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ----------------------------------------------------------- National Cuisine --
+
+export function CuisineBody({ iso3 }: { iso3: string }) {
+  const state = useCuisine(iso3)
+  if (state.status === 'loading') return null
+  const data = state.status === 'ready' ? state.data : null
+  if (!data || data.dishes.length === 0) {
+    return (
+      <Unavailable
+        what="National cuisine"
+        source="Wikidata"
+        reason="Wikidata records no dishes with this country as their origin — a coverage gap, not a verdict on the cooking."
+      />
+    )
+  }
+  return (
+    <div>
+      <MutedNote>{data.note}</MutedNote>
+      <div className="mt-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {data.dishes.map((dish) => (
+          <CommonsFigure
+            key={dish.name}
+            image={dish.image}
+            alt={dish.name}
+            caption={<strong style={{ fontWeight: 600 }}>{dish.name}</strong>}
+          />
+        ))}
+      </div>
     </div>
   )
 }

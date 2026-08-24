@@ -1,0 +1,16 @@
+{
+  "iso3": "BOL",
+  "name": "Bolivia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "flower": {
+    "name": "Heliconia rostrata",
+    "scientificName": "Cantua buxifolia",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kantutas%20Cuzco.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kantutas%20Cuzco.jpg",
+      "license": "GFDL",
+      "author": "No machine-readable author provided. Ghiz~commonswiki assumed (based on copyright claims)."
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "iso3": "IRN",
+  "name": "Iran",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Mehrabad International Airport",
+      "iata": "THR",
+      "municipality": "Tehran",
+      "large": true,
+      "passengers": 17464216
+    },
+    {
+      "name": "Mashhad International Airport",
+      "iata": "MHD",
+      "municipality": "Mashhad",
+      "large": true,
+      "passengers": 10459377
+    },
+    {
+      "name": "Imam Khomeini International Airport",
+      "iata": "IKA",
+      "municipality": "Tehran",
+      "large": true,
+      "passengers": 8512209
+    },
+    {
+      "name": "Shiraz Shahid Dastghaib International Airport",
+      "iata": "SYZ",
+      "municipality": "Shiraz",
+      "large": true,
+      "passengers": 3530525
+    },
+    {
+      "name": "Kish International Airport",
+      "iata": "KIH",
+      "municipality": "Kish Island",
+      "large": true,
+      "passengers": 3206496
+    },
+    {
+      "name": "Qasem Soleimani International Airport",
+      "iata": "AWZ",
+      "municipality": "Ahvaz",
+      "large": true,
+      "passengers": 2939958
+    },
+    {
+      "name": "Isfahan Shahid Beheshti International Airport",
+      "iata": "IFN",
+      "municipality": "Isfahan",
+      "large": true,
+      "passengers": 2784616
+    },
+    {
+      "name": "Tabriz International Airport",
+      "iata": "TBZ",
+      "municipality": "Tabriz",
+      "large": true,
+      "passengers": 1942726
+    },
+    {
+      "name": "Bandar Abbas International Airport",
+      "iata": "BND",
+      "municipality": "Bandar Abbas",
+      "large": true,
+      "passengers": 1289063
+    },
+    {
+      "name": "Abadan Ayatollah Jami International Airport",
+      "iata": "ABD",
+      "municipality": "Abadan",
+      "large": true,
+      "passengers": 898889
+    },
+    {
+      "name": "Ayatollah Hashemi Rafsanjani International Airport",
+      "iata": "KER",
+      "municipality": "Kerman",
+      "large": true,
+      "passengers": 846317
+    },
+    {
+      "name": "Persian Gulf International Airport",
+      "iata": "PGU",
+      "municipality": "Khiyaroo",
+      "large": false,
+      "passengers": 784003
+    },
+    {
+      "name": "Shahid Sadooghi Airport",
+      "iata": "AZD",
+      "municipality": "Yazd",
+      "large": false,
+      "passengers": 764074
+    },
+    {
+      "name": "Shahid Ashrafi Esfahani Airport",
+      "iata": "KSH",
+      "municipality": "Kermanshah",
+      "large": false,
+      "passengers": 662604
+    },
+    {
+      "name": "Bushehr Airport",
+      "iata": "BUZ",
+      "municipality": "Bushehr",
+      "large": false,
+      "passengers": 625976
+    },
+    {
+      "name": "Zahedan International Airport",
+      "iata": "ZAH",
+      "municipality": "Zahedan",
+      "large": true,
+      "passengers": 554683
+    },
+    {
+      "name": "Qeshm International Airport",
+      "iata": "GSM",
+      "municipality": "Qeshm(Dayrestan)",
+      "large": true,
+      "passengers": 519097
+    },
+    {
+      "name": "Urmia Airport",
+      "iata": "OMH",
+      "municipality": "Urmia",
+      "large": false,
+      "passengers": 451967
+    },
+    {
+      "name": "Sardar-e-Jangal Airport",
+      "iata": "RAS",
+      "municipality": "Rasht",
+      "large": false,
+      "passengers": 446576
+    },
+    {
+      "name": "Sari Dasht-e Naz International Airport",
+      "iata": "SRY",
+      "municipality": "Sari",
+      "large": false,
+      "passengers": 407802
+    }
+  ]
+}

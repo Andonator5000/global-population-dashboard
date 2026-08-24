@@ -1,0 +1,17 @@
+{
+  "iso3": "PRY",
+  "name": "Paraguay",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "piracaldo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Suquet%20de%20peix.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Suquet%20de%20peix.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Hector Garcia from Barcelona, Catalonia, Spain"
+      }
+    }
+  ]
+}

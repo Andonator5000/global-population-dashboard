@@ -1,0 +1,148 @@
+{
+  "iso3": "SAU",
+  "name": "Saudi Arabia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "King Abdulaziz International Airport",
+      "iata": "JED",
+      "municipality": "Jeddah",
+      "large": true,
+      "passengers": 41200000
+    },
+    {
+      "name": "King Khalid International Airport",
+      "iata": "RUH",
+      "municipality": "Riyadh",
+      "large": true,
+      "passengers": 29084238
+    },
+    {
+      "name": "Prince Mohammad Bin Abdulaziz Airport",
+      "iata": "MED",
+      "municipality": "Medina",
+      "large": true,
+      "passengers": 11891855
+    },
+    {
+      "name": "King Fahd International Airport",
+      "iata": "DMM",
+      "municipality": "Ad Dammam",
+      "large": true,
+      "passengers": 11168383
+    },
+    {
+      "name": "Abha International Airport",
+      "iata": "AHB",
+      "municipality": "Abha",
+      "large": true,
+      "passengers": 4500000
+    },
+    {
+      "name": "Jizan Regional Airport / King Abdullah bin Abdulaziz Airport",
+      "iata": "GIZ",
+      "municipality": "Jizan",
+      "large": false,
+      "passengers": 2836812
+    },
+    {
+      "name": "Prince Sultan bin Abdulaziz International Airport",
+      "iata": "TUU",
+      "municipality": "Tabuk",
+      "large": true,
+      "passengers": 1786960
+    },
+    {
+      "name": "Prince Naif bin Abdulaziz International Airport",
+      "iata": "ELQ",
+      "municipality": "Qassim",
+      "large": true,
+      "passengers": 1665294
+    },
+    {
+      "name": "Hail International Airport",
+      "iata": "HAS",
+      "municipality": "Hail",
+      "large": true,
+      "passengers": 1252906
+    },
+    {
+      "name": "Taif International Airport",
+      "iata": "TIF",
+      "municipality": "Taif",
+      "large": true,
+      "passengers": 1241487
+    },
+    {
+      "name": "Prince Abdulmohsen Bin Abdulaziz International Airport",
+      "iata": "YNB",
+      "municipality": "Yanbu",
+      "large": true,
+      "passengers": 1029179
+    },
+    {
+      "name": "Najran Domestic Airport",
+      "iata": "EAM",
+      "municipality": "Najran",
+      "large": false,
+      "passengers": 612000
+    },
+    {
+      "name": "Al-Jawf International Airport",
+      "iata": "AJF",
+      "municipality": "Al-Jawf",
+      "large": true,
+      "passengers": 606233
+    },
+    {
+      "name": "King Saud Bin Abdulaziz (Al Baha) Airport",
+      "iata": "ABT",
+      "municipality": "Al-Baha",
+      "large": false,
+      "passengers": 478389
+    },
+    {
+      "name": "Bisha Airport",
+      "iata": "BHH",
+      "municipality": "Bisha",
+      "large": false,
+      "passengers": 476076
+    },
+    {
+      "name": "Al-Ahsa International Airport",
+      "iata": "HOF",
+      "municipality": "Hofuf",
+      "large": true,
+      "passengers": 409000
+    },
+    {
+      "name": "Arar Domestic Airport",
+      "iata": "RAE",
+      "municipality": "Arar",
+      "large": false,
+      "passengers": 346100
+    },
+    {
+      "name": "Qaisumah–Hafar Al-Batin International Airport",
+      "iata": "AQI",
+      "municipality": "Qaisumah",
+      "large": true,
+      "passengers": 321891
+    },
+    {
+      "name": "Sharurah Domestic Airport",
+      "iata": "SHW",
+      "municipality": "Sharurah",
+      "large": false,
+      "passengers": 273830
+    },
+    {
+      "name": "Gurayat Domestic Airport",
+      "iata": "URY",
+      "municipality": "Gurayat",
+      "large": false,
+      "passengers": 258305
+    }
+  ]
+}

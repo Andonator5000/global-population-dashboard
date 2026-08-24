@@ -1,0 +1,51 @@
+{
+  "iso3": "IRN",
+  "name": "Iran",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Asiatic lion",
+      "type": "national animal",
+      "scientificName": "Panthera leo persica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Panthera%20leo%20persica%20-%20Tierpark%20Berlin%20-%202015.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Panthera%20leo%20persica%20-%20Tierpark%20Berlin%20-%202015.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Avda"
+      }
+    },
+    {
+      "name": "Persian Leopard",
+      "type": "national animal",
+      "scientificName": "Panthera pardus saxicolor",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Persian%20Leopard%20sitting.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Persian%20Leopard%20sitting.jpg",
+        "license": "Public domain",
+        "author": "Tamar Assaf"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Mediterranean cypress",
+    "type": "national tree",
+    "scientificName": "Cupressus sempervirens",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cupressus%20sempervirens%20Stricta.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cupressus%20sempervirens%20Stricta.jpg",
+      "license": "Public domain",
+      "author": null
+    }
+  },
+  "flower": {
+    "name": "Persian",
+    "scientificName": "nymphaea",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nymphaea%20alba.001%20-%20Breendonk.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Nymphaea%20alba.001%20-%20Breendonk.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Fernando Losada Rodríguez"
+    }
+  }
+}

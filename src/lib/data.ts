@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react'
 
 import { DATA_BASE_URL } from '../config'
 import type {
+  AirportsFile,
   BiomeFile,
   CapitalsFile,
   ClimateFile,
+  CuisineFile,
+  FloraFaunaFile,
+  InventionsFile,
   CountryIndicators,
   CountryOwid,
   CountryPyramid,
@@ -248,3 +252,15 @@ export const useSubdivisions = (iso3: string | undefined) =>
   useOptionalArtifact<SubdivisionsFile>(
     iso3 ? `subdivisions/${iso3}.json` : null,
   )
+
+export const useInventions = (iso3: string | undefined) =>
+  useOptionalArtifact<InventionsFile>(iso3 ? `inventions/${iso3}.json` : null)
+
+export const useAirports = (iso3: string | undefined) =>
+  useOptionalArtifact<AirportsFile>(iso3 ? `airports/${iso3}.json` : null)
+
+export const useFloraFauna = (iso3: string | undefined) =>
+  useOptionalArtifact<FloraFaunaFile>(iso3 ? `flora-fauna/${iso3}.json` : null)
+
+export const useCuisine = (iso3: string | undefined) =>
+  useOptionalArtifact<CuisineFile>(iso3 ? `cuisine/${iso3}.json` : null)

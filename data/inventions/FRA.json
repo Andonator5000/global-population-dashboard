@@ -1,0 +1,126 @@
+{
+  "iso3": "FRA",
+  "name": "France",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "margarine",
+      "inventors": [
+        "Hippolyte Mège-Mouriès"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Margaryn%20022.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Margaryn%20022.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Kagor"
+      }
+    },
+    {
+      "name": "Camembert",
+      "inventors": [
+        "Marie Harel"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Camembert.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Camembert.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    },
+    {
+      "name": "Bloody Mary",
+      "inventors": [
+        "Fernand Petiot"
+      ],
+      "year": 1921,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bloody%20Mary%20Coctail%20with%20celery%20stalk%20-%20Evan%20Swigart.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bloody%20Mary%20Coctail%20with%20celery%20stalk%20-%20Evan%20Swigart.jpg",
+        "license": "CC BY 2.0",
+        "author": "Evan Swigart from Chicago, USA"
+      }
+    },
+    {
+      "name": "soufflé",
+      "year": 1800,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/4%20ingredient%20berry%20souffle.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:4%20ingredient%20berry%20souffle.jpg",
+        "license": "CC BY 2.0",
+        "author": "jules"
+      }
+    },
+    {
+      "name": "Peach Melba",
+      "inventors": [
+        "Auguste Escoffier"
+      ],
+      "year": 1893,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Peach%20Melba.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Peach%20Melba.jpg",
+        "license": "CC BY 2.0",
+        "author": "Robbie Sproule"
+      }
+    },
+    {
+      "name": "vol-au-vent",
+      "inventors": [
+        "Marie-Antoine Carême"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gouff%C3%A9%20Le%20livre%20de%20p%C3%A2tisserie%20-%20Croustades.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gouff%C3%A9%20Le%20livre%20de%20p%C3%A2tisserie%20-%20Croustades.jpg",
+        "license": "Public domain",
+        "author": "Étienne Antoine Eugène Ronjat"
+      }
+    },
+    {
+      "name": "kouign-amann",
+      "year": 1860,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kouignamann.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kouignamann.JPG",
+        "license": "Public domain",
+        "author": "Haltopub"
+      }
+    },
+    {
+      "name": "nouvelle cuisine",
+      "year": 1960,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jacques%20Lameloise%20DSCF6580.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jacques%20Lameloise%20DSCF6580.jpg",
+        "license": "CC BY 3.0",
+        "author": "Jacques Lameloise - Edité par Arnaud 25"
+      }
+    },
+    {
+      "name": "Bleu d'Auvergne",
+      "inventors": [
+        "Antoine Roussel"
+      ],
+      "year": 1854,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wikicheese%20Clermont-Ferrand%20-%20Bleu%20d%27Auvergne%2020220825-02.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wikicheese%20Clermont-Ferrand%20-%20Bleu%20d%27Auvergne%2020220825-02.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Pymouss"
+      }
+    },
+    {
+      "name": "Chauchat",
+      "inventors": [
+        "Jacques-Louis-Henri Chauchat"
+      ],
+      "year": 1915,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chauchat%201%20%2850643241222%29%20%28cropped%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chauchat%201%20%2850643241222%29%20%28cropped%29.jpg",
+        "license": "Public domain",
+        "author": "National Guard Militia Museum from Also Lawrenceville"
+      }
+    }
+  ]
+}

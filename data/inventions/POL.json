@@ -1,0 +1,28 @@
+{
+  "iso3": "POL",
+  "name": "Poland",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Konik",
+      "inventors": [
+        "Tadeusz Vetulani"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20170824%20017%20Lelystad%20Oostvaardersplassen%20%2836802377085%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:20170824%20017%20Lelystad%20Oostvaardersplassen%20%2836802377085%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Jac. Janssen from Baarlo lb, NL"
+      }
+    },
+    {
+      "name": "ptasie mleczko",
+      "inventors": [
+        "E. Wedel",
+        "Jan Wedel"
+      ],
+      "year": 1936
+    }
+  ]
+}

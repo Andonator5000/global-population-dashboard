@@ -502,7 +502,7 @@
         "name": "Xi Jinping",
         "holders": 1,
         "image": "leaders/img/CHN-hos.jpg",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Xi_Jinping_meets_Keir_Starmer_Jan_2026.jpg"
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Xi_Jinping_on_August_18,_2026_(cropped).jpg"
       },
       "hog": {
         "name": "Li Qiang",
@@ -913,7 +913,7 @@
     },
     "FRA": {
       "hos": {
-        "name": "Emmanuel Macron",
+        "name": null,
         "holders": 1,
         "image": "leaders/img/FRA-hos.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Emmanuel_Macron_2025_(cropped).jpg"
@@ -983,10 +983,10 @@
     },
     "GEO": {
       "hos": {
-        "name": "Salome Zourabichvili",
+        "name": "Mikheil Kavelashvili",
         "holders": 1,
         "image": "leaders/img/GEO-hos.jpg",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:President_of_Georgia_Salome_Zourabichvili_in_Brussels,_2019_(cropped).jpg"
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mikheil_Kavelashvili_-_President_of_Georgia.jpg"
       },
       "hog": {
         "name": "Irakli Kobakhidze",
@@ -1239,13 +1239,13 @@
     },
     "HUN": {
       "hos": {
-        "name": "Ágnes Forsthoffer",
+        "name": null,
         "holders": 1,
         "image": "leaders/img/HUN-hos.jpg",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ágnes_Forsthoffer_i_Włodzimierz_Czarzasty_(cropped).jpg"
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:András_Baka_(cropped).png"
       },
       "hog": {
-        "name": "Péter Magyar",
+        "name": null,
         "holders": 1,
         "image": "leaders/img/HUN-hog.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Péter_Magyar_MEP_(2024).jpg"
@@ -1287,7 +1287,7 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:President_of_India_Droupadi_Murmu_official_portrait_(cropped).jpg"
       },
       "hog": {
-        "name": "Narendra Modi",
+        "name": null,
         "holders": 1,
         "image": "leaders/img/IND-hog.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Prime_Minister_Of_Bharat_Shri_Narendra_Damodardas_Modi.jpg"
@@ -1323,10 +1323,10 @@
     },
     "IRQ": {
       "hos": {
-        "name": "Abdul Latif Rashid",
+        "name": "Nizar Amidi",
         "holders": 1,
         "image": "leaders/img/IRQ-hos.jpg",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Abdul_Latif_Rashid_2023_(cropped).jpg"
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:نزار_آميدي_2026.jpg"
       },
       "hog": {
         "name": "Muhammad Shia' al-Sudani",
@@ -2021,7 +2021,7 @@
     },
     "NER": {
       "hos": {
-        "name": "Omar Tiani",
+        "name": "Abdourahamane Tiani",
         "holders": 1,
         "image": "leaders/img/NER-hos.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Abdourahamane_Tchiani_in_2025_(cropped).jpg"
@@ -2035,13 +2035,13 @@
     },
     "NGA": {
       "hos": {
-        "name": "Bola Ahmed Tinubu",
+        "name": "Bola Tinubu",
         "holders": 1,
         "image": "leaders/img/NGA-hos.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Bola_Tinubu_portrait.jpg"
       },
       "hog": {
-        "name": "Bola Ahmed Tinubu",
+        "name": "Bola Tinubu",
         "holders": 1,
         "image": "leaders/img/NGA-hog.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Bola_Tinubu_portrait.jpg"
@@ -2320,7 +2320,7 @@
         "name": "Mohammad Mustafa",
         "holders": 1,
         "image": "leaders/img/PSE-hog.jpg",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mohammad_Mustafa_to_the_European_Commission_(01)_(cropped).jpg"
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mohammad_Mustafa_July_2026.jpg"
       }
     },
     "PYF": {
@@ -2620,7 +2620,7 @@
         "name": "Janez Janša",
         "holders": 1,
         "image": "leaders/img/SVN-hog.jpg",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:1._redna_seja_vlade_Janeza_Janše_-_premier_Janez_Janša_(cropped).jpg"
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Janez_Janša_official_portrait_2026_(cropped_2).jpg"
       }
     },
     "SWE": {
@@ -2908,7 +2908,7 @@
         "name": "Yulia Svyrydenko",
         "holders": 1,
         "image": "leaders/img/UKR-hog.jpg",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:СВИРИДЕНКО_Юлія_Анатоліївна_(3x4_cropped).jpg"
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ukraina_peaminister_Julija_Svõrõdenko,_02.06.2026_(55309582751)_(cropped_1).jpg"
       }
     },
     "URY": {
@@ -2927,13 +2927,13 @@
     },
     "USA": {
       "hos": {
-        "name": "Donald Trump",
+        "name": null,
         "holders": 1,
         "image": "leaders/img/USA-hos.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025)_(cropped)(2).jpg"
       },
       "hog": {
-        "name": "Donald Trump",
+        "name": null,
         "holders": 1,
         "image": "leaders/img/USA-hog.jpg",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Official_Presidential_Portrait_of_President_Donald_J._Trump_(2025)_(cropped)(2).jpg"
@@ -2993,30 +2993,30 @@
       "hog": {
         "name": "Andrew Fahie",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/VGB-hog.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Andrew_Fahie_2021.jpg"
       }
     },
     "VIR": {
       "hog": {
         "name": "Albert Bryan Jr.",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/VIR-hog.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Albert_Bryan_with_Del_Plaskett_and_Doug_Domenech_cropped.jpg"
       }
     },
     "VNM": {
       "hos": {
         "name": "Tô Lâm",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/VNM-hos.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:To_Lam_May_2025.jpg"
       },
       "hog": {
         "name": "Phạm Minh Chính",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/VNM-hog.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pham_Minh_Chinh_2021.jpg"
       }
     },
     "VUT": {
@@ -3029,16 +3029,16 @@
       "hog": {
         "name": "Bob Loughman",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/VUT-hog.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bob_Loughman_2022.jpg"
       }
     },
     "WSM": {
       "hos": {
         "name": "Va'aletoa Sualauvi II",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/WSM-hos.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Va'aleto'a_Sualauvi_II_2026_(cropped).jpg"
       },
       "hog": {
         "name": null,
@@ -3051,14 +3051,14 @@
       "hos": {
         "name": "Rashad al-Alimi",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/YEM-hos.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rashad_al-Alimi_-_2022.jpg"
       },
       "hog": {
         "name": "Salem Saleh bin Braik",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/YEM-hog.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fagin_and_bin_Braik,_2025_(cropped).jpg"
       }
     },
     "ZAF": {
@@ -3079,28 +3079,28 @@
       "hos": {
         "name": "Hakainde Hichilema",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/ZMB-hos.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hakainde_Hichilema_in_Japan_on_February_6,_2025_(cropped).jpg"
       },
       "hog": {
         "name": "Edgar Lungu",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/ZMB-hog.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Edgar_Lungu_in_TICAD_VII_(cropped).jpg"
       }
     },
     "ZWE": {
       "hos": {
         "name": "Emmerson Mnangagwa",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/ZWE-hos.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emmerson_Mnangagwa_Official_Portrait_(cropped).jpg"
       },
       "hog": {
         "name": "Emmerson Mnangagwa",
         "holders": 1,
-        "image": null,
-        "commonsPage": null
+        "image": "leaders/img/ZWE-hog.jpg",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emmerson_Mnangagwa_Official_Portrait_(cropped).jpg"
       }
     }
   }

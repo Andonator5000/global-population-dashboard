@@ -544,6 +544,70 @@ export interface CapitalsFile {
   >
 }
 
+/** A hotlinked Commons image plus the attribution its licence requires. */
+export interface CommonsImage {
+  imageUrl: string
+  commonsPage: string
+  license: string | null
+  author: string | null
+}
+
+/** data/inventions/<ISO3>.json */
+export interface InventionsFile {
+  iso3: string
+  name: string
+  source: string
+  note: string
+  inventions: {
+    name: string
+    inventors?: string[]
+    year?: number
+    image?: CommonsImage
+  }[]
+}
+
+/** data/airports/<ISO3>.json */
+export interface AirportsFile {
+  iso3: string
+  name: string
+  source: string
+  note: string
+  airports: {
+    name: string
+    iata: string | null
+    municipality: string | null
+    large: boolean
+    passengers: number | null
+  }[]
+}
+
+/** data/flora-fauna/<ISO3>.json */
+export interface FloraFaunaSymbol {
+  name: string
+  type?: string
+  scientificName?: string
+  image?: CommonsImage
+}
+
+export interface FloraFaunaFile {
+  iso3: string
+  name: string
+  source: string
+  note: string
+  animals?: FloraFaunaSymbol[]
+  tree?: FloraFaunaSymbol
+  flower?: FloraFaunaSymbol
+}
+
+/** data/cuisine/<ISO3>.json */
+export interface CuisineFile {
+  iso3: string
+  name: string
+  source: string
+  note: string
+  dishes: { name: string; image?: CommonsImage }[]
+}
+
 export interface MapPalette {
   note: string
   minNeighbourDeltaE: number

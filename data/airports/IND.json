@@ -1,0 +1,148 @@
+{
+  "iso3": "IND",
+  "name": "India",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Indira Gandhi International Airport",
+      "iata": "DEL",
+      "municipality": "New Delhi",
+      "large": true,
+      "passengers": 77820834
+    },
+    {
+      "name": "Chhatrapati Shivaji Maharaj International Airport",
+      "iata": "BOM",
+      "municipality": "Mumbai",
+      "large": true,
+      "passengers": 47204259
+    },
+    {
+      "name": "Kempegowda International Airport Bengaluru",
+      "iata": "BLR",
+      "municipality": "Bengaluru",
+      "large": true,
+      "passengers": 41875620
+    },
+    {
+      "name": "Rajiv Gandhi International Airport",
+      "iata": "HYD",
+      "municipality": "Hyderabad",
+      "large": true,
+      "passengers": 22622077
+    },
+    {
+      "name": "Sardar Vallabh Patel International Airport",
+      "iata": "AMD",
+      "municipality": "Ahmedabad",
+      "large": true,
+      "passengers": 10665822
+    },
+    {
+      "name": "Chaudhary Charan Singh International Airport",
+      "iata": "LKO",
+      "municipality": "Lucknow",
+      "large": true,
+      "passengers": 5704641
+    },
+    {
+      "name": "Jaipur International Airport",
+      "iata": "JAI",
+      "municipality": "Jaipur",
+      "large": true,
+      "passengers": 5406612
+    },
+    {
+      "name": "Cochin International Airport",
+      "iata": "COK",
+      "municipality": "Kochi",
+      "large": true,
+      "passengers": 4306661
+    },
+    {
+      "name": "Netaji Subhash Chandra Bose International Airport",
+      "iata": "CCU",
+      "municipality": "Kolkata",
+      "large": true,
+      "passengers": 2100785
+    },
+    {
+      "name": "Chennai International Airport",
+      "iata": "MAA",
+      "municipality": "Chennai",
+      "large": true,
+      "passengers": 2096458
+    },
+    {
+      "name": "Goa Dabolim International Airport",
+      "iata": "GOI",
+      "municipality": "Vasco da Gama",
+      "large": true,
+      "passengers": 881843
+    },
+    {
+      "name": "Pune International Airport",
+      "iata": "PNQ",
+      "municipality": "Pune",
+      "large": true,
+      "passengers": 806034
+    },
+    {
+      "name": "Lokpriya Gopinath Bordoloi International Airport",
+      "iata": "GAU",
+      "municipality": "Guwahati",
+      "large": true,
+      "passengers": 555066
+    },
+    {
+      "name": "Thiruvananthapuram International Airport",
+      "iata": "TRV",
+      "municipality": "Thiruvananthapuram",
+      "large": true,
+      "passengers": 528412
+    },
+    {
+      "name": "Srinagar International Airport",
+      "iata": "SXR",
+      "municipality": "Srinagar",
+      "large": true,
+      "passengers": 480175
+    },
+    {
+      "name": "Jay Prakash Narayan Airport",
+      "iata": "PAT",
+      "municipality": "Patna",
+      "large": false,
+      "passengers": 459324
+    },
+    {
+      "name": "Biju Patnaik International Airport",
+      "iata": "BBI",
+      "municipality": "Bhubaneswar",
+      "large": true,
+      "passengers": 378772
+    },
+    {
+      "name": "Calicut International Airport",
+      "iata": "CCJ",
+      "municipality": "Calicut",
+      "large": true,
+      "passengers": 345210
+    },
+    {
+      "name": "Shaheed Bhagat Singh International Airport",
+      "iata": "IXC",
+      "municipality": "Chandigarh",
+      "large": true,
+      "passengers": 329861
+    },
+    {
+      "name": "Devi Ahilya Bai Holkar International Airport",
+      "iata": "IDR",
+      "municipality": "Indore",
+      "large": true,
+      "passengers": 315556
+    }
+  ]
+}

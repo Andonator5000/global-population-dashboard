@@ -1,0 +1,30 @@
+{
+  "iso3": "ROU",
+  "name": "Romania",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Eurasian Lynx",
+      "type": "national animal",
+      "scientificName": "Lynx lynx",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lynx%20lynx%20poing.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lynx%20lynx%20poing.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Bernard Landgraf (User:Baerni)"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Oak, Pedunculate oak",
+    "type": "national tree",
+    "scientificName": "Quercus, Quercus robur",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Raunkiaer.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Raunkiaer.jpg",
+      "license": "Public domain",
+      "author": "No machine-readable author provided. Haabet assumed (based on copyright claims)."
+    }
+  }
+}

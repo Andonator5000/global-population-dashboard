@@ -47,10 +47,14 @@ import type {
   OwidIndicatorSeries,
 } from '../types'
 import {
+  AirportsBody,
   CrimeExtraTiles,
+  CuisineBody,
   CurrencyImageFigure,
   EducationExtraTiles,
+  FloraFaunaBody,
   LiveExchangeRateTile,
+  NotableInventionsBody,
   PressFreedomTile,
   PublicDebtTiles,
   SubdivisionsBody,
@@ -922,6 +926,17 @@ export function CountryPage() {
           )}
         </Section>
 
+        {/* ------------------------------------------------ Flora and Fauna */}
+        <Section
+          id="flora-fauna"
+          title="Flora and Fauna"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          {iso3 && <FloraFaunaBody iso3={iso3} />}
+        </Section>
+
         {/* --------------------------------------------- Weather and Climate */}
         <Section
           id="weather"
@@ -970,6 +985,28 @@ export function CountryPage() {
               format={(v) => `${v.toFixed(1)}% of population`}
             />
           </div>
+        </Section>
+
+        {/* --------------------------------------------------------- Airports */}
+        <Section
+          id="airports"
+          title="Airports"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          {iso3 && <AirportsBody iso3={iso3} />}
+        </Section>
+
+        {/* ----------------------------------------------- Notable Inventions */}
+        <Section
+          id="inventions"
+          title="Notable Inventions"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          {iso3 && <NotableInventionsBody iso3={iso3} />}
         </Section>
 
         {/* ------------------------------------------ Security and Defense */}
@@ -1171,6 +1208,17 @@ export function CountryPage() {
               />
             )}
           </div>
+        </Section>
+
+        {/* ------------------------------------------------ National Cuisine */}
+        <Section
+          id="cuisine"
+          title="National Cuisine"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          {iso3 && <CuisineBody iso3={iso3} />}
         </Section>
 
         {/* -------------------------------------------------------- Freedom */}

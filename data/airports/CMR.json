@@ -1,0 +1,43 @@
+{
+  "iso3": "CMR",
+  "name": "Cameroon",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Douala International Airport",
+      "iata": "DLA",
+      "municipality": "Douala",
+      "large": true,
+      "passengers": 1062570
+    },
+    {
+      "name": "Yaoundé Nsimalen International Airport",
+      "iata": "NSI",
+      "municipality": "Yaoundé",
+      "large": true,
+      "passengers": 706868
+    },
+    {
+      "name": "Salak Airport",
+      "iata": "MVR",
+      "municipality": "Maroua",
+      "large": false,
+      "passengers": 62541
+    },
+    {
+      "name": "Garoua International Airport",
+      "iata": "GOU",
+      "municipality": "Garoua",
+      "large": true,
+      "passengers": 57070
+    },
+    {
+      "name": "N'Gaoundéré Airport",
+      "iata": "NGE",
+      "municipality": "N'Gaoundéré",
+      "large": false,
+      "passengers": 15117
+    }
+  ]
+}

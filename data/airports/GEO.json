@@ -1,0 +1,43 @@
+{
+  "iso3": "GEO",
+  "name": "Georgia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Tbilisi International Airport",
+      "iata": "TBS",
+      "municipality": "Tbilisi",
+      "large": true,
+      "passengers": 3809000
+    },
+    {
+      "name": "David the Builder Kutaisi International Airport",
+      "iata": "KUT",
+      "municipality": "Kopitnari",
+      "large": true,
+      "passengers": 873616
+    },
+    {
+      "name": "Alexander Kartveli Batumi International Airport",
+      "iata": "BUS",
+      "municipality": "Batumi",
+      "large": true,
+      "passengers": 624178
+    },
+    {
+      "name": "Ambrolauri Airport",
+      "iata": null,
+      "municipality": "Ambrolauri",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Vladislav Ardzinba Sukhum International Airport",
+      "iata": "SUI",
+      "municipality": "Sukhumi",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "iso3": "BRA",
+  "name": "Brazil",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Bauru",
+      "inventors": [
+        "Casimiro Pinto Neto"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%282014-11-22%29%20Emp%C3%B3rio%20Teodora%20-%20Bauru%20-%20Lanche%20Bauru%20Romerito%20Pontes-2%20%2815869512362%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%282014-11-22%29%20Emp%C3%B3rio%20Teodora%20-%20Bauru%20-%20Lanche%20Bauru%20Romerito%20Pontes-2%20%2815869512362%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Romerito Pontes from São Carlos"
+      }
+    },
+    {
+      "name": "Sergio",
+      "year": 1895,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PSM%20V69%20D278%20The%20largest%20carbon%20ever%20found.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:PSM%20V69%20D278%20The%20largest%20carbon%20ever%20found.png",
+        "license": "Public domain",
+        "author": "Unknown authorUnknown author"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "iso3": "KGZ",
+  "name": "Kyrgyzstan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Manas International Airport",
+      "iata": "BSZ",
+      "municipality": "Bishkek",
+      "large": true,
+      "passengers": 3683347
+    },
+    {
+      "name": "Osh International Airport",
+      "iata": "OSS",
+      "municipality": "Osh",
+      "large": true,
+      "passengers": 1499561
+    },
+    {
+      "name": "Issyk-Kul International Airport",
+      "iata": "IKU",
+      "municipality": "Tamchy",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Batken Airport",
+      "iata": null,
+      "municipality": "Batken",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Jalal-Abad Airport",
+      "iata": null,
+      "municipality": "Jalal-Abad",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Karakol International Airport",
+      "iata": "IKG",
+      "municipality": "Karakol",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

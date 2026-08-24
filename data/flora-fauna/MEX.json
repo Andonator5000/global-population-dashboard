@@ -1,0 +1,84 @@
+{
+  "iso3": "MEX",
+  "name": "Mexico",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Golden eagle",
+      "type": "national bird and animal",
+      "scientificName": "Aquila chrysaetos",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Golden%20Eagle%20in%20flight%20-%205.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Golden%20Eagle%20in%20flight%20-%205.jpg",
+        "license": "CC BY 2.0",
+        "author": "Tony Hisgett from Birmingham, UK"
+      }
+    },
+    {
+      "name": "Grasshopper",
+      "type": "national arthropod",
+      "scientificName": "Sphenarium purpurascens",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/American%20Bird%20Grasshopper.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:American%20Bird%20Grasshopper.jpg",
+        "license": "CC BY 3.0",
+        "author": "http://www.birdphotos.com"
+      }
+    },
+    {
+      "name": "Jaguar",
+      "type": "national mammal",
+      "scientificName": "Panthera onca",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Standing%20jaguar.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Standing%20jaguar.jpg",
+        "license": "Public domain",
+        "author": "USFWS"
+      }
+    },
+    {
+      "name": "Vaquita",
+      "type": "national marine mammal",
+      "scientificName": "Phocoena sinus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vaquita4%20Olson%20NOAA.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vaquita4%20Olson%20NOAA.jpg",
+        "license": "Public domain",
+        "author": "Paula Olson, NOAA"
+      }
+    },
+    {
+      "name": "Xoloitzcuintli",
+      "type": "national dog breed",
+      "scientificName": "(a breed of)Canis lupus familiaris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Xoloitzcuintli%20-%20GCH%20Bayshore%20Georgio%20Armani%2009%20%2816397731930%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Xoloitzcuintli%20-%20GCH%20Bayshore%20Georgio%20Armani%2009%20%2816397731930%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Pets Adviser from Brooklyn, USA"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Ahuehuete",
+    "type": "national tree",
+    "scientificName": "Taxodium mucronatum",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%81rbol-del-Tule-Oaxaca-Mexico.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%C3%81rbol-del-Tule-Oaxaca-Mexico.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "User:Gengiskanhg"
+    }
+  },
+  "flower": {
+    "name": "citation needed",
+    "scientificName": "Dahlia pinnata",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Borboletas%20em%20Mini-D%C3%A1lias.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Borboletas%20em%20Mini-D%C3%A1lias.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Denis Conrado"
+    }
+  }
+}

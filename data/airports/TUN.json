@@ -1,0 +1,57 @@
+{
+  "iso3": "TUN",
+  "name": "Tunisia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Tunis Carthage International Airport",
+      "iata": "TUN",
+      "municipality": "Tunis",
+      "large": true,
+      "passengers": 6441886
+    },
+    {
+      "name": "Monastir Habib Bourguiba International Airport",
+      "iata": "MIR",
+      "municipality": "Monastir",
+      "large": false,
+      "passengers": 3462157
+    },
+    {
+      "name": "Enfidha - Hammamet International Airport",
+      "iata": "NBE",
+      "municipality": "Enfidha",
+      "large": false,
+      "passengers": 2272074
+    },
+    {
+      "name": "Djerba Zarzis International Airport",
+      "iata": "DJE",
+      "municipality": "Mellita",
+      "large": true,
+      "passengers": 1969043
+    },
+    {
+      "name": "Sfax Thyna International Airport",
+      "iata": "SFA",
+      "municipality": "Sfax",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Tabarka-Aïn Draham International Airport",
+      "iata": "TBJ",
+      "municipality": "Tabarka",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Tozeur Nefta International Airport",
+      "iata": "TOE",
+      "municipality": "Tozeur",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

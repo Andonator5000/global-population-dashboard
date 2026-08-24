@@ -1,0 +1,30 @@
+{
+  "iso3": "JAM",
+  "name": "Jamaica",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Red-billed streamertail",
+      "type": "national bird",
+      "scientificName": "Trochilus polytmus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red-billed%20Streamertail%202506104129.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red-billed%20Streamertail%202506104129.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "dominic sherony"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Blue mahoe",
+    "type": "national tree",
+    "scientificName": "Hibiscus elatus",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20Mahoe%20Tree.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Blue%20Mahoe%20Tree.JPG",
+      "license": "Public domain",
+      "author": "Jamrock1962"
+    }
+  }
+}

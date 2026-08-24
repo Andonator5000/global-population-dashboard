@@ -1,0 +1,29 @@
+{
+  "iso3": "SGP",
+  "name": "Singapore",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Lion",
+      "type": "national animal",
+      "scientificName": "Panthera leo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Giles Laurent"
+      }
+    }
+  ],
+  "flower": {
+    "name": "Vanda teres",
+    "scientificName": "Vanda hookeriana",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Orchid%20Album-02-0078-0073-Vanda%20hookeriana.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:The%20Orchid%20Album-02-0078-0073-Vanda%20hookeriana.png",
+      "license": "Public domain",
+      "author": "John Nugent Fitch"
+    }
+  }
+}

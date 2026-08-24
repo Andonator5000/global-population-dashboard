@@ -1,0 +1,63 @@
+{
+  "iso3": "FIN",
+  "name": "Finland",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Brown bear",
+      "type": "national animal",
+      "scientificName": "Ursus arctos",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/European%20Brown%20Bear.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:European%20Brown%20Bear.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Francis C. Franklin"
+      }
+    },
+    {
+      "name": "European perch",
+      "type": "national fish",
+      "scientificName": "Perca fluviatilis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Perca%20fluviatilis2.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Perca%20fluviatilis2.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Citron"
+      }
+    },
+    {
+      "name": "Seven-spot ladybird",
+      "type": "national insect",
+      "scientificName": "Coccinella septempunctata",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/7-Spotted-Ladybug-Coccinella-septempunctata-sq1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:7-Spotted-Ladybug-Coccinella-septempunctata-sq1.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Photographer: Dominik Stodulski   Graphic Processing: User:MathKnight"
+      }
+    },
+    {
+      "name": "Whooper swan",
+      "type": "national bird",
+      "scientificName": "Cygnus cygnus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cygnus%20cygnus%20Singschwan.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cygnus%20cygnus%20Singschwan.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Andreas Trepte"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Silver birch",
+    "type": "national tree",
+    "scientificName": "Betula pendula",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/B.%20pendula%2C%20Koivu%20Birch%2C%20end%20of%20August%202.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:B.%20pendula%2C%20Koivu%20Birch%2C%20end%20of%20August%202.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Abc10"
+    }
+  }
+}

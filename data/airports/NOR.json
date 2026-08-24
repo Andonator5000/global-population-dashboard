@@ -1,0 +1,148 @@
+{
+  "iso3": "NOR",
+  "name": "Norway",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Oslo-Gardermoen International Airport",
+      "iata": "OSL",
+      "municipality": "Oslo (Gardermoen)",
+      "large": true,
+      "passengers": 28592619
+    },
+    {
+      "name": "Bergen Airport, Flesland",
+      "iata": "BGO",
+      "municipality": "Bergen",
+      "large": true,
+      "passengers": 6552286
+    },
+    {
+      "name": "Stavanger Airport, Sola",
+      "iata": "SVG",
+      "municipality": "Stavanger",
+      "large": true,
+      "passengers": 4721971
+    },
+    {
+      "name": "Trondheim Airport, Værnes",
+      "iata": "TRD",
+      "municipality": "Trondheim",
+      "large": true,
+      "passengers": 4441870
+    },
+    {
+      "name": "Tromsø Airport",
+      "iata": "TOS",
+      "municipality": "Tromsø",
+      "large": true,
+      "passengers": 2370565
+    },
+    {
+      "name": "Sandefjord Airport, Torp",
+      "iata": "TRF",
+      "municipality": "Sandefjord(Torp)",
+      "large": true,
+      "passengers": 2081865
+    },
+    {
+      "name": "Bodø Airport",
+      "iata": "BOO",
+      "municipality": "Bodø",
+      "large": true,
+      "passengers": 1918298
+    },
+    {
+      "name": "Ålesund Airport",
+      "iata": "AES",
+      "municipality": "Ålesund",
+      "large": true,
+      "passengers": 1147666
+    },
+    {
+      "name": "Kristiansand Airport",
+      "iata": "KRS",
+      "municipality": "Kristiansand(Kjevik)",
+      "large": true,
+      "passengers": 1072025
+    },
+    {
+      "name": "Harstad/Narvik Airport",
+      "iata": "EVE",
+      "municipality": "Evenes",
+      "large": true,
+      "passengers": 794106
+    },
+    {
+      "name": "Haugesund Airport, Karmøy",
+      "iata": "HAU",
+      "municipality": "Karmøy",
+      "large": false,
+      "passengers": 701110
+    },
+    {
+      "name": "Molde Airport, Årø",
+      "iata": "MOL",
+      "municipality": "Årø",
+      "large": false,
+      "passengers": 519678
+    },
+    {
+      "name": "Alta Airport",
+      "iata": "ALF",
+      "municipality": "Alta",
+      "large": false,
+      "passengers": 416272
+    },
+    {
+      "name": "Kristiansund Airport, Kvernberget",
+      "iata": "KSU",
+      "municipality": "Kvernberget",
+      "large": false,
+      "passengers": 395711
+    },
+    {
+      "name": "Kirkenes Airport, Høybuktmoen",
+      "iata": "KKN",
+      "municipality": "Kirkenes",
+      "large": false,
+      "passengers": 318194
+    },
+    {
+      "name": "Bardufoss Airport",
+      "iata": "BDU",
+      "municipality": "Målselv",
+      "large": false,
+      "passengers": 246420
+    },
+    {
+      "name": "Florø Airport",
+      "iata": "FRO",
+      "municipality": "Florø",
+      "large": false,
+      "passengers": 206713
+    },
+    {
+      "name": "Hammerfest Airport",
+      "iata": "HFT",
+      "municipality": "Hammerfest",
+      "large": false,
+      "passengers": 194287
+    },
+    {
+      "name": "Svalbard Airport, Longyear",
+      "iata": "LYR",
+      "municipality": "Longyearbyen",
+      "large": false,
+      "passengers": 185449
+    },
+    {
+      "name": "Brønnøysund Airport, Brønnøy",
+      "iata": "BNN",
+      "municipality": "Brønnøy",
+      "large": false,
+      "passengers": 172881
+    }
+  ]
+}

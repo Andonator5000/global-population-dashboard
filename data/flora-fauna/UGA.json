@@ -1,0 +1,30 @@
+{
+  "iso3": "UGA",
+  "name": "Uganda",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Ugandan kob",
+      "type": "national animal",
+      "scientificName": "Kobus kob thomasi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kobus%20kob%20thomasi%2011873505.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kobus%20kob%20thomasi%2011873505.jpg",
+        "license": "CC0",
+        "author": "Richard Fuller"
+      }
+    },
+    {
+      "name": "Grey crowned crane",
+      "type": "national bird",
+      "scientificName": "Balearica regulorum",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Balearica%20regulorum%20001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Balearica%20regulorum%20001.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "H. Zell"
+      }
+    }
+  ]
+}

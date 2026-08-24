@@ -1,0 +1,35 @@
+{
+  "iso3": "DZA",
+  "name": "Algeria",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Usban",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%B9%D8%B5%D8%A8%D8%A7%D9%86%20%D8%AA%D9%88%D9%86%D8%B3%D9%8A%201.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%B9%D8%B5%D8%A8%D8%A7%D9%86%20%D8%AA%D9%88%D9%86%D8%B3%D9%8A%201.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "Touzrimounir"
+      }
+    },
+    {
+      "name": "Mtewem",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mtewem.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mtewem.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Slothtysloth"
+      }
+    },
+    {
+      "name": "Tajine Lham-Lahlou",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lham%20lahlou%20algerien.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lham%20lahlou%20algerien.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Slothtysloth"
+      }
+    }
+  ]
+}

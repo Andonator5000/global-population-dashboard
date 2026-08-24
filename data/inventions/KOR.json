@@ -1,0 +1,91 @@
+{
+  "iso3": "KOR",
+  "name": "South Korea",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "dak-galbi",
+      "year": 1950,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20cuisine-Dakgalbi-01.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korean%20cuisine-Dakgalbi-01.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "by shizu k (shezzz) at Flickr"
+      }
+    },
+    {
+      "name": "Yangnyeom chicken",
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean.cuisine-Yangnyeom%20chicken-01.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korean.cuisine-Yangnyeom%20chicken-01.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "by ayustety (flickr)"
+      }
+    },
+    {
+      "name": "Andong jjimdak",
+      "year": 1980,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Andong-jjimdak.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Andong-jjimdak.jpg",
+        "license": "KOGL Type 1",
+        "author": "Korean Culture and Information Service"
+      }
+    },
+    {
+      "name": "tornado potato",
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hoeori-gamja%201.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hoeori-gamja%201.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "anokarina"
+      }
+    },
+    {
+      "name": "hodu-gwaja",
+      "year": 1934,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hodugwaja.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hodugwaja.jpg",
+        "license": "CC BY 2.0 kr",
+        "author": "parkyang1021"
+      }
+    },
+    {
+      "name": "jugyeom",
+      "inventors": [
+        "Kim Ilhun"
+      ],
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bambussalz-rr.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bambussalz-rr.jpg",
+        "license": "GFDL 1.2",
+        "author": "Marcela (talk)"
+      }
+    },
+    {
+      "name": "corn cheese",
+      "year": 1990,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Corn%20cheese.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Corn%20cheese.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "anokarina"
+      }
+    },
+    {
+      "name": "kimchi refrigerator",
+      "year": 1992,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/An%20Event%20with%20Four%20Comedians%20of%20Gag%20Concert%20for%20LG%20DIOS%20Refrigerator%20on%20September%2021%2C%202012%20from%20acrofan%206.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:An%20Event%20with%20Four%20Comedians%20of%20Gag%20Concert%20for%20LG%20DIOS%20Refrigerator%20on%20September%2021%2C%202012%20from%20acrofan%206.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "acrofan.com"
+      }
+    }
+  ]
+}

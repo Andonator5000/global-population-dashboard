@@ -1,0 +1,43 @@
+{
+  "iso3": "AZE",
+  "name": "Azerbaijan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Heydar Aliyev International Airport",
+      "iata": "GYD",
+      "municipality": "Baku",
+      "large": true,
+      "passengers": 4730000
+    },
+    {
+      "name": "Nakhchivan International Airport",
+      "iata": "NAJ",
+      "municipality": "Nakhchivan",
+      "large": true,
+      "passengers": 646000
+    },
+    {
+      "name": "Ganja International Airport",
+      "iata": "GNJ",
+      "municipality": "Ganja",
+      "large": true,
+      "passengers": 345055
+    },
+    {
+      "name": "Gabala International Airport",
+      "iata": "GBB",
+      "municipality": "Gabala",
+      "large": false,
+      "passengers": 55651
+    },
+    {
+      "name": "Lachin International Airport",
+      "iata": "LHL",
+      "municipality": "Lachin",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

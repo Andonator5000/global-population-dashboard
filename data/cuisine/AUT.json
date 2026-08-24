@@ -1,0 +1,35 @@
+{
+  "iso3": "AUT",
+  "name": "Austria",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Vanillekipferl",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vanillekipferl%20WMAT2017%2002.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vanillekipferl%20WMAT2017%2002.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Weihnachtskekserl"
+      }
+    },
+    {
+      "name": "Leberknödel",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Leberknoedelsuppe.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Leberknoedelsuppe.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "CTHOE"
+      }
+    },
+    {
+      "name": "Eiernockerl",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20180222%20CafeFalk%20003%20%2839646637215%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:20180222%20CafeFalk%20003%20%2839646637215%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Tauralbus from Wien, Austria"
+      }
+    }
+  ]
+}

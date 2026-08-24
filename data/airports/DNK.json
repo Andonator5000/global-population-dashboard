@@ -1,0 +1,78 @@
+{
+  "iso3": "DNK",
+  "name": "Denmark",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Copenhagen Kastrup Airport",
+      "iata": "CPH",
+      "municipality": "Copenhagen",
+      "large": true,
+      "passengers": 30298428
+    },
+    {
+      "name": "Billund Airport",
+      "iata": "BLL",
+      "municipality": "Billund",
+      "large": true,
+      "passengers": 3739267
+    },
+    {
+      "name": "Aalborg Airport",
+      "iata": "AAL",
+      "municipality": "Aalborg",
+      "large": true,
+      "passengers": 1585573
+    },
+    {
+      "name": "Aarhus Airport",
+      "iata": "AAR",
+      "municipality": "Aarhus",
+      "large": true,
+      "passengers": 654916
+    },
+    {
+      "name": "Midtjyllands Airport / Air Base Karup",
+      "iata": "KRP",
+      "municipality": "Karup",
+      "large": false,
+      "passengers": 311435
+    },
+    {
+      "name": "Bornholm Airport",
+      "iata": "RNN",
+      "municipality": "Rønne",
+      "large": false,
+      "passengers": 276415
+    },
+    {
+      "name": "Esbjerg Airport",
+      "iata": "EBJ",
+      "municipality": "Esbjerg",
+      "large": false,
+      "passengers": 199637
+    },
+    {
+      "name": "Sønderborg Airport",
+      "iata": "SGD",
+      "municipality": "Sønderborg",
+      "large": false,
+      "passengers": 74299
+    },
+    {
+      "name": "Copenhagen Roskilde Airport",
+      "iata": "RKE",
+      "municipality": "Roskilde",
+      "large": false,
+      "passengers": 43166
+    },
+    {
+      "name": "Odense Hans Christian Andersen Airport",
+      "iata": "ODE",
+      "municipality": "Odense",
+      "large": true,
+      "passengers": 23183
+    }
+  ]
+}

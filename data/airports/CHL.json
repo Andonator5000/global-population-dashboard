@@ -1,0 +1,127 @@
+{
+  "iso3": "CHL",
+  "name": "Chile",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Comodoro Arturo Merino Benítez International Airport",
+      "iata": "SCL",
+      "municipality": "Santiago",
+      "large": true,
+      "passengers": 24925660
+    },
+    {
+      "name": "Andrés Sabella Gálvez International Airport",
+      "iata": "ANF",
+      "municipality": "Antofagasta",
+      "large": true,
+      "passengers": 2078126
+    },
+    {
+      "name": "El Tepual International Airport",
+      "iata": "PMC",
+      "municipality": "Puerto Montt",
+      "large": true,
+      "passengers": 1485959
+    },
+    {
+      "name": "El Loa Airport",
+      "iata": "CJC",
+      "municipality": "Calama",
+      "large": false,
+      "passengers": 1441656
+    },
+    {
+      "name": "Diego Aracena International Airport",
+      "iata": "IQQ",
+      "municipality": "Iquique",
+      "large": true,
+      "passengers": 1340607
+    },
+    {
+      "name": "Carriel Sur International Airport",
+      "iata": "CCP",
+      "municipality": "Concepcion",
+      "large": true,
+      "passengers": 1112320
+    },
+    {
+      "name": "La Florida Airport",
+      "iata": "LSC",
+      "municipality": "La Serena-Coquimbo",
+      "large": false,
+      "passengers": 1024185
+    },
+    {
+      "name": "President Carlos Ibáñez International Airport",
+      "iata": "PUQ",
+      "municipality": "Punta Arenas",
+      "large": true,
+      "passengers": 994971
+    },
+    {
+      "name": "Chacalluta International Airport",
+      "iata": "ARI",
+      "municipality": "Arica",
+      "large": false,
+      "passengers": 702666
+    },
+    {
+      "name": "La Araucanía International Airport",
+      "iata": "ZCO",
+      "municipality": "Temuco",
+      "large": true,
+      "passengers": 619997
+    },
+    {
+      "name": "Desierto de Atacama Airport",
+      "iata": "CPO",
+      "municipality": "Copiapo",
+      "large": false,
+      "passengers": 597841
+    },
+    {
+      "name": "Balmaceda Airport",
+      "iata": "BBA",
+      "municipality": "Balmaceda",
+      "large": false,
+      "passengers": 515367
+    },
+    {
+      "name": "Pichoy Airport",
+      "iata": "ZAL",
+      "municipality": "Valdivia",
+      "large": false,
+      "passengers": 229993
+    },
+    {
+      "name": "Mataveri International Airport",
+      "iata": "IPC",
+      "municipality": "Isla De Pascua",
+      "large": true,
+      "passengers": 225402
+    },
+    {
+      "name": "Cañal Bajo Carlos Hott Siebert Airport",
+      "iata": "ZOS",
+      "municipality": "Osorno",
+      "large": false,
+      "passengers": 148938
+    },
+    {
+      "name": "Lieutenant Julio Gallardo Airport",
+      "iata": "PNT",
+      "municipality": "Puerto Natales",
+      "large": false,
+      "passengers": 62244
+    },
+    {
+      "name": "Ricardo García Posada Airport",
+      "iata": "ESR",
+      "municipality": "El Salvador",
+      "large": false,
+      "passengers": 21154
+    }
+  ]
+}

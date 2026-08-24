@@ -292,6 +292,10 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "currency_images": _simple_stage("currencyimages", "currency_images"),
     "subdivisions": _simple_stage("subdivisions", "subdivisions"),
     "climate": _simple_stage("climate", "climate"),
+    "inventions": _simple_stage("inventions", "inventions"),
+    "airports": _simple_stage("airports", "airports"),
+    "florafauna": _simple_stage("florafauna", "florafauna"),
+    "cuisine": _simple_stage("cuisine", "cuisine"),
     "geometry": stage_geometry,
     "flags": stage_flags,
     "factbook": stage_factbook,
@@ -326,6 +330,8 @@ def check_sources() -> int:
         ("Hipolabs universities", config.HIPOLABS_UNIVERSITIES_URL),
         ("UNODC prisons landing", config.UNODC_PRISON_LANDING),
         ("GeoNames cities15000", config.GEONAMES_CITIES15000_URL),
+        ("OurAirports roster", config.OURAIRPORTS_CSV_URL),
+        ("Wikipedia REST HTML", config.WIKIPEDIA_NATIONAL_ANIMALS_URL),
     ]
     rev = discover_wpp_revision()
     probes.append((

@@ -1,0 +1,74 @@
+{
+  "iso3": "CRI",
+  "name": "Costa Rica",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Three-toed sloth",
+      "type": "national animal",
+      "scientificName": "Bradypus variegatus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bicho-pregui%C3%A7a%203.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bicho-pregui%C3%A7a%203.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Daniella Maraschiello"
+      }
+    },
+    {
+      "name": "Two-toed sloth",
+      "type": "national animal",
+      "scientificName": "Choloepus hoffmanni",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Choloepus%20hoffmanni%20353441834.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Choloepus%20hoffmanni%20353441834.jpg",
+        "license": "CC BY 4.0",
+        "author": "Bex Goreham"
+      }
+    },
+    {
+      "name": "White-tailed deer",
+      "type": "national animal",
+      "scientificName": "Odocoileus virginianus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Odocoileus%20virginianus%20Goose%20Island%20SP%20Texas%202024.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Odocoileus%20virginianus%20Goose%20Island%20SP%20Texas%202024.jpg",
+        "license": "CC BY 4.0",
+        "author": "Larry D. Moore"
+      }
+    },
+    {
+      "name": "West Indian manatee",
+      "type": "national aquatic animal",
+      "scientificName": "Trichechus manatus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Manatee%20with%20calf.PD%20-%20colour%20corrected.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Manatee%20with%20calf.PD%20-%20colour%20corrected.jpg",
+        "license": "Public domain",
+        "author": "Galen Rathbun"
+      }
+    },
+    {
+      "name": "Yigüirro",
+      "type": "national bird",
+      "scientificName": "Turdus grayi",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turdus%20grayi%20Garita%2C%20Alajuela%20Costa%20Rica-10.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turdus%20grayi%20Garita%2C%20Alajuela%20Costa%20Rica-10.jpg",
+        "license": "CC BY 2.0",
+        "author": "Greg Gilbert from Dahlonega Area, Georgia, USA"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Guanacaste",
+    "type": "national tree",
+    "scientificName": "Enterolobium cyclocarpum",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%81rbol%20de%20Guancaste.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%C3%81rbol%20de%20Guancaste.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Avancari"
+    }
+  }
+}

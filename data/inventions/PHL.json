@@ -1,0 +1,40 @@
+{
+  "iso3": "PHL",
+  "name": "Philippines",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "banana ketchup",
+      "inventors": [
+        "Maria Orosa"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banana%20ketchup.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Banana%20ketchup.jpg",
+        "license": "Public domain",
+        "author": "John Stephen Dwyer (HouseOfScandal at en.wikipedia)"
+      }
+    },
+    {
+      "name": "psychic surgery",
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gutierrez2.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gutierrez2.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Brattarb"
+      }
+    },
+    {
+      "name": "Filipino spaghetti",
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Filipino%20style%20spaghetti.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Filipino%20style%20spaghetti.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "RightCowLeftCoast"
+      }
+    }
+  ]
+}

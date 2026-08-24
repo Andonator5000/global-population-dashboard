@@ -25,61 +25,10 @@ from typing import Any
 
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity
-from ..fetch import CachedResponse, fetch
-
-_FILEPATH_MARKER = "Special:FilePath/"
-_BATCH = 20  # Commons API titles per request, kept under URL-length limits
+from ..fetch import fetch
+from . import commons
 
 _OVERRIDES_PATH = config.REFERENCE_DIR / "currency_image_overrides.json"
-
-
-def _filename_from(image_url: str) -> str | None:
-    index = image_url.find(_FILEPATH_MARKER)
-    if index == -1:
-        return None
-    return urllib.parse.unquote(image_url[index + len(_FILEPATH_MARKER):])
-
-
-def _strip_html(text: str) -> str:
-    import re
-
-    return re.sub(r"<[^>]+>", "", text).strip()
-
-
-def _commons_metadata(
-    filenames: list[str], refresh: bool
-) -> tuple[dict[str, dict[str, str | None]], list[CachedResponse]]:
-    """{filename: {license, author}} for files that exist on Commons."""
-    out: dict[str, dict[str, str | None]] = {}
-    responses: list[CachedResponse] = []
-    for start in range(0, len(filenames), _BATCH):
-        batch = filenames[start:start + _BATCH]
-        titles = "|".join(f"File:{name}" for name in batch)
-        url = (
-            f"{config.COMMONS_API_URL}?action=query&format=json"
-            f"&prop=imageinfo&iiprop=extmetadata&redirects=1"
-            f"&titles={urllib.parse.quote(titles)}"
-        )
-        response = fetch(
-            url, refresh=refresh, subdir="currency-images",
-            filename=f"commons-meta-{start // _BATCH:02d}.json",
-            expect_json=True,
-        )
-        responses.append(response)
-        pages = response.read_json().get("query", {}).get("pages", {})
-        for page in pages.values():
-            title = (page.get("title") or "").removeprefix("File:")
-            info = (page.get("imageinfo") or [{}])[0]
-            meta = info.get("extmetadata") or {}
-            if not title or "missing" in page:
-                continue
-            out[title] = {
-                "license": (meta.get("LicenseShortName") or {}).get("value"),
-                "author": _strip_html(
-                    (meta.get("Artist") or {}).get("value") or ""
-                ) or None,
-            }
-    return out, responses
 
 
 def ingest(
@@ -115,7 +64,7 @@ def ingest(
         if iso3 not in registry or len(code) != 3:
             continue
         image = row.get("image", {}).get("value")
-        filename = _filename_from(image) if image else None
+        filename = commons.filename_from_special_path(image) if image else None
         existing = by_code.get(code)
         if existing is None or (existing["file"] is None and filename):
             by_code[code] = {
@@ -128,7 +77,9 @@ def ingest(
     with_files = sorted(
         {record["file"] for record in by_code.values() if record["file"]}
     )
-    metadata, meta_responses = _commons_metadata(with_files, refresh)
+    metadata, meta_responses = commons.fetch_metadata(
+        with_files, refresh=refresh, subdir="currency-images",
+    )
 
     currencies: dict[str, Any] = {}
     dropped: list[str] = []
@@ -140,15 +91,11 @@ def ingest(
             # The Commons file was renamed or deleted under Wikidata.
             dropped.append(code)
             continue
-        quoted = urllib.parse.quote(filename)
         currencies[code] = {
             "name": record["name"],
             "file": filename,
-            "imageUrl": (
-                f"https://commons.wikimedia.org/wiki/Special:FilePath/"
-                f"{quoted}?width={config.COMMONS_IMAGE_WIDTH}"
-            ),
-            "commonsPage": f"https://commons.wikimedia.org/wiki/File:{quoted}",
+            "imageUrl": commons.image_url_for(filename),
+            "commonsPage": commons.file_page_for(filename),
             "license": metadata[filename]["license"],
             "author": metadata[filename]["author"],
             "curated": code in overrides,

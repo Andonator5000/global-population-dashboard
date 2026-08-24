@@ -1,0 +1,57 @@
+{
+  "iso3": "IRQ",
+  "name": "Iraq",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Baghdad International Airport / New Al Muthana Air Base",
+      "iata": "BGW",
+      "municipality": "Baghdad",
+      "large": true,
+      "passengers": 3797413
+    },
+    {
+      "name": "Al Najaf International Airport",
+      "iata": "NJF",
+      "municipality": "Najaf",
+      "large": true,
+      "passengers": 2579355
+    },
+    {
+      "name": "Erbil International Airport",
+      "iata": "EBL",
+      "municipality": "Arbil",
+      "large": true,
+      "passengers": 1909785
+    },
+    {
+      "name": "Basra International Airport",
+      "iata": "BSR",
+      "municipality": "Basra",
+      "large": true,
+      "passengers": 984985
+    },
+    {
+      "name": "Jalal Talabani International Airport",
+      "iata": "ISU",
+      "municipality": "Sulaymaniyah",
+      "large": false,
+      "passengers": 574654
+    },
+    {
+      "name": "Kirkuk International Airport",
+      "iata": "KIK",
+      "municipality": "Kirkuk",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Mosul International Airport",
+      "iata": "OSM",
+      "municipality": "Mosul",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

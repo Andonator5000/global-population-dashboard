@@ -1,0 +1,15 @@
+{
+  "iso3": "JOR",
+  "name": "Jordan",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "flower": {
+    "name": "black iris",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Iris%20nigricans%20104379460.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Iris%20nigricans%20104379460.jpg",
+      "license": "CC BY 4.0",
+      "author": "Santiago Martín-Bravo"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "iso3": "CZE",
+  "name": "Czechia",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "Rubin",
+      "year": 1960,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cross%20section%20of%20Rubin%2C%20National%20Fruit%20Collection%20%28acc.%201978-135%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cross%20section%20of%20Rubin%2C%20National%20Fruit%20Collection%20%28acc.%201978-135%29.jpg",
+        "license": "OGL 2",
+        "author": "National Fruit Collection, Brogdale."
+      }
+    }
+  ]
+}

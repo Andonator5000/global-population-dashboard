@@ -1,0 +1,29 @@
+{
+  "iso3": "ISR",
+  "name": "Israel",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Ben Gurion International Airport",
+      "iata": "TLV",
+      "municipality": "Tel Aviv",
+      "large": true,
+      "passengers": 24821767
+    },
+    {
+      "name": "Ramon International Airport",
+      "iata": "ETM",
+      "municipality": "Eilat",
+      "large": true,
+      "passengers": 1534056
+    },
+    {
+      "name": "Uri Michaeli Haifa International Airport",
+      "iata": "HFA",
+      "municipality": "Haifa",
+      "large": false,
+      "passengers": 140222
+    }
+  ]
+}

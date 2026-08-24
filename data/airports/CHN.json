@@ -1,0 +1,148 @@
+{
+  "iso3": "CHN",
+  "name": "China",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Beijing Capital International Airport",
+      "iata": "PEK",
+      "municipality": "Beijing",
+      "large": true,
+      "passengers": 100983290
+    },
+    {
+      "name": "Shanghai Pudong International Airport",
+      "iata": "PVG",
+      "municipality": "Shanghai (Pudong)",
+      "large": true,
+      "passengers": 84994548
+    },
+    {
+      "name": "Guangzhou Baiyun International Airport",
+      "iata": "CAN",
+      "municipality": "Guangzhou (Huadu)",
+      "large": true,
+      "passengers": 76370000
+    },
+    {
+      "name": "Shenzhen Bao'an International Airport",
+      "iata": "SZX",
+      "municipality": "Shenzhen",
+      "large": true,
+      "passengers": 66485213
+    },
+    {
+      "name": "Chengdu Shuangliu International Airport",
+      "iata": "CTU",
+      "municipality": "Chengdu (Shuangliu)",
+      "large": true,
+      "passengers": 55858552
+    },
+    {
+      "name": "Chengdu Tianfu International Airport",
+      "iata": "TFU",
+      "municipality": "Chengdu (Jianyang)",
+      "large": true,
+      "passengers": 54905784
+    },
+    {
+      "name": "Beijing Daxing International Airport",
+      "iata": "PKX",
+      "municipality": "Beijing",
+      "large": true,
+      "passengers": 53618400
+    },
+    {
+      "name": "Hangzhou Xiaoshan International Airport",
+      "iata": "HGH",
+      "municipality": "Hangzhou",
+      "large": true,
+      "passengers": 50459018
+    },
+    {
+      "name": "Shanghai Hongqiao International Airport",
+      "iata": "SHA",
+      "municipality": "Shanghai (Minhang)",
+      "large": true,
+      "passengers": 50151025
+    },
+    {
+      "name": "Kunming Changshui International Airport",
+      "iata": "KMG",
+      "municipality": "Kunming",
+      "large": true,
+      "passengers": 49705725
+    },
+    {
+      "name": "Xi'an Xianyang International Airport",
+      "iata": "XIY",
+      "municipality": "Xi'an",
+      "large": true,
+      "passengers": 47220745
+    },
+    {
+      "name": "Chongqing Jiangbei International Airport",
+      "iata": "CKG",
+      "municipality": "Chongqing",
+      "large": true,
+      "passengers": 44786722
+    },
+    {
+      "name": "Nanjing Lukou International Airport",
+      "iata": "NKG",
+      "municipality": "Nanjing",
+      "large": true,
+      "passengers": 31378166
+    },
+    {
+      "name": "Zhengzhou Xinzheng International Airport",
+      "iata": "CGO",
+      "municipality": "Zhengzhou",
+      "large": true,
+      "passengers": 29129328
+    },
+    {
+      "name": "Xiamen Gaoqi International Airport",
+      "iata": "XMN",
+      "municipality": "Xiamen",
+      "large": true,
+      "passengers": 27413363
+    },
+    {
+      "name": "Wuhan Tianhe International Airport",
+      "iata": "WUH",
+      "municipality": "Wuhan (Huangpi)",
+      "large": true,
+      "passengers": 27150246
+    },
+    {
+      "name": "Changsha Huanghua International Airport",
+      "iata": "CSX",
+      "municipality": "Changsha (Changsha)",
+      "large": true,
+      "passengers": 26911393
+    },
+    {
+      "name": "Qingdao Jiaodong International Airport",
+      "iata": "TAO",
+      "municipality": "Qingdao (Jiaozhou)",
+      "large": true,
+      "passengers": 26896534
+    },
+    {
+      "name": "Haikou Meilan International Airport",
+      "iata": "HAK",
+      "municipality": "Haikou (Meilan)",
+      "large": true,
+      "passengers": 24216552
+    },
+    {
+      "name": "Ürümqi Tianshan International Airport",
+      "iata": "URC",
+      "municipality": "Ürümqi",
+      "large": true,
+      "passengers": 23963167
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "iso3": "CIV",
+  "name": "Ivory Coast",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Félix-Houphouët-Boigny International Airport",
+      "iata": "ABJ",
+      "municipality": "Abidjan",
+      "large": true,
+      "passengers": 2271700
+    },
+    {
+      "name": "San Pedro Airport",
+      "iata": "SPY",
+      "municipality": null,
+      "large": false,
+      "passengers": 40814
+    },
+    {
+      "name": "Korhogo Airport",
+      "iata": "HGO",
+      "municipality": "Korhogo",
+      "large": false,
+      "passengers": 28616
+    },
+    {
+      "name": "Bouaké Airport",
+      "iata": "BYK",
+      "municipality": "Bouaké",
+      "large": false,
+      "passengers": 23143
+    },
+    {
+      "name": "Yamoussoukro International Airport",
+      "iata": "ASK",
+      "municipality": "Yamoussoukro",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

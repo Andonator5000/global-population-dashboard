@@ -1,0 +1,17 @@
+{
+  "iso3": "ECU",
+  "name": "Ecuador",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Fioravanti",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fioravanti%20de%20Ecuador%20%283%29.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fioravanti%20de%20Ecuador%20%283%29.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Giuseppeariel"
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "iso3": "SSD",
+  "name": "South Sudan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Juba International Airport",
+      "iata": "JUB",
+      "municipality": "Juba",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Malakal International Airport",
+      "iata": "MAK",
+      "municipality": "Malakal",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Wau Airport",
+      "iata": "WUU",
+      "municipality": "Wau",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

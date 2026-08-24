@@ -1,0 +1,64 @@
+{
+  "iso3": "DOM",
+  "name": "Dominican Republic",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Punta Cana International Airport",
+      "iata": "PUJ",
+      "municipality": "Punta Cana",
+      "large": true,
+      "passengers": 9162782
+    },
+    {
+      "name": "Las Américas International Airport",
+      "iata": "SDQ",
+      "municipality": "Santo Domingo",
+      "large": true,
+      "passengers": 5287206
+    },
+    {
+      "name": "Cibao International Airport",
+      "iata": "STI",
+      "municipality": "Santiago",
+      "large": true,
+      "passengers": 1884572
+    },
+    {
+      "name": "Gregorio Luperon International Airport",
+      "iata": "POP",
+      "municipality": "Puerto Plata",
+      "large": false,
+      "passengers": 1827741
+    },
+    {
+      "name": "Casa De Campo International Airport",
+      "iata": "LRM",
+      "municipality": "La Romana",
+      "large": true,
+      "passengers": 611773
+    },
+    {
+      "name": "Samaná El Catey International Airport",
+      "iata": "AZS",
+      "municipality": "Samana",
+      "large": false,
+      "passengers": 178000
+    },
+    {
+      "name": "La Isabela International Airport",
+      "iata": "JBQ",
+      "municipality": "La Isabela",
+      "large": false,
+      "passengers": 103901
+    },
+    {
+      "name": "Maria Montez International Airport",
+      "iata": "BRX",
+      "municipality": "Barahona",
+      "large": false,
+      "passengers": 8105
+    }
+  ]
+}

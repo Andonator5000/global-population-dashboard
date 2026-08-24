@@ -1,0 +1,50 @@
+{
+  "iso3": "AUT",
+  "name": "Austria",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Vienna International Airport",
+      "iata": "VIE",
+      "municipality": "Vienna",
+      "large": true,
+      "passengers": 32559115
+    },
+    {
+      "name": "Salzburg Airport",
+      "iata": "SZG",
+      "municipality": "Salzburg",
+      "large": true,
+      "passengers": 1946422
+    },
+    {
+      "name": "Innsbruck Airport",
+      "iata": "INN",
+      "municipality": "Innsbruck",
+      "large": true,
+      "passengers": 1144541
+    },
+    {
+      "name": "Graz Airport",
+      "iata": "GRZ",
+      "municipality": "Feldkirchen bei Graz",
+      "large": true,
+      "passengers": 1036929
+    },
+    {
+      "name": "Linz-Hörsching Airport",
+      "iata": "LNZ",
+      "municipality": "Linz",
+      "large": true,
+      "passengers": 803163
+    },
+    {
+      "name": "Klagenfurt Airport",
+      "iata": "KLU",
+      "municipality": "Klagenfurt am Wörthersee",
+      "large": true,
+      "passengers": 522697
+    }
+  ]
+}

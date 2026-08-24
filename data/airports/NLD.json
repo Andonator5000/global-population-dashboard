@@ -1,0 +1,43 @@
+{
+  "iso3": "NLD",
+  "name": "Netherlands",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Amsterdam Airport Schiphol",
+      "iata": "AMS",
+      "municipality": "Amsterdam",
+      "large": true,
+      "passengers": 71679729
+    },
+    {
+      "name": "Eindhoven Airport",
+      "iata": "EIN",
+      "municipality": "Eindhoven",
+      "large": true,
+      "passengers": 6876917
+    },
+    {
+      "name": "Rotterdam The Hague Airport",
+      "iata": "RTM",
+      "municipality": "Rotterdam",
+      "large": true,
+      "passengers": 2133708
+    },
+    {
+      "name": "Maastricht Aachen Airport",
+      "iata": "MST",
+      "municipality": "Maastricht",
+      "large": true,
+      "passengers": 435977
+    },
+    {
+      "name": "Groningen Airport Eelde",
+      "iata": "GRQ",
+      "municipality": "Groningen",
+      "large": true,
+      "passengers": 230722
+    }
+  ]
+}

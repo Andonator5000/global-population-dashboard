@@ -1,0 +1,36 @@
+{
+  "iso3": "ZWE",
+  "name": "Zimbabwe",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Robert Gabriel Mugabe International Airport",
+      "iata": "HRE",
+      "municipality": "Harare",
+      "large": true,
+      "passengers": 1657622
+    },
+    {
+      "name": "Joshua Mqabuko Nkomo International Airport",
+      "iata": "BUQ",
+      "municipality": "Bulawayo",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Victoria Falls International Airport",
+      "iata": "VFA",
+      "municipality": "Victoria Falls",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Kariba Airport",
+      "iata": "KAB",
+      "municipality": "Kariba",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

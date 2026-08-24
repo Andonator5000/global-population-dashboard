@@ -1,0 +1,113 @@
+{
+  "iso3": "CUB",
+  "name": "Cuba",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "José Martí International Airport",
+      "iata": "HAV",
+      "municipality": "Havana",
+      "large": true,
+      "passengers": 5713859
+    },
+    {
+      "name": "Abel Santamaria International Airport",
+      "iata": "SNU",
+      "municipality": "Santa Clara",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Antonio Maceo International Airport",
+      "iata": "SCU",
+      "municipality": "Santiago",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Frank Pais International Airport",
+      "iata": "HOG",
+      "municipality": "Holguin",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Ignacio Agramonte International Airport",
+      "iata": "CMW",
+      "municipality": "Camaguey",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Juan Gualberto Gomez International Airport",
+      "iata": "VRA",
+      "municipality": "Matanzas",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Alberto Delgado Airport",
+      "iata": "TND",
+      "municipality": "Trinidad",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Carlos Manuel de Cespedes Airport",
+      "iata": "BYM",
+      "municipality": "Bayamo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gustavo Rizo Airport",
+      "iata": "BCA",
+      "municipality": "Baracoa",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Hermanos Ameijeiras Airport",
+      "iata": "VTU",
+      "municipality": "Las Tunas",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Jaime Gonzalez Airport",
+      "iata": "CFG",
+      "municipality": "Cienfuegos",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Jardines Del Rey Airport",
+      "iata": "CCC",
+      "municipality": "Cayo Coco",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Rafael Cabrera Airport",
+      "iata": "GER",
+      "municipality": "Nueva Gerona",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Sierra Maestra International Airport",
+      "iata": "MZO",
+      "municipality": "Manzanillo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Vilo Acuña International Airport",
+      "iata": "CYO",
+      "municipality": "Cayo Largo del Sur",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

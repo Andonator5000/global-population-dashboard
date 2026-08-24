@@ -1,0 +1,148 @@
+{
+  "iso3": "USA",
+  "name": "United States",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Hartsfield Jackson Atlanta International Airport",
+      "iata": "ATL",
+      "municipality": "Atlanta",
+      "large": true,
+      "passengers": 110531300
+    },
+    {
+      "name": "Los Angeles International Airport",
+      "iata": "LAX",
+      "municipality": "Los Angeles",
+      "large": true,
+      "passengers": 88068013
+    },
+    {
+      "name": "Dallas Fort Worth International Airport",
+      "iata": "DFW",
+      "municipality": "Dallas-Fort Worth",
+      "large": true,
+      "passengers": 87817864
+    },
+    {
+      "name": "Chicago O'Hare International Airport",
+      "iata": "ORD",
+      "municipality": "Chicago",
+      "large": true,
+      "passengers": 84851825
+    },
+    {
+      "name": "Denver International Airport",
+      "iata": "DEN",
+      "municipality": "Denver",
+      "large": true,
+      "passengers": 82427962
+    },
+    {
+      "name": "John F. Kennedy International Airport",
+      "iata": "JFK",
+      "municipality": "New York",
+      "large": true,
+      "passengers": 62551072
+    },
+    {
+      "name": "Charlotte Douglas International Airport",
+      "iata": "CLT",
+      "municipality": "Charlotte",
+      "large": true,
+      "passengers": 58811725
+    },
+    {
+      "name": "Harry Reid International Airport",
+      "iata": "LAS",
+      "municipality": "Las Vegas",
+      "large": true,
+      "passengers": 58447782
+    },
+    {
+      "name": "San Francisco International Airport",
+      "iata": "SFO",
+      "municipality": "San Francisco",
+      "large": true,
+      "passengers": 57793313
+    },
+    {
+      "name": "Orlando International Airport",
+      "iata": "MCO",
+      "municipality": "Orlando",
+      "large": true,
+      "passengers": 57735720
+    },
+    {
+      "name": "Miami International Airport",
+      "iata": "MIA",
+      "municipality": "Miami",
+      "large": true,
+      "passengers": 55926566
+    },
+    {
+      "name": "Seattle–Tacoma International Airport",
+      "iata": "SEA",
+      "municipality": "Seattle",
+      "large": true,
+      "passengers": 52715181
+    },
+    {
+      "name": "Phoenix Sky Harbor International Airport",
+      "iata": "PHX",
+      "municipality": "Phoenix",
+      "large": true,
+      "passengers": 52325266
+    },
+    {
+      "name": "Newark Liberty International Airport",
+      "iata": "EWR",
+      "municipality": "Newark",
+      "large": true,
+      "passengers": 49160546
+    },
+    {
+      "name": "George Bush Intercontinental Airport",
+      "iata": "IAH",
+      "municipality": "Houston",
+      "large": true,
+      "passengers": 48448545
+    },
+    {
+      "name": "Boston Logan International Airport",
+      "iata": "BOS",
+      "municipality": "Boston",
+      "large": true,
+      "passengers": 43500033
+    },
+    {
+      "name": "Minneapolis–Saint Paul International Airport / Wold–Chamberlain Field",
+      "iata": "MSP",
+      "municipality": "Minneapolis",
+      "large": true,
+      "passengers": 39555035
+    },
+    {
+      "name": "Detroit Metropolitan Wayne County Airport",
+      "iata": "DTW",
+      "municipality": "Detroit",
+      "large": true,
+      "passengers": 36769279
+    },
+    {
+      "name": "Fort Lauderdale Hollywood International Airport",
+      "iata": "FLL",
+      "municipality": "Fort Lauderdale",
+      "large": true,
+      "passengers": 36747622
+    },
+    {
+      "name": "LaGuardia Airport",
+      "iata": "LGA",
+      "municipality": "New York",
+      "large": true,
+      "passengers": 33543943
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "iso3": "BEL",
+  "name": "Belgium",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "saxophone",
+      "inventors": [
+        "Adolphe Sax"
+      ],
+      "year": 1840,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Saxophone.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:A%20Saxophone.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Sally V"
+      }
+    },
+    {
+      "name": "ruby chocolate",
+      "inventors": [
+        "Barry Callebaut"
+      ],
+      "year": 2017,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ruby%20Chocolate.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ruby%20Chocolate.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Zacharie Grossen"
+      }
+    },
+    {
+      "name": "Belgian praline",
+      "inventors": [
+        "Jean Neuhaus"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pralines%20cut.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pralines%20cut.jpg",
+        "license": "CC BY 2.0",
+        "author": "photo&amp;co"
+      }
+    },
+    {
+      "name": "andalouse sauce",
+      "inventors": [
+        "Auguste Escoffier"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Belgian%20fries%20with%20sauce%20andalouse%20in%20Brussels.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Belgian%20fries%20with%20sauce%20andalouse%20in%20Brussels.jpg",
+        "license": "Public domain",
+        "author": "CCPictureHunters WikipediaShare"
+      }
+    },
+    {
+      "name": "new beat",
+      "inventors": [
+        "A Split-Second"
+      ],
+      "year": 1987,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/LordsofAcid11%201%2019.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:LordsofAcid11%201%2019.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Chris Stessens"
+      }
+    },
+    {
+      "name": "The Mole",
+      "inventors": [
+        "Tom Lenaerts",
+        "Michel Vanhove",
+        "Bart De Pauw"
+      ]
+    },
+    {
+      "name": "Antwerps Handje",
+      "inventors": [
+        "Jos Hakker"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Antwerpse%20handjes%20011.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Antwerpse%20handjes%20011.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Ibu"
+      }
+    }
+  ]
+}

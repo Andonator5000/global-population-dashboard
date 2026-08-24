@@ -1,0 +1,71 @@
+{
+  "iso3": "NCL",
+  "name": "New Caledonia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "La Tontouta International Airport",
+      "iata": "NOU",
+      "municipality": "Nouméa (La Tontouta)",
+      "large": true,
+      "passengers": 569901
+    },
+    {
+      "name": "Nouméa Magenta Airport",
+      "iata": "GEA",
+      "municipality": "Nouméa",
+      "large": false,
+      "passengers": 472719
+    },
+    {
+      "name": "Lifou Airport",
+      "iata": "LIF",
+      "municipality": "Lifou",
+      "large": false,
+      "passengers": 191284
+    },
+    {
+      "name": "Île des Pins Airport",
+      "iata": "ILP",
+      "municipality": "Île des Pins",
+      "large": false,
+      "passengers": 114659
+    },
+    {
+      "name": "Maré Airport",
+      "iata": "MEE",
+      "municipality": "Maré",
+      "large": false,
+      "passengers": 97230
+    },
+    {
+      "name": "Ouvéa Airport",
+      "iata": "UVE",
+      "municipality": "Ouvéa",
+      "large": false,
+      "passengers": 89993
+    },
+    {
+      "name": "Koné Airport",
+      "iata": "KNQ",
+      "municipality": "Koné",
+      "large": false,
+      "passengers": 9289
+    },
+    {
+      "name": "Touho Airport",
+      "iata": "TOU",
+      "municipality": "Touho",
+      "large": false,
+      "passengers": 5040
+    },
+    {
+      "name": "Tiga Airport",
+      "iata": "TGJ",
+      "municipality": "Tiga",
+      "large": false,
+      "passengers": 3256
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "iso3": "ITA",
+  "name": "Italy",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Italian wolf",
+      "type": "national animal",
+      "scientificName": "Canis lupus italicus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/C.%20l.%20italicus%20in%20MNP.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:C.%20l.%20italicus%20in%20MNP.jpg",
+        "license": "CC BY 2.0",
+        "author": " Eye Am Didier "
+      }
+    }
+  ],
+  "tree": {
+    "name": "Strawberry tree",
+    "type": "national tree",
+    "scientificName": "Arbutus unedo",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Urtaca%20arbouses.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Urtaca%20arbouses.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Pierre Bona"
+    }
+  },
+  "flower": {
+    "name": "Arbutus unedo",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arbutus%20unedo%20off%20Bayshore%20Drive%20at%20Coal%20Harbour.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Arbutus%20unedo%20off%20Bayshore%20Drive%20at%20Coal%20Harbour.jpg",
+      "license": "CC BY 2.0",
+      "author": "Wendy Cutler from Vancouver, Canada"
+    }
+  }
+}

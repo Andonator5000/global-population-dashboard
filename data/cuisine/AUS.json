@@ -1,0 +1,26 @@
+{
+  "iso3": "AUS",
+  "name": "Australia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Halal snack pack",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Halal%20Snack%20Packs.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Halal%20Snack%20Packs.jpg",
+        "license": "CC0",
+        "author": "Photo by Kenneth Miller"
+      }
+    },
+    {
+      "name": "cruffin",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cruffins%20at%20Mr.%20Holmes%20Bakehouse%20%28TK6%29.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cruffins%20at%20Mr.%20Holmes%20Bakehouse%20%28TK6%29.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Tobias Kleinlercher / Wikipedia"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "iso3": "MMR",
+  "name": "Myanmar",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "flower": {
+    "name": "Pterocarpus indicus",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%8D%B0%E5%BA%A6%E7%B4%AB%E6%AA%80%20Pterocarpus%20indicus%2020200807191221%2009.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%E5%8D%B0%E5%BA%A6%E7%B4%AB%E6%AA%80%20Pterocarpus%20indicus%2020200807191221%2009.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Ping an Chang"
+    }
+  }
+}

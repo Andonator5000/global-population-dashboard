@@ -1,0 +1,85 @@
+{
+  "iso3": "KEN",
+  "name": "Kenya",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Jomo Kenyatta International Airport",
+      "iata": "NBO",
+      "municipality": "Nairobi",
+      "large": true,
+      "passengers": 9150000
+    },
+    {
+      "name": "Moi International Airport",
+      "iata": "MBA",
+      "municipality": "Mombasa",
+      "large": true,
+      "passengers": 1516000
+    },
+    {
+      "name": "Nairobi Wilson Airport",
+      "iata": "WIL",
+      "municipality": "Nairobi",
+      "large": false,
+      "passengers": 854000
+    },
+    {
+      "name": "Eldoret International Airport",
+      "iata": "EDL",
+      "municipality": "Eldoret",
+      "large": true,
+      "passengers": 111250
+    },
+    {
+      "name": "Kisumu International Airport",
+      "iata": "KIS",
+      "municipality": "Kisumu",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Amboseli Airport",
+      "iata": "ASV",
+      "municipality": "Ol Tukai",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Malindi International Airport",
+      "iata": "MYD",
+      "municipality": "Malindi",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Manda Airport",
+      "iata": "LAU",
+      "municipality": "Lamu",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mara Serena Lodge Airstrip",
+      "iata": "MRE",
+      "municipality": "Serena",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Nanyuki Civil Airport",
+      "iata": "NYK",
+      "municipality": "Gathiuru",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Wajir Airport",
+      "iata": "WJR",
+      "municipality": "Wajir",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

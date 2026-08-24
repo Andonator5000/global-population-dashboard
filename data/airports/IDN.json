@@ -1,0 +1,148 @@
+{
+  "iso3": "IDN",
+  "name": "Indonesia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Soekarno-Hatta International Airport",
+      "iata": "CGK",
+      "municipality": "Jakarta",
+      "large": true,
+      "passengers": 65893904
+    },
+    {
+      "name": "Denpasar I Gusti Ngurah Rai International Airport",
+      "iata": "DPS",
+      "municipality": "Kuta, Badung",
+      "large": true,
+      "passengers": 25382335
+    },
+    {
+      "name": "Juanda International Airport",
+      "iata": "SUB",
+      "municipality": "Surabaya",
+      "large": true,
+      "passengers": 20951063
+    },
+    {
+      "name": "Sultan Hasanuddin International Airport",
+      "iata": "UPG",
+      "municipality": "Makassar",
+      "large": true,
+      "passengers": 13537770
+    },
+    {
+      "name": "Kualanamu International Airport",
+      "iata": "KNO",
+      "municipality": "Beringin",
+      "large": true,
+      "passengers": 10027122
+    },
+    {
+      "name": "Radin Inten II International Airport",
+      "iata": "TKG",
+      "municipality": "Bandar Lampung",
+      "large": false,
+      "passengers": 8485000
+    },
+    {
+      "name": "Adisutjipto International Airport",
+      "iata": "JOG",
+      "municipality": "Yogyakarta",
+      "large": false,
+      "passengers": 8430622
+    },
+    {
+      "name": "Sultan Aji Muhammad Sulaiman Sepinggan International Airport",
+      "iata": "BPN",
+      "municipality": "Balikpapan",
+      "large": true,
+      "passengers": 7701216
+    },
+    {
+      "name": "Halim Perdanakusuma International Airport",
+      "iata": "HLP",
+      "municipality": "Jakarta",
+      "large": true,
+      "passengers": 7400000
+    },
+    {
+      "name": "Hang Nadim International Airport",
+      "iata": "BTH",
+      "municipality": "Batam",
+      "large": true,
+      "passengers": 6500000
+    },
+    {
+      "name": "Jenderal Ahmad Yani Airport",
+      "iata": "SRG",
+      "municipality": "Semarang",
+      "large": true,
+      "passengers": 5669282
+    },
+    {
+      "name": "Sultan Mahmud Badaruddin II Airport",
+      "iata": "PLM",
+      "municipality": "Palembang",
+      "large": false,
+      "passengers": 5126298
+    },
+    {
+      "name": "Sultan Syarif Kasim II International Airport / Roesmin Nurjadin AFB",
+      "iata": "PKU",
+      "municipality": "Pekanbaru",
+      "large": false,
+      "passengers": 4465977
+    },
+    {
+      "name": "Husein Sastranegara International Airport",
+      "iata": "BDO",
+      "municipality": "Bandung",
+      "large": false,
+      "passengers": 4310000
+    },
+    {
+      "name": "Supadio International Airport",
+      "iata": "PNK",
+      "municipality": "Pontianak",
+      "large": true,
+      "passengers": 4220000
+    },
+    {
+      "name": "Lombok International Airport",
+      "iata": "LOP",
+      "municipality": "Mataram (Pujut, Lombok Tengah)",
+      "large": true,
+      "passengers": 4139371
+    },
+    {
+      "name": "Minangkabau International Airport",
+      "iata": "PDG",
+      "municipality": "Padang (Katapiang)",
+      "large": true,
+      "passengers": 4130000
+    },
+    {
+      "name": "Syamsudin Noor International Airport",
+      "iata": "BDJ",
+      "municipality": "Banjarbaru",
+      "large": true,
+      "passengers": 3888993
+    },
+    {
+      "name": "Sam Ratulangi International Airport",
+      "iata": "MDC",
+      "municipality": "Manado",
+      "large": true,
+      "passengers": 2819640
+    },
+    {
+      "name": "Adisoemarmo International Airport",
+      "iata": "SOC",
+      "municipality": "Surakarta",
+      "large": true,
+      "passengers": 2683853
+    }
+  ]
+}

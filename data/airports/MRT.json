@@ -1,0 +1,29 @@
+{
+  "iso3": "MRT",
+  "name": "Mauritania",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Nouakchott–Oumtounsy International Airport",
+      "iata": "NKC",
+      "municipality": "Nouakchott",
+      "large": true,
+      "passengers": 350373
+    },
+    {
+      "name": "Nouadhibou International Airport",
+      "iata": "NDB",
+      "municipality": "Nouadhibou",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Tazadit Airport",
+      "iata": "OUZ",
+      "municipality": "Zouérate",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

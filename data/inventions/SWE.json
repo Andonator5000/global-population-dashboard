@@ -1,0 +1,122 @@
+{
+  "iso3": "SWE",
+  "name": "Sweden",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "modern pentathlon",
+      "inventors": [
+        "Pierre de Coubertin"
+      ],
+      "year": 1912,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Modern%20Pentathlon%202004%20Olympics.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Modern%20Pentathlon%202004%20Olympics.jpg",
+        "license": "Public domain",
+        "author": "DoD photo by Master Sgt. Lono Kollars, U.S. Air Force"
+      }
+    },
+    {
+      "name": "boccia",
+      "year": 1970,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Paralympics%20Beijing%202008%20506.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Paralympics%20Beijing%202008%20506.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Stig Morten Skjæran"
+      }
+    },
+    {
+      "name": "julmust",
+      "inventors": [
+        "Harry Roberts"
+      ],
+      "year": 1910,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glass%20of%20Swedish%20must.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Glass%20of%20Swedish%20must.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Tage Olsin"
+      }
+    },
+    {
+      "name": "gelignite",
+      "inventors": [
+        "Alfred Nobel"
+      ],
+      "year": 1875,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gelingnite%20general%20view.pdf?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gelingnite%20general%20view.pdf",
+        "license": "Public domain",
+        "author": "A. E. Mann"
+      }
+    },
+    {
+      "name": "kladdkaka",
+      "year": 1970,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kaffereptarta.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kaffereptarta.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "No machine-readable author provided. Meloday assumed (based on copyright claims)."
+      }
+    },
+    {
+      "name": "Flying Jacob",
+      "year": 1976,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flygande%20jakob%20fardig.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Flygande%20jakob%20fardig.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Kr-val"
+      }
+    },
+    {
+      "name": "polkagris",
+      "inventors": [
+        "Amalia Eriksson"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flickr%20-%20cyclonebill%20-%20Polkagris.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Flickr%20-%20cyclonebill%20-%20Polkagris.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "cyclone bill"
+      }
+    },
+    {
+      "name": "kebab pizza",
+      "year": 1982,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizzakebab%20G%C3%B6teborg.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pizzakebab%20G%C3%B6teborg.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Brunnaiz"
+      }
+    },
+    {
+      "name": "Cuba Cola",
+      "year": 1953,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cuba%20Cola%2033%20cl%20glasflaska.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cuba%20Cola%2033%20cl%20glasflaska.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Agatefilm"
+      }
+    },
+    {
+      "name": "Sommar",
+      "inventors": [
+        "Tage Danielsson"
+      ],
+      "year": 1959,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sommarv%C3%A4rdar%202013.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommarv%C3%A4rdar%202013.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Frankie Fouganthin"
+      }
+    }
+  ]
+}

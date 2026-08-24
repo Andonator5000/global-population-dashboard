@@ -1,0 +1,61 @@
+{
+  "iso3": "ZAF",
+  "name": "South Africa",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Springbok",
+      "type": "national animal",
+      "scientificName": "Antidorcas marsupialis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Springbok.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Springbok.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    },
+    {
+      "name": "Blue crane",
+      "type": "national bird",
+      "scientificName": "Anthropoides paradiseus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Anthropoides%20paradiseus%20-Etosha%20National%20Park%2C%20Namibia-8.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Anthropoides%20paradiseus%20-Etosha%20National%20Park%2C%20Namibia-8.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Alastair Rae"
+      }
+    },
+    {
+      "name": "Galjoen",
+      "type": "national fish",
+      "scientificName": "Dichistius capensis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dichistius%20capensis.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dichistius%20capensis.JPG",
+        "license": "Public domain",
+        "author": "Frederick Hermanus Van der Bank, University of Johannesburg"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Real yellowwood",
+    "type": "national tree",
+    "scientificName": "Podocarpus latifolius",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Podocarpus%20latifolius%20-%20Cape%20Town%20-%203.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Podocarpus%20latifolius%20-%20Cape%20Town%20-%203.JPG",
+      "license": "Public domain",
+      "author": "Abu Shawka"
+    }
+  },
+  "flower": {
+    "name": "King Protea",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Peninsula%20Sandstone%20Fynbos%20-%20KingProtea%20-%20Table%20Mountain.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Peninsula%20Sandstone%20Fynbos%20-%20KingProtea%20-%20Table%20Mountain.JPG",
+      "license": "Public domain",
+      "author": "S Molteno"
+    }
+  }
+}

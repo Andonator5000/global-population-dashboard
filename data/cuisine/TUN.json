@@ -1,0 +1,44 @@
+{
+  "iso3": "TUN",
+  "name": "Tunisia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Fricasse",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Le%20fricass%C3%A9.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Le%20fricass%C3%A9.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Yamen"
+      }
+    },
+    {
+      "name": "Msoki",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Msuki.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Msuki.png",
+        "license": "CC BY-SA 3.0",
+        "author": "אליהו הנביא אהי"
+      }
+    },
+    {
+      "name": "Mafrum",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D7%9E%D7%A4%D7%A8%D7%95%D7%9D%20%D7%91%D7%99%D7%AA%D7%99%20%D7%9E%D7%A1%D7%95%D7%A8%D7%AA%D7%99.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D7%9E%D7%A4%D7%A8%D7%95%D7%9D%20%D7%91%D7%99%D7%AA%D7%99%20%D7%9E%D7%A1%D7%95%D7%A8%D7%AA%D7%99.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "אריק"
+      }
+    },
+    {
+      "name": "tagine malsouka",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tajine%20malsouka.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tajine%20malsouka.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Souad Anane Lesina"
+      }
+    }
+  ]
+}

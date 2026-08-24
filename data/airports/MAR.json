@@ -1,0 +1,127 @@
+{
+  "iso3": "MAR",
+  "name": "Morocco",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Mohammed V International Airport",
+      "iata": "CMN",
+      "municipality": "Casablanca",
+      "large": true,
+      "passengers": 10313365
+    },
+    {
+      "name": "Marrakesh Menara Airport",
+      "iata": "RAK",
+      "municipality": "Marrakesh",
+      "large": true,
+      "passengers": 6399145
+    },
+    {
+      "name": "Al Massira Airport",
+      "iata": "AGA",
+      "municipality": "Agadir (Temsia)",
+      "large": true,
+      "passengers": 2009040
+    },
+    {
+      "name": "Tangier Ibn Battuta Airport",
+      "iata": "TNG",
+      "municipality": "Tangier",
+      "large": true,
+      "passengers": 1432175
+    },
+    {
+      "name": "Fes Saïss International Airport",
+      "iata": "FEZ",
+      "municipality": "Saïss",
+      "large": true,
+      "passengers": 1418950
+    },
+    {
+      "name": "Rabat-Salé Airport",
+      "iata": "RBA",
+      "municipality": "Rabat",
+      "large": true,
+      "passengers": 1101117
+    },
+    {
+      "name": "Oujda Angads Airport",
+      "iata": "OUD",
+      "municipality": "Ahl Angad",
+      "large": true,
+      "passengers": 855911
+    },
+    {
+      "name": "Nador Al Aaroui International Airport",
+      "iata": "NDR",
+      "municipality": "Al Aaroui",
+      "large": true,
+      "passengers": 836742
+    },
+    {
+      "name": "Sania Ramel Airport",
+      "iata": "TTU",
+      "municipality": "Tétouan",
+      "large": true,
+      "passengers": 187777
+    },
+    {
+      "name": "Ouarzazate International Airport",
+      "iata": "OZZ",
+      "municipality": "Ouarzazate",
+      "large": true,
+      "passengers": 136007
+    },
+    {
+      "name": "Essaouira-Mogador Airport",
+      "iata": "ESU",
+      "municipality": "Essaouira",
+      "large": false,
+      "passengers": 120443
+    },
+    {
+      "name": "Cherif Al Idrissi Airport",
+      "iata": "AHU",
+      "municipality": "Al Hoceima",
+      "large": false,
+      "passengers": 92121
+    },
+    {
+      "name": "Moulay Ali Cherif Airport",
+      "iata": "ERH",
+      "municipality": "Errachidia",
+      "large": false,
+      "passengers": 54226
+    },
+    {
+      "name": "Beni Mellal Airport",
+      "iata": "BEM",
+      "municipality": "Oulad Yaich",
+      "large": true,
+      "passengers": 23628
+    },
+    {
+      "name": "Zagora Airport",
+      "iata": "OZG",
+      "municipality": "Zagora",
+      "large": true,
+      "passengers": 17156
+    },
+    {
+      "name": "Tan Tan Airport",
+      "iata": "TTA",
+      "municipality": "Tan Tan",
+      "large": false,
+      "passengers": 13009
+    },
+    {
+      "name": "Bouarfa Airport",
+      "iata": "UAR",
+      "municipality": "Bouarfa",
+      "large": false,
+      "passengers": 2909
+    }
+  ]
+}

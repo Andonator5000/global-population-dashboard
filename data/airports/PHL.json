@@ -1,0 +1,148 @@
+{
+  "iso3": "PHL",
+  "name": "Philippines",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Ninoy Aquino International Airport",
+      "iata": "MNL",
+      "municipality": "Manila (Pasay)",
+      "large": true,
+      "passengers": 50356465
+    },
+    {
+      "name": "Mactan Cebu International Airport",
+      "iata": "CEB",
+      "municipality": "Cebu City/Lapu-Lapu City",
+      "large": true,
+      "passengers": 12662055
+    },
+    {
+      "name": "Francisco Bangoy International Airport",
+      "iata": "DVO",
+      "municipality": "Davao",
+      "large": true,
+      "passengers": 4490086
+    },
+    {
+      "name": "Clark International Airport / Clark Air Base",
+      "iata": "CRK",
+      "municipality": "Mabalacat",
+      "large": true,
+      "passengers": 4000211
+    },
+    {
+      "name": "Iloilo International Airport",
+      "iata": "ILO",
+      "municipality": "Cabatuan",
+      "large": true,
+      "passengers": 3101280
+    },
+    {
+      "name": "Kalibo International Airport",
+      "iata": "KLO",
+      "municipality": "Kalibo",
+      "large": true,
+      "passengers": 2711036
+    },
+    {
+      "name": "Laguindingan International Airport",
+      "iata": "CGY",
+      "municipality": "Laguindingan",
+      "large": true,
+      "passengers": 2310473
+    },
+    {
+      "name": "Godofredo P. Ramos Airport",
+      "iata": "MPH",
+      "municipality": "Caticlan",
+      "large": false,
+      "passengers": 2308195
+    },
+    {
+      "name": "Puerto Princesa International Airport / PAF Antonio Bautista Air Base",
+      "iata": "PPS",
+      "municipality": "Puerto Princesa",
+      "large": true,
+      "passengers": 2163731
+    },
+    {
+      "name": "Bacolod-Silay International Airport",
+      "iata": "BCD",
+      "municipality": "Bacolod City",
+      "large": true,
+      "passengers": 1770266
+    },
+    {
+      "name": "Daniel Z. Romualdez Airport",
+      "iata": "TAC",
+      "municipality": "Tacloban City",
+      "large": false,
+      "passengers": 1489803
+    },
+    {
+      "name": "Zamboanga International Airport",
+      "iata": "ZAM",
+      "municipality": "Zamboanga",
+      "large": true,
+      "passengers": 1214078
+    },
+    {
+      "name": "Bohol-Panglao International Airport",
+      "iata": "TAG",
+      "municipality": "Panglao",
+      "large": true,
+      "passengers": 1199283
+    },
+    {
+      "name": "General Santos International Airport",
+      "iata": "GES",
+      "municipality": "General Santos",
+      "large": true,
+      "passengers": 1049842
+    },
+    {
+      "name": "Sibulan Airport",
+      "iata": "DGT",
+      "municipality": "Dumaguete City",
+      "large": false,
+      "passengers": 775214
+    },
+    {
+      "name": "Bancasi Airport",
+      "iata": "BXU",
+      "municipality": "Butuan",
+      "large": false,
+      "passengers": 757842
+    },
+    {
+      "name": "Francisco B. Reyes (Busuanga) Airport",
+      "iata": "USU",
+      "municipality": "Coron",
+      "large": false,
+      "passengers": 688909
+    },
+    {
+      "name": "Bicol International Airport",
+      "iata": "DRP",
+      "municipality": "Legazpi",
+      "large": true,
+      "passengers": 526742
+    },
+    {
+      "name": "Tuguegarao Airport",
+      "iata": "TUG",
+      "municipality": "Tuguegarao City",
+      "large": false,
+      "passengers": 384819
+    },
+    {
+      "name": "Labo Airport",
+      "iata": "OZC",
+      "municipality": "Ozamiz",
+      "large": false,
+      "passengers": 371945
+    }
+  ]
+}

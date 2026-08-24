@@ -1,0 +1,148 @@
+{
+  "iso3": "KAZ",
+  "name": "Kazakhstan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Almaty International Airport",
+      "iata": "ALA",
+      "municipality": "Almaty",
+      "large": true,
+      "passengers": 11426650
+    },
+    {
+      "name": "Nursultan Nazarbayev International Airport",
+      "iata": "NQZ",
+      "municipality": "Astana",
+      "large": true,
+      "passengers": 8315108
+    },
+    {
+      "name": "Aktau International Airport",
+      "iata": "SCO",
+      "municipality": "Aktau",
+      "large": true,
+      "passengers": 1068000
+    },
+    {
+      "name": "Shymkent International Airport",
+      "iata": "CIT",
+      "municipality": "Shymkent",
+      "large": true,
+      "passengers": 955412
+    },
+    {
+      "name": "Atyrau International Airport",
+      "iata": "GUW",
+      "municipality": "Atyrau",
+      "large": true,
+      "passengers": 937032
+    },
+    {
+      "name": "Aktobe International Airport",
+      "iata": "AKX",
+      "municipality": "Aktobe",
+      "large": true,
+      "passengers": 411248
+    },
+    {
+      "name": "Oskemen International Airport",
+      "iata": "UKK",
+      "municipality": "Ust-Kamenogorsk (Oskemen)",
+      "large": true,
+      "passengers": 393034
+    },
+    {
+      "name": "Sary-Arka Airport",
+      "iata": "KGF",
+      "municipality": "Karaganda",
+      "large": true,
+      "passengers": 281931
+    },
+    {
+      "name": "Manshuk Mametova International Airport",
+      "iata": "URA",
+      "municipality": "Uralsk",
+      "large": true,
+      "passengers": 273095
+    },
+    {
+      "name": "Korkyt Ata International Airport",
+      "iata": "KZO",
+      "municipality": "Kyzylorda",
+      "large": true,
+      "passengers": 226962
+    },
+    {
+      "name": "Kostanay International Airport",
+      "iata": "KSN",
+      "municipality": "Kostanay",
+      "large": true,
+      "passengers": 190855
+    },
+    {
+      "name": "Pavlodar International Airport",
+      "iata": "PWQ",
+      "municipality": "Pavlodar",
+      "large": true,
+      "passengers": 188169
+    },
+    {
+      "name": "Semei International Airport",
+      "iata": "PLX",
+      "municipality": "Semey",
+      "large": true,
+      "passengers": 66235
+    },
+    {
+      "name": "Taraz International Airport",
+      "iata": "DMB",
+      "municipality": "Taraz",
+      "large": true,
+      "passengers": 63261
+    },
+    {
+      "name": "Taldykorgan Airport",
+      "iata": "TDK",
+      "municipality": "Taldykorgan",
+      "large": false,
+      "passengers": 37225
+    },
+    {
+      "name": "Zhezkazgan National Airport",
+      "iata": "DZN",
+      "municipality": "Zhezkazgan",
+      "large": true,
+      "passengers": 33898
+    },
+    {
+      "name": "Kokshetau International Airport",
+      "iata": "KOV",
+      "municipality": "Kokshetau",
+      "large": true,
+      "passengers": 22031
+    },
+    {
+      "name": "Petropavl International Airport",
+      "iata": "PPK",
+      "municipality": "Petropavl",
+      "large": true,
+      "passengers": 20830
+    },
+    {
+      "name": "Baikonur Krayniy International Airport",
+      "iata": "BXY",
+      "municipality": "Baikonur",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Hazrat Sultan International Airport",
+      "iata": "HSA",
+      "municipality": "Turkıstan",
+      "large": true,
+      "passengers": null
+    }
+  ]
+}

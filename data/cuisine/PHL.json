@@ -1,0 +1,71 @@
+{
+  "iso3": "PHL",
+  "name": "Philippines",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Tubâ",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tuba%20-%20Alcoholic%20tree%20sap%20from%20the%20palm%21%20Must%20be%20very%20fresh%20or%20it%20ferments%20into%20vinegar.%20%28Philippines%29%20-%20cropped.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tuba%20-%20Alcoholic%20tree%20sap%20from%20the%20palm%21%20Must%20be%20very%20fresh%20or%20it%20ferments%20into%20vinegar.%20%28Philippines%29%20-%20cropped.png",
+        "license": "CC BY 2.0",
+        "author": "Colin and Sarah Northway"
+      }
+    },
+    {
+      "name": "Kalamay",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bohol%20Kalamay%20packaged%20traditionally%20inside%20empty%20coconut%20shells.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bohol%20Kalamay%20packaged%20traditionally%20inside%20empty%20coconut%20shells.jpg",
+        "license": "CC BY 2.0",
+        "author": "Raycoy  Doop (JW) from Philippines"
+      }
+    },
+    {
+      "name": "Tocino",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tocino.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tocino.jpg",
+        "license": "CC BY 2.5",
+        "author": "Original uploaded by Kguirnela (Transfered by Diádoco)"
+      }
+    },
+    {
+      "name": "Silog",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tapsilog%20in%20saudi%20arabia.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tapsilog%20in%20saudi%20arabia.jpg",
+        "license": "CC BY 3.0",
+        "author": "Halil S. Mucaram Halil marx07 (talk) 18:26, 13 November 2012 (UTC)"
+      }
+    },
+    {
+      "name": "Poqui poqui",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ilocos%20Norte%20Currimao%20Sitio%20Remedios%20-%20Poqui%20Poqui.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ilocos%20Norte%20Currimao%20Sitio%20Remedios%20-%20Poqui%20Poqui.jpg",
+        "license": "CC BY 2.0",
+        "author": "Yvette Tan"
+      }
+    },
+    {
+      "name": "Empanadilla",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Empanadillas.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Empanadillas.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Fernand0"
+      }
+    },
+    {
+      "name": "Humba",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Humba%20%28Philippines%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Humba%20%28Philippines%29.jpg",
+        "license": "CC0",
+        "author": "Obsidian Soul"
+      }
+    }
+  ]
+}

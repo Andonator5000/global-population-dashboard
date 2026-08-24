@@ -1,0 +1,64 @@
+{
+  "iso3": "BGD",
+  "name": "Bangladesh",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Hazrat Shahjalal International Airport",
+      "iata": "DAC",
+      "municipality": "Dhaka",
+      "large": true,
+      "passengers": 8898000
+    },
+    {
+      "name": "Shah Amanat International Airport",
+      "iata": "CGP",
+      "municipality": "Chattogram (Chittagong)",
+      "large": true,
+      "passengers": 1687000
+    },
+    {
+      "name": "Cox's Bazar Airport",
+      "iata": "CXB",
+      "municipality": "Cox's Bazar",
+      "large": false,
+      "passengers": 539000
+    },
+    {
+      "name": "Osmany International Airport",
+      "iata": "ZYL",
+      "municipality": "Sylhet",
+      "large": true,
+      "passengers": 536000
+    },
+    {
+      "name": "Saidpur Airport",
+      "iata": "SPD",
+      "municipality": "Saidpur",
+      "large": false,
+      "passengers": 313000
+    },
+    {
+      "name": "Jessore Airport",
+      "iata": "JSR",
+      "municipality": "Jashore (Jessore)",
+      "large": false,
+      "passengers": 294000
+    },
+    {
+      "name": "Shah Makhdum Airport",
+      "iata": "RJH",
+      "municipality": "Rajshahi",
+      "large": false,
+      "passengers": 84000
+    },
+    {
+      "name": "Barisal Airport",
+      "iata": "BZL",
+      "municipality": "Barisal",
+      "large": false,
+      "passengers": 47000
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "iso3": "RUS",
+  "name": "Russia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Olivier salad",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Jacek Halicki"
+      }
+    },
+    {
+      "name": "bread roll",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korb%20mit%20Br%C3%B6tchen.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korb%20mit%20Br%C3%B6tchen.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "3268zauber"
+      }
+    },
+    {
+      "name": "Karelian pasty",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Karjalanpiirakka.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Karjalanpiirakka.png",
+        "license": "CC BY-SA 4.0",
+        "author": "Tiia Monto"
+      }
+    },
+    {
+      "name": "stroganina",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dish%20Stroganina%20.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dish%20Stroganina%20.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Cholbon"
+      }
+    },
+    {
+      "name": "Raph Coffee",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rafcoffe.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rafcoffe.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Serpas1010"
+      }
+    },
+    {
+      "name": "rasstegai",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rasstegai%20s%20gorbushei.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rasstegai%20s%20gorbushei.jpg",
+        "license": "CC BY 3.0",
+        "author": "Ekaterina ; processed by Off-shell (removed watermarks, adjusted colours)"
+      }
+    },
+    {
+      "name": "sulze",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/S%C3%BClze001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:S%C3%BClze001.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "The original uploader was Rainer Zenz at German Wikipedia."
+      }
+    }
+  ]
+}

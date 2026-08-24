@@ -1,0 +1,51 @@
+{
+  "iso3": "KOR",
+  "name": "South Korea",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Siberian tiger",
+      "type": "national animal",
+      "scientificName": "Panthera tigris altaica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Siberischer%20tiger%20de.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Siberischer%20tiger%20de.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "S. Taheri"
+      }
+    },
+    {
+      "name": "Korean magpie",
+      "type": "national bird",
+      "scientificName": "Pica serica",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20magpie%20in%20Daejeon%20%28side%20profile%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korean%20magpie%20in%20Daejeon%20%28side%20profile%29.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Yoo Chung"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Rose of Sharon, Korean red pine",
+    "type": "national tree",
+    "scientificName": "Hibiscus syriacus, Pinus densiflora",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kumgangsan-11.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kumgangsan-11.jpg",
+      "license": "CC BY 2.0",
+      "author": "Kok Leng Yeo from Singapore, Singapore"
+    }
+  },
+  "flower": {
+    "name": "Korean",
+    "scientificName": "Hibiscus syriacus",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hibiscus%20Syriacus.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Hibiscus%20Syriacus.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Eric Kounce TexasRaiser"
+    }
+  }
+}

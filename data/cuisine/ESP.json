@@ -1,0 +1,80 @@
+{
+  "iso3": "ESP",
+  "name": "Spain",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Fabada asturiana",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fabada%20con%20compangu.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fabada%20con%20compangu.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Amasuela, Luis Lafuente Agudín"
+      }
+    },
+    {
+      "name": "cocido",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cozido%20de%20gr%C3%A3o.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cozido%20de%20gr%C3%A3o.jpg",
+        "license": "CC BY 3.0",
+        "author": "Elingunnur"
+      }
+    },
+    {
+      "name": "Ensaïmada",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ensaimada%20DSCN0885.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ensaimada%20DSCN0885.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Lisa Stevens from Sutton Coldfield, UK"
+      }
+    },
+    {
+      "name": "Migas",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Migas.PNG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Migas.PNG",
+        "license": "CC BY-SA 3.0",
+        "author": "Nanow jesús madrid 21:40, 6 May 2007 (UTC)"
+      }
+    },
+    {
+      "name": "Tarta de Santiago",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tarta%20de%20Santiago-2009.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tarta%20de%20Santiago-2009.jpg",
+        "license": "CC BY 3.0",
+        "author": "Tamorlan"
+      }
+    },
+    {
+      "name": "fideuà",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fideua%20-%20xurde.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fideua%20-%20xurde.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Jorge Díaz from Madrid, Spain"
+      }
+    },
+    {
+      "name": "calçotada",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cal%C3%A7otada%20l%27espardenya%202008%20004.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cal%C3%A7otada%20l%27espardenya%202008%20004.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    },
+    {
+      "name": "gachas",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gachas1.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gachas1.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Aamapersa"
+      }
+    }
+  ]
+}

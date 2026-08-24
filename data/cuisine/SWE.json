@@ -1,0 +1,80 @@
+{
+  "iso3": "SWE",
+  "name": "Sweden",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "ostkaka",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ostkaka.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ostkaka.jpg",
+        "license": "Public domain",
+        "author": "AnonymousUnknown author"
+      }
+    },
+    {
+      "name": "tunnbröd",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tunnbr%C3%B6d-2007-07-14.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tunnbr%C3%B6d-2007-07-14.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Mikael Lindmark"
+      }
+    },
+    {
+      "name": "blåbärssoppa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bl%C3%A5b%C3%A4rssoppa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bl%C3%A5b%C3%A4rssoppa.jpg",
+        "license": "Public domain",
+        "author": "Dnor"
+      }
+    },
+    {
+      "name": "pölsa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/P%C3%B6lsa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:P%C3%B6lsa.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "No machine-readable author provided.  Karmosin~commonswiki assumed (based on copyright claims)."
+      }
+    },
+    {
+      "name": "pitepalt",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pitepalt.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pitepalt.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Fredrik Andersson"
+      }
+    },
+    {
+      "name": "Gotlandsdricka",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gotlandsdricka.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gotlandsdricka.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "W.carter"
+      }
+    },
+    {
+      "name": "saffron pancake",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Saffron%20pancake%20with%20dewberry.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Saffron%20pancake%20with%20dewberry.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Toyah"
+      }
+    },
+    {
+      "name": "Tjälknöl",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Knul-sliced.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Knul-sliced.jpg",
+        "license": "Public domain",
+        "author": "Anna Lagerberg"
+      }
+    }
+  ]
+}

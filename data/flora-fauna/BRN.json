@@ -1,0 +1,15 @@
+{
+  "iso3": "BRN",
+  "name": "Brunei",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "flower": {
+    "name": "Simpoh Ayer",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dil%20suffrut%20100524-1817%20sap.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Dil%20suffrut%20100524-1817%20sap.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Wibowo Djatmiko (Wie146)"
+    }
+  }
+}

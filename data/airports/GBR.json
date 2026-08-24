@@ -1,0 +1,148 @@
+{
+  "iso3": "GBR",
+  "name": "United Kingdom",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "London Heathrow Airport",
+      "iata": "LHR",
+      "municipality": "London",
+      "large": true,
+      "passengers": 83884572
+    },
+    {
+      "name": "London Gatwick Airport",
+      "iata": "LGW",
+      "municipality": "London",
+      "large": true,
+      "passengers": 46574786
+    },
+    {
+      "name": "Manchester Airport",
+      "iata": "MAN",
+      "municipality": "Manchester, Greater Manchester",
+      "large": true,
+      "passengers": 29367477
+    },
+    {
+      "name": "London Stansted Airport",
+      "iata": "STN",
+      "municipality": "London, Essex",
+      "large": true,
+      "passengers": 28124292
+    },
+    {
+      "name": "London Luton Airport",
+      "iata": "LTN",
+      "municipality": "Luton, Luton",
+      "large": true,
+      "passengers": 18213901
+    },
+    {
+      "name": "Edinburgh Airport",
+      "iata": "EDI",
+      "municipality": "Ingliston, Edinburgh",
+      "large": true,
+      "passengers": 14733966
+    },
+    {
+      "name": "Birmingham Airport",
+      "iata": "BHX",
+      "municipality": "Birmingham, West Midlands",
+      "large": true,
+      "passengers": 12990303
+    },
+    {
+      "name": "Glasgow Airport",
+      "iata": "GLA",
+      "municipality": "Glasgow",
+      "large": true,
+      "passengers": 9897959
+    },
+    {
+      "name": "Bristol Airport",
+      "iata": "BRS",
+      "municipality": "Bristol",
+      "large": true,
+      "passengers": 8959679
+    },
+    {
+      "name": "Belfast International Airport",
+      "iata": "BFS",
+      "municipality": "Belfast",
+      "large": true,
+      "passengers": 6286000
+    },
+    {
+      "name": "Newcastle International Airport",
+      "iata": "NCL",
+      "municipality": "Newcastle upon Tyne, Tyne and Wear",
+      "large": true,
+      "passengers": 5623607
+    },
+    {
+      "name": "East Midlands Airport",
+      "iata": "EMA",
+      "municipality": "Nottingham, Leicestershire",
+      "large": true,
+      "passengers": 5616278
+    },
+    {
+      "name": "Liverpool John Lennon Airport",
+      "iata": "LPL",
+      "municipality": "Liverpool",
+      "large": true,
+      "passengers": 5463234
+    },
+    {
+      "name": "London City Airport",
+      "iata": "LCY",
+      "municipality": "London",
+      "large": false,
+      "passengers": 5122271
+    },
+    {
+      "name": "Leeds Bradford Airport",
+      "iata": "LBA",
+      "municipality": "Leeds, West Yorkshire",
+      "large": true,
+      "passengers": 4076616
+    },
+    {
+      "name": "Aberdeen International Airport",
+      "iata": "ABZ",
+      "municipality": "Aberdeen",
+      "large": true,
+      "passengers": 3723662
+    },
+    {
+      "name": "George Best Belfast City Airport",
+      "iata": "BHD",
+      "municipality": "Belfast",
+      "large": false,
+      "passengers": 2740305
+    },
+    {
+      "name": "Glasgow Prestwick Airport",
+      "iata": "PIK",
+      "municipality": "Prestwick, South Ayrshire",
+      "large": true,
+      "passengers": 2420709
+    },
+    {
+      "name": "Cardiff International Airport",
+      "iata": "CWL",
+      "municipality": "Cardiff",
+      "large": true,
+      "passengers": 2093507
+    },
+    {
+      "name": "Southampton Airport",
+      "iata": "SOU",
+      "municipality": "Southampton",
+      "large": false,
+      "passengers": 2069910
+    }
+  ]
+}

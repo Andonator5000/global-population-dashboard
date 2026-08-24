@@ -1,0 +1,92 @@
+{
+  "iso3": "MNG",
+  "name": "Mongolia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Buyant-Ukhaa International Airport",
+      "iata": "ULN",
+      "municipality": "Ulaanbaatar",
+      "large": true,
+      "passengers": 1621571
+    },
+    {
+      "name": "Ulaanbaatar Chinggis Khaan International Airport",
+      "iata": "UBN",
+      "municipality": "Ulaanbaatar (Sergelen)",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Altai Airport",
+      "iata": "LTI",
+      "municipality": "Altai",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Arvaikheer Airport",
+      "iata": "AVK",
+      "municipality": "Arvaikheer",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Bayankhongor Airport",
+      "iata": "BYN",
+      "municipality": "Bayankhongor",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Bulgan Airport",
+      "iata": "UGA",
+      "municipality": "Bulgan",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Choibalsan Airport",
+      "iata": "COQ",
+      "municipality": null,
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Dalanzadgad Airport",
+      "iata": "DLZ",
+      "municipality": "Dalanzadgad",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Khovd Airport",
+      "iata": "HVD",
+      "municipality": "Khovd",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Mörön Airport",
+      "iata": "MXV",
+      "municipality": "Mörön",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Ulaangom Airport",
+      "iata": "ULO",
+      "municipality": "Ulaangom",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Ölgii Mongolei International Airport",
+      "iata": "ULG",
+      "municipality": "Ölgii",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

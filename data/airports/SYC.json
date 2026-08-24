@@ -1,0 +1,22 @@
+{
+  "iso3": "SYC",
+  "name": "Seychelles",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Seychelles International Airport",
+      "iata": "SEZ",
+      "municipality": "Victoria",
+      "large": true,
+      "passengers": 1200000
+    },
+    {
+      "name": "Praslin Island Airport",
+      "iata": "PRI",
+      "municipality": "Praslin Island",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "iso3": "DEU",
+  "name": "Germany",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "pretzel",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Brezel%20l%20B%C3%A4ckerei-Raisch.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Brezel%20l%20B%C3%A4ckerei-Raisch.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "LenaRaisch"
+      }
+    },
+    {
+      "name": "Butterbrot",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Butterbrot%20angebissen.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Butterbrot%20angebissen.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Xocolatl"
+      }
+    },
+    {
+      "name": "Frankfurter Würstchen",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Frankfurter%20wuerstchen.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Frankfurter%20wuerstchen.jpg",
+        "license": "CC BY 2.0",
+        "author": "WordRidden / Jessica  Spengler"
+      }
+    },
+    {
+      "name": "Obatzda",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Obatzter-1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Obatzter-1.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Rainer Z ..."
+      }
+    },
+    {
+      "name": "Mett",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mettbroetchen.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mettbroetchen.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Nize"
+      }
+    },
+    {
+      "name": "Saumagen",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Saumagen%20mit%20Sauerkraut.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Saumagen%20mit%20Sauerkraut.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Claus Ableiter"
+      }
+    },
+    {
+      "name": "Schneeball",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schneeball-gebaeck.jpeg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Schneeball-gebaeck.jpeg",
+        "license": "CC BY-SA 3.0",
+        "author": "S.kapfer"
+      }
+    },
+    {
+      "name": "Bauernfrühstück",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bauernfr%C3%BChst%C3%BCck-01.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bauernfr%C3%BChst%C3%BCck-01.jpg",
+        "license": "CC BY 2.0",
+        "author": "Josef Türk Reit im Winkl Chiemgau"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "iso3": "EGY",
+  "name": "Egypt",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Steppe eagle",
+      "type": "national bird",
+      "scientificName": "Aquila nipalensis",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aquila%20nipalensis%202010.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aquila%20nipalensis%202010.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "4028mdk09"
+      }
+    }
+  ]
+}

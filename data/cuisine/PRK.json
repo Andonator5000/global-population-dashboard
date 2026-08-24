@@ -1,0 +1,20 @@
+{
+  "iso3": "PRK",
+  "name": "North Korea",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "naengmyeon",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KOCIS%20Mul-naengmyeon%2C%20Chilled%20Buckwheat%20Noodle%20Soup%20%284594756202%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:KOCIS%20Mul-naengmyeon%2C%20Chilled%20Buckwheat%20Noodle%20Soup%20%284594756202%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Korea.net / Korean Culture and Information Service"
+      }
+    },
+    {
+      "name": "injo-gogi-bap"
+    }
+  ]
+}

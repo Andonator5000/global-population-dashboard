@@ -1,0 +1,36 @@
+{
+  "iso3": "SVK",
+  "name": "Slovakia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "M. R. Štefánik Airport",
+      "iata": "BTS",
+      "municipality": "Bratislava",
+      "large": true,
+      "passengers": 2292712
+    },
+    {
+      "name": "Košice International Airport",
+      "iata": "KSC",
+      "municipality": "Košice",
+      "large": false,
+      "passengers": 827798
+    },
+    {
+      "name": "Poprad-Tatry Airport",
+      "iata": "TAT",
+      "municipality": "Poprad",
+      "large": false,
+      "passengers": 88542
+    },
+    {
+      "name": "Sliač Airport",
+      "iata": "SLD",
+      "municipality": "Sliač",
+      "large": false,
+      "passengers": 41866
+    }
+  ]
+}

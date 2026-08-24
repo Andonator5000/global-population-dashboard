@@ -1,0 +1,36 @@
+{
+  "iso3": "FSM",
+  "name": "Micronesia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Chuuk International Airport",
+      "iata": "TKK",
+      "municipality": "Weno Island",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Kosrae International Airport",
+      "iata": "KSA",
+      "municipality": "Okat",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Yap International Airport",
+      "iata": "YAP",
+      "municipality": "Yap Island",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Pohnpei International Airport",
+      "iata": "PNI",
+      "municipality": "Pohnpei Island",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

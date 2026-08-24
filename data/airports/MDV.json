@@ -1,0 +1,57 @@
+{
+  "iso3": "MDV",
+  "name": "Maldives",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Gan International Airport",
+      "iata": "GAN",
+      "municipality": "Gan",
+      "large": true,
+      "passengers": 152740
+    },
+    {
+      "name": "Hanimaadhoo International Airport",
+      "iata": "HAQ",
+      "municipality": "Haa Dhaalu Atoll",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Velana International Airport",
+      "iata": "MLE",
+      "municipality": "Malé",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Kaadedhdhoo Airport",
+      "iata": "KDM",
+      "municipality": "Huvadhu Atoll",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Kadhdhoo Airport",
+      "iata": "KDO",
+      "municipality": "Kadhdhoo",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Maafaru International Airport",
+      "iata": "NMF",
+      "municipality": "Noonu Atoll",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Villa International Airport Maamigili",
+      "iata": "VAM",
+      "municipality": "Maamigili",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

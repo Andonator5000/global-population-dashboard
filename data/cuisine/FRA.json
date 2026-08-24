@@ -1,0 +1,80 @@
+{
+  "iso3": "FRA",
+  "name": "France",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "waffle",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gaufre%20molle.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gaufre%20molle.jpg",
+        "license": "Public domain",
+        "author": "No machine-readable author provided. Jrenier assumed (based on copyright claims)."
+      }
+    },
+    {
+      "name": "crêpe",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Crepes%20dsc07085.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Crepes%20dsc07085.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "David Monniaux"
+      }
+    },
+    {
+      "name": "stew",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20131117Estouffade8.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:20131117Estouffade8.jpg",
+        "license": "CC0",
+        "author": "AnRo0002"
+      }
+    },
+    {
+      "name": "bouillabaisse",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bullabessa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bullabessa.jpg",
+        "license": "CC BY 3.0",
+        "author": "Slastic"
+      }
+    },
+    {
+      "name": "mille-feuille",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mille-feuille%2020100916.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mille-feuille%2020100916.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Georges Seguin (Okki)"
+      }
+    },
+    {
+      "name": "Niçard salad",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Salade%20ni%C3%A7oise%20%287545098258%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Salade%20ni%C3%A7oise%20%287545098258%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "cyclonebill from Copenhagen, Denmark"
+      }
+    },
+    {
+      "name": "Consommé",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bruehe-2.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bruehe-2.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "User:Rainer Zenz"
+      }
+    },
+    {
+      "name": "pain au chocolat",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pain%20au%20chocolat%20Luc%20Viatour.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pain%20au%20chocolat%20Luc%20Viatour.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Luc Viatour"
+      }
+    }
+  ]
+}

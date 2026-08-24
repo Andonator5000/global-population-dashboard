@@ -1,0 +1,148 @@
+{
+  "iso3": "FRA",
+  "name": "France",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Charles de Gaulle International Airport",
+      "iata": "CDG",
+      "municipality": "Paris (Roissy-en-France, Val-d'Oise)",
+      "large": true,
+      "passengers": 76167233
+    },
+    {
+      "name": "Paris-Orly Airport",
+      "iata": "ORY",
+      "municipality": "Paris (Orly, Val-de-Marne)",
+      "large": true,
+      "passengers": 33120685
+    },
+    {
+      "name": "Nice-Côte d'Azur Airport",
+      "iata": "NCE",
+      "municipality": "Nice, Alpes-Maritimes",
+      "large": true,
+      "passengers": 14485423
+    },
+    {
+      "name": "Lyon Saint-Exupéry Airport",
+      "iata": "LYS",
+      "municipality": "Colombier-Saugnieu, Rhône",
+      "large": true,
+      "passengers": 11739600
+    },
+    {
+      "name": "Marseille Provence Airport",
+      "iata": "MRS",
+      "municipality": "Marignane, Bouches-du-Rhône",
+      "large": true,
+      "passengers": 10151743
+    },
+    {
+      "name": "Toulouse-Blagnac Airport",
+      "iata": "TLS",
+      "municipality": "Toulouse/Blagnac",
+      "large": true,
+      "passengers": 9652363
+    },
+    {
+      "name": "EuroAirport Basel–Mulhouse–Freiburg",
+      "iata": "BSL",
+      "municipality": "Bâle / Mulhouse",
+      "large": true,
+      "passengers": 9090312
+    },
+    {
+      "name": "Bordeaux–Mérignac Airport",
+      "iata": "BOD",
+      "municipality": "Bordeaux",
+      "large": true,
+      "passengers": 7703143
+    },
+    {
+      "name": "Nantes Atlantique Airport",
+      "iata": "NTE",
+      "municipality": "Nantes",
+      "large": true,
+      "passengers": 7227411
+    },
+    {
+      "name": "Beauvais-Tillé airport",
+      "iata": "BVA",
+      "municipality": "Beauvais",
+      "large": true,
+      "passengers": 4614424
+    },
+    {
+      "name": "Strasbourg Airport",
+      "iata": "SXB",
+      "municipality": "Strasbourg",
+      "large": true,
+      "passengers": 2226349
+    },
+    {
+      "name": "Lille Airport",
+      "iata": "LIL",
+      "municipality": "Lesquin",
+      "large": true,
+      "passengers": 2189206
+    },
+    {
+      "name": "Montpellier-Méditerranée Airport",
+      "iata": "MPL",
+      "municipality": "Montpellier/Méditerranée",
+      "large": true,
+      "passengers": 1935911
+    },
+    {
+      "name": "Ajaccio Napoléon Bonaparte airport",
+      "iata": "AJA",
+      "municipality": "Ajaccio",
+      "large": false,
+      "passengers": 1673308
+    },
+    {
+      "name": "Bastia-Poretta International airport",
+      "iata": "BIA",
+      "municipality": "Bastia",
+      "large": true,
+      "passengers": 1559492
+    },
+    {
+      "name": "Brest Bretagne airport",
+      "iata": "BES",
+      "municipality": "Brest",
+      "large": true,
+      "passengers": 1236121
+    },
+    {
+      "name": "Biarritz Pays Basque airport",
+      "iata": "BIQ",
+      "municipality": "Biarritz",
+      "large": false,
+      "passengers": 1190991
+    },
+    {
+      "name": "Clermont-Ferrand Auvergne airport",
+      "iata": "CFE",
+      "municipality": "Clermont-Ferrand",
+      "large": true,
+      "passengers": 1060842
+    },
+    {
+      "name": "Figari Sud-Corse Airport",
+      "iata": "FSC",
+      "municipality": "Figari",
+      "large": true,
+      "passengers": 907102
+    },
+    {
+      "name": "Rennes-Saint-Jacques Airport",
+      "iata": "RNS",
+      "municipality": "Saint-Jacques-de-la-Lande, Ille-et-Vilaine",
+      "large": false,
+      "passengers": 857000
+    }
+  ]
+}

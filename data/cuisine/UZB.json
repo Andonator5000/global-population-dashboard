@@ -1,0 +1,17 @@
+{
+  "iso3": "UZB",
+  "name": "Uzbekistan",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "pilaf",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Polu.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Polu.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Mizu basyo at Japanese Wikipedia"
+      }
+    }
+  ]
+}

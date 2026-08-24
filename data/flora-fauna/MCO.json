@@ -1,0 +1,41 @@
+{
+  "iso3": "MCO",
+  "name": "Monaco",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "European hedgehog",
+      "type": "national animal",
+      "scientificName": "Erinaceus europaeus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Erinaceus%20europaeus%20LC0119.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Erinaceus%20europaeus%20LC0119.jpg",
+        "license": "CC BY-SA 2.0 de",
+        "author": "Jörg Hempel"
+      }
+    },
+    {
+      "name": "European rabbit",
+      "type": "national animal",
+      "scientificName": "Oryctolagus cuniculus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Oryctolagus%20cuniculus%20-%20euqirneto%20-%20419737670%20%28cropped%29.jpeg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Oryctolagus%20cuniculus%20-%20euqirneto%20-%20419737670%20%28cropped%29.jpeg",
+        "license": "CC BY 4.0",
+        "author": "euqirneto"
+      }
+    },
+    {
+      "name": "Wood mouse",
+      "type": "national animal",
+      "scientificName": "Apodemus sylvaticus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ApodemusSylvaticus.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:ApodemusSylvaticus.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Christian Fischer"
+      }
+    }
+  ]
+}

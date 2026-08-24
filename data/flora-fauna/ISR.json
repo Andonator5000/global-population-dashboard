@@ -1,0 +1,84 @@
+{
+  "iso3": "ISR",
+  "name": "Israel",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Lion of Judah",
+      "type": "national animal",
+      "scientificName": "Panthera leo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Emblem%20of%20Jerusalem.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emblem%20of%20Jerusalem.svg",
+        "license": "Public domain",
+        "author": "User:Cameltrader"
+      }
+    },
+    {
+      "name": "Canaan Dog",
+      "type": "national dog breed",
+      "scientificName": "Canis familiaris",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CanaanDogChakedeNess.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:CanaanDogChakedeNess.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Samorodokhanaana\n\nCanaan Dogs from \"Samorodok\" http://www.ruscanaan.ru"
+      }
+    },
+    {
+      "name": "Common black scorpion",
+      "type": "national scorpion",
+      "scientificName": "Nebo hierichonticus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/NEBO%20HIERICHONTICUS.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:NEBO%20HIERICHONTICUS.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Guy Haimovitch"
+      }
+    },
+    {
+      "name": "Eurasian hoopoe",
+      "type": "national bird",
+      "scientificName": "Upupa epops",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wiedehopf%20mit%20Puppe%20als%20Futter.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wiedehopf%20mit%20Puppe%20als%20Futter.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Sven Damerow"
+      }
+    },
+    {
+      "name": "Palestine viper",
+      "type": "national snake",
+      "scientificName": "Daboia palaestinae",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ArbeLevy-Vipera%20palaestinae%203.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:ArbeLevy-Vipera%20palaestinae%203.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "ארבל לוי-ArbeLevy, לוכד נחשים"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Olive",
+    "type": "national tree",
+    "scientificName": "Olea europaea",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Olea%20europea%203.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Olea%20europea%203.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Bratislav Tabaš"
+    }
+  },
+  "flower": {
+    "name": "Hebrew",
+    "scientificName": "Anemone coronaria",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Anemone-coronaria-2016-Zachi-Evenor.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Anemone-coronaria-2016-Zachi-Evenor.jpg",
+      "license": "CC BY 2.0",
+      "author": "Zachi Evenor"
+    }
+  }
+}

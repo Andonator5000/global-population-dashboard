@@ -1,0 +1,20 @@
+{
+  "iso3": "NOR",
+  "name": "Norway",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "cheese slicer",
+      "inventors": [
+        "Thor Bjørklund"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Osthyvel%2020050723%20001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Osthyvel%2020050723%20001.jpg",
+        "license": "Public domain",
+        "author": "Jonas Bergsten"
+      }
+    }
+  ]
+}

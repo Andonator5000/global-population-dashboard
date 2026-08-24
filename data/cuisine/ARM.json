@@ -1,0 +1,35 @@
+{
+  "iso3": "ARM",
+  "name": "Armenia",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "dolma",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Etli%20biber%20dolma.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Etli%20biber%20dolma.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "E4024"
+      }
+    },
+    {
+      "name": "Ghapama",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ghapama.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ghapama.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "AndyHM"
+      }
+    },
+    {
+      "name": "kololak",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D4%BF%D5%B8%D5%AC%D5%B8%D5%AC%D5%A1%D5%AF%D5%B8%D5%BE%20%D5%BD%D5%BA%D5%A1%D5%BD.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D4%BF%D5%B8%D5%AC%D5%B8%D5%AC%D5%A1%D5%AF%D5%B8%D5%BE%20%D5%BD%D5%BA%D5%A1%D5%BD.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Սոնիա"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "iso3": "NPL",
+  "name": "Nepal",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Cow",
+      "type": "national animal",
+      "scientificName": "Bos indicus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Cow%20Worship.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:The%20Cow%20Worship.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Subarna Majhi"
+      }
+    },
+    {
+      "name": "Himalayan monal",
+      "type": "national bird",
+      "scientificName": "Lophophorus impejanus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lophophorus%20impejanus%20Zoo%20DU%202.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lophophorus%20impejanus%20Zoo%20DU%202.jpg",
+        "license": "Public domain",
+        "author": "H005"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Rhododendron",
+    "type": "national tree",
+    "scientificName": "Rhododendron",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhododendron-by-eiffel-public-domain-20040617.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rhododendron-by-eiffel-public-domain-20040617.jpg",
+      "license": "Public domain",
+      "author": "Eiffel"
+    }
+  },
+  "flower": {
+    "name": "Rhododendron arboreum",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhododendron%20arboreum%20subsp.%20nilagiricum%20%281%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rhododendron%20arboreum%20subsp.%20nilagiricum%20%281%29.jpg",
+      "license": "CC BY 3.0",
+      "author": "Marcus334"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "iso3": "BLZ",
+  "name": "Belize",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Baird's tapir",
+      "type": "national animal",
+      "scientificName": "Tapirus bairdii",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Central%20American%20Tapir-Belize20.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Central%20American%20Tapir-Belize20.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    },
+    {
+      "name": "Keel-billed toucan",
+      "type": "national bird",
+      "scientificName": "Ramphastos sulfuratus",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramphastos%20sulfuratus%20-Belize%20Zoo-6a-2c.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ramphastos%20sulfuratus%20-Belize%20Zoo-6a-2c.jpg",
+        "license": "CC BY 2.0",
+        "author": "derivative work: Snowmanradio (talk)\nRamphastos_sulfuratus_-Belize_Zoo-6a.jpg: Pearl Vas"
+      }
+    }
+  ],
+  "tree": {
+    "name": "Honduras mahogany",
+    "type": "national tree",
+    "scientificName": "Swietenia macrophylla",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Leaves%20I%20IMG%208668.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Leaves%20I%20IMG%208668.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "J.M.Garg"
+    }
+  }
+}

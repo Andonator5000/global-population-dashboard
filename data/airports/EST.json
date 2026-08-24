@@ -1,0 +1,43 @@
+{
+  "iso3": "EST",
+  "name": "Estonia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Lennart Meri Tallinn Airport",
+      "iata": "TLL",
+      "municipality": "Tallinn",
+      "large": true,
+      "passengers": 3267909
+    },
+    {
+      "name": "Kuressaare Airport",
+      "iata": "URE",
+      "municipality": "Kuressaare",
+      "large": false,
+      "passengers": 38749
+    },
+    {
+      "name": "Tartu Airport",
+      "iata": "TAY",
+      "municipality": "Tartu",
+      "large": false,
+      "passengers": 30296
+    },
+    {
+      "name": "Kärdla Airport",
+      "iata": "KDL",
+      "municipality": "Kärdla",
+      "large": false,
+      "passengers": 12004
+    },
+    {
+      "name": "Pärnu Airport",
+      "iata": "EPU",
+      "municipality": "Pärnu",
+      "large": false,
+      "passengers": 7072
+    }
+  ]
+}

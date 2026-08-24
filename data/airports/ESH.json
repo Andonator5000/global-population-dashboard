@@ -1,0 +1,29 @@
+{
+  "iso3": "ESH",
+  "name": "Western Sahara",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Dakhla Airport",
+      "iata": "VIL",
+      "municipality": "Dakhla",
+      "large": true,
+      "passengers": 256975
+    },
+    {
+      "name": "Laayoune Hassan I International Airport",
+      "iata": "EUN",
+      "municipality": "El Aaiún",
+      "large": true,
+      "passengers": 255640
+    },
+    {
+      "name": "Smara Airport",
+      "iata": "SMW",
+      "municipality": "Smara",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "iso3": "ISL",
+  "name": "Iceland",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Keflavik International Airport",
+      "iata": "KEF",
+      "municipality": "Reykjavík",
+      "large": true,
+      "passengers": 9804388
+    },
+    {
+      "name": "Reykjavík Domestic Airport",
+      "iata": "RKV",
+      "municipality": "Reykjavík",
+      "large": false,
+      "passengers": 471372
+    },
+    {
+      "name": "Akureyri International Airport",
+      "iata": "AEY",
+      "municipality": "Akureyri",
+      "large": true,
+      "passengers": 221759
+    },
+    {
+      "name": "Egilsstaðir Airport",
+      "iata": "EGS",
+      "municipality": "Egilsstaðir",
+      "large": false,
+      "passengers": 157643
+    },
+    {
+      "name": "Ísafjörður Airport",
+      "iata": "IFJ",
+      "municipality": "Ísafjörður",
+      "large": false,
+      "passengers": 52262
+    },
+    {
+      "name": "Hornafjörður Airport",
+      "iata": "HFN",
+      "municipality": "Höfn",
+      "large": false,
+      "passengers": 14672
+    },
+    {
+      "name": "Grímsey Airport",
+      "iata": "GRY",
+      "municipality": "Grímsey/Sandvík",
+      "large": false,
+      "passengers": 4671
+    },
+    {
+      "name": "Vopnafjörður Airport",
+      "iata": "VPN",
+      "municipality": "Vopnafjörður",
+      "large": false,
+      "passengers": 2099
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "iso3": "LCA",
+  "name": "Saint Lucia",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "animals": [
+    {
+      "name": "Saint Lucia amazon",
+      "type": "national bird",
+      "scientificName": "Amazona versicolor",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazona%20versicolor%20-St%20Lucia-5a.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Amazona%20versicolor%20-St%20Lucia-5a.jpg",
+        "license": "CC BY 2.0",
+        "author": "Brennan Mulrooney"
+      }
+    }
+  ]
+}

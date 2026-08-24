@@ -1,0 +1,26 @@
+{
+  "iso3": "ARG",
+  "name": "Argentina",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Fugazza",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Guerrin%20pizza%20fugazza%20queso.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Guerrin%20pizza%20fugazza%20queso.jpg",
+        "license": "CC0",
+        "author": "Neo139"
+      }
+    },
+    {
+      "name": "Revuelto Gramajo",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Revuelto%20gramajo.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Revuelto%20gramajo.jpg",
+        "license": "CC0",
+        "author": "Neo139"
+      }
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "iso3": "DZA",
+  "name": "Algeria",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Houari Boumediene Airport",
+      "iata": "ALG",
+      "municipality": "Algiers",
+      "large": true,
+      "passengers": 7975412
+    },
+    {
+      "name": "Oran Es-Sénia (Ahmed Ben Bella) International Airport",
+      "iata": "ORN",
+      "municipality": "Es-Sénia",
+      "large": true,
+      "passengers": 1938373
+    },
+    {
+      "name": "Mohamed Boudiaf International Airport",
+      "iata": "CZL",
+      "municipality": "Constantine",
+      "large": true,
+      "passengers": 1116415
+    },
+    {
+      "name": "Annaba Rabah Bitat Airport",
+      "iata": "AAE",
+      "municipality": "Annaba",
+      "large": true,
+      "passengers": 553349
+    },
+    {
+      "name": "Hassi Messaoud-Oued Irara Krim Belkacem Airport",
+      "iata": "HME",
+      "municipality": "Hassi Messaoud",
+      "large": false,
+      "passengers": 481371
+    },
+    {
+      "name": "Soummam–Abane Ramdane Airport",
+      "iata": "BJA",
+      "municipality": "Béjaïa",
+      "large": true,
+      "passengers": 318186
+    },
+    {
+      "name": "Ain Arnat Airport",
+      "iata": "QSF",
+      "municipality": "Sétif",
+      "large": false,
+      "passengers": 248225
+    },
+    {
+      "name": "Zenata – Messali El Hadj Airport",
+      "iata": "TLM",
+      "municipality": "Zenata",
+      "large": true,
+      "passengers": 137907
+    },
+    {
+      "name": "Biskra - Mohamed Khider Airport",
+      "iata": "BSK",
+      "municipality": "Biskra",
+      "large": true,
+      "passengers": 136718
+    },
+    {
+      "name": "Jijel Ferhat Abbas Airport",
+      "iata": "GJL",
+      "municipality": "Tahir",
+      "large": true,
+      "passengers": 85312
+    },
+    {
+      "name": "Batna Mostefa Ben Boulaid Airport",
+      "iata": "BLJ",
+      "municipality": "Batna",
+      "large": true,
+      "passengers": 83160
+    },
+    {
+      "name": "Cheikh Larbi Tébessi Airport",
+      "iata": "TEE",
+      "municipality": "Tébessi",
+      "large": false,
+      "passengers": 48845
+    },
+    {
+      "name": "In Salah Airport",
+      "iata": "INZ",
+      "municipality": "In Salah",
+      "large": false,
+      "passengers": 33867
+    },
+    {
+      "name": "Aguenar – Hadj Bey Akhamok Airport",
+      "iata": "TMR",
+      "municipality": "Tamanrasset",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Chlef Aboubakr Belkaid International Airport",
+      "iata": "CFK",
+      "municipality": "Chlef",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Tiska Djanet Airport",
+      "iata": "DJG",
+      "municipality": "Djanet",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Ain Beida Airport",
+      "iata": "OGX",
+      "municipality": "Ouargla",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Bordj Badji Mokhtar Airport",
+      "iata": "BMW",
+      "municipality": "Bordj Badji Mokhtar",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Béchar Boudghene Ben Ali Lotfi Airport",
+      "iata": "CBH",
+      "municipality": "Béchar",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "El Golea Airport",
+      "iata": "ELG",
+      "municipality": "El Menia",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

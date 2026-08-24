@@ -1,0 +1,26 @@
+{
+  "iso3": "MDV",
+  "name": "Maldives",
+  "source": "wikipedia_national_symbols",
+  "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
+  "tree": {
+    "name": "Coconut palm",
+    "type": "national tree",
+    "scientificName": "Cocos nucifera",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cocos%20nucifera%20Kratie%20Cambodia.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cocos%20nucifera%20Kratie%20Cambodia.JPG",
+      "license": "CC0",
+      "author": "Pamputt"
+    }
+  },
+  "flower": {
+    "name": "Rosa polyantha",
+    "image": {
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2020-05-20%2008%2005%2042%20Multiflora%20Rose%20flowers%20along%20a%20walking%20path%20within%20Horsepen%20Run%20Stream%20Valley%20Park%20in%20Oak%20Hill%2C%20Fairfax%20County%2C%20Virginia.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:2020-05-20%2008%2005%2042%20Multiflora%20Rose%20flowers%20along%20a%20walking%20path%20within%20Horsepen%20Run%20Stream%20Valley%20Park%20in%20Oak%20Hill%2C%20Fairfax%20County%2C%20Virginia.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Famartin"
+    }
+  }
+}

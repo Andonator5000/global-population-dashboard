@@ -1,0 +1,148 @@
+{
+  "iso3": "GRC",
+  "name": "Greece",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "iata": "ATH",
+      "municipality": "Spata-Artemida",
+      "large": true,
+      "passengers": 25573993
+    },
+    {
+      "name": "Heraklion International Nikos Kazantzakis Airport",
+      "iata": "HER",
+      "municipality": "Heraklion",
+      "large": true,
+      "passengers": 8098465
+    },
+    {
+      "name": "Thessaloniki Macedonia International Airport",
+      "iata": "SKG",
+      "municipality": "Thessaloniki",
+      "large": true,
+      "passengers": 6897057
+    },
+    {
+      "name": "Rhodes International Airport \"Diagoras\"",
+      "iata": "RHO",
+      "municipality": "Rhodes",
+      "large": true,
+      "passengers": 5857036
+    },
+    {
+      "name": "Corfu Ioannis Kapodistrias International Airport",
+      "iata": "CFU",
+      "municipality": "Kerkyra (Corfu)",
+      "large": true,
+      "passengers": 3749106
+    },
+    {
+      "name": "Chania International Airport",
+      "iata": "CHQ",
+      "municipality": "Souda",
+      "large": true,
+      "passengers": 3290802
+    },
+    {
+      "name": "Kos International Airport \"Ippokratis\"",
+      "iata": "KGS",
+      "municipality": "Kos Island",
+      "large": true,
+      "passengers": 2791590
+    },
+    {
+      "name": "Santorini International Airport",
+      "iata": "JTR",
+      "municipality": "Santorini Island",
+      "large": true,
+      "passengers": 2744650
+    },
+    {
+      "name": "Zakynthos International Airport Dionysios Solomos",
+      "iata": "ZTH",
+      "municipality": "Zakynthos",
+      "large": false,
+      "passengers": 1903404
+    },
+    {
+      "name": "Mykonos Island National Airport",
+      "iata": "JMK",
+      "municipality": "Mykonos",
+      "large": false,
+      "passengers": 1688037
+    },
+    {
+      "name": "Kefallinia Airport",
+      "iata": "EFL",
+      "municipality": "Kefallinia Island",
+      "large": false,
+      "passengers": 817216
+    },
+    {
+      "name": "Aktion National Airport",
+      "iata": "PVK",
+      "municipality": "Preveza",
+      "large": false,
+      "passengers": 773587
+    },
+    {
+      "name": "Skiathos Island National Airport",
+      "iata": "JSI",
+      "municipality": "Skiathos",
+      "large": false,
+      "passengers": 511611
+    },
+    {
+      "name": "Samos Airport",
+      "iata": "SMI",
+      "municipality": "Samos Island",
+      "large": false,
+      "passengers": 503836
+    },
+    {
+      "name": "Mytilene International Airport",
+      "iata": "MJT",
+      "municipality": "Mytilene",
+      "large": false,
+      "passengers": 496577
+    },
+    {
+      "name": "Kavala Alexander the Great International Airport",
+      "iata": "KVA",
+      "municipality": "Kavala",
+      "large": true,
+      "passengers": 406949
+    },
+    {
+      "name": "Kalamata Airport",
+      "iata": "KLX",
+      "municipality": "Kalamata",
+      "large": false,
+      "passengers": 354546
+    },
+    {
+      "name": "Karpathos Airport",
+      "iata": "AOK",
+      "municipality": "Karpathos Island",
+      "large": false,
+      "passengers": 275007
+    },
+    {
+      "name": "Alexandroupoli Democritus Airport",
+      "iata": "AXD",
+      "municipality": "Alexandroupolis",
+      "large": false,
+      "passengers": 249584
+    },
+    {
+      "name": "Chios Island National Airport",
+      "iata": "JKH",
+      "municipality": "Chios Island",
+      "large": false,
+      "passengers": 244694
+    }
+  ]
+}

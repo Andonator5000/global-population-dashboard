@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-24T02:49:25+00:00",
+  "generated_at": "2026-08-24T04:13:18+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-24T02:49:25+00:00",
+      "fetched_at": "2026-08-24T04:13:18+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -207,7 +207,7 @@
       "title": "Currency images (Wikidata P18 via Wikimedia Commons)",
       "url": "https://query.wikidata.org/sparql",
       "licence": "Per-file Commons licences, recorded per image",
-      "fetched_at": "2026-08-24T02:48:34+00:00",
+      "fetched_at": "2026-08-24T04:12:56+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
       "citation": "Wikidata; Wikimedia Commons (per-file attribution in artifact)",
@@ -236,6 +236,50 @@
       "files": [],
       "notes": "193 entities with temperature series, 241 capitals. Live weather itself is fetched by the BROWSER from Open-Meteo (CC BY 4.0, non-commercial API) and never enters /data."
     },
+    "wikidata_inventions": {
+      "title": "Wikidata — inventions by country of origin",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "CC0 (data); per-file Commons licences on images",
+      "fetched_at": "2026-08-24T04:11:59+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved",
+      "citation": "Wikidata (P495/P61/P575); Wikimedia Commons",
+      "files": [],
+      "notes": "53 countries with qualifying items, 181 inventions. Coverage reflects Wikidata tagging, not national histories; most countries have none tagged and render as unavailable."
+    },
+    "airports": {
+      "title": "OurAirports roster; Wikidata annual passengers",
+      "url": "https://davidmegginson.github.io/ourairports-data/airports.csv",
+      "licence": "OurAirports: public domain. Wikidata: CC0",
+      "fetched_at": "2026-08-24T03:58:00+00:00",
+      "upstream_release": "Mon, 24 Aug 2026 01:53:57 GMT",
+      "vintage": "roster as retrieved; passenger figures carry their own years",
+      "citation": "OurAirports; Wikidata (P3872 patronage)",
+      "files": [],
+      "notes": "234 countries, 1642 airports listed, 1210 with a passenger figure. Traffic ranking is best-available, not exhaustive."
+    },
+    "wikipedia_national_symbols": {
+      "title": "Wikipedia — lists of national animals, trees and flowers",
+      "url": "https://en.wikipedia.org/wiki/List_of_national_animals",
+      "licence": "CC BY-SA 4.0 (text); per-file Commons licences on images",
+      "fetched_at": "2026-08-24T04:09:55+00:00",
+      "upstream_release": "Fri, 21 Aug 2026 08:12:00 GMT",
+      "vintage": "pages as retrieved",
+      "citation": "Wikipedia: List of national animals; List of national trees; List of national flowers",
+      "files": [],
+      "notes": "142 countries with at least one symbol; 355 symbol images with Commons attribution. Unmatched rows: Central America and the Caribbean, Macedonia."
+    },
+    "wikidata_cuisine": {
+      "title": "Wikidata — dishes by country of origin",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "CC0 (data); per-file Commons licences on images",
+      "fetched_at": "2026-08-24T04:11:00+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved",
+      "citation": "Wikidata (P495 on dish items); Wikimedia Commons",
+      "files": [],
+      "notes": "101 countries, 349 dishes. Coverage reflects Wikidata tagging; countries without tagged dishes render as unavailable."
+    },
     "natural_earth": {
       "title": "Natural Earth 110m Admin 0 (via world-atlas TopoJSON)",
       "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
@@ -251,7 +295,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-24T02:49:25+00:00",
+      "fetched_at": "2026-08-24T04:13:18+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -273,19 +317,19 @@
       "title": "Wikidata heads of state and government, portraits via Wikimedia Commons",
       "url": "https://query.wikidata.org/sparql",
       "licence": "Wikidata: CC0. Portraits: individual Commons licences, attributed via the linked file page.",
-      "fetched_at": "2026-08-16T08:01:46+00:00",
+      "fetched_at": "2026-08-24T03:42:27+00:00",
       "upstream_release": null,
       "vintage": "current incumbents at fetch time",
       "citation": "Wikidata (P35/P6/P18); Wikimedia Commons",
       "files": [
         {
           "url": "https://query.wikidata.org/sparql?format=json&query=%0ASELECT%20%3Fiso3%20%3Frole%20%3Fperson%20%3FpersonLabel%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fcountry%20wdt%3AP298%20%3Fiso3%20.%0A%20%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP35%20%3Fperson%20.%20BIND%28%22hos%22%20AS%20%3Frole%29%0A%20%20%7D%20UNION%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP6%20%3Fperson%20.%20BIND%28%22hog%22%20AS%20%3Frole%29%0A%20%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP18%20%3Fimage%20.%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0A",
-          "sha256": "522000297d7cca5fe8b1fb222b6a5310c54cd2763599cfa4c4539c6defa422f7",
-          "size_bytes": 324026,
-          "fetched_at": "2026-08-16T08:01:46+00:00"
+          "sha256": "d5ae4b4716532b6db5e32f2b6543f3a7dbc56f622d9a92caea519b52caa44164",
+          "size_bytes": 323633,
+          "fetched_at": "2026-08-24T03:42:27+00:00"
         }
       ],
-      "notes": "233 entities, 409 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(3), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
+      "notes": "233 entities, 421 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(3), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
     },
     "unesco_whc": {
       "title": "UNESCO World Heritage List",
@@ -482,6 +526,38 @@
       "row_count": null,
       "entity_count": 241
     },
+    "inventions/<ISO3>.json": {
+      "description": "Notable inventions (name, inventor, approximate year, Commons image with attribution) for countries with Wikidata coverage.",
+      "sources": [
+        "wikidata_inventions"
+      ],
+      "row_count": null,
+      "entity_count": 53
+    },
+    "airports/<ISO3>.json": {
+      "description": "Top airports per entity (name, IATA, city, annual passengers where recorded), large first.",
+      "sources": [
+        "airports"
+      ],
+      "row_count": null,
+      "entity_count": 234
+    },
+    "flora-fauna/<ISO3>.json": {
+      "description": "National animal(s), tree and flower with Commons images and attribution, per entity.",
+      "sources": [
+        "wikipedia_national_symbols"
+      ],
+      "row_count": null,
+      "entity_count": 142
+    },
+    "cuisine/<ISO3>.json": {
+      "description": "Signature dishes with Commons images and attribution, per entity.",
+      "sources": [
+        "wikidata_cuisine"
+      ],
+      "row_count": null,
+      "entity_count": 101
+    },
     "geo/countries-110m.json": {
       "description": "Country polygons keyed by ISO3, for map rendering.",
       "sources": [
@@ -573,5 +649,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "3e855a45f91e3f692c7bdc8efc867727b7d4f18648cfc5f96ad583ee7ffa0755"
+  "content_fingerprint": "699dfe96d0c8c525be29c29e29dc0c90dda9d58abdacb27dba8bbc0fdf096536"
 }

@@ -1,0 +1,71 @@
+{
+  "iso3": "NAM",
+  "name": "Namibia",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Hosea Kutako International Airport",
+      "iata": "WDH",
+      "municipality": "Windhoek",
+      "large": true,
+      "passengers": 1037794
+    },
+    {
+      "name": "Walvis Bay International Airport",
+      "iata": "WVB",
+      "municipality": "Walvis Bay(Rooikop)",
+      "large": true,
+      "passengers": 124122
+    },
+    {
+      "name": "Eros Airport",
+      "iata": "ERS",
+      "municipality": "Windhoek",
+      "large": false,
+      "passengers": 99658
+    },
+    {
+      "name": "Ondangwa Airport",
+      "iata": "OND",
+      "municipality": "Ondangwa",
+      "large": false,
+      "passengers": 56449
+    },
+    {
+      "name": "Katima Mulilo Airport",
+      "iata": "MPA",
+      "municipality": "Mpacha",
+      "large": false,
+      "passengers": 14999
+    },
+    {
+      "name": "Luderitz Airport",
+      "iata": "LUD",
+      "municipality": "Luderitz",
+      "large": false,
+      "passengers": 9538
+    },
+    {
+      "name": "Rundu Airport",
+      "iata": "NDU",
+      "municipality": "Rundu",
+      "large": false,
+      "passengers": 8684
+    },
+    {
+      "name": "Oranjemund Airport",
+      "iata": "OMD",
+      "municipality": "Oranjemund",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Twyfelfontein Airport",
+      "iata": null,
+      "municipality": "Twyfelfontein",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

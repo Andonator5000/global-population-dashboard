@@ -1,0 +1,80 @@
+{
+  "iso3": "MEX",
+  "name": "Mexico",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "taco",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/001%20Tacos%20de%20carnitas%2C%20carne%20asada%20y%20al%20pastor.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:001%20Tacos%20de%20carnitas%2C%20carne%20asada%20y%20al%20pastor.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Larry Miller"
+      }
+    },
+    {
+      "name": "burrito",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Breakfast%20burritos.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Breakfast%20burritos.jpg",
+        "license": "CC BY 2.0",
+        "author": "jeffreyw"
+      }
+    },
+    {
+      "name": "chili",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl%20of%20chili.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bowl%20of%20chili.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Carstor"
+      }
+    },
+    {
+      "name": "quesadilla",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quesadilles%20de%20Blanes%20amb%20salses.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Quesadilles%20de%20Blanes%20amb%20salses.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Brunnaiz"
+      }
+    },
+    {
+      "name": "enchilada",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Festival%20de%20la%20Enchilada%2059.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Festival%20de%20la%20Enchilada%2059.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Lameirasb"
+      }
+    },
+    {
+      "name": "atole",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Atole%20de%20puscua%20Guanajuatense.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Atole%20de%20puscua%20Guanajuatense.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Juan Carlos Fonseca Mata"
+      }
+    },
+    {
+      "name": "chimichanga",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chimichanga%20Amigos%20IMG%201237.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chimichanga%20Amigos%20IMG%201237.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Dainsleaf"
+      }
+    },
+    {
+      "name": "tostada",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tostadas%20shrimp%20cooking%20food%20dinner%20salsa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tostadas%20shrimp%20cooking%20food%20dinner%20salsa.jpg",
+        "license": "Public domain",
+        "author": "Jon Sullivan"
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "iso3": "EGY",
+  "name": "Egypt",
+  "source": "wikidata",
+  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "inventions": [
+    {
+      "name": "plumbing",
+      "inventors": [
+        "Egyptians"
+      ],
+      "year": 1840,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Creativ%20plumbing%20-%20drain%20maze.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Creativ%20plumbing%20-%20drain%20maze.png",
+        "license": "CC BY-SA 4.0",
+        "author": "KaiKemmann"
+      }
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "iso3": "JPN",
+  "name": "Japan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Tokyo Haneda International Airport",
+      "iata": "HND",
+      "municipality": "Tokyo",
+      "large": true,
+      "passengers": 87406105
+    },
+    {
+      "name": "Narita International Airport",
+      "iata": "NRT",
+      "municipality": "Narita",
+      "large": true,
+      "passengers": 44344739
+    },
+    {
+      "name": "Kansai International Airport",
+      "iata": "KIX",
+      "municipality": "Osaka",
+      "large": true,
+      "passengers": 31807820
+    },
+    {
+      "name": "Fukuoka Airport",
+      "iata": "FUK",
+      "municipality": "Fukuoka",
+      "large": true,
+      "passengers": 26755262
+    },
+    {
+      "name": "New Chitose Airport",
+      "iata": "CTS",
+      "municipality": "Sapporo",
+      "large": true,
+      "passengers": 24599263
+    },
+    {
+      "name": "Naha International Airport",
+      "iata": "OKA",
+      "municipality": "Naha",
+      "large": true,
+      "passengers": 21761828
+    },
+    {
+      "name": "Osaka Itami International Airport",
+      "iata": "ITM",
+      "municipality": "Osaka",
+      "large": true,
+      "passengers": 19316582
+    },
+    {
+      "name": "Chubu Centrair International Airport",
+      "iata": "NGO",
+      "municipality": "Tokoname",
+      "large": true,
+      "passengers": 13460149
+    },
+    {
+      "name": "Nagoya Airport / JASDF Komaki Air Base",
+      "iata": "NKM",
+      "municipality": "Nagoya",
+      "large": false,
+      "passengers": 10889003
+    },
+    {
+      "name": "Kagoshima Airport",
+      "iata": "KOJ",
+      "municipality": "Kagoshima",
+      "large": true,
+      "passengers": 6261349
+    },
+    {
+      "name": "Sendai Airport",
+      "iata": "SDJ",
+      "municipality": "Natori",
+      "large": true,
+      "passengers": 3855387
+    },
+    {
+      "name": "Kobe Airport",
+      "iata": "UKB",
+      "municipality": "Kobe",
+      "large": true,
+      "passengers": 3576121
+    },
+    {
+      "name": "Kumamoto Airport",
+      "iata": "KMJ",
+      "municipality": "Kumamoto",
+      "large": true,
+      "passengers": 3544043
+    },
+    {
+      "name": "Hiroshima Airport",
+      "iata": "HIJ",
+      "municipality": "Hiroshima",
+      "large": true,
+      "passengers": 3439088
+    },
+    {
+      "name": "Miyazaki Airport",
+      "iata": "KMI",
+      "municipality": "Miyazaki",
+      "large": true,
+      "passengers": 3410361
+    },
+    {
+      "name": "Nagasaki Airport",
+      "iata": "NGS",
+      "municipality": "Nagasaki",
+      "large": true,
+      "passengers": 3360170
+    },
+    {
+      "name": "Matsuyama Airport",
+      "iata": "MYJ",
+      "municipality": "Matsuyama",
+      "large": true,
+      "passengers": 3152419
+    },
+    {
+      "name": "Komatsu Airport / JASDF Komatsu Air Base",
+      "iata": "KMQ",
+      "municipality": "Kanazawa",
+      "large": true,
+      "passengers": 2644936
+    },
+    {
+      "name": "New Ishigaki Airport",
+      "iata": "ISG",
+      "municipality": "Ishigaki",
+      "large": false,
+      "passengers": 2640784
+    },
+    {
+      "name": "Hakodate Airport",
+      "iata": "HKD",
+      "municipality": "Hakodate",
+      "large": true,
+      "passengers": 2432822
+    }
+  ]
+}

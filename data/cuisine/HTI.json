@@ -1,0 +1,35 @@
+{
+  "iso3": "HTI",
+  "name": "Haiti",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "soup joumou",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Soup%20joumou.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Soup%20joumou.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Lëa-Kim Châteauneuf"
+      }
+    },
+    {
+      "name": "mud cookie",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Haitian%20Dirt%20Biscuits.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Haitian%20Dirt%20Biscuits.jpg",
+        "license": "CC BY 2.0",
+        "author": "Feed My Starving Children (FMSC) https://www.flickr.com/photos/fmsc/"
+      }
+    },
+    {
+      "name": "griot",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Griot%20ha%C3%AFtien%20%2842675563925%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Griot%20ha%C3%AFtien%20%2842675563925%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Lëa-Kim Châteauneuf"
+      }
+    }
+  ]
+}

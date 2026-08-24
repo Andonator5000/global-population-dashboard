@@ -1,0 +1,17 @@
+{
+  "iso3": "JOR",
+  "name": "Jordan",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "galayet bandora",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D9%82%D9%84%D8%A7%D9%8A%D8%A9%20%D8%A8%D9%86%D8%AF%D9%88%D8%B1%D8%A9.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D9%82%D9%84%D8%A7%D9%8A%D8%A9%20%D8%A8%D9%86%D8%AF%D9%88%D8%B1%D8%A9.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Rania al-Bahara"
+      }
+    }
+  ]
+}

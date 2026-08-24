@@ -1,0 +1,80 @@
+{
+  "iso3": "VNM",
+  "name": "Vietnam",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Bun cha",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%BAn%20ch%E1%BA%A3%20H%C3%A0ng%20M%C3%A0nh.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:B%C3%BAn%20ch%E1%BA%A3%20H%C3%A0ng%20M%C3%A0nh.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Larry"
+      }
+    },
+    {
+      "name": "bánh chưng",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banh%20chung%20vuong.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Banh%20chung%20vuong.jpg",
+        "license": "Public domain",
+        "author": "vi:user:Viethavvh"
+      }
+    },
+    {
+      "name": "gỏi cuốn",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Summer%20roll.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Summer%20roll.jpg",
+        "license": "CC BY 2.0",
+        "author": null
+      }
+    },
+    {
+      "name": "bánh bao",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banhbao.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Banhbao.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Sue Le"
+      }
+    },
+    {
+      "name": "bánh",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh%20b%C3%A8o%2C%20b%E1%BB%99t%20l%E1%BB%8Dc%2C%20nem%20chua.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:B%C3%A1nh%20b%C3%A8o%2C%20b%E1%BB%99t%20l%E1%BB%8Dc%2C%20nem%20chua.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Thang Nguyen from Nottingham, United Kingdom"
+      }
+    },
+    {
+      "name": "bánh tét",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banh%20tet.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Banh%20tet.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "viviandnguyen_"
+      }
+    },
+    {
+      "name": "chả cá Lã Vọng",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha%20ca%20La%20Vong.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cha%20ca%20La%20Vong.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "tuhang"
+      }
+    },
+    {
+      "name": "Hủ tiếu",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/H%E1%BB%A7%20ti%E1%BA%BFu.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:H%E1%BB%A7%20ti%E1%BA%BFu.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Baoothersks"
+      }
+    }
+  ]
+}

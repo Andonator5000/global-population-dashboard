@@ -1,0 +1,141 @@
+{
+  "iso3": "PAK",
+  "name": "Pakistan",
+  "source": "ourairports_wikidata",
+  "note": "Large airports plus medium airports with scheduled service (OurAirports), ranked by annual passengers where Wikidata records them; airports without a passenger figure follow, largest class first. Passenger figures are the latest recorded and their reference years vary.",
+  "airports": [
+    {
+      "name": "Jinnah International Airport",
+      "iata": "KHI",
+      "municipality": "Karachi",
+      "large": true,
+      "passengers": 7267582
+    },
+    {
+      "name": "Allama Iqbal International Airport",
+      "iata": "LHE",
+      "municipality": "Lahore",
+      "large": true,
+      "passengers": 4490182
+    },
+    {
+      "name": "Skardu International Airport",
+      "iata": "KDU",
+      "municipality": "Skardu",
+      "large": true,
+      "passengers": 638572
+    },
+    {
+      "name": "Bacha Khan International Airport",
+      "iata": "PEW",
+      "municipality": "Peshawar",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Faisalabad International Airport",
+      "iata": "LYP",
+      "municipality": "Faisalabad",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Islamabad International Airport",
+      "iata": "ISB",
+      "municipality": "Attock",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Multan International Airport",
+      "iata": "MUX",
+      "municipality": "Multan",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "New Gwadar International Airport",
+      "iata": "GWD",
+      "municipality": "Gurandani",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Quetta International Airport",
+      "iata": "UET",
+      "municipality": "Quetta",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Sialkot International Airport",
+      "iata": "SKT",
+      "municipality": "Sialkot",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Turbat International Airport",
+      "iata": "TUK",
+      "municipality": "Turbat",
+      "large": true,
+      "passengers": null
+    },
+    {
+      "name": "Bahawalpur Airport",
+      "iata": "BHV",
+      "municipality": "Bahawalpur",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Begum Nusrat Bhutto International Airport Sukkur",
+      "iata": "SKZ",
+      "municipality": "Sukkur",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Chitral Airport",
+      "iata": "CJL",
+      "municipality": "Chitral",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Dera Ghazi Khan Airport",
+      "iata": "DEA",
+      "municipality": "Dera Ghazi Khan",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Gilgit Airport",
+      "iata": "GIL",
+      "municipality": "Gilgit",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Shaheed Benazirabad Airport",
+      "iata": "WNS",
+      "municipality": "Nawabashah",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Shaikh Zaid Airport",
+      "iata": "RYK",
+      "municipality": "Rahim Yar Khan",
+      "large": false,
+      "passengers": null
+    },
+    {
+      "name": "Zhob Airport",
+      "iata": "PZH",
+      "municipality": "Fort Sandeman",
+      "large": false,
+      "passengers": null
+    }
+  ]
+}

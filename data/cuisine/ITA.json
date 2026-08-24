@@ -1,0 +1,80 @@
+{
+  "iso3": "ITA",
+  "name": "Italy",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "lasagna",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Meaty%20Lasagna%208of8%20%288736299782%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Meaty%20Lasagna%208of8%20%288736299782%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Breville USA"
+      }
+    },
+    {
+      "name": "salami",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Salami%20aka.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Salami%20aka.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "André Karwath aka Aka"
+      }
+    },
+    {
+      "name": "Pizza Margherita",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Margherita%20Originale.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Margherita%20Originale.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Mario56"
+      }
+    },
+    {
+      "name": "ossobuco",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ossobuco.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ossobuco.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Mogens Engelund"
+      }
+    },
+    {
+      "name": "panini",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Italiano%20sandwich%2001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Italiano%20sandwich%2001.jpg",
+        "license": "CC BY 2.0",
+        "author": "cherrylet"
+      }
+    },
+    {
+      "name": "amatriciana sauce",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bucatini%20amatriciana%20Roma%202019.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bucatini%20amatriciana%20Roma%202019.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Blackcat"
+      }
+    },
+    {
+      "name": "Aperol",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aperol%20003%202026%2008%2007.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aperol%20003%202026%2008%2007.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Friedrich Haag"
+      }
+    },
+    {
+      "name": "cacio e pepe",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cacio%20e%20pepe.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cacio%20e%20pepe.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Popo le Chien"
+      }
+    }
+  ]
+}

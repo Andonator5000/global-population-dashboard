@@ -1,0 +1,53 @@
+{
+  "iso3": "PER",
+  "name": "Peru",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Lomo saltado",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lomo-saltado-perudelights.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lomo-saltado-perudelights.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "WikiHes"
+      }
+    },
+    {
+      "name": "Papa a la Hancaina",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papa%20huancaina.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Papa%20huancaina.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "The original uploader was Letincelle at English Wikipedia."
+      }
+    },
+    {
+      "name": "Kola Inglesa",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kola%20Inglesa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kola%20Inglesa.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "sandyshoes from Chicago"
+      }
+    },
+    {
+      "name": "Olluquito",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Olluquitos.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Olluquitos.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Miguel Alan Córdova Silva"
+      }
+    },
+    {
+      "name": "butifarra",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Un%20Sandwicsito%20pues%21.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Un%20Sandwicsito%20pues%21.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Luis Tamayo from Dallas, Texas, USA, USA"
+      }
+    }
+  ]
+}

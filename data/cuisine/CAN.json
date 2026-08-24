@@ -1,0 +1,62 @@
+{
+  "iso3": "CAN",
+  "name": "Canada",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Hawaiian pizza",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hawaiian%20pizza%201.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hawaiian%20pizza%201.jpg",
+        "license": "CC BY 2.0",
+        "author": "@joefoodie from USA"
+      }
+    },
+    {
+      "name": "Dasani",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Purified%20tap%20water.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Purified%20tap%20water.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": null
+      }
+    },
+    {
+      "name": "Nanaimo bar",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nanaimo%20bar.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nanaimo%20bar.JPG",
+        "license": "CC BY 2.5",
+        "author": "Stephanie Spencer"
+      }
+    },
+    {
+      "name": "sushi pizza",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sushi%20pizza%20%281%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sushi%20pizza%20%281%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Quinn Dombrowski from Berkeley, USA"
+      }
+    },
+    {
+      "name": "Garlic fingers",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Garlic%20Fingers.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Garlic%20Fingers.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Simon Laroche"
+      }
+    },
+    {
+      "name": "Montreal-style smoked meat",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schwartz%20smoked%20meat%20montreal.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Schwartz%20smoked%20meat%20montreal.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "chensiyuan"
+      }
+    }
+  ]
+}
