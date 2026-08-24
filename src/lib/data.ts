@@ -3,11 +3,17 @@ import { useEffect, useState } from 'react'
 import { DATA_BASE_URL } from '../config'
 import type {
   BiomeFile,
+  CapitalsFile,
+  ClimateFile,
   CountryIndicators,
   CountryOwid,
   CountryPyramid,
   CountrySeries,
   CountryTopology,
+  CurrencyImagesFile,
+  DeathPenaltyFile,
+  DebtFile,
+  EducationFile,
   Entity,
   FactbookRecord,
   GdpSummary,
@@ -18,6 +24,9 @@ import type {
   MarkerFile,
   PopulationSummary,
   PopulationTimeline,
+  PressFreedomFile,
+  SubdivisionsFile,
+  UnodcPrisonsFile,
 } from '../types'
 
 /**
@@ -204,3 +213,38 @@ export const useCountryFactbook = (iso3: string | undefined) =>
 
 export const useCountryOwid = (iso3: string | undefined) =>
   useOptionalArtifact<CountryOwid>(iso3 ? `owid/by-country/${iso3}.json` : null)
+
+// ---- 2026-08-23 batch: new committed artifacts ----------------------------
+// All whole-world files (not per-country) except subdivisions, which follows
+// the on-demand per-country pattern because a US page does not need Brazil's
+// states. Each is optional: a country absent from the file renders the
+// explicit "not available" state.
+
+export const usePressFreedom = (): AsyncState<PressFreedomFile> =>
+  useArtifact<PressFreedomFile>('freedom/press-freedom.json')
+
+export const useUnodcPrisons = (): AsyncState<UnodcPrisonsFile> =>
+  useArtifact<UnodcPrisonsFile>('crime/unodc-prisons.json')
+
+export const useDeathPenalty = (): AsyncState<DeathPenaltyFile> =>
+  useArtifact<DeathPenaltyFile>('crime/death-penalty.json')
+
+export const useEducationExtras = (): AsyncState<EducationFile> =>
+  useArtifact<EducationFile>('education/education.json')
+
+export const useDebt = (): AsyncState<DebtFile> =>
+  useArtifact<DebtFile>('economy/debt.json')
+
+export const useCurrencyImages = (): AsyncState<CurrencyImagesFile> =>
+  useArtifact<CurrencyImagesFile>('economy/currency-images.json')
+
+export const useClimate = (): AsyncState<ClimateFile> =>
+  useArtifact<ClimateFile>('climate/climate.json')
+
+export const useCapitals = (): AsyncState<CapitalsFile> =>
+  useArtifact<CapitalsFile>('climate/capitals.json')
+
+export const useSubdivisions = (iso3: string | undefined) =>
+  useOptionalArtifact<SubdivisionsFile>(
+    iso3 ? `subdivisions/${iso3}.json` : null,
+  )

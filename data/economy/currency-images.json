@@ -1,0 +1,1185 @@
+{
+  "source": "wikidata_commons",
+  "note": "Representative image per ISO 4217 currency (Wikidata P18, plus editorial overrides). Not guaranteed to be the smallest or the current banknote series -- some currencies are represented by a coin or a historical note, and several countries' modern notes are copyrighted and absent from Commons entirely.",
+  "currencies": {
+    "203": {
+      "name": "Czech koruna",
+      "file": "Czk- coins and banknotes.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Czk-%20coins%20and%20banknotes.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Czk-%20coins%20and%20banknotes.JPG",
+      "license": "Public domain",
+      "author": "Erictorres-2002",
+      "curated": false
+    },
+    "AED": {
+      "name": "United Arab Emirates dirham",
+      "file": "UAE Dirham Symbol.svg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/UAE%20Dirham%20Symbol.svg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:UAE%20Dirham%20Symbol.svg",
+      "license": "CC0",
+      "author": "ARABCREATOR7",
+      "curated": false
+    },
+    "AFN": {
+      "name": "afghani",
+      "file": "Afghānestān paper money.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Afgh%C4%81nest%C4%81n%20paper%20money.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Afgh%C4%81nest%C4%81n%20paper%20money.JPG",
+      "license": "CC BY-SA 4.0",
+      "author": "Indiana jo",
+      "curated": false
+    },
+    "ALL": {
+      "name": "Albanian lek",
+      "file": "Albania-5000lek-voor.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Albania-5000lek-voor.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Albania-5000lek-voor.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Subash05102001",
+      "curated": false
+    },
+    "AMD": {
+      "name": "Armenian dram",
+      "file": "100,000 Armenian dram - 2009 (obverse).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100%2C000%20Armenian%20dram%20-%202009%20%28obverse%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100%2C000%20Armenian%20dram%20-%202009%20%28obverse%29.jpg",
+      "license": "Public domain",
+      "author": "Central Bank of Armenia",
+      "curated": false
+    },
+    "AUD": {
+      "name": "Australian dollar",
+      "file": "Australian $1 - original series - obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Australian%20%241%20-%20original%20series%20-%20obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Australian%20%241%20-%20original%20series%20-%20obverse.jpg",
+      "license": "Public domain",
+      "author": "Reserve Bank of Australia",
+      "curated": false
+    },
+    "AZN": {
+      "name": "Azerbaijani manat",
+      "file": "5 manat - 2020 - obv.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/5%20manat%20-%202020%20-%20obv.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:5%20manat%20-%202020%20-%20obv.jpg",
+      "license": "Public domain",
+      "author": "Azərbaycan Mərkəzi Bankı",
+      "curated": false
+    },
+    "BAM": {
+      "name": "convertible mark",
+      "file": "Konvertibilne marke vertikalno.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Konvertibilne%20marke%20vertikalno.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Konvertibilne%20marke%20vertikalno.png",
+      "license": "Public domain",
+      "author": "Central Bank of Bosnia and Herzegovina",
+      "curated": false
+    },
+    "BBD": {
+      "name": "Barbadian dollar",
+      "file": "A Barbadian 100 Dollar bill with various Barbadian coins on it.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Barbadian%20100%20Dollar%20bill%20with%20various%20Barbadian%20coins%20on%20it.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:A%20Barbadian%20100%20Dollar%20bill%20with%20various%20Barbadian%20coins%20on%20it.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Gemini.skywalker",
+      "curated": false
+    },
+    "BDT": {
+      "name": "Bangladeshi taka",
+      "file": "Imagesbanknotes.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Imagesbanknotes.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Imagesbanknotes.jpg",
+      "license": "CC0",
+      "author": "The security printing corporation",
+      "curated": false
+    },
+    "BHD": {
+      "name": "Bahraini dinar",
+      "file": "Бахрейн 1 р.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%91%D0%B0%D1%85%D1%80%D0%B5%D0%B9%D0%BD%201%20%D1%80.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%85%D1%80%D0%B5%D0%B9%D0%BD%201%20%D1%80.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "ValeewIldar",
+      "curated": false
+    },
+    "BIF": {
+      "name": "Burundian franc",
+      "file": "Burundi 10Franc Front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Burundi%2010Franc%20Front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Burundi%2010Franc%20Front.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Samadolfo",
+      "curated": false
+    },
+    "BMD": {
+      "name": "Bermudian dollar",
+      "file": "Bermudaanse 2 dollar note.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bermudaanse%202%20dollar%20note.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Bermudaanse%202%20dollar%20note.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Arne van der zande",
+      "curated": false
+    },
+    "BOB": {
+      "name": "boliviano",
+      "file": "Bolivianos moneda.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bolivianos%20moneda.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Bolivianos%20moneda.png",
+      "license": "CC BY-SA 3.0",
+      "author": "No machine-readable author provided. Bolivian assumed (based on copyright claims).",
+      "curated": false
+    },
+    "BRL": {
+      "name": "Brazilian real",
+      "file": "Novas cedulas real thumb11-450x309.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Novas%20cedulas%20real%20thumb11-450x309.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Novas%20cedulas%20real%20thumb11-450x309.jpg",
+      "license": "Public domain",
+      "author": "Sandro",
+      "curated": false
+    },
+    "BSD": {
+      "name": "Bahamian dollar",
+      "file": "BHS001.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BHS001.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:BHS001.JPG",
+      "license": "Public domain",
+      "author": null,
+      "curated": false
+    },
+    "BTN": {
+      "name": "ngultrum",
+      "file": "10 Ngultrum Vorderseite.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/10%20Ngultrum%20Vorderseite.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:10%20Ngultrum%20Vorderseite.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Antho0603",
+      "curated": false
+    },
+    "BYN": {
+      "name": "Belarusian ruble",
+      "file": "1 ruble Belarus 2009 reverse.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1%20ruble%20Belarus%202009%20reverse.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1%20ruble%20Belarus%202009%20reverse.png",
+      "license": "Public domain",
+      "author": "Национальный банк Республики Беларусь",
+      "curated": false
+    },
+    "BZD": {
+      "name": "Belize dollar",
+      "file": "Bel i.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bel%20i.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Bel%20i.jpg",
+      "license": "Public domain",
+      "author": "Szabó Mátyás (Egrian)",
+      "curated": false
+    },
+    "CAD": {
+      "name": "Canadian dollar",
+      "file": "CAD 4 dollar bill.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CAD%204%20dollar%20bill.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:CAD%204%20dollar%20bill.jpg",
+      "license": "Public domain",
+      "author": "User: Bob Bolton",
+      "curated": false
+    },
+    "CDF": {
+      "name": "Congolese franc",
+      "file": "Congo 5F-2.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Congo%205F-2.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Congo%205F-2.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Петров Эдуард",
+      "curated": false
+    },
+    "CHF": {
+      "name": "Swiss franc",
+      "file": "1SwissFranc2001.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1SwissFranc2001.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1SwissFranc2001.jpg",
+      "license": "Public domain",
+      "author": "Scan by Zumbo",
+      "curated": false
+    },
+    "CLP": {
+      "name": "Chilean peso",
+      "file": "Peso Chile Vs.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Peso%20Chile%20Vs.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Peso%20Chile%20Vs.JPG",
+      "license": "CC BY-SA 3.0 de",
+      "author": "Hermann Junghans",
+      "curated": false
+    },
+    "COP": {
+      "name": "Colombian peso",
+      "file": "Bundle Colombia.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bundle%20Colombia.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Bundle%20Colombia.jpg",
+      "license": "CC BY 4.0",
+      "author": "Aamber90k",
+      "curated": false
+    },
+    "CRC": {
+      "name": "Costa Rican colón",
+      "file": "Costa Rica banknotes 10 Colones banknote of 1967..JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Costa%20Rica%20banknotes%2010%20Colones%20banknote%20of%201967..JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Costa%20Rica%20banknotes%2010%20Colones%20banknote%20of%201967..JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Banco Central de Costa Rica, Thomas De La Rue &amp; Company, Limited, London.",
+      "curated": false
+    },
+    "CUP": {
+      "name": "Cuban peso",
+      "file": "Coin-collection-sekekala.com-030116-246.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coin-collection-sekekala.com-030116-246.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Coin-collection-sekekala.com-030116-246.jpg",
+      "license": "Public domain",
+      "author": "Government of Cuba",
+      "curated": false
+    },
+    "CVE": {
+      "name": "Cape Verdean escudo",
+      "file": "200escudos-2014-300px-front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/200escudos-2014-300px-front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:200escudos-2014-300px-front.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Salguide",
+      "curated": false
+    },
+    "CZK": {
+      "name": "Czech koruna",
+      "file": "Czk- coins and banknotes.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Czk-%20coins%20and%20banknotes.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Czk-%20coins%20and%20banknotes.JPG",
+      "license": "Public domain",
+      "author": "Erictorres-2002",
+      "curated": false
+    },
+    "DJF": {
+      "name": "Djiboutian franc",
+      "file": "5 djiboutian francs.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/5%20djiboutian%20francs.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:5%20djiboutian%20francs.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Raf24",
+      "curated": false
+    },
+    "DOP": {
+      "name": "Dominican peso",
+      "file": "1 centavo 1969.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1%20centavo%201969.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1%20centavo%201969.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Guillermo2312",
+      "curated": false
+    },
+    "EGP": {
+      "name": "Egyptian pound",
+      "file": "EGP 100 Pounds 2009 (Front).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/EGP%20100%20Pounds%202009%20%28Front%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:EGP%20100%20Pounds%202009%20%28Front%29.jpg",
+      "license": "Public domain",
+      "author": "M. Abuhelwa (talk).\n\nOriginal uploader was Mabuhelwa at en.wikipedia",
+      "curated": false
+    },
+    "ERN": {
+      "name": "nakfa",
+      "file": "Banknotes of Eritrea 02.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banknotes%20of%20Eritrea%2002.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Banknotes%20of%20Eritrea%2002.JPG",
+      "license": "CC BY-SA 4.0",
+      "author": "Nicholas Gemini",
+      "curated": false
+    },
+    "ETB": {
+      "name": "bir",
+      "file": "Ethiopia, 25 centimes 1944, Selassie I.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ethiopia%2C%2025%20centimes%201944%2C%20Selassie%20I.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ethiopia%2C%2025%20centimes%201944%2C%20Selassie%20I.jpg",
+      "license": "CC0",
+      "author": "Петров Эдуард",
+      "curated": false
+    },
+    "EUR": {
+      "name": "Q4916",
+      "file": "Euro Series Banknotes (2019) - centered.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Euro%20Series%20Banknotes%20%282019%29%20-%20centered.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Euro%20Series%20Banknotes%20%282019%29%20-%20centered.png",
+      "license": "ECB decisions ECB/2003/4 and ECB/2003/5",
+      "author": "The RedBurn",
+      "curated": false
+    },
+    "FKP": {
+      "name": "Falkland Islands pound",
+      "file": "Falkland Islands £X coins reverse (cropped).png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Falkland%20Islands%20%C2%A3X%20coins%20reverse%20%28cropped%29.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Falkland%20Islands%20%C2%A3X%20coins%20reverse%20%28cropped%29.png",
+      "license": "CC0",
+      "author": "Unknown authorUnknown author",
+      "curated": false
+    },
+    "GBP": {
+      "name": "pound sterling",
+      "file": "One Pound 1983 obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/One%20Pound%201983%20obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:One%20Pound%201983%20obverse.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Abxbay",
+      "curated": false
+    },
+    "GEL": {
+      "name": "Georgian lari",
+      "file": "100 lari. Georgia, 2016 a.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100%20lari.%20Georgia%2C%202016%20a.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100%20lari.%20Georgia%2C%202016%20a.png",
+      "license": "Public domain",
+      "author": "საქართველოს ეროვნული ბანკი (National Bank of Georgia)",
+      "curated": false
+    },
+    "GHS": {
+      "name": "Ghana cedi",
+      "file": "50 Ghana Cedis.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/50%20Ghana%20Cedis.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:50%20Ghana%20Cedis.jpg",
+      "license": "Public domain",
+      "author": "Bank of Ghana, http://www.ghanacedi.gov.gh",
+      "curated": false
+    },
+    "GIP": {
+      "name": "Gibraltar pound",
+      "file": "1842 Gibraltar Half Quart.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1842%20Gibraltar%20Half%20Quart.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1842%20Gibraltar%20Half%20Quart.jpg",
+      "license": "Public domain",
+      "author": "The original uploader was RedCoat10 at English Wikipedia.\n\n(Original text: No illustrator given.)",
+      "curated": false
+    },
+    "GMD": {
+      "name": "dalasi",
+      "file": "Gambia-billet-monedes.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gambia-billet-monedes.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Gambia-billet-monedes.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": null,
+      "curated": false
+    },
+    "GNF": {
+      "name": "Guinean franc",
+      "file": "100Francs Guineen.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100Francs%20Guineen.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100Francs%20Guineen.jpg",
+      "license": "Public domain",
+      "author": "Banque Central de la République Guinée",
+      "curated": false
+    },
+    "GTQ": {
+      "name": "quetzal",
+      "file": "Ein Quetzal.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ein%20Quetzal.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ein%20Quetzal.jpg",
+      "license": "Attribution",
+      "author": "--Earwig 20:15, 20. Sep. 2009 (CEST)",
+      "curated": false
+    },
+    "HKD": {
+      "name": "Hong Kong dollar",
+      "file": "HK Museum of History One Dollar Banknote Legal Tender 1935 Printed in UK.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HK%20Museum%20of%20History%20One%20Dollar%20Banknote%20Legal%20Tender%201935%20Printed%20in%20UK.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:HK%20Museum%20of%20History%20One%20Dollar%20Banknote%20Legal%20Tender%201935%20Printed%20in%20UK.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "LungSanLau",
+      "curated": false
+    },
+    "HNL": {
+      "name": "Honduran lempira",
+      "file": "HND002.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HND002.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:HND002.JPG",
+      "license": "Public domain",
+      "author": null,
+      "curated": false
+    },
+    "HTG": {
+      "name": "gourde",
+      "file": "250G.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/250G.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:250G.png",
+      "license": "Public domain",
+      "author": "Uncredited",
+      "curated": false
+    },
+    "HUF": {
+      "name": "forint",
+      "file": "Uj forintok.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Uj%20forintok.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Uj%20forintok.png",
+      "license": "Hungarian banknote",
+      "author": "Magyar Nemzeti Bank",
+      "curated": false
+    },
+    "IDR": {
+      "name": "rupiah",
+      "file": "Indonesian Rupiah (IDR) banknotes.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Indonesian%20Rupiah%20%28IDR%29%20banknotes.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Indonesian%20Rupiah%20%28IDR%29%20banknotes.png",
+      "license": "Public domain",
+      "author": "Bank Indonesia",
+      "curated": false
+    },
+    "ILS": {
+      "name": "new shekel",
+      "file": "השטרות החדשים של ישראל.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D7%94%D7%A9%D7%98%D7%A8%D7%95%D7%AA%20%D7%94%D7%97%D7%93%D7%A9%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D7%94%D7%A9%D7%98%D7%A8%D7%95%D7%AA%20%D7%94%D7%97%D7%93%D7%A9%D7%99%D7%9D%20%D7%A9%D7%9C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C.jpg",
+      "license": "Use permitted by the BOI, Currency Department",
+      "author": "Yuvalf123",
+      "curated": false
+    },
+    "INR": {
+      "name": "Indian rupee",
+      "file": "Banknote of india.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banknote%20of%20india.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Banknote%20of%20india.jpg",
+      "license": "GODL-India",
+      "author": "Reserve bank of India, Adithya pergade (talk) 16:06, 25 June 2018 (UTC)",
+      "curated": false
+    },
+    "IRR": {
+      "name": "Iranian rial",
+      "file": "500 IRR 1981 Type 2 Back.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/500%20IRR%201981%20Type%202%20Back.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:500%20IRR%201981%20Type%202%20Back.jpg",
+      "license": "Public domain",
+      "author": "National Bank of Iran",
+      "curated": false
+    },
+    "ISK": {
+      "name": "Icelandic króna",
+      "file": "Iceland 500 Kronur banknote of 1928.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Iceland%20500%20Kronur%20banknote%20of%201928.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Iceland%20500%20Kronur%20banknote%20of%201928.jpg",
+      "license": "Public domain",
+      "author": "Central Bank of Iceland, Bradbury Wilkinson, New Malden.",
+      "curated": false
+    },
+    "JMD": {
+      "name": "Jamaican dollar",
+      "file": "Jamaica 100 Dollar observe.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jamaica%20100%20Dollar%20observe.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Jamaica%20100%20Dollar%20observe.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Nippon 725",
+      "curated": false
+    },
+    "JOD": {
+      "name": "Jordanian dinar",
+      "file": "10 Piaster Jordanien.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/10%20Piaster%20Jordanien.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:10%20Piaster%20Jordanien.png",
+      "license": "Public domain",
+      "author": "Zabelino",
+      "curated": false
+    },
+    "JPY": {
+      "name": "yen",
+      "file": "JPY coin3.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/JPY%20coin3.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:JPY%20coin3.png",
+      "license": "CC BY-SA 3.0",
+      "author": "original photo is uploaded by User:Misogi. Sorted horizontally by was_a_bee.",
+      "curated": false
+    },
+    "KES": {
+      "name": "Kenyan shilling",
+      "file": "Kenyan 20 Shilling Note.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kenyan%2020%20Shilling%20Note.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kenyan%2020%20Shilling%20Note.jpg",
+      "license": "CC BY 2.5",
+      "author": "No machine-readable author provided. Rob Cowie assumed (based on copyright claims).",
+      "curated": false
+    },
+    "KGS": {
+      "name": "Kyrgyz som",
+      "file": "KG 2008 CuZn 1tyiyn a.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KG%202008%20CuZn%201tyiyn%20a.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:KG%202008%20CuZn%201tyiyn%20a.png",
+      "license": "Public domain",
+      "author": "National Bank of the Kyrgyz Republic",
+      "curated": false
+    },
+    "KHR": {
+      "name": "riel",
+      "file": "Cambodia 2002 50r obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodia%202002%2050r%20obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cambodia%202002%2050r%20obverse.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Samadolfo",
+      "curated": false
+    },
+    "KPW": {
+      "name": "North Korean won",
+      "file": "1959-5won-2.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1959-5won-2.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1959-5won-2.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Russian howitzer",
+      "curated": false
+    },
+    "KRW": {
+      "name": "won",
+      "file": "Currency South Korea.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Currency%20South%20Korea.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Currency%20South%20Korea.jpg",
+      "license": "South Korean currency",
+      "author": "The Bank of Korea한국은행",
+      "curated": false
+    },
+    "KZT": {
+      "name": "Kazakhstani tenge",
+      "file": "Kazah tenge.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kazah%20tenge.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kazah%20tenge.jpg",
+      "license": "Public domain",
+      "author": "No machine-readable author provided. Burumbator assumed (based on copyright claims).",
+      "curated": false
+    },
+    "LAK": {
+      "name": "Lao kip",
+      "file": "100000 Laotian kip in 2011 Obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100000%20Laotian%20kip%20in%202011%20Obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100000%20Laotian%20kip%20in%202011%20Obverse.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Panxang rachavong 3000",
+      "curated": false
+    },
+    "LBP": {
+      "name": "Lebanese pound",
+      "file": "500 Lebanese Pounds - Minted 2009 - Backside.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/500%20Lebanese%20Pounds%20-%20Minted%202009%20-%20Backside.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:500%20Lebanese%20Pounds%20-%20Minted%202009%20-%20Backside.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "STJMLCC",
+      "curated": false
+    },
+    "LKR": {
+      "name": "Sri Lankan rupee",
+      "file": "Sri Lanka 5 rupie Cricket World Cup 03.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri%20Lanka%205%20rupie%20Cricket%20World%20Cup%2003.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sri%20Lanka%205%20rupie%20Cricket%20World%20Cup%2003.png",
+      "license": "CC BY-SA 3.0",
+      "author": "Nicholas Gemini",
+      "curated": false
+    },
+    "LRD": {
+      "name": "Liberian dollar",
+      "file": "Lib5$.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lib5%24.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Lib5%24.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Own",
+      "curated": false
+    },
+    "LSL": {
+      "name": "loti",
+      "file": "Lesotho 200 maloti averse 2015.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lesotho%20200%20maloti%20averse%202015.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Lesotho%20200%20maloti%20averse%202015.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Szajci",
+      "curated": false
+    },
+    "LYD": {
+      "name": "Libyan dinar",
+      "file": "New series of Libyan Dinar Banknotes 2011- present.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/New%20series%20of%20Libyan%20Dinar%20Banknotes%202011-%20present.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:New%20series%20of%20Libyan%20Dinar%20Banknotes%202011-%20present.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Waves of Editing",
+      "curated": false
+    },
+    "MAD": {
+      "name": "Moroccan dirham",
+      "file": "Dirhams marocains (MAD).jpeg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dirhams%20marocains%20%28MAD%29.jpeg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Dirhams%20marocains%20%28MAD%29.jpeg",
+      "license": "CC0",
+      "author": "Freepius",
+      "curated": false
+    },
+    "MDL": {
+      "name": "Moldovan leu",
+      "file": "10 LEI COIN 2018.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/10%20LEI%20COIN%202018.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:10%20LEI%20COIN%202018.png",
+      "license": "Public domain",
+      "author": "self-edited",
+      "curated": false
+    },
+    "MGA": {
+      "name": "ariary",
+      "file": "Madagascar-500francs 100ariary-banknote029.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Madagascar-500francs%20100ariary-banknote029.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Madagascar-500francs%20100ariary-banknote029.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Tonton Bernardo",
+      "curated": false
+    },
+    "MMK": {
+      "name": "kyat",
+      "file": "Mya 75k l.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mya%2075k%20l.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Mya%2075k%20l.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Hynek Moravec",
+      "curated": false
+    },
+    "MNT": {
+      "name": "Mongolian tögrög",
+      "file": "MN 1994 200tugrik a.gif",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MN%201994%20200tugrik%20a.gif?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:MN%201994%20200tugrik%20a.gif",
+      "license": "CC BY-SA 4.0",
+      "author": "Банк Монголии",
+      "curated": false
+    },
+    "MOP": {
+      "name": "Macanese pataca",
+      "file": "1 Pataca 2007 Macao.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1%20Pataca%202007%20Macao.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1%20Pataca%202007%20Macao.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "J. Patrick Fischer",
+      "curated": false
+    },
+    "MRU": {
+      "name": "Mauritanian ouguiya",
+      "file": "فئه العمله 74.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D9%81%D8%A6%D9%87%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D9%87%2074.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D9%81%D8%A6%D9%87%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%D9%87%2074.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "أشرف اليماني",
+      "curated": false
+    },
+    "MUR": {
+      "name": "Mauritian rupee",
+      "file": "Mauritius banknote.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mauritius%20banknote.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Mauritius%20banknote.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Rosa del desierto",
+      "curated": false
+    },
+    "MVR": {
+      "name": "Maldivian rufiyaa",
+      "file": "Maldives 20 Rufiyaa Polymer Banknote 2015.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Maldives%2020%20Rufiyaa%20Polymer%20Banknote%202015.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Maldives%2020%20Rufiyaa%20Polymer%20Banknote%202015.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Ajkuz",
+      "curated": false
+    },
+    "MWK": {
+      "name": "Malawian kwacha",
+      "file": "MWK2000v.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MWK2000v.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:MWK2000v.jpg",
+      "license": "CC0",
+      "author": "Ahandrich",
+      "curated": false
+    },
+    "MXN": {
+      "name": "peso",
+      "file": "Counterfeit Pesos (San Ysidro) (8652511989).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Counterfeit%20Pesos%20%28San%20Ysidro%29%20%288652511989%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Counterfeit%20Pesos%20%28San%20Ysidro%29%20%288652511989%29.jpg",
+      "license": "Public domain",
+      "author": "U.S. Customs and Border Protection",
+      "curated": false
+    },
+    "MYR": {
+      "name": "Malaysian ringgit",
+      "file": "10 sen de Malaisie 3.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/10%20sen%20de%20Malaisie%203.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:10%20sen%20de%20Malaisie%203.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Chatsam",
+      "curated": false
+    },
+    "NAD": {
+      "name": "Namibian dollar",
+      "file": "Coins NAD 2005.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coins%20NAD%202005.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Coins%20NAD%202005.jpg",
+      "license": "CC BY-SA 2.5",
+      "author": "Thomas Langen",
+      "curated": false
+    },
+    "NGN": {
+      "name": "naira",
+      "file": "Naira symbol.svg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Naira%20symbol.svg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Naira%20symbol.svg",
+      "license": "CC BY-SA 4.0",
+      "author": "1234qwer1234qwer4",
+      "curated": false
+    },
+    "NIO": {
+      "name": "Nicaraguan córdoba",
+      "file": "Billete de 1000 cordobas.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Billete%20de%201000%20cordobas.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Billete%20de%201000%20cordobas.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Burro2312",
+      "curated": false
+    },
+    "NOK": {
+      "name": "Norwegian krone",
+      "file": "NOK 1 1942.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/NOK%201%201942.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:NOK%201%201942.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "KS-U92",
+      "curated": false
+    },
+    "NPR": {
+      "name": "Nepalese rupee",
+      "file": "One nepalese rupee coin.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/One%20nepalese%20rupee%20coin.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:One%20nepalese%20rupee%20coin.jpg",
+      "license": "Public domain",
+      "author": "Mike Frysinger, vapier",
+      "curated": false
+    },
+    "NZD": {
+      "name": "New Zealand dollar",
+      "file": "Unused proposal for New Zealand Currency (9243555441).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Unused%20proposal%20for%20New%20Zealand%20Currency%20%289243555441%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Unused%20proposal%20for%20New%20Zealand%20Currency%20%289243555441%29.jpg",
+      "license": "CC BY-SA 2.0",
+      "author": "Archives New Zealand from New Zealand",
+      "curated": false
+    },
+    "OMR": {
+      "name": "Omani rial",
+      "file": "OMR 0,100.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/OMR%200%2C100.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:OMR%200%2C100.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Kontrollstellekundl",
+      "curated": false
+    },
+    "PAB": {
+      "name": "Panamanian balboa",
+      "file": "1-balboa-panamc3a1-2011.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1-balboa-panamc3a1-2011.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1-balboa-panamc3a1-2011.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "Selan 26",
+      "curated": false
+    },
+    "PEN": {
+      "name": "Nuevo sol",
+      "file": "S1 1995 Raul Haya del la Torre Anverso.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/S1%201995%20Raul%20Haya%20del%20la%20Torre%20Anverso.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:S1%201995%20Raul%20Haya%20del%20la%20Torre%20Anverso.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "BennoBu",
+      "curated": false
+    },
+    "PGK": {
+      "name": "kina",
+      "file": "Banknotes and Coins of Papua New Guinea 2673.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banknotes%20and%20Coins%20of%20Papua%20New%20Guinea%202673.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Banknotes%20and%20Coins%20of%20Papua%20New%20Guinea%202673.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "Bin im Garten",
+      "curated": false
+    },
+    "PHP": {
+      "name": "Philippine peso",
+      "file": "Php bill 100 front UP Centennial.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Php%20bill%20100%20front%20UP%20Centennial.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Php%20bill%20100%20front%20UP%20Centennial.jpg",
+      "license": "Public domain",
+      "author": "Government work",
+      "curated": false
+    },
+    "PKR": {
+      "name": "Pakistani rupee",
+      "file": "Pakistani rupee sign.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistani%20rupee%20sign.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Pakistani%20rupee%20sign.png",
+      "license": "CC BY-SA 3.0",
+      "author": "Muslimnity",
+      "curated": false
+    },
+    "PYG": {
+      "name": "Paraguayan guaraní",
+      "file": "La Trinité-sur-Mer 56 Front de mer 2013.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/La%20Trinit%C3%A9-sur-Mer%2056%20Front%20de%20mer%202013.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:La%20Trinit%C3%A9-sur-Mer%2056%20Front%20de%20mer%202013.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "JLPC",
+      "curated": false
+    },
+    "QAR": {
+      "name": "Qatari riyal",
+      "file": "QAT001.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/QAT001.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:QAT001.JPG",
+      "license": "Public domain",
+      "author": "No machine-readable author provided. B25es assumed (based on copyright claims).",
+      "curated": false
+    },
+    "RON": {
+      "name": "Romanian Leu",
+      "file": "500 lei. Romania, 2005 a.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/500%20lei.%20Romania%2C%202005%20a.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:500%20lei.%20Romania%2C%202005%20a.jpg",
+      "license": "Public domain",
+      "author": "en:User:ES Vic",
+      "curated": false
+    },
+    "RSD": {
+      "name": "Serbian dinar",
+      "file": "1000RSD front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1000RSD%20front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1000RSD%20front.jpg",
+      "license": "Public domain",
+      "author": null,
+      "curated": false
+    },
+    "RUB": {
+      "name": "Russian ruble",
+      "file": "Current Russian ruble (banknotes).png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Current%20Russian%20ruble%20%28banknotes%29.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Current%20Russian%20ruble%20%28banknotes%29.png",
+      "license": "Public domain",
+      "author": "Центральный банк Российской Федерации",
+      "curated": false
+    },
+    "RWF": {
+      "name": "Rwandan franc",
+      "file": "100frw.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100frw.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100frw.png",
+      "license": "CC0",
+      "author": "User:Hayko~commonswiki photo, User:Leokand cropping, adjusting",
+      "curated": false
+    },
+    "SAR": {
+      "name": "Saudi riyal",
+      "file": "50 Halala, Rückseite (1972).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/50%20Halala%2C%20R%C3%BCckseite%20%281972%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:50%20Halala%2C%20R%C3%BCckseite%20%281972%29.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Samiclaus",
+      "curated": false
+    },
+    "SCR": {
+      "name": "Seychellois rupee",
+      "file": "Seychellois rupee.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Seychellois%20rupee.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Seychellois%20rupee.jpg",
+      "license": "CC BY 4.0",
+      "author": "Seychelles News Agency",
+      "curated": false
+    },
+    "SDG": {
+      "name": "Sudanese pound",
+      "file": "SUDAN.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SUDAN.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:SUDAN.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Hayko",
+      "curated": false
+    },
+    "SEK": {
+      "name": "Swedish krona",
+      "file": "Femkronan 1976 fram high.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Femkronan%201976%20fram%20high.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Femkronan%201976%20fram%20high.jpg",
+      "license": "Public domain",
+      "author": "Riksbanken",
+      "curated": false
+    },
+    "SLE": {
+      "name": "leone",
+      "file": "500Leone.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/500Leone.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:500Leone.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Own",
+      "curated": false
+    },
+    "SOS": {
+      "name": "Somali shilling",
+      "file": "1000ShS.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1000ShS.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1000ShS.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Own",
+      "curated": false
+    },
+    "SRD": {
+      "name": "Surinamese dollar",
+      "file": "20surinamedollar.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20surinamedollar.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:20surinamedollar.jpg",
+      "license": "CC0",
+      "author": "Brokopondo",
+      "curated": false
+    },
+    "SSP": {
+      "name": "South Sudanese pound",
+      "file": "2011 South Sudan one pound.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2011%20South%20Sudan%20one%20pound.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:2011%20South%20Sudan%20one%20pound.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Hispalois",
+      "curated": false
+    },
+    "STN": {
+      "name": "São Tomé and Príncipe dobra",
+      "file": "Coins Dobra Sao Tome.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coins%20Dobra%20Sao%20Tome.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Coins%20Dobra%20Sao%20Tome.png",
+      "license": "CC BY-SA 3.0",
+      "author": "Unknown authorUnknown author",
+      "curated": false
+    },
+    "SZL": {
+      "name": "lilangeni",
+      "file": "Coins-of-swaziland.JPG",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coins-of-swaziland.JPG?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Coins-of-swaziland.JPG",
+      "license": "CC BY-SA 3.0",
+      "author": "The original uploader was SDC at English Wikipedia.",
+      "curated": false
+    },
+    "THB": {
+      "name": "baht",
+      "file": "Series 8 Banknote Siam.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Series%208%20Banknote%20Siam.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Series%208%20Banknote%20Siam.png",
+      "license": "Public domain",
+      "author": "Siam Banknote",
+      "curated": false
+    },
+    "TJS": {
+      "name": "Tajikistani somoni",
+      "file": "5 Dirams TJ 2001.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/5%20Dirams%20TJ%202001.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:5%20Dirams%20TJ%202001.png",
+      "license": "Public domain",
+      "author": "National Bank of Tajikistan",
+      "curated": false
+    },
+    "TMT": {
+      "name": "Turkmenistan new manat",
+      "file": "100 manat. Türkmenistan, 2009 a.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100%20manat.%20T%C3%BCrkmenistan%2C%202009%20a.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100%20manat.%20T%C3%BCrkmenistan%2C%202009%20a.jpg",
+      "license": "Public domain",
+      "author": "Central Bank of Turkmenistan",
+      "curated": false
+    },
+    "TND": {
+      "name": "Tunisian dinar",
+      "file": "Tunisian dinars and millimes.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tunisian%20dinars%20and%20millimes.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Tunisian%20dinars%20and%20millimes.jpg",
+      "license": "CC BY-SA 2.0",
+      "author": "金娜 Kim S",
+      "curated": false
+    },
+    "TOP": {
+      "name": "Tongan paʻanga",
+      "file": "1-Paʻanga-Schein Vorderseite.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1-Pa%CA%BBanga-Schein%20Vorderseite.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1-Pa%CA%BBanga-Schein%20Vorderseite.jpg",
+      "license": "Copyrighted free use",
+      "author": null,
+      "curated": false
+    },
+    "TRY": {
+      "name": "Turkish lira",
+      "file": "Lira coin.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lira%20coin.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Lira%20coin.png",
+      "license": "Public domain",
+      "author": "Sa-se",
+      "curated": false
+    },
+    "TTD": {
+      "name": "Trinidad and Tobago dollar",
+      "file": "Trinidad and Tobago Dollar Gallery.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Trinidad%20and%20Tobago%20Dollar%20Gallery.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Trinidad%20and%20Tobago%20Dollar%20Gallery.jpg",
+      "license": "Public domain",
+      "author": "Central Bank of Trinidad and Tobago",
+      "curated": false
+    },
+    "TZS": {
+      "name": "Tanzanian shilling",
+      "file": "10,000 Tanzanian shillings banknote, 2011 serie, obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/10%2C000%20Tanzanian%20shillings%20banknote%2C%202011%20serie%2C%20obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:10%2C000%20Tanzanian%20shillings%20banknote%2C%202011%20serie%2C%20obverse.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Plouf250",
+      "curated": false
+    },
+    "UAH": {
+      "name": "hryvnia",
+      "file": "200-uah-2020-1.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/200-uah-2020-1.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:200-uah-2020-1.png",
+      "license": "Public domain",
+      "author": "Національний Банк України(The National Bank of Ukraine)",
+      "curated": false
+    },
+    "UGX": {
+      "name": "Ugandan shilling",
+      "file": "Aftermath of the rain to the festival goers in Uganda.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aftermath%20of%20the%20rain%20to%20the%20festival%20goers%20in%20Uganda.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Aftermath%20of%20the%20rain%20to%20the%20festival%20goers%20in%20Uganda.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Jameswasswa",
+      "curated": false
+    },
+    "USD": {
+      "name": "United States dollar",
+      "file": "USDnotes.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/USDnotes.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:USDnotes.png",
+      "license": "Public domain",
+      "author": "derivative work: Hidro (talk)\nUSDnotes.jpg: The original uploader was Andyhi18 at English Wikipedia.",
+      "curated": false
+    },
+    "UZS": {
+      "name": "Uzbek som",
+      "file": "200 000 sum new front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/200%20000%20sum%20new%20front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:200%20000%20sum%20new%20front.jpg",
+      "license": "Public domain",
+      "author": "Central Bank of the Republic of Uzbekistan",
+      "curated": false
+    },
+    "VND": {
+      "name": "Vietnamese đồng",
+      "file": "North vietnam dong 1946.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/North%20vietnam%20dong%201946.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:North%20vietnam%20dong%201946.jpg",
+      "license": "Public domain",
+      "author": "This media: Art Hanoi ; Subject work:  ? ;",
+      "curated": false
+    },
+    "WST": {
+      "name": "Samoan tālā",
+      "file": "Samoa 100 Tala observe.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Samoa%20100%20Tala%20observe.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Samoa%20100%20Tala%20observe.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Nippon 725",
+      "curated": false
+    },
+    "XAF": {
+      "name": "Central African CFA franc",
+      "file": "Africacoins.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Africacoins.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Africacoins.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Hayko",
+      "curated": false
+    },
+    "XCD": {
+      "name": "Eastern Caribbean dollar",
+      "file": "East caribbean states eccb 5 dollars 2019.00.00 b240 pnl ad 000000 f.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/East%20caribbean%20states%20eccb%205%20dollars%202019.00.00%20b240%20pnl%20ad%20000000%20f.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:East%20caribbean%20states%20eccb%205%20dollars%202019.00.00%20b240%20pnl%20ad%20000000%20f.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Subash05102001",
+      "curated": false
+    },
+    "XCG": {
+      "name": "Caribbean guilder",
+      "file": "20 gliders 2025.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20%20gliders%202025.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:20%20gliders%202025.jpg",
+      "license": "CC0",
+      "author": "Sattirico",
+      "curated": false
+    },
+    "XOF": {
+      "name": "West African CFA franc",
+      "file": "BCEAOFranc.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BCEAOFranc.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:BCEAOFranc.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Hayko",
+      "curated": false
+    },
+    "XPF": {
+      "name": "CFP Franc",
+      "file": "CFP 1000 recto.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CFP%201000%20recto.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:CFP%201000%20recto.jpg",
+      "license": "Public domain",
+      "author": "Institut d'émission d'Outre-mer",
+      "curated": false
+    },
+    "YER": {
+      "name": "Yemeni Rial",
+      "file": "1000YR1.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/1000YR1.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:1000YR1.jpg",
+      "license": "CC0",
+      "author": "محمد صالح",
+      "curated": false
+    },
+    "ZAR": {
+      "name": "rand",
+      "file": "South Africa-Money-Old01.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/South%20Africa-Money-Old01.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:South%20Africa-Money-Old01.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": "NJR ZA",
+      "curated": false
+    },
+    "ZWD": {
+      "name": "Zimbabwean dollar",
+      "file": "Zimbabwe $1 2007 Obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zimbabwe%20%241%202007%20Obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Zimbabwe%20%241%202007%20Obverse.jpg",
+      "license": "Public domain",
+      "author": null,
+      "curated": false
+    },
+    "ZWL": {
+      "name": "Zimbabwean dollar",
+      "file": "Zimbabwe $1 2007 Obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zimbabwe%20%241%202007%20Obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Zimbabwe%20%241%202007%20Obverse.jpg",
+      "license": "Public domain",
+      "author": null,
+      "curated": false
+    },
+    "ZWN": {
+      "name": "Zimbabwean dollar",
+      "file": "Zimbabwe $1 2007 Obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zimbabwe%20%241%202007%20Obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Zimbabwe%20%241%202007%20Obverse.jpg",
+      "license": "Public domain",
+      "author": null,
+      "curated": false
+    },
+    "ZWR": {
+      "name": "Zimbabwean dollar",
+      "file": "Zimbabwe $1 2007 Obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zimbabwe%20%241%202007%20Obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Zimbabwe%20%241%202007%20Obverse.jpg",
+      "license": "Public domain",
+      "author": null,
+      "curated": false
+    }
+  }
+}

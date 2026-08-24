@@ -26,3 +26,8 @@ pyogrio==0.13.0
 # TopoJSON handling and progress output
 topojson==1.10
 tqdm==4.70.0
+
+# xlsx (UNODC prisons workbook) and HTML table parsing (Wikipedia capital
+# punishment tables via pandas.read_html). Added 2026-08-23.
+openpyxl==3.1.5
+lxml==5.3.0

@@ -46,6 +46,16 @@ NULL_ID_ASSIGNMENTS: dict[str, str] = {
     "Somaliland": "SOM",
 }
 
+# Display names for polygons that carry a parent entity's data (2026-08-23).
+# Keying Somaliland's polygon to SOM is a DATA ruling; naming it "Somalia" was
+# a labelling bug -- the map drew two shapes called Somalia (and two called
+# Cyprus). Each polygon keeps its own name and is hatched as contested;
+# clicking it still opens the parent entity's page, whose data covers it.
+POLYGON_LABEL_OVERRIDES: dict[str, str] = {
+    "N. Cyprus": "Northern Cyprus",
+    "Somaliland": "Somaliland",
+}
+
 
 # A split only happens when the containing part's measured area is this close
 # to the territory's published land area -- i.e. when the part IS the
@@ -242,12 +252,13 @@ def ingest(
             unresolved.append(f"{name!r} -> {iso3} not in registry")
             continue
 
+        label_override = POLYGON_LABEL_OVERRIDES.get(name)
         geometry["id"] = iso3
         geometry["properties"] = {
             "iso3": iso3,
-            "name": registry[iso3].name_common,
+            "name": label_override or registry[iso3].name_common,
             "continent": registry[iso3].continent,
-            "contested": registry[iso3].is_contested,
+            "contested": bool(label_override) or registry[iso3].is_contested,
         }
         assigned.setdefault(iso3, []).append(index)
 
@@ -332,7 +343,9 @@ def ingest(
             f"Re-keyed from UN M49 to ISO3. Kosovo, Northern Cyprus and "
             f"Somaliland carry no M49 code and are assigned explicitly "
             f"(Kosovo to XKX; the other two to Cyprus and Somalia, matching "
-            f"how UN WPP and the World Bank report that territory). "
+            f"how UN WPP and the World Bank report that territory, though "
+            f"each keeps its own name on the map and is hatched as "
+            f"contested). "
             f"{len(markers)} populated entities are too small to appear at "
             f"110m and are emitted as point markers instead."
         ),

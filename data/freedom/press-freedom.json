@@ -1,0 +1,720 @@
+{
+  "source": "rsf",
+  "year": 2026,
+  "scale": "0-100, higher means more press freedom (methodology in use since 2022; not comparable with pre-2022 editions).",
+  "rankedCountries": 178,
+  "entities": {
+    "FIN": {
+      "score": 86.22,
+      "rank": 6
+    },
+    "EST": {
+      "score": 88.54,
+      "rank": 3
+    },
+    "NLD": {
+      "score": 88.92,
+      "rank": 2
+    },
+    "SWE": {
+      "score": 87.61,
+      "rank": 5
+    },
+    "LTU": {
+      "score": 81.34,
+      "rank": 15
+    },
+    "DNK": {
+      "score": 88.47,
+      "rank": 4
+    },
+    "IRL": {
+      "score": 85.93,
+      "rank": 7
+    },
+    "PRT": {
+      "score": 83.71,
+      "rank": 10
+    },
+    "CHE": {
+      "score": 84.83,
+      "rank": 8
+    },
+    "CZE": {
+      "score": 83.01,
+      "rank": 11
+    },
+    "NOR": {
+      "score": 92.72,
+      "rank": 1
+    },
+    "LIE": {
+      "score": 82.62,
+      "rank": 13
+    },
+    "LUX": {
+      "score": 84.14,
+      "rank": 9
+    },
+    "DEU": {
+      "score": 82.17,
+      "rank": 14
+    },
+    "LVA": {
+      "score": 81.0,
+      "rank": 17
+    },
+    "NZL": {
+      "score": 77.38,
+      "rank": 22
+    },
+    "ISL": {
+      "score": 82.77,
+      "rank": 12
+    },
+    "BEL": {
+      "score": 81.17,
+      "rank": 16
+    },
+    "TTO": {
+      "score": 74.7,
+      "rank": 32
+    },
+    "GBR": {
+      "score": 79.45,
+      "rank": 18
+    },
+    "CAN": {
+      "score": 78.76,
+      "rank": 20
+    },
+    "AUT": {
+      "score": 79.43,
+      "rank": 19
+    },
+    "ESP": {
+      "score": 75.42,
+      "rank": 29
+    },
+    "TWN": {
+      "score": 75.44,
+      "rank": 28
+    },
+    "FRA": {
+      "score": 76.68,
+      "rank": 25
+    },
+    "JAM": {
+      "score": 75.87,
+      "rank": 26
+    },
+    "ZAF": {
+      "score": 77.95,
+      "rank": 21
+    },
+    "NAM": {
+      "score": 76.97,
+      "rank": 23
+    },
+    "AUS": {
+      "score": 74.58,
+      "rank": 33
+    },
+    "CPV": {
+      "score": 71.98,
+      "rank": 40
+    },
+    "POL": {
+      "score": 75.52,
+      "rank": 27
+    },
+    "SUR": {
+      "score": 73.2,
+      "rank": 34
+    },
+    "SVN": {
+      "score": 72.88,
+      "rank": 36
+    },
+    "ARM": {
+      "score": 67.02,
+      "rank": 50
+    },
+    "MDA": {
+      "score": 74.77,
+      "rank": 31
+    },
+    "CRI": {
+      "score": 72.35,
+      "rank": 38
+    },
+    "FJI": {
+      "score": 76.76,
+      "rank": 24
+    },
+    "SVK": {
+      "score": 72.71,
+      "rank": 37
+    },
+    "TLS": {
+      "score": 75.29,
+      "rank": 30
+    },
+    "LBY": {
+      "score": 40.34,
+      "rank": 138
+    },
+    "GAB": {
+      "score": 70.57,
+      "rank": 43
+    },
+    "MKD": {
+      "score": 69.49,
+      "rank": 45
+    },
+    "DOM": {
+      "score": 69.73,
+      "rank": 44
+    },
+    "WSM": {
+      "score": 64.53,
+      "rank": 59
+    },
+    "SYC": {
+      "score": 73.04,
+      "rank": 35
+    },
+    "TON": {
+      "score": 66.62,
+      "rank": 51
+    },
+    "BLZ": {
+      "score": 61.66,
+      "rank": 66
+    },
+    "ITA": {
+      "score": 65.16,
+      "rank": 56
+    },
+    "MRT": {
+      "score": 63.36,
+      "rank": 61
+    },
+    "MUS": {
+      "score": 70.92,
+      "rank": 42
+    },
+    "GHA": {
+      "score": 72.2,
+      "rank": 39
+    },
+    "PAN": {
+      "score": 62.14,
+      "rank": 65
+    },
+    "LBR": {
+      "score": 64.54,
+      "rank": 58
+    },
+    "ROU": {
+      "score": 67.71,
+      "rank": 49
+    },
+    "SLE": {
+      "score": 57.06,
+      "rank": 79
+    },
+    "USA": {
+      "score": 62.61,
+      "rank": 64
+    },
+    "GMB": {
+      "score": 69.42,
+      "rank": 46
+    },
+    "URY": {
+      "score": 68.72,
+      "rank": 48
+    },
+    "HRV": {
+      "score": 66.31,
+      "rank": 53
+    },
+    "QAT": {
+      "score": 59.79,
+      "rank": 75
+    },
+    "UKR": {
+      "score": 66.1,
+      "rank": 55
+    },
+    "BRA": {
+      "score": 66.37,
+      "rank": 52
+    },
+    "CIV": {
+      "score": 66.27,
+      "rank": 54
+    },
+    "AND": {
+      "score": 63.91,
+      "rank": 60
+    },
+    "JPN": {
+      "score": 62.9,
+      "rank": 62
+    },
+    "MLT": {
+      "score": 61.44,
+      "rank": 67
+    },
+    "HUN": {
+      "score": 59.85,
+      "rank": 74
+    },
+    "CHL": {
+      "score": 60.84,
+      "rank": 70
+    },
+    "BGR": {
+      "score": 60.28,
+      "rank": 71
+    },
+    "COG": {
+      "score": 61.21,
+      "rank": 68
+    },
+    "CAF": {
+      "score": 56.73,
+      "rank": 81
+    },
+    "GUY": {
+      "score": 59.58,
+      "rank": 76
+    },
+    "SEN": {
+      "score": 58.11,
+      "rank": 78
+    },
+    "COM": {
+      "score": 60.23,
+      "rank": 72
+    },
+    "MWI": {
+      "score": 60.96,
+      "rank": 69
+    },
+    "CYP": {
+      "score": 56.91,
+      "rank": 80
+    },
+    "PNG": {
+      "score": 60.11,
+      "rank": 73
+    },
+    "OMN": {
+      "score": 43.67,
+      "rank": 127
+    },
+    "ALB": {
+      "score": 56.52,
+      "rank": 83
+    },
+    "BWA": {
+      "score": 62.89,
+      "rank": 63
+    },
+    "ZMB": {
+      "score": 58.58,
+      "rank": 77
+    },
+    "NER": {
+      "score": 46.02,
+      "rank": 120
+    },
+    "PRY": {
+      "score": 54.67,
+      "rank": 88
+    },
+    "MNE": {
+      "score": 71.8,
+      "rank": 41
+    },
+    "BIH": {
+      "score": 54.29,
+      "rank": 90
+    },
+    "ARG": {
+      "score": 52.44,
+      "rank": 98
+    },
+    "MYS": {
+      "score": 52.73,
+      "rank": 95
+    },
+    "GRC": {
+      "score": 55.05,
+      "rank": 86
+    },
+    "NPL": {
+      "score": 54.8,
+      "rank": 87
+    },
+    "BEN": {
+      "score": 47.39,
+      "rank": 113
+    },
+    "BOL": {
+      "score": 54.25,
+      "rank": 91
+    },
+    "ECU": {
+      "score": 44.37,
+      "rank": 125
+    },
+    "LAO": {
+      "score": 32.54,
+      "rank": 154
+    },
+    "KWT": {
+      "score": 40.44,
+      "rank": 136
+    },
+    "BRN": {
+      "score": 52.58,
+      "rank": 96
+    },
+    "SWZ": {
+      "score": 51.94,
+      "rank": 101
+    },
+    "XKX": {
+      "score": 55.89,
+      "rank": 84
+    },
+    "AGO": {
+      "score": 48.82,
+      "rank": 109
+    },
+    "MOZ": {
+      "score": 52.27,
+      "rank": 99
+    },
+    "MNG": {
+      "score": 55.79,
+      "rank": 85
+    },
+    "GIN": {
+      "score": 48.45,
+      "rank": 111
+    },
+    "MDV": {
+      "score": 49.23,
+      "rank": 108
+    },
+    "BFA": {
+      "score": 48.52,
+      "rank": 110
+    },
+    "ZWE": {
+      "score": 44.37,
+      "rank": 124
+    },
+    "LSO": {
+      "score": 54.37,
+      "rank": 89
+    },
+    "TCD": {
+      "score": 53.9,
+      "rank": 93
+    },
+    "SSD": {
+      "score": 46.16,
+      "rank": 118
+    },
+    "GNB": {
+      "score": 51.99,
+      "rank": 100
+    },
+    "HTI": {
+      "score": 50.32,
+      "rank": 107
+    },
+    "ISR": {
+      "score": 46.46,
+      "rank": 116
+    },
+    "MDG": {
+      "score": 50.95,
+      "rank": 103
+    },
+    "GEO": {
+      "score": 40.77,
+      "rank": 135
+    },
+    "COL": {
+      "score": 51.66,
+      "rank": 102
+    },
+    "PHL": {
+      "score": 46.79,
+      "rank": 114
+    },
+    "KEN": {
+      "score": 50.51,
+      "rank": 106
+    },
+    "GNQ": {
+      "score": 52.79,
+      "rank": 94
+    },
+    "MLI": {
+      "score": 45.63,
+      "rank": 121
+    },
+    "MAR": {
+      "score": 50.55,
+      "rank": 105
+    },
+    "TGO": {
+      "score": 52.56,
+      "rank": 97
+    },
+    "NGA": {
+      "score": 48.11,
+      "rank": 112
+    },
+    "KOR": {
+      "score": 69.12,
+      "rank": 47
+    },
+    "MEX": {
+      "score": 45.23,
+      "rank": 122
+    },
+    "BDI": {
+      "score": 46.14,
+      "rank": 119
+    },
+    "DZA": {
+      "score": 37.38,
+      "rank": 145
+    },
+    "IDN": {
+      "score": 43.02,
+      "rank": 129
+    },
+    "SRB": {
+      "score": 50.79,
+      "rank": 104
+    },
+    "TUN": {
+      "score": 40.43,
+      "rank": 137
+    },
+    "PER": {
+      "score": 37.86,
+      "rank": 144
+    },
+    "CMR": {
+      "score": 40.88,
+      "rank": 133
+    },
+    "LBN": {
+      "score": 46.49,
+      "rank": 115
+    },
+    "COD": {
+      "score": 42.16,
+      "rank": 130
+    },
+    "BLR": {
+      "score": 27.72,
+      "rank": 165
+    },
+    "SLV": {
+      "score": 38.88,
+      "rank": 143
+    },
+    "SOM": {
+      "score": 43.84,
+      "rank": 126
+    },
+    "TJK": {
+      "score": 32.22,
+      "rank": 155
+    },
+    "GTM": {
+      "score": 43.21,
+      "rank": 128
+    },
+    "LKA": {
+      "score": 40.77,
+      "rank": 134
+    },
+    "HKG": {
+      "score": 39.49,
+      "rank": 140
+    },
+    "TZA": {
+      "score": 46.22,
+      "rank": 117
+    },
+    "HND": {
+      "score": 41.02,
+      "rank": 132
+    },
+    "UGA": {
+      "score": 41.98,
+      "rank": 131
+    },
+    "KGZ": {
+      "score": 35.06,
+      "rank": 146
+    },
+    "ETH": {
+      "score": 34.66,
+      "rank": 148
+    },
+    "RWA": {
+      "score": 39.58,
+      "rank": 139
+    },
+    "JOR": {
+      "score": 39.33,
+      "rank": 142
+    },
+    "UZB": {
+      "score": 34.95,
+      "rank": 147
+    },
+    "BGD": {
+      "score": 33.05,
+      "rank": 152
+    },
+    "AFG": {
+      "score": 19.51,
+      "rank": 175
+    },
+    "IND": {
+      "score": 31.96,
+      "rank": 157
+    },
+    "BTN": {
+      "score": 33.5,
+      "rank": 150
+    },
+    "THA": {
+      "score": 53.97,
+      "rank": 92
+    },
+    "YEM": {
+      "score": 27.89,
+      "rank": 164
+    },
+    "IRQ": {
+      "score": 28.85,
+      "rank": 162
+    },
+    "SDN": {
+      "score": 29.02,
+      "rank": 161
+    },
+    "BHR": {
+      "score": 24.84,
+      "rank": 170
+    },
+    "PAK": {
+      "score": 32.61,
+      "rank": 153
+    },
+    "TUR": {
+      "score": 27.94,
+      "rank": 163
+    },
+    "VEN": {
+      "score": 30.48,
+      "rank": 159
+    },
+    "KHM": {
+      "score": 33.28,
+      "rank": 151
+    },
+    "SAU": {
+      "score": 19.11,
+      "rank": 176
+    },
+    "PSE": {
+      "score": 32.09,
+      "rank": 156
+    },
+    "ARE": {
+      "score": 30.86,
+      "rank": 158
+    },
+    "CUB": {
+      "score": 29.22,
+      "rank": 160
+    },
+    "SGP": {
+      "score": 44.57,
+      "rank": 123
+    },
+    "AZE": {
+      "score": 23.95,
+      "rank": 171
+    },
+    "DJI": {
+      "score": 25.04,
+      "rank": 167
+    },
+    "MMR": {
+      "score": 26.38,
+      "rank": 166
+    },
+    "EGY": {
+      "score": 24.92,
+      "rank": 169
+    },
+    "RUS": {
+      "score": 23.15,
+      "rank": 172
+    },
+    "NIC": {
+      "score": 24.98,
+      "rank": 168
+    },
+    "SYR": {
+      "score": 39.44,
+      "rank": 141
+    },
+    "KAZ": {
+      "score": 34.41,
+      "rank": 149
+    },
+    "VNM": {
+      "score": 21.15,
+      "rank": 174
+    },
+    "IRN": {
+      "score": 17.45,
+      "rank": 177
+    },
+    "TKM": {
+      "score": 23.06,
+      "rank": 173
+    },
+    "CHN": {
+      "score": 13.85,
+      "rank": 178
+    },
+    "PRK": {
+      "score": 12.67,
+      "rank": 179
+    },
+    "ERI": {
+      "score": 10.24,
+      "rank": 180
+    }
+  }
+}

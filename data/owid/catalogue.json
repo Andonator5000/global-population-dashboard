@@ -87,6 +87,26 @@
       "citation": "Global Carbon Budget (2025); Population based on various sources (2024)",
       "subtitle": null,
       "latestYearAnywhere": 2024
+    },
+    "owid.wpb.prisonrate": {
+      "slug": "prison-population-rate",
+      "label": "Prison population rate",
+      "section": "crime",
+      "unit": "per_100k",
+      "kind": "number",
+      "citation": "Institute for Crime & Justice Policy Research (2026); Population based on various sources (2024)",
+      "subtitle": "Number of prisoners, including pre-trial and remand detainees, per 100,000 people.",
+      "latestYearAnywhere": 2026
+    },
+    "owid.wpb.occupancy": {
+      "slug": "prison-capacity",
+      "label": "Prison occupancy level",
+      "section": "crime",
+      "unit": "percent",
+      "kind": "number",
+      "citation": "Institute for Crime & Justice Policy Research (2026)",
+      "subtitle": "Occupancy level is measured relative to the country's stated official capacity. Values greater than 100% indicate that the number of prisoners exceeds the official capacity of prisons.",
+      "latestYearAnywhere": 2026
     }
   },
   "entityCoverage": {
@@ -97,7 +117,9 @@
     "owid.vdem.corruption": 175,
     "owid.vdem.ruleoflaw": 175,
     "owid.hanson.statecap": 165,
-    "owid.co2.percapita": 213
+    "owid.co2.percapita": 213,
+    "owid.wpb.prisonrate": 219,
+    "owid.wpb.occupancy": 202
   },
   "entityCount": 250
 }

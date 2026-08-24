@@ -46,6 +46,16 @@ import type {
   IndicatorSeries,
   OwidIndicatorSeries,
 } from '../types'
+import {
+  CrimeExtraTiles,
+  CurrencyImageFigure,
+  EducationExtraTiles,
+  LiveExchangeRateTile,
+  PressFreedomTile,
+  PublicDebtTiles,
+  SubdivisionsBody,
+  WeatherClimateBody,
+} from './CountryPageExtras'
 
 const WPP = 'UN World Population Prospects'
 const WB = 'World Bank World Development Indicators'
@@ -469,10 +479,15 @@ export function CountryPage() {
               format={(v) => v.toFixed(1)}
               note="Measures income inequality: 0 means every household earns the same; 100 means one household earns everything. Most countries fall between 25 (very equal) and 55 (very unequal)."
             />
-            <StatTile
-              label="Currency"
-              value={
-                entity?.currencies.length
+            {/* Presentation flipped from the other tiles on request
+                (2026-08-23): "Currency" is the display line and the unit
+                name(s) sit beneath it. */}
+            <div>
+              <div className="text-xl font-semibold tracking-tight">
+                Currency
+              </div>
+              <div className="mt-0.5 text-sm">
+                {entity?.currencies.length
                   ? entity.currencies
                       .map((c) =>
                         c.name
@@ -480,19 +495,25 @@ export function CountryPage() {
                           : c.code,
                       )
                       .join(' · ')
-                  : 'not available'
-              }
-              source="mledoze/countries"
-            />
+                  : 'not available'}
+              </div>
+              <div className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                mledoze/countries
+              </div>
+            </div>
             <IndicatorTile
               indicator={indicatorValue(indicators, 'PA.NUS.FCRF')}
               label="Exchange rate"
               format={(v) =>
-                `${new Intl.NumberFormat('en', { maximumSignificantDigits: 4 }).format(v)} per US$`
+                `${new Intl.NumberFormat('en', { maximumSignificantDigits: 4 }).format(v)} per US Dollar`
               }
               note="Official rate, annual period average — not a live market rate."
             />
+            <LiveExchangeRateTile currencies={entity?.currencies ?? []} />
+            {iso3 && <PublicDebtTiles iso3={iso3} />}
           </div>
+
+          <CurrencyImageFigure currencies={entity?.currencies ?? []} />
 
           <SectorComposition indicators={indicators} />
 
@@ -628,8 +649,49 @@ export function CountryPage() {
           )}
 
           <div>
-            <h3 className="text-sm font-medium">Education</h3>
-            <div className="mt-2 grid gap-4 sm:grid-cols-3">
+            <h3 className="text-sm font-medium">Ethnic Composition</h3>
+            <div className="mt-2 space-y-4">
+              <CompositionCaveat />
+              {factbook ? (
+                <CompositionBar
+                  title="Ethnic Groups"
+                  field={factbook.people.ethnicGroups}
+                  sourceName={FB}
+                />
+              ) : (
+                <Unavailable
+                  what="Ethnic composition"
+                  source={FB}
+                  reason="The Factbook has no entry for this entity."
+                />
+              )}
+            </div>
+          </div>
+        </Section>
+
+        {/* ----------------------------------------------- States/Provinces */}
+        <Section
+          id="subdivisions"
+          title="States/Provinces"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          {iso3 && <SubdivisionsBody iso3={iso3} />}
+        </Section>
+
+        {/* ------------------------------------------------------ Education */}
+        {/* Split out of Demographics and People 2026-08-23 (maintainer
+            request) so education can grow its own datasets. */}
+        <Section
+          id="education"
+          title="Education"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          <div>
+            <div className="grid gap-4 sm:grid-cols-3">
               <IndicatorTile
                 indicator={indicatorValue(indicators, 'SE.ADT.LITR.ZS')}
                 label="Adult literacy, total"
@@ -674,26 +736,7 @@ export function CountryPage() {
               />
             </div>
           </div>
-
-          <div>
-            <h3 className="text-sm font-medium">Ethnic Composition</h3>
-            <div className="mt-2 space-y-4">
-              <CompositionCaveat />
-              {factbook ? (
-                <CompositionBar
-                  title="Ethnic Groups"
-                  field={factbook.people.ethnicGroups}
-                  sourceName={FB}
-                />
-              ) : (
-                <Unavailable
-                  what="Ethnic composition"
-                  source={FB}
-                  reason="The Factbook has no entry for this entity."
-                />
-              )}
-            </div>
-          </div>
+          {iso3 && <EducationExtraTiles iso3={iso3} />}
         </Section>
 
         {/* ------------------------------------- Government and Stability */}
@@ -879,6 +922,29 @@ export function CountryPage() {
           )}
         </Section>
 
+        {/* --------------------------------------------- Weather and Climate */}
+        <Section
+          id="weather"
+          title="Weather and Climate"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          {iso3 && (
+            <WeatherClimateBody
+              iso3={iso3}
+              precipitation={
+                <IndicatorTile
+                  indicator={indicatorValue(indicators, 'AG.LND.PRCP.MM')}
+                  label="Average precipitation"
+                  format={(v) => `${new Intl.NumberFormat('en').format(Math.round(v))} mm/year`}
+                  note="Long-run climatological average over the country's land area."
+                />
+              }
+            />
+          )}
+        </Section>
+
         {/* -------------------------------- Technology and Infrastructure */}
         <Section
           id="technology"
@@ -925,11 +991,37 @@ export function CountryPage() {
               label="Armed forces personnel"
               format={(v) => new Intl.NumberFormat('en').format(Math.round(v))}
             />
+          </div>
+        </Section>
+
+        {/* -------------------------------------- Crime and Incarceration */}
+        {/* New section 2026-08-23 (maintainer request); intentional
+            homicides moved here from Security and Defense. */}
+        <Section
+          id="crime"
+          title="Crime and Incarceration"
+          accent={accent}
+          collapsible
+          defaultOpen={false}
+        >
+          <div className="grid gap-4 sm:grid-cols-3">
             <IndicatorTile
               indicator={indicatorValue(indicators, 'VC.IHR.PSRC.P5')}
               label="Intentional homicides"
               format={(v) => `${v.toFixed(1)} per 100,000`}
             />
+            <OwidTile
+              series={owidValue(owid, 'owid.wpb.prisonrate')}
+              label="Prison population rate"
+              format={(v) => `${v.toFixed(0)} per 100,000`}
+            />
+            <OwidTile
+              series={owidValue(owid, 'owid.wpb.occupancy')}
+              label="Prison occupancy"
+              format={(v) => `${v.toFixed(0)}% of official capacity`}
+              note="Above 100% means the system holds more people than it was built for."
+            />
+            {iso3 && <CrimeExtraTiles iso3={iso3} />}
           </div>
         </Section>
 
@@ -1115,6 +1207,7 @@ export function CountryPage() {
               format={(v) => v.toFixed(2)}
               note="Protection from state violations of physical integrity and civil liberties."
             />
+            {iso3 && <PressFreedomTile iso3={iso3} />}
             {regime?.available && regime.latest ? (
               <StatTile
                 label="Political regime"

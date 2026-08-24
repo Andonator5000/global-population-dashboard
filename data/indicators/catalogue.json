@@ -76,55 +76,55 @@
     },
     "SE.ADT.LITR.ZS": {
       "label": "Literacy rate, adult total (% 15+)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2024
     },
     "SE.ADT.LITR.MA.ZS": {
       "label": "Literacy rate, adult male (% 15+)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2024
     },
     "SE.ADT.LITR.FE.ZS": {
       "label": "Literacy rate, adult female (% 15+)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2024
     },
     "SE.XPD.TOTL.GD.ZS": {
       "label": "Government expenditure on education (% of GDP)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "SE.PRM.ENRR": {
       "label": "School enrollment, primary (% gross)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "SE.PRM.NENR": {
       "label": "School enrollment, primary (% net)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2019
     },
     "SE.SEC.ENRR": {
       "label": "School enrollment, secondary (% gross)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
     "SE.SEC.NENR": {
       "label": "School enrollment, secondary (% net)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2019
     },
     "SE.TER.ENRR": {
       "label": "School enrollment, tertiary (% gross)",
-      "section": "demographics",
+      "section": "education",
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
@@ -196,9 +196,15 @@
     },
     "VC.IHR.PSRC.P5": {
       "label": "Intentional homicides (per 100,000 people)",
-      "section": "security",
+      "section": "crime",
       "unit": "per_100k",
       "latestYearAnywhere": 2023
+    },
+    "AG.LND.PRCP.MM": {
+      "label": "Average precipitation in depth (mm per year)",
+      "section": "weather",
+      "unit": "mm_per_year",
+      "latestYearAnywhere": 2022
     },
     "SP.DYN.LE00.IN": {
       "label": "Life expectancy at birth (years)",
@@ -277,6 +283,7 @@
     "MS.MIL.XPND.GD.ZS": 164,
     "MS.MIL.TOTL.P1": 174,
     "VC.IHR.PSRC.P5": 195,
+    "AG.LND.PRCP.MM": 182,
     "SP.DYN.LE00.IN": 216,
     "SH.XPD.CHEX.GD.ZS": 193,
     "SH.DYN.MORT": 196,

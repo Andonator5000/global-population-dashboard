@@ -128,9 +128,10 @@ class Indicator(NamedTuple):
 
 
 # Grouped by the country-page section they serve. Section keys follow the
-# nine-section page layout introduced 2026-08-15: economy, demographics,
-# government, environment, technology, security, healthcare, culture, freedom
-# (education figures sit inside demographics; freedom is fed by OWID below).
+# page layout as of 2026-08-23: economy, demographics, education, government,
+# environment, technology, security, crime, healthcare, culture, freedom
+# (education and crime split out of demographics/security 2026-08-23;
+# freedom is fed by OWID below).
 # Codes verified live against the World Bank catalogue -- see run.py.
 WORLD_BANK_INDICATORS: tuple[Indicator, ...] = (
     # -- Economic Data -----------------------------------------------------
@@ -149,16 +150,17 @@ WORLD_BANK_INDICATORS: tuple[Indicator, ...] = (
     # FX, so the page shows this with its year rather than pretending to be a
     # currency converter.
     Indicator("PA.NUS.FCRF", "Official exchange rate (LCU per US$, period average)", "economy", "lcu_per_usd"),
-    # -- Demographics and People (incl. education) -------------------------
-    Indicator("SE.ADT.LITR.ZS", "Literacy rate, adult total (% 15+)", "demographics", "percent"),
-    Indicator("SE.ADT.LITR.MA.ZS", "Literacy rate, adult male (% 15+)", "demographics", "percent"),
-    Indicator("SE.ADT.LITR.FE.ZS", "Literacy rate, adult female (% 15+)", "demographics", "percent"),
-    Indicator("SE.XPD.TOTL.GD.ZS", "Government expenditure on education (% of GDP)", "demographics", "percent"),
-    Indicator("SE.PRM.ENRR", "School enrollment, primary (% gross)", "demographics", "percent"),
-    Indicator("SE.PRM.NENR", "School enrollment, primary (% net)", "demographics", "percent"),
-    Indicator("SE.SEC.ENRR", "School enrollment, secondary (% gross)", "demographics", "percent"),
-    Indicator("SE.SEC.NENR", "School enrollment, secondary (% net)", "demographics", "percent"),
-    Indicator("SE.TER.ENRR", "School enrollment, tertiary (% gross)", "demographics", "percent"),
+    # -- Education (split out of demographics 2026-08-23) ------------------
+    Indicator("SE.ADT.LITR.ZS", "Literacy rate, adult total (% 15+)", "education", "percent"),
+    Indicator("SE.ADT.LITR.MA.ZS", "Literacy rate, adult male (% 15+)", "education", "percent"),
+    Indicator("SE.ADT.LITR.FE.ZS", "Literacy rate, adult female (% 15+)", "education", "percent"),
+    Indicator("SE.XPD.TOTL.GD.ZS", "Government expenditure on education (% of GDP)", "education", "percent"),
+    Indicator("SE.PRM.ENRR", "School enrollment, primary (% gross)", "education", "percent"),
+    Indicator("SE.PRM.NENR", "School enrollment, primary (% net)", "education", "percent"),
+    Indicator("SE.SEC.ENRR", "School enrollment, secondary (% gross)", "education", "percent"),
+    Indicator("SE.SEC.NENR", "School enrollment, secondary (% net)", "education", "percent"),
+    Indicator("SE.TER.ENRR", "School enrollment, tertiary (% gross)", "education", "percent"),
+    # -- Demographics and People -------------------------------------------
     Indicator("SP.URB.TOTL.IN.ZS", "Urban population (% of total)", "demographics", "percent"),
     Indicator("EN.POP.DNST", "Population density (people per sq km of land)", "demographics", "per_sqkm"),
     # -- Environment and Geography -----------------------------------------
@@ -180,7 +182,13 @@ WORLD_BANK_INDICATORS: tuple[Indicator, ...] = (
     # -- Security and Defense ----------------------------------------------
     Indicator("MS.MIL.XPND.GD.ZS", "Military expenditure (% of GDP)", "security", "percent"),
     Indicator("MS.MIL.TOTL.P1", "Armed forces personnel, total", "security", "count"),
-    Indicator("VC.IHR.PSRC.P5", "Intentional homicides (per 100,000 people)", "security", "per_100k"),
+    # -- Crime and Incarceration (split out of security 2026-08-23) --------
+    Indicator("VC.IHR.PSRC.P5", "Intentional homicides (per 100,000 people)", "crime", "per_100k"),
+    # -- Weather and Climate -----------------------------------------------
+    # Long-run average precipitation. The World Bank stopped updating it after
+    # 2022, but it is a climatological average, not a weather reading -- an
+    # older vintage is still the right number to show.
+    Indicator("AG.LND.PRCP.MM", "Average precipitation in depth (mm per year)", "weather", "mm_per_year"),
     # -- Healthcare and Public Health --------------------------------------
     Indicator("SP.DYN.LE00.IN", "Life expectancy at birth (years)", "healthcare", "years"),
     Indicator("SH.XPD.CHEX.GD.ZS", "Current health expenditure (% of GDP)", "healthcare", "percent"),
@@ -340,6 +348,14 @@ OWID_INDICATORS: tuple[OwidIndicator, ...] = (
     OwidIndicator("co-emissions-per-capita", "owid.co2.percapita",
                   "CO₂ emissions per capita", "environment",
                   "t_per_person", "number"),
+    # -- Crime and Incarceration (added 2026-08-23) ------------------------
+    # Producer is the Institute for Crime & Justice Policy Research (the
+    # World Prison Brief compilers); WPB itself publishes no bulk endpoint,
+    # so OWID is the distribution channel, same doctrine as V-Dem above.
+    OwidIndicator("prison-population-rate", "owid.wpb.prisonrate",
+                  "Prison population rate", "crime", "per_100k", "number"),
+    OwidIndicator("prison-capacity", "owid.wpb.occupancy",
+                  "Prison occupancy level", "crime", "percent", "number"),
 )
 
 # Regimes of the World categories, as encoded in the political-regime series.
@@ -413,6 +429,159 @@ MAP_FILL_OKLCH = {
 # Bordering countries must differ by at least this much hue (degrees).
 MAP_HUE_MIN_SEPARATION_DEG = 12.0
 MAP_HUE_NUDGE_TOLERANCE_DEG = 18.0
+
+# --------------------------------------------------------------------------
+# RSF World Press Freedom Index  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# RSF publishes the full index as a semicolon-delimited CSV at a stable
+# year-keyed URL (verified live for 2024/2025/2026). Quirks, all verified:
+# windows-1252 encoding, decimal commas, ISO3 in the `ISO` column, 180
+# countries. A new edition lands around May, so the stage probes the current
+# year first and falls back. RSF's CDN rejects unfamiliar user agents, so
+# this source fetches with the browser UA (same ruling as UNESCO, §WHC).
+
+RSF_CSV_TEMPLATE = "https://rsf.org/sites/default/files/import_classement/{year}.csv"
+RSF_PROBE_YEARS_BACK = 3
+
+# --------------------------------------------------------------------------
+# UNODC prisons data  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# dataUNODC ships the full "prisons and prisoners" table as one keyless xlsx,
+# but the file URL carries a release-dated path (/files/2026-07/...) that
+# changes every update -- so the stage scrapes the CURRENT href from the
+# stable landing page rather than pinning a URL that will silently go stale.
+
+UNODC_PRISON_LANDING = "https://data.unodc.org/datareport/prison-held"
+UNODC_PRISON_XLSX_RE = r'href="([^"]*data_cts_prisons_and_prisoners\.xlsx)"'
+
+# --------------------------------------------------------------------------
+# Death penalty status (Wikipedia)  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# Amnesty International is the primary compiler but publishes only PDFs; no
+# keyless machine-readable source exists (checked OWID, Wikidata, UNODC).
+# Wikipedia's "Capital punishment by country" tables carry per-country status
+# (A abolished / L abolitionist in practice / E exceptional crimes only /
+# P retains), last-execution year and latest-year execution figures, under
+# CC BY-SA 4.0. Parsed from the REST HTML endpoint.
+
+WIKIPEDIA_CAPITAL_PUNISHMENT_URL = (
+    "https://en.wikipedia.org/api/rest_v1/page/html/Capital_punishment_by_country"
+)
+DEATH_PENALTY_STATUS_LABELS: dict[str, str] = {
+    "A": "Abolished for all crimes",
+    "E": "Abolished except exceptional circumstances",
+    "L": "Abolitionist in practice (retains, no recent executions)",
+    "P": "Retains the death penalty",
+}
+
+# --------------------------------------------------------------------------
+# Education extras  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# University counts: Hipolabs' university-domains list (MIT licensed, keyed by
+# ISO2). It counts institutions with web domains, so it UNDERCOUNTS and the
+# page must label it as such. Public library counts: Wikidata (IFLA's Library
+# Map has no keyless endpoint -- Cloudflare-gated); Wikidata coverage is
+# uneven, so the label says "recorded in Wikidata". Top universities: CWUR's
+# ranking page carries a National Rank column for ~2,000 institutions in ~90
+# countries; © CWUR, displayed with attribution.
+
+HIPOLABS_UNIVERSITIES_URL = (
+    "https://raw.githubusercontent.com/Hipo/university-domains-list/master/"
+    "world_universities_and_domains.json"
+)
+CWUR_RANKING_TEMPLATE = "https://cwur.org/{year}.php"
+CWUR_PROBE_YEARS_BACK = 3
+CWUR_TOP_N = 10
+
+WIKIDATA_PUBLIC_LIBRARIES_QUERY = """
+SELECT ?iso3 (COUNT(DISTINCT ?lib) AS ?libraries) WHERE {
+  ?lib wdt:P31/wdt:P279* wd:Q28564 .
+  ?lib wdt:P17 ?country .
+  ?country wdt:P298 ?iso3 .
+}
+GROUP BY ?iso3
+"""
+
+# --------------------------------------------------------------------------
+# IMF World Economic Outlook (DataMapper API)  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# Keyless JSON keyed by ISO3, with ~5 years of projections past the current
+# year. NOT CORS-enabled, so it is strictly a build-time source; the app
+# interpolates between annual values the same way the population counter
+# does, and labels the result as a modelled estimate.
+
+IMF_DATAMAPPER_TEMPLATE = "https://www.imf.org/external/datamapper/api/v1/{code}"
+IMF_DEBT_PCT_GDP = "GGXWDG_NGDP"     # general government gross debt, % of GDP
+IMF_GDP_USD_BILLIONS = "NGDPD"       # GDP, current prices, US$ billions
+IMF_AGGREGATE_KEYS = {
+    "ADVEC", "DA", "OEMDC", "EURO", "EU", "WE", "MECA", "WEOWORLD",
+}
+
+# --------------------------------------------------------------------------
+# Currency images (Wikidata + Wikimedia Commons)  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# country -> currency (P38) -> ISO 4217 code (P498) + image (P18). The P18
+# image is a REPRESENTATIVE specimen -- for some currencies Commons holds a
+# coin or a historical note, and no property orders denominations, so the
+# page must caption it honestly rather than promising "the smallest bill".
+# Editorial overrides in reference/currency_image_overrides.json take
+# precedence per ISO 4217 code. Images are hotlinked via Special:Redirect at
+# a Commons-bucketed width (arbitrary widths now answer HTTP 400), with
+# per-file licence/author pulled from the Commons API for attribution.
+
+WIKIDATA_CURRENCY_IMAGES_QUERY = """
+SELECT DISTINCT ?iso3 ?code ?image ?currencyLabel WHERE {
+  ?country wdt:P298 ?iso3 .
+  ?country wdt:P38 ?currency .
+  OPTIONAL { ?currency wdt:P498 ?code . }
+  OPTIONAL { ?currency wdt:P18 ?image . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+"""
+COMMONS_API_URL = "https://commons.wikimedia.org/w/api.php"
+COMMONS_IMAGE_WIDTH = 960  # bucketed width accepted by upload.wikimedia.org
+
+# --------------------------------------------------------------------------
+# First-level administrative subdivisions (Wikidata)  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# One query for every country: P150 (contains administrative territorial
+# entity) with truthy rank, excluding items typed as FORMER administrative
+# entities (Q19953632) -- the filter that stops India returning Daman and Diu.
+# Populations are truthy P1082 (preferred rank, usually the latest census or
+# estimate). Coverage and typing are only as good as Wikidata; the page
+# labels the source and the residual risk of the odd duplicate.
+
+WIKIDATA_SUBDIVISIONS_QUERY = """
+SELECT ?iso3 ?division ?divisionLabel ?population WHERE {
+  ?country wdt:P298 ?iso3 .
+  ?country wdt:P150 ?division .
+  FILTER NOT EXISTS { ?division wdt:P31 wd:Q19953632 }
+  OPTIONAL { ?division wdt:P1082 ?population . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+"""
+
+# --------------------------------------------------------------------------
+# Climate  (added 2026-08-23)
+# --------------------------------------------------------------------------
+#
+# Annual mean surface temperature per country: OWID's redistribution of
+# Copernicus ERA5 (1940 onward), which is what makes a 50-year warming
+# figure computable. The comparison is decade mean vs decade mean -- single
+# years are weather, not climate. Capitals (for the live weather panel) come
+# from GeoNames' cities15000 dump, feature code PPLC.
+
+OWID_SURFACE_TEMPERATURE_SLUG = "average-annual-surface-temperature"
+CLIMATE_BASELINE_DECADE = (1971, 1980)
+CLIMATE_RECENT_DECADE = (2016, 2025)
+GEONAMES_CITIES15000_URL = "https://download.geonames.org/export/dump/cities15000.zip"
 
 # --------------------------------------------------------------------------
 # HTTP
