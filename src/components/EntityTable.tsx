@@ -217,28 +217,25 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
                   {header('growthRate', 'Growth rate', true)}
                 </tr>
               </thead>
-              {/* Maintainer ruling (2026-08-23): the body zebra-stripes
-                  white / highlighter yellow IN BOTH THEMES -- these literals
-                  deliberately do not follow the theme tokens. Text colour is
-                  therefore pinned dark too: --text-muted is re-scoped so the
-                  muted inline styles below resolve against the light rows
-                  rather than the dark theme's light-on-dark values. */}
-              <tbody
-                style={
-                  {
-                    color: '#111827',
-                    '--text-muted': '#52525b',
-                  } as React.CSSProperties
-                }
-              >
+              {/* Maintainer ruling (2026-08-24, replacing the white/yellow
+                  scheme of 2026-08-23): the body zebra-stripes DARK BLUE /
+                  LIGHT BLUE in both themes. The two rows need opposite text
+                  polarities, so colour and the re-scoped --text-muted ride
+                  per-row rather than on the tbody. */}
+              <tbody>
                 {visible.map((row, index) => {
                   const rowGdp = gdpOf(row.iso3)
+                  const dark = index % 2 === 0
                   return (
                     <tr
                       key={row.iso3}
-                      style={{
-                        background: index % 2 === 0 ? '#ffffff' : '#fdff54',
-                      }}
+                      style={
+                        {
+                          background: dark ? '#1d3a5f' : '#cfe4f7',
+                          color: dark ? '#f1f5f9' : '#111827',
+                          '--text-muted': dark ? '#a9bfd6' : '#42556e',
+                        } as React.CSSProperties
+                      }
                     >
                       <th scope="row" className="px-3 py-1.5 text-left font-normal">
                         <Link

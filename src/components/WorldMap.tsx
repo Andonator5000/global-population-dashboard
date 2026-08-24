@@ -471,7 +471,9 @@ export function WorldMap({
         const { dx: fdx, dy: fdy } = pendingDrag.current
         pendingDrag.current = { dx: 0, dy: 0 }
         // Degrees per CSS pixel, eased down as the zoom tightens.
-        const sensitivity = 0.25 / Math.sqrt(zoomLevel.current)
+        // 0.25 -> 0.375 (2026-08-24): the maintainer found the spin ~50%
+        // too slow under a finger even after the rAF batching fix.
+        const sensitivity = 0.375 / Math.sqrt(zoomLevel.current)
         setRotation(([lambda, phi]) => [
           lambda + fdx * sensitivity,
           Math.max(-90, Math.min(90, phi - fdy * sensitivity)),
@@ -505,10 +507,11 @@ export function WorldMap({
   // with sunlit light land fills in both themes -- land sits tiers of
   // lightness above the ocean (min contrast 4.36, gated in
   // build-map-palette.mjs), so a blue country can never be mistaken for
-  // water. Only the area outside the projected sphere differs: black space
-  // behind the globe, ocean edge-to-edge on the flat views.
+  // water. Since 2026-08-24 the area OUTSIDE the projected sphere is black
+  // space on the flat views too (maintainer request) -- the ocean stops at
+  // the planet's edge on every projection, not just the globe.
   const waterFill = 'var(--map-ocean)'
-  const backgroundFill = isGlobe ? 'var(--map-space)' : 'var(--map-ocean)'
+  const backgroundFill = 'var(--map-space)'
   const landStroke = 'var(--map-ocean)'
   const landNeutral = GLOBE_LAND_NEUTRAL
   const noDataFill = 'oklch(92% 0.003 250)'
@@ -621,11 +624,41 @@ export function WorldMap({
           type="button"
           aria-label={isFullscreen ? 'Exit full screen' : 'View full screen'}
           aria-pressed={isFullscreen}
-          className="h-8 w-8 rounded text-sm leading-none"
+          className="flex h-8 w-8 items-center justify-center rounded"
           style={controlButtonStyle}
           onClick={toggleFullscreen}
         >
-          {isFullscreen ? '🡼' : '⛶'}
+          {/* Inline SVG, not a glyph: the exit icon used to be U+1F87C,
+              which most Windows/Android system fonts have no glyph for --
+              so the button appeared EMPTY exactly while fullscreen. */}
+          <svg
+            viewBox="0 0 16 16"
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            {isFullscreen ? (
+              <>
+                {/* Arrows pointing inward: leave fullscreen. */}
+                <path d="M6 2v4H2" />
+                <path d="M10 2v4h4" />
+                <path d="M6 14v-4H2" />
+                <path d="M10 14v-4h4" />
+              </>
+            ) : (
+              <>
+                {/* Corner brackets pointing outward: enter fullscreen. */}
+                <path d="M2 6V2h4" />
+                <path d="M14 6V2h-4" />
+                <path d="M2 10v4h4" />
+                <path d="M14 10v4h-4" />
+              </>
+            )}
+          </svg>
         </button>
       </div>
 

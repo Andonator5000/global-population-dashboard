@@ -159,7 +159,20 @@ export function HomePage() {
     summaryState.status === 'ready' ? summaryState.data.revision : 0
 
   return (
-    <div className="min-h-full" style={{ background: 'var(--page-tint)' }}>
+    // Maintainer ruling (2026-08-24): the home page washes VERDANT GREEN in
+    // both themes -- a rich light green in light mode, deep forest green in
+    // dark -- replacing the neutral blue tint. Country pages keep their
+    // flag-derived tints. light-dark() follows the root's color-scheme.
+    // Both greens hold AA against the theme's own text tokens (light: 22%L
+    // text on 87%L green; dark: 94%L text on 30%L green), so every card and
+    // control inside keeps its normal polarity.
+    <div
+      className="min-h-full"
+      style={{
+        background:
+          'light-dark(oklch(87% 0.10 148), oklch(30% 0.07 150))',
+      }}
+    >
     <div className="mx-auto max-w-[110rem] px-6 py-8">
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">
