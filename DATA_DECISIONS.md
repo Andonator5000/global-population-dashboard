@@ -1248,6 +1248,58 @@ the World Bank's climatological average (AG.LND.PRCP.MM) — last updated
 2022, which is fine for a climatological normal and labelled with its
 vintage. Capitals for the live weather panel come from GeoNames PPLC rows.
 
+## 20. The 2026-08-24 batch (maintainer-requested)
+
+### 20.1 UI rulings
+
+Globe drag sensitivity 0.25 → 0.375 deg/px (the spin still felt ~50% too
+slow under a finger after the rAF fix). The fullscreen button's exit glyph
+was U+1F87C, which most system fonts have no glyph for — the button
+appeared empty exactly while fullscreen; both states are inline SVG now.
+The area outside the projected sphere is black space on EVERY projection,
+not just the globe. The entity table's zebra becomes dark blue / light
+blue (replacing white/yellow), with per-row text polarity. Public debt
+presents as "Public Debt: $X" over "Public Debt as a % of GDP: Y%". The
+home page washes verdant green in both themes (light-dark pair holding AA
+against each theme's text tokens); country pages keep their flag tints.
+
+### 20.2 Leader portraits: the honest floor is six
+
+Backfill run with a refreshed Wikidata query recovered 12 more portraits
+(409 → 421). The remaining six single-holder offices (AFG hos, BDI hog,
+GNB hog, JEY hog, MOZ hog, PCN hog) have NO P18 image on Wikidata at all —
+no free-licensed portrait exists to fetch. Searching Commons by name was
+rejected: a wrong-person hit is worse than an empty slot. Twelve
+collective offices continue to carry a count and no photo, by design.
+
+### 20.3 Notable inventions and national cuisine: Wikidata, ranked by sitelinks
+
+Both sections use origin-tagged Wikidata items (P495) ranked by
+sitelink count — a notability proxy, labelled as such. Coverage is the
+data's, not the world's: ~53 countries have tagged inventions, ~101 have
+tagged dishes, and the rest render explicit unavailability rather than a
+padded editorial list this project has no basis to rank. The cuisine
+query runs one class at a time because the combined query answers 504
+under load, and 504 is not a retryable status in fetch().
+
+### 20.4 Airports: OurAirports roster, Wikidata traffic
+
+OurAirports (public domain) has every airport but no traffic; Wikidata has
+annual passengers (P3872) for ~4,500 IATA codes. Joined on IATA: "top 20
+by flight volume" is approximated by best-available passenger figures,
+airports without one following largest-class-first — the note says exactly
+that.
+
+### 20.5 Flora and fauna: Wikipedia lists, three different shapes
+
+No Wikidata property reliably links a country to its national symbols.
+The English Wikipedia lists are the maintained compilations: animals and
+trees are rowspan wikitables; the flowers article is prose sections per
+country (its only wikitable is SUBNATIONAL emblems and is ignored).
+Flower images come from each species article's lead image. Every image
+resolves to the original Commons file for licence and author; a file the
+Commons API does not know is dropped, never hotlinked blind.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

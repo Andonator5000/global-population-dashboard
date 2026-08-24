@@ -584,6 +584,108 @@ CLIMATE_RECENT_DECADE = (2016, 2025)
 GEONAMES_CITIES15000_URL = "https://download.geonames.org/export/dump/cities15000.zip"
 
 # --------------------------------------------------------------------------
+# Notable inventions (Wikidata)  (added 2026-08-24)
+# --------------------------------------------------------------------------
+#
+# Items carrying an inventor (P61) or a time of discovery/invention (P575)
+# plus a country of origin (P495), ranked by sitelink count as the
+# notability proxy. Verified coverage: ~57 countries clear the sitelink
+# floor -- Wikidata simply has no tagged notable inventions for most
+# countries, and the section renders that honestly rather than padding.
+
+WIKIDATA_INVENTIONS_QUERY = """
+SELECT ?iso3 ?item ?itemLabel ?inventorLabel ?invented ?inception ?image ?links WHERE {
+  ?item wdt:P495 ?country .
+  ?country wdt:P298 ?iso3 .
+  ?item wikibase:sitelinks ?links .
+  FILTER(?links >= 5)
+  { ?item wdt:P61 ?inventorAnchor . } UNION { ?item wdt:P575 ?dateAnchor . }
+  OPTIONAL { ?item wdt:P61 ?inventor . }
+  OPTIONAL { ?item wdt:P575 ?invented . }
+  OPTIONAL { ?item wdt:P571 ?inception . }
+  OPTIONAL { ?item wdt:P18 ?image . }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+"""
+INVENTIONS_TOP_N = 10
+
+# --------------------------------------------------------------------------
+# Airports (OurAirports + Wikidata patronage)  (added 2026-08-24)
+# --------------------------------------------------------------------------
+#
+# OurAirports (public domain) supplies the airport roster -- large airports
+# plus medium airports with scheduled service, ISO2-keyed. It carries no
+# traffic figures, so annual passenger counts join from Wikidata (P3872
+# patronage, ~4,500 IATA codes) and rank the list; airports without a
+# figure sort below those with one, largest class first. "Top 20 by flight
+# volume" is therefore approximated by best-available passenger data, and
+# the page says so.
+
+OURAIRPORTS_CSV_URL = (
+    "https://davidmegginson.github.io/ourairports-data/airports.csv"
+)
+WIKIDATA_AIRPORT_PATRONAGE_QUERY = """
+SELECT ?iata (MAX(?value) AS ?patronage) WHERE {
+  ?airport wdt:P238 ?iata .
+  ?airport p:P3872/ps:P3872 ?value .
+}
+GROUP BY ?iata
+"""
+AIRPORTS_TOP_N = 20
+
+# --------------------------------------------------------------------------
+# Flora and fauna (Wikipedia national-symbol lists)  (added 2026-08-24)
+# --------------------------------------------------------------------------
+#
+# No Wikidata property reliably links a country to its national animal,
+# tree, or flower; the English Wikipedia list articles are the maintained
+# compilations (CC BY-SA 4.0, attributed). Animals and trees are wikitables
+# (rowspan-aware parse); the flowers article is prose sections per country.
+# Images come from the tables' own picture cells where present, otherwise
+# from the linked article's lead image, always resolved to the ORIGINAL
+# Commons file so licence and author can ride along.
+
+WIKIPEDIA_NATIONAL_ANIMALS_URL = (
+    "https://en.wikipedia.org/api/rest_v1/page/html/List_of_national_animals"
+)
+WIKIPEDIA_NATIONAL_TREES_URL = (
+    "https://en.wikipedia.org/api/rest_v1/page/html/List_of_national_trees"
+)
+WIKIPEDIA_NATIONAL_FLOWERS_URL = (
+    "https://en.wikipedia.org/api/rest_v1/page/html/List_of_national_flowers"
+)
+WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php"
+
+# --------------------------------------------------------------------------
+# National cuisine (Wikidata)  (added 2026-08-24)
+# --------------------------------------------------------------------------
+#
+# Dishes and food types with a country of origin (P495), ranked by sitelink
+# count. The class list is a VALUES enumeration because the full Q746549
+# subclass closure times the query out. Verified coverage: ~113 countries.
+
+# One query PER CLASS, not a VALUES union: the combined query answers 504
+# under load, and a 504 (unlike 429/503) is not retried by fetch().
+WIKIDATA_CUISINE_CLASSES: tuple[str, ...] = (
+    "Q746549",    # dish
+    "Q19861951",  # type of food or dish
+    "Q28803",     # food
+    "Q40050",     # drink
+)
+WIKIDATA_CUISINE_QUERY_TEMPLATE = """
+SELECT ?iso3 ?item ?itemLabel ?image ?links WHERE {{
+  ?item wdt:P31 wd:{qid} .
+  ?item wdt:P495 ?country .
+  ?country wdt:P298 ?iso3 .
+  ?item wikibase:sitelinks ?links .
+  FILTER(?links >= 5)
+  OPTIONAL {{ ?item wdt:P18 ?image . }}
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
+}}
+"""
+CUISINE_TOP_N = 8
+
+# --------------------------------------------------------------------------
 # HTTP
 # --------------------------------------------------------------------------
 

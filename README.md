@@ -126,6 +126,9 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | States/provinces with populations | Wikidata (P150/P1082) | Former-entity filter; populations carry their own vintages. |
 | Climate (temperature, warming) | Copernicus ERA5 via Our World in Data | 50-year warming is decade-mean vs decade-mean. |
 | Capitals; live weather; live FX | GeoNames; Open-Meteo; open.er-api.com | The two live fetches are the app's only render-time upstream calls — see DATA_DECISIONS.md §19.1. |
+| Notable inventions; national cuisine | Wikidata (P495 origin, sitelink-ranked) | Coverage is Wikidata's, labelled — see DATA_DECISIONS.md §20.3. |
+| Airports | OurAirports (public domain) + Wikidata passengers | "Top by volume" is best-available passenger figures — §20.4. |
+| National animals, trees, flowers | Wikipedia national-symbol lists (CC BY-SA) | Images resolved to original Commons files with per-file licence — §20.5. |
 | Cross-checks | Our World in Data (population) | Sanity check only — OWID's modern population series is UN WPP re-published, so it validates our parsing, not the estimates. |
 
 Joined on **ISO 3166-1 alpha-3**.
