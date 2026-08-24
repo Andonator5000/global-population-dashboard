@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-16T09:29:05+00:00",
+  "generated_at": "2026-08-24T02:49:25+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-16T09:29:05+00:00",
+      "fetched_at": "2026-08-24T02:49:25+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -50,7 +50,7 @@
       "title": "World Bank World Development Indicators",
       "url": "https://api.worldbank.org/v2",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-08-16T04:11:01+00:00",
+      "fetched_at": "2026-08-24T02:49:44+00:00",
       "upstream_release": "2026-07-13",
       "vintage": "per indicator and country; newest observation 2025",
       "citation": "World Bank, World Development Indicators (api.worldbank.org/v2)",
@@ -74,16 +74,16 @@
           "fetched_at": "2026-08-10T02:55:51+00:00"
         }
       ],
-      "notes": "40 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
+      "notes": "41 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
     },
     "owid_indicators": {
       "title": "Our World in Data — curated indicators",
       "url": "https://ourworldindata.org/grapher",
       "licence": "CC BY 4.0 (underlying producers' terms apply)",
-      "fetched_at": "2026-08-16T04:01:47+00:00",
+      "fetched_at": "2026-08-24T02:49:47+00:00",
       "upstream_release": null,
-      "vintage": "per indicator and country; newest observation 2025",
-      "citation": "Global Carbon Budget (2025); Population based on various sources (2024); Jonathan Hanson and Rachel Sigman (2021); Population based on various sources (2023); V-Dem (2026), via Our World in Data",
+      "vintage": "per indicator and country; newest observation 2026",
+      "citation": "Global Carbon Budget (2025); Population based on various sources (2024); Institute for Crime & Justice Policy Research (2026); Institute for Crime & Justice Policy Research (2026); Population based on various sources (2024); Jonathan Hanson and Rachel Sigman (2021); Population based on various sources (2023); V-Dem (2026), via Our World in Data",
       "files": [
         {
           "url": "https://ourworldindata.org/grapher/electoral-democracy-index.csv",
@@ -132,9 +132,109 @@
           "sha256": "11a3a3531e4d814f96c5b6ce1ce4888be554cab5a48fe1394ba72f1b590e976e",
           "size_bytes": 801498,
           "fetched_at": "2026-08-16T03:30:03+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/prison-population-rate.csv",
+          "sha256": "65d8476363f800f9795b1f567f6f0394e48b9a76baeae8678955ccc12de34c77",
+          "size_bytes": 51544,
+          "fetched_at": "2026-08-24T02:49:46+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/prison-capacity.csv",
+          "sha256": "8b1e979f48c83df30675787689d31355466092051b3b3f87d79dfb46d99d40d9",
+          "size_bytes": 5149,
+          "fetched_at": "2026-08-24T02:49:47+00:00"
         }
       ],
-      "notes": "8 series, primary source for the Freedom section (V-Dem democracy and human-rights indices, Regimes of the World classification) and CO2 per capita (Global Carbon Budget). Distinct from the population cross-check, which remains validation-only."
+      "notes": "10 series, primary source for the Freedom section (V-Dem democracy and human-rights indices, Regimes of the World classification) and CO2 per capita (Global Carbon Budget). Distinct from the population cross-check, which remains validation-only."
+    },
+    "rsf_press_freedom": {
+      "title": "RSF World Press Freedom Index",
+      "url": "https://rsf.org/sites/default/files/import_classement/2026.csv",
+      "licence": "© Reporters Without Borders; reproduced with attribution",
+      "fetched_at": "2026-08-24T02:45:01+00:00",
+      "upstream_release": "Thu, 30 Apr 2026 02:45:58 GMT",
+      "vintage": "2026",
+      "citation": "Reporters Without Borders (RSF), World Press Freedom Index 2026",
+      "files": [],
+      "notes": "178 countries matched to the registry. First-party CSV; the OWID mirror was rejected (frozen in 2021 on the old inverted 0-is-best methodology)."
+    },
+    "unodc_prisons": {
+      "title": "UNODC — persons held in prisons and penal facilities",
+      "url": "https://data.unodc.org/sites/dataportal.unodc.org/files/2026-07/data_cts_prisons_and_prisoners.xlsx",
+      "licence": "United Nations / UNODC terms; free reuse with attribution",
+      "fetched_at": "2026-08-24T02:45:11+00:00",
+      "upstream_release": "Thu, 16 Jul 2026 07:35:44 GMT",
+      "vintage": "per country; newest observations 2024",
+      "citation": "UNODC, Data Portal — Prisons and prisoners (CTS)",
+      "files": [],
+      "notes": "226 countries with prisoner totals, 93 with facility counts. The xlsx href is re-discovered from the landing page each run because its path is release-dated."
+    },
+    "wikipedia_capital_punishment": {
+      "title": "Capital punishment by country (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Capital_punishment_by_country",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-08-24T02:45:19+00:00",
+      "upstream_release": "Mon, 24 Aug 2026 02:00:54 GMT",
+      "vintage": "page as retrieved; execution figures 2024",
+      "citation": "Wikipedia, 'Capital punishment by country' (execution figures originally compiled by Amnesty International)",
+      "files": [],
+      "notes": "194 countries matched. Amnesty publishes only PDFs and no keyless structured source exists; Wikipedia's tables are the machine-readable secondary source, used with per-page attribution."
+    },
+    "education_extras": {
+      "title": "University and library counts; CWUR rankings",
+      "url": "https://cwur.org/2026.php",
+      "licence": "Hipolabs MIT; Wikidata CC0; CWUR © Center for World University Rankings, displayed with attribution",
+      "fetched_at": "2026-08-24T02:45:23+00:00",
+      "upstream_release": null,
+      "vintage": "CWUR 2026; counts as retrieved",
+      "citation": "Hipolabs university-domains-list; Wikidata; Center for World University Rankings (CWUR) 2026",
+      "files": [],
+      "notes": "200 countries with university counts, 114 with Wikidata library counts, 93 with CWUR-ranked institutions."
+    },
+    "imf_weo": {
+      "title": "IMF World Economic Outlook (DataMapper API)",
+      "url": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
+      "licence": "IMF terms; cited with attribution",
+      "fetched_at": "2026-08-24T02:48:28+00:00",
+      "upstream_release": null,
+      "vintage": "annual series incl. projections; boundary 2026",
+      "citation": "IMF World Economic Outlook, via the DataMapper API",
+      "files": [],
+      "notes": "192 entities with debt (% of GDP), 195 with nominal GDP. Not CORS-enabled, so build-time only."
+    },
+    "currency_images": {
+      "title": "Currency images (Wikidata P18 via Wikimedia Commons)",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "Per-file Commons licences, recorded per image",
+      "fetched_at": "2026-08-24T02:48:34+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved",
+      "citation": "Wikidata; Wikimedia Commons (per-file attribution in artifact)",
+      "files": [],
+      "notes": "131 currencies with a usable image; 0 Wikidata-referenced files missing on Commons were dropped. Hotlinked at width 960 via Special:FilePath."
+    },
+    "wikidata_subdivisions": {
+      "title": "Wikidata — first-level administrative divisions",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "CC0",
+      "fetched_at": "2026-08-24T02:48:37+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved; division populations carry their own vintages",
+      "citation": "Wikidata (P150 contains administrative territorial entity)",
+      "files": [],
+      "notes": "215 countries, 4117 divisions, 3657 with a population figure. Former administrative entities excluded by P31 filter."
+    },
+    "climate": {
+      "title": "Copernicus ERA5 country temperatures (via OWID); GeoNames capitals",
+      "url": "https://ourworldindata.org/grapher/average-annual-surface-temperature.csv",
+      "licence": "Copernicus/OWID CC BY 4.0; GeoNames CC BY 4.0",
+      "fetched_at": "2026-08-24T02:48:41+00:00",
+      "upstream_release": "Mon, 24 Aug 2026 02:15:54 GMT",
+      "vintage": "temperature through 2025",
+      "citation": "Contains modified Copernicus Climate Change Service information (2026); GeoNames",
+      "files": [],
+      "notes": "193 entities with temperature series, 241 capitals. Live weather itself is fetched by the BROWSER from Open-Meteo (CC BY 4.0, non-commercial API) and never enters /data."
     },
     "natural_earth": {
       "title": "Natural Earth 110m Admin 0 (via world-atlas TopoJSON)",
@@ -145,13 +245,13 @@
       "vintage": null,
       "citation": "Natural Earth, 1:110m Cultural Vectors (public domain)",
       "files": [],
-      "notes": "Re-keyed from UN M49 to ISO3. Kosovo, Northern Cyprus and Somaliland carry no M49 code and are assigned explicitly (Kosovo to XKX; the other two to Cyprus and Somalia, matching how UN WPP and the World Bank report that territory). 63 populated entities are too small to appear at 110m and are emitted as point markers instead."
+      "notes": "Re-keyed from UN M49 to ISO3. Kosovo, Northern Cyprus and Somaliland carry no M49 code and are assigned explicitly (Kosovo to XKX; the other two to Cyprus and Somalia, matching how UN WPP and the World Bank report that territory, though each keeps its own name on the map and is hatched as contested). 63 populated entities are too small to appear at 110m and are emitted as point markers instead."
     },
     "flagcdn": {
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-16T09:29:05+00:00",
+      "fetched_at": "2026-08-24T02:49:25+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -185,7 +285,7 @@
           "fetched_at": "2026-08-16T08:01:46+00:00"
         }
       ],
-      "notes": "233 entities, 351 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(3), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
+      "notes": "233 entities, 409 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(3), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
     },
     "unesco_whc": {
       "title": "UNESCO World Heritage List",
@@ -283,7 +383,7 @@
       "sources": [
         "world_bank"
       ],
-      "row_count": 40,
+      "row_count": 41,
       "entity_count": null
     },
     "indicators/by-country/<ISO3>.json": {
@@ -299,7 +399,7 @@
       "sources": [
         "owid_indicators"
       ],
-      "row_count": 8,
+      "row_count": 10,
       "entity_count": null
     },
     "owid/by-country/<ISO3>.json": {
@@ -309,6 +409,78 @@
       ],
       "row_count": null,
       "entity_count": 250
+    },
+    "freedom/press-freedom.json": {
+      "description": "RSF press-freedom score and rank per entity.",
+      "sources": [
+        "rsf_press_freedom"
+      ],
+      "row_count": null,
+      "entity_count": 178
+    },
+    "crime/unodc-prisons.json": {
+      "description": "Total persons held in prison and number of penal facilities per entity, latest reported year.",
+      "sources": [
+        "unodc_prisons"
+      ],
+      "row_count": null,
+      "entity_count": 221
+    },
+    "crime/death-penalty.json": {
+      "description": "Death penalty legal status, last execution year, and latest Amnesty execution figure per entity.",
+      "sources": [
+        "wikipedia_capital_punishment"
+      ],
+      "row_count": null,
+      "entity_count": 194
+    },
+    "education/education.json": {
+      "description": "University count, Wikidata public-library count, and CWUR top-10 universities per entity.",
+      "sources": [
+        "education_extras"
+      ],
+      "row_count": null,
+      "entity_count": 208
+    },
+    "economy/debt.json": {
+      "description": "General government gross debt (% of GDP) and nominal GDP annual series per entity, IMF WEO, including projections.",
+      "sources": [
+        "imf_weo"
+      ],
+      "row_count": null,
+      "entity_count": 195
+    },
+    "economy/currency-images.json": {
+      "description": "Representative currency image per ISO 4217 code, with Commons file page, licence and author for attribution.",
+      "sources": [
+        "currency_images"
+      ],
+      "row_count": 131,
+      "entity_count": null
+    },
+    "subdivisions/<ISO3>.json": {
+      "description": "First-level administrative divisions (states, provinces, cantons...) with latest Wikidata populations, sorted by population.",
+      "sources": [
+        "wikidata_subdivisions"
+      ],
+      "row_count": null,
+      "entity_count": 215
+    },
+    "climate/climate.json": {
+      "description": "Annual mean surface temperature (latest year) and 50-year decade-mean warming per entity.",
+      "sources": [
+        "climate"
+      ],
+      "row_count": null,
+      "entity_count": 193
+    },
+    "climate/capitals.json": {
+      "description": "Capital coordinates for the live weather panel.",
+      "sources": [
+        "climate"
+      ],
+      "row_count": null,
+      "entity_count": 241
     },
     "geo/countries-110m.json": {
       "description": "Country polygons keyed by ISO3, for map rendering.",
@@ -389,6 +561,9 @@
   "warnings": [
     "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe.",
     "UN WPP 2024 publishes no population series for 13 registry entities (ALA, ATA, ATF, BVT, CCK, CXR, HMD, IOT, NFK, PCN, SGS, SJM, UMI); these render as unavailable rather than zero. Most are uninhabited territories, but Aland Islands and Svalbard are inhabited and are reported within Finland and Norway respectively.",
+    "RSF index carried 2 ISO3 codes absent from the registry: CSS, CTU.",
+    "Capital punishment table rows not matched to the registry: Congo, Democratic Republic of the, Congo, Republic of the, Myanmar Burma.",
+    "CWUR locations not matched to the registry: Northern Cyprus, Turkey.",
     "63 populated entities are too small to render as polygons at 110m resolution and appear as point markers instead, among them Singapore, Malta, Hong Kong and Macao. Their area is not to scale on the map.",
     "Entities drawn by more than one Natural Earth polygon: CYP, SOM (Cyprus includes Northern Cyprus; Somalia includes Somaliland). Their fills paint multiple paths.",
     "16 Factbook files could not be joined to a registry entity and were skipped: australia-oceania/at.json (Ashmore and Cartier Islands), europe/ax.json (Akrotiri), central-america-n-caribbean/bq.json (Navassa Island), australia-oceania/cr.json (Coral Sea Islands), europe/dx.json (Dhekelia), middle-east/gz.json (Gaza, Gaza Strip), north-america/ip.json (Clipperton Island), europe/jn.json (Jan Mayen), east-n-southeast-asia/pf.json (Paracel Islands), east-n-southeast-asia/pg.json (Spratly Islands), australia-oceania/um.json (Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Palmyra Atoll), australia-oceania/wq.json (Wake Island)...",
@@ -398,5 +573,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "497efbac14751c00081821aa740245c8a050b9868fbd6edb4a61a6e33e07861f"
+  "content_fingerprint": "3e855a45f91e3f692c7bdc8efc867727b7d4f18648cfc5f96ad583ee7ffa0755"
 }

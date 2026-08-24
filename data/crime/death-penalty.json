@@ -1,0 +1,1316 @@
+{
+  "source": "wikipedia_capital_punishment",
+  "statusLabels": {
+    "A": "Abolished for all crimes",
+    "E": "Abolished except exceptional circumstances",
+    "L": "Abolitionist in practice (retains, no recent executions)",
+    "P": "Retains the death penalty"
+  },
+  "executionsYear": 2024,
+  "note": "Execution figures are Amnesty International counts as recorded by Wikipedia and are kept verbatim -- values like '1,000s' are floor estimates, not numbers.",
+  "entities": {
+    "DZA": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1993
+    },
+    "AGO": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1977,
+      "abolishedYear": 1992
+    },
+    "BEN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1987,
+      "abolishedYear": 2012
+    },
+    "BWA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2021
+    },
+    "BFA": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 1988,
+      "abolishedYear": 2018
+    },
+    "BDI": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2000,
+      "abolishedYear": 2009
+    },
+    "CMR": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1997
+    },
+    "CPV": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1975,
+      "abolishedYear": 1981
+    },
+    "CAF": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1981,
+      "abolishedYear": 2022
+    },
+    "TCD": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2015,
+      "abolishedYear": 2020
+    },
+    "COM": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1997
+    },
+    "DJI": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1977,
+      "abolishedYear": 1995
+    },
+    "EGY": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2024,
+      "recentExecutions": "13+"
+    },
+    "GNQ": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 2014,
+      "abolishedYear": 2022
+    },
+    "ERI": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1989
+    },
+    "SWZ": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1983
+    },
+    "ETH": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2007
+    },
+    "GAB": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1985,
+      "abolishedYear": 2010
+    },
+    "GMB": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2012
+    },
+    "GHA": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1993,
+      "abolishedYear": 2023
+    },
+    "GIN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2001,
+      "abolishedYear": 2017
+    },
+    "GNB": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1986,
+      "abolishedYear": 1993
+    },
+    "CIV": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1960,
+      "abolishedYear": 2000
+    },
+    "KEN": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1987
+    },
+    "LSO": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1995
+    },
+    "LBR": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 2000
+    },
+    "LBY": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2010
+    },
+    "MDG": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1960,
+      "abolishedYear": 2014
+    },
+    "MWI": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1992
+    },
+    "MLI": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1980
+    },
+    "MRT": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1987
+    },
+    "MUS": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1987,
+      "abolishedYear": 1995
+    },
+    "MAR": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1993
+    },
+    "MOZ": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1986,
+      "abolishedYear": 1990
+    },
+    "NAM": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1990,
+      "abolishedYear": 1990
+    },
+    "NER": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1976
+    },
+    "NGA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2016
+    },
+    "RWA": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1998,
+      "abolishedYear": 2007
+    },
+    "STP": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1975,
+      "abolishedYear": 1990
+    },
+    "SEN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1967,
+      "abolishedYear": 2004
+    },
+    "SYC": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1976,
+      "abolishedYear": 1993
+    },
+    "SLE": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1998,
+      "abolishedYear": 2021
+    },
+    "SOM": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2024,
+      "recentExecutions": "34+"
+    },
+    "ZAF": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1989,
+      "abolishedYear": 1995
+    },
+    "SSD": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025
+    },
+    "SDN": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025
+    },
+    "TZA": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1994
+    },
+    "TGO": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1978,
+      "abolishedYear": 2009
+    },
+    "TUN": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1990
+    },
+    "UGA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2005
+    },
+    "ZMB": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1997,
+      "abolishedYear": 2022
+    },
+    "ZWE": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 2005,
+      "abolishedYear": 2024
+    },
+    "ATG": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1991
+    },
+    "ARG": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1956,
+      "abolishedYear": 1984
+    },
+    "BHS": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2000
+    },
+    "BRB": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1984
+    },
+    "BLZ": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1985
+    },
+    "BOL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1973,
+      "abolishedYear": 2009
+    },
+    "BRA": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 1876,
+      "abolishedYear": 1978
+    },
+    "CAN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1962,
+      "abolishedYear": 1999
+    },
+    "CHL": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 1985,
+      "abolishedYear": 2001
+    },
+    "COL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1907,
+      "abolishedYear": 1910
+    },
+    "CRI": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1859,
+      "abolishedYear": 1877
+    },
+    "CUB": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2003
+    },
+    "DMA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1986
+    },
+    "DOM": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1966,
+      "abolishedYear": 1966
+    },
+    "ECU": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1884,
+      "abolishedYear": 1906
+    },
+    "SLV": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 1973,
+      "abolishedYear": 1983
+    },
+    "GRD": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1978
+    },
+    "GTM": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 2000,
+      "abolishedYear": 2017
+    },
+    "GUY": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1997
+    },
+    "HTI": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1972,
+      "abolishedYear": 1987
+    },
+    "HND": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1940,
+      "abolishedYear": 1956
+    },
+    "JAM": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1988
+    },
+    "MEX": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1957,
+      "abolishedYear": 2005
+    },
+    "NIC": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1930,
+      "abolishedYear": 1979
+    },
+    "PAN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1903,
+      "abolishedYear": 1918
+    },
+    "PRY": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1917,
+      "abolishedYear": 1992
+    },
+    "PER": {
+      "status": "E",
+      "statusLabel": "Abolished except exceptional circumstances",
+      "retained": true,
+      "lastExecutionYear": 1979,
+      "abolishedYear": 1979
+    },
+    "KNA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2008
+    },
+    "LCA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1995
+    },
+    "VCT": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1995
+    },
+    "SUR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1982,
+      "abolishedYear": 2015
+    },
+    "TTO": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1999
+    },
+    "USA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2026,
+      "recentExecutions": "25"
+    },
+    "URY": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1902,
+      "abolishedYear": 1907
+    },
+    "VEN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1830,
+      "abolishedYear": 1863
+    },
+    "AFG": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2021
+    },
+    "ARM": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 1998
+    },
+    "AZE": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1993,
+      "abolishedYear": 1998
+    },
+    "BHR": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2019
+    },
+    "BGD": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025
+    },
+    "BTN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1974,
+      "abolishedYear": 2004
+    },
+    "BRN": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1984
+    },
+    "KHM": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1989,
+      "abolishedYear": 1989
+    },
+    "CHN": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2026,
+      "recentExecutions": "1000+"
+    },
+    "CYP": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1962,
+      "abolishedYear": 2002
+    },
+    "TLS": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2002,
+      "abolishedYear": 2002
+    },
+    "GEO": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1995,
+      "abolishedYear": 2006
+    },
+    "IND": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2020
+    },
+    "IDN": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2016
+    },
+    "IRN": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2026,
+      "recentExecutions": "972+"
+    },
+    "IRQ": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2026,
+      "recentExecutions": "63+"
+    },
+    "ISR": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1962,
+      "abolishedYear": 1954
+    },
+    "JPN": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "1"
+    },
+    "JOR": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2026,
+      "recentExecutions": "8"
+    },
+    "KAZ": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2003,
+      "abolishedYear": 2021
+    },
+    "KWT": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "6"
+    },
+    "KGZ": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 2007
+    },
+    "LAO": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1989
+    },
+    "LBN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2004,
+      "abolishedYear": 2026
+    },
+    "MYS": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2017
+    },
+    "MDV": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1965
+    },
+    "MNG": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2008,
+      "abolishedYear": 2012
+    },
+    "NPL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1979,
+      "abolishedYear": 1997
+    },
+    "PRK": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "980+"
+    },
+    "OMN": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2024,
+      "recentExecutions": "3"
+    },
+    "PAK": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2019
+    },
+    "PSE": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2005
+    },
+    "PHL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2000,
+      "abolishedYear": 2006
+    },
+    "QAT": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2020
+    },
+    "SAU": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "345+"
+    },
+    "SGP": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "9"
+    },
+    "KOR": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1997
+    },
+    "LKA": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1976
+    },
+    "SYR": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2024,
+      "recentExecutions": "+"
+    },
+    "TWN": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "2"
+    },
+    "TJK": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 2004
+    },
+    "THA": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2018
+    },
+    "TUR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1984,
+      "abolishedYear": 2004
+    },
+    "TKM": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1997,
+      "abolishedYear": 1999
+    },
+    "ARE": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "1+"
+    },
+    "UZB": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2005,
+      "abolishedYear": 2008
+    },
+    "VNM": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2024,
+      "recentExecutions": "100+"
+    },
+    "YEM": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2025,
+      "recentExecutions": "38+"
+    },
+    "ALB": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1995,
+      "abolishedYear": 2007
+    },
+    "AND": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1943,
+      "abolishedYear": 1990
+    },
+    "AUT": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1950,
+      "abolishedYear": 1968
+    },
+    "BLR": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 2022
+    },
+    "BEL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1950,
+      "abolishedYear": 1996
+    },
+    "BIH": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 1998
+    },
+    "BGR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1989,
+      "abolishedYear": 1998
+    },
+    "HRV": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 1991
+    },
+    "CZE": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1993,
+      "abolishedYear": 1990
+    },
+    "DNK": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1950,
+      "abolishedYear": 1978
+    },
+    "EST": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 1998
+    },
+    "FIN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1944,
+      "abolishedYear": 1972
+    },
+    "FRA": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1977,
+      "abolishedYear": 1981
+    },
+    "DEU": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1981,
+      "abolishedYear": 1987
+    },
+    "GRC": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1972,
+      "abolishedYear": 2004
+    },
+    "HUN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1988,
+      "abolishedYear": 1990
+    },
+    "ISL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1944,
+      "abolishedYear": 1928
+    },
+    "IRL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1954,
+      "abolishedYear": 1990
+    },
+    "ITA": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1947,
+      "abolishedYear": 1994
+    },
+    "XKX": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2008,
+      "abolishedYear": 2008
+    },
+    "LVA": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1996,
+      "abolishedYear": 2012
+    },
+    "LIE": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1785,
+      "abolishedYear": 1989
+    },
+    "LTU": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1995,
+      "abolishedYear": 1998
+    },
+    "LUX": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1949,
+      "abolishedYear": 1979
+    },
+    "MLT": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1964,
+      "abolishedYear": 2000
+    },
+    "MDA": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 2005
+    },
+    "MCO": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1847,
+      "abolishedYear": 1962
+    },
+    "MNE": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2006,
+      "abolishedYear": 1995
+    },
+    "NLD": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1952,
+      "abolishedYear": 1982
+    },
+    "MKD": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 1991
+    },
+    "NOR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1948,
+      "abolishedYear": 1979
+    },
+    "POL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1988,
+      "abolishedYear": 1998
+    },
+    "PRT": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1917,
+      "abolishedYear": 1867
+    },
+    "ROU": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1989,
+      "abolishedYear": 1990
+    },
+    "RUS": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1996
+    },
+    "SMR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1667,
+      "abolishedYear": 1865
+    },
+    "SRB": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 2006,
+      "abolishedYear": 1995
+    },
+    "SVK": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1993,
+      "abolishedYear": 1990
+    },
+    "SVN": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1991,
+      "abolishedYear": 1991
+    },
+    "ESP": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1975,
+      "abolishedYear": 1978
+    },
+    "SWE": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1910,
+      "abolishedYear": 1973
+    },
+    "CHE": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1944,
+      "abolishedYear": 1992
+    },
+    "UKR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1997,
+      "abolishedYear": 2000
+    },
+    "GBR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1977,
+      "abolishedYear": 1998
+    },
+    "VAT": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1870,
+      "abolishedYear": 1969
+    },
+    "AUS": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1967,
+      "abolishedYear": 1985
+    },
+    "FJI": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1970,
+      "abolishedYear": 2015
+    },
+    "KIR": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1979,
+      "abolishedYear": 1979
+    },
+    "MHL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1986,
+      "abolishedYear": 1986
+    },
+    "FSM": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1986,
+      "abolishedYear": 1986
+    },
+    "NRU": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1968,
+      "abolishedYear": 2016
+    },
+    "NZL": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1957,
+      "abolishedYear": 1989
+    },
+    "PLW": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1994,
+      "abolishedYear": 1994
+    },
+    "PNG": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1975,
+      "abolishedYear": 2022
+    },
+    "WSM": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1962,
+      "abolishedYear": 2004
+    },
+    "SLB": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1978,
+      "abolishedYear": 1978
+    },
+    "TON": {
+      "status": "L",
+      "statusLabel": "Abolitionist in practice (retains, no recent executions)",
+      "retained": true,
+      "lastExecutionYear": 1982
+    },
+    "TUV": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1978,
+      "abolishedYear": 1978
+    },
+    "VUT": {
+      "status": "A",
+      "statusLabel": "Abolished for all crimes",
+      "retained": false,
+      "lastExecutionYear": 1980,
+      "abolishedYear": 1980
+    }
+  }
+}

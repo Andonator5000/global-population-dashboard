@@ -1,0 +1,1452 @@
+{
+  "source": "geonames",
+  "note": "Capital-city coordinates (GeoNames feature code PPLC, most populous where several are recorded). Used by the app to ask Open-Meteo for live weather at render time.",
+  "entities": {
+    "AND": {
+      "name": "Andorra la Vella",
+      "lat": 42.50779,
+      "lon": 1.52109,
+      "population": 20430
+    },
+    "ARE": {
+      "name": "Abu Dhabi",
+      "lat": 24.45118,
+      "lon": 54.39696,
+      "population": 1807000
+    },
+    "AFG": {
+      "name": "Kabul",
+      "lat": 34.52813,
+      "lon": 69.17233,
+      "population": 4434550
+    },
+    "ATG": {
+      "name": "Saint John’s",
+      "lat": 17.12096,
+      "lon": -61.84329,
+      "population": 51737
+    },
+    "AIA": {
+      "name": "The Valley",
+      "lat": 18.21704,
+      "lon": -63.05783,
+      "population": 2035
+    },
+    "ALB": {
+      "name": "Tirana",
+      "lat": 41.32744,
+      "lon": 19.81866,
+      "population": 418495
+    },
+    "ARM": {
+      "name": "Yerevan",
+      "lat": 40.17765,
+      "lon": 44.5126,
+      "population": 1144700
+    },
+    "AGO": {
+      "name": "Luanda",
+      "lat": -8.83682,
+      "lon": 13.23432,
+      "population": 2776168
+    },
+    "ARG": {
+      "name": "Buenos Aires",
+      "lat": -34.61315,
+      "lon": -58.37723,
+      "population": 2891082
+    },
+    "ASM": {
+      "name": "Pago Pago",
+      "lat": -14.27806,
+      "lon": -170.7025,
+      "population": 11500
+    },
+    "AUT": {
+      "name": "Vienna",
+      "lat": 48.20849,
+      "lon": 16.37208,
+      "population": 1691468
+    },
+    "AUS": {
+      "name": "Canberra",
+      "lat": -35.28346,
+      "lon": 149.12807,
+      "population": 367752
+    },
+    "ABW": {
+      "name": "Oranjestad",
+      "lat": 12.52398,
+      "lon": -70.02703,
+      "population": 29998
+    },
+    "ALA": {
+      "name": "Mariehamn",
+      "lat": 60.09726,
+      "lon": 19.93481,
+      "population": 10682
+    },
+    "AZE": {
+      "name": "Baku",
+      "lat": 40.37767,
+      "lon": 49.89201,
+      "population": 2351300
+    },
+    "BIH": {
+      "name": "Sarajevo",
+      "lat": 43.84864,
+      "lon": 18.35644,
+      "population": 696731
+    },
+    "BRB": {
+      "name": "Bridgetown",
+      "lat": 13.10732,
+      "lon": -59.62021,
+      "population": 98511
+    },
+    "BGD": {
+      "name": "Dhaka",
+      "lat": 23.7104,
+      "lon": 90.40744,
+      "population": 10356500
+    },
+    "BEL": {
+      "name": "Brussels",
+      "lat": 50.85045,
+      "lon": 4.34878,
+      "population": 1019022
+    },
+    "BFA": {
+      "name": "Ouagadougou",
+      "lat": 12.36566,
+      "lon": -1.53388,
+      "population": 2415266
+    },
+    "BGR": {
+      "name": "Sofia",
+      "lat": 42.69751,
+      "lon": 23.32415,
+      "population": 1152556
+    },
+    "BHR": {
+      "name": "Manama",
+      "lat": 26.22787,
+      "lon": 50.58565,
+      "population": 147074
+    },
+    "BDI": {
+      "name": "Gitega",
+      "lat": -3.42708,
+      "lon": 29.92463,
+      "population": 64904
+    },
+    "BEN": {
+      "name": "Porto-Novo",
+      "lat": 6.49646,
+      "lon": 2.60359,
+      "population": 264320
+    },
+    "BLM": {
+      "name": "Gustavia",
+      "lat": 17.89618,
+      "lon": -62.84978,
+      "population": 5988
+    },
+    "BMU": {
+      "name": "Hamilton",
+      "lat": 32.2949,
+      "lon": -64.78303,
+      "population": 902
+    },
+    "BRN": {
+      "name": "Bandar Seri Begawan",
+      "lat": 4.89035,
+      "lon": 114.94006,
+      "population": 64409
+    },
+    "BOL": {
+      "name": "Sucre",
+      "lat": -19.03332,
+      "lon": -65.26274,
+      "population": 224838
+    },
+    "BES": {
+      "name": "Kralendijk",
+      "lat": 12.15,
+      "lon": -68.26667,
+      "population": 10620
+    },
+    "BRA": {
+      "name": "Brasília",
+      "lat": -15.77972,
+      "lon": -47.92972,
+      "population": 2207718
+    },
+    "BHS": {
+      "name": "Nassau",
+      "lat": 25.05823,
+      "lon": -77.34306,
+      "population": 227940
+    },
+    "BTN": {
+      "name": "Thimphu",
+      "lat": 27.46609,
+      "lon": 89.64191,
+      "population": 98676
+    },
+    "BWA": {
+      "name": "Gaborone",
+      "lat": -24.65451,
+      "lon": 25.90859,
+      "population": 246325
+    },
+    "BLR": {
+      "name": "Minsk",
+      "lat": 53.90019,
+      "lon": 27.56653,
+      "population": 1742124
+    },
+    "BLZ": {
+      "name": "Belmopan",
+      "lat": 17.25376,
+      "lon": -88.76401,
+      "population": 13381
+    },
+    "CAN": {
+      "name": "Ottawa",
+      "lat": 45.41117,
+      "lon": -75.69812,
+      "population": 1017449
+    },
+    "CCK": {
+      "name": "West Island",
+      "lat": -12.15681,
+      "lon": 96.82251,
+      "population": 120
+    },
+    "COD": {
+      "name": "Kinshasa",
+      "lat": -4.32758,
+      "lon": 15.31357,
+      "population": 16000000
+    },
+    "CAF": {
+      "name": "Bangui",
+      "lat": 4.36122,
+      "lon": 18.55496,
+      "population": 812407
+    },
+    "COG": {
+      "name": "Brazzaville",
+      "lat": -4.26613,
+      "lon": 15.28318,
+      "population": 1982000
+    },
+    "CHE": {
+      "name": "Bern",
+      "lat": 46.94809,
+      "lon": 7.44744,
+      "population": 121631
+    },
+    "CIV": {
+      "name": "Yamoussoukro",
+      "lat": 6.82055,
+      "lon": -5.27674,
+      "population": 275686
+    },
+    "COK": {
+      "name": "Avarua",
+      "lat": -21.2075,
+      "lon": -159.77546,
+      "population": 13373
+    },
+    "CHL": {
+      "name": "Santiago",
+      "lat": -33.45694,
+      "lon": -70.64827,
+      "population": 4837295
+    },
+    "CMR": {
+      "name": "Yaoundé",
+      "lat": 3.86667,
+      "lon": 11.51667,
+      "population": 1299369
+    },
+    "CHN": {
+      "name": "Beijing",
+      "lat": 39.9075,
+      "lon": 116.39723,
+      "population": 18960744
+    },
+    "COL": {
+      "name": "Bogotá",
+      "lat": 4.60971,
+      "lon": -74.08175,
+      "population": 7674366
+    },
+    "CRI": {
+      "name": "San José",
+      "lat": 9.93388,
+      "lon": -84.08489,
+      "population": 335007
+    },
+    "CUB": {
+      "name": "Havana",
+      "lat": 23.13302,
+      "lon": -82.38304,
+      "population": 2163824
+    },
+    "CPV": {
+      "name": "Praia",
+      "lat": 14.93152,
+      "lon": -23.51254,
+      "population": 137868
+    },
+    "CUW": {
+      "name": "Willemstad",
+      "lat": 12.12246,
+      "lon": -68.88641,
+      "population": 125000
+    },
+    "CXR": {
+      "name": "Flying Fish Cove",
+      "lat": -10.42172,
+      "lon": 105.67912,
+      "population": 500
+    },
+    "CYP": {
+      "name": "Nicosia",
+      "lat": 35.17284,
+      "lon": 33.35397,
+      "population": 200452
+    },
+    "CZE": {
+      "name": "Prague",
+      "lat": 50.08804,
+      "lon": 14.42076,
+      "population": 1165581
+    },
+    "DEU": {
+      "name": "Berlin",
+      "lat": 52.52437,
+      "lon": 13.41053,
+      "population": 3426354
+    },
+    "DJI": {
+      "name": "Djibouti",
+      "lat": 11.58901,
+      "lon": 43.14503,
+      "population": 626512
+    },
+    "DNK": {
+      "name": "Copenhagen",
+      "lat": 55.67594,
+      "lon": 12.56553,
+      "population": 1153615
+    },
+    "DMA": {
+      "name": "Roseau",
+      "lat": 15.30174,
+      "lon": -61.38808,
+      "population": 16571
+    },
+    "DOM": {
+      "name": "Santo Domingo",
+      "lat": 18.47186,
+      "lon": -69.89232,
+      "population": 2201941
+    },
+    "DZA": {
+      "name": "Algiers",
+      "lat": 36.73225,
+      "lon": 3.08746,
+      "population": 2364230
+    },
+    "ECU": {
+      "name": "Quito",
+      "lat": -0.22985,
+      "lon": -78.52495,
+      "population": 2781641
+    },
+    "EST": {
+      "name": "Tallinn",
+      "lat": 59.43696,
+      "lon": 24.75353,
+      "population": 394024
+    },
+    "EGY": {
+      "name": "Cairo",
+      "lat": 30.06263,
+      "lon": 31.24967,
+      "population": 9606916
+    },
+    "ERI": {
+      "name": "Asmara",
+      "lat": 15.33805,
+      "lon": 38.93184,
+      "population": 563930
+    },
+    "ESP": {
+      "name": "Madrid",
+      "lat": 40.4165,
+      "lon": -3.70256,
+      "population": 3255944
+    },
+    "ETH": {
+      "name": "Addis Ababa",
+      "lat": 9.02497,
+      "lon": 38.74689,
+      "population": 3860000
+    },
+    "FIN": {
+      "name": "Helsinki",
+      "lat": 60.16952,
+      "lon": 24.93545,
+      "population": 658864
+    },
+    "FJI": {
+      "name": "Suva",
+      "lat": -18.13683,
+      "lon": 178.42531,
+      "population": 77366
+    },
+    "FLK": {
+      "name": "Stanley",
+      "lat": -51.69382,
+      "lon": -57.85701,
+      "population": 2213
+    },
+    "FSM": {
+      "name": "Palikir",
+      "lat": 6.92477,
+      "lon": 158.16109,
+      "population": 6942
+    },
+    "FRO": {
+      "name": "Tórshavn",
+      "lat": 62.00973,
+      "lon": -6.77164,
+      "population": 13200
+    },
+    "FRA": {
+      "name": "Paris",
+      "lat": 48.85341,
+      "lon": 2.3488,
+      "population": 2138551
+    },
+    "GAB": {
+      "name": "Libreville",
+      "lat": 0.39241,
+      "lon": 9.45356,
+      "population": 846090
+    },
+    "GBR": {
+      "name": "London",
+      "lat": 51.50853,
+      "lon": -0.12574,
+      "population": 8961989
+    },
+    "GRD": {
+      "name": "Saint George's",
+      "lat": 12.05288,
+      "lon": -61.75226,
+      "population": 7500
+    },
+    "GEO": {
+      "name": "Tbilisi",
+      "lat": 41.69143,
+      "lon": 44.83412,
+      "population": 1049498
+    },
+    "GUF": {
+      "name": "Cayenne",
+      "lat": 4.9381,
+      "lon": -52.33455,
+      "population": 61550
+    },
+    "GGY": {
+      "name": "Saint Peter Port",
+      "lat": 49.45981,
+      "lon": -2.53527,
+      "population": 16488
+    },
+    "GHA": {
+      "name": "Accra",
+      "lat": 5.55602,
+      "lon": -0.1969,
+      "population": 1963264
+    },
+    "GIB": {
+      "name": "Gibraltar",
+      "lat": 36.14474,
+      "lon": -5.35257,
+      "population": 26544
+    },
+    "GRL": {
+      "name": "Nuuk",
+      "lat": 64.18347,
+      "lon": -51.72157,
+      "population": 14798
+    },
+    "GMB": {
+      "name": "Banjul",
+      "lat": 13.45274,
+      "lon": -16.57803,
+      "population": 37274
+    },
+    "GIN": {
+      "name": "Conakry",
+      "lat": 9.53795,
+      "lon": -13.67729,
+      "population": 1928389
+    },
+    "GLP": {
+      "name": "Basse-Terre",
+      "lat": 15.99714,
+      "lon": -61.73214,
+      "population": 11472
+    },
+    "GNQ": {
+      "name": "Ciudad de la Paz",
+      "lat": 1.5925,
+      "lon": 10.82361,
+      "population": 2000
+    },
+    "GRC": {
+      "name": "Athens",
+      "lat": 37.98376,
+      "lon": 23.72784,
+      "population": 664046
+    },
+    "SGS": {
+      "name": "Grytviken",
+      "lat": -54.28111,
+      "lon": -36.5092,
+      "population": 2
+    },
+    "GTM": {
+      "name": "Guatemala City",
+      "lat": 14.64072,
+      "lon": -90.51327,
+      "population": 994938
+    },
+    "GUM": {
+      "name": "Hagåtña",
+      "lat": 13.47567,
+      "lon": 144.74886,
+      "population": 1051
+    },
+    "GNB": {
+      "name": "Bissau",
+      "lat": 11.86357,
+      "lon": -15.59767,
+      "population": 439704
+    },
+    "GUY": {
+      "name": "Georgetown",
+      "lat": 6.80448,
+      "lon": -58.15527,
+      "population": 235017
+    },
+    "HKG": {
+      "name": "Hong Kong",
+      "lat": 22.27832,
+      "lon": 114.17469,
+      "population": 7396076
+    },
+    "HND": {
+      "name": "Tegucigalpa",
+      "lat": 14.0818,
+      "lon": -87.20681,
+      "population": 850848
+    },
+    "HRV": {
+      "name": "Zagreb",
+      "lat": 45.81444,
+      "lon": 15.97798,
+      "population": 663592
+    },
+    "HTI": {
+      "name": "Port-au-Prince",
+      "lat": 18.54349,
+      "lon": -72.33881,
+      "population": 1234742
+    },
+    "HUN": {
+      "name": "Budapest",
+      "lat": 47.49835,
+      "lon": 19.04045,
+      "population": 1741041
+    },
+    "IDN": {
+      "name": "Jakarta",
+      "lat": -6.21462,
+      "lon": 106.84513,
+      "population": 8540121
+    },
+    "IRL": {
+      "name": "Dublin",
+      "lat": 53.33306,
+      "lon": -6.24889,
+      "population": 1024027
+    },
+    "IMN": {
+      "name": "Douglas",
+      "lat": 54.15,
+      "lon": -4.48333,
+      "population": 26218
+    },
+    "IND": {
+      "name": "New Delhi",
+      "lat": 28.62137,
+      "lon": 77.2148,
+      "population": 317797
+    },
+    "IRQ": {
+      "name": "Baghdad",
+      "lat": 33.34058,
+      "lon": 44.40088,
+      "population": 7216000
+    },
+    "IRN": {
+      "name": "Tehran",
+      "lat": 35.69439,
+      "lon": 51.42151,
+      "population": 7153309
+    },
+    "ISL": {
+      "name": "Reykjavík",
+      "lat": 64.13548,
+      "lon": -21.89541,
+      "population": 118918
+    },
+    "ITA": {
+      "name": "Rome",
+      "lat": 41.89193,
+      "lon": 12.51133,
+      "population": 2318895
+    },
+    "JEY": {
+      "name": "Saint Helier",
+      "lat": 49.18804,
+      "lon": -2.10491,
+      "population": 28000
+    },
+    "JAM": {
+      "name": "Kingston",
+      "lat": 17.99702,
+      "lon": -76.79358,
+      "population": 937700
+    },
+    "JOR": {
+      "name": "Amman",
+      "lat": 31.95522,
+      "lon": 35.94503,
+      "population": 1275857
+    },
+    "JPN": {
+      "name": "Tokyo",
+      "lat": 35.6895,
+      "lon": 139.69171,
+      "population": 9733276
+    },
+    "KEN": {
+      "name": "Nairobi",
+      "lat": -1.28333,
+      "lon": 36.81667,
+      "population": 4397073
+    },
+    "KGZ": {
+      "name": "Bishkek",
+      "lat": 42.87,
+      "lon": 74.59,
+      "population": 900000
+    },
+    "KHM": {
+      "name": "Phnom Penh",
+      "lat": 11.56245,
+      "lon": 104.91601,
+      "population": 1573544
+    },
+    "KIR": {
+      "name": "Tarawa",
+      "lat": 1.3278,
+      "lon": 172.97696,
+      "population": 40311
+    },
+    "COM": {
+      "name": "Moroni",
+      "lat": -11.70216,
+      "lon": 43.25506,
+      "population": 74749
+    },
+    "KNA": {
+      "name": "Basseterre",
+      "lat": 17.2955,
+      "lon": -62.72499,
+      "population": 12920
+    },
+    "PRK": {
+      "name": "Pyongyang",
+      "lat": 39.03385,
+      "lon": 125.75432,
+      "population": 3222000
+    },
+    "KOR": {
+      "name": "Seoul",
+      "lat": 37.566,
+      "lon": 126.9784,
+      "population": 10349312
+    },
+    "KWT": {
+      "name": "Kuwait City",
+      "lat": 29.367,
+      "lon": 47.97429,
+      "population": 60064
+    },
+    "CYM": {
+      "name": "George Town",
+      "lat": 19.2866,
+      "lon": -81.37436,
+      "population": 29370
+    },
+    "KAZ": {
+      "name": "Astana",
+      "lat": 51.1801,
+      "lon": 71.44598,
+      "population": 1544142
+    },
+    "LAO": {
+      "name": "Vientiane",
+      "lat": 17.96667,
+      "lon": 102.6,
+      "population": 840940
+    },
+    "LBN": {
+      "name": "Beirut",
+      "lat": 33.89332,
+      "lon": 35.50157,
+      "population": 1916100
+    },
+    "LCA": {
+      "name": "Castries",
+      "lat": 13.9957,
+      "lon": -61.00614,
+      "population": 20000
+    },
+    "LIE": {
+      "name": "Vaduz",
+      "lat": 47.14151,
+      "lon": 9.52154,
+      "population": 5197
+    },
+    "LKA": {
+      "name": "Colombo",
+      "lat": 6.93548,
+      "lon": 79.84868,
+      "population": 648034
+    },
+    "LBR": {
+      "name": "Monrovia",
+      "lat": 6.30054,
+      "lon": -10.7969,
+      "population": 1542549
+    },
+    "LSO": {
+      "name": "Maseru",
+      "lat": -29.31667,
+      "lon": 27.48333,
+      "population": 359753
+    },
+    "LTU": {
+      "name": "Vilnius",
+      "lat": 54.68916,
+      "lon": 25.2798,
+      "population": 542366
+    },
+    "LUX": {
+      "name": "Luxembourg",
+      "lat": 49.60982,
+      "lon": 6.13268,
+      "population": 76684
+    },
+    "LVA": {
+      "name": "Riga",
+      "lat": 56.946,
+      "lon": 24.10589,
+      "population": 742572
+    },
+    "LBY": {
+      "name": "Tripoli",
+      "lat": 32.88743,
+      "lon": 13.18733,
+      "population": 1302947
+    },
+    "MAR": {
+      "name": "Rabat",
+      "lat": 34.01325,
+      "lon": -6.83255,
+      "population": 1655753
+    },
+    "MCO": {
+      "name": "Monaco",
+      "lat": 43.73718,
+      "lon": 7.42145,
+      "population": 32965
+    },
+    "MDA": {
+      "name": "Chisinau",
+      "lat": 47.00902,
+      "lon": 28.85938,
+      "population": 635994
+    },
+    "MNE": {
+      "name": "Podgorica",
+      "lat": 42.44124,
+      "lon": 19.26309,
+      "population": 236852
+    },
+    "MAF": {
+      "name": "Marigot",
+      "lat": 18.06819,
+      "lon": -63.08302,
+      "population": 5700
+    },
+    "MDG": {
+      "name": "Antananarivo",
+      "lat": -18.91368,
+      "lon": 47.53613,
+      "population": 1349501
+    },
+    "MHL": {
+      "name": "Majuro",
+      "lat": 7.08971,
+      "lon": 171.38027,
+      "population": 25400
+    },
+    "MKD": {
+      "name": "Skopje",
+      "lat": 41.99646,
+      "lon": 21.43141,
+      "population": 474889
+    },
+    "MLI": {
+      "name": "Bamako",
+      "lat": 12.60915,
+      "lon": -7.97522,
+      "population": 4227569
+    },
+    "MMR": {
+      "name": "Nay Pyi Taw",
+      "lat": 19.745,
+      "lon": 96.12972,
+      "population": 925000
+    },
+    "MNG": {
+      "name": "Ulan Bator",
+      "lat": 47.90771,
+      "lon": 106.88324,
+      "population": 844818
+    },
+    "MAC": {
+      "name": "Macau",
+      "lat": 22.20056,
+      "lon": 113.54611,
+      "population": 649335
+    },
+    "MNP": {
+      "name": "Saipan",
+      "lat": 15.21233,
+      "lon": 145.7545,
+      "population": 48220
+    },
+    "MTQ": {
+      "name": "Fort-de-France",
+      "lat": 14.60365,
+      "lon": -61.07418,
+      "population": 89995
+    },
+    "MRT": {
+      "name": "Nouakchott",
+      "lat": 18.08581,
+      "lon": -15.9785,
+      "population": 1184530
+    },
+    "MSR": {
+      "name": "Plymouth",
+      "lat": 16.70555,
+      "lon": -62.21292,
+      "population": 0
+    },
+    "MLT": {
+      "name": "Valletta",
+      "lat": 35.89968,
+      "lon": 14.5148,
+      "population": 6794
+    },
+    "MUS": {
+      "name": "Port Louis",
+      "lat": -20.16194,
+      "lon": 57.49889,
+      "population": 155226
+    },
+    "MDV": {
+      "name": "Male",
+      "lat": 4.17521,
+      "lon": 73.50916,
+      "population": 103693
+    },
+    "MWI": {
+      "name": "Lilongwe",
+      "lat": -13.96692,
+      "lon": 33.78725,
+      "population": 1115815
+    },
+    "MEX": {
+      "name": "Mexico City",
+      "lat": 19.42847,
+      "lon": -99.12766,
+      "population": 12294193
+    },
+    "MYS": {
+      "name": "Kuala Lumpur",
+      "lat": 3.1412,
+      "lon": 101.68653,
+      "population": 1453975
+    },
+    "MOZ": {
+      "name": "Maputo",
+      "lat": -25.96553,
+      "lon": 32.58322,
+      "population": 1254837
+    },
+    "NAM": {
+      "name": "Windhoek",
+      "lat": -22.55941,
+      "lon": 17.08323,
+      "population": 386219
+    },
+    "NCL": {
+      "name": "Nouméa",
+      "lat": -22.27407,
+      "lon": 166.44884,
+      "population": 93060
+    },
+    "NER": {
+      "name": "Niamey",
+      "lat": 13.51366,
+      "lon": 2.1098,
+      "population": 1323691
+    },
+    "NFK": {
+      "name": "Kingston",
+      "lat": -29.05459,
+      "lon": 167.96628,
+      "population": 880
+    },
+    "NGA": {
+      "name": "Abuja",
+      "lat": 9.05785,
+      "lon": 7.49508,
+      "population": 2690000
+    },
+    "NIC": {
+      "name": "Managua",
+      "lat": 12.13282,
+      "lon": -86.2504,
+      "population": 973087
+    },
+    "NLD": {
+      "name": "Amsterdam",
+      "lat": 52.37403,
+      "lon": 4.88969,
+      "population": 741636
+    },
+    "NOR": {
+      "name": "Oslo",
+      "lat": 59.91273,
+      "lon": 10.74609,
+      "population": 1082575
+    },
+    "NPL": {
+      "name": "Kathmandu",
+      "lat": 27.70169,
+      "lon": 85.3206,
+      "population": 1442271
+    },
+    "NRU": {
+      "name": "Yaren",
+      "lat": -0.55085,
+      "lon": 166.9252,
+      "population": 1100
+    },
+    "NIU": {
+      "name": "Alofi",
+      "lat": -19.05294,
+      "lon": -169.91957,
+      "population": 624
+    },
+    "NZL": {
+      "name": "Wellington",
+      "lat": -41.28664,
+      "lon": 174.77557,
+      "population": 381900
+    },
+    "OMN": {
+      "name": "Muscat",
+      "lat": 23.58413,
+      "lon": 58.40778,
+      "population": 797000
+    },
+    "PAN": {
+      "name": "Panama City",
+      "lat": 8.9936,
+      "lon": -79.51973,
+      "population": 408168
+    },
+    "PER": {
+      "name": "Lima",
+      "lat": -12.04318,
+      "lon": -77.02824,
+      "population": 7737002
+    },
+    "PYF": {
+      "name": "Papeete",
+      "lat": -17.5347,
+      "lon": -149.56843,
+      "population": 26357
+    },
+    "PNG": {
+      "name": "Port Moresby",
+      "lat": -9.47723,
+      "lon": 147.15089,
+      "population": 283733
+    },
+    "PHL": {
+      "name": "Manila",
+      "lat": 14.6042,
+      "lon": 120.9822,
+      "population": 1600000
+    },
+    "PAK": {
+      "name": "Islamabad",
+      "lat": 33.72148,
+      "lon": 73.04329,
+      "population": 601600
+    },
+    "POL": {
+      "name": "Warsaw",
+      "lat": 52.22977,
+      "lon": 21.01178,
+      "population": 1702139
+    },
+    "SPM": {
+      "name": "Saint-Pierre",
+      "lat": 46.77914,
+      "lon": -56.1773,
+      "population": 6200
+    },
+    "PCN": {
+      "name": "Adamstown",
+      "lat": -25.06597,
+      "lon": -130.10147,
+      "population": 46
+    },
+    "PRI": {
+      "name": "San Juan",
+      "lat": 18.46633,
+      "lon": -66.10572,
+      "population": 418140
+    },
+    "PRT": {
+      "name": "Lisbon",
+      "lat": 38.72509,
+      "lon": -9.1498,
+      "population": 517802
+    },
+    "PLW": {
+      "name": "Ngerulmud",
+      "lat": 7.50077,
+      "lon": 134.6238,
+      "population": 0
+    },
+    "PRY": {
+      "name": "Asunción",
+      "lat": -25.28646,
+      "lon": -57.647,
+      "population": 1482200
+    },
+    "QAT": {
+      "name": "Doha",
+      "lat": 25.28545,
+      "lon": 51.53096,
+      "population": 344939
+    },
+    "REU": {
+      "name": "Saint-Denis",
+      "lat": -20.88231,
+      "lon": 55.4504,
+      "population": 154765
+    },
+    "ROU": {
+      "name": "Bucharest",
+      "lat": 44.43225,
+      "lon": 26.10626,
+      "population": 1877155
+    },
+    "SRB": {
+      "name": "Belgrade",
+      "lat": 44.80401,
+      "lon": 20.46513,
+      "population": 1273651
+    },
+    "RUS": {
+      "name": "Moscow",
+      "lat": 55.75204,
+      "lon": 37.61781,
+      "population": 10381222
+    },
+    "RWA": {
+      "name": "Kigali",
+      "lat": -1.94995,
+      "lon": 30.05885,
+      "population": 1132686
+    },
+    "SAU": {
+      "name": "Riyadh",
+      "lat": 24.68773,
+      "lon": 46.72185,
+      "population": 4205961
+    },
+    "SLB": {
+      "name": "Honiara",
+      "lat": -9.43333,
+      "lon": 159.95,
+      "population": 56298
+    },
+    "SYC": {
+      "name": "Victoria",
+      "lat": -4.62001,
+      "lon": 55.45501,
+      "population": 22881
+    },
+    "SDN": {
+      "name": "Khartoum",
+      "lat": 15.55177,
+      "lon": 32.53241,
+      "population": 1974647
+    },
+    "SWE": {
+      "name": "Stockholm",
+      "lat": 59.32938,
+      "lon": 18.06871,
+      "population": 1515017
+    },
+    "SGP": {
+      "name": "Singapore",
+      "lat": 1.28967,
+      "lon": 103.85007,
+      "population": 5638700
+    },
+    "SHN": {
+      "name": "Jamestown",
+      "lat": -15.92488,
+      "lon": -5.71816,
+      "population": 637
+    },
+    "SVN": {
+      "name": "Ljubljana",
+      "lat": 46.05108,
+      "lon": 14.50513,
+      "population": 272220
+    },
+    "SJM": {
+      "name": "Longyearbyen",
+      "lat": 78.22334,
+      "lon": 15.64689,
+      "population": 2368
+    },
+    "SVK": {
+      "name": "Bratislava",
+      "lat": 48.14816,
+      "lon": 17.10674,
+      "population": 423737
+    },
+    "SLE": {
+      "name": "Freetown",
+      "lat": 8.48714,
+      "lon": -13.2356,
+      "population": 802639
+    },
+    "SMR": {
+      "name": "San Marino",
+      "lat": 43.93667,
+      "lon": 12.44639,
+      "population": 4500
+    },
+    "SEN": {
+      "name": "Dakar",
+      "lat": 14.6937,
+      "lon": -17.44406,
+      "population": 2646503
+    },
+    "SOM": {
+      "name": "Mogadishu",
+      "lat": 2.03711,
+      "lon": 45.34375,
+      "population": 2587183
+    },
+    "SUR": {
+      "name": "Paramaribo",
+      "lat": 5.86638,
+      "lon": -55.16682,
+      "population": 223757
+    },
+    "SSD": {
+      "name": "Juba",
+      "lat": 4.85165,
+      "lon": 31.58247,
+      "population": 450000
+    },
+    "STP": {
+      "name": "São Tomé",
+      "lat": 0.33756,
+      "lon": 6.7299,
+      "population": 53300
+    },
+    "SLV": {
+      "name": "San Salvador",
+      "lat": 13.68935,
+      "lon": -89.18718,
+      "population": 525990
+    },
+    "SXM": {
+      "name": "Philipsburg",
+      "lat": 18.026,
+      "lon": -63.04582,
+      "population": 1400
+    },
+    "SYR": {
+      "name": "Damascus",
+      "lat": 33.5102,
+      "lon": 36.29128,
+      "population": 1569394
+    },
+    "SWZ": {
+      "name": "Mbabane",
+      "lat": -26.31667,
+      "lon": 31.13333,
+      "population": 76218
+    },
+    "TCA": {
+      "name": "Cockburn Town",
+      "lat": 21.46122,
+      "lon": -71.14188,
+      "population": 3720
+    },
+    "TCD": {
+      "name": "N'Djamena",
+      "lat": 12.10672,
+      "lon": 15.0444,
+      "population": 1359526
+    },
+    "ATF": {
+      "name": "Port-aux-Français",
+      "lat": -49.34916,
+      "lon": 70.21937,
+      "population": 45
+    },
+    "TGO": {
+      "name": "Lomé",
+      "lat": 6.12874,
+      "lon": 1.22154,
+      "population": 2188376
+    },
+    "THA": {
+      "name": "Bangkok",
+      "lat": 13.75398,
+      "lon": 100.50144,
+      "population": 5104476
+    },
+    "TJK": {
+      "name": "Dushanbe",
+      "lat": 38.53575,
+      "lon": 68.77905,
+      "population": 679400
+    },
+    "TLS": {
+      "name": "Dili",
+      "lat": -8.55861,
+      "lon": 125.57361,
+      "population": 150000
+    },
+    "TKM": {
+      "name": "Ashgabat",
+      "lat": 37.95,
+      "lon": 58.38333,
+      "population": 1030063
+    },
+    "TUN": {
+      "name": "Tunis",
+      "lat": 36.81897,
+      "lon": 10.16579,
+      "population": 693210
+    },
+    "TON": {
+      "name": "Nuku‘alofa",
+      "lat": -21.13683,
+      "lon": -175.20114,
+      "population": 22400
+    },
+    "TUR": {
+      "name": "Ankara",
+      "lat": 39.91987,
+      "lon": 32.85427,
+      "population": 3517182
+    },
+    "TTO": {
+      "name": "Port of Spain",
+      "lat": 10.66668,
+      "lon": -61.51889,
+      "population": 49031
+    },
+    "TUV": {
+      "name": "Funafuti",
+      "lat": -8.52425,
+      "lon": 179.19417,
+      "population": 6320
+    },
+    "TWN": {
+      "name": "Taipei",
+      "lat": 25.05306,
+      "lon": 121.52639,
+      "population": 7871900
+    },
+    "TZA": {
+      "name": "Dodoma",
+      "lat": -6.17221,
+      "lon": 35.73947,
+      "population": 765179
+    },
+    "UKR": {
+      "name": "Kyiv",
+      "lat": 50.45466,
+      "lon": 30.5238,
+      "population": 2952301
+    },
+    "UGA": {
+      "name": "Kampala",
+      "lat": 0.31628,
+      "lon": 32.58219,
+      "population": 1680600
+    },
+    "USA": {
+      "name": "Washington",
+      "lat": 38.89511,
+      "lon": -77.03637,
+      "population": 689545
+    },
+    "URY": {
+      "name": "Montevideo",
+      "lat": -34.90328,
+      "lon": -56.18816,
+      "population": 1270737
+    },
+    "UZB": {
+      "name": "Tashkent",
+      "lat": 41.26465,
+      "lon": 69.21627,
+      "population": 1978028
+    },
+    "VAT": {
+      "name": "Vatican City",
+      "lat": 41.90268,
+      "lon": 12.45414,
+      "population": 829
+    },
+    "VCT": {
+      "name": "Kingstown",
+      "lat": 13.15527,
+      "lon": -61.22742,
+      "population": 24518
+    },
+    "VEN": {
+      "name": "Caracas",
+      "lat": 10.48801,
+      "lon": -66.87919,
+      "population": 3000000
+    },
+    "VGB": {
+      "name": "Road Town",
+      "lat": 18.42693,
+      "lon": -64.62079,
+      "population": 8449
+    },
+    "VIR": {
+      "name": "Charlotte Amalie",
+      "lat": 18.3419,
+      "lon": -64.9307,
+      "population": 20000
+    },
+    "VNM": {
+      "name": "Hanoi",
+      "lat": 21.0245,
+      "lon": 105.84117,
+      "population": 8053663
+    },
+    "VUT": {
+      "name": "Port-Vila",
+      "lat": -17.73648,
+      "lon": 168.31366,
+      "population": 35901
+    },
+    "WLF": {
+      "name": "Mata-Utu",
+      "lat": -13.28163,
+      "lon": -176.17453,
+      "population": 1200
+    },
+    "WSM": {
+      "name": "Apia",
+      "lat": -13.83333,
+      "lon": -171.76666,
+      "population": 40407
+    },
+    "XKX": {
+      "name": "Pristina",
+      "lat": 42.67272,
+      "lon": 21.16688,
+      "population": 550000
+    },
+    "YEM": {
+      "name": "Sanaa",
+      "lat": 15.35452,
+      "lon": 44.20646,
+      "population": 1937451
+    },
+    "MYT": {
+      "name": "Mamoudzou",
+      "lat": -12.78234,
+      "lon": 45.22878,
+      "population": 54831
+    },
+    "ZAF": {
+      "name": "Pretoria",
+      "lat": -25.74486,
+      "lon": 28.18783,
+      "population": 2112693
+    },
+    "ZMB": {
+      "name": "Lusaka",
+      "lat": -15.40669,
+      "lon": 28.28713,
+      "population": 2212301
+    },
+    "ZWE": {
+      "name": "Harare",
+      "lat": -17.82772,
+      "lon": 31.05337,
+      "population": 1542813
+    }
+  }
+}

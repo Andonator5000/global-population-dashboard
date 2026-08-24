@@ -1,0 +1,3531 @@
+{
+  "cwurYear": 2026,
+  "notes": {
+    "universities": "Count of institutions in the Hipolabs university-domains list; an institution appears only if it has a web domain, so this undercounts.",
+    "publicLibraries": "Count of items typed 'public library' in Wikidata. Coverage varies enormously by country's cataloguing activity; treat as a floor, not a census.",
+    "topUniversities": "CWUR World University Rankings 2026 national ranks; countries with fewer than 10 ranked institutions list what is ranked."
+  },
+  "entities": {
+    "ABW": {
+      "publicLibraries": 1
+    },
+    "AFG": {
+      "universities": 40
+    },
+    "AGO": {
+      "universities": 8
+    },
+    "ALB": {
+      "universities": 16,
+      "publicLibraries": 7
+    },
+    "AND": {
+      "universities": 1,
+      "publicLibraries": 2
+    },
+    "ARE": {
+      "universities": 37,
+      "publicLibraries": 2,
+      "topUniversities": [
+        {
+          "name": "Khalifa University",
+          "worldRank": 795,
+          "nationalRank": 1
+        },
+        {
+          "name": "United Arab Emirates University",
+          "worldRank": 958,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Sharjah",
+          "worldRank": 994,
+          "nationalRank": 3
+        },
+        {
+          "name": "New York University Abu Dhabi",
+          "worldRank": 1063,
+          "nationalRank": 4
+        }
+      ]
+    },
+    "ARG": {
+      "universities": 121,
+      "publicLibraries": 2060,
+      "topUniversities": [
+        {
+          "name": "University of Buenos Aires",
+          "worldRank": 423,
+          "nationalRank": 1
+        },
+        {
+          "name": "National University of La Plata",
+          "worldRank": 768,
+          "nationalRank": 2
+        },
+        {
+          "name": "National University of Córdoba",
+          "worldRank": 845,
+          "nationalRank": 3
+        },
+        {
+          "name": "National University of Rosario",
+          "worldRank": 1681,
+          "nationalRank": 4
+        },
+        {
+          "name": "National University of the Littoral",
+          "worldRank": 1739,
+          "nationalRank": 5
+        },
+        {
+          "name": "National University of Cuyo",
+          "worldRank": 1829,
+          "nationalRank": 6
+        },
+        {
+          "name": "National University of Mar del Plata",
+          "worldRank": 1891,
+          "nationalRank": 7
+        }
+      ]
+    },
+    "ARM": {
+      "universities": 12,
+      "topUniversities": [
+        {
+          "name": "Yerevan Physics Institute",
+          "worldRank": 1103,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "ASM": {
+      "publicLibraries": 1
+    },
+    "ATG": {
+      "universities": 2
+    },
+    "AUS": {
+      "universities": 59,
+      "publicLibraries": 1082,
+      "topUniversities": [
+        {
+          "name": "University of New South Wales",
+          "worldRank": 52,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Melbourne",
+          "worldRank": 64,
+          "nationalRank": 2
+        },
+        {
+          "name": "Australian National University",
+          "worldRank": 93,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Sydney",
+          "worldRank": 100,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Queensland",
+          "worldRank": 103,
+          "nationalRank": 5
+        },
+        {
+          "name": "Monash University",
+          "worldRank": 113,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Western Australia",
+          "worldRank": 160,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Adelaide",
+          "worldRank": 215,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Technology Sydney",
+          "worldRank": 308,
+          "nationalRank": 9
+        },
+        {
+          "name": "Curtin University",
+          "worldRank": 327,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "AUT": {
+      "universities": 46,
+      "publicLibraries": 1298,
+      "topUniversities": [
+        {
+          "name": "University of Vienna",
+          "worldRank": 206,
+          "nationalRank": 1
+        },
+        {
+          "name": "Medical University of Vienna",
+          "worldRank": 286,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Innsbruck",
+          "worldRank": 436,
+          "nationalRank": 3
+        },
+        {
+          "name": "Vienna University of Technology",
+          "worldRank": 483,
+          "nationalRank": 4
+        },
+        {
+          "name": "Medical University of Graz",
+          "worldRank": 589,
+          "nationalRank": 5
+        },
+        {
+          "name": "Medical University of Innsbruck",
+          "worldRank": 594,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Graz",
+          "worldRank": 648,
+          "nationalRank": 7
+        },
+        {
+          "name": "BOKU University",
+          "worldRank": 771,
+          "nationalRank": 8
+        },
+        {
+          "name": "Graz University of Technology",
+          "worldRank": 894,
+          "nationalRank": 9
+        },
+        {
+          "name": "Johannes Kepler University Linz",
+          "worldRank": 988,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "AZE": {
+      "universities": 32,
+      "topUniversities": [
+        {
+          "name": "Institute of Physics, Azerbaijan National Academy of Sciences",
+          "worldRank": 1733,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "BDI": {
+      "universities": 3
+    },
+    "BEL": {
+      "universities": 50,
+      "publicLibraries": 39,
+      "topUniversities": [
+        {
+          "name": "KU Leuven",
+          "worldRank": 98,
+          "nationalRank": 1
+        },
+        {
+          "name": "Ghent University",
+          "worldRank": 137,
+          "nationalRank": 2
+        },
+        {
+          "name": "Université catholique de Louvain",
+          "worldRank": 252,
+          "nationalRank": 3
+        },
+        {
+          "name": "Université libre de Bruxelles",
+          "worldRank": 263,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Antwerp",
+          "worldRank": 303,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Liège",
+          "worldRank": 307,
+          "nationalRank": 6
+        },
+        {
+          "name": "Vrije Universiteit Brussel",
+          "worldRank": 443,
+          "nationalRank": 7
+        },
+        {
+          "name": "Hasselt University",
+          "worldRank": 830,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Mons",
+          "worldRank": 1187,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Namur",
+          "worldRank": 1540,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "BEN": {
+      "universities": 3,
+      "publicLibraries": 5
+    },
+    "BFA": {
+      "universities": 1
+    },
+    "BGD": {
+      "universities": 83,
+      "publicLibraries": 10,
+      "topUniversities": [
+        {
+          "name": "University of Dhaka",
+          "worldRank": 1465,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "BGR": {
+      "universities": 37,
+      "publicLibraries": 2,
+      "topUniversities": [
+        {
+          "name": "Sofia University",
+          "worldRank": 1089,
+          "nationalRank": 1
+        },
+        {
+          "name": "Medical University Sofia",
+          "worldRank": 1537,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "BHR": {
+      "universities": 12
+    },
+    "BHS": {
+      "universities": 1,
+      "publicLibraries": 2
+    },
+    "BIH": {
+      "universities": 16
+    },
+    "BLR": {
+      "universities": 34,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "Belarusian State University",
+          "worldRank": 1135,
+          "nationalRank": 1
+        },
+        {
+          "name": "B.I. Stepanov Institute of Physics of The National Academy of Sciences of Belarus",
+          "worldRank": 1855,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "BLZ": {
+      "universities": 5
+    },
+    "BMU": {
+      "universities": 1
+    },
+    "BOL": {
+      "universities": 31,
+      "publicLibraries": 5
+    },
+    "BRA": {
+      "universities": 187,
+      "publicLibraries": 6355,
+      "topUniversities": [
+        {
+          "name": "University of São Paulo",
+          "worldRank": 119,
+          "nationalRank": 1
+        },
+        {
+          "name": "Federal University of Rio de Janeiro",
+          "worldRank": 346,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Campinas",
+          "worldRank": 379,
+          "nationalRank": 3
+        },
+        {
+          "name": "Federal University of Rio Grande do Sul",
+          "worldRank": 476,
+          "nationalRank": 4
+        },
+        {
+          "name": "São Paulo State University",
+          "worldRank": 479,
+          "nationalRank": 5
+        },
+        {
+          "name": "Federal University of Minas Gerais",
+          "worldRank": 508,
+          "nationalRank": 6
+        },
+        {
+          "name": "Federal University of São Paulo",
+          "worldRank": 621,
+          "nationalRank": 7
+        },
+        {
+          "name": "Oswaldo Cruz Foundation",
+          "worldRank": 682,
+          "nationalRank": 8
+        },
+        {
+          "name": "Federal University of Santa Catarina",
+          "worldRank": 732,
+          "nationalRank": 9
+        },
+        {
+          "name": "Federal University of Paraná",
+          "worldRank": 799,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "BRB": {
+      "universities": 1
+    },
+    "BRN": {
+      "universities": 3,
+      "publicLibraries": 9
+    },
+    "BTN": {
+      "universities": 1
+    },
+    "BWA": {
+      "universities": 9,
+      "publicLibraries": 61
+    },
+    "CAF": {
+      "universities": 1
+    },
+    "CAN": {
+      "universities": 156,
+      "publicLibraries": 1161,
+      "topUniversities": [
+        {
+          "name": "University of Toronto",
+          "worldRank": 23,
+          "nationalRank": 1
+        },
+        {
+          "name": "McGill University",
+          "worldRank": 28,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of British Columbia",
+          "worldRank": 49,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Alberta",
+          "worldRank": 82,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Montreal",
+          "worldRank": 126,
+          "nationalRank": 5
+        },
+        {
+          "name": "Western University",
+          "worldRank": 187,
+          "nationalRank": 6
+        },
+        {
+          "name": "McMaster University",
+          "worldRank": 190,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Calgary",
+          "worldRank": 203,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Waterloo",
+          "worldRank": 216,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Ottawa",
+          "worldRank": 226,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "CHE": {
+      "universities": 76,
+      "publicLibraries": 89,
+      "topUniversities": [
+        {
+          "name": "ETH Zurich",
+          "worldRank": 31,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Zurich",
+          "worldRank": 63,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Basel",
+          "worldRank": 90,
+          "nationalRank": 3
+        },
+        {
+          "name": "École Polytechnique Fédérale de Lausanne",
+          "worldRank": 109,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Geneva",
+          "worldRank": 116,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Bern",
+          "worldRank": 145,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Lausanne",
+          "worldRank": 202,
+          "nationalRank": 7
+        },
+        {
+          "name": "International Institute for Management Development",
+          "worldRank": 434,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of St.Gallen",
+          "worldRank": 624,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Fribourg",
+          "worldRank": 683,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "CHL": {
+      "universities": 65,
+      "publicLibraries": 7,
+      "topUniversities": [
+        {
+          "name": "Pontifical Catholic University of Chile",
+          "worldRank": 421,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Chile",
+          "worldRank": 465,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Concepción",
+          "worldRank": 877,
+          "nationalRank": 3
+        },
+        {
+          "name": "Federico Santa María Technical University",
+          "worldRank": 1022,
+          "nationalRank": 4
+        },
+        {
+          "name": "Andrés Bello University",
+          "worldRank": 1098,
+          "nationalRank": 5
+        },
+        {
+          "name": "Austral University of Chile",
+          "worldRank": 1374,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of La Frontera",
+          "worldRank": 1442,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Santiago, Chile",
+          "worldRank": 1476,
+          "nationalRank": 8
+        },
+        {
+          "name": "Pontifical Catholic University of Valparaíso",
+          "worldRank": 1484,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Tarapacá",
+          "worldRank": 1565,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "CHN": {
+      "universities": 398,
+      "publicLibraries": 113,
+      "topUniversities": [
+        {
+          "name": "Tsinghua University",
+          "worldRank": 36,
+          "nationalRank": 1
+        },
+        {
+          "name": "Peking University",
+          "worldRank": 40,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Chinese Academy of Sciences",
+          "worldRank": 41,
+          "nationalRank": 3
+        },
+        {
+          "name": "Shanghai Jiao Tong University",
+          "worldRank": 54,
+          "nationalRank": 4
+        },
+        {
+          "name": "Zhejiang University",
+          "worldRank": 62,
+          "nationalRank": 5
+        },
+        {
+          "name": "Fudan University",
+          "worldRank": 66,
+          "nationalRank": 6
+        },
+        {
+          "name": "Sun Yat-sen University",
+          "worldRank": 81,
+          "nationalRank": 7
+        },
+        {
+          "name": "Huazhong University of Science and Technology",
+          "worldRank": 84,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Science and Technology of China",
+          "worldRank": 85,
+          "nationalRank": 9
+        },
+        {
+          "name": "Nanjing University",
+          "worldRank": 120,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "CIV": {
+      "universities": 4,
+      "publicLibraries": 1
+    },
+    "CMR": {
+      "universities": 10,
+      "publicLibraries": 6,
+      "topUniversities": [
+        {
+          "name": "University of Yaoundé I",
+          "worldRank": 1369,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "COD": {
+      "universities": 10,
+      "publicLibraries": 1
+    },
+    "COG": {
+      "universities": 1
+    },
+    "COL": {
+      "universities": 104,
+      "publicLibraries": 20,
+      "topUniversities": [
+        {
+          "name": "National University of Colombia",
+          "worldRank": 757,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of the Andes, Colombia",
+          "worldRank": 919,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Antioquia",
+          "worldRank": 985,
+          "nationalRank": 3
+        },
+        {
+          "name": "Pontifical Javeriana University",
+          "worldRank": 1600,
+          "nationalRank": 4
+        },
+        {
+          "name": "Antonio Nariño University",
+          "worldRank": 1732,
+          "nationalRank": 5
+        },
+        {
+          "name": "Industrial University of Santander",
+          "worldRank": 1833,
+          "nationalRank": 6
+        }
+      ]
+    },
+    "CPV": {
+      "universities": 1,
+      "publicLibraries": 1
+    },
+    "CRI": {
+      "universities": 32,
+      "topUniversities": [
+        {
+          "name": "University of Costa Rica",
+          "worldRank": 1418,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "CUB": {
+      "universities": 13
+    },
+    "CYM": {
+      "universities": 2
+    },
+    "CYP": {
+      "universities": 17,
+      "topUniversities": [
+        {
+          "name": "University of Cyprus",
+          "worldRank": 841,
+          "nationalRank": 1
+        },
+        {
+          "name": "Cyprus University of Technology",
+          "worldRank": 1905,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "CZE": {
+      "universities": 30,
+      "publicLibraries": 5308,
+      "topUniversities": [
+        {
+          "name": "Charles University in Prague",
+          "worldRank": 248,
+          "nationalRank": 1
+        },
+        {
+          "name": "Masaryk University",
+          "worldRank": 561,
+          "nationalRank": 2
+        },
+        {
+          "name": "Palacký University Olomouc",
+          "worldRank": 649,
+          "nationalRank": 3
+        },
+        {
+          "name": "Czech Technical University in Prague",
+          "worldRank": 714,
+          "nationalRank": 4
+        },
+        {
+          "name": "Czech University of Life Sciences Prague",
+          "worldRank": 1021,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of South Bohemia",
+          "worldRank": 1160,
+          "nationalRank": 6
+        },
+        {
+          "name": "Brno University of Technology",
+          "worldRank": 1194,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Chemistry and Technology, Prague",
+          "worldRank": 1244,
+          "nationalRank": 8
+        },
+        {
+          "name": "Mendel University in Brno",
+          "worldRank": 1622,
+          "nationalRank": 9
+        },
+        {
+          "name": "Technical University of Ostrava",
+          "worldRank": 1661,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "DEU": {
+      "universities": 321,
+      "publicLibraries": 1470,
+      "topUniversities": [
+        {
+          "name": "Ludwig Maximilian University of Munich",
+          "worldRank": 51,
+          "nationalRank": 1
+        },
+        {
+          "name": "Free University of Berlin",
+          "worldRank": 57,
+          "nationalRank": 2
+        },
+        {
+          "name": "Humboldt University of Berlin",
+          "worldRank": 59,
+          "nationalRank": 3
+        },
+        {
+          "name": "Heidelberg University",
+          "worldRank": 70,
+          "nationalRank": 4
+        },
+        {
+          "name": "Technical University of Munich",
+          "worldRank": 77,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Göttingen",
+          "worldRank": 108,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Tübingen",
+          "worldRank": 118,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Bonn",
+          "worldRank": 123,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Freiburg",
+          "worldRank": 148,
+          "nationalRank": 9
+        },
+        {
+          "name": "Goethe University Frankfurt",
+          "worldRank": 161,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "DJI": {
+      "universities": 1
+    },
+    "DMA": {
+      "universities": 3
+    },
+    "DNK": {
+      "universities": 34,
+      "publicLibraries": 491,
+      "topUniversities": [
+        {
+          "name": "University of Copenhagen",
+          "worldRank": 37,
+          "nationalRank": 1
+        },
+        {
+          "name": "Aarhus University",
+          "worldRank": 97,
+          "nationalRank": 2
+        },
+        {
+          "name": "Technical University of Denmark",
+          "worldRank": 213,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Southern Denmark",
+          "worldRank": 292,
+          "nationalRank": 4
+        },
+        {
+          "name": "Aalborg University",
+          "worldRank": 330,
+          "nationalRank": 5
+        },
+        {
+          "name": "Copenhagen Business School",
+          "worldRank": 1085,
+          "nationalRank": 6
+        },
+        {
+          "name": "Roskilde University",
+          "worldRank": 1718,
+          "nationalRank": 7
+        }
+      ]
+    },
+    "DOM": {
+      "universities": 26
+    },
+    "DZA": {
+      "universities": 29,
+      "publicLibraries": 4
+    },
+    "ECU": {
+      "universities": 43,
+      "topUniversities": [
+        {
+          "name": "University of San Francisco, Quito",
+          "worldRank": 1498,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "EGY": {
+      "universities": 44,
+      "publicLibraries": 64,
+      "topUniversities": [
+        {
+          "name": "Cairo University",
+          "worldRank": 517,
+          "nationalRank": 1
+        },
+        {
+          "name": "Ain Shams University",
+          "worldRank": 731,
+          "nationalRank": 2
+        },
+        {
+          "name": "Mansoura University",
+          "worldRank": 780,
+          "nationalRank": 3
+        },
+        {
+          "name": "Alexandria University",
+          "worldRank": 848,
+          "nationalRank": 4
+        },
+        {
+          "name": "Assiut University",
+          "worldRank": 999,
+          "nationalRank": 5
+        },
+        {
+          "name": "Zagazig University",
+          "worldRank": 1026,
+          "nationalRank": 6
+        },
+        {
+          "name": "Tanta University",
+          "worldRank": 1107,
+          "nationalRank": 7
+        },
+        {
+          "name": "Al-Azhar University",
+          "worldRank": 1125,
+          "nationalRank": 8
+        },
+        {
+          "name": "Beni Suef University",
+          "worldRank": 1348,
+          "nationalRank": 9
+        },
+        {
+          "name": "Capital University",
+          "worldRank": 1377,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "ERI": {
+      "universities": 1
+    },
+    "ESP": {
+      "universities": 96,
+      "publicLibraries": 5106,
+      "topUniversities": [
+        {
+          "name": "Autonomous University of Barcelona",
+          "worldRank": 125,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Barcelona",
+          "worldRank": 140,
+          "nationalRank": 2
+        },
+        {
+          "name": "Complutense University of Madrid",
+          "worldRank": 255,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Valencia",
+          "worldRank": 309,
+          "nationalRank": 4
+        },
+        {
+          "name": "Autonomous University of Madrid",
+          "worldRank": 315,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Granada",
+          "worldRank": 359,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of the Basque Country",
+          "worldRank": 382,
+          "nationalRank": 7
+        },
+        {
+          "name": "Technical University of Catalonia (UPC)",
+          "worldRank": 414,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Seville",
+          "worldRank": 426,
+          "nationalRank": 9
+        },
+        {
+          "name": "Pompeu Fabra University",
+          "worldRank": 448,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "EST": {
+      "universities": 10,
+      "topUniversities": [
+        {
+          "name": "University of Tartu",
+          "worldRank": 539,
+          "nationalRank": 1
+        },
+        {
+          "name": "Tallinn University of Technology",
+          "worldRank": 1507,
+          "nationalRank": 2
+        },
+        {
+          "name": "Estonian University of Life Sciences",
+          "worldRank": 1806,
+          "nationalRank": 3
+        }
+      ]
+    },
+    "ETH": {
+      "universities": 30,
+      "publicLibraries": 8,
+      "topUniversities": [
+        {
+          "name": "Addis Ababa University",
+          "worldRank": 789,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Gondar",
+          "worldRank": 1517,
+          "nationalRank": 2
+        },
+        {
+          "name": "Jimma University",
+          "worldRank": 1625,
+          "nationalRank": 3
+        },
+        {
+          "name": "Bahir Dar University",
+          "worldRank": 1691,
+          "nationalRank": 4
+        },
+        {
+          "name": "Mekelle University",
+          "worldRank": 1742,
+          "nationalRank": 5
+        },
+        {
+          "name": "Haramaya University",
+          "worldRank": 1831,
+          "nationalRank": 6
+        }
+      ]
+    },
+    "FIN": {
+      "universities": 35,
+      "publicLibraries": 422,
+      "topUniversities": [
+        {
+          "name": "University of Helsinki",
+          "worldRank": 130,
+          "nationalRank": 1
+        },
+        {
+          "name": "Aalto University",
+          "worldRank": 372,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Turku",
+          "worldRank": 395,
+          "nationalRank": 3
+        },
+        {
+          "name": "Tampere University",
+          "worldRank": 447,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Oulu",
+          "worldRank": 466,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Eastern Finland",
+          "worldRank": 515,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Jyväskylä",
+          "worldRank": 657,
+          "nationalRank": 7
+        },
+        {
+          "name": "Lappeenranta University of Technology",
+          "worldRank": 1041,
+          "nationalRank": 8
+        },
+        {
+          "name": "Åbo Akademi University",
+          "worldRank": 1176,
+          "nationalRank": 9
+        },
+        {
+          "name": "Hanken School of Economics",
+          "worldRank": 1690,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "FJI": {
+      "universities": 4
+    },
+    "FRA": {
+      "universities": 294,
+      "publicLibraries": 200,
+      "topUniversities": [
+        {
+          "name": "PSL University",
+          "worldRank": 20,
+          "nationalRank": 1
+        },
+        {
+          "name": "Institut Polytechnique de Paris",
+          "worldRank": 32,
+          "nationalRank": 2
+        },
+        {
+          "name": "Paris-Saclay University",
+          "worldRank": 33,
+          "nationalRank": 3
+        },
+        {
+          "name": "Paris City University",
+          "worldRank": 38,
+          "nationalRank": 4
+        },
+        {
+          "name": "Sorbonne University",
+          "worldRank": 45,
+          "nationalRank": 5
+        },
+        {
+          "name": "INSEAD",
+          "worldRank": 122,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Strasbourg",
+          "worldRank": 159,
+          "nationalRank": 7
+        },
+        {
+          "name": "Grenoble Alpes University",
+          "worldRank": 170,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Montpellier",
+          "worldRank": 179,
+          "nationalRank": 9
+        },
+        {
+          "name": "Aix-Marseille University",
+          "worldRank": 180,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "FRO": {
+      "universities": 1
+    },
+    "GAB": {
+      "universities": 1
+    },
+    "GBR": {
+      "universities": 193,
+      "publicLibraries": 3925,
+      "topUniversities": [
+        {
+          "name": "University of Cambridge",
+          "worldRank": 4,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Oxford",
+          "worldRank": 5,
+          "nationalRank": 2
+        },
+        {
+          "name": "University College London",
+          "worldRank": 19,
+          "nationalRank": 3
+        },
+        {
+          "name": "Imperial College London",
+          "worldRank": 27,
+          "nationalRank": 4
+        },
+        {
+          "name": "King's College London",
+          "worldRank": 44,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Edinburgh",
+          "worldRank": 50,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Manchester",
+          "worldRank": 53,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Birmingham",
+          "worldRank": 95,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Bristol",
+          "worldRank": 102,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Leeds",
+          "worldRank": 110,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "GEO": {
+      "universities": 15,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "Ivane Javakhishvili Tbilisi State University",
+          "worldRank": 1161,
+          "nationalRank": 1
+        },
+        {
+          "name": "Ilia State University",
+          "worldRank": 1486,
+          "nationalRank": 2
+        },
+        {
+          "name": "Georgian Technical University",
+          "worldRank": 1627,
+          "nationalRank": 3
+        }
+      ]
+    },
+    "GGY": {
+      "publicLibraries": 2
+    },
+    "GHA": {
+      "universities": 31,
+      "publicLibraries": 159,
+      "topUniversities": [
+        {
+          "name": "University of Ghana",
+          "worldRank": 1157,
+          "nationalRank": 1
+        },
+        {
+          "name": "Kwame Nkrumah University of Science and Technology",
+          "worldRank": 1288,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "GIN": {
+      "universities": 4
+    },
+    "GLP": {
+      "universities": 1
+    },
+    "GMB": {
+      "universities": 3
+    },
+    "GNQ": {
+      "universities": 1
+    },
+    "GRC": {
+      "universities": 33,
+      "publicLibraries": 39,
+      "topUniversities": [
+        {
+          "name": "National and Kapodistrian University of Athens",
+          "worldRank": 297,
+          "nationalRank": 1
+        },
+        {
+          "name": "Aristotle University of Thessaloniki",
+          "worldRank": 457,
+          "nationalRank": 2
+        },
+        {
+          "name": "National Technical University of Athens",
+          "worldRank": 642,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Ioannina",
+          "worldRank": 840,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Crete",
+          "worldRank": 849,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Patras",
+          "worldRank": 872,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Thessaly",
+          "worldRank": 1050,
+          "nationalRank": 7
+        },
+        {
+          "name": "Democritus University of Thrace",
+          "worldRank": 1440,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of the Aegean",
+          "worldRank": 1491,
+          "nationalRank": 9
+        },
+        {
+          "name": "Agricultural University of Athens",
+          "worldRank": 1871,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "GRD": {
+      "universities": 1
+    },
+    "GRL": {
+      "universities": 1
+    },
+    "GTM": {
+      "universities": 11
+    },
+    "GUF": {
+      "universities": 1
+    },
+    "GUM": {
+      "universities": 1
+    },
+    "GUY": {
+      "universities": 4
+    },
+    "HKG": {
+      "universities": 15
+    },
+    "HND": {
+      "universities": 9
+    },
+    "HRV": {
+      "universities": 12,
+      "publicLibraries": 4,
+      "topUniversities": [
+        {
+          "name": "University of Zagreb",
+          "worldRank": 522,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Split",
+          "worldRank": 953,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Rijeka",
+          "worldRank": 1658,
+          "nationalRank": 3
+        }
+      ]
+    },
+    "HTI": {
+      "universities": 6,
+      "publicLibraries": 5
+    },
+    "HUN": {
+      "universities": 42,
+      "publicLibraries": 24,
+      "topUniversities": [
+        {
+          "name": "Eötvös Loránd University",
+          "worldRank": 509,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Szeged",
+          "worldRank": 604,
+          "nationalRank": 2
+        },
+        {
+          "name": "Semmelweis University",
+          "worldRank": 662,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Debrecen",
+          "worldRank": 825,
+          "nationalRank": 4
+        },
+        {
+          "name": "Budapest University of Technology and Economics",
+          "worldRank": 1051,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Pécs",
+          "worldRank": 1239,
+          "nationalRank": 6
+        },
+        {
+          "name": "Hungarian University of Agriculture and Life Sciences",
+          "worldRank": 1750,
+          "nationalRank": 7
+        }
+      ]
+    },
+    "IDN": {
+      "universities": 194,
+      "publicLibraries": 10,
+      "topUniversities": [
+        {
+          "name": "University of Indonesia",
+          "worldRank": 1324,
+          "nationalRank": 1
+        },
+        {
+          "name": "Gadjah Mada University",
+          "worldRank": 1741,
+          "nationalRank": 2
+        },
+        {
+          "name": "Bandung Institute of Technology",
+          "worldRank": 1879,
+          "nationalRank": 3
+        }
+      ]
+    },
+    "IMN": {
+      "publicLibraries": 6
+    },
+    "IND": {
+      "universities": 477,
+      "publicLibraries": 526,
+      "topUniversities": [
+        {
+          "name": "Indian Institute of Management Ahmedabad",
+          "worldRank": 437,
+          "nationalRank": 1
+        },
+        {
+          "name": "Indian Institute of Science",
+          "worldRank": 518,
+          "nationalRank": 2
+        },
+        {
+          "name": "Indian Institute of Technology Madras",
+          "worldRank": 546,
+          "nationalRank": 3
+        },
+        {
+          "name": "Indian Institute of Technology Bombay",
+          "worldRank": 568,
+          "nationalRank": 4
+        },
+        {
+          "name": "Indian Institute of Technology Delhi",
+          "worldRank": 586,
+          "nationalRank": 5
+        },
+        {
+          "name": "Tata Institute of Fundamental Research",
+          "worldRank": 664,
+          "nationalRank": 6
+        },
+        {
+          "name": "Delhi University",
+          "worldRank": 669,
+          "nationalRank": 7
+        },
+        {
+          "name": "Indian Institute of Technology Kharagpur",
+          "worldRank": 698,
+          "nationalRank": 8
+        },
+        {
+          "name": "Academy of Scientific & Innovative Research",
+          "worldRank": 709,
+          "nationalRank": 9
+        },
+        {
+          "name": "Homi Bhabha National Institute",
+          "worldRank": 759,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "IRL": {
+      "universities": 27,
+      "publicLibraries": 123,
+      "topUniversities": [
+        {
+          "name": "Trinity College Dublin",
+          "worldRank": 256,
+          "nationalRank": 1
+        },
+        {
+          "name": "University College Dublin",
+          "worldRank": 304,
+          "nationalRank": 2
+        },
+        {
+          "name": "University College Cork",
+          "worldRank": 557,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Galway",
+          "worldRank": 721,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Limerick",
+          "worldRank": 929,
+          "nationalRank": 5
+        },
+        {
+          "name": "Royal College of Surgeons in Ireland",
+          "worldRank": 1032,
+          "nationalRank": 6
+        },
+        {
+          "name": "Dublin City University",
+          "worldRank": 1182,
+          "nationalRank": 7
+        },
+        {
+          "name": "Maynooth University",
+          "worldRank": 1384,
+          "nationalRank": 8
+        }
+      ]
+    },
+    "IRN": {
+      "universities": 193,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "Islamic Azad University",
+          "worldRank": 375,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Tehran",
+          "worldRank": 478,
+          "nationalRank": 2
+        },
+        {
+          "name": "Tehran University of Medical Sciences",
+          "worldRank": 582,
+          "nationalRank": 3
+        },
+        {
+          "name": "Sharif University of Technology",
+          "worldRank": 738,
+          "nationalRank": 4
+        },
+        {
+          "name": "Tarbiat Modares University",
+          "worldRank": 760,
+          "nationalRank": 5
+        },
+        {
+          "name": "Isfahan University of Technology",
+          "worldRank": 820,
+          "nationalRank": 6
+        },
+        {
+          "name": "Shahid Beheshti University of Medical Sciences",
+          "worldRank": 843,
+          "nationalRank": 7
+        },
+        {
+          "name": "Amirkabir University of Technology",
+          "worldRank": 846,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Tabriz",
+          "worldRank": 905,
+          "nationalRank": 9
+        },
+        {
+          "name": "Iran University of Science and Technology",
+          "worldRank": 975,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "IRQ": {
+      "universities": 47,
+      "topUniversities": [
+        {
+          "name": "University of Baghdad",
+          "worldRank": 1993,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "ISL": {
+      "universities": 10,
+      "topUniversities": [
+        {
+          "name": "University of Iceland",
+          "worldRank": 652,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "ISR": {
+      "universities": 24,
+      "publicLibraries": 20,
+      "topUniversities": [
+        {
+          "name": "Hebrew University of Jerusalem",
+          "worldRank": 67,
+          "nationalRank": 1
+        },
+        {
+          "name": "Weizmann Institute of Science",
+          "worldRank": 74,
+          "nationalRank": 2
+        },
+        {
+          "name": "Tel Aviv University",
+          "worldRank": 162,
+          "nationalRank": 3
+        },
+        {
+          "name": "Technion – Israel Institute of Technology",
+          "worldRank": 193,
+          "nationalRank": 4
+        },
+        {
+          "name": "Ben-Gurion University of the Negev",
+          "worldRank": 357,
+          "nationalRank": 5
+        },
+        {
+          "name": "Bar-Ilan University",
+          "worldRank": 610,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Haifa",
+          "worldRank": 703,
+          "nationalRank": 7
+        },
+        {
+          "name": "Ariel University",
+          "worldRank": 1404,
+          "nationalRank": 8
+        },
+        {
+          "name": "Reichman University",
+          "worldRank": 1998,
+          "nationalRank": 9
+        }
+      ]
+    },
+    "ITA": {
+      "universities": 93,
+      "publicLibraries": 7060,
+      "topUniversities": [
+        {
+          "name": "Sapienza University of Rome",
+          "worldRank": 129,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Padova",
+          "worldRank": 182,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Milan",
+          "worldRank": 194,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Bologna",
+          "worldRank": 208,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Naples Federico II",
+          "worldRank": 243,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Turin",
+          "worldRank": 245,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Florence",
+          "worldRank": 273,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Pisa",
+          "worldRank": 293,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Genoa",
+          "worldRank": 294,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Pavia",
+          "worldRank": 335,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "JAM": {
+      "universities": 3,
+      "topUniversities": [
+        {
+          "name": "University of the West Indies, Mona",
+          "worldRank": 1468,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "JEY": {
+      "publicLibraries": 1
+    },
+    "JOR": {
+      "universities": 29,
+      "topUniversities": [
+        {
+          "name": "University of Jordan",
+          "worldRank": 1242,
+          "nationalRank": 1
+        },
+        {
+          "name": "Jordan University of Science and Technology",
+          "worldRank": 1246,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "JPN": {
+      "universities": 572,
+      "publicLibraries": 4855,
+      "topUniversities": [
+        {
+          "name": "University of Tokyo",
+          "worldRank": 13,
+          "nationalRank": 1
+        },
+        {
+          "name": "Kyoto University",
+          "worldRank": 26,
+          "nationalRank": 2
+        },
+        {
+          "name": "Keio University",
+          "worldRank": 107,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Osaka",
+          "worldRank": 112,
+          "nationalRank": 4
+        },
+        {
+          "name": "Nagoya University",
+          "worldRank": 127,
+          "nationalRank": 5
+        },
+        {
+          "name": "Institute of Science Tokyo",
+          "worldRank": 150,
+          "nationalRank": 6
+        },
+        {
+          "name": "Tohoku University",
+          "worldRank": 167,
+          "nationalRank": 7
+        },
+        {
+          "name": "Waseda University",
+          "worldRank": 233,
+          "nationalRank": 8
+        },
+        {
+          "name": "Hokkaido University",
+          "worldRank": 249,
+          "nationalRank": 9
+        },
+        {
+          "name": "Kyushu University",
+          "worldRank": 267,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "KAZ": {
+      "universities": 29,
+      "topUniversities": [
+        {
+          "name": "Nazarbayev University",
+          "worldRank": 1451,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "KEN": {
+      "universities": 49,
+      "publicLibraries": 112,
+      "topUniversities": [
+        {
+          "name": "University of Nairobi",
+          "worldRank": 1425,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "KGZ": {
+      "universities": 13,
+      "publicLibraries": 1
+    },
+    "KHM": {
+      "universities": 21
+    },
+    "KNA": {
+      "universities": 4
+    },
+    "KOR": {
+      "universities": 244,
+      "publicLibraries": 7,
+      "topUniversities": [
+        {
+          "name": "Seoul National University",
+          "worldRank": 30,
+          "nationalRank": 1
+        },
+        {
+          "name": "Yonsei University",
+          "worldRank": 142,
+          "nationalRank": 2
+        },
+        {
+          "name": "Korea University",
+          "worldRank": 158,
+          "nationalRank": 3
+        },
+        {
+          "name": "Sungkyunkwan University",
+          "worldRank": 197,
+          "nationalRank": 4
+        },
+        {
+          "name": "KAIST",
+          "worldRank": 254,
+          "nationalRank": 5
+        },
+        {
+          "name": "Hanyang University",
+          "worldRank": 311,
+          "nationalRank": 6
+        },
+        {
+          "name": "Kyung Hee University",
+          "worldRank": 370,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Ulsan",
+          "worldRank": 404,
+          "nationalRank": 8
+        },
+        {
+          "name": "Pohang University of Science and Technology",
+          "worldRank": 412,
+          "nationalRank": 9
+        },
+        {
+          "name": "Pusan National University",
+          "worldRank": 451,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "KWT": {
+      "universities": 8,
+      "topUniversities": [
+        {
+          "name": "Kuwait University",
+          "worldRank": 1364,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "LAO": {
+      "universities": 2
+    },
+    "LBN": {
+      "universities": 24,
+      "topUniversities": [
+        {
+          "name": "American University of Beirut",
+          "worldRank": 770,
+          "nationalRank": 1
+        },
+        {
+          "name": "Lebanese American University",
+          "worldRank": 1292,
+          "nationalRank": 2
+        },
+        {
+          "name": "Lebanese University",
+          "worldRank": 1970,
+          "nationalRank": 3
+        }
+      ]
+    },
+    "LBR": {
+      "universities": 1
+    },
+    "LBY": {
+      "universities": 11,
+      "publicLibraries": 1
+    },
+    "LCA": {
+      "universities": 1
+    },
+    "LIE": {
+      "universities": 2
+    },
+    "LKA": {
+      "universities": 27,
+      "publicLibraries": 2,
+      "topUniversities": [
+        {
+          "name": "University of Peradeniya",
+          "worldRank": 1695,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Colombo",
+          "worldRank": 1710,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Ruhuna",
+          "worldRank": 1844,
+          "nationalRank": 3
+        }
+      ]
+    },
+    "LSO": {
+      "universities": 1
+    },
+    "LTU": {
+      "universities": 17,
+      "publicLibraries": 4,
+      "topUniversities": [
+        {
+          "name": "Vilnius University",
+          "worldRank": 756,
+          "nationalRank": 1
+        },
+        {
+          "name": "Lithuanian University of Health Sciences",
+          "worldRank": 1698,
+          "nationalRank": 2
+        },
+        {
+          "name": "Kaunas University of Technology",
+          "worldRank": 1930,
+          "nationalRank": 3
+        }
+      ]
+    },
+    "LUX": {
+      "universities": 2,
+      "publicLibraries": 11,
+      "topUniversities": [
+        {
+          "name": "University of Luxembourg",
+          "worldRank": 781,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "LVA": {
+      "universities": 24,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "University of Latvia",
+          "worldRank": 1447,
+          "nationalRank": 1
+        },
+        {
+          "name": "Riga Technical University",
+          "worldRank": 1795,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "MAC": {
+      "universities": 4,
+      "publicLibraries": 2
+    },
+    "MAR": {
+      "universities": 33,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "Mohammed V University",
+          "worldRank": 1011,
+          "nationalRank": 1
+        },
+        {
+          "name": "Cadi Ayyad University",
+          "worldRank": 1101,
+          "nationalRank": 2
+        },
+        {
+          "name": "Hassan II University of Casablanca",
+          "worldRank": 1155,
+          "nationalRank": 3
+        },
+        {
+          "name": "Mohammed First University Oujda",
+          "worldRank": 1393,
+          "nationalRank": 4
+        },
+        {
+          "name": "University Mohammed VI Polytechnic",
+          "worldRank": 1763,
+          "nationalRank": 5
+        },
+        {
+          "name": "Sidi Mohamed Ben Abdellah University",
+          "worldRank": 1892,
+          "nationalRank": 6
+        }
+      ]
+    },
+    "MDA": {
+      "universities": 12,
+      "publicLibraries": 1
+    },
+    "MDG": {
+      "universities": 6
+    },
+    "MDV": {
+      "universities": 3
+    },
+    "MEX": {
+      "universities": 166,
+      "publicLibraries": 59,
+      "topUniversities": [
+        {
+          "name": "National Autonomous University of Mexico",
+          "worldRank": 287,
+          "nationalRank": 1
+        },
+        {
+          "name": "National Polytechnic Institute",
+          "worldRank": 772,
+          "nationalRank": 2
+        },
+        {
+          "name": "CINVESTAV",
+          "worldRank": 821,
+          "nationalRank": 3
+        },
+        {
+          "name": "Monterrey Institute of Technology and Higher Education",
+          "worldRank": 1009,
+          "nationalRank": 4
+        },
+        {
+          "name": "Benemérita Autonomous University of Puebla",
+          "worldRank": 1112,
+          "nationalRank": 5
+        },
+        {
+          "name": "National Institute of Public Health (INSP)",
+          "worldRank": 1273,
+          "nationalRank": 6
+        },
+        {
+          "name": "Metropolitan Autonomous University",
+          "worldRank": 1296,
+          "nationalRank": 7
+        },
+        {
+          "name": "Autonomous University of San Luis Potosí",
+          "worldRank": 1376,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Guadalajara",
+          "worldRank": 1417,
+          "nationalRank": 9
+        },
+        {
+          "name": "Autonomous University of Nuevo León",
+          "worldRank": 1453,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "MHL": {
+      "publicLibraries": 1
+    },
+    "MKD": {
+      "universities": 9,
+      "publicLibraries": 1
+    },
+    "MLI": {
+      "universities": 1,
+      "publicLibraries": 6
+    },
+    "MLT": {
+      "universities": 4,
+      "topUniversities": [
+        {
+          "name": "University of Malta",
+          "worldRank": 1605,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "MMR": {
+      "universities": 5
+    },
+    "MNE": {
+      "universities": 1,
+      "publicLibraries": 1
+    },
+    "MNG": {
+      "universities": 11,
+      "publicLibraries": 2
+    },
+    "MOZ": {
+      "universities": 8
+    },
+    "MRT": {
+      "universities": 1
+    },
+    "MSR": {
+      "universities": 1
+    },
+    "MUS": {
+      "universities": 2,
+      "publicLibraries": 15
+    },
+    "MWI": {
+      "universities": 8,
+      "publicLibraries": 18,
+      "topUniversities": [
+        {
+          "name": "University of Malawi",
+          "worldRank": 1568,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "MYS": {
+      "universities": 152,
+      "publicLibraries": 10,
+      "topUniversities": [
+        {
+          "name": "University of Malaya",
+          "worldRank": 428,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Science, Malaysia",
+          "worldRank": 783,
+          "nationalRank": 2
+        },
+        {
+          "name": "National University of Malaysia (UKM)",
+          "worldRank": 800,
+          "nationalRank": 3
+        },
+        {
+          "name": "Putra University, Malaysia",
+          "worldRank": 871,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Technology, Malaysia",
+          "worldRank": 876,
+          "nationalRank": 5
+        },
+        {
+          "name": "MARA University of Technology",
+          "worldRank": 1571,
+          "nationalRank": 6
+        },
+        {
+          "name": "International Islamic University Malaysia",
+          "worldRank": 1713,
+          "nationalRank": 7
+        },
+        {
+          "name": "PETRONAS University of Technology",
+          "worldRank": 1729,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Malaysia Terengganu",
+          "worldRank": 1894,
+          "nationalRank": 9
+        }
+      ]
+    },
+    "NAM": {
+      "universities": 5,
+      "publicLibraries": 60
+    },
+    "NCL": {
+      "universities": 1
+    },
+    "NER": {
+      "universities": 1
+    },
+    "NFK": {
+      "publicLibraries": 1
+    },
+    "NGA": {
+      "universities": 115,
+      "publicLibraries": 138,
+      "topUniversities": [
+        {
+          "name": "University of Ibadan",
+          "worldRank": 1047,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Nigeria",
+          "worldRank": 1533,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Lagos",
+          "worldRank": 1683,
+          "nationalRank": 3
+        },
+        {
+          "name": "Ahmadu Bello University",
+          "worldRank": 1779,
+          "nationalRank": 4
+        },
+        {
+          "name": "Obafemi Awolowo University",
+          "worldRank": 1884,
+          "nationalRank": 5
+        }
+      ]
+    },
+    "NIC": {
+      "universities": 17
+    },
+    "NIU": {
+      "universities": 1
+    },
+    "NLD": {
+      "universities": 48,
+      "topUniversities": [
+        {
+          "name": "Utrecht University",
+          "worldRank": 80,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Amsterdam",
+          "worldRank": 83,
+          "nationalRank": 2
+        },
+        {
+          "name": "Leiden University",
+          "worldRank": 87,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Groningen",
+          "worldRank": 106,
+          "nationalRank": 4
+        },
+        {
+          "name": "Erasmus University Rotterdam",
+          "worldRank": 111,
+          "nationalRank": 5
+        },
+        {
+          "name": "VU Amsterdam",
+          "worldRank": 164,
+          "nationalRank": 6
+        },
+        {
+          "name": "Radboud University",
+          "worldRank": 174,
+          "nationalRank": 7
+        },
+        {
+          "name": "Wageningen University & Research",
+          "worldRank": 199,
+          "nationalRank": 8
+        },
+        {
+          "name": "Maastricht University",
+          "worldRank": 258,
+          "nationalRank": 9
+        },
+        {
+          "name": "Delft University of Technology",
+          "worldRank": 268,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "NOR": {
+      "universities": 25,
+      "publicLibraries": 27,
+      "topUniversities": [
+        {
+          "name": "University of Oslo",
+          "worldRank": 88,
+          "nationalRank": 1
+        },
+        {
+          "name": "Norwegian University of Science and Technology",
+          "worldRank": 183,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Bergen",
+          "worldRank": 310,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Tromsø – The Arctic University of Norway",
+          "worldRank": 554,
+          "nationalRank": 4
+        },
+        {
+          "name": "Norwegian University of Life Sciences",
+          "worldRank": 924,
+          "nationalRank": 5
+        },
+        {
+          "name": "Norwegian School of Economics",
+          "worldRank": 979,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Stavanger",
+          "worldRank": 1234,
+          "nationalRank": 7
+        },
+        {
+          "name": "Oslo Metropolitan University",
+          "worldRank": 1370,
+          "nationalRank": 8
+        },
+        {
+          "name": "Western Norway University of Applied Sciences",
+          "worldRank": 1464,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Agder",
+          "worldRank": 1512,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "NPL": {
+      "universities": 15,
+      "topUniversities": [
+        {
+          "name": "Tribhuvan University",
+          "worldRank": 1581,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "NZL": {
+      "universities": 12,
+      "publicLibraries": 214,
+      "topUniversities": [
+        {
+          "name": "University of Auckland",
+          "worldRank": 277,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Otago",
+          "worldRank": 415,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Canterbury",
+          "worldRank": 637,
+          "nationalRank": 3
+        },
+        {
+          "name": "Victoria University of Wellington",
+          "worldRank": 723,
+          "nationalRank": 4
+        },
+        {
+          "name": "Massey University",
+          "worldRank": 758,
+          "nationalRank": 5
+        },
+        {
+          "name": "Auckland University of Technology",
+          "worldRank": 1044,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Waikato",
+          "worldRank": 1225,
+          "nationalRank": 7
+        },
+        {
+          "name": "Lincoln University",
+          "worldRank": 1670,
+          "nationalRank": 8
+        }
+      ]
+    },
+    "OMN": {
+      "universities": 11,
+      "topUniversities": [
+        {
+          "name": "Sultan Qaboos University",
+          "worldRank": 1255,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "PAK": {
+      "universities": 136,
+      "publicLibraries": 3,
+      "topUniversities": [
+        {
+          "name": "COMSATS University Islamabad",
+          "worldRank": 635,
+          "nationalRank": 1
+        },
+        {
+          "name": "Quaid-i-Azam University",
+          "worldRank": 793,
+          "nationalRank": 2
+        },
+        {
+          "name": "Aga Khan University",
+          "worldRank": 1017,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of the Punjab",
+          "worldRank": 1084,
+          "nationalRank": 4
+        },
+        {
+          "name": "National University of Sciences and Technology",
+          "worldRank": 1092,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Agriculture Faisalabad",
+          "worldRank": 1093,
+          "nationalRank": 6
+        },
+        {
+          "name": "Government College University Faisalabad",
+          "worldRank": 1300,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Peshawar",
+          "worldRank": 1471,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of Lahore",
+          "worldRank": 1544,
+          "nationalRank": 9
+        },
+        {
+          "name": "Bahauddin Zakariya University",
+          "worldRank": 1594,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "PAN": {
+      "universities": 17
+    },
+    "PER": {
+      "universities": 67,
+      "publicLibraries": 12,
+      "topUniversities": [
+        {
+          "name": "Cayetano Heredia Peruvian University",
+          "worldRank": 1454,
+          "nationalRank": 1
+        },
+        {
+          "name": "Pontifical Catholic University of Peru",
+          "worldRank": 1768,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "PHL": {
+      "universities": 118,
+      "publicLibraries": 3,
+      "topUniversities": [
+        {
+          "name": "University of the Philippines Manila",
+          "worldRank": 1642,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of the Philippines Diliman",
+          "worldRank": 1747,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "PNG": {
+      "universities": 5
+    },
+    "POL": {
+      "universities": 138,
+      "publicLibraries": 71,
+      "topUniversities": [
+        {
+          "name": "Jagiellonian University",
+          "worldRank": 396,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Warsaw",
+          "worldRank": 438,
+          "nationalRank": 2
+        },
+        {
+          "name": "AGH University of Krakow",
+          "worldRank": 627,
+          "nationalRank": 3
+        },
+        {
+          "name": "Warsaw University of Technology",
+          "worldRank": 762,
+          "nationalRank": 4
+        },
+        {
+          "name": "Henryk Niewodniczański Institute of Nuclear Physics",
+          "worldRank": 807,
+          "nationalRank": 5
+        },
+        {
+          "name": "Adam Mickiewicz University in Poznań",
+          "worldRank": 859,
+          "nationalRank": 6
+        },
+        {
+          "name": "National Centre for Nuclear Research",
+          "worldRank": 889,
+          "nationalRank": 7
+        },
+        {
+          "name": "Wroclaw Medical University",
+          "worldRank": 890,
+          "nationalRank": 8
+        },
+        {
+          "name": "Medical University of Warsaw",
+          "worldRank": 908,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Wrocław",
+          "worldRank": 941,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "PRI": {
+      "universities": 25,
+      "publicLibraries": 1
+    },
+    "PRK": {
+      "universities": 1,
+      "publicLibraries": 2
+    },
+    "PRT": {
+      "universities": 65,
+      "publicLibraries": 334,
+      "topUniversities": [
+        {
+          "name": "University of Lisbon",
+          "worldRank": 223,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Porto",
+          "worldRank": 301,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Coimbra",
+          "worldRank": 460,
+          "nationalRank": 3
+        },
+        {
+          "name": "NOVA University of Lisbon",
+          "worldRank": 558,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Aveiro",
+          "worldRank": 605,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Minho",
+          "worldRank": 656,
+          "nationalRank": 6
+        },
+        {
+          "name": "University of Algarve",
+          "worldRank": 1429,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Beira Interior",
+          "worldRank": 1520,
+          "nationalRank": 8
+        },
+        {
+          "name": "Catholic University of Portugal",
+          "worldRank": 1631,
+          "nationalRank": 9
+        },
+        {
+          "name": "ISCTE – University Institute of Lisbon",
+          "worldRank": 1634,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "PRY": {
+      "universities": 14,
+      "publicLibraries": 1
+    },
+    "PSE": {
+      "universities": 16,
+      "publicLibraries": 15,
+      "topUniversities": [
+        {
+          "name": "An-Najah National University",
+          "worldRank": 1719,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "PYF": {
+      "universities": 1
+    },
+    "QAT": {
+      "universities": 5,
+      "topUniversities": [
+        {
+          "name": "Qatar University",
+          "worldRank": 747,
+          "nationalRank": 1
+        },
+        {
+          "name": "Hamad Bin Khalifa University",
+          "worldRank": 1156,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "REU": {
+      "universities": 1
+    },
+    "ROU": {
+      "universities": 63,
+      "publicLibraries": 7,
+      "topUniversities": [
+        {
+          "name": "Babeș-Bolyai University",
+          "worldRank": 966,
+          "nationalRank": 1
+        },
+        {
+          "name": "Carol Davila University of Medicine and Pharmacy",
+          "worldRank": 1036,
+          "nationalRank": 2
+        },
+        {
+          "name": "Polytechnic University of Bucharest",
+          "worldRank": 1062,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Bucharest",
+          "worldRank": 1141,
+          "nationalRank": 4
+        },
+        {
+          "name": "Transilvania University of Brașov",
+          "worldRank": 1316,
+          "nationalRank": 5
+        },
+        {
+          "name": "Alexandru Ioan Cuza University of Iaşi",
+          "worldRank": 1467,
+          "nationalRank": 6
+        },
+        {
+          "name": "West University of Timișoara",
+          "worldRank": 1470,
+          "nationalRank": 7
+        },
+        {
+          "name": "Iuliu Hațieganu University of Medicine and Pharmacy",
+          "worldRank": 1585,
+          "nationalRank": 8
+        }
+      ]
+    },
+    "RUS": {
+      "universities": 308,
+      "publicLibraries": 9,
+      "topUniversities": [
+        {
+          "name": "Lomonosov Moscow State University",
+          "worldRank": 264,
+          "nationalRank": 1
+        },
+        {
+          "name": "P.N. Lebedev Physical Institute of the Russian Academy of Sciences",
+          "worldRank": 363,
+          "nationalRank": 2
+        },
+        {
+          "name": "Ioffe Physical-Technical Institute of the Russian Academy of Sciences",
+          "worldRank": 392,
+          "nationalRank": 3
+        },
+        {
+          "name": "Moscow Institute of Physics and Technology",
+          "worldRank": 547,
+          "nationalRank": 4
+        },
+        {
+          "name": "National Research Center «Kurchatov Institute»",
+          "worldRank": 553,
+          "nationalRank": 5
+        },
+        {
+          "name": "Novosibirsk State University",
+          "worldRank": 595,
+          "nationalRank": 6
+        },
+        {
+          "name": "Saint Petersburg University",
+          "worldRank": 611,
+          "nationalRank": 7
+        },
+        {
+          "name": "Joint Institute for Nuclear Research",
+          "worldRank": 696,
+          "nationalRank": 8
+        },
+        {
+          "name": "National Research Nuclear University MEPhI",
+          "worldRank": 728,
+          "nationalRank": 9
+        },
+        {
+          "name": "National Research University Higher School of Economics",
+          "worldRank": 740,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "RWA": {
+      "universities": 11
+    },
+    "SAU": {
+      "universities": 63,
+      "publicLibraries": 3,
+      "topUniversities": [
+        {
+          "name": "King Abdullah University of Science and Technology",
+          "worldRank": 236,
+          "nationalRank": 1
+        },
+        {
+          "name": "King Abdulaziz University",
+          "worldRank": 271,
+          "nationalRank": 2
+        },
+        {
+          "name": "King Saud University",
+          "worldRank": 306,
+          "nationalRank": 3
+        },
+        {
+          "name": "King Fahd University of Petroleum and Minerals",
+          "worldRank": 606,
+          "nationalRank": 4
+        },
+        {
+          "name": "King Khalid University",
+          "worldRank": 1076,
+          "nationalRank": 5
+        },
+        {
+          "name": "Prince Sattam Bin Abdulaziz University",
+          "worldRank": 1152,
+          "nationalRank": 6
+        },
+        {
+          "name": "Taif University",
+          "worldRank": 1212,
+          "nationalRank": 7
+        },
+        {
+          "name": "King Saud bin Abdulaziz University for Health Sciences",
+          "worldRank": 1262,
+          "nationalRank": 8
+        },
+        {
+          "name": "Imam Abdulrahman Bin Faisal University",
+          "worldRank": 1287,
+          "nationalRank": 9
+        },
+        {
+          "name": "Princess Nourah bint Abdulrahman University",
+          "worldRank": 1357,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "SDN": {
+      "universities": 35
+    },
+    "SEN": {
+      "universities": 10,
+      "publicLibraries": 5
+    },
+    "SGP": {
+      "universities": 18,
+      "publicLibraries": 26,
+      "topUniversities": [
+        {
+          "name": "National University of Singapore",
+          "worldRank": 79,
+          "nationalRank": 1
+        },
+        {
+          "name": "Nanyang Technological University",
+          "worldRank": 132,
+          "nationalRank": 2
+        },
+        {
+          "name": "Singapore University of Technology and Design",
+          "worldRank": 879,
+          "nationalRank": 3
+        },
+        {
+          "name": "Singapore Management University",
+          "worldRank": 1185,
+          "nationalRank": 4
+        }
+      ]
+    },
+    "SLB": {
+      "publicLibraries": 2
+    },
+    "SLE": {
+      "universities": 4,
+      "publicLibraries": 11
+    },
+    "SLV": {
+      "universities": 25
+    },
+    "SMR": {
+      "universities": 1
+    },
+    "SOM": {
+      "universities": 17
+    },
+    "SRB": {
+      "universities": 13,
+      "publicLibraries": 14,
+      "topUniversities": [
+        {
+          "name": "University of Belgrade",
+          "worldRank": 393,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Novi Sad",
+          "worldRank": 1136,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Kragujevac",
+          "worldRank": 1549,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Niš",
+          "worldRank": 1886,
+          "nationalRank": 4
+        }
+      ]
+    },
+    "SSD": {
+      "universities": 2
+    },
+    "SUR": {
+      "universities": 1
+    },
+    "SVK": {
+      "universities": 31,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "Comenius University Bratislava",
+          "worldRank": 748,
+          "nationalRank": 1
+        },
+        {
+          "name": "Pavol Jozef Šafárik University in Košice",
+          "worldRank": 1638,
+          "nationalRank": 2
+        },
+        {
+          "name": "Slovak University of Technology in Bratislava",
+          "worldRank": 1744,
+          "nationalRank": 3
+        },
+        {
+          "name": "Technical University of Košice",
+          "worldRank": 1967,
+          "nationalRank": 4
+        }
+      ]
+    },
+    "SVN": {
+      "universities": 4,
+      "publicLibraries": 4,
+      "topUniversities": [
+        {
+          "name": "University of Ljubljana",
+          "worldRank": 444,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Maribor",
+          "worldRank": 1293,
+          "nationalRank": 2
+        }
+      ]
+    },
+    "SWE": {
+      "universities": 36,
+      "publicLibraries": 1142,
+      "topUniversities": [
+        {
+          "name": "Karolinska Institute",
+          "worldRank": 42,
+          "nationalRank": 1
+        },
+        {
+          "name": "Uppsala University",
+          "worldRank": 96,
+          "nationalRank": 2
+        },
+        {
+          "name": "Lund University",
+          "worldRank": 135,
+          "nationalRank": 3
+        },
+        {
+          "name": "KTH Royal Institute of Technology",
+          "worldRank": 152,
+          "nationalRank": 4
+        },
+        {
+          "name": "Stockholm University",
+          "worldRank": 154,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Gothenburg",
+          "worldRank": 177,
+          "nationalRank": 6
+        },
+        {
+          "name": "Umeå University",
+          "worldRank": 384,
+          "nationalRank": 7
+        },
+        {
+          "name": "Linköping University",
+          "worldRank": 387,
+          "nationalRank": 8
+        },
+        {
+          "name": "Chalmers University of Technology",
+          "worldRank": 399,
+          "nationalRank": 9
+        },
+        {
+          "name": "Swedish University of Agricultural Sciences",
+          "worldRank": 446,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "SWZ": {
+      "universities": 1,
+      "publicLibraries": 18
+    },
+    "SYC": {
+      "universities": 2
+    },
+    "SYR": {
+      "universities": 15
+    },
+    "TCA": {
+      "universities": 1
+    },
+    "TCD": {
+      "universities": 1
+    },
+    "TGO": {
+      "universities": 1
+    },
+    "THA": {
+      "universities": 67,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "Chulalongkorn University",
+          "worldRank": 468,
+          "nationalRank": 1
+        },
+        {
+          "name": "Mahidol University",
+          "worldRank": 548,
+          "nationalRank": 2
+        },
+        {
+          "name": "Chiang Mai University",
+          "worldRank": 865,
+          "nationalRank": 3
+        },
+        {
+          "name": "Khon Kaen University",
+          "worldRank": 1230,
+          "nationalRank": 4
+        },
+        {
+          "name": "Prince of Songkla University",
+          "worldRank": 1233,
+          "nationalRank": 5
+        },
+        {
+          "name": "Kasetsart University",
+          "worldRank": 1361,
+          "nationalRank": 6
+        },
+        {
+          "name": "Suranaree University of Technology",
+          "worldRank": 1570,
+          "nationalRank": 7
+        },
+        {
+          "name": "Thammasat University",
+          "worldRank": 1624,
+          "nationalRank": 8
+        },
+        {
+          "name": "King Mongkut's University of Technology Thonburi",
+          "worldRank": 1686,
+          "nationalRank": 9
+        },
+        {
+          "name": "Mae Fah Luang University",
+          "worldRank": 1755,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "TJK": {
+      "universities": 3
+    },
+    "TKM": {
+      "universities": 1
+    },
+    "TTO": {
+      "universities": 3
+    },
+    "TUN": {
+      "universities": 19,
+      "publicLibraries": 2,
+      "topUniversities": [
+        {
+          "name": "Tunis El Manar University",
+          "worldRank": 995,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Sfax",
+          "worldRank": 1179,
+          "nationalRank": 2
+        },
+        {
+          "name": "University of Monastir",
+          "worldRank": 1401,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of Carthage",
+          "worldRank": 1426,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Sousse",
+          "worldRank": 1976,
+          "nationalRank": 5
+        }
+      ]
+    },
+    "TUR": {
+      "universities": 188,
+      "publicLibraries": 23
+    },
+    "TWN": {
+      "universities": 86,
+      "publicLibraries": 459,
+      "topUniversities": [
+        {
+          "name": "National Taiwan University",
+          "worldRank": 115,
+          "nationalRank": 1
+        },
+        {
+          "name": "National Yang Ming Chiao Tung University",
+          "worldRank": 338,
+          "nationalRank": 2
+        },
+        {
+          "name": "National Cheng Kung University",
+          "worldRank": 416,
+          "nationalRank": 3
+        },
+        {
+          "name": "National Tsing Hua University",
+          "worldRank": 480,
+          "nationalRank": 4
+        },
+        {
+          "name": "China Medical University, Taiwan",
+          "worldRank": 505,
+          "nationalRank": 5
+        },
+        {
+          "name": "Chang Gung University",
+          "worldRank": 653,
+          "nationalRank": 6
+        },
+        {
+          "name": "Taipei Medical University",
+          "worldRank": 716,
+          "nationalRank": 7
+        },
+        {
+          "name": "National Central University",
+          "worldRank": 724,
+          "nationalRank": 8
+        },
+        {
+          "name": "National Chung Hsing University",
+          "worldRank": 737,
+          "nationalRank": 9
+        },
+        {
+          "name": "Kaohsiung Medical University",
+          "worldRank": 834,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "TZA": {
+      "universities": 19,
+      "publicLibraries": 1,
+      "topUniversities": [
+        {
+          "name": "Muhimbili University of Health and Allied Sciences",
+          "worldRank": 1981,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "UGA": {
+      "universities": 18,
+      "publicLibraries": 51,
+      "topUniversities": [
+        {
+          "name": "Makerere University",
+          "worldRank": 904,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "UKR": {
+      "universities": 75,
+      "publicLibraries": 46,
+      "topUniversities": [
+        {
+          "name": "Institute of Mathematics of the National Academy of Sciences of Ukraine",
+          "worldRank": 1373,
+          "nationalRank": 1
+        },
+        {
+          "name": "Taras Shevchenko National University of Kyiv",
+          "worldRank": 1603,
+          "nationalRank": 2
+        },
+        {
+          "name": "Kharkiv Institute of Physics and Technology",
+          "worldRank": 1791,
+          "nationalRank": 3
+        },
+        {
+          "name": "Institute for Scintillation Materials",
+          "worldRank": 1975,
+          "nationalRank": 4
+        }
+      ]
+    },
+    "URY": {
+      "universities": 6,
+      "publicLibraries": 7,
+      "topUniversities": [
+        {
+          "name": "University of the Republic, Uruguay",
+          "worldRank": 1000,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "USA": {
+      "universities": 2348,
+      "publicLibraries": 14721,
+      "topUniversities": [
+        {
+          "name": "Harvard University",
+          "worldRank": 1,
+          "nationalRank": 1
+        },
+        {
+          "name": "Massachusetts Institute of Technology",
+          "worldRank": 2,
+          "nationalRank": 2
+        },
+        {
+          "name": "Stanford University",
+          "worldRank": 3,
+          "nationalRank": 3
+        },
+        {
+          "name": "Princeton University",
+          "worldRank": 6,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Pennsylvania",
+          "worldRank": 7,
+          "nationalRank": 5
+        },
+        {
+          "name": "Columbia University",
+          "worldRank": 8,
+          "nationalRank": 6
+        },
+        {
+          "name": "Yale University",
+          "worldRank": 9,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of Chicago",
+          "worldRank": 10,
+          "nationalRank": 8
+        },
+        {
+          "name": "California Institute of Technology",
+          "worldRank": 11,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of California, Berkeley",
+          "worldRank": 12,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "UZB": {
+      "universities": 23
+    },
+    "VAT": {
+      "universities": 5
+    },
+    "VCT": {
+      "universities": 1
+    },
+    "VEN": {
+      "universities": 37,
+      "publicLibraries": 3
+    },
+    "VGB": {
+      "universities": 1
+    },
+    "VNM": {
+      "universities": 59,
+      "publicLibraries": 42,
+      "topUniversities": [
+        {
+          "name": "Duy Tân University",
+          "worldRank": 936,
+          "nationalRank": 1
+        },
+        {
+          "name": "Tôn Đức Thắng University",
+          "worldRank": 1046,
+          "nationalRank": 2
+        },
+        {
+          "name": "Vietnam National University, Hanoi",
+          "worldRank": 1219,
+          "nationalRank": 3
+        },
+        {
+          "name": "Vietnam National University, Ho Chi Minh City",
+          "worldRank": 1367,
+          "nationalRank": 4
+        },
+        {
+          "name": "Hanoi Medical University",
+          "worldRank": 1835,
+          "nationalRank": 5
+        },
+        {
+          "name": "Hanoi University of Science and Technology",
+          "worldRank": 1898,
+          "nationalRank": 6
+        }
+      ]
+    },
+    "WSM": {
+      "universities": 1,
+      "publicLibraries": 2
+    },
+    "XKX": {
+      "universities": 5
+    },
+    "YEM": {
+      "universities": 13
+    },
+    "ZAF": {
+      "universities": 29,
+      "publicLibraries": 99,
+      "topUniversities": [
+        {
+          "name": "University of the Witwatersrand",
+          "worldRank": 200,
+          "nationalRank": 1
+        },
+        {
+          "name": "University of Cape Town",
+          "worldRank": 276,
+          "nationalRank": 2
+        },
+        {
+          "name": "Stellenbosch University",
+          "worldRank": 461,
+          "nationalRank": 3
+        },
+        {
+          "name": "University of KwaZulu-Natal",
+          "worldRank": 532,
+          "nationalRank": 4
+        },
+        {
+          "name": "University of Pretoria",
+          "worldRank": 565,
+          "nationalRank": 5
+        },
+        {
+          "name": "University of Johannesburg",
+          "worldRank": 587,
+          "nationalRank": 6
+        },
+        {
+          "name": "North-West University",
+          "worldRank": 860,
+          "nationalRank": 7
+        },
+        {
+          "name": "University of South Africa",
+          "worldRank": 1143,
+          "nationalRank": 8
+        },
+        {
+          "name": "University of the Free State",
+          "worldRank": 1147,
+          "nationalRank": 9
+        },
+        {
+          "name": "University of Western Cape",
+          "worldRank": 1178,
+          "nationalRank": 10
+        }
+      ]
+    },
+    "ZMB": {
+      "universities": 7,
+      "publicLibraries": 20,
+      "topUniversities": [
+        {
+          "name": "University of Zambia",
+          "worldRank": 1651,
+          "nationalRank": 1
+        }
+      ]
+    },
+    "ZWE": {
+      "universities": 15,
+      "publicLibraries": 10,
+      "topUniversities": [
+        {
+          "name": "University of Zimbabwe",
+          "worldRank": 1834,
+          "nationalRank": 1
+        }
+      ]
+    }
+  }
+}

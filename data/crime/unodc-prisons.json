@@ -1,0 +1,1696 @@
+{
+  "source": "unodc",
+  "note": "Latest reported value per country; countries report in different years. 'Facilities' is the number of penal institutions, reported by fewer than half of countries.",
+  "entities": {
+    "ABW": {
+      "prisoners": {
+        "value": 311,
+        "year": 2022
+      }
+    },
+    "AFG": {
+      "prisoners": {
+        "value": 28240,
+        "year": 2021
+      }
+    },
+    "AGO": {
+      "prisoners": {
+        "value": 24068,
+        "year": 2024
+      }
+    },
+    "AIA": {
+      "prisoners": {
+        "value": 36,
+        "year": 2022
+      }
+    },
+    "ALB": {
+      "prisoners": {
+        "value": 4741,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 20,
+        "year": 2023
+      }
+    },
+    "AND": {
+      "prisoners": {
+        "value": 51,
+        "year": 2024
+      }
+    },
+    "ARE": {
+      "prisoners": {
+        "value": 9826,
+        "year": 2016
+      }
+    },
+    "ARG": {
+      "prisoners": {
+        "value": 125041,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 338,
+        "year": 2023
+      }
+    },
+    "ARM": {
+      "prisoners": {
+        "value": 2469,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 10,
+        "year": 2023
+      }
+    },
+    "ASM": {
+      "prisoners": {
+        "value": 301,
+        "year": 2022
+      }
+    },
+    "ATG": {
+      "prisoners": {
+        "value": 233,
+        "year": 2022
+      }
+    },
+    "AUS": {
+      "prisoners": {
+        "value": 45248,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 114,
+        "year": 2017
+      }
+    },
+    "AUT": {
+      "prisoners": {
+        "value": 9288,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 28,
+        "year": 2023
+      }
+    },
+    "AZE": {
+      "prisoners": {
+        "value": 27935,
+        "year": 2024
+      }
+    },
+    "BDI": {
+      "prisoners": {
+        "value": 13824,
+        "year": 2024
+      }
+    },
+    "BEL": {
+      "prisoners": {
+        "value": 12575,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 38,
+        "year": 2023
+      }
+    },
+    "BEN": {
+      "prisoners": {
+        "value": 19563,
+        "year": 2024
+      }
+    },
+    "BFA": {
+      "prisoners": {
+        "value": 8800,
+        "year": 2022
+      }
+    },
+    "BGD": {
+      "prisoners": {
+        "value": 53831,
+        "year": 2024
+      }
+    },
+    "BGR": {
+      "prisoners": {
+        "value": 6378,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 68,
+        "year": 2023
+      }
+    },
+    "BHR": {
+      "prisoners": {
+        "value": 3861,
+        "year": 2022
+      }
+    },
+    "BHS": {
+      "prisoners": {
+        "value": 1319,
+        "year": 2022
+      },
+      "facilities": {
+        "value": 6,
+        "year": 2019
+      }
+    },
+    "BIH": {
+      "prisoners": {
+        "value": 3498,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 17,
+        "year": 2023
+      }
+    },
+    "BLR": {
+      "prisoners": {
+        "value": 32556,
+        "year": 2018
+      }
+    },
+    "BLZ": {
+      "prisoners": {
+        "value": 1339,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2019
+      }
+    },
+    "BMU": {
+      "prisoners": {
+        "value": 124,
+        "year": 2021
+      },
+      "facilities": {
+        "value": 4,
+        "year": 2021
+      }
+    },
+    "BOL": {
+      "prisoners": {
+        "value": 31105,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 46,
+        "year": 2023
+      }
+    },
+    "BRA": {
+      "prisoners": {
+        "value": 888791,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 1387,
+        "year": 2023
+      }
+    },
+    "BRB": {
+      "prisoners": {
+        "value": 781,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2023
+      }
+    },
+    "BRN": {
+      "prisoners": {
+        "value": 636,
+        "year": 2022
+      }
+    },
+    "BTN": {
+      "prisoners": {
+        "value": 1954,
+        "year": 2019
+      }
+    },
+    "BWA": {
+      "prisoners": {
+        "value": 3971,
+        "year": 2022
+      }
+    },
+    "CAF": {
+      "prisoners": {
+        "value": 2678,
+        "year": 2023
+      }
+    },
+    "CAN": {
+      "prisoners": {
+        "value": 35207,
+        "year": 2022
+      },
+      "facilities": {
+        "value": 218,
+        "year": 2022
+      }
+    },
+    "CHE": {
+      "prisoners": {
+        "value": 6881,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 88,
+        "year": 2023
+      }
+    },
+    "CHL": {
+      "prisoners": {
+        "value": 59185,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 107,
+        "year": 2023
+      }
+    },
+    "CIV": {
+      "prisoners": {
+        "value": 27149,
+        "year": 2024
+      }
+    },
+    "CMR": {
+      "prisoners": {
+        "value": 34419,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 76,
+        "year": 2022
+      }
+    },
+    "COD": {
+      "prisoners": {
+        "value": 44536,
+        "year": 2022
+      }
+    },
+    "COG": {
+      "prisoners": {
+        "value": 1388,
+        "year": 2019
+      }
+    },
+    "COK": {
+      "prisoners": {
+        "value": 28,
+        "year": 2024
+      }
+    },
+    "COL": {
+      "prisoners": {
+        "value": 104441,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 126,
+        "year": 2023
+      }
+    },
+    "COM": {
+      "prisoners": {
+        "value": 422,
+        "year": 2023
+      }
+    },
+    "CPV": {
+      "prisoners": {
+        "value": 2700,
+        "year": 2024
+      }
+    },
+    "CRI": {
+      "prisoners": {
+        "value": 15963,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 20,
+        "year": 2023
+      }
+    },
+    "CUB": {
+      "prisoners": {
+        "value": 90000,
+        "year": 2020
+      }
+    },
+    "CUW": {
+      "prisoners": {
+        "value": 429,
+        "year": 2022
+      }
+    },
+    "CYM": {
+      "prisoners": {
+        "value": 258,
+        "year": 2023
+      }
+    },
+    "CYP": {
+      "prisoners": {
+        "value": 966,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2022
+      }
+    },
+    "CZE": {
+      "prisoners": {
+        "value": 19606,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 35,
+        "year": 2023
+      }
+    },
+    "DEU": {
+      "prisoners": {
+        "value": 58798,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 180,
+        "year": 2017
+      }
+    },
+    "DJI": {
+      "prisoners": {
+        "value": 750,
+        "year": 2022
+      }
+    },
+    "DMA": {
+      "prisoners": {
+        "value": 406,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2021
+      }
+    },
+    "DNK": {
+      "prisoners": {
+        "value": 4083,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 54,
+        "year": 2023
+      }
+    },
+    "DOM": {
+      "prisoners": {
+        "value": 25987,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 46,
+        "year": 2021
+      }
+    },
+    "DZA": {
+      "prisoners": {
+        "value": 94749,
+        "year": 2021
+      }
+    },
+    "ECU": {
+      "prisoners": {
+        "value": 33669,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 46,
+        "year": 2023
+      }
+    },
+    "EGY": {
+      "prisoners": {
+        "value": 114000,
+        "year": 2020
+      }
+    },
+    "ESP": {
+      "prisoners": {
+        "value": 56698,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 97,
+        "year": 2023
+      }
+    },
+    "EST": {
+      "prisoners": {
+        "value": 1688,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 3,
+        "year": 2023
+      }
+    },
+    "ETH": {
+      "prisoners": {
+        "value": 110000,
+        "year": 2020
+      }
+    },
+    "FIN": {
+      "prisoners": {
+        "value": 2962,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 28,
+        "year": 2023
+      }
+    },
+    "FJI": {
+      "prisoners": {
+        "value": 2276,
+        "year": 2024
+      }
+    },
+    "FRA": {
+      "prisoners": {
+        "value": 80669,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 274,
+        "year": 2023
+      }
+    },
+    "FRO": {
+      "prisoners": {
+        "value": 11,
+        "year": 2020
+      }
+    },
+    "FSM": {
+      "prisoners": {
+        "value": 132,
+        "year": 2014
+      }
+    },
+    "GAB": {
+      "prisoners": {
+        "value": 5501,
+        "year": 2024
+      }
+    },
+    "GEO": {
+      "prisoners": {
+        "value": 9494,
+        "year": 2024
+      }
+    },
+    "GGY": {
+      "prisoners": {
+        "value": 93,
+        "year": 2024
+      }
+    },
+    "GHA": {
+      "prisoners": {
+        "value": 14246,
+        "year": 2024
+      }
+    },
+    "GIB": {
+      "prisoners": {
+        "value": 103,
+        "year": 2024
+      }
+    },
+    "GIN": {
+      "prisoners": {
+        "value": 5549,
+        "year": 2024
+      }
+    },
+    "GLP": {
+      "prisoners": {
+        "value": 929,
+        "year": 2024
+      }
+    },
+    "GMB": {
+      "prisoners": {
+        "value": 543,
+        "year": 2021
+      }
+    },
+    "GNB": {
+      "prisoners": {
+        "value": 596,
+        "year": 2017
+      }
+    },
+    "GNQ": {
+      "prisoners": {
+        "value": 500,
+        "year": 2015
+      }
+    },
+    "GRC": {
+      "prisoners": {
+        "value": 10242,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 34,
+        "year": 2023
+      }
+    },
+    "GRD": {
+      "prisoners": {
+        "value": 378,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2021
+      }
+    },
+    "GRL": {
+      "prisoners": {
+        "value": 131,
+        "year": 2020
+      }
+    },
+    "GTM": {
+      "prisoners": {
+        "value": 24205,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 23,
+        "year": 2023
+      }
+    },
+    "GUF": {
+      "prisoners": {
+        "value": 1010,
+        "year": 2024
+      }
+    },
+    "GUM": {
+      "prisoners": {
+        "value": 896,
+        "year": 2024
+      }
+    },
+    "GUY": {
+      "prisoners": {
+        "value": 2300,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 5,
+        "year": 2023
+      }
+    },
+    "HKG": {
+      "prisoners": {
+        "value": 9151,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 29,
+        "year": 2023
+      }
+    },
+    "HND": {
+      "prisoners": {
+        "value": 19481,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 25,
+        "year": 2019
+      }
+    },
+    "HRV": {
+      "prisoners": {
+        "value": 4445,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 24,
+        "year": 2023
+      }
+    },
+    "HTI": {
+      "prisoners": {
+        "value": 7523,
+        "year": 2024
+      }
+    },
+    "HUN": {
+      "prisoners": {
+        "value": 17939,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 32,
+        "year": 2023
+      }
+    },
+    "IDN": {
+      "prisoners": {
+        "value": 273697,
+        "year": 2024
+      }
+    },
+    "IMN": {
+      "prisoners": {
+        "value": 132,
+        "year": 2024
+      }
+    },
+    "IND": {
+      "prisoners": {
+        "value": 573220,
+        "year": 2022
+      }
+    },
+    "IRL": {
+      "prisoners": {
+        "value": 5086,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 12,
+        "year": 2023
+      }
+    },
+    "IRN": {
+      "prisoners": {
+        "value": 189000,
+        "year": 2020
+      }
+    },
+    "IRQ": {
+      "prisoners": {
+        "value": 73715,
+        "year": 2021
+      }
+    },
+    "ISL": {
+      "prisoners": {
+        "value": 140,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 4,
+        "year": 2023
+      }
+    },
+    "ISR": {
+      "prisoners": {
+        "value": 19756,
+        "year": 2023
+      }
+    },
+    "ITA": {
+      "prisoners": {
+        "value": 61568,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 230,
+        "year": 2023
+      }
+    },
+    "JAM": {
+      "prisoners": {
+        "value": 3720,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 10,
+        "year": 2023
+      }
+    },
+    "JEY": {
+      "prisoners": {
+        "value": 138,
+        "year": 2023
+      }
+    },
+    "JOR": {
+      "prisoners": {
+        "value": 19140,
+        "year": 2022
+      },
+      "facilities": {
+        "value": 17,
+        "year": 2023
+      }
+    },
+    "JPN": {
+      "prisoners": {
+        "value": 40178,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 74,
+        "year": 2023
+      }
+    },
+    "KAZ": {
+      "prisoners": {
+        "value": 32171,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 86,
+        "year": 2017
+      }
+    },
+    "KEN": {
+      "prisoners": {
+        "value": 58887,
+        "year": 2022
+      },
+      "facilities": {
+        "value": 135,
+        "year": 2021
+      }
+    },
+    "KGZ": {
+      "prisoners": {
+        "value": 5045,
+        "year": 2023
+      }
+    },
+    "KHM": {
+      "prisoners": {
+        "value": 45122,
+        "year": 2024
+      }
+    },
+    "KIR": {
+      "prisoners": {
+        "value": 129,
+        "year": 2016
+      }
+    },
+    "KNA": {
+      "prisoners": {
+        "value": 251,
+        "year": 2022
+      }
+    },
+    "KOR": {
+      "prisoners": {
+        "value": 59088,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 53,
+        "year": 2021
+      }
+    },
+    "KWT": {
+      "prisoners": {
+        "value": 4500,
+        "year": 2023
+      }
+    },
+    "LAO": {
+      "prisoners": {
+        "value": 11885,
+        "year": 2018
+      }
+    },
+    "LBN": {
+      "prisoners": {
+        "value": 6363,
+        "year": 2023
+      }
+    },
+    "LBR": {
+      "prisoners": {
+        "value": 2925,
+        "year": 2021
+      }
+    },
+    "LBY": {
+      "prisoners": {
+        "value": 19103,
+        "year": 2023
+      }
+    },
+    "LCA": {
+      "prisoners": {
+        "value": 585,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2023
+      }
+    },
+    "LIE": {
+      "prisoners": {
+        "value": 14,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2023
+      }
+    },
+    "LKA": {
+      "prisoners": {
+        "value": 29226,
+        "year": 2024
+      }
+    },
+    "LSO": {
+      "prisoners": {
+        "value": 2216,
+        "year": 2019
+      }
+    },
+    "LTU": {
+      "prisoners": {
+        "value": 4551,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 8,
+        "year": 2023
+      }
+    },
+    "LUX": {
+      "prisoners": {
+        "value": 600,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 3,
+        "year": 2023
+      }
+    },
+    "LVA": {
+      "prisoners": {
+        "value": 3505,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 9,
+        "year": 2023
+      }
+    },
+    "MAC": {
+      "prisoners": {
+        "value": 1345,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2021
+      }
+    },
+    "MAF": {
+      "prisoners": {
+        "value": 1030,
+        "year": 2024
+      }
+    },
+    "MAR": {
+      "prisoners": {
+        "value": 105094,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 75,
+        "year": 2023
+      }
+    },
+    "MCO": {
+      "prisoners": {
+        "value": 31,
+        "year": 2024
+      }
+    },
+    "MDA": {
+      "prisoners": {
+        "value": 5695,
+        "year": 2024
+      }
+    },
+    "MDG": {
+      "prisoners": {
+        "value": 29281,
+        "year": 2024
+      }
+    },
+    "MDV": {
+      "prisoners": {
+        "value": 1852,
+        "year": 2017
+      }
+    },
+    "MEX": {
+      "prisoners": {
+        "value": 235461,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 331,
+        "year": 2023
+      }
+    },
+    "MHL": {
+      "prisoners": {
+        "value": 35,
+        "year": 2014
+      }
+    },
+    "MKD": {
+      "prisoners": {
+        "value": 2555,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 12,
+        "year": 2023
+      }
+    },
+    "MLI": {
+      "prisoners": {
+        "value": 8670,
+        "year": 2022
+      }
+    },
+    "MLT": {
+      "prisoners": {
+        "value": 671,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 1,
+        "year": 2023
+      }
+    },
+    "MMR": {
+      "prisoners": {
+        "value": 100324,
+        "year": 2020
+      }
+    },
+    "MNE": {
+      "prisoners": {
+        "value": 1046,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 11,
+        "year": 2023
+      }
+    },
+    "MNG": {
+      "prisoners": {
+        "value": 5658,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 42,
+        "year": 2018
+      }
+    },
+    "MNP": {
+      "prisoners": {
+        "value": 170,
+        "year": 2022
+      }
+    },
+    "MOZ": {
+      "prisoners": {
+        "value": 21814,
+        "year": 2023
+      }
+    },
+    "MRT": {
+      "prisoners": {
+        "value": 2826,
+        "year": 2022
+      }
+    },
+    "MTQ": {
+      "prisoners": {
+        "value": 827,
+        "year": 2019
+      }
+    },
+    "MUS": {
+      "prisoners": {
+        "value": 2639,
+        "year": 2024
+      }
+    },
+    "MWI": {
+      "prisoners": {
+        "value": 16536,
+        "year": 2024
+      }
+    },
+    "MYS": {
+      "prisoners": {
+        "value": 87419,
+        "year": 2024
+      }
+    },
+    "MYT": {
+      "prisoners": {
+        "value": 647,
+        "year": 2024
+      }
+    },
+    "NAM": {
+      "prisoners": {
+        "value": 7400,
+        "year": 2016
+      }
+    },
+    "NCL": {
+      "prisoners": {
+        "value": 609,
+        "year": 2024
+      }
+    },
+    "NER": {
+      "prisoners": {
+        "value": 13005,
+        "year": 2023
+      }
+    },
+    "NGA": {
+      "prisoners": {
+        "value": 82382,
+        "year": 2024
+      }
+    },
+    "NIC": {
+      "prisoners": {
+        "value": 20918,
+        "year": 2018
+      },
+      "facilities": {
+        "value": 9,
+        "year": 2019
+      }
+    },
+    "NLD": {
+      "prisoners": {
+        "value": 11681,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 51,
+        "year": 2023
+      }
+    },
+    "NOR": {
+      "prisoners": {
+        "value": 3432,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 35,
+        "year": 2022
+      }
+    },
+    "NPL": {
+      "prisoners": {
+        "value": 27550,
+        "year": 2022
+      }
+    },
+    "NRU": {
+      "prisoners": {
+        "value": 38,
+        "year": 2023
+      }
+    },
+    "NZL": {
+      "prisoners": {
+        "value": 9924,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 18,
+        "year": 2021
+      }
+    },
+    "OMN": {
+      "prisoners": {
+        "value": 1960,
+        "year": 2015
+      }
+    },
+    "PAK": {
+      "prisoners": {
+        "value": 108643,
+        "year": 2024
+      }
+    },
+    "PAN": {
+      "prisoners": {
+        "value": 23798,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 18,
+        "year": 2021
+      }
+    },
+    "PER": {
+      "prisoners": {
+        "value": 98127,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 79,
+        "year": 2023
+      }
+    },
+    "PHL": {
+      "prisoners": {
+        "value": 171247,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 933,
+        "year": 2017
+      }
+    },
+    "PLW": {
+      "prisoners": {
+        "value": 66,
+        "year": 2023
+      }
+    },
+    "PNG": {
+      "prisoners": {
+        "value": 5373,
+        "year": 2023
+      }
+    },
+    "POL": {
+      "prisoners": {
+        "value": 70418,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 133,
+        "year": 2023
+      }
+    },
+    "PRI": {
+      "prisoners": {
+        "value": 7296,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 27,
+        "year": 2021
+      }
+    },
+    "PRT": {
+      "prisoners": {
+        "value": 12379,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 49,
+        "year": 2023
+      }
+    },
+    "PRY": {
+      "prisoners": {
+        "value": 17836,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 26,
+        "year": 2021
+      }
+    },
+    "PSE": {
+      "prisoners": {
+        "value": 4071,
+        "year": 2022
+      },
+      "facilities": {
+        "value": 7,
+        "year": 2023
+      }
+    },
+    "PYF": {
+      "prisoners": {
+        "value": 575,
+        "year": 2024
+      }
+    },
+    "QAT": {
+      "prisoners": {
+        "value": 2057,
+        "year": 2022
+      },
+      "facilities": {
+        "value": 2,
+        "year": 2021
+      }
+    },
+    "REU": {
+      "prisoners": {
+        "value": 1506,
+        "year": 2024
+      }
+    },
+    "ROU": {
+      "prisoners": {
+        "value": 24606,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 45,
+        "year": 2023
+      }
+    },
+    "RUS": {
+      "prisoners": {
+        "value": 313304,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 997,
+        "year": 2019
+      }
+    },
+    "RWA": {
+      "prisoners": {
+        "value": 87621,
+        "year": 2024
+      }
+    },
+    "SAU": {
+      "prisoners": {
+        "value": 48660,
+        "year": 2019
+      },
+      "facilities": {
+        "value": 104,
+        "year": 2019
+      }
+    },
+    "SDN": {
+      "prisoners": {
+        "value": 21000,
+        "year": 2017
+      }
+    },
+    "SEN": {
+      "prisoners": {
+        "value": 13185,
+        "year": 2023
+      }
+    },
+    "SGP": {
+      "prisoners": {
+        "value": 9851,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 14,
+        "year": 2023
+      }
+    },
+    "SLB": {
+      "prisoners": {
+        "value": 479,
+        "year": 2018
+      }
+    },
+    "SLE": {
+      "prisoners": {
+        "value": 4453,
+        "year": 2024
+      }
+    },
+    "SLV": {
+      "prisoners": {
+        "value": 109519,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 27,
+        "year": 2019
+      }
+    },
+    "SMR": {
+      "prisoners": {
+        "value": 1,
+        "year": 2024
+      }
+    },
+    "SOM": {
+      "prisoners": {
+        "value": 2799,
+        "year": 2023
+      }
+    },
+    "SRB": {
+      "prisoners": {
+        "value": 11701,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 29,
+        "year": 2023
+      }
+    },
+    "SSD": {
+      "prisoners": {
+        "value": 8400,
+        "year": 2021
+      }
+    },
+    "STP": {
+      "prisoners": {
+        "value": 253,
+        "year": 2018
+      }
+    },
+    "SUR": {
+      "prisoners": {
+        "value": 1086,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 4,
+        "year": 2023
+      }
+    },
+    "SVK": {
+      "prisoners": {
+        "value": 8385,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 18,
+        "year": 2023
+      }
+    },
+    "SVN": {
+      "prisoners": {
+        "value": 1816,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 14,
+        "year": 2023
+      }
+    },
+    "SWE": {
+      "prisoners": {
+        "value": 10175,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 84,
+        "year": 2023
+      }
+    },
+    "SWZ": {
+      "prisoners": {
+        "value": 3405,
+        "year": 2022
+      }
+    },
+    "SXM": {
+      "prisoners": {
+        "value": 87,
+        "year": 2023
+      }
+    },
+    "SYC": {
+      "prisoners": {
+        "value": 474,
+        "year": 2024
+      }
+    },
+    "SYR": {
+      "prisoners": {
+        "value": 10599,
+        "year": 2004
+      }
+    },
+    "TCD": {
+      "prisoners": {
+        "value": 9589,
+        "year": 2022
+      }
+    },
+    "TGO": {
+      "prisoners": {
+        "value": 4990,
+        "year": 2021
+      }
+    },
+    "THA": {
+      "prisoners": {
+        "value": 292812,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 149,
+        "year": 2023
+      }
+    },
+    "TJK": {
+      "prisoners": {
+        "value": 12491,
+        "year": 2023
+      }
+    },
+    "TKM": {
+      "prisoners": {
+        "value": 30452,
+        "year": 2017
+      }
+    },
+    "TLS": {
+      "prisoners": {
+        "value": 763,
+        "year": 2021
+      }
+    },
+    "TON": {
+      "prisoners": {
+        "value": 557,
+        "year": 2022
+      }
+    },
+    "TTO": {
+      "prisoners": {
+        "value": 3802,
+        "year": 2021
+      }
+    },
+    "TUN": {
+      "prisoners": {
+        "value": 23484,
+        "year": 2021
+      }
+    },
+    "TUR": {
+      "prisoners": {
+        "value": 378657,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 403,
+        "year": 2023
+      }
+    },
+    "TUV": {
+      "prisoners": {
+        "value": 11,
+        "year": 2014
+      }
+    },
+    "TZA": {
+      "prisoners": {
+        "value": 32671,
+        "year": 2022
+      }
+    },
+    "UGA": {
+      "prisoners": {
+        "value": 78539,
+        "year": 2024
+      }
+    },
+    "UKR": {
+      "prisoners": {
+        "value": 44024,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 100,
+        "year": 2023
+      }
+    },
+    "URY": {
+      "prisoners": {
+        "value": 15767,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 26,
+        "year": 2023
+      }
+    },
+    "USA": {
+      "prisoners": {
+        "value": 1808100,
+        "year": 2022
+      },
+      "facilities": {
+        "value": 4800,
+        "year": 2019
+      }
+    },
+    "UZB": {
+      "prisoners": {
+        "value": 29000,
+        "year": 2022
+      }
+    },
+    "VAT": {
+      "prisoners": {
+        "value": 0,
+        "year": 2023
+      }
+    },
+    "VCT": {
+      "prisoners": {
+        "value": 490,
+        "year": 2023
+      },
+      "facilities": {
+        "value": 3,
+        "year": 2023
+      }
+    },
+    "VEN": {
+      "prisoners": {
+        "value": 67200,
+        "year": 2022
+      }
+    },
+    "VGB": {
+      "prisoners": {
+        "value": 143,
+        "year": 2018
+      }
+    },
+    "VIR": {
+      "prisoners": {
+        "value": 261,
+        "year": 2022
+      }
+    },
+    "VNM": {
+      "prisoners": {
+        "value": 133986,
+        "year": 2022
+      }
+    },
+    "VUT": {
+      "prisoners": {
+        "value": 195,
+        "year": 2021
+      }
+    },
+    "WSM": {
+      "prisoners": {
+        "value": 358,
+        "year": 2019
+      }
+    },
+    "XKX": {
+      "prisoners": {
+        "value": 1396,
+        "year": 2020
+      },
+      "facilities": {
+        "value": 11,
+        "year": 2020
+      }
+    },
+    "YEM": {
+      "prisoners": {
+        "value": 4268,
+        "year": 2022
+      }
+    },
+    "ZAF": {
+      "prisoners": {
+        "value": 156600,
+        "year": 2024
+      }
+    },
+    "ZMB": {
+      "prisoners": {
+        "value": 28225,
+        "year": 2024
+      }
+    },
+    "ZWE": {
+      "prisoners": {
+        "value": 20997,
+        "year": 2024
+      },
+      "facilities": {
+        "value": 78,
+        "year": 2023
+      }
+    }
+  }
+}
