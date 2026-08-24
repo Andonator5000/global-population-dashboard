@@ -404,20 +404,17 @@ export function WorldMap({
    */
   const handleGlobePointerDown = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
-      if (!isGlobe || !event.isPrimary) {
-        if (isGlobe) {
-          dragPointers.current.set(event.pointerId, {
-            x: event.clientX,
-            y: event.clientY,
-          })
-        }
-        return
-      }
+      // A fresh press is never a leftover drag, so the click suppression
+      // resets on EVERY projection. It used to reset only on the globe
+      // path -- spin the globe (flag set true), switch to a flat view, and
+      // the stale flag swallowed every click on the flat map: countries
+      // became unopenable until the page reloaded.
+      if (event.isPrimary) dragSuppressesClick.current = false
+      if (!isGlobe) return
       dragPointers.current.set(event.pointerId, {
         x: event.clientX,
         y: event.clientY,
       })
-      dragSuppressesClick.current = false
     },
     [isGlobe],
   )
