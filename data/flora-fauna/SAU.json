@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Camelus dromedarius",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Camel%20in%20Al%20Ula%202023.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Camel%20in%20Al%20Ula%202023.jpg",
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/105974064/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/105974064/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/105974064",
         "license": "CC0",
-        "author": "Chuck Lennox"
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,19 +23,23 @@
     "type": "national tree",
     "scientificName": "Phoenix dactylifera",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Phoenix%20dactylifera100%204209.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Phoenix%20dactylifera100%204209.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "Mmcknight4"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/412786024/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/412786024/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/412786024",
+      "license": "CC-BY",
+      "author": "(c) Nachman bones, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Jasminum grandiflorum",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jasminum%20grandiflorum%20%28Oleaceae%29.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Jasminum%20grandiflorum%20%28Oleaceae%29.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Juan Carlos Fonseca Mata"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/284306477/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/284306477/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/284306477",
+      "license": "CC-BY",
+      "author": "(c) Cheongweei Gan, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

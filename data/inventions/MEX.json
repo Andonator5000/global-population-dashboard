@@ -1,31 +1,40 @@
 {
   "iso3": "MEX",
   "name": "Mexico",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "nachos",
-      "inventors": [
-        "Ignacio Anaya García"
-      ],
-      "year": 1943,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Beanery%20Nachos.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:The%20Beanery%20Nachos.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Navajcmer"
-      }
+      "name": "Tlapitzalli",
+      "source": "wikipedia"
     },
     {
-      "name": "Japanese style peanuts",
-      "year": 1940,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nagarya%20cracker%20nuts.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nagarya%20cracker%20nuts.jpg",
-        "license": "CC BY 2.0",
-        "author": "Raphael Love"
-      }
+      "name": "Canal",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Pachyrhizus erosus",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Huipil",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Pelota mixteca",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Mariachi",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Quechquemitl",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Jet pack",
+      "source": "wikipedia"
     }
   ]
 }

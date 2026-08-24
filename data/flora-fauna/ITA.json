@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Canis lupus italicus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/C.%20l.%20italicus%20in%20MNP.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:C.%20l.%20italicus%20in%20MNP.jpg",
-        "license": "CC BY 2.0",
-        "author": " Eye Am Didier "
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/179960480/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/179960480/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/179960480",
+        "license": "CC-BY",
+        "author": "(c) Nicholas Moray Williams, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,19 +23,23 @@
     "type": "national tree",
     "scientificName": "Arbutus unedo",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Urtaca%20arbouses.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Urtaca%20arbouses.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Pierre Bona"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/203203936/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/203203936/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/203203936",
+      "license": "CC-BY",
+      "author": "(c) B. Phalan, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Arbutus unedo",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arbutus%20unedo%20off%20Bayshore%20Drive%20at%20Coal%20Harbour.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Arbutus%20unedo%20off%20Bayshore%20Drive%20at%20Coal%20Harbour.jpg",
-      "license": "CC BY 2.0",
-      "author": "Wendy Cutler from Vancouver, Canada"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/203203936/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/203203936/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/203203936",
+      "license": "CC-BY",
+      "author": "(c) B. Phalan, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

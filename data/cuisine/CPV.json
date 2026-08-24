@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Cachupa",
+      "description": "traditional dish from Cape Verde, considered the national dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cachupa%202.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Cachupa%202.jpg",
         "license": "Public domain",
-        "author": "Xandu"
+        "author": "Xandu",
+        "source": "Wikimedia Commons"
       }
     }
   ]

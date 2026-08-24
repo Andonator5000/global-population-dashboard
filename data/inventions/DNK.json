@@ -1,11 +1,12 @@
 {
   "iso3": "DNK",
   "name": "Denmark",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "Lego",
+      "source": "wikidata",
       "inventors": [
         "Ole Kirk Christiansen"
       ],
@@ -14,21 +15,50 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lego%20bricks.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lego%20bricks.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Benjamin D. Esham (bdesham)"
+        "author": "Benjamin D. Esham (bdesham)",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Danish Blue",
-      "inventors": [
-        "Marius Boel"
-      ],
-      "year": 1920,
+      "name": "Tychonic system",
+      "source": "wikipedia",
+      "year": 1588
+    },
+    {
+      "name": "Gram stain",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Parotid duct",
+      "source": "wikipedia"
+    },
+    {
+      "name": "PH",
+      "source": "wikipedia",
+      "year": 1909,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Danish%20Blue%20cheese.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Danish%20Blue%20cheese.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "No machine-readable author provided. Brookie assumed (based on copyright claims)."
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PH%20scale%203.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:PH%20scale%203.jpg",
+        "license": "CC BY 4.0",
+        "author": "Alvy16",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Hafnium",
+      "source": "wikipedia",
+      "inventors": [
+        "Dirk Coster"
+      ],
+      "year": 1923
+    },
+    {
+      "name": "Speed of light",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Magnetism",
+      "source": "wikipedia"
     }
   ]
 }

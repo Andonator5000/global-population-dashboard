@@ -9,20 +9,24 @@
       "type": "national animal",
       "scientificName": "Bubalus bubalis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BinhQuoiWaterBuffalo%20Jun2005.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:BinhQuoiWaterBuffalo%20Jun2005.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Rdivilbiss"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/65871268/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/65871268/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/65871268",
+        "license": "CC-BY",
+        "author": "(c) Gergely Nigg, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
   "flower": {
     "name": "lotus flower",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sacred%20lotus%20Nelumbo%20nucifera.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sacred%20lotus%20Nelumbo%20nucifera.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "T.Voekler"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/6847160/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/6847160/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/6847160",
+      "license": "CC-BY",
+      "author": "(c) W. Terry Hunefeld, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

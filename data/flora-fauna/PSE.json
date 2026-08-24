@@ -8,19 +8,23 @@
     "type": "national tree",
     "scientificName": "Olea europaea",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Olea%20europea%203.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Olea%20europea%203.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Bratislav Tabaš"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/712174255/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/712174255/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/712174255",
+      "license": "CC-BY",
+      "author": "(c) zebedeugalinha, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Iris haynei",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gilboa-iris-gilboa-ridge-c.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Gilboa-iris-gilboa-ridge-c.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Mboesch"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/287/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/287/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/287",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

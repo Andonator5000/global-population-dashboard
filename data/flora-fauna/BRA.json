@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera onca",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Standing%20jaguar.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Standing%20jaguar.jpg",
-        "license": "Public domain",
-        "author": "USFWS"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/53458442/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/53458442/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/53458442",
+        "license": "CC-BY",
+        "author": "(c) Matt Muir, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Turdus rufiventris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turdus-rufiventris.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turdus-rufiventris.jpg",
-        "license": "CC BY-SA 2.0 br",
-        "author": "Flávio Cruvinel Brandão"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/167139807/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/167139807/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/167139807",
+        "license": "CC-BY",
+        "author": "(c) Rodrigo Paiva Lázaro, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,20 +36,24 @@
     "type": "national tree",
     "scientificName": "Paubrasilia echinata",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Caesalpinia-echinata.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Caesalpinia-echinata.jpg",
-      "license": "CC BY 2.5",
-      "author": "Der Kolonist"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/462699580/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/462699580/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/462699580",
+      "license": "CC-BY",
+      "author": "(c) Filipi Miranda Soares, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Portuguese",
     "scientificName": "Handroanthus chrysotrichus",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ip%C3%AA%20%28Avar%C3%A9%29%20REFON.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ip%C3%AA%20%28Avar%C3%A9%29%20REFON.jpg",
-      "license": "CC BY 2.5",
-      "author": "José Reynaldo da Fonseca"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/306416717/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/306416717/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/306416717",
+      "license": "CC-BY",
+      "author": "(c) Agustina Medina, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

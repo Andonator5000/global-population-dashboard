@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Ursus thibetanus formosanus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Formosan%20Black%20Bear.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Formosan%20Black%20Bear.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Abu0804"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/43473384/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/43473384/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/43473384",
+        "license": "CC-BY",
+        "author": "(c) Tatsutomo Chin, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -22,7 +24,8 @@
       "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Prunus%20mume.JPG?width=960",
       "commonsPage": "https://commons.wikimedia.org/wiki/File:Prunus%20mume.JPG",
       "license": "CC BY-SA 3.0",
-      "author": "Kakidai"
+      "author": "Kakidai",
+      "source": "Wikimedia Commons"
     }
   }
 }

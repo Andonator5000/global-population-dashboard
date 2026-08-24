@@ -1,79 +1,103 @@
 {
   "iso3": "ITA",
   "name": "Italy",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "lasagna",
+      "name": "Budino Di Ricotta",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Meaty%20Lasagna%208of8%20%288736299782%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Meaty%20Lasagna%208of8%20%288736299782%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Breville USA"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1549542877.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1549542877.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52961",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "salami",
+      "name": "Chicken Alfredo Primavera",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Salami%20aka.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Salami%20aka.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "André Karwath aka Aka"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52796",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Pizza Margherita",
+      "name": "Chilli prawn linguine",
+      "description": "Pasta",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Margherita%20Originale.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Margherita%20Originale.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Mario56"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52839",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "ossobuco",
+      "name": "Fettuccine Alfredo",
+      "description": "Pasta",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ossobuco.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ossobuco.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Mogens Engelund"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53064",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "panini",
+      "name": "Fettucine alfredo",
+      "description": "Pasta",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Italiano%20sandwich%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Italiano%20sandwich%2001.jpg",
-        "license": "CC BY 2.0",
-        "author": "cherrylet"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52835",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "amatriciana sauce",
+      "name": "Lasagne",
+      "description": "Pasta",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bucatini%20amatriciana%20Roma%202019.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bucatini%20amatriciana%20Roma%202019.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Blackcat"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52844",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Aperol",
+      "name": "Mediterranean Pasta Salad",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aperol%20003%202026%2008%2007.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aperol%20003%202026%2008%2007.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Friedrich Haag"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52777",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "cacio e pepe",
+      "name": "Osso Buco alla Milanese",
+      "description": "Miscellaneous",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cacio%20e%20pepe.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cacio%20e%20pepe.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Popo le Chien"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52810",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

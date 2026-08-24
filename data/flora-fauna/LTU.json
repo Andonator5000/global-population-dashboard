@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Ciconia ciconia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/White%20stork%20%28Ciconia%20ciconia%29%20standing.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:White%20stork%20%28Ciconia%20ciconia%29%20standing.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/603583229/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/603583229/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/603583229",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,10 +23,12 @@
     "type": "national tree",
     "scientificName": "Quercus, Quercus robur",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stelmu%C5%BE%C4%97001.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Stelmu%C5%BE%C4%97001.JPG",
-      "license": "CC BY-SA 4.0",
-      "author": "Hugo.arg"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/10407529",
+      "license": "CC-BY",
+      "author": "(c) Natalya Ivanova, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

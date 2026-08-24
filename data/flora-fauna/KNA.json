@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Pelecanus occidentalis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Brown%20Pelican21K.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Brown%20Pelican21K.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Terry Foote"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/348929489/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/348929489/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/348929489",
+        "license": "CC-BY",
+        "author": "(c) Laura Gaudette, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera tigris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MalayanTiger%20PantheraTigrisJacksoni.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:MalayanTiger%20PantheraTigrisJacksoni.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Ltshears"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,19 +23,23 @@
     "type": "national tree",
     "scientificName": "Intsia palembanica",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Malacca%20Teak%2C%20William%20Farquhar%20Collection%20of%20Natural%20History%20Drawings.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Malacca%20Teak%2C%20William%20Farquhar%20Collection%20of%20Natural%20History%20Drawings.jpg",
-      "license": "Public domain",
-      "author": "Unknown authorUnknown author (anonymous Chinese artist)."
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/619162414/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/619162414/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/619162414",
+      "license": "CC-BY",
+      "author": "(c) Adam Kamal, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Hibiscus rosa-sinensis",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hibiscus%20Brilliant.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Hibiscus%20Brilliant.jpg",
-      "license": "CC BY 2.0",
-      "author": "Andy / Andrew Fogg from near Cambridge, UK"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/538512426/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/538512426/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/538512426",
+      "license": "CC-BY",
+      "author": "(c) mikazilla, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

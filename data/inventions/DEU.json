@@ -1,21 +1,24 @@
 {
   "iso3": "DEU",
   "name": "Germany",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "Chinese checkers",
+      "source": "wikidata",
       "year": 1892,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Halma-Spielfeld.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Halma-Spielfeld.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "The original uploader was Splattne at German Wikipedia."
+        "author": "The original uploader was Splattne at German Wikipedia.",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Volksempfänger",
+      "source": "wikidata",
       "inventors": [
         "Otto Griessing"
       ],
@@ -23,11 +26,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Volksempfaenger%2002%20KMJ.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Volksempfaenger%2002%20KMJ.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "KMJ"
+        "author": "KMJ",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Western concert flute",
+      "source": "wikidata",
       "inventors": [
         "Theobald Boehm"
       ],
@@ -35,25 +40,21 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Western%20concert%20flute%20%28Yamaha%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Western%20concert%20flute%20%28Yamaha%29.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Petar Milošević"
+        "author": "Petar Milošević",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "learning by teaching",
+      "source": "wikidata",
       "inventors": [
         "Jean-Pol Martin"
       ],
       "year": 1980
     },
     {
-      "name": "Capri-Sun",
-      "inventors": [
-        "Rudolf Wild"
-      ],
-      "year": 1969
-    },
-    {
       "name": "Fischertechnik",
+      "source": "wikidata",
       "inventors": [
         "Artur Fischer"
       ],
@@ -62,32 +63,26 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fischertechnik-DaVinci-Feilenhaumaschine.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Fischertechnik-DaVinci-Feilenhaumaschine.jpg",
         "license": "CC BY 3.0",
-        "author": "fischertechnik GmbH"
+        "author": "fischertechnik GmbH",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "German ju-jutsu",
+      "source": "wikidata",
       "inventors": [
         "Franz Josef Gresch",
         "Werner Heim"
       ]
     },
     {
-      "name": "Pinova",
-      "year": 1965,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pinova%20%28apple%29%20jm26295.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pinova%20%28apple%29%20jm26295.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "joergens.mi"
-      }
-    },
-    {
       "name": "Perle",
+      "source": "wikidata",
       "year": 1950
     },
     {
       "name": "Raytheon Lectron",
+      "source": "wikidata",
       "inventors": [
         "Georg Greger"
       ],
@@ -96,7 +91,35 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lectron%20electronics%20construction%20system%2C%20invented%20by%20Georg%20Greger%2C%20designed%20by%20Dieter%20Rams%20and%20Jurgen%20Geubel%2C%20manufactured%20by%20Braun%2C%201967-1972%20-%20Design%20Museum%2C%20Kensington%20-%20London%20-%20DSC01559.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lectron%20electronics%20construction%20system%2C%20invented%20by%20Georg%20Greger%2C%20designed%20by%20Dieter%20Rams%20and%20Jurgen%20Geubel%2C%20manufactured%20by%20Braun%2C%201967-1972%20-%20Design%20Museum%2C%20Kensington%20-%20London%20-%20DSC01559.jpg",
         "license": "CC0",
-        "author": "Daderot"
+        "author": "Daderot",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Pancreatic duct",
+      "source": "wikipedia",
+      "era": "17th century"
+    },
+    {
+      "name": "Dicraeosaurus",
+      "source": "wikipedia",
+      "year": 1914
+    },
+    {
+      "name": "Odic force",
+      "source": "wikipedia",
+      "year": 1845
+    },
+    {
+      "name": "Melamine",
+      "source": "wikipedia",
+      "year": 1834,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Structural%20formula%20of%20melamine.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Structural%20formula%20of%20melamine.svg",
+        "license": "Public domain",
+        "author": "ChemSim",
+        "source": "Wikimedia Commons"
       }
     }
   ]

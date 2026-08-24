@@ -951,8 +951,15 @@ export function CountryPage() {
               precipitation={
                 <IndicatorTile
                   indicator={indicatorValue(indicators, 'AG.LND.PRCP.MM')}
-                  label="Average precipitation"
-                  format={(v) => `${new Intl.NumberFormat('en').format(Math.round(v))} mm/year`}
+                  label="Average precipitation per year"
+                  // Multi-unit on request (2026-08-24): large readings in
+                  // cm/in with m/ft alongside; arid-country readings stay
+                  // in mm/in, where centimetres would round to noise.
+                  format={(v) =>
+                    v >= 100
+                      ? `${(v / 10).toFixed(0)} cm · ${(v / 25.4).toFixed(1)} in (${(v / 1000).toFixed(2)} m · ${(v / 304.8).toFixed(2)} ft)`
+                      : `${Math.round(v)} mm · ${(v / 25.4).toFixed(2)} in`
+                  }
                   note="Long-run climatological average over the country's land area."
                 />
               }

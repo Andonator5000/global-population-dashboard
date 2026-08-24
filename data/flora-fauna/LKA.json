@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Ratufa macroura",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grizzled%20sqirrel%20Chinnar%20WLS%20Kerala%20%2868%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Grizzled%20sqirrel%20Chinnar%20WLS%20Kerala%20%2868%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Firos AK"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/141560349/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/141560349/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/141560349",
+        "license": "CC-BY",
+        "author": "(c) Paulmathi Vinod, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Gallus lafayettii",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Thimindu%202009%2009%2004%20Yala%20Sri%20Lanka%20Junglefowl%201.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Thimindu%202009%2009%2004%20Yala%20Sri%20Lanka%20Junglefowl%201.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Thimindu"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/92429505/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/92429505/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/92429505",
+        "license": "CC-BY",
+        "author": "(c) Christoph Moning, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -35,7 +39,8 @@
       "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MesuaFerrea%20IronWood.jpg?width=960",
       "commonsPage": "https://commons.wikimedia.org/wiki/File:MesuaFerrea%20IronWood.jpg",
       "license": "CC BY-SA 3.0",
-      "author": "Benvda"
+      "author": "Benvda",
+      "source": "Wikimedia Commons"
     }
   },
   "flower": {
@@ -45,7 +50,8 @@
       "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/South%20Vietnam%27s%20Water%20Lily.JPG?width=960",
       "commonsPage": "https://commons.wikimedia.org/wiki/File:South%20Vietnam%27s%20Water%20Lily.JPG",
       "license": "CC BY-SA 3.0",
-      "author": "Nguyễn Tấn Phát"
+      "author": "Nguyễn Tấn Phát",
+      "source": "Wikimedia Commons"
     }
   }
 }

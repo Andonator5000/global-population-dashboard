@@ -1,25 +1,67 @@
 {
   "iso3": "KEN",
   "name": "Kenya",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "ugali",
+      "name": "Home-made Mandazi",
+      "description": "Breakfast",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ugali%20%26%20Sukuma%20Wiki.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ugali%20%26%20Sukuma%20Wiki.jpg",
-        "license": "CC BY 2.0",
-        "author": "Paresh Jai from Nairobi, Kenya"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52967",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Githeri",
+      "name": "Kenyan Beef Curry",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Githeri.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Githeri.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Mukuba"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lqampv1762325397.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lqampv1762325397.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53112",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mbuzi Choma (Roasted Goat)",
+      "description": "Goat",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52968",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Sukuma Wiki",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53113",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Ugali – Kenyan cornmeal",
+      "description": "Breakfast",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/smoa3h1762341142.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/smoa3h1762341142.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53114",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

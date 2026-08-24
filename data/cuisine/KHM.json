@@ -1,0 +1,104 @@
+{
+  "iso3": "KHM",
+  "name": "Cambodia",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Amok Trey – Cambodian Fish Curry",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/diuub11782687570.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/diuub11782687570.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53495",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Bai Sach Chrouk – Grilled Pork with Rice",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/f0cdwk1782688162.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/f0cdwk1782688162.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53496",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "BEEF LOK LAK (Lok Lak Sach Ko)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/t2b8bn1779737789.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/t2b8bn1779737789.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53421",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cambodian Stir-fried Morning Glory with Pork, Fermented Soybeans, and Garlic",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wympxc1779734808.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wympxc1779734808.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53418",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cambodian Waffles (Num Poum)",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/h7zrys1779736460.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/h7zrys1779736460.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53420",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Crispy fried fish with ginger and fermented soybeans (trey chien chuon)",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9q1ci41779735714.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/9q1ci41779735714.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53419",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Khmer Banh Xeo – Cambodian Savory Pancake",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xrv78g1782769859.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xrv78g1782769859.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53502",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Meang Nem",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5rk8vc1779740302.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5rk8vc1779740302.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53423",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

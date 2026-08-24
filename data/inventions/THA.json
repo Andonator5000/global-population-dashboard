@@ -1,0 +1,44 @@
+{
+  "iso3": "THA",
+  "name": "Thailand",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "inventions": [
+    {
+      "name": "Kathoey",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Muay Thai",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Gnathostoma spinigerum",
+      "source": "wikipedia",
+      "year": 1933
+    },
+    {
+      "name": "LIFT technique",
+      "source": "wikipedia",
+      "year": 2007
+    },
+    {
+      "name": "Local-density approximation",
+      "source": "wikipedia",
+      "year": 2016
+    },
+    {
+      "name": "Proto-Tai language",
+      "source": "wikipedia",
+      "year": 2009
+    },
+    {
+      "name": "Thai language",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Chicken",
+      "source": "wikipedia"
+    }
+  ]
+}

@@ -1,79 +1,103 @@
 {
   "iso3": "CHN",
   "name": "China",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "fried rice",
+      "name": "Air Fryer Egg Rolls",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fried%20rice%20by%20Adonis%20Chen%20in%20Keelung%2C%20Taiwan.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fried%20rice%20by%20Adonis%20Chen%20in%20Keelung%2C%20Taiwan.jpg",
-        "license": "CC BY 2.0",
-        "author": "Adonis Chen from Keelung, Taiwan"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53373",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "dim sum",
+      "name": "Beef and Broccoli Stir-Fry",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinesische%20K%C3%BCche.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chinesische%20K%C3%BCche.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Kolumbusjogger"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53366",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "sugarcane juice",
+      "name": "Beef Lo Mein",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sugarcanejuice.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sugarcanejuice.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Food Trails"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529444830.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1529444830.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52952",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "grass jelly",
+      "name": "Chicken Congee",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/GrassJellyBlocks.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:GrassJellyBlocks.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Sjschen"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529446352.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1529446352.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52956",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "biangbiang noodles",
+      "name": "Chicken Fried Rice",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Biang%20Biang%20Mian.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Biang%20Biang%20Mian.jpg",
-        "license": "CC BY 2.0",
-        "author": "Gary Soup"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53367",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "stinky tofu",
+      "name": "Chinese Orange Chicken",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stinky%20Tofu%20Fried.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stinky%20Tofu%20Fried.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "The original uploader was Richy at Chinese Wikipedia."
+        "imageUrl": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53365",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "gunpowder tea",
+      "name": "Chinese Tomato Egg Stir Fry",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Th%C3%A9%20vert%20gunpowder%20entass%C3%A9%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%20vert%20gunpowder%20entass%C3%A9%2001.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Zantastik"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53372",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "lamian",
+      "name": "Egg Drop Soup",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20noodles.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chinese%20noodles.JPG",
-        "license": "CC BY 3.0",
-        "author": "Youngjediboy at English Wikipedia"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1529446137.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1529446137.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52955",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

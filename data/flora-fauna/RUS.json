@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Ursus arctos",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/European%20Brown%20Bear.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:European%20Brown%20Bear.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Francis C. Franklin"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9581603/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9581603/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/9581603",
+        "license": "CC-BY",
+        "author": "(c) Annika Lindqvist, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -23,7 +25,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lesser%20coat%20of%20arms%20of%20the%20Russian%20Empire.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lesser%20coat%20of%20arms%20of%20the%20Russian%20Empire.svg",
         "license": "Public domain",
-        "author": null
+        "author": null,
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -32,10 +35,12 @@
     "type": "national tree",
     "scientificName": "Larix sibirica",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Larix%20sibirica%20Urals.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Larix%20sibirica%20Urals.jpg",
-      "license": "CC BY 2.0",
-      "author": "ugraland"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/352313775/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/352313775/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/352313775",
+      "license": "CC-BY",
+      "author": "(c) Oleg Kosterin, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

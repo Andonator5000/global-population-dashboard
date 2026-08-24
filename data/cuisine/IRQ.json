@@ -1,0 +1,19 @@
+{
+  "iso3": "IRQ",
+  "name": "Iraq",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "Gaz",
+      "description": "pastry",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gaz%20Candy%20From%20Iran.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gaz%20Candy%20From%20Iran.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Sidster",
+        "source": "Wikimedia Commons"
+      }
+    }
+  ]
+}

@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Castor canadensis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/American%20Beaver.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:American%20Beaver.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Steve from Washington, DC, USA"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214854240/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214854240/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/214854240",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national horse",
       "scientificName": "Equus ferus caballus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheval%20canadien%20au%20trot%203372.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheval%20canadien%20au%20trot%203372.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "No machine-readable author provided. David Campbell assumed (based on copyright claims)."
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/398682693/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/398682693/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/398682693",
+        "license": "CC-BY",
+        "author": "(c) Valentín Alfano, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,19 +36,23 @@
     "type": "national tree",
     "scientificName": "Acer",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acer%20saccharum.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acer%20saccharum.jpg",
-      "license": "CC BY-SA 2.5",
-      "author": "Bruce Marlin"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/30907600/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/30907600/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/30907600",
+      "license": "CC-BY",
+      "author": "(c) Jody Shugart, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "maple leaf",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acer%20pseudoplatanus%20002.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acer%20pseudoplatanus%20002.jpg",
-      "license": "CC BY-SA 2.5",
-      "author": "Willow"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/54842851/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/54842851/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/54842851",
+      "license": "CC-BY",
+      "author": "(c) Alex Abair, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

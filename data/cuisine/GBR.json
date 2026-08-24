@@ -1,43 +1,103 @@
 {
   "iso3": "GBR",
   "name": "United Kingdom",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "coronation chicken",
+      "name": "Bubble & Squeak",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coronation%20Chicken.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Coronation%20Chicken.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "James F. Carter"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xusqvw1511638311.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xusqvw1511638311.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52885",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "cheese on toast",
+      "name": "Apple & Blackberry Crumble",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese%20on%20toast-11.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheese%20on%20toast-11.jpg",
-        "license": "CC BY 2.0",
-        "author": "jules"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52893",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "cucumber sandwich",
+      "name": "Apple Frangipan Tart",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flickr%20bitboy%20204619671--Cucumber%20sandwiches%20with%20tea.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Flickr%20bitboy%20204619671--Cucumber%20sandwiches%20with%20tea.jpg",
-        "license": "CC BY 2.0",
-        "author": "Bit Boy from Los Angeles, California, USA"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52768",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Cheese and pickle sandwich",
+      "name": "Baked salmon with fennel & tomatoes",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese%20and%20Pickle%20Sandwich%20Step%204%20%288576760021%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheese%20and%20Pickle%20Sandwich%20Step%204%20%288576760021%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "LearningLark from United States"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1548772327.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1548772327.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52959",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Bakewell tart",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52767",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Battenberg Cake",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ywwrsp1511720277.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ywwrsp1511720277.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52894",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Bean & Sausage Hotpot",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52848",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Beef and Mustard Pie",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52874",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

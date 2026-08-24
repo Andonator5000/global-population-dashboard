@@ -8,10 +8,12 @@
     "type": "national tree",
     "scientificName": "Cocos nucifera",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cocos%20nucifera%20Kratie%20Cambodia.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cocos%20nucifera%20Kratie%20Cambodia.JPG",
-      "license": "CC0",
-      "author": "Pamputt"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/103610074/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/103610074/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/103610074",
+      "license": "CC-BY",
+      "author": "(c) David Anderson, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
@@ -20,7 +22,8 @@
       "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2020-05-20%2008%2005%2042%20Multiflora%20Rose%20flowers%20along%20a%20walking%20path%20within%20Horsepen%20Run%20Stream%20Valley%20Park%20in%20Oak%20Hill%2C%20Fairfax%20County%2C%20Virginia.jpg?width=960",
       "commonsPage": "https://commons.wikimedia.org/wiki/File:2020-05-20%2008%2005%2042%20Multiflora%20Rose%20flowers%20along%20a%20walking%20path%20within%20Horsepen%20Run%20Stream%20Valley%20Park%20in%20Oak%20Hill%2C%20Fairfax%20County%2C%20Virginia.jpg",
       "license": "CC BY-SA 4.0",
-      "author": "Famartin"
+      "author": "Famartin",
+      "source": "Wikimedia Commons"
     }
   }
 }

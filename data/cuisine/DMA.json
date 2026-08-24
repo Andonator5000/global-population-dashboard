@@ -1,0 +1,104 @@
+{
+  "iso3": "DMA",
+  "name": "Dominica",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Apple pie pops",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ax643t1784731109.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ax643t1784731109.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53568",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Breadfruit Tacos",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dk70uv1784670127.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dk70uv1784670127.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53562",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cassava bread",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/fnfnhi1784671116.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/fnfnhi1784671116.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53564",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chicken Lollipop",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53565",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Codfish deviled eggs",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vayi021784668764.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vayi021784668764.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53561",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Creamy mango smoothie",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/pjbaq11784731571.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/pjbaq11784731571.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53569",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dominica mastiff bread",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/u1996p1784670686.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/u1996p1784670686.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53563",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dominica’s coconut rough cake",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sgqy9d1784832045.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sgqy9d1784832045.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53571",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

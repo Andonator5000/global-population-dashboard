@@ -9,20 +9,24 @@
       "type": "national animal",
       "scientificName": "Bos taurus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cow%20%28Fleckvieh%20breed%29%20Oeschinensee%20Slaunger%202009-07-07.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cow%20%28Fleckvieh%20breed%29%20Oeschinensee%20Slaunger%202009-07-07.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Kim Hansen"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/29102489/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/29102489/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/29102489",
+        "license": "CC-BY",
+        "author": "(c) Paulius Rupšas, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
   "flower": {
     "name": "edelweiss",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Alpen%20Edelwei%C3%9F%2C%20Leontopodium%20alpinum%202.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Alpen%20Edelwei%C3%9F%2C%20Leontopodium%20alpinum%202.JPG",
-      "license": "CC BY-SA 2.5",
-      "author": "Böhringer Friedrich"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/535574862/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/535574862/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/535574862",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

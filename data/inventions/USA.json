@@ -1,11 +1,12 @@
 {
   "iso3": "USA",
   "name": "United States",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "basketball",
+      "source": "wikidata",
       "inventors": [
         "James Naismith"
       ],
@@ -14,11 +15,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dream%20Team%20at%20the%201992%20Summer%20Olympics.JPEG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Dream%20Team%20at%20the%201992%20Summer%20Olympics.JPEG",
         "license": "Public domain",
-        "author": "Ken Hackman, U.S. Air Force"
+        "author": "Ken Hackman, U.S. Air Force",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "volleyball",
+      "source": "wikidata",
       "inventors": [
         "William G. Morgan"
       ],
@@ -27,34 +30,25 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Triple%20block%20%28Serbia%20vs%20China%2C%20Grand%20Prix%202017%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Triple%20block%20%28Serbia%20vs%20China%2C%20Grand%20Prix%202017%29.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Jeffrey Ng from Hong Kong"
+        "author": "Jeffrey Ng from Hong Kong",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "baseball",
+      "source": "wikidata",
       "year": 1900,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zack%20Greinke%20on%20July%2029%2C%202009.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Zack%20Greinke%20on%20July%2029%2C%202009.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Keith Allison on Flickr"
-      }
-    },
-    {
-      "name": "Coca-Cola",
-      "inventors": [
-        "John Pemberton"
-      ],
-      "year": 1886,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/15-09-26-RalfR-WLC-0098%20-%20Coca-Cola%20glass%20bottle%20%28Germany%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:15-09-26-RalfR-WLC-0098%20-%20Coca-Cola%20glass%20bottle%20%28Germany%29.jpg",
-        "license": "Public domain",
-        "author": "Ralf Roletschek"
+        "author": "Keith Allison on Flickr",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "ChatGPT",
+      "source": "wikidata",
       "inventors": [
         "OpenAI"
       ],
@@ -62,36 +56,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png",
         "license": "Public domain",
-        "author": "Gio Antonio"
-      }
-    },
-    {
-      "name": "Pepsi",
-      "inventors": [
-        "Caleb Bradham"
-      ],
-      "year": 1893,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pepsi%20Blue.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pepsi%20Blue.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Fieldafar"
-      }
-    },
-    {
-      "name": "hot dog",
-      "inventors": [
-        "Charles Feltman"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hotdog%20-%20Evan%20Swigart.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hotdog%20-%20Evan%20Swigart.jpg",
-        "license": "CC BY 2.0",
-        "author": "Evan Swigart from Chicago, USA"
+        "author": "Gio Antonio",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "USB flash drive",
+      "source": "wikidata",
       "inventors": [
         "IBM",
         "Pua Khein-Seng",
@@ -102,11 +73,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kingston%20Technology%20USB%20flash%20drives.%20USB%203.0.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Kingston%20Technology%20USB%20flash%20drives.%20USB%203.0.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Dmitry Makeev"
+        "author": "Dmitry Makeev",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "electric guitar",
+      "source": "wikidata",
       "inventors": [
         "George Beauchamp"
       ],
@@ -115,17 +88,89 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Yngwie%20Malmsteen%27s%20electric%20guitar.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Yngwie%20Malmsteen%27s%20electric%20guitar.jpg",
         "license": "CC BY 2.0",
-        "author": "francesco from Italia"
+        "author": "francesco from Italia",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "beach volleyball",
+      "source": "wikidata",
       "year": 1920,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/USMC-111007-M-UV915-234.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:USMC-111007-M-UV915-234.jpg",
         "license": "Public domain",
-        "author": null
+        "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "BIOS",
+      "source": "wikidata",
+      "inventors": [
+        "Gary Kildall"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/AWD%20BIOS.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:AWD%20BIOS.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Appaloosa",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "thermonuclear weapon",
+      "source": "wikidata",
+      "year": 1952,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/B53%20bomb.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:B53%20bomb.jpg",
+        "license": "Public domain",
+        "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "M1 Garand",
+      "source": "wikidata",
+      "inventors": [
+        "John Garand"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/M1%20Garand%20rifle%20-%20USA%20-%2030-06%20-%20Arm%C3%A9museum.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:M1%20Garand%20rifle%20-%20USA%20-%2030-06%20-%20Arm%C3%A9museum.jpg",
+        "license": "Public domain",
+        "author": "Armémuseum (The Swedish Army Museum)",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "gramophone",
+      "source": "wikidata",
+      "inventors": [
+        "Emile Berliner"
+      ],
+      "year": 1887,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/VictorVPhonograph.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:VictorVPhonograph.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Norman Bruderhofer",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Segway PT",
+      "source": "wikidata",
+      "inventors": [
+        "Dean Kamen"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Segwaygreen.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Segwaygreen.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Gawrisch",
+        "source": "Wikimedia Commons"
       }
     }
   ]

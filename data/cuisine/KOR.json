@@ -6,20 +6,24 @@
   "dishes": [
     {
       "name": "corn tea",
+      "description": "beverage made by infusing roasted corn kernels",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Oksusu-cha.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Oksusu-cha.jpg",
         "license": "CC BY 4.0",
-        "author": "연두씨네"
+        "author": "연두씨네",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "dwaeji-gukbap",
+      "description": "Korean rice soup category",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dwaeji-gukbap.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Dwaeji-gukbap.jpg",
         "license": "CC BY 2.0 kr",
-        "author": "http://blog.daum.net/wjlee4284 사이팔사]"
+        "author": "http://blog.daum.net/wjlee4284 사이팔사]",
+        "source": "Wikimedia Commons"
       }
     }
   ]

@@ -1,79 +1,103 @@
 {
   "iso3": "JPN",
   "name": "Japan",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "sushi",
+      "name": "Chicken Karaage",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Various%20sushi%2C%20beautiful%20October%20night%20at%20midnight.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Various%20sushi%2C%20beautiful%20October%20night%20at%20midnight.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Yumi Kimura"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52831",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "instant noodles",
+      "name": "Honey Teriyaki Salmon",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mama%20instant%20noodle%20block.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mama%20instant%20noodle%20block.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Takeaway"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52773",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "takoyaki",
+      "name": "Japanese gohan rice",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Takoyaki%20by%20yomi955.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Takoyaki%20by%20yomi955.jpg",
-        "license": "CC BY 2.0",
-        "author": "heiwa4126"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53033",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "nattō",
+      "name": "Japanese Katsudon",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Natto%20mixed.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Natto%20mixed.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "User:Gleam"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53034",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "tonkatsu",
+      "name": "Katsu Chicken curry",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tonkatsu%20of%20Kimukatsu.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tonkatsu%20of%20Kimukatsu.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Minseong Kim"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52820",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "donburi",
+      "name": "Sushi",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tendon%20and%20unadon%20by%20avlxyz.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tendon%20and%20unadon%20by%20avlxyz.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "avlxyz"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53065",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "osechi",
+      "name": "Teriyaki Chicken Casserole",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Japanese%20Osechi.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Japanese%20Osechi.jpg",
-        "license": "Public domain",
-        "author": null
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52772",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "kamaboko",
+      "name": "Tonkatsu pork",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamaboko.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kamaboko.jpg",
-        "license": "Public domain",
-        "author": null
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53032",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

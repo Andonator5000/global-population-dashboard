@@ -1,79 +1,103 @@
 {
   "iso3": "USA",
   "name": "United States",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "hamburger",
+      "name": "15-minute chicken & halloumi burgers",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/NCI%20Visuals%20Food%20Hamburger.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:NCI%20Visuals%20Food%20Hamburger.jpg",
-        "license": "Public domain",
-        "author": "Len Rizzi (photographer)"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vdwloy1713225718.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vdwloy1713225718.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53085",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "pancake",
+      "name": "Banana Pancakes",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cr%C3%AApe%20opened%20up.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cr%C3%AApe%20opened%20up.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": null
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52855",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "carbonara",
+      "name": "BBQ Pork Sloppy Joes",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Espaguetis%20carbonara.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Espaguetis%20carbonara.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Javier Somoza"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52995",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "cheeseburger",
+      "name": "Beef Brisket Pot Roast",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheeseburger.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cheeseburger.jpg",
-        "license": "Public domain",
-        "author": "Renee Comet (photographer)"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ursuup1487348423.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ursuup1487348423.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52812",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "sundae",
+      "name": "Big Mac",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/StrawberrySundae.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:StrawberrySundae.jpg",
-        "license": "Public domain",
-        "author": "USDA photo by: Ken Hammond"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53013",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "corn dog",
+      "name": "Chick-Fil-A Sandwich",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Corn%20dog%20001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Corn%20dog%20001.jpg",
-        "license": "CC0",
-        "author": "Ocdp"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53016",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "red velvet cake",
+      "name": "Chicken Fajita Mac and Cheese",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20Velvet%20Cake%20Waldorf%20Astoria.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red%20Velvet%20Cake%20Waldorf%20Astoria.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Hennem08"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52818",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "s'more",
+      "name": "Choc Chip Pecan Pie",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HersheySmore.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:HersheySmore.jpg",
-        "license": "GFDL 1.2",
-        "author": "Jonathunder"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52856",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

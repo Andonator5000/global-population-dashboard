@@ -1,25 +1,103 @@
 {
   "iso3": "AUS",
   "name": "Australia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Halal snack pack",
+      "name": "Anzac biscuits",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Halal%20Snack%20Packs.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Halal%20Snack%20Packs.jpg",
-        "license": "CC0",
-        "author": "Photo by Kenneth Miller"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53111",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "cruffin",
+      "name": "Aussie Burgers",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cruffins%20at%20Mr.%20Holmes%20Bakehouse%20%28TK6%29.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cruffins%20at%20Mr.%20Holmes%20Bakehouse%20%28TK6%29.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Tobias Kleinlercher / Wikipedia"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/44bzep1761848278.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/44bzep1761848278.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53099",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Avocado dip with new potatoes",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/flrajf1762341295.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/flrajf1762341295.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53107",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Barramundi with Moroccan spices",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53103",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Blueberry & lemon friands",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/e756bf1761848342.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/e756bf1761848342.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53100",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chocolate Coconut Squares",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/8oupz51761848432.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/8oupz51761848432.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53101",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Lamingtons",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/j2n7vg1761848636.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/j2n7vg1761848636.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53104",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mini chilli beef pies",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6sarfo1762340107.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/6sarfo1762340107.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53109",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

@@ -1,18 +1,67 @@
 {
   "iso3": "ZAF",
   "name": "South Africa",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "Jubilee Diamond",
+      "source": "wikidata",
       "year": 1895,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jubilee%20Diamond%20copy.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Jubilee%20Diamond%20copy.jpg",
         "license": "CC BY-SA 3.0",
-        "author": null
+        "author": null,
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Jukskei",
+      "source": "wikipedia",
+      "year": 1743
+    },
+    {
+      "name": "Assegai",
+      "source": "wikipedia",
+      "year": 1787
+    },
+    {
+      "name": "Wadley loop",
+      "source": "wikipedia",
+      "inventors": [
+        "Dr. Trevor Wadley"
+      ]
+    },
+    {
+      "name": "Pinetown",
+      "source": "wikipedia",
+      "inventors": [
+        "Mr. Robertson"
+      ],
+      "year": 1950
+    },
+    {
+      "name": "Helikon vortex separation process",
+      "source": "wikipedia"
+    },
+    {
+      "name": "CT scan",
+      "source": "wikipedia",
+      "inventors": [
+        "Allan MacLeod Cormack"
+      ],
+      "year": 1963
+    },
+    {
+      "name": "Saddam Maake",
+      "source": "wikipedia",
+      "year": 1965
+    },
+    {
+      "name": "Christiaan Barnard",
+      "source": "wikipedia",
+      "year": 1967
     }
   ]
 }

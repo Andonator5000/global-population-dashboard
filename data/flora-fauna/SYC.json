@@ -6,10 +6,12 @@
   "flower": {
     "name": "Angraecum eburneum",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Angraecum%20eburneum%20-%20Edwards%20vol%2018%20pl%201522%20%281832%29.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Angraecum%20eburneum%20-%20Edwards%20vol%2018%20pl%201522%20%281832%29.jpg",
-      "license": "Public domain",
-      "author": "Miss Drake (1803-1857) del., J. Watts sc."
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/465005053/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/465005053/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/465005053",
+      "license": "CC-BY",
+      "author": "(c) Adrien Jailloux, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

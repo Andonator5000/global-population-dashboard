@@ -5,7 +5,8 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
-      "name": "Sindhi biryani"
+      "name": "Sindhi biryani",
+      "description": "variety of biryani"
     }
   ]
 }

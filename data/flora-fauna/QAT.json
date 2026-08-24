@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Oryx leucoryx",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arabian%20oryx%20%28oryx%20leucoryx%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Arabian%20oryx%20%28oryx%20leucoryx%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/59951975/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/59951975/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/59951975",
+        "license": "CC-BY",
+        "author": "(c) Christoph Moning, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,10 +23,12 @@
     "type": "national tree",
     "scientificName": "Ziziphus spina-christi",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ziziphus-areva-israel.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ziziphus-areva-israel.jpg",
-      "license": "Public domain",
-      "author": "Dov Grobgeld"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/46616058/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/46616058/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/46616058",
+      "license": "CC-BY",
+      "author": "(c) Jacky Judas, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

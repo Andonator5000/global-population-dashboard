@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Kobus kob thomasi",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kobus%20kob%20thomasi%2011873505.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kobus%20kob%20thomasi%2011873505.jpg",
-        "license": "CC0",
-        "author": "Richard Fuller"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/567641540/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/567641540/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/567641540",
+        "license": "CC-BY",
+        "author": "(c) avocat, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Balearica regulorum",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Balearica%20regulorum%20001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Balearica%20regulorum%20001.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "H. Zell"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/60853728/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/60853728/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/60853728",
+        "license": "CC-BY",
+        "author": "(c) M Rutherford, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

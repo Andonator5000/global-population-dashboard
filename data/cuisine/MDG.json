@@ -6,29 +6,35 @@
   "dishes": [
     {
       "name": "Romazava",
+      "description": "Malagasy stew",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Madagaskar%20stew%202019-10-01.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Madagaskar%20stew%202019-10-01.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vary%20%28riz%29%20avec%20sardine%20frit%20et%20romazava%20agnamorongo.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vary%20%28riz%29%20avec%20sardine%20frit%20et%20romazava%20agnamorongo.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Z thomas"
+        "author": "Chirocca77",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Koba",
+      "description": "confectionery sweet",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kobandravina%20dessert%20snack%20food%20Antananarivo%20Madagascar.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kobandravina%20dessert%20snack%20food%20Antananarivo%20Madagascar.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Salym Fayad"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Art%20culinaire%20malgache%2C%20le%20fameux%20koba%20de%20Talata%20Volonondry.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Art%20culinaire%20malgache%2C%20le%20fameux%20koba%20de%20Talata%20Volonondry.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Anai171",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Mofo gasy",
+      "description": "Malagasy traditional recipe",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mokary%20Vary-anivorano%20nord%20Madagascar.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Mokary%20Vary-anivorano%20nord%20Madagascar.jpg",
         "license": "CC0",
-        "author": "Chirocca77"
+        "author": "Chirocca77",
+        "source": "Wikimedia Commons"
       }
     }
   ]

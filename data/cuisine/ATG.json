@@ -1,0 +1,56 @@
+{
+  "iso3": "ATG",
+  "name": "Antigua and Barbuda",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Antiguan Breakfast (Chop Up and ‘Saltfish’)",
+      "description": "Breakfast",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jvjnoh1780086318.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jvjnoh1780086318.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53430",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Corn on the cob with lime, green chilli and coconut butter",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/brhaoj1780086661.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/brhaoj1780086661.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53431",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mango chow",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/8hx4fi1780087744.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/8hx4fi1780087744.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53433",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Slow-cooked, Wadadli-spiced Cubano pork belly",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53432",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

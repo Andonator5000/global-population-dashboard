@@ -6,20 +6,13 @@
   "dishes": [
     {
       "name": "Vepřo knedlo zelo",
+      "description": "Czech national dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Knedlo%20zelo%20vep%C5%99o%20%283%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Knedlo%20zelo%20vep%C5%99o%20%283%29.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "I would appreciate being notified if you use my work outside Wikimedia.\nDo not copy this image illegally by ignoring the terms of the license below, as it is not in the public domain. If you would like special permission to use, license, or purchase the image please contact me to negotiate terms.\n\nMore of my work can be found in my personal gallery."
-      }
-    },
-    {
-      "name": "serviettenknödel",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Serviettenkloss.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Serviettenkloss.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Hutschi"
+        "author": "I would appreciate being notified if you use my work outside Wikimedia.\nDo not copy this image illegally by ignoring the terms of the license below, as it is not in the public domain. If you would like special permission to use, license, or purchase the image please contact me to negotiate terms.\n\nMore of my work can be found in my personal gallery.",
+        "source": "Wikimedia Commons"
       }
     }
   ]

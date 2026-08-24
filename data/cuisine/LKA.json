@@ -1,0 +1,19 @@
+{
+  "iso3": "LKA",
+  "name": "Sri Lanka",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "appam",
+      "description": "South Indian and Sri Lankan pancake made with fermented rice batter and coconut milk",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pesaha%20Appam%20Indari%20Appam%2C%20%E0%B4%AA%E0%B5%86%E0%B4%B8%E0%B4%B9%20%E0%B4%85%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B4%82%2C%20%E0%B4%87%E0%B4%A3%E0%B5%8D%E0%B4%9F%E0%B5%8D%E0%B4%B0%E0%B4%BF%20%E0%B4%85%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B4%82.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pesaha%20Appam%20Indari%20Appam%2C%20%E0%B4%AA%E0%B5%86%E0%B4%B8%E0%B4%B9%20%E0%B4%85%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B4%82%2C%20%E0%B4%87%E0%B4%A3%E0%B5%8D%E0%B4%9F%E0%B5%8D%E0%B4%B0%E0%B4%BF%20%E0%B4%85%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B4%82.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "കാക്കര",
+        "source": "Wikimedia Commons"
+      }
+    }
+  ]
+}

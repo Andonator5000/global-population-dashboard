@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Amazona versicolor",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazona%20versicolor%20-St%20Lucia-5a.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Amazona%20versicolor%20-St%20Lucia-5a.jpg",
-        "license": "CC BY 2.0",
-        "author": "Brennan Mulrooney"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/616526052/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/616526052/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/616526052",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ]

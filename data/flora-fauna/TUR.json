@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Canis lupus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Front%20view%20of%20a%20resting%20Canis%20lupus%20ssp.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Front%20view%20of%20a%20resting%20Canis%20lupus%20ssp.jpg",
-        "license": "Public domain",
-        "author": "Gary Kramer"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/214572955",
+        "license": "CC-BY",
+        "author": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national dog",
       "scientificName": "Canis lupus familiaris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kangal%20front%20on.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kangal%20front%20on.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Kangalshepherddog"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/214572955",
+        "license": "CC-BY",
+        "author": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,20 +35,24 @@
       "type": "national cat",
       "scientificName": "Felis catus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20Angora%20Odd-Eyed.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turkish%20Angora%20Odd-Eyed.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Franzioseph"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/707418591/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/707418591/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/707418591",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ],
   "flower": {
     "name": "tulip",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG",
-      "license": "CC0",
-      "author": "Dina L"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/482684019/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/482684019/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/482684019",
+      "license": "CC-BY",
+      "author": "(c) Alexander Dubynin, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -1,70 +1,91 @@
 {
   "iso3": "RUS",
   "name": "Russia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Olivier salad",
+      "name": "Beef stroganoff",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Jacek Halicki"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/svprys1511176755.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/svprys1511176755.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52834",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "bread roll",
+      "name": "Blini Pancakes",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korb%20mit%20Br%C3%B6tchen.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korb%20mit%20Br%C3%B6tchen.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "3268zauber"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0206h11699013358.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0206h11699013358.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53080",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Karelian pasty",
+      "name": "Cabbage Soup (Shchi)",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Karjalanpiirakka.png?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Karjalanpiirakka.png",
-        "license": "CC BY-SA 4.0",
-        "author": "Tiia Monto"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53077",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "stroganina",
+      "name": "Fish Soup (Ukha)",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dish%20Stroganina%20.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dish%20Stroganina%20.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Cholbon"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/7n8su21699013057.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/7n8su21699013057.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53079",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Raph Coffee",
+      "name": "Lamb Pilaf (Plov)",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rafcoffe.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rafcoffe.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Serpas1010"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53083",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "rasstegai",
+      "name": "Potato Salad (Olivier Salad)",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rasstegai%20s%20gorbushei.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rasstegai%20s%20gorbushei.jpg",
-        "license": "CC BY 3.0",
-        "author": "Ekaterina ; processed by Off-shell (removed watermarks, adjusted colours)"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53081",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "sulze",
+      "name": "Strawberries Romanoff",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/S%C3%BClze001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:S%C3%BClze001.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "The original uploader was Rainer Zenz at German Wikipedia."
+        "imageUrl": "https://www.themealdb.com/images/media/meals/oe8rg51699014028.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/oe8rg51699014028.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53082",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

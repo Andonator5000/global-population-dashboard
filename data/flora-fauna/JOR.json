@@ -6,10 +6,12 @@
   "flower": {
     "name": "black iris",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Iris%20nigricans%20104379460.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Iris%20nigricans%20104379460.jpg",
-      "license": "CC BY 4.0",
-      "author": "Santiago Martín-Bravo"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/407374589/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/407374589/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/407374589",
+      "license": "CC-BY",
+      "author": "(c) Wang.QG, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

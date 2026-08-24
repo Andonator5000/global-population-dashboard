@@ -1,36 +1,12 @@
 {
   "iso3": "IDN",
   "name": "Indonesia",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Indomie",
-      "inventors": [
-        "Sudono Salim"
-      ],
-      "year": 1972,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2016%20Indomie%20Mi%20Goreng%20Rendang%20NL%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:2016%20Indomie%20Mi%20Goreng%20Rendang%20NL%2001.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Takeaway"
-      }
-    },
-    {
-      "name": "Ayam goreng",
-      "inventors": [
-        "Javanese"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ayam%20goreng%20%282%29.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ayam%20goreng%20%282%29.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Wagino 20100516"
-      }
-    },
-    {
       "name": "Ulu scripts",
+      "source": "wikidata",
       "inventors": [
         "Kerinci people"
       ],
@@ -38,9 +14,43 @@
     },
     {
       "name": "Pacu Jalur",
+      "source": "wikidata",
       "inventors": [
         "Minangkabau"
       ]
+    },
+    {
+      "name": "Wayang",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Gamelan",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Surakarta (game)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Candi of Indonesia",
+      "source": "wikipedia",
+      "era": "8th century"
+    },
+    {
+      "name": "Instant noodles",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Communal work",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Tanja sail",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Lancaran (ship)",
+      "source": "wikipedia"
     }
   ]
 }

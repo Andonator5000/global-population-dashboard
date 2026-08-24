@@ -1,79 +1,79 @@
 {
   "iso3": "MEX",
   "name": "Mexico",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "taco",
+      "name": "Braised Beef Chilli",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/001%20Tacos%20de%20carnitas%2C%20carne%20asada%20y%20al%20pastor.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:001%20Tacos%20de%20carnitas%2C%20carne%20asada%20y%20al%20pastor.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Larry Miller"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52826",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "burrito",
+      "name": "Cajun spiced fish tacos",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Breakfast%20burritos.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Breakfast%20burritos.jpg",
-        "license": "CC BY 2.0",
-        "author": "jeffreyw"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52819",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "chili",
+      "name": "Chicken Enchilada Casserole",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bowl%20of%20chili.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bowl%20of%20chili.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Carstor"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52765",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "quesadilla",
+      "name": "Chickpea Fajitas",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quesadilles%20de%20Blanes%20amb%20salses.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Quesadilles%20de%20Blanes%20amb%20salses.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Brunnaiz"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52870",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "enchilada",
+      "name": "Crock Pot Chicken Baked Tacos",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Festival%20de%20la%20Enchilada%2059.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Festival%20de%20la%20Enchilada%2059.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Lameirasb"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52830",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "atole",
+      "name": "Stuffed Bell Peppers with Quinoa and Black Beans",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Atole%20de%20puscua%20Guanajuatense.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Atole%20de%20puscua%20Guanajuatense.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Juan Carlos Fonseca Mata"
-      }
-    },
-    {
-      "name": "chimichanga",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chimichanga%20Amigos%20IMG%201237.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chimichanga%20Amigos%20IMG%201237.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Dainsleaf"
-      }
-    },
-    {
-      "name": "tostada",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tostadas%20shrimp%20cooking%20food%20dinner%20salsa.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tostadas%20shrimp%20cooking%20food%20dinner%20salsa.jpg",
-        "license": "Public domain",
-        "author": "Jon Sullivan"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53067",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

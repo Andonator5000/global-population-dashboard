@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera tigris tigris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Panthera%20tigris%20tigris.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Panthera%20tigris%20tigris.jpg",
-        "license": "Public domain",
-        "author": "Hollingsworth, John and Karen, retouched by Zwoenitzer"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national fish",
       "scientificName": "Tenualosa ilisha",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ilish.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ilish.JPG",
-        "license": "CC BY-SA 2.5",
-        "author": "No machine-readable author provided. Mamun2a assumed (based on copyright claims)."
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/483757929/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/483757929/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/483757929",
+        "license": "CC-BY",
+        "author": "(c) Sagnik Dutta Roy, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national bird",
       "scientificName": "Copsychus saularis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Magpie%20robin.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Magpie%20robin.jpg",
-        "license": "CC BY 2.5",
-        "author": null
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/78846863/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/78846863/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/78846863",
+        "license": "CC-BY",
+        "author": "(c) carbenoid, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -43,19 +49,23 @@
     "type": "national tree",
     "scientificName": "Mangifera indica",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango%20blossoms.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Mango%20blossoms.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Amar"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/30269758/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/30269758/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/30269758",
+      "license": "CC-BY",
+      "author": "(c) Jagdish Supekar, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "water lily",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nymphaea%20nouchali5.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Nymphaea%20nouchali5.JPG",
-      "license": "CC BY 3.0",
-      "author": "TC Tao"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/133473561/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/133473561/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/133473561",
+      "license": "CC-BY",
+      "author": "(c) Bonnie Semmling, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

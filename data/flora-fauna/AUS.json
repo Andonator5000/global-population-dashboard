@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Macropus rufus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20kangaroo%20-%20melbourne%20zoo.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red%20kangaroo%20-%20melbourne%20zoo.jpg",
-        "license": "GFDL 1.2",
-        "author": "fir0002  flagstaffotos [at] gmail.com\n\t\tCanon 20D + Canon 70-200mm f/2.8 L"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/342143057/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/342143057/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/342143057",
+        "license": "CC-BY",
+        "author": "(c) Donald Hobern, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Dromaius novaehollandiae",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Emoe.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emoe.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "J. Folmer, nl:Gebruiker:Jcwf"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/350136412/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/350136412/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/350136412",
+        "license": "CC-BY",
+        "author": "(c) Sockrosma, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,19 +36,23 @@
     "type": "national tree",
     "scientificName": "Acacia pycnantha",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acacia%20pycnantha%20Golden%20Wattle.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acacia%20pycnantha%20Golden%20Wattle.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Melburnian"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/538889167/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/538889167/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/538889167",
+      "license": "CC-BY",
+      "author": "(c) Rosalie Lawrence, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Acacia pycnantha",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acacia%20pycnantha%20Golden%20Wattle.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Acacia%20pycnantha%20Golden%20Wattle.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Melburnian"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/538889167/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/538889167/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/538889167",
+      "license": "CC-BY",
+      "author": "(c) Rosalie Lawrence, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

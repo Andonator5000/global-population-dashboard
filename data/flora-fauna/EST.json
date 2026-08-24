@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Canis lupus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Loup%20gris%20%28Canis%20lupus%20%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Loup%20gris%20%28Canis%20lupus%20%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Clément Bardot"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/214572955",
+        "license": "CC-BY",
+        "author": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national fish",
       "scientificName": "Clupea harengus membras",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Silakka.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Silakka.jpg",
-        "license": "Public domain",
-        "author": "Arto Alanenpää"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/534814096/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/534814096/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/534814096",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national bird",
       "scientificName": "Hirundo rustica",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Barn%20swallow%20in%20Montezuma%20%2814460%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Barn%20swallow%20in%20Montezuma%20%2814460%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Rhododendrites"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/575999585/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/575999585/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/575999585",
+        "license": "CC-BY",
+        "author": "(c) Diego González Dopico, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -42,10 +48,12 @@
       "type": "national butterfly",
       "scientificName": "Papilio machaon",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papilio%20machaon%20Mitterbach%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Papilio%20machaon%20Mitterbach%2001.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Uoaei1"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/280989662/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/280989662/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/280989662",
+        "license": "CC-BY",
+        "author": "(c) Fyodor Pudovikov, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -54,10 +62,12 @@
     "type": "national tree",
     "scientificName": "Quercus, Quercus robur",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Baginton%20oak%20tree%20july06.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Baginton%20oak%20tree%20july06.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "The original uploader was Snowmanradio at English Wikipedia.\n\n(Original text: snowmanradio)"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/10407529",
+      "license": "CC-BY",
+      "author": "(c) Natalya Ivanova, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

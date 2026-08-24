@@ -1,24 +1,12 @@
 {
   "iso3": "CAN",
   "name": "Canada",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Hawaiian pizza",
-      "inventors": [
-        "Sam Panopoulos"
-      ],
-      "year": 1962,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hawaiian%20pizza%201.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hawaiian%20pizza%201.jpg",
-        "license": "CC BY 2.0",
-        "author": "@joefoodie from USA"
-      }
-    },
-    {
       "name": "snow blower",
+      "source": "wikidata",
       "inventors": [
         "Arthur Sicard"
       ],
@@ -26,51 +14,18 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Honda%20hs1136%20snowblower.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Honda%20hs1136%20snowblower.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Jared C. Benedict"
+        "author": "Jared C. Benedict",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Ulterior Motives",
+      "source": "wikidata",
       "year": 2024
     },
     {
-      "name": "Caesar",
-      "inventors": [
-        "Walter Chell"
-      ],
-      "year": 1969,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bloody%20Caesar.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bloody%20Caesar.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "A Minty Penguin"
-      }
-    },
-    {
-      "name": "pizza cake",
-      "year": 2014,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pizza%20cake%20in%20pan%2C%20Windsor%2C%20Ontario.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pizza%20cake%20in%20pan%2C%20Windsor%2C%20Ontario.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "Crisco 1492"
-      }
-    },
-    {
-      "name": "butter tart",
-      "inventors": [
-        "Mary Ethel MacLeod"
-      ],
-      "year": 1900,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pecan%20butter%20tart%2C%20May%202011.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pecan%20butter%20tart%2C%20May%202011.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Hisakazu Watanabe"
-      }
-    },
-    {
       "name": "Ski-Doo",
+      "source": "wikidata",
       "inventors": [
         "Joseph-Armand Bombardier"
       ],
@@ -79,11 +34,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Snowmobile%20Ski-Doo%20MXZ%20800.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Snowmobile%20Ski-Doo%20MXZ%20800.jpg",
         "license": "Public domain",
-        "author": "Dirk Unger(Unger.dirk at de.wikipedia)"
+        "author": "Dirk Unger(Unger.dirk at de.wikipedia)",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Manic GT",
+      "source": "wikidata",
       "inventors": [
         "Jacques About"
       ],
@@ -91,8 +48,65 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%2771%20Manic%20GT%20%28MIAS%20%2710%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:%2771%20Manic%20GT%20%28MIAS%20%2710%29.jpg",
         "license": "Public domain",
-        "author": "Bull-Doser"
+        "author": "Bull-Doser",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Ambrosia (apple)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Fricot",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Peanut butter",
+      "source": "wikipedia",
+      "year": 1884,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2020-03-24%2020%2057%2022%20An%20open%20jar%20of%20Skippy%20Creamy%20Peanut%20Butter%20in%20the%20Dulles%20section%20of%20Sterling%2C%20Loudoun%20County%2C%20Virginia.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:2020-03-24%2020%2057%2022%20An%20open%20jar%20of%20Skippy%20Creamy%20Peanut%20Butter%20in%20the%20Dulles%20section%20of%20Sterling%2C%20Loudoun%20County%2C%20Virginia.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Famartin",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Java (programming language)",
+      "source": "wikipedia",
+      "inventors": [
+        "James Gosling"
+      ],
+      "year": 1994
+    },
+    {
+      "name": "Phonograph",
+      "source": "wikipedia",
+      "inventors": [
+        "Alexander Graham Bell"
+      ],
+      "year": 1889
+    },
+    {
+      "name": "Steam engine",
+      "source": "wikipedia",
+      "inventors": [
+        "Robert Foulis"
+      ],
+      "year": 1859
+    },
+    {
+      "name": "Amauti",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Baby jumper",
+      "source": "wikipedia",
+      "inventors": [
+        "Olivia Poole"
+      ],
+      "year": 1959
     }
   ]
 }

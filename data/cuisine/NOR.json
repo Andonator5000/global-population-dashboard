@@ -1,25 +1,103 @@
 {
   "iso3": "NOR",
   "name": "Norway",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "sautéed reindeer",
+      "name": "Æbleskiver",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Poronk%C3%A4ristys.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Poronk%C3%A4ristys.jpg",
-        "license": "Public domain",
-        "author": "Htm"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53120",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Espresso and tonic",
+      "name": "Authentic Norwegian Kransekake",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Espresso%20and%20tonic%2020150418%202.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Espresso%20and%20tonic%2020150418%202.jpg",
-        "license": "CC BY 2.0",
-        "author": "Bex Walton"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yk78uc1763075719.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/yk78uc1763075719.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53127",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Brun Lapskaus (Norwegian Beef Vegetable Stew)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6vi2cv1763075785.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/6vi2cv1763075785.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53126",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cinnamon buns",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/as88dq1762772486.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/as88dq1762772486.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53116",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Fårikål (Norwegian National Dish)",
+      "description": "Lamb",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53123",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Fiskesuppe (Creamy Norwegian Fish Soup)",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/raqjbj1762773035.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/raqjbj1762773035.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53122",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Fyrstekake – Norwegian Prince Cake",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9zqrod1763075574.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/9zqrod1763075574.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53131",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Karbonader (Lean Beef Patties) with Caramelized Onions",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53125",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

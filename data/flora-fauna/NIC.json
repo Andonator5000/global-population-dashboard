@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Eumomota superciliosa",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turquoise-browed%20Motmot%20%2816423222357%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turquoise-browed%20Motmot%20%2816423222357%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Katja Schulz from Washington, D. C., USA"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/138785793/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/138785793/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/138785793",
+        "license": "CC-BY",
+        "author": "(c) Sebastián de Jesús Herrera Buenfil, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,10 +23,12 @@
     "type": "national tree",
     "scientificName": "Calycophyllum candidissimum",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Calycophyllum%20candidissimum%20%28Vahl.%29%20DC..JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Calycophyllum%20candidissimum%20%28Vahl.%29%20DC..JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "JorgeAlejandro"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61036982/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61036982/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/61036982",
+      "license": "CC-BY",
+      "author": "(c) Carlos Domínguez-Rodríguez, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

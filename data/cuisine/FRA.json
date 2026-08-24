@@ -1,79 +1,103 @@
 {
   "iso3": "FRA",
   "name": "France",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "waffle",
+      "name": "Beef Bourguignon",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gaufre%20molle.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gaufre%20molle.jpg",
-        "license": "Public domain",
-        "author": "No machine-readable author provided. Jrenier assumed (based on copyright claims)."
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52904",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "crêpe",
+      "name": "Boulangère Potatoes",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Crepes%20dsc07085.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Crepes%20dsc07085.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "David Monniaux"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qywups1511796761.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qywups1511796761.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52914",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "stew",
+      "name": "Brie wrapped in prosciutto & brioche",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20131117Estouffade8.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:20131117Estouffade8.jpg",
-        "license": "CC0",
-        "author": "AnRo0002"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qqpwsy1511796276.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qqpwsy1511796276.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52913",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "bouillabaisse",
+      "name": "Chicken Basquaise",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bullabessa.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bullabessa.jpg",
-        "license": "CC BY 3.0",
-        "author": "Slastic"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52934",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "mille-feuille",
+      "name": "Chicken Marengo",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mille-feuille%2020100916.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mille-feuille%2020100916.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Georges Seguin (Okki)"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52920",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Niçard salad",
+      "name": "Chicken Parmentier",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Salade%20ni%C3%A7oise%20%287545098258%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Salade%20ni%C3%A7oise%20%287545098258%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "cyclonebill from Copenhagen, Denmark"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52879",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Consommé",
+      "name": "Chinon Apple Tarts",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bruehe-2.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bruehe-2.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "User:Rainer Zenz"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qtqwwu1511792650.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qtqwwu1511792650.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52910",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "pain au chocolat",
+      "name": "Chocolate Gateau",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pain%20au%20chocolat%20Luc%20Viatour.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pain%20au%20chocolat%20Luc%20Viatour.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Luc Viatour"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tqtywx1468317395.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tqtywx1468317395.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52776",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

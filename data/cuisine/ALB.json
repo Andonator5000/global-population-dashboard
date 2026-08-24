@@ -1,16 +1,103 @@
 {
   "iso3": "ALB",
   "name": "Albania",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "albanian stew",
+      "name": "Arra të Mbushura me Fik Walnut Stuffed Figs (with Fig Syrup)",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gi%C3%B2%20th%E1%BB%A7.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gi%C3%B2%20th%E1%BB%A7.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Viethavvh"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dokbyt1779645030.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dokbyt1779645030.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53406",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dolma Japrak Stuffed Vine Leaves",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lqshrh1779648160.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lqshrh1779648160.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53411",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Flija Layered Pancake / Crepe",
+      "description": "Breakfast",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53413",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Kulaç Soda Bread",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9aia021779646058.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/9aia021779646058.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53408",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Kurabie Butter Cookies",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qidask1779650423.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qidask1779650423.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53414",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Lakra me Mish Cabbage and Meat Stew",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/mobh1l1779648766.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/mobh1l1779648766.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53412",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Lakror me Kungull Summer Squash Pie",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ae4rwb1779645576.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ae4rwb1779645576.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53407",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Presh me Oriz Leek and Rice Bake",
+      "description": "Lamb",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sjfgbc1779647169.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sjfgbc1779647169.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53410",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

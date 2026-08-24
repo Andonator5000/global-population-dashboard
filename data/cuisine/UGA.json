@@ -6,29 +6,35 @@
   "dishes": [
     {
       "name": "Matoke",
+      "description": "Ugandan dish and cultivar name of the East African Highland banana",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Matoke.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Matoke.JPG",
         "license": "CC BY-SA 3.0",
-        "author": "Wikistallion"
+        "author": "Wikistallion",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Kikomando",
+      "description": "Sliced chapati and beans",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ekikomando%2005.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Ekikomando%2005.jpg",
         "license": "CC BY 4.0",
-        "author": "Denis kasozi"
+        "author": "Denis kasozi",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Rolex",
+      "description": "Ugandan street food made by rolling eggs and vegetables In chapatti",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20bitten%20off%20Ugandan%20rolex.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:A%20bitten%20off%20Ugandan%20rolex.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "B722N"
+        "author": "B722N",
+        "source": "Wikimedia Commons"
       }
     }
   ]

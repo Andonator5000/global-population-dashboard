@@ -6,10 +6,12 @@
   "flower": {
     "name": "Rhanterium epapposum",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhanterium-epapposum-near-Jubail-SaudiArabia-15apr2009-JohnNorton.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rhanterium-epapposum-near-Jubail-SaudiArabia-15apr2009-JohnNorton.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "EcoLover"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/384111295/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/384111295/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/384111295",
+      "license": "CC-BY",
+      "author": "(c) Chase Mathey, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

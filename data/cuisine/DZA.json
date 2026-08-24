@@ -1,34 +1,103 @@
 {
   "iso3": "DZA",
   "name": "Algeria",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Usban",
+      "name": "Algerian Bouzgene Berber Bread with Roasted Pepper Sauce",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%B9%D8%B5%D8%A8%D8%A7%D9%86%20%D8%AA%D9%88%D9%86%D8%B3%D9%8A%201.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%B9%D8%B5%D8%A8%D8%A7%D9%86%20%D8%AA%D9%88%D9%86%D8%B3%D9%8A%201.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "Touzrimounir"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/se5vhk1764114880.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/se5vhk1764114880.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53284",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Mtewem",
+      "name": "Algerian Carrots",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mtewem.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mtewem.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Slothtysloth"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/o2cd4r1764113576.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/o2cd4r1764113576.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53282",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Tajine Lham-Lahlou",
+      "name": "Algerian Flafla (Bell Pepper Salad)",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lham%20lahlou%20algerien.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lham%20lahlou%20algerien.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Slothtysloth"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53288",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Algerian Kefta (Meatballs)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53281",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cheese Borek",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/oal8x31764119345.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/oal8x31764119345.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53290",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chorba Hamra bel Frik (Algerian Lamb, Tomato, and Freekeh Soup)",
+      "description": "Lamb",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/p9tebp1764118792.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/p9tebp1764118792.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53289",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chtitha Batata (Algerian Potato Stew)",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/q8pu1k1764114334.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/q8pu1k1764114334.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53283",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cornes de Gazelle (Gazelle Horns)",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0h1b7m1764120235.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0h1b7m1764120235.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53291",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

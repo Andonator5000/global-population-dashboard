@@ -12,7 +12,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Serbia%20small.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Coat%20of%20arms%20of%20Serbia%20small.svg",
         "license": "Public domain",
-        "author": "upload: User:Madden"
+        "author": "upload: User:Madden",
+        "source": "Wikimedia Commons"
       }
     },
     {
@@ -20,10 +21,12 @@
       "type": "national animal",
       "scientificName": "Canis lupus lupus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Canis%20lupus%20lupus%20qtl1.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Canis%20lupus%20lupus%20qtl1.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Quartl"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/214572955",
+        "license": "CC-BY",
+        "author": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,19 +35,23 @@
     "type": "national tree",
     "scientificName": "Quercus, Quercus robur",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zapis-0454-Kolare-hrast-luznjak-spomenik-prirode%2020150828%201335.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Zapis-0454-Kolare-hrast-luznjak-spomenik-prirode%2020150828%201335.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Zblagojevic"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/10407529",
+      "license": "CC-BY",
+      "author": "(c) Natalya Ivanova, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Natalie's ramonda",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramonda%20nathaliae.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ramonda%20nathaliae.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Francine Riez"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/49976814/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/49976814/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/49976814",
+      "license": "CC-BY",
+      "author": "(c) Michael D. Pirie, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

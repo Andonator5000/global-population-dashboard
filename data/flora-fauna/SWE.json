@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Alces alces",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moose-Gustav.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Moose-Gustav.jpg",
-        "license": "CC BY 2.5",
-        "author": null
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/23946339/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/23946339/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/23946339",
+        "license": "CC-BY",
+        "author": "(c) Matt Muir, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Turdus merula",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Common%20Blackbird.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Common%20Blackbird.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Andreas Trepte"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31623386/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31623386/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/31623386",
+        "license": "CC-BY",
+        "author": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -35,16 +39,19 @@
       "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rikstr%C3%A4det%20i%20%C3%96rebro.jpg?width=960",
       "commonsPage": "https://commons.wikimedia.org/wiki/File:Rikstr%C3%A4det%20i%20%C3%96rebro.jpg",
       "license": "CC0",
-      "author": "This image was produced by me, David Castor (user:dcastor). The pictures I submit to the Wikipedia Project are released to the public domain. This gives you the right to use them in any way you like, without any kind of notification. This said, I would still appreciate to be mentioned as the originator whenever you think it complies well with your use of the picture. A message to me  about how it has been used would also be welcome. You are obviously not required to respond to these wishes of mine, just in a friendly manner encouraged to. (All my photos are placed in Category:Images by David Castor or a subcategory thereof.)"
+      "author": "This image was produced by me, David Castor (user:dcastor). The pictures I submit to the Wikipedia Project are released to the public domain. This gives you the right to use them in any way you like, without any kind of notification. This said, I would still appreciate to be mentioned as the originator whenever you think it complies well with your use of the picture. A message to me  about how it has been used would also be welcome. You are obviously not required to respond to these wishes of mine, just in a friendly manner encouraged to. (All my photos are placed in Category:Images by David Castor or a subcategory thereof.)",
+      "source": "Wikimedia Commons"
     }
   },
   "flower": {
     "name": "Campanula rotundifolia",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Campanula%20rotondifolia.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Campanula%20rotondifolia.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": null
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/44913866/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/44913866/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/44913866",
+      "license": "CC-BY",
+      "author": "(c) Mattia Menchetti, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

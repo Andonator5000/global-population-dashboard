@@ -1,16 +1,103 @@
 {
   "iso3": "COL",
   "name": "Colombia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Polvorosa",
+      "name": "Achiote Oil (Aceite Achiotado) Recipe",
+      "description": "Miscellaneous",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Polvorosa.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Polvorosa.jpg",
-        "license": "CC BY 2.0",
-        "author": "Mover el Bigote"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/iuws3q1783801530.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/iuws3q1783801530.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53527",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Ají de Aguacate Recipe (Colombian Spicy Avocado Sauce)",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jyvy8u1783800448.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jyvy8u1783800448.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53525",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Almojábanas (Colombian Cheese Bread)",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ymk7gt1783803106.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ymk7gt1783803106.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53529",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Arroz con Leche Recipe",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jp09191782856005.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jp09191782856005.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53522",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Breaded Steak Recipe (Lomo de Res Apanado)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lmwaf61783805434.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lmwaf61783805434.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53533",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chicken in Orange Sauce Recipe (Pollo a la Naranja)",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/uuns781783804024.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/uuns781783804024.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53531",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chuletas de Cerdo a la Criolla (Pork Chops in Creole Sauce)",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/087fu71783802698.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/087fu71783802698.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53528",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Coconut Natilla Recipe",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/gp1sj51783799928.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/gp1sj51783799928.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53524",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

@@ -6,29 +6,35 @@
   "dishes": [
     {
       "name": "salteña",
+      "description": "Bolivian empanada",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Salte%C3%B1as%20de%20Bolivia.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Salte%C3%B1as%20de%20Bolivia.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "EEJCC"
+        "author": "EEJCC",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Mocochinchi",
+      "description": "Bolivian drink made from dried peaches",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Refresco%20de%20Quisa%20o%20Moconchinchi.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Refresco%20de%20Quisa%20o%20Moconchinchi.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "AnaBatuani"
+        "author": "AnaBatuani",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Cuñapé",
+      "description": "cheese bread from eastern Bolivia",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cu%C3%B1ape.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Cu%C3%B1ape.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Mascats"
+        "author": "Mascats",
+        "source": "Wikimedia Commons"
       }
     }
   ]

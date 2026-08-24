@@ -1,25 +1,103 @@
 {
   "iso3": "CRI",
   "name": "Costa Rica",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Casado",
+      "name": "Black Beans Hotpot",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Casado%20Tico.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Casado%20Tico.jpg",
-        "license": "CC BY 2.0",
-        "author": "Richie Diesterheft from Chicago, IL, USA"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/81ahfr1784394567.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/81ahfr1784394567.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53536",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "panela con limón",
+      "name": "Chorreadas",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papel%C3%B3n%20con%20lim%C3%B3n.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Papel%C3%B3n%20con%20lim%C3%B3n.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "LittleT889"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/f9u0lk1784397769.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/f9u0lk1784397769.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53542",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Gallo pinto",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ytogg31784397116.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ytogg31784397116.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53541",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mango Tropical Salsa",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ukeksq1784395551.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ukeksq1784395551.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53538",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Pan De Yucca",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sumomx1784395153.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sumomx1784395153.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53537",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Picadillo de Vainicas (Green Beans Picadillo)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/2ncui81784396094.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/2ncui81784396094.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53539",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Pollo en Salsa",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4o13oe1784396585.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/4o13oe1784396585.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53540",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Tamal De Maicena",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/mjgl9z1784393681.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/mjgl9z1784393681.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53535",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

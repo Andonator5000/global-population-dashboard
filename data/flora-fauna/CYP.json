@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Ovis orientalis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cyprus%20mouflon%20%28Ovis%20gmelini%20ophion%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cyprus%20mouflon%20%28Ovis%20gmelini%20ophion%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/347164949/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/347164949/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/347164949",
+        "license": "CC-BY",
+        "author": "(c) Barney M, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,10 +23,12 @@
     "type": "national tree",
     "scientificName": "Quercus alnifolia",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Golden%20oak.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Golden%20oak.JPG",
-      "license": "CC BY-SA 4.0",
-      "author": "Chneophytou"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219477848/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219477848/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/219477848",
+      "license": "CC-BY",
+      "author": "(c) Oisín, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -1,61 +1,103 @@
 {
   "iso3": "CAN",
   "name": "Canada",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Hawaiian pizza",
+      "name": "BeaverTails",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hawaiian%20pizza%201.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hawaiian%20pizza%201.jpg",
-        "license": "CC BY 2.0",
-        "author": "@joefoodie from USA"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52928",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Dasani",
+      "name": "Breakfast Potatoes",
+      "description": "Breakfast",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Purified%20tap%20water.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Purified%20tap%20water.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": null
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1550441882.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1550441882.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52965",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Nanaimo bar",
+      "name": "Canadian Butter Tarts",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nanaimo%20bar.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nanaimo%20bar.JPG",
-        "license": "CC BY 2.5",
-        "author": "Stephanie Spencer"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52923",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "sushi pizza",
+      "name": "Classic Tourtière",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sushi%20pizza%20%281%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sushi%20pizza%20%281%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Quinn Dombrowski from Berkeley, USA"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0sd7ac1764787957.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0sd7ac1764787957.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53343",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Garlic fingers",
+      "name": "Date squares",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Garlic%20Fingers.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Garlic%20Fingers.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Simon Laroche"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/u4scbo1764446514.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/u4scbo1764446514.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53338",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Montreal-style smoked meat",
+      "name": "Figgy Duff",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schwartz%20smoked%20meat%20montreal.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Schwartz%20smoked%20meat%20montreal.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "chensiyuan"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kzi6p51764787198.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/kzi6p51764787198.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53342",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Flapper Pie",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6ht8141764786479.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/6ht8141764786479.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53341",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Hodge Podge",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xihv0c1764447887.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xihv0c1764447887.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53340",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

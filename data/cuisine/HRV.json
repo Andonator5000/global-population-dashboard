@@ -1,25 +1,103 @@
 {
   "iso3": "HRV",
   "name": "Croatia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Zagorski štrukli",
+      "name": "Burek",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuhane%20strukle%200210%201.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kuhane%20strukle%200210%201.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Roberta F."
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53060",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Soparnik",
+      "name": "Cevapi Sausages",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Soparnik.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Soparnik.jpg",
-        "license": "CC0",
-        "author": "Popo le Chien"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vc08jn1628769553.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vc08jn1628769553.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53055",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Croatian Bean Stew",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53058",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Croatian lamb peka",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/pn59o51628769837.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/pn59o51628769837.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53056",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Fresh sardines",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/nv5lf31628771380.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/nv5lf31628771380.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53061",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mushroom soup with buckwheat",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53059",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Traditional Croatian Goulash",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53057",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Walnut Roll Gužvara",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/u9l7k81628771647.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/u9l7k81628771647.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53062",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

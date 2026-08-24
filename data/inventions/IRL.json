@@ -1,0 +1,60 @@
+{
+  "iso3": "IRL",
+  "name": "Ireland",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "inventions": [
+    {
+      "name": "Ogham",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Caid (sport)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Boyle's law",
+      "source": "wikipedia",
+      "year": 1662
+    },
+    {
+      "name": "Beaufort scale",
+      "source": "wikipedia",
+      "year": 1805
+    },
+    {
+      "name": "Waterford",
+      "source": "wikipedia",
+      "year": 1820
+    },
+    {
+      "name": "Wood preservation",
+      "source": "wikipedia",
+      "year": 1832,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PiquetPesticides%20detail%2001.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:PiquetPesticides%20detail%2001.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Lamiot",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Hypodermic needle",
+      "source": "wikipedia",
+      "year": 1844,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HypodermicBronami.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:HypodermicBronami.svg",
+        "license": "CC BY-SA 4.0",
+        "author": "Bronami",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Icosian calculus",
+      "source": "wikipedia",
+      "year": 1856
+    }
+  ]
+}

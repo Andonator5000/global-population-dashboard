@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Vulpes zerda",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fennec%20Fox%20Vulpes%20zerda.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fennec%20Fox%20Vulpes%20zerda.jpg",
-        "license": "CC BY 2.0",
-        "author": "Drew Avery"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/471246065/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/471246065/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/471246065",
+        "license": "CC-BY",
+        "author": "(c) Demian Hiß, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

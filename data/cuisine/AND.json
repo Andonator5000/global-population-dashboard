@@ -1,0 +1,44 @@
+{
+  "iso3": "AND",
+  "name": "Andorra",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Pa Amb Tomaquet (Bread with Tomato)",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lz9rw91779733434.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lz9rw91779733434.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53417",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Torrijas",
+      "description": "Breakfast",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/927vvp1779732018.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/927vvp1779732018.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53415",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Trinxat (Potato, Cabbage and Bacon Hash)",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/khpso71779732715.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/khpso71779732715.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53416",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

@@ -1,34 +1,55 @@
 {
   "iso3": "ARM",
   "name": "Armenia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "dolma",
+      "name": "Jajek",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Etli%20biber%20dolma.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Etli%20biber%20dolma.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "E4024"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/8x0vgs1780090328.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/8x0vgs1780090328.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53436",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Ghapama",
+      "name": "Koulenje",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ghapama.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ghapama.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "AndyHM"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xajyjk1780091885.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xajyjk1780091885.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53434",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "kololak",
+      "name": "Leg of Lamb Armenian-Style",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D4%BF%D5%B8%D5%AC%D5%B8%D5%AC%D5%A1%D5%AF%D5%B8%D5%BE%20%D5%BD%D5%BA%D5%A1%D5%BD.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D4%BF%D5%B8%D5%AC%D5%B8%D5%AC%D5%A1%D5%AF%D5%B8%D5%BE%20%D5%BD%D5%BA%D5%A1%D5%BD.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Սոնիա"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vy6k391780090969.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vy6k391780090969.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53437",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Stuffed Grape Leaves",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/oga0ax1780089591.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/oga0ax1780089591.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53435",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

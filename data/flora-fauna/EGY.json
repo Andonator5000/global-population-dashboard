@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Aquila nipalensis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aquila%20nipalensis%202010.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aquila%20nipalensis%202010.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "4028mdk09"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/199120526/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/199120526/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/199120526",
+        "license": "CC-BY",
+        "author": "(c) موسی مزینانیان Mousa Mazinanian, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

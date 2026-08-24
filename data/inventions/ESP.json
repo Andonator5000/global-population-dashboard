@@ -1,23 +1,12 @@
 {
   "iso3": "ESP",
   "name": "Spain",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "madeleine",
-      "inventors": [
-        "Madeleine Paulmier"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Madeleines%20de%20Commercy.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Madeleines%20de%20Commercy.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "myself (Bernard Leprêtre)"
-      }
-    },
-    {
       "name": "bossaball",
+      "source": "wikidata",
       "inventors": [
         "Filip Eyckmans"
       ],
@@ -25,19 +14,56 @@
     },
     {
       "name": "paranoiac-critical method",
+      "source": "wikidata",
       "inventors": [
         "Salvador Dalí"
       ]
     },
     {
-      "name": "Catànies",
-      "year": 1946,
+      "name": "Mercury(II) oxide",
+      "source": "wikipedia",
+      "era": "10th century"
+    },
+    {
+      "name": "Pharmacopoeia",
+      "source": "wikipedia",
+      "year": 1400
+    },
+    {
+      "name": "Herrerian style",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Neo-Mudéjar",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Vanadium",
+      "source": "wikipedia",
+      "year": 1801,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CataloniaCatanies.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:CataloniaCatanies.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Friviere"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vanadium%20crystal%20bar%20and%201cm3%20cube.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vanadium%20crystal%20bar%20and%201cm3%20cube.jpg",
+        "license": "FAL",
+        "author": "Alchemist-hp (pse-mendelejew.de).",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Gregorian calendar",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Chagas disease",
+      "source": "wikipedia",
+      "inventors": [
+        "Francisco J. Ayala"
+      ]
+    },
+    {
+      "name": "Ligature (medicine)",
+      "source": "wikipedia",
+      "year": 1013
     }
   ]
 }

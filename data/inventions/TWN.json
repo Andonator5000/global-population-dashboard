@@ -1,18 +1,40 @@
 {
   "iso3": "TWN",
   "name": "Taiwan",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Mongolian barbecue",
-      "year": 1951,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mongolianbbq.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mongolianbbq.jpg",
-        "license": "CC BY 2.0",
-        "author": "Matthew Levine from San Francisco, CA, USA"
-      }
+      "name": "T112 assault rifle",
+      "source": "wikipedia"
+    },
+    {
+      "name": "T91 assault rifle",
+      "source": "wikipedia"
+    },
+    {
+      "name": "T86 assault rifle",
+      "source": "wikipedia"
+    },
+    {
+      "name": "T65 assault rifle",
+      "source": "wikipedia"
+    },
+    {
+      "name": "T93 sniper rifle",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Type 77 submachine gun",
+      "source": "wikipedia"
+    },
+    {
+      "name": "FN MAG",
+      "source": "wikipedia"
+    },
+    {
+      "name": "T75 light machine gun",
+      "source": "wikipedia"
     }
   ]
 }

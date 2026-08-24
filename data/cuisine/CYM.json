@@ -1,0 +1,104 @@
+{
+  "iso3": "CYM",
+  "name": "Cayman Islands",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Cassava Cake",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/2mrghf1782773422.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/2mrghf1782773422.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53508",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cayman Style Potato Salad",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/q21suk1782772956.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/q21suk1782772956.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53507",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cayman-Style Lobster",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wkhwqr1782774765.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wkhwqr1782774765.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53510",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Conch Fritters",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/nmtq3n1782772031.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/nmtq3n1782772031.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53505",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Conch Stew",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/mlkjeu1782775816.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/mlkjeu1782775816.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53512",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Fried Crab",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rprcc51782774240.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/rprcc51782774240.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53509",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Macaroni Pudding",
+      "description": "Pasta",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hbte551782770868.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/hbte551782770868.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53504",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Rice and Beans",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/j8c1d51782772399.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/j8c1d51782772399.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53506",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

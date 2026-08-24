@@ -1,25 +1,55 @@
 {
   "iso3": "SVK",
   "name": "Slovakia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "lokša",
+      "name": "Bryndzové Halušky",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lokse.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lokse.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Maciarka"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/g33c901763365484.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/g33c901763365484.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53190",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "strapačky",
+      "name": "Fašírky",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Strapa%C4%8Dky.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Strapa%C4%8Dky.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Maciarka"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/gtpvwp1763363947.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/gtpvwp1763363947.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53188",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Šúĺlance s Makom",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/d6o4nu1763362422.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/d6o4nu1763362422.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53187",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Zemiakové Placky",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0umm891763364625.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0umm891763364625.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53189",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

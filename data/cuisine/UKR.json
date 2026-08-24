@@ -1,20 +1,92 @@
 {
   "iso3": "UKR",
   "name": "Ukraine",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Syrniki",
+      "name": "Beetroot latkes",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Syrniki6.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Syrniki6.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Tatyana Morozyuk, color processing by Off-shell"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qwicc91764368097.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qwicc91764368097.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53313",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Grechanyky"
+      "name": "Beetroot pancakes",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xlqqhw1764369924.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xlqqhw1764369924.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53316",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Beetroot Soup (Borscht)",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53078",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Borsch",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/804v1j1764367088.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/804v1j1764367088.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53311",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Rosemary braised red cabbage with kabanos",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/s1jxzl1764369317.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/s1jxzl1764369317.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53315",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Sauerkraut pierogii",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/gqlxgc1764368767.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/gqlxgc1764368767.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53314",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Tangy cabbage slaw",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/e2g2r21764367568.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/e2g2r21764367568.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53312",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
     }
   ]
 }

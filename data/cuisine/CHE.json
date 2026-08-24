@@ -6,29 +6,35 @@
   "dishes": [
     {
       "name": "muesli",
+      "description": "breakfast dish based on unboiled rolled oats and other ingredients",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Muesli.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Muesli.jpg",
         "license": "CC BY-SA 2.5",
-        "author": "Original description was: I, VirtualSteve took this photograph on February 19, 2006."
+        "author": "Original description was: I, VirtualSteve took this photograph on February 19, 2006.",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Rivella",
+      "description": "Swiss soft drink derived from milk whey",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pack%20shot.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Pack%20shot.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Rivellafrance"
+        "author": "Rivellafrance",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Malakoff",
+      "description": "Swiss fried cheese balls",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Malakoff.jpeg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Malakoff.jpeg",
         "license": "CC BY-SA 3.0",
-        "author": "Popo le Chien"
+        "author": "Popo le Chien",
+        "source": "Wikimedia Commons"
       }
     }
   ]

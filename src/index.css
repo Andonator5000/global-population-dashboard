@@ -251,6 +251,29 @@ td {
   }
 }
 
+/*
+ * Image lightbox (<dialog>-based, see CommonsFigure). Native dialog gives
+ * Esc handling and focus containment for free; the backdrop click-to-close
+ * lives in the component. Content is centred and never exceeds the
+ * viewport.
+ */
+dialog.lightbox {
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: min(92vw, 70rem);
+  margin: auto;
+}
+
+dialog.lightbox::backdrop {
+  background: rgb(0 0 0 / 0.82);
+}
+
+dialog.lightbox img {
+  margin: 0 auto;
+  display: block;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

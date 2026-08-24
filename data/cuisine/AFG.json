@@ -1,16 +1,103 @@
 {
   "iso3": "AFG",
   "name": "Afghanistan",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Afghan salad",
+      "name": "Baghlaw-e-Khanagi",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Afghan-Salad.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Afghan-Salad.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "ANBI"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/bjtjyl1779552068.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/bjtjyl1779552068.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53396",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Bolani with Potato Filling",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/de0sns1779555283.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/de0sns1779555283.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53401",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Firni",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dm8kee1779553541.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dm8kee1779553541.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53399",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Haft Mewa Recipe",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/io2u3z1779551885.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/io2u3z1779551885.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53397",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Kadu Borani",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/walmi81779552709.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/walmi81779552709.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53398",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mantu Afghan Dumpling",
+      "description": "Starter",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/oemdp11779556068.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/oemdp11779556068.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53402",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mastawa Lamb and Rice",
+      "description": "Lamb",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4kzx4d1779554755.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/4kzx4d1779554755.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53400",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Muraba-E-Kadu (Pumpkin Jam)",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ug6bwk1779556566.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ug6bwk1779556566.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53403",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

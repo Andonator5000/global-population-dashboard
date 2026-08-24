@@ -210,6 +210,64 @@ def _parse_flowers_prose(
     return out, unmatched
 
 
+def _inaturalist_photo(
+    query: str, *, refresh: bool
+) -> dict[str, Any] | None:
+    """The community's best CC0/CC-BY photo of a species, or None.
+
+    Two keyless calls: name -> taxon, then the top research-grade
+    observation by votes with the licence filter applied server-side.
+    Only photos on the inaturalist-open-data bucket (published for
+    third-party use) are accepted; anything else falls back to Commons.
+    """
+    import time
+
+    try:
+        taxa_response = fetch(
+            config.INATURALIST_TAXA_URL.format(
+                query=urllib.parse.quote(query)
+            ),
+            refresh=refresh, subdir="florafauna/inat", expect_json=True,
+        )
+        if not taxa_response.from_cache:
+            time.sleep(config.INATURALIST_THROTTLE_SECONDS)
+        taxa = taxa_response.read_json().get("results") or []
+        if not taxa:
+            return None
+        observations_response = fetch(
+            config.INATURALIST_OBSERVATIONS_URL.format(
+                taxon_id=taxa[0]["id"]
+            ),
+            refresh=refresh, subdir="florafauna/inat", expect_json=True,
+        )
+        if not observations_response.from_cache:
+            time.sleep(config.INATURALIST_THROTTLE_SECONDS)
+        observations = observations_response.read_json().get("results") or []
+    except FetchError:
+        return None  # photo enrichment must never sink the stage
+    for observation in observations:
+        for photo in observation.get("photos") or []:
+            url = photo.get("url") or ""
+            if "inaturalist-open-data" not in url:
+                continue
+            if not re.search(r"/square\.(\w+)$", url):
+                continue
+            licence = (photo.get("license_code") or "").upper()
+            if licence not in ("CC0", "CC-BY"):
+                continue
+            return {
+                "imageUrl": re.sub(r"/square\.(\w+)$", r"/medium.\1", url),
+                "largeUrl": re.sub(r"/square\.(\w+)$", r"/large.\1", url),
+                "commonsPage": config.INATURALIST_PHOTO_PAGE.format(
+                    photo_id=photo["id"]
+                ),
+                "license": licence,
+                "author": photo.get("attribution"),
+                "source": "iNaturalist",
+            }
+    return None
+
+
 def _lead_images(
     titles: list[str], *, refresh: bool
 ) -> tuple[dict[str, str], list[CachedResponse]]:
@@ -324,11 +382,16 @@ def ingest(
 
     def finalise(entry: dict[str, Any]) -> dict[str, Any]:
         record = {k: v for k, v in entry.items() if k != "file"}
+        # iNaturalist first (community-vote-ranked, licence-filtered
+        # wildlife photography); the Commons image is the fallback.
+        image = _inaturalist_photo(
+            entry.get("scientificName") or entry["name"], refresh=refresh,
+        )
         filename = entry.get("file")
-        if filename:
+        if image is None and filename:
             image = commons.image_record(filename, metadata)
-            if image:
-                record["image"] = image
+        if image:
+            record["image"] = image
         return record
 
     written = 0
@@ -375,13 +438,17 @@ def ingest(
         "wikipedia_national_symbols",
         title="Wikipedia — lists of national animals, trees and flowers",
         url="https://en.wikipedia.org/wiki/List_of_national_animals",
-        licence="CC BY-SA 4.0 (text); per-file Commons licences on images",
+        licence=(
+            "CC BY-SA 4.0 (text); images CC0/CC-BY via iNaturalist or "
+            "per-file Commons licences"
+        ),
         fetched_at=max(r.fetched_at for r in all_responses),
         upstream_release=pages["animals"].upstream_release,
         vintage="pages as retrieved",
         citation=(
             "Wikipedia: List of national animals; List of national trees; "
-            "List of national flowers"
+            "List of national flowers. Photos: iNaturalist (CC0/CC-BY, "
+            "research grade) with Wikimedia Commons fallback"
         ),
         notes=(
             f"{written} countries with at least one symbol; {with_images} "

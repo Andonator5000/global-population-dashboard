@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera tigris tigris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Panthera%20tigris%20tigris.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Panthera%20tigris%20tigris.jpg",
-        "license": "Public domain",
-        "author": "Hollingsworth, John and Karen, retouched by Zwoenitzer"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national aquatic animal",
       "scientificName": "Platanista gangetica",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ganges%20River%20Dolphin%20cropped.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ganges%20River%20Dolphin%20cropped.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Kukil Gogoi"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/73811782/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/73811782/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/73811782",
+        "license": "CC-BY",
+        "author": "(c) Fábio Olmos, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national heritage animal",
       "scientificName": "Elephas maximus indicus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/IndianElephant.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:IndianElephant.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Jayanand Govindaraj"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219306743/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219306743/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/219306743",
+        "license": "CC-BY",
+        "author": "(c) Morten Ross, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -42,10 +48,12 @@
       "type": "national bird",
       "scientificName": "Pavo cristatus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Carnavalesco.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Carnavalesco.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Gabriel Castaldini"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/307026691/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/307026691/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/307026691",
+        "license": "CC-BY",
+        "author": "(c) Parth Kansara, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -54,19 +62,23 @@
     "type": "national tree",
     "scientificName": "Ficus benghalensis",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banyantree.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Banyantree.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Ahoerstemeier"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/192133322/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/192133322/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/192133322",
+      "license": "CC-BY",
+      "author": "(c) Yoav Daniel Bar-Ness, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Nelumbo nucifera",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sacred%20lotus%20Nelumbo%20nucifera.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sacred%20lotus%20Nelumbo%20nucifera.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "T.Voekler"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/610788907/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/610788907/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/610788907",
+      "license": "CC-BY",
+      "author": "(c) Adrien Jailloux, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

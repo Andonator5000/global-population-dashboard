@@ -1,0 +1,61 @@
+{
+  "iso3": "JAM",
+  "name": "Jamaica",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "inventions": [
+    {
+      "name": "Tangor",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Chromosphere",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Measles virus",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Pig",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pig%20farm%20Vampula%201.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pig%20farm%20Vampula%201.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "kallerna",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Chemical symbol",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Simple%20Periodic%20Table%20Chart-blocks.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Simple%20Periodic%20Table%20Chart-blocks.svg",
+        "license": "CC BY-SA 4.0",
+        "author": "User:Double sharp, based on File:Simple Periodic Table Chart-en.svg by User:Offnfopt",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Absorption spectroscopy",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Spectroscopy%20overview.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Spectroscopy%20overview.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Jon Chui",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "LEMO",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Neil Hanchard",
+      "source": "wikipedia"
+    }
+  ]
+}

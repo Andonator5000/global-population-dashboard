@@ -1,61 +1,103 @@
 {
   "iso3": "PRT",
   "name": "Portugal",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "pastel de nata",
+      "name": "Fish fofos",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pastel%20de%20nata%20septembre%202015.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pastel%20de%20nata%20septembre%202015.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Photo Claude TRUONG-NGOC"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53043",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Açorda",
+      "name": "Grilled Portuguese sardines",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A%C3%A7orda%20%C3%A0%20Alentejana.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:A%C3%A7orda%20%C3%A0%20Alentejana.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Filipe Fortes"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53041",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Serradura",
+      "name": "Piri-piri chicken and slaw",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Serradura.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Serradura.JPG",
-        "license": "CC0",
-        "author": "Popo le Chien"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53039",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Xerém",
+      "name": "Portuguese barbecued pork (Febras assadas)",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Xar%C3%A9m%20algarvio.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Xar%C3%A9m%20algarvio.jpg",
-        "license": "CC BY 3.0",
-        "author": "Adriao"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/cybyue1614349443.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53044",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "espetada",
+      "name": "Portuguese custard tarts",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zum%20Grill%20umgebautes%20Fass%20mit%20Espetada-Spie%C3%9Fen%20II.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Zum%20Grill%20umgebautes%20Fass%20mit%20Espetada-Spie%C3%9Fen%20II.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "GerritR"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53046",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Molotof",
+      "name": "Portuguese fish stew (Caldeirada de peixe)",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Molotof%20%2848144427677%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Molotof%20%2848144427677%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "David Ceballos from Madrid, España"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53045",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Portuguese prego with green piri-piri",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53042",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Spring onion and prawn empanadas",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53040",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

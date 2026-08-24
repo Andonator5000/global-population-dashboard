@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Bradypus variegatus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bicho-pregui%C3%A7a%203.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bicho-pregui%C3%A7a%203.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Daniella Maraschiello"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/60587910/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/60587910/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/60587910",
+        "license": "CC-BY",
+        "author": "(c) Aitor, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national animal",
       "scientificName": "Choloepus hoffmanni",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Choloepus%20hoffmanni%20353441834.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Choloepus%20hoffmanni%20353441834.jpg",
-        "license": "CC BY 4.0",
-        "author": "Bex Goreham"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/144252981/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/144252981/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/144252981",
+        "license": "CC-BY",
+        "author": "(c) Adrienne van den Beemt, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national animal",
       "scientificName": "Odocoileus virginianus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Odocoileus%20virginianus%20Goose%20Island%20SP%20Texas%202024.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Odocoileus%20virginianus%20Goose%20Island%20SP%20Texas%202024.jpg",
-        "license": "CC BY 4.0",
-        "author": "Larry D. Moore"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/58166047/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/58166047/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/58166047",
+        "license": "CC-BY",
+        "author": "(c) Whitney Mattila, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -42,10 +48,12 @@
       "type": "national aquatic animal",
       "scientificName": "Trichechus manatus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Manatee%20with%20calf.PD%20-%20colour%20corrected.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Manatee%20with%20calf.PD%20-%20colour%20corrected.jpg",
-        "license": "Public domain",
-        "author": "Galen Rathbun"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61186254/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61186254/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/61186254",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -53,10 +61,12 @@
       "type": "national bird",
       "scientificName": "Turdus grayi",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turdus%20grayi%20Garita%2C%20Alajuela%20Costa%20Rica-10.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turdus%20grayi%20Garita%2C%20Alajuela%20Costa%20Rica-10.jpg",
-        "license": "CC BY 2.0",
-        "author": "Greg Gilbert from Dahlonega Area, Georgia, USA"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/85503922/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/85503922/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/85503922",
+        "license": "CC-BY",
+        "author": "(c) Rodolfo Salinas Villarreal, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -65,10 +75,12 @@
     "type": "national tree",
     "scientificName": "Enterolobium cyclocarpum",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%81rbol%20de%20Guancaste.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:%C3%81rbol%20de%20Guancaste.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Avancari"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/491278395/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/491278395/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/491278395",
+      "license": "CC-BY",
+      "author": "(c) Juan Cruzado Cortés, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

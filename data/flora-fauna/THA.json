@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Elephas maximus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Elephas%20maximus%20%28Bandipur%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Elephas%20maximus%20%28Bandipur%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Yathin S Krishnappa"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219306743/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219306743/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/219306743",
+        "license": "CC-BY",
+        "author": "(c) Morten Ross, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -23,7 +25,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Male%20Betta%20-34245661920.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Male%20Betta%20-34245661920.jpg",
         "license": "CC0",
-        "author": "ivabalk https://pixabay.com/pt/users/ivabalk-782511/"
+        "author": "ivabalk https://pixabay.com/pt/users/ivabalk-782511/",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -32,19 +35,23 @@
     "type": "national tree",
     "scientificName": "Cassia fistula",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Konnamaram.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Konnamaram.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "Original uploader was Suniltg at en.wikipedia"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/79950978/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/79950978/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/79950978",
+      "license": "CC-BY",
+      "author": "(c) Ben Machado, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Thai",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Idioma%20tailand%C3%A9s.png?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Idioma%20tailand%C3%A9s.png",
-      "license": "CC BY-SA 3.0",
-      "author": "Fobos92"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/431312749/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/431312749/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/431312749",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

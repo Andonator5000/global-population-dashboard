@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Stuffat tal-fenek",
+      "description": "Rabbit stew, cuisine of Malta",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20national%20dish%20of%20Malta%20%E2%80%93%20Stuffat%20tal-Fenek%20%28rabbit%20stew%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:The%20national%20dish%20of%20Malta%20%E2%80%93%20Stuffat%20tal-Fenek%20%28rabbit%20stew%29.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Renata Apan"
+        "author": "Renata Apan",
+        "source": "Wikimedia Commons"
       }
     }
   ]

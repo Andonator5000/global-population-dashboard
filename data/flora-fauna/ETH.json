@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera leo",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Giles Laurent"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -20,10 +22,12 @@
     "name": "calla lily",
     "scientificName": "Zantedeschia aethiopica",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zantedeschia%20aethiopica%20-1.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Zantedeschia%20aethiopica%20-1.jpg",
-      "license": "CC BY-SA 2.5",
-      "author": "Eric Hunt"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/328892033/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/328892033/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/328892033",
+      "license": "CC-BY",
+      "author": "(c) Siphiwe Bright Zengele, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

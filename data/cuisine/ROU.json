@@ -6,29 +6,35 @@
   "dishes": [
     {
       "name": "Mititei",
+      "description": "Romanian meat roll",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mititei%20la%20gratar.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Mititei%20la%20gratar.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Nicubunu"
+        "author": "Nicubunu",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "sarmale",
+      "description": "Romanian and Moldovan culinary specialty",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sarmale%20%2B%20polenta%2C%20Miori%C8%9Ba%20Timi%C8%99oara%20%282023%29%20-%20img%2001.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Sarmale%20%2B%20polenta%2C%20Miori%C8%9Ba%20Timi%C8%99oara%20%282023%29%20-%20img%2001.jpg",
         "license": "CC BY 4.0",
-        "author": "Chainwit."
+        "author": "Chainwit.",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Varză à la Cluj",
+      "description": "a Hungarian-Romanian dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cluj%20Napoca%20-%20Varz%C4%83%20%C3%A0%20la%20Cluj%20%282023%29%20-%20img%2003.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Cluj%20Napoca%20-%20Varz%C4%83%20%C3%A0%20la%20Cluj%20%282023%29%20-%20img%2003.jpg",
         "license": "CC BY 4.0",
-        "author": "Chainwit."
+        "author": "Chainwit.",
+        "source": "Wikimedia Commons"
       }
     }
   ]

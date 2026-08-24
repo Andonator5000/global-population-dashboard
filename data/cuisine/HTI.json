@@ -6,29 +6,35 @@
   "dishes": [
     {
       "name": "soup joumou",
+      "description": "Haitian soup",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Soup%20joumou.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Soup%20joumou.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Lëa-Kim Châteauneuf"
+        "author": "Lëa-Kim Châteauneuf",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "mud cookie",
+      "description": "Haitian food in which dirt is mixed with salt and fat, formed into flat discs and dried",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Haitian%20Dirt%20Biscuits.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Haitian%20Dirt%20Biscuits.jpg",
         "license": "CC BY 2.0",
-        "author": "Feed My Starving Children (FMSC) https://www.flickr.com/photos/fmsc/"
+        "author": "Feed My Starving Children (FMSC) https://www.flickr.com/photos/fmsc/",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "griot",
+      "description": "dish in Haitian cuisine",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Griot%20ha%C3%AFtien%20%2842675563925%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Griot%20ha%C3%AFtien%20%2842675563925%29.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Lëa-Kim Châteauneuf"
+        "author": "Lëa-Kim Châteauneuf",
+        "source": "Wikimedia Commons"
       }
     }
   ]

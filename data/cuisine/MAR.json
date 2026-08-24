@@ -1,37 +1,79 @@
 {
   "iso3": "MAR",
   "name": "Morocco",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Pastilla",
+      "name": "Chicken Couscous",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bisteeya.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bisteeya.jpg",
-        "license": "CC BY 2.0",
-        "author": "Krista"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52850",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Taktouka"
-    },
-    {
-      "name": "Ahriche",
+      "name": "Lamb Tagine",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tahricht.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tahricht.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Alexdevil"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52843",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "tfaya",
+      "name": "Lamb tomato and sweet spices",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tfaya.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tfaya.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Miznate"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qtwtss1468572261.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qtwtss1468572261.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52782",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Moroccan Carrot Soup",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53047",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Spicy North African Potato Salad",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/urtwux1486983078.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/urtwux1486983078.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52797",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Tahini Lentils",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52869",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

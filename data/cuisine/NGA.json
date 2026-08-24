@@ -5,75 +5,91 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
+      "name": "akara",
+      "description": "peeled beans formed into a ball and deep-fried in palm oil",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Beans%20Ball-Akara.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Beans%20Ball-Akara.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "AkinkuotuFunmi",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Eba",
+      "description": "West African staple food",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/African%20dish%2C%2CEgusi%20Soup%20and%20Eba.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:African%20dish%2C%2CEgusi%20Soup%20and%20Eba.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Kethsa Kingsley",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
       "name": "Afang",
+      "description": "vegetable-based delicacy originating from South-South Nigeria, usually eaten with starch",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Afang%20Soup.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Afang%20Soup.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Yemisi Ogbe"
+        "author": "Yemisi Ogbe",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "suya",
+      "description": "snack of skewered meat popular in Nigeria and Cameroon originating from the Hausa people",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Suya%20with%20pepper%20sauce.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Suya%20with%20pepper%20sauce.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Bukky658"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SuyavarietiesTX.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:SuyavarietiesTX.JPG",
+        "license": "CC0",
+        "author": "WhisperToMe",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Kuli-kuli",
+      "description": "Nigerian snack that is made from dry roasted peanuts/groundnuts",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kuli%20kuli.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Kuli%20kuli.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Kenogenic"
+        "author": "Kenogenic",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "palm nut soup",
+      "description": "soup made from palm fruit",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Eba%20served%20with%20Fresh%20fish%20banga%20soup%20in%20a%20clay%20pot.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Eba%20served%20with%20Fresh%20fish%20banga%20soup%20in%20a%20clay%20pot.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Palm%20nut%20soup%20close%20up.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Palm%20nut%20soup%20close%20up.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Justdifference"
+        "author": "Nkansahrexford",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "kilishi",
+      "description": "Hausa dish of spiced dried beef, mutton or goat meat",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kilishi%20heaven.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kilishi%20heaven.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Akinrinade Habeeb omobolaji",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Amala",
+      "description": "traditional Yoruba Nigerian food made of root flour",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Amala%20and%20Abula.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Amala%20and%20Abula.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Owoeye007"
-      }
-    },
-    {
-      "name": "Ekuru",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ekuru%20and%20ata%20din%20din.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ekuru%20and%20ata%20din%20din.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Atimukoh"
-      }
-    },
-    {
-      "name": "Efo riro",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Efo%20Riro%20with%20fried%20mackerel%20fishes%20and%20roasted%20cowskin.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Efo%20Riro%20with%20fried%20mackerel%20fishes%20and%20roasted%20cowskin.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Bukky658"
-      }
-    },
-    {
-      "name": "Ewa Agoyin",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aganyin%20Beans%20with%20Plantain%20and%20Meat.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aganyin%20Beans%20with%20Plantain%20and%20Meat.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "secretlondon123"
+        "author": "Owoeye007",
+        "source": "Wikimedia Commons"
       }
     }
   ]

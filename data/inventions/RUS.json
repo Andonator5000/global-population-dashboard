@@ -1,33 +1,24 @@
 {
   "iso3": "RUS",
   "name": "Russia",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Olivier salad",
-      "inventors": [
-        "Lucien Olivier"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:2023%20Sa%C5%82atka%20jarzynowa%20%281%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Jacek Halicki"
-      }
-    },
-    {
       "name": "3M-54 Kalibr",
+      "source": "wikidata",
       "year": 1983,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/3M-54E%20Sketch.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:3M-54E%20Sketch.svg",
         "license": "CC BY-SA 3.0",
-        "author": "Allocer"
+        "author": "Allocer",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Orlov Trotter",
+      "source": "wikidata",
       "inventors": [
         "Alexei Grigoryevich Orlov"
       ],
@@ -36,11 +27,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grey%20Orlov%20Trotter.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Grey%20Orlov%20Trotter.jpg",
         "license": "CC BY 2.0",
-        "author": "Alexander"
+        "author": "Alexander",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "2S42 Lotos",
+      "source": "wikidata",
       "inventors": [
         "TsNIITochMash"
       ],
@@ -48,15 +41,56 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2S42%20Lotos.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:2S42%20Lotos.jpg",
         "license": "CC BY 4.0",
-        "author": "Ministry of Defence of the Russian Federation"
+        "author": "Ministry of Defence of the Russian Federation",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Matryoshka",
+      "source": "wikidata",
       "inventors": [
         "ALROSA"
       ],
       "year": 2019
+    },
+    {
+      "name": "Airliner",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/United%20A320%20N405UA%20at%20BOS%20%2833787222465%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:United%20A320%20N405UA%20at%20BOS%20%2833787222465%29.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "G B_NZ",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Russian language",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Samovar",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Emil Lenz",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Pavel Yablochkov",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Shukhov cracking process",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Synthetic rubber",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Russian lacquer art",
+      "source": "wikipedia"
     }
   ]
 }

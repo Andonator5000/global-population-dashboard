@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Accipitridae",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Martial%20eagle%20%28Polemaetus%20bellicosus%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Martial%20eagle%20%28Polemaetus%20bellicosus%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/201699947/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/201699947/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/201699947",
+        "license": "CC-BY",
+        "author": "(c) Ezequiel Racker, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,20 +22,24 @@
       "type": "national bird",
       "scientificName": "Balearica pavonina",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Balearica%20pavonina%20-%20Maroparque%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Balearica%20pavonina%20-%20Maroparque%2001.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "H. Zell"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/108397041/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/108397041/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/108397041",
+        "license": "CC-BY",
+        "author": "(c) Lucy Keith-Diagne, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
   "flower": {
     "name": "Costus spectabilis",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Costus%20spectabilis00%2C%20white%20background.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Costus%20spectabilis00%2C%20white%20background.jpg",
-      "license": "Public domain",
-      "author": "Matilda Smith (1854–1926)"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/296178119/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/296178119/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/296178119",
+      "license": "CC-BY",
+      "author": "(c) Lucky Okpanachi Atabo, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

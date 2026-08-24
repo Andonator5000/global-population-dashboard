@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera tigris altaica",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Siberischer%20tiger%20de.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Siberischer%20tiger%20de.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "S. Taheri"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/180359044/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/180359044/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/180359044",
+        "license": "CC-BY",
+        "author": "(c) Andreas Taeger, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Pica serica",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korean%20magpie%20in%20Daejeon%20%28side%20profile%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korean%20magpie%20in%20Daejeon%20%28side%20profile%29.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Yoo Chung"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/363305323/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/363305323/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/363305323",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -35,17 +39,20 @@
       "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kumgangsan-11.jpg?width=960",
       "commonsPage": "https://commons.wikimedia.org/wiki/File:Kumgangsan-11.jpg",
       "license": "CC BY 2.0",
-      "author": "Kok Leng Yeo from Singapore, Singapore"
+      "author": "Kok Leng Yeo from Singapore, Singapore",
+      "source": "Wikimedia Commons"
     }
   },
   "flower": {
     "name": "Korean",
     "scientificName": "Hibiscus syriacus",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hibiscus%20Syriacus.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Hibiscus%20Syriacus.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "Eric Kounce TexasRaiser"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/331420616/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/331420616/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/331420616",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Furnarius rufus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rufous%20hornero%20%28Red%20ovenbird%29%28Furnarius%20rufus%29.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rufous%20hornero%20%28Red%20ovenbird%29%28Furnarius%20rufus%29.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/99908278/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/99908278/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/99908278",
+        "license": "CC-BY",
+        "author": "(c) Leo Lagos, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,19 +23,23 @@
     "type": "national tree",
     "scientificName": "Erythrina crista-galli",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Erythrina%20crista-galli%202-3.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Erythrina%20crista-galli%202-3.jpg",
-      "license": "CC BY-SA 2.5",
-      "author": null
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/103807160/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/103807160/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/103807160",
+      "license": "CC-BY",
+      "author": "(c) Rafael Tosi, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "ceibo",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Corticeira%20em%20Bag%C3%A9%2004.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Corticeira%20em%20Bag%C3%A9%2004.jpg",
-      "license": "CC BY 4.0",
-      "author": "O Tupinólogo"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/91623632/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/91623632/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/91623632",
+      "license": "CC-BY",
+      "author": "(c) Jason K., some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

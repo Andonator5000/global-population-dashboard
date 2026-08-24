@@ -1,30 +1,69 @@
 {
   "iso3": "BRA",
   "name": "Brazil",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Bauru",
-      "inventors": [
-        "Casimiro Pinto Neto"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%282014-11-22%29%20Emp%C3%B3rio%20Teodora%20-%20Bauru%20-%20Lanche%20Bauru%20Romerito%20Pontes-2%20%2815869512362%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%282014-11-22%29%20Emp%C3%B3rio%20Teodora%20-%20Bauru%20-%20Lanche%20Bauru%20Romerito%20Pontes-2%20%2815869512362%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Romerito Pontes from São Carlos"
-      }
-    },
-    {
       "name": "Sergio",
+      "source": "wikidata",
       "year": 1895,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PSM%20V69%20D278%20The%20largest%20carbon%20ever%20found.png?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:PSM%20V69%20D278%20The%20largest%20carbon%20ever%20found.png",
         "license": "Public domain",
-        "author": "Unknown authorUnknown author"
+        "author": "Unknown authorUnknown author",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Pion",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quark%20structure%20pion.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Quark%20structure%20pion.svg",
+        "license": "CC BY-SA 2.5",
+        "author": "No machine-readable author provided. Harp assumed (based on copyright claims).",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Spectrum (topology)",
+      "source": "wikipedia",
+      "year": 1958
+    },
+    {
+      "name": "Peixoto's theorem",
+      "source": "wikipedia",
+      "year": 1959
+    },
+    {
+      "name": "Costa's minimal surface",
+      "source": "wikipedia",
+      "year": 1982,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Costa%27s%20minimal%20surface.ogv?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Costa%27s%20minimal%20surface.ogv",
+        "license": "CC BY-SA 3.0",
+        "author": "RupertMillard",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Chagas disease",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Epidemic typhus",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Schistosomiasis",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Arterial switch operation",
+      "source": "wikipedia"
     }
   ]
 }

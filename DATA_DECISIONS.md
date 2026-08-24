@@ -1300,6 +1300,49 @@ Flower images come from each species article's lead image. Every image
 resolves to the original Commons file for licence and author; a file the
 Commons API does not know is dropped, never hotlinked blind.
 
+## 21. The 2026-08-24 refinement batch (maintainer-requested)
+
+### 21.1 Inventions: non-edible, and Wikipedia lists join Wikidata
+
+Food and drink are excluded by ruling. Class ancestry alone missed brands
+(Coca-Cola is a "drink brand", which does not subclass food) and generic
+foods (hot dog has no P31 at all — it IS a class), so exclusion is a
+three-net test: item/class ancestry to food or drink, class-label
+keywords, and (for Wikipedia entries) summary-description keywords.
+Exclusion thinned Wikidata to ~39 countries, so ~50 CURATED English
+Wikipedia per-country invention list articles now top countries up
+(title→ISO3 mapping is explicit, never demonym-parsed; England, Scotland
+and Wales fold into GBR). The list parse is heuristic and honestly lossy:
+first wiki link names the invention; year, era and inventor are regexed
+from prose; every candidate is vetted through its article's REST summary
+(missing page = parse noise = dropped).
+
+### 21.2 Photos: iNaturalist for wildlife, TheMealDB for dishes
+
+Commons species images are a lottery (the centre-crop was decapitating
+animals). Flora/fauna photos now come from iNaturalist's research-grade
+observations — community-vote-ordered, server-side filtered to CC0/CC-BY,
+hosted on the open-data bucket iNat publishes for third-party use — with
+Commons as fallback. Cuisine photos come from TheMealDB (guaranteed
+uniform 700×700 with size variants) for the ~60 countries it covers, with
+Wikidata+Commons fallback elsewhere; per-country artifacts name their
+source. Clicking any photo now opens an in-page lightbox; the attribution
+link still points to the hosting page, because CC attribution must keep
+pointing home.
+
+### 21.3 Smaller rulings
+
+Globe drag sensitivity 0.375 → 0.5625 °/px (a second +50%). Public-debt
+and precipitation presentation reshaped (multi-unit cm/in/m/ft for large
+precipitation readings; mm/in where centimetres would round to noise).
+The live-weather panel becomes a weather-app-style condition card:
+theme-invariant gradient keyed to the WMO code group, white text at AA,
+explicit capital-local update time (Open-Meteo now queried with
+timezone=auto). Subdivisions carry the country's own term for its
+divisions (most common specific P31 class label — "canton of
+Switzerland", "U.S. state"); cuisine entries carry the Wikidata English
+description or TheMealDB category as a descriptor.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

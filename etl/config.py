@@ -558,15 +558,31 @@ COMMONS_IMAGE_WIDTH = 960  # bucketed width accepted by upload.wikimedia.org
 # estimate). Coverage and typing are only as good as Wikidata; the page
 # labels the source and the residual risk of the odd duplicate.
 
+# The division's P31 class label carries the country's OWN term for its
+# first-level unit ("canton of Switzerland", "U.S. state", "region of
+# France") -- added 2026-08-24 so the page can say what the country calls
+# them instead of the generic "divisions".
 WIKIDATA_SUBDIVISIONS_QUERY = """
-SELECT ?iso3 ?division ?divisionLabel ?population WHERE {
+SELECT ?iso3 ?division ?divisionLabel ?population ?classLabel WHERE {
   ?country wdt:P298 ?iso3 .
   ?country wdt:P150 ?division .
   FILTER NOT EXISTS { ?division wdt:P31 wd:Q19953632 }
   OPTIONAL { ?division wdt:P1082 ?population . }
+  OPTIONAL {
+    ?division wdt:P31 ?class .
+    ?class rdfs:label ?classLabel .
+    FILTER(LANG(?classLabel) = "en")
+  }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 """
+# Class labels too generic to be "what the country calls them".
+SUBDIVISION_GENERIC_CLASS_LABELS = {
+    "administrative territorial entity",
+    "political territorial entity",
+    "administrative territorial entity of a specific level",
+    "first-level administrative subdivision",
+}
 
 # --------------------------------------------------------------------------
 # Climate  (added 2026-08-23)
@@ -594,7 +610,7 @@ GEONAMES_CITIES15000_URL = "https://download.geonames.org/export/dump/cities1500
 # countries, and the section renders that honestly rather than padding.
 
 WIKIDATA_INVENTIONS_QUERY = """
-SELECT ?iso3 ?item ?itemLabel ?inventorLabel ?invented ?inception ?image ?links WHERE {
+SELECT ?iso3 ?item ?itemLabel ?inventorLabel ?invented ?inception ?image ?links ?class WHERE {
   ?item wdt:P495 ?country .
   ?country wdt:P298 ?iso3 .
   ?item wikibase:sitelinks ?links .
@@ -604,10 +620,103 @@ SELECT ?iso3 ?item ?itemLabel ?inventorLabel ?invented ?inception ?image ?links 
   OPTIONAL { ?item wdt:P575 ?invented . }
   OPTIONAL { ?item wdt:P571 ?inception . }
   OPTIONAL { ?item wdt:P18 ?image . }
+  OPTIONAL { ?item wdt:P31 ?class . }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 """
-INVENTIONS_TOP_N = 10
+INVENTIONS_TOP_N = 12
+
+# Wikipedia's per-country invention list articles complement Wikidata
+# (whose origin-tagged coverage thinned to ~39 countries once food was
+# excluded). CURATED title -> ISO3 mapping, not demonym parsing: the
+# category also holds "List of military inventions", university pages and
+# civilisation-era lists that must not join to a country. England,
+# Scotland and Wales fold into GBR and dedupe there.
+WIKIPEDIA_REST_HTML_TEMPLATE = "https://en.wikipedia.org/api/rest_v1/page/html/{title}"
+WIKIPEDIA_REST_SUMMARY_TEMPLATE = "https://en.wikipedia.org/api/rest_v1/page/summary/{title}"
+WIKIPEDIA_INVENTION_LISTS: dict[str, str] = {
+    "List of Albanian inventions and discoveries": "ALB",
+    "Timeline of Australian inventions": "AUS",
+    "List of Austrian inventions and discoveries": "AUT",
+    "List of Azerbaijani inventions and discoveries": "AZE",
+    "List of Bangladeshi inventions and discoveries": "BGD",
+    "List of Brazilian inventions and discoveries": "BRA",
+    "List of British innovations and discoveries": "GBR",
+    "List of Canadian inventions, innovations, and discoveries": "CAN",
+    "List of Chinese inventions": "CHN",
+    "List of Croatian inventions and discoveries": "HRV",
+    "List of Czech inventions and discoveries": "CZE",
+    "List of Danish inventions and discoveries": "DNK",
+    "List of Dutch inventions and innovations": "NLD",
+    "List of Egyptian inventions and discoveries": "EGY",
+    "List of English inventions and discoveries": "GBR",
+    "List of Filipino inventions and discoveries": "PHL",
+    "List of French inventions and discoveries": "FRA",
+    "List of German inventions and discoveries": "DEU",
+    "List of Greek inventions and discoveries": "GRC",
+    "List of Indian inventions and discoveries": "IND",
+    "List of Indonesian inventions and discoveries": "IDN",
+    "Timeline of Irish inventions and discoveries": "IRL",
+    "List of Israeli inventions and discoveries": "ISR",
+    "List of Italian inventions and discoveries": "ITA",
+    "List of Jamaican inventions and discoveries": "JAM",
+    "List of Japanese inventions and discoveries": "JPN",
+    "List of Kenyan inventions and discoveries": "KEN",
+    "List of Korean inventions and discoveries": "KOR",
+    "List of Malaysian inventions and discoveries": "MYS",
+    "List of Mexican inventions and discoveries": "MEX",
+    "List of Nigerian inventions and discoveries": "NGA",
+    "List of North Korean inventions and discoveries": "PRK",
+    "List of Pakistani inventions and discoveries": "PAK",
+    "Timeline of Polish science and technology": "POL",
+    "List of Portuguese inventions and discoveries": "PRT",
+    "Timeline of Russian innovation": "RUS",
+    "List of Scottish inventions and discoveries": "GBR",
+    "List of Serbian inventions and discoveries": "SRB",
+    "List of Singaporean inventions and discoveries": "SGP",
+    "List of South African inventions and discoveries": "ZAF",
+    "List of South Korean inventions and discoveries": "KOR",
+    "List of Spanish inventions and discoveries": "ESP",
+    "List of Swiss inventions and discoveries": "CHE",
+    "List of Taiwanese inventions and discoveries": "TWN",
+    "List of Thai inventions and discoveries": "THA",
+    "Timeline of United States inventions (before 1890)": "USA",
+    "Timeline of United States inventions (1890–1945)": "USA",
+    "Timeline of United States inventions (after 1991)": "USA",
+    "List of Vietnamese inventions and discoveries": "VNM",
+    "List of Welsh inventions and discoveries": "GBR",
+}
+# Per-page cap on parsed candidates, before the cross-source merge.
+WIKIPEDIA_INVENTIONS_PER_PAGE = 8
+
+# Food and drink are excluded from the inventions section (2026-08-24,
+# maintainer request -- Coca-Cola was listed beside the electric guitar).
+# The subclass test cannot run inside the main query (P279* closure in a
+# FILTER NOT EXISTS answers 504), so the items' DIRECT classes come back
+# with the main query and this second query walks only those classes
+# upward -- a few hundred specific nodes, cheap.
+WIKIDATA_FOOD_CLASSES_QUERY_TEMPLATE = """
+SELECT DISTINCT ?class WHERE {{
+  VALUES ?class {{ {qids} }}
+  {{ ?class wdt:P279* wd:Q2095 . }} UNION {{ ?class wdt:P279* wd:Q40050 . }}
+}}
+"""
+# Class ANCESTRY alone misses brand items: Coca-Cola's classes are "drink
+# brand" and "trademark", neither of which subclasses food. The class
+# labels are checked against these keywords as a second net.
+WIKIDATA_CLASS_LABELS_QUERY_TEMPLATE = """
+SELECT ?class ?classLabel WHERE {{
+  VALUES ?class {{ {qids} }}
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
+}}
+"""
+FOOD_CLASS_LABEL_KEYWORDS = (
+    "food", "drink", "beverage", "dish", "cuisine", "meal", "dessert",
+    "snack", "confection", "sauce", "soup", "bread", "cheese", "beer",
+    "wine", "spirit", "liqueur", "cocktail", "pastry", "cake", "sausage",
+    "candy", "pizza", "sandwich", "cola",
+)
+FOOD_CLASS_BATCH = 150
 
 # --------------------------------------------------------------------------
 # Airports (OurAirports + Wikidata patronage)  (added 2026-08-24)
@@ -657,6 +766,45 @@ WIKIPEDIA_NATIONAL_FLOWERS_URL = (
 WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php"
 
 # --------------------------------------------------------------------------
+# iNaturalist photos for flora/fauna  (added 2026-08-24)
+# --------------------------------------------------------------------------
+#
+# Commons P18/lead images of species are a lottery (random framing, cropped
+# heads). iNaturalist's research-grade observations, ordered by community
+# votes and FILTERED TO CC0/CC-BY, are consistently better wildlife
+# photography with machine-readable licensing. Photos live on the
+# inaturalist-open-data S3 bucket, which iNat explicitly publishes for
+# third-party use. Keyless; ~1 request/second is the polite ceiling.
+
+INATURALIST_TAXA_URL = (
+    "https://api.inaturalist.org/v1/taxa?q={query}&per_page=1"
+)
+INATURALIST_OBSERVATIONS_URL = (
+    "https://api.inaturalist.org/v1/observations?taxon_id={taxon_id}"
+    "&photo_license=cc0,cc-by&quality_grade=research&order_by=votes"
+    "&per_page=1"
+)
+INATURALIST_THROTTLE_SECONDS = 0.7
+INATURALIST_PHOTO_PAGE = "https://www.inaturalist.org/photos/{photo_id}"
+
+# --------------------------------------------------------------------------
+# TheMealDB  (added 2026-08-24)
+# --------------------------------------------------------------------------
+#
+# Guaranteed-uniform 700x700 dish photography with size variants, keyless
+# (public test key). Covers ~62 countries; Wikidata+Commons remains the
+# fallback for the rest, and each country's artifact says which source fed
+# it. Terms: free for development/educational use with attribution.
+
+THEMEALDB_LIST_URL = "https://www.themealdb.com/api/json/v1/1/list.php?a=list"
+THEMEALDB_FILTER_TEMPLATE = (
+    "https://www.themealdb.com/api/json/v1/1/filter.php?a={area}"
+)
+THEMEALDB_LOOKUP_TEMPLATE = (
+    "https://www.themealdb.com/api/json/v1/1/lookup.php?i={meal_id}"
+)
+
+# --------------------------------------------------------------------------
 # National cuisine (Wikidata)  (added 2026-08-24)
 # --------------------------------------------------------------------------
 #
@@ -672,14 +820,20 @@ WIKIDATA_CUISINE_CLASSES: tuple[str, ...] = (
     "Q28803",     # food
     "Q40050",     # drink
 )
+# The English description doubles as the dish descriptor on the page
+# ("traditional Ukrainian soup") -- added 2026-08-24, maintainer request.
 WIKIDATA_CUISINE_QUERY_TEMPLATE = """
-SELECT ?iso3 ?item ?itemLabel ?image ?links WHERE {{
+SELECT ?iso3 ?item ?itemLabel ?description ?image ?links WHERE {{
   ?item wdt:P31 wd:{qid} .
   ?item wdt:P495 ?country .
   ?country wdt:P298 ?iso3 .
   ?item wikibase:sitelinks ?links .
   FILTER(?links >= 5)
   OPTIONAL {{ ?item wdt:P18 ?image . }}
+  OPTIONAL {{
+    ?item schema:description ?description .
+    FILTER(LANG(?description) = "en")
+  }}
   SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
 }}
 """

@@ -1,0 +1,104 @@
+{
+  "iso3": "SAU",
+  "name": "Saudi Arabia",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Chicken Shawarma with homemade garlic herb yoghurt sauce",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hcg6l91763596970.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/hcg6l91763596970.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53218",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "kabse",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/utqnjv1763598650.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/utqnjv1763598650.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53220",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Knafeh",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/76nffj1763593933.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/76nffj1763593933.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53216",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mamoul (Eid biscuits)",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/35kejr1763599712.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/35kejr1763599712.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53221",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mutabbaq",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/i5o2b61763739053.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/i5o2b61763739053.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53223",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Pistachio Kunafa Chocolate Cake and Cupcakes",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yh3sg71763741307.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/yh3sg71763741307.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53224",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Shakshouka",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/crd1jz1763592990.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/crd1jz1763592990.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53215",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Shakshuka Feta Cheese",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wpkfin1763597958.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wpkfin1763597958.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53219",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

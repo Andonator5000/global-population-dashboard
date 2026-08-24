@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Haliaeetus vocifer",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/African%20Fish%20Eagle%20AdF.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:African%20Fish%20Eagle%20AdF.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Arturo de Frias Marques"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/20939777/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/20939777/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/20939777",
+        "license": "CC-BY",
+        "author": "(c) Wynand Uys, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

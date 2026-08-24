@@ -1,18 +1,79 @@
 {
   "iso3": "CZE",
   "name": "Czechia",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Rubin",
-      "year": 1960,
+      "name": "Denis d'or",
+      "source": "wikipedia",
+      "inventors": [
+        "Prokop Diviš"
+      ],
+      "year": 1748
+    },
+    {
+      "name": "Purkinje effect",
+      "source": "wikipedia",
+      "inventors": [
+        "Jan Evangelista Purkyně"
+      ],
+      "year": 1819
+    },
+    {
+      "name": "Sugar cube",
+      "source": "wikipedia",
+      "inventors": [
+        "Jakob Christof Rad"
+      ],
+      "year": 1843,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cross%20section%20of%20Rubin%2C%20National%20Fruit%20Collection%20%28acc.%201978-135%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cross%20section%20of%20Rubin%2C%20National%20Fruit%20Collection%20%28acc.%201978-135%29.jpg",
-        "license": "OGL 2",
-        "author": "National Fruit Collection, Brogdale."
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/W%C3%BCrfelzucker%20--%202018%20--%203582.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:W%C3%BCrfelzucker%20--%202018%20--%203582.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Dietmar Rabich",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "František Křižík",
+      "source": "wikipedia",
+      "year": 1878
+    },
+    {
+      "name": "Tábor–Bechyně railway",
+      "source": "wikipedia",
+      "year": 1903,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8CD%20Class%20100%2C%20v%C3%BDjezd%20z%20lesa%20za%20zast%C3%A1vkou%20Be%C5%BEerovice.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%C4%8CD%20Class%20100%2C%20v%C3%BDjezd%20z%20lesa%20za%20zast%C3%A1vkou%20Be%C5%BEerovice.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "© Karel Furiš, author (Ostrava Poruba, Czech Republic). When reusing, please credit me as: Karel Furiš / Wikimedia Commons. I would appreciate being notified if you use my work outside Wikimedia. Do not copy this image illegally by ignoring the terms of the license below, as it is not in the public domain.",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Color photography",
+      "source": "wikipedia",
+      "inventors": [
+        "Karl Schinzel"
+      ],
+      "year": 1905
+    },
+    {
+      "name": "Kaplan turbine",
+      "source": "wikipedia",
+      "inventors": [
+        "Viktor Kaplan"
+      ],
+      "year": 1912
+    },
+    {
+      "name": "String bag",
+      "source": "wikipedia",
+      "inventors": [
+        "Vavřín Krčil"
+      ]
     }
   ]
 }

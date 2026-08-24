@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Capra falconeri",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Markhor%20Schraubenziege%20Capra%20falconeri%20Zoo%20Augsburg-02.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Markhor%20Schraubenziege%20Capra%20falconeri%20Zoo%20Augsburg-02.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Rufus46"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/339648613/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/339648613/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/339648613",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national animal",
       "scientificName": "Falco peregrinus peregrinator",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%AC%D9%8A%D8%B1%20%D8%B4%D8%A7%D9%87%D9%8A%D9%86.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%AC%D9%8A%D8%B1%20%D8%B4%D8%A7%D9%87%D9%8A%D9%86.jpg",
-        "license": "Public domain",
-        "author": "إماراتي 1971"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/626747287/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/626747287/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/626747287",
+        "license": "CC-BY",
+        "author": "(c) sunnyjosef, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national bird",
       "scientificName": "Alectoris chukar",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Alectoris-chukar-001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Alectoris-chukar-001.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Mdf"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/336473629/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/336473629/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/336473629",
+        "license": "CC-BY",
+        "author": "(c) SIA, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -42,10 +48,12 @@
       "type": "national aquatic mammal",
       "scientificName": "Platanista minor",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A-Platanista-gangetica-showing-the-body-shape-and-especially-the-head-with-a-long-beak.png?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:A-Platanista-gangetica-showing-the-body-shape-and-especially-the-head-with-a-long-beak.png",
-        "license": "CC BY 3.0",
-        "author": "Christina H Lockyer and Gill T Braulik"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/73811782/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/73811782/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/73811782",
+        "license": "CC-BY",
+        "author": "(c) Fábio Olmos, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -53,10 +61,12 @@
       "type": "national reptile",
       "scientificName": "Crocodylus palustris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PK%20Kirthar%20NP%20asv2020-02%20img25.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:PK%20Kirthar%20NP%20asv2020-02%20img25.jpg",
-        "license": "FAL",
-        "author": "A.Savin"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/106663266/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/106663266/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/106663266",
+        "license": "CC-BY",
+        "author": "(c) Thomas Galewski, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -65,19 +75,23 @@
     "type": "national tree",
     "scientificName": "Cedrus deodara",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pedrengo%20cedro%20nel%20parco%20Frizzoni.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Pedrengo%20cedro%20nel%20parco%20Frizzoni.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Luigi Chiesa"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/192798298/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/192798298/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/192798298",
+      "license": "CC-BY",
+      "author": "(c) Yoav Daniel Bar-Ness, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "common jasmine",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jasminum%20officinale%20-%20Bot.%20Mag.%2031%2C%201787.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Jasminum%20officinale%20-%20Bot.%20Mag.%2031%2C%201787.jpg",
-      "license": "Public domain",
-      "author": "Botanical Magazine"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/437364703/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/437364703/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/437364703",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

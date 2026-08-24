@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera leo",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal%20coat%20of%20arms%20of%20the%20Netherlands.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Royal%20coat%20of%20arms%20of%20the%20Netherlands.svg",
-        "license": "CC BY-SA 3.0",
-        "author": "Sodacan"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,20 +22,24 @@
       "type": "national bird",
       "scientificName": "Limosa limosa",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Limosa%20limosa%20%28Uitkerke%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Limosa%20limosa%20%28Uitkerke%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Hans Hillewaert"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/340802872/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/340802872/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/340802872",
+        "license": "CC-BY",
+        "author": "(c) Nathan Aaron, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
   "flower": {
     "name": "tulip",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG",
-      "license": "CC0",
-      "author": "Dina L"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/482684019/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/482684019/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/482684019",
+      "license": "CC-BY",
+      "author": "(c) Alexander Dubynin, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

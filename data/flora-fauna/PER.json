@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Vicugna vicugna",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vicunacrop.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vicunacrop.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Alexandre Buisse (Nattfodd)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/448912241/medium.png",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/448912241/large.png",
+        "commonsPage": "https://www.inaturalist.org/photos/448912241",
+        "license": "CC-BY",
+        "author": "(c) Slunky, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Rupicola peruviana",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rupicola%20peruviana%20%28male%29%20-San%20Diego%20Zoo-8a.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rupicola%20peruviana%20%28male%29%20-San%20Diego%20Zoo-8a.jpg",
-        "license": "CC BY 2.0",
-        "author": "Jerry Thompson"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/117598271/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/117598271/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/117598271",
+        "license": "CC-BY",
+        "author": "(c) Jared Shorma, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,19 +36,23 @@
     "type": "national tree",
     "scientificName": "Cinchona",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cinchona%20officinalis%20%28DITSL%29.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cinchona%20officinalis%20%28DITSL%29.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "James Steakley"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/122660065/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/122660065/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/122660065",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Cantua buxifolia",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kantutas%20Cuzco.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kantutas%20Cuzco.jpg",
-      "license": "GFDL",
-      "author": "No machine-readable author provided. Ghiz~commonswiki assumed (based on copyright claims)."
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/305996073/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/305996073/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/305996073",
+      "license": "CC-BY",
+      "author": "(c) Natalí Karina, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

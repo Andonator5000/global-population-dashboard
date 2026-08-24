@@ -1,0 +1,56 @@
+{
+  "iso3": "LAO",
+  "name": "Laos",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Authentic Laos Tapioca Pudding with Bananas",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5pmn0g1779813285.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5pmn0g1779813285.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53425",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Lao Naem Khao",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0dypw51779817467.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0dypw51779817467.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53427",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Lao Som Pak Pickled Cabbage",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/44pjrn1779814409.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/44pjrn1779814409.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53426",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Laos Plantain Coconut Bake (Flourless Muffin)",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/x7cbsp1779811798.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/x7cbsp1779811798.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53424",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

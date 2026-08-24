@@ -12,7 +12,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Atelopus%20zeteki%20IMG%203668.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Atelopus%20zeteki%20IMG%203668.jpg",
         "license": "CC BY 2.0",
-        "author": "brian.gratwicke"
+        "author": "brian.gratwicke",
+        "source": "Wikimedia Commons"
       }
     },
     {
@@ -20,16 +21,26 @@
       "type": "national bird",
       "scientificName": "Harpia harpyja",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Harpia%20harpyja%20001%20800.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Harpia%20harpyja%20001%20800.jpg",
-        "license": "CC BY 3.0",
-        "author": "http://www.birdphotos.com"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/447088675/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/447088675/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/447088675",
+        "license": "CC-BY",
+        "author": "(c) Christoph Moning, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
   "tree": {
     "name": "Panama tree",
     "type": "national tree",
-    "scientificName": "Sterculia apetala"
+    "scientificName": "Sterculia apetala",
+    "image": {
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/458787195/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/458787195/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/458787195",
+      "license": "CC-BY",
+      "author": "(c) Anthony Batista, some rights reserved (CC BY)",
+      "source": "iNaturalist"
+    }
   }
 }

@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Maboké",
+      "description": "dish in Central African Republic",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mabok%C3%A9%203.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Mabok%C3%A9%203.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Zakalingba"
+        "author": "Zakalingba",
+        "source": "Wikimedia Commons"
       }
     }
   ]

@@ -1,25 +1,79 @@
 {
   "iso3": "EST",
   "name": "Estonia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Mulgikapsad",
+      "name": "Apple Pie",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mulgikapsad%20with%20potatoes.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mulgikapsad%20with%20potatoes.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "M0d3M"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/stnxzp1784835840.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/stnxzp1784835840.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53575",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "kiluvõileib",
+      "name": "Carrot and Bean Fritters",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kiluv%C3%B5ileib.IMG%204378.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kiluv%C3%B5ileib.IMG%204378.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Ave Maria Mõistlik"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xjii2g1784836867.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xjii2g1784836867.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53576",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Gingerbread Waffles",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0wmns51784837949.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0wmns51784837949.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53578",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Honey Cookies",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/yleo1y1784839077.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/yleo1y1784839077.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53579",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Quark and Rhubarb Pie",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/s5o6521784834958.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/s5o6521784834958.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53574",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Sauerkraut and Fish Salad",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/2i0plx1784837241.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/2i0plx1784837241.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53577",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

@@ -7,10 +7,12 @@
     "name": "Heliconia rostrata",
     "scientificName": "Cantua buxifolia",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kantutas%20Cuzco.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kantutas%20Cuzco.jpg",
-      "license": "GFDL",
-      "author": "No machine-readable author provided. Ghiz~commonswiki assumed (based on copyright claims)."
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/305996073/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/305996073/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/305996073",
+      "license": "CC-BY",
+      "author": "(c) Natalí Karina, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

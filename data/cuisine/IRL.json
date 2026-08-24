@@ -1,34 +1,103 @@
 {
   "iso3": "IRL",
   "name": "Ireland",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "chicken fillet roll",
+      "name": "Boxty Breakfast",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20fillet%20baguette%20%28with%20lettuce%20and%20tomato%29%20bought%20from%20spar%20liffey%20street%20dublin%202023%202%20public%20domain%20alan%20butler.tif?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20fillet%20baguette%20%28with%20lettuce%20and%20tomato%29%20bought%20from%20spar%20liffey%20street%20dublin%202023%202%20public%20domain%20alan%20butler.tif",
-        "license": "CC0",
-        "author": "ALANBUTLERcommons"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53036",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Paddy Whiskey",
+      "name": "Coddled pork with cider",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Paddy%20Whiskey.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Paddy%20Whiskey.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Gambiteer"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/7vpsfp1608588991.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/7vpsfp1608588991.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53037",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "croffle",
+      "name": "Corned Beef and Cabbage",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Croffle%201.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Croffle%201.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Scudsvlad"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xb97a81583266727.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xb97a81583266727.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52998",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Crispy Sausages and Greens",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/st1ifa1583267248.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/st1ifa1583267248.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52999",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Ham hock colcannon",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/n41ny81608588066.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/n41ny81608588066.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53035",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Irish stew",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52781",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mustard champ",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53038",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Vegetable Shepherds Pie",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/w8umt11583268117.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/w8umt11583268117.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53000",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

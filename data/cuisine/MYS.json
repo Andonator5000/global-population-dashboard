@@ -1,25 +1,103 @@
 {
   "iso3": "MYS",
   "name": "Malaysia",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "bak kut teh",
+      "name": "Apam balik",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bakutteh.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bakutteh.jpg",
-        "license": "CC BY 2.5",
-        "author": "Indradi Soemardjan http://www.indrani.net"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53049",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Teh Tarik",
+      "name": "Ayam Percik",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Teh%20Tarik.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Teh%20Tarik.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Jonathan Lin"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/020z181619788503.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/020z181619788503.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53050",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Beef Rendang",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53053",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Laksa King Prawn Noodles",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52821",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Mee goreng mamak",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53048",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Nasi lemak",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53051",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Roti john",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hx335q1619789561.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/hx335q1619789561.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53052",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Seri muka kuih",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53054",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

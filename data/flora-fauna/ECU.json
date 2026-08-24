@@ -8,10 +8,12 @@
     "type": "national tree",
     "scientificName": "Cinchona pubescens",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Starr%20020501-0053%20Cinchona%20pubescens.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Starr%20020501-0053%20Cinchona%20pubescens.jpg",
-      "license": "CC BY 3.0",
-      "author": "Forest &amp; Kim Starr"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/455373350/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/455373350/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/455373350",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

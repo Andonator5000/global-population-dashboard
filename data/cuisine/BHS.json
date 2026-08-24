@@ -1,0 +1,20 @@
+{
+  "iso3": "BHS",
+  "name": "Bahamas",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Grits",
+      "description": "Breakfast",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/bfok4w1780242078.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/bfok4w1780242078.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53450",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

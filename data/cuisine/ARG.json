@@ -1,25 +1,103 @@
 {
   "iso3": "ARG",
   "name": "Argentina",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Fugazza",
+      "name": "Alfajores",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Guerrin%20pizza%20fugazza%20queso.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Guerrin%20pizza%20fugazza%20queso.jpg",
-        "license": "CC0",
-        "author": "Neo139"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/a4kgf21763075288.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/a4kgf21763075288.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53138",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Revuelto Gramajo",
+      "name": "Asado",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Revuelto%20gramajo.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Revuelto%20gramajo.jpg",
-        "license": "CC0",
-        "author": "Neo139"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53133",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Carbonada Criolla",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/8b2msz1763074897.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/8b2msz1763074897.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53141",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Choripán",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5i25sg1763075353.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5i25sg1763075353.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53136",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dulce de Leche",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jyjlhj1763075323.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jyjlhj1763075323.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53137",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Empanadas",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/q99te31763075494.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/q99te31763075494.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53134",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Fainá",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/849jd81763075251.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/849jd81763075251.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53139",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Locro",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5sgsob1763196284.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5sgsob1763196284.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53146",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

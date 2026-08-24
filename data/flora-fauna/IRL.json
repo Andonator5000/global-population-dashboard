@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Lepus timidus hibernicus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Irish%20Mountain%20Hare%20imported%20from%20iNaturalist%20photo%20322047161%20on%2022%20April%202024.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Irish%20Mountain%20Hare%20imported%20from%20iNaturalist%20photo%20322047161%20on%2022%20April%202024.jpg",
-        "license": "CC BY 4.0",
-        "author": "(c) Colton Veltkamp, some rights reserved (CC BY)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/378907485/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/378907485/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/378907485",
+        "license": "CC-BY",
+        "author": "(c) Jeremiah Degenhardt, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,10 +23,12 @@
     "type": "national tree",
     "scientificName": "Quercus petraea",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quercus%20petraea%2006.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Quercus%20petraea%2006.jpg",
-      "license": "CC BY 2.5",
-      "author": "Willow"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/398772095/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/398772095/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/398772095",
+      "license": "CC-BY",
+      "author": "(c) Jo Roberts, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

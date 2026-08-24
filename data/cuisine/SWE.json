@@ -6,74 +6,90 @@
   "dishes": [
     {
       "name": "ostkaka",
+      "description": "traditional Swedish oven-baked dessert based on milk, flour, and rennet, particularly in Hälsingland and Småland",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ostkaka.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Ostkaka.jpg",
         "license": "Public domain",
-        "author": "AnonymousUnknown author"
+        "author": "AnonymousUnknown author",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "tunnbröd",
+      "description": "bread",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tunnbr%C3%B6d-2007-07-14.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Tunnbr%C3%B6d-2007-07-14.jpg",
         "license": "CC BY-SA 2.5",
-        "author": "Mikael Lindmark"
+        "author": "Mikael Lindmark",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "blåbärssoppa",
+      "description": "Scandanavian soup made from bilberries",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bl%C3%A5b%C3%A4rssoppa.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Bl%C3%A5b%C3%A4rssoppa.jpg",
         "license": "Public domain",
-        "author": "Dnor"
+        "author": "Dnor",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "pölsa",
+      "description": "traditional Swedish dish made from finely ground meat, traditionally leftover meat",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/P%C3%B6lsa.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:P%C3%B6lsa.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "No machine-readable author provided.  Karmosin~commonswiki assumed (based on copyright claims)."
+        "author": "No machine-readable author provided.  Karmosin~commonswiki assumed (based on copyright claims).",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "pitepalt",
+      "description": "Swedish meat-filled dumpling made from raw grated potatoes, barley flour, and/or wheat flour. boiled in salted water and served with lingonberries and butter",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pitepalt.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Pitepalt.jpg",
         "license": "CC BY-SA 2.5",
-        "author": "Fredrik Andersson"
+        "author": "Fredrik Andersson",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Gotlandsdricka",
+      "description": "traditional homebrewed alcoholic beverage made on Gotland",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gotlandsdricka.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Gotlandsdricka.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "W.carter"
+        "author": "W.carter",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "saffron pancake",
+      "description": "pudding dessert from the island of Gotland, Sweden",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Saffron%20pancake%20with%20dewberry.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Saffron%20pancake%20with%20dewberry.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Toyah"
+        "author": "Toyah",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Tjälknöl",
+      "description": "Swedish dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Knul-sliced.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Knul-sliced.jpg",
         "license": "Public domain",
-        "author": "Anna Lagerberg"
+        "author": "Anna Lagerberg",
+        "source": "Wikimedia Commons"
       }
     }
   ]

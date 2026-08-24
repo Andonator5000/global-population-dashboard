@@ -1,127 +1,78 @@
 {
   "iso3": "ITA",
   "name": "Italy",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Caesar salad",
-      "inventors": [
-        "Caesar Cardini"
-      ],
-      "year": 1924,
+      "name": "Shine Muscat",
+      "source": "wikidata",
+      "year": 1997,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Caesar%20salad%20%282%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Caesar%20salad%20%282%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Geoff Peters from Vancouver, BC, Canada"
-      }
-    },
-    {
-      "name": "vermouth",
-      "inventors": [
-        "Antonio Benedetto Carpano"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Four%20bottles%20of%20vermouth.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Four%20bottles%20of%20vermouth.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E3%82%B7%E3%83%A3%E3%82%A4%E3%83%B3%E3%83%9E%E3%82%B9%E3%82%AB%E3%83%83%E3%83%88.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%E3%82%B7%E3%83%A3%E3%82%A4%E3%83%B3%E3%83%9E%E3%82%B9%E3%82%AB%E3%83%83%E3%83%88.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Kenneth C. Zirkel"
+        "author": "黒崎一男",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Kinder Surprise",
+      "name": "Tractor configuration",
+      "source": "wikipedia",
       "inventors": [
-        "William Salice"
+        "Mario Calderara"
+      ],
+      "year": 1909
+    },
+    {
+      "name": "Codex",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Electroplating",
+      "source": "wikipedia",
+      "inventors": [
+        "Luigi Valentino Brugnatelli"
+      ],
+      "year": 1805
+    },
+    {
+      "name": "Holocene calendar",
+      "source": "wikipedia",
+      "year": 1993
+    },
+    {
+      "name": "Medical thermometer",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Ocarina",
+      "source": "wikipedia",
+      "inventors": [
+        "Giuseppe Donati"
       ],
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kinder%20egg%20open.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kinder%20egg%20open.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2016-01%20Ocarina%20front.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:2016-01%20Ocarina%20front.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Tiia Monto"
+        "author": "0x010C",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "ice cream cone",
+      "name": "Radio-frequency identification",
+      "source": "wikipedia",
       "inventors": [
-        "http://www.wikidata.org/.well-known/genid/13260064c273959088dd083a3f04ac7e"
-      ],
-      "year": 1724,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Eiswaffeln%202008%20PD%201.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Eiswaffeln%202008%20PD%201.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Kamel15"
-      }
+        "Great Britain"
+      ]
     },
     {
-      "name": "Neapolitan ice cream",
+      "name": "Galileo thermometer",
+      "source": "wikipedia",
       "inventors": [
-        "Ludwig Ferdinand Jungius"
+        "Galileo Galilei"
       ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Neapolitan.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Neapolitan.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "No machine-readable author provided. Pschemp assumed (based on copyright claims)."
-      }
-    },
-    {
-      "name": "Stracciatella",
-      "inventors": [
-        "Enrico Panattoni"
-      ],
-      "year": 1961,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stracciatella%20in%20Firenze.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stracciatella%20in%20Firenze.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "WikiLucas00"
-      }
-    },
-    {
-      "name": "Kinder Joy",
-      "year": 2001,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kinder%20Surprise%2001.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kinder%20Surprise%2001.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Nicholas Gemini"
-      }
-    },
-    {
-      "name": "Colomba di Pasqua",
-      "inventors": [
-        "Angelo Motta"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Colomba%20pasquale%2C%20edizione%202013%20-%20ND0%204662%20%288564331585%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Colomba%20pasquale%2C%20edizione%202013%20-%20ND0%204662%20%288564331585%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "N i c o l a from Fiumicino (Rome), Italy"
-      }
-    },
-    {
-      "name": "Barbajada",
-      "inventors": [
-        "Domenico Barbaia"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Barbajada.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Barbajada.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Sciking"
-      }
-    },
-    {
-      "name": "Italia",
-      "year": 1911,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Raisin%20Italia.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Raisin%20Italia.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Véronique PAGNIER"
-      }
+      "year": 1593
     }
   ]
 }

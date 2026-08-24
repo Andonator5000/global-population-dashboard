@@ -1,11 +1,12 @@
 {
   "iso3": "EGY",
   "name": "Egypt",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "plumbing",
+      "source": "wikidata",
       "inventors": [
         "Egyptians"
       ],
@@ -14,7 +15,71 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Creativ%20plumbing%20-%20drain%20maze.png?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Creativ%20plumbing%20-%20drain%20maze.png",
         "license": "CC BY-SA 4.0",
-        "author": "KaiKemmann"
+        "author": "KaiKemmann",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Community banking models",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Police dog",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Electrum",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Hysteria",
+      "source": "wikipedia",
+      "year": 1900
+    },
+    {
+      "name": "Gynaecology",
+      "source": "wikipedia",
+      "year": 1800,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Female%20genital%20system%20-%20Sagittal%20view.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Female%20genital%20system%20-%20Sagittal%20view.svg",
+        "license": "CC BY-SA 4.0",
+        "author": "R. Dewaele (Bioscope, Unige), J. Abdulcadir (HUG), C. Brockmann (Bioscope, Unige), O. Fillod, S. Valera-Kummer (DIP), www.unige.ch/ssi",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Numeral system",
+      "source": "wikipedia",
+      "era": "3200 BC",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Numeral%20Systems%20of%20the%20World.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Numeral%20Systems%20of%20the%20World.svg",
+        "license": "CC BY-SA 4.0",
+        "author": "Psiĥedelisto",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Ancient Egyptian units of measurement",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cubito%20regale%20con%20il%20nome%20del%20faraone%20Amenhotep%20II%201%20DSC5688.tif?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cubito%20regale%20con%20il%20nome%20del%20faraone%20Amenhotep%20II%201%20DSC5688.tif",
+        "license": "CC0",
+        "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Bellows",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bellows%20%28PSF%29.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bellows%20%28PSF%29.svg",
+        "license": "Public domain",
+        "author": "Pearson Scott Foresman",
+        "source": "Wikimedia Commons"
       }
     }
   ]

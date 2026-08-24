@@ -6,15 +6,18 @@
   "dishes": [
     {
       "name": "Shark chutney",
+      "description": "Seychelles dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SeychellesSharkChutney.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:SeychellesSharkChutney.JPG",
         "license": "CC BY-SA 3.0",
-        "author": "Ian Taylor"
+        "author": "Ian Taylor",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Ladob"
+      "name": "Ladob",
+      "description": "Seychelles dish"
     }
   ]
 }

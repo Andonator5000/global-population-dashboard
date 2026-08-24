@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Erinaceus europaeus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Erinaceus%20europaeus%20LC0119.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Erinaceus%20europaeus%20LC0119.jpg",
-        "license": "CC BY-SA 2.0 de",
-        "author": "Jörg Hempel"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/364360125/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/364360125/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/364360125",
+        "license": "CC-BY",
+        "author": "(c) Stephan Mende, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national animal",
       "scientificName": "Oryctolagus cuniculus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Oryctolagus%20cuniculus%20-%20euqirneto%20-%20419737670%20%28cropped%29.jpeg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Oryctolagus%20cuniculus%20-%20euqirneto%20-%20419737670%20%28cropped%29.jpeg",
-        "license": "CC BY 4.0",
-        "author": "euqirneto"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/137362674/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/137362674/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/137362674",
+        "license": "CC-BY",
+        "author": "(c) Alexis Lours, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national animal",
       "scientificName": "Apodemus sylvaticus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ApodemusSylvaticus.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:ApodemusSylvaticus.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Christian Fischer"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/626298711/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/626298711/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/626298711",
+        "license": "CC-BY",
+        "author": "(c) franktl, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

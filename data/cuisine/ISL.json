@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Hákarl",
+      "description": "national dish of Iceland consisting of fermented shark",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/H%C3%A1karl2.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:H%C3%A1karl2.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Xfigpower"
+        "author": "Xfigpower",
+        "source": "Wikimedia Commons"
       }
     }
   ]
