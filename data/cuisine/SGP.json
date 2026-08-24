@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Roti john",
+      "description": "Malay traditional sandwich, popular in Indonesia, Malaysia and Singapore",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Roti%20John%20-%20served.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Roti%20John%20-%20served.jpg",
         "license": "CC BY 2.0",
-        "author": "stef yau from Seattle, USA"
+        "author": "stef yau from Seattle, USA",
+        "source": "Wikimedia Commons"
       }
     }
   ]

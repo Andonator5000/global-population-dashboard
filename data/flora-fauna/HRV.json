@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Martes martes",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Martes%20martes%2C%20Clunes%2C%20Scotland%204.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Martes%20martes%2C%20Clunes%2C%20Scotland%204.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Vince Smith"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31717848/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31717848/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/31717848",
+        "license": "CC-BY",
+        "author": "(c) Owen Strickland, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,10 +23,12 @@
     "type": "national tree",
     "scientificName": "Quercus, Quercus robur",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quercus%20robur.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Quercus%20robur.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": null
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/10407529",
+      "license": "CC-BY",
+      "author": "(c) Natalya Ivanova, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

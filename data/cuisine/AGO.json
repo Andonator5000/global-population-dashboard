@@ -1,0 +1,32 @@
+{
+  "iso3": "AGO",
+  "name": "Angola",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Camaro Grelhado Com Molho Cru (Grilled Prawns with Green Onion Sauce)",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jg4r991779916649.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jg4r991779916649.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53428",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Paracuca (Roasted Peanuts)",
+      "description": "Starter",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vgsipt1779917593.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vgsipt1779917593.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53429",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

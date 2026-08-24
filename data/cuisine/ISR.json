@@ -6,20 +6,24 @@
   "dishes": [
     {
       "name": "Bamba",
+      "description": "peanut snack",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bamba%20snack.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bamba%20snack.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Peanuts%20maize%20chips%202.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Peanuts%20maize%20chips%202.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Nsaum75"
+        "author": "Ondřej Langr",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Shkedei marak",
+      "description": "Israeli crouton",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shkedeymarak.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Shkedeymarak.jpg",
         "license": "Public domain",
-        "author": "Almog"
+        "author": "Almog",
+        "source": "Wikimedia Commons"
       }
     }
   ]

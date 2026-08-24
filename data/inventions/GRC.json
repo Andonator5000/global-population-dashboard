@@ -1,28 +1,64 @@
 {
   "iso3": "GRC",
   "name": "Greece",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "Venus de Milo",
+      "source": "wikidata",
       "year": 1820,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A9nus%20de%20Milo%20-%20Mus%C3%A9e%20du%20Louvre%20AGER%20LL%20299%20%3B%20N%20527%20%3B%20Ma%20399.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:V%C3%A9nus%20de%20Milo%20-%20Mus%C3%A9e%20du%20Louvre%20AGER%20LL%20299%20%3B%20N%20527%20%3B%20Ma%20399.jpg",
         "license": "CC0",
-        "author": "Shonagon"
+        "author": "Shonagon",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "frappé coffee",
-      "year": 1957,
+      "name": "Acrolith",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Artificial intelligence",
+      "source": "wikipedia",
+      "era": "3rd century BC"
+    },
+    {
+      "name": "Bouzouki",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Chelys",
+      "source": "wikipedia",
+      "inventors": [
+        "Hermes. According"
+      ]
+    },
+    {
+      "name": "Crane (machine)",
+      "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cafe-frape-glas-holztisch-unscharf.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cafe-frape-glas-holztisch-unscharf.jpg",
-        "license": "CC0",
-        "author": "philleb"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Crane%20machine%20slewing%20platform.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Crane%20machine%20slewing%20platform.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Wilfredo R. Rodriguez H. edited by Gregory David Harington",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Emotion",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Football",
+      "source": "wikipedia",
+      "era": "9th century BC"
+    },
+    {
+      "name": "Jury trial",
+      "source": "wikipedia"
     }
   ]
 }

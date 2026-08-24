@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Tapirus bairdii",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Central%20American%20Tapir-Belize20.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Central%20American%20Tapir-Belize20.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": null
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/585544969/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/585544969/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/585544969",
+        "license": "CC-BY",
+        "author": "(c) Juan Cruzado Cortés, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Ramphastos sulfuratus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramphastos%20sulfuratus%20-Belize%20Zoo-6a-2c.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ramphastos%20sulfuratus%20-Belize%20Zoo-6a-2c.jpg",
-        "license": "CC BY 2.0",
-        "author": "derivative work: Snowmanradio (talk)\nRamphastos_sulfuratus_-Belize_Zoo-6a.jpg: Pearl Vas"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/209837912/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/209837912/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/209837912",
+        "license": "CC-BY",
+        "author": "(c) Ricard Busquets Reverte, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,10 +36,12 @@
     "type": "national tree",
     "scientificName": "Swietenia macrophylla",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Leaves%20I%20IMG%208668.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Leaves%20I%20IMG%208668.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "J.M.Garg"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/254484019/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/254484019/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/254484019",
+      "license": "CC-BY",
+      "author": "(c) Alaina Krakowiak, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

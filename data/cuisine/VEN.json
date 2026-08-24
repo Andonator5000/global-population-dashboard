@@ -1,34 +1,103 @@
 {
   "iso3": "VEN",
   "name": "Venezuela",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "arepa",
+      "name": "Arepa Pabellón",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arepitas%20Food%20Macro.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Arepitas%20Food%20Macro.jpg",
-        "license": "CC BY 2.0",
-        "author": "Steven Depolo from Grand Rapids, MI, USA"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/13fg4j1764441982.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/13fg4j1764441982.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53334",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "hallaca",
+      "name": "Arepa pelua",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hallacas%20con%20pan%20de%20jamon%2C%20plato%20Venezuelano.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hallacas%20con%20pan%20de%20jamon%2C%20plato%20Venezuelano.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Wilfredor"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53329",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Tequeño",
+      "name": "Cassava pizza",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Teque%C3%B1os%20v%C3%A9n%C3%A9zu%C3%A9liens%20%C3%A0%20Arepado%20%28Lyon%29%2C%20avril%202019%20%282%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Teque%C3%B1os%20v%C3%A9n%C3%A9zu%C3%A9liens%20%C3%A0%20Arepado%20%28Lyon%29%2C%20avril%202019%20%282%29.jpg",
-        "license": "CC0",
-        "author": "Benoît Prieur"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53330",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Oatmeal pancakes",
+      "description": "Breakfast",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53331",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Passion fruit mousse",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/gkcdpl1764441325.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/gkcdpl1764441325.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53333",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Venezuelan Arepas",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/3hcy191764376285.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/3hcy191764376285.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53325",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Venezuelan Coconut Chicken",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/z2sw3o1764378271.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/z2sw3o1764378271.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53327",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Venezuelan Sancocho",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/8859m71764377470.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/8859m71764377470.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53326",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

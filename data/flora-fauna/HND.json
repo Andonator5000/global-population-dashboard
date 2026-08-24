@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Odocoileus virginianus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/White-tailed%20deer.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:White-tailed%20deer.jpg",
-        "license": "Public domain",
-        "author": "USDA photo by Scott Bauer"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/58166047/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/58166047/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/58166047",
+        "license": "CC-BY",
+        "author": "(c) Whitney Mattila, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Ara macao",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ara%20macao%20-%20two%20at%20Lowry%20Park%20Zoo.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ara%20macao%20-%20two%20at%20Lowry%20Park%20Zoo.jpg",
-        "license": "CC BY 2.0",
-        "author": "Matthew Romack"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/53458435/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/53458435/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/53458435",
+        "license": "CC-BY",
+        "author": "(c) Matt Muir, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

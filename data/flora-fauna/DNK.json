@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Cygnus olor",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cygnus%20olor%202%20%28Marek%20Szczepanek%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cygnus%20olor%202%20%28Marek%20Szczepanek%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Marek Szczepanek"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/13855998/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/13855998/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/13855998",
+        "license": "CC-BY",
+        "author": "(c) carnifex, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national mammal",
       "scientificName": "Sciurus vulgaris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red%20Squirrel%201c.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red%20Squirrel%201c.jpg",
-        "license": "CC BY 2.0",
-        "author": "Tony Hisgett"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/189057259/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/189057259/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/189057259",
+        "license": "CC-BY",
+        "author": "(c) carnifex, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national butterfly",
       "scientificName": "Aglais urticae",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aglais%20urticae%20LC0310.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aglais%20urticae%20LC0310.jpg",
-        "license": "CC BY-SA 3.0 de",
-        "author": "Jörg Hempel"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/48011428/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/48011428/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/48011428",
+        "license": "CC-BY",
+        "author": "(c) Jon Sullivan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -43,10 +49,12 @@
     "type": "national tree",
     "scientificName": "Fagus sylvatica",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grib%20skov.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Grib%20skov.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Malene Thyssen"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/408459425/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/408459425/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/408459425",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

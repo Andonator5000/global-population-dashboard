@@ -1,0 +1,104 @@
+{
+  "iso3": "NLD",
+  "name": "Netherlands",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Apple cake",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/c0gmo31766594751.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/c0gmo31766594751.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53380",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Apple Potato Mash (Hete bliksem)",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/pa03n41777540582.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/pa03n41777540582.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53389",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Arnhemse meisjes",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/y4t9zg1777628842.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/y4t9zg1777628842.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53392",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Bitterballen (Dutch meatballs)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lhqev81565090111.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lhqev81565090111.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52979",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Boterkoek (Dutch Butter Cake)",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tkwxmv1777540463.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tkwxmv1777540463.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53385",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dutch Apple Pie",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/zy4fs51777540384.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/zy4fs51777540384.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53386",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dutch doughnuts",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/cz1d6v1777627421.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/cz1d6v1777627421.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53393",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dutch poffertjes (mini pancakes)",
+      "description": "Breakfast",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/oaqz9f1766593912.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/oaqz9f1766593912.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53379",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

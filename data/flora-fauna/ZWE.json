@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Hippotragus niger",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sable%20antelope%20%28Hippotragus%20niger%29%20adult%20male.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sable%20antelope%20%28Hippotragus%20niger%29%20adult%20male.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/104368605/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/104368605/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/104368605",
+        "license": "CC-BY",
+        "author": "(c) Christiaan Viljoen, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,20 +22,24 @@
       "type": "national bird",
       "scientificName": "Haliaeetus vocifer",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/African%20Fish%20Eagle%20AdF.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:African%20Fish%20Eagle%20AdF.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Arturo de Frias Marques"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/20939777/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/20939777/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/20939777",
+        "license": "CC-BY",
+        "author": "(c) Wynand Uys, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
   "flower": {
     "name": "Gloriosa superba",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flame%20Lily.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Flame%20Lily.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Macvivo at English Wikipedia\n\n(Original text: Samwise Gamgee)"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/440992542/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/440992542/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/440992542",
+      "license": "CC-BY",
+      "author": "(c) Teja Yantrapalli, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -1,79 +1,103 @@
 {
   "iso3": "ESP",
   "name": "Spain",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Fabada asturiana",
+      "name": "Air fryer patatas bravas",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fabada%20con%20compangu.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fabada%20con%20compangu.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Amasuela, Luis Lafuente Agudín"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53158",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "cocido",
+      "name": "Ajo blanco",
+      "description": "Starter",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cozido%20de%20gr%C3%A3o.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cozido%20de%20gr%C3%A3o.jpg",
-        "license": "CC BY 3.0",
-        "author": "Elingunnur"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53169",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Ensaïmada",
+      "name": "Arroz al horno (baked rice)",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ensaimada%20DSCN0885.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ensaimada%20DSCN0885.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Lisa Stevens from Sutton Coldfield, UK"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qt4i0n1763256454.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qt4i0n1763256454.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53156",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Migas",
+      "name": "Arroz con gambas y calamar",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Migas.PNG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Migas.PNG",
-        "license": "CC BY-SA 3.0",
-        "author": "Nanow jesús madrid 21:40, 6 May 2007 (UTC)"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jc6oub1763196663.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jc6oub1763196663.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53147",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Tarta de Santiago",
+      "name": "Chicken & chorizo rice pot",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tarta%20de%20Santiago-2009.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tarta%20de%20Santiago-2009.jpg",
-        "license": "CC BY 3.0",
-        "author": "Tamorlan"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53161",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "fideuà",
+      "name": "Chicken with saffron, raisins & pine nuts",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fideua%20-%20xurde.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fideua%20-%20xurde.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Jorge Díaz from Madrid, Spain"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53186",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "calçotada",
+      "name": "Chickpea, chorizo & spinach stew",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cal%C3%A7otada%20l%27espardenya%202008%20004.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cal%C3%A7otada%20l%27espardenya%202008%20004.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": null
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53166",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "gachas",
+      "name": "Chocolate churros with chocolate & salted caramel sauce",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gachas1.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gachas1.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Aamapersa"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/erzs951763296201.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/erzs951763296201.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53170",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

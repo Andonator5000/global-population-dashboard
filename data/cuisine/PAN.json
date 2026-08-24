@@ -1,0 +1,19 @@
+{
+  "iso3": "PAN",
+  "name": "Panama",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "panela con limón",
+      "description": "Latin American drink",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papel%C3%B3n%20con%20lim%C3%B3n.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Papel%C3%B3n%20con%20lim%C3%B3n.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "LittleT889",
+        "source": "Wikimedia Commons"
+      }
+    }
+  ]
+}

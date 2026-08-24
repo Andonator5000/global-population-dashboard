@@ -1,52 +1,103 @@
 {
   "iso3": "BRA",
   "name": "Brazil",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "akara",
+      "name": "Acaraje black-eyed pea fritters with shrimp filling",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Beans%20Ball-Akara.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Beans%20Ball-Akara.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "AkinkuotuFunmi"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dxs5t71782678369.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dxs5t71782678369.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53483",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "farofa",
+      "name": "Bahia-style Moqueca prawn stew",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Farofa%20brazil.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Farofa%20brazil.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "User Carioca"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/e2kcut1782591669.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/e2kcut1782591669.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53481",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Cajuína",
+      "name": "Black bean & meat stew - feijoada",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Caju%C3%ADnas%20do%20Brasil%20em%202019%20idem.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Caju%C3%ADnas%20do%20Brasil%20em%202019%20idem.jpg",
-        "license": "Public domain",
-        "author": "Moacir Ximenes"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xrxz7h1782592711.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xrxz7h1782592711.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53482",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Virado",
+      "name": "Brazilian carrot cake",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Virado%20a%20paulista.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Virado%20a%20paulista.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "edsonaoki"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/h68o161782679437.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/h68o161782679437.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53485",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Beirut sandwich",
+      "name": "Brazilian cheese bread (pão de queijo)",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Beirute%20sande.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Beirute%20sande.jpg",
-        "license": "Public domain",
-        "author": "“E Sortica (Sortica)”"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53476",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Brazilian chocolate truffles - brigadeiro",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dg7tad1782588053.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dg7tad1782588053.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53475",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Coconut quindim",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/46uazv1782588877.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/46uazv1782588877.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53477",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Creamy Aji green sauce",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/81j8iu1782590903.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/81j8iu1782590903.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53480",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

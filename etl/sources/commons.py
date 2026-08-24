@@ -117,6 +117,7 @@ def image_record(
         "commonsPage": file_page_for(filename),
         "license": metadata[filename]["license"],
         "author": metadata[filename]["author"],
+        "source": "Wikimedia Commons",
     }
 
 

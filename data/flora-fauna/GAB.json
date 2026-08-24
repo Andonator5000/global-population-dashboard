@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera pardus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Blackleopard.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Blackleopard.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Qilinmon at English Wikipedia"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ]

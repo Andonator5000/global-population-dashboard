@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Equus ferus przewalskii",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Przewalski%27s%20Horse%20%2802710137%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Przewalski%27s%20Horse%20%2802710137%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "IAEA Imagebank"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/12222219/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/12222219/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/12222219",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -23,7 +25,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ursus%20arctos%20gobiensis.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Ursus%20arctos%20gobiensis.jpg",
         "license": "CC BY-SA 1.0",
-        "author": "Hunter J. Causey"
+        "author": "Hunter J. Causey",
+        "source": "Wikimedia Commons"
       }
     },
     {
@@ -31,10 +34,12 @@
       "type": "national bird",
       "scientificName": "Falco cherrug",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Marek Szczepanek"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/92961407/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/92961407/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/92961407",
+        "license": "CC-BY",
+        "author": "(c) Christoph Moning, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -42,10 +47,12 @@
     "name": "Mongolian",
     "scientificName": "Scabiosa comosa",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Scabiosa%20comosa%2058515197.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Scabiosa%20comosa%2058515197.jpg",
-      "license": "CC BY 4.0",
-      "author": "yvesbas"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/111863914/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/111863914/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/111863914",
+      "license": "CC-BY",
+      "author": "(c) Ochirnima Nimaev, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

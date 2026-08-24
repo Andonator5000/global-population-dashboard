@@ -1,52 +1,103 @@
 {
   "iso3": "EGY",
   "name": "Egypt",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "kofta",
+      "name": "Egyptian Fatteh",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/EgFoodKofta.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:EgFoodKofta.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Roland Unger"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53031",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "ful medames",
+      "name": "Feteer Meshaltet",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Foul%20Mdammis%2C%20Tunisie.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Foul%20Mdammis%2C%20Tunisie.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Habib M'henni"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53030",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "koshari",
+      "name": "Ful Medames",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20food%20Koshary.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Egyptian%20food%20Koshary.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Dina Said"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53025",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "basbousa",
+      "name": "Koshari",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Basboosa.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Basboosa.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "stu_spivack"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53027",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Hawawshi",
+      "name": "Mulukhiyah",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20meatloaf.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Egyptian%20meatloaf.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Mkevy"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53029",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Shakshuka",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/g373701551450225.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/g373701551450225.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52963",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Shawarma",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53028",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Tamiya",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53026",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

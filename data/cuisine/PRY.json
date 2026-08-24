@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "piracaldo",
+      "description": "fish soup typical of Paraguay",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Suquet%20de%20peix.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Suquet%20de%20peix.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Hector Garcia from Barcelona, Catalonia, Spain"
+        "author": "Hector Garcia from Barcelona, Catalonia, Spain",
+        "source": "Wikimedia Commons"
       }
     }
   ]

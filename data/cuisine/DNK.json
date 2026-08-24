@@ -1,34 +1,103 @@
 {
   "iso3": "DNK",
   "name": "Denmark",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Stegt flæsk",
+      "name": "Baked brie with sorrel jam",
+      "description": "Starter",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stegt%20fl%C3%A6sk.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stegt%20fl%C3%A6sk.jpg",
-        "license": "CC BY 2.0",
-        "author": "Original uploader was ChildofMidnight at en.wikipedia"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/fg7d641784666908.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/fg7d641784666908.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53559",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Sol over Gudhjem",
+      "name": "Chicken Salad With Mushrooms and Bacon",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sol%20over%20Gudhjem%20p%C3%A5%20Snogeb%C3%A6k%20R%C3%B8geri%20-%2020240819%20-%2016.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sol%20over%20Gudhjem%20p%C3%A5%20Snogeb%C3%A6k%20R%C3%B8geri%20-%2020240819%20-%2016.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "AleWi"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/t5rgav1784659936.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/t5rgav1784659936.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53549",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Dyrlægens natmad",
+      "name": "Classic Potato Salad",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ida%20Davidsen%20-%20Dyrl%C3%A6gens%20Natmad.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ida%20Davidsen%20-%20Dyrl%C3%A6gens%20Natmad.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "User:Nillerdk"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5q88l31784664151.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5q88l31784664151.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53555",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Danish Rye Bread",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hem6gk1784664868.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/hem6gk1784664868.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53556",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Frikadeller - Danish Meatballs",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/bnhfa71784662834.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/bnhfa71784662834.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53553",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Hveder - Danish Wheat Buns",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xceagx1784662211.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xceagx1784662211.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53552",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Old-fashioned Danish Apple Trifle",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6aj3wy1784661564.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/6aj3wy1784661564.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53551",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Open-faced Sandwich With Potato",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wooxjq1784663522.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wooxjq1784663522.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53554",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

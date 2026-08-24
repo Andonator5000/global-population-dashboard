@@ -1,70 +1,103 @@
 {
   "iso3": "PHL",
   "name": "Philippines",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Tubâ",
+      "name": "Beef Asado",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tuba%20-%20Alcoholic%20tree%20sap%20from%20the%20palm%21%20Must%20be%20very%20fresh%20or%20it%20ferments%20into%20vinegar.%20%28Philippines%29%20-%20cropped.png?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tuba%20-%20Alcoholic%20tree%20sap%20from%20the%20palm%21%20Must%20be%20very%20fresh%20or%20it%20ferments%20into%20vinegar.%20%28Philippines%29%20-%20cropped.png",
-        "license": "CC BY 2.0",
-        "author": "Colin and Sarah Northway"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/pkopc31683207947.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/pkopc31683207947.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53071",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Kalamay",
+      "name": "Beef Caldereta",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bohol%20Kalamay%20packaged%20traditionally%20inside%20empty%20coconut%20shells.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bohol%20Kalamay%20packaged%20traditionally%20inside%20empty%20coconut%20shells.jpg",
-        "license": "CC BY 2.0",
-        "author": "Raycoy  Doop (JW) from Philippines"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/41cxjh1683207682.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/41cxjh1683207682.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53070",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Tocino",
+      "name": "Beef Mechado",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tocino.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tocino.jpg",
-        "license": "CC BY 2.5",
-        "author": "Original uploaded by Kguirnela (Transfered by Diádoco)"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/cgl60b1683206581.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/cgl60b1683206581.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53068",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Silog",
+      "name": "Bistek",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tapsilog%20in%20saudi%20arabia.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tapsilog%20in%20saudi%20arabia.jpg",
-        "license": "CC BY 3.0",
-        "author": "Halil S. Mucaram Halil marx07 (talk) 18:26, 13 November 2012 (UTC)"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53069",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Poqui poqui",
+      "name": "Crispy Eggplant",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ilocos%20Norte%20Currimao%20Sitio%20Remedios%20-%20Poqui%20Poqui.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ilocos%20Norte%20Currimao%20Sitio%20Remedios%20-%20Poqui%20Poqui.jpg",
-        "license": "CC BY 2.0",
-        "author": "Yvette Tan"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/c7lzrl1683208757.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/c7lzrl1683208757.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53072",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Empanadilla",
+      "name": "Eggplant Adobo",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Empanadillas.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Empanadillas.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Fernand0"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/y7h0lq1683208991.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/y7h0lq1683208991.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53073",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Humba",
+      "name": "Grilled eggplant with coconut milk",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Humba%20%28Philippines%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Humba%20%28Philippines%29.jpg",
-        "license": "CC0",
-        "author": "Obsidian Soul"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/bopa2i1683209167.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/bopa2i1683209167.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53074",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Tortang Talong",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/va668f1683209318.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/va668f1683209318.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53075",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

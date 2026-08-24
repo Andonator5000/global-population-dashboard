@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Gallus gallus domesticus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coq-gaulois-dore.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Coq-gaulois-dore.JPG",
-        "license": "CC BY-SA 2.5",
-        "author": "Gandalf le blanc"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/43973343/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/43973343/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/43973343",
+        "license": "CC-BY",
+        "author": "(c) Jacqui Geux, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

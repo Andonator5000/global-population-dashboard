@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Ursus arctos",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/European%20Brown%20Bear.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:European%20Brown%20Bear.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Francis C. Franklin"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9581603/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9581603/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/9581603",
+        "license": "CC-BY",
+        "author": "(c) Annika Lindqvist, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national fish",
       "scientificName": "Perca fluviatilis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Perca%20fluviatilis2.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Perca%20fluviatilis2.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Citron"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/406174507/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/406174507/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/406174507",
+        "license": "CC-BY",
+        "author": "(c) Alex Sosnovshchenko, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national insect",
       "scientificName": "Coccinella septempunctata",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/7-Spotted-Ladybug-Coccinella-septempunctata-sq1.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:7-Spotted-Ladybug-Coccinella-septempunctata-sq1.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Photographer: Dominik Stodulski   Graphic Processing: User:MathKnight"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/375875537/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/375875537/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/375875537",
+        "license": "CC-BY",
+        "author": "(c) Victor Heng, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -42,10 +48,12 @@
       "type": "national bird",
       "scientificName": "Cygnus cygnus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cygnus%20cygnus%20Singschwan.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cygnus%20cygnus%20Singschwan.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Andreas Trepte"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/13096818/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/13096818/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/13096818",
+        "license": "CC-BY",
+        "author": "(c) Austin 0201, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -54,10 +62,12 @@
     "type": "national tree",
     "scientificName": "Betula pendula",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/B.%20pendula%2C%20Koivu%20Birch%2C%20end%20of%20August%202.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:B.%20pendula%2C%20Koivu%20Birch%2C%20end%20of%20August%202.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Abc10"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/73723498/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/73723498/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/73723498",
+      "license": "CC-BY",
+      "author": "(c) Нурхайдарова Татьяна, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

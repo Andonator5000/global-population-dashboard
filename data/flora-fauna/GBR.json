@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Canis lupus familiaris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Clyde%20The%20Bulldog.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Clyde%20The%20Bulldog.jpg",
-        "license": "Public domain",
-        "author": "Asmadeus"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/214572955",
+        "license": "CC-BY",
+        "author": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national animal",
       "scientificName": "Panthera leo",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:020%20The%20lion%20king%20Snyggve%20in%20the%20Serengeti%20National%20Park%20Photo%20by%20Giles%20Laurent.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Giles Laurent"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national animal",
       "scientificName": "Milvus milvus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Milvus%20milvus%20R%28ThKraft%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Milvus%20milvus%20R%28ThKraft%29.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Thomas Kraft (ThKraft)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61895301/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61895301/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/61895301",
+        "license": "CC-BY",
+        "author": "(c) Charlotte Kirchner, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -45,7 +51,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Oftheunicorn.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Oftheunicorn.jpg",
         "license": "Public domain",
-        "author": "Conrad Gessner"
+        "author": "Conrad Gessner",
+        "source": "Wikimedia Commons"
       }
     },
     {
@@ -56,7 +63,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Welsh%20Dragon%20%28Y%20Ddraig%20Goch%29.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Welsh%20Dragon%20%28Y%20Ddraig%20Goch%29.svg",
         "license": "CC BY-SA 3.0",
-        "author": "Sodacan"
+        "author": "Sodacan",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -65,10 +73,12 @@
     "type": "national tree",
     "scientificName": "Quercus, Quercus robur",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Baginton%20oak%20tree%20july06.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Baginton%20oak%20tree%20july06.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "The original uploader was Snowmanradio at English Wikipedia.\n\n(Original text: snowmanradio)"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/10407529",
+      "license": "CC-BY",
+      "author": "(c) Natalya Ivanova, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

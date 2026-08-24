@@ -8,10 +8,12 @@
     "type": "national tree",
     "scientificName": "Dracaena cinnabari",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dragon%27s%20Blood%20Tree%2C%20Socotra%20Island%20%2811083564084%29.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Dragon%27s%20Blood%20Tree%2C%20Socotra%20Island%20%2811083564084%29.jpg",
-      "license": "CC BY-SA 2.0",
-      "author": "Rod Waddington from Kergunyah, Australia"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/111803110/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/111803110/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/111803110",
+      "license": "CC-BY",
+      "author": "(c) Manuel Schwarz, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

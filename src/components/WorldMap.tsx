@@ -468,9 +468,9 @@ export function WorldMap({
         const { dx: fdx, dy: fdy } = pendingDrag.current
         pendingDrag.current = { dx: 0, dy: 0 }
         // Degrees per CSS pixel, eased down as the zoom tightens.
-        // 0.25 -> 0.375 (2026-08-24): the maintainer found the spin ~50%
-        // too slow under a finger even after the rAF batching fix.
-        const sensitivity = 0.375 / Math.sqrt(zoomLevel.current)
+        // 0.25 -> 0.375 -> 0.5625 (2026-08-24): raised 50% twice on
+        // maintainer request; the spin should track a finger briskly.
+        const sensitivity = 0.5625 / Math.sqrt(zoomLevel.current)
         setRotation(([lambda, phi]) => [
           lambda + fdx * sensitivity,
           Math.max(-90, Math.min(90, phi - fdy * sensitivity)),

@@ -1,0 +1,30 @@
+{
+  "iso3": "KAZ",
+  "name": "Kazakhstan",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "chal",
+      "description": "Turkic beverage of fermented camel milk",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shubat.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Shubat.jpg",
+        "license": "CC BY 2.0",
+        "author": "Upyernoz on Flickr",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Nauryz kozhe",
+      "description": "Uyghur/Kazakh/Kyrgyz congee",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Navruzkozhe.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Navruzkozhe.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Beqery",
+        "source": "Wikimedia Commons"
+      }
+    }
+  ]
+}

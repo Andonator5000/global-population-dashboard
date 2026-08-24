@@ -54,6 +54,8 @@ def ingest(
     # iso3 -> label -> {name, population, qid}; label-level dedupe because
     # P150 occasionally lists an entity twice under different items.
     collected: dict[str, dict[str, dict[str, Any]]] = {}
+    # iso3 -> class label -> occurrences, for "what this country calls them".
+    class_votes: dict[str, dict[str, int]] = {}
     for row in bindings:
         iso3 = (row.get("iso3", {}).get("value") or "").upper()
         if iso3 not in registry:
@@ -69,6 +71,13 @@ def ingest(
                 population = int(float(raw))
             except ValueError:
                 population = None
+        class_label = (row.get("classLabel", {}).get("value") or "").strip()
+        if (
+            class_label
+            and class_label.lower() not in config.SUBDIVISION_GENERIC_CLASS_LABELS
+        ):
+            votes = class_votes.setdefault(iso3, {})
+            votes[class_label] = votes.get(class_label, 0) + 1
         existing = collected.setdefault(iso3, {}).get(label)
         if existing is None or (existing["population"] is None and population):
             collected[iso3][label] = {
@@ -84,6 +93,12 @@ def ingest(
             by_label.values(),
             key=lambda d: (-(d["population"] or -1), d["name"]),
         )
+        votes = class_votes.get(iso3, {})
+        # The most common specific class label is the country's own term
+        # ("canton of Switzerland", "state of the United States").
+        division_type = (
+            max(votes.items(), key=lambda kv: kv[1])[0] if votes else None
+        )
         document = {
             "iso3": iso3,
             "name": registry[iso3].name_common,
@@ -93,6 +108,7 @@ def ingest(
                 "Wikidata (P150); population is the latest Wikidata figure "
                 "(P1082), whose reference year varies by division."
             ),
+            "divisionType": division_type,
             "divisions": divisions,
         }
         (out_dir / f"{iso3}.json").write_text(

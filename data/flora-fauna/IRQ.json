@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Alectoris chukar",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Alectoris-chukar-001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Alectoris-chukar-001.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Mdf"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/336473629/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/336473629/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/336473629",
+        "license": "CC-BY",
+        "author": "(c) SIA, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national animal, krg",
       "scientificName": "Capra aegagrus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bezoarziege.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bezoarziege.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "F. Spangenberg (Der Irbis, own photo)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/239844749/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/239844749/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/239844749",
+        "license": "CC-BY",
+        "author": "(c) Lennart Hudel, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

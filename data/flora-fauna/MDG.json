@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Lemur catta",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lemur%20catta%20001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lemur%20catta%20001.jpg",
-        "license": "CC BY 3.0",
-        "author": "Alex Dunkel (Maky)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/99684889/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/99684889/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/99684889",
+        "license": "CC-BY",
+        "author": "(c) George Williams, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national animal",
       "scientificName": "Bos primigenius indicus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Z%C3%A9bu.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Z%C3%A9bu.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Marius CONJEAUD"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/354343330/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/354343330/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/354343330",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,10 +36,12 @@
     "type": "national tree",
     "scientificName": "Adansonia",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KayesBaobab.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:KayesBaobab.jpg",
-      "license": "Public domain",
-      "author": "NOAA. This image is a work of the National Oceanic and Atmospheric Administration, taken or made during the course of an employee's official duties. As works of the U.S. federal government, all NOAA images are in the public domain."
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/15521975/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/15521975/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/15521975",
+      "license": "CC-BY",
+      "author": "(c) Robert Taylor, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

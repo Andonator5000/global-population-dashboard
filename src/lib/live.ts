@@ -128,6 +128,32 @@ export function describeWeatherCode(code: number): string {
   return `Weather code ${code}`
 }
 
+/**
+ * Weather-app styling per WMO code group: an emoji and a gradient. Every
+ * gradient is deep enough to carry WHITE text at AA for large type, in
+ * both themes -- the card is deliberately theme-invariant, like a weather
+ * app's condition tile.
+ */
+export function weatherVisual(code: number): { emoji: string; gradient: string } {
+  if (code <= 1)
+    return { emoji: '☀️', gradient: 'linear-gradient(135deg, #d97706, #92400e)' }
+  if (code === 2)
+    return { emoji: '⛅', gradient: 'linear-gradient(135deg, #2f6fb3, #1d4e84)' }
+  if (code === 3)
+    return { emoji: '☁️', gradient: 'linear-gradient(135deg, #5b6b7c, #3c4a59)' }
+  if (code === 45 || code === 48)
+    return { emoji: '🌫️', gradient: 'linear-gradient(135deg, #6d7a86, #49545f)' }
+  if (code >= 51 && code <= 57)
+    return { emoji: '🌦️', gradient: 'linear-gradient(135deg, #4477aa, #2b5580)' }
+  if ((code >= 61 && code <= 67) || (code >= 80 && code <= 82))
+    return { emoji: '🌧️', gradient: 'linear-gradient(135deg, #33608f, #1e3f63)' }
+  if ((code >= 71 && code <= 77) || code === 85 || code === 86)
+    return { emoji: '🌨️', gradient: 'linear-gradient(135deg, #5c7fa3, #3d5975)' }
+  if (code >= 95)
+    return { emoji: '⛈️', gradient: 'linear-gradient(135deg, #4b3f72, #2e2749)' }
+  return { emoji: '🌡️', gradient: 'linear-gradient(135deg, #5b6b7c, #3c4a59)' }
+}
+
 export function useLiveWeather(
   lat: number | null,
   lon: number | null,
@@ -142,7 +168,10 @@ export function useLiveWeather(
     const url =
       `https://api.open-meteo.com/v1/forecast?latitude=${lat.toFixed(3)}` +
       `&longitude=${lon.toFixed(3)}` +
-      `&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`
+      `&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m` +
+      // Observation timestamps in the CAPITAL's own zone, so "last updated"
+      // reads as local time there rather than GMT.
+      `&timezone=auto`
     fetch(url)
       .then((response) => {
         if (!response.ok) throw new Error(`weather HTTP ${response.status}`)

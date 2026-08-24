@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Phasianus versicolor",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Phasianus%20versicolor%20in%20field.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Phasianus%20versicolor%20in%20field.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Alpsdake"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/422858525/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/422858525/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/422858525",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national fish",
       "scientificName": "Cyprinus carpio",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Koi%20at%20Japanese%20Garden%20-%20UH%20Manoa%20%285674161714-c%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Koi%20at%20Japanese%20Garden%20-%20UH%20Manoa%20%285674161714-c%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Daniel Ramirez from Honolulu, USA"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/110834346/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/110834346/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/110834346",
+        "license": "CC-BY",
+        "author": "(c) Юлия, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,19 +36,23 @@
     "type": "national tree",
     "scientificName": "Prunus serrulata",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg",
-      "license": "CC BY 2.0",
-      "author": "TANAKA Juuyoh (田中十洋)"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/366717203/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/366717203/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/366717203",
+      "license": "CC-BY",
+      "author": "(c) W Rao, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Cherry Blossom",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sakura%20and%20Moss%20Pink%20-%20%E6%A1%9C%28%E3%81%95%E3%81%8F%E3%82%89%29%E3%81%A8%E8%8A%9D%E6%A1%9C%28%E3%81%97%E3%81%B0%E3%81%96%E3%81%8F%E3%82%89%29.jpg",
-      "license": "CC BY 2.0",
-      "author": "TANAKA Juuyoh (田中十洋)"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/291667357/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/291667357/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/291667357",
+      "license": "CC-BY",
+      "author": "(c) marius, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

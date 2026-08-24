@@ -1,0 +1,104 @@
+{
+  "iso3": "CHL",
+  "name": "Chile",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Chilean Dobladitas",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/p6hgrj1782851874.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/p6hgrj1782851874.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53516",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chilean Empanada",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/q4xgij1782851193.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/q4xgij1782851193.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53514",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chilean-Style Sopaipillas",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/45noa31782850540.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/45noa31782850540.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53513",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Empanadas Fritas de Queso",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53518",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Leche Asada",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/fnh40v1782853788.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/fnh40v1782853788.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53519",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Manjar (Dulce de Leche)",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tmc6ai1782851531.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tmc6ai1782851531.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53515",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Pastel de Choclo",
+      "description": "Chicken",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/47abic1782854326.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/47abic1782854326.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53520",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Pastel de Papas (Chilean Potato Pie)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/h031jy1782853081.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/h031jy1782853081.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53517",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

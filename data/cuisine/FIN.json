@@ -6,47 +6,57 @@
   "dishes": [
     {
       "name": "kalakukko",
+      "description": "traditional food from the Finnish region of Savonia",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kalakukko%20%28opened%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Kalakukko%20%28opened%29.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Rst2000"
+        "author": "Rst2000",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "sahti",
+      "description": "traditional beer from Finland",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Finlandia%20sahti.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Finlandia%20sahti.jpg",
         "license": "Public domain",
-        "author": "User:Mahlum"
+        "author": "User:Mahlum",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Lohikeitto",
+      "description": "fish soup",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lohikeitto.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lohikeitto.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Tuijasal"
+        "author": "Tuijasal",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Porkkanalaatikko",
+      "description": "traditional Finnish dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Carrot%20casserole.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Carrot%20casserole.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Tiia Monto"
+        "author": "Tiia Monto",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Salmiakki Koskenkorva",
+      "description": "Finnish pre-mixed liqueur",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lakritzlikoer.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lakritzlikoer.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Superbass"
+        "author": "Superbass",
+        "source": "Wikimedia Commons"
       }
     }
   ]

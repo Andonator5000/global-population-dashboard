@@ -9,10 +9,12 @@
       "type": "national fish",
       "scientificName": "Makaira nigricans",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Atlantic%20blue%20marlin.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Atlantic%20blue%20marlin.jpg",
-        "license": "Public domain",
-        "author": "NOAA"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/349147818/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/349147818/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/349147818",
+        "license": "CC-BY",
+        "author": "(c) Robin Fokker, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Phoenicopterus ruber",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/American%20flamingo%20%28Phoenicopterus%20ruber%29.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:American%20flamingo%20%28Phoenicopterus%20ruber%29.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/565765124/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/565765124/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/565765124",
+        "license": "CC-BY",
+        "author": "(c) SteveM4560, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,10 +36,12 @@
     "type": "national tree",
     "scientificName": "Guaiacum sanctum",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Guaiacum%20sanctum.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Guaiacum%20sanctum.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Mangostar"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/187672492/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/187672492/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/187672492",
+      "license": "CC-BY",
+      "author": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

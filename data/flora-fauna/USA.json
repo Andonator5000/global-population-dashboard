@@ -9,10 +9,12 @@
       "type": "national mammal",
       "scientificName": "Bison bison",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/American%20bison%20k5680-1.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:American%20bison%20k5680-1.jpg",
-        "license": "Public domain",
-        "author": "Jack Dykinga"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/318196/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/318196/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/318196",
+        "license": "CC-BY",
+        "author": "(c) James Hardcastle, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Haliaeetus leucocephalus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Haliaeetus%20leucocephalus.jpeg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Haliaeetus%20leucocephalus.jpeg",
-        "license": "CC BY-SA 3.0",
-        "author": "The original uploader was Cactus.man at English Wikipedia."
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/384490244/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/384490244/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/384490244",
+        "license": "CC-BY",
+        "author": "(c) Marcel_Pepin, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,19 +36,23 @@
     "type": "national tree",
     "scientificName": "Quercus",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Raunkiaer.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Raunkiaer.jpg",
-      "license": "Public domain",
-      "author": "No machine-readable author provided. Haabet assumed (based on copyright claims)."
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31649163/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31649163/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/31649163",
+      "license": "CC-BY",
+      "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "rose",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rosa%20rubiginosa%201.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rosa%20rubiginosa%201.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Stan Shebs"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/331527891/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/331527891/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/331527891",
+      "license": "CC-BY",
+      "author": "(c) Millie Basden, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

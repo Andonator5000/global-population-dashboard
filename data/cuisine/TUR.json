@@ -5,75 +5,91 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
+      "name": "ayran",
+      "description": "drink made from yoghurt with soda water and salt, and sometimes also vodka",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fresh%20ayran.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fresh%20ayran.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Mavigogun",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
       "name": "sujuk",
+      "description": "dry, spicy, fermented sausage of several Anatolian, Balkan, Middle Eastern and Central Asian cuisines",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sucuk-1.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Sucuk-1.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Rainer Zenz"
+        "author": "Rainer Zenz",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "dondurma",
+      "description": "Turkish variety of ice cream",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dondurma%20with%20kabak.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Dondurma%20with%20kabak.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "E4024"
+        "author": "E4024",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "pastırma",
+      "description": "Anatolian cuisine cold cut, also found in neighbouring countries",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Iraqi%20Pastirma-Mosul%2002.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Iraqi%20Pastirma-Mosul%2002.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turkish%20pastirma.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Turkish%20pastirma.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Abdulsalam Al Dabbagh"
+        "author": "E4024",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "menemen",
+      "description": "Turkish tomato, fresh pepper and optional onion with egg.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Menemen%20%2849657982813%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Menemen%20%2849657982813%29.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "やましこ"
+        "author": "やましこ",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "nettle soup",
+      "description": "traditional soup prepared from stinging nettles",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/St%20John%20Restaurant%2C%20Smithfield%2C%20London%20%283445306202%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:St%20John%20Restaurant%2C%20Smithfield%2C%20London%20%283445306202%29.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Ewan Munro from London, UK"
+        "author": "Ewan Munro from London, UK",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "vine leaf roll",
+      "description": "dishes made by stuffing rice, cheese or ground meat in vine (grape) leaves (rolls)",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Etli%20yaprak%20sarma%20in%20Turkey.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Etli%20yaprak%20sarma%20in%20Turkey.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "E4024"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sarma.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sarma.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Noumenon",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "pişmaniye",
+      "description": "Turkish sweet",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pismaniye%201%20%28Piotr%20Kuczynski%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Pismaniye%201%20%28Piotr%20Kuczynski%29.jpg",
         "license": "CC BY 3.0",
-        "author": "Pkuczynski"
-      }
-    },
-    {
-      "name": "tavukgöğsü",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tavuk%20G%C3%B6%C4%9Fs%C3%BC.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tavuk%20G%C3%B6%C4%9Fs%C3%BC.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Maderibeyza"
+        "author": "Pkuczynski",
+        "source": "Wikimedia Commons"
       }
     }
   ]

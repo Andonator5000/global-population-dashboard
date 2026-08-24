@@ -1,73 +1,103 @@
 {
   "iso3": "POL",
   "name": "Poland",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "bigos",
+      "name": "Beetroot & red cabbage sauerkraut",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bigos%20in%20Krak%C3%B3w%20%28Rynek%20G%C5%82%C3%B3wny%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bigos%20in%20Krak%C3%B3w%20%28Rynek%20G%C5%82%C3%B3wny%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Alberto Racatumba from Spain / España"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ra2k8a1764365055.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ra2k8a1764365055.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53307",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "sour rye soup",
+      "name": "Bigos (Hunters Stew)",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%C5%BBywno%C5%9B%C4%87%20-%20023.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%C5%BBywno%C5%9B%C4%87%20-%20023.JPG",
-        "license": "Public domain",
-        "author": "This file was added by User Joymaster Ten plik został dodany przez Wikipedystę Joymaster\n\n\n\n\n Joymaster\n\n\ne-mail GG 6403904\n\nCOMMONS pl.wiki\n\n\nJoymasters upload list"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/md8w601593348504.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/md8w601593348504.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53018",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "lazanki",
+      "name": "Bigos (Polish hunter's stew)",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Skryliai.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Skryliai.JPG",
-        "license": "Public domain",
-        "author": "Šarūnas Šimkus"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/fl4brj1764361323.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/fl4brj1764361323.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53300",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Obwarzanek krakowski",
+      "name": "Braised stuffed cabbage",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Obwarzanki%20krakowskie.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Obwarzanki%20krakowskie.jpg",
-        "license": "CC BY 2.0",
-        "author": "Chris Brown"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/z267f71764364072.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/z267f71764364072.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53305",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "faworki",
+      "name": "Challah",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Faworki%20%28plate%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Faworki%20%28plate%29.jpg",
-        "license": "CC BY 2.5",
-        "author": "Marcin Floryan"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/fm01ky1764366365.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/fm01ky1764366365.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53310",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "kotlet schabowy",
+      "name": "Cucumber & fennel salad",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kotlet%20Schabowy.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kotlet%20Schabowy.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Dmitry Dzema"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ei21r61764365935.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ei21r61764365935.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53309",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Podpiwek"
+      "name": "Golabki (cabbage roll)",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53021",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
     },
     {
-      "name": "Häckerle",
+      "name": "Mini bundt cakes",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Breslauer%20H%C3%A4ckerle.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Breslauer%20H%C3%A4ckerle.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "Schläsinger"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/tzt3it1764363293.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/tzt3it1764363293.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53304",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

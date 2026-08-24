@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Bison bonasus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wisent.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wisent.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Henryk Kotowski at English Wikipedia"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/393095275/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/393095275/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/393095275",
+        "license": "CC-BY",
+        "author": "(c) Kristof Zyskowski, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Ciconia ciconia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ciconia%20ciconia%20-%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ciconia%20ciconia%20-%2001.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Carlos Delgado"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/603583229/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/603583229/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/603583229",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national bird",
       "scientificName": "Haliaeetus albicilla",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/White-tailed%20Eagle%20Head%20detail.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:White-tailed%20Eagle%20Head%20detail.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Eprdox"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/341507041/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/341507041/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/341507041",
+        "license": "CC-BY",
+        "author": "(c) موسی مزینانیان Mousa Mazinanian, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -43,10 +49,12 @@
     "type": "national tree",
     "scientificName": "Quercus, Quercus robur",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Raunkiaer.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Raunkiaer.jpg",
-      "license": "Public domain",
-      "author": "No machine-readable author provided. Haabet assumed (based on copyright claims)."
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/10407529",
+      "license": "CC-BY",
+      "author": "(c) Natalya Ivanova, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

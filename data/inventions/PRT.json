@@ -1,17 +1,81 @@
 {
   "iso3": "PRT",
   "name": "Portugal",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "Pergaminho Sharrer",
+      "source": "wikidata",
       "year": 1990,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pergamino%20Sharrer.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Pergamino%20Sharrer.jpg",
         "license": "Public domain",
-        "author": null
+        "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Manueline",
+      "source": "wikipedia",
+      "era": "16th century",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre%20Bel%C3%A9m%20April%202009-4a.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Torre%20Bel%C3%A9m%20April%202009-4a.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Alvesgaspar",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Visigothic art and architecture",
+      "source": "wikipedia",
+      "era": "5th century"
+    },
+    {
+      "name": "Gaita transmontana",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Machete (musical instrument)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Jamón ibérico",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jamon%20iberico%20de%20bellota%202%20%28cinco%20jotas%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jamon%20iberico%20de%20bellota%202%20%28cinco%20jotas%29.jpg",
+        "license": "CC0",
+        "author": "Cantabrucu",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Carrack",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Gun port",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gunport.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gunport.svg",
+        "license": "CC BY-SA 2.0 fr",
+        "author": "Rama",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Cantino planisphere",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cantino%20planisphere%20%281502%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cantino%20planisphere%20%281502%29.jpg",
+        "license": "Public domain",
+        "author": "anonymous Portuguese (1502)",
+        "source": "Wikimedia Commons"
       }
     }
   ]

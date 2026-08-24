@@ -8,10 +8,12 @@
     "type": "national tree",
     "scientificName": "Tabebuia rosea",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Roble%20Sabana%20%28Tabebuia%20rosea%29.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Roble%20Sabana%20%28Tabebuia%20rosea%29.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "EliasTorres"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/638612011/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/638612011/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/638612011",
+      "license": "CC-BY",
+      "author": "(c) Eduardo Rueda Chiapas, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Dama dama",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fallow%20deer%20in%20field%20%28cropped%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fallow%20deer%20in%20field%20%28cropped%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Johann-Nikolaus Andreae"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/1859603/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/1859603/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/1859603",
+        "license": "CC-BY",
+        "author": "(c) Morten Ross, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Fregata magnificens",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fregata%20magnificens%20Islas%20Gal%C3%A1pagos.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fregata%20magnificens%20Islas%20Gal%C3%A1pagos.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "macraegi"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/158806319/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/158806319/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/158806319",
+        "license": "CC-BY",
+        "author": "(c) Megan Massa, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national sea creature",
       "scientificName": "Eretmochelys imbricata",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hawksbill%20Turtle.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hawksbill%20Turtle.jpg",
-        "license": "Public domain",
-        "author": "Hoffryan at English Wikipedia"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/44650/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/44650/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/44650",
+        "license": "CC-BY",
+        "author": "(c) Kyle Van Houtan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -43,10 +49,12 @@
     "type": "national tree",
     "scientificName": "Bucida buceras",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Starr%20080530-4639%20Bucida%20buceras.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Starr%20080530-4639%20Bucida%20buceras.jpg",
-      "license": "CC BY 3.0",
-      "author": "Forest &amp; Kim Starr"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/346642481/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/346642481/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/346642481",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

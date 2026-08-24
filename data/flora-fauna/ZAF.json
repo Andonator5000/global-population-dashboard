@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Antidorcas marsupialis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Springbok.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Springbok.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": null
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/598555802/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/598555802/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/598555802",
+        "license": "CC-BY",
+        "author": "(c) Vicente Lopes, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Anthropoides paradiseus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Anthropoides%20paradiseus%20-Etosha%20National%20Park%2C%20Namibia-8.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Anthropoides%20paradiseus%20-Etosha%20National%20Park%2C%20Namibia-8.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Alastair Rae"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/188055304/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/188055304/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/188055304",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national fish",
       "scientificName": "Dichistius capensis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dichistius%20capensis.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dichistius%20capensis.JPG",
-        "license": "Public domain",
-        "author": "Frederick Hermanus Van der Bank, University of Johannesburg"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/295265909/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/295265909/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/295265909",
+        "license": "CC-BY",
+        "author": "(c) Justin Ponder, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -43,19 +49,23 @@
     "type": "national tree",
     "scientificName": "Podocarpus latifolius",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Podocarpus%20latifolius%20-%20Cape%20Town%20-%203.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Podocarpus%20latifolius%20-%20Cape%20Town%20-%203.JPG",
-      "license": "Public domain",
-      "author": "Abu Shawka"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/440881548/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/440881548/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/440881548",
+      "license": "CC-BY",
+      "author": "(c) michaelheuermann, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "King Protea",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Peninsula%20Sandstone%20Fynbos%20-%20KingProtea%20-%20Table%20Mountain.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Peninsula%20Sandstone%20Fynbos%20-%20KingProtea%20-%20Table%20Mountain.JPG",
-      "license": "Public domain",
-      "author": "S Molteno"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/213126269/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/213126269/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/213126269",
+      "license": "CC-BY",
+      "author": "(c) Ren Hoekstra, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -6,10 +6,12 @@
   "flower": {
     "name": "Pterocarpus indicus",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E5%8D%B0%E5%BA%A6%E7%B4%AB%E6%AA%80%20Pterocarpus%20indicus%2020200807191221%2009.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:%E5%8D%B0%E5%BA%A6%E7%B4%AB%E6%AA%80%20Pterocarpus%20indicus%2020200807191221%2009.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Ping an Chang"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/511293438/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/511293438/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/511293438",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

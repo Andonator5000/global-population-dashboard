@@ -517,6 +517,8 @@ export interface SubdivisionsFile {
   name: string
   source: string
   note: string
+  /** The country's own term ("canton of Switzerland", "U.S. state"). */
+  divisionType?: string | null
   divisions: { name: string; population: number | null; qid: string }[]
 }
 
@@ -544,12 +546,17 @@ export interface CapitalsFile {
   >
 }
 
-/** A hotlinked Commons image plus the attribution its licence requires. */
+/** A hotlinked image plus the attribution its licence requires. */
 export interface CommonsImage {
   imageUrl: string
+  /** Higher-resolution variant for the lightbox; imageUrl if absent. */
+  largeUrl?: string
+  /** The image's own page (Commons file page, iNaturalist photo page...). */
   commonsPage: string
   license: string | null
   author: string | null
+  /** Which service hosts it: "Wikimedia Commons", "iNaturalist", "TheMealDB". */
+  source?: string
 }
 
 /** data/inventions/<ISO3>.json */
@@ -562,6 +569,9 @@ export interface InventionsFile {
     name: string
     inventors?: string[]
     year?: number
+    /** Prose-parsed period ("4th century BCE") when no year is recorded. */
+    era?: string
+    source?: string
     image?: CommonsImage
   }[]
 }
@@ -605,7 +615,7 @@ export interface CuisineFile {
   name: string
   source: string
   note: string
-  dishes: { name: string; image?: CommonsImage }[]
+  dishes: { name: string; description?: string; image?: CommonsImage }[]
 }
 
 export interface MapPalette {

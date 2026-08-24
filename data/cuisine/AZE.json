@@ -1,16 +1,31 @@
 {
   "iso3": "AZE",
   "name": "Azerbaijan",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Lula kebab",
+      "name": "Kelem dolmasi",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lula%20kebab.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lula%20kebab.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Lesya Dolyk"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53449",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Tendir Choreyi (Tandoori Bread)",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5mfmh01780158856.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5mfmh01780158856.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53448",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

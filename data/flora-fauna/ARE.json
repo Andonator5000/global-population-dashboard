@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Oryx leucoryx",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Arabian%20oryx%20%28oryx%20leucoryx%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Arabian%20oryx%20%28oryx%20leucoryx%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/59951975/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/59951975/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/59951975",
+        "license": "CC-BY",
+        "author": "(c) Christoph Moning, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national bird",
       "scientificName": "Falco cherrug",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Falco%20cherrug%20%28Marek%20Szczepanek%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Marek Szczepanek"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/92961407/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/92961407/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/92961407",
+        "license": "CC-BY",
+        "author": "(c) Christoph Moning, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,10 +36,12 @@
     "type": "national tree",
     "scientificName": "Prosopis cineraria",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jhand%20%28Prosopis%20cineraria%29%20at%20Hodal%20W%20IMG%201191.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Jhand%20%28Prosopis%20cineraria%29%20at%20Hodal%20W%20IMG%201191.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "J.M.Garg"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/475831891/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/475831891/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/475831891",
+      "license": "CC-BY",
+      "author": "(c) Denys Vynokurov, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {

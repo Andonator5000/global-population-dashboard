@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-24T04:13:18+00:00",
+  "generated_at": "2026-08-24T08:10:17+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-24T04:13:18+00:00",
+      "fetched_at": "2026-08-24T08:10:17+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -218,7 +218,7 @@
       "title": "Wikidata — first-level administrative divisions",
       "url": "https://query.wikidata.org/sparql",
       "licence": "CC0",
-      "fetched_at": "2026-08-24T02:48:37+00:00",
+      "fetched_at": "2026-08-24T06:14:05+00:00",
       "upstream_release": null,
       "vintage": "as retrieved; division populations carry their own vintages",
       "citation": "Wikidata (P150 contains administrative territorial entity)",
@@ -237,15 +237,15 @@
       "notes": "193 entities with temperature series, 241 capitals. Live weather itself is fetched by the BROWSER from Open-Meteo (CC BY 4.0, non-commercial API) and never enters /data."
     },
     "wikidata_inventions": {
-      "title": "Wikidata — inventions by country of origin",
+      "title": "Inventions: Wikidata origin tags + Wikipedia list articles",
       "url": "https://query.wikidata.org/sparql",
-      "licence": "CC0 (data); per-file Commons licences on images",
-      "fetched_at": "2026-08-24T04:11:59+00:00",
+      "licence": "Wikidata CC0; Wikipedia CC BY-SA 4.0; per-file Commons licences on images",
+      "fetched_at": "2026-08-24T07:53:01+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
-      "citation": "Wikidata (P495/P61/P575); Wikimedia Commons",
+      "citation": "Wikidata (P495/P61/P575); English Wikipedia per-country invention lists; Wikimedia Commons",
       "files": [],
-      "notes": "53 countries with qualifying items, 181 inventions. Coverage reflects Wikidata tagging, not national histories; most countries have none tagged and render as unavailable."
+      "notes": "53 countries with qualifying items, 363 inventions (195 Wikidata food/drink items excluded by class, 26 Wikipedia list entries excluded by description). Wikidata origin tags plus 50 curated Wikipedia list articles."
     },
     "airports": {
       "title": "OurAirports roster; Wikidata annual passengers",
@@ -261,24 +261,24 @@
     "wikipedia_national_symbols": {
       "title": "Wikipedia — lists of national animals, trees and flowers",
       "url": "https://en.wikipedia.org/wiki/List_of_national_animals",
-      "licence": "CC BY-SA 4.0 (text); per-file Commons licences on images",
+      "licence": "CC BY-SA 4.0 (text); images CC0/CC-BY via iNaturalist or per-file Commons licences",
       "fetched_at": "2026-08-24T04:09:55+00:00",
       "upstream_release": "Fri, 21 Aug 2026 08:12:00 GMT",
       "vintage": "pages as retrieved",
-      "citation": "Wikipedia: List of national animals; List of national trees; List of national flowers",
+      "citation": "Wikipedia: List of national animals; List of national trees; List of national flowers. Photos: iNaturalist (CC0/CC-BY, research grade) with Wikimedia Commons fallback",
       "files": [],
-      "notes": "142 countries with at least one symbol; 355 symbol images with Commons attribution. Unmatched rows: Central America and the Caribbean, Macedonia."
+      "notes": "142 countries with at least one symbol; 357 symbol images with Commons attribution. Unmatched rows: Central America and the Caribbean, Macedonia."
     },
     "wikidata_cuisine": {
-      "title": "Wikidata — dishes by country of origin",
-      "url": "https://query.wikidata.org/sparql",
-      "licence": "CC0 (data); per-file Commons licences on images",
-      "fetched_at": "2026-08-24T04:11:00+00:00",
+      "title": "Cuisine: TheMealDB (primary) + Wikidata dishes (fallback)",
+      "url": "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
+      "licence": "TheMealDB free/educational tier, attributed; Wikidata CC0; per-file Commons licences on fallback images",
+      "fetched_at": "2026-08-24T06:15:07+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
-      "citation": "Wikidata (P495 on dish items); Wikimedia Commons",
+      "citation": "TheMealDB (themealdb.com); Wikidata (P495 on dish items); Wikimedia Commons",
       "files": [],
-      "notes": "101 countries, 349 dishes. Coverage reflects Wikidata tagging; countries without tagged dishes render as unavailable."
+      "notes": "116 countries, 576 dishes; 62 countries served by TheMealDB's uniform 700x700 photography, the rest by Wikidata+Commons. Countries covered by neither render as unavailable."
     },
     "natural_earth": {
       "title": "Natural Earth 110m Admin 0 (via world-atlas TopoJSON)",
@@ -295,7 +295,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-24T04:13:18+00:00",
+      "fetched_at": "2026-08-24T08:10:17+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -556,7 +556,7 @@
         "wikidata_cuisine"
       ],
       "row_count": null,
-      "entity_count": 101
+      "entity_count": 116
     },
     "geo/countries-110m.json": {
       "description": "Country polygons keyed by ISO3, for map rendering.",
@@ -649,5 +649,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "699dfe96d0c8c525be29c29e29dc0c90dda9d58abdacb27dba8bbc0fdf096536"
+  "content_fingerprint": "a98eb1e8957c386a27981ff1d6bb9d4e848b5ab12732f31a12f34311394adaf0"
 }

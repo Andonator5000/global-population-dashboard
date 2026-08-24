@@ -1,11 +1,12 @@
 {
   "iso3": "URY",
   "name": "Uruguay",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "futsal",
+      "source": "wikidata",
       "inventors": [
         "Juan Carlos Ceriani Gralier"
       ],
@@ -13,19 +14,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Futebol%20Salao%20Pan2007.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Futebol%20Salao%20Pan2007.jpg",
         "license": "CC BY 3.0 br",
-        "author": "Wilson Dias/ABr"
-      }
-    },
-    {
-      "name": "mate",
-      "inventors": [
-        "Guaraní people"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Erva%20mate%20chimarrao%20in%20big%20cuia.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Erva%20mate%20chimarrao%20in%20big%20cuia.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "ChimaAddicted"
+        "author": "Wilson Dias/ABr",
+        "source": "Wikimedia Commons"
       }
     }
   ]

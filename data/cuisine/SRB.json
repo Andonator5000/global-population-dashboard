@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Mućkalica",
+      "description": "Serbian dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mu%C4%87kalica%20%288838976124%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Mu%C4%87kalica%20%288838976124%29.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Darko Mareš from Croatia"
+        "author": "Darko Mareš from Croatia",
+        "source": "Wikimedia Commons"
       }
     }
   ]

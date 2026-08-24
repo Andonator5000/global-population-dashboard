@@ -1,31 +1,38 @@
 {
   "iso3": "SGP",
   "name": "Singapore",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "fish head curry",
-      "year": 1950,
+      "name": "Kaya toast",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Sound Blaster",
+      "source": "wikipedia",
+      "inventors": [
+        "Sim Wong Hoo"
+      ],
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fisheadcurry.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fisheadcurry.JPG",
-        "license": "Copyrighted free use",
-        "author": "User Chensiyuan on en.wikipedia"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sound%20Blaster%20logo.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sound%20Blaster%20logo.svg",
+        "license": "Public domain",
+        "author": "Creative Technologies",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "black pepper crab",
+      "name": "Vaccine",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Virtual museum",
+      "source": "wikipedia",
       "inventors": [
-        "Long Beach Seafood Restaurant"
+        "Lin Hsin Hsin"
       ],
-      "year": 1959,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Black%20Peppered%20Crab%20%286895480431%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Black%20Peppered%20Crab%20%286895480431%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Bill Scott"
-      }
+      "year": 1994
     }
   ]
 }

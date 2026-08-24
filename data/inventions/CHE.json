@@ -1,50 +1,12 @@
 {
   "iso3": "CHE",
   "name": "Switzerland",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Toblerone",
-      "inventors": [
-        "Theodor Tobler"
-      ],
-      "year": 1908,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Toblerone%203362.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Toblerone%203362.jpg",
-        "license": "CC BY 3.0",
-        "author": "Ashley Pomeroy"
-      }
-    },
-    {
-      "name": "processed cheese",
-      "inventors": [
-        "Walter Gerber",
-        "Fritz Stettler"
-      ],
-      "year": 1911,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schmelzk%C3%A4se-1.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Schmelzk%C3%A4se-1.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Rainer Z ..."
-      }
-    },
-    {
-      "name": "hematogen",
-      "inventors": [
-        "Adolf Hommel"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%91%D0%B0%D1%82%D0%BE%D0%BD%D1%87%D0%B8%D0%BA%D0%B8%20%D0%B3%D0%B5%D0%BC%D0%B0%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D1%83.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D1%82%D0%BE%D0%BD%D1%87%D0%B8%D0%BA%D0%B8%20%D0%B3%D0%B5%D0%BC%D0%B0%D1%82%D0%BE%D0%B3%D0%B5%D0%BD%D1%83.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Sergei Frolov, sfrolov.livejournal.com"
-      }
-    },
-    {
       "name": "Gastronorm",
+      "source": "wikidata",
       "inventors": [
         "HotellerieSuisse"
       ],
@@ -52,25 +14,71 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gastronorm%20sizes.png?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Gastronorm%20sizes.png",
         "license": "CC BY-SA 4.0",
-        "author": "Brezh"
-      }
-    },
-    {
-      "name": "Riz Casimir",
-      "year": 1952,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Riz%20Casimir%20%284247740294%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Riz%20Casimir%20%284247740294%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "kochtopf"
+        "author": "Brezh",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Apertus",
+      "source": "wikidata",
       "inventors": [
         "Swiss AI"
       ],
       "year": 2025
+    },
+    {
+      "name": "Didier Queloz",
+      "source": "wikipedia",
+      "year": 1995
+    },
+    {
+      "name": "Aluminium foil",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Sandmeyer reaction",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Robert Maillart",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ETH-BIB-Maillart%2C%20Robert%20%281872-1940%29-Portrait-Portr%2013004.tif?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:ETH-BIB-Maillart%2C%20Robert%20%281872-1940%29-Portrait-Portr%2013004.tif",
+        "license": "Public domain",
+        "author": "Unbekannt",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Bouillon cube",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Trigonometric functions",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Academ%20Base%20of%20trigonometry.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Academ%20Base%20of%20trigonometry.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Baelde",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Euler's identity",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Euler%27s%20formula.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Euler%27s%20formula.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Original:  GuntherDerivative work:  Wereon",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Compound interest",
+      "source": "wikipedia"
     }
   ]
 }

@@ -1,16 +1,103 @@
 {
   "iso3": "URY",
   "name": "Uruguay",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "picada",
+      "name": "Beef Empanadas",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Picada%20cordobesa.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Picada%20cordobesa.jpg",
-        "license": "CC BY 2.5 ar",
-        "author": "Unknown authorUnknown author"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dxpc7j1764370714.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dxpc7j1764370714.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53317",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chivito sandwich",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/j80gmw1764372176.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/j80gmw1764372176.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53319",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chivito uruguayo",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/n7qnkb1630444129.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/n7qnkb1630444129.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53063",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chocolate alfajores",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/k9o0xr1764373018.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/k9o0xr1764373018.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53320",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Chocolate empanadas",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/u9ezi21764375474.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/u9ezi21764375474.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53324",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Flan",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0s80wo1764374393.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0s80wo1764374393.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53322",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Postre Chajá",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wii0591764375062.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wii0591764375062.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53323",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Torta de fiambre",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/okl9cm1764371087.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/okl9cm1764371087.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53318",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

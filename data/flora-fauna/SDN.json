@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Sagittarius serpentarius",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sagittarius%20serpentarius%20portrait.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sagittarius%20serpentarius%20portrait.jpg",
-        "license": "CC BY 2.0",
-        "author": "Flickr user belgianchocolate"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/507313802/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/507313802/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/507313802",
+        "license": "CC-BY",
+        "author": "(c) Jan Ebr &amp; Ivana Ebrová, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

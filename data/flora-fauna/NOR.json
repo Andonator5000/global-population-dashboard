@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Alces alces",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moose-Gustav.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Moose-Gustav.jpg",
-        "license": "CC BY 2.5",
-        "author": null
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/23946339/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/23946339/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/23946339",
+        "license": "CC-BY",
+        "author": "(c) Matt Muir, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national horse",
       "scientificName": "Equus ferus caballus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fjording%2C%20mother%20and%20daughter.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fjording%2C%20mother%20and%20daughter.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "GoogleMe"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/398682693/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/398682693/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/398682693",
+        "license": "CC-BY",
+        "author": "(c) Valentín Alfano, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "royal national animal",
       "scientificName": "Panthera leo",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Norway.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Coat%20of%20arms%20of%20Norway.svg",
-        "license": "Public domain",
-        "author": "Emblazonment by Sverre Morken (1992), redrawn by Jonas Madsen Rogne (2023) on behalf of the Norwegian Government Design Programme."
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -42,10 +48,12 @@
       "type": "national bird",
       "scientificName": "Cinclus cinclus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cinclus%20cinclus%20R%28ThKraft%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cinclus%20cinclus%20R%28ThKraft%29.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Thomas Kraft (ThKraft)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/247681814/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/247681814/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/247681814",
+        "license": "CC-BY",
+        "author": "(c) Jared Shorma, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

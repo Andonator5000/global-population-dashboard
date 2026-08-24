@@ -5,7 +5,8 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
-      "name": "Babute"
+      "name": "Babute",
+      "description": "Congolese dish"
     }
   ]
 }

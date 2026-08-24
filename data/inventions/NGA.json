@@ -1,0 +1,27 @@
+{
+  "iso3": "NGA",
+  "name": "Nigeria",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "inventions": [
+    {
+      "name": "Multi-core processor",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dual%20Core%20Generic.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dual%20Core%20Generic.svg",
+        "license": "Public domain",
+        "author": "CountingPine at English Wikipedia",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Autotransfusion",
+      "source": "wikipedia"
+    },
+    {
+      "name": "RxAll",
+      "source": "wikipedia"
+    }
+  ]
+}

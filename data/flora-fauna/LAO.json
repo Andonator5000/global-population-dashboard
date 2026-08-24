@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Elephas maximus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Elephas%20maximus%20Kobe%2002.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Elephas%20maximus%20Kobe%2002.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Corpse Reviver"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219306743/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/219306743/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/219306743",
+        "license": "CC-BY",
+        "author": "(c) Morten Ross, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,19 +23,23 @@
     "type": "national tree",
     "scientificName": "Plumeria",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Frangipani%20flowers.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Frangipani%20flowers.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Renesis"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/287591218/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/287591218/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/287591218",
+      "license": "CC-BY",
+      "author": "(c) MarvalPhotography19, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "plumeria",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Plumeria%20rubra-4.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Plumeria%20rubra-4.JPG",
-      "license": "CC BY-SA 4.0",
-      "author": "Varun Pabrai"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/287591218/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/287591218/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/287591218",
+      "license": "CC-BY",
+      "author": "(c) MarvalPhotography19, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

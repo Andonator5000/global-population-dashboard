@@ -1,40 +1,59 @@
 {
   "iso3": "PHL",
   "name": "Philippines",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "banana ketchup",
-      "inventors": [
-        "Maria Orosa"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Banana%20ketchup.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Banana%20ketchup.jpg",
-        "license": "Public domain",
-        "author": "John Stephen Dwyer (HouseOfScandal at en.wikipedia)"
-      }
-    },
-    {
       "name": "psychic surgery",
+      "source": "wikidata",
       "year": 2000,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gutierrez2.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Gutierrez2.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Brattarb"
+        "author": "Brattarb",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Filipino spaghetti",
-      "year": 2000,
+      "name": "Barong tagalog",
+      "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Filipino%20style%20spaghetti.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Filipino%20style%20spaghetti.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Barong%20made%20of%20pi%C3%B1a%20fabric%20displayed%20at%20the%20National%20Museum%20in%20the%20Philippines.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Barong%20made%20of%20pi%C3%B1a%20fabric%20displayed%20at%20the%20National%20Museum%20in%20the%20Philippines.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "RightCowLeftCoast"
+        "author": "Irvin Parco Sto. Tomas",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Salakot",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Panabas",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Kalis",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Lantaka",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Torogan",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Gambang (instrument)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Karakoa",
+      "source": "wikipedia"
     }
   ]
 }

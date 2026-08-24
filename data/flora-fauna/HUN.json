@@ -12,7 +12,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turul-Tb-front.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Turul-Tb-front.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Gajárszki László"
+        "author": "Gajárszki László",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -21,10 +22,12 @@
     "type": "national tree",
     "scientificName": "Ulmus",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Blismes%20elm%202007.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Blismes%20elm%202007.jpg",
-      "license": "GFDL",
-      "author": "Eric Collin.\n\nOriginal uploader was Ptelea at en.wikipedia"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/184724696/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/184724696/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/184724696",
+      "license": "CC-BY",
+      "author": "(c) Sandy Wolkenberg, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "iso3": "KEN",
+  "name": "Kenya",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "inventions": [
+    {
+      "name": "M-Pesa",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Lion lights",
+      "source": "wikipedia",
+      "inventors": [
+        "Richard Turere"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Richard%20Turere-profile-picture.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Richard%20Turere-profile-picture.jpg",
+        "license": "CC BY 4.0",
+        "author": "Louloudi92",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Fathiya Mbarak Khamis",
+      "source": "wikipedia",
+      "inventors": [
+        "Dr Fathiya Mbarak"
+      ]
+    },
+    {
+      "name": "Benga music",
+      "source": "wikipedia"
+    }
+  ]
+}

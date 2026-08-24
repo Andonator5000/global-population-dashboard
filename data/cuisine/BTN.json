@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Ema datshi",
+      "description": "a cheese and chili-based dish from Bhutan",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bhutanese%20hemadatsi.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Bhutanese%20hemadatsi.jpg",
         "license": "CC BY 2.0",
-        "author": "Bhutanese_hemadatsi_and_rice.JPG: ShashiBellamkonda\nderivative work: Thejinan (talk)"
+        "author": "Bhutanese_hemadatsi_and_rice.JPG: ShashiBellamkonda\nderivative work: Thejinan (talk)",
+        "source": "Wikimedia Commons"
       }
     }
   ]

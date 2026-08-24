@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera leo",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Emblem%20of%20Jerusalem.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emblem%20of%20Jerusalem.svg",
-        "license": "Public domain",
-        "author": "User:Cameltrader"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182303394/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/182303394",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national dog breed",
       "scientificName": "Canis familiaris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CanaanDogChakedeNess.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:CanaanDogChakedeNess.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Samorodokhanaana\n\nCanaan Dogs from \"Samorodok\" http://www.ruscanaan.ru"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/214572955",
+        "license": "CC-BY",
+        "author": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -31,10 +35,12 @@
       "type": "national scorpion",
       "scientificName": "Nebo hierichonticus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/NEBO%20HIERICHONTICUS.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:NEBO%20HIERICHONTICUS.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Guy Haimovitch"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/23848252/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/23848252/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/23848252",
+        "license": "CC-BY",
+        "author": "(c) Neal Kelso, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -42,10 +48,12 @@
       "type": "national bird",
       "scientificName": "Upupa epops",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wiedehopf%20mit%20Puppe%20als%20Futter.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wiedehopf%20mit%20Puppe%20als%20Futter.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Sven Damerow"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/540368634/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/540368634/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/540368634",
+        "license": "CC-BY",
+        "author": "(c) Dmitry Ivanov, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -53,10 +61,12 @@
       "type": "national snake",
       "scientificName": "Daboia palaestinae",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ArbeLevy-Vipera%20palaestinae%203.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:ArbeLevy-Vipera%20palaestinae%203.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "ארבל לוי-ArbeLevy, לוכד נחשים"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/201305643/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/201305643/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/201305643",
+        "license": "CC-BY",
+        "author": "(c) Dmitry Babin, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -65,20 +75,24 @@
     "type": "national tree",
     "scientificName": "Olea europaea",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Olea%20europea%203.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Olea%20europea%203.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Bratislav Tabaš"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/712174255/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/712174255/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/712174255",
+      "license": "CC-BY",
+      "author": "(c) zebedeugalinha, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Hebrew",
     "scientificName": "Anemone coronaria",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Anemone-coronaria-2016-Zachi-Evenor.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Anemone-coronaria-2016-Zachi-Evenor.jpg",
-      "license": "CC BY 2.0",
-      "author": "Zachi Evenor"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/467609205/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/467609205/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/467609205",
+      "license": "CC-BY",
+      "author": "(c) Pantazi Katerina, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -1,79 +1,103 @@
 {
   "iso3": "IND",
   "name": "India",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "chutney",
+      "name": "Baingan Bharta",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chutneykarnataka.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chutneykarnataka.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Charles Haynes"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52807",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "lassi",
+      "name": "Beef Mandi",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fatfreelassi.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fatfreelassi.jpg",
-        "license": "CC BY 2.0",
-        "author": "Swami Stream"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1nalo51765188375.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1nalo51765188375.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53359",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "appam",
+      "name": "Bread omelette",
+      "description": "Breakfast",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Paalappam.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Paalappam.JPG",
-        "license": "CC BY 3.0",
-        "author": "Jomesh at Malayalam Wikipedia"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53076",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "korma",
+      "name": "Chicken Handi",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20Korma.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20Korma.JPG",
-        "license": "CC0",
-        "author": "Miansari66"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52795",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "chana masala",
+      "name": "Chicken Mandi",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Choleindia.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Choleindia.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "kspoddar"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53358",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Pav bhaji",
+      "name": "Dal fry",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pav%20Bhaji.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pav%20Bhaji.jpg",
-        "license": "CC BY 2.0",
-        "author": "Rishika Palvankar"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52785",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Idiyappam",
+      "name": "Kidney Bean Curry",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E0%B2%B6%E0%B3%8D%E0%B2%AF%E0%B2%BE%E0%B2%B5%E0%B2%BF%E0%B2%97%E0%B3%86%20%E0%B2%95%E0%B2%BE%E0%B2%AF%E0%B2%BF%20%E0%B2%B9%E0%B2%BE%E0%B2%B2%E0%B3%81.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%E0%B2%B6%E0%B3%8D%E0%B2%AF%E0%B2%BE%E0%B2%B5%E0%B2%BF%E0%B2%97%E0%B3%86%20%E0%B2%95%E0%B2%BE%E0%B2%AF%E0%B2%BF%20%E0%B2%B9%E0%B2%BE%E0%B2%B2%E0%B3%81.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Yakshitha"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52868",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Vada pav",
+      "name": "Lamb Biryani",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vada%20Paav-The%20Mumbai%20Burger.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vada%20Paav-The%20Mumbai%20Burger.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Kaushiki Prabhudesai"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52805",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

@@ -1,34 +1,55 @@
 {
   "iso3": "AUT",
   "name": "Austria",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Vanillekipferl",
+      "name": "Clear Soup with Semolina Dumplings",
+      "description": "Miscellaneous",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vanillekipferl%20WMAT2017%2002.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vanillekipferl%20WMAT2017%2002.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Weihnachtskekserl"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qserum1780156275.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qserum1780156275.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53446",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Leberknödel",
+      "name": "Kaspressknödel - Cheese Dumplings",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Leberknoedelsuppe.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Leberknoedelsuppe.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "CTHOE"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/x26z3y1780155760.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/x26z3y1780155760.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53445",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Eiernockerl",
+      "name": "Tafelspitz",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20180222%20CafeFalk%20003%20%2839646637215%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:20180222%20CafeFalk%20003%20%2839646637215%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Tauralbus from Wien, Austria"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/svf3d01780298321.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/svf3d01780298321.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53447",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Tirolean Dumplings",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/jbw8m11780155348.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/jbw8m11780155348.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53444",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

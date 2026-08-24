@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Vultur gryphus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Colca-condor-c03.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Colca-condor-c03.jpg",
-        "license": "CC BY-SA 2.5 es",
-        "author": "Colegota"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/28100377/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/28100377/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/28100377",
+        "license": "CC-BY",
+        "author": "(c) Sebastian Serna Muñoz, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,20 +23,24 @@
     "type": "national tree",
     "scientificName": "Ceroxylon quindiuense",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ceroxylon%20quindiuense%202.png?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ceroxylon%20quindiuense%202.png",
-      "license": "CC BY-SA 2.0",
-      "author": "Ángela Quintero"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9927391/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9927391/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/9927391",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Colombia",
     "scientificName": "Cattleya trianae",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cattleya%20trianae.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cattleya%20trianae.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Arne Larsen (?)"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/47433788/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/47433788/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/47433788",
+      "license": "CC-BY",
+      "author": "(c) GERMAN LEONEL SARMIENTO CRUZ, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

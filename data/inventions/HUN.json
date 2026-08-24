@@ -1,11 +1,12 @@
 {
   "iso3": "HUN",
   "name": "Hungary",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "teqball",
+      "source": "wikidata",
       "inventors": [
         "György Gattyán",
         "Viktor Huszar",
@@ -16,19 +17,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Natalia%20Guitler%20en%20Teqball.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Natalia%20Guitler%20en%20Teqball.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "WynWork"
-      }
-    },
-    {
-      "name": "Gundel pancake",
-      "inventors": [
-        "Károly Gundel"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gundel%20Palacsinta%20at%20Gundel.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gundel%20Palacsinta%20at%20Gundel.jpg",
-        "license": "CC BY 2.0",
-        "author": "dpotera"
+        "author": "WynWork",
+        "source": "Wikimedia Commons"
       }
     }
   ]

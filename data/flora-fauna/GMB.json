@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Crocuta crocuta",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Spotted%20hyena%20%28Crocuta%20crocuta%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Spotted%20hyena%20%28Crocuta%20crocuta%29.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Charles J. Sharp"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/123762771/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/123762771/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/123762771",
+        "license": "CC-BY",
+        "author": "(c) Amelia Tauber, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

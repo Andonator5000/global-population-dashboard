@@ -11,16 +11,19 @@
       "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tabebuia%20impetiginosa%20h%C3%A1bito%202.jpeg?width=960",
       "commonsPage": "https://commons.wikimedia.org/wiki/File:Tabebuia%20impetiginosa%20h%C3%A1bito%202.jpeg",
       "license": "CC BY-SA 2.5 ar",
-      "author": "© 2006 Carla Antonini"
+      "author": "© 2006 Carla Antonini",
+      "source": "Wikimedia Commons"
     }
   },
   "flower": {
     "name": "Passiflora caerulea",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Passiflora%20caerulea%20%282019-06-24%29%20frontal-view.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Passiflora%20caerulea%20%282019-06-24%29%20frontal-view.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Franz van Duns"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/169805900/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/169805900/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/169805900",
+      "license": "CC-BY",
+      "author": "(c) Victoria Prosdocimo, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

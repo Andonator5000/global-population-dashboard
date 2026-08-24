@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Budorcas taxicolor",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Takin%20indick%C3%BD.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Takin%20indick%C3%BD.jpg",
-        "license": "CC BY 3.0",
-        "author": "Dezidor"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/51303107/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/51303107/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/51303107",
+        "license": "CC-BY",
+        "author": "(c) Sheelagh Halsey, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -23,7 +25,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bhutanese%20dragon%20%28%27druk%27%29.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Bhutanese%20dragon%20%28%27druk%27%29.svg",
         "license": "CC0",
-        "author": "W-dcem"
+        "author": "W-dcem",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -32,19 +35,23 @@
     "type": "national tree",
     "scientificName": "Cupressus cashmeriana",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CupressusCashmerianaSochi.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:CupressusCashmerianaSochi.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "Materialscientist"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/457665981/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/457665981/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/457665981",
+      "license": "CC-BY",
+      "author": "(c) Sagnik Dutta Roy, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Meconopsis grandis",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Himalayan%20Blue%20Poppy%20%28Meconopsis%20grandis%29%20-%20Jura%20House%20Gardens%20-%20geograph.org.uk%20-%201327483.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Himalayan%20Blue%20Poppy%20%28Meconopsis%20grandis%29%20-%20Jura%20House%20Gardens%20-%20geograph.org.uk%20-%201327483.jpg",
-      "license": "CC BY-SA 2.0",
-      "author": "Andrew Curtis"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/414833364/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/414833364/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/414833364",
+      "license": "CC-BY",
+      "author": "(c) Jiao Sun (孙娇), some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

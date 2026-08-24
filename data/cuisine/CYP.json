@@ -1,0 +1,19 @@
+{
+  "iso3": "CYP",
+  "name": "Cyprus",
+  "source": "wikidata",
+  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "dishes": [
+    {
+      "name": "sarma",
+      "description": "cabbage, vine leaf, or other leaf roll",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vi%C5%9Fneli%20Yaprak%20Sarma.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vi%C5%9Fneli%20Yaprak%20Sarma.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Garrett Ziegler",
+        "source": "Wikimedia Commons"
+      }
+    }
+  ]
+}

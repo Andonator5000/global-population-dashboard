@@ -1,0 +1,80 @@
+{
+  "iso3": "CUB",
+  "name": "Cuba",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Baked Yuca Fries",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53548",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Black Bean soup",
+      "description": "Starter",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/x0mreq1784577446.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/x0mreq1784577446.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53546",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "CAFE LA LLAVE ESPRESSO ICE CREAM",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9kecho1784575366.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/9kecho1784575366.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53544",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cuban Sandwich",
+      "description": "Pork",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53547",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Dulce de Leche Cheesecake with a Maria Cookie Crust.",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/f9qog11784574376.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/f9qog11784574376.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53543",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Ropa Veija",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/thvft91784576451.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/thvft91784576451.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53545",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

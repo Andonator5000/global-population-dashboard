@@ -1,11 +1,12 @@
 {
   "iso3": "GBR",
   "name": "United Kingdom",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "netball",
+      "source": "wikidata",
       "inventors": [
         "Martina Bergman-Österberg"
       ],
@@ -13,33 +14,25 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MalawiFijiNetball.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:MalawiFijiNetball.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Grant Williamson"
+        "author": "Grant Williamson",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "rugby sevens",
+      "source": "wikidata",
       "year": 1833,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Germany%20England%20Oktoberfest%207s%202931.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Germany%20England%20Oktoberfest%207s%202931.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Henning Schlottmann (User:H-stt)"
-      }
-    },
-    {
-      "name": "chicken tikka masala",
-      "inventors": [
-        "Ali Ahmed Aslam"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20tikka%20masala.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20tikka%20masala.jpg",
-        "license": "CC BY 2.0",
-        "author": "Michael Hays"
+        "author": "Henning Schlottmann (User:H-stt)",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Cluedo",
+      "source": "wikidata",
       "inventors": [
         "Anthony E. Pratt",
         "Elva Rosalie Pratt"
@@ -48,11 +41,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hry%20a%20hlavolamy%202009%20-%20Cluedo%200173u.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Hry%20a%20hlavolamy%202009%20-%20Cluedo%200173u.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Matěj \"Dědek\" Baťha"
+        "author": "Matěj \"Dědek\" Baťha",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "difference engine",
+      "source": "wikidata",
       "inventors": [
         "Charles Babbage"
       ],
@@ -61,53 +56,94 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Babbage%20difference%20engine%20drawing.gif?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Babbage%20difference%20engine%20drawing.gif",
         "license": "Public domain",
-        "author": "Benjamin Herschel Babbage, printed in Harper's new monthly magazine"
+        "author": "Benjamin Herschel Babbage, printed in Harper's new monthly magazine",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Adolescence",
+      "source": "wikidata",
       "inventors": [
         "Stephen Graham",
         "Jack Thorne"
       ]
     },
     {
-      "name": "Marmite",
-      "inventors": [
-        "Justus von Liebig"
-      ],
-      "year": 1902,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Marmite.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Marmite.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": null
-      }
-    },
-    {
-      "name": "Battenberg cake",
-      "inventors": [
-        "English people"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Battenbergcake.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Battenbergcake.jpg",
-        "license": "CC BY 3.0",
-        "author": "Henrycooksey"
-      }
-    },
-    {
       "name": "ammonal",
+      "source": "wikidata",
       "inventors": [
         "Richard Escales"
       ]
     },
     {
       "name": "spaghetti-tree",
+      "source": "wikidata",
       "inventors": [
         "Panorama"
       ],
       "year": 1957
+    },
+    {
+      "name": "Bartitsu",
+      "source": "wikidata",
+      "inventors": [
+        "Edward William Barton-Wright"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bartitsu%20montage.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bartitsu%20montage.jpg",
+        "license": "Public domain",
+        "author": "Artful Dodger at English Wikipedia",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Cunk on Earth",
+      "source": "wikidata",
+      "inventors": [
+        "Charlie Brooker"
+      ]
+    },
+    {
+      "name": "Stronsay Beast",
+      "source": "wikidata",
+      "year": 1808,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stronsay%20beast1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stronsay%20beast1.jpg",
+        "license": "Public domain",
+        "author": "Sir Alexander Gibson",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Jasperware",
+      "source": "wikidata",
+      "inventors": [
+        "Josiah Wedgwood"
+      ],
+      "year": 1774,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jasper%20Ware%2C%20Nelson%20Atkins%20Museum%20of%20Art.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jasper%20Ware%2C%20Nelson%20Atkins%20Museum%20of%20Art.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Rebecca Partington from Seattle, Washington, USA",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "cryptic crossword",
+      "source": "wikidata",
+      "inventors": [
+        "Edward Powys Mathers"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/British%20crossword.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:British%20crossword.svg",
+        "license": "Public domain",
+        "author": "Tonyle",
+        "source": "Wikimedia Commons"
+      }
     }
   ]
 }

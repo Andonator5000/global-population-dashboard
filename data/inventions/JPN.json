@@ -1,11 +1,12 @@
 {
   "iso3": "JPN",
   "name": "Japan",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "judo",
+      "source": "wikidata",
       "inventors": [
         "Kanō Jigorō"
       ],
@@ -14,11 +15,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KOCIS%20Korea%20Judo%20Kim%20Jaebum%20London%2036%20%287696361164%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:KOCIS%20Korea%20Judo%20Kim%20Jaebum%20London%2036%20%287696361164%29.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Korea.net / Korean Culture and Information Service (Korean Olympic Committee)"
+        "author": "Korea.net / Korean Culture and Information Service (Korean Olympic Committee)",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "aikido",
+      "source": "wikidata",
       "inventors": [
         "Morihei Ueshiba"
       ],
@@ -26,11 +29,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shihonage.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Shihonage.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Magyar Balázs"
+        "author": "Magyar Balázs",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "emoji",
+      "source": "wikidata",
       "inventors": [
         "Shigetaka Kurita"
       ],
@@ -39,11 +44,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Emoji%20u263a.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Emoji%20u263a.svg",
         "license": "Apache License 2.0",
-        "author": "Google"
+        "author": "Google",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "QR code",
+      "source": "wikidata",
       "inventors": [
         "Denso Wave",
         "Masahiro Hara"
@@ -53,11 +60,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/QR%20code%20for%20mobile%20English%20Wikipedia.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:QR%20code%20for%20mobile%20English%20Wikipedia.svg",
         "license": "Public domain",
-        "author": "Brdall"
+        "author": "Brdall",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "kickboxing",
+      "source": "wikidata",
       "inventors": [
         "Osamu Noguchi"
       ],
@@ -65,11 +74,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/WKA%20World%20Championship%202012%20Munich%20444.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:WKA%20World%20Championship%202012%20Munich%20444.JPG",
         "license": "CC BY-SA 4.0",
-        "author": "Claus Michelfelder"
+        "author": "Claus Michelfelder",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Tamagotchi",
+      "source": "wikidata",
       "inventors": [
         "Aki Maita"
       ],
@@ -78,48 +89,78 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tamagotchi%200124%20ubt.jpeg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Tamagotchi%200124%20ubt.jpeg",
         "license": "CC BY-SA 3.0",
-        "author": "Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com]"
-      }
-    },
-    {
-      "name": "instant noodles",
-      "inventors": [
-        "Momofuku Ando"
-      ],
-      "year": 1950,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mama%20instant%20noodle%20block.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mama%20instant%20noodle%20block.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Takeaway"
+        "author": "Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com]",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "maneki-neko",
+      "source": "wikidata",
       "year": 2000,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Maneki-neko-ja.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Maneki-neko-ja.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Searobin"
-      }
-    },
-    {
-      "name": "takoyaki",
-      "inventors": [
-        "Aidu-ya"
-      ],
-      "year": 1935,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Takoyaki%20by%20yomi955.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Takoyaki%20by%20yomi955.jpg",
-        "license": "CC BY 2.0",
-        "author": "heiwa4126"
+        "author": "Searobin",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "original video animation",
+      "source": "wikidata",
       "year": 1983
+    },
+    {
+      "name": "shiatsu",
+      "source": "wikidata",
+      "inventors": [
+        "Tokujirō Namikoshi"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shiatsu%205.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Shiatsu%205.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Arnaldo V. Carvalho",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Sylvanian Families",
+      "source": "wikidata",
+      "inventors": [
+        "Epoch Co."
+      ],
+      "year": 1985,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Famille%20Lapin%20Chocolat.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Famille%20Lapin%20Chocolat.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Sylvanian Families France",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "nishiki-e",
+      "source": "wikidata",
+      "inventors": [
+        "Suzuki Harunobu"
+      ],
+      "year": 1765,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nishikie.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nishikie.jpg",
+        "license": "Public domain",
+        "author": "Suzuki Harunobu",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Asadora",
+      "source": "wikidata",
+      "inventors": [
+        "NHK"
+      ],
+      "year": 1961
     }
   ]
 }

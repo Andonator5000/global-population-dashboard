@@ -1,34 +1,103 @@
 {
   "iso3": "BGR",
   "name": "Bulgaria",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "mish-mash",
+      "name": "Bulgarian Green Salad",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cuisinebg%20mishmash.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cuisinebg%20mishmash.jpg",
-        "license": "Public domain",
-        "author": "Ikonact"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6awyvm1782685205.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/6awyvm1782685205.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53492",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Snow White salad",
+      "name": "Bulgarian Honey Cookies",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Snezhanka.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Snezhanka.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "ShockD"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/y75q5j1782685779.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/y75q5j1782685779.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53493",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "torpedo dessert",
+      "name": "Cabbage with Ground Beef",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Rurki%20z%20kremem.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Rurki%20z%20kremem.jpg",
-        "license": "CC BY 3.0",
-        "author": "Jos."
+        "imageUrl": "https://www.themealdb.com/images/media/meals/brmxra1782681940.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/brmxra1782681940.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53488",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cottage Cheese And Feta Stuffed Peppers",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/w0rsga1782683912.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/w0rsga1782683912.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53490",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Easy White Bean Soup",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/p5nzbk1782680889.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/p5nzbk1782680889.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53486",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Keto Banitsa",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/8wynv41782686271.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/8wynv41782686271.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53494",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Oyster Mushroom Soup",
+      "description": "Starter",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/0r7y5n1782681336.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/0r7y5n1782681336.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53487",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Potato Moussaka Recipe",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/08ez421782683409.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/08ez421782683409.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53489",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

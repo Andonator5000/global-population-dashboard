@@ -9,10 +9,12 @@
       "type": "national dog breed",
       "scientificName": "Canis lupus familiaris",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kelb%20tal%20fenek%20529.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kelb%20tal%20fenek%20529.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Jan Eduard, adjust by Pleple2000"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/214572955/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/214572955",
+        "license": "CC-BY",
+        "author": "(c) Afsar Nayakkan, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,19 +23,23 @@
     "type": "national tree",
     "scientificName": "Tetraclinis articulata",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tetraclinis%20articulata8.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Tetraclinis%20articulata8.jpg",
-      "license": "Public domain",
-      "author": "Nanosanchez"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/279708911/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/279708911/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/279708911",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Cheirolophus crassifolius",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%9F%D0%B0%D0%BB%D0%B5%D0%BE%D1%86%D0%B5%D0%BD%D1%82%D0%B0%D1%83%D1%80%D0%B5%D1%8F%20%D0%BC%D0%B0%D0%BB%D1%8C%D1%82%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F.png?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%B0%D0%BB%D0%B5%D0%BE%D1%86%D0%B5%D0%BD%D1%82%D0%B0%D1%83%D1%80%D0%B5%D1%8F%20%D0%BC%D0%B0%D0%BB%D1%8C%D1%82%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F.png",
-      "license": "CC BY-SA 4.0",
-      "author": "Никитина Оксана"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/352769631/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/352769631/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/352769631",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

@@ -1,16 +1,103 @@
 {
   "iso3": "JAM",
   "name": "Jamaica",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Run down",
+      "name": "Brown Stew Chicken",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Run%20down%20%28stew%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Run%20down%20%28stew%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Brian Johnson &amp; Dane Kantner"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52940",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Callaloo and SaltFish",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/73o3vq1765317873.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/73o3vq1765317873.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53361",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Callaloo Jamaican Style",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ussyxw1515364536.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ussyxw1515364536.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52939",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Caribbean Tamarind balls",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/z1hz7z1765316430.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/z1hz7z1765316430.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53360",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Corned Beef and Cabbage – Jamaican Style",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/kdz63q1764793442.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/kdz63q1764793442.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53350",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Escovitch Fish",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1520084413.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1520084413.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52944",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Grape Nut Ice Cream",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/1xscby1764790242.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/1xscby1764790242.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53346",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Jamaican Banana Fritters",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ul2uy31764794321.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ul2uy31764794321.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53351",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

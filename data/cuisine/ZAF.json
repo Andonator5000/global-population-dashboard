@@ -6,38 +6,46 @@
   "dishes": [
     {
       "name": "bobotie",
+      "description": "South African dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bobotie-01.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Bobotie-01.jpg",
         "license": "CC BY 2.0",
-        "author": "cherrylet"
+        "author": "cherrylet",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "chakalaka",
+      "description": "South African vegetable relish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chakalaka.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Chakalaka.jpg",
         "license": "CC BY 2.0",
-        "author": "philipp from cape town, south africa"
+        "author": "philipp from cape town, south africa",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Gatsby",
+      "description": "South African sandwich",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Root44%203%20cropped.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Root44%203%20cropped.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "HelenOnline"
+        "author": "HelenOnline",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "boeber",
+      "description": "Malay dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Boeber.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Boeber.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Craigfraser"
+        "author": "Craigfraser",
+        "source": "Wikimedia Commons"
       }
     }
   ]

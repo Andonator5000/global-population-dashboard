@@ -1,0 +1,80 @@
+{
+  "iso3": "BWA",
+  "name": "Botswana",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Beef pumpkin Stew",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/k07k271782502861.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/k07k271782502861.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53469",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Curried Spinach from Botswana",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/lyr07q1782505714.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/lyr07q1782505714.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53473",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Madombi: Dumplings from Botswana",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/bjeq6g1782505296.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/bjeq6g1782505296.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53472",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Magwinya: Doughnut Bites from Botswana",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/4ae5tp1782506270.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/4ae5tp1782506270.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53474",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Phaphatha Flatbreads",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53471",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Seswaa",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/p7eid81782503889.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/p7eid81782503889.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53470",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

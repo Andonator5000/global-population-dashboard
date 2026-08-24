@@ -1,28 +1,43 @@
 {
   "iso3": "BGD",
   "name": "Bangladesh",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Pithali"
-    },
-    {
-      "name": "Borhani",
+      "name": "Bangladeshi fish curry with daikon",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20Glass%20of%20Borhani.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:A%20Glass%20of%20Borhani.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "DarkSpartan"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/r7mcjm1780261264.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/r7mcjm1780261264.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53451",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Soft Khichuri",
+      "name": "Bengali Chicken Curry with Potatoes",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%EA%A0%81%EA%A0%8D%EA%A0%94%EA%A0%A3%EA%A0%9E%EA%A0%A4%20%E0%A7%A7%E0%A7%A7.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%EA%A0%81%EA%A0%8D%EA%A0%94%EA%A0%A3%EA%A0%9E%EA%A0%A4%20%E0%A7%A7%E0%A7%A7.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "এম আবু সাঈদ"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/9ya6o71780262651.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/9ya6o71780262651.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53453",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Handesh – Bangladeshi rice flour and date molasses cakes",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/vfybi01780261706.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/vfybi01780261706.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53452",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

@@ -1,50 +1,73 @@
 {
   "iso3": "IND",
   "name": "India",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Canai bread",
-      "inventors": [
-        "Tamil"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Roti%20Prata%20Curry%20Large.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Roti%20Prata%20Curry%20Large.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "No machine-readable author provided. Jpatokal assumed (based on copyright claims)."
-      }
-    },
-    {
       "name": "Pompeii Lakshmi",
+      "source": "wikidata",
       "year": 1938,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statuetta%20indiana%20di%20Lakshmi%2C%20avorio%2C%20da%20pompei%2C%201-50%20dc%20ca.%2C%20149425%2C%2001.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Statuetta%20indiana%20di%20Lakshmi%2C%20avorio%2C%20da%20pompei%2C%201-50%20dc%20ca.%2C%20149425%2C%2001.JPG",
         "license": "CC BY-SA 3.0",
-        "author": "Sailko"
-      }
-    },
-    {
-      "name": "Chicken 65",
-      "year": 1965,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%2065%20%28Dish%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%2065%20%28Dish%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Amiyashrivastava"
+        "author": "Sailko",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Nassak Diamond",
+      "source": "wikidata",
       "year": 1500,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nassak%20Diamond%20copy.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Nassak%20Diamond%20copy.jpg",
         "license": "CC BY-SA 3.0",
-        "author": null
+        "author": null,
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Indigo",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Kho kho",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Cotton",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Diabetes",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20circle%20for%20diabetes.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Blue%20circle%20for%20diabetes.svg",
+        "license": "Public domain",
+        "author": "IntDiabetesFed",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Ferrous metallurgy",
+      "source": "wikipedia",
+      "year": 1800
+    },
+    {
+      "name": "Trairūpya",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Interpolation",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Diamond (gemstone)",
+      "source": "wikipedia",
+      "era": "18th century"
     }
   ]
 }

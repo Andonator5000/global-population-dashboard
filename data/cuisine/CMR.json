@@ -6,20 +6,24 @@
   "dishes": [
     {
       "name": "Ndolé",
+      "description": "national dish of Cameroon",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ndol%C3%A9%20camerounais.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Ndol%C3%A9%20camerounais.JPG",
         "license": "CC BY 3.0",
-        "author": "PRA"
+        "author": "PRA",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Koki",
+      "description": "Cameroonian dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Koki%20banane%20poyo.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Koki%20banane%20poyo.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Bandrefam"
+        "author": "Bandrefam",
+        "source": "Wikimedia Commons"
       }
     }
   ]

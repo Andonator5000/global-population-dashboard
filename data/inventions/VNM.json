@@ -1,18 +1,56 @@
 {
   "iso3": "VNM",
   "name": "Vietnam",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
       "name": "nón lá",
+      "source": "wikidata",
       "year": 1300,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeune%20vietnamienne%20%C3%A0%20C%E1%BA%A7n%20Th%C6%A1.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Jeune%20vietnamienne%20%C3%A0%20C%E1%BA%A7n%20Th%C6%A1.jpg",
         "license": "CC0",
-        "author": "Hisu Lee"
+        "author": "Hisu Lee",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Brieskorn manifold",
+      "source": "wikipedia",
+      "year": 1966
+    },
+    {
+      "name": "Phong shading",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Deligne–Lusztig theory",
+      "source": "wikipedia",
+      "year": 2024
+    },
+    {
+      "name": "Cải lương",
+      "source": "wikipedia",
+      "era": "20th century"
+    },
+    {
+      "name": "Vietnamese language",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Đờn ca tài tử",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Dong Son drum",
+      "source": "wikipedia",
+      "era": "7th century BCE"
+    },
+    {
+      "name": "Đàn gáo",
+      "source": "wikipedia"
     }
   ]
 }

@@ -9,10 +9,12 @@
       "type": "national marine mammal",
       "scientificName": "Dugong dugon",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dugong%20Marsa%20Alam.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dugong%20Marsa%20Alam.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Julien Willem"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61186254/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/61186254/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/61186254",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     }
   ]

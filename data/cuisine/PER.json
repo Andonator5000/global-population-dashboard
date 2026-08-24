@@ -6,47 +6,67 @@
   "dishes": [
     {
       "name": "Lomo saltado",
+      "description": "Peruvian stir fry dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lomo-saltado-perudelights.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lomo-saltado-perudelights.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "WikiHes"
+        "author": "WikiHes",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Papa a la Hancaina",
+      "description": "Peruvian appetizer of boiled yellow potatoes in a spicy, creamy sauce",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papa%20huancaina.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Papa%20huancaina.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "The original uploader was Letincelle at English Wikipedia."
+        "author": "The original uploader was Letincelle at English Wikipedia.",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Kola Inglesa",
+      "description": "Peruvian soft drink",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kola%20Inglesa.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Kola%20Inglesa.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "sandyshoes from Chicago"
+        "author": "sandyshoes from Chicago",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Olluquito",
+      "description": "Peruvian stew",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Olluquitos.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Olluquitos.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Miguel Alan Córdova Silva"
+        "author": "Miguel Alan Córdova Silva",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Empanadilla",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Empanadillas.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Empanadillas.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Fernand0",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "butifarra",
+      "description": "Peruvian ham sandwich",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Un%20Sandwicsito%20pues%21.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Un%20Sandwicsito%20pues%21.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Luis Tamayo from Dallas, Texas, USA, USA"
+        "author": "Luis Tamayo from Dallas, Texas, USA, USA",
+        "source": "Wikimedia Commons"
       }
     }
   ]

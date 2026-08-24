@@ -6,10 +6,12 @@
   "flower": {
     "name": "poppy",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Papaver%20rhoeas%20-%20K%C3%B6hler%E2%80%93s%20Medizinal-Pflanzen-101.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Papaver%20rhoeas%20-%20K%C3%B6hler%E2%80%93s%20Medizinal-Pflanzen-101.jpg",
-      "license": "Public domain",
-      "author": "Franz Eugen Köhler, Köhler's Medizinal-Pflanzen"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/8862789/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/8862789/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/8862789",
+      "license": "CC-BY",
+      "author": "(c) Whitney Brook Matson, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

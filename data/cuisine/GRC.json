@@ -1,70 +1,103 @@
 {
   "iso3": "GRC",
   "name": "Greece",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "lokma",
+      "name": "Chicken Quinoa Greek Salad",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lokma%20Galata%20Bridge.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lokma%20Galata%20Bridge.JPG",
-        "license": "CC BY 3.0",
-        "author": "Benreis"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53011",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Saganaki",
+      "name": "Garides Saganaki",
+      "description": "Seafood",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Saganaki.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Saganaki.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Tammy Green from Chicago, USA"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52764",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "sarma",
+      "name": "Gigantes Plaki",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Japrak%201.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Japrak%201.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Tizilohja25"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53012",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "skordalia",
+      "name": "Honey Yogurt Cheesecake",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Skordalia.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Skordalia.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Amymoni"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/y2irzl1585563479.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/y2irzl1585563479.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53007",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "tirokafteri",
+      "name": "Lamb and Lemon Souvlaki",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tirokafteri.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tirokafteri.jpg",
-        "license": "CC BY 2.0",
-        "author": "Alexander Baxevanis"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/rjhf741585564676.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/rjhf741585564676.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53009",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Strapatsada",
+      "name": "Lamb Tzatziki Burgers",
+      "description": "Lamb",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Strapatsada.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Strapatsada.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Saintfevrier"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53010",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Spanakorizo",
+      "name": "Moussaka",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Spanakorizo.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Spanakorizo.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "KaterinaStrak"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53006",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Stuffed Lamb Tomatoes",
+      "description": "Lamb",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53008",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

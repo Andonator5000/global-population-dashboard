@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Amazona guildingii",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazona%20guildingii%20-Botanical%20Gardens%20-Kingstown%20-Saint%20Vincent-8a-4c.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Amazona%20guildingii%20-Botanical%20Gardens%20-Kingstown%20-Saint%20Vincent-8a-4c.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Amazona_guildingii_-Botanical_Gardens_-Kingstown_-Saint_Vincent-8a.jpg: Chennette\nderivative work: Snowmanradio (talk)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/476745530/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/476745530/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/476745530",
+        "license": "CC-BY",
+        "author": "(c) Thorsten Hackbarth, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

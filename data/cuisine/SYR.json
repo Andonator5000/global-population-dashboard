@@ -1,16 +1,79 @@
 {
   "iso3": "SYR",
   "name": "Syria",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "Halawet el Jibn",
+      "name": "Baba Ghanoush",
+      "description": "Side",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%AD%D9%84%D8%A7%D9%88%D8%A9%20%D8%A7%D9%84%D8%AC%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D9%88%D9%8A%D8%A9.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%AD%D9%84%D8%A7%D9%88%D8%A9%20%D8%A7%D9%84%D8%AC%D8%A8%D9%86%20%D8%A7%D9%84%D8%AD%D9%85%D9%88%D9%8A%D8%A9.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Mahmood ALsalama"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dlmh401760524897.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dlmh401760524897.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53094",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Falafel Pita Sandwich with Tahini Sauce",
+      "description": "Vegetarian",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53091",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Fasoliyyeh Bi Z-Zayt (Syrian Green Beans with Olive Oil)",
+      "description": "Vegan",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/21yc5s1760524759.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/21yc5s1760524759.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53092",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Syrian Bread",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53089",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Syrian Rice with Meat",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/zg2b9l1760524940.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/zg2b9l1760524940.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53095",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Syrian Spaghetti",
+      "description": "Pasta",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/5fu4ew1760524857.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/5fu4ew1760524857.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53093",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     }
   ]

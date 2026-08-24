@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Hippocamelus bisulcus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Huemul%20verdadero.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Huemul%20verdadero.JPG",
-        "license": "CC BY-SA 2.0",
-        "author": "magical-world"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/27595081/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/27595081/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/27595081",
+        "license": "CC-BY",
+        "author": "(c) Philipp Pavelka, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -21,19 +23,23 @@
     "type": "national tree",
     "scientificName": "Araucaria araucana",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/IMG%206492%20monkey%20puzzle.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:IMG%206492%20monkey%20puzzle.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "BillyKwiki at en.wikipedia"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/59786970/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/59786970/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/59786970",
+      "license": "CC-BY",
+      "author": "(c) Nelson Atencio, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "copihue",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lapageria%20rosea%20Strybing.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Lapageria%20rosea%20Strybing.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Eric Hunt"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31403989/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31403989/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/31403989",
+      "license": "CC-BY",
+      "author": "(c) Nicolás Lavandero, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

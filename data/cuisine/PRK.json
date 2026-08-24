@@ -6,15 +6,18 @@
   "dishes": [
     {
       "name": "naengmyeon",
+      "description": "Korean dish of cold noodles",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KOCIS%20Mul-naengmyeon%2C%20Chilled%20Buckwheat%20Noodle%20Soup%20%284594756202%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:KOCIS%20Mul-naengmyeon%2C%20Chilled%20Buckwheat%20Noodle%20Soup%20%284594756202%29.jpg",
         "license": "CC BY-SA 2.0",
-        "author": "Korea.net / Korean Culture and Information Service"
+        "author": "Korea.net / Korean Culture and Information Service",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "injo-gogi-bap"
+      "name": "injo-gogi-bap",
+      "description": "North Korean food dish"
     }
   ]
 }

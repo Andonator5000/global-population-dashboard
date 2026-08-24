@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { StatTile, Unavailable } from '../components/viz/primitives'
 import {
@@ -23,6 +23,7 @@ import {
   interpolateAnnual,
   useLiveRates,
   useLiveWeather,
+  weatherVisual,
 } from '../lib/live'
 import type { CommonsImage, Entity, FloraFaunaSymbol } from '../types'
 
@@ -478,7 +479,16 @@ export function SubdivisionsBody({ iso3 }: { iso3: string }) {
   }
   return (
     <div>
-      <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+      {data.divisionType && (
+        <p className="text-sm">
+          Locally known as:{' '}
+          <strong style={{ fontWeight: 600 }}>
+            {data.divisionType.charAt(0).toUpperCase() +
+              data.divisionType.slice(1)}
+          </strong>
+        </p>
+      )}
+      <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
         {data.divisions.length} first-level divisions as recorded in Wikidata.
         Each population is the latest Wikidata figure and its reference year
         varies by division; a missing figure means Wikidata holds none.
@@ -510,37 +520,102 @@ export function SubdivisionsBody({ iso3 }: { iso3: string }) {
 // ------------------------------------------------------------ Batch 6 (2026-08-24) --
 
 /**
- * A Commons image inside a FIXED-SIZE frame with the attribution its
- * licence requires. Every visual section of the 2026-08-24 batch uses the
- * same frame with object-cover, so images of wildly different native sizes
- * render at identical dimensions (an explicit maintainer requirement for
- * the cuisine grid, applied uniformly).
+ * An image inside a FIXED-SIZE frame with the attribution its licence
+ * requires. Every visual section uses the same frame with object-cover, so
+ * images of wildly different native sizes render at identical dimensions.
+ *
+ * Clicking the photo opens an in-page LIGHTBOX (native <dialog>, Esc and
+ * backdrop-click close it) rather than leaving for the hosting site
+ * (2026-08-24, maintainer request); the attribution line still links the
+ * source page, because CC attribution must keep pointing home.
+ *
+ * `focus="top"` biases the crop upward -- centre-cropping wildlife photos
+ * was decapitating the animals.
  */
 function CommonsFigure({
   image,
   alt,
   caption,
   tall = false,
+  focus = 'center',
 }: {
   image: CommonsImage | undefined
   alt: string
   caption: React.ReactNode
   tall?: boolean
+  focus?: 'top' | 'center'
 }) {
+  const dialogRef = useRef<HTMLDialogElement | null>(null)
+  const attribution = image && (
+    <span className="block text-xs" style={{ color: 'var(--text-muted)' }}>
+      <a
+        href={image.commonsPage}
+        target="_blank"
+        rel="noreferrer"
+        className="underline underline-offset-2"
+      >
+        {image.source ?? 'Commons'}
+      </a>
+      {image.license ? ` · ${image.license}` : ''}
+      {image.author ? ` · ${image.author}` : ''}
+    </span>
+  )
   return (
     <figure
       className="m-0 flex flex-col overflow-hidden rounded-lg border"
       style={{ borderColor: 'var(--border)' }}
     >
       {image ? (
-        <a href={image.commonsPage} target="_blank" rel="noreferrer">
-          <img
-            src={image.imageUrl}
-            alt={alt}
-            loading="lazy"
-            className={`${tall ? 'h-48' : 'h-36'} w-full object-cover`}
-          />
-        </a>
+        <>
+          <button
+            type="button"
+            className="block w-full cursor-zoom-in p-0"
+            aria-label={`Enlarge image of ${alt}`}
+            onClick={() => dialogRef.current?.showModal()}
+          >
+            <img
+              src={image.imageUrl}
+              alt={alt}
+              loading="lazy"
+              className={`${tall ? 'h-48' : 'h-36'} w-full object-cover`}
+              style={{
+                objectPosition: focus === 'top' ? '50% 18%' : '50% 50%',
+              }}
+            />
+          </button>
+          <dialog
+            ref={dialogRef}
+            className="lightbox"
+            aria-label={alt}
+            onClick={(event) => {
+              // A click on the backdrop (the dialog element itself, not its
+              // children) closes it.
+              if (event.target === dialogRef.current)
+                dialogRef.current?.close()
+            }}
+          >
+            <img
+              src={image.largeUrl ?? image.imageUrl}
+              alt={alt}
+              className="max-h-[80vh] w-auto max-w-full rounded"
+            />
+            <div
+              className="mt-2 rounded px-3 py-2 text-sm"
+              style={{ background: 'var(--surface-raised)', color: 'var(--text)' }}
+            >
+              {caption}
+              {attribution}
+              <button
+                type="button"
+                className="mt-1.5 rounded border px-2 py-0.5 text-xs"
+                style={{ borderColor: 'var(--border)' }}
+                onClick={() => dialogRef.current?.close()}
+              >
+                Close (Esc)
+              </button>
+            </div>
+          </dialog>
+        </>
       ) : (
         <div
           className={`${tall ? 'h-48' : 'h-36'} flex w-full items-center justify-center text-xs`}
@@ -549,22 +624,9 @@ function CommonsFigure({
           no free image
         </div>
       )}
-      <figcaption className="px-2.5 py-2 text-xs">
+      <figcaption className="px-2.5 py-2">
         {caption}
-        {image && (
-          <span className="block" style={{ color: 'var(--text-muted)' }}>
-            <a
-              href={image.commonsPage}
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-2"
-            >
-              Commons
-            </a>
-            {image.license ? ` · ${image.license}` : ''}
-            {image.author ? ` · ${image.author}` : ''}
-          </span>
-        )}
+        {attribution}
       </figcaption>
     </figure>
   )
@@ -596,12 +658,21 @@ export function NotableInventionsBody({ iso3 }: { iso3: string }) {
             alt={invention.name}
             caption={
               <>
-                <strong style={{ fontWeight: 600 }}>{invention.name}</strong>
-                <span className="block" style={{ color: 'var(--text-muted)' }}>
+                <span className="block text-base font-semibold">
+                  {invention.name}
+                </span>
+                <span
+                  className="block text-sm"
+                  style={{ color: 'var(--text-muted)' }}
+                >
                   {invention.inventors?.length
                     ? invention.inventors.join(', ')
                     : 'inventor not recorded'}
-                  {invention.year ? ` · c. ${invention.year}` : ''}
+                  {invention.year
+                    ? ` · c. ${invention.year}`
+                    : invention.era
+                      ? ` · ${invention.era}`
+                      : ''}
                 </span>
               </>
             }
@@ -657,8 +728,8 @@ export function AirportsBody({ iso3 }: { iso3: string }) {
 function symbolCaption(symbol: FloraFaunaSymbol, fallbackType: string) {
   return (
     <>
-      <strong style={{ fontWeight: 600 }}>{symbol.name}</strong>
-      <span className="block" style={{ color: 'var(--text-muted)' }}>
+      <span className="block text-base font-semibold">{symbol.name}</span>
+      <span className="block text-sm" style={{ color: 'var(--text-muted)' }}>
         {symbol.type ?? fallbackType}
         {symbol.scientificName ? ` · ${symbol.scientificName}` : ''}
       </span>
@@ -705,6 +776,7 @@ export function FloraFaunaBody({ iso3 }: { iso3: string }) {
             image={animal.image}
             alt={animal.name}
             tall
+            focus="top"
             caption={symbolCaption(animal, 'national animal')}
           />
         ))}
@@ -737,7 +809,21 @@ export function CuisineBody({ iso3 }: { iso3: string }) {
             key={dish.name}
             image={dish.image}
             alt={dish.name}
-            caption={<strong style={{ fontWeight: 600 }}>{dish.name}</strong>}
+            caption={
+              <>
+                <span className="block text-base font-semibold">
+                  {dish.name}
+                </span>
+                {dish.description && (
+                  <span
+                    className="block text-sm"
+                    style={{ color: 'var(--text-muted)' }}
+                  >
+                    {dish.description}
+                  </span>
+                )}
+              </>
+            }
           />
         ))}
       </div>
@@ -785,25 +871,58 @@ export function WeatherClimateBody({
           </div>
         ) : weatherState.status === 'ready' ? (
           <>
-            <div className="mt-2 grid gap-4 sm:grid-cols-3">
-              <StatTile
-                label={describeWeatherCode(weatherState.data.weatherCode)}
-                value={`${weatherState.data.temperatureC.toFixed(1)} °C`}
-                detail={`${((weatherState.data.temperatureC * 9) / 5 + 32).toFixed(0)} °F`}
-              />
-              <StatTile
-                label="Humidity"
-                value={`${weatherState.data.relativeHumidityPct.toFixed(0)}%`}
-              />
-              <StatTile
-                label="Wind"
-                value={`${weatherState.data.windSpeedKmh.toFixed(0)} km/h`}
-              />
-            </div>
+            {/* Weather-app-style condition card (2026-08-24, maintainer
+                request): colourful, theme-invariant gradient keyed to the
+                condition, white text, big reading, explicit update time. */}
+            {(() => {
+              const visual = weatherVisual(weatherState.data.weatherCode)
+              const fahrenheit = (
+                (weatherState.data.temperatureC * 9) / 5 +
+                32
+              ).toFixed(0)
+              return (
+                <div
+                  className="mt-2 max-w-md rounded-xl px-5 py-4"
+                  style={{
+                    background: visual.gradient,
+                    color: '#ffffff',
+                  }}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="text-5xl" aria-hidden="true">
+                      {visual.emoji}
+                    </span>
+                    <div>
+                      <div className="text-4xl font-semibold tracking-tight">
+                        {weatherState.data.temperatureC.toFixed(1)} °C
+                        <span className="ml-2 text-xl font-normal opacity-90">
+                          {fahrenheit} °F
+                        </span>
+                      </div>
+                      <div className="text-base font-medium">
+                        {describeWeatherCode(weatherState.data.weatherCode)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+                    <span>
+                      💧 Humidity{' '}
+                      {weatherState.data.relativeHumidityPct.toFixed(0)}%
+                    </span>
+                    <span>
+                      🌬️ Wind {weatherState.data.windSpeedKmh.toFixed(0)} km/h
+                    </span>
+                  </div>
+                  <div className="mt-2 text-xs opacity-90">
+                    Updated {weatherState.data.timeIso.replace('T', ' ')}{' '}
+                    (local time{capital ? ` in ${capital.name}` : ''})
+                  </div>
+                </div>
+              )
+            })()}
             <MutedNote>
               Live reading fetched by your browser from Open-Meteo (data CC
-              BY 4.0), observation time {weatherState.data.timeIso} at the
-              capital’s coordinates. Not a committed artifact.
+              BY 4.0) at the capital’s coordinates. Not a committed artifact.
             </MutedNote>
           </>
         ) : weatherState.status === 'error' ? (

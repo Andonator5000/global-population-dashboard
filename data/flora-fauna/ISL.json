@@ -9,10 +9,12 @@
       "type": "national bird",
       "scientificName": "Falco rusticolus",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Falco%20rusticolus%20white%20cropped.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Falco%20rusticolus%20white%20cropped.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Falco_rusticolus_white.jpg: Ólafur Larsen\nderivative work: Bogbumper (talk)"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/63828704/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/63828704/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/63828704",
+        "license": "CC-BY",
+        "author": "(c) Quinten Wiegersma, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ]

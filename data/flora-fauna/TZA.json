@@ -12,7 +12,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Giraffe%20Mikumi%20National%20Park.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Giraffe%20Mikumi%20National%20Park.jpg",
         "license": "GFDL 1.2",
-        "author": "Muhammad Mahdi Karim Facebook\n\n\n\n\n\nThe making of this document was supported by Wikimedia CH. (Submit your project!)\nFor all the files concerned, please see the category Supported by Wikimedia CH.\n\n\nالعربية ∙ বাংলা ∙ čeština ∙ Deutsch ∙ English ∙ Esperanto ∙ español ∙ français ∙ galego ∙ हिन्दी ∙ magyar ∙ italiano ∙ 日本語 ∙ македонски ∙ Nederlands ∙ português do Brasil ∙ rumantsch ∙ русский ∙ sicilianu ∙ slovenščina ∙ தமிழ் ∙ українська ∙ 中文 ∙ +/−"
+        "author": "Muhammad Mahdi Karim Facebook\n\n\n\n\n\nThe making of this document was supported by Wikimedia CH. (Submit your project!)\nFor all the files concerned, please see the category Supported by Wikimedia CH.\n\n\nالعربية ∙ বাংলা ∙ čeština ∙ Deutsch ∙ English ∙ Esperanto ∙ español ∙ français ∙ galego ∙ हिन्दी ∙ magyar ∙ italiano ∙ 日本語 ∙ македонски ∙ Nederlands ∙ português do Brasil ∙ rumantsch ∙ русский ∙ sicilianu ∙ slovenščina ∙ தமிழ் ∙ українська ∙ 中文 ∙ +/−",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -21,10 +22,12 @@
     "type": "national tree",
     "scientificName": "Dalbergia melanoxylon",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dalbergia%20melanoxylon%20%28tree%29.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Dalbergia%20melanoxylon%20%28tree%29.jpg",
-      "license": "Public domain",
-      "author": "Marie-Elisabeth GORGE"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/15283133/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/15283133/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/15283133",
+      "license": "CC-BY",
+      "author": "(c) Ryan van Huyssteen, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

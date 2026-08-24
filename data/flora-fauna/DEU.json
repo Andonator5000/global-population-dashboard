@@ -12,7 +12,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Germany.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Coat%20of%20arms%20of%20Germany.svg",
         "license": "Public domain",
-        "author": "Karl-Tobias Schwab"
+        "author": "Karl-Tobias Schwab",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -21,10 +22,12 @@
     "type": "national tree",
     "scientificName": "Quercus, Quercus robur",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ivenacker%20Eik.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ivenacker%20Eik.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Jeroen Philippona"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/10407529/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/10407529",
+      "license": "CC-BY",
+      "author": "(c) Natalya Ivanova, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

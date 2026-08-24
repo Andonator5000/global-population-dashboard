@@ -1,24 +1,12 @@
 {
   "iso3": "AUT",
   "name": "Austria",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Sachertorte",
-      "inventors": [
-        "Franz Sacher"
-      ],
-      "year": 1832,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Caf%C3%A9%20Sabarsky%20Sachertorte.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Caf%C3%A9%20Sabarsky%20Sachertorte.jpg",
-        "license": "CC BY 2.5",
-        "author": "Hellokitty893112 at en.wikipedia"
-      }
-    },
-    {
       "name": "goalball",
+      "source": "wikidata",
       "inventors": [
         "Natalie Örnkvist"
       ],
@@ -27,11 +15,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Goalball%20vid%20Paralympics%20i%20Aten.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Goalball%20vid%20Paralympics%20i%20Aten.jpg",
         "license": "Copyrighted free use",
-        "author": "Helene Stjernlöf"
+        "author": "Helene Stjernlöf",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Glock",
+      "source": "wikidata",
       "inventors": [
         "Gaston Glock"
       ],
@@ -39,11 +29,13 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glock%2017-removebg-preview.png?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Glock%2017-removebg-preview.png",
         "license": "CC BY 2.0",
-        "author": "Asklid Antonsen"
+        "author": "Asklid Antonsen",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Glock 17",
+      "source": "wikidata",
       "inventors": [
         "Gaston Glock"
       ],
@@ -52,28 +44,65 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glock%2017%20%286825676904%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Glock%2017%20%286825676904%29.jpg",
         "license": "CC BY 2.0",
-        "author": "Askild Antonsen"
+        "author": "Askild Antonsen",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Neapolitan wafer",
-      "year": 1898,
+      "name": "Cosmic ray",
+      "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Neapolitaner%20Waffel.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Neapolitaner%20Waffel.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmic%20ray%20flux%20versus%20particle%20energy.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cosmic%20ray%20flux%20versus%20particle%20energy.svg",
         "license": "CC BY-SA 3.0",
-        "author": "Pilettes"
+        "author": "Sven Lafebre",
+        "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Käsekrainer",
-      "year": 1960,
+      "name": "Cori cycle",
+      "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/K%C3%A4sekrainer.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:K%C3%A4sekrainer.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Kobako"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cori%20Cycle.SVG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cori%20Cycle.SVG",
+        "license": "CC BY-SA 3.0",
+        "author": "User:Petaholmes, user:PDH, user:Eyal Bairey",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Gondwana",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Drum memory",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Slow motion",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ultra%20slow-motion%20video%20of%20glass%20tea%20cup%20smashed%20on%20concrete%20floor.webm?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ultra%20slow-motion%20video%20of%20glass%20tea%20cup%20smashed%20on%20concrete%20floor.webm",
+        "license": "CC BY-SA 4.0",
+        "author": "Pittigrilli",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Psychoanalysis",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Poliovirus",
+      "source": "wikipedia",
+      "inventors": [
+        "Karl Landsteiner"
+      ]
+    },
+    {
+      "name": "Blow forward",
+      "source": "wikipedia"
     }
   ]
 }

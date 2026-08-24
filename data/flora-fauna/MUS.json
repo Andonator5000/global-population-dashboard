@@ -12,17 +12,20 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dronte%20dodo%20Raphus%20cucullatus.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Dronte%20dodo%20Raphus%20cucullatus.jpg",
         "license": "CC0",
-        "author": "Jebulon"
+        "author": "Jebulon",
+        "source": "Wikimedia Commons"
       }
     }
   ],
   "flower": {
     "name": "Ruizia boutoniana",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Trochetia%20boutoniana%20tree.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Trochetia%20boutoniana%20tree.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "This illustration was made by Citron\nYou must credit this : Citron / CC-BY-SA-3.0"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/156415872/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/156415872/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/156415872",
+      "license": "CC-BY",
+      "author": "(c) Ben, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

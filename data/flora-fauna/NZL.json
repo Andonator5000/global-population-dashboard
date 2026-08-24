@@ -12,7 +12,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/TeTuatahianui.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:TeTuatahianui.jpg",
         "license": "Public domain",
-        "author": "Maungatautari Ecological Island Trust"
+        "author": "Maungatautari Ecological Island Trust",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -21,19 +22,23 @@
     "type": "national tree",
     "scientificName": "Cyathea dealbata",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Silver-fern.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Silver-fern.jpg",
-      "license": "CC BY 2.0",
-      "author": "Tatania Gerus"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/1181138/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/1181138/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/1181138",
+      "license": "CC-BY",
+      "author": "(c) Jon Sullivan, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "silver fern",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Alsophila%20tricolor%20kz03.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Alsophila%20tricolor%20kz03.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Krzysztof Ziarnek, Kenraiz"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/565340547/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/565340547/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/565340547",
+      "license": "CC-BY",
+      "author": "(c) Steven Lamonde, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Panthera leo persica",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Panthera%20leo%20persica%20-%20Tierpark%20Berlin%20-%202015.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Panthera%20leo%20persica%20-%20Tierpark%20Berlin%20-%202015.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Avda"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/175467590/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/175467590/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/175467590",
+        "license": "CC-BY",
+        "author": "(c) Jay Pruett, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     },
     {
@@ -20,10 +22,12 @@
       "type": "national animal",
       "scientificName": "Panthera pardus saxicolor",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Persian%20Leopard%20sitting.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Persian%20Leopard%20sitting.jpg",
-        "license": "Public domain",
-        "author": "Tamar Assaf"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/249976590/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/249976590/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/249976590",
+        "license": "CC-BY",
+        "author": "(c) موسی مزینانیان Mousa Mazinanian, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -32,20 +36,24 @@
     "type": "national tree",
     "scientificName": "Cupressus sempervirens",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cupressus%20sempervirens%20Stricta.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Cupressus%20sempervirens%20Stricta.jpg",
-      "license": "Public domain",
-      "author": null
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/687051362/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/687051362/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/687051362",
+      "license": "CC-BY",
+      "author": "(c) zebedeugalinha, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   },
   "flower": {
     "name": "Persian",
     "scientificName": "nymphaea",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nymphaea%20alba.001%20-%20Breendonk.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Nymphaea%20alba.001%20-%20Breendonk.jpg",
-      "license": "CC BY-SA 4.0",
-      "author": "Fernando Losada Rodríguez"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/133473561/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/133473561/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/133473561",
+      "license": "CC-BY",
+      "author": "(c) Bonnie Semmling, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

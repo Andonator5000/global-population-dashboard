@@ -1,74 +1,92 @@
 {
   "iso3": "BEL",
   "name": "Belgium",
-  "source": "wikidata",
-  "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
   "dishes": [
     {
-      "name": "mitraillette",
+      "name": "Belgian Meatballs in Liège Syrup Sauce",
+      "description": "Beef",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mitraillette%20%28fast%20food%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Mitraillette%20%28fast%20food%29.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Renatus"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/gjjlzc1782496055.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/gjjlzc1782496055.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53463",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "moules-frites",
+      "name": "Belgian Stoemp",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moules%20Frites.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Moules%20Frites.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "dennis and aimee jonez"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/byolko1782500400.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/byolko1782500400.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53468",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Actimel",
+      "name": "Belgian Waterzooi Chicken",
+      "description": "Chicken",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Actimel.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Actimel.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Pancrat"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53466",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "rijstevlaai",
+      "name": "Cinnamon Roll Cookies",
+      "description": "Dessert",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tarte%20au%20riz.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tarte%20au%20riz.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "No machine-readable author provided. Frinck51~commonswiki assumed (based on copyright claims)."
+        "imageUrl": "https://www.themealdb.com/images/media/meals/txce0y1782494894.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/txce0y1782494894.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53462",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Belgian waffle",
+      "name": "Flemish Hutsepot",
+      "description": "Pork",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Waffle%20with%20strawberries%20and%20confectioner%27s%20sugar.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Waffle%20with%20strawberries%20and%20confectioner%27s%20sugar.jpg",
-        "license": "CC BY 2.0",
-        "author": "Ralph Daily"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/2lywl71782496853.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/2lywl71782496853.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53464",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "stoemp",
+      "name": "Frog Legs Recipe in Garlic Butter",
+      "description": "Miscellaneous",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cod%20and%20stoemp.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cod%20and%20stoemp.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Simon Aughton"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qcprt21782497529.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qcprt21782497529.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53465",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
     },
     {
-      "name": "Potjevleesch",
+      "name": "Liegeoise Salad",
+      "description": "Vegetarian",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jielbeaumadier%20potjevleesch%202010.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jielbeaumadier%20potjevleesch%202010.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Jiel Beaumadier"
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ji3mho1782499823.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ji3mho1782499823.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53467",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
       }
-    },
-    {
-      "name": "dagobert"
     }
   ]
 }

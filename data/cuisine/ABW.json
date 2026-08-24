@@ -1,0 +1,80 @@
+{
+  "iso3": "ABW",
+  "name": "Aruba",
+  "source": "themealdb",
+  "note": "Signature dishes from TheMealDB, whose photography is shot to one uniform format. Attribution: TheMealDB (themealdb.com).",
+  "dishes": [
+    {
+      "name": "Arepa",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/ejht7k1780092390.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/ejht7k1780092390.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53439",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Balchi di Pisca",
+      "description": "Seafood",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/qqwhw51780093126.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/qqwhw51780093126.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53440",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Banana den Forno",
+      "description": "Dessert",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/6v583k1780093743.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/6v583k1780093743.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53441",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Bolita di Keshi",
+      "description": "Miscellaneous",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/skzd0x1780091674.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/skzd0x1780091674.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53438",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Cheese Sticks",
+      "description": "Side",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/7i6csk1780094394.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/7i6csk1780094394.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53442",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    },
+    {
+      "name": "Satee",
+      "description": "Beef",
+      "image": {
+        "imageUrl": "https://www.themealdb.com/images/media/meals/dqxtlh1780153831.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/dqxtlh1780153831.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53443",
+        "license": null,
+        "author": null,
+        "source": "TheMealDB"
+      }
+    }
+  ]
+}

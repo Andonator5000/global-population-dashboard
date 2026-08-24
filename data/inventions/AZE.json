@@ -1,0 +1,45 @@
+{
+  "iso3": "AZE",
+  "name": "Azerbaijan",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "inventions": [
+    {
+      "name": "Fuzzy logic",
+      "source": "wikipedia",
+      "year": 1965
+    },
+    {
+      "name": "Fuzzy set",
+      "source": "wikipedia",
+      "year": 1965
+    },
+    {
+      "name": "Fuzzy mathematics",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Fuzzy control system",
+      "source": "wikipedia",
+      "year": 1973
+    },
+    {
+      "name": "Petroleum industry in Russia",
+      "source": "wikipedia",
+      "year": 1961
+    },
+    {
+      "name": "Oil",
+      "source": "wikipedia",
+      "year": 1958
+    },
+    {
+      "name": "Istiglal anti-materiel rifle",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Yalguzag sniper rifle",
+      "source": "wikipedia"
+    }
+  ]
+}

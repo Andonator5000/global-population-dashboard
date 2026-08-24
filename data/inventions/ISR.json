@@ -1,21 +1,56 @@
 {
   "iso3": "ISR",
   "name": "Israel",
-  "source": "wikidata",
-  "note": "Inventions with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage. Dates are the recorded invention date and are often approximate.",
+  "source": "wikidata_wikipedia",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
   "inventions": [
     {
-      "name": "Ptitim",
-      "inventors": [
-        "Osem"
-      ],
-      "year": 1950,
+      "name": "Johnson–Lindenstrauss lemma",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Alternating sign matrix",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Quasicrystal",
+      "source": "wikipedia",
+      "year": 2011
+    },
+    {
+      "name": "Jacob Bekenstein",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Glatiramer acetate",
+      "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Israeli%20couscous.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Israeli%20couscous.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Nsaum75"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glatiramer%20acetate.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Glatiramer%20acetate.svg",
+        "license": "CC BY-SA 4.0",
+        "author": "Mykhal",
+        "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Game theory",
+      "source": "wikipedia",
+      "year": 2005
+    },
+    {
+      "name": "Nondeterministic finite automaton",
+      "source": "wikipedia",
+      "inventors": [
+        "Michael O. Rabin"
+      ]
+    },
+    {
+      "name": "Kernel-based Virtual Machine",
+      "source": "wikipedia",
+      "inventors": [
+        "Avi Kivity"
+      ],
+      "year": 2006
     }
   ]
 }

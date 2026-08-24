@@ -5,21 +5,14 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
-      "name": "Nauryz kozhe",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Navruzkozhe.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Navruzkozhe.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Beqery"
-      }
-    },
-    {
       "name": "oromo",
+      "description": "Central Asian steamed pie",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Oromo%20%28dish%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Oromo%20%28dish%29.jpg",
         "license": "CC BY 4.0",
-        "author": "Абдырашит Сатылганов"
+        "author": "Абдырашит Сатылганов",
+        "source": "Wikimedia Commons"
       }
     }
   ]

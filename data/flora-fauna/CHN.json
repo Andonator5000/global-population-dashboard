@@ -9,10 +9,12 @@
       "type": "national animal",
       "scientificName": "Ailuropoda melanoleuca",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Giant%20Panda%202004-03-2.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Giant%20Panda%202004-03-2.jpg",
-        "license": "Public domain",
-        "author": "Jeff Kubina"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/351209004/medium.jpeg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/351209004/large.jpeg",
+        "commonsPage": "https://www.inaturalist.org/photos/351209004",
+        "license": "CC0",
+        "author": "no rights reserved",
+        "source": "iNaturalist"
       }
     },
     {
@@ -23,7 +25,8 @@
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20dragon%20asset%20heraldry.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Chinese%20dragon%20asset%20heraldry.svg",
         "license": "CC BY-SA 4.0",
-        "author": "User:Sodacan"
+        "author": "User:Sodacan",
+        "source": "Wikimedia Commons"
       }
     },
     {
@@ -31,10 +34,12 @@
       "type": "national bird",
       "scientificName": "Grus japonensis",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red-crowned%20Crane%201.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Red-crowned%20Crane%201.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Ryan E. Poplin"
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/13096699/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/13096699/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/13096699",
+        "license": "CC-BY",
+        "author": "(c) Austin 0201, some rights reserved (CC BY)",
+        "source": "iNaturalist"
       }
     }
   ],
@@ -43,10 +48,12 @@
     "type": "national tree",
     "scientificName": "Ginkgo biloba",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ginkgoaceae-%20Ginkgo%20biloba.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Ginkgoaceae-%20Ginkgo%20biloba.jpg",
-      "license": "CC BY 2.0",
-      "author": "Kristof Zyskowski &amp; Yulia Bereshpolova"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/27163508/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/27163508/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/27163508",
+      "license": "CC-BY",
+      "author": "(c) Summit Metro Parks, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }
