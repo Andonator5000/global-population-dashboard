@@ -419,6 +419,131 @@ export interface BiomeFile {
   continents: Record<string, BiomeContinent>
 }
 
+/** data/freedom/press-freedom.json — RSF World Press Freedom Index. */
+export interface PressFreedomFile {
+  source: string
+  year: number
+  scale: string
+  rankedCountries: number
+  entities: Record<string, { score: number; rank: number }>
+}
+
+/** data/crime/unodc-prisons.json */
+export interface UnodcPrisonsFile {
+  source: string
+  note: string
+  entities: Record<
+    string,
+    {
+      prisoners?: { value: number; year: number }
+      facilities?: { value: number; year: number }
+    }
+  >
+}
+
+/** data/crime/death-penalty.json */
+export interface DeathPenaltyFile {
+  source: string
+  statusLabels: Record<string, string>
+  executionsYear: number | null
+  note: string
+  entities: Record<
+    string,
+    {
+      status: 'A' | 'E' | 'L' | 'P'
+      statusLabel: string
+      retained: boolean
+      lastExecutionYear?: number
+      abolishedYear?: number
+      /** Verbatim Amnesty figure — may be "972+", "1,000s", never parsed. */
+      recentExecutions?: string
+    }
+  >
+}
+
+/** data/education/education.json */
+export interface EducationFile {
+  cwurYear: number
+  notes: Record<string, string>
+  entities: Record<
+    string,
+    {
+      universities?: number
+      publicLibraries?: number
+      topUniversities?: {
+        name: string
+        worldRank: number
+        nationalRank: number
+      }[]
+    }
+  >
+}
+
+/** data/economy/debt.json — IMF WEO series incl. projections. */
+export interface DebtFile {
+  source: string
+  projectionsFrom: number
+  note: string
+  entities: Record<
+    string,
+    {
+      debtPctGdp?: { years: number[]; values: number[] }
+      gdpUsdBillions?: { years: number[]; values: number[] }
+    }
+  >
+}
+
+/** data/economy/currency-images.json */
+export interface CurrencyImagesFile {
+  source: string
+  note: string
+  currencies: Record<
+    string,
+    {
+      name: string
+      file: string
+      imageUrl: string
+      commonsPage: string
+      license: string | null
+      author: string | null
+      curated: boolean
+    }
+  >
+}
+
+/** data/subdivisions/<ISO3>.json */
+export interface SubdivisionsFile {
+  iso3: string
+  name: string
+  source: string
+  note: string
+  divisions: { name: string; population: number | null; qid: string }[]
+}
+
+/** data/climate/climate.json */
+export interface ClimateFile {
+  source: string
+  citation: string
+  note: string
+  entities: Record<
+    string,
+    {
+      latestTempC: { year: number; value: number }
+      warming?: { value: number; baseline: string; recent: string }
+    }
+  >
+}
+
+/** data/climate/capitals.json */
+export interface CapitalsFile {
+  source: string
+  note: string
+  entities: Record<
+    string,
+    { name: string; lat: number; lon: number; population: number }
+  >
+}
+
 export interface MapPalette {
   note: string
   minNeighbourDeltaE: number

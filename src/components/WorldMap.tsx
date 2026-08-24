@@ -17,6 +17,22 @@ const VIEW_WIDTH = 1000
 const VIEW_HEIGHT = 480
 
 /**
+ * Zoom ceiling. Raised from 12 (2026-08-23, maintainer request): at 12x the
+ * smaller island nations were still marker dots with no visible name. 48x is
+ * deep enough to read Caribbean and Pacific microstates while the 110m
+ * geometry still holds up (it is generalised, so beyond this it turns to
+ * obvious straight-line artifacts).
+ */
+const MAX_ZOOM = 48
+
+/**
+ * Point markers carry their name label WITHOUT hover once the zoom passes
+ * this factor. At world zoom 250 marker names would be unreadable soup; by
+ * 3x the map is regional and the labels have room.
+ */
+const MARKER_LABEL_MIN_ZOOM = 3
+
+/**
  * Marker radius for entities with no polygon at 110m. The visible dot is small
  * so it does not imply an area it does not have; the transparent hit ring is
  * 12px (24px target) so it is actually clickable and touch-reachable.
@@ -158,6 +174,23 @@ export function WorldMap({
    */
   const [activeIndex, setActiveIndex] = useState(0)
 
+  /**
+   * TopoJSON decoding is independent of rotation and zoom, but it used to sit
+   * inside the projection memo below -- meaning every pointermove that spun
+   * the globe re-decoded all 250 geometries before projecting them. Hoisted
+   * so a drag only pays for projection, not for parsing.
+   */
+  const collection = useMemo(
+    () =>
+      feature(
+        topology as never,
+        topology.objects.countries as never,
+      ) as unknown as {
+        features: { properties: CountryGeometryProperties; geometry: unknown }[]
+      },
+    [topology],
+  )
+
   const { shapes, sphere, markerPoints } = useMemo(() => {
     const base = createProjection(projectionKey)
     if (isGlobe) base.rotate([rotation[0], rotation[1], 0])
@@ -169,13 +202,6 @@ export function WorldMap({
     const pointVisible = (coordinates: [number, number]) =>
       !isGlobe ||
       geoDistance(coordinates, [-rotation[0], -rotation[1]]) <= Math.PI / 2
-
-    const collection = feature(
-      topology as never,
-      topology.objects.countries as never,
-    ) as unknown as {
-      features: { properties: CountryGeometryProperties; geometry: unknown }[]
-    }
 
     const built: CountryShape[] = []
     for (const item of collection.features) {
@@ -206,7 +232,7 @@ export function WorldMap({
       sphere: path({ type: 'Sphere' }) ?? '',
       markerPoints: points,
     }
-  }, [topology, markers, projectionKey, isGlobe, rotation])
+  }, [collection, markers, projectionKey, isGlobe, rotation])
 
   /** Every focusable entity, ordered west-to-east so Tab order is sensible. */
   const focusTargets: FocusTarget[] = useMemo(() => {
@@ -313,7 +339,7 @@ export function WorldMap({
     const svg = svgRef.current
     if (!svg) return
     const behaviour = zoom<SVGSVGElement, unknown>()
-      .scaleExtent([1, 12])
+      .scaleExtent([1, MAX_ZOOM])
       .translateExtent([
         [0, 0],
         [VIEW_WIDTH, VIEW_HEIGHT],
@@ -396,6 +422,28 @@ export function WorldMap({
     [isGlobe],
   )
 
+  /**
+   * Drag deltas accumulate here and are applied ONCE per animation frame.
+   *
+   * Touch screens deliver pointermove at up to 120-240 Hz; applying each one
+   * through setState forced a full reprojection render per event -- several
+   * renders per painted frame, all but one thrown away. That was the
+   * sluggishness on touch. Batching to requestAnimationFrame renders exactly
+   * once per frame with the summed delta, so the sphere tracks the finger at
+   * the display's own rate.
+   */
+  const pendingDrag = useRef({ dx: 0, dy: 0 })
+  const dragFrame = useRef<number | null>(null)
+  const zoomLevel = useRef(1)
+  zoomLevel.current = transform.k
+
+  useEffect(
+    () => () => {
+      if (dragFrame.current !== null) cancelAnimationFrame(dragFrame.current)
+    },
+    [],
+  )
+
   const handleGlobePointerMove = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
       if (!isGlobe) return
@@ -404,19 +452,33 @@ export function WorldMap({
       const dx = event.clientX - tracked.x
       const dy = event.clientY - tracked.y
       if (!dragSuppressesClick.current && Math.hypot(dx, dy) < 4) return
-      dragSuppressesClick.current = true
+      if (!dragSuppressesClick.current) {
+        dragSuppressesClick.current = true
+        // From here the gesture is a drag, never a click, so capturing the
+        // pointer costs nothing and keeps the spin alive when the finger
+        // wanders off the svg mid-gesture.
+        event.currentTarget.setPointerCapture(event.pointerId)
+      }
       dragPointers.current.set(event.pointerId, {
         x: event.clientX,
         y: event.clientY,
       })
-      // Degrees per CSS pixel, eased down as the zoom tightens.
-      const sensitivity = 0.25 / Math.sqrt(transform.k)
-      setRotation(([lambda, phi]) => [
-        lambda + dx * sensitivity,
-        Math.max(-90, Math.min(90, phi - dy * sensitivity)),
-      ])
+      pendingDrag.current.dx += dx
+      pendingDrag.current.dy += dy
+      if (dragFrame.current !== null) return
+      dragFrame.current = requestAnimationFrame(() => {
+        dragFrame.current = null
+        const { dx: fdx, dy: fdy } = pendingDrag.current
+        pendingDrag.current = { dx: 0, dy: 0 }
+        // Degrees per CSS pixel, eased down as the zoom tightens.
+        const sensitivity = 0.25 / Math.sqrt(zoomLevel.current)
+        setRotation(([lambda, phi]) => [
+          lambda + fdx * sensitivity,
+          Math.max(-90, Math.min(90, phi - fdy * sensitivity)),
+        ])
+      })
     },
-    [isGlobe, transform.k],
+    [isGlobe],
   )
 
   const handleGlobePointerEnd = useCallback(
@@ -479,30 +541,39 @@ export function WorldMap({
     // would fight them and imply country-level interaction.
     if (mode === 'continent') return []
     const k2 = transform.k * transform.k
-    const labels: { iso3: string; name: string; x: number; y: number; emphasized: boolean }[] = []
-    for (const shape of shapes) {
+    // The key must be STABLE and UNIQUE per drawn shape, not per iso3: two
+    // polygons share iso3 SOM (Somalia + Somaliland) and CYP. Keying labels
+    // by iso3 alone gave React duplicate keys, and panning while zoomed left
+    // stale label nodes behind -- the "Somalia multiplies" bug.
+    const labels: { key: string; iso3: string; name: string; x: number; y: number; emphasized: boolean }[] = []
+    shapes.forEach((shape, index) => {
       const isHovered = hovered?.iso3 === shape.iso3
-      if (!isHovered && shape.areaPx * k2 < LABEL_MIN_AREA_PX2) continue
-      if (!Number.isFinite(shape.centroid[0])) continue
+      if (!isHovered && shape.areaPx * k2 < LABEL_MIN_AREA_PX2) return
+      if (!Number.isFinite(shape.centroid[0])) return
       labels.push({
+        key: `shape-${shape.iso3}-${index}`,
         iso3: shape.iso3,
         name: shape.name,
         x: shape.centroid[0],
         y: shape.centroid[1],
         emphasized: isHovered,
       })
-    }
-    if (hovered && !labels.some((l) => l.iso3 === hovered.iso3)) {
-      const point = markerPoints.find(({ marker }) => marker.iso3 === hovered.iso3)
-      if (point) {
-        labels.push({
-          iso3: hovered.iso3,
-          name: point.marker.name,
-          x: point.x,
-          y: point.y - 6,
-          emphasized: true,
-        })
-      }
+    })
+    // Marker entities (no polygon at 110m) get their names once the zoom is
+    // regional -- before this, an island nation's name existed only on hover,
+    // which on touch meant only after tapping the dot.
+    const labelMarkers = transform.k >= MARKER_LABEL_MIN_ZOOM
+    for (const { marker, x, y } of markerPoints) {
+      const isHovered = hovered?.iso3 === marker.iso3
+      if (!labelMarkers && !isHovered) continue
+      labels.push({
+        key: `marker-${marker.iso3}`,
+        iso3: marker.iso3,
+        name: marker.name,
+        x,
+        y: y - 6 / Math.sqrt(transform.k),
+        emphasized: isHovered,
+      })
     }
     return labels
   }, [shapes, markerPoints, hovered, transform.k, mode])
@@ -610,7 +681,7 @@ export function WorldMap({
             it, zooming scaled the landmasses while the globe's blue circle
             stayed fixed -- land visibly outgrew its own planet. */}
         <path d={sphere} fill={waterFill} />
-        {shapes.map((shape) => {
+        {shapes.map((shape, index) => {
           const row = populationByIso3.get(shape.iso3)
           const dimmed = isDimmed(shape.continent)
           const target: HoverTarget = {
@@ -622,7 +693,11 @@ export function WorldMap({
           }
           return (
             <path
-              key={`${shape.iso3}-${shape.d.length}`}
+              // Key on identity + position in the feature list, NEVER on the
+              // path string: a d-derived key changes every rotation frame,
+              // which remounts all ~250 nodes per frame instead of updating
+              // one attribute (and duplicate iso3s -- SOM, CYP -- collide).
+              key={`${shape.iso3}-${index}`}
               ref={registerNode(shape.iso3)}
               d={shape.d}
               fill={fillFor(shape)}
@@ -655,10 +730,11 @@ export function WorldMap({
         {/* Contested overlay, drawn above fills and inert to pointer events so
             it never steals the hit target from the country beneath it. */}
         {shapes
-          .filter((shape) => shape.contested)
-          .map((shape) => (
+          .map((shape, index) => ({ shape, index }))
+          .filter(({ shape }) => shape.contested)
+          .map(({ shape, index }) => (
             <path
-              key={`hatch-${shape.iso3}-${shape.d.length}`}
+              key={`hatch-${shape.iso3}-${index}`}
               d={shape.d}
               fill="url(#contested-hatch)"
               stroke="none"
@@ -717,7 +793,7 @@ export function WorldMap({
             with a light halo; flat views follow the theme. */}
         {visibleLabels.map((label) => (
           <text
-            key={`name-${label.iso3}`}
+            key={label.key}
             x={label.x}
             y={label.y}
             textAnchor="middle"

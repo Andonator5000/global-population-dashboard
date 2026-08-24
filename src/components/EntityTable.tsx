@@ -217,19 +217,27 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
                   {header('growthRate', 'Growth rate', true)}
                 </tr>
               </thead>
-              <tbody>
+              {/* Maintainer ruling (2026-08-23): the body zebra-stripes
+                  white / highlighter yellow IN BOTH THEMES -- these literals
+                  deliberately do not follow the theme tokens. Text colour is
+                  therefore pinned dark too: --text-muted is re-scoped so the
+                  muted inline styles below resolve against the light rows
+                  rather than the dark theme's light-on-dark values. */}
+              <tbody
+                style={
+                  {
+                    color: '#111827',
+                    '--text-muted': '#52525b',
+                  } as React.CSSProperties
+                }
+              >
                 {visible.map((row, index) => {
                   const rowGdp = gdpOf(row.iso3)
                   return (
                     <tr
                       key={row.iso3}
                       style={{
-                        // Zebra stripes in the page-tint band, so the colour
-                        // never competes with text contrast (gated).
-                        background:
-                          index % 2 === 0
-                            ? 'var(--surface-raised)'
-                            : 'var(--page-tint)',
+                        background: index % 2 === 0 ? '#ffffff' : '#fdff54',
                       }}
                     >
                       <th scope="row" className="px-3 py-1.5 text-left font-normal">
