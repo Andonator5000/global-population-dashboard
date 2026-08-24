@@ -1108,6 +1108,146 @@ icon-led legends now list every tail category individually.
 
 ---
 
+## 18. The 2026-08-23 batch (maintainer-requested)
+
+### 18.1 Somaliland and Northern Cyprus get their own labels
+
+Keying the Somaliland polygon to SOM and the Northern Cyprus polygon to CYP
+remains the DATA ruling (their people are counted in the parent's series and
+neither has an ISO 3166-1 code — §see geometry notes). But re-labelling those
+polygons with the parent's name was a bug, not a ruling: the map drew two
+shapes called "Somalia" and two called "Cyprus". Each polygon now keeps its
+own name (`POLYGON_LABEL_OVERRIDES` in `etl/sources/geometry.py`) and is
+hatched as contested; clicking either still opens the parent entity's page,
+which is where its data genuinely lives.
+
+### 18.2 Map label identity, zoom ceiling, and marker labels
+
+The label layer keyed labels by iso3, which is NOT unique per drawn shape
+(SOM and CYP each paint two polygons). Duplicate React keys left stale label
+nodes behind while panning zoomed-in — the reported "Somalia multiplies" bug.
+Labels and paths now key on identity + feature index, never on the path
+string (a d-derived key remounted every path node on every rotation frame).
+
+Zoom ceiling raised 12 → 48 so island microstates are reachable, and point
+markers carry their name without hover once zoom ≥ 3 — before this, an
+island nation's name existed only on hover, which on touch meant only after
+tapping the dot.
+
+### 18.3 Globe drag batched to animation frames
+
+Touch screens deliver pointermove at 120–240 Hz; each event forced a full
+reprojection render, most thrown away between paints. Drag deltas now
+accumulate and apply once per requestAnimationFrame, TopoJSON decoding is
+hoisted out of the per-rotation memo, and the pointer is captured once a
+drag starts so the spin survives leaving the svg.
+
+### 18.4 Entity table zebra: white / highlighter yellow in BOTH themes
+
+Maintainer ruling. The table body deliberately abandons the theme tokens:
+rows alternate #ffffff and #fdff54 with dark text in light AND dark mode.
+The muted token is re-scoped inside the tbody so per-cell muted styles
+resolve against the light rows. This is a conscious exception to the
+theme-parity discipline, contained to the tbody.
+
+### 18.5 Sections: Education and Crime & Incarceration split out
+
+Education (literacy, spending, enrollment) moves out of Demographics and
+People into its own section; intentional homicides moves out of Security and
+Defense into a new Crime and Incarceration section. Indicator `section` keys
+in `etl/config.py` follow, so the by-country artifacts state the same layout
+the page renders.
+
+### 18.6 Currency tile presentation
+
+The Currency tile flips its hierarchy on request: "Currency" is the display
+line, the unit name(s) sit beneath. Exchange-rate wording says "per US
+Dollar" in full.
+
+## 19. New data sections (2026-08-23 batch, maintainer-requested)
+
+### 19.1 The live-fetch exception
+
+Until now the app never talked to an upstream at render time. Live exchange
+rates and live weather cannot exist in a committed artifact by definition,
+so `src/lib/live.ts` opens a CONTAINED exception: keyless, CORS-verified
+sources only (open.er-api.com for FX — attribution link required and
+rendered; Open-Meteo for weather — CC BY 4.0, non-commercial API), every
+failure resolving to the standard explicit-unavailable state, and no
+committed figure ever depending on a live fetch. Everything else in this
+batch remains build-time artifacts.
+
+### 19.2 Press freedom: RSF first-party CSV, OWID mirror rejected
+
+RSF publishes the full index at a stable year-keyed CSV URL (windows-1252,
+semicolons, decimal commas — all real, all handled). OWID's mirror froze in
+2021 on the OLD inverted 0-is-best methodology; mixing the two across years
+would corrupt every comparison, so the mirror was rejected outright.
+
+### 19.3 Crime & Incarceration sources
+
+Prison population rate and occupancy come via OWID (producer: ICPR/World
+Prison Brief). Absolute prisoner totals and facility counts come from
+UNODC's bulk xlsx, whose release-dated URL is re-discovered from the stable
+landing page each run. Facility counts exist for only ~93 countries and
+render as honest unavailability elsewhere — scraping World Prison Brief's
+~220 HTML pages to fill the gap was considered and rejected (no bulk
+endpoint, fragile, discourteous to a small academic site).
+
+Death-penalty status: Amnesty compiles it but ships PDFs only; OWID and
+Wikidata have nothing current (verified). Wikipedia's "Capital punishment
+by country" tables are the one keyless machine-readable source (CC BY-SA,
+attributed). Execution figures are kept VERBATIM ("1,000s", "972+") —
+parsing a floor estimate into a number would launder its uncertainty.
+
+### 19.4 Education extras: three confidence levels, labelled
+
+University counts (Hipolabs domains list) UNDERCOUNT and say so. Public
+library counts come from Wikidata because IFLA's Library Map sits behind
+Cloudflare with no keyless endpoint — the label says "recorded in
+Wikidata", because Czechia outscoring Germany is a cataloguing artefact,
+not a fact about libraries. Top-10 universities come from CWUR's national
+ranks (~2,000 institutions, ~90 countries), © CWUR with attribution;
+QS/THE are proprietary and were not scraped.
+
+### 19.5 Public debt: interpolated IMF WEO, projections included
+
+IMF DataMapper (keyless, ISO3-keyed, NOT CORS-enabled — build-time only)
+provides debt %GDP and nominal GDP including ~5 projection years. The page
+interpolates both to the current instant and ticks, extending the
+population counter's modelled-estimate discipline; the derived US$ figure
+and the projection boundary are labelled as such. Quirk: imf.org's WAF
+allows stock client user agents and rejects custom ones, so this one
+source fetches as plain `python-requests/x`.
+
+### 19.6 Currency images: representative, never promised as "the smallest bill"
+
+The request was the smallest banknote per country in high resolution. No
+structured source orders denominations, banknote copyright varies by
+jurisdiction (many modern notes cannot legally be on Commons), and
+Wikidata's P18 is whatever an editor chose. So: P18 image per ISO 4217
+code, editorial overrides file for curation, per-file licence and author
+recorded from the Commons API and rendered, hotlinked at a Commons-bucketed
+width — captioned "representative specimen", because that is what it is.
+
+### 19.7 Subdivisions: Wikidata P150 with the former-entity filter
+
+One SPARQL query covers all countries. Items typed as former
+administrative entities are excluded (the filter that stops India listing
+Daman and Diu), rows dedupe by label, and populations are truthy P1082
+whose reference year varies by division — the page says "latest Wikidata
+figure" rather than inventing a vintage. GeoNames lost on staleness and a
+400 MB dump.
+
+### 19.8 Climate: decade means, not single years
+
+Country temperature series are Copernicus ERA5 via OWID (1940 onward). The
+"50-year warming" figure compares 1971–1980 vs 2016–2025 DECADE MEANS;
+single-year deltas would swing by degrees on year choice. Precipitation is
+the World Bank's climatological average (AG.LND.PRCP.MM) — last updated
+2022, which is fine for a climatological normal and labelled with its
+vintage. Capitals for the live weather panel come from GeoNames PPLC rows.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

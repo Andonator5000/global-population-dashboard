@@ -261,11 +261,37 @@ def stage_owid_indicators(ctx: dict[str, Any]) -> None:
     )
 
 
+def _simple_stage(module_name: str, display: str) -> Callable[[dict[str, Any]], None]:
+    """The standard stage shape: require the registry, import lazily, ingest.
+
+    The 2026-08-23 batch added eight sources; writing eight identical
+    stage_x functions would just be surface area for copy-paste drift.
+    """
+    def run(ctx: dict[str, Any]) -> None:
+        import importlib
+
+        _require_registry(ctx)
+        stage(display)
+        module = importlib.import_module(f"etl.sources.{module_name}")
+        module.ingest(
+            ctx["registry"], refresh=ctx["refresh"], manifest=ctx["manifest"]
+        )
+    return run
+
+
 STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "crosswalk": stage_crosswalk,
     "wpp": stage_wpp,
     "worldbank": stage_worldbank,
     "owid_indicators": stage_owid_indicators,
+    "pressfreedom": _simple_stage("pressfreedom", "pressfreedom"),
+    "unodc": _simple_stage("unodc", "unodc"),
+    "deathpenalty": _simple_stage("deathpenalty", "deathpenalty"),
+    "education": _simple_stage("education", "education"),
+    "imf": _simple_stage("imf", "imf"),
+    "currency_images": _simple_stage("currencyimages", "currency_images"),
+    "subdivisions": _simple_stage("subdivisions", "subdivisions"),
+    "climate": _simple_stage("climate", "climate"),
     "geometry": stage_geometry,
     "flags": stage_flags,
     "factbook": stage_factbook,
@@ -295,6 +321,11 @@ def check_sources() -> int:
         ("Our World in Data grapher",
          config.OWID_GRAPHER_CSV.format(slug=config.OWID_INDICATORS[0].slug)),
         ("flagcdn", config.FLAGCDN_SVG.format(cca2_lower="us")),
+        ("IMF DataMapper",
+         config.IMF_DATAMAPPER_TEMPLATE.format(code=config.IMF_DEBT_PCT_GDP)),
+        ("Hipolabs universities", config.HIPOLABS_UNIVERSITIES_URL),
+        ("UNODC prisons landing", config.UNODC_PRISON_LANDING),
+        ("GeoNames cities15000", config.GEONAMES_CITIES15000_URL),
     ]
     rev = discover_wpp_revision()
     probes.append((

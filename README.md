@@ -117,6 +117,15 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Biomes | RESOLVE Ecoregions 2017 | Build-time overlay, never runtime. |
 | Democracy, human rights, governance, CO₂ per capita | V-Dem / Regimes of the World / Hanson & Sigman / Global Carbon Budget, via Our World in Data | Primary source for the Freedom and governance measures; citations name the underlying producer. |
 | World Heritage sites | UNESCO World Heritage List | Official syndication XML — see DATA_DECISIONS.md §16.3 on the WAF workaround. |
+| Press freedom | RSF World Press Freedom Index | First-party CSV; the stale OWID mirror was rejected (DATA_DECISIONS.md §19.2). |
+| Prisons and prisoners | UNODC bulk xlsx; prison rate/occupancy via OWID (ICPR/World Prison Brief) | Facility counts exist for ~93 countries and render as unavailable elsewhere. |
+| Death penalty status | Wikipedia "Capital punishment by country" (CC BY-SA) | Amnesty compiles but ships PDFs only; execution figures kept verbatim. |
+| Universities, libraries, top-10 rankings | Hipolabs / Wikidata / CWUR | Three confidence levels, each labelled — see DATA_DECISIONS.md §19.4. |
+| Public debt, nominal GDP (incl. projections) | IMF World Economic Outlook (DataMapper) | Build-time only (no CORS); the page interpolates and labels it modelled. |
+| Currency images | Wikidata P18 via Wikimedia Commons | Representative specimen with per-file licence/author; overrides file for curation. |
+| States/provinces with populations | Wikidata (P150/P1082) | Former-entity filter; populations carry their own vintages. |
+| Climate (temperature, warming) | Copernicus ERA5 via Our World in Data | 50-year warming is decade-mean vs decade-mean. |
+| Capitals; live weather; live FX | GeoNames; Open-Meteo; open.er-api.com | The two live fetches are the app's only render-time upstream calls — see DATA_DECISIONS.md §19.1. |
 | Cross-checks | Our World in Data (population) | Sanity check only — OWID's modern population series is UN WPP re-published, so it validates our parsing, not the estimates. |
 
 Joined on **ISO 3166-1 alpha-3**.
