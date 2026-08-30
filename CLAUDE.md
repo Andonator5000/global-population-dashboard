@@ -1,7 +1,7 @@
 # Operating guide (for Claude Code sessions)
 
 Read this before changing anything. `README.md` explains the project;
-`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–22 are
+`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–23 are
 the 2026-08 maintainer batches) — check it before re-litigating a source
 choice.
 
@@ -69,8 +69,14 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 ## Editorial invariants (don't undo silently)
 
 - Somaliland/N. Cyprus polygons keep their own labels but key to SOM/CYP.
-- Entity table: dark-blue/light-blue rows in BOTH themes; home page washes
-  verdant green in both themes; country pages tint from flag colours.
+- Entity table: neutral rows, hairline dividers, sticky header, signed
+  growth-rate colour only (2026-08-29); home page washes verdant green in
+  both themes; country pages tint from flag colours.
+- ONE breakdown pattern: ranked horizontal bars (`Breakdown.tsx`); the
+  stacked bar is gone. Flag is the hero of the country page with attributed
+  Wikipedia symbolism text (CC BY-SA, verbatim, linked).
+- Map palette: two gated directions (atlas default, paper), chroma <= 0.045;
+  continent view = cohesive regions + labels, no internal borders.
 - Inventions pass a Wikidata class gate (allow/deny roots in
   `etl/config.py`; food/drink still denied); cuisine and inventions
   coverage limits are stated in the UI, not padded.
