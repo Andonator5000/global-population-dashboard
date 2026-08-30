@@ -2,37 +2,8 @@
   "iso3": "AUT",
   "name": "Austria",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "goalball",
-      "source": "wikidata",
-      "inventors": [
-        "Natalie Örnkvist"
-      ],
-      "year": 1946,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Goalball%20vid%20Paralympics%20i%20Aten.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Goalball%20vid%20Paralympics%20i%20Aten.jpg",
-        "license": "Copyrighted free use",
-        "author": "Helene Stjernlöf",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Glock",
-      "source": "wikidata",
-      "inventors": [
-        "Gaston Glock"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glock%2017-removebg-preview.png?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Glock%2017-removebg-preview.png",
-        "license": "CC BY 2.0",
-        "author": "Asklid Antonsen",
-        "source": "Wikimedia Commons"
-      }
-    },
     {
       "name": "Glock 17",
       "source": "wikidata",
@@ -49,59 +20,38 @@
       }
     },
     {
-      "name": "Cosmic ray",
-      "source": "wikipedia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cosmic%20ray%20flux%20versus%20particle%20energy.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cosmic%20ray%20flux%20versus%20particle%20energy.svg",
-        "license": "CC BY-SA 3.0",
-        "author": "Sven Lafebre",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Cori cycle",
-      "source": "wikipedia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cori%20Cycle.SVG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cori%20Cycle.SVG",
-        "license": "CC BY-SA 3.0",
-        "author": "User:Petaholmes, user:PDH, user:Eyal Bairey",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Gondwana",
+      "name": "Soman",
       "source": "wikipedia"
     },
     {
-      "name": "Drum memory",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Slow motion",
+      "name": "Printed circuit board",
       "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ultra%20slow-motion%20video%20of%20glass%20tea%20cup%20smashed%20on%20concrete%20floor.webm?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ultra%20slow-motion%20video%20of%20glass%20tea%20cup%20smashed%20on%20concrete%20floor.webm",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SEG%20DVD%20430%20-%20Printed%20circuit%20board-4276.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:SEG%20DVD%20430%20-%20Printed%20circuit%20board-4276.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Pittigrilli",
+        "author": "Raimond Spekking",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Psychoanalysis",
+      "name": "Salvator Dormus pistol",
       "source": "wikipedia"
     },
     {
-      "name": "Poliovirus",
-      "source": "wikipedia",
-      "inventors": [
-        "Karl Landsteiner"
-      ]
+      "name": "Snow globe",
+      "source": "wikipedia"
     },
     {
-      "name": "Blow forward",
+      "name": "Internal combustion engine",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Kaplan turbine",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Rumpler Tropfenwagen",
       "source": "wikipedia"
     }
   ]

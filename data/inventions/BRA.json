@@ -2,67 +2,57 @@
   "iso3": "BRA",
   "name": "Brazil",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Sergio",
-      "source": "wikidata",
-      "year": 1895,
+      "name": "Bradykinin",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Electric shower",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Orelhão",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Sebastião Leme",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Electronic voting machine",
+      "source": "wikipedia",
+      "year": 1989
+    },
+    {
+      "name": "Lua",
+      "source": "wikipedia",
+      "inventors": [
+        "Roberto Ierusalimschy"
+      ],
+      "year": 1993,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PSM%20V69%20D278%20The%20largest%20carbon%20ever%20found.png?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:PSM%20V69%20D278%20The%20largest%20carbon%20ever%20found.png",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lua-Logo.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lua-Logo.svg",
         "license": "Public domain",
-        "author": "Unknown authorUnknown author",
+        "author": "Alexandre Nakonechnyj (Graphic design) and Lua team (PostScript code)",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Pion",
+      "name": "Pix (payment system)",
       "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quark%20structure%20pion.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Quark%20structure%20pion.svg",
-        "license": "CC BY-SA 2.5",
-        "author": "No machine-readable author provided. Harp assumed (based on copyright claims).",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pix%20%28Brazil%29%20logo.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pix%20%28Brazil%29%20logo.svg",
+        "license": "Public domain",
+        "author": "Banco Central do Brasil",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Spectrum (topology)",
-      "source": "wikipedia",
-      "year": 1958
-    },
-    {
-      "name": "Peixoto's theorem",
-      "source": "wikipedia",
-      "year": 1959
-    },
-    {
-      "name": "Costa's minimal surface",
-      "source": "wikipedia",
-      "year": 1982,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Costa%27s%20minimal%20surface.ogv?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Costa%27s%20minimal%20surface.ogv",
-        "license": "CC BY-SA 3.0",
-        "author": "RupertMillard",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Chagas disease",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Epidemic typhus",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Schistosomiasis",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Arterial switch operation",
+      "name": "Vanishing spray",
       "source": "wikipedia"
     }
   ]

@@ -2,13 +2,9 @@
   "cwurYear": 2026,
   "notes": {
     "universities": "Count of institutions in the Hipolabs university-domains list; an institution appears only if it has a web domain, so this undercounts.",
-    "publicLibraries": "Count of items typed 'public library' in Wikidata. Coverage varies enormously by country's cataloguing activity; treat as a floor, not a census.",
     "topUniversities": "CWUR World University Rankings 2026 national ranks; countries with fewer than 10 ranked institutions list what is ranked."
   },
   "entities": {
-    "ABW": {
-      "publicLibraries": 1
-    },
     "AFG": {
       "universities": 40
     },
@@ -16,16 +12,13 @@
       "universities": 8
     },
     "ALB": {
-      "universities": 16,
-      "publicLibraries": 7
+      "universities": 16
     },
     "AND": {
-      "universities": 1,
-      "publicLibraries": 2
+      "universities": 1
     },
     "ARE": {
       "universities": 37,
-      "publicLibraries": 2,
       "topUniversities": [
         {
           "name": "Khalifa University",
@@ -51,7 +44,6 @@
     },
     "ARG": {
       "universities": 121,
-      "publicLibraries": 2060,
       "topUniversities": [
         {
           "name": "University of Buenos Aires",
@@ -100,15 +92,11 @@
         }
       ]
     },
-    "ASM": {
-      "publicLibraries": 1
-    },
     "ATG": {
       "universities": 2
     },
     "AUS": {
       "universities": 59,
-      "publicLibraries": 1082,
       "topUniversities": [
         {
           "name": "University of New South Wales",
@@ -164,7 +152,6 @@
     },
     "AUT": {
       "universities": 46,
-      "publicLibraries": 1298,
       "topUniversities": [
         {
           "name": "University of Vienna",
@@ -233,7 +220,6 @@
     },
     "BEL": {
       "universities": 50,
-      "publicLibraries": 39,
       "topUniversities": [
         {
           "name": "KU Leuven",
@@ -288,15 +274,13 @@
       ]
     },
     "BEN": {
-      "universities": 3,
-      "publicLibraries": 5
+      "universities": 3
     },
     "BFA": {
       "universities": 1
     },
     "BGD": {
       "universities": 83,
-      "publicLibraries": 10,
       "topUniversities": [
         {
           "name": "University of Dhaka",
@@ -307,7 +291,6 @@
     },
     "BGR": {
       "universities": 37,
-      "publicLibraries": 2,
       "topUniversities": [
         {
           "name": "Sofia University",
@@ -325,15 +308,13 @@
       "universities": 12
     },
     "BHS": {
-      "universities": 1,
-      "publicLibraries": 2
+      "universities": 1
     },
     "BIH": {
       "universities": 16
     },
     "BLR": {
       "universities": 34,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "Belarusian State University",
@@ -354,12 +335,10 @@
       "universities": 1
     },
     "BOL": {
-      "universities": 31,
-      "publicLibraries": 5
+      "universities": 31
     },
     "BRA": {
       "universities": 187,
-      "publicLibraries": 6355,
       "topUniversities": [
         {
           "name": "University of São Paulo",
@@ -417,22 +396,19 @@
       "universities": 1
     },
     "BRN": {
-      "universities": 3,
-      "publicLibraries": 9
+      "universities": 3
     },
     "BTN": {
       "universities": 1
     },
     "BWA": {
-      "universities": 9,
-      "publicLibraries": 61
+      "universities": 9
     },
     "CAF": {
       "universities": 1
     },
     "CAN": {
       "universities": 156,
-      "publicLibraries": 1161,
       "topUniversities": [
         {
           "name": "University of Toronto",
@@ -488,7 +464,6 @@
     },
     "CHE": {
       "universities": 76,
-      "publicLibraries": 89,
       "topUniversities": [
         {
           "name": "ETH Zurich",
@@ -544,7 +519,6 @@
     },
     "CHL": {
       "universities": 65,
-      "publicLibraries": 7,
       "topUniversities": [
         {
           "name": "Pontifical Catholic University of Chile",
@@ -600,7 +574,6 @@
     },
     "CHN": {
       "universities": 398,
-      "publicLibraries": 113,
       "topUniversities": [
         {
           "name": "Tsinghua University",
@@ -655,12 +628,10 @@
       ]
     },
     "CIV": {
-      "universities": 4,
-      "publicLibraries": 1
+      "universities": 4
     },
     "CMR": {
       "universities": 10,
-      "publicLibraries": 6,
       "topUniversities": [
         {
           "name": "University of Yaoundé I",
@@ -670,15 +641,13 @@
       ]
     },
     "COD": {
-      "universities": 10,
-      "publicLibraries": 1
+      "universities": 10
     },
     "COG": {
       "universities": 1
     },
     "COL": {
       "universities": 104,
-      "publicLibraries": 20,
       "topUniversities": [
         {
           "name": "National University of Colombia",
@@ -713,8 +682,7 @@
       ]
     },
     "CPV": {
-      "universities": 1,
-      "publicLibraries": 1
+      "universities": 1
     },
     "CRI": {
       "universities": 32,
@@ -749,7 +717,6 @@
     },
     "CZE": {
       "universities": 30,
-      "publicLibraries": 5308,
       "topUniversities": [
         {
           "name": "Charles University in Prague",
@@ -805,7 +772,6 @@
     },
     "DEU": {
       "universities": 321,
-      "publicLibraries": 1470,
       "topUniversities": [
         {
           "name": "Ludwig Maximilian University of Munich",
@@ -867,7 +833,6 @@
     },
     "DNK": {
       "universities": 34,
-      "publicLibraries": 491,
       "topUniversities": [
         {
           "name": "University of Copenhagen",
@@ -910,8 +875,7 @@
       "universities": 26
     },
     "DZA": {
-      "universities": 29,
-      "publicLibraries": 4
+      "universities": 29
     },
     "ECU": {
       "universities": 43,
@@ -925,7 +889,6 @@
     },
     "EGY": {
       "universities": 44,
-      "publicLibraries": 64,
       "topUniversities": [
         {
           "name": "Cairo University",
@@ -984,7 +947,6 @@
     },
     "ESP": {
       "universities": 96,
-      "publicLibraries": 5106,
       "topUniversities": [
         {
           "name": "Autonomous University of Barcelona",
@@ -1060,7 +1022,6 @@
     },
     "ETH": {
       "universities": 30,
-      "publicLibraries": 8,
       "topUniversities": [
         {
           "name": "Addis Ababa University",
@@ -1096,7 +1057,6 @@
     },
     "FIN": {
       "universities": 35,
-      "publicLibraries": 422,
       "topUniversities": [
         {
           "name": "University of Helsinki",
@@ -1155,7 +1115,6 @@
     },
     "FRA": {
       "universities": 294,
-      "publicLibraries": 200,
       "topUniversities": [
         {
           "name": "PSL University",
@@ -1217,7 +1176,6 @@
     },
     "GBR": {
       "universities": 193,
-      "publicLibraries": 3925,
       "topUniversities": [
         {
           "name": "University of Cambridge",
@@ -1273,7 +1231,6 @@
     },
     "GEO": {
       "universities": 15,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "Ivane Javakhishvili Tbilisi State University",
@@ -1292,12 +1249,8 @@
         }
       ]
     },
-    "GGY": {
-      "publicLibraries": 2
-    },
     "GHA": {
       "universities": 31,
-      "publicLibraries": 159,
       "topUniversities": [
         {
           "name": "University of Ghana",
@@ -1325,7 +1278,6 @@
     },
     "GRC": {
       "universities": 33,
-      "publicLibraries": 39,
       "topUniversities": [
         {
           "name": "National and Kapodistrian University of Athens",
@@ -1405,7 +1357,6 @@
     },
     "HRV": {
       "universities": 12,
-      "publicLibraries": 4,
       "topUniversities": [
         {
           "name": "University of Zagreb",
@@ -1425,12 +1376,10 @@
       ]
     },
     "HTI": {
-      "universities": 6,
-      "publicLibraries": 5
+      "universities": 6
     },
     "HUN": {
       "universities": 42,
-      "publicLibraries": 24,
       "topUniversities": [
         {
           "name": "Eötvös Loránd University",
@@ -1471,7 +1420,6 @@
     },
     "IDN": {
       "universities": 194,
-      "publicLibraries": 10,
       "topUniversities": [
         {
           "name": "University of Indonesia",
@@ -1490,12 +1438,8 @@
         }
       ]
     },
-    "IMN": {
-      "publicLibraries": 6
-    },
     "IND": {
       "universities": 477,
-      "publicLibraries": 526,
       "topUniversities": [
         {
           "name": "Indian Institute of Management Ahmedabad",
@@ -1551,7 +1495,6 @@
     },
     "IRL": {
       "universities": 27,
-      "publicLibraries": 123,
       "topUniversities": [
         {
           "name": "Trinity College Dublin",
@@ -1597,7 +1540,6 @@
     },
     "IRN": {
       "universities": 193,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "Islamic Azad University",
@@ -1673,7 +1615,6 @@
     },
     "ISR": {
       "universities": 24,
-      "publicLibraries": 20,
       "topUniversities": [
         {
           "name": "Hebrew University of Jerusalem",
@@ -1724,7 +1665,6 @@
     },
     "ITA": {
       "universities": 93,
-      "publicLibraries": 7060,
       "topUniversities": [
         {
           "name": "Sapienza University of Rome",
@@ -1788,9 +1728,6 @@
         }
       ]
     },
-    "JEY": {
-      "publicLibraries": 1
-    },
     "JOR": {
       "universities": 29,
       "topUniversities": [
@@ -1808,7 +1745,6 @@
     },
     "JPN": {
       "universities": 572,
-      "publicLibraries": 4855,
       "topUniversities": [
         {
           "name": "University of Tokyo",
@@ -1874,7 +1810,6 @@
     },
     "KEN": {
       "universities": 49,
-      "publicLibraries": 112,
       "topUniversities": [
         {
           "name": "University of Nairobi",
@@ -1884,8 +1819,7 @@
       ]
     },
     "KGZ": {
-      "universities": 13,
-      "publicLibraries": 1
+      "universities": 13
     },
     "KHM": {
       "universities": 21
@@ -1895,7 +1829,6 @@
     },
     "KOR": {
       "universities": 244,
-      "publicLibraries": 7,
       "topUniversities": [
         {
           "name": "Seoul National University",
@@ -1986,8 +1919,7 @@
       "universities": 1
     },
     "LBY": {
-      "universities": 11,
-      "publicLibraries": 1
+      "universities": 11
     },
     "LCA": {
       "universities": 1
@@ -1997,7 +1929,6 @@
     },
     "LKA": {
       "universities": 27,
-      "publicLibraries": 2,
       "topUniversities": [
         {
           "name": "University of Peradeniya",
@@ -2021,7 +1952,6 @@
     },
     "LTU": {
       "universities": 17,
-      "publicLibraries": 4,
       "topUniversities": [
         {
           "name": "Vilnius University",
@@ -2042,7 +1972,6 @@
     },
     "LUX": {
       "universities": 2,
-      "publicLibraries": 11,
       "topUniversities": [
         {
           "name": "University of Luxembourg",
@@ -2053,7 +1982,6 @@
     },
     "LVA": {
       "universities": 24,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "University of Latvia",
@@ -2068,12 +1996,10 @@
       ]
     },
     "MAC": {
-      "universities": 4,
-      "publicLibraries": 2
+      "universities": 4
     },
     "MAR": {
       "universities": 33,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "Mohammed V University",
@@ -2108,8 +2034,7 @@
       ]
     },
     "MDA": {
-      "universities": 12,
-      "publicLibraries": 1
+      "universities": 12
     },
     "MDG": {
       "universities": 6
@@ -2119,7 +2044,6 @@
     },
     "MEX": {
       "universities": 166,
-      "publicLibraries": 59,
       "topUniversities": [
         {
           "name": "National Autonomous University of Mexico",
@@ -2173,16 +2097,11 @@
         }
       ]
     },
-    "MHL": {
-      "publicLibraries": 1
-    },
     "MKD": {
-      "universities": 9,
-      "publicLibraries": 1
+      "universities": 9
     },
     "MLI": {
-      "universities": 1,
-      "publicLibraries": 6
+      "universities": 1
     },
     "MLT": {
       "universities": 4,
@@ -2198,12 +2117,10 @@
       "universities": 5
     },
     "MNE": {
-      "universities": 1,
-      "publicLibraries": 1
+      "universities": 1
     },
     "MNG": {
-      "universities": 11,
-      "publicLibraries": 2
+      "universities": 11
     },
     "MOZ": {
       "universities": 8
@@ -2215,12 +2132,10 @@
       "universities": 1
     },
     "MUS": {
-      "universities": 2,
-      "publicLibraries": 15
+      "universities": 2
     },
     "MWI": {
       "universities": 8,
-      "publicLibraries": 18,
       "topUniversities": [
         {
           "name": "University of Malawi",
@@ -2231,7 +2146,6 @@
     },
     "MYS": {
       "universities": 152,
-      "publicLibraries": 10,
       "topUniversities": [
         {
           "name": "University of Malaya",
@@ -2281,8 +2195,7 @@
       ]
     },
     "NAM": {
-      "universities": 5,
-      "publicLibraries": 60
+      "universities": 5
     },
     "NCL": {
       "universities": 1
@@ -2290,12 +2203,8 @@
     "NER": {
       "universities": 1
     },
-    "NFK": {
-      "publicLibraries": 1
-    },
     "NGA": {
       "universities": 115,
-      "publicLibraries": 138,
       "topUniversities": [
         {
           "name": "University of Ibadan",
@@ -2387,7 +2296,6 @@
     },
     "NOR": {
       "universities": 25,
-      "publicLibraries": 27,
       "topUniversities": [
         {
           "name": "University of Oslo",
@@ -2453,7 +2361,6 @@
     },
     "NZL": {
       "universities": 12,
-      "publicLibraries": 214,
       "topUniversities": [
         {
           "name": "University of Auckland",
@@ -2509,7 +2416,6 @@
     },
     "PAK": {
       "universities": 136,
-      "publicLibraries": 3,
       "topUniversities": [
         {
           "name": "COMSATS University Islamabad",
@@ -2568,7 +2474,6 @@
     },
     "PER": {
       "universities": 67,
-      "publicLibraries": 12,
       "topUniversities": [
         {
           "name": "Cayetano Heredia Peruvian University",
@@ -2584,7 +2489,6 @@
     },
     "PHL": {
       "universities": 118,
-      "publicLibraries": 3,
       "topUniversities": [
         {
           "name": "University of the Philippines Manila",
@@ -2603,7 +2507,6 @@
     },
     "POL": {
       "universities": 138,
-      "publicLibraries": 71,
       "topUniversities": [
         {
           "name": "Jagiellonian University",
@@ -2658,16 +2561,13 @@
       ]
     },
     "PRI": {
-      "universities": 25,
-      "publicLibraries": 1
+      "universities": 25
     },
     "PRK": {
-      "universities": 1,
-      "publicLibraries": 2
+      "universities": 1
     },
     "PRT": {
       "universities": 65,
-      "publicLibraries": 334,
       "topUniversities": [
         {
           "name": "University of Lisbon",
@@ -2722,12 +2622,10 @@
       ]
     },
     "PRY": {
-      "universities": 14,
-      "publicLibraries": 1
+      "universities": 14
     },
     "PSE": {
       "universities": 16,
-      "publicLibraries": 15,
       "topUniversities": [
         {
           "name": "An-Najah National University",
@@ -2759,7 +2657,6 @@
     },
     "ROU": {
       "universities": 63,
-      "publicLibraries": 7,
       "topUniversities": [
         {
           "name": "Babeș-Bolyai University",
@@ -2805,7 +2702,6 @@
     },
     "RUS": {
       "universities": 308,
-      "publicLibraries": 9,
       "topUniversities": [
         {
           "name": "Lomonosov Moscow State University",
@@ -2864,7 +2760,6 @@
     },
     "SAU": {
       "universities": 63,
-      "publicLibraries": 3,
       "topUniversities": [
         {
           "name": "King Abdullah University of Science and Technology",
@@ -2922,12 +2817,10 @@
       "universities": 35
     },
     "SEN": {
-      "universities": 10,
-      "publicLibraries": 5
+      "universities": 10
     },
     "SGP": {
       "universities": 18,
-      "publicLibraries": 26,
       "topUniversities": [
         {
           "name": "National University of Singapore",
@@ -2951,12 +2844,8 @@
         }
       ]
     },
-    "SLB": {
-      "publicLibraries": 2
-    },
     "SLE": {
-      "universities": 4,
-      "publicLibraries": 11
+      "universities": 4
     },
     "SLV": {
       "universities": 25
@@ -2969,7 +2858,6 @@
     },
     "SRB": {
       "universities": 13,
-      "publicLibraries": 14,
       "topUniversities": [
         {
           "name": "University of Belgrade",
@@ -3001,7 +2889,6 @@
     },
     "SVK": {
       "universities": 31,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "Comenius University Bratislava",
@@ -3027,7 +2914,6 @@
     },
     "SVN": {
       "universities": 4,
-      "publicLibraries": 4,
       "topUniversities": [
         {
           "name": "University of Ljubljana",
@@ -3043,7 +2929,6 @@
     },
     "SWE": {
       "universities": 36,
-      "publicLibraries": 1142,
       "topUniversities": [
         {
           "name": "Karolinska Institute",
@@ -3098,8 +2983,7 @@
       ]
     },
     "SWZ": {
-      "universities": 1,
-      "publicLibraries": 18
+      "universities": 1
     },
     "SYC": {
       "universities": 2
@@ -3118,7 +3002,6 @@
     },
     "THA": {
       "universities": 67,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "Chulalongkorn University",
@@ -3183,7 +3066,6 @@
     },
     "TUN": {
       "universities": 19,
-      "publicLibraries": 2,
       "topUniversities": [
         {
           "name": "Tunis El Manar University",
@@ -3213,12 +3095,10 @@
       ]
     },
     "TUR": {
-      "universities": 188,
-      "publicLibraries": 23
+      "universities": 188
     },
     "TWN": {
       "universities": 86,
-      "publicLibraries": 459,
       "topUniversities": [
         {
           "name": "National Taiwan University",
@@ -3274,7 +3154,6 @@
     },
     "TZA": {
       "universities": 19,
-      "publicLibraries": 1,
       "topUniversities": [
         {
           "name": "Muhimbili University of Health and Allied Sciences",
@@ -3285,7 +3164,6 @@
     },
     "UGA": {
       "universities": 18,
-      "publicLibraries": 51,
       "topUniversities": [
         {
           "name": "Makerere University",
@@ -3296,7 +3174,6 @@
     },
     "UKR": {
       "universities": 75,
-      "publicLibraries": 46,
       "topUniversities": [
         {
           "name": "Institute of Mathematics of the National Academy of Sciences of Ukraine",
@@ -3322,7 +3199,6 @@
     },
     "URY": {
       "universities": 6,
-      "publicLibraries": 7,
       "topUniversities": [
         {
           "name": "University of the Republic, Uruguay",
@@ -3333,7 +3209,6 @@
     },
     "USA": {
       "universities": 2348,
-      "publicLibraries": 14721,
       "topUniversities": [
         {
           "name": "Harvard University",
@@ -3397,15 +3272,13 @@
       "universities": 1
     },
     "VEN": {
-      "universities": 37,
-      "publicLibraries": 3
+      "universities": 37
     },
     "VGB": {
       "universities": 1
     },
     "VNM": {
       "universities": 59,
-      "publicLibraries": 42,
       "topUniversities": [
         {
           "name": "Duy Tân University",
@@ -3440,8 +3313,7 @@
       ]
     },
     "WSM": {
-      "universities": 1,
-      "publicLibraries": 2
+      "universities": 1
     },
     "XKX": {
       "universities": 5
@@ -3451,7 +3323,6 @@
     },
     "ZAF": {
       "universities": 29,
-      "publicLibraries": 99,
       "topUniversities": [
         {
           "name": "University of the Witwatersrand",
@@ -3507,7 +3378,6 @@
     },
     "ZMB": {
       "universities": 7,
-      "publicLibraries": 20,
       "topUniversities": [
         {
           "name": "University of Zambia",
@@ -3518,7 +3388,6 @@
     },
     "ZWE": {
       "universities": 15,
-      "publicLibraries": 10,
       "topUniversities": [
         {
           "name": "University of Zimbabwe",

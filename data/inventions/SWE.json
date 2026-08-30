@@ -2,35 +2,8 @@
   "iso3": "SWE",
   "name": "Sweden",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "modern pentathlon",
-      "source": "wikidata",
-      "inventors": [
-        "Pierre de Coubertin"
-      ],
-      "year": 1912,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Modern%20Pentathlon%202004%20Olympics.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Modern%20Pentathlon%202004%20Olympics.jpg",
-        "license": "Public domain",
-        "author": "DoD photo by Master Sgt. Lono Kollars, U.S. Air Force",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "boccia",
-      "source": "wikidata",
-      "year": 1970,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Paralympics%20Beijing%202008%20506.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Paralympics%20Beijing%202008%20506.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Stig Morten Skjæran",
-        "source": "Wikimedia Commons"
-      }
-    },
     {
       "name": "gelignite",
       "source": "wikidata",
@@ -43,21 +16,6 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Gelingnite%20general%20view.pdf",
         "license": "Public domain",
         "author": "A. E. Mann",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Sommar",
-      "source": "wikidata",
-      "inventors": [
-        "Tage Danielsson"
-      ],
-      "year": 1959,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sommarv%C3%A4rdar%202013.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommarv%C3%A4rdar%202013.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Frankie Fouganthin",
         "source": "Wikimedia Commons"
       }
     }

@@ -2,7 +2,7 @@
   "iso3": "CAN",
   "name": "Canada",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "snow blower",
@@ -15,26 +15,6 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Honda%20hs1136%20snowblower.jpg",
         "license": "CC BY-SA 2.0",
         "author": "Jared C. Benedict",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Ulterior Motives",
-      "source": "wikidata",
-      "year": 2024
-    },
-    {
-      "name": "Ski-Doo",
-      "source": "wikidata",
-      "inventors": [
-        "Joseph-Armand Bombardier"
-      ],
-      "year": 1959,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Snowmobile%20Ski-Doo%20MXZ%20800.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Snowmobile%20Ski-Doo%20MXZ%20800.jpg",
-        "license": "Public domain",
-        "author": "Dirk Unger(Unger.dirk at de.wikipedia)",
         "source": "Wikimedia Commons"
       }
     },
@@ -53,60 +33,61 @@
       }
     },
     {
-      "name": "Ambrosia (apple)",
+      "name": "Canadian pipe mine",
       "source": "wikipedia"
-    },
-    {
-      "name": "Fricot",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Peanut butter",
-      "source": "wikipedia",
-      "year": 1884,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2020-03-24%2020%2057%2022%20An%20open%20jar%20of%20Skippy%20Creamy%20Peanut%20Butter%20in%20the%20Dulles%20section%20of%20Sterling%2C%20Loudoun%20County%2C%20Virginia.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:2020-03-24%2020%2057%2022%20An%20open%20jar%20of%20Skippy%20Creamy%20Peanut%20Butter%20in%20the%20Dulles%20section%20of%20Sterling%2C%20Loudoun%20County%2C%20Virginia.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Famartin",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Java (programming language)",
-      "source": "wikipedia",
-      "inventors": [
-        "James Gosling"
-      ],
-      "year": 1994
-    },
-    {
-      "name": "Phonograph",
-      "source": "wikipedia",
-      "inventors": [
-        "Alexander Graham Bell"
-      ],
-      "year": 1889
-    },
-    {
-      "name": "Steam engine",
-      "source": "wikipedia",
-      "inventors": [
-        "Robert Foulis"
-      ],
-      "year": 1859
     },
     {
       "name": "Amauti",
       "source": "wikipedia"
     },
     {
-      "name": "Baby jumper",
+      "name": "Snowshoe",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Ebola vaccine",
+      "source": "wikipedia",
+      "year": 2014
+    },
+    {
+      "name": "Contrabass bugle",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Professional video camera",
+      "source": "wikipedia",
+      "year": 1934,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sony%20television%20camera%20with%20DIGI%20SUPER%2086II%20xs%2020120211a.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sony%20television%20camera%20with%20DIGI%20SUPER%2086II%20xs%2020120211a.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "ArildV",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Compound steam engine",
       "source": "wikipedia",
       "inventors": [
-        "Olivia Poole"
+        "Benjamin Franklin Tibbetts"
       ],
-      "year": 1959
+      "year": 1842
+    },
+    {
+      "name": "Hydrofoil",
+      "source": "wikipedia",
+      "inventors": [
+        "Alexander Graham Bell"
+      ],
+      "year": 1908
+    },
+    {
+      "name": "Uno (dicycle)",
+      "source": "wikipedia",
+      "inventors": [
+        "Ben Gulak"
+      ],
+      "year": 2006
     }
   ]
 }

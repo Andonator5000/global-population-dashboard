@@ -2,30 +2,15 @@
   "iso3": "PRK",
   "name": "North Korea",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "National intranet",
       "source": "wikipedia"
     },
     {
-      "name": "Juche",
-      "source": "wikipedia"
-    },
-    {
       "name": "Vinylon",
       "source": "wikipedia"
-    },
-    {
-      "name": "Music of North Korea",
-      "source": "wikipedia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pyongyang%20Conservatory%20of%20Music%20%2814275194446%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pyongyang%20Conservatory%20of%20Music%20%2814275194446%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Uri Tours",
-        "source": "Wikimedia Commons"
-      }
     }
   ]
 }

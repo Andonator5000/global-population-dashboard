@@ -17,6 +17,7 @@
   },
   "flower": {
     "name": "Passiflora caerulea",
+    "scientificName": "Passiflora caerulea",
     "image": {
       "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/169805900/medium.jpeg",
       "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/169805900/large.jpeg",

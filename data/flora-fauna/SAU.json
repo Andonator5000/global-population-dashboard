@@ -33,6 +33,7 @@
   },
   "flower": {
     "name": "Jasminum grandiflorum",
+    "scientificName": "Jasminum grandiflorum",
     "image": {
       "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/284306477/medium.jpeg",
       "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/284306477/large.jpeg",

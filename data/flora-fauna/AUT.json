@@ -3,22 +3,23 @@
   "name": "Austria",
   "source": "wikipedia_national_symbols",
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
-  "animals": [
+  "emblems": [
     {
       "name": "Austrian Bundesadler",
       "type": "national animal",
-      "scientificName": "Mythical",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Austria%20Bundesadler.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Austria%20Bundesadler.svg",
         "license": "Public domain",
         "author": "Austrian publicist Peter Diem with the webteam from the Austrian BMLV (Bundesministerium für Landesverteidigung / Federal Ministry of National Defense) as of uploader David Liuzzo; in the last version: Great Brightstar, 2025-06-16.",
         "source": "Wikimedia Commons"
-      }
+      },
+      "kind": "heraldic or mythical emblem"
     }
   ],
   "flower": {
     "name": "edelweiss",
+    "scientificName": "Leontopodium nivale",
     "image": {
       "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/535574862/medium.jpg",
       "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/535574862/large.jpg",

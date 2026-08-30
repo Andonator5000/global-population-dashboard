@@ -2,7 +2,7 @@
   "iso3": "CZE",
   "name": "Czechia",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "Denis d'or",
@@ -13,52 +13,9 @@
       "year": 1748
     },
     {
-      "name": "Purkinje effect",
+      "name": "Arc lamp",
       "source": "wikipedia",
-      "inventors": [
-        "Jan Evangelista Purkyně"
-      ],
-      "year": 1819
-    },
-    {
-      "name": "Sugar cube",
-      "source": "wikipedia",
-      "inventors": [
-        "Jakob Christof Rad"
-      ],
-      "year": 1843,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/W%C3%BCrfelzucker%20--%202018%20--%203582.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:W%C3%BCrfelzucker%20--%202018%20--%203582.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Dietmar Rabich",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "František Křižík",
-      "source": "wikipedia",
-      "year": 1878
-    },
-    {
-      "name": "Tábor–Bechyně railway",
-      "source": "wikipedia",
-      "year": 1903,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%C4%8CD%20Class%20100%2C%20v%C3%BDjezd%20z%20lesa%20za%20zast%C3%A1vkou%20Be%C5%BEerovice.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%C4%8CD%20Class%20100%2C%20v%C3%BDjezd%20z%20lesa%20za%20zast%C3%A1vkou%20Be%C5%BEerovice.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "© Karel Furiš, author (Ostrava Poruba, Czech Republic). When reusing, please credit me as: Karel Furiš / Wikimedia Commons. I would appreciate being notified if you use my work outside Wikimedia. Do not copy this image illegally by ignoring the terms of the license below, as it is not in the public domain.",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Color photography",
-      "source": "wikipedia",
-      "inventors": [
-        "Karl Schinzel"
-      ],
-      "year": 1905
+      "year": 1880
     },
     {
       "name": "Kaplan turbine",
@@ -74,6 +31,58 @@
       "inventors": [
         "Vavřín Krčil"
       ]
+    },
+    {
+      "name": "Robot",
+      "source": "wikipedia",
+      "year": 1920
+    },
+    {
+      "name": "Cabin motorcycle",
+      "source": "wikipedia",
+      "inventors": [
+        "Jan Anderle"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quasar%20%285966715122%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Quasar%20%285966715122%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Andrew Napier",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Water-jet loom",
+      "source": "wikipedia",
+      "inventors": [
+        "Vladimír Svatý"
+      ],
+      "year": 1950
+    },
+    {
+      "name": "Contact lens",
+      "source": "wikipedia",
+      "year": 1961
+    },
+    {
+      "name": "Remoska",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Semtex",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Tenofovir disoproxil",
+      "source": "wikipedia",
+      "year": 1986,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tenofovir%20disoproxil%20structure.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tenofovir%20disoproxil%20structure.svg",
+        "license": "CC0",
+        "author": "Anypodetos",
+        "source": "Wikimedia Commons"
+      }
     }
   ]
 }

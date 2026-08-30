@@ -2,68 +2,65 @@
   "iso3": "ESP",
   "name": "Spain",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "bossaball",
-      "source": "wikidata",
-      "inventors": [
-        "Filip Eyckmans"
-      ],
-      "year": 2004
-    },
-    {
-      "name": "paranoiac-critical method",
-      "source": "wikidata",
-      "inventors": [
-        "Salvador Dalí"
-      ]
-    },
     {
       "name": "Mercury(II) oxide",
       "source": "wikipedia",
       "era": "10th century"
     },
     {
-      "name": "Pharmacopoeia",
-      "source": "wikipedia",
-      "year": 1400
-    },
-    {
-      "name": "Herrerian style",
+      "name": "Farthingale",
       "source": "wikipedia"
-    },
-    {
-      "name": "Neo-Mudéjar",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Vanadium",
-      "source": "wikipedia",
-      "year": 1801,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vanadium%20crystal%20bar%20and%201cm3%20cube.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vanadium%20crystal%20bar%20and%201cm3%20cube.jpg",
-        "license": "FAL",
-        "author": "Alchemist-hp (pse-mendelejew.de).",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Gregorian calendar",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Chagas disease",
-      "source": "wikipedia",
-      "inventors": [
-        "Francisco J. Ayala"
-      ]
     },
     {
       "name": "Ligature (medicine)",
       "source": "wikipedia",
       "year": 1013
+    },
+    {
+      "name": "Autogyro",
+      "source": "wikipedia",
+      "year": 1934
+    },
+    {
+      "name": "Bandurria",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Classical guitar",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Fiscorn",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Gralla (instrument)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Tambori",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Txalaparta",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Xirula",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Xirula%20-%20Soinuenea%20Fundazioa.webm?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Xirula%20-%20Soinuenea%20Fundazioa.webm",
+        "license": "CC BY 4.0",
+        "author": "Soinuenea Fundazioa",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Steam engine",
+      "source": "wikipedia"
     }
   ]
 }

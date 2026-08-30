@@ -2,39 +2,36 @@
   "iso3": "GRC",
   "name": "Greece",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Venus de Milo",
-      "source": "wikidata",
-      "year": 1820,
+      "name": "Archimedes' heat ray",
+      "source": "wikipedia",
+      "era": "212 BC",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A9nus%20de%20Milo%20-%20Mus%C3%A9e%20du%20Louvre%20AGER%20LL%20299%20%3B%20N%20527%20%3B%20Ma%20399.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:V%C3%A9nus%20de%20Milo%20-%20Mus%C3%A9e%20du%20Louvre%20AGER%20LL%20299%20%3B%20N%20527%20%3B%20Ma%20399.jpg",
-        "license": "CC0",
-        "author": "Shonagon",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Archimedes%20Heat%20Ray%20conceptual%20diagram.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Archimedes%20Heat%20Ray%20conceptual%20diagram.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Finnrind (original); Pbroks13 (talk) (redraw)",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Acrolith",
-      "source": "wikipedia"
+      "name": "Astrolabe",
+      "source": "wikipedia",
+      "era": "300 BC"
     },
     {
-      "name": "Artificial intelligence",
-      "source": "wikipedia",
-      "era": "3rd century BC"
+      "name": "Baglamas",
+      "source": "wikipedia"
     },
     {
       "name": "Bouzouki",
       "source": "wikipedia"
     },
     {
-      "name": "Chelys",
-      "source": "wikipedia",
-      "inventors": [
-        "Hermes. According"
-      ]
+      "name": "Kithara",
+      "source": "wikipedia"
     },
     {
       "name": "Crane (machine)",
@@ -48,16 +45,29 @@
       }
     },
     {
-      "name": "Emotion",
+      "name": "Differential (mechanical device)",
       "source": "wikipedia"
     },
     {
-      "name": "Football",
+      "name": "Fire pump",
       "source": "wikipedia",
-      "era": "9th century BC"
+      "era": "2nd century"
     },
     {
-      "name": "Jury trial",
+      "name": "Headband",
+      "source": "wikipedia",
+      "era": "475 BC"
+    },
+    {
+      "name": "Sponge (tool)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Syringe",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Thermometer",
       "source": "wikipedia"
     }
   ]

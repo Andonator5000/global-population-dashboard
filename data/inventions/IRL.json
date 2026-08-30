@@ -2,42 +2,16 @@
   "iso3": "IRL",
   "name": "Ireland",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "Ogham",
       "source": "wikipedia"
     },
     {
-      "name": "Caid (sport)",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Boyle's law",
+      "name": "Magnesium hydroxide",
       "source": "wikipedia",
-      "year": 1662
-    },
-    {
-      "name": "Beaufort scale",
-      "source": "wikipedia",
-      "year": 1805
-    },
-    {
-      "name": "Waterford",
-      "source": "wikipedia",
-      "year": 1820
-    },
-    {
-      "name": "Wood preservation",
-      "source": "wikipedia",
-      "year": 1832,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PiquetPesticides%20detail%2001.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:PiquetPesticides%20detail%2001.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Lamiot",
-        "source": "Wikimedia Commons"
-      }
+      "year": 1809
     },
     {
       "name": "Hypodermic needle",
@@ -52,9 +26,56 @@
       }
     },
     {
-      "name": "Icosian calculus",
+      "name": "Anemometer",
       "source": "wikipedia",
-      "year": 1856
+      "year": 1846
+    },
+    {
+      "name": "Stethoscope",
+      "source": "wikipedia",
+      "year": 1851
+    },
+    {
+      "name": "Transatlantic telegraph cable",
+      "source": "wikipedia",
+      "year": 1865
+    },
+    {
+      "name": "Respirator",
+      "source": "wikipedia",
+      "year": 1871
+    },
+    {
+      "name": "Brennan torpedo",
+      "source": "wikipedia",
+      "year": 1877
+    },
+    {
+      "name": "Conveyor belt",
+      "source": "wikipedia",
+      "year": 1905
+    },
+    {
+      "name": "Three-point hitch",
+      "source": "wikipedia",
+      "year": 1926
+    },
+    {
+      "name": "Drumm Battery Train",
+      "source": "wikipedia",
+      "year": 1931
+    },
+    {
+      "name": "Ejection seat",
+      "source": "wikipedia",
+      "year": 1946,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/EjectionSeats40.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:EjectionSeats40.jpg",
+        "license": "CC BY 3.0",
+        "author": "Ejection_Seats_@_Deutsche_Museum_Flugwerft_Schleißheim.jpg: Vestman from Helsinki, Finland\nderivative work: Jon Ascton at en.wikipedia",
+        "source": "Wikimedia Commons"
+      }
     }
   ]
 }

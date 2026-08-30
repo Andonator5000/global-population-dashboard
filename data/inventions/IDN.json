@@ -2,29 +2,10 @@
   "iso3": "IDN",
   "name": "Indonesia",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Ulu scripts",
-      "source": "wikidata",
-      "inventors": [
-        "Kerinci people"
-      ],
-      "year": 1300
-    },
-    {
-      "name": "Pacu Jalur",
-      "source": "wikidata",
-      "inventors": [
-        "Minangkabau"
-      ]
-    },
-    {
-      "name": "Wayang",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Gamelan",
+      "name": "Kolintang",
       "source": "wikipedia"
     },
     {
@@ -32,25 +13,33 @@
       "source": "wikipedia"
     },
     {
-      "name": "Candi of Indonesia",
+      "name": "Proa",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Londe",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Lepa-lepa (dugout canoe)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Lambo (boat)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Solu",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Lantaka",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Kretek",
       "source": "wikipedia",
-      "era": "8th century"
-    },
-    {
-      "name": "Instant noodles",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Communal work",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Tanja sail",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Lancaran (ship)",
-      "source": "wikipedia"
+      "era": "19th century"
     }
   ]
 }

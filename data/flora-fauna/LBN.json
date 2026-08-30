@@ -9,12 +9,11 @@
       "type": "national animal",
       "scientificName": "Hyaena hyaena",
       "image": {
-        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/332301999/medium.jpeg",
-        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/332301999/large.jpeg",
-        "commonsPage": "https://www.inaturalist.org/photos/332301999",
-        "license": "CC-BY",
-        "author": "(c) موسی مزینانیان Mousa Mazinanian, some rights reserved (CC BY)",
-        "source": "iNaturalist"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Striped%20hyena%20%28Hyaena%20hyaena%29%20-%20cropped.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Striped%20hyena%20%28Hyaena%20hyaena%29%20-%20cropped.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Rushikesh Deshmukh DOP",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -23,12 +22,11 @@
     "type": "national tree",
     "scientificName": "Cedrus libani",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/419651736/medium.jpeg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/419651736/large.jpeg",
-      "commonsPage": "https://www.inaturalist.org/photos/419651736",
-      "license": "CC-BY",
-      "author": "(c) Mourad Harzallah, some rights reserved (CC BY)",
-      "source": "iNaturalist"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Libanonzeder.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Libanonzeder.jpg",
+      "license": "CC BY-SA 3.0",
+      "author": null,
+      "source": "Wikimedia Commons"
     }
   }
 }

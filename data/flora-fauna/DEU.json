@@ -3,18 +3,18 @@
   "name": "Germany",
   "source": "wikipedia_national_symbols",
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
-  "animals": [
+  "emblems": [
     {
       "name": "Bundesadler",
       "type": "national animal",
-      "scientificName": "Mythical",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Coat%20of%20arms%20of%20Germany.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Coat%20of%20arms%20of%20Germany.svg",
         "license": "Public domain",
         "author": "Karl-Tobias Schwab",
         "source": "Wikimedia Commons"
-      }
+      },
+      "kind": "heraldic or mythical emblem"
     }
   ],
   "tree": {

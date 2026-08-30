@@ -45,14 +45,6 @@
     }
   },
   "flower": {
-    "name": "Cherry Blossom",
-    "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/291667357/medium.jpeg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/291667357/large.jpeg",
-      "commonsPage": "https://www.inaturalist.org/photos/291667357",
-      "license": "CC-BY",
-      "author": "(c) marius, some rights reserved (CC BY)",
-      "source": "iNaturalist"
-    }
+    "name": "Cherry Blossom"
   }
 }

@@ -33,12 +33,13 @@
   },
   "flower": {
     "name": "ceibo",
+    "scientificName": "Erythrina crista-galli",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/91623632/medium.jpg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/91623632/large.jpg",
-      "commonsPage": "https://www.inaturalist.org/photos/91623632",
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/103807160/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/103807160/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/103807160",
       "license": "CC-BY",
-      "author": "(c) Jason K., some rights reserved (CC BY)",
+      "author": "(c) Rafael Tosi, some rights reserved (CC BY)",
       "source": "iNaturalist"
     }
   }

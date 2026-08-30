@@ -2,7 +2,7 @@
   "iso3": "DEU",
   "name": "Germany",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "Chinese checkers",
@@ -13,20 +13,6 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Halma-Spielfeld.jpg",
         "license": "CC BY-SA 3.0",
         "author": "The original uploader was Splattne at German Wikipedia.",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Volksempfänger",
-      "source": "wikidata",
-      "inventors": [
-        "Otto Griessing"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Volksempfaenger%2002%20KMJ.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Volksempfaenger%2002%20KMJ.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "KMJ",
         "source": "Wikimedia Commons"
       }
     },
@@ -45,42 +31,6 @@
       }
     },
     {
-      "name": "learning by teaching",
-      "source": "wikidata",
-      "inventors": [
-        "Jean-Pol Martin"
-      ],
-      "year": 1980
-    },
-    {
-      "name": "Fischertechnik",
-      "source": "wikidata",
-      "inventors": [
-        "Artur Fischer"
-      ],
-      "year": 1964,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fischertechnik-DaVinci-Feilenhaumaschine.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fischertechnik-DaVinci-Feilenhaumaschine.jpg",
-        "license": "CC BY 3.0",
-        "author": "fischertechnik GmbH",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "German ju-jutsu",
-      "source": "wikidata",
-      "inventors": [
-        "Franz Josef Gresch",
-        "Werner Heim"
-      ]
-    },
-    {
-      "name": "Perle",
-      "source": "wikidata",
-      "year": 1950
-    },
-    {
       "name": "Raytheon Lectron",
       "source": "wikidata",
       "inventors": [
@@ -96,31 +46,63 @@
       }
     },
     {
-      "name": "Pancreatic duct",
+      "name": "Nitrocellulose",
       "source": "wikipedia",
-      "era": "17th century"
+      "year": 1846
     },
     {
-      "name": "Dicraeosaurus",
+      "name": "Tollens' reagent",
       "source": "wikipedia",
-      "year": 1914
+      "year": 1882
     },
     {
-      "name": "Odic force",
+      "name": "Decaffeination",
       "source": "wikipedia",
-      "year": 1845
+      "year": 1903
     },
     {
-      "name": "Melamine",
+      "name": "Breaker (hydraulic)",
       "source": "wikipedia",
-      "year": 1834,
+      "year": 1963
+    },
+    {
+      "name": "Glue stick",
+      "source": "wikipedia",
+      "year": 1969
+    },
+    {
+      "name": "Hydromorphone",
+      "source": "wikipedia",
+      "year": 1923,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Structural%20formula%20of%20melamine.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Structural%20formula%20of%20melamine.svg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hydromorphone%20skeletal.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hydromorphone%20skeletal.svg",
         "license": "Public domain",
-        "author": "ChemSim",
+        "author": "Fvasconcellos",
         "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Dreyse needle gun",
+      "source": "wikipedia",
+      "year": 1836
+    },
+    {
+      "name": "Ballistic missile",
+      "source": "wikipedia",
+      "year": 1944,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Minuteman%20III%20MIRV%20path.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Minuteman%20III%20MIRV%20path.svg",
+        "license": "Public domain",
+        "author": "Fastfission",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Magnetometer",
+      "source": "wikipedia",
+      "year": 1833
     }
   ]
 }

@@ -2,7 +2,7 @@
   "iso3": "VNM",
   "name": "Vietnam",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "nón lá",
@@ -17,40 +17,41 @@
       }
     },
     {
-      "name": "Brieskorn manifold",
-      "source": "wikipedia",
-      "year": 1966
-    },
-    {
-      "name": "Phong shading",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Deligne–Lusztig theory",
-      "source": "wikipedia",
-      "year": 2024
-    },
-    {
-      "name": "Cải lương",
-      "source": "wikipedia",
-      "era": "20th century"
-    },
-    {
-      "name": "Vietnamese language",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Đờn ca tài tử",
-      "source": "wikipedia"
-    },
-    {
       "name": "Dong Son drum",
       "source": "wikipedia",
       "era": "7th century BCE"
     },
     {
+      "name": "Đàn đá",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Binh%20Da%20Lithophone.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Binh%20Da%20Lithophone.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Hoangkid",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
       "name": "Đàn gáo",
       "source": "wikipedia"
+    },
+    {
+      "name": "Gong",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Sênh tiền",
+      "source": "wikipedia"
+    },
+    {
+      "name": "T'rưng",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Leeboard",
+      "source": "wikipedia",
+      "era": "300 BC"
     }
   ]
 }

@@ -2,23 +2,8 @@
   "iso3": "CUB",
   "name": "Cuba",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "son montuno",
-      "source": "wikidata",
-      "inventors": [
-        "Arsenio Rodríguez"
-      ],
-      "year": 1900,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Conjunto%20de%20Arsenio%20Rodr%C3%ADguez.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Conjunto%20de%20Arsenio%20Rodr%C3%ADguez.JPG",
-        "license": "Public domain",
-        "author": "Unknown authorUnknown author",
-        "source": "Wikimedia Commons"
-      }
-    },
     {
       "name": "Armónico",
       "source": "wikidata",

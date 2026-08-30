@@ -9,12 +9,11 @@
       "type": "national animal",
       "scientificName": "Panthera leo persica",
       "image": {
-        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/175467590/medium.jpg",
-        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/175467590/large.jpg",
-        "commonsPage": "https://www.inaturalist.org/photos/175467590",
-        "license": "CC-BY",
-        "author": "(c) Jay Pruett, some rights reserved (CC BY)",
-        "source": "iNaturalist"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Panthera%20leo%20persica%20-%20Tierpark%20Berlin%20-%202015.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Panthera%20leo%20persica%20-%20Tierpark%20Berlin%20-%202015.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Avda",
+        "source": "Wikimedia Commons"
       }
     },
     {
@@ -22,12 +21,11 @@
       "type": "national animal",
       "scientificName": "Panthera pardus saxicolor",
       "image": {
-        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/249976590/medium.jpeg",
-        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/249976590/large.jpeg",
-        "commonsPage": "https://www.inaturalist.org/photos/249976590",
-        "license": "CC-BY",
-        "author": "(c) موسی مزینانیان Mousa Mazinanian, some rights reserved (CC BY)",
-        "source": "iNaturalist"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Persian%20Leopard%20sitting.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Persian%20Leopard%20sitting.jpg",
+        "license": "Public domain",
+        "author": "Tamar Assaf",
+        "source": "Wikimedia Commons"
       }
     }
   ],
@@ -46,14 +44,6 @@
   },
   "flower": {
     "name": "Persian",
-    "scientificName": "nymphaea",
-    "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/133473561/medium.jpeg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/133473561/large.jpeg",
-      "commonsPage": "https://www.inaturalist.org/photos/133473561",
-      "license": "CC-BY",
-      "author": "(c) Bonnie Semmling, some rights reserved (CC BY)",
-      "source": "iNaturalist"
-    }
+    "scientificName": "nymphaea"
   }
 }

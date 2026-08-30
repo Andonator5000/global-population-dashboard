@@ -9,12 +9,11 @@
       "type": "national bird",
       "scientificName": "Amazona imperalis",
       "image": {
-        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/616801420/medium.jpg",
-        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/616801420/large.jpg",
-        "commonsPage": "https://www.inaturalist.org/photos/616801420",
-        "license": "CC-BY",
-        "author": "(c) novvictan, some rights reserved (CC BY)",
-        "source": "iNaturalist"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazona%20imperialis%20Mitchell%202.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Amazona%20imperialis%20Mitchell%202.jpg",
+        "license": "Public domain",
+        "author": "David William Mitchell (1813–1859)",
+        "source": "Wikimedia Commons"
       }
     }
   ]

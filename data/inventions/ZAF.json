@@ -2,66 +2,62 @@
   "iso3": "ZAF",
   "name": "South Africa",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Jubilee Diamond",
-      "source": "wikidata",
-      "year": 1895,
+      "name": "Flame ionization detector",
+      "source": "wikipedia",
+      "year": 1957,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jubilee%20Diamond%20copy.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jubilee%20Diamond%20copy.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": null,
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flame%20ionization%20detector%20schematic-en.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Flame%20ionization%20detector%20schematic-en.svg",
+        "license": "CC0",
+        "author": "Д.Ильин: vectorization",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Jukskei",
-      "source": "wikipedia",
-      "year": 1743
-    },
-    {
-      "name": "Assegai",
-      "source": "wikipedia",
-      "year": 1787
-    },
-    {
-      "name": "Wadley loop",
+      "name": "Black & Decker Workmate",
       "source": "wikipedia",
       "inventors": [
-        "Dr. Trevor Wadley"
-      ]
-    },
-    {
-      "name": "Pinetown",
-      "source": "wikipedia",
-      "inventors": [
-        "Mr. Robertson"
+        "Ron Hickman"
       ],
-      "year": 1950
+      "year": 1961
     },
     {
-      "name": "Helikon vortex separation process",
-      "source": "wikipedia"
+      "name": "South African Class 6E1, Series 4",
+      "source": "wikipedia",
+      "year": 1978
     },
     {
-      "name": "CT scan",
+      "name": "Casspir",
+      "source": "wikipedia",
+      "year": 1980
+    },
+    {
+      "name": "Denel Rooivalk",
+      "source": "wikipedia",
+      "year": 1984
+    },
+    {
+      "name": "Safety syringe",
+      "source": "wikipedia",
+      "year": 1999,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sicherheitsspritze%20010.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sicherheitsspritze%20010.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Bin im Garten",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Amoriguard",
       "source": "wikipedia",
       "inventors": [
-        "Allan MacLeod Cormack"
+        "Professor Mulalo Doyoyo"
       ],
-      "year": 1963
-    },
-    {
-      "name": "Saddam Maake",
-      "source": "wikipedia",
-      "year": 1965
-    },
-    {
-      "name": "Christiaan Barnard",
-      "source": "wikipedia",
-      "year": 1967
+      "year": 2013
     }
   ]
 }

@@ -5,12 +5,13 @@
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
   "flower": {
     "name": "poppy",
+    "scientificName": "Papaver rhoeas",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/8862789/medium.jpg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/8862789/large.jpg",
-      "commonsPage": "https://www.inaturalist.org/photos/8862789",
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/77613327/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/77613327/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/77613327",
       "license": "CC-BY",
-      "author": "(c) Whitney Brook Matson, some rights reserved (CC BY)",
+      "author": "(c) Andrew Bazdyrev, some rights reserved (CC BY)",
       "source": "iNaturalist"
     }
   }

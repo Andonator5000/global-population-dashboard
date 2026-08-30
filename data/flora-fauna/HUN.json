@@ -3,18 +3,18 @@
   "name": "Hungary",
   "source": "wikipedia_national_symbols",
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
-  "animals": [
+  "emblems": [
     {
       "name": "Turul",
       "type": "national mythical creature",
-      "scientificName": "Mythical (most probably Falco cherrug)",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Turul-Tb-front.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Turul-Tb-front.jpg",
         "license": "CC BY-SA 2.0",
         "author": "Gajárszki László",
         "source": "Wikimedia Commons"
-      }
+      },
+      "kind": "heraldic or mythical emblem"
     }
   ],
   "tree": {
