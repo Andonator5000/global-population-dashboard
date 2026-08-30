@@ -729,6 +729,8 @@ WIKIDATA_INVENTION_ALLOW_ROOTS: dict[str, str] = {
     "Q11173": "chemical compound",
     "Q214609": "material",
     "Q431289": "brand",
+    "Q8192": "writing system",
+    "Q79529": "chemical substance",
 }
 WIKIDATA_INVENTION_DENY_ROOTS: dict[str, str] = {
     # medicine / biology -- "described in country X" is not "invented in X"
@@ -759,6 +761,12 @@ WIKIDATA_INVENTION_DENY_ROOTS: dict[str, str] = {
     "Q5": "human",
     "Q43229": "organization",
     "Q838948": "work of art",
+    "Q860861": "sculpture",
+    "Q4989906": "monument",
+    "Q41176": "building",
+    "Q482994": "album",
+    "Q4167410": "Wikimedia disambiguation page",
+    "Q101352": "family name",
     "Q7725634": "literary work",
     "Q2188189": "musical work",
     "Q11424": "film",
