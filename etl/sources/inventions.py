@@ -1,4 +1,4 @@
-"""Notable inventions per country, from Wikidata.
+"""Notable inventions per country, from Wikidata and Wikipedia list articles.
 
 Anchor: an item with a country of origin (P495) that either names an
 inventor (P61) or carries a time of invention (P575). Sitelink count is the
@@ -6,10 +6,18 @@ notability proxy and the ranking. The invention date prefers P575 (time of
 discovery or invention) over P571 (inception) -- inception on an invention
 item is often the item's own founding-adjacent date, not the invention's.
 
-Coverage is honest and thin: ~57 countries have any qualifying item. The
-page renders explicit unavailability for the rest; padding from prose
-sources would mean inventing an editorial ranking this project has no
-basis for.
+Class gate (2026-08-29): every candidate -- Wikidata row or Wikipedia list
+entry -- must pass `config.WIKIDATA_INVENTION_ALLOW_ROOTS` and none of
+`config.WIKIDATA_INVENTION_DENY_ROOTS` through its Wikidata class
+ancestry. P495 is "country of origin", which editors also set on diseases
+first described in a country, on species, on minerals and on theorems;
+the Wikipedia lists mix "inventions AND discoveries" by title. Neither is
+an invention for this section. Everything rejected is written to
+etl/logs/inventions-rejected.json for review.
+
+Coverage is honest and thin. The page renders explicit unavailability for
+countries with nothing left; padding from prose sources would mean
+inventing an editorial ranking this project has no basis for.
 """
 
 from __future__ import annotations
@@ -49,6 +57,10 @@ def _year(value: str | None) -> int | None:
         return None
 
 
+def _qid(uri: str | None) -> str:
+    return (uri or "").rsplit("/", 1)[-1]
+
+
 def _commons_filename_from_upload_url(url: str) -> str | None:
     """Original Commons filename from an upload.wikimedia.org URL.
 
@@ -62,6 +74,117 @@ def _commons_filename_from_upload_url(url: str) -> str | None:
     tail = url.rsplit("/", 1)[-1]
     return urllib.parse.unquote(tail).replace("_", " ") or None
 
+
+# --------------------------------------------------------------------------
+# Wikidata class gate
+# --------------------------------------------------------------------------
+
+def _sparql(query: str, *, refresh: bool) -> list[dict[str, Any]]:
+    response = fetch(
+        f"{config.WIKIDATA_SPARQL}?format=json&query="
+        + urllib.parse.quote(query),
+        refresh=refresh, subdir="inventions", expect_json=True,
+    )
+    return response.read_json()["results"]["bindings"]
+
+
+def _class_roots(
+    classes: list[str], *, refresh: bool
+) -> tuple[dict[str, set[str]], set[str]]:
+    """{class qid: roots reached} plus the set of food-by-label classes."""
+    roots = " ".join(
+        f"wd:{q}" for q in (
+            list(config.WIKIDATA_INVENTION_ALLOW_ROOTS)
+            + list(config.WIKIDATA_INVENTION_DENY_ROOTS)
+        )
+    )
+    reached: dict[str, set[str]] = {}
+    food_by_label: set[str] = set()
+    for start in range(0, len(classes), config.FOOD_CLASS_BATCH):
+        batch = classes[start:start + config.FOOD_CLASS_BATCH]
+        values = " ".join(f"wd:{qid}" for qid in batch)
+        for row in _sparql(
+            config.WIKIDATA_CLASS_ROOTS_QUERY_TEMPLATE.format(
+                qids=values, roots=roots
+            ),
+            refresh=refresh,
+        ):
+            reached.setdefault(_qid(row["class"]["value"]), set()).add(
+                _qid(row["root"]["value"])
+            )
+        # Second net for food: brand items ("drink brand") never subclass
+        # food, and Coca-Cola sailed through the ancestry test.
+        for row in _sparql(
+            config.WIKIDATA_CLASS_LABELS_QUERY_TEMPLATE.format(qids=values),
+            refresh=refresh,
+        ):
+            label = (row.get("classLabel", {}).get("value") or "").lower()
+            if any(k in label for k in config.FOOD_CLASS_LABEL_KEYWORDS):
+                food_by_label.add(_qid(row["class"]["value"]))
+    return reached, food_by_label
+
+
+def _item_classes(qids: list[str], *, refresh: bool) -> dict[str, set[str]]:
+    out: dict[str, set[str]] = {q: set() for q in qids}
+    for start in range(0, len(qids), config.FOOD_CLASS_BATCH):
+        batch = qids[start:start + config.FOOD_CLASS_BATCH]
+        values = " ".join(f"wd:{qid}" for qid in batch)
+        for row in _sparql(
+            config.WIKIDATA_ITEM_CLASSES_QUERY_TEMPLATE.format(qids=values),
+            refresh=refresh,
+        ):
+            out.setdefault(_qid(row["item"]["value"]), set()).add(
+                _qid(row["class"]["value"])
+            )
+    return out
+
+
+class _Gate:
+    """Allow/deny verdicts over class ancestry, with a rejection log."""
+
+    def __init__(
+        self, reached: dict[str, set[str]], food_by_label: set[str]
+    ) -> None:
+        self.reached = reached
+        self.food_by_label = food_by_label
+        self.rejected: list[dict[str, Any]] = []
+
+    def verdict(self, qid: str, classes: set[str]) -> tuple[bool, str, list[str]]:
+        """(accepted, reason, matched root labels).
+
+        The item ITSELF is tested alongside its classes: generic items like
+        "hot dog" carry no P31 -- they ARE classes -- and only their own
+        ancestry reveals what they are.
+        """
+        nodes = set(classes) | {qid}
+        allowed: set[str] = set()
+        denied: set[str] = set()
+        for node in nodes:
+            for root in self.reached.get(node, ()):
+                if root in config.WIKIDATA_INVENTION_DENY_ROOTS:
+                    denied.add(root)
+                elif root in config.WIKIDATA_INVENTION_ALLOW_ROOTS:
+                    allowed.add(root)
+            if node in self.food_by_label:
+                denied.add("Q2095")
+        if denied:
+            labels = sorted(
+                config.WIKIDATA_INVENTION_DENY_ROOTS[r] for r in denied
+            )
+            return False, "denied class ancestry", labels
+        if not allowed:
+            return False, "no allowed class ancestry", []
+        return True, "ok", sorted(
+            config.WIKIDATA_INVENTION_ALLOW_ROOTS[r] for r in allowed
+        )
+
+    def reject(self, **entry: Any) -> None:
+        self.rejected.append(entry)
+
+
+# --------------------------------------------------------------------------
+# Wikipedia list articles
+# --------------------------------------------------------------------------
 
 def _parse_list_page(html_bytes: bytes) -> list[dict[str, Any]]:
     """Invention candidates from one Wikipedia list article.
@@ -117,19 +240,16 @@ def _parse_list_page(html_bytes: bytes) -> list[dict[str, Any]]:
     return entries
 
 
-def _wikipedia_entries(
+def _wikipedia_candidates(
     registry: dict[str, Entity], *, refresh: bool
-) -> tuple[dict[str, list[dict[str, Any]]], int]:
+) -> dict[str, list[dict[str, Any]]]:
     """{iso3: candidates} from the curated per-country list articles.
 
-    Each candidate is enriched (and vetted) through the REST summary of its
-    linked article: entries whose summary is missing are dropped as parse
-    noise, and food/drink reads in the summary description are excluded --
-    the national lists enjoy listing champagne and pad thai as inventions,
-    and this section is non-edible by ruling (see the Wikidata filter).
+    Each candidate is enriched through the REST summary of its linked
+    article, which also yields its Wikidata item (`wikibase_item`) for the
+    class gate. Entries whose summary is missing are dropped as parse noise.
     """
     out: dict[str, list[dict[str, Any]]] = {}
-    dropped_food = 0
     for title, iso3 in config.WIKIPEDIA_INVENTION_LISTS.items():
         if iso3 not in registry:
             continue
@@ -147,16 +267,12 @@ def _wikipedia_entries(
         # lists are sectioned by category, and head-taking made every French
         # invention an artefact of whichever category sorts first ("Gothic
         # art" led the list). Even spacing crosses the categories.
-        window = config.WIKIPEDIA_INVENTIONS_PER_PAGE * 2  # survive drops
+        window = config.WIKIPEDIA_INVENTIONS_SAMPLE_WINDOW
         if len(candidates) > window:
             step = len(candidates) / window
-            candidates = [
-                candidates[int(i * step)] for i in range(window)
-            ]
+            candidates = [candidates[int(i * step)] for i in range(window)]
         kept: list[dict[str, Any]] = []
         for entry in candidates:
-            if len(kept) >= config.WIKIPEDIA_INVENTIONS_PER_PAGE:
-                break
             try:
                 summary_response = fetch(
                     config.WIKIPEDIA_REST_SUMMARY_TEMPLATE.format(
@@ -172,10 +288,9 @@ def _wikipedia_entries(
             summary = summary_response.read_json()
             if summary.get("type") not in ("standard", None):
                 continue  # disambiguation or missing page: parse noise
-            description = (summary.get("description") or "").lower()
-            if any(k in description for k in config.FOOD_CLASS_LABEL_KEYWORDS):
-                dropped_food += 1
-                continue
+            entry["qid"] = summary.get("wikibase_item")
+            entry["description"] = summary.get("description") or ""
+            entry["listArticle"] = title
             image = (summary.get("originalimage") or {}).get("source")
             if image:
                 filename = _commons_filename_from_upload_url(image)
@@ -189,8 +304,12 @@ def _wikipedia_entries(
             kept.append(entry)
         if kept:
             out.setdefault(iso3, []).extend(kept)
-    return out, dropped_food
+    return out
 
+
+# --------------------------------------------------------------------------
+# Stage
+# --------------------------------------------------------------------------
 
 def ingest(
     registry: dict[str, Entity],
@@ -222,7 +341,7 @@ def ingest(
         iso3 = (row.get("iso3", {}).get("value") or "").upper()
         if iso3 not in registry:
             continue
-        qid = (row.get("item", {}).get("value") or "").rsplit("/", 1)[-1]
+        qid = _qid(row.get("item", {}).get("value"))
         label = (row.get("itemLabel", {}).get("value") or "").strip()
         if not label or label == qid:
             continue
@@ -246,75 +365,69 @@ def ingest(
             image = row.get("image", {}).get("value")
             if image:
                 record["file"] = commons.filename_from_special_path(image)
-        item_class = (row.get("class", {}).get("value") or "").rsplit("/", 1)[-1]
+        item_class = _qid(row.get("class", {}).get("value"))
         if item_class.startswith("Q"):
             record["classes"].add(item_class)
 
-    # Food and drink are NOT inventions for this section (maintainer ruling
-    # 2026-08-24: Coca-Cola was listed beside the electric guitar). The
-    # subclass test runs as its own query over the items' direct classes --
-    # a P279* closure inside the main query's FILTER answers 504.
-    # The ancestry test covers the items THEMSELVES too, not only their
-    # classes: generic foods like "hot dog" carry no P31 at all -- they ARE
-    # classes (P279 "sausage sandwich") and only the item's own ancestry
-    # reveals them as food.
+    # Wikipedia list candidates, then their direct classes from Wikidata so
+    # the same gate judges both sources.
+    wiki_by_country = _wikipedia_candidates(registry, refresh=refresh)
+    wiki_qids = sorted({
+        c["qid"] for cs in wiki_by_country.values() for c in cs if c.get("qid")
+    })
+    wiki_classes = _item_classes(wiki_qids, refresh=refresh)
+
     all_classes = sorted(
-        {c for r in by_item.values() for c in r["classes"]} | set(by_item)
+        {c for r in by_item.values() for c in r["classes"]}
+        | set(by_item)
+        | {c for cs in wiki_classes.values() for c in cs}
+        | set(wiki_qids)
     )
-    food_classes: set[str] = set()
-    for start in range(0, len(all_classes), config.FOOD_CLASS_BATCH):
-        batch = all_classes[start:start + config.FOOD_CLASS_BATCH]
-        values = " ".join(f"wd:{qid}" for qid in batch)
-        # Net 1: classes that subclass food or drink.
-        food_response = fetch(
-            f"{config.WIKIDATA_SPARQL}?format=json&query="
-            + urllib.parse.quote(
-                config.WIKIDATA_FOOD_CLASSES_QUERY_TEMPLATE.format(qids=values)
-            ),
-            refresh=refresh, subdir="inventions", expect_json=True,
-        )
-        for row in food_response.read_json()["results"]["bindings"]:
-            food_classes.add(
-                (row.get("class", {}).get("value") or "").rsplit("/", 1)[-1]
-            )
-        # Net 2: classes whose label READS food-like -- brand items ("drink
-        # brand") never subclass food, and Coca-Cola sailed through net 1.
-        labels_response = fetch(
-            f"{config.WIKIDATA_SPARQL}?format=json&query="
-            + urllib.parse.quote(
-                config.WIKIDATA_CLASS_LABELS_QUERY_TEMPLATE.format(qids=values)
-            ),
-            refresh=refresh, subdir="inventions", expect_json=True,
-        )
-        for row in labels_response.read_json()["results"]["bindings"]:
-            label = (row.get("classLabel", {}).get("value") or "").lower()
-            if any(k in label for k in config.FOOD_CLASS_LABEL_KEYWORDS):
-                food_classes.add(
-                    (row.get("class", {}).get("value") or "").rsplit("/", 1)[-1]
-                )
-    edible = [
-        qid for qid, record in by_item.items()
-        if record["classes"] & food_classes or qid in food_classes
-    ]
-    for qid in edible:
-        del by_item[qid]
+    reached, food_by_label = _class_roots(all_classes, refresh=refresh)
+    gate = _Gate(reached, food_by_label)
 
     by_country: dict[str, list[dict[str, Any]]] = {}
-    for record in by_item.values():
+    for qid, record in by_item.items():
+        ok, reason, roots = gate.verdict(qid, record["classes"])
+        if not ok:
+            gate.reject(
+                source="wikidata", iso3=record["iso3"], qid=qid,
+                name=record["name"], reason=reason, matched=roots,
+            )
+            continue
+        record["roots"] = roots
         by_country.setdefault(record["iso3"], []).append(record)
     for records in by_country.values():
         records.sort(key=lambda r: (-r["links"], r["name"]))
         del records[config.INVENTIONS_TOP_N:]
 
-    # Wikipedia's per-country list articles fill in what Wikidata's origin
-    # tagging misses (2026-08-24) -- Wikidata entries lead, list entries
-    # top the country up to the cap, deduplicated by name.
-    wiki_by_country, wiki_dropped_food = _wikipedia_entries(
-        registry, refresh=refresh
-    )
+    wiki_accepted: dict[str, list[dict[str, Any]]] = {}
+    for iso3, candidates in wiki_by_country.items():
+        for candidate in candidates:
+            qid = candidate.get("qid")
+            if not qid:
+                gate.reject(
+                    source="wikipedia", iso3=iso3, qid=None,
+                    name=candidate["name"], reason="no Wikidata item",
+                    matched=[], listArticle=candidate["listArticle"],
+                )
+                continue
+            ok, reason, roots = gate.verdict(qid, wiki_classes.get(qid, set()))
+            if not ok:
+                gate.reject(
+                    source="wikipedia", iso3=iso3, qid=qid,
+                    name=candidate["name"], reason=reason, matched=roots,
+                    description=candidate.get("description"),
+                    listArticle=candidate["listArticle"],
+                )
+                continue
+            if len(wiki_accepted.setdefault(iso3, [])) < config.WIKIPEDIA_INVENTIONS_PER_PAGE * 2:
+                wiki_accepted[iso3].append(candidate)
 
+    # Wikidata entries lead, list entries top the country up to the cap,
+    # deduplicated by name. A country with two solid entries shows two.
     merged: dict[str, list[dict[str, Any]]] = {}
-    for iso3 in sorted(set(by_country) | set(wiki_by_country)):
+    for iso3 in sorted(set(by_country) | set(wiki_accepted)):
         entries: list[dict[str, Any]] = [
             {
                 "name": r["name"],
@@ -327,7 +440,7 @@ def ingest(
             for r in by_country.get(iso3, [])
         ]
         names = {e["name"].casefold() for e in entries}
-        for candidate in wiki_by_country.get(iso3, []):
+        for candidate in wiki_accepted.get(iso3, []):
             if len(entries) >= config.INVENTIONS_TOP_N:
                 break
             if candidate["name"].casefold() in names:
@@ -341,7 +454,8 @@ def ingest(
                 "file": candidate.get("file"),
                 "source": "wikipedia",
             })
-        merged[iso3] = entries[:config.INVENTIONS_TOP_N]
+        if entries:
+            merged[iso3] = entries[:config.INVENTIONS_TOP_N]
 
     filenames = [
         r["file"]
@@ -353,9 +467,8 @@ def ingest(
         filenames, refresh=refresh, subdir="inventions",
     )
 
-    # Remove artifacts for countries no longer covered -- the food
-    # exclusion legitimately dropped some, and a stale file would keep
-    # serving Coca-Cola forever.
+    # Remove artifacts for countries no longer covered -- a stale file
+    # would keep serving a rejected item forever.
     for stale in out_dir.glob("*.json"):
         if stale.stem not in merged:
             stale.unlink()
@@ -387,9 +500,12 @@ def ingest(
             "note": (
                 "Inventions with a recorded country of origin in Wikidata, "
                 "topped up from the English Wikipedia's per-country "
-                "invention list articles (CC BY-SA). Dates are recorded or "
-                "parsed from prose and are often approximate; food and "
-                "drink are excluded by ruling."
+                "invention list articles (CC BY-SA). Every entry passed a "
+                "Wikidata class check (device, technology, process, "
+                "product, software, medication ...); diseases, species, "
+                "discoveries, theorems and food are excluded by ruling. "
+                "Dates are recorded or parsed from prose and are often "
+                "approximate."
             ),
             "inventions": items,
         }
@@ -399,6 +515,29 @@ def ingest(
         )
         written += 1
         total += len(items)
+
+    # Reviewable rejection log (committed, outside /data).
+    config.LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    rejected = sorted(
+        gate.rejected, key=lambda r: (r["iso3"], r["source"], r["name"])
+    )
+    by_reason: dict[str, int] = {}
+    for entry in rejected:
+        by_reason[entry["reason"]] = by_reason.get(entry["reason"], 0) + 1
+    (config.LOGS_DIR / "inventions-rejected.json").write_text(
+        json.dumps({
+            "note": (
+                "Every inventions candidate the class gate rejected, with "
+                "the reason and the matched roots. 'denied class ancestry' "
+                "names the deny roots hit; 'no allowed class ancestry' "
+                "means the item reaches none of the allow roots and may "
+                "deserve a new root or a Wikidata fix."
+            ),
+            "summary": by_reason,
+            "rejected": rejected,
+        }, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8", newline="\n",
+    )
 
     manifest_mod.record_source(
         manifest,
@@ -415,29 +554,30 @@ def ingest(
         upstream_release=None,
         vintage="as retrieved",
         citation=(
-            "Wikidata (P495/P61/P575); English Wikipedia per-country "
-            "invention lists; Wikimedia Commons"
+            "Wikidata (P495/P61/P575, P31/P279 class gate); English "
+            "Wikipedia per-country invention lists; Wikimedia Commons"
         ),
         notes=(
-            f"{written} countries with qualifying items, {total} inventions "
-            f"({len(edible)} Wikidata food/drink items excluded by class, "
-            f"{wiki_dropped_food} Wikipedia list entries excluded by "
-            f"description). Wikidata origin tags plus "
-            f"{len(config.WIKIPEDIA_INVENTION_LISTS)} curated Wikipedia "
-            f"list articles."
+            f"{written} countries with qualifying items, {total} inventions. "
+            f"Class gate rejected {len(rejected)} candidates "
+            f"({', '.join(f'{k}: {v}' for k, v in sorted(by_reason.items()))}); "
+            f"see etl/logs/inventions-rejected.json. Wikidata origin tags "
+            f"plus {len(config.WIKIPEDIA_INVENTION_LISTS)} curated "
+            f"Wikipedia list articles."
         ),
     )
     manifest_mod.record_artifact(
         manifest, "inventions/<ISO3>.json",
         description=(
             "Notable inventions (name, inventor, approximate year, Commons "
-            "image with attribution) for countries with Wikidata coverage."
+            "image with attribution) for countries with coverage after the "
+            "class gate."
         ),
         sources=["wikidata_inventions"], entity_count=written,
     )
     print(f"    inventions: {written} countries, {total} items "
-          f"({len(edible)}+{wiki_dropped_food} food/drink excluded, "
-          f"{len(wiki_by_country)} countries from Wikipedia lists)")
+          f"({len(rejected)} candidates rejected by the class gate, "
+          f"{len(wiki_accepted)} countries from Wikipedia lists)")
 
 
 __all__ = ["ingest"]

@@ -162,6 +162,9 @@ WORLD_BANK_INDICATORS: tuple[Indicator, ...] = (
     Indicator("SE.TER.ENRR", "School enrollment, tertiary (% gross)", "education", "percent"),
     # -- Demographics and People -------------------------------------------
     Indicator("SP.URB.TOTL.IN.ZS", "Urban population (% of total)", "demographics", "percent"),
+    # Rural is pulled from its own series rather than computed as 100-urban
+    # (2026-08-29); the stage logs any pair that disagrees beyond rounding.
+    Indicator("SP.RUR.TOTL.ZS", "Rural population (% of total)", "demographics", "percent"),
     Indicator("EN.POP.DNST", "Population density (people per sq km of land)", "demographics", "per_sqkm"),
     # -- Environment and Geography -----------------------------------------
     Indicator("AG.LND.TOTL.K2", "Land area (sq. km)", "environment", "sq_km"),
@@ -483,11 +486,16 @@ DEATH_PENALTY_STATUS_LABELS: dict[str, str] = {
 #
 # University counts: Hipolabs' university-domains list (MIT licensed, keyed by
 # ISO2). It counts institutions with web domains, so it UNDERCOUNTS and the
-# page must label it as such. Public library counts: Wikidata (IFLA's Library
-# Map has no keyless endpoint -- Cloudflare-gated); Wikidata coverage is
-# uneven, so the label says "recorded in Wikidata". Top universities: CWUR's
-# ranking page carries a National Rank column for ~2,000 institutions in ~90
-# countries; © CWUR, displayed with attribution.
+# page must label it as such. Top universities: CWUR's ranking page carries a
+# National Rank column for ~2,000 institutions in ~90 countries; © CWUR,
+# displayed with attribution.
+#
+# Public library counts were DROPPED 2026-08-29. The only keyless source was
+# a Wikidata COUNT of items typed "public library", which measures
+# cataloguing activity (Russia: 9; Czechia > Germany) rather than libraries.
+# IFLA's Library Map of the World holds the official national counts but is
+# Cloudflare-gated with no machine-readable feed. No reliable source, no
+# figure -- see DATA_DECISIONS.md.
 
 HIPOLABS_UNIVERSITIES_URL = (
     "https://raw.githubusercontent.com/Hipo/university-domains-list/master/"
@@ -497,14 +505,6 @@ CWUR_RANKING_TEMPLATE = "https://cwur.org/{year}.php"
 CWUR_PROBE_YEARS_BACK = 3
 CWUR_TOP_N = 10
 
-WIKIDATA_PUBLIC_LIBRARIES_QUERY = """
-SELECT ?iso3 (COUNT(DISTINCT ?lib) AS ?libraries) WHERE {
-  ?lib wdt:P31/wdt:P279* wd:Q28564 .
-  ?lib wdt:P17 ?country .
-  ?country wdt:P298 ?iso3 .
-}
-GROUP BY ?iso3
-"""
 
 # --------------------------------------------------------------------------
 # IMF World Economic Outlook (DataMapper API)  (added 2026-08-23)
@@ -526,21 +526,25 @@ IMF_AGGREGATE_KEYS = {
 # Currency images (Wikidata + Wikimedia Commons)  (added 2026-08-23)
 # --------------------------------------------------------------------------
 #
-# country -> currency (P38) -> ISO 4217 code (P498) + image (P18). The P18
-# image is a REPRESENTATIVE specimen -- for some currencies Commons holds a
-# coin or a historical note, and no property orders denominations, so the
-# page must caption it honestly rather than promising "the smallest bill".
-# Editorial overrides in reference/currency_image_overrides.json take
-# precedence per ISO 4217 code. Images are hotlinked via Special:Redirect at
+# country -> currency (P38) -> ISO 4217 code (P498), Commons category
+# (P373) and image (P18). Since 2026-08-29 the stage walks the Commons
+# banknote categories and accepts only a single flat obverse note (criteria
+# in etl/sources/currencyimages.py); overrides in
+# reference/currency_image_overrides.json add a candidate per code but are
+# judged like any other file. Images are hotlinked via Special:Redirect at
 # a Commons-bucketed width (arbitrary widths now answer HTTP 400), with
 # per-file licence/author pulled from the Commons API for attribution.
 
+# 2026-08-29: P373 (Commons category) added so the stage can walk the
+# currency's "Banknotes of ..." subcategories; P18 is now a last-resort
+# candidate judged by the same acceptance criteria as every other file.
 WIKIDATA_CURRENCY_IMAGES_QUERY = """
-SELECT DISTINCT ?iso3 ?code ?image ?currencyLabel WHERE {
+SELECT DISTINCT ?iso3 ?code ?image ?currencyLabel ?commonsCategory WHERE {
   ?country wdt:P298 ?iso3 .
   ?country wdt:P38 ?currency .
   OPTIONAL { ?currency wdt:P498 ?code . }
   OPTIONAL { ?currency wdt:P18 ?image . }
+  OPTIONAL { ?currency wdt:P373 ?commonsCategory . }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 """
@@ -688,17 +692,99 @@ WIKIPEDIA_INVENTION_LISTS: dict[str, str] = {
 }
 # Per-page cap on parsed candidates, before the cross-source merge.
 WIKIPEDIA_INVENTIONS_PER_PAGE = 8
+# Candidates sampled per page before the class gate; the gate rejects a
+# large share of list entries (theorems, diseases, discoveries), so the
+# window is generous.
+WIKIPEDIA_INVENTIONS_SAMPLE_WINDOW = 40
 
-# Food and drink are excluded from the inventions section (2026-08-24,
-# maintainer request -- Coca-Cola was listed beside the electric guitar).
-# The subclass test cannot run inside the main query (P279* closure in a
-# FILTER NOT EXISTS answers 504), so the items' DIRECT classes come back
-# with the main query and this second query walks only those classes
-# upward -- a few hundred specific nodes, cheap.
-WIKIDATA_FOOD_CLASSES_QUERY_TEMPLATE = """
-SELECT DISTINCT ?class WHERE {{
+# Class gate (rewritten 2026-08-29, maintainer request: Brazil listed
+# Schistosomiasis as an invention). An item is an invention for this
+# section only if its class ancestry -- the item's own P31 classes, and the
+# item itself, walked up P279* -- reaches one of the ALLOW roots and none
+# of the DENY roots. Deny wins. The P279* closure cannot run inside the
+# main query (FILTER NOT EXISTS answers 504), so the direct classes come
+# back with the main query and this second query walks only those classes
+# -- a few hundred specific nodes, cheap. The same gate vets the Wikipedia
+# list candidates through their own Wikidata item (REST summary carries
+# `wikibase_item`); a candidate with no Wikidata item is rejected.
+#
+# Everything the gate drops is written to etl/logs/inventions-rejected.json
+# with the reason and the matched roots, for editorial review.
+WIKIDATA_INVENTION_ALLOW_ROOTS: dict[str, str] = {
+    "Q8205328": "artificial physical object",
+    "Q1183543": "device",
+    "Q39546": "physical tool",
+    "Q42889": "vehicle",
+    "Q11016": "technology",
+    "Q2695280": "technique",
+    "Q1799072": "method",
+    "Q3249551": "process",
+    "Q2424752": "product",
+    "Q28877": "goods",
+    "Q17444171": "product model",
+    "Q7397": "software",
+    "Q9143": "programming language",
+    "Q7889": "video game",
+    "Q12140": "medication",
+    "Q11173": "chemical compound",
+    "Q214609": "material",
+    "Q431289": "brand",
+}
+WIKIDATA_INVENTION_DENY_ROOTS: dict[str, str] = {
+    # medicine / biology -- "described in country X" is not "invented in X"
+    "Q12136": "disease",
+    "Q12135": "mental disorder",
+    "Q179630": "syndrome",
+    "Q170065": "pathogen",
+    "Q2996394": "biological process",
+    "Q7239": "organism",
+    "Q16521": "taxon",
+    "Q4936952": "anatomical structure",
+    "Q7187": "gene",
+    "Q8054": "protein",
+    # natural science objects
+    "Q11344": "chemical element",
+    "Q7946": "mineral",
+    "Q6999": "astronomical object",
+    "Q618123": "geographical feature",
+    "Q17334923": "physical location",
+    # abstractions and discoveries
+    "Q65943": "theorem",
+    "Q24034552": "mathematical concept",
+    "Q12772819": "discovery",
+    "Q11862829": "academic discipline",
+    "Q1047113": "field of study",
+    "Q1190554": "occurrence",
+    # people, organisations, creative works, culture
+    "Q5": "human",
+    "Q43229": "organization",
+    "Q838948": "work of art",
+    "Q7725634": "literary work",
+    "Q2188189": "musical work",
+    "Q11424": "film",
+    "Q47461344": "written work",
+    "Q41710": "ethnic group",
+    "Q34770": "language",
+    "Q9174": "religion",
+    "Q349": "sport",
+    "Q618779": "award",
+    # food and drink stay out by the 2026-08-24 ruling
+    "Q2095": "food",
+    "Q40050": "drink",
+}
+# One batched query answers which roots each class reaches.
+WIKIDATA_CLASS_ROOTS_QUERY_TEMPLATE = """
+SELECT DISTINCT ?class ?root WHERE {{
   VALUES ?class {{ {qids} }}
-  {{ ?class wdt:P279* wd:Q2095 . }} UNION {{ ?class wdt:P279* wd:Q40050 . }}
+  VALUES ?root {{ {roots} }}
+  ?class wdt:P279* ?root .
+}}
+"""
+# Direct P31 classes of arbitrary items (used for Wikipedia candidates).
+WIKIDATA_ITEM_CLASSES_QUERY_TEMPLATE = """
+SELECT ?item ?class WHERE {{
+  VALUES ?item {{ {qids} }}
+  ?item wdt:P31 ?class .
 }}
 """
 # Class ANCESTRY alone misses brand items: Coca-Cola's classes are "drink
@@ -717,6 +803,10 @@ FOOD_CLASS_LABEL_KEYWORDS = (
     "candy", "pizza", "sandwich", "cola",
 )
 FOOD_CLASS_BATCH = 150
+# Where the ETL writes reviewable rejection / suppression logs. Committed,
+# so a review can happen on the PR diff; NOT under /data, so the logs do not
+# ship with the site or enter the content fingerprint.
+LOGS_DIR = REPO_ROOT / "etl" / "logs"
 
 # --------------------------------------------------------------------------
 # Airports (OurAirports + Wikidata patronage)  (added 2026-08-24)
