@@ -535,7 +535,6 @@ const cssLines = [
   ' * sunlit land on a dark ocean against space in both themes, so its land',
   ' * colours must not swap to the dark tiers, which would sink into the',
   ' * ocean colour.',
-  ' */',
   ' *',
   ' * --fill-globe-<dir>-* are the per-DIRECTION light fills (atlas, paper);',
   ' * the map selects one by the "Map colours" control. --region-* are the',
