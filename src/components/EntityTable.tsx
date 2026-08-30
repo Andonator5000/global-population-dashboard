@@ -114,10 +114,19 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
     setAscending(key === 'name' || key === 'continent')
   }
 
+  // Sticky, clearly distinguished header (2026-08-29, Phase 2.3): raised
+  // surface, bottom rule, muted uppercase labels; the active sort column is
+  // in full text colour with its direction glyph. Sort buttons are real
+  // buttons, so keyboard users tab to them and press Enter/Space.
   const header = (key: SortKey, label: string, numeric = false) => (
     <th
       scope="col"
-      className={`px-3 py-2 font-medium ${numeric ? 'text-right' : 'text-left'}`}
+      className={`sticky top-0 z-10 px-3 py-2 text-xs font-medium uppercase tracking-wide ${numeric ? 'text-right' : 'text-left'}`}
+      style={{
+        background: 'var(--surface-raised)',
+        color: sortKey === key ? 'var(--text)' : 'var(--text-muted)',
+        boxShadow: 'inset 0 -2px 0 var(--border)',
+      }}
       aria-sort={
         sortKey === key ? (ascending ? 'ascending' : 'descending') : 'none'
       }
@@ -125,10 +134,12 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
       <button
         type="button"
         onClick={() => toggleSort(key)}
-        className="underline-offset-2 hover:underline"
+        className="rounded underline-offset-2 hover:underline"
       >
         {label}
-        {sortKey === key && <span aria-hidden="true">{ascending ? ' ▲' : ' ▼'}</span>}
+        <span aria-hidden="true" className="inline-block w-3 text-left">
+          {sortKey === key ? (ascending ? ' ▲' : ' ▼') : ''}
+        </span>
       </button>
     </th>
   )
@@ -196,20 +207,18 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
           </p>
 
           <div
-            className="mt-3 overflow-x-auto rounded-lg border"
-            style={{ borderColor: 'var(--border)' }}
+            className="mt-3 max-h-[70vh] overflow-auto rounded-lg border"
+            style={{
+              borderColor: 'var(--border)',
+              background: 'var(--surface-raised)',
+            }}
           >
             <table className="w-full border-collapse text-sm">
               <caption className="sr-only">
                 GDP, population and growth rate by entity, {year}. Sortable.
               </caption>
               <thead>
-                <tr
-                  style={{
-                    background: 'var(--control-selected-bg)',
-                    color: 'var(--control-selected-text)',
-                  }}
-                >
+                <tr>
                   {header('name', 'Entity')}
                   {header('continent', 'Continent')}
                   {header('gdp', 'GDP (US$)', true)}
@@ -217,25 +226,20 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
                   {header('growthRate', 'Growth rate', true)}
                 </tr>
               </thead>
-              {/* Maintainer ruling (2026-08-24, replacing the white/yellow
-                  scheme of 2026-08-23): the body zebra-stripes DARK BLUE /
-                  LIGHT BLUE in both themes. The two rows need opposite text
-                  polarities, so colour and the re-scoped --text-muted ride
-                  per-row rather than on the tbody. */}
+              {/* Maintainer ruling (2026-08-29, Phase 2.3, replacing the
+                  dark-blue/light-blue zebra of 2026-08-24): neutral rows on
+                  the theme surface with a subtle divider, no zebra. Colour is
+                  used only where it carries meaning -- the growth-rate sign,
+                  which is also printed as +/-. Every cell uses the gated
+                  theme tokens, so AA holds in both themes. */}
               <tbody>
-                {visible.map((row, index) => {
+                {visible.map((row) => {
                   const rowGdp = gdpOf(row.iso3)
-                  const dark = index % 2 === 0
                   return (
                     <tr
                       key={row.iso3}
-                      style={
-                        {
-                          background: dark ? '#1d3a5f' : '#cfe4f7',
-                          color: dark ? '#f1f5f9' : '#111827',
-                          '--text-muted': dark ? '#a9bfd6' : '#42556e',
-                        } as React.CSSProperties
-                      }
+                      className="border-t"
+                      style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
                     >
                       <th scope="row" className="px-3 py-1.5 text-left font-normal">
                         <Link
@@ -296,15 +300,21 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
                       </td>
                       <td
                         className="px-3 py-1.5 text-right"
-                        style={{ fontVariantNumeric: 'tabular-nums' }}
+                        style={{
+                          fontVariantNumeric: 'tabular-nums',
+                          color:
+                            row.growthRate === null || row.growthRate === undefined
+                              ? 'var(--text-muted)'
+                              : row.growthRate > 0
+                                ? 'var(--positive)'
+                                : row.growthRate < 0
+                                  ? 'var(--negative)'
+                                  : 'var(--text)',
+                        }}
                       >
-                        {row.growthRate === null || row.growthRate === undefined ? (
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            {NOT_AVAILABLE}
-                          </span>
-                        ) : (
-                          formatGrowthRate(row.growthRate)
-                        )}
+                        {row.growthRate === null || row.growthRate === undefined
+                          ? NOT_AVAILABLE
+                          : formatGrowthRate(row.growthRate)}
                       </td>
                     </tr>
                   )

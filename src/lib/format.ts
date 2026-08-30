@@ -37,6 +37,7 @@ export function formatExact(value: number | null | undefined): string {
 }
 
 /** Growth rate, always signed so decline is unmistakable. */
+/** Signed, two decimals, the unit spelled out: "+0.72% per year". */
 export function formatGrowthRate(value: number | null | undefined): string {
   if (value === null || value === undefined || !Number.isFinite(value)) {
     return NOT_AVAILABLE
