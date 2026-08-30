@@ -1649,6 +1649,22 @@ layout depends on the webfonts loading. Colour tokens, spacing and
 component patterns are unchanged -- the database's "Minimalism & Swiss"
 entry described what the site already does.
 
+## 26. Navigation and timeline layout (2026-08-30, maintainer-requested)
+
+Two section buttons in the header: "Global Data" (renamed from "Global
+Population Dashboard" because the atlas covers far more than population)
+in the brand green, and "Human History" in a clay red chosen to sit
+opposite green on the hue wheel; the two are matched in lightness and
+told apart by hue and spacing, so no luminance ratio between them is
+gated -- only each label's AA contrast. The timeline moves to two columns:
+boxed era labels (name, span, "1 px ≈ N years") on the left, sticky within
+their own band; events on the right. Event rows are measured after render
+so wrapped labels on phones can never overlap. Category icons now come
+from the same OpenMoji set as the rest of the site (DNA, hammer and
+wrench, light bulb, compass, crossed swords, place of worship, scroll);
+no open icon set draws a sword crossed with a gun, so crossed swords, the
+conventional conflict mark, stand for wars. Category names are Title Case.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

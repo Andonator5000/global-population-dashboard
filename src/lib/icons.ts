@@ -114,6 +114,25 @@ export function productIcon(item: string): IconMatch | null {
   return null
 }
 
+/**
+ * Human History timeline categories (Phase 3). Crossed swords stand for
+ * wars: no open icon set draws a sword crossed with a gun, and the
+ * crossed-swords glyph is the conventional conflict mark.
+ */
+const HISTORY_CATEGORY_ICONS: Record<string, string> = {
+  'evolution-prehistory': '1F9EC', // dna
+  'invention-technology': '1F6E0', // hammer and wrench
+  'scientific-discovery': '1F4A1', // light bulb
+  'other-discovery': '1F9ED', // compass
+  'war-conflict': '2694', // crossed swords
+  religion: '1F6D0', // place of worship
+  'rights-document': '1F4DC', // scroll
+}
+
+export function historyCategoryIcon(category: string): string | null {
+  return HISTORY_CATEGORY_ICONS[category] ?? null
+}
+
 /** Religion keyword rules; first match wins. */
 const RELIGION_RULES: [RegExp, string][] = [
   [/catholic|christian|protestant|orthodox|anglican|evangelical|methodist|baptist|lutheran|presbyterian|pentecostal|adventist|church|mormon|latter[- ]day/, '271D'],

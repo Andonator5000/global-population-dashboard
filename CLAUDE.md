@@ -1,7 +1,7 @@
 # Operating guide (for Claude Code sessions)
 
 Read this before changing anything. `README.md` explains the project;
-`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–25 are
+`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–26 are
 the 2026-08 maintainer batches) — check it before re-litigating a source
 choice.
 
@@ -90,6 +90,8 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   species grid; no flora/fauna image ships unverified against its taxon.
 - Currency images: a single flat obverse banknote or the designed fallback
   card — criteria in `etl/sources/currencyimages.py`, never bypassed.
+- Header: two section buttons, "Global Data" (brand green) and "Human
+  History" (clay red); timeline = era boxes left, events right (§26).
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).
