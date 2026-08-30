@@ -1,0 +1,19 @@
+{
+  "note": "Coverage of the curated keyword-to-icon table over every distinct Factbook item string. \"exact\" = the icon depicts the item; \"category\" = closest category icon (crop, mineral, factory...); \"none\" = labelled chip with no icon.",
+  "distinctItems": 994,
+  "totalMentions": 5148,
+  "distinct": {
+    "exact": 884,
+    "category": 110,
+    "none": 0,
+    "coveredPct": 100
+  },
+  "mentions": {
+    "exact": 4540,
+    "category": 608,
+    "none": 0,
+    "coveredPct": 100
+  },
+  "iconsUsed": 131,
+  "unmatched": []
+}

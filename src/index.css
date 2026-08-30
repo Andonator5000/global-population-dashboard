@@ -4,6 +4,22 @@
 @import './generated/flag-fills.css';
 
 /*
+ * Monochrome OpenMoji glyphs (public/icons/openmoji, CC BY-SA 4.0), painted
+ * in currentColor through a mask so one SVG follows both themes. Sized in
+ * em so an icon scales with the text it decorates.
+ */
+.om-icon {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+  vertical-align: -0.3em;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/*
  * Theme tokens. Light and dark are both first-class: the brief requires WCAG
  * AA contrast in both, so neither is an afterthought applied with filters.
  *

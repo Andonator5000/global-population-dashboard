@@ -1,3 +1,4 @@
+import { ICON_ATTRIBUTION } from './Icon'
 import { useState } from 'react'
 
 import { useManifest } from '../lib/data'
@@ -56,6 +57,7 @@ export function FreshnessPanel() {
       style={{ borderColor: 'var(--border)', color: 'var(--text-muted)' }}
     >
       <div className="mx-auto max-w-7xl px-6 py-8">
+        <p className="mb-4">{ICON_ATTRIBUTION}</p>
         <h2 className="mb-3 font-medium" style={{ color: 'var(--text)' }}>
           Data freshness
         </h2>
