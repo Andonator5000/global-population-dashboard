@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Apple pie pops",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ax643t1784731109.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ax643t1784731109.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Breadfruit Tacos",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dk70uv1784670127.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dk70uv1784670127.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Cassava bread",
-      "description": "Side",
+      "description": "Casabe or cassava bread is a flatbread made of cassava, eaten across the Caribbean Basin and the Amazon.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/fnfnhi1784671116.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/fnfnhi1784671116.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Chicken Lollipop",
-      "description": "Chicken",
+      "description": "Chicken lollipop is a popular Indian fried chicken appetiser.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Codfish deviled eggs",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vayi021784668764.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vayi021784668764.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Creamy mango smoothie",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/pjbaq11784731571.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/pjbaq11784731571.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Dominica mastiff bread",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/u1996p1784670686.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/u1996p1784670686.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Dominica’s coconut rough cake",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sgqy9d1784832045.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sgqy9d1784832045.jpg",

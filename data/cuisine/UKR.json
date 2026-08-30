@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Beetroot latkes",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qwicc91764368097.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qwicc91764368097.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Beetroot pancakes",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xlqqhw1764369924.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xlqqhw1764369924.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Beetroot Soup (Borscht)",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Borsch",
-      "description": "Beef",
+      "description": "Borscht (English: ) is a sour soup, made with meat stock, vegetables and seasonings, common in Eastern Europe, Central Europe and Northern Asia.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/804v1j1764367088.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/804v1j1764367088.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Rosemary braised red cabbage with kabanos",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/s1jxzl1764369317.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/s1jxzl1764369317.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Sauerkraut pierogii",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/gqlxgc1764368767.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/gqlxgc1764368767.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Tangy cabbage slaw",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/e2g2r21764367568.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/e2g2r21764367568.jpg",

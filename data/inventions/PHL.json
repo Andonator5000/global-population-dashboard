@@ -7,6 +7,7 @@
     {
       "name": "Barong tagalog",
       "source": "wikipedia",
+      "description": "The barong tagalog, more commonly known simply as barong, is an embroidered long-sleeved formal shirt for men and a national dress of the Philippines.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Barong%20made%20of%20pi%C3%B1a%20fabric%20displayed%20at%20the%20National%20Museum%20in%20the%20Philippines.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Barong%20made%20of%20pi%C3%B1a%20fabric%20displayed%20at%20the%20National%20Museum%20in%20the%20Philippines.jpg",
@@ -17,47 +18,58 @@
     },
     {
       "name": "Baro't saya",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The baro't saya or baro at saya is a traditional dress ensemble worn by women in the Philippines."
     },
     {
       "name": "Bahag (garment)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Bahag is a general term for the loincloth that was commonly used by men throughout the pre-colonial Philippines."
     },
     {
       "name": "Salakot",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Salakot is a traditional lightweight headgear from the Philippines commonly used for protection against the sun and rain."
     },
     {
       "name": "Panabas",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The panabas is a chopping bladed weapon or tool from the Philippines, variously described as both a sword and a battle axe."
     },
     {
       "name": "Butterfly knife",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A balisong, also known as a butterfly knife, fan knife or Batangas knife, is a type of folding pocketknife that originated from the Philippines."
     },
     {
       "name": "Kampilan",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The kampilan is a type of single-edged sword,(also known as talong) traditionally used by various ethnic groups in the Philippine archipelago, Kalimantan and Sulawesi."
     },
     {
       "name": "Lantaka",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The lantaka, also known as the rentaka, was a type of bronze portable cannon or swivel gun, sometimes mounted on merchant vessels and warships in Maritime Southeast Asia."
     },
     {
       "name": "Kutiyapi",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The kutiyapi, or kudyapi, is a Philippine two-stringed, fretted boat-lute."
     },
     {
       "name": "Gambang (instrument)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A gambang, properly called a gambang kayu is a xylophone-like instrument used in Indonesian gamelan and kulintang ensembles."
     },
     {
       "name": "Gandingan",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The gandingan is a Philippine set of four large, hanging gongs used by the Maguindanao as part of their kulintang ensemble."
     },
     {
       "name": "Balangay",
       "source": "wikipedia",
+      "description": "A balangay, or barangay, is a type of lashed-lug boat built by joining planks edge-to-edge using pins, dowels, and fiber lashings.",
       "year": 1976
     }
   ]

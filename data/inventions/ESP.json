@@ -7,49 +7,60 @@
     {
       "name": "Mercury(II) oxide",
       "source": "wikipedia",
+      "description": "Mercury(II) oxide, also called mercuric oxide or simply mercury oxide, is the inorganic compound with the formula HgO.",
       "era": "10th century"
     },
     {
       "name": "Farthingale",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A farthingale is one of several structures used under Western European women's clothing - especially in the 16th and 17th centuries - to support the skirts in the desired shape and to enlarge the lower half of the body."
     },
     {
       "name": "Ligature (medicine)",
       "source": "wikipedia",
+      "description": "In surgery or medical procedure, a ligature consists of a piece of thread (suture) tied around an anatomical structure, usually a blood vessel, another hollow structure, or an accessory skin tag to shut it off.",
       "year": 1013
     },
     {
       "name": "Autogyro",
       "source": "wikipedia",
+      "description": "An autogyro, gyroplane or gyrocopter, is a class of rotorcraft that uses an unpowered rotor in free autorotation to develop lift.",
       "year": 1934
     },
     {
       "name": "Bandurria",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The bandurria is a plucked chordophone from Spain, similar to the mandolin and bandola, primarily used in Spanish folk music, but also found in former Spanish colonies."
     },
     {
       "name": "Classical guitar",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The classical guitar, also known as a Spanish guitar, is a member of the guitar family used in classical music and other styles."
     },
     {
       "name": "Fiscorn",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A fiscorn is a brass instrument."
     },
     {
       "name": "Gralla (instrument)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The gralla, also known as grall de pastor, xaramita, dulzaina catalana or xirimita, is a traditional Catalan double reed instrument in the shawm family classified in the group 422.112 in the Hornbostel-Sachs system."
     },
     {
       "name": "Tambori",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The tambori is a percussion instrument of about 10 centimetres diameter, a small shallow cylinder formed of metal or wood with a drumhead of skin."
     },
     {
       "name": "Txalaparta",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The txalaparta is a specialized Basque music device of wood or stone."
     },
     {
       "name": "Xirula",
       "source": "wikipedia",
+      "description": "The xirula is a small three holed woodwind instrument or flute usually made of wood akin to the Basque txistu or three-hole pipe, but more high pitched and strident, tuned to D/G and an octave higher than the silbote.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Xirula%20-%20Soinuenea%20Fundazioa.webm?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Xirula%20-%20Soinuenea%20Fundazioa.webm",
@@ -60,7 +71,8 @@
     },
     {
       "name": "Steam engine",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A steam engine is a heat engine that performs mechanical work using steam as its working fluid."
     }
   ]
 }

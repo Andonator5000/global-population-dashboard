@@ -7,6 +7,7 @@
     {
       "name": "Flame ionization detector",
       "source": "wikipedia",
+      "description": "A flame ionization detector (FID) is a scientific instrument that measures analytes in a gas stream.",
       "year": 1957,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flame%20ionization%20detector%20schematic-en.svg?width=960",
@@ -22,26 +23,31 @@
       "inventors": [
         "Ron Hickman"
       ],
+      "description": "The Black & Decker Workmate is a general purpose portable workbench and general carpentry tool manufactured under the brand Black & Decker.",
       "year": 1961
     },
     {
       "name": "South African Class 6E1, Series 4",
       "source": "wikipedia",
+      "description": "The South African Railways Class 6E1, Series 4 of 1973 was an electric locomotive.",
       "year": 1978
     },
     {
       "name": "Casspir",
       "source": "wikipedia",
+      "description": "The Casspir is a Mine-Resistant Ambush Protected Vehicle that has been in use in South Africa since the 1980s.",
       "year": 1980
     },
     {
       "name": "Denel Rooivalk",
       "source": "wikipedia",
+      "description": "The Denel Rooivalk is an attack helicopter manufactured by Denel Aviation of South Africa.",
       "year": 1984
     },
     {
       "name": "Safety syringe",
       "source": "wikipedia",
+      "description": "A safety syringe is a syringe with a built-in safety mechanism to reduce the risk of needlestick injuries to healthcare workers and others.",
       "year": 1999,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sicherheitsspritze%20010.JPG?width=960",
@@ -57,6 +63,7 @@
       "inventors": [
         "Professor Mulalo Doyoyo"
       ],
+      "description": "Amoriguard is a water-based paint with fillers based on recycled industrial waste.",
       "year": 2013
     }
   ]

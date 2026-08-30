@@ -627,6 +627,12 @@
       "retained": true,
       "lastExecutionYear": 1984
     },
+    "MMR": {
+      "status": "P",
+      "statusLabel": "Retains the death penalty",
+      "retained": true,
+      "lastExecutionYear": 1988
+    },
     "KHM": {
       "status": "A",
       "statusLabel": "Abolished for all crimes",
@@ -699,7 +705,7 @@
       "status": "P",
       "statusLabel": "Retains the death penalty",
       "retained": true,
-      "lastExecutionYear": 2025,
+      "lastExecutionYear": 2026,
       "recentExecutions": "1"
     },
     "JOR": {

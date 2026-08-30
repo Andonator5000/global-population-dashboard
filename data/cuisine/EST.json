@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Apple Pie",
-      "description": "Dessert",
+      "description": "An apple pie is a fruit pie in which the principal filling is apples.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/stnxzp1784835840.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/stnxzp1784835840.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Carrot and Bean Fritters",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xjii2g1784836867.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xjii2g1784836867.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Gingerbread Waffles",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0wmns51784837949.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0wmns51784837949.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Honey Cookies",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/yleo1y1784839077.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/yleo1y1784839077.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Quark and Rhubarb Pie",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/s5o6521784834958.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/s5o6521784834958.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Sauerkraut and Fish Salad",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/2i0plx1784837241.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/2i0plx1784837241.jpg",

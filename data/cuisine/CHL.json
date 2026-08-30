@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Chilean Dobladitas",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/p6hgrj1782851874.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/p6hgrj1782851874.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Chilean Empanada",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/q4xgij1782851193.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/q4xgij1782851193.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Chilean-Style Sopaipillas",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/45noa31782850540.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/45noa31782850540.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Empanadas Fritas de Queso",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Leche Asada",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/fnh40v1782853788.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/fnh40v1782853788.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Manjar (Dulce de Leche)",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tmc6ai1782851531.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tmc6ai1782851531.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Pastel de Choclo",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/47abic1782854326.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/47abic1782854326.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Pastel de Papas (Chilean Potato Pie)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/h031jy1782853081.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/h031jy1782853081.jpg",

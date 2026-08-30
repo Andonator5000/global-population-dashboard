@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Jajek",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8x0vgs1780090328.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8x0vgs1780090328.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Koulenje",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xajyjk1780091885.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xajyjk1780091885.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Leg of Lamb Armenian-Style",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vy6k391780090969.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vy6k391780090969.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Stuffed Grape Leaves",
-      "description": "Side",
+      "description": "Stuffed leaves—more commonly known by its sub-types stuffed grape leaves, stuffed vine leaves, or stuffed cabbage leaves—are a food made of leaves rolled around a filling of minced meat, grains such as rice, or both.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/oga0ax1780089591.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/oga0ax1780089591.jpg",

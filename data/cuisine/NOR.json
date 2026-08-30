@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Æbleskiver",
-      "description": "Dessert",
+      "description": "Æbleskiver are spherical Danish snacks made from fried batter.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wkhg581762773124.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Authentic Norwegian Kransekake",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/yk78uc1763075719.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/yk78uc1763075719.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Brun Lapskaus (Norwegian Beef Vegetable Stew)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6vi2cv1763075785.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6vi2cv1763075785.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Cinnamon buns",
-      "description": "Dessert",
+      "description": "A cinnamon roll (also known as cinnamon bun, cinnamon swirl, cinnamon scroll, cinnamon Danish and cinnamon snail) is a sweet roll commonly served in Northern Europe and North America.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/as88dq1762772486.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/as88dq1762772486.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Fårikål (Norwegian National Dish)",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Fiskesuppe (Creamy Norwegian Fish Soup)",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/raqjbj1762773035.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/raqjbj1762773035.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Fyrstekake – Norwegian Prince Cake",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/9zqrod1763075574.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/9zqrod1763075574.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Karbonader (Lean Beef Patties) with Caramelized Onions",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0bpjb11763075817.jpg",

@@ -10,6 +10,7 @@
       "inventors": [
         "Arthur Sicard"
       ],
+      "description": "A snow blower or snowblower or snow thrower is a machine for removing snow from an area where it is problematic, such as a driveway, sidewalk, roadway, railroad track, ice rink, or runway.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Honda%20hs1136%20snowblower.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Honda%20hs1136%20snowblower.jpg",
@@ -24,6 +25,7 @@
       "inventors": [
         "Jacques About"
       ],
+      "description": "The Manic GT is a sports car that was built in the province of Québec in Canada from 1969 to 1971.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%2771%20Manic%20GT%20%28MIAS%20%2710%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:%2771%20Manic%20GT%20%28MIAS%20%2710%29.jpg",
@@ -34,28 +36,34 @@
     },
     {
       "name": "Canadian pipe mine",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Canadian pipe mine, also known as the McNaughton tube, was a type of landmine deployed in Britain during the invasion crisis of 1940–1941."
     },
     {
       "name": "Amauti",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The amauti is the parka worn by Inuit women of the eastern area of Northern Canada."
     },
     {
       "name": "Snowshoe",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Snowshoes are specialized outdoor gear for walking over snow."
     },
     {
       "name": "Ebola vaccine",
       "source": "wikipedia",
+      "description": "An Ebola vaccine is a vaccine used to prevent Ebola virus disease (Ebola).",
       "year": 2014
     },
     {
       "name": "Contrabass bugle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The contrabass bugle is the lowest-pitched brass instrument in the drum and bugle corps and marching band hornline."
     },
     {
       "name": "Professional video camera",
       "source": "wikipedia",
+      "description": "A professional video camera is a high-end device for creating electronic moving images.",
       "year": 1934,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sony%20television%20camera%20with%20DIGI%20SUPER%2086II%20xs%2020120211a.jpg?width=960",
@@ -71,6 +79,7 @@
       "inventors": [
         "Benjamin Franklin Tibbetts"
       ],
+      "description": "A compound steam engine unit is a type of steam engine where steam is expanded in two or more stages.",
       "year": 1842
     },
     {
@@ -79,6 +88,7 @@
       "inventors": [
         "Alexander Graham Bell"
       ],
+      "description": "A hydrofoil is a lifting surface, or foil, that operates in water.",
       "year": 1908
     },
     {
@@ -87,6 +97,7 @@
       "inventors": [
         "Ben Gulak"
       ],
+      "description": "The Uno is a novel self-balancing electric motorcycle using two wheels side by side.",
       "year": 2006
     }
   ]

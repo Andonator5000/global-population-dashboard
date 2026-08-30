@@ -10,6 +10,7 @@
       "inventors": [
         "Enrico Forlanini"
       ],
+      "description": "A helicopter is a type of rotorcraft in which lift and thrust are supplied by horizontally spinning rotors.",
       "year": 1877,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/VH-SUF%20Taking%20Off.jpg?width=960",
@@ -21,15 +22,18 @@
     },
     {
       "name": "Gondola",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The gondola is a traditional, flat-bottomed Venetian rowing boat, well suited to the conditions of the Venetian lagoon."
     },
     {
       "name": "Launeddas",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The launeddas are a traditional Sardinian woodwind instrument made of three pipes, each of which has an idioglot single reed."
     },
     {
       "name": "Medical thermometer",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A medical thermometer or clinical thermometer is a device that is used to measure the body temperature of a human or other animal."
     },
     {
       "name": "Montessori education",
@@ -37,6 +41,7 @@
       "inventors": [
         "Maria Montessori"
       ],
+      "description": "The Montessori method of education is a type of educational method that encourages children's natural interests and activities rather than formal teaching methods.",
       "year": 1907,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Traditional%20Montessori%20educational%20materials.jpg?width=960",
@@ -48,16 +53,19 @@
     },
     {
       "name": "Parachute",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A parachute is a device designed to slow an object's descent through an atmosphere by creating drag or aerodynamic lift."
     },
     {
       "name": "Telephone card",
       "source": "wikipedia",
+      "description": "A telephone card is a credit card-size plastic or paper card used to pay for telephone services.",
       "year": 1976
     },
     {
       "name": "Methane",
       "source": "wikipedia",
+      "description": "Methane is a chemical compound that has the chemical formula CH4.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Methane-2D-dimensions.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Methane-2D-dimensions.svg",

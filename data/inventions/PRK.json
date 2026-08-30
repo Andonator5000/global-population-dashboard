@@ -6,11 +6,13 @@
   "inventions": [
     {
       "name": "National intranet",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A national intranet is an Internet Protocol-based walled garden network maintained by a nation state as a national substitute for the global Internet, with the aim of controlling and monitoring the communications of its…"
     },
     {
       "name": "Vinylon",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Vinylon, also known as Vinalon, is a synthetic fiber produced from reaction between polyvinyl alcohol (PVA) fiber and formaldehyde."
     }
   ]
 }

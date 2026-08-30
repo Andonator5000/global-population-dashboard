@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Home-made Mandazi",
-      "description": "Breakfast",
+      "description": "Breakfast dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Kenyan Beef Curry",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/lqampv1762325397.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/lqampv1762325397.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Mbuzi Choma (Roasted Goat)",
-      "description": "Goat",
+      "description": "Goat dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Sukuma Wiki",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Ugali – Kenyan cornmeal",
-      "description": "Breakfast",
+      "description": "Breakfast dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/smoa3h1762341142.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/smoa3h1762341142.jpg",

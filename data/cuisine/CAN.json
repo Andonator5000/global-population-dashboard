@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "BeaverTails",
-      "description": "Dessert",
+      "description": "BeaverTails is a Canadian restaurant chain, specializing in pastries known as BeaverTails, that is operated by BeaverTails Canada Inc.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Breakfast Potatoes",
-      "description": "Breakfast",
+      "description": "Breakfast dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1550441882.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1550441882.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Canadian Butter Tarts",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wpputp1511812960.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Classic Tourtière",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0sd7ac1764787957.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0sd7ac1764787957.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Date squares",
-      "description": "Dessert",
+      "description": "A date square is a Canadian dessert or bar cookie made of cooked dates with an oatmeal crumb topping.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/u4scbo1764446514.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/u4scbo1764446514.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Figgy Duff",
-      "description": "Dessert",
+      "description": "Figgy Duff was a Canadian folk-rock band from Newfoundland, Canada.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/kzi6p51764787198.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/kzi6p51764787198.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Flapper Pie",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6ht8141764786479.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6ht8141764786479.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Hodge Podge",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xihv0c1764447887.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xihv0c1764447887.jpg",

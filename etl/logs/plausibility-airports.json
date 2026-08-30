@@ -1,7 +1,7 @@
 {
   "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
   "stage": "airports",
-  "checked": 2651,
+  "checked": 2653,
   "summary": {
     "airports.passengers": 10
   },

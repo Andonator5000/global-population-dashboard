@@ -5,13 +5,24 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
+      "name": "ayran",
+      "description": "drink made from yoghurt with soda water and salt, and sometimes also vodka",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fresh%20ayran.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fresh%20ayran.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Mavigogun",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
       "name": "laksa",
       "description": "Southeast Asian noodle soup origin from Malacca, originally introduced by Persian trader",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Thai%20laksa%20dish%20at%20Yim%20Thai%20Yeronga%2C%20Queensland.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Thai%20laksa%20dish%20at%20Yim%20Thai%20Yeronga%2C%20Queensland.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Chris Olszewski",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken%20curry%20served%20in%20an%20Indonesian%20restaurant%3B%20February%202010.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chicken%20curry%20served%20in%20an%20Indonesian%20restaurant%3B%20February%202010.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Alpha from Melbourne, Australia",
         "source": "Wikimedia Commons"
       }
     },
@@ -60,6 +71,17 @@
       }
     },
     {
+      "name": "Gaz",
+      "description": "pastry",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gaz%20Candy%20From%20Iran.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gaz%20Candy%20From%20Iran.jpg",
+        "license": "CC BY-SA 2.5",
+        "author": "Sidster",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
       "name": "Borani",
       "description": "Persian appetizer",
       "image": {
@@ -67,28 +89,6 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Boran%C4%B1.jpg",
         "license": "CC BY-SA 3.0",
         "author": "Maderibeyza",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Tah Chin",
-      "description": "Iranian rice dish",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tachin.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tachin.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Renegadesaba",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Kashk e badamjan",
-      "description": "Persian eggplant dish",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kashk-o%20Bademjan.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kashk-o%20Bademjan.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Rka11111",
         "source": "Wikimedia Commons"
       }
     }

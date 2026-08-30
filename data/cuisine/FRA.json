@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Beef Bourguignon",
-      "description": "Beef",
+      "description": "Beef bourguignon or bœuf bourguignon, is a French stew of beef braised in red wine, often red Burgundy, and beef stock, typically flavored with carrots, onions, garlic, and a bouquet garni, and garnished with pearl…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Boulangère Potatoes",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qywups1511796761.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qywups1511796761.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Brie wrapped in prosciutto & brioche",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qqpwsy1511796276.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qqpwsy1511796276.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Chicken Basquaise",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Chicken Marengo",
-      "description": "Chicken",
+      "description": "Chicken Marengo is a French dish consisting of a chicken sautéed in oil with garlic and tomato, garnished with fried eggs and crayfish.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qpxvuq1511798906.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chicken Parmentier",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Chinon Apple Tarts",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qtqwwu1511792650.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qtqwwu1511792650.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Chocolate Gateau",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tqtywx1468317395.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tqtywx1468317395.jpg",

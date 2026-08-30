@@ -10,30 +10,33 @@
       "inventors": [
         "Epoch Co."
       ],
+      "description": "Sylvanian Families (シルバニアファミリー, Shirubania Famirī) (known as Calico Critters in the US and Canada) is a line of collectible anthropomorphic animal figurines made of flocked plastic.",
       "year": 1985,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Famille%20Lapin%20Chocolat.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Famille%20Lapin%20Chocolat.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Sylvanian Families France",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shop%20Window%20of%20Sylvanian%20Families%20Store%2C%20London.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Shop%20Window%20of%20Sylvanian%20Families%20Store%2C%20London.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Saima from Flickr \n\nOriginal uploader was Dancingwombatsrule at en.wikipedia",
         "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Randoseru",
       "source": "wikidata",
+      "description": "A randoseru (ランドセル) is a firm-sided backpack made of stitched firm leather or leather-like synthetic material, most commonly used in Japan by elementary schoolchildren.",
       "year": 1900,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schoolkid%20wearing%20yellow%20hat%20and%20randoseru%20in%20Japan%3B%20April%202011.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Schoolkid%20wearing%20yellow%20hat%20and%20randoseru%20in%20Japan%3B%20April%202011.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "hiro",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Uniform%20%2816859820106%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Uniform%20%2816859820106%29.jpg",
+        "license": "CC BY 2.0",
+        "author": "Bit Boy",
         "source": "Wikimedia Commons"
       }
     },
     {
       "name": "shō",
       "source": "wikidata",
+      "description": "The shō (笙) is a Japanese free reed musical instrument descended from the Chinese sheng, of the Tang dynasty era, which was introduced to Japan during the Nara period (AD 710 to 794), although the shō tends to be…",
       "year": 800,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gifujyou5846.JPG?width=960",

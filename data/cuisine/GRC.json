@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Chicken Quinoa Greek Salad",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Garides Saganaki",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Gigantes Plaki",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Honey Yogurt Cheesecake",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/y2irzl1585563479.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/y2irzl1585563479.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Lamb and Lemon Souvlaki",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/rjhf741585564676.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/rjhf741585564676.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Lamb Tzatziki Burgers",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Moussaka",
-      "description": "Beef",
+      "description": "Moussaka (, UK also, US also; see below) is an aubergine (eggplant)- or potato-based dish, often including ground meat, which is common in the Balkans and the Middle East, with many local and regional variations.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Stuffed Lamb Tomatoes",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg",

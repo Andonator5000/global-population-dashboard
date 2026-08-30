@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Acaraje black-eyed pea fritters with shrimp filling",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dxs5t71782678369.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dxs5t71782678369.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Bahia-style Moqueca prawn stew",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/e2kcut1782591669.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/e2kcut1782591669.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Black bean & meat stew - feijoada",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xrxz7h1782592711.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xrxz7h1782592711.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Brazilian carrot cake",
-      "description": "Dessert",
+      "description": "Carrot cake is a cake that contains carrots mixed into the spiced batter, often topped with a rich cream cheese frosting.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/h68o161782679437.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/h68o161782679437.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Brazilian cheese bread (pão de queijo)",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Brazilian chocolate truffles - brigadeiro",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dg7tad1782588053.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dg7tad1782588053.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Coconut quindim",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/46uazv1782588877.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/46uazv1782588877.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Creamy Aji green sauce",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/81j8iu1782590903.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/81j8iu1782590903.jpg",

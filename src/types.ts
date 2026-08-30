@@ -503,6 +503,28 @@ export interface EducationFile {
   >
 }
 
+/** data/education/libraries.json (IFLA Library Map of the World) */
+export interface LibrariesFile {
+  source: string
+  note: string
+  entities: Record<string, { publicLibraries: number; year: number | null; method: string | null }>
+}
+
+/** data/energy/energy.json */
+export interface EnergyFile {
+  source: string
+  note: string
+  entities: Record<
+    string,
+    {
+      mix?: import('./components/viz/CompositionBar').CompositionField
+      renewablesShare?: { value: number; year: number }
+      nuclearShare?: { value: number; year: number }
+      nuclearPlants?: { count: number; capacityMw: number | null }
+    }
+  >
+}
+
 /** data/economy/debt.json — IMF WEO series incl. projections. */
 export interface DebtFile {
   source: string
@@ -597,6 +619,8 @@ export interface InventionsFile {
   inventions: {
     name: string
     inventors?: string[]
+    /** Opening sentence of the anchoring Wikipedia article (2026-08-30). */
+    description?: string
     year?: number
     /** Prose-parsed period ("4th century BCE") when no year is recorded. */
     era?: string

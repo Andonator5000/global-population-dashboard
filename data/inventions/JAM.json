@@ -6,22 +6,26 @@
   "inventions": [
     {
       "name": "Lingo (programming language)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Lingo is a verbose object-oriented (OO) scripting language developed by John H."
     },
     {
       "name": "White bikini of Ursula Andress",
       "source": "wikipedia",
       "inventors": [
         "Tessa Prendergast"
-      ]
+      ],
+      "description": "The white bikini worn by Ursula Andress as Honey Ryder in the 1962 James Bond film Dr."
     },
     {
       "name": "Bauxite",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Bauxite is a sedimentary rock with a relatively high aluminium content."
     },
     {
       "name": "Savage Model 99",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Savage Model 99, Model 1899, and their predecessor the Model 1895 are a series of hammerless lever action rifles created by the Savage Arms Company in Utica, New York."
     }
   ]
 }

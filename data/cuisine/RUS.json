@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Beef stroganoff",
-      "description": "Beef",
+      "description": "Beef Stroganoff, also spelled beef Stroganov, is a Russian dish of sautéed pieces of beef in a sauce of mustard and smetana (heavy sour cream).",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/svprys1511176755.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/svprys1511176755.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Blini Pancakes",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0206h11699013358.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0206h11699013358.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Cabbage Soup (Shchi)",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Fish Soup (Ukha)",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/7n8su21699013057.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/7n8su21699013057.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Lamb Pilaf (Plov)",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Potato Salad (Olivier Salad)",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Strawberries Romanoff",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/oe8rg51699014028.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/oe8rg51699014028.jpg",

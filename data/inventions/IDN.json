@@ -6,39 +6,48 @@
   "inventions": [
     {
       "name": "Kolintang",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Kolintang is a traditional Minahasan percussion instrument from North Sulawesi, Indonesia, consisting of wooden blades arranged in a row and mounted on a wooden tub."
     },
     {
       "name": "Surakarta (game)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Surakarta is an Indonesian abstract strategy board game for two players, named after Surakarta, Central Java."
     },
     {
       "name": "Proa",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Proas are various types of multi-hull outrigger sailboats of the Austronesian peoples."
     },
     {
       "name": "Londe",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Londe or londi is a traditional boat from North Sulawesi, Indonesia."
     },
     {
       "name": "Lepa-lepa (dugout canoe)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Lepa-lepa is a traditional canoe from the eastern part of the Indonesian archipelago."
     },
     {
       "name": "Lambo (boat)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The term lambo or lamba refer to two types of traditional boats from Indonesia."
     },
     {
       "name": "Solu",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A solu is a traditional boat of the Toba Batak people of North Sumatra, Indonesia."
     },
     {
       "name": "Lantaka",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The lantaka, also known as the rentaka, was a type of bronze portable cannon or swivel gun, sometimes mounted on merchant vessels and warships in Maritime Southeast Asia."
     },
     {
       "name": "Kretek",
       "source": "wikipedia",
+      "description": "Kretek is a type of Indonesian cigarette made with a blend of tobacco, cloves and other flavors.",
       "era": "19th century"
     }
   ]

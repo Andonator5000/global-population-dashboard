@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Baba Ghanoush",
-      "description": "Side",
+      "description": "Baba ghanoush, also spelled baba ganoush or baba ghanouj, is a Levantine appetizer consisting of finely chopped roasted eggplant (aubergine), olive oil, lemon juice, various seasonings, and tahini.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dlmh401760524897.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dlmh401760524897.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Falafel Pita Sandwich with Tahini Sauce",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Fasoliyyeh Bi Z-Zayt (Syrian Green Beans with Olive Oil)",
-      "description": "Vegan",
+      "description": "Vegan dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/21yc5s1760524759.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/21yc5s1760524759.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Syrian Bread",
-      "description": "Miscellaneous",
+      "description": "Pita ( or US:; Greek: πίτα; Hebrew: פִּתָּה) or pitta (British English), also known as Greek bread (Greek: Ελληνικό ψωμί, romanized: Ellinikó psomí), Arabic bread, Arab bread (Arabic: خبز عربي, romanized: khubz ʿArabī)…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Syrian Rice with Meat",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/zg2b9l1760524940.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/zg2b9l1760524940.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Syrian Spaghetti",
-      "description": "Pasta",
+      "description": "Pasta dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5fu4ew1760524857.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5fu4ew1760524857.jpg",

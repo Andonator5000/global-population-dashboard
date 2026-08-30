@@ -6,39 +6,48 @@
   "inventions": [
     {
       "name": "T112 assault rifle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The T112 assault rifle is a Taiwanese AR-15–style rifle produced by the 205th Armory."
     },
     {
       "name": "T91 assault rifle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The T91 is a Taiwanese gas-operated, magazine-fed assault rifle chambered for the 5.56×45mm NATO cartridge."
     },
     {
       "name": "T86 assault rifle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The T86 rifle is a gas-operated, magazine-fed, assault rifle."
     },
     {
       "name": "T65 assault rifle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The T65 is an assault rifle developed and manufactured by the Combined Logistics Command of the Republic of China (Taiwan) Armed Forces of Taiwan."
     },
     {
       "name": "T93 sniper rifle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The T93 Sniper Rifle is a 7.62×51mm bolt-action rifle designed and manufactured in Taiwan."
     },
     {
       "name": "FN MAG",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The FN MAG is a Belgian 7.62 mm general-purpose machine gun, designed in the early 1950s at Fabrique Nationale (FN) by Ernest Vervier."
     },
     {
       "name": "T75 light machine gun",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The T75 Light machine gun is produced by the 205th Arsenal, Ministry of Defense, Republic of China (Taiwan)."
     },
     {
       "name": "T75 pistol",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The T75 pistol is produced by the 205th Arsenal, Ministry of National Defense in Taiwan."
     },
     {
       "name": "Kestrel (rocket launcher)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Kestrel (紅隼) is an individual shoulder-launched weapon system developed by Taiwan's National Chung-Shan Institute of Science and Technology and currently in service with the Republic of China Armed Forces and Coast…"
     }
   ]
 }

@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Bryndzové Halušky",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/g33c901763365484.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/g33c901763365484.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Fašírky",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/gtpvwp1763363947.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/gtpvwp1763363947.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Šúĺlance s Makom",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/d6o4nu1763362422.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/d6o4nu1763362422.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Zemiakové Placky",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0umm891763364625.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0umm891763364625.jpg",

@@ -5,39 +5,47 @@
   "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Poultice",
-      "source": "wikipedia"
+      "name": "Intramedullary rod",
+      "source": "wikipedia",
+      "description": "An intramedullary rod, also known as an intramedullary nail or inter-locking nail or Küntscher nail, is a metal rod forced into the medullary cavity of a bone."
     },
     {
       "name": "Lever",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A lever is a simple machine consisting of a beam or rigid rod pivoted at a fixed hinge, or fulcrum."
     },
     {
       "name": "Pen",
       "source": "wikipedia",
+      "description": "A pen is a common writing instrument that applies ink to a surface, typically paper, for writing or drawing.",
       "era": "3000 BC"
     },
     {
       "name": "Spoon",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A spoon is a utensil consisting of a shallow bowl, oval or round, at the end of a handle."
     },
     {
       "name": "Table (furniture)",
       "source": "wikipedia",
+      "description": "A table is a piece of furniture with a raised flat top and is supported most commonly by 1 to 4 legs.",
       "era": "2500 BC"
     },
     {
       "name": "Egyptian faience",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Egyptian faience is a sintered-quartz ceramic material from Ancient Egypt."
     },
     {
       "name": "Henna",
       "source": "wikipedia",
+      "description": "Henna is a dye made from dried, powdered leaves of Lawsonia inermis, used to produce reddish stains used in body art.",
       "year": 1574
     },
     {
       "name": "Umbrella",
       "source": "wikipedia",
+      "description": "An umbrella is a folding canopy supported by wooden or metal ribs that is mounted on a wooden, metal, or plastic pole.",
       "era": "2450 BC"
     }
   ]

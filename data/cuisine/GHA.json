@@ -8,10 +8,21 @@
       "name": "fufu",
       "description": "dough-like food in African cuisine",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Fufu%20serving%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Fufu%20serving%2001.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wrapped%20fufu.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wrapped%20fufu.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Agoetee 123",
+        "author": "daSupremo",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "akara",
+      "description": "peeled beans formed into a ball and deep-fried in palm oil",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Beans%20Ball-Akara.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Beans%20Ball-Akara.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "AkinkuotuFunmi",
         "source": "Wikimedia Commons"
       }
     },
@@ -34,10 +45,10 @@
       "name": "wasawasa",
       "description": "local dish from Ghana",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wasawasa%20food%2001.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wasawasa%20food%2001.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Wasawasa.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Wasawasa.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Shahadusadik",
+        "author": "Mumuni Y Yunus",
         "source": "Wikimedia Commons"
       }
     },

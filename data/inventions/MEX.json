@@ -6,28 +6,34 @@
   "inventions": [
     {
       "name": "Tlapitzalli",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A tlapitzalli is an aerophone known from pre-Columbian Mesoamerican cultures, particularly the Aztec."
     },
     {
       "name": "Carimba",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The carimba is a national instrument of the Nahua people of Mexico."
     },
     {
       "name": "Molinillo (whisk)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A molinillo is a traditional turned wood whisk used in Latin America, as well as the Philippines, where it is also called a batirol or batidor."
     },
     {
       "name": "Ephedra (medicine)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Ephedra is a medicinal preparation from the plant Ephedra sinica."
     },
     {
       "name": "Lathe",
       "source": "wikipedia",
+      "description": "A lathe is a machine tool that rotates a workpiece about an axis of rotation to perform various operations such as cutting, sanding, knurling, drilling, deformation, facing, threading and turning, with tools that are…",
       "year": 1774
     },
     {
       "name": "Sombrero",
       "source": "wikipedia",
+      "description": "A sombrero, sombrero de charro or sombrero jarano, is a type of wide-brimmed hat used to shield the face and eyes from the sun.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CharroHatsMAPDF.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:CharroHatsMAPDF.JPG",
@@ -39,26 +45,31 @@
     {
       "name": "Translucent concrete",
       "source": "wikipedia",
+      "description": "Translucent concrete is a concrete based building material with light-transmissive properties due to embedded light optical elements — usually optical fibers.",
       "year": 2005
     },
     {
       "name": "Jet pack",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A jet pack, rocket belt, rocket pack or flight pack is a device worn as a backpack which uses jets to propel the wearer through the air."
     },
     {
       "name": "Mendoza RM2",
       "source": "wikipedia",
       "inventors": [
         "Rafael Mendoza Blanco"
-      ]
+      ],
+      "description": "The Mendoza RM2 was a light machine gun manufactured in Mexico by Productos Mendoza, S.A."
     },
     {
       "name": "Saint-Chamond-Mondragón",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Canon de 75 modèle 1915 Saint-Chamond also known as the Canon de Tir Rapide 75 mm St Chamond or the Saint-Chamond-Mondragón was specified in the 1890s by Mexican General Manuel Mondragón, designed mostly by Colonel…"
     },
     {
       "name": "Oaxaca-class patrol vessel",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Oaxaca class are offshore patrol vessels, constructed and designed by and for the Mexican Navy."
     }
   ]
 }

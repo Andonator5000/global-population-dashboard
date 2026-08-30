@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Drunken noodles (pad kee mao)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Lemongrass beef stew with noodles",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Massaman Beef curry",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tvttqv1504640475.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tvttqv1504640475.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Pad See Ew",
-      "description": "Chicken",
+      "description": "Pad see ew is a stir-fried noodle dish that is commonly eaten in Thailand.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/uuuspp1468263334.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/uuuspp1468263334.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Pad Thai",
-      "description": "Seafood",
+      "description": "Pad thai is a stir-fried rice noodle dish commonly served as a street food in Thailand as part of Thai cuisine.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/rg9ze01763479093.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/rg9ze01763479093.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Panang chicken curry (kaeng panang gai)",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0dhtwr1763371444.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0dhtwr1763371444.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Prawn stir-fry",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/96lt871763480970.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/96lt871763480970.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Red curry chicken kebabs",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/prjve31763486864.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/prjve31763486864.jpg",

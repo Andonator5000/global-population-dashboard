@@ -6,16 +6,19 @@
   "inventions": [
     {
       "name": "Flaris LAR01",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Flaris LAR01, also variously called the LAR 1 and LAR-1, is a Polish five-seat very light jet, currently under development by Metal-Master of Jelenia Góra."
     },
     {
       "name": "Meteor (rocket)",
       "source": "wikipedia",
+      "description": "Meteor is a family of Polish sounding rockets series.",
       "year": 1963
     },
     {
       "name": "7TP",
       "source": "wikipedia",
+      "description": "The 7TP was a Polish light tank of the Second World War.",
       "year": 1935
     }
   ]

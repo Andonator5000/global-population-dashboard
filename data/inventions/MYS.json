@@ -6,35 +6,43 @@
   "inventions": [
     {
       "name": "Baju Kurung",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Baju Kurung is a traditional attire of Malays and traditionally worn by women in Brunei, Indonesia, Malaysia, Singapore and southern Thailand."
     },
     {
       "name": "Kebaya",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A kebaya is an upper garment traditionally worn by women in Southeast Asia, notably in Brunei, Indonesia, Malaysia, Singapore, and Southern Thailand."
     },
     {
       "name": "Pua Kumbu",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Pua Kumbu is a traditional patterned multi-coloured ceremonial cotton clothing created and occasionally worn by the Iban people of Sarawak in Malaysia, West Kalimantan of Indonesia, and Brunei during varieties of the…"
     },
     {
       "name": "Tengkolok",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Tengkolok, also known as Tanjak or Destar is a traditional Malay or Indonesian male headgear."
     },
     {
       "name": "Southeast Asian mancala",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Southeast Asian mancalas are a subtype of mancala games predominantly found in Southeast Asia."
     },
     {
       "name": "Wau bulan",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Wau bulan is an intricately designed Malaysian kite that is traditionally flown in the Malaysian state of Kelantan."
     },
     {
       "name": "Kuriding",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Kuriding also known as the gurinding, uriding, turiding or kubing is a traditional musical instrument of the Banjar people originating from South Kalimantan, Indonesia."
     },
     {
       "name": "Qanbūs",
       "source": "wikipedia",
+      "description": "A qanbūs is a short-necked lute that originated in Yemen and spread throughout the Arabian Peninsula.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%B5%D9%86%D8%B9%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%86%D9%8A%D9%86.webm?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%B5%D9%86%D8%B9%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%86%D9%8A%D9%86.webm",
@@ -45,19 +53,23 @@
     },
     {
       "name": "Rebana",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The rebana or terbangan is a tambourine that is used in Islamic devotional music in Southeast Asia, particularly in Indonesia, Malaysia, Brunei, and Singapore."
     },
     {
       "name": "Suling",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The suling is a musical instrument of the Sundanese people in Indonesia."
     },
     {
       "name": "Bedar (ship)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The term bedar is applied to a wide variety of boats of the east coast of Malaysia that carry one or two junk sails and lack the typical transom stern of the perahu pinas."
     },
     {
       "name": "Birau (boat)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Birau, is a type of small dugout canoe of the Sama-Bajau people of the Philippines."
     }
   ]
 }

@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Cassava Cake",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/2mrghf1782773422.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/2mrghf1782773422.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Cayman Style Potato Salad",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/q21suk1782772956.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/q21suk1782772956.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Cayman-Style Lobster",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wkhwqr1782774765.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wkhwqr1782774765.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Conch Fritters",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/nmtq3n1782772031.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/nmtq3n1782772031.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Conch Stew",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/mlkjeu1782775816.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/mlkjeu1782775816.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Fried Crab",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/rprcc51782774240.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/rprcc51782774240.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Macaroni Pudding",
-      "description": "Pasta",
+      "description": "Pasta dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/hbte551782770868.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/hbte551782770868.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Rice and Beans",
-      "description": "Vegetarian",
+      "description": "Rice and beans, or beans and rice, is a category of dishes from many cultures around the world where the staple foods of rice and beans are combined in some manner.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/j8c1d51782772399.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/j8c1d51782772399.jpg",

@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Baked Yuca Fries",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Black Bean soup",
-      "description": "Starter",
+      "description": "Starter dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/x0mreq1784577446.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/x0mreq1784577446.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "CAFE LA LLAVE ESPRESSO ICE CREAM",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/9kecho1784575366.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/9kecho1784575366.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Cuban Sandwich",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Dulce de Leche Cheesecake with a Maria Cookie Crust.",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/f9qog11784574376.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/f9qog11784574376.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Ropa Veija",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/thvft91784576451.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/thvft91784576451.jpg",

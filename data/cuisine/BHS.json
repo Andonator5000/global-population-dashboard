@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Grits",
-      "description": "Breakfast",
+      "description": "Grits is a type of porridge made from coarsely ground dried corn (maize) or hominy, the latter being maize that has been treated with an alkali in a process called nixtamalization, with the pericarp (ovary wall) removed.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/bfok4w1780242078.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/bfok4w1780242078.jpg",

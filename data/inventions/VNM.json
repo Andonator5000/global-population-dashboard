@@ -7,6 +7,7 @@
     {
       "name": "nón lá",
       "source": "wikidata",
+      "description": "Nón lá (chữ Nôm: 𥶄蘿; lit.",
       "year": 1300,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeune%20vietnamienne%20%C3%A0%20C%E1%BA%A7n%20Th%C6%A1.jpg?width=960",
@@ -19,11 +20,13 @@
     {
       "name": "Dong Son drum",
       "source": "wikipedia",
+      "description": "A Đông Sơn drum is a type of ancient bronze drum created by the Đông Sơn culture that existed in the Red River Delta.",
       "era": "7th century BCE"
     },
     {
       "name": "Đàn đá",
       "source": "wikipedia",
+      "description": "The đàn đá is a lithophone played by ethnic minority groups in the Central Highlands of Vietnam, in the provinces of Lâm Đồng, Đắk Nông, Đắk Lắk, Gia Lai, and Kon Tum.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Binh%20Da%20Lithophone.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Binh%20Da%20Lithophone.jpg",
@@ -34,23 +37,28 @@
     },
     {
       "name": "Đàn gáo",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The đàn gáo is a bowed string instrument, a part of the traditional Vietnamese orchestra."
     },
     {
       "name": "Gong",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A gong is a percussion instrument originating from Southeast Asia, and used widely in Southeast Asian and East Asian musical traditions."
     },
     {
       "name": "Sênh tiền",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The sênh tiền or sinh tiền is a clapper used in Vietnamese traditional instrumental and vocal music."
     },
     {
       "name": "T'rưng",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The t'rung is a traditional bamboo xylophone used by the Jarai people and Bahnar people in Vietnam's Central Highlands."
     },
     {
       "name": "Leeboard",
       "source": "wikipedia",
+      "description": "A leeboard is a form of pivoting keel used largely by sailboats, very often in lieu of a fixed keel.",
       "era": "300 BC"
     }
   ]

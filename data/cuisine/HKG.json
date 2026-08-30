@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "red bean ice",
+      "description": "drink commonly found in Hong Kong",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ice%20kachang.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Ice%20kachang.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "K.C. Tang"
+        "author": "K.C. Tang",
+        "source": "Wikimedia Commons"
       }
     }
   ]

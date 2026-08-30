@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Air Fryer Egg Rolls",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/grhn401765687086.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Beef and Broccoli Stir-Fry",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Beef Lo Mein",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1529444830.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1529444830.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Chicken Congee",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1529446352.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1529446352.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Chicken Fried Rice",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chinese Orange Chicken",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Chinese Tomato Egg Stir Fry",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Egg Drop Soup",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1529446137.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1529446137.jpg",

@@ -8,9 +8,10 @@
       "name": "Cluedo",
       "source": "wikidata",
       "inventors": [
-        "Anthony E. Pratt",
-        "Elva Rosalie Pratt"
+        "Elva Rosalie Pratt",
+        "Anthony E. Pratt"
       ],
+      "description": "Cluedo, known as Clue in North America, is a murder mystery game for three to six players (depending on editions) that was devised in 1943 by British board game designer Anthony E.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hry%20a%20hlavolamy%202009%20-%20Cluedo%200173u.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Hry%20a%20hlavolamy%202009%20-%20Cluedo%200173u.jpg",
@@ -25,6 +26,7 @@
       "inventors": [
         "Charles Babbage"
       ],
+      "description": "A difference engine is an automatic mechanical calculator designed to tabulate polynomial functions.",
       "year": 1822,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Babbage%20difference%20engine%20drawing.gif?width=960",
@@ -39,7 +41,15 @@
       "source": "wikidata",
       "inventors": [
         "Richard Escales"
-      ]
+      ],
+      "description": "Ammonal is an explosive made up of ammonium nitrate and aluminium powder.",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hawthorn%20Ridge%20Redoubt%20mine%20%281%20July%201916%29%201.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hawthorn%20Ridge%20Redoubt%20mine%20%281%20July%201916%29%201.jpg",
+        "license": "Public domain",
+        "author": "Ernest Brooks",
+        "source": "Wikimedia Commons"
+      }
     },
     {
       "name": "Jasperware",
@@ -47,6 +57,7 @@
       "inventors": [
         "Josiah Wedgwood"
       ],
+      "description": "Jasperware, or jasper ware, is a type of pottery first developed by Josiah Wedgwood in the 1770s.",
       "year": 1774,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jasper%20Ware%2C%20Nelson%20Atkins%20Museum%20of%20Art.jpg?width=960",
@@ -62,6 +73,7 @@
       "inventors": [
         "Mikael Pedersen"
       ],
+      "description": "The Pedersen bicycle, also called the Dursley Pedersen bicycle is a bicycle that was developed by Danish inventor Mikael Pedersen and produced in the English town of Dursley.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/00%208321%20Antikes%20Fahrrad.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:00%208321%20Antikes%20Fahrrad.jpg",
@@ -75,19 +87,23 @@
       "source": "wikipedia",
       "inventors": [
         "Sir Frank Whittle"
-      ]
+      ],
+      "description": "A jet engine is a type of reaction engine, discharging a fast-moving jet of heated gas that generates thrust by jet propulsion."
     },
     {
       "name": "Carbon fiber reinforced polymer",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Carbon fiber reinforced polymers are extremely strong and light fiber-reinforced plastics that contain carbon fibers."
     },
     {
       "name": "Touchpad",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A touchpad or trackpad is a type of pointing device."
     },
     {
       "name": "Flip-flop (electronics)",
       "source": "wikipedia",
+      "description": "In electronics, flip-flops and latches are circuits that have two stable states that can store state information – a bistable multivibrator.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Transistor%20Bistable%20interactive%20animated-en.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Transistor%20Bistable%20interactive%20animated-en.svg",
@@ -98,15 +114,18 @@
     },
     {
       "name": "Hydraulic accumulator",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A hydraulic accumulator is a pressure storage reservoir in which an incompressible hydraulic fluid is held under pressure that is applied by an external source of mechanical energy."
     },
     {
       "name": "Steam turbine",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A steam turbine or steam turbine engine is a machine or heat engine that extracts thermal energy from pressurized steam and uses it to do mechanical work utilising a rotating output shaft."
     },
     {
       "name": "Acetylcholine",
       "source": "wikipedia",
+      "description": "Acetylcholine (ACh) is an organic compound that functions in the brain and body of many types of animals as a neurotransmitter.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acetylcholine%20structure.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Acetylcholine%20structure.svg",

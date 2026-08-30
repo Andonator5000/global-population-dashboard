@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Arra të Mbushura me Fik Walnut Stuffed Figs (with Fig Syrup)",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dokbyt1779645030.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dokbyt1779645030.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Dolma Japrak Stuffed Vine Leaves",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/lqshrh1779648160.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/lqshrh1779648160.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Flija Layered Pancake / Crepe",
-      "description": "Breakfast",
+      "description": "Breakfast dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Kulaç Soda Bread",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/9aia021779646058.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/9aia021779646058.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Kurabie Butter Cookies",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qidask1779650423.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qidask1779650423.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Lakra me Mish Cabbage and Meat Stew",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/mobh1l1779648766.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/mobh1l1779648766.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Lakror me Kungull Summer Squash Pie",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ae4rwb1779645576.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ae4rwb1779645576.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Presh me Oriz Leek and Rice Bake",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sjfgbc1779647169.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sjfgbc1779647169.jpg",

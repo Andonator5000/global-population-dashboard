@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Burek",
-      "description": "Side",
+      "description": "Börek, also referred to as burek or byrek, is a family of pastries or pies made in West Asia and Southeast Europe.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Cevapi Sausages",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vc08jn1628769553.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vc08jn1628769553.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Croatian Bean Stew",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Croatian lamb peka",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/pn59o51628769837.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/pn59o51628769837.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Fresh sardines",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/nv5lf31628771380.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/nv5lf31628771380.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Mushroom soup with buckwheat",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Traditional Croatian Goulash",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/n1hcou1628770088.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Walnut Roll Gužvara",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/u9l7k81628771647.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/u9l7k81628771647.jpg",

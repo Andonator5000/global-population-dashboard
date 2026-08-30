@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Authentic Laos Tapioca Pudding with Bananas",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5pmn0g1779813285.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5pmn0g1779813285.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Lao Naem Khao",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0dypw51779817467.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0dypw51779817467.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Lao Som Pak Pickled Cabbage",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/44pjrn1779814409.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/44pjrn1779814409.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Laos Plantain Coconut Bake (Flourless Muffin)",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/x7cbsp1779811798.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/x7cbsp1779811798.jpg",

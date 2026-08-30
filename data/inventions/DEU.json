@@ -7,6 +7,7 @@
     {
       "name": "Chinese checkers",
       "source": "wikidata",
+      "description": "Chinese checkers (US) or Chinese chequers (UK), known as Sternhalma in German, is a strategy board game of German origin that can be played by two, three, four, or six people, playing individually or with partners.",
       "year": 1892,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Halma-Spielfeld.jpg?width=960",
@@ -22,6 +23,7 @@
       "inventors": [
         "Theobald Boehm"
       ],
+      "description": "The Western concert flute can refer to the common C concert flute or to the family of transverse (side-blown) flutes to which the C flute belongs.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Western%20concert%20flute%20%28Yamaha%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Western%20concert%20flute%20%28Yamaha%29.jpg",
@@ -36,6 +38,7 @@
       "inventors": [
         "Georg Greger"
       ],
+      "description": "Lectron was a modular electronic experimentation kit designed to introduce youth to basic electronic circuits and theory.",
       "year": 1966,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lectron%20electronics%20construction%20system%2C%20invented%20by%20Georg%20Greger%2C%20designed%20by%20Dieter%20Rams%20and%20Jurgen%20Geubel%2C%20manufactured%20by%20Braun%2C%201967-1972%20-%20Design%20Museum%2C%20Kensington%20-%20London%20-%20DSC01559.jpg?width=960",
@@ -48,31 +51,37 @@
     {
       "name": "Nitrocellulose",
       "source": "wikipedia",
+      "description": "Nitrocellulose is a highly flammable compound formed by nitrating cellulose through exposure to a mixture of nitric acid and sulfuric acid.",
       "year": 1846
     },
     {
       "name": "Tollens' reagent",
       "source": "wikipedia",
+      "description": "Tollens' reagent is a chemical reagent used to distinguish between aldehydes and ketones along with some alpha-hydroxy ketones which can tautomerize into aldehydes.",
       "year": 1882
     },
     {
       "name": "Decaffeination",
       "source": "wikipedia",
+      "description": "Decaffeination is the removal of caffeine from coffee beans, cocoa, tea leaves, and other caffeine-containing materials.",
       "year": 1903
     },
     {
       "name": "Breaker (hydraulic)",
       "source": "wikipedia",
+      "description": "A breaker is a powerful percussion hammer fitted to an excavator for demolishing hard structures.",
       "year": 1963
     },
     {
       "name": "Glue stick",
       "source": "wikipedia",
+      "description": "Glue sticks are solid and hard adhesives in twist or push-up tubes often used for arts and crafts.",
       "year": 1969
     },
     {
       "name": "Hydromorphone",
       "source": "wikipedia",
+      "description": "Hydromorphone, also known as dihydromorphinone, and sold under the brand name Dilaudid among others, is a morphinan opioid used to treat moderate to severe pain.",
       "year": 1923,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hydromorphone%20skeletal.svg?width=960",
@@ -85,11 +94,13 @@
     {
       "name": "Dreyse needle gun",
       "source": "wikipedia",
+      "description": "The Dreyse needle-gun was a 19th-century military breech-loading rifle, as well as the first breech-loading rifle to use a bolt action to open and close the chamber.",
       "year": 1836
     },
     {
       "name": "Ballistic missile",
       "source": "wikipedia",
+      "description": "A ballistic missile is a type of missile that follows a ballistic trajectory and is powered only during a relatively brief initial period—most of the flight is unpowered.",
       "year": 1944,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Minuteman%20III%20MIRV%20path.svg?width=960",
@@ -102,6 +113,7 @@
     {
       "name": "Magnetometer",
       "source": "wikipedia",
+      "description": "A magnetometer is a device that measures magnetic field or magnetic dipole moment.",
       "year": 1833
     }
   ]

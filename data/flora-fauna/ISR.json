@@ -100,11 +100,11 @@
     "name": "Hebrew",
     "scientificName": "Anemone coronaria",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/467609205/medium.jpeg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/467609205/large.jpeg",
-      "commonsPage": "https://www.inaturalist.org/photos/467609205",
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/172084763/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/172084763/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/172084763",
       "license": "CC-BY",
-      "author": "(c) Pantazi Katerina, some rights reserved (CC BY)",
+      "author": "(c) Naturalista, some rights reserved (CC BY)",
       "source": "iNaturalist"
     }
   }

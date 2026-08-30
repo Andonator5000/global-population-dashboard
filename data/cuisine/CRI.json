@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Black Beans Hotpot",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/81ahfr1784394567.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/81ahfr1784394567.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Chorreadas",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/f9u0lk1784397769.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/f9u0lk1784397769.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Gallo pinto",
-      "description": "Vegetarian",
+      "description": "Gallo pinto or gallopinto is a traditional rice and bean dish from Central America.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ytogg31784397116.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ytogg31784397116.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Mango Tropical Salsa",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ukeksq1784395551.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ukeksq1784395551.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Pan De Yucca",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sumomx1784395153.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sumomx1784395153.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Picadillo de Vainicas (Green Beans Picadillo)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/2ncui81784396094.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/2ncui81784396094.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Pollo en Salsa",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4o13oe1784396585.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4o13oe1784396585.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Tamal De Maicena",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/mjgl9z1784393681.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/mjgl9z1784393681.jpg",

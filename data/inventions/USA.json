@@ -10,6 +10,7 @@
       "inventors": [
         "George Beauchamp"
       ],
+      "description": "An electric guitar is a guitar that, unlike a standard acoustic guitar, requires external electric sound amplification to be heard at typical performance volumes.",
       "year": 1932,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Yngwie%20Malmsteen%27s%20electric%20guitar.jpg?width=960",
@@ -22,12 +23,13 @@
     {
       "name": "thermonuclear weapon",
       "source": "wikidata",
+      "description": "A thermonuclear weapon, fusion weapon or hydrogen bomb (H-bomb) is a second-generation nuclear weapon, using nuclear fusion.",
       "year": 1952,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/B53%20bomb.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:B53%20bomb.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Castle%20Romeo.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Castle%20Romeo.jpg",
         "license": "Public domain",
-        "author": null,
+        "author": "United States Department of Energy",
         "source": "Wikimedia Commons"
       }
     },
@@ -37,6 +39,7 @@
       "inventors": [
         "John Garand"
       ],
+      "description": "The M1 Garand or M1 rifle is a semi-automatic rifle that was the service rifle of the U.S.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/M1%20Garand%20rifle%20-%20USA%20-%2030-06%20-%20Arm%C3%A9museum.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:M1%20Garand%20rifle%20-%20USA%20-%2030-06%20-%20Arm%C3%A9museum.jpg",
@@ -51,6 +54,7 @@
       "inventors": [
         "Dean Kamen"
       ],
+      "description": "The Segway is a two-wheeled, self-balancing personal transporter invented by Dean Kamen.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Segwaygreen.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Segwaygreen.jpg",
@@ -65,6 +69,7 @@
       "inventors": [
         "Carter Bryant"
       ],
+      "description": "Bratz is an American fashion doll and media franchise created by former Mattel employee Carter Bryant for MGA Entertainment, which first introduced in Spring 2001.",
       "year": 2001
     },
     {
@@ -73,6 +78,7 @@
       "inventors": [
         "Norm Larsen"
       ],
+      "description": "WD-40 (Water Displacement, 40th formula) is a penetrating oil manufactured by the WD-40 Company based in San Diego, California.",
       "year": 1953,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/WD-40%20Smart%20Straw.JPG?width=960",
@@ -85,6 +91,7 @@
     {
       "name": "graphite bomb",
       "source": "wikidata",
+      "description": "A graphite bomb is intended to be a non-lethal weapon used to disable an electrical grid.",
       "year": 2000,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BLU-114.jpg?width=960",
@@ -100,6 +107,7 @@
       "inventors": [
         "Alan Adler"
       ],
+      "description": "The AeroPress is a manual coffeemaker invented by Alan Adler, founder of AeroPress, Inc.",
       "year": 2005,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aeropress%20setup.jpg?width=960",
@@ -115,6 +123,7 @@
       "inventors": [
         "Peter Schlumbohm"
       ],
+      "description": "The Chemex Coffeemaker is a manual pour-over style glass coffeemaker, invented by Peter Schlumbohm in 1941, manufactured by the Chemex Corporation in Chicopee, Massachusetts.",
       "year": 1941,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Peter%20Schlumbohm.%20Coffee%20Maker%2C%20Designed%201941.jpg?width=960",
@@ -125,27 +134,13 @@
       }
     },
     {
-      "name": "Sybian",
-      "source": "wikidata",
-      "inventors": [
-        "Dave Lampert"
-      ],
-      "year": 1980,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tn%20sybian%20gmax1.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tn%20sybian%20gmax1.jpg",
-        "license": "Copyrighted free use",
-        "author": "The original uploader was Buttysquirrel at English Wikipedia.",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "Colt Walker",
       "source": "wikidata",
       "inventors": [
-        "Samuel Colt",
-        "Samuel Hamilton Walker"
+        "Samuel Hamilton Walker",
+        "Samuel Colt"
       ],
+      "description": "The Colt Walker, sometimes known as the Walker Colt, is a single-action six-shot black powder revolver (typically firing.44 caliber lead balls).",
       "year": 1847,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Colt%20Walker%20Percussion%20Revolver%2C%20serial%20no.%201017%20MET%2058.171.1%20002feb2015.jpg?width=960",
@@ -161,11 +156,28 @@
       "inventors": [
         "Jean Alexandre LeMat"
       ],
+      "description": "The LeMat revolver was a.42 or.36 caliber cap & ball black powder revolver invented by Jean Alexandre LeMat of France, which featured an unusual secondary 16 to 20 gauge smooth-bore barrel capable of firing buckshot.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Le%20Mat%20Revolver.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Le%20Mat%20Revolver.jpg",
         "license": "Public domain",
         "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Comptometer",
+      "source": "wikidata",
+      "inventors": [
+        "Dorr Felt"
+      ],
+      "description": "The comptometer was the first commercially successful key-driven mechanical calculator, patented in the United States by Dorr Felt in 1887.",
+      "year": 1887,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Comptometer%20Model%20A.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Comptometer%20Model%20A.jpg",
+        "license": "Public domain",
+        "author": "Ezrdr",
         "source": "Wikimedia Commons"
       }
     }

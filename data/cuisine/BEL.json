@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Belgian Meatballs in Liège Syrup Sauce",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/gjjlzc1782496055.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/gjjlzc1782496055.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Belgian Stoemp",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/byolko1782500400.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/byolko1782500400.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Belgian Waterzooi Chicken",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Cinnamon Roll Cookies",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/txce0y1782494894.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/txce0y1782494894.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Flemish Hutsepot",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/2lywl71782496853.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/2lywl71782496853.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Frog Legs Recipe in Garlic Butter",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qcprt21782497529.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qcprt21782497529.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Liegeoise Salad",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ji3mho1782499823.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ji3mho1782499823.jpg",

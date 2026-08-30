@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Kelem dolmasi",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/7vdtqi1780160088.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Tendir Choreyi (Tandoori Bread)",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5mfmh01780158856.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5mfmh01780158856.jpg",

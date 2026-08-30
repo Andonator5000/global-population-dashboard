@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Algerian Bouzgene Berber Bread with Roasted Pepper Sauce",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/se5vhk1764114880.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/se5vhk1764114880.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Algerian Carrots",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/o2cd4r1764113576.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/o2cd4r1764113576.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Algerian Flafla (Bell Pepper Salad)",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Algerian Kefta (Meatballs)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Cheese Borek",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/oal8x31764119345.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/oal8x31764119345.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chorba Hamra bel Frik (Algerian Lamb, Tomato, and Freekeh Soup)",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/p9tebp1764118792.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/p9tebp1764118792.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Chtitha Batata (Algerian Potato Stew)",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/q8pu1k1764114334.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/q8pu1k1764114334.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Cornes de Gazelle (Gazelle Horns)",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0h1b7m1764120235.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0h1b7m1764120235.jpg",

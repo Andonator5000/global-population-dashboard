@@ -383,6 +383,50 @@ OWID_REGIME_LABELS: dict[int, str] = {
 # each to its Commons file page for author and licence attribution.
 
 WIKIDATA_SPARQL = "https://query.wikidata.org/sparql"
+
+# --------------------------------------------------------------------------
+# Public libraries (IFLA Library Map of the World)  (added 2026-08-30)
+# --------------------------------------------------------------------------
+# The static JSON the map page itself loads: every reported metric per
+# country, library type, year and collection method. Needs a browser UA.
+IFLA_MAP_DATA_URL = (
+    "https://librarymap.ifla.org/wp-content/themes/ifla/assets/json/"
+    "ifla-map-data-all-years.json"
+)
+
+# --------------------------------------------------------------------------
+# Electricity mix and nuclear plants  (added 2026-08-30)
+# --------------------------------------------------------------------------
+OWID_ELECTRICITY_SHARES: dict[str, str] = {
+    "coal": "share-electricity-coal",
+    "gas": "share-electricity-gas",
+    "oil": "share-electricity-oil",
+    "nuclear": "share-electricity-nuclear",
+    "hydro": "share-electricity-hydro",
+    "wind": "share-electricity-wind",
+    "solar": "share-electricity-solar",
+    "bioenergy": "share-electricity-bioenergy",
+    "renewables": "share-electricity-renewables",
+}
+ELECTRICITY_SOURCE_LABELS: dict[str, str] = {
+    "coal": "Coal", "gas": "Gas", "oil": "Oil", "nuclear": "Nuclear",
+    "hydro": "Hydropower", "wind": "Wind", "solar": "Solar",
+    "bioenergy": "Bioenergy",
+}
+# Operating nuclear power stations: state of use "in use" (or unset), no
+# retirement or dissolution date, a nameplate capacity recorded (which
+# drops proposed sites). Q134447 = nuclear power plant.
+WIKIDATA_NUCLEAR_PLANTS_QUERY = """
+SELECT ?iso3 (COUNT(DISTINCT ?plant) AS ?plants) (SUM(?cap) AS ?mw) WHERE {
+  ?plant wdt:P31/wdt:P279* wd:Q134447 ; wdt:P17 ?country .
+  ?country wdt:P298 ?iso3 .
+  FILTER NOT EXISTS { ?plant wdt:P730 ?retired }
+  FILTER NOT EXISTS { ?plant wdt:P576 ?dissolved }
+  OPTIONAL { ?plant wdt:P5817 ?status }
+  FILTER(!BOUND(?status) || ?status IN (wd:Q55654238, wd:Q109551035))
+  ?plant wdt:P2109 ?cap .
+} GROUP BY ?iso3
+"""
 WIKIDATA_LEADERS_QUERY = """
 SELECT ?iso3 ?role ?person ?personLabel ?image WHERE {
   ?country wdt:P298 ?iso3 .
@@ -637,7 +681,7 @@ GEONAMES_CITIES15000_URL = "https://download.geonames.org/export/dump/cities1500
 # countries, and the section renders that honestly rather than padding.
 
 WIKIDATA_INVENTIONS_QUERY = """
-SELECT ?iso3 ?item ?itemLabel ?inventorLabel ?invented ?inception ?image ?links ?class WHERE {
+SELECT ?iso3 ?item ?itemLabel ?itemDescription ?inventorLabel ?invented ?inception ?image ?links ?class ?article WHERE {
   ?item wdt:P495 ?country .
   ?country wdt:P298 ?iso3 .
   ?item wikibase:sitelinks ?links .
@@ -648,6 +692,7 @@ SELECT ?iso3 ?item ?itemLabel ?inventorLabel ?invented ?inception ?image ?links 
   OPTIONAL { ?item wdt:P571 ?inception . }
   OPTIONAL { ?item wdt:P18 ?image . }
   OPTIONAL { ?item wdt:P31 ?class . }
+  OPTIONAL { ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 """
@@ -802,7 +847,20 @@ WIKIDATA_INVENTION_DENY_ROOTS: dict[str, str] = {
     # food and drink stay out by the 2026-08-24 ruling
     "Q2095": "food",
     "Q40050": "drink",
+    # sexual content stays out (2026-08-30, maintainer ruling: the Sybian was
+    # listed as a notable American invention). Its item is typed plainly as
+    # "invention", so the class roots alone cannot catch it; see the
+    # description keyword net below.
+    "Q10816": "sex toy",
+    "Q291": "pornography",
 }
+# Second net for sexual content: the item's own English description (and,
+# for Wikipedia candidates, the article summary description) is checked
+# against these keywords. Matching items are rejected and logged.
+ADULT_CONTENT_KEYWORDS = (
+    "sex toy", "sex machine", "vibrator", "dildo", "erotic", "pornograph",
+    "masturbat", "sexual", "bdsm", "fetish", "condom", "adult toy",
+)
 # One batched query answers which roots each class reaches.
 WIKIDATA_CLASS_ROOTS_QUERY_TEMPLATE = """
 SELECT DISTINCT ?class ?root WHERE {{
@@ -955,6 +1013,7 @@ SELECT ?iso3 ?item ?itemLabel ?description ?image ?links WHERE {{
     ?item schema:description ?description .
     FILTER(LANG(?description) = "en")
   }}
+  OPTIONAL {{ ?article schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> . }}
   SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
 }}
 """
@@ -964,8 +1023,11 @@ CUISINE_TOP_N = 8
 # HTTP
 # --------------------------------------------------------------------------
 
+# Wikimedia's API policy wants a contact in the UA; the repository URL is
+# it. Requests that omit one get throttled hard.
 USER_AGENT = (
-    "global-population-dashboard/0.1 (ETL; contact: repository owner) "
+    "global-population-dashboard/0.1 "
+    "(https://github.com/Andonator5000/global-population-dashboard; ETL) "
     "python-requests"
 )
 HTTP_TIMEOUT_SECONDS = 120

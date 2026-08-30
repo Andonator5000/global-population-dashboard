@@ -8,10 +8,10 @@
       "name": "palm wine",
       "description": "sweet drink that is produced from the sap of various species of palm tree such as the Palmyra, date palms, and coconut palms",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Toddy%20Bottle%20and%20Glass.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Toddy%20Bottle%20and%20Glass.jpg",
-        "license": "CC BY 3.0",
-        "author": "Dhruvarahjs at ml.wikipedia",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Refreshing%20palm%20wine.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Refreshing%20palm%20wine.jpg",
+        "license": "CC BY 2.0",
+        "author": "Nick Hobgood Peace Corps Zaire",
         "source": "Wikimedia Commons"
       }
     },
@@ -27,17 +27,6 @@
       }
     },
     {
-      "name": "gado-gado",
-      "description": "Indonesian salad dish originating from Java island",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gado-gado%20in%20Jakarta.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gado-gado%20in%20Jakarta.JPG",
-        "license": "CC BY 3.0",
-        "author": "Sakurai Midori",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "rendang",
       "description": "spicy meat dish",
       "image": {
@@ -45,6 +34,17 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lamb%20rendang.jpg",
         "license": "CC BY-SA 2.0",
         "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "gado-gado",
+      "description": "Indonesian salad dish originating from Java island",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gado-gado%20in%20Jakarta.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gado-gado%20in%20Jakarta.JPG",
+        "license": "CC BY 3.0",
+        "author": "Sakurai Midori",
         "source": "Wikimedia Commons"
       }
     },
@@ -63,9 +63,9 @@
       "name": "Cendol",
       "description": "Indonesian traditional drink from Jawa Tengah",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jakarta%20street-side%20Es%20Cendol%204.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jakarta%20street-side%20Es%20Cendol%204.jpg",
-        "license": "CC BY-SA 4.0",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cendol%20Durian.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cendol%20Durian.JPG",
+        "license": "CC BY-SA 3.0",
         "author": "Gunawan Kartapranata",
         "source": "Wikimedia Commons"
       }

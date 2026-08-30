@@ -7,6 +7,7 @@
     {
       "name": "Archimedes' heat ray",
       "source": "wikipedia",
+      "description": "Archimedes is purported to have invented a large scale solar furnace, sometimes described as a heat ray, and used it to burn attacking Roman ships during the Siege of Syracuse.",
       "era": "212 BC",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Archimedes%20Heat%20Ray%20conceptual%20diagram.svg?width=960",
@@ -19,23 +20,28 @@
     {
       "name": "Astrolabe",
       "source": "wikipedia",
+      "description": "An astrolabe is an astronomical instrument dating to ancient times.",
       "era": "300 BC"
     },
     {
       "name": "Baglamas",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The baglamas, plural baglamades) or baglamadaki (μπαγλαμαδάκι), a long necked bowl-lute, is a plucked string instrument used in Greek music; it is a smaller version of the bouzouki pitched an octave higher, with unison…"
     },
     {
       "name": "Bouzouki",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The bouzouki is a musical instrument popular in Greece."
     },
     {
       "name": "Kithara",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The kithara, Latinized as cithara, was an ancient Greek musical instrument in the yoke lutes family."
     },
     {
       "name": "Crane (machine)",
       "source": "wikipedia",
+      "description": "A crane is a machine used to move materials both vertically and horizontally, utilizing a system of a boom, hoist, wire ropes or chains, and sheaves for lifting and relocating heavy objects within the swing of its boom.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Crane%20machine%20slewing%20platform.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Crane%20machine%20slewing%20platform.svg",
@@ -46,29 +52,35 @@
     },
     {
       "name": "Differential (mechanical device)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A differential is a gear train with three drive shafts that has the property that the rotational speed of one shaft is the average of the speeds of the others."
     },
     {
       "name": "Fire pump",
       "source": "wikipedia",
+      "description": "A fire pump usually refers to a pressure-increasing component of the water supply for fixed-place fire suppression systems such as fire sprinklers, standpipes, and foam systems.",
       "era": "2nd century"
     },
     {
       "name": "Headband",
       "source": "wikipedia",
+      "description": "A headband is a clothing accessory worn in the hair or around the forehead, usually to hold hair away from the face or eyes, or to help control forehead sweat or (rarely) to provide some protection to the head during…",
       "era": "475 BC"
     },
     {
       "name": "Sponge (tool)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A sponge is a cleaning aid made of soft, porous material."
     },
     {
       "name": "Syringe",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A syringe is a simple reciprocating pump consisting of a plunger that fits tightly within a cylindrical tube called a barrel."
     },
     {
       "name": "Thermometer",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A thermometer is a device that measures temperature."
     }
   ]
 }

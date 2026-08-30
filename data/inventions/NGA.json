@@ -7,6 +7,7 @@
     {
       "name": "Multi-core processor",
       "source": "wikipedia",
+      "description": "A multi-core processor (MCP) is a microprocessor on a single integrated circuit (IC) with two or more separate central processing units (CPUs), called cores to emphasize their multiplicity.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dual%20Core%20Generic.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Dual%20Core%20Generic.svg",

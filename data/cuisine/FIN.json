@@ -16,6 +16,17 @@
       }
     },
     {
+      "name": "Karelian pasty",
+      "description": "traditional pasties from Karelia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Karjalanpiirakka.png?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Karjalanpiirakka.png",
+        "license": "CC BY-SA 4.0",
+        "author": "Tiia Monto",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
       "name": "sahti",
       "description": "traditional beer from Finland",
       "image": {

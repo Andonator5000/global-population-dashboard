@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Beef Asado",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/pkopc31683207947.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/pkopc31683207947.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Beef Caldereta",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/41cxjh1683207682.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/41cxjh1683207682.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Beef Mechado",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/cgl60b1683206581.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/cgl60b1683206581.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Bistek",
-      "description": "Beef",
+      "description": "Bistek (from Spanish: bistec, \"beefsteak\"), also known as bistek tagalog or karne frita, is a Filipino dish consisting of thinly sliced beefsteak braised in soy sauce, calamansi juice, garlic, ground black pepper, and…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Crispy Eggplant",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/c7lzrl1683208757.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/c7lzrl1683208757.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Eggplant Adobo",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/y7h0lq1683208991.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/y7h0lq1683208991.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Grilled eggplant with coconut milk",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/bopa2i1683209167.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/bopa2i1683209167.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Tortang Talong",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/va668f1683209318.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/va668f1683209318.jpg",

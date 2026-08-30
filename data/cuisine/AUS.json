@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Anzac biscuits",
-      "description": "Dessert",
+      "description": "The Anzac biscuit is a sweet biscuit, popular in Australia and New Zealand, made using rolled oats, flour, sugar, butter (or margarine), golden syrup, baking soda, boiling water and optionally desiccated coconut.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/q47rkb1762324620.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Aussie Burgers",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/44bzep1761848278.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/44bzep1761848278.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Avocado dip with new potatoes",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/flrajf1762341295.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/flrajf1762341295.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Barramundi with Moroccan spices",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Blueberry & lemon friands",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/e756bf1761848342.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/e756bf1761848342.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chocolate Coconut Squares",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8oupz51761848432.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8oupz51761848432.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Lamingtons",
-      "description": "Dessert",
+      "description": "A lamington is an Australian cake made from squares of butter cake or sponge cake coated in an outer layer of chocolate sauce and rolled in desiccated coconut.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/j2n7vg1761848636.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/j2n7vg1761848636.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Mini chilli beef pies",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6sarfo1762340107.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6sarfo1762340107.jpg",

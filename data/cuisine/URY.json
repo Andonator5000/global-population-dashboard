@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Beef Empanadas",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dxpc7j1764370714.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dxpc7j1764370714.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Chivito sandwich",
-      "description": "Beef",
+      "description": "Chivito is the national dish of Uruguay.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/j80gmw1764372176.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/j80gmw1764372176.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Chivito uruguayo",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/n7qnkb1630444129.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/n7qnkb1630444129.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Chocolate alfajores",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/k9o0xr1764373018.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/k9o0xr1764373018.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Chocolate empanadas",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/u9ezi21764375474.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/u9ezi21764375474.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Flan",
-      "description": "Dessert",
+      "description": "Flan may refer to several culinary items, as well as other unrelated uses.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0s80wo1764374393.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0s80wo1764374393.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Postre Chajá",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wii0591764375062.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wii0591764375062.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Torta de fiambre",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/okl9cm1764371087.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/okl9cm1764371087.jpg",

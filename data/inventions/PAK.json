@@ -9,15 +9,13 @@
       "source": "wikipedia",
       "inventors": [
         "Ayub K. Ommaya"
-      ]
-    },
-    {
-      "name": "Neurochip",
-      "source": "wikipedia"
+      ],
+      "description": "An Ommaya reservoir is an intraventricular catheter system that can be used for the aspiration of cerebrospinal fluid or for the delivery of drugs into the cerebrospinal fluid."
     },
     {
       "name": "Sagar veena",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Sagar veena is a plucked string instrument used in Punjab and developed in 1970 by prominent Pakistani lawyer Raza Kazim."
     }
   ]
 }

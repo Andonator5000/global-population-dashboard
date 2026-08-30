@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { capitalizeFirst } from '../lib/format'
+import { CompositionBar } from '../components/viz/CompositionBar'
 import { StatTile, Unavailable } from '../components/viz/primitives'
 import {
   useAirports,
@@ -10,6 +12,8 @@ import {
   useDeathPenalty,
   useDebt,
   useEducationExtras,
+  useEnergy,
+  useLibraries,
   useFloraFauna,
   useInventions,
   usePressFreedom,
@@ -287,6 +291,76 @@ export function CurrencyImageFigure({
   )
 }
 
+// ------------------------------------------------------------------ Energy --
+
+/**
+ * Electricity mix, renewable and nuclear shares, and operating nuclear
+ * plants (2026-08-30, maintainer request) for the Technology &
+ * Infrastructure section.
+ */
+export function EnergyBody({ iso3 }: { iso3: string }) {
+  const state = useEnergy()
+  if (state.status === 'loading') return null
+  const entry = state.status === 'ready' ? state.data?.entities[iso3] : undefined
+  const OWID = 'Ember / Energy Institute, via Our World in Data'
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-3">
+        {entry?.renewablesShare ? (
+          <StatTile
+            label="Renewable share of electricity"
+            value={`${entry.renewablesShare.value.toFixed(1)}%`}
+            detail="hydro, wind, solar, bioenergy and other renewables"
+            source={OWID}
+            vintage={entry.renewablesShare.year}
+          />
+        ) : (
+          <Unavailable what="Renewable share of electricity" source={OWID} />
+        )}
+        {entry?.nuclearShare ? (
+          <StatTile
+            label="Nuclear share of electricity"
+            value={`${entry.nuclearShare.value.toFixed(1)}%`}
+            source={OWID}
+            vintage={entry.nuclearShare.year}
+          />
+        ) : (
+          <Unavailable what="Nuclear share of electricity" source={OWID} />
+        )}
+        {entry?.nuclearPlants ? (
+          <div>
+            <StatTile
+              label="Nuclear power plants"
+              value={number.format(entry.nuclearPlants.count)}
+              detail={
+                entry.nuclearPlants.capacityMw
+                  ? `operating · ${number.format(entry.nuclearPlants.capacityMw)} MW recorded capacity`
+                  : 'operating'
+              }
+              source="Wikidata"
+            />
+            <MutedNote>
+              Stations catalogued in Wikidata as in use, with no retirement date and a
+              recorded capacity. The IAEA’s PRIS is the authority and may differ.
+            </MutedNote>
+          </div>
+        ) : (
+          <Unavailable
+            what="Nuclear power plants"
+            source="Wikidata"
+            reason="No operating nuclear power station is catalogued for this entity."
+          />
+        )}
+      </div>
+      {entry?.mix ? (
+        <CompositionBar title="Electricity Generation Mix" field={entry.mix} sourceName={OWID} />
+      ) : (
+        <Unavailable what="Electricity generation mix" source={OWID} />
+      )}
+    </div>
+  )
+}
+
 // ---------------------------------------------------------------- Freedom --
 
 export function PressFreedomTile({ iso3 }: { iso3: string }) {
@@ -439,9 +513,7 @@ export function EducationExtraTiles({ iso3 }: { iso3: string }) {
             source="Hipolabs university-domains list"
           />
         )}
-        {/* Public library counts were removed 2026-08-29: the only keyless
-            source (a Wikidata item count) measured cataloguing, not
-            libraries -- Russia showed 9. No reliable source, no figure. */}
+        <PublicLibrariesTile iso3={iso3} />
       </div>
 
       <div>
@@ -484,6 +556,43 @@ export function EducationExtraTiles({ iso3 }: { iso3: string }) {
   )
 }
 
+/**
+ * Public libraries, back from a real source (2026-08-30): IFLA's Library
+ * Map of the World, reported by national library associations with a
+ * year and a collection method. Replaces the Wikidata item count that
+ * gave Russia nine libraries.
+ */
+function PublicLibrariesTile({ iso3 }: { iso3: string }) {
+  const state = useLibraries()
+  if (state.status === 'loading') return null
+  const entry = state.status === 'ready' ? state.data?.entities[iso3] : undefined
+  if (!entry) {
+    return (
+      <Unavailable
+        what="Public libraries"
+        source="IFLA Library Map of the World"
+        reason="No public-library count has been reported to IFLA for this entity."
+      />
+    )
+  }
+  return (
+    <div>
+      <StatTile
+        label="Public libraries"
+        value={number.format(entry.publicLibraries)}
+        detail="service points"
+        source="IFLA Library Map of the World"
+        vintage={entry.year ?? undefined}
+      />
+      <MutedNote>
+        Reported by the national library association or statistics office
+        {entry.method ? ` (${entry.method.toLowerCase()})` : ''}; report years
+        differ by country and are never mixed.
+      </MutedNote>
+    </div>
+  )
+}
+
 // --------------------------------------------------------- States/Provinces --
 
 export function SubdivisionsBody({ iso3 }: { iso3: string }) {
@@ -521,7 +630,7 @@ export function SubdivisionsBody({ iso3 }: { iso3: string }) {
             key={division.qid}
             className="flex items-baseline justify-between gap-3"
           >
-            <span>{division.name}</span>
+            <span>{capitalizeFirst(division.name)}</span>
             <span
               style={{
                 color: 'var(--text-muted)',
@@ -680,11 +789,18 @@ export function NotableInventionsBody({ iso3 }: { iso3: string }) {
           <CommonsFigure
             key={invention.name}
             image={invention.image}
-            alt={invention.name}
+            alt={capitalizeFirst(invention.name)}
             caption={
               <>
                 <span className="block text-base font-semibold">
-                  {invention.name}
+                  {capitalizeFirst(invention.name)}
+                </span>
+                {invention.description && (
+                  <span className="mt-0.5 block text-xs" style={{ color: 'var(--text-muted)' }}>
+                    {invention.description}
+                  </span>
+                )}
+                <span className="hidden">
                 </span>
                 <span
                   className="block text-sm"
@@ -761,7 +877,7 @@ function SpeciesCard({ symbol }: { symbol: FloraFaunaSymbol }) {
         className="text-lg font-semibold leading-tight tracking-tight"
         style={{ color: 'var(--text)' }}
       >
-        {symbol.name}
+        {capitalizeFirst(symbol.name)}
       </div>
       {symbol.scientificName && (
         <div className="mt-1 text-sm italic">{symbol.scientificName}</div>
@@ -776,7 +892,7 @@ function SpeciesCard({ symbol }: { symbol: FloraFaunaSymbol }) {
 function symbolCaption(symbol: FloraFaunaSymbol, fallbackType: string) {
   return (
     <>
-      <span className="block text-base font-semibold">{symbol.name}</span>
+      <span className="block text-base font-semibold">{capitalizeFirst(symbol.name)}</span>
       <span className="block text-sm" style={{ color: 'var(--text-muted)' }}>
         {symbol.type ?? fallbackType}
         {symbol.scientificName ? ` · ${symbol.scientificName}` : ''}
@@ -883,11 +999,18 @@ export function CuisineBody({ iso3 }: { iso3: string }) {
           <CommonsFigure
             key={dish.name}
             image={dish.image}
-            alt={dish.name}
+            alt={capitalizeFirst(dish.name)}
             caption={
               <>
                 <span className="block text-base font-semibold">
-                  {dish.name}
+                  {capitalizeFirst(dish.name)}
+                </span>
+                {dish.description && (
+                  <span className="mt-0.5 block text-xs" style={{ color: 'var(--text-muted)' }}>
+                    {dish.description}
+                  </span>
+                )}
+                <span className="hidden">
                 </span>
                 {dish.description && (
                   <span

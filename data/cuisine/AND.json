@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Pa Amb Tomaquet (Bread with Tomato)",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/lz9rw91779733434.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/lz9rw91779733434.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Torrijas",
-      "description": "Breakfast",
+      "description": "Torrijas is a municipality located in the province of Teruel, Aragon, Spain.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/927vvp1779732018.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/927vvp1779732018.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Trinxat (Potato, Cabbage and Bacon Hash)",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/khpso71779732715.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/khpso71779732715.jpg",

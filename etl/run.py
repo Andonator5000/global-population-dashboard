@@ -288,6 +288,8 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "unodc": _simple_stage("unodc", "unodc"),
     "deathpenalty": _simple_stage("deathpenalty", "deathpenalty"),
     "education": _simple_stage("education", "education"),
+    "libraries": _simple_stage("libraries", "libraries"),
+    "energy": _simple_stage("energy", "energy"),
     "imf": _simple_stage("imf", "imf"),
     "currency_images": _simple_stage("currencyimages", "currency_images"),
     "subdivisions": _simple_stage("subdivisions", "subdivisions"),

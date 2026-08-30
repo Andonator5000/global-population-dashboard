@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Achiote Oil (Aceite Achiotado) Recipe",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/iuws3q1783801530.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/iuws3q1783801530.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Ají de Aguacate Recipe (Colombian Spicy Avocado Sauce)",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jyvy8u1783800448.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jyvy8u1783800448.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Almojábanas (Colombian Cheese Bread)",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ymk7gt1783803106.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ymk7gt1783803106.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Arroz con Leche Recipe",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jp09191782856005.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jp09191782856005.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Breaded Steak Recipe (Lomo de Res Apanado)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/lmwaf61783805434.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/lmwaf61783805434.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chicken in Orange Sauce Recipe (Pollo a la Naranja)",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/uuns781783804024.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/uuns781783804024.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Chuletas de Cerdo a la Criolla (Pork Chops in Creole Sauce)",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/087fu71783802698.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/087fu71783802698.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Coconut Natilla Recipe",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/gp1sj51783799928.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/gp1sj51783799928.jpg",

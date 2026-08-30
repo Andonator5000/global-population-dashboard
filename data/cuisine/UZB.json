@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "pilaf",
+      "description": "rice dish",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Polu.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Polu.jpg",
         "license": "CC BY-SA 3.0",
-        "author": "Mizu basyo at Japanese Wikipedia"
+        "author": "Mizu basyo at Japanese Wikipedia",
+        "source": "Wikimedia Commons"
       }
     }
   ]

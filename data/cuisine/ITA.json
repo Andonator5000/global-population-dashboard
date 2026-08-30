@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Budino Di Ricotta",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1549542877.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1549542877.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Chicken Alfredo Primavera",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Chilli prawn linguine",
-      "description": "Pasta",
+      "description": "Pasta dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Fettuccine Alfredo",
-      "description": "Pasta",
+      "description": "Fettuccine Alfredo is a pasta dish consisting of fettuccine tossed with butter and Parmesan cheese which is melted and emulsified to form a rich cheese sauce coating the pasta.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Fettucine alfredo",
-      "description": "Pasta",
+      "description": "Fettuccine Alfredo is a pasta dish consisting of fettuccine tossed with butter and Parmesan cheese which is melted and emulsified to form a rich cheese sauce coating the pasta.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Lasagne",
-      "description": "Pasta",
+      "description": "Lasagna, also known by the plural form lasagne, is a type of pasta made in wide, flat sheets.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wtsvxx1511296896.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Mediterranean Pasta Salad",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Osso Buco alla Milanese",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wwuqvt1487345467.jpg",
