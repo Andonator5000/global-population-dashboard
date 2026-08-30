@@ -131,17 +131,19 @@ def _judge(
         return False, f"criterion 3: metadata mentions '{hit.group(1).lower()}'"
     if not (from_banknote_category or _BANKNOTE.search(haystack)):
         return False, "criterion 4: not described or categorised as a banknote"
-    if stems and not any(stem in haystack for stem in stems):
+    if stems and not any(re.search(rf"(?<![a-z]){re.escape(stem)}(?![a-z])", haystack) for stem in stems):
         return False, f"criterion 4: metadata names none of {sorted(stems)}"
     return True, "compliant"
 
 
-def _rank_key(filename: str, record: dict[str, Any]) -> tuple[int, float, float]:
+def _rank_key(filename: str, record: dict[str, Any], stems: set[str] = frozenset()) -> tuple[int, int, float]:
     text = f"{filename} {record.get('objectName') or ''}"
     obverse = 0 if _OBVERSE.search(text) else 1
-    years = [int(y) for y in _YEAR.findall(text)]
-    newest = max(years) if years else 0
-    return (obverse, -float(newest), -float(record.get("width") or 0))
+    lower = filename.lower()
+    named = 0 if any(re.search(rf"(?<![a-z]){re.escape(s)}(?![a-z])", lower) for s in stems) else 1
+    # A year in a filename is as often the photo date as the series, so it
+    # does not rank; width does, as a proxy for a proper scan.
+    return (obverse, named, -float(record.get("width") or 0))
 
 
 def _stems(name: str, code: str, commons_category: str | None) -> set[str]:
@@ -201,14 +203,20 @@ def _banknote_files(
         f"{stem} banknotes",
     ):
         roots.append(title)
-    for country in countries[:3]:
-        roots.append(f"Banknotes of {country}")
-        roots.append(f"Banknotes of the {country}")
-    country_words = {w.lower() for c in countries for w in c.split() if len(w) > 3}
+    # Country-named roots ONLY for a currency with exactly one country: the
+    # yen is listed for Zimbabwe and the euro for Croatia, and a walk into
+    # "Banknotes of Zimbabwe" put a Zimbabwean note on Japan's page.
+    if len(countries) == 1:
+        roots.append(f"Banknotes of {countries[0]}")
+        roots.append(f"Banknotes of the {countries[0]}")
+    country_words = {w.lower() for c in countries[:1] for w in c.split() if len(w) > 3} if len(countries) == 1 else set()
 
     def relevant(sub_name: str) -> bool:
         lower = sub_name.lower()
-        return any(s in lower for s in stems) or any(w in lower for w in country_words)
+        return (
+            any(re.search(rf"(?<![a-z]){re.escape(s)}(?![a-z])", lower) for s in stems)
+            or any(re.search(rf"(?<![a-z]){re.escape(w)}(?![a-z])", lower) for w in country_words)
+        )
     walked: list[str] = []
     files: list[str] = []
     seen: set[str] = set()
@@ -344,7 +352,7 @@ def ingest(
             )
             judged.append({"file": filename, "verdict": reason})
             if ok:
-                compliant.append((_rank_key(filename, record), filename))
+                compliant.append((_rank_key(filename, record, by_code[code]["stems"]), filename))
         compliant.sort()
         chosen = compliant[0][1] if compliant else None
         log[code] = {
