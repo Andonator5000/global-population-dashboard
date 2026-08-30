@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Chicken Shawarma with homemade garlic herb yoghurt sauce",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/hcg6l91763596970.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/hcg6l91763596970.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "kabse",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/utqnjv1763598650.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/utqnjv1763598650.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Knafeh",
-      "description": "Dessert",
+      "description": "Knafeh (Arabic: كنافة) is a traditional Arab dessert made with kadayif (spun pastry dough) layered with cheese and soaked in a sweet, sugar-based syrup called attar.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/76nffj1763593933.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/76nffj1763593933.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Mamoul (Eid biscuits)",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/35kejr1763599712.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/35kejr1763599712.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Mutabbaq",
-      "description": "Miscellaneous",
+      "description": "Murtabak, or mutabbaq, is a stuffed pancake or pan-fried bread commonly found in the Arabian Peninsula, parts of the Indian subcontinent, and Southeast Asia (especially Maritime Southeast Asia), notably in Saudi Arabia…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/i5o2b61763739053.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/i5o2b61763739053.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Pistachio Kunafa Chocolate Cake and Cupcakes",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/yh3sg71763741307.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/yh3sg71763741307.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Shakshouka",
-      "description": "Miscellaneous",
+      "description": "Shakshouka is a Maghrebi dish of eggs poached in a sauce of tomatoes, olive oil, peppers, onion, and garlic, commonly spiced with cumin, paprika, and cayenne pepper.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/crd1jz1763592990.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/crd1jz1763592990.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Shakshuka Feta Cheese",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wpkfin1763597958.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wpkfin1763597958.jpg",

@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Egyptian Fatteh",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Feteer Meshaltet",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Ful Medames",
-      "description": "Vegetarian",
+      "description": "Ful medames, or simply ful, is a stew of cooked fava beans served with olive oil, cumin, and optionally with chopped parsley, garlic, onion, lemon juice, chili pepper and other vegetables, herbs, and spices.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Koshari",
-      "description": "Vegetarian",
+      "description": "Koshary, Kushari or Koshari is Egypt's national dish and a widely popular street food.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Mulukhiyah",
-      "description": "Beef",
+      "description": "Mulukhiyah (Arabic: مُلُوخِيَّة, romanized: mulūḫiyya), also known as mulukhiyya, molokhiyya, melokhiyya, molohiya or ewédú, is a type of jute plant whose leaves are used to prepare a traditional Egyptian and Arab dish.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/x372ug1598733932.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Shakshuka",
-      "description": "Vegetarian",
+      "description": "Shakshouka is a Maghrebi dish of eggs poached in a sauce of tomatoes, olive oil, peppers, onion, and garlic, commonly spiced with cumin, paprika, and cayenne pepper.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/g373701551450225.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/g373701551450225.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Shawarma",
-      "description": "Chicken",
+      "description": "Shawarma (; Arabic: شاورما) is a popular street food in the Middle East that originated in the Levant during the Ottoman Empire.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Tamiya",
-      "description": "Vegetarian",
+      "description": "Tamiya may refer to: Tamiya Corporation, a Japanese manufacturer of plastic model kits, radio-controlled cars and related products Tamiya-ryū (disambiguation), several iaijutsu ryūgi Tamiya connector, a type of DC power…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg",

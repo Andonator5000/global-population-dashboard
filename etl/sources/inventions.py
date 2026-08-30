@@ -290,6 +290,7 @@ def _wikipedia_candidates(
                 continue  # disambiguation or missing page: parse noise
             entry["qid"] = summary.get("wikibase_item")
             entry["description"] = summary.get("description") or ""
+            entry["blurb"] = commons.first_sentence(summary.get("extract") or "")
             entry["listArticle"] = title
             image = (summary.get("originalimage") or {}).get("source")
             if image:
@@ -348,6 +349,7 @@ def ingest(
         record = by_item.setdefault(qid, {
             "iso3": iso3,
             "name": label,
+            "description": (row.get("itemDescription", {}).get("value") or "").strip(),
             "inventors": [],
             "year": None,
             "file": None,
@@ -368,6 +370,9 @@ def ingest(
         item_class = _qid(row.get("class", {}).get("value"))
         if item_class.startswith("Q"):
             record["classes"].add(item_class)
+        article = row.get("article", {}).get("value")
+        if article and not record.get("article"):
+            record["article"] = urllib.parse.unquote(article.rsplit("/", 1)[-1]).replace("_", " ")
 
     # Wikipedia list candidates, then their direct classes from Wikidata so
     # the same gate judges both sources.
@@ -386,9 +391,15 @@ def ingest(
     reached, food_by_label = _class_roots(all_classes, refresh=refresh)
     gate = _Gate(reached, food_by_label)
 
+    def adult(text: str) -> bool:
+        lower = (text or "").lower()
+        return any(k in lower for k in config.ADULT_CONTENT_KEYWORDS)
+
     by_country: dict[str, list[dict[str, Any]]] = {}
     for qid, record in by_item.items():
         ok, reason, roots = gate.verdict(qid, record["classes"])
+        if ok and (adult(record["description"]) or adult(record["name"])):
+            ok, reason, roots = False, "adult content keyword", ["description"]
         if not ok:
             gate.reject(
                 source="wikidata", iso3=record["iso3"], qid=qid,
@@ -413,6 +424,8 @@ def ingest(
                 )
                 continue
             ok, reason, roots = gate.verdict(qid, wiki_classes.get(qid, set()))
+            if ok and (adult(candidate.get("description", "")) or adult(candidate["name"])):
+                ok, reason, roots = False, "adult content keyword", ["description"]
             if not ok:
                 gate.reject(
                     source="wikipedia", iso3=iso3, qid=qid,
@@ -426,6 +439,26 @@ def ingest(
 
     # Wikidata entries lead, list entries top the country up to the cap,
     # deduplicated by name. A country with two solid entries shows two.
+    # Brief descriptions and a lead-image fallback (2026-08-30): the anchor
+    # article's opening sentence, and its lead image when Wikidata has no
+    # P18 -- both from the REST summary, which the Wikipedia candidates
+    # already carry.
+    extracts = commons.wikipedia_extracts(
+        [r["article"] for records in by_country.values() for r in records if r.get("article")],
+        refresh=refresh, subdir="inventions/extracts",
+    )
+    for records in by_country.values():
+        for r in records:
+            r["description"] = r.get("description") or None
+            summary = extracts.get(r.get("article") or "")
+            if not summary:
+                continue
+            blurb = commons.first_sentence(summary.get("extract") or "")
+            if blurb:
+                r["description"] = blurb
+            if not r["file"] and summary.get("pageimage"):
+                r["file"] = summary["pageimage"]
+
     merged: dict[str, list[dict[str, Any]]] = {}
     for iso3 in sorted(set(by_country) | set(wiki_accepted)):
         entries: list[dict[str, Any]] = [
@@ -435,6 +468,7 @@ def ingest(
                 "year": r["year"],
                 "era": None,
                 "file": r["file"],
+                "description": r.get("description"),
                 "source": "wikidata",
             }
             for r in by_country.get(iso3, [])
@@ -452,6 +486,7 @@ def ingest(
                 "year": candidate.get("year"),
                 "era": candidate.get("era"),
                 "file": candidate.get("file"),
+                "description": candidate.get("blurb") or candidate.get("description") or None,
                 "source": "wikipedia",
             })
         if entries:
@@ -484,6 +519,8 @@ def ingest(
             }
             if record["inventors"]:
                 item["inventors"] = record["inventors"][:3]
+            if record.get("description"):
+                item["description"] = record["description"]
             if record["year"]:
                 item["year"] = record["year"]
             elif record["era"]:

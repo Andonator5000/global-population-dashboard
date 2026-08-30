@@ -145,7 +145,12 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
   )
 
   return (
-    <section className="mt-10" id="all-entities" aria-labelledby="all-entities-heading">
+    <section
+      className="mt-8 rounded-xl border px-5 py-4"
+      style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+      id="all-entities"
+      aria-labelledby="all-entities-heading"
+    >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <h2
@@ -210,10 +215,12 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
             className="mt-3 max-h-[70vh] overflow-auto rounded-lg border"
             style={{
               borderColor: 'var(--border)',
-              background: 'var(--surface-raised)',
+              background: 'var(--surface)',
             }}
           >
-            <table className="w-full border-collapse text-sm">
+            {/* Dense rows (UI UX Pro Max "data-dense dashboard": 36px rows,
+                13px type), hover highlight in the raised token, no zebra. */}
+            <table className="entity-table w-full border-collapse text-[13px]">
               <caption className="sr-only">
                 GDP, population and growth rate by entity, {year}. Sortable.
               </caption>
@@ -241,7 +248,7 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
                       className="border-t"
                       style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
                     >
-                      <th scope="row" className="px-3 py-1.5 text-left font-normal">
+                      <th scope="row" className="px-3 py-1.5 text-left font-medium">
                         <Link
                           to={`/country/${row.iso3}`}
                           className="underline underline-offset-2"

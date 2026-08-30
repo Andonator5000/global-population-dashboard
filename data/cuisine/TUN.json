@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Cashew Ghoriba Biscuits",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/t3r3ka1560461972.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/t3r3ka1560461972.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Chakchouka",
-      "description": "Miscellaneous",
+      "description": "Shakshouka is a Maghrebi dish of eggs poached in a sauce of tomatoes, olive oil, peppers, onion, and garlic, commonly spiced with cumin, paprika, and cayenne pepper.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/gpz67p1560458984.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/gpz67p1560458984.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Kafteji",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1bsv1q1560459826.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1bsv1q1560459826.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Keleya Zaara",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8x09hy1560460923.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8x09hy1560460923.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Leblebi Soup",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/x2fw9e1560460636.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/x2fw9e1560460636.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Tuna and Egg Briks",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Tunisian Lamb Soup",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/t8mn9g1560460231.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/t8mn9g1560460231.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Tunisian Orange Cake",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/y4jpgq1560459207.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/y4jpgq1560459207.jpg",

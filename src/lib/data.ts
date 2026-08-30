@@ -24,8 +24,10 @@ import type {
   HeritageFile,
   LeadersFile,
   Manifest,
+  EnergyFile,
   FlagMetaFile,
   HistoryFile,
+  LibrariesFile,
   MapPalette,
   MarkerFile,
   PopulationSummary,
@@ -240,6 +242,12 @@ export const useUnodcPrisons = (): AsyncState<UnodcPrisonsFile> =>
 
 export const useDeathPenalty = (): AsyncState<DeathPenaltyFile> =>
   useArtifact<DeathPenaltyFile>('crime/death-penalty.json')
+
+export const useLibraries = (): AsyncState<LibrariesFile | null> =>
+  useOptionalArtifact<LibrariesFile>('education/libraries.json')
+
+export const useEnergy = (): AsyncState<EnergyFile | null> =>
+  useOptionalArtifact<EnergyFile>('energy/energy.json')
 
 export const useEducationExtras = (): AsyncState<EducationFile> =>
   useArtifact<EducationFile>('education/education.json')

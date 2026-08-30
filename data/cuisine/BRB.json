@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Bajan Salt Bread Recipe",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sr7chd1780264758.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sr7chd1780264758.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Bajan Sweet Bread",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5vhbzt1782239221.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5vhbzt1782239221.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Barbados Pepperpot",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5tf8j11782236249.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5tf8j11782236249.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Breadfruit in Butter Sauce",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6utn1w1782237402.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6utn1w1782237402.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Breadfruit in Butter Sauce Recipe",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/z672jx1780263633.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/z672jx1780263633.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chicken and Potato Roti",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/mp9z0i1782238092.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/mp9z0i1782238092.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Chicken Liver Pate Recipe",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/hob03q1780264260.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/hob03q1780264260.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Macaroni Pie",
-      "description": "Pasta",
+      "description": "Pasta dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/kpiu4t1782242131.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/kpiu4t1782242131.jpg",

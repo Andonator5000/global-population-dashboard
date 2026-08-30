@@ -1,7 +1,7 @@
 # Operating guide (for Claude Code sessions)
 
 Read this before changing anything. `README.md` explains the project;
-`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–26 are
+`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–27 are
 the 2026-08 maintainer batches) — check it before re-litigating a source
 choice.
 
@@ -50,10 +50,15 @@ npm run dev                                # dev server on :5173
   inventions class-gate rejections, flora/fauna image rejections, banknote
   verdicts, icon coverage. A stage regenerates its own log; a `--only` run
   leaves the others untouched.
-- **Icons are one set** (OpenMoji black outline, vendored under
-  `public/icons/openmoji`). Add a hexcode to `src/data/product-icons.json`
+- **Icons are one set** (OpenMoji COLOUR variant since 2026-08-30, vendored
+  under `public/icons/openmoji`). Add a hexcode to `src/data/product-icons.json`
   or `src/lib/icons.ts`, then `npm run icons` to vendor it; `npm run
   check:icons` gates coverage at 95% of mentions. No emoji, no gear.
+  Icon-led breakdowns reserve the slot (a dash) so labels stay flush.
+- Public libraries come from IFLA via `fetch_via_curl` (Cloudflare blocks
+  Python's TLS fingerprint); electricity mix from OWID; nuclear plants from
+  Wikidata with a status filter (§27). Inventions also pass an
+  adult-content keyword net.
 
 ## Architecture in one paragraph
 
@@ -69,9 +74,10 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 ## Editorial invariants (don't undo silently)
 
 - Somaliland/N. Cyprus polygons keep their own labels but key to SOM/CYP.
-- Entity table: neutral rows, hairline dividers, sticky header, signed
-  growth-rate colour only (2026-08-29); home page washes verdant green in
-  both themes; country pages tint from flag colours.
+- Home page: three raised cards on the neutral page tint (no green wash
+  since 2026-08-30); entity table dense, neutral, sticky header, hover
+  highlight, signed growth-rate colour only; country pages tint from flag
+  colours.
 - ONE breakdown pattern: ranked horizontal bars (`Breakdown.tsx`); the
   stacked bar is gone. Flag is the hero of the country page with attributed
   Wikipedia symbolism text (CC BY-SA, verbatim, linked).

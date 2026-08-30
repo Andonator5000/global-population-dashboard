@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Arepa",
-      "description": "Side",
+      "description": "An arepa is a type of flatbread made of ground maize dough that may be stuffed with a filling, eaten in northern parts of South America since pre-Columbian times, and notable primarily in the cuisine of Colombia and…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ejht7k1780092390.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ejht7k1780092390.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Balchi di Pisca",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qqwhw51780093126.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qqwhw51780093126.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Banana den Forno",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6v583k1780093743.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6v583k1780093743.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Bolita di Keshi",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/skzd0x1780091674.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/skzd0x1780091674.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Cheese Sticks",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/7i6csk1780094394.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/7i6csk1780094394.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Satee",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dqxtlh1780153831.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dqxtlh1780153831.jpg",

@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Chicken Couscous",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Lamb Tagine",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Lamb tomato and sweet spices",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qtwtss1468572261.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qtwtss1468572261.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Moroccan Carrot Soup",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Spicy North African Potato Salad",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/urtwux1486983078.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/urtwux1486983078.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Tahini Lentils",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg",

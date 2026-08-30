@@ -57,6 +57,7 @@ import {
   CuisineBody,
   CurrencyImageFigure,
   EducationExtraTiles,
+  EnergyBody,
   FloraFaunaBody,
   LiveExchangeRateTile,
   NotableInventionsBody,
@@ -1037,6 +1038,7 @@ export function CountryPage() {
               format={(v) => `${v.toFixed(1)}% of population`}
             />
           </div>
+          {iso3 && <EnergyBody iso3={iso3} />}
         </Section>
 
         {/* --------------------------------------------------------- Airports */}
@@ -1444,7 +1446,7 @@ function FlagFacts({
       style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
     >
       <h2 className="font-sans text-sm font-medium">
-        {meta.flagName ?? `Flag of ${name}`}
+        {capitalizeFirst(meta.flagName ?? `Flag of ${name}`)}
       </h2>
       <dl className="mt-1 grid gap-x-6 gap-y-1 sm:grid-cols-2">
         {meta.adopted && (

@@ -6,20 +6,24 @@
   "dishes": [
     {
       "name": "kilishi",
+      "description": "Hausa dish of spiced dried beef, mutton or goat meat",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%22Kilishi%22.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:%22Kilishi%22.JPG",
         "license": "CC BY-SA 3.0",
-        "author": "Abubakar M. Ahmad"
+        "author": "Abubakar M. Ahmad",
+        "source": "Wikimedia Commons"
       }
     },
     {
       "name": "dambu",
+      "description": "food from Niger",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dambu.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Dambu.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Saliousoft"
+        "author": "Saliousoft",
+        "source": "Wikimedia Commons"
       }
     }
   ]

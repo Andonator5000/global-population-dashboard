@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Air fryer patatas bravas",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Ajo blanco",
-      "description": "Starter",
+      "description": "Ajoblanco (sometimes written ajo blanco) is a popular Spanish cold soup typical from Granada and Málaga (Andalusia).",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Arroz al horno (baked rice)",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qt4i0n1763256454.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qt4i0n1763256454.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Arroz con gambas y calamar",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jc6oub1763196663.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jc6oub1763196663.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Chicken & chorizo rice pot",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chicken with saffron, raisins & pine nuts",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Chickpea, chorizo & spinach stew",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Chocolate churros with chocolate & salted caramel sauce",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/erzs951763296201.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/erzs951763296201.jpg",

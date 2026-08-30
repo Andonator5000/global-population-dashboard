@@ -6,23 +6,28 @@
   "inventions": [
     {
       "name": "Bradykinin",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Bradykinin (BK) (from Greek brady- 'slow' + -kinin, kīn(eîn) 'to move') is a peptide that promotes inflammation."
     },
     {
       "name": "Electric shower",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "An electric shower or electric shower head are self-heating shower heads that use an immersion heater which is turned on with the flow of water."
     },
     {
       "name": "Orelhão",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Orelhão, officially Telefone de Uso Público is the name given to the protector for public telephones designed by Chinese Brazilian architect and designer Chu Ming Silveira."
     },
     {
       "name": "Sebastião Leme",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Sebastião Carvalho Leme, was a photographer from Marília, São Paulo, Brazil."
     },
     {
       "name": "Electronic voting machine",
       "source": "wikipedia",
+      "description": "An electronic voting machine is a voting machine based on electronics.",
       "year": 1989
     },
     {
@@ -31,6 +36,7 @@
       "inventors": [
         "Roberto Ierusalimschy"
       ],
+      "description": "Lua is a lightweight, high-level, multi-paradigm programming language designed mainly for embedded use in applications.",
       "year": 1993,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lua-Logo.svg?width=960",
@@ -43,6 +49,7 @@
     {
       "name": "Pix (payment system)",
       "source": "wikipedia",
+      "description": "Pix is an instant payment platform created and managed by the Central Bank of Brazil (BCB).",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pix%20%28Brazil%29%20logo.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Pix%20%28Brazil%29%20logo.svg",
@@ -53,7 +60,8 @@
     },
     {
       "name": "Vanishing spray",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Vanishing spray, also known as vanishing foam, is a substance applied to an association football pitch in order to provide a temporary visual marker."
     }
   ]
 }

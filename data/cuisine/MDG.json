@@ -5,24 +5,24 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
-      "name": "Romazava",
-      "description": "Malagasy stew",
+      "name": "Koba",
+      "description": "confectionery sweet",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Vary%20%28riz%29%20avec%20sardine%20frit%20et%20romazava%20agnamorongo.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Vary%20%28riz%29%20avec%20sardine%20frit%20et%20romazava%20agnamorongo.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Chirocca77",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kobandravina%20dessert%20snack%20food%20Antananarivo%20Madagascar.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kobandravina%20dessert%20snack%20food%20Antananarivo%20Madagascar.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Salym Fayad",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Koba",
-      "description": "confectionery sweet",
+      "name": "Romazava",
+      "description": "Malagasy stew",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Art%20culinaire%20malgache%2C%20le%20fameux%20koba%20de%20Talata%20Volonondry.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Art%20culinaire%20malgache%2C%20le%20fameux%20koba%20de%20Talata%20Volonondry.jpg",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Madagaskar%20stew%202019-10-01.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Madagaskar%20stew%202019-10-01.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Anai171",
+        "author": "Z thomas",
         "source": "Wikimedia Commons"
       }
     },

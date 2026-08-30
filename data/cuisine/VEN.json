@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Arepa Pabellón",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/13fg4j1764441982.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/13fg4j1764441982.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Arepa pelua",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jgl9qq1764437635.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Cassava pizza",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/lrfdwz1764438393.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Oatmeal pancakes",
-      "description": "Breakfast",
+      "description": "Breakfast dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Passion fruit mousse",
-      "description": "Dessert",
+      "description": "Passion fruit mousse (Portuguese: mousse de maracujá, sometimes spelled musse) is a passion fruit-flavored variation of mousse from Brazilian cuisine.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/gkcdpl1764441325.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/gkcdpl1764441325.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Venezuelan Arepas",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/3hcy191764376285.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/3hcy191764376285.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Venezuelan Coconut Chicken",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/z2sw3o1764378271.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/z2sw3o1764378271.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Venezuelan Sancocho",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8859m71764377470.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8859m71764377470.jpg",

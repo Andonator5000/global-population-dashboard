@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Antiguan Breakfast (Chop Up and ‘Saltfish’)",
-      "description": "Breakfast",
+      "description": "Breakfast dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jvjnoh1780086318.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jvjnoh1780086318.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Corn on the cob with lime, green chilli and coconut butter",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/brhaoj1780086661.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/brhaoj1780086661.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Mango chow",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8hx4fi1780087744.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8hx4fi1780087744.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Slow-cooked, Wadadli-spiced Cubano pork belly",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg",

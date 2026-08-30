@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "flat white",
+      "description": "espresso-based coffee beverage",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Flat%20white%20coffee%20at%20Highgate%20Cricket%20Club%2C%20Haringey%2C%20angle%20view%202.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Flat%20white%20coffee%20at%20Highgate%20Cricket%20Club%2C%20Haringey%2C%20angle%20view%202.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Acabashi"
+        "author": "Acabashi",
+        "source": "Wikimedia Commons"
       }
     }
   ]

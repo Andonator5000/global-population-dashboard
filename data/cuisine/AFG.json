@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Baghlaw-e-Khanagi",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/bjtjyl1779552068.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/bjtjyl1779552068.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Bolani with Potato Filling",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/de0sns1779555283.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/de0sns1779555283.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Firni",
-      "description": "Dessert",
+      "description": "Phirni or firni is a rice pudding dessert made with ground rice, rice flour or cornflour cooked in milk.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/dm8kee1779553541.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/dm8kee1779553541.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Haft Mewa Recipe",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/io2u3z1779551885.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/io2u3z1779551885.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Kadu Borani",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/walmi81779552709.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/walmi81779552709.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Mantu Afghan Dumpling",
-      "description": "Starter",
+      "description": "Starter dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/oemdp11779556068.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/oemdp11779556068.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Mastawa Lamb and Rice",
-      "description": "Lamb",
+      "description": "Lamb dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4kzx4d1779554755.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4kzx4d1779554755.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Muraba-E-Kadu (Pumpkin Jam)",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ug6bwk1779556566.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ug6bwk1779556566.jpg",

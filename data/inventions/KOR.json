@@ -7,26 +7,30 @@
     {
       "name": "kimchi refrigerator",
       "source": "wikidata",
+      "description": "A kimchi refrigerator is a refrigerator designed specifically to meet the storage requirements of kimchi and facilitate different fermentation processes.",
       "year": 1992,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/An%20Event%20with%20Four%20Comedians%20of%20Gag%20Concert%20for%20LG%20DIOS%20Refrigerator%20on%20September%2021%2C%202012%20from%20acrofan%206.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:An%20Event%20with%20Four%20Comedians%20of%20Gag%20Concert%20for%20LG%20DIOS%20Refrigerator%20on%20September%2021%2C%202012%20from%20acrofan%206.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "acrofan.com",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kimchi%20refrigerator3.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kimchi%20refrigerator3.jpg",
+        "license": "CC BY 2.0",
+        "author": "Jose Gabriel Marcelino",
         "source": "Wikimedia Commons"
       }
     },
     {
       "name": "Ch'ŭgugi",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Ch'ŭgugi were rain gauges invented and used during the Joseon dynasty of Korea."
     },
     {
       "name": "Plate armour",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Plate armour is a historical type of personal body armour made from bronze, iron, or steel plates, culminating in suits of armour which entirely or mostly encased the wearer."
     },
     {
       "name": "Pistol",
       "source": "wikipedia",
+      "description": "A pistol is a type of handgun, characterized by a barrel with an integral chamber.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pistol%20used%20by%20%22Squeaky%22%20Fromme.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Pistol%20used%20by%20%22Squeaky%22%20Fromme.JPG",
@@ -37,27 +41,33 @@
     },
     {
       "name": "Hwacha",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The hwacha or hwach'a was a fifteenth-century Korean weapons platform capable of performing both the multiple rocket launcher or a volley gun roles."
     },
     {
       "name": "Airplane",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "An airplane, or aeroplane, also plane, is a fixed-wing aircraft that is propelled forward by thrust from a jet engine, propeller, or rocket engine."
     },
     {
       "name": "Warship",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A warship or combatant ship is a naval ship that is used for naval warfare."
     },
     {
       "name": "Bulletproof vest",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A bulletproof vest, also known as a ballistic vest or bullet-resistant vest, is a type of body armor designed to absorb impact and prevent the penetration of firearm projectiles and explosion fragments to the torso."
     },
     {
       "name": "Musket",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A musket is a muzzle-loaded long gun that appeared as a smoothbore weapon in the early 16th century, at first as a heavier variant of the arquebus, capable of penetrating plate armour."
     },
     {
       "name": "Machine gun",
       "source": "wikipedia",
+      "description": "A machine gun (MG) is a fully automatic and rifled firearm designed for sustained direct fire.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/IDF-machineguns-67.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:IDF-machineguns-67.jpg",
@@ -68,11 +78,13 @@
     },
     {
       "name": "Janggu",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The janggu or seyogo is a drum often used in traditional Korean music."
     },
     {
       "name": "Gayageum",
       "source": "wikipedia",
+      "description": "The gayageum or kayagum is a traditional Korean musical instrument.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%ED%92%8D%EB%A5%98%EA%B0%80%EC%95%BC%EA%B8%88.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:%ED%92%8D%EB%A5%98%EA%B0%80%EC%95%BC%EA%B8%88.jpg",

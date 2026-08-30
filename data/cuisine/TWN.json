@@ -16,35 +16,13 @@
       }
     },
     {
-      "name": "stinky tofu",
-      "description": "Chinese fermented tofu with a strong odor; usually sold at night markets or roadside stands as a snack, or in lunch bars as a side dish, rather than in restaurants",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stinky%20Tofu%20Fried.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stinky%20Tofu%20Fried.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "The original uploader was Richy at Chinese Wikipedia.",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Kuih",
-      "description": "Bite-sized snack or dessert foods originating from Southeast Asia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jajan%20Pasar%20in%20Jakarta.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Jajan%20Pasar%20in%20Jakarta.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Gunawan Kartapranata",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "Ló͘-bah-pn̄g",
       "description": "rice dish",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lurou%20fan%28Taiwanese%20cuisine%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lurou%20fan%28Taiwanese%20cuisine%29.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Jzest",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cubed%20Pork%20with%20Rice.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Cubed%20Pork%20with%20Rice.jpg",
+        "license": "CC BY 2.0",
+        "author": "kawanet",
         "source": "Wikimedia Commons"
       }
     },
@@ -91,6 +69,20 @@
         "author": "The original uploader was Seasurfer at Chinese Wikipedia.",
         "source": "Wikimedia Commons"
       }
+    },
+    {
+      "name": "Danbing",
+      "description": "Taiwanese egg crêpe",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/D%C3%A0nb%C7%90ng.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:D%C3%A0nb%C7%90ng.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "Đậu tương",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Savory rice pudding"
     }
   ]
 }

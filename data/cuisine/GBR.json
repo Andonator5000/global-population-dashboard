@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Bubble & Squeak",
-      "description": "Pork",
+      "description": "Bubble and squeak is a British dish made from cooked potatoes and cabbage.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xusqvw1511638311.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xusqvw1511638311.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Apple & Blackberry Crumble",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Apple Frangipan Tart",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Baked salmon with fennel & tomatoes",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1548772327.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1548772327.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Bakewell tart",
-      "description": "Dessert",
+      "description": "The Bakewell tart is a traditional English cake originating in the town of Bakewell, in the Derbyshire Dales district of Derbyshire.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Battenberg Cake",
-      "description": "Dessert",
+      "description": "Battenberg or Battenburg cake is a light sponge cake with coloured sections held together with jam and covered in marzipan.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ywwrsp1511720277.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ywwrsp1511720277.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Bean & Sausage Hotpot",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Beef and Mustard Pie",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",

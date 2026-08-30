@@ -7,6 +7,7 @@
     {
       "name": "Tetrahydrocannabinol",
       "source": "wikipedia",
+      "description": "Tetrahydrocannabinol (THC) is a cannabinoid found in cannabis.",
       "year": 1964,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/THC.svg?width=960",
@@ -18,11 +19,13 @@
     },
     {
       "name": "Stent",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "In medicine, a stent is a tube usually constructed of a metallic alloy or a polymer."
     },
     {
       "name": "Glatiramer acetate",
       "source": "wikipedia",
+      "description": "Glatiramer acetate, sold under the brand name Copaxone among others, is an immunomodulator medication used to treat multiple sclerosis.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glatiramer%20acetate.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Glatiramer%20acetate.svg",
@@ -34,11 +37,13 @@
     {
       "name": "Taliglucerase alfa",
       "source": "wikipedia",
+      "description": "Taliglucerase alfa, sold under the brand name Elelyso among others, is a biopharmaceutical medication developed by Protalix and Pfizer.",
       "year": 2012
     },
     {
       "name": "Projection keyboard",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A projection keyboard is a form of computer input device whereby the image of a virtual keyboard is projected onto a surface: when a user touches the surface covered by an image of a key, the device records the…"
     },
     {
       "name": "EPROM",
@@ -46,15 +51,18 @@
       "inventors": [
         "Dov Frohman"
       ],
+      "description": "An EPROM, or erasable programmable read-only memory, is a type of programmable read-only memory (PROM) chip that retains its data when its power supply is switched off.",
       "year": 1971
     },
     {
       "name": "ReWalk",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "ReWalk is a commercial bionic walking assistance system that uses powered leg attachments to enable paraplegics to stand upright, walk and climb stairs."
     },
     {
       "name": "Desert Eagle",
       "source": "wikipedia",
+      "description": "The Desert Eagle, also known as the Deagle, is a single-action, gas-operated, semi-automatic pistol capable of chambering the.50 Action Express, the largest centerfire cartridge of any magazine-fed, self-loading pistol…",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/DesertEagle%2050AE.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:DesertEagle%2050AE.jpg",
@@ -68,15 +76,18 @@
       "source": "wikipedia",
       "inventors": [
         "Lt. Col. Amos"
-      ]
+      ],
+      "description": "CornerShot is a weapon accessory created by Lt."
     },
     {
       "name": "Tactical Robotics Cormorant",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Tactical Robotics Cormorant, formerly AirMule or Mule, Israel Defense Forces (IDF) codename Pereira, is a flying car unmanned aerial vehicle (UAV) built by Tactical Robotics Ltd., a subsidiary of designer Rafi…"
     },
     {
       "name": "Trophy (countermeasure)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Trophy is an active protection system (APS) for military armored vehicles designed by Rafael Advanced Defense Systems."
     }
   ]
 }

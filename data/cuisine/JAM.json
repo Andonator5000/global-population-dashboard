@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Brown Stew Chicken",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Callaloo and SaltFish",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/73o3vq1765317873.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/73o3vq1765317873.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Callaloo Jamaican Style",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ussyxw1515364536.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ussyxw1515364536.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Caribbean Tamarind balls",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/z1hz7z1765316430.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/z1hz7z1765316430.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Corned Beef and Cabbage – Jamaican Style",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/kdz63q1764793442.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/kdz63q1764793442.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Escovitch Fish",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1520084413.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1520084413.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Grape Nut Ice Cream",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1xscby1764790242.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1xscby1764790242.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Jamaican Banana Fritters",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ul2uy31764794321.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ul2uy31764794321.jpg",

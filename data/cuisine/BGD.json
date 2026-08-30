@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Bangladeshi fish curry with daikon",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/r7mcjm1780261264.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/r7mcjm1780261264.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Bengali Chicken Curry with Potatoes",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/9ya6o71780262651.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/9ya6o71780262651.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Handesh – Bangladeshi rice flour and date molasses cakes",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vfybi01780261706.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vfybi01780261706.jpg",

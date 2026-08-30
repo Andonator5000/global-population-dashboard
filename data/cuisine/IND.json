@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Baingan Bharta",
-      "description": "Vegetarian",
+      "description": "Baigan bharta, also spelled baingan bharta or begun bharta or baigan chokha (mashed eggplant) is an Indian subcontinent dish prepared by mashing or mincing grilled brinjal (aubergine in UK English, eggplant in US…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Beef Mandi",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/1nalo51765188375.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/1nalo51765188375.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Bread omelette",
-      "description": "Breakfast",
+      "description": "Breakfast dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Chicken Handi",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Chicken Mandi",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/er4d081765186828.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Dal fry",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
@@ -77,24 +77,24 @@
       }
     },
     {
-      "name": "Kidney Bean Curry",
-      "description": "Vegetarian",
+      "name": "Healthy Biss Jaggery Modak",
+      "description": "Dessert dish",
       "image": {
-        "imageUrl": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg/medium",
-        "largeUrl": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg",
-        "commonsPage": "https://www.themealdb.com/meal/52868",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/h8v7e91787756994.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/h8v7e91787756994.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/53580",
         "license": null,
         "author": null,
         "source": "TheMealDB"
       }
     },
     {
-      "name": "Lamb Biryani",
-      "description": "Lamb",
+      "name": "Kidney Bean Curry",
+      "description": "Vegetarian dish",
       "image": {
-        "imageUrl": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg/medium",
-        "largeUrl": "https://www.themealdb.com/images/media/meals/xrttsx1487339558.jpg",
-        "commonsPage": "https://www.themealdb.com/meal/52805",
+        "imageUrl": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg/medium",
+        "largeUrl": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg",
+        "commonsPage": "https://www.themealdb.com/meal/52868",
         "license": null,
         "author": null,
         "source": "TheMealDB"

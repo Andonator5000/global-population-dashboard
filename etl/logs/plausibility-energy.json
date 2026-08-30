@@ -1,0 +1,7 @@
+{
+  "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
+  "stage": "energy",
+  "checked": 1021,
+  "summary": {},
+  "suppressed": []
+}

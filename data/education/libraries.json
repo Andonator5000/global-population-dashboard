@@ -1,0 +1,671 @@
+{
+  "source": "ifla_library_map",
+  "note": "Number of public library service points per country as reported to IFLA's Library Map of the World by national library associations and statistics offices. Each figure carries its own report year and collection method; years differ by country and are never mixed.",
+  "entities": {
+    "ABW": {
+      "publicLibraries": 3,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "AGO": {
+      "publicLibraries": 39,
+      "year": 2019,
+      "method": null
+    },
+    "AND": {
+      "publicLibraries": 8,
+      "year": 2018,
+      "method": null
+    },
+    "ARE": {
+      "publicLibraries": 28,
+      "year": 2022,
+      "method": null
+    },
+    "ARG": {
+      "publicLibraries": 30,
+      "year": 2017,
+      "method": null
+    },
+    "ARM": {
+      "publicLibraries": 124,
+      "year": 2025,
+      "method": "Administrative data collection"
+    },
+    "ATG": {
+      "publicLibraries": 1,
+      "year": 2021,
+      "method": "Census survey"
+    },
+    "AUS": {
+      "publicLibraries": 1664,
+      "year": 2020,
+      "method": "Official statistics"
+    },
+    "AUT": {
+      "publicLibraries": 1010,
+      "year": 2025,
+      "method": "Census survey"
+    },
+    "AZE": {
+      "publicLibraries": 2913,
+      "year": 2022,
+      "method": null
+    },
+    "BDI": {
+      "publicLibraries": 1,
+      "year": 2017,
+      "method": null
+    },
+    "BEL": {
+      "publicLibraries": 1103,
+      "year": 2016,
+      "method": null
+    },
+    "BEN": {
+      "publicLibraries": 10,
+      "year": 2017,
+      "method": null
+    },
+    "BES": {
+      "publicLibraries": 3,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "BGR": {
+      "publicLibraries": 3881,
+      "year": 2025,
+      "method": "Administrative data collection"
+    },
+    "BHR": {
+      "publicLibraries": 14,
+      "year": 2022,
+      "method": "Census survey"
+    },
+    "BHS": {
+      "publicLibraries": 52,
+      "year": 2017,
+      "method": null
+    },
+    "BIH": {
+      "publicLibraries": 88,
+      "year": 2022,
+      "method": "Official statistics"
+    },
+    "BLR": {
+      "publicLibraries": 3204,
+      "year": 2021,
+      "method": "Official statistics"
+    },
+    "BLZ": {
+      "publicLibraries": 48,
+      "year": 2019,
+      "method": "Official statistics"
+    },
+    "BRA": {
+      "publicLibraries": 6102,
+      "year": 2015,
+      "method": "Official statistics"
+    },
+    "BRN": {
+      "publicLibraries": 80,
+      "year": 2016,
+      "method": null
+    },
+    "BTN": {
+      "publicLibraries": 3,
+      "year": 2022,
+      "method": "Official statistics"
+    },
+    "CAN": {
+      "publicLibraries": 17412,
+      "year": 2022,
+      "method": "Census survey"
+    },
+    "CHE": {
+      "publicLibraries": 1025,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "CHL": {
+      "publicLibraries": 519,
+      "year": 2017,
+      "method": null
+    },
+    "CHN": {
+      "publicLibraries": 2994,
+      "year": 2017,
+      "method": null
+    },
+    "CMR": {
+      "publicLibraries": 203,
+      "year": 2021,
+      "method": null
+    },
+    "COL": {
+      "publicLibraries": 1702,
+      "year": 2016,
+      "method": null
+    },
+    "CRI": {
+      "publicLibraries": 64,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "CUB": {
+      "publicLibraries": 386,
+      "year": 2024,
+      "method": "Administrative data collection"
+    },
+    "CUW": {
+      "publicLibraries": 1,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "CYP": {
+      "publicLibraries": 27,
+      "year": 2016,
+      "method": "Census survey"
+    },
+    "CZE": {
+      "publicLibraries": 6031,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "DEU": {
+      "publicLibraries": 5159,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "DNK": {
+      "publicLibraries": 509,
+      "year": 2022,
+      "method": "Official statistics"
+    },
+    "DOM": {
+      "publicLibraries": 276,
+      "year": 2017,
+      "method": null
+    },
+    "ECU": {
+      "publicLibraries": 35,
+      "year": 2024,
+      "method": "Census survey"
+    },
+    "EGY": {
+      "publicLibraries": 923,
+      "year": 2024,
+      "method": null
+    },
+    "ESP": {
+      "publicLibraries": 4603,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "EST": {
+      "publicLibraries": 528,
+      "year": 2018,
+      "method": null
+    },
+    "ETH": {
+      "publicLibraries": 237,
+      "year": 2016,
+      "method": null
+    },
+    "FIN": {
+      "publicLibraries": 868,
+      "year": 2020,
+      "method": "Official statistics"
+    },
+    "FRA": {
+      "publicLibraries": 15500,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "GBR": {
+      "publicLibraries": 3889,
+      "year": 2018,
+      "method": null
+    },
+    "GEO": {
+      "publicLibraries": 834,
+      "year": 2022,
+      "method": "Administrative data collection"
+    },
+    "GHA": {
+      "publicLibraries": 61,
+      "year": 2016,
+      "method": null
+    },
+    "GIN": {
+      "publicLibraries": 24,
+      "year": 2018,
+      "method": null
+    },
+    "GMB": {
+      "publicLibraries": 1,
+      "year": 2016,
+      "method": null
+    },
+    "GNB": {
+      "publicLibraries": 24,
+      "year": 2018,
+      "method": null
+    },
+    "GRC": {
+      "publicLibraries": 320,
+      "year": 2022,
+      "method": "Administrative data collection"
+    },
+    "GRL": {
+      "publicLibraries": 5,
+      "year": 2017,
+      "method": null
+    },
+    "GUY": {
+      "publicLibraries": 5,
+      "year": 2017,
+      "method": null
+    },
+    "HKG": {
+      "publicLibraries": 82,
+      "year": 2017,
+      "method": null
+    },
+    "HND": {
+      "publicLibraries": 175,
+      "year": 2020,
+      "method": "Administrative data collection"
+    },
+    "HRV": {
+      "publicLibraries": 371,
+      "year": 2021,
+      "method": "Official statistics"
+    },
+    "HUN": {
+      "publicLibraries": 3648,
+      "year": 2021,
+      "method": "Administrative data collection"
+    },
+    "IDN": {
+      "publicLibraries": 42460,
+      "year": 2018,
+      "method": null
+    },
+    "IND": {
+      "publicLibraries": 146173,
+      "year": 2017,
+      "method": null
+    },
+    "IRL": {
+      "publicLibraries": 331,
+      "year": 2025,
+      "method": "Official statistics"
+    },
+    "IRN": {
+      "publicLibraries": 3614,
+      "year": 2022,
+      "method": "Administrative data collection"
+    },
+    "IRQ": {
+      "publicLibraries": 85,
+      "year": 2019,
+      "method": null
+    },
+    "ISR": {
+      "publicLibraries": 36,
+      "year": 2017,
+      "method": null
+    },
+    "ITA": {
+      "publicLibraries": 6042,
+      "year": 2014,
+      "method": null
+    },
+    "JAM": {
+      "publicLibraries": 118,
+      "year": 2017,
+      "method": null
+    },
+    "JPN": {
+      "publicLibraries": 3394,
+      "year": 2021,
+      "method": "Official statistics"
+    },
+    "KAZ": {
+      "publicLibraries": 4052,
+      "year": 2017,
+      "method": null
+    },
+    "KEN": {
+      "publicLibraries": 67,
+      "year": 2018,
+      "method": null
+    },
+    "KGZ": {
+      "publicLibraries": 1612,
+      "year": 2019,
+      "method": "Official statistics"
+    },
+    "KNA": {
+      "publicLibraries": 1,
+      "year": 2019,
+      "method": "Administrative data collection"
+    },
+    "KOR": {
+      "publicLibraries": 2496,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "LCA": {
+      "publicLibraries": 19,
+      "year": 2018,
+      "method": null
+    },
+    "LKA": {
+      "publicLibraries": 1199,
+      "year": 2016,
+      "method": null
+    },
+    "LTU": {
+      "publicLibraries": 1209,
+      "year": 2025,
+      "method": "Official statistics"
+    },
+    "LUX": {
+      "publicLibraries": 7,
+      "year": 2020,
+      "method": "Official statistics"
+    },
+    "LVA": {
+      "publicLibraries": 863,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "MAC": {
+      "publicLibraries": 76,
+      "year": 2017,
+      "method": null
+    },
+    "MDA": {
+      "publicLibraries": 1278,
+      "year": 2025,
+      "method": "Official statistics"
+    },
+    "MDG": {
+      "publicLibraries": 57,
+      "year": 2018,
+      "method": null
+    },
+    "MDV": {
+      "publicLibraries": 1,
+      "year": 2021,
+      "method": null
+    },
+    "MEX": {
+      "publicLibraries": 5544,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "MKD": {
+      "publicLibraries": 58,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "MLI": {
+      "publicLibraries": 61,
+      "year": 2019,
+      "method": "Administrative data collection"
+    },
+    "MMR": {
+      "publicLibraries": 416,
+      "year": 2022,
+      "method": "Official statistics"
+    },
+    "MNE": {
+      "publicLibraries": 21,
+      "year": 2022,
+      "method": "Derived statistical activities"
+    },
+    "MNG": {
+      "publicLibraries": 364,
+      "year": 2018,
+      "method": null
+    },
+    "MNP": {
+      "publicLibraries": 7,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "MUS": {
+      "publicLibraries": 13,
+      "year": 2017,
+      "method": null
+    },
+    "MYS": {
+      "publicLibraries": 1425,
+      "year": 2021,
+      "method": "Official statistics"
+    },
+    "NAM": {
+      "publicLibraries": 65,
+      "year": 2022,
+      "method": "Official statistics"
+    },
+    "NGA": {
+      "publicLibraries": 290,
+      "year": 2015,
+      "method": null
+    },
+    "NIC": {
+      "publicLibraries": 142,
+      "year": 2018,
+      "method": null
+    },
+    "NLD": {
+      "publicLibraries": 1094,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "NOR": {
+      "publicLibraries": 740,
+      "year": 2015,
+      "method": null
+    },
+    "NPL": {
+      "publicLibraries": 7,
+      "year": 2017,
+      "method": null
+    },
+    "NZL": {
+      "publicLibraries": 314,
+      "year": 2015,
+      "method": null
+    },
+    "OMN": {
+      "publicLibraries": 20,
+      "year": 2017,
+      "method": null
+    },
+    "PAK": {
+      "publicLibraries": 350,
+      "year": 2024,
+      "method": "Derived statistical activities"
+    },
+    "PAN": {
+      "publicLibraries": 58,
+      "year": 2016,
+      "method": null
+    },
+    "PER": {
+      "publicLibraries": 418,
+      "year": 2024,
+      "method": "Sample survey"
+    },
+    "PHL": {
+      "publicLibraries": 1752,
+      "year": 2024,
+      "method": "Administrative data collection"
+    },
+    "POL": {
+      "publicLibraries": 8050,
+      "year": 2015,
+      "method": null
+    },
+    "PRT": {
+      "publicLibraries": 952,
+      "year": 2024,
+      "method": "Administrative data collection"
+    },
+    "PRY": {
+      "publicLibraries": 151,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "PSE": {
+      "publicLibraries": 65,
+      "year": 2013,
+      "method": null
+    },
+    "QAT": {
+      "publicLibraries": 10,
+      "year": 2025,
+      "method": "Administrative data collection"
+    },
+    "REU": {
+      "publicLibraries": 82,
+      "year": 2018,
+      "method": null
+    },
+    "ROU": {
+      "publicLibraries": 2207,
+      "year": 2018,
+      "method": null
+    },
+    "RUS": {
+      "publicLibraries": 37138,
+      "year": 2018,
+      "method": null
+    },
+    "SAU": {
+      "publicLibraries": 51,
+      "year": 2025,
+      "method": "Derived statistical activities"
+    },
+    "SDN": {
+      "publicLibraries": 55,
+      "year": 2018,
+      "method": null
+    },
+    "SGP": {
+      "publicLibraries": 33,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "SRB": {
+      "publicLibraries": 564,
+      "year": 2016,
+      "method": null
+    },
+    "SUR": {
+      "publicLibraries": 12,
+      "year": 2018,
+      "method": null
+    },
+    "SVK": {
+      "publicLibraries": 1461,
+      "year": 2018,
+      "method": null
+    },
+    "SVN": {
+      "publicLibraries": 289,
+      "year": 2021,
+      "method": "Official statistics"
+    },
+    "SWE": {
+      "publicLibraries": 1059,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "SWZ": {
+      "publicLibraries": 17,
+      "year": 2017,
+      "method": null
+    },
+    "SXM": {
+      "publicLibraries": 2,
+      "year": 2024,
+      "method": "Official statistics"
+    },
+    "SYC": {
+      "publicLibraries": 5,
+      "year": 2017,
+      "method": null
+    },
+    "THA": {
+      "publicLibraries": 1120,
+      "year": 2018,
+      "method": null
+    },
+    "TTO": {
+      "publicLibraries": 27,
+      "year": 2014,
+      "method": "Derived statistical activities"
+    },
+    "TUR": {
+      "publicLibraries": 1257,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "UGA": {
+      "publicLibraries": 45,
+      "year": 2017,
+      "method": null
+    },
+    "UKR": {
+      "publicLibraries": 18261,
+      "year": 2018,
+      "method": null
+    },
+    "URY": {
+      "publicLibraries": 63,
+      "year": 2018,
+      "method": null
+    },
+    "USA": {
+      "publicLibraries": 17227,
+      "year": 2016,
+      "method": null
+    },
+    "UZB": {
+      "publicLibraries": 144,
+      "year": 2023,
+      "method": "Official statistics"
+    },
+    "VEN": {
+      "publicLibraries": 706,
+      "year": 2017,
+      "method": null
+    },
+    "VNM": {
+      "publicLibraries": 18097,
+      "year": 2017,
+      "method": null
+    },
+    "ZAF": {
+      "publicLibraries": 1879,
+      "year": 2018,
+      "method": null
+    },
+    "ZMB": {
+      "publicLibraries": 45,
+      "year": 2017,
+      "method": null
+    },
+    "ZWE": {
+      "publicLibraries": 10,
+      "year": 2018,
+      "method": null
+    }
+  }
+}

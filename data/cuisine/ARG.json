@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Alfajores",
-      "description": "Dessert",
+      "description": "An alfajor or alajú is a traditional confection.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/a4kgf21763075288.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/a4kgf21763075288.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Asado",
-      "description": "Beef",
+      "description": "Asado is the technique and the social event of having or attending a barbecue in various South American countries: especially Argentina and Uruguay where it is also a traditional event, as well as Brazil (Rio Grande do…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Carbonada Criolla",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8b2msz1763074897.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8b2msz1763074897.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Choripán",
-      "description": "Pork",
+      "description": "Choripán (plural: choripanes) is a type of asado sandwich with grilled chorizo.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5i25sg1763075353.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5i25sg1763075353.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Dulce de Leche",
-      "description": "Dessert",
+      "description": "Dulce de leche, caramelized milk, milk candy, or milk jam is a confection commonly made by heating sugar and milk over several hours.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jyjlhj1763075323.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jyjlhj1763075323.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Empanadas",
-      "description": "Beef",
+      "description": "An empanada is a type of baked or fried turnover consisting of pastry and filling, common in Spain, Portugal, other Southern European countries, North African countries, West African countries (where they are known as…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/q99te31763075494.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/q99te31763075494.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Fainá",
-      "description": "Side",
+      "description": "Farinata, socca or farinata di ceci is a type of thin, unleavened pancake or crêpe made from chickpea flour.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/849jd81763075251.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/849jd81763075251.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Locro",
-      "description": "Miscellaneous",
+      "description": "Locro or lojro (from the Quechua ruqru) is a hearty thick squash or potato stew, associated with Native Andean civilizations, and popular along the Andes mountain range.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5sgsob1763196284.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5sgsob1763196284.jpg",

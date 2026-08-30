@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Camaro Grelhado Com Molho Cru (Grilled Prawns with Green Onion Sauce)",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jg4r991779916649.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jg4r991779916649.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Paracuca (Roasted Peanuts)",
-      "description": "Starter",
+      "description": "Starter dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vgsipt1779917593.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vgsipt1779917593.jpg",

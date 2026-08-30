@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "Pelau",
+      "description": "rice dish of the West Indies",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MISC%20Pelau.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:MISC%20Pelau.jpg",
         "license": "CC BY-SA 4.0",
-        "author": "Grueslayer"
+        "author": "Grueslayer",
+        "source": "Wikimedia Commons"
       }
     }
   ]

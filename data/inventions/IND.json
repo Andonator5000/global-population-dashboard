@@ -7,52 +7,72 @@
     {
       "name": "Calico",
       "source": "wikipedia",
+      "description": "Calico is a heavy plain-woven textile made from unbleached, and often not fully processed, cotton.",
       "era": "11th century"
     },
     {
       "name": "Cotton",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Cotton is a soft, fluffy staple fiber that grows in a boll, or protective case, around the seeds of the cotton plants of the genus Gossypium in the mallow family Malvaceae."
     },
     {
       "name": "Shellac",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Shellac is a resin secreted by the female lac bug on trees in the forests of India and Thailand."
     },
     {
       "name": "Crucible steel",
       "source": "wikipedia",
+      "description": "Crucible steel is steel made by melting pig iron, cast iron, iron, and sometimes steel, often along with sand, glass, ashes, and other fluxes, in a crucible.",
       "era": "300 BCE"
     },
     {
       "name": "Touchstone (assaying tool)",
       "source": "wikipedia",
+      "description": "A touchstone is a small tablet of dark stone such as slate or lydite, used for assaying precious metal alloys.",
       "year": 1900
     },
     {
       "name": "Mysorean rockets",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Horn antenna",
       "source": "wikipedia",
-      "year": 1897
+      "description": "Mysorean rockets were an Indian military weapon."
     },
     {
-      "name": "Crescograph",
+      "name": "Transponder (satellite communications)",
       "source": "wikipedia",
-      "era": "20th century"
+      "description": "A communications satellite's transponder is the series of interconnected units that form a communications channel between the receiving and the transmitting antennas."
     },
     {
-      "name": "Combat helmet",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Transformer",
+      "name": "Kojo (learning environment)",
       "source": "wikipedia",
-      "year": 2026
+      "description": "Kojo is a programming language and integrated development environment (IDE) for computer programming and learning."
+    },
+    {
+      "name": "ZyCoV-D",
+      "source": "wikipedia",
+      "description": "ZyCoV-D is a DNA plasmid-based COVID-19 vaccine developed by Indian pharmaceutical company Cadila Healthcare, with support from the Biotechnology Industry Research Assistance Council."
+    },
+    {
+      "name": "Small Satellite Launch Vehicle",
+      "source": "wikipedia",
+      "description": "The Small Satellite Launch Vehicle (SSLV) is a small-lift launch vehicle developed by ISRO to deliver 500 kg (1,100 lb) payload to low Earth orbit or 300 kg (660 lb) payload to Sun-synchronous orbit."
+    },
+    {
+      "name": "Ramjet",
+      "source": "wikipedia",
+      "description": "A ramjet is a form of airbreathing jet engine that requires forward motion of the engine to provide air for combustion.",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Ramjet%20operation.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Ramjet%20operation.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "Vector image made by Cryonic07. Source \npng-drawing was made by Emoscopes and later slighly \n\nmodified by Wolfkeeper",
+        "source": "Wikimedia Commons"
+      }
     },
     {
       "name": "Dual-phase steel",
       "source": "wikipedia",
+      "description": "Dual-phase steel (DP steel) is a high-strength steel that has a ferritic–martensitic microstructure.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%90%D1%80%D0%BC%D0%B0%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%BA%D0%B0%D1%82.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%80%D0%BC%D0%B0%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%BA%D0%B0%D1%82.jpg",

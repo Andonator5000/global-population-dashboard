@@ -5,6 +5,17 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
+      "name": "Pholourie",
+      "description": "Fried, spiced dough balls",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MISC%20Pholourie%20with%20Curry%20Dip.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:MISC%20Pholourie%20with%20Curry%20Dip.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Grueslayer",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
       "name": "Pom",
       "description": "oven dish",
       "image": {

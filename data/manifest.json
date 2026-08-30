@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-30T03:22:18+00:00",
+  "generated_at": "2026-08-30T06:16:34+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-30T03:22:18+00:00",
+      "fetched_at": "2026-08-30T06:16:34+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -20,7 +20,7 @@
       "title": "UN World Population Prospects 2024",
       "url": "https://population.un.org/wpp/",
       "licence": "CC BY 3.0 IGO",
-      "fetched_at": "2026-08-10T02:54:33+00:00",
+      "fetched_at": "2026-08-30T06:16:59+00:00",
       "upstream_release": "Fri, 13 Dec 2024 19:11:17 GMT",
       "vintage": "estimates 1950-2023; projections 2024-2100",
       "citation": "United Nations, Department of Economic and Social Affairs, Population Division (2024). World Population Prospects 2024, Online Edition. Medium variant.",
@@ -29,19 +29,19 @@
           "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
           "sha256": "286ac36bb1415e2e1ade03acfef0a29f0e4c087e2f78e38c48f50c5df89082bc",
           "size_bytes": 16557272,
-          "fetched_at": "2026-08-10T02:51:14+00:00"
+          "fetched_at": "2026-08-30T06:16:43+00:00"
         },
         {
           "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_OtherVariants.csv.gz",
           "sha256": "a860504df54877e4c19788bf6e16920d6017d021b4c149eaf8b5662674180a54",
           "size_bytes": 75342445,
-          "fetched_at": "2026-08-10T02:54:33+00:00"
+          "fetched_at": "2026-08-30T06:16:51+00:00"
         },
         {
           "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_PopulationByAge5GroupSex_Medium.csv.gz",
           "sha256": "a04d7d1486a5eb2832cc812d599448f0a71e8ac9e1e7e6fa4066673d6a2487cd",
           "size_bytes": 29948947,
-          "fetched_at": "2026-08-10T02:52:06+00:00"
+          "fetched_at": "2026-08-30T06:16:59+00:00"
         }
       ],
       "notes": "Counts converted from the published thousands to persons. Estimates run through 2023; later years are the medium-variant projection, with low/high variants supplied as bands. Bulk CSV rather than the Data Portal API, which requires a token (see DATA_DECISIONS.md)."
@@ -50,7 +50,7 @@
       "title": "World Bank World Development Indicators",
       "url": "https://api.worldbank.org/v2",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-08-29T21:33:20+00:00",
+      "fetched_at": "2026-08-30T06:18:04+00:00",
       "upstream_release": "2026-07-13",
       "vintage": "per indicator and country; newest observation 2025",
       "citation": "World Bank, World Development Indicators (api.worldbank.org/v2)",
@@ -59,19 +59,19 @@
           "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&page=1",
           "sha256": "337b37071281a128340331068a39abae870868ab49c4032b56e17b89871deed1",
           "size_bytes": 3675128,
-          "fetched_at": "2026-08-10T02:55:48+00:00"
+          "fetched_at": "2026-08-30T06:17:05+00:00"
         },
         {
           "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.CD?format=json&per_page=20000&page=1",
           "sha256": "ddd7c4777b51f18262a2a67db60e1bdd0b1f850e2a84e1b18f141b57868bcaa5",
           "size_bytes": 4152536,
-          "fetched_at": "2026-08-10T02:55:50+00:00"
+          "fetched_at": "2026-08-30T06:17:05+00:00"
         },
         {
           "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&page=1",
           "sha256": "d95fabbb5731225261778b7febda96eceadd66a557ce81a9f3255520703ad0b6",
           "size_bytes": 3803123,
-          "fetched_at": "2026-08-10T02:55:51+00:00"
+          "fetched_at": "2026-08-30T06:17:06+00:00"
         }
       ],
       "notes": "42 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
@@ -80,7 +80,7 @@
       "title": "Our World in Data — curated indicators",
       "url": "https://ourworldindata.org/grapher",
       "licence": "CC BY 4.0 (underlying producers' terms apply)",
-      "fetched_at": "2026-08-24T02:49:47+00:00",
+      "fetched_at": "2026-08-30T06:18:26+00:00",
       "upstream_release": null,
       "vintage": "per indicator and country; newest observation 2026",
       "citation": "Global Carbon Budget (2025); Population based on various sources (2024); Institute for Crime & Justice Policy Research (2026); Institute for Crime & Justice Policy Research (2026); Population based on various sources (2024); Jonathan Hanson and Rachel Sigman (2021); Population based on various sources (2023); V-Dem (2026), via Our World in Data",
@@ -89,61 +89,61 @@
           "url": "https://ourworldindata.org/grapher/electoral-democracy-index.csv",
           "sha256": "b10099af07ae1c4900edb9e7cd8d2d3876bbca5b3bb1bae69e70932fcdb4bd7e",
           "size_bytes": 1115469,
-          "fetched_at": "2026-08-16T03:29:57+00:00"
+          "fetched_at": "2026-08-30T06:18:05+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/liberal-democracy-index.csv",
           "sha256": "d6c331b8ea80027599e1bca8e28aab544382c1625b2536ea62f4df4fcb122de6",
           "size_bytes": 1073845,
-          "fetched_at": "2026-08-16T03:29:58+00:00"
+          "fetched_at": "2026-08-30T06:18:08+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/human-rights-index-vdem.csv",
           "sha256": "6303ce0a230c707b9e05e5248ee7c462494eda19ba71bbd2e3204ef25378cd97",
           "size_bytes": 1137721,
-          "fetched_at": "2026-08-16T03:30:00+00:00"
+          "fetched_at": "2026-08-30T06:18:11+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/political-regime.csv",
           "sha256": "1e0d045bc702591c95c9885a6dbe5e8bed13bcca9b2a236464caa7c6098851ff",
           "size_bytes": 647110,
-          "fetched_at": "2026-08-16T03:30:02+00:00"
+          "fetched_at": "2026-08-30T06:18:13+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/political-corruption-index.csv",
           "sha256": "fd1733e084221ec2a6e6a8b01b9f6b4baeedfa179c25d9e3d3d57348d2b4df8f",
           "size_bytes": 930777,
-          "fetched_at": "2026-08-16T04:01:43+00:00"
+          "fetched_at": "2026-08-30T06:18:15+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/rule-of-law-index.csv",
           "sha256": "20aa91fad74cbd3c5ef2db1abf6f4d69b9abf0f03fbe6ee0461080d02bd8372b",
           "size_bytes": 1137564,
-          "fetched_at": "2026-08-16T04:01:45+00:00"
+          "fetched_at": "2026-08-30T06:18:18+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/state-capacity-index.csv",
           "sha256": "cfd0cab19277043fccdda3f5e16d42b4a936ae3787d6dceb99664cc54f6b4a40",
           "size_bytes": 237821,
-          "fetched_at": "2026-08-16T04:01:47+00:00"
+          "fetched_at": "2026-08-30T06:18:21+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/co-emissions-per-capita.csv",
           "sha256": "11a3a3531e4d814f96c5b6ce1ce4888be554cab5a48fe1394ba72f1b590e976e",
           "size_bytes": 801498,
-          "fetched_at": "2026-08-16T03:30:03+00:00"
+          "fetched_at": "2026-08-30T06:18:22+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/prison-population-rate.csv",
           "sha256": "65d8476363f800f9795b1f567f6f0394e48b9a76baeae8678955ccc12de34c77",
           "size_bytes": 51544,
-          "fetched_at": "2026-08-24T02:49:46+00:00"
+          "fetched_at": "2026-08-30T06:18:24+00:00"
         },
         {
           "url": "https://ourworldindata.org/grapher/prison-capacity.csv",
           "sha256": "8b1e979f48c83df30675787689d31355466092051b3b3f87d79dfb46d99d40d9",
           "size_bytes": 5149,
-          "fetched_at": "2026-08-24T02:49:47+00:00"
+          "fetched_at": "2026-08-30T06:18:26+00:00"
         }
       ],
       "notes": "10 series, primary source for the Freedom section (V-Dem democracy and human-rights indices, Regimes of the World classification) and CO2 per capita (Global Carbon Budget). Distinct from the population cross-check, which remains validation-only."
@@ -152,7 +152,7 @@
       "title": "RSF World Press Freedom Index",
       "url": "https://rsf.org/sites/default/files/import_classement/2026.csv",
       "licence": "© Reporters Without Borders; reproduced with attribution",
-      "fetched_at": "2026-08-24T02:45:01+00:00",
+      "fetched_at": "2026-08-30T06:18:28+00:00",
       "upstream_release": "Thu, 30 Apr 2026 02:45:58 GMT",
       "vintage": "2026",
       "citation": "Reporters Without Borders (RSF), World Press Freedom Index 2026",
@@ -163,8 +163,8 @@
       "title": "UNODC — persons held in prisons and penal facilities",
       "url": "https://data.unodc.org/sites/dataportal.unodc.org/files/2026-07/data_cts_prisons_and_prisoners.xlsx",
       "licence": "United Nations / UNODC terms; free reuse with attribution",
-      "fetched_at": "2026-08-24T02:45:11+00:00",
-      "upstream_release": "Thu, 16 Jul 2026 07:35:44 GMT",
+      "fetched_at": "2026-08-30T06:18:38+00:00",
+      "upstream_release": "Wed, 26 Aug 2026 12:58:34 GMT",
       "vintage": "per country; newest observations 2024",
       "citation": "UNODC, Data Portal — Prisons and prisoners (CTS)",
       "files": [],
@@ -174,29 +174,51 @@
       "title": "Capital punishment by country (Wikipedia)",
       "url": "https://en.wikipedia.org/wiki/Capital_punishment_by_country",
       "licence": "CC BY-SA 4.0",
-      "fetched_at": "2026-08-24T02:45:19+00:00",
-      "upstream_release": "Mon, 24 Aug 2026 02:00:54 GMT",
+      "fetched_at": "2026-08-30T06:18:47+00:00",
+      "upstream_release": "Fri, 28 Aug 2026 11:20:30 GMT",
       "vintage": "page as retrieved; execution figures 2024",
       "citation": "Wikipedia, 'Capital punishment by country' (execution figures originally compiled by Amnesty International)",
       "files": [],
-      "notes": "194 countries matched. Amnesty publishes only PDFs and no keyless structured source exists; Wikipedia's tables are the machine-readable secondary source, used with per-page attribution."
+      "notes": "195 countries matched. Amnesty publishes only PDFs and no keyless structured source exists; Wikipedia's tables are the machine-readable secondary source, used with per-page attribution."
     },
     "education_extras": {
       "title": "University counts; CWUR rankings",
       "url": "https://cwur.org/2026.php",
       "licence": "Hipolabs MIT; CWUR © Center for World University Rankings, displayed with attribution",
-      "fetched_at": "2026-08-24T02:45:23+00:00",
+      "fetched_at": "2026-08-30T06:18:49+00:00",
       "upstream_release": null,
       "vintage": "CWUR 2026; counts as retrieved",
       "citation": "Hipolabs university-domains-list; Center for World University Rankings (CWUR) 2026",
       "files": [],
       "notes": "200 countries with university counts, 93 with CWUR-ranked institutions. Public library counts dropped 2026-08-29: no reliable keyless source."
     },
+    "ifla_library_map": {
+      "title": "IFLA Library Map of the World",
+      "url": "https://librarymap.ifla.org/",
+      "licence": "© IFLA; data contributed by national library associations, reused with attribution",
+      "fetched_at": "2026-08-30T05:06:33+00:00",
+      "upstream_release": null,
+      "vintage": "per country, report years 2013–2025",
+      "citation": "IFLA Library Map of the World (librarymap.ifla.org)",
+      "files": [],
+      "notes": "133 countries with a public-library service-point count. Replaces the Wikidata item count dropped 2026-08-29."
+    },
+    "owid_electricity": {
+      "title": "Electricity mix (Our World in Data) and nuclear plants (Wikidata)",
+      "url": "https://ourworldindata.org/grapher/share-electricity-nuclear.csv",
+      "licence": "OWID CC BY 4.0 (Ember CC BY 4.0; Energy Institute); Wikidata CC0",
+      "fetched_at": "2026-08-30T05:06:54+00:00",
+      "upstream_release": null,
+      "vintage": "latest year per entity",
+      "citation": "Ember (2026) and other sources – with major processing by Our World in Data",
+      "files": [],
+      "notes": "199 entities with an electricity mix, 31 with nuclear plants."
+    },
     "imf_weo": {
       "title": "IMF World Economic Outlook (DataMapper API)",
       "url": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
       "licence": "IMF terms; cited with attribution",
-      "fetched_at": "2026-08-24T02:48:28+00:00",
+      "fetched_at": "2026-08-30T06:19:12+00:00",
       "upstream_release": null,
       "vintage": "annual series incl. projections; boundary 2026",
       "citation": "IMF World Economic Outlook, via the DataMapper API",
@@ -207,7 +229,7 @@
       "title": "Banknote images (Wikimedia Commons banknote categories)",
       "url": "https://commons.wikimedia.org/w/api.php",
       "licence": "Per-file Commons licences, recorded per image",
-      "fetched_at": "2026-08-30T03:04:20+00:00",
+      "fetched_at": "2026-08-30T06:19:17+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
       "citation": "Wikimedia Commons (per-file attribution in artifact); Wikidata P373/P18",
@@ -218,7 +240,7 @@
       "title": "Wikidata — first-level administrative divisions",
       "url": "https://query.wikidata.org/sparql",
       "licence": "CC0",
-      "fetched_at": "2026-08-24T06:14:05+00:00",
+      "fetched_at": "2026-08-30T06:19:22+00:00",
       "upstream_release": null,
       "vintage": "as retrieved; division populations carry their own vintages",
       "citation": "Wikidata (P150 contains administrative territorial entity)",
@@ -229,8 +251,8 @@
       "title": "Copernicus ERA5 country temperatures (via OWID); GeoNames capitals",
       "url": "https://ourworldindata.org/grapher/average-annual-surface-temperature.csv",
       "licence": "Copernicus/OWID CC BY 4.0; GeoNames CC BY 4.0",
-      "fetched_at": "2026-08-24T02:48:41+00:00",
-      "upstream_release": "Mon, 24 Aug 2026 02:15:54 GMT",
+      "fetched_at": "2026-08-30T06:19:35+00:00",
+      "upstream_release": "Sun, 30 Aug 2026 06:19:24 GMT",
       "vintage": "temperature through 2025",
       "citation": "Contains modified Copernicus Climate Change Service information (2026); GeoNames",
       "files": [],
@@ -240,30 +262,30 @@
       "title": "Inventions: Wikidata origin tags + Wikipedia list articles",
       "url": "https://query.wikidata.org/sparql",
       "licence": "Wikidata CC0; Wikipedia CC BY-SA 4.0; per-file Commons licences on images",
-      "fetched_at": "2026-08-30T02:55:03+00:00",
+      "fetched_at": "2026-08-30T06:15:35+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
       "citation": "Wikidata (P495/P61/P575, P31/P279 class gate); English Wikipedia per-country invention lists; Wikimedia Commons",
       "files": [],
-      "notes": "44 countries with qualifying items, 324 inventions. Class gate rejected 1273 candidates (denied class ancestry: 1084, no Wikidata item: 1, no allowed class ancestry: 188); see etl/logs/inventions-rejected.json. Wikidata origin tags plus 50 curated Wikipedia list articles."
+      "notes": "44 countries with qualifying items, 324 inventions. Class gate rejected 1279 candidates (denied class ancestry: 1096, no allowed class ancestry: 183); see etl/logs/inventions-rejected.json. Wikidata origin tags plus 50 curated Wikipedia list articles."
     },
     "airports": {
       "title": "OurAirports roster; Wikidata annual passengers",
       "url": "https://davidmegginson.github.io/ourairports-data/airports.csv",
       "licence": "OurAirports: public domain. Wikidata: CC0",
-      "fetched_at": "2026-08-24T03:58:00+00:00",
-      "upstream_release": "Mon, 24 Aug 2026 01:53:57 GMT",
+      "fetched_at": "2026-08-30T06:19:48+00:00",
+      "upstream_release": "Sun, 30 Aug 2026 01:53:58 GMT",
       "vintage": "roster as retrieved; passenger figures carry their own years",
       "citation": "OurAirports; Wikidata (P3872 patronage)",
       "files": [],
-      "notes": "234 countries, 1642 airports listed, 1210 with a passenger figure. Traffic ranking is best-available, not exhaustive."
+      "notes": "234 countries, 1640 airports listed, 1210 with a passenger figure. Traffic ranking is best-available, not exhaustive."
     },
     "wikipedia_national_symbols": {
       "title": "Wikipedia — lists of national animals, trees and flowers",
       "url": "https://en.wikipedia.org/wiki/List_of_national_animals",
       "licence": "CC BY-SA 4.0 (text); images CC0/CC-BY via iNaturalist or per-file Commons licences",
-      "fetched_at": "2026-08-29T22:00:02+00:00",
-      "upstream_release": "Fri, 21 Aug 2026 08:12:00 GMT",
+      "fetched_at": "2026-08-30T06:20:04+00:00",
+      "upstream_release": "Thu, 27 Aug 2026 20:04:52 GMT",
       "vintage": "pages as retrieved",
       "citation": "Wikipedia: List of national animals; List of national trees; List of national flowers. Photos: iNaturalist (CC0/CC-BY, research grade) with Wikimedia Commons fallback",
       "files": [],
@@ -273,18 +295,18 @@
       "title": "Cuisine: TheMealDB (primary) + Wikidata dishes (fallback)",
       "url": "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
       "licence": "TheMealDB free/educational tier, attributed; Wikidata CC0; per-file Commons licences on fallback images",
-      "fetched_at": "2026-08-30T02:57:01+00:00",
+      "fetched_at": "2026-08-30T05:40:04+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
       "citation": "TheMealDB (themealdb.com); Wikidata (P495 on dish items); Wikimedia Commons",
       "files": [],
-      "notes": "116 countries, 576 dishes; 62 countries served by TheMealDB's uniform 700x700 photography, the rest by Wikidata+Commons. Countries covered by neither render as unavailable."
+      "notes": "116 countries, 579 dishes; 62 countries served by TheMealDB's uniform 700x700 photography, the rest by Wikidata+Commons. Countries covered by neither render as unavailable."
     },
     "natural_earth": {
       "title": "Natural Earth 110m Admin 0 (via world-atlas TopoJSON)",
       "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
       "licence": "Public domain",
-      "fetched_at": "2026-08-10T03:17:51+00:00",
+      "fetched_at": "2026-08-30T06:30:47+00:00",
       "upstream_release": "W/\"1a4f1-8dtjGzlGpmC8r8Twr0B+StMP8nE\"",
       "vintage": null,
       "citation": "Natural Earth, 1:110m Cultural Vectors (public domain)",
@@ -295,7 +317,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-30T03:22:18+00:00",
+      "fetched_at": "2026-08-30T06:16:34+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -306,7 +328,7 @@
       "title": "Flag metadata (Wikidata) and symbolism text (Wikipedia)",
       "url": "https://query.wikidata.org/sparql",
       "licence": "Wikidata CC0; Wikipedia text CC BY-SA 4.0 (attributed, linked)",
-      "fetched_at": "2026-08-30T01:02:00+00:00",
+      "fetched_at": "2026-08-30T06:32:35+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
       "citation": "Wikidata (P163/P571/P287); English Wikipedia flag articles",
@@ -317,7 +339,7 @@
       "title": "Human History timeline (editorial) with Commons images",
       "url": "https://commons.wikimedia.org",
       "licence": "Editorial text CC0 (this project); images per-file PD/CC (attributed)",
-      "fetched_at": "2026-08-30T00:58:03+00:00",
+      "fetched_at": "2026-08-30T06:32:46+00:00",
       "upstream_release": null,
       "vintage": "events file version 2",
       "citation": "etl/reference/history_events.json; Wikimedia Commons",
@@ -328,7 +350,7 @@
       "title": "CIA World Factbook (factbook.json mirror)",
       "url": "https://github.com/factbook/factbook.json",
       "licence": "Public domain (US Government work)",
-      "fetched_at": "2026-08-10T04:21:44+00:00",
+      "fetched_at": "2026-08-30T06:35:12+00:00",
       "upstream_release": "W/\"57c29caa90955152af5a78d177ca86223fec144ff20c73964fc7cdffda88f0fe\"",
       "vintage": "per field; each composition figure carries its own census or estimate year",
       "citation": "Central Intelligence Agency, The World Factbook",
@@ -339,34 +361,34 @@
       "title": "Wikidata heads of state and government, portraits via Wikimedia Commons",
       "url": "https://query.wikidata.org/sparql",
       "licence": "Wikidata: CC0. Portraits: individual Commons licences, attributed via the linked file page.",
-      "fetched_at": "2026-08-24T03:42:27+00:00",
+      "fetched_at": "2026-08-30T06:35:14+00:00",
       "upstream_release": null,
       "vintage": "current incumbents at fetch time",
       "citation": "Wikidata (P35/P6/P18); Wikimedia Commons",
       "files": [
         {
           "url": "https://query.wikidata.org/sparql?format=json&query=%0ASELECT%20%3Fiso3%20%3Frole%20%3Fperson%20%3FpersonLabel%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fcountry%20wdt%3AP298%20%3Fiso3%20.%0A%20%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP35%20%3Fperson%20.%20BIND%28%22hos%22%20AS%20%3Frole%29%0A%20%20%7D%20UNION%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP6%20%3Fperson%20.%20BIND%28%22hog%22%20AS%20%3Frole%29%0A%20%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP18%20%3Fimage%20.%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0A",
-          "sha256": "d5ae4b4716532b6db5e32f2b6543f3a7dbc56f622d9a92caea519b52caa44164",
-          "size_bytes": 323633,
-          "fetched_at": "2026-08-24T03:42:27+00:00"
+          "sha256": "4f756f36704657b27f6cf1c0ae17ee65d7a0a7f190f42ef10c8e8d23aa6d6081",
+          "size_bytes": 322979,
+          "fetched_at": "2026-08-30T06:35:14+00:00"
         }
       ],
-      "notes": "233 entities, 421 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(3), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
+      "notes": "233 entities, 0 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(2), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
     },
     "unesco_whc": {
       "title": "UNESCO World Heritage List",
       "url": "https://whc.unesco.org/en/list/xml",
       "licence": "© UNESCO World Heritage Centre; syndication feed",
-      "fetched_at": "2026-08-16T04:18:43+00:00",
+      "fetched_at": "2026-08-30T06:35:15+00:00",
       "upstream_release": null,
       "vintage": "inscription years 1978 onward",
       "citation": "UNESCO World Heritage Centre, World Heritage List",
       "files": [
         {
           "url": "https://whc.unesco.org/en/list/xml",
-          "sha256": "2577b64e7105180eb174111b99ae36f9f894b97fe5bdac26fef7b713b3ba1514",
-          "size_bytes": 2496451,
-          "fetched_at": "2026-08-16T04:18:43+00:00"
+          "sha256": "3349a442c926fea57eda4f7c099da2e3519a16bf217e3b66dd4bedfb5fc3db81",
+          "size_bytes": 2496432,
+          "fetched_at": "2026-08-30T06:35:15+00:00"
         }
       ],
       "notes": "1272 inscribed properties across 173 entities. Transboundary sites listed under every member state."
@@ -375,7 +397,7 @@
       "title": "RESOLVE Ecoregions 2017",
       "url": "https://storage.googleapis.com/teow2016/Ecoregions2017.zip",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-08-10T04:53:58+00:00",
+      "fetched_at": "2026-08-30T06:35:21+00:00",
       "upstream_release": "Tue, 07 May 2019 00:52:59 GMT",
       "vintage": "2017",
       "citation": "Dinerstein et al. (2017), An Ecoregion-Based Approach to Protecting Half the Terrestrial Realm, BioScience 67(6)",
@@ -386,8 +408,8 @@
       "title": "Our World in Data — Population",
       "url": "https://ourworldindata.org/grapher/population",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-08-10T02:57:43+00:00",
-      "upstream_release": "Mon, 10 Aug 2026 01:48:29 GMT",
+      "fetched_at": "2026-08-30T06:39:12+00:00",
+      "upstream_release": "Sun, 30 Aug 2026 05:01:00 GMT",
       "vintage": "10,000 BCE - 2023",
       "citation": "HYDE (2023); Gapminder (2022); UN WPP (2024), via Our World in Data",
       "files": [],
@@ -498,7 +520,7 @@
         "wikipedia_capital_punishment"
       ],
       "row_count": null,
-      "entity_count": 194
+      "entity_count": 195
     },
     "education/education.json": {
       "description": "University count and CWUR top-10 universities per entity.",
@@ -507,6 +529,22 @@
       ],
       "row_count": null,
       "entity_count": 200
+    },
+    "education/libraries.json": {
+      "description": "Public library service points per entity with report year and collection method (IFLA).",
+      "sources": [
+        "ifla_library_map"
+      ],
+      "row_count": null,
+      "entity_count": 133
+    },
+    "energy/energy.json": {
+      "description": "Electricity generation mix by source, renewable and nuclear shares, and operating nuclear power plants per entity.",
+      "sources": [
+        "owid_electricity"
+      ],
+      "row_count": null,
+      "entity_count": 213
     },
     "economy/debt.json": {
       "description": "General government gross debt (% of GDP) and nominal GDP annual series per entity, IMF WEO, including projections.",
@@ -677,8 +715,9 @@
     "UN WPP 2024 publishes no population series for 13 registry entities (ALA, ATA, ATF, BVT, CCK, CXR, HMD, IOT, NFK, PCN, SGS, SJM, UMI); these render as unavailable rather than zero. Most are uninhabited territories, but Aland Islands and Svalbard are inhabited and are reported within Finland and Norway respectively.",
     "worldbank: plausibility layer suppressed 23 figure(s) (IT.CEL.SETS.P2 x1, PA.NUS.FCRF x14, SH.DYN.MORT x1, SH.STA.MMRT x7); see etl/logs/plausibility-worldbank.json.",
     "RSF index carried 2 ISO3 codes absent from the registry: CSS, CTU.",
-    "Capital punishment table rows not matched to the registry: Congo, Democratic Republic of the, Congo, Republic of the, Myanmar Burma.",
+    "Capital punishment table rows not matched to the registry: Congo, Democratic Republic of the, Congo, Republic of the.",
     "CWUR locations not matched to the registry: Northern Cyprus, Turkey.",
+    "libraries: plausibility layer suppressed 1 figure(s) (libraries.public x1); see etl/logs/plausibility-libraries.json.",
     "airports: plausibility layer suppressed 10 figure(s) (airports.passengers x10); see etl/logs/plausibility-airports.json.",
     "63 populated entities are too small to render as polygons at 110m resolution and appear as point markers instead, among them Singapore, Malta, Hong Kong and Macao. Their area is not to scale on the map.",
     "Entities drawn by more than one Natural Earth polygon: CYP, SOM (Cyprus includes Northern Cyprus; Somalia includes Somaliland). Their fills paint multiple paths.",
@@ -691,5 +730,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "c42d7574b1f4cd28cbbee8c8759aecc04134b8a51f21ce6f8fd1bb9f55b222fa"
+  "content_fingerprint": "44cb1a1a6299bd714a3c25cf24b90dcf23955e7a8a4f81861849c67f67310c09"
 }

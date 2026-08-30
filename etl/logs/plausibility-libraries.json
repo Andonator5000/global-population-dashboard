@@ -1,0 +1,18 @@
+{
+  "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
+  "stage": "libraries",
+  "checked": 134,
+  "summary": {
+    "libraries.public": 1
+  },
+  "suppressed": [
+    {
+      "iso3": "KHM",
+      "metric": "libraries.public",
+      "value": -1.0,
+      "rule": "outside bounds [1, 200000]",
+      "label": "Public libraries",
+      "year": 2017
+    }
+  ]
+}

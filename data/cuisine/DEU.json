@@ -5,17 +5,6 @@
   "note": "Dishes with a recorded country of origin in Wikidata, ranked by Wikipedia-language coverage — a notability proxy, not a popularity measurement.",
   "dishes": [
     {
-      "name": "hamburger",
-      "description": "American sandwich of ground beef patty",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/NCI%20Visuals%20Food%20Hamburger.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:NCI%20Visuals%20Food%20Hamburger.jpg",
-        "license": "Public domain",
-        "author": "Len Rizzi (photographer)",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "pretzel",
       "description": "German baked pastry shaped into a knot",
       "image": {
@@ -23,28 +12,6 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Brezel%20l%20B%C3%A4ckerei-Raisch.jpg",
         "license": "CC BY-SA 4.0",
         "author": "LenaRaisch",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "bread roll",
-      "description": "small, usually round or oblong individual loaf of bread served as a meal accompaniment",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Korb%20mit%20Br%C3%B6tchen.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Korb%20mit%20Br%C3%B6tchen.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "3268zauber",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "tarte flambée",
-      "description": "traditional food of Alsace, Saarland, Baden, and Pfalz",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Franchettis%20Gasthaus%20%2B%20Kitchen%20-%202021-02-05%20-%20Sarah%20Stierch%2006.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Franchettis%20Gasthaus%20%2B%20Kitchen%20-%202021-02-05%20-%20Sarah%20Stierch%2006.jpg",
-        "license": "CC BY 4.0",
-        "author": "Missvain",
         "source": "Wikimedia Commons"
       }
     },
@@ -89,6 +56,39 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Mettbroetchen.jpg",
         "license": "CC BY-SA 3.0",
         "author": "Nize",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Saumagen",
+      "description": "German stuffed dish of potatoes and pork with spices",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Saumagen%20mit%20Sauerkraut.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Saumagen%20mit%20Sauerkraut.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Claus Ableiter",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Schneeball",
+      "description": "German dessert",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schneeball-gebaeck.jpeg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Schneeball-gebaeck.jpeg",
+        "license": "CC BY-SA 3.0",
+        "author": "S.kapfer",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Bauernfrühstück",
+      "description": "potato dish",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bauernfr%C3%BChst%C3%BCck-01.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bauernfr%C3%BChst%C3%BCck-01.jpg",
+        "license": "CC BY 2.0",
+        "author": "Josef Türk Reit im Winkl Chiemgau",
         "source": "Wikimedia Commons"
       }
     }

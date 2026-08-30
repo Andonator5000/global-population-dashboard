@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Beef pumpkin Stew",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/k07k271782502861.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/k07k271782502861.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Curried Spinach from Botswana",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/lyr07q1782505714.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/lyr07q1782505714.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Madombi: Dumplings from Botswana",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/bjeq6g1782505296.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/bjeq6g1782505296.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Magwinya: Doughnut Bites from Botswana",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4ae5tp1782506270.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4ae5tp1782506270.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Phaphatha Flatbreads",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/um1phx1782504510.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Seswaa",
-      "description": "Beef",
+      "description": "Seswaa (as the dish is called in the north of Botswana) or loswao (as the dish is called in the south of the country and western South Africa) is a traditional meat dish of Botswana, made of beef or goat meat.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/p7eid81782503889.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/p7eid81782503889.jpg",

@@ -7,6 +7,7 @@
     {
       "name": "xiao",
       "source": "wikidata",
+      "description": "The xiao is a Chinese vertical end-blown flute.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%E7%90%B4%E8%95%AD%E8%88%87%E6%B4%9E%E8%95%AD.JPG?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:%E7%90%B4%E8%95%AD%E8%88%87%E6%B4%9E%E8%95%AD.JPG",
@@ -18,6 +19,7 @@
     {
       "name": "Bellows",
       "source": "wikipedia",
+      "description": "Bellows are a device constructed to expel a controlled blast of air.",
       "year": 1279,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bellows%20%28PSF%29.svg?width=960",
@@ -30,6 +32,7 @@
     {
       "name": "Cannon",
       "source": "wikipedia",
+      "description": "A cannon is a large-caliber gun classified as a type of artillery, which usually launches a projectile using explosive chemical propellant.",
       "year": 1128,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%28Saint-Lys%29%20Fauconneau%20de%201589.jpg?width=960",
@@ -42,11 +45,13 @@
     {
       "name": "Chain drive",
       "source": "wikipedia",
+      "description": "A chain drive is a way of transmitting mechanical power from one place to another.",
       "year": 1090
     },
     {
       "name": "Amalgam (dentistry)",
       "source": "wikipedia",
+      "description": "In dentistry, amalgam is an alloy of mercury used to fill teeth cavities.",
       "year": 1505
     },
     {
@@ -55,26 +60,31 @@
       "inventors": [
         "Jean le Calabrais"
       ],
+      "description": "A loom is a device used to weave cloth and tapestry.",
       "era": "400 BC"
     },
     {
       "name": "Firecracker",
       "source": "wikipedia",
+      "description": "A firecracker is a small explosive device primarily designed to produce a large amount of noise, especially in the form of a loud bang, usually for celebration or entertainment; any visual effect is incidental to this…",
       "era": "200 BC"
     },
     {
       "name": "Flamethrower",
       "source": "wikipedia",
+      "description": "A flamethrower is a ranged incendiary device designed to project a controllable jet of fire.",
       "year": 1044
     },
     {
       "name": "Hand cannon",
       "source": "wikipedia",
+      "description": "The hand cannon, also known as the gonne or handgonne, is the first true firearm and the successor of the fire lance.",
       "year": 1288
     },
     {
       "name": "Horse collar",
       "source": "wikipedia",
+      "description": "A horse collar is a component of horse harness designed to distribute the force of a load evenly across a horse's shoulders and chest, enabling efficient pulling of a load while not interfering with a horse's windpipe.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Horse%20collar%20%28AM%20615168-1%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Horse%20collar%20%28AM%20615168-1%29.jpg",
@@ -85,11 +95,13 @@
     },
     {
       "name": "India ink",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "India ink or China ink is a simple black or coloured ink once widely used for writing and printing and now more commonly used for drawing and outlining, especially when inking comic books and comic strips."
     },
     {
       "name": "Kite",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A kite is a tethered heavier-than-air craft with wing surfaces that react against the air to create lift and drag forces."
     }
   ]
 }

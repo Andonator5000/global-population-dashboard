@@ -218,6 +218,70 @@ def fetch(
     )
 
 
+def fetch_via_curl(
+    url: str,
+    *,
+    subdir: str,
+    filename: str,
+    refresh: bool = False,
+    user_agent: str | None = None,
+) -> CachedResponse:
+    """`fetch` for a host whose bot mitigation rejects Python's TLS fingerprint.
+
+    IFLA's Library Map (Cloudflare) answers 403 to `requests` with any
+    headers but 200 to curl with a browser user agent. This shells out to
+    the system curl (present on Windows 10+, macOS and the CI runner) and
+    stores the payload and sidecar exactly as `fetch` would, so callers and
+    the manifest see one kind of response. Same cache semantics: a hit
+    requires the payload and sidecar and no --refresh.
+    """
+    import shutil
+    import subprocess
+
+    payload_path = config.CACHE_DIR / subdir / filename
+    sidecar = _sidecar_path(payload_path)
+    if not refresh and payload_path.exists() and sidecar.exists():
+        meta = json.loads(sidecar.read_text(encoding="utf-8"))
+        return CachedResponse(
+            url=meta["url"], path=payload_path, fetched_at=meta["fetched_at"],
+            sha256=meta["sha256"], size_bytes=meta["size_bytes"], from_cache=True,
+            etag=meta.get("etag"), last_modified=meta.get("last_modified"),
+        )
+    curl = shutil.which("curl")
+    if not curl:
+        raise FetchError(f"{url}: curl is required for this source and is not on PATH")
+    payload_path.parent.mkdir(parents=True, exist_ok=True)
+    result = subprocess.run(
+        [curl, "-sS", "-L", "--max-time", str(config.HTTP_TIMEOUT_SECONDS),
+         "-A", user_agent or config.USER_AGENT, "-o", str(payload_path),
+         "-w", "%{http_code}", url],
+        capture_output=True, text=True, check=False,
+    )
+    code = result.stdout.strip()[-3:]
+    if result.returncode != 0 or code != "200":
+        payload_path.unlink(missing_ok=True)
+        raise FetchError(f"{url} via curl returned HTTP {code or '?'}: {result.stderr.strip()[:200]}")
+    body = payload_path.read_bytes()
+    try:
+        json.loads(body.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        payload_path.unlink(missing_ok=True)
+        raise FetchError(f"{url} via curl returned a non-JSON body") from exc
+    meta = {
+        "url": url,
+        "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "sha256": hashlib.sha256(body).hexdigest(),
+        "size_bytes": len(body),
+        "etag": None,
+        "last_modified": None,
+    }
+    sidecar.write_text(json.dumps(meta, indent=2), encoding="utf-8", newline="\n")
+    return CachedResponse(
+        url=url, path=payload_path, fetched_at=meta["fetched_at"],
+        sha256=meta["sha256"], size_bytes=meta["size_bytes"], from_cache=False,
+    )
+
+
 def head_ok(url: str) -> bool:
     """True if `url` responds 200 to a GET of its first bytes.
 
@@ -270,6 +334,7 @@ __all__ = [
     "CachedResponse",
     "FetchError",
     "fetch",
+    "fetch_via_curl",
     "is_cached",
     "head_ok",
     "response_to_manifest_entry",

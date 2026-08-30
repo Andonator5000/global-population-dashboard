@@ -7,6 +7,7 @@
     {
       "name": "Adlam",
       "source": "wikidata",
+      "description": "The Adlam script is a script used to write Fulani.",
       "year": 1989,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Adlam%20acronym.png?width=960",

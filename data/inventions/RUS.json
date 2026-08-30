@@ -10,6 +10,7 @@
       "inventors": [
         "TsNIITochMash"
       ],
+      "description": "2S42 \"Lotos\" (Russian: 2С42 «Лотос»; \"Lotos\") is a developing Russian self-propelled 120 mm mortar system meant for the Russian Airborne Forces.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/2S42%20Lotos.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:2S42%20Lotos.jpg",
@@ -21,6 +22,7 @@
     {
       "name": "Airliner",
       "source": "wikipedia",
+      "description": "An airliner is a type of airplane for transporting passengers and air cargo.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/United%20A320%20N405UA%20at%20BOS%20%2833787222465%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:United%20A320%20N405UA%20at%20BOS%20%2833787222465%29.jpg",
@@ -32,40 +34,49 @@
     {
       "name": "Axe",
       "source": "wikipedia",
+      "description": "An axe is an implement that has been used for thousands of years to shape, split, and cut wood, to harvest timber, and as a weapon.",
       "era": "15th century"
     },
     {
       "name": "Military uniform",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A military uniform is a standardised form of dress worn by members of an armed force or paramilitary unit to identify their service, rank, role and affiliation."
     },
     {
       "name": "Clay",
       "source": "wikipedia",
+      "description": "Clay is a type of fine-grained natural soil material containing clay minerals.",
       "year": 1811
     },
     {
       "name": "Samovar",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A samovar is a metal container traditionally used to heat and boil water."
     },
     {
       "name": "Rushnyk",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A rushnyk or rushnik is a decorative and ritual cloth."
     },
     {
       "name": "Vandal (tanker)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Vandal was a river tanker designed by Karl Hagelin and Johny Johnson for Branobel."
     },
     {
       "name": "Synthetic rubber",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A synthetic rubber is an artificial elastomer."
     },
     {
       "name": "Sikorsky Ilya Muromets",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Sikorsky Ilya Muromets was a class of Russian pre-World War I large four-engine commercial airliners and military heavy bombers used during World War I by the Russian Empire."
     },
     {
       "name": "Troika (driving)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A troika is a high-speed Russian harness driving combination, using three horses abreast."
     },
     {
       "name": "Artificial leather",
@@ -73,6 +84,7 @@
       "inventors": [
         "Ivan Plotnikov"
       ],
+      "description": "Artificial leather, also called synthetic leather, is a material intended to substitute for leather in upholstery, clothing, footwear, and other uses where a leather-like finish is desired but the actual material is…",
       "year": 1935
     }
   ]

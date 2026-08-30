@@ -6,11 +6,13 @@
   "inventions": [
     {
       "name": "Laudanum",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Laudanum is a tincture of opium containing approximately 10% powdered opium by weight."
     },
     {
       "name": "DDT",
       "source": "wikipedia",
+      "description": "Dichlorodiphenyltrichloroethane (DDT) is a colorless, tasteless, and almost odorless crystalline chemical compound, an organochloride.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/P%2Cp%27-dichlorodiphenyltrichloroethane.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:P%2Cp%27-dichlorodiphenyltrichloroethane.svg",
@@ -21,24 +23,29 @@
     },
     {
       "name": "Invar",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Invar, also known generically as FeNi36, is a nickel–iron alloy notable for its uniquely low coefficient of thermal expansion."
     },
     {
       "name": "Computer mouse",
       "source": "wikipedia",
+      "description": "A computer mouse is a hand-held pointing device that detects two-dimensional motion relative to a surface.",
       "year": 2004
     },
     {
       "name": "Immersion blender",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "An immersion blender, also known as a stick blender, mini blender, hand blender, or wand blender, is a kitchen blade grinder used to blend ingredients or purée food in the container in which they are being prepared."
     },
     {
       "name": "Separation of variables",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "In mathematics, separation of variables is any of several methods for solving ordinary and partial differential equations, in which algebra allows one to rewrite an equation so that each of two variables occurs on a…"
     },
     {
       "name": "Diclofenac",
       "source": "wikipedia",
+      "description": "Diclofenac, sold under the brand name Voltaren among others, is a nonsteroidal anti-inflammatory drug (NSAID) used to treat pain and inflammatory diseases such as gout.",
       "year": 1973,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Diclofenac.svg?width=960",
@@ -51,19 +58,23 @@
     {
       "name": "Stent",
       "source": "wikipedia",
+      "description": "In medicine, a stent is a tube usually constructed of a metallic alloy or a polymer.",
       "year": 1986
     },
     {
       "name": "Swiss Army knife",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Swiss Army knife is a multi-tooled pocketknife made for the Swiss Army since 1890, with consumer versions made, particularly since 1945."
     },
     {
       "name": "Argand lamp",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Argand lamp is a type of oil lamp invented in 1780 by Aimé Argand."
     },
     {
       "name": "STN display",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "An STN display is a type of liquid-crystal display (LCD)."
     },
     {
       "name": "Internal combustion engine",
@@ -71,6 +82,7 @@
       "inventors": [
         "François Isaac"
       ],
+      "description": "An internal combustion engine is a heat engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber that is an integral part of the working fluid flow circuit.",
       "year": 1806
     }
   ]

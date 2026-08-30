@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Baked brie with sorrel jam",
-      "description": "Starter",
+      "description": "Starter dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/fg7d641784666908.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/fg7d641784666908.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Chicken Salad With Mushrooms and Bacon",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/t5rgav1784659936.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/t5rgav1784659936.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Classic Potato Salad",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/5q88l31784664151.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/5q88l31784664151.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Danish Rye Bread",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/hem6gk1784664868.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/hem6gk1784664868.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Frikadeller - Danish Meatballs",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/bnhfa71784662834.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/bnhfa71784662834.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Hveder - Danish Wheat Buns",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xceagx1784662211.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xceagx1784662211.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Old-fashioned Danish Apple Trifle",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6aj3wy1784661564.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6aj3wy1784661564.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Open-faced Sandwich With Potato",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wooxjq1784663522.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wooxjq1784663522.jpg",

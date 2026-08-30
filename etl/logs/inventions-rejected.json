@@ -1,11 +1,21 @@
 {
   "note": "Every inventions candidate the class gate rejected, with the reason and the matched roots. 'denied class ancestry' names the deny roots hit; 'no allowed class ancestry' means the item reaches none of the allow roots and may deserve a new root or a Wikidata fix.",
   "summary": {
-    "denied class ancestry": 1084,
-    "no allowed class ancestry": 188,
-    "no Wikidata item": 1
+    "denied class ancestry": 1096,
+    "no allowed class ancestry": 183
   },
   "rejected": [
+    {
+      "source": "wikidata",
+      "iso3": "ARG",
+      "qid": "Q203540",
+      "name": "mate",
+      "reason": "denied class ancestry",
+      "matched": [
+        "drink",
+        "occurrence"
+      ]
+    },
     {
       "source": "wikidata",
       "iso3": "AUS",
@@ -611,6 +621,16 @@
       ]
     },
     {
+      "source": "wikidata",
+      "iso3": "BRA",
+      "qid": "Q2595956",
+      "name": "psychic surgery",
+      "reason": "denied class ancestry",
+      "matched": [
+        "occurrence"
+      ]
+    },
+    {
       "source": "wikipedia",
       "iso3": "BRA",
       "qid": "Q6164543",
@@ -697,6 +717,19 @@
         "occurrence"
       ],
       "description": "Bacterial infection spread by body lice",
+      "listArticle": "List of Brazilian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "BRA",
+      "qid": "Q6957141",
+      "name": "Nachbin's theorem",
+      "reason": "denied class ancestry",
+      "matched": [
+        "mathematical concept",
+        "theorem"
+      ],
+      "description": "Theorem bounding the growth rate of analytic functions",
       "listArticle": "List of Brazilian inventions and discoveries"
     },
     {
@@ -2203,6 +2236,17 @@
     {
       "source": "wikidata",
       "iso3": "DEU",
+      "qid": "Q644776",
+      "name": "Neapolitan ice cream",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food",
+        "occurrence"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "DEU",
       "qid": "Q879973",
       "name": "Perle",
       "reason": "denied class ancestry",
@@ -2234,6 +2278,27 @@
         "biological process",
         "occurrence",
         "organization"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "DEU",
+      "qid": "Q1262781",
+      "name": "dub techno",
+      "reason": "denied class ancestry",
+      "matched": [
+        "occurrence"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "DEU",
+      "qid": "Q181055",
+      "name": "hot dog",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food",
+        "occurrence"
       ]
     },
     {
@@ -2768,6 +2833,18 @@
     {
       "source": "wikipedia",
       "iso3": "EGY",
+      "qid": "Q122224",
+      "name": "Birth control",
+      "reason": "denied class ancestry",
+      "matched": [
+        "occurrence"
+      ],
+      "description": "Prevention of human pregnancy",
+      "listArticle": "List of Egyptian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "EGY",
       "qid": "Q12132",
       "name": "Calendar",
       "reason": "denied class ancestry",
@@ -2886,20 +2963,6 @@
         "mathematical concept"
       ],
       "description": "N-th root of the product of n numbers",
-      "listArticle": "List of Egyptian inventions and discoveries"
-    },
-    {
-      "source": "wikipedia",
-      "iso3": "EGY",
-      "qid": "Q1221899",
-      "name": "Gynaecology",
-      "reason": "denied class ancestry",
-      "matched": [
-        "academic discipline",
-        "field of study",
-        "occurrence"
-      ],
-      "description": "Medical area for women's reproductive health",
       "listArticle": "List of Egyptian inventions and discoveries"
     },
     {
@@ -3141,16 +3204,6 @@
       "matched": [
         "occurrence",
         "sport"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "ESP",
-      "qid": "Q604408",
-      "name": "madeleine",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food"
       ]
     },
     {
@@ -3726,8 +3779,28 @@
     {
       "source": "wikidata",
       "iso3": "FRA",
+      "qid": "Q58263",
+      "name": "eggs Benedict",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "FRA",
       "qid": "Q548319",
       "name": "kouign-amann",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "FRA",
+      "qid": "Q604408",
+      "name": "madeleine",
       "reason": "denied class ancestry",
       "matched": [
         "food"
@@ -4198,16 +4271,6 @@
       "name": "alternative vote plus",
       "reason": "no allowed class ancestry",
       "matched": []
-    },
-    {
-      "source": "wikidata",
-      "iso3": "GBR",
-      "qid": "Q654159",
-      "name": "chicken tikka masala",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food"
-      ]
     },
     {
       "source": "wikidata",
@@ -5653,6 +5716,16 @@
     },
     {
       "source": "wikidata",
+      "iso3": "HTI",
+      "qid": "Q3501282",
+      "name": "Gingerbread house",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
+    },
+    {
+      "source": "wikidata",
       "iso3": "HUN",
       "qid": "Q1554570",
       "name": "Gundel pancake",
@@ -6113,6 +6186,16 @@
       ]
     },
     {
+      "source": "wikidata",
+      "iso3": "IND",
+      "qid": "Q654159",
+      "name": "chicken tikka masala",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
+    },
+    {
       "source": "wikipedia",
       "iso3": "IND",
       "qid": "Q204",
@@ -6122,31 +6205,6 @@
         "mathematical concept"
       ],
       "description": "Whole number",
-      "listArticle": "List of Indian inventions and discoveries"
-    },
-    {
-      "source": "wikipedia",
-      "iso3": "IND",
-      "qid": "Q294284",
-      "name": "AKS primality test",
-      "reason": "denied class ancestry",
-      "matched": [
-        "mathematical concept",
-        "occurrence"
-      ],
-      "description": "Algorithm checking for prime numbers",
-      "listArticle": "List of Indian inventions and discoveries"
-    },
-    {
-      "source": "wikipedia",
-      "iso3": "IND",
-      "qid": "Q4688351",
-      "name": "Aeronautical Development Agency",
-      "reason": "denied class ancestry",
-      "matched": [
-        "organization"
-      ],
-      "description": "Indian governmental aircraft design agency",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
@@ -6192,10 +6250,38 @@
     {
       "source": "wikipedia",
       "iso3": "IND",
-      "qid": null,
-      "name": "Chilli Potato",
-      "reason": "no Wikidata item",
-      "matched": [],
+      "qid": "Q41491",
+      "name": "Carbon capture and storage",
+      "reason": "denied class ancestry",
+      "matched": [
+        "biological process",
+        "occurrence"
+      ],
+      "description": "Process of capturing and storing carbon dioxide from industrial flue gas",
+      "listArticle": "List of Indian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "IND",
+      "qid": "Q5251227",
+      "name": "Defence Metallurgical Research Laboratory",
+      "reason": "denied class ancestry",
+      "matched": [
+        "organization"
+      ],
+      "description": "Indian research laboratory",
+      "listArticle": "List of Indian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "IND",
+      "qid": "Q60741441",
+      "name": "Defluoridation",
+      "reason": "denied class ancestry",
+      "matched": [
+        "occurrence"
+      ],
+      "description": "Water sanitation procedure",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
@@ -6223,6 +6309,19 @@
     {
       "source": "wikipedia",
       "iso3": "IND",
+      "qid": "Q3631634",
+      "name": "Geological Survey of India",
+      "reason": "denied class ancestry",
+      "matched": [
+        "occurrence",
+        "organization"
+      ],
+      "description": "Indian governmental organization",
+      "listArticle": "List of Indian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "IND",
       "qid": "Q11412",
       "name": "Gravity",
       "reason": "denied class ancestry",
@@ -6230,6 +6329,31 @@
         "occurrence"
       ],
       "description": "Attraction of masses and energy",
+      "listArticle": "List of Indian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "IND",
+      "qid": "Q3521733",
+      "name": "Indian Institutes of Science Education and Research",
+      "reason": "denied class ancestry",
+      "matched": [
+        "organization"
+      ],
+      "description": "Group of science education and research institutes in India",
+      "listArticle": "List of Indian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "IND",
+      "qid": "Q6022264",
+      "name": "Indian filter coffee",
+      "reason": "denied class ancestry",
+      "matched": [
+        "drink",
+        "food"
+      ],
+      "description": "Drink made with coffee and milk",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
@@ -6294,43 +6418,26 @@
     {
       "source": "wikipedia",
       "iso3": "IND",
-      "qid": "Q18085818",
-      "name": "Magnetically controlled shunt reactor",
-      "reason": "no allowed class ancestry",
-      "matched": [],
-      "description": "Voltage stabilization equipment",
-      "listArticle": "List of Indian inventions and discoveries"
-    },
-    {
-      "source": "wikipedia",
-      "iso3": "IND",
-      "qid": "Q3294789",
-      "name": "Magnetism",
-      "reason": "no allowed class ancestry",
-      "matched": [],
-      "description": "Class of physical phenomena",
-      "listArticle": "List of Indian inventions and discoveries"
-    },
-    {
-      "source": "wikipedia",
-      "iso3": "IND",
-      "qid": "Q282114",
-      "name": "National Highways Authority of India",
+      "qid": "Q28172123",
+      "name": "Man Mohan Suri",
       "reason": "denied class ancestry",
       "matched": [
-        "organization"
+        "human",
+        "organism"
       ],
-      "description": "Agency for construction & management of Highways in India",
+      "description": "Indian mechanical engineer",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
       "source": "wikipedia",
       "iso3": "IND",
-      "qid": "Q65091624",
-      "name": "Neem-coated urea",
-      "reason": "no allowed class ancestry",
-      "matched": [],
-      "description": "",
+      "qid": "Q1952580",
+      "name": "Multivariate statistics",
+      "reason": "denied class ancestry",
+      "matched": [
+        "occurrence"
+      ],
+      "description": "Simultaneous observation and analysis of more than one outcome variable",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
@@ -6346,27 +6453,39 @@
     {
       "source": "wikipedia",
       "iso3": "IND",
-      "qid": "Q1381652",
-      "name": "Oral rehydration therapy",
+      "qid": "Q30588528",
+      "name": "Plastic road",
       "reason": "denied class ancestry",
       "matched": [
-        "occurrence"
+        "geographical feature"
       ],
-      "description": "Type of fluid replacement used to prevent and treat dehydration",
+      "description": "Vehicular road made from plastic",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
       "source": "wikipedia",
       "iso3": "IND",
-      "qid": "Q17637401",
-      "name": "RISC-V",
+      "qid": "Q7233553",
+      "name": "Post-kala-azar dermal leishmaniasis",
       "reason": "denied class ancestry",
       "matched": [
-        "mathematical concept",
-        "occurrence",
-        "written work"
+        "biological process",
+        "disease",
+        "occurrence"
       ],
-      "description": "Open-source CPU instruction set architecture",
+      "description": "Complication of leishmaniasis",
+      "listArticle": "List of Indian inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "IND",
+      "qid": "Q215675",
+      "name": "Quantum entanglement",
+      "reason": "denied class ancestry",
+      "matched": [
+        "mathematical concept"
+      ],
+      "description": "Physics phenomenon",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
@@ -6385,24 +6504,14 @@
     {
       "source": "wikipedia",
       "iso3": "IND",
-      "qid": "Q7408818",
-      "name": "Samarendra Nath Roy",
+      "qid": "Q4456449",
+      "name": "Score test",
       "reason": "denied class ancestry",
       "matched": [
-        "human",
-        "organism"
+        "mathematical concept",
+        "occurrence"
       ],
-      "description": "Indian-born American mathematician",
-      "listArticle": "List of Indian inventions and discoveries"
-    },
-    {
-      "source": "wikipedia",
-      "iso3": "IND",
-      "qid": "Q85801925",
-      "name": "Solid Fuel Ducted Ramjet",
-      "reason": "no allowed class ancestry",
-      "matched": [],
-      "description": "Indian missile propulsion system",
+      "description": "Statistical test based on the gradient of the likelihood function",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
@@ -6427,16 +6536,6 @@
         "organization"
       ],
       "description": "Academic and research institution",
-      "listArticle": "List of Indian inventions and discoveries"
-    },
-    {
-      "source": "wikipedia",
-      "iso3": "IND",
-      "qid": "Q130279725",
-      "name": "White Tiger Safari & Zoo Mukundpur",
-      "reason": "no allowed class ancestry",
-      "matched": [],
-      "description": "Zoo in Madhya Pradesh, India",
       "listArticle": "List of Indian inventions and discoveries"
     },
     {
@@ -7185,6 +7284,16 @@
     {
       "source": "wikidata",
       "iso3": "ITA",
+      "qid": "Q2915859",
+      "name": "Fettuccine Alfredo",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "ITA",
       "qid": "Q941166",
       "name": "Italia",
       "reason": "denied class ancestry",
@@ -7215,17 +7324,6 @@
       "matched": [
         "food",
         "mathematical concept"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "ITA",
-      "qid": "Q644776",
-      "name": "Neapolitan ice cream",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food",
-        "occurrence"
       ]
     },
     {
@@ -9579,6 +9677,16 @@
     },
     {
       "source": "wikidata",
+      "iso3": "LBR",
+      "qid": "Q5480212",
+      "name": "palm-wine music",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
+    },
+    {
+      "source": "wikidata",
       "iso3": "LVA",
       "qid": "Q1539410",
       "name": "Riga Black Balsam",
@@ -9936,6 +10044,18 @@
       ],
       "description": "Flat or bowl-shaped tortilla that is deep-fried or toasted",
       "listArticle": "List of Mexican inventions and discoveries"
+    },
+    {
+      "source": "wikidata",
+      "iso3": "MYS",
+      "qid": "Q1647694",
+      "name": "USB flash drive",
+      "reason": "denied class ancestry",
+      "matched": [
+        "mathematical concept",
+        "occurrence",
+        "written work"
+      ]
     },
     {
       "source": "wikipedia",
@@ -10340,6 +10460,19 @@
     {
       "source": "wikipedia",
       "iso3": "PAK",
+      "qid": "Q6982905",
+      "name": "Naweed Syed",
+      "reason": "denied class ancestry",
+      "matched": [
+        "human",
+        "organism"
+      ],
+      "description": "Pakistani neuro-scientist",
+      "listArticle": "List of Pakistani inventions and discoveries"
+    },
+    {
+      "source": "wikipedia",
+      "iso3": "PAK",
       "qid": "Q7048938",
       "name": "Non-invasive measurement of intracranial pressure",
       "reason": "denied class ancestry",
@@ -10374,6 +10507,19 @@
       "listArticle": "List of Pakistani inventions and discoveries"
     },
     {
+      "source": "wikipedia",
+      "iso3": "PAK",
+      "qid": "Q7881138",
+      "name": "Umar Saif",
+      "reason": "denied class ancestry",
+      "matched": [
+        "human",
+        "organism"
+      ],
+      "description": "Pakistani computer scientist and entrepreneur",
+      "listArticle": "List of Pakistani inventions and discoveries"
+    },
+    {
       "source": "wikidata",
       "iso3": "PER",
       "qid": "Q2735024",
@@ -10401,16 +10547,6 @@
       "reason": "denied class ancestry",
       "matched": [
         "food"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "PHL",
-      "qid": "Q2595956",
-      "name": "psychic surgery",
-      "reason": "denied class ancestry",
-      "matched": [
-        "occurrence"
       ]
     },
     {
@@ -11961,16 +12097,6 @@
     },
     {
       "source": "wikidata",
-      "iso3": "SLE",
-      "qid": "Q5480212",
-      "name": "palm-wine music",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food"
-      ]
-    },
-    {
-      "source": "wikidata",
       "iso3": "SWE",
       "qid": "Q2265620",
       "name": "Cuba Cola",
@@ -12295,17 +12421,6 @@
     },
     {
       "source": "wikidata",
-      "iso3": "URY",
-      "qid": "Q203540",
-      "name": "mate",
-      "reason": "denied class ancestry",
-      "matched": [
-        "drink",
-        "occurrence"
-      ]
-    },
-    {
-      "source": "wikidata",
       "iso3": "USA",
       "qid": "Q270059",
       "name": "7 Up",
@@ -12492,16 +12607,6 @@
     {
       "source": "wikidata",
       "iso3": "USA",
-      "qid": "Q2915859",
-      "name": "Fettuccine Alfredo",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "USA",
       "qid": "Q2340980",
       "name": "Fidelipac",
       "reason": "denied class ancestry",
@@ -12566,16 +12671,6 @@
     {
       "source": "wikidata",
       "iso3": "USA",
-      "qid": "Q3501282",
-      "name": "Gingerbread house",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "USA",
       "qid": "Q201996",
       "name": "Golden Delicious",
       "reason": "denied class ancestry",
@@ -12603,6 +12698,16 @@
       "name": "Great Filter",
       "reason": "no allowed class ancestry",
       "matched": []
+    },
+    {
+      "source": "wikidata",
+      "iso3": "USA",
+      "qid": "Q5602039",
+      "name": "Greek pizza",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
     },
     {
       "source": "wikidata",
@@ -12711,6 +12816,16 @@
     {
       "source": "wikidata",
       "iso3": "USA",
+      "qid": "Q17083201",
+      "name": "New Haven-style pizza",
+      "reason": "denied class ancestry",
+      "matched": [
+        "food"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "USA",
       "qid": "Q47719",
       "name": "Pepsi",
       "reason": "denied class ancestry",
@@ -12810,6 +12925,16 @@
     {
       "source": "wikidata",
       "iso3": "USA",
+      "qid": "Q2003186",
+      "name": "Sybian",
+      "reason": "denied class ancestry",
+      "matched": [
+        "sex toy"
+      ]
+    },
+    {
+      "source": "wikidata",
+      "iso3": "USA",
       "qid": "Q16993115",
       "name": "Thomcord",
       "reason": "denied class ancestry",
@@ -12826,18 +12951,6 @@
       "reason": "denied class ancestry",
       "matched": [
         "work of art"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "USA",
-      "qid": "Q1647694",
-      "name": "USB flash drive",
-      "reason": "denied class ancestry",
-      "matched": [
-        "mathematical concept",
-        "occurrence",
-        "written work"
       ]
     },
     {
@@ -13019,26 +13132,6 @@
     {
       "source": "wikidata",
       "iso3": "USA",
-      "qid": "Q1262781",
-      "name": "dub techno",
-      "reason": "denied class ancestry",
-      "matched": [
-        "occurrence"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "USA",
-      "qid": "Q58263",
-      "name": "eggs Benedict",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "USA",
       "qid": "Q5523466",
       "name": "garlic knot",
       "reason": "denied class ancestry",
@@ -13084,17 +13177,6 @@
       "reason": "denied class ancestry",
       "matched": [
         "food"
-      ]
-    },
-    {
-      "source": "wikidata",
-      "iso3": "USA",
-      "qid": "Q181055",
-      "name": "hot dog",
-      "reason": "denied class ancestry",
-      "matched": [
-        "food",
-        "occurrence"
       ]
     },
     {
@@ -14920,7 +15002,7 @@
       "matched": [
         "taxon"
       ],
-      "description": "Species of plant in the family Fabaceae",
+      "description": "Species of flowering plant",
       "listArticle": "List of South African inventions and discoveries"
     },
     {

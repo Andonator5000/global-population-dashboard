@@ -14,28 +14,6 @@
         "author": "Libiya11",
         "source": "Wikimedia Commons"
       }
-    },
-    {
-      "name": "Usban",
-      "description": "North African dish of sausage stuffed with rice, herbs, lamb, chopped liver and heart",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%B9%D8%B5%D8%A8%D8%A7%D9%86%20%D8%AA%D9%88%D9%86%D8%B3%D9%8A%201.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%B9%D8%B5%D8%A8%D8%A7%D9%86%20%D8%AA%D9%88%D9%86%D8%B3%D9%8A%201.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "Touzrimounir",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Mafrum",
-      "description": "Libyan-Jewish and Tunisian-Jewish meat dish",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D7%9E%D7%A4%D7%A8%D7%95%D7%9D%20%D7%91%D7%99%D7%AA%D7%99%20%D7%9E%D7%A1%D7%95%D7%A8%D7%AA%D7%99.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D7%9E%D7%A4%D7%A8%D7%95%D7%9D%20%D7%91%D7%99%D7%AA%D7%99%20%D7%9E%D7%A1%D7%95%D7%A8%D7%AA%D7%99.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "אריק",
-        "source": "Wikimedia Commons"
-      }
     }
   ]
 }

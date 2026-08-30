@@ -10,6 +10,7 @@
       "inventors": [
         "Gaston Glock"
       ],
+      "description": "Glock is a brand of polymer-framed, short-recoil-operated, locked-breech semi-automatic pistols (as well as some rifles and one machine pistol) designed and produced by Austrian manufacturer Glock GmbH.",
       "year": 1980,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Glock%2017%20%286825676904%29.jpg?width=960",
@@ -21,11 +22,13 @@
     },
     {
       "name": "Soman",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Soman is an extremely toxic chemical substance."
     },
     {
       "name": "Printed circuit board",
       "source": "wikipedia",
+      "description": "A printed circuit board (PCB), also known as a printed wiring board (PWB), is a laminated sandwich structure of conductive and insulating layers, each with a pattern of traces, planes and other features etched from one…",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/SEG%20DVD%20430%20-%20Printed%20circuit%20board-4276.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:SEG%20DVD%20430%20-%20Printed%20circuit%20board-4276.jpg",
@@ -36,23 +39,28 @@
     },
     {
       "name": "Salvator Dormus pistol",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Salvator-Dormus pistol is the earliest-patented semi-automatic pistol."
     },
     {
       "name": "Snow globe",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A snow globe is a transparent sphere or spheroid, traditionally made of glass, enclosing a miniaturized scene of some sort, often together with a model of a town, neighborhood, landscape or figure."
     },
     {
       "name": "Internal combustion engine",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "An internal combustion engine is a heat engine in which the combustion of a fuel occurs with an oxidizer in a combustion chamber that is an integral part of the working fluid flow circuit."
     },
     {
       "name": "Kaplan turbine",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Kaplan turbine is a propeller-type water turbine which has adjustable blades."
     },
     {
       "name": "Rumpler Tropfenwagen",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Rumpler Tropfenwagen was a car developed by Austrian engineer Edmund Rumpler to be streamlined with a very low drag coefficient."
     }
   ]
 }

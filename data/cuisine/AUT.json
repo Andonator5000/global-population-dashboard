@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Clear Soup with Semolina Dumplings",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qserum1780156275.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qserum1780156275.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Kaspressknödel - Cheese Dumplings",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/x26z3y1780155760.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/x26z3y1780155760.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Tafelspitz",
-      "description": "Beef",
+      "description": "Tafelspitz is boiled veal or beef in broth, served with a mix of minced apples and horseradish.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/svf3d01780298321.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/svf3d01780298321.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Tirolean Dumplings",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/jbw8m11780155348.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/jbw8m11780155348.jpg",

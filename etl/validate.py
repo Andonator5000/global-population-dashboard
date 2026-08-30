@@ -83,6 +83,8 @@ METRIC_BOUNDS: dict[str, tuple[float, float]] = {
     "airports.passengers": (1.0, 200e6),
     # Uninhabited atolls really do have 0 people.
     "subdivisions.population": (0.0, 2e9),
+    "libraries.public": (1.0, 200_000.0),
+    "energy.nuclearPlants": (1.0, 100.0),
 }
 
 #: Ratio rules: metric id -> (denominator, lo, hi). Denominators:
@@ -98,6 +100,10 @@ RATIO_RULES: dict[str, tuple[str, float, float]] = {
     "unodc.facilities": ("per_million", 0.005, 150.0),
     "airports.passengers": ("share_of_population", 0.0, 60.0),
     "subdivisions.population": ("share_of_population", 0.0, 1.05),
+    # Czechia reports 558 branches per million and Canada 443 -- dense,
+    # real networks -- so the ceiling sits well above them; 0.05 is a
+    # country that reports a handful.
+    "libraries.public": ("per_million", 0.05, 1500.0),
 }
 
 

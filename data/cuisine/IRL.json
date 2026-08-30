@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Boxty Breakfast",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Coddled pork with cider",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/7vpsfp1608588991.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/7vpsfp1608588991.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Corned Beef and Cabbage",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xb97a81583266727.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xb97a81583266727.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Crispy Sausages and Greens",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/st1ifa1583267248.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/st1ifa1583267248.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Ham hock colcannon",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/n41ny81608588066.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/n41ny81608588066.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Irish stew",
-      "description": "Beef",
+      "description": "Irish stew (Irish: stobhach Gaelach) or stobhach is a stew from Ireland that is traditionally made with root vegetables and lamb or mutton, but in modern times also it is commonly made with beef.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Mustard champ",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Vegetable Shepherds Pie",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/w8umt11583268117.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/w8umt11583268117.jpg",

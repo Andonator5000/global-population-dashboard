@@ -1,4 +1,4 @@
-// Vendors the OpenMoji black-outline SVGs the product-icon table references
+// Vendors the OpenMoji colour SVGs the product-icon table references
 // into public/icons/openmoji/<HEXCODE>.svg, and fails loudly on any hexcode
 // OpenMoji does not publish (a typo in the table must not become a broken
 // image in production).
@@ -19,7 +19,9 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'public/icons/openmoji')
-const BASE = 'https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/black/svg'
+// Colour variant since 2026-08-30 (maintainer request); the monochrome
+// black set was the first choice for theme-following outlines.
+const BASE = 'https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg'
 
 const table = JSON.parse(readFileSync(join(ROOT, 'src/data/product-icons.json'), 'utf8'))
 const codes = new Set()

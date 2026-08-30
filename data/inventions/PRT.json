@@ -6,39 +6,48 @@
   "inventions": [
     {
       "name": "Azulejo",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Azulejo is a form of Iberian painted tin-glazed ceramic tilework."
     },
     {
       "name": "Adufe",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The adufe is a traditional square frame drum of Moorish origin, which is used in Portugal and Galicia, and other regions of Spain."
     },
     {
       "name": "Portuguese guitar",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Portuguese guitar is a plucked string instrument with twelve steel strings, strung in six courses of two strings."
     },
     {
       "name": "Cavaquinho",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The cavaquinho is a small Portuguese string instrument in the European guitar family, with four wires or gut strings."
     },
     {
       "name": "Viola braguesa",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Viola braguesa is a stringed instrument from Braga in northwestern Portugal."
     },
     {
       "name": "Viola amarantina",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The viola amarantina is a stringed musical instrument from Amarante, Northern Portugal."
     },
     {
       "name": "Galleon",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Galleons were large, multi-decked sailing ships developed in the early 16th century from ships such as the Caravel and the Carrack, in Portugal and in Spain."
     },
     {
       "name": "Square-rigged caravel",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The square-rigged caravel, was a sailing ship created by the Portuguese in the second half of the fifteenth century."
     },
     {
       "name": "Gun port",
       "source": "wikipedia",
+      "description": "A gunport is an opening in the side of the hull of a ship, above the waterline, which allows the muzzle of artillery pieces mounted on the gun deck to fire outside.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gunport.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Gunport.svg",
@@ -49,15 +58,18 @@
     },
     {
       "name": "Nonius (device)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Nonius is a measuring tool used in navigation and astronomy named in honour of its inventor, Pedro Nunes, a Portuguese author, mathematician and navigator."
     },
     {
       "name": "Dilagrama m/65",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Dilagrama m/65 is a device employed by the Portuguese Army that fits G3 Automatic Rifles allowing them to launch defensive Type m/63 hand grenades further than they can be thrown by hand."
     },
     {
       "name": "Mauser–Vergueiro",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The Mauser–Vergueiro is a bolt-action rifle, designed in 1904 by José Alberto Vergueiro, an infantry officer of the Portuguese Army, and manufactured by Deutsche Waffen und Munitionsfabriken (DWM)."
     }
   ]
 }

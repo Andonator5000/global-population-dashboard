@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Bang bang prawn salad",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/4xcfai1763765676.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/4xcfai1763765676.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Barbecue pork buns",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tzsy461763769901.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tzsy461763769901.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Beef Banh Mi Bowls with Sriracha Mayo, Carrot & Pickled Cucumber",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Beef pho",
-      "description": "Beef",
+      "description": "Pho is a Vietnamese soup dish consisting of broth, rice noodles (bánh phở), herbs, and meat – usually beef (phở bò), and sometimes chicken (phở gà).",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/pbzcrx1763765096.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/pbzcrx1763765096.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Noodle bowl salad",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/zry07j1763779321.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/zry07j1763779321.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Prawn & noodle salad with crispy shallots",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0iryz91763778419.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0iryz91763778419.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Purple sprouting broccoli tempura with nuoc cham",
-      "description": "Miscellaneous",
+      "description": "Miscellaneous dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xnv4wf1763756529.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xnv4wf1763756529.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Rice paper dumplings",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sfahy01763752319.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sfahy01763752319.jpg",

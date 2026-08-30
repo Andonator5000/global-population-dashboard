@@ -21,11 +21,11 @@
       "type": "national bird",
       "scientificName": "Pseudibis gigantea",
       "image": {
-        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/106599540/medium.jpg",
-        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/106599540/large.jpg",
-        "commonsPage": "https://www.inaturalist.org/photos/106599540",
+        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/551284250/medium.jpg",
+        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/551284250/large.jpg",
+        "commonsPage": "https://www.inaturalist.org/photos/551284250",
         "license": "CC-BY",
-        "author": "(c) desertnaturalist, some rights reserved (CC BY)",
+        "author": "(c) Katharine Khamhaengwong, some rights reserved (CC BY)",
         "source": "iNaturalist"
       }
     },
@@ -60,9 +60,9 @@
     "type": "national tree",
     "scientificName": "Borassus flabellifer",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/414985854/medium.jpeg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/414985854/large.jpeg",
-      "commonsPage": "https://www.inaturalist.org/photos/414985854",
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/452185299/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/452185299/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/452185299",
       "license": "CC-BY",
       "author": "(c) T R Shankar Raman, some rights reserved (CC BY)",
       "source": "iNaturalist"

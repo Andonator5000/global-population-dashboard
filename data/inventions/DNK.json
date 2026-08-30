@@ -10,6 +10,7 @@
       "inventors": [
         "Ole Kirk Christiansen"
       ],
+      "description": "Lego is a brand of plastic construction toys manufactured by the Lego Group, a privately held company based in Billund, Denmark.",
       "year": 1949,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lego%20bricks.jpg?width=960",
@@ -22,6 +23,7 @@
     {
       "name": "Tychonic system",
       "source": "wikipedia",
+      "description": "The Tychonic system is a model of the universe published by Tycho Brahe in 1588, which combines what he saw as the mathematical benefits of the Copernican system with the philosophical and \"physical\" benefits of the…",
       "year": 1588
     },
     {
@@ -29,11 +31,13 @@
       "source": "wikipedia",
       "inventors": [
         "Ole Rømer"
-      ]
+      ],
+      "description": "A thermometer is a device that measures temperature."
     },
     {
       "name": "C++",
       "source": "wikipedia",
+      "description": "C++ is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ISO%20C%2B%2B%20Logo.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:ISO%20C%2B%2B%20Logo.svg",

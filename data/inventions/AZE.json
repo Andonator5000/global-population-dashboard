@@ -7,28 +7,34 @@
     {
       "name": "Fuzzy control system",
       "source": "wikipedia",
+      "description": "A fuzzy control system is a control system based on fuzzy logic – a mathematical system that analyzes analog input values in terms of logical variables that take on continuous values between 0 and 1, in contrast to…",
       "year": 1973
     },
     {
       "name": "Oil",
       "source": "wikipedia",
+      "description": "Oil is a liquid with varying degrees of viscosity depending on temperature.",
       "year": 1958
     },
     {
       "name": "Istiglal anti-materiel rifle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The İstiglal IST-14.5 anti-materiel rifle is a recoil-operated, semi-automatic anti-materiel sniper rifle produced by Telemexanika zavodu, subsidiary of the Ministry of Defence Industry of Azerbaijan."
     },
     {
       "name": "Yalguzag sniper rifle",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Yalguzag sniper rifle is a bolt-action sniper rifle that fires the 7.62×51mm NATO round used by the Azerbaijani Land Forces."
     },
     {
       "name": "Balaban (instrument)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The balaban or balaman is a double-reed pipe with cylindrical bore, about 35 centimetres (14 in) in length, with eight finger holes and one thumb hole, which is played in the eastern part of Iran's historic Azerbaijan…"
     },
     {
       "name": "Nagara (drum)",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "The nagara or naghara is a drum used in India."
     }
   ]
 }

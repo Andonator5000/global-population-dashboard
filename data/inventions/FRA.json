@@ -10,6 +10,7 @@
       "inventors": [
         "Jacques-Louis-Henri Chauchat"
       ],
+      "description": "The Chauchat was the standard light machine gun or \"machine rifle\" of the French Army during World War I (1914–18).",
       "year": 1915,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chauchat%201%20%2850643241222%29%20%28cropped%29.jpg?width=960",
@@ -25,6 +26,7 @@
       "inventors": [
         "Jean Hilaire Asté"
       ],
+      "description": "The ophicleide is a family of conical-bore keyed brass instruments invented in early 19th-century France to extend the keyed bugle into the lower range.",
       "year": 1821,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Basophicle%C3%AFde%2C%20BK-NM-11430-46.jpg?width=960",
@@ -40,6 +42,7 @@
       "inventors": [
         "André Broca"
       ],
+      "description": "The Arbalète sauterelle type A, or simply Sauterelle, was a bomb-throwing crossbow used by French and British forces on the Western Front during World War I.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Sauterelle%201915.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Sauterelle%201915.jpg",
@@ -51,20 +54,24 @@
     {
       "name": "Clavecin électrique",
       "source": "wikipedia",
+      "description": "The clavecin électrique was a musical instrument invented in 1759 by Jean-Baptiste Thillaie Delaborde, a French Jesuit priest.",
       "year": 1759
     },
     {
       "name": "Hydrometer",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A hydrometer or lactometer is an instrument used for measuring density or relative density of liquids based on the concept of buoyancy."
     },
     {
       "name": "Ligature (medicine)",
       "source": "wikipedia",
+      "description": "In surgery or medical procedure, a ligature consists of a piece of thread (suture) tied around an anatomical structure, usually a blood vessel, another hollow structure, or an accessory skin tag to shut it off.",
       "year": 1565
     },
     {
       "name": "Quinine",
       "source": "wikipedia",
+      "description": "Quinine is a medication used to treat malaria and babesiosis.",
       "year": 1820,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quinine.svg?width=960",
@@ -77,21 +84,25 @@
     {
       "name": "Motorcycle",
       "source": "wikipedia",
+      "description": "A motorcycle is a two or three-wheeled motor vehicle steered by a handlebar from a saddle-style seat.",
       "year": 1869
     },
     {
       "name": "Submarine",
       "source": "wikipedia",
+      "description": "A submarine is a watercraft capable of independent operation underwater.",
       "year": 1863
     },
     {
       "name": "Scooter (motorcycle)",
       "source": "wikipedia",
+      "description": "A scooter or motor scooter, is a motorcycle with an underbone or step-through frame, a seat, and a platform for the rider's feet.",
       "year": 1902
     },
     {
       "name": "Catalytic converter",
       "source": "wikipedia",
+      "description": "A catalytic converter is an exhaust emission control device which converts toxic gases and pollutants in exhaust gas from an internal combustion engine into less-toxic pollutants by catalyzing a redox reaction.",
       "year": 1956
     },
     {
@@ -100,6 +111,7 @@
       "inventors": [
         "Joseph Marie Jacquard"
       ],
+      "description": "The Jacquard machine is a device fitted to a loom that simplifies the process of manufacturing textiles with such complex patterns as brocade, damask and matelassé.",
       "year": 1801
     }
   ]

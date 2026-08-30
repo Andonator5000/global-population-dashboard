@@ -31,13 +31,6 @@
       "municipality": "Ndola",
       "large": true,
       "passengers": null
-    },
-    {
-      "name": "Peter Zuze Air Force Base",
-      "iata": null,
-      "municipality": "Ndola",
-      "large": false,
-      "passengers": null
     }
   ]
 }

@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "15-minute chicken & halloumi burgers",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/vdwloy1713225718.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/vdwloy1713225718.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Banana Pancakes",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "BBQ Pork Sloppy Joes",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Beef Brisket Pot Roast",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ursuup1487348423.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ursuup1487348423.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Big Mac",
-      "description": "Beef",
+      "description": "The Big Mac is a brand of hamburger sold by the international fast food restaurant chain McDonald's.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/urzj1d1587670726.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Chick-Fil-A Sandwich",
-      "description": "Chicken",
+      "description": "Chick-fil-A, Inc.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Chicken Fajita Mac and Cheese",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Choc Chip Pecan Pie",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg",

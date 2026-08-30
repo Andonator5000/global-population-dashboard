@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Apam balik",
-      "description": "Dessert",
+      "description": "Martabak manis (lit.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Ayam Percik",
-      "description": "Chicken",
+      "description": "Chicken dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/020z181619788503.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/020z181619788503.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Beef Rendang",
-      "description": "Beef",
+      "description": "Rendang is a stir-fried meat dish or dry curry made of meat stewed in coconut milk and spices, widely popular across Indonesia, Malaysia, Singapore, Brunei, and the southern parts of the Philippines, where each version…",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Laksa King Prawn Noodles",
-      "description": "Seafood",
+      "description": "Seafood dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Mee goreng mamak",
-      "description": "Seafood",
+      "description": "Mee goreng, or mi goreng, refers to fried noodles in the Malay-speaking cultures of several countries, such as the Southeast Asian states of Brunei, Malaysia, and Singapore.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Nasi lemak",
-      "description": "Seafood",
+      "description": "Nasi lemak is a dish originating in Malay cuisine that consists of rice cooked in coconut milk and pandan leaf.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Roti john",
-      "description": "Beef",
+      "description": "Roti John (lit.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/hx335q1619789561.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/hx335q1619789561.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Seri muka kuih",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg",

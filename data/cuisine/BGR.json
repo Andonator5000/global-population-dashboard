@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Bulgarian Green Salad",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/6awyvm1782685205.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/6awyvm1782685205.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Bulgarian Honey Cookies",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/y75q5j1782685779.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/y75q5j1782685779.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Cabbage with Ground Beef",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/brmxra1782681940.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/brmxra1782681940.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Cottage Cheese And Feta Stuffed Peppers",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/w0rsga1782683912.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/w0rsga1782683912.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Easy White Bean Soup",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/p5nzbk1782680889.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/p5nzbk1782680889.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Keto Banitsa",
-      "description": "Side",
+      "description": "Side dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/8wynv41782686271.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/8wynv41782686271.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Oyster Mushroom Soup",
-      "description": "Starter",
+      "description": "Starter dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/0r7y5n1782681336.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/0r7y5n1782681336.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Potato Moussaka Recipe",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/08ez421782683409.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/08ez421782683409.jpg",

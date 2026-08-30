@@ -6,16 +6,19 @@
   "inventions": [
     {
       "name": "Ogham",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Ogham is an Early Medieval alphabet used primarily to write the early Irish language, and later the Old Irish language."
     },
     {
       "name": "Magnesium hydroxide",
       "source": "wikipedia",
+      "description": "Magnesium hydroxide is an inorganic compound with the chemical formula Mg(OH)2.",
       "year": 1809
     },
     {
       "name": "Hypodermic needle",
       "source": "wikipedia",
+      "description": "A hypodermic needle is a very thin, hollow tube with one sharp tip.",
       "year": 1844,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/HypodermicBronami.svg?width=960",
@@ -28,46 +31,55 @@
     {
       "name": "Anemometer",
       "source": "wikipedia",
+      "description": "In meteorology, an anemometer is a device that measures wind speed and direction.",
       "year": 1846
     },
     {
       "name": "Stethoscope",
       "source": "wikipedia",
+      "description": "The stethoscope is a medical device for auscultation, or listening to internal sounds of an animal or human body.",
       "year": 1851
     },
     {
       "name": "Transatlantic telegraph cable",
       "source": "wikipedia",
+      "description": "Transatlantic telegraph cables are undersea cables running under the Atlantic Ocean which were used for telegraph communications.",
       "year": 1865
     },
     {
       "name": "Respirator",
       "source": "wikipedia",
+      "description": "A respirator is type of mask designed to protect the wearer from inhaling hazardous atmospheres including lead fumes, vapors, gases and particulate matter such as dusts and airborne pathogens such as viruses.",
       "year": 1871
     },
     {
       "name": "Brennan torpedo",
       "source": "wikipedia",
+      "description": "The Brennan torpedo was a torpedo patented by Irish-born Australian inventor Louis Brennan in 1877.",
       "year": 1877
     },
     {
       "name": "Conveyor belt",
       "source": "wikipedia",
+      "description": "A conveyor belt is the carrying medium of a belt conveyor system.",
       "year": 1905
     },
     {
       "name": "Three-point hitch",
       "source": "wikipedia",
+      "description": "The three-point hitch is a widely used type of hitch for attaching plows and other implements to an agricultural or industrial tractor.",
       "year": 1926
     },
     {
       "name": "Drumm Battery Train",
       "source": "wikipedia",
+      "description": "The Drumm Battery Train was an Irish battery electric multiple unit developed in the 1930s which ran successfully in service on the Dublin to Bray route.",
       "year": 1931
     },
     {
       "name": "Ejection seat",
       "source": "wikipedia",
+      "description": "In aircraft, an ejection seat or ejector seat is a system designed to rescue the pilot or other crew of an aircraft in an emergency.",
       "year": 1946,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/EjectionSeats40.jpg?width=960",

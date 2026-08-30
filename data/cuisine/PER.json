@@ -49,16 +49,6 @@
       }
     },
     {
-      "name": "Empanadilla",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Empanadillas.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Empanadillas.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Fernand0",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "butifarra",
       "description": "Peruvian ham sandwich",
       "image": {

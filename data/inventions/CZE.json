@@ -10,11 +10,13 @@
       "inventors": [
         "Prokop Diviš"
       ],
+      "description": "The Denis d'or was reportedly the first musical instrument in history that involved electricity.",
       "year": 1748
     },
     {
       "name": "Arc lamp",
       "source": "wikipedia",
+      "description": "An arc lamp or arc light is a lamp that produces light by an electric arc.",
       "year": 1880
     },
     {
@@ -23,6 +25,7 @@
       "inventors": [
         "Viktor Kaplan"
       ],
+      "description": "The Kaplan turbine is a propeller-type water turbine which has adjustable blades.",
       "year": 1912
     },
     {
@@ -30,11 +33,13 @@
       "source": "wikipedia",
       "inventors": [
         "Vavřín Krčil"
-      ]
+      ],
+      "description": "A string bag, net bag, or mesh bag is an open netted bag."
     },
     {
       "name": "Robot",
       "source": "wikipedia",
+      "description": "A robot is a machine, especially one programmable via a computer, capable of automatically carrying out a complex series of actions.",
       "year": 1920
     },
     {
@@ -43,6 +48,7 @@
       "inventors": [
         "Jan Anderle"
       ],
+      "description": "A cabin motorcycle is a fully or semi-enclosed motorcycle.",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quasar%20%285966715122%29.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Quasar%20%285966715122%29.jpg",
@@ -57,24 +63,29 @@
       "inventors": [
         "Vladimír Svatý"
       ],
+      "description": "A water-jet loom is a type of shuttleless loom in which a high-velocity jet of water is used as the propulsion medium to carry the weft yarn across the warp shed during each pick.",
       "year": 1950
     },
     {
       "name": "Contact lens",
       "source": "wikipedia",
+      "description": "Contact lenses, or simply contacts, are thin lenses placed directly on the surface of the eyes.",
       "year": 1961
     },
     {
       "name": "Remoska",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A Remoska is a small portable electric oven with the cooking element housed in the lid of a pot."
     },
     {
       "name": "Semtex",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "Semtex is a general-purpose plastic explosive containing RDX and PETN."
     },
     {
       "name": "Tenofovir disoproxil",
       "source": "wikipedia",
+      "description": "Tenofovir disoproxil, sold under the brand name Viread among others, is a medication used to treat chronic hepatitis B and to prevent and treat HIV/AIDS.",
       "year": 1986,
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tenofovir%20disoproxil%20structure.svg?width=960",

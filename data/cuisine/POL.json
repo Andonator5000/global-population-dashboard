@@ -6,7 +6,7 @@
   "dishes": [
     {
       "name": "Beetroot & red cabbage sauerkraut",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ra2k8a1764365055.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ra2k8a1764365055.jpg",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Bigos (Hunters Stew)",
-      "description": "Pork",
+      "description": "Pork dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/md8w601593348504.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/md8w601593348504.jpg",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Bigos (Polish hunter's stew)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/fl4brj1764361323.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/fl4brj1764361323.jpg",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Braised stuffed cabbage",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/z267f71764364072.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/z267f71764364072.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Challah",
-      "description": "Side",
+      "description": "Challah ( (K)HAH-lə; Hebrew: חַלָּה, romanized: ḥallā, pronounced [χaˈla, ħalˈlaː]; pl.",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/fm01ky1764366365.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/fm01ky1764366365.jpg",
@@ -66,7 +66,7 @@
     },
     {
       "name": "Cucumber & fennel salad",
-      "description": "Vegetarian",
+      "description": "Vegetarian dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/ei21r61764365935.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/ei21r61764365935.jpg",
@@ -78,7 +78,7 @@
     },
     {
       "name": "Golabki (cabbage roll)",
-      "description": "Beef",
+      "description": "Beef dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg",
@@ -90,7 +90,7 @@
     },
     {
       "name": "Mini bundt cakes",
-      "description": "Dessert",
+      "description": "Dessert dish",
       "image": {
         "imageUrl": "https://www.themealdb.com/images/media/meals/tzt3it1764363293.jpg/medium",
         "largeUrl": "https://www.themealdb.com/images/media/meals/tzt3it1764363293.jpg",

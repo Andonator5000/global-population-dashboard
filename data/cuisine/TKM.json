@@ -6,11 +6,13 @@
   "dishes": [
     {
       "name": "chal",
+      "description": "Turkic beverage of fermented camel milk",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shubat.jpg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Shubat.jpg",
         "license": "CC BY 2.0",
-        "author": "Upyernoz on Flickr"
+        "author": "Upyernoz on Flickr",
+        "source": "Wikimedia Commons"
       }
     }
   ]

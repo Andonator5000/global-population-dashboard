@@ -10,11 +10,13 @@
       "inventors": [
         "Van Suwannukul"
       ],
+      "description": "The Hercules Graphics Card (HGC) is a computer graphics controller formerly made by Hercules Computer Technology, Inc.",
       "year": 1982
     },
     {
       "name": "Parachute",
-      "source": "wikipedia"
+      "source": "wikipedia",
+      "description": "A parachute is a device designed to slow an object's descent through an atmosphere by creating drag or aerodynamic lift."
     }
   ]
 }

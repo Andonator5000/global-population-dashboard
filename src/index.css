@@ -32,9 +32,8 @@ summary {
 }
 
 /*
- * Monochrome OpenMoji glyphs (public/icons/openmoji, CC BY-SA 4.0), painted
- * in currentColor through a mask so one SVG follows both themes. Sized in
- * em so an icon scales with the text it decorates.
+ * OpenMoji colour glyphs (public/icons/openmoji, CC BY-SA 4.0) as inline
+ * images, sized in em so an icon scales with the text it decorates.
  */
 .om-icon {
   display: inline-block;
@@ -42,9 +41,7 @@ summary {
   height: 1.25em;
   flex-shrink: 0;
   vertical-align: -0.3em;
-  background-color: currentColor;
-  -webkit-mask: var(--icon) center / contain no-repeat;
-  mask: var(--icon) center / contain no-repeat;
+  object-fit: contain;
 }
 
 /*
@@ -304,6 +301,13 @@ body {
       font-size: 2.75rem;
     }
   }
+}
+
+/* Entity table rows light up on hover/focus-within so a dense table stays
+   scannable; the raised surface token keeps AA for every cell. */
+.entity-table tbody tr:hover,
+.entity-table tbody tr:focus-within {
+  background: var(--surface-raised);
 }
 
 /* Long entity names and ecoregion labels would otherwise force a table wider
