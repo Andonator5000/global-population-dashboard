@@ -1632,6 +1632,23 @@ Interaction is tap-to-open on touch (labels are real buttons with
 `aria-expanded`), hover-to-open on mouse, Escape to close, and the cards
 are reachable and dismissible from the keyboard.
 
+## 25. Type (2026-08-29, UI UX Pro Max exploration)
+
+The maintainer asked for the UI UX Pro Max style database to be explored.
+Its design-system generator, keyword-driven, proposed a data-dense
+dashboard style (Fira Sans / Fira Code) and, on other queries, an OLED
+dark theme -- neither fits a reference atlas read for its prose and its
+figures alike. Its "News Editorial" pairing does: a text serif for titles,
+a clean sans for the interface. Ruling: **Newsreader** (optical-size axis,
+so it holds at both 44 px page titles and 18 px section headings) for `h1`
+and `h2` only; **Public Sans** (tabular figures) for body, labels, controls
+and every number. Both are OFL and self-hosted in `public/fonts` (Latin
+subsets, ~240 KB total) because the site makes no third-party requests at
+render time; the system stack remains the fallback and nothing in the
+layout depends on the webfonts loading. Colour tokens, spacing and
+component patterns are unchanged -- the database's "Minimalism & Swiss"
+entry described what the site already does.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

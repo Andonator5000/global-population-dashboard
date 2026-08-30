@@ -150,7 +150,7 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
         <div className="flex items-center gap-3">
           <h2
             id="all-entities-heading"
-            className="text-sm font-medium uppercase tracking-wide"
+            className="font-sans text-sm font-medium uppercase tracking-wide"
           >
             All Entities
           </h2>

@@ -1443,7 +1443,7 @@ function FlagFacts({
       className="mt-5 rounded-lg border px-4 py-3 text-sm"
       style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
     >
-      <h2 className="text-sm font-medium">
+      <h2 className="font-sans text-sm font-medium">
         {meta.flagName ?? `Flag of ${name}`}
       </h2>
       <dl className="mt-1 grid gap-x-6 gap-y-1 sm:grid-cols-2">
