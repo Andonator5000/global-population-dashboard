@@ -325,13 +325,24 @@ export function Timeline({
                 style={{ marginLeft: GUTTER + 12, width: `calc(100% - ${GUTTER + 12}px)` }}
               >
                 <span
-                  className="shrink-0 text-xs"
+                  className="text-xs"
                   style={{ color: 'var(--text-muted)', fontVariantNumeric: 'tabular-nums' }}
                 >
-                  {formatYear(event.startYear, event.datePrecision)}
-                  {event.endYear !== null && event.endYear !== event.startYear
-                    ? `–${formatYear(event.endYear, event.datePrecision)}`
-                    : ''}
+                  {/* A range like "400,000 years ago–40,000 years ago" is wider
+                      than a phone's event column; it may break after the dash
+                      (each side stays whole), which is why it is not shrink-0. */}
+                  <span className="whitespace-nowrap">
+                    {formatYear(event.startYear, event.datePrecision)}
+                    {event.endYear !== null && event.endYear !== event.startYear ? '–' : ''}
+                  </span>
+                  {event.endYear !== null && event.endYear !== event.startYear && (
+                    <>
+                      <wbr />
+                      <span className="whitespace-nowrap">
+                        {formatYear(event.endYear, event.datePrecision)}
+                      </span>
+                    </>
+                  )}
                 </span>
                 <span className="font-medium underline-offset-2 hover:underline">
                   {event.title}
@@ -351,23 +362,30 @@ export function Timeline({
                 className="mt-1 max-w-xl rounded-lg border p-3 text-sm shadow-lg"
                 style={
                   {
-                    marginLeft: GUTTER + 12,
+                    // On a phone the right column is ~200px, which left the
+                    // card 175px wide with a 96px image beside a 42px text
+                    // column -- the words ran outside the box (maintainer
+                    // report, 2026-08-30). Narrow: the open card breaks out
+                    // over the era column to span the whole timeline; the
+                    // open row already sits at z-index 20 above the boxes.
+                    marginLeft: wide ? GUTTER + 12 : -(leftCol - 8),
+                    width: wide ? undefined : `calc(100% + ${leftCol - 16}px)`,
                     borderColor: 'var(--border)',
                     background: 'var(--surface-raised)',
                     color: 'var(--text)',
                   } as CSSProperties
                 }
               >
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   {event.image && (
                     <img
                       src={event.image.url}
                       alt=""
                       loading="lazy"
-                      className="h-24 w-24 shrink-0 rounded object-cover"
+                      className="h-36 w-full shrink-0 rounded object-cover sm:h-24 sm:w-24"
                     />
                   )}
-                  <div className="min-w-0">
+                  <div className="min-w-0 break-words">
                     <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
                       {CATEGORY_LABELS[event.category] ?? event.category}
                       {' · '}
