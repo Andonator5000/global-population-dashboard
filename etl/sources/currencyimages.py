@@ -24,10 +24,12 @@ ACCEPTANCE CRITERIA (all must hold)
     3. the file's name/description/categories mention nothing on the
        REJECT list (reverse, back, coin, stack, bundle, hand, wallet, pile,
        set, collection, both sides, specimen sheet, ...)
-    4. the file is categorised or described as a banknote (or came from a
-       banknote category)
+    4. the file's metadata names THIS currency (its unit word, ISO code or
+       Commons category name) -- a walk from "Banknotes of Brazil" also
+       reaches cruzado and mil-réis notes, which are not the real
 Ranking among compliant files: an explicit "obverse"/"front" mention
-first, then the smallest denomination the name states, then width.
+first, then the NEWEST year the filename states (the current series
+beats a colonial-era note), then width.
 
 Everything considered -- accepted, rejected and why -- is written to
 etl/logs/currency-images.json for review.
@@ -36,16 +38,36 @@ etl/logs/currency-images.json for review.
 from __future__ import annotations
 
 import json
+import os
 import re
 import urllib.parse
 from typing import Any
 
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity
-from ..fetch import CachedResponse, FetchError, fetch
+from ..fetch import CachedResponse, FetchError, fetch, is_cached
 from . import commons
 
 _OVERRIDES_PATH = config.REFERENCE_DIR / "currency_image_overrides.json"
+
+# Operational escape hatch, same shape as LEADERS_CACHED_ONLY: with
+# CURRENCY_CACHED_ONLY=1 the category walk consults only listings already
+# in the raw cache and never fetches a new one. Commons rate-limits the
+# ~1,500 category listings hard enough that a cold walk takes hours; a
+# local run can ship what is cached and the monthly refresh (which runs
+# WITHOUT the flag) completes the walk.
+_CACHED_ONLY = os.environ.get("CURRENCY_CACHED_ONLY") == "1"
+
+# The Commons category WALK is opt-in (CURRENCY_WALK=1) until its
+# candidate selection is trusted. The 2026-08-29 review found two ways it
+# picks a wrong note: a currency used by several countries (the yen is
+# listed for Zimbabwe, the euro for Croatia) pulls in those countries'
+# category trees, and a stem such as "Brazilian" matches the historic
+# "Brazilian cruzado". Without the walk, only the Wikidata P18 image and
+# any editorial override are judged -- fewer images, none mismatched. The
+# maintainer chose to hold the walk for another day rather than delay the
+# batch; see DATA_DECISIONS.md §22.7.
+_WALK = os.environ.get("CURRENCY_WALK") == "1"
 
 MIN_WIDTH = 600
 ASPECT_MIN = 1.45
@@ -62,7 +84,7 @@ _REJECT = re.compile(
     r"specimen sheet|uncut|sheet of|proof|essay|error note|counterfeit|"
     r"fake|replica|souvenir|play money|torn|damaged|detail|close-up|"
     r"crop|watermark|hologram|security thread|signature|serial number|"
-    r"collage|montage|composite|mosaic|comparison|various|assorted|"
+    r"collage|montage|composite|mosaic|comparison|gallery|various|assorted|"
     r"mixed|several|multiple|all denominations|full set|complete set|"
     r"medal|token|cheque|check|bond|stamp|voucher|scrip|map|chart|"
     r"table|diagram|logo|symbol|sign|icon|emblem)\b",
@@ -70,7 +92,8 @@ _REJECT = re.compile(
 )
 _OBVERSE = re.compile(r"\b(obverse|front|face|avers|recto|o\.jpg)\b", re.IGNORECASE)
 _BANKNOTE = re.compile(r"banknote|bank note|bill\b|note\b|paper money|currency", re.IGNORECASE)
-_DENOMINATION = re.compile(r"\b(\d{1,3}(?:[,.]\d{3})*|\d+)\b")
+_YEAR = re.compile(r"\b(1[89]\d{2}|20\d{2})\b")
+_STOP = {"the", "of", "and", "dollar", "pound", "franc", "peso", "rupee", "shilling", "dinar", "rial", "riyal", "krone", "krona"}
 
 
 def _aspect(record: dict[str, Any]) -> float | None:
@@ -84,7 +107,8 @@ def _aspect(record: dict[str, Any]) -> float | None:
 
 
 def _judge(
-    filename: str, record: dict[str, Any], *, from_banknote_category: bool
+    filename: str, record: dict[str, Any], *, from_banknote_category: bool,
+    stems: set[str] = frozenset(),
 ) -> tuple[bool, str]:
     """(compliant, reason). The reason names the FIRST failed criterion."""
     mime = (record.get("mime") or "").lower()
@@ -107,18 +131,32 @@ def _judge(
         return False, f"criterion 3: metadata mentions '{hit.group(1).lower()}'"
     if not (from_banknote_category or _BANKNOTE.search(haystack)):
         return False, "criterion 4: not described or categorised as a banknote"
+    if stems and not any(stem in haystack for stem in stems):
+        return False, f"criterion 4: metadata names none of {sorted(stems)}"
     return True, "compliant"
 
 
 def _rank_key(filename: str, record: dict[str, Any]) -> tuple[int, float, float]:
     text = f"{filename} {record.get('objectName') or ''}"
     obverse = 0 if _OBVERSE.search(text) else 1
-    denominations = [
-        float(d.replace(",", "")) for d in _DENOMINATION.findall(filename)
-        if 0 < float(d.replace(",", "")) < 1_000_000
-    ]
-    smallest = min(denominations) if denominations else 1e9
-    return (obverse, smallest, -float(record.get("width") or 0))
+    years = [int(y) for y in _YEAR.findall(text)]
+    newest = max(years) if years else 0
+    return (obverse, -float(newest), -float(record.get("width") or 0))
+
+
+def _stems(name: str, code: str, commons_category: str | None) -> set[str]:
+    """Words that identify THIS currency in a filename or category.
+
+    The unit noun alone ("dollar", "pound") would match every other
+    country's notes, so generic unit words are dropped and the qualifier
+    kept: "Brazilian real" -> {real, brl}; "pound sterling" -> {sterling,
+    gbp}; "Eastern Caribbean dollar" -> {eastern, caribbean, xcd}.
+    """
+    words = [w for w in re.split(r"[\s-]+", name.lower()) if len(w) > 2 and w not in _STOP]
+    stems = {code.lower(), *words}
+    if commons_category:
+        stems |= {w for w in re.split(r"[\s-]+", commons_category.lower()) if len(w) > 2 and w not in _STOP}
+    return {s for s in stems if not s.startswith("q") or not s[1:].isdigit()}
 
 
 def _category_members(
@@ -130,6 +168,8 @@ def _category_members(
         f"&list=categorymembers&cmtype={cmtype}&cmlimit=100"
         f"&cmtitle={urllib.parse.quote('Category:' + category)}"
     )
+    if _CACHED_ONLY and not is_cached(url, subdir="currency-images/categories"):
+        return []
     try:
         response = fetch(
             url, refresh=refresh, subdir="currency-images/categories",
@@ -143,10 +183,17 @@ def _category_members(
 
 
 def _banknote_files(
-    name: str, commons_category: str | None, *, refresh: bool,
-    responses: list[CachedResponse],
+    name: str, commons_category: str | None, countries: list[str],
+    stems: set[str], *, refresh: bool, responses: list[CachedResponse],
 ) -> tuple[list[str], list[str]]:
-    """(candidate filenames, categories walked) for one currency."""
+    """(candidate filenames, categories walked) for one currency.
+
+    Commons files banknotes by CURRENCY for some ("Banknotes of the euro")
+    and by COUNTRY for others ("Banknotes of the United States"), so both
+    forms are tried. Subcategories are followed only when their title
+    names this currency or one of its countries -- a walk from "Banknotes
+    of Brazil" must not descend into the cruzado.
+    """
     roots: list[str] = []
     stem = name.strip()
     for title in (
@@ -154,6 +201,14 @@ def _banknote_files(
         f"{stem} banknotes",
     ):
         roots.append(title)
+    for country in countries[:3]:
+        roots.append(f"Banknotes of {country}")
+        roots.append(f"Banknotes of the {country}")
+    country_words = {w.lower() for c in countries for w in c.split() if len(w) > 3}
+
+    def relevant(sub_name: str) -> bool:
+        lower = sub_name.lower()
+        return any(s in lower for s in stems) or any(w in lower for w in country_words)
     walked: list[str] = []
     files: list[str] = []
     seen: set[str] = set()
@@ -173,7 +228,7 @@ def _banknote_files(
                 category, cmtype="subcat", refresh=refresh, responses=responses,
             ):
                 sub_name = sub.removeprefix("Category:")
-                if re.match(r"(?i)banknotes? of", sub_name):
+                if re.match(r"(?i)banknotes? of", sub_name) and relevant(sub_name):
                     visit(sub_name, depth + 1)
 
     for root in roots:
@@ -215,7 +270,7 @@ def ingest(
         if not code.startswith("_")
     }
 
-    # code -> {name, p18, commonsCategory}
+    # code -> {name, p18, commonsCategory, countries}
     by_code: dict[str, dict[str, Any]] = {}
     for row in response.read_json()["results"]["bindings"]:
         iso3 = (row.get("iso3", {}).get("value") or "").upper()
@@ -225,11 +280,16 @@ def ingest(
         if iso3 not in registry or not re.fullmatch(r"[A-Z]{3}", code):
             continue
         image = row.get("image", {}).get("value")
+        label = (row.get("currencyLabel", {}).get("value") or "").strip()
         record = by_code.setdefault(code, {
-            "name": row.get("currencyLabel", {}).get("value") or code,
+            "name": label if label and not re.fullmatch(r"Q\d+", label) else code,
             "p18": None,
             "commonsCategory": None,
+            "countries": [],
         })
+        country_name = registry[iso3].name_common
+        if country_name not in record["countries"]:
+            record["countries"].append(country_name)
         if image and not record["p18"]:
             record["p18"] = commons.filename_from_special_path(image)
         category = row.get("commonsCategory", {}).get("value")
@@ -242,10 +302,16 @@ def ingest(
     candidates: dict[str, list[tuple[str, bool]]] = {}
     walked_by_code: dict[str, list[str]] = {}
     for code, record in sorted(by_code.items()):
-        files, walked = _banknote_files(
-            record["name"], record["commonsCategory"],
-            refresh=refresh, responses=responses,
-        )
+        if record["name"] == code and record["commonsCategory"]:
+            record["name"] = record["commonsCategory"]
+        record["stems"] = _stems(record["name"], code, record["commonsCategory"])
+        if _WALK:
+            files, walked = _banknote_files(
+                record["name"], record["commonsCategory"], record["countries"],
+                record["stems"], refresh=refresh, responses=responses,
+            )
+        else:
+            files, walked = [], []
         walked_by_code[code] = walked
         entries: list[tuple[str, bool]] = [(f, True) for f in files]
         if record["p18"]:
@@ -272,7 +338,10 @@ def ingest(
             if record is None:
                 judged.append({"file": filename, "verdict": "missing on Commons"})
                 continue
-            ok, reason = _judge(filename, record, from_banknote_category=from_cat)
+            ok, reason = _judge(
+                filename, record, from_banknote_category=from_cat,
+                stems=by_code[code]["stems"],
+            )
             judged.append({"file": filename, "verdict": reason})
             if ok:
                 compliant.append((_rank_key(filename, record), filename))
@@ -359,6 +428,13 @@ def ingest(
             f"judged); {len(without)} render the fallback card. Criteria in "
             f"etl/sources/currencyimages.py; verdicts in "
             f"etl/logs/currency-images.json."
+            + (" Built with CURRENCY_CACHED_ONLY=1: only cached category "
+               "listings were consulted."
+               if _CACHED_ONLY else "")
+            + (" Commons category walk enabled (CURRENCY_WALK=1)."
+               if _WALK else
+               " Category walk OFF: candidates are the Wikidata P18 image "
+               "and editorial overrides only, judged by the same criteria.")
         ),
     )
     manifest_mod.record_artifact(

@@ -75,6 +75,13 @@ def _cache_key(url: str) -> str:
     return hashlib.sha256(url.encode("utf-8")).hexdigest()[:20]
 
 
+def is_cached(url: str, *, subdir: str, filename: str | None = None) -> bool:
+    """True when `fetch` would answer this URL from the raw cache."""
+    name = filename or f"{_cache_key(url)}{_suffix_for(url)}"
+    payload_path = config.CACHE_DIR / subdir / name
+    return payload_path.exists() and _sidecar_path(payload_path).exists()
+
+
 def _sidecar_path(payload_path: Path) -> Path:
     return payload_path.with_suffix(payload_path.suffix + ".meta.json")
 
@@ -263,6 +270,7 @@ __all__ = [
     "CachedResponse",
     "FetchError",
     "fetch",
+    "is_cached",
     "head_ok",
     "response_to_manifest_entry",
     "asdict",

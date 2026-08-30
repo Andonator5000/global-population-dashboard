@@ -1,0 +1,2052 @@
+{
+  "note": "Every banknote candidate considered per currency and the first acceptance criterion it failed. Currencies under 'withoutImage' render the fallback card; add a compliant Commons filename to etl/reference/currency_image_overrides.json to supply one (it is still judged).",
+  "withImage": 28,
+  "withoutImage": [
+    "AED",
+    "AFN",
+    "ALL",
+    "AOA",
+    "ARS",
+    "AWG",
+    "BAM",
+    "BBD",
+    "BDT",
+    "BMD",
+    "BND",
+    "BOB",
+    "BRL",
+    "BSD",
+    "BTN",
+    "BWP",
+    "BYN",
+    "BZD",
+    "CAD",
+    "CDF",
+    "CHF",
+    "CLP",
+    "CNY",
+    "COP",
+    "CUP",
+    "CZK",
+    "DJF",
+    "DKK",
+    "DOP",
+    "DZD",
+    "EGP",
+    "ERN",
+    "ETB",
+    "EUR",
+    "FJD",
+    "FKP",
+    "GBP",
+    "GHS",
+    "GIP",
+    "GMD",
+    "GNF",
+    "GTQ",
+    "GYD",
+    "HKD",
+    "HNL",
+    "HTG",
+    "HUF",
+    "IDR",
+    "ILS",
+    "INR",
+    "IQD",
+    "IRR",
+    "JMD",
+    "JOD",
+    "JPY",
+    "KGS",
+    "KHR",
+    "KMF",
+    "KPW",
+    "KRW",
+    "KWD",
+    "KYD",
+    "KZT",
+    "LBP",
+    "LKR",
+    "LRD",
+    "LSL",
+    "LYD",
+    "MAD",
+    "MDL",
+    "MKD",
+    "MNT",
+    "MOP",
+    "MUR",
+    "MXN",
+    "MYR",
+    "MZN",
+    "NAD",
+    "NGN",
+    "NIO",
+    "NOK",
+    "NPR",
+    "NZD",
+    "OMR",
+    "PAB",
+    "PEN",
+    "PGK",
+    "PHP",
+    "PKR",
+    "PLN",
+    "PLZ",
+    "PYG",
+    "QAR",
+    "RSD",
+    "RUB",
+    "RWF",
+    "SAR",
+    "SBD",
+    "SCR",
+    "SDG",
+    "SEK",
+    "SGD",
+    "SHP",
+    "SLE",
+    "SOS",
+    "STN",
+    "SYP",
+    "SZL",
+    "THB",
+    "TJS",
+    "TND",
+    "TRY",
+    "TTD",
+    "TWD",
+    "UAH",
+    "UGX",
+    "USD",
+    "UYU",
+    "VES",
+    "VND",
+    "VUV",
+    "WST",
+    "XAF",
+    "XCD",
+    "XCG",
+    "XOF",
+    "XPF",
+    "ZAR",
+    "ZMW",
+    "ZWG"
+  ],
+  "currencies": {
+    "AED": {
+      "name": "United Arab Emirates dirham",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "UAE Dirham Symbol.svg",
+          "verdict": "criterion 2: aspect ratio 1.15 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "AFN": {
+      "name": "afghani",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Afghānestān paper money.JPG",
+          "verdict": "criterion 2: aspect ratio 1.26 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "ALL": {
+      "name": "Albanian lek",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Albania-5000lek-voor.jpg",
+          "verdict": "criterion 1: only 452px wide (min 600)"
+        }
+      ]
+    },
+    "AMD": {
+      "name": "Armenian dram",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "100,000 Armenian dram - 2009 (obverse).jpg",
+      "judged": [
+        {
+          "file": "100,000 Armenian dram - 2009 (obverse).jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "AOA": {
+      "name": "kwanza",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "ARS": {
+      "name": "Argentine convertible peso",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "AUD": {
+      "name": "Australian dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Australian $1 - original series - obverse.jpg",
+      "judged": [
+        {
+          "file": "Australian $1 - original series - obverse.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "AWG": {
+      "name": "Aruban florin",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "AZN": {
+      "name": "Azerbaijani manat",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "5 manat - 2020 - obv.jpg",
+      "judged": [
+        {
+          "file": "5 manat - 2020 - obv.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "BAM": {
+      "name": "convertible mark",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Konvertibilne marke vertikalno.png",
+          "verdict": "criterion 1: only 213px wide (min 600)"
+        }
+      ]
+    },
+    "BBD": {
+      "name": "Barbadian dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "A Barbadian 100 Dollar bill with various Barbadian coins on it.jpg",
+          "verdict": "criterion 2: aspect ratio 0.91 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "BDT": {
+      "name": "Bangladeshi taka",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Imagesbanknotes.jpg",
+          "verdict": "criterion 1: only 599px wide (min 600)"
+        }
+      ]
+    },
+    "BHD": {
+      "name": "Bahraini dinar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Бахрейн 1 р.jpg",
+      "judged": [
+        {
+          "file": "Бахрейн 1 р.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "BIF": {
+      "name": "Burundian franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Burundi 10Franc Front.jpg",
+      "judged": [
+        {
+          "file": "Burundi 10Franc Front.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "BMD": {
+      "name": "Bermudian dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Bermudaanse 2 dollar note.jpg",
+          "verdict": "criterion 2: aspect ratio 0.49 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "BND": {
+      "name": "Brunei dollar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "BOB": {
+      "name": "boliviano",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Bolivianos moneda.png",
+          "verdict": "criterion 1: only 550px wide (min 600)"
+        }
+      ]
+    },
+    "BRL": {
+      "name": "Brazilian real",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Novas cedulas real thumb11-450x309.jpg",
+          "verdict": "criterion 1: only 450px wide (min 600)"
+        }
+      ]
+    },
+    "BSD": {
+      "name": "Bahamian dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "BHS001.JPG",
+          "verdict": "criterion 1: only 384px wide (min 600)"
+        }
+      ]
+    },
+    "BTN": {
+      "name": "ngultrum",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "10 Ngultrum Vorderseite.jpg",
+          "verdict": "criterion 1: only 493px wide (min 600)"
+        }
+      ]
+    },
+    "BWP": {
+      "name": "Botswana pula",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "BYN": {
+      "name": "Belarusian ruble",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1 ruble Belarus 2009 reverse.png",
+          "verdict": "criterion 1: only 310px wide (min 600)"
+        }
+      ]
+    },
+    "BZD": {
+      "name": "Belize dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Bel i.jpg",
+          "verdict": "criterion 2: aspect ratio 4.74 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "CAD": {
+      "name": "Canadian dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "CAD 4 dollar bill.jpg",
+          "verdict": "criterion 1: only 500px wide (min 600)"
+        }
+      ]
+    },
+    "CDF": {
+      "name": "Congolese franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Congo 5F-2.jpg",
+          "verdict": "criterion 2: aspect ratio 1.01 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "CHF": {
+      "name": "Swiss franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1SwissFranc2001.jpg",
+          "verdict": "criterion 1: only 567px wide (min 600)"
+        }
+      ]
+    },
+    "CLP": {
+      "name": "Chilean peso",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Peso Chile Vs.JPG",
+          "verdict": "criterion 2: aspect ratio 1.00 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "CNY": {
+      "name": "renminbi",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "COP": {
+      "name": "Colombian peso",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Bundle Colombia.jpg",
+          "verdict": "criterion 3: metadata mentions 'bundle'"
+        }
+      ]
+    },
+    "CRC": {
+      "name": "Costa Rican colón",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Costa Rica banknotes 10 Colones banknote of 1967..JPG",
+      "judged": [
+        {
+          "file": "Costa Rica banknotes 10 Colones banknote of 1967..JPG",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "CUP": {
+      "name": "Cuban peso",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Coin-collection-sekekala.com-030116-246.jpg",
+          "verdict": "criterion 2: aspect ratio 1.00 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "CVE": {
+      "name": "Cape Verdean escudo",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "200escudos-2014-300px-front.jpg",
+      "judged": [
+        {
+          "file": "200escudos-2014-300px-front.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "CZK": {
+      "name": "Czech koruna",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Czk- coins and banknotes.JPG",
+          "verdict": "criterion 2: aspect ratio 1.33 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "DJF": {
+      "name": "Djiboutian franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "5 djiboutian francs.jpg",
+          "verdict": "criterion 1: only 430px wide (min 600)"
+        }
+      ]
+    },
+    "DKK": {
+      "name": "Danish krone",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "DOP": {
+      "name": "Dominican peso",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1 centavo 1969.jpg",
+          "verdict": "criterion 1: only 530px wide (min 600)"
+        }
+      ]
+    },
+    "DZD": {
+      "name": "Algerian dinar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "EGP": {
+      "name": "Egyptian pound",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "EGP 100 Pounds 2009 (Front).jpg",
+          "verdict": "criterion 1: only 300px wide (min 600)"
+        }
+      ]
+    },
+    "ERN": {
+      "name": "nakfa",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Banknotes of Eritrea 02.JPG",
+          "verdict": "criterion 2: aspect ratio 0.75 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "ETB": {
+      "name": "bir",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Ethiopia, 25 centimes 1944, Selassie I.jpg",
+          "verdict": "criterion 3: metadata mentions 'coin'"
+        }
+      ]
+    },
+    "EUR": {
+      "name": "Euro",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Euro Series Banknotes (2019) - centered.png",
+          "verdict": "criterion 2: aspect ratio 1.33 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "FJD": {
+      "name": "Fijian dollar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "FKP": {
+      "name": "Falkland Islands pound",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Falkland Islands £X coins reverse (cropped).png",
+          "verdict": "criterion 1: only 203px wide (min 600)"
+        }
+      ]
+    },
+    "GBP": {
+      "name": "pound sterling",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "One Pound 1983 obverse.jpg",
+          "verdict": "criterion 2: aspect ratio 1.02 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "GEL": {
+      "name": "Georgian lari",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "100 lari. Georgia, 2016 a.png",
+      "judged": [
+        {
+          "file": "100 lari. Georgia, 2016 a.png",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "GHS": {
+      "name": "Ghana cedi",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "50 Ghana Cedis.jpg",
+          "verdict": "criterion 1: only 356px wide (min 600)"
+        }
+      ]
+    },
+    "GIP": {
+      "name": "Gibraltar pound",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1842 Gibraltar Half Quart.jpg",
+          "verdict": "criterion 3: metadata mentions 'coin'"
+        }
+      ]
+    },
+    "GMD": {
+      "name": "dalasi",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Gambia-billet-monedes.jpg",
+          "verdict": "criterion 2: aspect ratio 0.79 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "GNF": {
+      "name": "Guinean franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "100Francs Guineen.jpg",
+          "verdict": "criterion 2: aspect ratio 1.02 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "GTQ": {
+      "name": "quetzal",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Ein Quetzal.jpg",
+          "verdict": "criterion 3: metadata mentions 'coins'"
+        }
+      ]
+    },
+    "GYD": {
+      "name": "Guyanese dollar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "HKD": {
+      "name": "Hong Kong dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "HK Museum of History One Dollar Banknote Legal Tender 1935 Printed in UK.JPG",
+          "verdict": "criterion 3: metadata mentions 'gallery'"
+        }
+      ]
+    },
+    "HNL": {
+      "name": "Honduran lempira",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "HND002.JPG",
+          "verdict": "criterion 1: only 336px wide (min 600)"
+        }
+      ]
+    },
+    "HTG": {
+      "name": "gourde",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "250G.png",
+          "verdict": "criterion 1: only 495px wide (min 600)"
+        }
+      ]
+    },
+    "HUF": {
+      "name": "forint",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Uj forintok.png",
+          "verdict": "criterion 1: only 500px wide (min 600)"
+        }
+      ]
+    },
+    "IDR": {
+      "name": "rupiah",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Indonesian Rupiah (IDR) banknotes.png",
+          "verdict": "criterion 1: only 549px wide (min 600)"
+        }
+      ]
+    },
+    "ILS": {
+      "name": "new shekel",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "השטרות החדשים של ישראל.jpg",
+          "verdict": "criterion 2: aspect ratio 1.00 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "INR": {
+      "name": "Indian rupee",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Banknote of india.jpg",
+          "verdict": "criterion 1: only 429px wide (min 600)"
+        }
+      ]
+    },
+    "IQD": {
+      "name": "Iraqi dinar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "IRR": {
+      "name": "Iranian rial",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "500 IRR 1981 Type 2 Back.jpg",
+          "verdict": "criterion 3: metadata mentions 'back'"
+        }
+      ]
+    },
+    "ISK": {
+      "name": "Icelandic króna",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Iceland 500 Kronur banknote of 1928.jpg",
+      "judged": [
+        {
+          "file": "Iceland 500 Kronur banknote of 1928.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "JMD": {
+      "name": "Jamaican dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Jamaica 100 Dollar observe.jpg",
+          "verdict": "criterion 1: only 480px wide (min 600)"
+        }
+      ]
+    },
+    "JOD": {
+      "name": "Jordanian dinar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "10 Piaster Jordanien.png",
+          "verdict": "criterion 1: only 500px wide (min 600)"
+        }
+      ]
+    },
+    "JPY": {
+      "name": "yen",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "JPY coin3.png",
+          "verdict": "criterion 1: only 565px wide (min 600)"
+        }
+      ]
+    },
+    "KES": {
+      "name": "Kenyan shilling",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Kenyan 20 Shilling Note.jpg",
+      "judged": [
+        {
+          "file": "Kenyan 20 Shilling Note.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "KGS": {
+      "name": "Kyrgyz som",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "KG 2008 CuZn 1tyiyn a.png",
+          "verdict": "criterion 1: only 500px wide (min 600)"
+        }
+      ]
+    },
+    "KHR": {
+      "name": "riel",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Cambodia 2002 50r obverse.jpg",
+          "verdict": "criterion 3: metadata mentions 'collection'"
+        }
+      ]
+    },
+    "KMF": {
+      "name": "Comorian franc",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "KPW": {
+      "name": "North Korean won",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1959-5won-2.jpg",
+          "verdict": "criterion 3: metadata mentions 'reverse'"
+        }
+      ]
+    },
+    "KRW": {
+      "name": "won",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Currency South Korea.jpg",
+          "verdict": "criterion 2: aspect ratio 1.25 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "KWD": {
+      "name": "Kuwaiti dinar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "KYD": {
+      "name": "Cayman Islands dollar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "KZT": {
+      "name": "Kazakhstani tenge",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Kazah tenge.jpg",
+          "verdict": "criterion 2: aspect ratio 1.36 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "LAK": {
+      "name": "Lao kip",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "100000 Laotian kip in 2011 Obverse.jpg",
+      "judged": [
+        {
+          "file": "100000 Laotian kip in 2011 Obverse.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "LBP": {
+      "name": "Lebanese pound",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "500 Lebanese Pounds - Minted 2009 - Backside.jpg",
+          "verdict": "criterion 2: aspect ratio 1.21 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "LKR": {
+      "name": "Sri Lankan rupee",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Sri Lanka 5 rupie Cricket World Cup 03.png",
+          "verdict": "criterion 1: only 514px wide (min 600)"
+        }
+      ]
+    },
+    "LRD": {
+      "name": "Liberian dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Lib5$.png",
+          "verdict": "criterion 1: only 384px wide (min 600)"
+        }
+      ]
+    },
+    "LSL": {
+      "name": "loti",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Lesotho 200 maloti averse 2015.jpg",
+          "verdict": "criterion 1: only 470px wide (min 600)"
+        }
+      ]
+    },
+    "LYD": {
+      "name": "Libyan dinar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "New series of Libyan Dinar Banknotes 2011- present.png",
+          "verdict": "criterion 1: only 450px wide (min 600)"
+        }
+      ]
+    },
+    "MAD": {
+      "name": "Moroccan dirham",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Dirhams marocains (MAD).jpeg",
+          "verdict": "criterion 2: aspect ratio 1.33 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "MDL": {
+      "name": "Moldovan leu",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "10 LEI COIN 2018.png",
+          "verdict": "criterion 1: only 408px wide (min 600)"
+        }
+      ]
+    },
+    "MGA": {
+      "name": "ariary",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Madagascar-500francs 100ariary-banknote029.jpg",
+      "judged": [
+        {
+          "file": "Madagascar-500francs 100ariary-banknote029.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "MKD": {
+      "name": "Macedonian denar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "MMK": {
+      "name": "kyat",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Mya 75k l.jpg",
+      "judged": [
+        {
+          "file": "Mya 75k l.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "MNT": {
+      "name": "Mongolian tögrög",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "MN 1994 200tugrik a.gif",
+          "verdict": "criterion 1: unsupported type image/gif"
+        }
+      ]
+    },
+    "MOP": {
+      "name": "Macanese pataca",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1 Pataca 2007 Macao.jpg",
+          "verdict": "criterion 3: metadata mentions 'coins'"
+        }
+      ]
+    },
+    "MRU": {
+      "name": "Mauritanian ouguiya",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "فئه العمله 74.jpg",
+      "judged": [
+        {
+          "file": "فئه العمله 74.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "MUR": {
+      "name": "Mauritian rupee",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Mauritius banknote.jpg",
+          "verdict": "criterion 2: aspect ratio 1.33 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "MVR": {
+      "name": "Maldivian rufiyaa",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Maldives 20 Rufiyaa Polymer Banknote 2015.jpg",
+      "judged": [
+        {
+          "file": "Maldives 20 Rufiyaa Polymer Banknote 2015.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "MWK": {
+      "name": "Malawian kwacha",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "MWK2000v.jpg",
+      "judged": [
+        {
+          "file": "MWK2000v.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "MXN": {
+      "name": "peso",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Counterfeit Pesos (San Ysidro) (8652511989).jpg",
+          "verdict": "criterion 3: metadata mentions 'counterfeit'"
+        }
+      ]
+    },
+    "MYR": {
+      "name": "Malaysian ringgit",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "10 sen de Malaisie 3.JPG",
+          "verdict": "criterion 2: aspect ratio 1.20 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "MZN": {
+      "name": "Mozambican metical",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "NAD": {
+      "name": "Namibian dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Coins NAD 2005.jpg",
+          "verdict": "criterion 1: only 491px wide (min 600)"
+        }
+      ]
+    },
+    "NGN": {
+      "name": "naira",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Naira symbol.svg",
+          "verdict": "criterion 2: aspect ratio 1.07 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "NIO": {
+      "name": "Nicaraguan córdoba",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Nicaraguan córdoba.png",
+          "verdict": "criterion 3: metadata mentions 'obverse and reverse'"
+        }
+      ]
+    },
+    "NOK": {
+      "name": "Norwegian krone",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "NOK 1 1942.jpg",
+          "verdict": "criterion 1: only 250px wide (min 600)"
+        }
+      ]
+    },
+    "NPR": {
+      "name": "Nepalese rupee",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "One nepalese rupee coin.jpg",
+          "verdict": "criterion 3: metadata mentions 'coin'"
+        }
+      ]
+    },
+    "NZD": {
+      "name": "New Zealand dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Unused proposal for New Zealand Currency (9243555441).jpg",
+          "verdict": "criterion 3: metadata mentions 'coins'"
+        }
+      ]
+    },
+    "OMR": {
+      "name": "Omani rial",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "OMR 0,100.jpg",
+          "verdict": "criterion 2: aspect ratio 0.95 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "PAB": {
+      "name": "Panamanian balboa",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1-balboa-panamc3a1-2011.jpg",
+          "verdict": "criterion 1: only 533px wide (min 600)"
+        }
+      ]
+    },
+    "PEN": {
+      "name": "Nuevo sol",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "S1 1995 Raul Haya del la Torre Anverso.jpg",
+          "verdict": "criterion 2: aspect ratio 1.00 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "PGK": {
+      "name": "kina",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Banknotes and Coins of Papua New Guinea 2673.JPG",
+          "verdict": "criterion 2: aspect ratio 1.31 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "PHP": {
+      "name": "Philippine peso",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Php bill 100 front UP Centennial.jpg",
+          "verdict": "criterion 3: metadata mentions 'logo'"
+        }
+      ]
+    },
+    "PKR": {
+      "name": "Pakistani rupee",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Pakistani rupee sign.png",
+          "verdict": "criterion 1: only 195px wide (min 600)"
+        }
+      ]
+    },
+    "PLN": {
+      "name": "złoty",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "PLZ": {
+      "name": "złoty",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "PYG": {
+      "name": "Paraguayan guaraní",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "La Trinité-sur-Mer 56 Front de mer 2013.jpg",
+          "verdict": "criterion 2: aspect ratio 2.83 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "QAR": {
+      "name": "Qatari riyal",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "QAT001.JPG",
+          "verdict": "criterion 3: metadata mentions 'coins'"
+        }
+      ]
+    },
+    "RON": {
+      "name": "Romanian Leu",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "500 lei. Romania, 2005 a.jpg",
+      "judged": [
+        {
+          "file": "500 lei. Romania, 2005 a.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "RSD": {
+      "name": "Serbian dinar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1000RSD front.jpg",
+          "verdict": "criterion 1: only 594px wide (min 600)"
+        }
+      ]
+    },
+    "RUB": {
+      "name": "Russian ruble",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Current Russian ruble (banknotes).png",
+          "verdict": "criterion 2: aspect ratio 1.00 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "RWF": {
+      "name": "Rwandan franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "100frw.png",
+          "verdict": "criterion 1: only 350px wide (min 600)"
+        }
+      ]
+    },
+    "SAR": {
+      "name": "Saudi riyal",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "50 Halala, Rückseite (1972).jpg",
+          "verdict": "criterion 2: aspect ratio 1.02 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "SBD": {
+      "name": "Solomon Islands dollar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "SCR": {
+      "name": "Seychellois rupee",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Seychellois rupee.jpg",
+          "verdict": "criterion 2: aspect ratio 1.33 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "SDG": {
+      "name": "Sudanese pound",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "SUDAN.png",
+          "verdict": "criterion 3: metadata mentions 'coins'"
+        }
+      ]
+    },
+    "SEK": {
+      "name": "Swedish krona",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Femkronan 1976 fram high.jpg",
+          "verdict": "criterion 2: aspect ratio 1.00 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "SGD": {
+      "name": "Singapore dollar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "SHP": {
+      "name": "Saint Helena pound",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "SLE": {
+      "name": "leone",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "500Leone.png",
+          "verdict": "criterion 2: aspect ratio 3.30 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "SOS": {
+      "name": "Somali shilling",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "1000ShS.png",
+          "verdict": "criterion 1: only 591px wide (min 600)"
+        }
+      ]
+    },
+    "SRD": {
+      "name": "Surinamese dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "20surinamedollar.jpg",
+      "judged": [
+        {
+          "file": "20surinamedollar.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "SSP": {
+      "name": "South Sudanese pound",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "2011 South Sudan one pound.jpg",
+      "judged": [
+        {
+          "file": "2011 South Sudan one pound.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "STN": {
+      "name": "São Tomé and Príncipe dobra",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Coins Dobra Sao Tome.png",
+          "verdict": "criterion 1: only 442px wide (min 600)"
+        }
+      ]
+    },
+    "SYP": {
+      "name": "Syrian pound",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "SZL": {
+      "name": "lilangeni",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Coins-of-swaziland.JPG",
+          "verdict": "criterion 1: only 581px wide (min 600)"
+        }
+      ]
+    },
+    "THB": {
+      "name": "baht",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Series 8 Banknote Siam.png",
+          "verdict": "criterion 2: aspect ratio 0.84 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "TJS": {
+      "name": "Tajikistani somoni",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "5 Dirams TJ 2001.png",
+          "verdict": "criterion 1: only 224px wide (min 600)"
+        }
+      ]
+    },
+    "TMT": {
+      "name": "Turkmenistan new manat",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "100 manat. Türkmenistan, 2009 a.jpg",
+      "judged": [
+        {
+          "file": "100 manat. Türkmenistan, 2009 a.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "TND": {
+      "name": "Tunisian dinar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Tunisian dinars and millimes.jpg",
+          "verdict": "criterion 2: aspect ratio 1.33 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "TOP": {
+      "name": "Tongan paʻanga",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "1-Paʻanga-Schein Vorderseite.jpg",
+      "judged": [
+        {
+          "file": "1-Paʻanga-Schein Vorderseite.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "TRY": {
+      "name": "Turkish lira",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Lira coin.png",
+          "verdict": "criterion 3: metadata mentions 'coin'"
+        }
+      ]
+    },
+    "TTD": {
+      "name": "Trinidad and Tobago dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Trinidad and Tobago Dollar Gallery.jpg",
+          "verdict": "criterion 3: metadata mentions 'gallery'"
+        }
+      ]
+    },
+    "TWD": {
+      "name": "New Taiwan dollar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "TZS": {
+      "name": "Tanzanian shilling",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "10,000 Tanzanian shillings banknote, 2011 serie, obverse.jpg",
+      "judged": [
+        {
+          "file": "10,000 Tanzanian shillings banknote, 2011 serie, obverse.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "UAH": {
+      "name": "hryvnia",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "200-uah-2020-1.png",
+          "verdict": "criterion 3: metadata mentions 'signature'"
+        }
+      ]
+    },
+    "UGX": {
+      "name": "Ugandan shilling",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Aftermath of the rain to the festival goers in Uganda.jpg",
+          "verdict": "criterion 3: metadata mentions 'check'"
+        }
+      ]
+    },
+    "USD": {
+      "name": "United States dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "USDnotes.png",
+          "verdict": "criterion 2: aspect ratio 1.15 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "UYU": {
+      "name": "Uruguayan peso",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "UZS": {
+      "name": "Uzbek som",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "200 000 sum new front.jpg",
+      "judged": [
+        {
+          "file": "200 000 sum new front.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "VES": {
+      "name": "sovereign bolivar",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "VND": {
+      "name": "Vietnamese đồng",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "North vietnam dong 1946.jpg",
+          "verdict": "criterion 3: metadata mentions 'coins'"
+        }
+      ]
+    },
+    "VUV": {
+      "name": "Vanuatu vatus",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "WST": {
+      "name": "Samoan tālā",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Samoa 100 Tala observe.jpg",
+          "verdict": "criterion 4: metadata names none of ['samoan', 'tālā', 'wst']"
+        }
+      ]
+    },
+    "XAF": {
+      "name": "Central African CFA franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "Africacoins.png",
+          "verdict": "criterion 1: only 567px wide (min 600)"
+        }
+      ]
+    },
+    "XCD": {
+      "name": "Eastern Caribbean dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "East caribbean states eccb 5 dollars 2019.00.00 b240 pnl ad 000000 f.jpg",
+          "verdict": "criterion 1: only 207px wide (min 600)"
+        }
+      ]
+    },
+    "XCG": {
+      "name": "Caribbean guilder",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "20 gliders 2025.jpg",
+          "verdict": "criterion 2: aspect ratio 1.33 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "XOF": {
+      "name": "West African CFA franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "BCEAOFranc.png",
+          "verdict": "criterion 1: only 520px wide (min 600)"
+        }
+      ]
+    },
+    "XPF": {
+      "name": "CFP Franc",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "CFP 1000 recto.jpg",
+          "verdict": "criterion 1: only 488px wide (min 600)"
+        }
+      ]
+    },
+    "YER": {
+      "name": "Yemeni Rial",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "1000YR1.jpg",
+      "judged": [
+        {
+          "file": "1000YR1.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "ZAR": {
+      "name": "rand",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 0,
+      "chosen": null,
+      "judged": [
+        {
+          "file": "South Africa-Money-Old01.jpg",
+          "verdict": "criterion 2: aspect ratio 1.25 outside [1.45, 2.6] -- not a single flat note"
+        }
+      ]
+    },
+    "ZMW": {
+      "name": "Zambian Kwacha",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "ZWD": {
+      "name": "Zimbabwean dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Zimbabwe $1 2007 Obverse.jpg",
+      "judged": [
+        {
+          "file": "Zimbabwe $1 2007 Obverse.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "ZWG": {
+      "name": "Zimbabwe ZiG",
+      "categoriesWalked": [],
+      "candidates": 0,
+      "compliant": 0,
+      "chosen": null,
+      "judged": []
+    },
+    "ZWL": {
+      "name": "Zimbabwean dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Zimbabwe $1 2007 Obverse.jpg",
+      "judged": [
+        {
+          "file": "Zimbabwe $1 2007 Obverse.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "ZWN": {
+      "name": "Zimbabwean dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Zimbabwe $1 2007 Obverse.jpg",
+      "judged": [
+        {
+          "file": "Zimbabwe $1 2007 Obverse.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    },
+    "ZWR": {
+      "name": "Zimbabwean dollar",
+      "categoriesWalked": [],
+      "candidates": 1,
+      "compliant": 1,
+      "chosen": "Zimbabwe $1 2007 Obverse.jpg",
+      "judged": [
+        {
+          "file": "Zimbabwe $1 2007 Obverse.jpg",
+          "verdict": "compliant"
+        }
+      ]
+    }
+  }
+}
