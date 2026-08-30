@@ -9,9 +9,10 @@ import {
   SourceLine,
   StatTile,
   Unavailable,
-  seriesColour,
 } from '../components/viz/primitives'
+import { Icon } from '../components/Icon'
 import { DATA_BASE_URL } from '../config'
+import { completeBreakdown } from '../lib/breakdown'
 import {
   useBiomes,
   useCountryFactbook,
@@ -30,6 +31,7 @@ import {
   formatExact,
   formatGrowthRate,
   formatPopulation,
+  formatShare,
   normaliseFactbookCaps,
   titleCase,
 } from '../lib/format'
@@ -42,6 +44,7 @@ import {
 import type {
   CountryIndicators,
   CountryOwid,
+  CountrySeries,
   FactbookField,
   IndicatorSeries,
   OwidIndicatorSeries,
@@ -246,14 +249,22 @@ function ItemList({
       {field.summary && <p className="mt-1 text-sm">{field.summary}</p>}
       {field.items?.length ? (
         <ul className="mt-1 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-2">
-          {field.items.map((item) => (
-            <li key={item} className="flex items-baseline gap-2">
-              <span aria-hidden="true" className="w-5 shrink-0 text-center">
-                {productIcon(item) ?? '•'}
-              </span>
-              <span>{capitalizeFirst(itemDisplayName(item))}</span>
-            </li>
-          ))}
+          {field.items.map((item) => {
+            const icon = productIcon(item)
+            return (
+              <li key={item} className="flex items-center gap-2">
+                {/* One icon set (OpenMoji outline); a category icon for an
+                    item with no exact match, a plain labelled chip for the
+                    genuinely unmappable -- never a gear. */}
+                {icon?.code ? (
+                  <Icon code={icon.code} className="w-5 shrink-0" />
+                ) : (
+                  <span aria-hidden="true" className="w-5 shrink-0" />
+                )}
+                <span>{capitalizeFirst(itemDisplayName(item))}</span>
+              </li>
+            )
+          })}
         </ul>
       ) : (
         <p className="mt-1 text-sm">{field.text}</p>
@@ -625,12 +636,8 @@ export function CountryPage() {
 
               <PopulationTrend series={series} />
 
+              <UrbanRural indicators={indicators} series={series} />
               <div className="grid gap-4 sm:grid-cols-2">
-                <IndicatorTile
-                  indicator={indicatorValue(indicators, 'SP.URB.TOTL.IN.ZS')}
-                  label="Urban population"
-                  format={(v) => `${v.toFixed(1)}%`}
-                />
                 <IndicatorTile
                   indicator={indicatorValue(indicators, 'EN.POP.DNST')}
                   label="Population density (World Bank)"
@@ -876,21 +883,45 @@ export function CountryPage() {
               format={(v) => `${v.toFixed(1)} t/person`}
             />
           </div>
+          {factbook?.geography?.landUse ? (
+            <CompositionBar
+              title="Land Use"
+              field={factbook.geography.landUse}
+              sourceName={FB}
+            />
+          ) : (
+            <Unavailable what="Land use breakdown" source={FB} />
+          )}
           <div>
             <h3 className="text-sm font-medium">Land Borders</h3>
+            {/* Full names, not ISO3 codes (2026-08-29). The code stays in
+                the tooltip and the accessible name; each is a link to the
+                neighbour's page. */}
             <p className="mt-1 text-sm">
               {entity?.borders.length ? (
-                entity.borders.map((code, index) => (
-                  <span key={code}>
-                    {index > 0 && ', '}
-                    <Link
-                      to={`/country/${code}`}
-                      className="underline underline-offset-2"
-                    >
-                      {code}
-                    </Link>
-                  </span>
-                ))
+                entity.borders
+                  .map((code) => ({
+                    code,
+                    name:
+                      entitiesState.status === 'ready'
+                        ? (entitiesState.data.find((row) => row.iso3 === code)
+                            ?.name_common ?? code)
+                        : code,
+                  }))
+                  .sort((a, b) => a.name.localeCompare(b.name))
+                  .map((border, index) => (
+                    <span key={border.code}>
+                      {index > 0 && ', '}
+                      <Link
+                        to={`/country/${border.code}`}
+                        className="underline underline-offset-2"
+                        title={border.code}
+                        aria-label={`${border.name} (${border.code})`}
+                      >
+                        {border.name}
+                      </Link>
+                    </span>
+                  ))
               ) : (
                 <span style={{ color: 'var(--text-muted)' }}>
                   No land borders.
@@ -907,6 +938,8 @@ export function CountryPage() {
                   coveredShare={biome.coveredShare}
                   landAreaKm2={biome.landAreaKm2}
                   ecoregions={biome.topEcoregions}
+                  other={biome.other}
+                  overlapNote={biome.overlapNote}
                   {...(biome.areaDiffersFromPublishedPct !== undefined
                     ? {
                         areaDiffersFromPublishedPct:
@@ -1323,57 +1356,129 @@ function SectorComposition({
 
   const values = parts.map((p) => ({
     label: p.label,
-    value: p.series!.latest!.value,
+    value: Math.round(p.series!.latest!.value * 100) / 100,
     year: p.series!.latest!.year,
   }))
-  const total = values.reduce((sum, v) => sum + v.value, 0)
   const years = [...new Set(values.map((v) => v.year))].sort()
 
+  // Sector shares exclude net taxes on products, so they rarely reach 100;
+  // the completion rules add the explicit "Other" (2026-08-29).
+  const field = completeBreakdown(
+    'gdpSectors',
+    values.map((v) => ({
+      label: v.label,
+      percent: v.value,
+      isUpperBound: false,
+      official: false,
+      qualifier: years.length > 1 ? `${v.year}` : null,
+    })),
+    {
+      vintageYear: Math.max(...years),
+      note:
+        years.length > 1
+          ? `Shares come from different years (${years.join(', ')}).`
+          : null,
+    },
+  )
+  return (
+    <CompositionBar
+      title="GDP Composition by Sector"
+      field={field}
+      sourceName={WB}
+      iconFor={sectorIcon}
+    />
+  )
+}
+
+/**
+ * Urban and rural population as one 100% breakdown, both shares pulled from
+ * their own World Bank series (never 100 - urban), with absolute headcounts
+ * from the UN WPP population for the matching year (2026-08-29).
+ */
+function UrbanRural({
+  indicators,
+  series,
+}: {
+  indicators: CountryIndicators | null
+  series: CountrySeries | null
+}) {
+  const urban = indicatorValue(indicators, 'SP.URB.TOTL.IN.ZS')
+  const rural = indicatorValue(indicators, 'SP.RUR.TOTL.ZS')
+  if (!urban?.available || !urban.latest) {
+    return (
+      <Unavailable
+        what="Urban and rural population"
+        source={WB}
+        reason={urban?.unavailableReason}
+      />
+    )
+  }
+  const year = urban.latest.year
+  const ruralAtYear =
+    rural?.available && rural.years.includes(year)
+      ? rural.values[rural.years.indexOf(year)]
+      : rural?.latest?.value
+  const population = (() => {
+    if (!series) return null
+    const index = series.years.indexOf(year)
+    const at = index >= 0 ? series.series.population?.[index] : null
+    if (at != null) return at
+    const lastEstimate = series.years.indexOf(series.estimatesThrough)
+    return lastEstimate >= 0 ? (series.series.population?.[lastEstimate] ?? null) : null
+  })()
+  const headcount = (share: number) =>
+    population != null ? formatPopulation(Math.round((population * share) / 100)) : null
+
+  const items = [
+    {
+      label: 'Urban',
+      percent: Math.round(urban.latest.value * 100) / 100,
+      isUpperBound: false,
+      official: false,
+      qualifier: headcount(urban.latest.value)
+        ? `about ${headcount(urban.latest.value)} people`
+        : null,
+    },
+    ...(ruralAtYear != null
+      ? [
+          {
+            label: 'Rural',
+            percent: Math.round(ruralAtYear * 100) / 100,
+            isUpperBound: false,
+            official: false,
+            qualifier: headcount(ruralAtYear)
+              ? `about ${headcount(ruralAtYear)} people`
+              : null,
+          },
+        ]
+      : []),
+  ]
+  const field = completeBreakdown('urbanRural', items, {
+    vintageYear: year,
+    note:
+      items.length === 1
+        ? 'The World Bank publishes no rural share for this entity, so only the urban share is shown.'
+        : population != null
+          ? `Headcounts apply each share to the UN WPP population estimate for ${year}.`
+          : null,
+  })
   return (
     <div>
-      <h3 className="text-sm font-medium">GDP Composition by Sector</h3>
-      <div className="mt-2 flex h-6 w-full overflow-hidden rounded">
-        {values.map((entry, index) => (
-          <div
-            key={entry.label}
-            style={{
-              width: `${(entry.value / total) * 100}%`,
-              background: seriesColour(index),
-              marginRight: index < values.length - 1 ? 2 : 0,
-            }}
-            title={`${entry.label}: ${entry.value.toFixed(1)}% of GDP (${entry.year})`}
-          />
-        ))}
-      </div>
-      <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
-        {values.map((entry, index) => (
-          <li key={entry.label} className="flex items-center gap-1.5">
-            <span
-              className="inline-block h-2.5 w-2.5 rounded-sm"
-              style={{ background: seriesColour(index) }}
-              aria-hidden="true"
+      <CompositionBar title="Urban and Rural Population" field={field} sourceName={WB} />
+      {items.length === 2 && population != null && (
+        <div className="mt-3 grid gap-4 sm:grid-cols-2">
+          {items.map((item) => (
+            <StatTile
+              key={item.label}
+              label={`${item.label} population`}
+              value={headcount(item.percent) ?? 'not available'}
+              detail={`${formatShare(item.percent)}% of ${formatPopulation(population)}`}
+              source={`${WB} share × ${WPP} population`}
+              vintage={year}
             />
-            {sectorIcon(entry.label) && (
-              <span aria-hidden="true">{sectorIcon(entry.label)}</span>
-            )}
-            {entry.label}
-            <span
-              style={{
-                color: 'var(--text-muted)',
-                fontVariantNumeric: 'tabular-nums',
-              }}
-            >
-              {entry.value.toFixed(1)}% ({entry.year})
-            </span>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-        Source: {WB}
-        {years.length > 1
-          ? `. Shares come from different years (${years.join(', ')}) and total ${total.toFixed(1)}%.`
-          : `, ${years[0]}. Shares total ${total.toFixed(1)}%.`}
-      </p>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

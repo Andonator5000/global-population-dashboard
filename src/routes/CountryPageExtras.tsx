@@ -208,12 +208,51 @@ export function CurrencyImageFigure({
     .map((c) => ({ code: c.code, record: imagesState.data.currencies[c.code] }))
     .find((c) => c.record)
   if (!match?.record) {
+    // Designed fallback (2026-08-29): a note-shaped card carrying the
+    // currency's name, ISO code and symbol. Never a mismatched photo.
+    const primary = currencies[0]
+    if (!primary) return null
     return (
-      <Unavailable
-        what="Currency image"
-        source="Wikimedia Commons"
-        reason="Commons holds no free-licensed image for this currency — many modern banknotes are copyrighted and cannot be hosted there."
-      />
+      <figure className="m-0">
+        <div
+          className="flex aspect-[2.2/1] w-full max-w-sm flex-col justify-between rounded-md border-2 border-dashed p-4"
+          style={{
+            borderColor: 'var(--border)',
+            background: 'var(--surface-raised)',
+          }}
+          role="img"
+          aria-label={`${primary.name ?? primary.code} (${primary.code}) — no compliant free banknote image`}
+        >
+          <div className="flex items-start justify-between">
+            <span
+              className="text-xs uppercase tracking-widest"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              {primary.code}
+            </span>
+            <span
+              className="text-3xl font-semibold leading-none"
+              style={{ fontVariantNumeric: 'tabular-nums' }}
+              aria-hidden="true"
+            >
+              {primary.symbol ?? primary.code}
+            </span>
+          </div>
+          <div>
+            <div className="text-lg font-semibold leading-tight tracking-tight">
+              {primary.name ?? primary.code}
+            </div>
+            <div className="text-xs" style={{ color: 'var(--text-muted)' }}>
+              no compliant free banknote image
+            </div>
+          </div>
+        </div>
+        <figcaption className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+          Wikimedia Commons holds no free image of a single {primary.name ?? primary.code}{' '}
+          banknote that meets the site&apos;s criteria (flat, head-on, obverse) — many
+          modern notes are copyrighted and cannot be hosted there.
+        </figcaption>
+      </figure>
     )
   }
   const record = match.record
@@ -221,7 +260,7 @@ export function CurrencyImageFigure({
     <figure className="m-0">
       <img
         src={record.imageUrl}
-        alt={`${record.name} (${match.code})`}
+        alt={`${record.name} (${match.code}) banknote, obverse`}
         loading="lazy"
         className="max-h-48 w-auto max-w-full rounded"
         style={{ boxShadow: '0 0 0 1px var(--border)' }}
@@ -230,7 +269,8 @@ export function CurrencyImageFigure({
         className="mt-1 text-xs"
         style={{ color: 'var(--text-muted)' }}
       >
-        {record.name} ({match.code}) — representative specimen, not
+        {record.name} ({match.code}) — a single banknote, obverse; the
+        denomination is whichever compliant free image Commons holds, not
         necessarily the smallest or current note.{' '}
         <a
           href={record.commonsPage}
@@ -372,15 +412,15 @@ export function EducationExtraTiles({ iso3 }: { iso3: string }) {
   if (state.status !== 'ready') {
     return state.status === 'loading' ? null : (
       <Unavailable
-        what="Universities and libraries"
-        source="Hipolabs / Wikidata / CWUR"
+        what="Universities"
+        source="Hipolabs / CWUR"
       />
     )
   }
   const entry = state.data.entities[iso3]
   return (
     <div className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {entry?.universities !== undefined ? (
           <div>
             <StatTile
@@ -399,27 +439,9 @@ export function EducationExtraTiles({ iso3 }: { iso3: string }) {
             source="Hipolabs university-domains list"
           />
         )}
-        {entry?.publicLibraries !== undefined ? (
-          <div>
-            <StatTile
-              label="Public libraries"
-              value={number.format(entry.publicLibraries)}
-              detail="recorded in Wikidata"
-              source="Wikidata"
-            />
-            <MutedNote>
-              Wikidata’s coverage varies enormously by country; treat as a
-              floor. IFLA’s Library Map of the World holds official counts
-              but publishes no machine-readable feed.
-            </MutedNote>
-          </div>
-        ) : (
-          <Unavailable
-            what="Public library count"
-            source="Wikidata"
-            reason="No items typed as public libraries are recorded for this country."
-          />
-        )}
+        {/* Public library counts were removed 2026-08-29: the only keyless
+            source (a Wikidata item count) measured cataloguing, not
+            libraries -- Russia showed 9. No reliable source, no figure. */}
       </div>
 
       <div>
@@ -538,12 +560,15 @@ function CommonsFigure({
   caption,
   tall = false,
   focus = 'center',
+  placeholder,
 }: {
   image: CommonsImage | undefined
   alt: string
   caption: React.ReactNode
   tall?: boolean
   focus?: 'top' | 'center'
+  /** Designed fallback for the frame when no verified image exists. */
+  placeholder?: React.ReactNode
 }) {
   const dialogRef = useRef<HTMLDialogElement | null>(null)
   const attribution = image && (
@@ -621,7 +646,7 @@ function CommonsFigure({
           className={`${tall ? 'h-48' : 'h-36'} flex w-full items-center justify-center text-xs`}
           style={{ background: 'var(--page-tint)', color: 'var(--text-muted)' }}
         >
-          no free image
+          {placeholder ?? 'no free image'}
         </div>
       )}
       <figcaption className="px-2.5 py-2">
@@ -725,6 +750,29 @@ export function AirportsBody({ iso3 }: { iso3: string }) {
 
 // ------------------------------------------------------------- Flora & Fauna --
 
+/**
+ * Typographic card for a species with no verified photo (2026-08-29):
+ * the common name set large, the scientific name in italics beneath.
+ */
+function SpeciesCard({ symbol }: { symbol: FloraFaunaSymbol }) {
+  return (
+    <div className="px-4 text-center">
+      <div
+        className="text-lg font-semibold leading-tight tracking-tight"
+        style={{ color: 'var(--text)' }}
+      >
+        {symbol.name}
+      </div>
+      {symbol.scientificName && (
+        <div className="mt-1 text-sm italic">{symbol.scientificName}</div>
+      )}
+      <div className="mt-2 text-[0.65rem] uppercase tracking-wide">
+        no verified free image
+      </div>
+    </div>
+  )
+}
+
 function symbolCaption(symbol: FloraFaunaSymbol, fallbackType: string) {
   return (
     <>
@@ -760,6 +808,7 @@ export function FloraFaunaBody({ iso3 }: { iso3: string }) {
             alt={data.flower.name}
             tall
             caption={symbolCaption(data.flower, 'national flower')}
+            placeholder={<SpeciesCard symbol={data.flower} />}
           />
         )}
         {data.tree && (
@@ -768,6 +817,7 @@ export function FloraFaunaBody({ iso3 }: { iso3: string }) {
             alt={data.tree.name}
             tall
             caption={symbolCaption(data.tree, 'national tree')}
+            placeholder={<SpeciesCard symbol={data.tree} />}
           />
         )}
         {data.animals?.map((animal) => (
@@ -778,9 +828,34 @@ export function FloraFaunaBody({ iso3 }: { iso3: string }) {
             tall
             focus="top"
             caption={symbolCaption(animal, 'national animal')}
+            placeholder={<SpeciesCard symbol={animal} />}
           />
         ))}
       </div>
+      {data.emblems && data.emblems.length > 0 && (
+        <div className="mt-5">
+          <h3 className="text-sm font-medium">Heraldic and mythical emblems</h3>
+          <MutedNote>
+            National symbols that are legendary or heraldic figures rather
+            than living species. Listed apart from the flora and fauna above
+            on purpose.
+          </MutedNote>
+          <div className="mt-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {data.emblems.map((emblem) => (
+              <CommonsFigure
+                key={emblem.name}
+                image={emblem.image}
+                alt={emblem.name}
+                caption={symbolCaption(
+                  { ...emblem, type: emblem.type ?? emblem.kind },
+                  emblem.kind,
+                )}
+                placeholder={<SpeciesCard symbol={emblem} />}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
