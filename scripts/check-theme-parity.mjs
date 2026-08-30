@@ -33,6 +33,8 @@ const css = readFileSync(CSS_PATH, 'utf-8')
 const LIGHT_ONLY = new Set([
   '--brand-bg',
   '--brand-text',
+  '--history-bg',
+  '--history-text',
   '--map-space',
   '--map-ocean',
 ])

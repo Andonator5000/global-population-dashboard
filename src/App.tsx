@@ -1,4 +1,4 @@
-import { Link, NavLink, Route, Routes } from 'react-router'
+import { NavLink, Route, Routes } from 'react-router'
 
 import { FreshnessPanel } from './components/FreshnessPanel'
 import { ContinentPage } from './routes/ContinentPage'
@@ -25,25 +25,34 @@ export function App() {
         {/* Left-aligned deliberately (no mx-auto): the site title should sit
             at the left edge of the viewport at 100% zoom. */}
         <nav
-          className="flex items-baseline gap-6 px-6 py-3"
+          className="flex flex-wrap items-center gap-3 px-6 py-3"
           aria-label="Primary"
         >
-          <Link
+          {/* Two section buttons (2026-08-30, maintainer request): the data
+              atlas in the brand green, the history timeline in a clay red
+              that sits opposite green on the wheel. The label "Global Data"
+              replaced "Global Population Dashboard" because the atlas covers
+              far more than population. Active section is marked with a ring
+              as well as aria-current. */}
+          <NavLink
             to="/"
+            end
             className="rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
-            style={{
+            style={({ isActive }) => ({
               background: 'var(--brand-bg)',
               color: 'var(--brand-text)',
-            }}
+              boxShadow: isActive ? '0 0 0 2px var(--surface), 0 0 0 4px var(--brand-bg)' : 'none',
+            })}
           >
-            Global Population Dashboard
-          </Link>
+            Global Data
+          </NavLink>
           <NavLink
             to="/history"
-            className="text-sm underline-offset-2 hover:underline"
+            className="rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
             style={({ isActive }) => ({
-              color: isActive ? 'var(--text)' : 'var(--text-muted)',
-              fontWeight: isActive ? 600 : 400,
+              background: 'var(--history-bg)',
+              color: 'var(--history-text)',
+              boxShadow: isActive ? '0 0 0 2px var(--surface), 0 0 0 4px var(--history-bg)' : 'none',
             })}
           >
             Human History

@@ -128,6 +128,10 @@ summary {
      one identity everywhere. */
   --brand-bg: oklch(44% 0.12 155);
   --brand-text: oklch(100% 0 0);
+  /* The Human History section button: clay red, opposite the brand green on
+     the hue wheel, white text at AA. Theme-invariant like the brand pill. */
+  --history-bg: oklch(46% 0.13 35);
+  --history-text: oklch(100% 0 0);
   --map-space: oklch(8% 0.005 260);
   --map-ocean: oklch(31% 0.06 255);
 

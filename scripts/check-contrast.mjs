@@ -36,6 +36,8 @@ const hex = (value) => formatHex(rgb(parse(value)))
 // Theme-invariant tokens (declared once in :root, inherited by dark).
 const INVARIANT = {
   brandBg: 'oklch(44% 0.12 155)',
+  historyBg: 'oklch(46% 0.13 35)',
+  historyText: 'oklch(100% 0 0)',
   brandText: 'oklch(100% 0 0)',
   mapSpace: 'oklch(8% 0.005 260)',
   mapOcean: 'oklch(31% 0.06 255)',
@@ -95,6 +97,11 @@ const checks = (t) => [
   ['muted text on page tint', t.textMuted, t.pageTint, 4.5],
   // Brand button and globe-view tokens are theme-invariant.
   ['brand button label', INVARIANT.brandText, INVARIANT.brandBg, 4.5],
+  // The two nav buttons are distinguished by HUE (green vs clay, ~120
+  // degrees apart) and separated by whitespace; they are deliberately
+  // matched in lightness, so a luminance ratio between them is not a
+  // meaningful check and none is made.
+  ['history button label', INVARIANT.historyText, INVARIANT.historyBg, 4.5],
   ['globe ocean vs space', INVARIANT.mapOcean, INVARIANT.mapSpace, 1.5],
   ['muted text on surface', t.textMuted, t.surface, 4.5],
   ['muted text on raised', t.textMuted, t.raised, 4.5],

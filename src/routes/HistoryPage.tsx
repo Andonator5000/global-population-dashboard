@@ -78,8 +78,9 @@ export function HistoryPage() {
           </div>
 
           <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-            {state.data.counts.events} events, version {state.data.version}. Hover or
-            tap an event for its summary; Escape closes it. {state.data.imageNote}
+            {state.data.counts.events} events, version {state.data.version}. Eras and
+            their spans are boxed on the left; events sit on the right. Hover or tap an
+            event for its summary; Escape closes it. {state.data.imageNote}
           </p>
 
           <div className="mt-6">
