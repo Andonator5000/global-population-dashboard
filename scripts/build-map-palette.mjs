@@ -62,14 +62,14 @@ const THEMES = {
   light: {
     surface: 'oklch(98% 0.010 235)', // map water
     stroke: 'oklch(98% 0.010 235)',
-    // Raised from 0.055 (2026-08): the muted band read as drab, and the
-    // maintainer asked for a brighter map. Higher chroma also WIDENS
-    // neighbour separation -- the hue chord is 2*C*sin(dHue/2), so it scales
-    // linearly with chroma. Fills are clamped into sRGB gamut per hue, so a
-    // hue that cannot carry this chroma at its tier degrades to the most
-    // saturated displayable colour instead of channel-clipping.
-    chroma: 0.1,
-    // Four tiers, 0.055 apart -> dE 5.5 minimum between adjacent tiers.
+    // 2026-08-29 (Phase 2.4): the maintainer asked for something more
+    // restrained and cohesive than the 0.10-chroma band of 2026-08-15.
+    // Chroma drops to 0.045; the lightness tiers widen to 0.055 steps so the
+    // neighbour separation (dE = dL*100 for same-hue pairs) stays above the
+    // 4.0 floor without leaning on hue at all -- which is also what keeps
+    // the palette legible under every common colour-vision deficiency:
+    // lightness is the one channel CVD never removes.
+    chroma: 0.045,
     // The TOP tier is capped at 0.845 because anything lighter drifts too
     // close to the water and drops below the fill/water contrast floor --
     // measured, not guessed (0.89 scored 1.29 against a 1.35 floor).
@@ -78,12 +78,53 @@ const THEMES = {
   dark: {
     surface: 'oklch(13% 0.010 235)',
     stroke: 'oklch(13% 0.010 235)',
-    chroma: 0.11, // raised from 0.06 -- see the light-theme note
-    // Lifted from [0.30..0.45] (2026-08) for the same brightening pass:
-    // more lightness against the near-black water, and 0.06 steps -> dE 6
-    // minimum between adjacent tiers, up from 5.
+    chroma: 0.05,
     tiers: [0.34, 0.4, 0.46, 0.52],
   },
+}
+
+/**
+ * Palette DIRECTIONS (2026-08-29, Phase 2.4). Both are emitted so the
+ * maintainer can compare them live via the "Map colours" control; the
+ * default is `atlas`.
+ *
+ *   atlas  the flag hue, restrained: chroma 0.045, four lightness tiers.
+ *          Reads as a printed atlas -- identity survives, saturation does
+ *          not.
+ *   paper  the flag hue at chroma 0.022 over a warm paper base (hue 80),
+ *          so the whole map is near-neutral and the lightness tiers carry
+ *          the borders. The hue is a faint tint, not a colour.
+ *
+ * Every direction passes the same gates: neighbour dE >= 4.0 in both
+ * themes, fill/water contrast >= 1.35, and every LIGHT fill >= 2.0 against
+ * the globe ocean (light fills double as the globe's land in both themes).
+ */
+const DIRECTIONS = {
+  atlas: { chroma: { light: 0.045, dark: 0.05 }, blendTo: null },
+  paper: { chroma: { light: 0.022, dark: 0.028 }, blendTo: 80 },
+}
+const DEFAULT_DIRECTION = 'atlas'
+
+/**
+ * Continent REGIONS for the continent view (Phase 2.4): one cohesive fill
+ * per continent, all at the same lightness so none reads as "more", with
+ * hues spread around the wheel. Identity still comes from the label -- seven
+ * hues cannot clear every CVD pair (DATA_DECISIONS 6.3) -- but the regions
+ * now read as distinct blocks rather than one emphasised continent against
+ * grey. Lightness matches the middle tiers so the globe ocean contrast
+ * floor holds for these too.
+ */
+// Hues at least 50 degrees apart so every pair clears the neighbour floor
+// at this chroma (dE = 2*C*sin(dHue/2)*100 -> 5.9 at 50 degrees, 0.07).
+// Antarctica is ice: near-white, no hue, and lighter than the others.
+const CONTINENT_HUES = { AF: 65, AS: 15, EU: 250, NA: 305, SA: 140, OC: 195, AN: 250 }
+const CONTINENT_REGION = {
+  light: { l: 0.79, c: 0.07 },
+  dark: { l: 0.44, c: 0.07 },
+}
+const ANTARCTICA_REGION = {
+  light: { l: 0.93, c: 0.004 },
+  dark: { l: 0.62, c: 0.004 },
 }
 
 /** Bordering fills must clear this. Above JND for large adjacent fields. */
@@ -124,8 +165,16 @@ function contrast(a, b) {
   return (hi + 0.05) / (lo + 0.05)
 }
 
-const fillFor = (theme, tierIndex, hue) =>
-  formatHex(
+const fillFor = (theme, tierIndex, hue, direction = DEFAULT_DIRECTION) => {
+  const spec = DIRECTIONS[direction]
+  // "paper" pulls every hue a third of the way toward the paper base, so
+  // the map reads as one warm sheet with tints rather than as colours.
+  let h = hue
+  if (spec.blendTo !== null) {
+    const d = ((spec.blendTo - hue + 540) % 360) - 180
+    h = (hue + d / 3 + 360) % 360
+  }
+  return formatHex(
     toRgb(
       // clampChroma walks chroma down (holding L and H) until the colour is
       // displayable in sRGB. Without it, formatHex would clip channels
@@ -136,13 +185,26 @@ const fillFor = (theme, tierIndex, hue) =>
         {
           mode: 'oklch',
           l: THEMES[theme].tiers[tierIndex],
-          c: THEMES[theme].chroma,
-          h: hue,
+          c: spec.chroma[theme],
+          h,
         },
         'oklch',
       ),
     ),
   )
+}
+
+const regionFor = (theme, continent) => {
+  const band = continent === 'AN' ? ANTARCTICA_REGION[theme] : CONTINENT_REGION[theme]
+  return formatHex(
+    toRgb(
+      clampChroma(
+        { mode: 'oklch', l: band.l, c: band.c, h: CONTINENT_HUES[continent] ?? 250 },
+        'oklch',
+      ),
+    ),
+  )
+}
 
 // ---------------------------------------------------------------------------
 // Graph colouring
@@ -268,76 +330,129 @@ for (const entity of entities) {
       light: fillFor('light', tierIndex, hue),
       dark: fillFor('dark', tierIndex, hue),
     },
+    // Every direction, for the live comparison control. `fill` above is
+    // the default direction.
+    directions: Object.fromEntries(
+      Object.keys(DIRECTIONS).map((name) => [
+        name,
+        {
+          light: fillFor('light', tierIndex, hue, name),
+          dark: fillFor('dark', tierIndex, hue, name),
+        },
+      ]),
+    ),
   }
 }
 
+const continentRegions = Object.fromEntries(
+  Object.keys(CONTINENT_HUES).map((key) => [
+    key,
+    { light: regionFor('light', key), dark: regionFor('dark', key) },
+  ]),
+)
+
 // --- verification ----------------------------------------------------------
 
-const report = { light: {}, dark: {} }
+const report = { light: {}, dark: {}, directions: {} }
 let hardFailures = 0
 
-for (const theme of ['light', 'dark']) {
-  const surface = THEMES[theme].surface
-  const seen = new Set()
-  const pairDeltas = []
-  const violations = []
+function verifyDirection(direction) {
+  const out = { light: {}, dark: {} }
+  const fillOf = (iso3, theme) => palette[iso3].directions[direction][theme]
+  for (const theme of ['light', 'dark']) {
+    const surface = THEMES[theme].surface
+    const seen = new Set()
+    const pairDeltas = []
+    const violations = []
 
-  for (const entity of entities) {
-    for (const other of entity.borders) {
-      if (!palette[other]) continue
-      const key = [entity.iso3, other].sort().join('|')
-      if (seen.has(key)) continue
-      seen.add(key)
-      const d = deltaE(
-        palette[entity.iso3].fill[theme],
-        palette[other].fill[theme],
+    for (const entity of entities) {
+      for (const other of entity.borders) {
+        if (!palette[other]) continue
+        const key = [entity.iso3, other].sort().join('|')
+        if (seen.has(key)) continue
+        seen.add(key)
+        const d = deltaE(fillOf(entity.iso3, theme), fillOf(other, theme))
+        pairDeltas.push(d)
+        if (d < MIN_NEIGHBOUR_DE) {
+          violations.push({ pair: key, deltaE: Number(d.toFixed(2)) })
+        }
+      }
+    }
+
+    const contrasts = entities.map((e) => ({
+      iso3: e.iso3,
+      ratio: contrast(fillOf(e.iso3, theme), surface),
+    }))
+    const lowContrast = contrasts.filter((c) => c.ratio < MIN_SURFACE_CONTRAST)
+
+    // Light fills double as the globe's land colours; check them against
+    // the globe ocean once (during the light pass).
+    if (theme === 'light') {
+      const oceanFailures = entities.filter(
+        (e) => contrast(fillOf(e.iso3, 'light'), GLOBE_OCEAN) < MIN_OCEAN_CONTRAST,
       )
-      pairDeltas.push(d)
-      if (d < MIN_NEIGHBOUR_DE) {
-        violations.push({ pair: key, deltaE: Number(d.toFixed(2)) })
+      out.globe = {
+        ocean: GLOBE_OCEAN,
+        minContrast: Number(
+          Math.min(
+            ...entities.map((e) => contrast(fillOf(e.iso3, 'light'), GLOBE_OCEAN)),
+          ).toFixed(2),
+        ),
+        floor: MIN_OCEAN_CONTRAST,
+        failures: oceanFailures.map((e) => e.iso3),
+      }
+      if (oceanFailures.length > 0) hardFailures += 1
+    }
+
+    pairDeltas.sort((a, b) => a - b)
+    out[theme] = {
+      borderPairs: pairDeltas.length,
+      minDeltaE: Number((pairDeltas[0] ?? 0).toFixed(2)),
+      medianDeltaE: Number(
+        (pairDeltas[Math.floor(pairDeltas.length / 2)] ?? 0).toFixed(2),
+      ),
+      violations,
+      minSurfaceContrast: Number(
+        Math.min(...contrasts.map((c) => c.ratio)).toFixed(2),
+      ),
+      lowContrastEntities: lowContrast.map((c) => c.iso3),
+    }
+    if (violations.length > 0 || lowContrast.length > 0) hardFailures += 1
+  }
+  return out
+}
+
+for (const direction of Object.keys(DIRECTIONS)) {
+  report.directions[direction] = verifyDirection(direction)
+}
+// The top-level report describes the default direction (what `fill` is).
+report.light = report.directions[DEFAULT_DIRECTION].light
+report.dark = report.directions[DEFAULT_DIRECTION].dark
+report.globe = report.directions[DEFAULT_DIRECTION].globe
+
+// Continent regions: every region must clear the globe ocean and the water,
+// and no two regions may sit within the neighbour floor of each other.
+{
+  const regionPairs = []
+  const keys = Object.keys(continentRegions)
+  for (let i = 0; i < keys.length; i += 1) {
+    for (let j = i + 1; j < keys.length; j += 1) {
+      for (const theme of ['light', 'dark']) {
+        const d = deltaE(continentRegions[keys[i]][theme], continentRegions[keys[j]][theme])
+        regionPairs.push({ pair: `${keys[i]}|${keys[j]}`, theme, deltaE: Number(d.toFixed(2)) })
       }
     }
   }
-
-  const contrasts = entities.map((e) => ({
-    iso3: e.iso3,
-    ratio: contrast(palette[e.iso3].fill[theme], surface),
-  }))
-  const lowContrast = contrasts.filter((c) => c.ratio < MIN_SURFACE_CONTRAST)
-
-  // Light fills double as the globe's land colours; check them against the
-  // globe ocean once (during the light pass).
-  if (theme === 'light') {
-    const oceanFailures = entities.filter(
-      (e) => contrast(palette[e.iso3].fill.light, GLOBE_OCEAN) < MIN_OCEAN_CONTRAST,
-    )
-    report.globe = {
-      ocean: GLOBE_OCEAN,
-      minContrast: Number(
-        Math.min(
-          ...entities.map((e) => contrast(palette[e.iso3].fill.light, GLOBE_OCEAN)),
-        ).toFixed(2),
-      ),
-      floor: MIN_OCEAN_CONTRAST,
-      failures: oceanFailures.map((e) => e.iso3),
-    }
-    if (oceanFailures.length > 0) hardFailures += 1
+  const regionViolations = regionPairs.filter((p) => p.deltaE < MIN_NEIGHBOUR_DE)
+  const oceanFailures = keys.filter(
+    (k) => contrast(continentRegions[k].light, GLOBE_OCEAN) < MIN_OCEAN_CONTRAST,
+  )
+  report.continentRegions = {
+    minDeltaE: Math.min(...regionPairs.map((p) => p.deltaE)),
+    violations: regionViolations,
+    oceanFailures,
   }
-
-  pairDeltas.sort((a, b) => a - b)
-  report[theme] = {
-    borderPairs: pairDeltas.length,
-    minDeltaE: Number((pairDeltas[0] ?? 0).toFixed(2)),
-    medianDeltaE: Number(
-      (pairDeltas[Math.floor(pairDeltas.length / 2)] ?? 0).toFixed(2),
-    ),
-    violations,
-    minSurfaceContrast: Number(
-      Math.min(...contrasts.map((c) => c.ratio)).toFixed(2),
-    ),
-    lowContrastEntities: lowContrast.map((c) => c.iso3),
-  }
-  if (violations.length > 0 || lowContrast.length > 0) hardFailures += 1
+  if (regionViolations.length > 0 || oceanFailures.length > 0) hardFailures += 1
 }
 
 // --- continent accents -----------------------------------------------------
@@ -421,10 +536,24 @@ const cssLines = [
   ' * colours must not swap to the dark tiers, which would sink into the',
   ' * ocean colour.',
   ' */',
+  ' *',
+  ' * --fill-globe-<dir>-* are the per-DIRECTION light fills (atlas, paper);',
+  ' * the map selects one by the "Map colours" control. --region-* are the',
+  ' * continent-view fills.',
+  ' */',
   ':root {',
   ...entities.map((e) => `  --fill-${e.iso3}: ${palette[e.iso3].fill.light};`),
   ...entities.map(
     (e) => `  --fill-globe-${e.iso3}: ${palette[e.iso3].fill.light};`,
+  ),
+  ...Object.keys(DIRECTIONS).flatMap((direction) =>
+    entities.map(
+      (e) =>
+        `  --fill-globe-${direction}-${e.iso3}: ${palette[e.iso3].directions[direction].light};`,
+    ),
+  ),
+  ...Object.keys(continentRegions).map(
+    (k) => `  --region-${k}: ${continentRegions[k].light};`,
   ),
   '}',
   '',
@@ -459,6 +588,9 @@ writeFileSync(
         'achieve that at low chroma (see scripts/build-map-palette.mjs). ' +
         'Lightness carries NO value meaning.',
       bands: THEMES,
+      directions: DIRECTIONS,
+      defaultDirection: DEFAULT_DIRECTION,
+      continentRegions,
       minNeighbourDeltaE: MIN_NEIGHBOUR_DE,
       verification: report,
       graphColouringFailures: failures,
@@ -480,9 +612,10 @@ console.log(
     : `4-tier graph colouring FAILED for ${failures.length}: ${failures.join(', ')}`,
 )
 
-for (const theme of ['light', 'dark']) {
-  const r = report[theme]
-  console.log(`\n  ${theme.toUpperCase()}`)
+for (const direction of Object.keys(DIRECTIONS)) {
+  for (const theme of ['light', 'dark']) {
+  const r = report.directions[direction][theme]
+  console.log(`\n  ${direction.toUpperCase()} / ${theme.toUpperCase()}`)
   console.log(`    bordering pairs checked : ${r.borderPairs}`)
   console.log(
     `    neighbour dE            : min ${r.minDeltaE}, median ${r.medianDeltaE} ` +
@@ -503,7 +636,13 @@ for (const theme of ['light', 'dark']) {
   if (r.lowContrastEntities.length) {
     console.log(`        ${r.lowContrastEntities.slice(0, 10).join(', ')}`)
   }
+  }
 }
+console.log(
+  `\n  continent regions: min pairwise dE ${report.continentRegions.minDeltaE} ` +
+    `(${report.continentRegions.violations.length ? 'FAIL' : 'PASS'}), ` +
+    `ocean failures ${report.continentRegions.oceanFailures.length}`,
+)
 
 const unsafeLight = Object.values(palette).filter(
   (p) => p.accent && !p.accent.rawSafeAsTextLight,

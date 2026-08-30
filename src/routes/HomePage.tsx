@@ -7,10 +7,14 @@ import { MapReadout } from '../components/MapReadout'
 import { TimeScrubber } from '../components/TimeScrubber'
 import { WorldMap, type HoverTarget } from '../components/WorldMap'
 import {
+  DEFAULT_MAP_PALETTE,
   DEFAULT_PROJECTION,
+  MAP_PALETTES,
+  MAP_PALETTE_LABELS,
   PROJECTIONS,
   UNINHABITED_CONTINENTS,
   type ContinentKey,
+  type MapPaletteKey,
   type ProjectionKey,
 } from '../config'
 import {
@@ -36,6 +40,8 @@ export function HomePage() {
   const [projectionKey, setProjectionKey] =
     useState<ProjectionKey>(DEFAULT_PROJECTION)
   const [mode, setMode] = useState<'country' | 'continent'>('country')
+  const [paletteDirection, setPaletteDirection] =
+    useState<MapPaletteKey>(DEFAULT_MAP_PALETTE)
   const [hovered, setHovered] = useState<HoverTarget | null>(null)
   const [activeContinent, setActiveContinent] = useState<ContinentKey | null>(null)
 
@@ -279,6 +285,28 @@ export function HomePage() {
           </select>
         </label>
 
+        <label className="flex items-center gap-2">
+          <span style={{ color: 'var(--text-muted)' }}>Map colours</span>
+          <select
+            value={paletteDirection}
+            onChange={(event) =>
+              setPaletteDirection(event.target.value as MapPaletteKey)
+            }
+            className="rounded border px-2 py-1"
+            style={{
+              borderColor: 'var(--border)',
+              background: 'var(--surface-raised)',
+              color: 'var(--text)',
+            }}
+          >
+            {MAP_PALETTES.map((key) => (
+              <option key={key} value={key}>
+                {MAP_PALETTE_LABELS[key]}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
           {projectionKey === 'globe'
             ? 'Drag to spin the globe; scroll or pinch to zoom.'
@@ -356,6 +384,7 @@ export function HomePage() {
               populationByIso3={byIso3}
               projectionKey={projectionKey}
               mode={mode}
+              paletteDirection={paletteDirection}
               hovered={hovered}
               onHover={setHovered}
               onSelect={(target) =>
