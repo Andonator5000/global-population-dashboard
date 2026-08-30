@@ -8,6 +8,19 @@
       <path d="M15,38.5v3H13v-3h2m1-2H12a1,1,0,0,0-1,1v5a1,1,0,0,0,1,1h4a1,1,0,0,0,1-1v-5a1,1,0,0,0-1-1Z"/>
     </g>
   </g>
+  <g id="color">
+    <g>
+      <rect x="9" y="22" rx="3" width="54" height="34" fill="#a57939"/>
+      <rect x="19" y="20" rx="1" width="4" height="38" fill="#6a462f"/>
+      <rect x="49" y="20" rx="1" width="4" height="38" fill="#6a462f"/>
+      <rect x="38" y="36.2679" rx="1" width="7" height="6" transform="matrix(0.866, 0.5, -0.5, 0.866, 25.194, -15.4891)" fill="#e67a94"/>
+      <circle cx="30.5" cy="30.2679" r="3" fill="#fcea2b"/>
+      <circle cx="58.4998" cy="43.2686" r="3" fill="#61b2e4"/>
+      <rect x="29" y="46.2679" rx="1" width="7" height="6" transform="translate(-20.2798 22.8507) rotate(-30)" fill="#f4aa41"/>
+      <rect x="10.5" y="37" rx="1" width="7" height="6" transform="translate(54 26) rotate(90.0001)" fill="#b1cc33"/>
+      <path fill="#a57939" d="M33.5,22V20a1,1,0,0,1,1-1h3a1,1,0,0,1,1,1v2h3V18.2A2.2,2.2,0,0,0,39.3,16H32.7a2.2,2.2,0,0,0-2.2,2.2V22Z"/>
+    </g>
+  </g>
   <g id="line">
     <g>
       <path fill="none" stroke="#000" stroke-linejoin="round" stroke-width="2" d="M33.5,22V20a1,1,0,0,1,1-1h3a1,1,0,0,1,1,1v2h3V18.2A2.2,2.2,0,0,0,39.3,16H32.7a2.2,2.2,0,0,0-2.2,2.2V22Z"/>

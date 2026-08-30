@@ -122,6 +122,7 @@ export function CompositionBar({
       footnote={field.overlapNote ?? field.breakdownNote}
       unquantified={items.filter((i) => i.percent === null).map((i) => i.label)}
       maxRows={maxRows}
+      iconColumn={Boolean(iconFor)}
     />
   )
 }

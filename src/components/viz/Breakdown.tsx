@@ -56,6 +56,7 @@ export function Breakdown({
   suppressedReason,
   headingLevel = 3,
   maxRows,
+  iconColumn = false,
   children,
 }: {
   title: string
@@ -77,6 +78,12 @@ export function Breakdown({
   headingLevel?: 3 | 4
   /** Fold rows past this count behind a "show all" control (default: all). */
   maxRows?: number | undefined
+  /**
+   * Reserve the icon slot on EVERY row (a muted dash where no icon exists)
+   * so labels stay flush -- an icon-less "Jehovah's Witness" must not sit
+   * further left than "Roman Catholic" (2026-08-30, maintainer request).
+   */
+  iconColumn?: boolean
   /** Extra content under the rows (boundary notes, ecoregion lines ...). */
   children?: ReactNode
 }) {
@@ -155,7 +162,17 @@ export function Breakdown({
                 style={{ width: '42%' }}
               >
                 <span className="flex items-start gap-1.5">
-                  {row.icon && <Icon code={row.icon} className="mt-0.5" />}
+                  {row.icon ? (
+                    <Icon code={row.icon} className="mt-0.5" />
+                  ) : iconColumn ? (
+                    <span
+                      aria-hidden="true"
+                      className="mt-0.5 inline-block w-[1.25em] text-center"
+                      style={{ color: 'var(--text-muted)' }}
+                    >
+                      –
+                    </span>
+                  ) : null}
                   <span>
                     <span
                       title={row.isOther ? (row.detail ?? undefined) : undefined}
