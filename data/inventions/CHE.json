@@ -2,83 +2,76 @@
   "iso3": "CHE",
   "name": "Switzerland",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Gastronorm",
-      "source": "wikidata",
-      "inventors": [
-        "HotellerieSuisse"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gastronorm%20sizes.png?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gastronorm%20sizes.png",
-        "license": "CC BY-SA 4.0",
-        "author": "Brezh",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Apertus",
-      "source": "wikidata",
-      "inventors": [
-        "Swiss AI"
-      ],
-      "year": 2025
-    },
-    {
-      "name": "Didier Queloz",
-      "source": "wikipedia",
-      "year": 1995
-    },
-    {
-      "name": "Aluminium foil",
+      "name": "Laudanum",
       "source": "wikipedia"
     },
     {
-      "name": "Sandmeyer reaction",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Robert Maillart",
+      "name": "DDT",
       "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ETH-BIB-Maillart%2C%20Robert%20%281872-1940%29-Portrait-Portr%2013004.tif?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:ETH-BIB-Maillart%2C%20Robert%20%281872-1940%29-Portrait-Portr%2013004.tif",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/P%2Cp%27-dichlorodiphenyltrichloroethane.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:P%2Cp%27-dichlorodiphenyltrichloroethane.svg",
         "license": "Public domain",
-        "author": "Unbekannt",
+        "author": "Leyo",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Bouillon cube",
+      "name": "Invar",
       "source": "wikipedia"
     },
     {
-      "name": "Trigonometric functions",
+      "name": "Computer mouse",
       "source": "wikipedia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Academ%20Base%20of%20trigonometry.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Academ%20Base%20of%20trigonometry.svg",
-        "license": "CC BY-SA 3.0",
-        "author": "Baelde",
-        "source": "Wikimedia Commons"
-      }
+      "year": 2004
     },
     {
-      "name": "Euler's identity",
-      "source": "wikipedia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Euler%27s%20formula.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Euler%27s%20formula.svg",
-        "license": "CC BY-SA 3.0",
-        "author": "Original:  GuntherDerivative work:  Wereon",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Compound interest",
+      "name": "Immersion blender",
       "source": "wikipedia"
+    },
+    {
+      "name": "Separation of variables",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Diclofenac",
+      "source": "wikipedia",
+      "year": 1973,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Diclofenac.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Diclofenac.svg",
+        "license": "Public domain",
+        "author": "Harbin",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Stent",
+      "source": "wikipedia",
+      "year": 1986
+    },
+    {
+      "name": "Swiss Army knife",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Argand lamp",
+      "source": "wikipedia"
+    },
+    {
+      "name": "STN display",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Internal combustion engine",
+      "source": "wikipedia",
+      "inventors": [
+        "François Isaac"
+      ],
+      "year": 1806
     }
   ]
 }

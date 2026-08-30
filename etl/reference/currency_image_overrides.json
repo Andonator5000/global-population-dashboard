@@ -1,3 +1,3 @@
 {
-  "_note": "ISO 4217 code -> Wikimedia Commons filename (without the File: prefix). Overrides the Wikidata P18 image for currencies where the default is a coin, a symbol, or a historical note. Files are validated against the Commons API at build time; a missing file is dropped with a manifest warning, never guessed."
+  "_note": "ISO 4217 code -> Wikimedia Commons filename (without the File: prefix). Adds a candidate banknote image for the code; it is judged by the same acceptance criteria as every file (single flat obverse note, see etl/sources/currencyimages.py) and rejected with a logged reason if it fails."
 }

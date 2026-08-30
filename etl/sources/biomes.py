@@ -39,7 +39,7 @@ import json
 import zipfile
 from typing import Any
 
-from .. import config, manifest as manifest_mod
+from .. import breakdown, config, manifest as manifest_mod
 from ..crosswalk import Entity
 from ..fetch import FetchError, fetch
 
@@ -228,6 +228,13 @@ def ingest(
             # a shortfall is reported, never rescaled away.
             "coveredShare": covered,
             "withinTolerance": within_tolerance,
+            # Explicit "Other" for the uncovered remainder (2026-08-29) so
+            # the breakdown totals 100%; a covered share over 100 is an
+            # overlay artefact and is noted, never clamped.
+            **breakdown.complete(
+                "biomes", covered,
+                iso3=iso3, label="biome breakdown",
+            ),
         }
 
     # ---- continent aggregation ------------------------------------------
@@ -265,6 +272,10 @@ def ingest(
             "landAreaKm2": round(total, 2),
             "biomes": rows,
             "coveredShare": round(sum(r["share"] for r in rows), 3),
+            **breakdown.complete(
+                "biomes", round(sum(r["share"] for r in rows), 3),
+                iso3=key, label="continent biome breakdown",
+            ),
             "memberEntitiesWithBiomeData": sum(
                 1
                 for iso3 in entities

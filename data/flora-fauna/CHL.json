@@ -33,6 +33,7 @@
   },
   "flower": {
     "name": "copihue",
+    "scientificName": "Lapageria rosea",
     "image": {
       "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31403989/medium.jpeg",
       "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/31403989/large.jpeg",

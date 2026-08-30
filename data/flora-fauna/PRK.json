@@ -5,18 +5,6 @@
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
   "animals": [
     {
-      "name": "Qianlima",
-      "type": "national animal",
-      "scientificName": "Mythical",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chollima%20statue%2005.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chollima%20statue%2005.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Nicor",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "Siberian tiger",
       "type": "national animal",
       "scientificName": "Panthera tigris altaica",
@@ -56,6 +44,20 @@
       }
     }
   ],
+  "emblems": [
+    {
+      "name": "Qianlima",
+      "type": "national animal",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chollima%20statue%2005.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chollima%20statue%2005.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Nicor",
+        "source": "Wikimedia Commons"
+      },
+      "kind": "heraldic or mythical emblem"
+    }
+  ],
   "tree": {
     "name": "Pine",
     "type": "national tree",
@@ -72,12 +74,11 @@
   "flower": {
     "name": "Korean",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/17173379/medium.jpg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/17173379/large.jpg",
-      "commonsPage": "https://www.inaturalist.org/photos/17173379",
-      "license": "CC-BY",
-      "author": "(c) Carrie Seltzer, some rights reserved (CC BY)",
-      "source": "iNaturalist"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hangugeo-Chosono.svg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Hangugeo-Chosono.svg",
+      "license": "Public domain",
+      "author": "Great Brightstar",
+      "source": "Wikimedia Commons"
     }
   }
 }

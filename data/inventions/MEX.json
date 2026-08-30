@@ -2,38 +2,62 @@
   "iso3": "MEX",
   "name": "Mexico",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "Tlapitzalli",
       "source": "wikipedia"
     },
     {
-      "name": "Canal",
+      "name": "Carimba",
       "source": "wikipedia"
     },
     {
-      "name": "Pachyrhizus erosus",
+      "name": "Molinillo (whisk)",
       "source": "wikipedia"
     },
     {
-      "name": "Huipil",
+      "name": "Ephedra (medicine)",
       "source": "wikipedia"
     },
     {
-      "name": "Pelota mixteca",
-      "source": "wikipedia"
+      "name": "Lathe",
+      "source": "wikipedia",
+      "year": 1774
     },
     {
-      "name": "Mariachi",
-      "source": "wikipedia"
+      "name": "Sombrero",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CharroHatsMAPDF.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:CharroHatsMAPDF.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "AlejandroLinaresGarcia",
+        "source": "Wikimedia Commons"
+      }
     },
     {
-      "name": "Quechquemitl",
-      "source": "wikipedia"
+      "name": "Translucent concrete",
+      "source": "wikipedia",
+      "year": 2005
     },
     {
       "name": "Jet pack",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Mendoza RM2",
+      "source": "wikipedia",
+      "inventors": [
+        "Rafael Mendoza Blanco"
+      ]
+    },
+    {
+      "name": "Saint-Chamond-Mondragón",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Oaxaca-class patrol vessel",
       "source": "wikipedia"
     }
   ]

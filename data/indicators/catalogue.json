@@ -134,6 +134,12 @@
       "unit": "percent",
       "latestYearAnywhere": 2025
     },
+    "SP.RUR.TOTL.ZS": {
+      "label": "Rural population (% of total)",
+      "section": "demographics",
+      "unit": "percent",
+      "latestYearAnywhere": 2025
+    },
     "EN.POP.DNST": {
       "label": "Population density (people per sq km of land)",
       "section": "demographics",
@@ -272,6 +278,7 @@
     "SE.SEC.NENR": 188,
     "SE.TER.ENRR": 203,
     "SP.URB.TOTL.IN.ZS": 216,
+    "SP.RUR.TOTL.ZS": 216,
     "EN.POP.DNST": 215,
     "AG.LND.TOTL.K2": 215,
     "AG.LND.FRST.ZS": 213,

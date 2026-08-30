@@ -1,0 +1,989 @@
+{
+  "_note": "Keyword -> icon mapping for CIA Factbook industry, agricultural-product and export-commodity items (2026-08-29). One icon set: OpenMoji, black (monochrome outline) variant, CC BY-SA 4.0 (https://openmoji.org). Rules are tested in order against the lowercased item string; the first match wins, so specific rules precede general ones. `tier` is 'exact' (the icon depicts the item) or 'category' (the closest sensible category icon). Items no rule matches render as a labelled chip with no icon -- never a catch-all gear. Hexcodes are OpenMoji hexcodes; scripts/fetch-icons.mjs vendors the SVGs into public/icons/openmoji and fails on an unknown code.",
+  "attribution": "Icons: OpenMoji (openmoji.org), CC BY-SA 4.0",
+  "rules": [
+    [
+      "\\bnone\\b",
+      null,
+      "none",
+      "exact"
+    ],
+    [
+      "\\bretail\\b|\\bcommerce\\b|\\bconsumer (?:goods|products)\\b|\\bconsumer\\b|\\bwholesale",
+      "1F6D2",
+      "shopping cart",
+      "exact"
+    ],
+    [
+      "\\bpharmaceutical|\\bmedicines?\\b|\\bvaccines?\\b|\\bdrugs?\\b|\\bhormones?\\b|\\bbiotech|\\bbiomedical|\\bmedical cultures",
+      "1F48A",
+      "pill",
+      "exact"
+    ],
+    [
+      "\\bmedical\\b|\\bsurgical|\\borthopedic|\\bdental|\\bhealth",
+      "1FA7A",
+      "stethoscope",
+      "exact"
+    ],
+    [
+      "\\b(?:cow|bison|sheep|goat|camel|buffalo)? ?milk\\b|\\bdairy\\b|\\blactose\\b",
+      "1F95B",
+      "glass of milk",
+      "exact"
+    ],
+    [
+      "\\bbutter\\b|\\bmargarine\\b",
+      "1F9C8",
+      "butter",
+      "exact"
+    ],
+    [
+      "\\bcheese\\b",
+      "1F9C0",
+      "cheese wedge",
+      "exact"
+    ],
+    [
+      "\\beggs?\\b",
+      "1F95A",
+      "egg",
+      "exact"
+    ],
+    [
+      "\\bhoney\\b|\\bbeekeeping\\b|\\bwax\\b",
+      "1F36F",
+      "honey pot",
+      "exact"
+    ],
+    [
+      "\\bmaize\\b|\\bcorn\\b|\\bpopcorn\\b",
+      "1F33D",
+      "ear of corn",
+      "exact"
+    ],
+    [
+      "\\brice\\b",
+      "1F33E",
+      "sheaf of rice",
+      "exact"
+    ],
+    [
+      "\\bwheat\\b|\\bflour\\b|\\bmilling\\b|\\bbaked goods\\b|\\bbakery\\b",
+      "1F35E",
+      "bread",
+      "exact"
+    ],
+    [
+      "\\bbarley\\b|\\bmalt\\b",
+      "1F37A",
+      "beer mug",
+      "exact"
+    ],
+    [
+      "\\boats?\\b|\\brye\\b|\\bsorghum\\b|\\bmillet\\b|\\btriticale\\b|\\bfonio\\b|\\bcereals?\\b|\\bgrains?\\b|\\bfodder\\b|\\bforage\\b|\\bhay\\b|\\banimal (?:food|meal|feed)\\b|\\bstarch\\b",
+      "1F33E",
+      "sheaf of rice",
+      "category"
+    ],
+    [
+      "\\bsweet potato",
+      "1F360",
+      "roasted sweet potato",
+      "exact"
+    ],
+    [
+      "\\bpotato",
+      "1F954",
+      "potato",
+      "exact"
+    ],
+    [
+      "\\bcassava\\b|\\bmanioc\\b|\\btapioca\\b|\\byams?\\b|\\btaro\\b|\\byautia\\b|\\broot vegetables?\\b|\\bradish",
+      "1F360",
+      "roasted sweet potato",
+      "category"
+    ],
+    [
+      "\\bsugar ?cane\\b|\\bsugar ?beets?\\b|\\bsugar\\b|\\bmolasses\\b|\\bcane\\b",
+      "1F36C",
+      "candy",
+      "exact"
+    ],
+    [
+      "\\bcocoa\\b|\\bchocolate\\b",
+      "1F36B",
+      "chocolate bar",
+      "exact"
+    ],
+    [
+      "\\bcoffee\\b",
+      "2615",
+      "hot beverage",
+      "exact"
+    ],
+    [
+      "\\btea\\b|\\bmate\\b",
+      "1FAD6",
+      "teapot",
+      "exact"
+    ],
+    [
+      "\\btomato",
+      "1F345",
+      "tomato",
+      "exact"
+    ],
+    [
+      "\\bbananas?\\b|\\bplantains?\\b",
+      "1F34C",
+      "banana",
+      "exact"
+    ],
+    [
+      "\\bpineapple",
+      "1F34D",
+      "pineapple",
+      "exact"
+    ],
+    [
+      "\\bwatermelon",
+      "1F349",
+      "watermelon",
+      "exact"
+    ],
+    [
+      "\\bcantaloupe|\\bmelons?\\b",
+      "1F348",
+      "melon",
+      "exact"
+    ],
+    [
+      "\\bmango",
+      "1F96D",
+      "mango",
+      "exact"
+    ],
+    [
+      "\\bpapaya|\\bpawpaw|\\bguava|\\bsoursop|\\bnoni\\b|\\bbreadfruit|\\btropical fruit|\\bcalamansi|\\bareca|\\bbetel",
+      "1F96D",
+      "mango",
+      "category"
+    ],
+    [
+      "\\bavocado",
+      "1F951",
+      "avocado",
+      "exact"
+    ],
+    [
+      "\\bcoconut|\\bcopra\\b",
+      "1F965",
+      "coconut",
+      "exact"
+    ],
+    [
+      "\\bpalm oil\\b|\\boil palm\\b|\\bkentia palm|\\bpalm seed",
+      "1F334",
+      "palm tree",
+      "exact"
+    ],
+    [
+      "\\bdates?\\b",
+      "1F334",
+      "palm tree",
+      "category"
+    ],
+    [
+      "\\bgrapes?\\b",
+      "1F347",
+      "grapes",
+      "exact"
+    ],
+    [
+      "\\bwine\\b|\\bbrandy\\b",
+      "1F377",
+      "wine glass",
+      "exact"
+    ],
+    [
+      "\\bapples?\\b",
+      "1F34E",
+      "red apple",
+      "exact"
+    ],
+    [
+      "\\bpears?\\b",
+      "1F350",
+      "pear",
+      "exact"
+    ],
+    [
+      "\\bpeach|\\bnectarine|\\bapricot|\\bplums?\\b|\\bpitted fruit",
+      "1F351",
+      "peach",
+      "exact"
+    ],
+    [
+      "\\bcherr(?:y|ies)\\b|\\bberr(?:y|ies)\\b|\\bstrawberr",
+      "1F353",
+      "strawberry",
+      "exact"
+    ],
+    [
+      "\\bkiwi",
+      "1F95D",
+      "kiwi fruit",
+      "exact"
+    ],
+    [
+      "\\bfigs?\\b",
+      "1F96D",
+      "mango",
+      "category"
+    ],
+    [
+      "\\boranges?\\b|\\btangerine|\\bmandarin|\\bcitrus\\b|\\bgrapefruit",
+      "1F34A",
+      "tangerine",
+      "exact"
+    ],
+    [
+      "\\blime processing|\\blimestone",
+      "1FAA8",
+      "rock",
+      "exact"
+    ],
+    [
+      "\\blemons?\\b|\\blimes?\\b",
+      "1F34B",
+      "lemon",
+      "exact"
+    ],
+    [
+      "\\bolives?\\b|\\bolive oil\\b",
+      "1FAD2",
+      "olive",
+      "exact"
+    ],
+    [
+      "\\bpeanut|\\bgroundnut|\\bground nut",
+      "1F95C",
+      "peanuts",
+      "exact"
+    ],
+    [
+      "\\bcashew|\\balmond|\\bpistachio|\\bhazelnut|\\bwalnut|\\bnuts?\\b|\\bpolynesian",
+      "1F95C",
+      "peanuts",
+      "category"
+    ],
+    [
+      "\\bchestnut",
+      "1F330",
+      "chestnut",
+      "exact"
+    ],
+    [
+      "\\bsoybean|\\bsoy\\b|\\bbeans?\\b|\\bpulses?\\b|\\blegume|\\blentil|\\bchickpea|\\bcowpea|\\bpigeon pea",
+      "1FAD8",
+      "beans",
+      "exact"
+    ],
+    [
+      "\\bpeas?\\b",
+      "1FADB",
+      "pea pod",
+      "exact"
+    ],
+    [
+      "\\bonions?\\b",
+      "1F9C5",
+      "onion",
+      "exact"
+    ],
+    [
+      "\\bgarlic\\b",
+      "1F9C4",
+      "garlic",
+      "exact"
+    ],
+    [
+      "\\bginger\\b",
+      "1FADA",
+      "ginger root",
+      "exact"
+    ],
+    [
+      "\\bchil(?:i|li|lies)\\b|\\bhot pepper|\\bchillies",
+      "1F336",
+      "hot pepper",
+      "exact"
+    ],
+    [
+      "\\bpeppers?\\b|\\bsweet pepper|\\bcapsicum",
+      "1FAD1",
+      "bell pepper",
+      "exact"
+    ],
+    [
+      "\\bcucumber|\\bgherkin",
+      "1F952",
+      "cucumber",
+      "exact"
+    ],
+    [
+      "\\bpumpkin|\\bsquash|\\bgourd",
+      "1F383",
+      "jack-o-lantern",
+      "category"
+    ],
+    [
+      "\\beggplant|\\baubergine",
+      "1F346",
+      "eggplant",
+      "exact"
+    ],
+    [
+      "\\bcarrots?\\b|\\bturnip",
+      "1F955",
+      "carrot",
+      "exact"
+    ],
+    [
+      "\\bcabbage|\\blettuce|\\bspinach|\\bkangkong|\\bwatercress|\\bokra\\b|\\bleafy",
+      "1F96C",
+      "leafy green",
+      "exact"
+    ],
+    [
+      "\\bbroccoli|\\bcauliflower",
+      "1F966",
+      "broccoli",
+      "exact"
+    ],
+    [
+      "\\bmushroom",
+      "1F344",
+      "mushroom",
+      "exact"
+    ],
+    [
+      "\\bvegetables?\\b",
+      "1F955",
+      "carrot",
+      "category"
+    ],
+    [
+      "\\bfruits?\\b",
+      "1F34E",
+      "red apple",
+      "category"
+    ],
+    [
+      "\\bsunflower",
+      "1F33B",
+      "sunflower",
+      "exact"
+    ],
+    [
+      "\\brapeseed|\\bcanola|\\bsesame|\\boil ?seeds?\\b|\\bseed oils?\\b|\\bvegetable oil|\\bedible oils?\\b|\\bsoybean oil|\\bcoconut oil",
+      "1F33B",
+      "sunflower",
+      "category"
+    ],
+    [
+      "\\bspices?\\b|\\bvanilla|\\bcloves?\\b|\\bcinnamon|\\bcardamom|\\bcardamon|\\bnutmeg|\\bturmeric|\\bsaffron|\\bpepper\\b|\\bessential oil|\\bperfume plant|\\baloe",
+      "1F33F",
+      "herb",
+      "exact"
+    ],
+    [
+      "\\bflowers?\\b|\\bhorticulture|\\bornamental plant",
+      "1F490",
+      "bouquet",
+      "exact"
+    ],
+    [
+      "\\bjute\\b|\\bsisal\\b|\\bhemp\\b|\\bfiber crops?\\b|\\bfibre crops?\\b|\\bflax\\b",
+      "1F33F",
+      "herb",
+      "category"
+    ],
+    [
+      "\\bcotton\\b",
+      "1F9F5",
+      "thread",
+      "exact"
+    ],
+    [
+      "\\bwool\\b|\\bcashmere\\b",
+      "1F9F6",
+      "yarn",
+      "exact"
+    ],
+    [
+      "\\bsilk\\b",
+      "1F9F5",
+      "thread",
+      "exact"
+    ],
+    [
+      "\\btobacco\\b|\\bcigarette|\\bcigars?\\b",
+      "1F6AC",
+      "cigarette",
+      "exact"
+    ],
+    [
+      "\\brubber\\b|\\btires?\\b|\\btyres?\\b",
+      "1F6DE",
+      "wheel",
+      "exact"
+    ],
+    [
+      "\\btimber\\b|\\blumber|\\bwood\\b|\\bwooden\\b|\\bforestry\\b|\\blogging\\b|\\blogs\\b|\\bsawmill|\\bplywood|\\bcork\\b|\\bwoodwork",
+      "1FAB5",
+      "wood",
+      "exact"
+    ],
+    [
+      "\\bpulp\\b|\\bpaper\\b|\\bcardboard|\\bcarton|\\bprinting\\b|\\bpublishing\\b",
+      "1F4C4",
+      "page facing up",
+      "exact"
+    ],
+    [
+      "\\bpine\\b|\\bconifer|\\bnorfolk",
+      "1F332",
+      "evergreen tree",
+      "exact"
+    ],
+    [
+      "\\btractors?\\b|\\bharvesting machinery|\\bagricultural machinery|\\bfarm machinery",
+      "1F69C",
+      "tractor",
+      "exact"
+    ],
+    [
+      "\\bbeef\\b|\\bcattle\\b|\\bcows?\\b|\\bveal\\b|\\bsuet\\b|\\bbison\\b|\\bbuffalo\\b|\\bhides?\\b|\\bskins\\b|\\bslaughter",
+      "1F404",
+      "cow",
+      "exact"
+    ],
+    [
+      "\\bpork\\b|\\bpigs?\\b(?! iron)|\\bswine\\b|\\bhogs?\\b|\\bbacon\\b|\\bham\\b",
+      "1F416",
+      "pig",
+      "exact"
+    ],
+    [
+      "\\bchickens?\\b|\\bpoultry\\b|\\bbroiler",
+      "1F414",
+      "chicken",
+      "exact"
+    ],
+    [
+      "\\bducks?\\b|\\bgeese\\b|\\bgoose\\b",
+      "1F986",
+      "duck",
+      "exact"
+    ],
+    [
+      "\\bsheep\\b|\\bmutton\\b|\\blamb\\b|\\bsheepskin",
+      "1F411",
+      "ewe",
+      "exact"
+    ],
+    [
+      "\\bgoats?\\b",
+      "1F410",
+      "goat",
+      "exact"
+    ],
+    [
+      "\\bcamels?\\b",
+      "1F42A",
+      "camel",
+      "exact"
+    ],
+    [
+      "\\bhorses?\\b|\\bequine\\b",
+      "1F40E",
+      "horse",
+      "exact"
+    ],
+    [
+      "\\bdonkey|\\bmules?\\b",
+      "1FACF",
+      "donkey",
+      "exact"
+    ],
+    [
+      "\\breindeer\\b|\\bvenison\\b|\\bdeer\\b|\\bgame meat\\b",
+      "1F98C",
+      "deer",
+      "exact"
+    ],
+    [
+      "\\bllama|\\balpaca",
+      "1F999",
+      "llama",
+      "exact"
+    ],
+    [
+      "\\bturtle",
+      "1F422",
+      "turtle",
+      "exact"
+    ],
+    [
+      "\\bmeats?\\b|\\boffal\\b|\\blivestock\\b|\\banimals?\\b|\\banimal products\\b",
+      "1F969",
+      "cut of meat",
+      "category"
+    ],
+    [
+      "\\bshrimp|\\bprawn",
+      "1F990",
+      "shrimp",
+      "exact"
+    ],
+    [
+      "\\blobster|\\bcrab|\\bcrustacean|\\bshellfish",
+      "1F99E",
+      "lobster",
+      "exact"
+    ],
+    [
+      "\\bsquid\\b|\\boctopus",
+      "1F991",
+      "squid",
+      "exact"
+    ],
+    [
+      "\\boyster|\\bpearl|\\bmother-of-pearl|\\bseashell|\\bshell\\b",
+      "1F9AA",
+      "oyster",
+      "exact"
+    ],
+    [
+      "\\btuna\\b|\\bfish\\b|\\bfisher|\\bfishing\\b|\\bseafood\\b|\\baquaculture\\b|\\bhalibut|\\bsalmon|\\bcod\\b|\\bsardine|\\banchov|\\bseaweed",
+      "1F41F",
+      "fish",
+      "exact"
+    ],
+    [
+      "\\bagricultur|\\bfarming\\b|\\bagro|\\bagribusiness|\\bsubsistence\\b|\\bcrops?\\b|\\bhorticultur",
+      "1F69C",
+      "tractor",
+      "exact"
+    ],
+    [
+      "\\bwatch(?:es)?\\b|\\bclocks?\\b",
+      "231A",
+      "watch",
+      "exact"
+    ],
+    [
+      "\\bcement\\b|\\bconcrete\\b|\\bbricks?\\b|\\bconstruction materials?\\b|\\bbuilding materials?\\b|\\bprefabricated|\\bgypsum",
+      "1F9F1",
+      "brick",
+      "exact"
+    ],
+    [
+      "\\bmining\\b",
+      "26CF",
+      "pick",
+      "exact"
+    ],
+    [
+      "\\bmineral water\\b",
+      "1F964",
+      "cup with straw",
+      "exact"
+    ],
+    [
+      "\\bgold\\b",
+      "1FA99",
+      "coin",
+      "exact"
+    ],
+    [
+      "\\bdiamonds?\\b|\\bgems?\\b|\\bgemstone|\\bemerald|\\bruby\\b|\\bjade\\b|\\bprecious stones?\\b|\\bamber\\b",
+      "1F48E",
+      "gem stone",
+      "exact"
+    ],
+    [
+      "\\bjewel|\\bsilver\\b|\\bplatinum\\b|\\bprecious metal",
+      "1F48D",
+      "ring",
+      "exact"
+    ],
+    [
+      "\\bcoins?\\b|\\bmedals?\\b|\\bmint\\b",
+      "1FA99",
+      "coin",
+      "exact"
+    ],
+    [
+      "\\bcoal\\b|\\blignite\\b|\\bcoke\\b|\\bpeat\\b",
+      "1FAA8",
+      "rock",
+      "category"
+    ],
+    [
+      "\\buranium|\\bthorium|\\bradioactive|\\bnuclear fuel",
+      "2622",
+      "radioactive",
+      "exact"
+    ],
+    [
+      "\\bnuclear\\b",
+      "E2D4",
+      "nuclear power plant",
+      "exact"
+    ],
+    [
+      "\\bsalt\\b",
+      "1F9C2",
+      "salt",
+      "exact"
+    ],
+    [
+      "\\bmining\\b|\\bmines?\\b|\\bquarry|\\bores?\\b|\\bextractive|\\bextraction\\b|\\bbauxite|\\bphosphate|\\bpotash|\\bchromite|\\bmanganese|\\bcobalt|\\bcoltan|\\bcolumbite|\\bzircon|\\brutile|\\bdolomite|\\bfeldspar|\\baragonite|\\banorthosite|\\bantimony|\\blithium|\\btungsten|\\bmolybdenum|\\bfluorspar|\\bboron|\\bgraphite|\\bmagnesite|\\brare[- ]earth|\\bnatron\\b|\\bsulfur\\b|\\bsulphur\\b|\\bgypsum|\\basbestos|\\bcarbonates?\\b|\\bminerals?\\b|\\bnickel\\b|\\btin\\b|\\blead\\b|\\bzinc\\b|\\bcopper\\b|\\btitanium|\\baluminum ore|\\biron ore",
+      "26CF",
+      "pick",
+      "exact"
+    ],
+    [
+      "\\bsand\\b|\\bgravel|\\bcrushed stone|\\bbuilding stone|\\bgranite|\\bmarble|\\bstone\\b|\\blime processing|\\blimestone|\\bclay\\b|\\brefractory",
+      "1FAA8",
+      "rock",
+      "exact"
+    ],
+    [
+      "\\bsteel(?:making)?\\b|\\biron\\b|\\bmetallurg|\\bsmelt|\\bfoundry|\\bforging|\\bpig iron|\\brolled|\\bferrous|\\bnonferrous|\\bbase metals?\\b|\\bmetals?\\b|\\bmetal(?:work|-cutting| products| fabricat| manufactur)|\\baluminum\\b|\\baluminium\\b|\\bfasteners?\\b|\\bpiping\\b|\\bwire\\b|\\bwire harness|\\bscrap\\b",
+      "1F529",
+      "nut and bolt",
+      "exact"
+    ],
+    [
+      "\\bcrude\\b|\\bpetroleum\\b|\\boil\\b|\\brefin|\\bhydrocarbon|\\bfuels?\\b|\\blubricant|\\bbunkering|\\boilfield|\\boil drilling|\\boffshore platform",
+      "1F6E2",
+      "oil drum",
+      "exact"
+    ],
+    [
+      "\\bnatural gas\\b|\\blng\\b|\\bgas\\b|\\bliquefied|\\bliquefaction|\\bmethanol\\b|\\bindustrial gases\\b",
+      "1F525",
+      "fire",
+      "exact"
+    ],
+    [
+      "\\bhydro(?:power|electric)|\\bgeothermal|\\bwind (?:turbine|power|energy)|\\bsolar\\b|\\brenewable",
+      "E2D1",
+      "wind energy",
+      "exact"
+    ],
+    [
+      "\\belectric(?:ity| power)|\\bpower (?:generat|equipment|plant)|\\benergy\\b|\\bwater supply|\\bdesalination|\\bwater\\b|\\butilit",
+      "26A1",
+      "high voltage",
+      "exact"
+    ],
+    [
+      "\\bbatter(?:y|ies)\\b|\\bcapacitor|\\btransformer|\\bcontrol boards?\\b|\\belectric motors?\\b|\\belectrical\\b|\\belectric\\b",
+      "1F50C",
+      "electric plug",
+      "exact"
+    ],
+    [
+      "\\bsemiconductor|\\bintegrated circuit|\\bmicroelectronic|\\bchips?\\b|\\belectronic components?\\b|\\btransistor",
+      "E1D7",
+      "circuit",
+      "exact"
+    ],
+    [
+      "\\bcomputer|\\bsoftware|\\bapp/|\\bhardware\\b|\\binformation technology\\b|\\bit services\\b|\\bvideo game|\\bgame development|\\bcard games\\b|\\bhigh-technology|\\btechnology\\b|\\bautomation\\b|\\brobot",
+      "1F4BB",
+      "laptop",
+      "exact"
+    ],
+    [
+      "\\btelephones?\\b|\\bmobile phones?\\b|\\btelecommunication|\\bcommunications? equipment|\\bwireless\\b|\\bbroadcasting|\\bradio\\b|\\boptic fiber|\\bfiber optic|\\bconnectors\\b",
+      "1F4F1",
+      "mobile phone",
+      "exact"
+    ],
+    [
+      "\\btelevision|\\bvideo displays?\\b|\\bmedia\\b|\\bfilm\\b|\\bentertainment",
+      "1F4FA",
+      "television",
+      "exact"
+    ],
+    [
+      "\\belectronics?\\b|\\bappliances?\\b|\\brefrigerat|\\bfreezers?\\b|\\bwashing machines?\\b|\\bair conditioning|\\bheating machinery|\\bconsumer durables\\b",
+      "1F50C",
+      "electric plug",
+      "category"
+    ],
+    [
+      "\\bsatellites?\\b|\\bspace\\b|\\blaunch vehicles?\\b|\\baerospace\\b",
+      "1F6F0",
+      "satellite",
+      "exact"
+    ],
+    [
+      "\\baircraft|\\baviation\\b|\\bairline|\\bavionic",
+      "2708",
+      "airplane",
+      "exact"
+    ],
+    [
+      "\\bshipbuilding|\\bship ?(?:building|repair|construction|yards?)|\\bshipyards?\\b|\\bvessels?\\b|\\bmaritime|\\bboats?\\b|\\byacht|\\bshipping\\b|\\bships\\b|\\bport\\b|\\bharbou?r|\\btransshipment",
+      "1F6A2",
+      "ship",
+      "exact"
+    ],
+    [
+      "\\brail(?:way|road|cars?)?\\b|\\blocomotive|\\btrams?\\b|\\bmetro\\b",
+      "1F682",
+      "locomotive",
+      "exact"
+    ],
+    [
+      "\\bcars?\\b|\\bautomobile|\\bautomotive|\\bmotor vehicle|\\bvehicles?\\b|\\bauto (?:parts|assembly)|\\bauto assembly",
+      "1F697",
+      "automobile",
+      "exact"
+    ],
+    [
+      "\\btrucks?\\b|\\blorr(?:y|ies)\\b|\\bbus(?:es)?\\b|\\btrailers?\\b|\\bcargo\\b|\\blogistics\\b|\\bhaulage|\\bfreight",
+      "1F69A",
+      "delivery truck",
+      "exact"
+    ],
+    [
+      "\\bmotorcycle|\\bmotorbike|\\bscooter",
+      "1F3CD",
+      "motorcycle",
+      "exact"
+    ],
+    [
+      "\\btransport(?:ation)?\\b|\\btransit\\b",
+      "1F69A",
+      "delivery truck",
+      "category"
+    ],
+    [
+      "\\bmachine tools?\\b|\\bmachiner(?:y|ies)\\b|\\bmachines?\\b|\\bmachine[- ]building|\\bequipment\\b|\\bengineering\\b|\\bengines?\\b|\\bturbines?\\b|\\bearthmover|\\bexcavat|\\bconstruction vehicles?\\b|\\btools?\\b",
+      "1F6E0",
+      "hammer and wrench",
+      "exact"
+    ],
+    [
+      "\\bconstruction\\b|\\bpublic works\\b|\\bbuilding\\b",
+      "1F3D7",
+      "building construction",
+      "exact"
+    ],
+    [
+      "\\breal estate\\b|\\bhousing\\b",
+      "1F3D8",
+      "houses",
+      "exact"
+    ],
+    [
+      "\\bchemicals?\\b|\\bpetrochemical|\\bfertili[sz]er|\\bammonia\\b|\\burea\\b|\\bacids?\\b|\\balcohols?\\b|\\bsoda ash|\\bcaustic soda|\\bsodium|\\bcalcium carbide|\\bcompounds?\\b|\\bpolymers?\\b|\\bethylene|\\bcatalytic|\\bnitrogen|\\bphosphoric|\\bamine\\b|\\boxide\\b|\\bpaints?\\b|\\babrasive|\\bgum resins?\\b|\\bscented\\b",
+      "1F9EA",
+      "test tube",
+      "exact"
+    ],
+    [
+      "\\bplastics?\\b|\\bsynthetic fib(?:er|re)",
+      "E0CC",
+      "plastic bottle",
+      "exact"
+    ],
+    [
+      "\\bsoap\\b|\\bcosmetic|\\bperfume|\\bdetergent|\\btoilet paper|\\btissue",
+      "1F9FC",
+      "soap",
+      "exact"
+    ],
+    [
+      "\\bglass\\b|\\bglassware|\\bceramic|\\bporcelain|\\bearthenware|\\bpottery",
+      "1F3FA",
+      "amphora",
+      "exact"
+    ],
+    [
+      "\\btextiles?\\b|\\bfabrics?\\b|\\bcloth\\b|\\byarn\\b|\\bthread\\b|\\bwoven\\b|\\bweav|\\bknit|\\bhosiery|\\bginning|\\blint\\b|\\bspinning|\\bmattress|\\bbedding|\\brope\\b|\\bmats?\\b|\\bcarpets?\\b|\\brugs?\\b",
+      "1F9F5",
+      "thread",
+      "exact"
+    ],
+    [
+      "\\bgarments?\\b|\\bapparel\\b|\\bclothing\\b|\\bclothes\\b|\\buniforms?\\b|\\bwear\\b",
+      "1F455",
+      "t-shirt",
+      "exact"
+    ],
+    [
+      "\\bfootwear\\b|\\bshoes?\\b|\\bboots?\\b|\\bsandals?\\b",
+      "1F45F",
+      "running shoe",
+      "exact"
+    ],
+    [
+      "\\bleather\\b|\\btrunks and cases|\\bluggage|\\bbags?\\b|\\bhandbag",
+      "1F45C",
+      "handbag",
+      "exact"
+    ],
+    [
+      "\\bhandicraft|\\bcrafts?\\b|\\bcraft items|\\bcarvings?\\b|\\bsouvenir|\\blacework|\\bplaited|\\bfake hair|\\bwigs?\\b",
+      "1F9F6",
+      "yarn",
+      "category"
+    ],
+    [
+      "\\bfurniture\\b|\\bseats?\\b|\\bchairs?\\b",
+      "1FA91",
+      "chair",
+      "exact"
+    ],
+    [
+      "\\btoys?\\b",
+      "1F9F8",
+      "teddy bear",
+      "exact"
+    ],
+    [
+      "\\boptic(?:s|al)?\\b|\\blens|\\blasers?\\b|\\bphoto lab\\b",
+      "1F52D",
+      "telescope",
+      "exact"
+    ],
+    [
+      "\\bscientific instruments?\\b|\\bprecision (?:instruments?|equipment)|\\bmeasuring|\\binstruments?\\b",
+      "1F4CF",
+      "straight ruler",
+      "exact"
+    ],
+    [
+      "\\bpaintings?\\b|\\bartwork|\\bart\\b|\\bmosaics?\\b|\\bcultural|\\bcreative",
+      "1F3A8",
+      "artist palette",
+      "exact"
+    ],
+    [
+      "\\bstamps?\\b|\\bpostage|\\bdocuments\\b",
+      "2709",
+      "envelope",
+      "exact"
+    ],
+    [
+      "\\bpackaging|\\bcontainers?\\b|\\bboxes\\b|\\bpackaged\\b",
+      "1F4E6",
+      "package",
+      "exact"
+    ],
+    [
+      "\\bbeer\\b|\\bbrew",
+      "1F37A",
+      "beer mug",
+      "exact"
+    ],
+    [
+      "\\brum\\b|\\bwhisk|\\bvodka|\\bliquor|\\bspirits\\b|\\bdistill|(?<!non-)\\balcoholic\\b",
+      "1F943",
+      "tumbler glass",
+      "exact"
+    ],
+    [
+      "\\bsoft drinks?\\b|\\bmineral water|\\bflavored water|\\bnon-alcoholic|\\bbeverages?\\b|\\bconcentrates?\\b|\\bsyrup",
+      "1F964",
+      "cup with straw",
+      "exact"
+    ],
+    [
+      "\\bcanning|\\bcanneries|\\bcanned\\b|\\bfreezing\\b|\\bfrozen\\b|\\bprocessed\\b|\\bprocessing\\b|\\bfood\\b|\\bfoodstuffs?\\b|\\bfoods\\b|\\bprepared\\b",
+      "1F96B",
+      "canned food",
+      "exact"
+    ],
+    [
+      "\\btourism\\b|\\bhospitality|\\bhotels?\\b|\\bskiing",
+      "1F9F3",
+      "luggage",
+      "exact"
+    ],
+    [
+      "\\bbank|\\bfinanc|\\binsurance|\\boffshore\\b|\\bremittance|\\binternational business|\\bentrepot\\b|\\btrade\\b|\\btrading\\b",
+      "1F3E6",
+      "bank",
+      "exact"
+    ],
+    [
+      "\\bgambling|\\bcasino|\\bgaming\\b",
+      "1F3B0",
+      "slot machine",
+      "exact"
+    ],
+    [
+      "\\beducation\\b|\\bschools?\\b|\\buniversit",
+      "1F393",
+      "graduation cap",
+      "exact"
+    ],
+    [
+      "\\bcall[- ]cent|\\boutsourc|\\bbusiness process|\\bprofessional services|\\bbusiness services|\\bservices\\b",
+      "1F4BC",
+      "briefcase",
+      "exact"
+    ],
+    [
+      "\\bdefen[cs]e\\b|\\barms\\b|\\barmaments?\\b|\\bammunition|\\bmilitary\\b|\\bweapons?\\b|\\bmissile|\\bradar",
+      "1F6E1",
+      "shield",
+      "exact"
+    ],
+    [
+      "\\benvironmental|\\brecycl|\\bwaste\\b",
+      "267B",
+      "recycling symbol",
+      "exact"
+    ],
+    [
+      "\\bmanufactur|\\bindustr|\\bassembl|\\bproduction\\b|\\bfabricat|\\benterprises?\\b|\\bcomponents?\\b|\\bproducts?\\b|\\bgoods\\b|\\bmaterials?\\b",
+      "1F3ED",
+      "factory",
+      "category"
+    ]
+  ],
+  "categoryFallbacks": {
+    "_note": "Applied AFTER the rules above, by coarse item type, so an unmatched crop gets a plant icon, an unmatched mineral an ore icon, an unmatched industry a factory -- never a gear.",
+    "crop": [
+      "\\b(?:seeds?|fruit|nuts?|leaf|leaves|beans?|roots?|tubers?|grass|plant|palm|tree)\\b",
+      "1F331",
+      "seedling"
+    ],
+    "mineral": [
+      "\\b(?:ore|ores|stone|rock|mineral|quarr|mine|metal)\\b",
+      "1FAA8",
+      "rock"
+    ],
+    "manufacturing": [
+      "\\b(?:production|manufacture|manufacturing|plant|works|factory|processing|equipment|machinery|goods|products)\\b",
+      "1F3ED",
+      "factory"
+    ],
+    "service": [
+      "\\b(?:service|services|activities|operations|centers?|centres?)\\b",
+      "1F4BC",
+      "briefcase"
+    ]
+  }
+}

@@ -2,23 +2,22 @@
   "iso3": "ISR",
   "name": "Israel",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Johnson–Lindenstrauss lemma",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Alternating sign matrix",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Quasicrystal",
+      "name": "Tetrahydrocannabinol",
       "source": "wikipedia",
-      "year": 2011
+      "year": 1964,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/THC.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:THC.svg",
+        "license": "Public domain",
+        "author": "Harbin",
+        "source": "Wikimedia Commons"
+      }
     },
     {
-      "name": "Jacob Bekenstein",
+      "name": "Stent",
       "source": "wikipedia"
     },
     {
@@ -33,24 +32,51 @@
       }
     },
     {
-      "name": "Game theory",
+      "name": "Taliglucerase alfa",
       "source": "wikipedia",
-      "year": 2005
+      "year": 2012
     },
     {
-      "name": "Nondeterministic finite automaton",
+      "name": "Projection keyboard",
+      "source": "wikipedia"
+    },
+    {
+      "name": "EPROM",
       "source": "wikipedia",
       "inventors": [
-        "Michael O. Rabin"
+        "Dov Frohman"
+      ],
+      "year": 1971
+    },
+    {
+      "name": "ReWalk",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Desert Eagle",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/DesertEagle%2050AE.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:DesertEagle%2050AE.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Bobbfwed",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "CornerShot",
+      "source": "wikipedia",
+      "inventors": [
+        "Lt. Col. Amos"
       ]
     },
     {
-      "name": "Kernel-based Virtual Machine",
-      "source": "wikipedia",
-      "inventors": [
-        "Avi Kivity"
-      ],
-      "year": 2006
+      "name": "Tactical Robotics Cormorant",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Trophy (countermeasure)",
+      "source": "wikipedia"
     }
   ]
 }

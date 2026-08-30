@@ -1343,6 +1343,181 @@ divisions (most common specific P31 class label — "canton of
 Switzerland", "U.S. state"); cuisine entries carry the Wikidata English
 description or TheMealDB category as a descriptor.
 
+## 22. The 2026-08-29 accuracy batch (maintainer-requested, Phase 1)
+
+### 22.1 Inventions: a class gate, not a keyword net
+
+Brazil listed Schistosomiasis as a notable invention. The diseases came
+from the Wikipedia LIST parse (§21.1 — "inventions and discoveries" by
+title), and the Wikidata side had its own noise (a diamond named "Sergio",
+P495-tagged): P495 "country of origin" is also set on species, minerals,
+diseases first described somewhere, and theorems.
+
+Ruling: every candidate from EITHER source must pass a Wikidata class
+gate. The item's P31 classes (and the item itself, for class-like items
+such as "hot dog") are walked up P279* in a batched query; the item is an
+invention only if that ancestry reaches an ALLOW root (artificial physical
+object, device, tool, vehicle, technology, technique, method, process,
+product, product model, software, programming language, video game,
+medication, chemical compound, material, brand) and none of the DENY roots
+(disease, disorder, syndrome, pathogen, biological process, organism,
+taxon, anatomical structure, gene, protein, chemical element, mineral,
+astronomical object, geographical feature, location, theorem, mathematical
+concept, discovery, academic discipline, field of study, occurrence, human,
+organization, work of art, literary/musical work, film, written work, ethnic
+group, language, religion, sport, award, and — still — food and drink).
+Deny wins. Wikipedia list candidates are resolved to their Wikidata item
+via the REST summary's `wikibase_item`; no item, no entry. The lists'
+sampling window widened (16 → 40) because the gate rejects a large share.
+
+Every rejection is written to `etl/logs/inventions-rejected.json` with the
+reason and matched roots — "no allowed class ancestry" is the bucket to
+review for a missing root. Countries with two solid entries show two; there
+is no padding.
+
+### 22.2 The plausibility layer, and the library count is gone
+
+Russia showed 9 public libraries. The figure was a Wikidata `COUNT` of
+items typed "public library", i.e. cataloguing activity, not libraries
+(§19.4 already said so; the number still rendered with a number's
+authority). IFLA's Library Map holds the official counts behind Cloudflare
+with no feed. No reliable source → the field is DROPPED, not relabelled.
+
+Audit of every other count-style field on the country page: universities
+(Hipolabs roster, labelled undercount), heritage sites (UNESCO's own list),
+airports (OurAirports roster), prisoners/facilities (UNODC), subdivision
+populations (Wikidata P1082, per item) are real-source figures, not item
+counts. None has the libraries failure mode; all now pass through the
+plausibility layer.
+
+`etl/validate.py` is that layer: per-metric absolute bounds (unit defaults
+plus overrides) and ratio checks against WPP population (per-capita rules
+skipped below 100k people — one university in Niue is real). A failing
+figure ships as the standard explicit-unavailable state and is logged to
+`etl/logs/plausibility-<stage>.json`. Bounds are deliberately wide — the
+layer is a tripwire for order-of-magnitude nonsense (Saint-Martin's 3,700
+prisoners per 100k, Fiji's 574 mobile subscriptions per 100) and was
+widened twice during calibration when it caught REAL history (Rwanda's
+1994 life expectancy, Angola's 1e-7 pre-redenomination exchange rate,
+Kuwait's 117%-of-GDP 1991 military spend).
+
+`etl/logs/` is committed so every suppression and rejection is reviewable
+on the PR diff, and lives outside `/data` so the logs neither ship with the
+site nor enter the content fingerprint.
+
+### 22.3 Every breakdown accounts for 100%
+
+`etl/breakdown.py` (mirrored in `src/lib/breakdown.ts` for the pairs the
+app assembles from World Bank series): components under 100 get an explicit
+"Other" for the EXACT difference, in the neutral series token, with a
+per-metric explanation rendered visibly (land use: built-up, barren, inland
+water, unclassified; biomes: rounding, water/ice, unassigned area; ethnic
+groups / religions: unenumerated groups, non-response, rounding; trade
+partners: all other partners). Sums over 100 are never clamped: within two
+points the chart renders with a note that the source's categories overlap
+or round; beyond that the breakdown is SUPPRESSED and the prose renders
+(agroforestry land use — Wallis and Futuna 117% — and several religion
+fields). A field whose own note says respondents could pick several
+categories (New Zealand's census ethnicity, 115%) is multi-response by
+design and renders with that note instead. A gap over 40 points is a
+missing-data smell rather than an "Other"; those ship WITHOUT an Other,
+with a note, and are logged for review (South Sudan ethnic groups 55%,
+Andorra / DR Congo / Russia religions). Top-5 partner lists are partial by
+construction and always get their Other.
+
+Land use now comes from the Factbook's own `Geography > Land use` block,
+which publishes agricultural, forest AND its residual "other" with a common
+vintage — shipping the source's residual beats subtracting two World Bank
+series of different vintages from 100. GDP sectors gain an Other for net
+taxes on products. Urban/rural is one breakdown, both shares from their own
+series (§22.5).
+
+### 22.4 Flora and fauna: emblems apart, images verified
+
+Fourteen national "animals" were mythical or heraldic (Unicorn, Druk,
+Bundesadler, Phoenix, Qianlima...). The lists tag them "Mythical" in the
+scientific-name column; a second net catches an untagged legendary name
+with no binomial (the Komodo dragon keeps its binomial and stays real).
+They ship in their own `emblems` list and render in a separate "Heraldic
+and mythical emblems" sub-section, never in the species grid.
+
+Images: the iNaturalist photo is accepted only when the taxon iNaturalist
+resolves is the queried one (scientific name equal, or its species part
+for a subspecies; common name equal when no binomial exists) — the search
+is fuzzy and an unverified first hit is how a wrong animal gets on a card.
+The Commons fallback is accepted only when the file's own name,
+description, object name or categories mention the taxon (genus at
+least). Anything else renders the typographic species card (common name,
+scientific name in italics). Rejections: `etl/logs/florafauna-rejected-images.json`.
+iNaturalist stays the primary source (§21.2) rather than Wikidata P18 —
+it is verified by taxon identity, which is stronger than an editor's pick.
+
+### 22.5 Rural population from its own series
+
+`SP.RUR.TOTL.ZS` is ingested alongside `SP.URB.TOTL.IN.ZS`; rural is never
+computed as 100 − urban. The World Bank stage compares the pair for the
+latest common year and warns in the manifest if they differ from 100 by
+more than 0.11 points. Headcounts apply each share to the WPP population
+estimate for the same year and say so.
+
+### 22.6 Borders are names
+
+Land borders render the neighbour's common name from the registry, sorted,
+each a link to its page; the ISO3 code stays as the tooltip and inside the
+accessible name.
+
+### 22.7 Banknotes: one treatment, criteria in code
+
+The P18-per-currency approach (§19.6) produced coin stacks, symbol SVGs and
+composites, and the numeric-code bug let "203" through as a currency.
+Rewritten: the stage walks Wikimedia Commons' "Banknotes of ..." categories
+(from the currency's P373 category and the conventional titles), and judges
+EVERY candidate — category files, the P18 image, and any editorial override
+— by criteria that live in `etl/sources/currencyimages.py`: raster/SVG at
+least 600 px wide; landscape aspect between 1.45 and 2.6 (one flat note,
+head-on); no reject-list term in the file's name, description or
+categories (reverse, back, coin, stack, bundle, hand, wallet, set,
+collection, both sides, specimen sheet, …); banknote category or
+description. Ranking prefers an explicit obverse mention, then the
+smallest denomination the filename states, then width. Overrides cannot
+bypass the criteria. Every verdict is in `etl/logs/currency-images.json`;
+currencies with no compliant free image render a designed card (name, ISO
+code, symbol) — never a mismatched photo. Coverage is what Commons holds:
+many modern notes are copyrighted and absent by law.
+
+**Status at ship (2026-08-29): the category walk is OFF.** Two full walks
+(about 1,500 rate-limited Commons listings each, hours apiece) showed the
+candidate selection is not yet trustworthy: a currency Wikidata lists for
+several countries (yen → Zimbabwe, euro → Croatia and Monaco) pulls in
+those countries' banknote trees, and a name stem such as "Brazilian"
+admits the historic cruzado. Rather than delay the batch, the maintainer
+chose to hold the walk for another day. The stage therefore judges only
+the Wikidata P18 image and editorial overrides against the criteria
+(`CURRENCY_WALK=1` re-enables the walk; `CURRENCY_CACHED_ONLY=1` limits
+it to cached listings). The visible result is honest: a compliant single
+note where P18 supplies one, the designed card everywhere else. Open
+items for the walk: restrict country-named roots to single-country
+currencies; whole-word stem matching; rank by series year, not by any
+year in a photo's filename.
+
+### 22.8 One icon set
+
+Industry, agriculture and export items used platform emoji through 104
+regex rules; ⚙️ was the mapped icon for the metals and machinery rules and
+read as a catch-all. Replaced by OpenMoji's black-outline variant (CC BY-SA
+4.0, attribution in the footer), vendored as SVG under
+`public/icons/openmoji` by `scripts/fetch-icons.mjs` (which fails on an
+unknown hexcode) and painted in currentColor through a CSS mask so one file
+serves both themes. The mapping (`src/data/product-icons.json`) was built
+from the full list of 994 distinct item strings across all countries
+(5,148 mentions): 884 exact, 110 category-tier (an unmatched crop gets a
+plant, a mineral an ore pick, an industry a factory), 0 unmatched — 158
+glyphs. `npm run check:icons` regenerates `etl/logs/icon-coverage.json` and
+gates at 95% of mentions; the mapping is ordered, so specific rules precede
+general ones ("pig iron" is steel, "lime processing" is rock, "mineral
+water" is a drink, "non-alcoholic" is not alcohol). Biome, sector and
+religion icons moved to the same set.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

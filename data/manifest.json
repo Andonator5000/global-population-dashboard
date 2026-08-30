@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-24T08:10:17+00:00",
+  "generated_at": "2026-08-30T03:04:31+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-24T08:10:17+00:00",
+      "fetched_at": "2026-08-30T03:04:31+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -50,7 +50,7 @@
       "title": "World Bank World Development Indicators",
       "url": "https://api.worldbank.org/v2",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-08-24T02:49:44+00:00",
+      "fetched_at": "2026-08-29T21:33:20+00:00",
       "upstream_release": "2026-07-13",
       "vintage": "per indicator and country; newest observation 2025",
       "citation": "World Bank, World Development Indicators (api.worldbank.org/v2)",
@@ -74,7 +74,7 @@
           "fetched_at": "2026-08-10T02:55:51+00:00"
         }
       ],
-      "notes": "41 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
+      "notes": "42 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
     },
     "owid_indicators": {
       "title": "Our World in Data — curated indicators",
@@ -182,15 +182,15 @@
       "notes": "194 countries matched. Amnesty publishes only PDFs and no keyless structured source exists; Wikipedia's tables are the machine-readable secondary source, used with per-page attribution."
     },
     "education_extras": {
-      "title": "University and library counts; CWUR rankings",
+      "title": "University counts; CWUR rankings",
       "url": "https://cwur.org/2026.php",
-      "licence": "Hipolabs MIT; Wikidata CC0; CWUR © Center for World University Rankings, displayed with attribution",
+      "licence": "Hipolabs MIT; CWUR © Center for World University Rankings, displayed with attribution",
       "fetched_at": "2026-08-24T02:45:23+00:00",
       "upstream_release": null,
       "vintage": "CWUR 2026; counts as retrieved",
-      "citation": "Hipolabs university-domains-list; Wikidata; Center for World University Rankings (CWUR) 2026",
+      "citation": "Hipolabs university-domains-list; Center for World University Rankings (CWUR) 2026",
       "files": [],
-      "notes": "200 countries with university counts, 114 with Wikidata library counts, 93 with CWUR-ranked institutions."
+      "notes": "200 countries with university counts, 93 with CWUR-ranked institutions. Public library counts dropped 2026-08-29: no reliable keyless source."
     },
     "imf_weo": {
       "title": "IMF World Economic Outlook (DataMapper API)",
@@ -204,15 +204,15 @@
       "notes": "192 entities with debt (% of GDP), 195 with nominal GDP. Not CORS-enabled, so build-time only."
     },
     "currency_images": {
-      "title": "Currency images (Wikidata P18 via Wikimedia Commons)",
-      "url": "https://query.wikidata.org/sparql",
+      "title": "Banknote images (Wikimedia Commons banknote categories)",
+      "url": "https://commons.wikimedia.org/w/api.php",
       "licence": "Per-file Commons licences, recorded per image",
-      "fetched_at": "2026-08-24T04:12:56+00:00",
+      "fetched_at": "2026-08-30T03:04:20+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
-      "citation": "Wikidata; Wikimedia Commons (per-file attribution in artifact)",
+      "citation": "Wikimedia Commons (per-file attribution in artifact); Wikidata P373/P18",
       "files": [],
-      "notes": "131 currencies with a usable image; 0 Wikidata-referenced files missing on Commons were dropped. Hotlinked at width 960 via Special:FilePath."
+      "notes": "28 of 158 currencies have a compliant banknote image (127 candidate files judged); 130 render the fallback card. Criteria in etl/sources/currencyimages.py; verdicts in etl/logs/currency-images.json. Built with CURRENCY_CACHED_ONLY=1: only cached category listings were consulted. Category walk OFF: candidates are the Wikidata P18 image and editorial overrides only, judged by the same criteria."
     },
     "wikidata_subdivisions": {
       "title": "Wikidata — first-level administrative divisions",
@@ -240,12 +240,12 @@
       "title": "Inventions: Wikidata origin tags + Wikipedia list articles",
       "url": "https://query.wikidata.org/sparql",
       "licence": "Wikidata CC0; Wikipedia CC BY-SA 4.0; per-file Commons licences on images",
-      "fetched_at": "2026-08-24T07:53:01+00:00",
+      "fetched_at": "2026-08-30T02:55:03+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
-      "citation": "Wikidata (P495/P61/P575); English Wikipedia per-country invention lists; Wikimedia Commons",
+      "citation": "Wikidata (P495/P61/P575, P31/P279 class gate); English Wikipedia per-country invention lists; Wikimedia Commons",
       "files": [],
-      "notes": "53 countries with qualifying items, 363 inventions (195 Wikidata food/drink items excluded by class, 26 Wikipedia list entries excluded by description). Wikidata origin tags plus 50 curated Wikipedia list articles."
+      "notes": "44 countries with qualifying items, 324 inventions. Class gate rejected 1273 candidates (denied class ancestry: 1084, no Wikidata item: 1, no allowed class ancestry: 188); see etl/logs/inventions-rejected.json. Wikidata origin tags plus 50 curated Wikipedia list articles."
     },
     "airports": {
       "title": "OurAirports roster; Wikidata annual passengers",
@@ -262,18 +262,18 @@
       "title": "Wikipedia — lists of national animals, trees and flowers",
       "url": "https://en.wikipedia.org/wiki/List_of_national_animals",
       "licence": "CC BY-SA 4.0 (text); images CC0/CC-BY via iNaturalist or per-file Commons licences",
-      "fetched_at": "2026-08-24T04:09:55+00:00",
+      "fetched_at": "2026-08-29T22:00:02+00:00",
       "upstream_release": "Fri, 21 Aug 2026 08:12:00 GMT",
       "vintage": "pages as retrieved",
       "citation": "Wikipedia: List of national animals; List of national trees; List of national flowers. Photos: iNaturalist (CC0/CC-BY, research grade) with Wikimedia Commons fallback",
       "files": [],
-      "notes": "142 countries with at least one symbol; 357 symbol images with Commons attribution. Unmatched rows: Central America and the Caribbean, Macedonia."
+      "notes": "142 countries with at least one symbol; 334 symbol images with Commons attribution. Unmatched rows: Central America and the Caribbean, Macedonia."
     },
     "wikidata_cuisine": {
       "title": "Cuisine: TheMealDB (primary) + Wikidata dishes (fallback)",
       "url": "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
       "licence": "TheMealDB free/educational tier, attributed; Wikidata CC0; per-file Commons licences on fallback images",
-      "fetched_at": "2026-08-24T06:15:07+00:00",
+      "fetched_at": "2026-08-30T02:57:01+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
       "citation": "TheMealDB (themealdb.com); Wikidata (P495 on dish items); Wikimedia Commons",
@@ -295,7 +295,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-24T08:10:17+00:00",
+      "fetched_at": "2026-08-30T03:04:31+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -427,7 +427,7 @@
       "sources": [
         "world_bank"
       ],
-      "row_count": 41,
+      "row_count": 42,
       "entity_count": null
     },
     "indicators/by-country/<ISO3>.json": {
@@ -479,12 +479,12 @@
       "entity_count": 194
     },
     "education/education.json": {
-      "description": "University count, Wikidata public-library count, and CWUR top-10 universities per entity.",
+      "description": "University count and CWUR top-10 universities per entity.",
       "sources": [
         "education_extras"
       ],
       "row_count": null,
-      "entity_count": 208
+      "entity_count": 200
     },
     "economy/debt.json": {
       "description": "General government gross debt (% of GDP) and nominal GDP annual series per entity, IMF WEO, including projections.",
@@ -495,11 +495,11 @@
       "entity_count": 195
     },
     "economy/currency-images.json": {
-      "description": "Representative currency image per ISO 4217 code, with Commons file page, licence and author for attribution.",
+      "description": "One verified single-banknote (obverse) image per ISO 4217 code, with Commons file page, licence and author.",
       "sources": [
         "currency_images"
       ],
-      "row_count": 131,
+      "row_count": 28,
       "entity_count": null
     },
     "subdivisions/<ISO3>.json": {
@@ -527,12 +527,12 @@
       "entity_count": 241
     },
     "inventions/<ISO3>.json": {
-      "description": "Notable inventions (name, inventor, approximate year, Commons image with attribution) for countries with Wikidata coverage.",
+      "description": "Notable inventions (name, inventor, approximate year, Commons image with attribution) for countries with coverage after the class gate.",
       "sources": [
         "wikidata_inventions"
       ],
       "row_count": null,
-      "entity_count": 53
+      "entity_count": 44
     },
     "airports/<ISO3>.json": {
       "description": "Top airports per entity (name, IATA, city, annual passengers where recorded), large first.",
@@ -543,7 +543,7 @@
       "entity_count": 234
     },
     "flora-fauna/<ISO3>.json": {
-      "description": "National animal(s), tree and flower with Commons images and attribution, per entity.",
+      "description": "National animal(s), tree and flower with verified images and attribution, per entity; mythical/heraldic emblems listed separately.",
       "sources": [
         "wikipedia_national_symbols"
       ],
@@ -637,17 +637,20 @@
   "warnings": [
     "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe.",
     "UN WPP 2024 publishes no population series for 13 registry entities (ALA, ATA, ATF, BVT, CCK, CXR, HMD, IOT, NFK, PCN, SGS, SJM, UMI); these render as unavailable rather than zero. Most are uninhabited territories, but Aland Islands and Svalbard are inhabited and are reported within Finland and Norway respectively.",
+    "worldbank: plausibility layer suppressed 23 figure(s) (IT.CEL.SETS.P2 x1, PA.NUS.FCRF x14, SH.DYN.MORT x1, SH.STA.MMRT x7); see etl/logs/plausibility-worldbank.json.",
     "RSF index carried 2 ISO3 codes absent from the registry: CSS, CTU.",
     "Capital punishment table rows not matched to the registry: Congo, Democratic Republic of the, Congo, Republic of the, Myanmar Burma.",
     "CWUR locations not matched to the registry: Northern Cyprus, Turkey.",
+    "airports: plausibility layer suppressed 10 figure(s) (airports.passengers x10); see etl/logs/plausibility-airports.json.",
     "63 populated entities are too small to render as polygons at 110m resolution and appear as point markers instead, among them Singapore, Malta, Hong Kong and Macao. Their area is not to scale on the map.",
     "Entities drawn by more than one Natural Earth polygon: CYP, SOM (Cyprus includes Northern Cyprus; Somalia includes Somaliland). Their fills paint multiple paths.",
     "16 Factbook files could not be joined to a registry entity and were skipped: australia-oceania/at.json (Ashmore and Cartier Islands), europe/ax.json (Akrotiri), central-america-n-caribbean/bq.json (Navassa Island), australia-oceania/cr.json (Coral Sea Islands), europe/dx.json (Dhekelia), middle-east/gz.json (Gaza, Gaza Strip), north-america/ip.json (Clipperton Island), europe/jn.json (Jan Mayen), east-n-southeast-asia/pf.json (Paracel Islands), east-n-southeast-asia/pg.json (Spratly Islands), australia-oceania/um.json (Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Palmyra Atoll), australia-oceania/wq.json (Wake Island)...",
     "8 entities have no Factbook entry; their People, Government and industry sections render as not published: ALA, BES, GLP, GUF, MTQ, MYT, REU, UMI",
+    "factbook: 25 percentage breakdown(s) do not reconcile to 100% beyond tolerance (suppressed or shipped without an Other item); see etl/logs/breakdowns-factbook.json.",
     "Biome shares fall outside 1.0% of 100 for 114 entities. 78 are small territories under 50,000 km2 that RESOLVE Ecoregions does not resolve (verified: a 4x finer simplification tolerance did not improve them). 36 are larger countries whose polygons include substantial inland water or ice that carries no terrestrial ecoregion -- Tanzania's great lakes, Canada's Great Lakes, the Greenland ice sheet. Shares are reported as computed and never rescaled to 100.",
     "5 entities' measured polygon area differs from their published land area by more than 25% (ESH -66%, ALA -52%, PYF -38%, MAR +30%, FRO -25%). These are boundary-definition differences, not measurement errors. Most significant: Natural Earth draws the de facto administered boundary in Western Sahara at both the 110m map and 50m biome resolutions, which agree with each other. Both give Western Sahara roughly a third of its internationally recognised extent (about 96,000 of 266,000 sq km), with the remainder drawn inside Morocco. Area and biome figures for both entities should be read with that in mind.",
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "a98eb1e8957c386a27981ff1d6bb9d4e848b5ab12732f31a12f34311394adaf0"
+  "content_fingerprint": "5bf0cf586649919271d3bb182aef6f798fd3168eb154e703ca88a29b881e6845"
 }

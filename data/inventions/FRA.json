@@ -2,7 +2,7 @@
   "iso3": "FRA",
   "name": "France",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "Chauchat",
@@ -35,50 +35,6 @@
       }
     },
     {
-      "name": "Nutri-score",
-      "source": "wikidata",
-      "inventors": [
-        "Serge Hercberg"
-      ],
-      "year": 2017,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nutri-score-A.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nutri-score-A.svg",
-        "license": "Public domain",
-        "author": "https://fr.openfoodfacts.org/",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "belote",
-      "source": "wikidata",
-      "year": 1920,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Belot-9.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Belot-9.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Stokkestijn",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "blackboard bold",
-      "source": "wikidata",
-      "year": 1950,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Blackboard%20bold.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Blackboard%20bold.svg",
-        "license": "Public domain",
-        "author": "Bryan Derksen, conversion of public domain png created by en:User:Deco",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "circe chess",
-      "source": "wikidata",
-      "year": 1967
-    },
-    {
       "name": "Sauterelle of Imphy",
       "source": "wikidata",
       "inventors": [
@@ -93,46 +49,58 @@
       }
     },
     {
-      "name": "Royal Ann",
-      "source": "wikidata",
-      "year": 1785,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal%20Ann%20cherries.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Royal%20Ann%20cherries.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Hallsarahe",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Serpentine dance",
-      "source": "wikidata",
-      "inventors": [
-        "Loïe Fuller"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Loie%20Fuller.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Loie%20Fuller.jpg",
-        "license": "Public domain",
-        "author": "Frederick Whitman Glasier",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Chronophone",
-      "source": "wikidata",
-      "inventors": [
-        "Georges Demenÿ"
-      ]
-    },
-    {
-      "name": "Gothic art",
+      "name": "Clavecin électrique",
       "source": "wikipedia",
-      "era": "12th century"
+      "year": 1759
     },
     {
-      "name": "Bal-musette",
+      "name": "Hydrometer",
       "source": "wikipedia"
+    },
+    {
+      "name": "Ligature (medicine)",
+      "source": "wikipedia",
+      "year": 1565
+    },
+    {
+      "name": "Quinine",
+      "source": "wikipedia",
+      "year": 1820,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Quinine.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Quinine.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "CYL",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Motorcycle",
+      "source": "wikipedia",
+      "year": 1869
+    },
+    {
+      "name": "Submarine",
+      "source": "wikipedia",
+      "year": 1863
+    },
+    {
+      "name": "Scooter (motorcycle)",
+      "source": "wikipedia",
+      "year": 1902
+    },
+    {
+      "name": "Catalytic converter",
+      "source": "wikipedia",
+      "year": 1956
+    },
+    {
+      "name": "Jacquard machine",
+      "source": "wikipedia",
+      "inventors": [
+        "Joseph Marie Jacquard"
+      ],
+      "year": 1801
     }
   ]
 }

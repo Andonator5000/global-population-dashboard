@@ -2,81 +2,8 @@
   "iso3": "USA",
   "name": "United States",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "basketball",
-      "source": "wikidata",
-      "inventors": [
-        "James Naismith"
-      ],
-      "year": 1891,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dream%20Team%20at%20the%201992%20Summer%20Olympics.JPEG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Dream%20Team%20at%20the%201992%20Summer%20Olympics.JPEG",
-        "license": "Public domain",
-        "author": "Ken Hackman, U.S. Air Force",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "volleyball",
-      "source": "wikidata",
-      "inventors": [
-        "William G. Morgan"
-      ],
-      "year": 1895,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Triple%20block%20%28Serbia%20vs%20China%2C%20Grand%20Prix%202017%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Triple%20block%20%28Serbia%20vs%20China%2C%20Grand%20Prix%202017%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Jeffrey Ng from Hong Kong",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "baseball",
-      "source": "wikidata",
-      "year": 1900,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Zack%20Greinke%20on%20July%2029%2C%202009.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Zack%20Greinke%20on%20July%2029%2C%202009.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Keith Allison on Flickr",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "ChatGPT",
-      "source": "wikidata",
-      "inventors": [
-        "OpenAI"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:ChatGPT%205.2%20Thinking%20Wikipedia%20historia%20PDF%20screenshot.png",
-        "license": "Public domain",
-        "author": "Gio Antonio",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "USB flash drive",
-      "source": "wikidata",
-      "inventors": [
-        "IBM",
-        "Pua Khein-Seng",
-        "Amir Ban"
-      ],
-      "year": 1996,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kingston%20Technology%20USB%20flash%20drives.%20USB%203.0.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Kingston%20Technology%20USB%20flash%20drives.%20USB%203.0.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Dmitry Makeev",
-        "source": "Wikimedia Commons"
-      }
-    },
     {
       "name": "electric guitar",
       "source": "wikidata",
@@ -89,32 +16,6 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Yngwie%20Malmsteen%27s%20electric%20guitar.jpg",
         "license": "CC BY 2.0",
         "author": "francesco from Italia",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "beach volleyball",
-      "source": "wikidata",
-      "year": 1920,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/USMC-111007-M-UV915-234.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:USMC-111007-M-UV915-234.jpg",
-        "license": "Public domain",
-        "author": null,
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "BIOS",
-      "source": "wikidata",
-      "inventors": [
-        "Gary Kildall"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/AWD%20BIOS.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:AWD%20BIOS.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Appaloosa",
         "source": "Wikimedia Commons"
       }
     },
@@ -145,21 +46,6 @@
       }
     },
     {
-      "name": "gramophone",
-      "source": "wikidata",
-      "inventors": [
-        "Emile Berliner"
-      ],
-      "year": 1887,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/VictorVPhonograph.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:VictorVPhonograph.jpg",
-        "license": "CC BY-SA 2.5",
-        "author": "Norman Bruderhofer",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "Segway PT",
       "source": "wikidata",
       "inventors": [
@@ -170,6 +56,116 @@
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Segwaygreen.jpg",
         "license": "CC BY-SA 3.0",
         "author": "Gawrisch",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Bratz",
+      "source": "wikidata",
+      "inventors": [
+        "Carter Bryant"
+      ],
+      "year": 2001
+    },
+    {
+      "name": "WD-40",
+      "source": "wikidata",
+      "inventors": [
+        "Norm Larsen"
+      ],
+      "year": 1953,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/WD-40%20Smart%20Straw.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:WD-40%20Smart%20Straw.JPG",
+        "license": "CC BY 3.0",
+        "author": "ZooFari",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "graphite bomb",
+      "source": "wikidata",
+      "year": 2000,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/BLU-114.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:BLU-114.jpg",
+        "license": "CC BY-SA 3.0",
+        "author": "Photo by Marko M",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "AeroPress",
+      "source": "wikidata",
+      "inventors": [
+        "Alan Adler"
+      ],
+      "year": 2005,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Aeropress%20setup.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aeropress%20setup.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "Ldiggity",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Chemex Coffeemaker",
+      "source": "wikidata",
+      "inventors": [
+        "Peter Schlumbohm"
+      ],
+      "year": 1941,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Peter%20Schlumbohm.%20Coffee%20Maker%2C%20Designed%201941.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Peter%20Schlumbohm.%20Coffee%20Maker%2C%20Designed%201941.jpg",
+        "license": "No restrictions",
+        "author": "Peter Schlumbohm",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Sybian",
+      "source": "wikidata",
+      "inventors": [
+        "Dave Lampert"
+      ],
+      "year": 1980,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tn%20sybian%20gmax1.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tn%20sybian%20gmax1.jpg",
+        "license": "Copyrighted free use",
+        "author": "The original uploader was Buttysquirrel at English Wikipedia.",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Colt Walker",
+      "source": "wikidata",
+      "inventors": [
+        "Samuel Colt",
+        "Samuel Hamilton Walker"
+      ],
+      "year": 1847,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Colt%20Walker%20Percussion%20Revolver%2C%20serial%20no.%201017%20MET%2058.171.1%20002feb2015.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Colt%20Walker%20Percussion%20Revolver%2C%20serial%20no.%201017%20MET%2058.171.1%20002feb2015.jpg",
+        "license": "CC0",
+        "author": "Samuel Colt / Waterman Ormsby / Samuel Hamilton Walker",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "LeMat Revolver",
+      "source": "wikidata",
+      "inventors": [
+        "Jean Alexandre LeMat"
+      ],
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Le%20Mat%20Revolver.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Le%20Mat%20Revolver.jpg",
+        "license": "Public domain",
+        "author": null,
         "source": "Wikimedia Commons"
       }
     }

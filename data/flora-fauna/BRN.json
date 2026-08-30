@@ -5,12 +5,14 @@
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
   "flower": {
     "name": "Simpoh Ayer",
+    "scientificName": "Dillenia suffruticosa",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dil%20suffrut%20100524-1817%20sap.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Dil%20suffrut%20100524-1817%20sap.jpg",
-      "license": "CC BY-SA 3.0",
-      "author": "Wibowo Djatmiko (Wie146)",
-      "source": "Wikimedia Commons"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/155261032/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/155261032/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/155261032",
+      "license": "CC-BY",
+      "author": "(c) Cheongweei Gan, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

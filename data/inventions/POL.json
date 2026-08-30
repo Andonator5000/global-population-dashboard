@@ -2,56 +2,21 @@
   "iso3": "POL",
   "name": "Poland",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "Konik",
-      "source": "wikidata",
-      "inventors": [
-        "Tadeusz Vetulani"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/20170824%20017%20Lelystad%20Oostvaardersplassen%20%2836802377085%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:20170824%20017%20Lelystad%20Oostvaardersplassen%20%2836802377085%29.jpg",
-        "license": "CC BY 2.0",
-        "author": "Jac. Janssen from Baarlo lb, NL",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Monika Mościbrodzka",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Krzysztof Matyjaszewski",
-      "source": "wikipedia",
-      "year": 1995
-    },
     {
       "name": "Flaris LAR01",
       "source": "wikipedia"
     },
     {
-      "name": "Andrzej Trybulec",
+      "name": "Meteor (rocket)",
       "source": "wikipedia",
-      "year": 1973
+      "year": 1963
     },
     {
-      "name": "Tadek Marek",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Albert Sabin",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Ryszard Gryglewski",
+      "name": "7TP",
       "source": "wikipedia",
-      "year": 1976
-    },
-    {
-      "name": "Lwów School of Mathematics",
-      "source": "wikipedia"
+      "year": 1935
     }
   ]
 }

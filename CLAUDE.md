@@ -1,7 +1,7 @@
 # Operating guide (for Claude Code sessions)
 
 Read this before changing anything. `README.md` explains the project;
-`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–21 are
+`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–22 are
 the 2026-08 maintainer batches) — check it before re-litigating a source
 choice.
 
@@ -29,7 +29,9 @@ npm run dev                                # dev server on :5173
 - **Always finish with a FULL cached `etl\run.py` before committing data.**
   `--only` writes a partial manifest; CI verifies `content_fingerprint`
   against /data and rejects mismatches.
-- Set `LEADERS_CACHED_ONLY=1` for local full runs — otherwise the leaders
+- Set `LEADERS_CACHED_ONLY=1 CURRENCY_CACHED_ONLY=1` for local full runs —
+  the banknote category walk (~1,500 Commons listings, rate-limited) takes
+  hours cold and the monthly refresh completes it; otherwise the leaders
   stage grinds against Commons rate limits re-downloading portraits. The
   monthly refresh (.github/workflows/refresh-data.yml) retries them.
 - The biomes stage takes ~10 min per full run. That's normal.
@@ -43,6 +45,15 @@ npm run dev                                # dev server on :5173
   — write the message to a file and use `git commit -F`.
 - The 6 leaders without portraits (AFG-hos, BDI/GNB/JEY/MOZ/PCN-hog) have
   **no free-licensed image anywhere** — don't chase them.
+- **`etl/logs/` is committed and reviewable**: plausibility suppressions
+  (`etl/validate.py`), breakdown reconciliation (`etl/breakdown.py`),
+  inventions class-gate rejections, flora/fauna image rejections, banknote
+  verdicts, icon coverage. A stage regenerates its own log; a `--only` run
+  leaves the others untouched.
+- **Icons are one set** (OpenMoji black outline, vendored under
+  `public/icons/openmoji`). Add a hexcode to `src/data/product-icons.json`
+  or `src/lib/icons.ts`, then `npm run icons` to vendor it; `npm run
+  check:icons` gates coverage at 95% of mentions. No emoji, no gear.
 
 ## Architecture in one paragraph
 
@@ -60,7 +71,15 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - Somaliland/N. Cyprus polygons keep their own labels but key to SOM/CYP.
 - Entity table: dark-blue/light-blue rows in BOTH themes; home page washes
   verdant green in both themes; country pages tint from flag colours.
-- Inventions exclude food/drink (three-net filter); cuisine and inventions
+- Inventions pass a Wikidata class gate (allow/deny roots in
+  `etl/config.py`; food/drink still denied); cuisine and inventions
   coverage limits are stated in the UI, not padded.
+- Every percentage breakdown accounts for 100% with an explicit "Other"
+  (neutral token, visible explanation); >2 points over 100 suppresses the
+  chart; a >40-point gap ships without an Other and is logged for review.
+- Mythical/heraldic national animals live in `emblems`, never in the
+  species grid; no flora/fauna image ships unverified against its taxon.
+- Currency images: a single flat obverse banknote or the designed fallback
+  card — criteria in `etl/sources/currencyimages.py`, never bypassed.
 - Globe drag sensitivity is 0.5625°/px by explicit request (two ×1.5
   raises). Space outside the projection is black on every view.

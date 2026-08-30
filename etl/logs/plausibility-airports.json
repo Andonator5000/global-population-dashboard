@@ -1,0 +1,80 @@
+{
+  "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
+  "stage": "airports",
+  "checked": 2651,
+  "summary": {
+    "airports.passengers": 10
+  },
+  "suppressed": [
+    {
+      "iso3": "ARG",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Perito Moreno Jalil Hamer Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Bella Bella (Campbell Island) Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Bella Coola Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Dauphin Barker Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Peterborough Regional Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Nakina Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Roberval Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Wiarton Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Lynn Lake Airport"
+    },
+    {
+      "iso3": "CAN",
+      "metric": "airports.passengers",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+08]",
+      "label": "Whitecourt Airport"
+    }
+  ]
+}

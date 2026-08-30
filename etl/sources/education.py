@@ -20,13 +20,13 @@ from __future__ import annotations
 
 import json
 import re
-import urllib.parse
 from datetime import datetime, timezone
 from typing import Any
 
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity, build_name_index, normalise_name, normalise_name_strict
 from ..fetch import CachedResponse, FetchError, fetch
+from ..validate import Plausibility
 
 # CWUR location spellings that name folding cannot reach.
 _CWUR_ALIASES: dict[str, str] = {
@@ -151,23 +151,9 @@ def ingest(
             f"countries; expected ~200."
         )
 
-    # ---- Wikidata public library counts ----------------------------------
-    libraries_response = fetch(
-        f"{config.WIKIDATA_SPARQL}?format=json&query="
-        + urllib.parse.quote(config.WIKIDATA_PUBLIC_LIBRARIES_QUERY),
-        refresh=refresh,
-        subdir="education",
-        filename="wikidata-libraries.json",
-        expect_json=True,
-    )
-    library_counts: dict[str, int] = {}
-    for row in libraries_response.read_json()["results"]["bindings"]:
-        iso3 = (row.get("iso3", {}).get("value") or "").upper()
-        if iso3 in registry:
-            try:
-                library_counts[iso3] = int(row["libraries"]["value"])
-            except (KeyError, ValueError):
-                continue
+    # Public library counts were dropped 2026-08-29 (see config.py): the
+    # Wikidata COUNT measured cataloguing, not libraries.
+    plausibility = Plausibility("education", registry)
 
     # ---- CWUR top universities -------------------------------------------
     cwur_response, cwur_year = _load_cwur(refresh)
@@ -178,10 +164,11 @@ def ingest(
     entities: dict[str, Any] = {}
     for iso3 in sorted(registry):
         record: dict[str, Any] = {}
-        if iso3 in university_counts:
+        if iso3 in university_counts and plausibility.check(
+            iso3, "education.universities", university_counts[iso3],
+            label="Colleges and universities",
+        ):
             record["universities"] = university_counts[iso3]
-        if iso3 in library_counts:
-            record["publicLibraries"] = library_counts[iso3]
         if iso3 in top_universities:
             record["topUniversities"] = top_universities[iso3]
         if record:
@@ -194,11 +181,6 @@ def ingest(
                 "Count of institutions in the Hipolabs university-domains "
                 "list; an institution appears only if it has a web domain, "
                 "so this undercounts."
-            ),
-            "publicLibraries": (
-                "Count of items typed 'public library' in Wikidata. Coverage "
-                "varies enormously by country's cataloguing activity; treat "
-                "as a floor, not a census."
             ),
             "topUniversities": (
                 f"CWUR World University Rankings {cwur_year} national ranks; "
@@ -216,32 +198,31 @@ def ingest(
     manifest_mod.record_source(
         manifest,
         "education_extras",
-        title="University and library counts; CWUR rankings",
+        title="University counts; CWUR rankings",
         url=config.CWUR_RANKING_TEMPLATE.format(year=cwur_year),
         licence=(
-            "Hipolabs MIT; Wikidata CC0; CWUR © Center for World University "
-            "Rankings, displayed with attribution"
+            "Hipolabs MIT; CWUR © Center for World University Rankings, "
+            "displayed with attribution"
         ),
         fetched_at=max(
-            r.fetched_at for r in (hipo, libraries_response, cwur_response)
+            r.fetched_at for r in (hipo, cwur_response)
         ),
         upstream_release=cwur_response.upstream_release,
         vintage=f"CWUR {cwur_year}; counts as retrieved",
         citation=(
-            "Hipolabs university-domains-list; Wikidata; Center for World "
+            "Hipolabs university-domains-list; Center for World "
             f"University Rankings (CWUR) {cwur_year}"
         ),
         notes=(
             f"{len(university_counts)} countries with university counts, "
-            f"{len(library_counts)} with Wikidata library counts, "
-            f"{len(top_universities)} with CWUR-ranked institutions."
+            f"{len(top_universities)} with CWUR-ranked institutions. Public "
+            f"library counts dropped 2026-08-29: no reliable keyless source."
         ),
     )
     manifest_mod.record_artifact(
         manifest, "education/education.json",
         description=(
-            "University count, Wikidata public-library count, and CWUR "
-            "top-10 universities per entity."
+            "University count and CWUR top-10 universities per entity."
         ),
         sources=["education_extras"], entity_count=len(entities),
     )
@@ -251,9 +232,10 @@ def ingest(
             f"CWUR locations not matched to the registry: "
             f"{', '.join(sorted(cwur_unmatched))}."
         )
+    suppressed = plausibility.flush(manifest)
     print(f"    education: {len(university_counts)} university counts, "
-          f"{len(library_counts)} library counts, "
-          f"{len(top_universities)} CWUR countries")
+          f"{len(top_universities)} CWUR countries "
+          f"({suppressed} suppressed by the plausibility layer)")
 
 
 __all__ = ["ingest"]

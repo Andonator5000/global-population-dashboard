@@ -46,12 +46,11 @@
   "flower": {
     "name": "Thai",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/431312749/medium.jpg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/431312749/large.jpg",
-      "commonsPage": "https://www.inaturalist.org/photos/431312749",
-      "license": "CC0",
-      "author": "no rights reserved",
-      "source": "iNaturalist"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Idioma%20tailand%C3%A9s.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Idioma%20tailand%C3%A9s.png",
+      "license": "CC BY-SA 3.0",
+      "author": "Fobos92",
+      "source": "Wikimedia Commons"
     }
   }
 }

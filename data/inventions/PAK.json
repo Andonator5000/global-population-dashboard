@@ -2,40 +2,8 @@
   "iso3": "PAK",
   "name": "Pakistan",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "Electroweak interaction",
-      "source": "wikipedia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Standard%20Model%20of%20Elementary%20Particles.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Standard%20Model%20of%20Elementary%20Particles.svg",
-        "license": "Public domain",
-        "author": "Cush",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Abdus Salam",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Standard Model",
-      "source": "wikipedia",
-      "year": 1960,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Standard%20Model%20of%20Elementary%20Particles.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Standard%20Model%20of%20Elementary%20Particles.svg",
-        "license": "Public domain",
-        "author": "Cush",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Sultan Bashiruddin Mahmood",
-      "source": "wikipedia",
-      "year": 1972
-    },
     {
       "name": "Ommaya reservoir",
       "source": "wikipedia",
@@ -44,26 +12,11 @@
       ]
     },
     {
-      "name": "Non-invasive measurement of intracranial pressure",
-      "source": "wikipedia",
-      "inventors": [
-        "Faisal Kashif"
-      ]
-    },
-    {
-      "name": "Boot sector",
-      "source": "wikipedia",
-      "year": 1986,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/GNU%20GRUB%20components.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:GNU%20GRUB%20components.svg",
-        "license": "CC BY-SA 3.0",
-        "author": "ScotXW",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "Neurochip",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Sagar veena",
       "source": "wikipedia"
     }
   ]

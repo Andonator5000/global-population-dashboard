@@ -2,7 +2,7 @@
   "iso3": "KOR",
   "name": "South Korea",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
       "name": "kimchi refrigerator",
@@ -21,44 +21,65 @@
       "source": "wikipedia"
     },
     {
-      "name": "Soybean",
+      "name": "Plate armour",
       "source": "wikipedia"
     },
     {
-      "name": "Whaling",
+      "name": "Pistol",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pistol%20used%20by%20%22Squeaky%22%20Fromme.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pistol%20used%20by%20%22Squeaky%22%20Fromme.JPG",
+        "license": "Public domain",
+        "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Hwacha",
       "source": "wikipedia"
     },
     {
-      "name": "Latin square",
+      "name": "Airplane",
       "source": "wikipedia"
     },
     {
-      "name": "Silhak",
+      "name": "Warship",
       "source": "wikipedia"
     },
     {
-      "name": "Ice house (building)",
+      "name": "Bulletproof vest",
       "source": "wikipedia"
     },
     {
-      "name": "Cheonsang Yeolcha Bunyajido",
+      "name": "Musket",
       "source": "wikipedia"
     },
     {
-      "name": "Phonemic orthography",
+      "name": "Machine gun",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/IDF-machineguns-67.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:IDF-machineguns-67.jpg",
+        "license": "CC BY 4.0",
+        "author": "MathKnight and Zachi Evenor",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Janggu",
       "source": "wikipedia"
     },
     {
-      "name": "Ree group",
-      "source": "wikipedia"
-    },
-    {
-      "name": "MOSFET",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Synchronous dynamic random-access memory",
-      "source": "wikipedia"
+      "name": "Gayageum",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%ED%92%8D%EB%A5%98%EA%B0%80%EC%95%BC%EA%B8%88.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%ED%92%8D%EB%A5%98%EA%B0%80%EC%95%BC%EA%B8%88.jpg",
+        "license": "KOGL Type 1",
+        "author": "국립중앙박물관 e뮤지엄",
+        "source": "Wikimedia Commons"
+      }
     }
   ]
 }

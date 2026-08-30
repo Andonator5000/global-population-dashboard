@@ -2,128 +2,8 @@
   "iso3": "JPN",
   "name": "Japan",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "judo",
-      "source": "wikidata",
-      "inventors": [
-        "Kanō Jigorō"
-      ],
-      "year": 1882,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KOCIS%20Korea%20Judo%20Kim%20Jaebum%20London%2036%20%287696361164%29.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:KOCIS%20Korea%20Judo%20Kim%20Jaebum%20London%2036%20%287696361164%29.jpg",
-        "license": "CC BY-SA 2.0",
-        "author": "Korea.net / Korean Culture and Information Service (Korean Olympic Committee)",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "aikido",
-      "source": "wikidata",
-      "inventors": [
-        "Morihei Ueshiba"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shihonage.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Shihonage.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Magyar Balázs",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "emoji",
-      "source": "wikidata",
-      "inventors": [
-        "Shigetaka Kurita"
-      ],
-      "year": 1999,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Emoji%20u263a.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Emoji%20u263a.svg",
-        "license": "Apache License 2.0",
-        "author": "Google",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "QR code",
-      "source": "wikidata",
-      "inventors": [
-        "Denso Wave",
-        "Masahiro Hara"
-      ],
-      "year": 1994,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/QR%20code%20for%20mobile%20English%20Wikipedia.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:QR%20code%20for%20mobile%20English%20Wikipedia.svg",
-        "license": "Public domain",
-        "author": "Brdall",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "kickboxing",
-      "source": "wikidata",
-      "inventors": [
-        "Osamu Noguchi"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/WKA%20World%20Championship%202012%20Munich%20444.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:WKA%20World%20Championship%202012%20Munich%20444.JPG",
-        "license": "CC BY-SA 4.0",
-        "author": "Claus Michelfelder",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Tamagotchi",
-      "source": "wikidata",
-      "inventors": [
-        "Aki Maita"
-      ],
-      "year": 1996,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tamagotchi%200124%20ubt.jpeg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Tamagotchi%200124%20ubt.jpeg",
-        "license": "CC BY-SA 3.0",
-        "author": "Tomasz Sienicki [user: tsca, mail: tomasz.sienicki at gmail.com]",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "maneki-neko",
-      "source": "wikidata",
-      "year": 2000,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Maneki-neko-ja.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Maneki-neko-ja.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Searobin",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "original video animation",
-      "source": "wikidata",
-      "year": 1983
-    },
-    {
-      "name": "shiatsu",
-      "source": "wikidata",
-      "inventors": [
-        "Tokujirō Namikoshi"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Shiatsu%205.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Shiatsu%205.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Arnaldo V. Carvalho",
-        "source": "Wikimedia Commons"
-      }
-    },
     {
       "name": "Sylvanian Families",
       "source": "wikidata",
@@ -140,27 +20,28 @@
       }
     },
     {
-      "name": "nishiki-e",
+      "name": "Randoseru",
       "source": "wikidata",
-      "inventors": [
-        "Suzuki Harunobu"
-      ],
-      "year": 1765,
+      "year": 1900,
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nishikie.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nishikie.jpg",
-        "license": "Public domain",
-        "author": "Suzuki Harunobu",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Schoolkid%20wearing%20yellow%20hat%20and%20randoseru%20in%20Japan%3B%20April%202011.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Schoolkid%20wearing%20yellow%20hat%20and%20randoseru%20in%20Japan%3B%20April%202011.jpg",
+        "license": "CC BY-SA 2.0",
+        "author": "hiro",
         "source": "Wikimedia Commons"
       }
     },
     {
-      "name": "Asadora",
+      "name": "shō",
       "source": "wikidata",
-      "inventors": [
-        "NHK"
-      ],
-      "year": 1961
+      "year": 800,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gifujyou5846.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Gifujyou5846.JPG",
+        "license": "CC BY-SA 4.0",
+        "author": "Jnn",
+        "source": "Wikimedia Commons"
+      }
     }
   ]
 }

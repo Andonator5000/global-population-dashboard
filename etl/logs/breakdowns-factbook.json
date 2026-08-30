@@ -1,0 +1,987 @@
+{
+  "note": "Percentage breakdowns whose components do not reconcile to 100% (etl/breakdown.py). 'suppressed' breakdowns render as prose; 'large gap' ones render without an Other item until reviewed; 'overlap within tolerance' ones render with a note.",
+  "stage": "factbook",
+  "summary": {
+    "large gap, shipped without Other -- review": 4,
+    "overlap within tolerance, note shown": 97,
+    "suppressed": 21
+  },
+  "entries": [
+    {
+      "iso3": "SSD",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 55.0,
+      "gap": 45.0,
+      "state": "large gap, shipped without Other -- review"
+    },
+    {
+      "iso3": "AND",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 10.5,
+      "gap": 89.5,
+      "state": "large gap, shipped without Other -- review"
+    },
+    {
+      "iso3": "COD",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 7.8,
+      "gap": 92.2,
+      "state": "large gap, shipped without Other -- review"
+    },
+    {
+      "iso3": "RUS",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 37.0,
+      "gap": 63.0,
+      "state": "large gap, shipped without Other -- review"
+    },
+    {
+      "iso3": "AIA",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ARE",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "BGR",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 101.0,
+      "overshoot": 1.0,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "BLR",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "CAF",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.9,
+      "overshoot": 0.9,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "COL",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GBR",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GNQ",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GRD",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "JAM",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "KIR",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 101.48,
+      "overshoot": 1.48,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "LCA",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MAC",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MCO",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MDA",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MNE",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MNP",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MSR",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "NER",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.2,
+      "overshoot": 0.2,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "PAK",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "SEN",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "SUR",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TCD",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TJK",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TKL",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TTO",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ZAF",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ZMB",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "BLR",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "BRB",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "CUB",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "DOM",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 102.0,
+      "overshoot": 2.0,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ESP",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "FRA",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.2,
+      "overshoot": 0.2,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GAB",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GGY",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "HND",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ITA",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "JEY",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "KHM",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "LUX",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MLI",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MNP",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "NIU",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "PHL",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "PRK",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "PYF",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "RWA",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.8,
+      "overshoot": 0.8,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "SWZ",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TCA",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TCD",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "URY",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "AGO",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ASM",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.3,
+      "overshoot": 0.3,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ATG",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "AUT",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "BHR",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "BWA",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "CHL",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.2,
+      "overshoot": 0.2,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "COM",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "CPV",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.2,
+      "overshoot": 0.2,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ESP",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "FJI",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "FLK",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "FRO",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.5,
+      "overshoot": 0.5,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GBR",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GRD",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GUM",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "GUY",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "HRV",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "HTI",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.7,
+      "overshoot": 0.7,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "IDN",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.5,
+      "overshoot": 0.5,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "IMN",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "IRL",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "JAM",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "JOR",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "JPN",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "LBR",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "LIE",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.2,
+      "overshoot": 0.2,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MOZ",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "MYS",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "NIC",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "NRU",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "PLW",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "PNG",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "PRY",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.2,
+      "overshoot": 0.2,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "QAT",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.8,
+      "overshoot": 0.8,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "SSD",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 101.6,
+      "overshoot": 1.6,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "SXM",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TON",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TTO",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "TWN",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.6,
+      "overshoot": 0.6,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "VCT",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "VEN",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "WSM",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "XKX",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "ZWE",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 100.1,
+      "overshoot": 0.1,
+      "state": "overlap within tolerance, note shown"
+    },
+    {
+      "iso3": "AUS",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 107.3,
+      "overshoot": 7.3,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "IRQ",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 105.0,
+      "overshoot": 5.0,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "TUR",
+      "kind": "ethnicGroups",
+      "label": "ethnic group composition",
+      "total": 105.0,
+      "overshoot": 5.0,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "CHE",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 102.4,
+      "overshoot": 2.4,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "DMA",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 109.9,
+      "overshoot": 9.9,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "GNB",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 104.9,
+      "overshoot": 4.9,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "SRB",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 108.0,
+      "overshoot": 8.0,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "STP",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 102.3,
+      "overshoot": 2.3,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "SVN",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 103.0,
+      "overshoot": 3.0,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "VGB",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 113.2,
+      "overshoot": 13.2,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "WLF",
+      "kind": "landUse",
+      "label": "land use",
+      "total": 117.2,
+      "overshoot": 17.2,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "BRA",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 107.5,
+      "overshoot": 7.5,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "CUB",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 104.7,
+      "overshoot": 4.7,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "GRC",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 111.0,
+      "overshoot": 11.0,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "IRQ",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 103.0,
+      "overshoot": 3.0,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "LBN",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 104.7,
+      "overshoot": 4.7,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "LBY",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 105.3,
+      "overshoot": 5.3,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "PSE",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 102.5,
+      "overshoot": 2.5,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "TGO",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 103.4,
+      "overshoot": 3.4,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "TKM",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 104.4,
+      "overshoot": 4.4,
+      "state": "suppressed"
+    },
+    {
+      "iso3": "TZA",
+      "kind": "religions",
+      "label": "religious composition",
+      "total": 103.9,
+      "overshoot": 3.9,
+      "state": "suppressed"
+    }
+  ]
+}

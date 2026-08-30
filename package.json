@@ -14,9 +14,11 @@
     "check:biome-areas": "node scripts/check-biome-areas.mjs",
     "check:theme-parity": "node scripts/check-theme-parity.mjs",
     "check:polygons": "node scripts/check-polygon-ownership.mjs",
-    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas && npm run check:polygons",
+    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas && npm run check:polygons && npm run check:icons",
     "flags": "node scripts/extract-flag-colors.mjs",
-    "palette": "node scripts/build-map-palette.mjs"
+    "palette": "node scripts/build-map-palette.mjs",
+    "check:icons": "node scripts/check-icon-coverage.mjs --strict",
+    "icons": "node scripts/fetch-icons.mjs"
   },
   "dependencies": {
     "culori": "^4.0.2",

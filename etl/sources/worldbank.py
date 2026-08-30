@@ -28,6 +28,7 @@ from typing import Any
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity, excluded_aggregate_codes
 from ..fetch import CachedResponse, FetchError, fetch
+from ..validate import Plausibility
 
 
 def _fetch_country_catalogue(refresh: bool) -> tuple[dict[str, str], set[str]]:
@@ -136,6 +137,7 @@ def ingest(
     newest_year: dict[str, int] = {}
     unmatched_codes: set[str] = set()
     last_updated: str | None = None
+    plausibility = Plausibility("worldbank", registry)
 
     for indicator in config.WORLD_BANK_INDICATORS:
         rows = _fetch_indicator(
@@ -156,6 +158,11 @@ def ingest(
                 year = int(row.get("date"))
             except (TypeError, ValueError):
                 continue
+            if not plausibility.check(
+                iso3, indicator.code, value, unit=indicator.unit,
+                year=year, label=indicator.label,
+            ):
+                continue
             observations.setdefault(iso3, {}).setdefault(
                 indicator.code, {}
             )[year] = float(value)
@@ -164,6 +171,20 @@ def ingest(
             )
             kept += 1
         print(f"    {indicator.code:22s} {kept:>7,} observations", flush=True)
+
+    # Urban and rural shares are separate World Bank series; they should be
+    # complements. Log the pairs that are not (beyond rounding) rather than
+    # silently trusting either.
+    urban_rural_mismatch: list[str] = []
+    for iso3, by_indicator in observations.items():
+        urban = by_indicator.get("SP.URB.TOTL.IN.ZS", {})
+        rural = by_indicator.get("SP.RUR.TOTL.ZS", {})
+        for year in sorted(set(urban) & set(rural), reverse=True)[:1]:
+            if abs(urban[year] + rural[year] - 100.0) > 0.11:
+                urban_rural_mismatch.append(
+                    f"{iso3} {year}: urban {urban[year]:.2f} + rural "
+                    f"{rural[year]:.2f} = {urban[year] + rural[year]:.2f}"
+                )
 
     # `lastupdated` is the World Bank's own release stamp for the source.
     first_payload = responses[0].read_json() if responses else None
@@ -341,7 +362,17 @@ def ingest(
             f"an explicit unavailable state."
         )
 
-    print(f"    wrote {written} country indicator files")
+    if urban_rural_mismatch:
+        manifest_mod.add_warning(
+            manifest,
+            f"World Bank urban + rural shares do not sum to 100 for "
+            f"{len(urban_rural_mismatch)} entities (latest common year): "
+            f"{'; '.join(urban_rural_mismatch[:8])}"
+            f"{'; ...' if len(urban_rural_mismatch) > 8 else ''}."
+        )
+    suppressed = plausibility.flush(manifest)
+    print(f"    wrote {written} country indicator files "
+          f"({suppressed} observations suppressed by the plausibility layer)")
 
 
 __all__ = ["ingest"]

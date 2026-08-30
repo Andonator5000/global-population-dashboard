@@ -9,12 +9,11 @@
       "type": "national animal",
       "scientificName": "Lemur catta",
       "image": {
-        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/99684889/medium.jpg",
-        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/99684889/large.jpg",
-        "commonsPage": "https://www.inaturalist.org/photos/99684889",
-        "license": "CC-BY",
-        "author": "(c) George Williams, some rights reserved (CC BY)",
-        "source": "iNaturalist"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lemur%20catta%20001.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Lemur%20catta%20001.jpg",
+        "license": "CC BY 3.0",
+        "author": "Alex Dunkel (Maky)",
+        "source": "Wikimedia Commons"
       }
     },
     {
@@ -22,12 +21,11 @@
       "type": "national animal",
       "scientificName": "Bos primigenius indicus",
       "image": {
-        "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/354343330/medium.jpeg",
-        "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/354343330/large.jpeg",
-        "commonsPage": "https://www.inaturalist.org/photos/354343330",
-        "license": "CC0",
-        "author": "no rights reserved",
-        "source": "iNaturalist"
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Z%C3%A9bu.JPG?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Z%C3%A9bu.JPG",
+        "license": "CC BY-SA 3.0",
+        "author": "Marius CONJEAUD",
+        "source": "Wikimedia Commons"
       }
     }
   ],

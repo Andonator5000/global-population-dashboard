@@ -5,6 +5,7 @@
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
   "flower": {
     "name": "Angraecum eburneum",
+    "scientificName": "Angraecum eburneum",
     "image": {
       "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/465005053/medium.jpeg",
       "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/465005053/large.jpeg",

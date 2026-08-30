@@ -30,6 +30,72 @@ from ..crosswalk import Entity, build_name_index, normalise_name, normalise_name
 from ..fetch import CachedResponse, FetchError, fetch
 from . import commons
 
+# Mythical / heraldic emblems (2026-08-29). The Wikipedia lists tag these
+# with "Mythical" in the scientific-name column; a second net catches an
+# untagged legendary name that has no binomial. "Komodo dragon" keeps its
+# binomial and is a real lizard, so the name net only fires when the
+# scientific name is missing or non-binomial.
+_MYTHICAL_TAGS = {"mythical", "legendary", "heraldic", "fictional", "mythological"}
+_MYTHICAL_NAME = re.compile(
+    r"\b(phoenix|unicorn|griffin|gryphon|garuda|qilin|qianlima|wyvern|"
+    r"heraldic|coat of arms|double-headed|double-tailed|dragon)\b",
+    re.IGNORECASE,
+)
+# Heraldic figures the list files under a real taxon's binomial.
+_HERALDIC_NAMES = {"lion of judah"}
+_BINOMIAL = re.compile(r"^[A-Z][a-z-]+ [a-z-]+(?: [a-z-]+)?$")
+_GENUS = re.compile(r"^[A-Z][a-z-]+$")
+_SPLIT = re.compile(r"\s*(?:,|;| and | or |/)\s*")
+
+
+def _scientific_parts(entry: dict[str, Any]) -> list[str]:
+    """Binomials and genera named in the scientific-name cell, in order.
+
+    The lists join several taxa with commas ("Quercus, Quercus robur";
+    "Hibiscus syriacus, Pinus densiflora"); each part is a taxon in its own
+    right. Cultivar quotes are stripped (Betula pendula 'Dalecarlica').
+    """
+    raw = (entry.get("scientificName") or "").strip()
+    parts: list[str] = []
+    for part in _SPLIT.split(raw):
+        part = re.sub(r"\s*'[^']*'\s*$", "", part).strip()
+        if _BINOMIAL.match(part) or _GENUS.match(part):
+            parts.append(part)
+    # Species before genus, so the most specific taxon is tried first.
+    return sorted(parts, key=lambda p: (" " not in p, parts.index(p)))
+
+
+def _is_emblem(entry: dict[str, Any]) -> bool:
+    scientific = (entry.get("scientificName") or "").strip()
+    if scientific.lower() in _MYTHICAL_TAGS:
+        return True
+    if "mythical" in (entry.get("type") or "").lower():
+        return True
+    if entry["name"].strip().lower() in _HERALDIC_NAMES:
+        return True
+    if not _BINOMIAL.match(scientific) and _MYTHICAL_NAME.search(entry["name"]):
+        return True
+    return False
+
+
+def _name_tokens(entry: dict[str, Any]) -> list[str]:
+    """Lowercased names a matching photo's metadata must mention."""
+    tokens: list[str] = []
+    for part in _scientific_parts(entry):
+        tokens.append(part.lower())
+        tokens.append(part.split()[0].lower())  # genus
+    for name in _SPLIT.split(entry["name"].strip().lower()):
+        if len(name) > 3:
+            tokens.append(name)
+    return tokens
+
+
+def _commons_matches(filename: str, entry: dict[str, Any],
+                     metadata: dict[str, dict[str, Any]]) -> bool:
+    """True when the Commons file's own metadata names this taxon."""
+    haystack = commons.metadata_text(filename, metadata)
+    return any(token in haystack for token in _name_tokens(entry))
+
 # Wikipedia spellings the registry's folding cannot reach.
 _NAME_ALIASES: dict[str, str] = {
     "democratic republic of the congo": "COD",
@@ -211,7 +277,7 @@ def _parse_flowers_prose(
 
 
 def _inaturalist_photo(
-    query: str, *, refresh: bool
+    query: str, *, refresh: bool, scientific: str | None = None,
 ) -> dict[str, Any] | None:
     """The community's best CC0/CC-BY photo of a species, or None.
 
@@ -219,6 +285,12 @@ def _inaturalist_photo(
     observation by votes with the licence filter applied server-side.
     Only photos on the inaturalist-open-data bucket (published for
     third-party use) are accepted; anything else falls back to Commons.
+
+    Verification (2026-08-29): the resolved taxon must actually BE the
+    queried one -- its scientific name equal to the query (or its species
+    part, for a subspecies query), or its common name equal to the queried
+    common name. iNaturalist's search is fuzzy, and an unverified first
+    hit put the wrong animal on a card.
     """
     import time
 
@@ -234,6 +306,19 @@ def _inaturalist_photo(
         taxa = taxa_response.read_json().get("results") or []
         if not taxa:
             return None
+        taxon = taxa[0]
+        taxon_name = (taxon.get("name") or "").strip().lower()
+        wanted = (scientific or query).strip().lower()
+        common = (taxon.get("preferred_common_name") or "").strip().lower()
+        species_part = " ".join(wanted.split()[:2])
+        if not (
+            taxon_name == wanted
+            or (scientific and taxon_name == species_part)
+            or (not scientific and common == wanted)
+        ):
+            return None  # fuzzy hit on some other taxon: no image beats a wrong one
+        if scientific and " " not in wanted and taxon.get("rank") != "genus":
+            return None  # a genus query must resolve to the genus itself
         observations_response = fetch(
             config.INATURALIST_OBSERVATIONS_URL.format(
                 taxon_id=taxa[0]["id"]
@@ -270,16 +355,22 @@ def _inaturalist_photo(
 
 def _lead_images(
     titles: list[str], *, refresh: bool
-) -> tuple[dict[str, str], list[CachedResponse]]:
-    """{article title: lead image Commons filename} via the pageimages API."""
+) -> tuple[dict[str, str], dict[str, str], list[CachedResponse]]:
+    """({article title: lead image Commons filename}, {title: Wikidata QID}).
+
+    The QID feeds `_taxon_names`: the flowers article names most species by
+    common name only, and the image verification needs the binomial.
+    """
     out: dict[str, str] = {}
+    qids: dict[str, str] = {}
     responses: list[CachedResponse] = []
     ordered = sorted(set(titles))
     for start in range(0, len(ordered), 20):
         batch = ordered[start:start + 20]
         url = (
             f"{config.WIKIPEDIA_API_URL}?action=query&format=json"
-            f"&prop=pageimages&piprop=name&redirects=1"
+            f"&prop=pageimages%7Cpageprops&piprop=name&ppprop=wikibase_item"
+            f"&redirects=1"
             f"&titles={urllib.parse.quote('|'.join(batch))}"
         )
         # URL-hash cache naming; see commons.fetch_metadata for why
@@ -297,12 +388,43 @@ def _lead_images(
         for page in payload.get("pages", {}).values():
             title = page.get("title") or ""
             image = page.get("pageimage")
-            if not image:
-                continue
+            qid = (page.get("pageprops") or {}).get("wikibase_item")
             original = redirect_back.get(title, title)
             original = normalise_back.get(original, original)
             for key in {title, original}:
-                out[key.replace(" ", "_")] = image.replace("_", " ")
+                if image:
+                    out[key.replace(" ", "_")] = image.replace("_", " ")
+                if qid:
+                    qids[key.replace(" ", "_")] = qid
+    return out, qids, responses
+
+
+def _taxon_names(
+    qids: list[str], *, refresh: bool
+) -> tuple[dict[str, str], list[CachedResponse]]:
+    """{QID: taxon name (P225)} for the species/genus articles."""
+    out: dict[str, str] = {}
+    responses: list[CachedResponse] = []
+    ordered = sorted(set(qids))
+    for start in range(0, len(ordered), 100):
+        batch = ordered[start:start + 100]
+        values = " ".join(f"wd:{q}" for q in batch)
+        query = (
+            "SELECT ?item ?taxon WHERE { VALUES ?item { " + values + " } "
+            "?item wdt:P225 ?taxon . }"
+        )
+        try:
+            response = fetch(
+                f"{config.WIKIDATA_SPARQL}?format=json&query="
+                + urllib.parse.quote(query),
+                refresh=refresh, subdir="florafauna", expect_json=True,
+            )
+        except FetchError:
+            continue  # enrichment only; the stage must not sink on it
+        responses.append(response)
+        for row in response.read_json()["results"]["bindings"]:
+            qid = (row["item"]["value"]).rsplit("/", 1)[-1]
+            out[qid] = row["taxon"]["value"]
     return out, responses
 
 
@@ -363,11 +485,22 @@ def ingest(
         for record in flowers.values()
         if record.get("articleTitle")
     ]
-    lead, lead_responses = _lead_images(flower_titles, refresh=refresh)
+    lead, flower_qids, lead_responses = _lead_images(
+        flower_titles, refresh=refresh,
+    )
+    taxon_names, taxon_responses = _taxon_names(
+        list(flower_qids.values()), refresh=refresh,
+    )
+    lead_responses = [*lead_responses, *taxon_responses]
     for record in flowers.values():
         title = record.pop("articleTitle", None)
         if title and title in lead:
             record["file"] = lead[title]
+        # Scientific name from the article's Wikidata item when the prose
+        # gave only a common name -- it is what the image check verifies.
+        qid = flower_qids.get(title or "")
+        if qid and qid in taxon_names and not record.get("scientificName"):
+            record["scientificName"] = taxon_names[qid]
 
     filenames = [
         entry["file"]
@@ -380,16 +513,34 @@ def ingest(
         filenames, refresh=refresh, subdir="florafauna",
     )
 
-    def finalise(entry: dict[str, Any]) -> dict[str, Any]:
+    rejected_images: list[dict[str, Any]] = []
+
+    def finalise(entry: dict[str, Any], *, emblem: bool = False) -> dict[str, Any]:
         record = {k: v for k, v in entry.items() if k != "file"}
-        # iNaturalist first (community-vote-ranked, licence-filtered
-        # wildlife photography); the Commons image is the fallback.
-        image = _inaturalist_photo(
-            entry.get("scientificName") or entry["name"], refresh=refresh,
-        )
         filename = entry.get("file")
+        image = None
+        if not emblem:
+            # iNaturalist first (community-vote-ranked, licence-filtered
+            # wildlife photography, verified against the taxon); the
+            # Commons image is the fallback and must name the taxon in its
+            # own metadata. Otherwise: no image.
+            for scientific in _scientific_parts(entry) or [None]:
+                image = _inaturalist_photo(
+                    scientific or entry["name"], refresh=refresh,
+                    scientific=scientific,
+                )
+                if image:
+                    break
         if image is None and filename:
-            image = commons.image_record(filename, metadata)
+            if emblem or _commons_matches(filename, entry, metadata):
+                image = commons.image_record(filename, metadata)
+            elif filename in metadata:
+                rejected_images.append({
+                    "name": entry["name"],
+                    "scientificName": entry.get("scientificName"),
+                    "file": filename,
+                    "reason": "Commons metadata does not mention the taxon",
+                })
         if image:
             record["image"] = image
         return record
@@ -409,10 +560,25 @@ def ingest(
             ),
         }
         if iso3 in animals:
-            entries = [finalise(e) for e in animals[iso3][:5]]
+            real = [e for e in animals[iso3] if not _is_emblem(e)]
+            emblems = [e for e in animals[iso3] if _is_emblem(e)]
+            entries = [finalise(e) for e in real[:5]]
             # The headline national animal first, then birds and the rest.
             entries.sort(key=lambda e: (e["type"] != "national animal", e["name"]))
-            document["animals"] = entries
+            if entries:
+                document["animals"] = entries
+            if emblems:
+                # Mythical and heraldic figures are real national symbols
+                # but not real taxa; they ship in their own list so the UI
+                # can keep them out of the species grid.
+                document["emblems"] = [
+                    {
+                        **{k: v for k, v in finalise(e, emblem=True).items()
+                           if k != "scientificName"},
+                        "kind": "heraldic or mythical emblem",
+                    }
+                    for e in emblems[:3]
+                ]
         if iso3 in trees:
             document["tree"] = finalise(trees[iso3][0])
         if iso3 in flowers:
@@ -428,6 +594,20 @@ def ingest(
                          document.get("tree"), document.get("flower")]
             if part and part.get("image")
         )
+
+    config.LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    (config.LOGS_DIR / "florafauna-rejected-images.json").write_text(
+        json.dumps({
+            "note": (
+                "Commons images the flora/fauna stage refused because the "
+                "file's own metadata (name, description, categories) does "
+                "not mention the taxon. The card renders its typographic "
+                "fallback instead."
+            ),
+            "rejected": sorted(rejected_images, key=lambda r: r["name"]),
+        }, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8", newline="\n",
+    )
 
     unmatched = sorted(un_a | un_t | un_f)
     all_responses = [
@@ -459,14 +639,16 @@ def ingest(
     manifest_mod.record_artifact(
         manifest, "flora-fauna/<ISO3>.json",
         description=(
-            "National animal(s), tree and flower with Commons images and "
-            "attribution, per entity."
+            "National animal(s), tree and flower with verified images and "
+            "attribution, per entity; mythical/heraldic emblems listed "
+            "separately."
         ),
         sources=["wikipedia_national_symbols"], entity_count=written,
     )
     print(f"    flora/fauna: {written} countries "
           f"({len(animals)} animals, {len(trees)} trees, "
-          f"{len(flowers)} flowers), {with_images} images")
+          f"{len(flowers)} flowers), {with_images} images, "
+          f"{len(rejected_images)} Commons images rejected as unverified")
 
 
 __all__ = ["ingest"]

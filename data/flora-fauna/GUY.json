@@ -5,12 +5,14 @@
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
   "flower": {
     "name": "Victoria regia lily",
+    "scientificName": "Victoria amazonica",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20amazonica%20edit%201.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Victoria%20amazonica%20edit%201.jpg",
-      "license": "CC BY 3.0",
-      "author": "Bilby",
-      "source": "Wikimedia Commons"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/68253999/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/68253999/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/68253999",
+      "license": "CC0",
+      "author": "no rights reserved",
+      "source": "iNaturalist"
     }
   }
 }

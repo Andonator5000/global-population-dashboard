@@ -2,34 +2,8 @@
   "iso3": "GBR",
   "name": "United Kingdom",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "netball",
-      "source": "wikidata",
-      "inventors": [
-        "Martina Bergman-Österberg"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MalawiFijiNetball.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:MalawiFijiNetball.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": "Grant Williamson",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "rugby sevens",
-      "source": "wikidata",
-      "year": 1833,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Germany%20England%20Oktoberfest%207s%202931.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Germany%20England%20Oktoberfest%207s%202931.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Henning Schlottmann (User:H-stt)",
-        "source": "Wikimedia Commons"
-      }
-    },
     {
       "name": "Cluedo",
       "source": "wikidata",
@@ -61,60 +35,11 @@
       }
     },
     {
-      "name": "Adolescence",
-      "source": "wikidata",
-      "inventors": [
-        "Stephen Graham",
-        "Jack Thorne"
-      ]
-    },
-    {
       "name": "ammonal",
       "source": "wikidata",
       "inventors": [
         "Richard Escales"
       ]
-    },
-    {
-      "name": "spaghetti-tree",
-      "source": "wikidata",
-      "inventors": [
-        "Panorama"
-      ],
-      "year": 1957
-    },
-    {
-      "name": "Bartitsu",
-      "source": "wikidata",
-      "inventors": [
-        "Edward William Barton-Wright"
-      ],
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bartitsu%20montage.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bartitsu%20montage.jpg",
-        "license": "Public domain",
-        "author": "Artful Dodger at English Wikipedia",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Cunk on Earth",
-      "source": "wikidata",
-      "inventors": [
-        "Charlie Brooker"
-      ]
-    },
-    {
-      "name": "Stronsay Beast",
-      "source": "wikidata",
-      "year": 1808,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stronsay%20beast1.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Stronsay%20beast1.jpg",
-        "license": "Public domain",
-        "author": "Sir Alexander Gibson",
-        "source": "Wikimedia Commons"
-      }
     },
     {
       "name": "Jasperware",
@@ -132,16 +57,61 @@
       }
     },
     {
-      "name": "cryptic crossword",
+      "name": "Pedersen bicycle",
       "source": "wikidata",
       "inventors": [
-        "Edward Powys Mathers"
+        "Mikael Pedersen"
       ],
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/British%20crossword.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:British%20crossword.svg",
-        "license": "Public domain",
-        "author": "Tonyle",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/00%208321%20Antikes%20Fahrrad.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:00%208321%20Antikes%20Fahrrad.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "W. Bulach",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Jet engine",
+      "source": "wikipedia",
+      "inventors": [
+        "Sir Frank Whittle"
+      ]
+    },
+    {
+      "name": "Carbon fiber reinforced polymer",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Touchpad",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Flip-flop (electronics)",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Transistor%20Bistable%20interactive%20animated-en.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Transistor%20Bistable%20interactive%20animated-en.svg",
+        "license": "CC BY-SA 3.0",
+        "author": "DrJolo",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Hydraulic accumulator",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Steam turbine",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Acetylcholine",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acetylcholine%20structure.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Acetylcholine%20structure.svg",
+        "license": "CC0",
+        "author": "AlyInWikiWonderland",
         "source": "Wikimedia Commons"
       }
     }

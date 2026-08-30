@@ -8,22 +8,22 @@
     "type": "national tree",
     "scientificName": "Tilia",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/258942569/medium.jpg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/258942569/large.jpg",
-      "commonsPage": "https://www.inaturalist.org/photos/258942569",
-      "license": "CC-BY",
-      "author": "(c) Jared Shorma, some rights reserved (CC BY)",
-      "source": "iNaturalist"
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tilia%20tomentosa.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Tilia%20tomentosa.jpg",
+      "license": "CC BY 3.0",
+      "author": "Bruce Marlin",
+      "source": "Wikimedia Commons"
     }
   },
   "flower": {
     "name": "carnation",
+    "scientificName": "Dianthus caryophyllus",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/516524078/medium.jpg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/516524078/large.jpg",
-      "commonsPage": "https://www.inaturalist.org/photos/516524078",
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/677526389/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/677526389/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/677526389",
       "license": "CC-BY",
-      "author": "(c) Alaina Krakowiak, some rights reserved (CC BY)",
+      "author": "(c) Louis Aureglia, some rights reserved (CC BY)",
       "source": "iNaturalist"
     }
   }

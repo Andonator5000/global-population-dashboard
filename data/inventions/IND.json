@@ -2,72 +2,64 @@
   "iso3": "IND",
   "name": "India",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Pompeii Lakshmi",
-      "source": "wikidata",
-      "year": 1938,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Statuetta%20indiana%20di%20Lakshmi%2C%20avorio%2C%20da%20pompei%2C%201-50%20dc%20ca.%2C%20149425%2C%2001.JPG?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Statuetta%20indiana%20di%20Lakshmi%2C%20avorio%2C%20da%20pompei%2C%201-50%20dc%20ca.%2C%20149425%2C%2001.JPG",
-        "license": "CC BY-SA 3.0",
-        "author": "Sailko",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Nassak Diamond",
-      "source": "wikidata",
-      "year": 1500,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Nassak%20Diamond%20copy.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Nassak%20Diamond%20copy.jpg",
-        "license": "CC BY-SA 3.0",
-        "author": null,
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Indigo",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Kho kho",
-      "source": "wikipedia"
+      "name": "Calico",
+      "source": "wikipedia",
+      "era": "11th century"
     },
     {
       "name": "Cotton",
       "source": "wikipedia"
     },
     {
-      "name": "Diabetes",
+      "name": "Shellac",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Crucible steel",
+      "source": "wikipedia",
+      "era": "300 BCE"
+    },
+    {
+      "name": "Touchstone (assaying tool)",
+      "source": "wikipedia",
+      "year": 1900
+    },
+    {
+      "name": "Mysorean rockets",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Horn antenna",
+      "source": "wikipedia",
+      "year": 1897
+    },
+    {
+      "name": "Crescograph",
+      "source": "wikipedia",
+      "era": "20th century"
+    },
+    {
+      "name": "Combat helmet",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Transformer",
+      "source": "wikipedia",
+      "year": 2026
+    },
+    {
+      "name": "Dual-phase steel",
       "source": "wikipedia",
       "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Blue%20circle%20for%20diabetes.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Blue%20circle%20for%20diabetes.svg",
-        "license": "Public domain",
-        "author": "IntDiabetesFed",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%90%D1%80%D0%BC%D0%B0%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%BA%D0%B0%D1%82.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%80%D0%BC%D0%B0%D1%82%D1%83%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%BA%D0%B0%D1%82.jpg",
+        "license": "CC BY-SA 4.0",
+        "author": "ArcelorMittal Kryvyi Rih",
         "source": "Wikimedia Commons"
       }
-    },
-    {
-      "name": "Ferrous metallurgy",
-      "source": "wikipedia",
-      "year": 1800
-    },
-    {
-      "name": "Trairūpya",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Interpolation",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Diamond (gemstone)",
-      "source": "wikipedia",
-      "era": "18th century"
     }
   ]
 }

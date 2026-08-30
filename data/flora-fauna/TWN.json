@@ -20,12 +20,14 @@
   ],
   "flower": {
     "name": "plum blossom",
+    "scientificName": "Prunus mume",
     "image": {
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Prunus%20mume.JPG?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Prunus%20mume.JPG",
-      "license": "CC BY-SA 3.0",
-      "author": "Kakidai",
-      "source": "Wikimedia Commons"
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/173122050/medium.jpeg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/173122050/large.jpeg",
+      "commonsPage": "https://www.inaturalist.org/photos/173122050",
+      "license": "CC-BY",
+      "author": "(c) Richard Littauer, some rights reserved (CC BY)",
+      "source": "iNaturalist"
     }
   }
 }

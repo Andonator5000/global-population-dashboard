@@ -19,6 +19,7 @@ from typing import Any
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity
 from ..fetch import FetchError, fetch
+from ..validate import Plausibility
 
 
 def _text(row: ET.Element, tag: str) -> str:
@@ -95,6 +96,13 @@ def ingest(
 
     for sites in by_iso3.values():
         sites.sort(key=lambda s: (s["year"] or 9999, s["name"]))
+    plausibility = Plausibility("heritage", registry)
+    for iso3 in [
+        k for k, v in by_iso3.items()
+        if not plausibility.check(k, "heritage.count", len(v), label="World Heritage sites")
+    ]:
+        del by_iso3[iso3]
+    plausibility.flush(manifest)
 
     out_dir = config.DATA_DIR / "heritage"
     out_dir.mkdir(parents=True, exist_ok=True)

@@ -25,6 +25,7 @@ from typing import Any
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity
 from ..fetch import FetchError, fetch
+from ..validate import Plausibility
 
 
 def ingest(
@@ -85,6 +86,18 @@ def ingest(
                 "population": population,
                 "qid": qid,
             }
+
+    # A division's Wikidata population above the country's own is a
+    # cataloguing error (wrong item, wrong unit); suppress it, keep the row.
+    plausibility = Plausibility("subdivisions", registry)
+    for iso3, by_label in collected.items():
+        for division in by_label.values():
+            if division["population"] is not None and not plausibility.check(
+                iso3, "subdivisions.population", division["population"],
+                label=division["name"],
+            ):
+                division["population"] = None
+    plausibility.flush(manifest)
 
     written = 0
     index: dict[str, int] = {}

@@ -1,0 +1,197 @@
+{
+  "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
+  "stage": "worldbank",
+  "checked": 318790,
+  "summary": {
+    "PA.NUS.FCRF": 14,
+    "IT.CEL.SETS.P2": 1,
+    "SH.DYN.MORT": 1,
+    "SH.STA.MMRT": 7
+  },
+  "suppressed": [
+    {
+      "iso3": "FJI",
+      "metric": "IT.CEL.SETS.P2",
+      "value": 574.152332512188,
+      "rule": "outside bounds [0, 500]",
+      "label": "Mobile cellular subscriptions (per 100 people)",
+      "year": 2024
+    },
+    {
+      "iso3": "BRA",
+      "metric": "PA.NUS.FCRF",
+      "value": 9.60713051097307e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1966
+    },
+    {
+      "iso3": "BRA",
+      "metric": "PA.NUS.FCRF",
+      "value": 8.21654885346591e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1965
+    },
+    {
+      "iso3": "BRA",
+      "metric": "PA.NUS.FCRF",
+      "value": 5.42023917053559e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1964
+    },
+    {
+      "iso3": "BRA",
+      "metric": "PA.NUS.FCRF",
+      "value": 2.488693976762e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1963
+    },
+    {
+      "iso3": "BRA",
+      "metric": "PA.NUS.FCRF",
+      "value": 1.67764155487091e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1962
+    },
+    {
+      "iso3": "BRA",
+      "metric": "PA.NUS.FCRF",
+      "value": 1.16843478826882e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1961
+    },
+    {
+      "iso3": "BRA",
+      "metric": "PA.NUS.FCRF",
+      "value": 8.09970533496995e-14,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1960
+    },
+    {
+      "iso3": "COD",
+      "metric": "PA.NUS.FCRF",
+      "value": 5.5e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1966
+    },
+    {
+      "iso3": "COD",
+      "metric": "PA.NUS.FCRF",
+      "value": 5.5e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1965
+    },
+    {
+      "iso3": "COD",
+      "metric": "PA.NUS.FCRF",
+      "value": 5.5e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1964
+    },
+    {
+      "iso3": "COD",
+      "metric": "PA.NUS.FCRF",
+      "value": 2.525e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1963
+    },
+    {
+      "iso3": "COD",
+      "metric": "PA.NUS.FCRF",
+      "value": 2.1e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1962
+    },
+    {
+      "iso3": "COD",
+      "metric": "PA.NUS.FCRF",
+      "value": 1.75e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1961
+    },
+    {
+      "iso3": "COD",
+      "metric": "PA.NUS.FCRF",
+      "value": 1.7e-13,
+      "rule": "outside bounds [1e-12, 1e+10]",
+      "label": "Official exchange rate (LCU per US$, period average)",
+      "year": 1960
+    },
+    {
+      "iso3": "SSD",
+      "metric": "SH.DYN.MORT",
+      "value": 780.9,
+      "rule": "outside bounds [0, 700]",
+      "label": "Under-5 mortality (per 1,000 live births)",
+      "year": 1988
+    },
+    {
+      "iso3": "RWA",
+      "metric": "SH.STA.MMRT",
+      "value": 5721.0,
+      "rule": "outside bounds [0, 5000]",
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "year": 1994
+    },
+    {
+      "iso3": "SSD",
+      "metric": "SH.STA.MMRT",
+      "value": 7514.0,
+      "rule": "outside bounds [0, 5000]",
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "year": 1998
+    },
+    {
+      "iso3": "SSD",
+      "metric": "SH.STA.MMRT",
+      "value": 7537.0,
+      "rule": "outside bounds [0, 5000]",
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "year": 1993
+    },
+    {
+      "iso3": "SSD",
+      "metric": "SH.STA.MMRT",
+      "value": 7597.0,
+      "rule": "outside bounds [0, 5000]",
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "year": 1992
+    },
+    {
+      "iso3": "SSD",
+      "metric": "SH.STA.MMRT",
+      "value": 5103.0,
+      "rule": "outside bounds [0, 5000]",
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "year": 1989
+    },
+    {
+      "iso3": "SSD",
+      "metric": "SH.STA.MMRT",
+      "value": 5535.0,
+      "rule": "outside bounds [0, 5000]",
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "year": 1988
+    },
+    {
+      "iso3": "SSD",
+      "metric": "SH.STA.MMRT",
+      "value": 8045.0,
+      "rule": "outside bounds [0, 5000]",
+      "label": "Maternal mortality ratio (per 100,000 live births)",
+      "year": 1987
+    }
+  ]
+}

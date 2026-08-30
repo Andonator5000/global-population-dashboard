@@ -18,18 +18,6 @@
       }
     },
     {
-      "name": "Chinese dragon",
-      "type": "national mythical creature",
-      "scientificName": "Mythical",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20dragon%20asset%20heraldry.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chinese%20dragon%20asset%20heraldry.svg",
-        "license": "CC BY-SA 4.0",
-        "author": "User:Sodacan",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
       "name": "Red-crowned crane",
       "type": "national bird",
       "scientificName": "Grus japonensis",
@@ -41,6 +29,20 @@
         "author": "(c) Austin 0201, some rights reserved (CC BY)",
         "source": "iNaturalist"
       }
+    }
+  ],
+  "emblems": [
+    {
+      "name": "Chinese dragon",
+      "type": "national mythical creature",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20dragon%20asset%20heraldry.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chinese%20dragon%20asset%20heraldry.svg",
+        "license": "CC BY-SA 4.0",
+        "author": "User:Sodacan",
+        "source": "Wikimedia Commons"
+      },
+      "kind": "heraldic or mythical emblem"
     }
   ],
   "tree": {

@@ -26,6 +26,7 @@ from typing import Any
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity
 from ..fetch import FetchError, fetch
+from ..validate import Plausibility
 
 
 def _latest_by_iso3(frame: Any) -> dict[str, dict[str, float | int]]:
@@ -107,15 +108,22 @@ def ingest(
             f"expected 200+. The sheet layout likely changed."
         )
 
+    plausibility = Plausibility("unodc", registry)
     entities: dict[str, Any] = {}
     for iso3 in sorted(registry):
         record: dict[str, Any] = {}
-        if iso3 in prisoners:
+        if iso3 in prisoners and plausibility.check(
+            iso3, "unodc.prisoners", prisoners[iso3]["value"],
+            year=prisoners[iso3]["year"], label="Persons held",
+        ):
             record["prisoners"] = {
                 "value": int(prisoners[iso3]["value"]),
                 "year": prisoners[iso3]["year"],
             }
-        if iso3 in facilities:
+        if iso3 in facilities and plausibility.check(
+            iso3, "unodc.facilities", facilities[iso3]["value"],
+            year=facilities[iso3]["year"], label="Penal facilities",
+        ):
             record["facilities"] = {
                 "value": int(facilities[iso3]["value"]),
                 "year": facilities[iso3]["year"],
@@ -162,8 +170,10 @@ def ingest(
         ),
         sources=["unodc_prisons"], entity_count=len(entities),
     )
+    suppressed = plausibility.flush(manifest)
     print(f"    UNODC: {len(prisoners)} prisoner totals, "
-          f"{len(facilities)} facility counts")
+          f"{len(facilities)} facility counts "
+          f"({suppressed} suppressed by the plausibility layer)")
 
 
 __all__ = ["ingest"]

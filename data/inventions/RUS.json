@@ -2,35 +2,8 @@
   "iso3": "RUS",
   "name": "Russia",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "3M-54 Kalibr",
-      "source": "wikidata",
-      "year": 1983,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/3M-54E%20Sketch.svg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:3M-54E%20Sketch.svg",
-        "license": "CC BY-SA 3.0",
-        "author": "Allocer",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Orlov Trotter",
-      "source": "wikidata",
-      "inventors": [
-        "Alexei Grigoryevich Orlov"
-      ],
-      "year": 1784,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Grey%20Orlov%20Trotter.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Grey%20Orlov%20Trotter.jpg",
-        "license": "CC BY 2.0",
-        "author": "Alexander",
-        "source": "Wikimedia Commons"
-      }
-    },
     {
       "name": "2S42 Lotos",
       "source": "wikidata",
@@ -46,14 +19,6 @@
       }
     },
     {
-      "name": "Matryoshka",
-      "source": "wikidata",
-      "inventors": [
-        "ALROSA"
-      ],
-      "year": 2019
-    },
-    {
       "name": "Airliner",
       "source": "wikipedia",
       "image": {
@@ -65,23 +30,29 @@
       }
     },
     {
-      "name": "Russian language",
+      "name": "Axe",
+      "source": "wikipedia",
+      "era": "15th century"
+    },
+    {
+      "name": "Military uniform",
       "source": "wikipedia"
+    },
+    {
+      "name": "Clay",
+      "source": "wikipedia",
+      "year": 1811
     },
     {
       "name": "Samovar",
       "source": "wikipedia"
     },
     {
-      "name": "Emil Lenz",
+      "name": "Rushnyk",
       "source": "wikipedia"
     },
     {
-      "name": "Pavel Yablochkov",
-      "source": "wikipedia"
-    },
-    {
-      "name": "Shukhov cracking process",
+      "name": "Vandal (tanker)",
       "source": "wikipedia"
     },
     {
@@ -89,8 +60,20 @@
       "source": "wikipedia"
     },
     {
-      "name": "Russian lacquer art",
+      "name": "Sikorsky Ilya Muromets",
       "source": "wikipedia"
+    },
+    {
+      "name": "Troika (driving)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Artificial leather",
+      "source": "wikipedia",
+      "inventors": [
+        "Ivan Plotnikov"
+      ],
+      "year": 1935
     }
   ]
 }

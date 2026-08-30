@@ -1,0 +1,53 @@
+{
+  "note": "Commons images the flora/fauna stage refused because the file's own metadata (name, description, categories) does not mention the taxon. The card renders its typographic fallback instead.",
+  "rejected": [
+    {
+      "name": "Cherry Blossom",
+      "scientificName": null,
+      "file": "Sakura and Moss Pink - 桜(さくら)と芝桜(しばざくら).jpg",
+      "reason": "Commons metadata does not mention the taxon"
+    },
+    {
+      "name": "Cow",
+      "scientificName": "Bos indicus",
+      "file": "The Cow Worship.jpg",
+      "reason": "Commons metadata does not mention the taxon"
+    },
+    {
+      "name": "Hibiscus rosa-sinensis",
+      "scientificName": "Hibiscus × rosa-sinensis",
+      "file": "Hibiscus Brilliant.jpg",
+      "reason": "Commons metadata does not mention the taxon"
+    },
+    {
+      "name": "Kangal Shepherd Dog",
+      "scientificName": "Canis lupus familiaris",
+      "file": "Kangal front on.jpg",
+      "reason": "Commons metadata does not mention the taxon"
+    },
+    {
+      "name": "Lion",
+      "scientificName": "Panthera leo",
+      "file": "Coat of arms of Norway.svg",
+      "reason": "Commons metadata does not mention the taxon"
+    },
+    {
+      "name": "Persian",
+      "scientificName": "nymphaea",
+      "file": "Nymphaea alba.001 - Breendonk.jpg",
+      "reason": "Commons metadata does not mention the taxon"
+    },
+    {
+      "name": "maple leaf",
+      "scientificName": null,
+      "file": "Acer pseudoplatanus 002.jpg",
+      "reason": "Commons metadata does not mention the taxon"
+    },
+    {
+      "name": "water lily",
+      "scientificName": "Nymphaeaceae",
+      "file": "Nymphaea nouchali5.JPG",
+      "reason": "Commons metadata does not mention the taxon"
+    }
+  ]
+}

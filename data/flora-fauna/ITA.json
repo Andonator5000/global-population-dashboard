@@ -33,6 +33,7 @@
   },
   "flower": {
     "name": "Arbutus unedo",
+    "scientificName": "Arbutus unedo",
     "image": {
       "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/203203936/medium.jpeg",
       "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/203203936/large.jpeg",

@@ -2,29 +2,26 @@
   "iso3": "MYS",
   "name": "Malaysia",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
     {
-      "name": "Attap dwelling",
+      "name": "Baju Kurung",
       "source": "wikipedia"
     },
     {
-      "name": "Surau",
-      "source": "wikipedia",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Surau%20Gadang%20Syekh%20Burhanuddin%202020%2007.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Surau%20Gadang%20Syekh%20Burhanuddin%202020%2007.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": "Rahmat Irfan Denas",
-        "source": "Wikimedia Commons"
-      }
+      "name": "Kebaya",
+      "source": "wikipedia"
     },
     {
       "name": "Pua Kumbu",
       "source": "wikipedia"
     },
     {
-      "name": "Tudong",
+      "name": "Tengkolok",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Southeast Asian mancala",
       "source": "wikipedia"
     },
     {
@@ -32,15 +29,34 @@
       "source": "wikipedia"
     },
     {
-      "name": "Malay Annals",
-      "source": "wikipedia"
-    },
-    {
       "name": "Kuriding",
       "source": "wikipedia"
     },
     {
-      "name": "Krem (instrument)",
+      "name": "Qanbūs",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D8%B5%D9%86%D8%B9%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%86%D9%8A%D9%86.webm?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%D8%B5%D9%86%D8%B9%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%86%D9%8A%D9%86.webm",
+        "license": "CC BY-SA 4.0",
+        "author": "Singer and Qanbus player Hussein Moheb and Maestro Mohammed Al-Ghoom of Heritage Symphonies",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Rebana",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Suling",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Bedar (ship)",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Birau (boat)",
       "source": "wikipedia"
     }
   ]

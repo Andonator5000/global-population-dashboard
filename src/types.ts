@@ -339,6 +339,10 @@ export interface FactbookRecord {
     languages: import('./components/viz/CompositionBar').CompositionField
   }
   government: Record<string, FactbookField>
+  /** Added 2026-08-29: the Factbook's own land-use split incl. its "other". */
+  geography?: {
+    landUse: import('./components/viz/CompositionBar').CompositionField
+  }
   economy: {
     industries: FactbookField
     agriculturalProducts: FactbookField
@@ -386,6 +390,12 @@ export interface BiomeEntity {
   /** Sum of shares. Below 100 means part of the polygon has no ecoregion. */
   coveredShare: number
   withinTolerance: boolean
+  /** Explicit remainder so the breakdown totals 100% (etl/breakdown.py). */
+  other?: BreakdownOther | null
+  overlapPercent?: number | null
+  overlapNote?: string | null
+  breakdownSuppressed?: boolean
+  breakdownNote?: string | null
   /**
    * Set when the drawn polygon disagrees with the published land area by more
    * than 25% — a boundary-definition difference, not a measurement error.
@@ -399,7 +409,20 @@ export interface BiomeContinent {
   landAreaKm2: number
   biomes: BiomeShare[]
   coveredShare: number
+  other?: BreakdownOther | null
+  overlapPercent?: number | null
+  overlapNote?: string | null
+  breakdownSuppressed?: boolean
+  breakdownNote?: string | null
   memberEntitiesWithBiomeData: number
+}
+
+/** The "Other" element that completes a percentage breakdown to 100%. */
+export interface BreakdownOther {
+  label: string
+  percent: number
+  /** What this metric's "Other" covers; rendered visibly, never tooltip-only. */
+  tooltip: string
 }
 
 export interface BiomeFile {
@@ -469,7 +492,6 @@ export interface EducationFile {
     string,
     {
       universities?: number
-      publicLibraries?: number
       topUniversities?: {
         name: string
         worldRank: number
@@ -497,6 +519,8 @@ export interface DebtFile {
 export interface CurrencyImagesFile {
   source: string
   note: string
+  /** Human-readable acceptance criteria (single flat obverse banknote). */
+  criteria?: string
   currencies: Record<
     string,
     {
@@ -507,6 +531,9 @@ export interface CurrencyImagesFile {
       license: string | null
       author: string | null
       curated: boolean
+      width?: number | null
+      height?: number | null
+      verified?: boolean
     }
   >
 }
@@ -605,6 +632,8 @@ export interface FloraFaunaFile {
   source: string
   note: string
   animals?: FloraFaunaSymbol[]
+  /** Mythical / heraldic national figures -- symbols, not species. */
+  emblems?: (FloraFaunaSymbol & { kind: string })[]
   tree?: FloraFaunaSymbol
   flower?: FloraFaunaSymbol
 }

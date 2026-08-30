@@ -2,28 +2,8 @@
   "iso3": "CHN",
   "name": "China",
   "source": "wikidata_wikipedia",
-  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Dates are recorded or parsed from prose and are often approximate; food and drink are excluded by ruling.",
+  "note": "Inventions with a recorded country of origin in Wikidata, topped up from the English Wikipedia's per-country invention list articles (CC BY-SA). Every entry passed a Wikidata class check (device, technology, process, product, software, medication ...); diseases, species, discoveries, theorems and food are excluded by ruling. Dates are recorded or parsed from prose and are often approximate.",
   "inventions": [
-    {
-      "name": "acupuncture",
-      "source": "wikidata",
-      "year": -10,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Acupuncture1-1.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Acupuncture1-1.jpg",
-        "license": "Public domain",
-        "author": "Kyle Hunter (= original uploader Kphunter at en.wikipedia)",
-        "source": "Wikimedia Commons"
-      }
-    },
-    {
-      "name": "Labubu",
-      "source": "wikidata",
-      "inventors": [
-        "Kasing Lung"
-      ],
-      "year": 2015
-    },
     {
       "name": "xiao",
       "source": "wikidata",
@@ -36,9 +16,28 @@
       }
     },
     {
-      "name": "Borehole",
+      "name": "Bellows",
       "source": "wikipedia",
-      "era": "202 BC"
+      "year": 1279,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Bellows%20%28PSF%29.svg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Bellows%20%28PSF%29.svg",
+        "license": "Public domain",
+        "author": "Pearson Scott Foresman",
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "Cannon",
+      "source": "wikipedia",
+      "year": 1128,
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%28Saint-Lys%29%20Fauconneau%20de%201589.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:%28Saint-Lys%29%20Fauconneau%20de%201589.jpg",
+        "license": "Public domain",
+        "author": "Didier Descouens",
+        "source": "Wikimedia Commons"
+      }
     },
     {
       "name": "Chain drive",
@@ -46,26 +45,27 @@
       "year": 1090
     },
     {
-      "name": "Cuju",
+      "name": "Amalgam (dentistry)",
       "source": "wikipedia",
-      "era": "221 BC"
+      "year": 1505
     },
     {
-      "name": "Field mill (carriage)",
+      "name": "Loom",
       "source": "wikipedia",
-      "year": 1580
+      "inventors": [
+        "Jean le Calabrais"
+      ],
+      "era": "400 BC"
     },
     {
-      "name": "Folding screen",
+      "name": "Firecracker",
       "source": "wikipedia",
-      "year": 1279,
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hofmobiliendepot%20-%20Chinesischer%20Paravent.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:Hofmobiliendepot%20-%20Chinesischer%20Paravent.jpg",
-        "license": "CC BY-SA 4.0",
-        "author": null,
-        "source": "Wikimedia Commons"
-      }
+      "era": "200 BC"
+    },
+    {
+      "name": "Flamethrower",
+      "source": "wikipedia",
+      "year": 1044
     },
     {
       "name": "Hand cannon",
@@ -73,7 +73,22 @@
       "year": 1288
     },
     {
-      "name": "Hygrometer",
+      "name": "Horse collar",
+      "source": "wikipedia",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Horse%20collar%20%28AM%20615168-1%29.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Horse%20collar%20%28AM%20615168-1%29.jpg",
+        "license": "CC BY 4.0",
+        "author": null,
+        "source": "Wikimedia Commons"
+      }
+    },
+    {
+      "name": "India ink",
+      "source": "wikipedia"
+    },
+    {
+      "name": "Kite",
       "source": "wikipedia"
     }
   ]

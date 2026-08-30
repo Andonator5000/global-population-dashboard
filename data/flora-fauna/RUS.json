@@ -16,18 +16,20 @@
         "author": "(c) Annika Lindqvist, some rights reserved (CC BY)",
         "source": "iNaturalist"
       }
-    },
+    }
+  ],
+  "emblems": [
     {
       "name": "Double-headed eagle",
       "type": "national animal",
-      "scientificName": "Mythical",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lesser%20coat%20of%20arms%20of%20the%20Russian%20Empire.svg?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Lesser%20coat%20of%20arms%20of%20the%20Russian%20Empire.svg",
         "license": "Public domain",
         "author": null,
         "source": "Wikimedia Commons"
-      }
+      },
+      "kind": "heraldic or mythical emblem"
     }
   ],
   "tree": {

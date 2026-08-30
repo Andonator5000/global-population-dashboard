@@ -16,30 +16,32 @@
         "author": "(c) Juan Rodríguez, some rights reserved (CC BY)",
         "source": "iNaturalist"
       }
-    },
-    {
-      "name": "Cock of Barcelos",
-      "type": "national bird",
-      "scientificName": "Mythical",
-      "image": {
-        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PA2900302%20galo%20emiliarocha%20medio.jpg?width=960",
-        "commonsPage": "https://commons.wikimedia.org/wiki/File:PA2900302%20galo%20emiliarocha%20medio.jpg",
-        "license": "Public domain",
-        "author": "Adriculas",
-        "source": "Wikimedia Commons"
-      }
-    },
+    }
+  ],
+  "emblems": [
     {
       "name": "Dragon",
       "type": "traditional coat of arms / national animal",
-      "scientificName": "Mythical",
       "image": {
         "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Brasao%20d%27armas.png?width=960",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Brasao%20d%27armas.png",
         "license": "CC BY-SA 3.0",
         "author": "Lumastan",
         "source": "Wikimedia Commons"
-      }
+      },
+      "kind": "heraldic or mythical emblem"
+    },
+    {
+      "name": "Cock of Barcelos",
+      "type": "national bird",
+      "image": {
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/PA2900302%20galo%20emiliarocha%20medio.jpg?width=960",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:PA2900302%20galo%20emiliarocha%20medio.jpg",
+        "license": "Public domain",
+        "author": "Adriculas",
+        "source": "Wikimedia Commons"
+      },
+      "kind": "heraldic or mythical emblem"
     }
   ],
   "tree": {
@@ -57,6 +59,7 @@
   },
   "flower": {
     "name": "lavender",
+    "scientificName": "Lavandula",
     "image": {
       "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/555045631/medium.jpg",
       "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/555045631/large.jpg",

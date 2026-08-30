@@ -5,12 +5,13 @@
   "note": "As compiled by the English Wikipedia lists of national animals, trees and flowers (CC BY-SA 4.0). Symbols are not always enshrined in law; absence here means the lists record none.",
   "flower": {
     "name": "black iris",
+    "scientificName": "Iris nigricans",
     "image": {
-      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/407374589/medium.jpg",
-      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/407374589/large.jpg",
-      "commonsPage": "https://www.inaturalist.org/photos/407374589",
+      "imageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/104379425/medium.jpg",
+      "largeUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/104379425/large.jpg",
+      "commonsPage": "https://www.inaturalist.org/photos/104379425",
       "license": "CC-BY",
-      "author": "(c) Wang.QG, some rights reserved (CC BY)",
+      "author": "(c) Santiago Martín-Bravo, some rights reserved (CC BY)",
       "source": "iNaturalist"
     }
   }
