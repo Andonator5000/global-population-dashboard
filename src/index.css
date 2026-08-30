@@ -91,6 +91,17 @@
   --series-8: #e34948;
   --series-other: oklch(62% 0.01 250);
 
+  /* Ranked-bar breakdowns (Breakdown.tsx): one fill for every row, so colour
+     carries no meaning; the track is the empty remainder. */
+  --bar-fill: oklch(52% 0.11 250);
+  --bar-track: oklch(93% 0.006 250);
+
+  /* Signed values (growth rate in the entity table). Text-safe at AA on the
+     surface; the sign is always printed too, so colour is never the only
+     carrier. */
+  --positive: oklch(44% 0.13 150);
+  --negative: oklch(50% 0.17 25);
+
   color-scheme: light;
 }
 
@@ -125,6 +136,10 @@
     --series-7: #9085e9;
     --series-8: #e66767;
     --series-other: oklch(60% 0.01 250);
+    --bar-fill: oklch(72% 0.11 250);
+    --bar-track: oklch(27% 0.008 250);
+    --positive: oklch(78% 0.14 150);
+    --negative: oklch(76% 0.15 25);
 
     color-scheme: dark;
   }
@@ -157,6 +172,10 @@
   --series-7: #9085e9;
   --series-8: #e66767;
   --series-other: oklch(60% 0.01 250);
+  --bar-fill: oklch(72% 0.11 250);
+  --bar-track: oklch(27% 0.008 250);
+  --positive: oklch(78% 0.14 150);
+  --negative: oklch(76% 0.15 25);
 
   color-scheme: dark;
 }
