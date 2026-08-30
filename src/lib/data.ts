@@ -24,6 +24,7 @@ import type {
   HeritageFile,
   LeadersFile,
   Manifest,
+  FlagMetaFile,
   MapPalette,
   MarkerFile,
   PopulationSummary,
@@ -107,6 +108,9 @@ export const useMapMarkers = (): AsyncState<MarkerFile> =>
 
 export const useMapPalette = (): AsyncState<MapPalette> =>
   useArtifact<MapPalette>('flags/map-palette.json')
+
+export const useFlagMeta = (): AsyncState<FlagMetaFile | null> =>
+  useOptionalArtifact<FlagMetaFile>('flags/meta.json')
 
 export const useBiomes = (): AsyncState<BiomeFile> =>
   useArtifact<BiomeFile>('biomes/biomes.json')

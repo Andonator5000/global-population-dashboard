@@ -181,6 +181,8 @@ export interface EntityPalette {
   flagSvg: string | null
   tier: number
   fill: { light: string; dark: string }
+  /** Every palette direction's fills (Phase 2.4); `fill` is the default. */
+  directions?: Record<string, { light: string; dark: string }>
   accent: {
     raw: string
     rawSafeAsTextLight: boolean
@@ -647,8 +649,33 @@ export interface CuisineFile {
   dishes: { name: string; description?: string; image?: CommonsImage }[]
 }
 
+/** data/flags/meta.json (Phase 2.2) */
+export interface FlagMetaFile {
+  source: string
+  note: string
+  entities: Record<
+    string,
+    {
+      flagName?: string
+      adopted?: { value: string; precision: 'day' | 'month' | 'year' | 'decade' | 'approximate' }
+      designer?: string
+      article?: string
+      symbolism?: {
+        text: string
+        source: string
+        article: string
+        title: string
+        license: string
+        retrieved: string
+      }
+    }
+  >
+}
+
 export interface MapPalette {
   note: string
+  defaultDirection?: string
+  continentRegions?: Record<string, { light: string; dark: string }>
   minNeighbourDeltaE: number
   verification: Record<
     string,

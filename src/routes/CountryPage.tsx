@@ -21,6 +21,7 @@ import {
   useCountryPyramid,
   useCountrySeries,
   useEntities,
+  useFlagMeta,
   useHeritage,
   useLeaders,
   useMapPalette,
@@ -46,6 +47,7 @@ import type {
   CountryOwid,
   CountrySeries,
   FactbookField,
+  FlagMetaFile,
   IndicatorSeries,
   OwidIndicatorSeries,
 } from '../types'
@@ -352,6 +354,11 @@ export function CountryPage() {
   const biomeState = useBiomes()
   const heritageState = useHeritage()
   const leadersState = useLeaders()
+  const flagMetaState = useFlagMeta()
+  const flagMeta =
+    flagMetaState.status === 'ready' && iso3
+      ? flagMetaState.data?.entities[iso3]
+      : undefined
 
   const entity =
     entitiesState.status === 'ready'
@@ -419,17 +426,18 @@ export function CountryPage() {
   return (
     <div className="min-h-full" style={{ background: pageTint }}>
     <div className="mx-auto max-w-4xl px-6 py-10">
-      <div className="flex items-start gap-5">
-        {/* The flag itself, from the committed SVG artifact. No fixed width:
-            not every flag is 3:2 (Nepal is not even rectangular), so the
-            height is pinned and the width follows the flag's own ratio. The
-            ring keeps mostly-white flags from dissolving into the surface. */}
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-8">
+        {/* The flag is the HERO of the page (2026-08-29, Phase 2.2): large,
+            from the committed SVG artifact. No fixed width: not every flag
+            is 3:2 (Nepal is not even rectangular), so the height is pinned
+            and the width follows the flag's own ratio. The ring keeps
+            mostly-white flags from dissolving into the surface. */}
         {palette?.flagSvg && (
           <img
             src={`${DATA_BASE_URL}/${palette.flagSvg}`}
             alt={`Flag of ${entity?.name_common ?? iso3}`}
-            className="h-14 w-auto shrink-0 rounded-sm"
-            style={{ boxShadow: '0 0 0 1px var(--border)' }}
+            className="h-36 w-auto max-w-full shrink-0 rounded-md sm:h-44"
+            style={{ boxShadow: '0 0 0 1px var(--border), 0 8px 24px -12px oklch(0% 0 0 / 0.45)' }}
           />
         )}
         <div>
@@ -450,6 +458,10 @@ export function CountryPage() {
           )}
         </div>
       </div>
+
+      {flagMeta && (flagMeta.adopted || flagMeta.designer || flagMeta.symbolism) && (
+        <FlagFacts meta={flagMeta} name={entity?.name_common ?? iso3 ?? ''} />
+      )}
 
       {entity?.status_label && (
         <p
@@ -1387,6 +1399,93 @@ function SectorComposition({
       sourceName={WB}
       iconFor={sectorIcon}
     />
+  )
+}
+
+/** Wikidata time with its precision, rendered honestly. */
+function formatAdopted(adopted: NonNullable<FlagMetaFile['entities'][string]['adopted']>) {
+  if (adopted.precision === 'day') {
+    const [y, m, d] = adopted.value.split('-').map(Number)
+    return new Date(Date.UTC(y ?? 0, (m ?? 1) - 1, d ?? 1)).toLocaleDateString('en', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+  }
+  if (adopted.precision === 'month') {
+    const [y, m] = adopted.value.split('-').map(Number)
+    return new Date(Date.UTC(y ?? 0, (m ?? 1) - 1, 1)).toLocaleDateString('en', {
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+  }
+  if (adopted.precision === 'approximate') return `c. ${adopted.value}`
+  return adopted.value
+}
+
+/**
+ * Flag facts under the hero (Phase 2.2): adoption date, designer, and the
+ * lead of the Wikipedia flag article, verbatim and attributed -- CC BY-SA
+ * makes the link and licence line a condition of reuse, not a courtesy.
+ * Every line is omitted cleanly when its field is unrecorded.
+ */
+function FlagFacts({
+  meta,
+  name,
+}: {
+  meta: FlagMetaFile['entities'][string]
+  name: string
+}) {
+  return (
+    <div
+      className="mt-5 rounded-lg border px-4 py-3 text-sm"
+      style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+    >
+      <h2 className="text-sm font-medium">
+        {meta.flagName ?? `Flag of ${name}`}
+      </h2>
+      <dl className="mt-1 grid gap-x-6 gap-y-1 sm:grid-cols-2">
+        {meta.adopted && (
+          <div className="flex gap-2">
+            <dt style={{ color: 'var(--text-muted)' }}>Adopted</dt>
+            <dd>{formatAdopted(meta.adopted)}</dd>
+          </div>
+        )}
+        {meta.designer && (
+          <div className="flex gap-2">
+            <dt style={{ color: 'var(--text-muted)' }}>Designer</dt>
+            <dd>{meta.designer}</dd>
+          </div>
+        )}
+      </dl>
+      {meta.symbolism && (
+        <>
+          <p className="mt-2">{meta.symbolism.text}</p>
+          <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+            Text from{' '}
+            <a
+              href={meta.symbolism.article}
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2"
+            >
+              “{meta.symbolism.title}”, Wikipedia
+            </a>
+            , {meta.symbolism.license}, retrieved {meta.symbolism.retrieved}.
+            {meta.adopted || meta.designer
+              ? ' Adoption date and designer from Wikidata (CC0).'
+              : ''}
+          </p>
+        </>
+      )}
+      {!meta.symbolism && (meta.adopted || meta.designer) && (
+        <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+          Source: Wikidata (CC0).
+        </p>
+      )}
+    </div>
   )
 }
 
