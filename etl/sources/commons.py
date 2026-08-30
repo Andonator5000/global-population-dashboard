@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import re
 import urllib.parse
+from typing import Any
 
 from .. import config
 from ..fetch import CachedResponse, fetch
@@ -68,10 +69,14 @@ def fetch_metadata(
     refresh: bool,
     subdir: str,
 ) -> tuple[dict[str, dict[str, str | None]], list[CachedResponse]]:
-    """{filename: {license, author}} for files that exist on Commons.
+    """{filename: {license, author, description, objectName, categories,
+    width, height, mime}} for files that exist on Commons.
 
     A file absent from the result was renamed or deleted under whoever
-    referenced it; callers must DROP it rather than hotlink a 404.
+    referenced it; callers must DROP it rather than hotlink a 404. The
+    description, object name and categories exist so a caller can verify
+    the file is OF the thing it is being attached to (2026-08-29: a
+    national-animal card must not carry a photo of some other species).
     """
     out: dict[str, dict[str, str | None]] = {}
     responses: list[CachedResponse] = []
@@ -81,7 +86,7 @@ def fetch_metadata(
         titles = "|".join(f"File:{name}" for name in batch)
         url = (
             f"{config.COMMONS_API_URL}?action=query&format=json"
-            f"&prop=imageinfo&iiprop=extmetadata&redirects=1"
+            f"&prop=imageinfo&iiprop=extmetadata%7Csize%7Cmime&redirects=1"
             f"&titles={urllib.parse.quote(titles)}"
         )
         # Cache by URL hash, never by batch position: a positional name like
@@ -101,13 +106,34 @@ def fetch_metadata(
                 "author": strip_html(
                     (meta.get("Artist") or {}).get("value") or ""
                 ) or None,
+                "description": strip_html(
+                    (meta.get("ImageDescription") or {}).get("value") or ""
+                ) or None,
+                "objectName": strip_html(
+                    (meta.get("ObjectName") or {}).get("value") or ""
+                ) or None,
+                "categories": (meta.get("Categories") or {}).get("value"),
+                "width": info.get("width"),
+                "height": info.get("height"),
+                "mime": info.get("mime"),
             }
     return out, responses
 
 
+def metadata_text(filename: str, meta: dict[str, dict[str, Any]]) -> str:
+    """Everything Commons says about a file, lowercased, for keyword checks."""
+    record = meta.get(filename) or {}
+    return " ".join(
+        str(part) for part in (
+            filename, record.get("objectName"), record.get("description"),
+            record.get("categories"),
+        ) if part
+    ).lower()
+
+
 def image_record(
     filename: str,
-    metadata: dict[str, dict[str, str | None]],
+    metadata: dict[str, dict[str, Any]],
 ) -> dict[str, str | None] | None:
     """The standard hotlink+attribution payload, or None if not on Commons."""
     if filename not in metadata:
@@ -129,5 +155,6 @@ __all__ = [
     "filename_from_thumb_url",
     "image_record",
     "image_url_for",
+    "metadata_text",
     "strip_html",
 ]
