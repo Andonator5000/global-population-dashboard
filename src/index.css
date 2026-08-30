@@ -283,20 +283,22 @@ body {
 /* Editorial voice for titles only: page titles and section headings set in
    the serif at a slightly heavier weight; data, labels, controls and every
    number stay in the sans so figures align and tabular digits apply. */
-h1,
-h2,
-.font-display {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  letter-spacing: -0.005em;
-}
-h1 {
-  font-size: 2.25rem;
-  line-height: 1.1;
-}
-@media (min-width: 640px) {
+@layer base {
+  h1,
+  h2,
+  .font-display {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
   h1 {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
+    line-height: 1.1;
+  }
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 2.75rem;
+    }
   }
 }
 

@@ -138,9 +138,11 @@ export function Timeline({
   // above down by a minimum row height so labels never collide.
   const placed = useMemo(() => {
     const MIN_GAP = 30
+    // Every era band opens with a sticky header line; events sit below it.
+    const HEADER_OFFSET = 28
     let last = -Infinity
     return events.map((e) => {
-      let y = yFor(e.startYear)
+      let y = yFor(e.startYear) + HEADER_OFFSET
       if (y < last + MIN_GAP) y = last + MIN_GAP
       last = y
       return { event: e, y }
@@ -238,8 +240,10 @@ export function Timeline({
               background: index % 2 === 0 ? 'transparent' : 'var(--page-tint)',
             }}
           >
+            {/* Static, not sticky: a sticky band header slid over the events
+                inside its own band; the era rail already tracks position. */}
             <div
-              className="sticky top-0 flex flex-wrap items-baseline gap-x-3 px-2 pt-1 text-xs"
+              className="flex flex-wrap items-baseline gap-x-3 px-2 pt-1 text-xs"
               style={{ color: 'var(--text-muted)' }}
             >
               <span className="font-medium" style={{ color: 'var(--text)' }}>
