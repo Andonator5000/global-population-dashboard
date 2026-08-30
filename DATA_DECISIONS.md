@@ -1665,6 +1665,96 @@ wrench, light bulb, compass, crossed swords, place of worship, scroll);
 no open icon set draws a sword crossed with a gun, so crossed swords, the
 conventional conflict mark, stand for wars. Category names are Title Case.
 
+## 27. The 2026-08-30 polish batch (maintainer-requested)
+
+### 27.1 Capitalisation
+
+Data-derived names render through `capitalizeFirst` wherever they head a
+card or block: flag names from Wikidata ("flag of Japan" → "Flag of
+Japan"), invention and dish names, flora and fauna names, subdivision
+names. Category names on the timeline are Title Case. The committed
+artifacts keep the source spelling; the change is display-only.
+
+### 27.2 Sexual content is out of the inventions list
+
+The Sybian appeared as a notable American invention. Its Wikidata item is
+typed plainly "invention", so the class gate could not catch it. Two nets
+now do: deny roots for sex toy and pornography, and a keyword check on
+the item's own English description (and the Wikipedia summary description
+for list candidates) — sex toy, vibrator, erotic, pornograph, masturbat,
+sexual, BDSM, fetish, condom. Rejections are logged as "adult content
+keyword".
+
+### 27.3 Icons: colour, and a reserved slot
+
+The OpenMoji COLOUR variant replaces the monochrome outlines (maintainer
+request); the same hexcodes, the same vendoring script, rendered as inline
+images instead of currentColor masks. In icon-led breakdowns (religions,
+GDP sectors) every row reserves the icon slot — a muted dash where no icon
+exists — so "Jehovah's Witness" sits flush with "Roman Catholic".
+
+### 27.4 Public libraries, from IFLA
+
+The public library count is back, from the IFLA Library Map of the World:
+national library associations and statistics offices report public
+library SERVICE POINTS per country with a year and a collection method.
+Russia: 37,138 (2018) — against the nine the Wikidata item count gave.
+The map's data is a static JSON its own page loads; Cloudflare rejects
+Python's TLS fingerprint with any headers but serves curl with a browser
+user agent, so this one source is fetched through `fetch_via_curl`, which
+writes the same cache payload and sidecar `fetch` would. A sentinel −1
+(Cambodia) is suppressed by the plausibility layer; the per-capita
+ceiling was set at 1,500 per million after Czechia's real 558 tripped a
+first guess of 400.
+
+### 27.5 Electricity mix and nuclear plants
+
+Technology & Infrastructure gains the electricity generation mix (coal,
+gas, oil, nuclear, hydro, wind, solar, bioenergy) as a ranked breakdown
+with an "Other" for geothermal and other renewables the source does not
+break out (Kenya's 46%, Iceland's 29% — so this kind is partial by design
+and always gets its Other), plus renewable and nuclear share tiles. Source:
+Our World in Data's grapher series, producers Ember and the Energy
+Institute, latest year per entity; zero-share sources are not listed.
+Nuclear power PLANTS come from Wikidata — items typed nuclear power plant
+(Q134447) with state of use "in use" or unset, no retirement or
+dissolution date, and a recorded capacity (which excludes proposed sites)
+— giving USA 55, France 18, Japan 17, China 15. The IAEA's PRIS is the
+authority; it redirects to an analytics app with no keyless table, so the
+tile says "as catalogued in Wikidata".
+
+### 27.6 Descriptions and more images for inventions and dishes
+
+Every invention and dish now carries the opening sentence of its English
+Wikipedia article (REST summary, trimmed to ~220 characters) as a brief
+description; where Wikidata records no P18 image the article's lead image
+is used instead, subject to the same Commons licence/attribution check.
+TheMealDB dishes look up an article under the dish name and fall back to
+"<category> dish".
+
+### 27.7 Home page, with the UI UX Pro Max database
+
+The database's closest matches — a "Knowledge Base / Documentation"
+palette (slate, blue accent, near-white ground), the "Minimalism & Swiss"
+style, and the "Data-Dense Dashboard" table cues (36 px rows, 13 px type,
+sticky header, hover highlight) — replace the verdant-green wash of §20.1.
+The page is three raised cards on the neutral page tint: hero (title,
+live counter, time scrubber), map (toolbar, map, readout) and the entity
+table. No new colour token was introduced; every surface is a gated
+theme token. The nav's two buttons carry the only saturated colour.
+
+### 27.8 Bars, not pies (maintainer question)
+
+Asked whether pie charts would be better: no, for this site. Every
+breakdown here has three to fourteen categories, often with several under
+3%, and the reader needs to compare and rank them; a pie encodes value as
+angle and area, which people read far less accurately than length, and it
+cannot label small slices. A donut earns its place only for one or two
+categories where the part-to-whole gestalt is the point — the urban/rural
+pair is the single candidate and it already reads at a glance as two
+bars. The dataviz guidance and UI UX Pro Max's chart table both say the
+same. Ranked bars stay.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
