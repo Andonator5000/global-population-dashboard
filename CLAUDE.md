@@ -95,7 +95,12 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - Mythical/heraldic national animals live in `emblems`, never in the
   species grid; no flora/fauna image ships unverified against its taxon.
 - Currency images: a single flat obverse banknote or the designed fallback
-  card — criteria in `etl/sources/currencyimages.py`, never bypassed.
+  card — criteria in `etl/sources/currencyimages.py`, never bypassed. The
+  Commons category walk is ON by default (§27.9): walk finds need a face
+  value and a named obverse and no pre-1990 date; curated P18/override
+  picks win; `etl/reference/currency_image_rejects.json` is the
+  person-reviewed deny list. Review new picks on a contact sheet before
+  shipping.
 - Header: two section buttons, "Global Data" (brand green) and "Human
   History" (clay red); timeline = era boxes left, events right (§26).
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else

@@ -1755,6 +1755,51 @@ pair is the single candidate and it already reads at a glance as two
 bars. The dataviz guidance and UI UX Pro Max's chart table both say the
 same. Ranked bars stay.
 
+### 27.9 Banknotes: the category walk, made trustworthy
+
+The Commons category walk parked in §22.7 was rerun on 2026-08-30 with the
+fixes from that section (country-named roots only for single-country
+currencies; whole-word stems) and reviewed on a contact sheet of every
+pick. It still chose wrongly for a quarter of the currencies: historic
+series with no year in the text (the 1944 "Victory" peso, Qatar Monetary
+Agency riyals, old-złoty notes for PLN), predecessor units sharing a
+country's tree (cruzados, intis, tomans), reverses named in other
+languages (реверс, belakang, hátlap, arka), and photographs OF money — a
+"Banco do Café" sign, a pile of euros, a person holding rupiah, "British
+Museum – Room 68". It also displaced good Wikidata picks (Azerbaijan's
+2020 manat for a 1919 rouble).
+
+Rulings, all in `etl/sources/currencyimages.py`:
+
+- **Curated wins.** The Wikidata P18 image or an editorial override, when
+  compliant, is chosen over any walk find; the walk only fills gaps.
+- **Criterion 5 — no historic series.** A walk find dated before 1990
+  anywhere in its name, description or categories is out. Curated picks
+  are exempt (Australia's 1966 original-series dollar stays).
+- **Criterion 6 — a catalogued obverse.** A walk find must carry a face
+  value AND name its side (obverse/front/avers/anverso/recto/аверс/…) in
+  its filename or object name. Precision over recall: a tree's stray
+  photographs never name a side.
+- **Reject terms** grew: the reverse in the languages met; predecessor
+  units (cruzado, cruzeiro, inti, austral, sucre, toman, qiran, shahi);
+  demonetised series names (Bagong Lipunan, "English series"); overprint,
+  specimen, örnektir, old, historical, moneda/Münze/pièce, lenders,
+  market, presentación, ceremony. "Museum" and "display" were tried and
+  dropped — they cost South Sudan's curated 2011 pound.
+- **A person-reviewed reject list**, `etl/reference/currency_image_rejects.json`
+  (filename → reason), for what no rule can see: the coffee-exchange sign,
+  the glare on a sleeve, the tilted photo of a 10,000 yen note.
+- **Ranking**: obverse mention, then the currency named in the filename,
+  then the newest year mentioned, then width.
+
+Result: 51 of 158 currencies show a verified single obverse note (28
+before the walk); every one of the 26 walk-found additions was looked at.
+Currencies whose trees hold only historic scans (Iran, the Philippines,
+Brazil, Japan) show the fallback card rather than an ancestor's note. The
+walk is now ON by default (`CURRENCY_WALK=0` opts out) so the monthly
+refresh keeps these images; `CURRENCY_CACHED_ONLY=1` still keeps local
+runs to cached listings.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
