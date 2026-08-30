@@ -3,8 +3,8 @@
   "stage": "factbook",
   "summary": {
     "large gap, shipped without Other -- review": 4,
-    "overlap within tolerance, note shown": 98,
-    "suppressed": 24
+    "overlap within tolerance, note shown": 97,
+    "suppressed": 21
   },
   "entries": [
     {
@@ -704,14 +704,6 @@
       "state": "overlap within tolerance, note shown"
     },
     {
-      "iso3": "NZL",
-      "kind": "religions",
-      "label": "religious composition",
-      "total": 100.6,
-      "overshoot": 0.6,
-      "state": "overlap within tolerance, note shown"
-    },
-    {
       "iso3": "PLW",
       "kind": "religions",
       "label": "religious composition",
@@ -832,35 +824,11 @@
       "state": "suppressed"
     },
     {
-      "iso3": "BLZ",
-      "kind": "ethnicGroups",
-      "label": "ethnic group composition",
-      "total": 107.4,
-      "overshoot": 7.4,
-      "state": "suppressed"
-    },
-    {
-      "iso3": "HUN",
-      "kind": "ethnicGroups",
-      "label": "ethnic group composition",
-      "total": 102.3,
-      "overshoot": 2.3,
-      "state": "suppressed"
-    },
-    {
       "iso3": "IRQ",
       "kind": "ethnicGroups",
       "label": "ethnic group composition",
       "total": 105.0,
       "overshoot": 5.0,
-      "state": "suppressed"
-    },
-    {
-      "iso3": "NZL",
-      "kind": "ethnicGroups",
-      "label": "ethnic group composition",
-      "total": 115.3,
-      "overshoot": 15.3,
       "state": "suppressed"
     },
     {

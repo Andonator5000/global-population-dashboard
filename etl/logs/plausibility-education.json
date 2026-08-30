@@ -2,31 +2,6 @@
   "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
   "stage": "education",
   "checked": 200,
-  "summary": {
-    "education.universities": 2
-  },
-  "suppressed": [
-    {
-      "iso3": "NIU",
-      "metric": "education.universities",
-      "value": 1.0,
-      "rule": "per_million 550.4 outside [0.005, 400]",
-      "label": "Colleges and universities",
-      "denominator": {
-        "kind": "per_million",
-        "value": 1817.0
-      }
-    },
-    {
-      "iso3": "VAT",
-      "metric": "education.universities",
-      "value": 5.0,
-      "rule": "per_million 1.008e+04 outside [0.005, 400]",
-      "label": "Colleges and universities",
-      "denominator": {
-        "kind": "per_million",
-        "value": 496.0
-      }
-    }
-  ]
+  "summary": {},
+  "suppressed": []
 }
