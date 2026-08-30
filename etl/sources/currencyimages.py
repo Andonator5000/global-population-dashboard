@@ -49,6 +49,13 @@ from ..fetch import CachedResponse, FetchError, fetch, is_cached
 from . import commons
 
 _OVERRIDES_PATH = config.REFERENCE_DIR / "currency_image_overrides.json"
+# Files a person rejected after seeing them (contact-sheet review); they
+# fail for every currency and the walk falls through to its next candidate.
+_REJECTS_PATH = config.REFERENCE_DIR / "currency_image_rejects.json"
+_EDITORIAL_REJECTS: dict[str, str] = {
+    k: v for k, v in json.loads(_REJECTS_PATH.read_text(encoding="utf-8")).items()
+    if not k.startswith("_")
+} if _REJECTS_PATH.exists() else {}
 
 # Operational escape hatch, same shape as LEADERS_CACHED_ONLY: with
 # CURRENCY_CACHED_ONLY=1 the category walk consults only listings already
@@ -58,16 +65,15 @@ _OVERRIDES_PATH = config.REFERENCE_DIR / "currency_image_overrides.json"
 # WITHOUT the flag) completes the walk.
 _CACHED_ONLY = os.environ.get("CURRENCY_CACHED_ONLY") == "1"
 
-# The Commons category WALK is opt-in (CURRENCY_WALK=1) until its
-# candidate selection is trusted. The 2026-08-29 review found two ways it
-# picks a wrong note: a currency used by several countries (the yen is
-# listed for Zimbabwe, the euro for Croatia) pulls in those countries'
-# category trees, and a stem such as "Brazilian" matches the historic
-# "Brazilian cruzado". Without the walk, only the Wikidata P18 image and
-# any editorial override are judged -- fewer images, none mismatched. The
-# maintainer chose to hold the walk for another day rather than delay the
-# batch; see DATA_DECISIONS.md §22.7.
-_WALK = os.environ.get("CURRENCY_WALK") == "1"
+# The Commons category WALK is on by default since 2026-08-30 (opt out
+# with CURRENCY_WALK=0). Its first outings picked wrong notes -- other
+# countries' trees for shared currencies, historic series, reverses, and
+# photographs of money -- so walk finds now pass criteria 5-6 (no year
+# before 1990; a face value AND a named obverse side) on top of 1-4, a
+# person-reviewed reject list (reference/currency_image_rejects.json)
+# applies, and the Wikidata P18 image or an editorial override wins
+# whenever it is compliant. DATA_DECISIONS.md §22.7 and §27.9.
+_WALK = os.environ.get("CURRENCY_WALK", "1") != "0"
 
 MIN_WIDTH = 600
 ASPECT_MIN = 1.45
@@ -87,10 +93,36 @@ _REJECT = re.compile(
     r"collage|montage|composite|mosaic|comparison|gallery|various|assorted|"
     r"mixed|several|multiple|all denominations|full set|complete set|"
     r"medal|token|cheque|check|bond|stamp|voucher|scrip|map|chart|"
-    r"table|diagram|logo|symbol|sign|icon|emblem)\b",
+    r"table|diagram|logo|symbol|sign|icon|emblem|specimen|"
+    r"exhibition|market|presentaci[oó]n|ceremony|moneda|"
+    r"m[üu]nze|pi[eè]ce|coin|lenders?|old|historical|history|[öo]rnektir|overprint(?:ed)?|"
+    # the reverse, in the languages the walk met on 2026-08-30
+    r"reverso|revers|r[üu]ckseite|belakang|h[áa]tlap|arka|arkay[üu]z|"
+    r"rev|r\.jpg|"
+    # predecessor units that share a country's category tree
+    r"cruzados?|cruzeiros?|intis?|austral(?:es)?|sucres?|kolchak|tomans?|qirans?|shahi|"
+    r"english series|bagong lipunan|"
+    r"alt\+neu|alt und neu)\b",
     re.IGNORECASE,
 )
-_OBVERSE = re.compile(r"\b(obverse|front|face|avers|recto|o\.jpg)\b", re.IGNORECASE)
+# Cyrillic reverse/back terms, matched outside \b (which is ASCII-minded).
+_REJECT_CYRILLIC = re.compile(r"реверс|оборот|колчак", re.IGNORECASE)
+# A note names its face value; a "Canadian Currency - Canada Money" photo
+# does not. Walk finds without a denomination are not a single note.
+_DENOMINATION = re.compile(r"\d")
+# A note dated before 1990 anywhere in its name, description or categories
+# is a historic series or a predecessor currency (1895 Argentine bill, 1794
+# Polish groszy, the cruzado) -- the walk of 2026-08-30 chose these for a
+# quarter of the currencies. Criterion 5 rejects them; a currency with only
+# such scans shows the fallback card rather than an ancestor's note.
+_HISTORIC = re.compile(r"(?<!\d)(1[0-8]\d{2}|19[0-8]\d)(?!\d)")
+# The obverse, in the languages the category walk meets. A walk find must
+# name its side (criterion 6): "Banco de chile (29951204656).jpg" and
+# "British Museum - Room 68" are what the trees hold otherwise.
+_OBVERSE = re.compile(
+    r"(?<![a-z])(obverse|front|face|avers|anverso|recto|obv|ob|av|o)(?![a-z])"
+    r"|аверс|лицевая|表", re.IGNORECASE,
+)
 _BANKNOTE = re.compile(r"banknote|bank note|bill\b|note\b|paper money|currency", re.IGNORECASE)
 _YEAR = re.compile(r"\b(1[89]\d{2}|20\d{2})\b")
 _STOP = {"the", "of", "and", "dollar", "pound", "franc", "peso", "rupee", "shilling", "dinar", "rial", "riyal", "krone", "krona"}
@@ -108,9 +140,11 @@ def _aspect(record: dict[str, Any]) -> float | None:
 
 def _judge(
     filename: str, record: dict[str, Any], *, from_banknote_category: bool,
-    stems: set[str] = frozenset(),
+    stems: set[str] = frozenset(), curated: bool = False,
 ) -> tuple[bool, str]:
     """(compliant, reason). The reason names the FIRST failed criterion."""
+    if filename in _EDITORIAL_REJECTS:
+        return False, f"editorial: {_EDITORIAL_REJECTS[filename]}"
     mime = (record.get("mime") or "").lower()
     if mime not in ACCEPTED_MIME:
         return False, f"criterion 1: unsupported type {mime or 'unknown'}"
@@ -126,24 +160,39 @@ def _judge(
             f"[{ASPECT_MIN}, {ASPECT_MAX}] -- not a single flat note"
         )
     haystack = commons.metadata_text(filename, {filename: record})
-    hit = _REJECT.search(haystack)
+    hit = _REJECT.search(haystack) or _REJECT_CYRILLIC.search(haystack)
     if hit:
-        return False, f"criterion 3: metadata mentions '{hit.group(1).lower()}'"
+        return False, f"criterion 3: metadata mentions '{hit.group(0).lower()}'"
     if not (from_banknote_category or _BANKNOTE.search(haystack)):
         return False, "criterion 4: not described or categorised as a banknote"
     if stems and not any(re.search(rf"(?<![a-z]){re.escape(stem)}(?![a-z])", haystack) for stem in stems):
         return False, f"criterion 4: metadata names none of {sorted(stems)}"
+    if not curated:
+        # Criteria 5-6 apply to what the category walk turned up; the P18
+        # image and an override were chosen by a person and may be an
+        # original-series note (Australia's 1966 dollar).
+        old = _HISTORIC.search(haystack)
+        if old:
+            return False, f"criterion 5: dated {old.group(1)} -- historic series"
+        name_text = f"{filename} {record.get('objectName') or ''}"
+        if not _DENOMINATION.search(name_text):
+            return False, "criterion 6: no face value in the name -- not a single note"
+        if not _OBVERSE.search(name_text):
+            return False, "criterion 6: side not named -- not a catalogued obverse"
     return True, "compliant"
 
 
-def _rank_key(filename: str, record: dict[str, Any], stems: set[str] = frozenset()) -> tuple[int, int, float]:
+def _rank_key(filename: str, record: dict[str, Any], stems: set[str] = frozenset()) -> tuple[int, int, float, float]:
     text = f"{filename} {record.get('objectName') or ''}"
     obverse = 0 if _OBVERSE.search(text) else 1
     lower = filename.lower()
     named = 0 if any(re.search(rf"(?<![a-z]){re.escape(s)}(?![a-z])", lower) for s in stems) else 1
-    # A year in a filename is as often the photo date as the series, so it
-    # does not rank; width does, as a proxy for a proper scan.
-    return (obverse, named, -float(record.get("width") or 0))
+    # The newest year mentioned ranks next: a photo date and a series date
+    # both argue for a current note once pre-1990 scans are out (criterion
+    # 5). Width last, as a proxy for a proper scan.
+    years = [int(y) for y in _YEAR.findall(text)]
+    newest = max(years) if years else 0
+    return (obverse, named, -float(newest), -float(record.get("width") or 0))
 
 
 def _stems(name: str, code: str, commons_category: str | None) -> set[str]:
@@ -340,21 +389,31 @@ def ingest(
     log: dict[str, Any] = {}
     for code, entries in sorted(candidates.items()):
         judged: list[dict[str, Any]] = []
-        compliant: list[tuple[tuple[int, float, float], str]] = []
+        compliant: list[tuple[tuple[int, int, float, float], str]] = []
+        # The Wikidata P18 image and the editorial override are chosen by a
+        # person; when one of them is compliant it wins, and the category
+        # walk only fills currencies that have neither (2026-08-30 -- the
+        # walk had displaced Azerbaijan's 2020 manat with a 1919 rouble).
+        curated: list[tuple[tuple[int, int, float, float], str]] = []
         for filename, from_cat in entries:
             record = metadata.get(filename)
             if record is None:
                 judged.append({"file": filename, "verdict": "missing on Commons"})
                 continue
+            is_curated = filename in {by_code[code]["p18"], overrides.get(code)}
             ok, reason = _judge(
                 filename, record, from_banknote_category=from_cat,
-                stems=by_code[code]["stems"],
+                stems=by_code[code]["stems"], curated=is_curated,
             )
             judged.append({"file": filename, "verdict": reason})
             if ok:
-                compliant.append((_rank_key(filename, record, by_code[code]["stems"]), filename))
+                key = _rank_key(filename, record, by_code[code]["stems"])
+                compliant.append((key, filename))
+                if is_curated:
+                    curated.append((key, filename))
         compliant.sort()
-        chosen = compliant[0][1] if compliant else None
+        curated.sort()
+        chosen = curated[0][1] if curated else compliant[0][1] if compliant else None
         log[code] = {
             "name": by_code[code]["name"],
             "categoriesWalked": walked_by_code.get(code, []),
@@ -439,7 +498,7 @@ def ingest(
             + (" Built with CURRENCY_CACHED_ONLY=1: only cached category "
                "listings were consulted."
                if _CACHED_ONLY else "")
-            + (" Commons category walk enabled (CURRENCY_WALK=1)."
+            + (" Commons category walk enabled."
                if _WALK else
                " Category walk OFF: candidates are the Wikidata P18 image "
                "and editorial overrides only, judged by the same criteria.")

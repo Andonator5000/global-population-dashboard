@@ -39,6 +39,18 @@
       "curated": false,
       "verified": true
     },
+    "BDT": {
+      "name": "Bangladeshi taka",
+      "file": "Бангладеш 5 така 2011 года, аверс.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%91%D0%B0%D0%BD%D0%B3%D0%BB%D0%B0%D0%B4%D0%B5%D1%88%205%20%D1%82%D0%B0%D0%BA%D0%B0%202011%20%D0%B3%D0%BE%D0%B4%D0%B0%2C%20%D0%B0%D0%B2%D0%B5%D1%80%D1%81.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D0%BD%D0%B3%D0%BB%D0%B0%D0%B4%D0%B5%D1%88%205%20%D1%82%D0%B0%D0%BA%D0%B0%202011%20%D0%B3%D0%BE%D0%B4%D0%B0%2C%20%D0%B0%D0%B2%D0%B5%D1%80%D1%81.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Andman 51 rus",
+      "width": 3245,
+      "height": 1626,
+      "curated": false,
+      "verified": true
+    },
     "BHD": {
       "name": "Bahraini dinar",
       "file": "Бахрейн 1 р.jpg",
@@ -60,6 +72,18 @@
       "author": "Samadolfo",
       "width": 1274,
       "height": 638,
+      "curated": false,
+      "verified": true
+    },
+    "CHF": {
+      "name": "Swiss franc",
+      "file": "CHF500 5 front horizontal.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/CHF500%205%20front%20horizontal.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:CHF500%205%20front%20horizontal.jpg",
+      "license": "Public domain",
+      "author": null,
+      "width": 1656,
+      "height": 888,
       "curated": false,
       "verified": true
     },
@@ -87,6 +111,54 @@
       "curated": false,
       "verified": true
     },
+    "DJF": {
+      "name": "Djiboutian franc",
+      "file": "40 Djiboutian Francs in 2017 Obverse Commemorative.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/40%20Djiboutian%20Francs%20in%202017%20Obverse%20Commemorative.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:40%20Djiboutian%20Francs%20in%202017%20Obverse%20Commemorative.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Rawlan1998",
+      "width": 600,
+      "height": 271,
+      "curated": false,
+      "verified": true
+    },
+    "DZD": {
+      "name": "Algerian dinar",
+      "file": "Algerian 2000 dinar banknote 2020 (Obverse).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Algerian%202000%20dinar%20banknote%202020%20%28Obverse%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Algerian%202000%20dinar%20banknote%202020%20%28Obverse%29.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Nassimdz03",
+      "width": 1280,
+      "height": 576,
+      "curated": false,
+      "verified": true
+    },
+    "ERN": {
+      "name": "nakfa",
+      "file": "5 накф аверс.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/5%20%D0%BD%D0%B0%D0%BA%D1%84%20%D0%B0%D0%B2%D0%B5%D1%80%D1%81.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:5%20%D0%BD%D0%B0%D0%BA%D1%84%20%D0%B0%D0%B2%D0%B5%D1%80%D1%81.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Fassendek",
+      "width": 800,
+      "height": 397,
+      "curated": false,
+      "verified": true
+    },
+    "ETB": {
+      "name": "bir",
+      "file": "ETHW0057-2023-2o.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/ETHW0057-2023-2o.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:ETHW0057-2023-2o.jpg",
+      "license": "CC0",
+      "author": "Mbele2025",
+      "width": 600,
+      "height": 278,
+      "curated": false,
+      "verified": true
+    },
     "GEL": {
       "name": "Georgian lari",
       "file": "100 lari. Georgia, 2016 a.png",
@@ -96,6 +168,54 @@
       "author": "საქართველოს ეროვნული ბანკი (National Bank of Georgia)",
       "width": 600,
       "height": 292,
+      "curated": false,
+      "verified": true
+    },
+    "GNF": {
+      "name": "Guinean franc",
+      "file": "Avers d'un billet de 500 francs guinéens de 2022.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Avers%20d%27un%20billet%20de%20500%20francs%20guin%C3%A9ens%20de%202022.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Avers%20d%27un%20billet%20de%20500%20francs%20guin%C3%A9ens%20de%202022.jpg",
+      "license": "CC0",
+      "author": "Flosegura",
+      "width": 2736,
+      "height": 1357,
+      "curated": false,
+      "verified": true
+    },
+    "GTQ": {
+      "name": "quetzal",
+      "file": "Billete de un quetzal 20210430 anverso.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Billete%20de%20un%20quetzal%2020210430%20anverso.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Billete%20de%20un%20quetzal%2020210430%20anverso.jpg",
+      "license": "CC BY 4.0",
+      "author": "Ismael Olea",
+      "width": 4608,
+      "height": 1973,
+      "curated": false,
+      "verified": true
+    },
+    "HKD": {
+      "name": "Hong Kong dollar",
+      "file": "Hkd 10dollar note sc obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Hkd%2010dollar%20note%20sc%20obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Hkd%2010dollar%20note%20sc%20obverse.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Greatbaconbits",
+      "width": 7040,
+      "height": 3855,
+      "curated": false,
+      "verified": true
+    },
+    "INR": {
+      "name": "Indian rupee",
+      "file": "Indian 1 Rupee 2020 Front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Indian%201%20Rupee%202020%20Front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Indian%201%20Rupee%202020%20Front.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Swapnil1101",
+      "width": 1141,
+      "height": 736,
       "curated": false,
       "verified": true
     },
@@ -113,13 +233,49 @@
     },
     "KES": {
       "name": "Kenyan shilling",
-      "file": "Kenyan 20 Shilling Note.jpg",
-      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kenyan%2020%20Shilling%20Note.jpg?width=960",
-      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kenyan%2020%20Shilling%20Note.jpg",
-      "license": "CC BY 2.5",
-      "author": "No machine-readable author provided. Rob Cowie assumed (based on copyright claims).",
-      "width": 2353,
-      "height": 1280,
+      "file": "KENW0052-2024o.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KENW0052-2024o.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:KENW0052-2024o.jpg",
+      "license": "CC0",
+      "author": "De Gnomo",
+      "width": 600,
+      "height": 304,
+      "curated": false,
+      "verified": true
+    },
+    "KGS": {
+      "name": "Kyrgyz som",
+      "file": "200 som 2016 ob.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/200%20som%202016%20ob.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:200%20som%202016%20ob.jpg",
+      "license": "Public domain",
+      "author": "National Bank of the Kyrgyz Republic",
+      "width": 3255,
+      "height": 1556,
+      "curated": false,
+      "verified": true
+    },
+    "KHR": {
+      "name": "riel",
+      "file": "KhRiel100front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/KhRiel100front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:KhRiel100front.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Tuzzakan",
+      "width": 5532,
+      "height": 2325,
+      "curated": false,
+      "verified": true
+    },
+    "KZT": {
+      "name": "Kazakhstani tenge",
+      "file": "Kazakhstan-1993-Bill-10-Obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Kazakhstan-1993-Bill-10-Obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Kazakhstan-1993-Bill-10-Obverse.jpg",
+      "license": "Public domain",
+      "author": "Қазақстан Ұлттық Банкi (Национальный Банк Республики Казахстан / National Bank of the Republic of Kazakhstan)",
+      "width": 825,
+      "height": 395,
       "curated": false,
       "verified": true
     },
@@ -135,6 +291,30 @@
       "curated": false,
       "verified": true
     },
+    "LYD": {
+      "name": "Libyan dinar",
+      "file": "Libyan dinar - 1 dinar (polymer) - obverse.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Libyan%20dinar%20-%201%20dinar%20%28polymer%29%20-%20obverse.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Libyan%20dinar%20-%201%20dinar%20%28polymer%29%20-%20obverse.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Waves of Editing",
+      "width": 2500,
+      "height": 1250,
+      "curated": false,
+      "verified": true
+    },
+    "MDL": {
+      "name": "Moldovan leu",
+      "file": "MD 1 leu 2015 av.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/MD%201%20leu%202015%20av.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:MD%201%20leu%202015%20av.jpg",
+      "license": "Public domain",
+      "author": "Wiki currency",
+      "width": 1806,
+      "height": 930,
+      "curated": false,
+      "verified": true
+    },
     "MGA": {
       "name": "ariary",
       "file": "Madagascar-500francs 100ariary-banknote029.jpg",
@@ -147,6 +327,18 @@
       "curated": false,
       "verified": true
     },
+    "MKD": {
+      "name": "Macedonian denar",
+      "file": "Obverse 10 Macedonian Denars Polymer Banknote 2018.png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Obverse%2010%20Macedonian%20Denars%20Polymer%20Banknote%202018.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Obverse%2010%20Macedonian%20Denars%20Polymer%20Banknote%202018.png",
+      "license": "CC BY-SA 4.0",
+      "author": "Идеологист",
+      "width": 3557,
+      "height": 1802,
+      "curated": false,
+      "verified": true
+    },
     "MMK": {
       "name": "kyat",
       "file": "Mya 75k l.jpg",
@@ -156,6 +348,18 @@
       "author": "Hynek Moravec",
       "width": 1857,
       "height": 889,
+      "curated": false,
+      "verified": true
+    },
+    "MNT": {
+      "name": "Mongolian tögrög",
+      "file": "100 Tögrög front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100%20T%C3%B6gr%C3%B6g%20front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100%20T%C3%B6gr%C3%B6g%20front.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "NagerLB",
+      "width": 3271,
+      "height": 1611,
       "curated": false,
       "verified": true
     },
@@ -195,6 +399,30 @@
       "curated": false,
       "verified": true
     },
+    "NIO": {
+      "name": "Nicaraguan córdoba",
+      "file": "NIO 100 obverse 2015 Polymer.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/NIO%20100%20obverse%202015%20Polymer.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:NIO%20100%20obverse%202015%20Polymer.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "NagerLB",
+      "width": 3446,
+      "height": 1603,
+      "curated": false,
+      "verified": true
+    },
+    "OMR": {
+      "name": "Omani rial",
+      "file": "10 Omani Rial (Obverse).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/10%20Omani%20Rial%20%28Obverse%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:10%20Omani%20Rial%20%28Obverse%29.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "Zurfa",
+      "width": 7644,
+      "height": 3711,
+      "curated": false,
+      "verified": true
+    },
     "RON": {
       "name": "Romanian Leu",
       "file": "500 lei. Romania, 2005 a.jpg",
@@ -204,6 +432,30 @@
       "author": "en:User:ES Vic",
       "width": 800,
       "height": 422,
+      "curated": false,
+      "verified": true
+    },
+    "RSD": {
+      "name": "Serbian dinar",
+      "file": "100RSD front.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/100RSD%20front.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:100RSD%20front.jpg",
+      "license": "CC BY-SA 4.0",
+      "author": "WikiWriter123",
+      "width": 1704,
+      "height": 812,
+      "curated": false,
+      "verified": true
+    },
+    "RUB": {
+      "name": "Russian ruble",
+      "file": "Банкнота 100 рублей (обр. 2026 г.; аверс).jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%91%D0%B0%D0%BD%D0%BA%D0%BD%D0%BE%D1%82%D0%B0%20100%20%D1%80%D1%83%D0%B1%D0%BB%D0%B5%D0%B9%20%28%D0%BE%D0%B1%D1%80.%202026%20%D0%B3.%3B%20%D0%B0%D0%B2%D0%B5%D1%80%D1%81%29.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%91%D0%B0%D0%BD%D0%BA%D0%BD%D0%BE%D1%82%D0%B0%20100%20%D1%80%D1%83%D0%B1%D0%BB%D0%B5%D0%B9%20%28%D0%BE%D0%B1%D1%80.%202026%20%D0%B3.%3B%20%D0%B0%D0%B2%D0%B5%D1%80%D1%81%29.jpg",
+      "license": "Public domain",
+      "author": "Центральный банк Российской Федерации (Банк России, ЦБ РФ)",
+      "width": 1181,
+      "height": 508,
       "curated": false,
       "verified": true
     },
@@ -267,6 +519,18 @@
       "curated": false,
       "verified": true
     },
+    "UAH": {
+      "name": "hryvnia",
+      "file": "10 лідерів (аверс).png",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/10%20%D0%BB%D1%96%D0%B4%D0%B5%D1%80%D1%96%D0%B2%20%28%D0%B0%D0%B2%D0%B5%D1%80%D1%81%29.png?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:10%20%D0%BB%D1%96%D0%B4%D0%B5%D1%80%D1%96%D0%B2%20%28%D0%B0%D0%B2%D0%B5%D1%80%D1%81%29.png",
+      "license": "Public domain",
+      "author": "Андрій",
+      "width": 8577,
+      "height": 4512,
+      "curated": false,
+      "verified": true
+    },
     "UZS": {
       "name": "Uzbek som",
       "file": "200 000 sum new front.jpg",
@@ -276,6 +540,18 @@
       "author": "Central Bank of the Republic of Uzbekistan",
       "width": 1590,
       "height": 720,
+      "curated": false,
+      "verified": true
+    },
+    "XAF": {
+      "name": "Central African CFA franc",
+      "file": "Купюра в 2000 франков КФА. Лицевая сторона.jpg",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%D0%9A%D1%83%D0%BF%D1%8E%D1%80%D0%B0%20%D0%B2%202000%20%D1%84%D1%80%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2%20%D0%9A%D0%A4%D0%90.%20%D0%9B%D0%B8%D1%86%D0%B5%D0%B2%D0%B0%D1%8F%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%B0.jpg?width=960",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:%D0%9A%D1%83%D0%BF%D1%8E%D1%80%D0%B0%20%D0%B2%202000%20%D1%84%D1%80%D0%B0%D0%BD%D0%BA%D0%BE%D0%B2%20%D0%9A%D0%A4%D0%90.%20%D0%9B%D0%B8%D1%86%D0%B5%D0%B2%D0%B0%D1%8F%20%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%B0.jpg",
+      "license": "Public domain",
+      "author": "Экономи́ческое соо́бщество стра́н Центра́льной А́фрики (ЭКОЦАС)",
+      "width": 620,
+      "height": 327,
       "curated": false,
       "verified": true
     },

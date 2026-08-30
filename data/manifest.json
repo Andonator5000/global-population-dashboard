@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-30T06:16:34+00:00",
+  "generated_at": "2026-08-30T07:14:06+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-30T06:16:34+00:00",
+      "fetched_at": "2026-08-30T07:14:06+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -229,12 +229,12 @@
       "title": "Banknote images (Wikimedia Commons banknote categories)",
       "url": "https://commons.wikimedia.org/w/api.php",
       "licence": "Per-file Commons licences, recorded per image",
-      "fetched_at": "2026-08-30T06:19:17+00:00",
+      "fetched_at": "2026-08-30T07:00:13+00:00",
       "upstream_release": null,
       "vintage": "as retrieved",
       "citation": "Wikimedia Commons (per-file attribution in artifact); Wikidata P373/P18",
       "files": [],
-      "notes": "28 of 158 currencies have a compliant banknote image (127 candidate files judged); 130 render the fallback card. Criteria in etl/sources/currencyimages.py; verdicts in etl/logs/currency-images.json. Built with CURRENCY_CACHED_ONLY=1: only cached category listings were consulted. Category walk OFF: candidates are the Wikidata P18 image and editorial overrides only, judged by the same criteria."
+      "notes": "51 of 158 currencies have a compliant banknote image (4577 candidate files judged); 107 render the fallback card. Criteria in etl/sources/currencyimages.py; verdicts in etl/logs/currency-images.json. Built with CURRENCY_CACHED_ONLY=1: only cached category listings were consulted. Commons category walk enabled."
     },
     "wikidata_subdivisions": {
       "title": "Wikidata — first-level administrative divisions",
@@ -317,7 +317,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-30T06:16:34+00:00",
+      "fetched_at": "2026-08-30T07:14:06+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -559,7 +559,7 @@
       "sources": [
         "currency_images"
       ],
-      "row_count": 28,
+      "row_count": 51,
       "entity_count": null
     },
     "subdivisions/<ISO3>.json": {
@@ -730,5 +730,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "44cb1a1a6299bd714a3c25cf24b90dcf23955e7a8a4f81861849c67f67310c09"
+  "content_fingerprint": "7fd8ab5751458ad109b2bbcb7dc21529b1dc503f695a2bb367a3d11ec97ac1b2"
 }
