@@ -419,6 +419,29 @@ WHC_BROWSER_UA = (
 # --------------------------------------------------------------------------
 
 FLAGCDN_SVG = "https://flagcdn.com/{cca2_lower}.svg"
+
+# Flag metadata (Phase 2.2, 2026-08-29): the flag ITEM (P163) carries the
+# adoption date and designer; its enwiki sitelink is the symbolism source.
+# The time precision rides along so a year-precision date never renders as
+# a day.
+WIKIDATA_FLAG_META_QUERY = """
+SELECT ?iso3 ?flag ?flagLabel ?inception ?inceptionPrecision ?designerLabel ?article WHERE {
+  ?country wdt:P298 ?iso3 .
+  ?country wdt:P163 ?flag .
+  OPTIONAL {
+    ?flag p:P571 ?inceptionStatement .
+    ?inceptionStatement psv:P571 ?inceptionValue .
+    ?inceptionValue wikibase:timeValue ?inception ;
+                    wikibase:timePrecision ?inceptionPrecision .
+  }
+  OPTIONAL { ?flag wdt:P287 ?designer . }
+  OPTIONAL {
+    ?article schema:about ?flag ;
+             schema:isPartOf <https://en.wikipedia.org/> .
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+"""
 FLAG_RASTER_WIDTH = 160
 
 # OKLCH clamp band for map fills. Chosen so every country fill sits in one

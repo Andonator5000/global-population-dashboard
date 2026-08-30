@@ -57,6 +57,10 @@ const THEMES = {
     mapNoData: 'oklch(92% 0.003 250)',
     controlSelectedBg: 'oklch(88% 0.065 250)',
     controlSelectedText: 'oklch(25% 0.02 250)',
+    barFill: 'oklch(52% 0.11 250)',
+    barTrack: 'oklch(93% 0.006 250)',
+    positive: 'oklch(44% 0.13 150)',
+    negative: 'oklch(50% 0.17 25)',
   },
   dark: {
     surface: 'oklch(17% 0.006 250)',
@@ -73,6 +77,10 @@ const THEMES = {
     mapNoData: 'oklch(22% 0.004 250)',
     controlSelectedBg: 'oklch(38% 0.075 250)',
     controlSelectedText: 'oklch(96% 0.005 250)',
+    barFill: 'oklch(72% 0.11 250)',
+    barTrack: 'oklch(27% 0.008 250)',
+    positive: 'oklch(78% 0.14 150)',
+    negative: 'oklch(76% 0.15 25)',
   },
 }
 
@@ -112,6 +120,16 @@ const checks = (t) => [
   // token, which is tuned for polygons that carry no text.
   ['selected control label', t.controlSelectedText, t.controlSelectedBg, 4.5],
   ['selected control vs surface', t.controlSelectedBg, t.surface, 1.2],
+  // Ranked-bar breakdowns (Phase 2.1): the bar is a non-text UI component
+  // against its track and the raised surface.
+  ['breakdown bar vs track', t.barFill, t.barTrack, 3.0],
+  ['breakdown bar vs raised', t.barFill, t.raised, 3.0],
+  ['breakdown track vs raised', t.barTrack, t.raised, 1.08],
+  // Signed growth-rate text in the entity table (Phase 2.3).
+  ['positive value text on raised', t.positive, t.raised, 4.5],
+  ['negative value text on raised', t.negative, t.raised, 4.5],
+  ['positive value text on surface', t.positive, t.surface, 4.5],
+  ['negative value text on surface', t.negative, t.surface, 4.5],
 ]
 
 let failures = 0

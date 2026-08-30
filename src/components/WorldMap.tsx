@@ -4,7 +4,13 @@ import { zoom, zoomIdentity, type D3ZoomEvent } from 'd3-zoom'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { feature } from 'topojson-client'
 
-import { CONTINENTS, type ContinentKey, type ProjectionKey } from '../config'
+import {
+  CONTINENTS,
+  DEFAULT_MAP_PALETTE,
+  type ContinentKey,
+  type MapPaletteKey,
+  type ProjectionKey,
+} from '../config'
 import { createProjection, fitProjection } from '../lib/projection'
 import type {
   CountryGeometryProperties,
@@ -61,6 +67,8 @@ interface WorldMapProps {
   /** Continent highlighted in continent mode; null means none. */
   activeContinent: ContinentKey | null
   onActiveContinentChange: (continent: ContinentKey | null) => void
+  /** Colour direction for country fills (Phase 2.4); 'atlas' by default. */
+  paletteDirection?: MapPaletteKey
 }
 
 interface CountryShape {
@@ -146,6 +154,7 @@ export function WorldMap({
   onSelect,
   activeContinent,
   onActiveContinentChange,
+  paletteDirection = DEFAULT_MAP_PALETTE,
 }: WorldMapProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -513,17 +522,21 @@ export function WorldMap({
   const landNeutral = GLOBE_LAND_NEUTRAL
   const noDataFill = 'oklch(92% 0.003 250)'
 
+  // Continent view (Phase 2.4): each continent is ONE cohesive region --
+  // every member takes the continent's region fill, the country strokes
+  // match it so internal borders drop away, and the continent label carries
+  // identity. Hover/focus emphasises a whole continent by dimming the rest,
+  // never by recolouring a single country.
   function fillFor(shape: CountryShape): string {
     const row = populationByIso3.get(shape.iso3)
+    if (mode === 'continent') {
+      return `var(--region-${shape.continent}, ${GLOBE_LAND_NEUTRAL})`
+    }
     if (!row?.available) return noDataFill
     if (hovered?.iso3 === shape.iso3) return 'var(--map-accent-fill)'
-    if (mode === 'continent') {
-      return activeContinent === shape.continent
-        ? 'var(--map-accent-fill)'
-        : landNeutral
-    }
-    return `var(--fill-globe-${shape.iso3}, ${GLOBE_LAND_NEUTRAL})`
+    return `var(--fill-globe-${paletteDirection}-${shape.iso3}, ${GLOBE_LAND_NEUTRAL})`
   }
+  void landNeutral
 
   const activeIso3 = focusTargets[activeIndex]?.iso3
   const tabIndexFor = (iso3: string) =>
@@ -731,7 +744,7 @@ export function WorldMap({
               ref={registerNode(shape.iso3)}
               d={shape.d}
               fill={fillFor(shape)}
-              stroke={landStroke}
+              stroke={mode === 'continent' ? fillFor(shape) : landStroke}
               strokeWidth={strokeWidth}
               strokeLinejoin="round"
               opacity={dimmed ? 0.45 : 1}

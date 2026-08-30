@@ -40,6 +40,19 @@ export type ProjectionKey = (typeof PROJECTIONS)[number]
 // projections remain one click away and keep their acceptance gates.
 export const DEFAULT_PROJECTION: ProjectionKey = 'globe'
 
+/**
+ * Map colour directions (2026-08-29, Phase 2.4). Both are built and gated
+ * by scripts/build-map-palette.mjs; the control on the home page switches
+ * between them live. 'atlas' is the default.
+ */
+export const MAP_PALETTES = ['atlas', 'paper'] as const
+export type MapPaletteKey = (typeof MAP_PALETTES)[number]
+export const DEFAULT_MAP_PALETTE: MapPaletteKey = 'atlas'
+export const MAP_PALETTE_LABELS: Record<MapPaletteKey, string> = {
+  atlas: 'Atlas — restrained flag hues',
+  paper: 'Paper — near-neutral tints',
+}
+
 /** Continents excluded from per-capita, density, and population rankings. */
 export const UNINHABITED_CONTINENTS: readonly ContinentKey[] = ['AN']
 

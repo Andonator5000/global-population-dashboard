@@ -1518,6 +1518,70 @@ general ones ("pig iron" is steel, "lime processing" is rock, "mineral
 water" is a drink, "non-alcoholic" is not alcohol). Biome, sector and
 religion icons moved to the same set.
 
+## 23. The 2026-08-29 presentation batch (maintainer-requested, Phase 2)
+
+### 23.1 One breakdown pattern: ranked horizontal bars
+
+The stacked/segmented bar (Biomes, compositions, trade partners, and since
+Phase 1 land use, urban/rural and GDP sectors) was hard to read: a 3%
+sliver needed a hover to be named, eight segments cannot carry labels, and
+identity rode on colour alone. Three alternatives were weighed -- ranked
+horizontal bars, a small-multiples grid, a donut with a legend table --
+and ranked bars won on every requirement: labels readable without hover,
+the percentage printed as text on each row, no meaning in colour (every
+bar is the same accent; the "Other" row is the neutral token and says so
+in words), and a one-column layout that is mobile as-is. `Breakdown.tsx`
+is the single implementation; `CompositionBar` and `BiomeBar` survive only
+as adapters so no call site had to change. Bars scale to the largest
+share (the printed value is the truth); the rows are a real `<table>`, so
+the old "show as table" toggle is gone. The 8-hue categorical series
+tokens remain for genuinely multi-series charts (population trend, age
+pyramid).
+
+### 23.2 The flag is the hero
+
+The country page's flag grows from 56 px to 144-176 px and leads the
+page. Beneath it, a facts block: adoption date (Wikidata P571 on the
+flag item, rendered at its STATED precision -- a year never becomes
+"1 January"), designer (P287), and the lead of the English Wikipedia flag
+article, trimmed to four sentences and shipped VERBATIM with the article
+link, title, licence and retrieval date. CC BY-SA 4.0 makes attribution
+and a link conditions of reuse; a paraphrase would be a derived work with
+the same obligations and none of the traceability, so the text is quoted,
+not rewritten. Wikidata has no "date designed" property; only adoption is
+recorded and the line is omitted where it is missing. New stage
+`flagmeta`; artifact `flags/meta.json`.
+
+### 23.3 Entity table: neutral, sticky, numeric
+
+The dark-blue/light-blue zebra (§20.1) is replaced at the maintainer's
+request by neutral rows on the theme surface with hairline dividers, a
+sticky raised header with muted uppercase labels (the active sort column
+in full text colour), right-aligned tabular figures, and colour only
+where it carries meaning: the growth-rate sign, printed as +/- as well.
+Two new tokens, `--positive` and `--negative`, are AA text on both
+surfaces in both themes and gated in `check-contrast.mjs`. Sorting and
+keyboard access are unchanged (real buttons in real `<th>` cells with
+`aria-sort`).
+
+### 23.4 Map palette: restrained, in two directions
+
+Chroma drops from 0.10 (§16.6) to 0.045; the four graph-coloured
+lightness tiers (§7) still guarantee that no two bordering countries
+share a fill, and because the separation now rides almost entirely on
+lightness it holds under every common colour-vision deficiency. Two
+directions are built and gated (neighbour dE >= 4.0 both themes, fill/
+water >= 1.35, globe-ocean >= 2.0): **Atlas** (the flag hue, restrained;
+default) and **Paper** (chroma 0.022, hues pulled a third of the way to a
+warm paper base). Both are switchable live from the "Map colours"
+control so the choice can be made on the real map. The continent view is
+its own treatment: each continent is one cohesive region (seven hues >= 50
+degrees apart at chroma 0.07, Antarctica near-white), internal borders
+drop away (strokes match the fill), country labels are off and continent
+labels carry identity -- §6.3's finding that seven hues cannot clear every
+CVD pair still stands, which is why the label is never optional. Region
+pairs are gated at the same dE floor.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

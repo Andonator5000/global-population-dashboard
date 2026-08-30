@@ -4,6 +4,34 @@
 @import './generated/flag-fills.css';
 
 /*
+ * Interaction baseline (2026-08-29, from the UI UX Pro Max checklist):
+ * Tailwind v4 resets buttons to cursor: default, so clickable controls
+ * must opt back in; hover/focus colour changes ease over 150 ms; touch
+ * targets skip the legacy 300 ms tap delay; in-page anchors scroll
+ * smoothly unless the reader asked for reduced motion.
+ */
+button,
+[role='button'],
+select,
+summary {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  button,
+  a,
+  summary {
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+}
+
+/*
  * Monochrome OpenMoji glyphs (public/icons/openmoji, CC BY-SA 4.0), painted
  * in currentColor through a mask so one SVG follows both themes. Sized in
  * em so an icon scales with the text it decorates.
@@ -91,6 +119,17 @@
   --series-8: #e34948;
   --series-other: oklch(62% 0.01 250);
 
+  /* Ranked-bar breakdowns (Breakdown.tsx): one fill for every row, so colour
+     carries no meaning; the track is the empty remainder. */
+  --bar-fill: oklch(52% 0.11 250);
+  --bar-track: oklch(93% 0.006 250);
+
+  /* Signed values (growth rate in the entity table). Text-safe at AA on the
+     surface; the sign is always printed too, so colour is never the only
+     carrier. */
+  --positive: oklch(44% 0.13 150);
+  --negative: oklch(50% 0.17 25);
+
   color-scheme: light;
 }
 
@@ -125,6 +164,10 @@
     --series-7: #9085e9;
     --series-8: #e66767;
     --series-other: oklch(60% 0.01 250);
+    --bar-fill: oklch(72% 0.11 250);
+    --bar-track: oklch(27% 0.008 250);
+    --positive: oklch(78% 0.14 150);
+    --negative: oklch(76% 0.15 25);
 
     color-scheme: dark;
   }
@@ -157,6 +200,10 @@
   --series-7: #9085e9;
   --series-8: #e66767;
   --series-other: oklch(60% 0.01 250);
+  --bar-fill: oklch(72% 0.11 250);
+  --bar-track: oklch(27% 0.008 250);
+  --positive: oklch(78% 0.14 150);
+  --negative: oklch(76% 0.15 25);
 
   color-scheme: dark;
 }
