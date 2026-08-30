@@ -165,23 +165,26 @@ export function HomePage() {
     summaryState.status === 'ready' ? summaryState.data.revision : 0
 
   return (
-    // Maintainer ruling (2026-08-24): the home page washes VERDANT GREEN in
-    // both themes -- a rich light green in light mode, deep forest green in
-    // dark -- replacing the neutral blue tint. Country pages keep their
-    // flag-derived tints. light-dark() follows the root's color-scheme.
-    // Both greens hold AA against the theme's own text tokens (light: 22%L
-    // text on 87%L green; dark: 94%L text on 30%L green), so every card and
-    // control inside keeps its normal polarity.
-    <div
-      className="min-h-full"
-      style={{
-        background:
-          'light-dark(oklch(87% 0.10 148), oklch(30% 0.07 150))',
-      }}
-    >
+    // Layout and colour reworked 2026-08-30 with the UI UX Pro Max
+    // database (DATA_DECISIONS 27): the verdant-green wash of 2026-08-24 is
+    // replaced by the site's neutral page tint, and the page is composed of
+    // three raised cards -- hero (title, live counter, time scrubber), map
+    // (toolbar, map, readout) and the entity table -- so the eye has three
+    // things to find instead of one green field. Every colour is a gated
+    // theme token; no new colour was introduced.
+    <div className="min-h-full" style={{ background: 'var(--page-tint)' }}>
     <div className="mx-auto max-w-[110rem] px-6 py-8">
-      <header>
-        <h1 className="text-2xl font-semibold tracking-tight">
+      <header
+        className="rounded-xl border px-6 py-6"
+        style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+      >
+        <p
+          className="font-sans text-xs font-medium uppercase tracking-widest"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          Global Data
+        </p>
+        <h1 className="mt-1 text-2xl font-semibold tracking-tight">
           World population
         </h1>
 
@@ -235,9 +238,45 @@ export function HomePage() {
           Source: UN World Population Prospects {revision || '—'}, medium
           variant.
         </p>
+
+      {timeline && (
+        <div
+          className="mt-5 rounded-lg border px-4 py-3"
+          style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
+        >
+          <TimeScrubber
+            years={timeline.years}
+            // In live mode the slider rests on the CURRENT year, so it agrees
+            // with the counter above it. Resting it on the last estimate year
+            // instead made the header read 2026 while the slider said 2023.
+            value={scrubYear ?? liveYear}
+            onChange={setScrubYear}
+            estimatesThrough={timeline.estimatesThrough}
+            playing={playing}
+            onPlayingChange={setPlaying}
+          />
+          {scrubYear !== null && (
+            <button
+              type="button"
+              className="mt-2 text-xs underline underline-offset-2"
+              style={{ color: 'var(--text-muted)' }}
+              onClick={() => {
+                setPlaying(false)
+                setScrubYear(null)
+              }}
+            >
+              Return to the live estimate
+            </button>
+          )}
+        </div>
+      )}
       </header>
 
-      <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
+      {/* Map toolbar: fill mode, projection, colours, and the interaction hint. */}
+      <div
+        className="mt-6 flex flex-wrap items-center gap-4 rounded-t-xl border border-b-0 px-4 py-3 text-sm"
+        style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+      >
         <fieldset className="flex items-center gap-2">
           <legend className="sr-only">Map fill mode</legend>
           {(['country', 'continent'] as const).map((value) => (
@@ -316,38 +355,6 @@ export function HomePage() {
         </span>
       </div>
 
-      {timeline && (
-        <div
-          className="mt-4 rounded-lg border px-4 py-3"
-          style={{ borderColor: 'var(--border)' }}
-        >
-          <TimeScrubber
-            years={timeline.years}
-            // In live mode the slider rests on the CURRENT year, so it agrees
-            // with the counter above it. Resting it on the last estimate year
-            // instead made the header read 2026 while the slider said 2023.
-            value={scrubYear ?? liveYear}
-            onChange={setScrubYear}
-            estimatesThrough={timeline.estimatesThrough}
-            playing={playing}
-            onPlayingChange={setPlaying}
-          />
-          {scrubYear !== null && (
-            <button
-              type="button"
-              className="mt-2 text-xs underline underline-offset-2"
-              style={{ color: 'var(--text-muted)' }}
-              onClick={() => {
-                setPlaying(false)
-                setScrubYear(null)
-              }}
-            >
-              Return to the live estimate
-            </button>
-          )}
-        </div>
-      )}
-
       {error && (
         <p className="mt-8" style={{ color: 'var(--text-muted)' }}>
           {error.message}
@@ -361,7 +368,10 @@ export function HomePage() {
       )}
 
       {!loading && !error && topologyState.status === 'ready' && (
-        <div className="map-layout mt-4 grid gap-6 lg:grid-cols-[minmax(0,1fr)_17rem]">
+        <div
+          className="map-layout grid gap-6 rounded-b-xl border border-t-0 p-4 lg:grid-cols-[minmax(0,1fr)_17rem]"
+          style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+        >
           {/* Escape hatch for keyboard users. The map is a single tab stop
               with arrow-key navigation inside, but someone who tabs INTO it
               still wants a one-key way back out to the table. */}
