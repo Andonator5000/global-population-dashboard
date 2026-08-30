@@ -81,7 +81,7 @@ def _themealdb_dishes(
                 detail = (detail_response.read_json().get("meals") or [{}])[0]
                 category = (detail.get("strCategory") or "").strip()
                 if category:
-                    dish["description"] = category
+                    dish["description"] = f"{category} dish"
             except FetchError:
                 pass
             dish["image"] = {
@@ -97,6 +97,17 @@ def _themealdb_dishes(
             dishes.append(dish)
         if dishes:
             out[iso3] = dishes
+    # A real sentence beats a category tag: the dish's Wikipedia article,
+    # when one exists under this name (2026-08-30), fetched twenty at a time.
+    extracts = commons.wikipedia_extracts(
+        [d["name"] for dishes in out.values() for d in dishes],
+        refresh=refresh, subdir="cuisine/extracts",
+    )
+    for dishes in out.values():
+        for dish in dishes:
+            blurb = commons.first_sentence((extracts.get(dish["name"]) or {}).get("extract") or "")
+            if blurb:
+                dish["description"] = blurb
     return out
 
 
@@ -156,6 +167,9 @@ def ingest(
             description = (row.get("description", {}).get("value") or "").strip()
             if description:
                 record["description"] = description
+        article = row.get("article", {}).get("value")
+        if article and not record.get("article"):
+            record["article"] = urllib.parse.unquote(article.rsplit("/", 1)[-1]).replace("_", " ")
 
     by_country: dict[str, list[dict[str, Any]]] = {}
     for record in by_item.values():
@@ -166,6 +180,26 @@ def ingest(
         # that can actually show the food is the better page.
         records.sort(key=lambda r: (-r["links"], r["file"] is None, r["name"]))
         del records[config.CUISINE_TOP_N:]
+
+    # Brief descriptions and a lead-image fallback (2026-08-30): the dish
+    # article's opening sentence beats Wikidata's terse description, and its
+    # lead image fills in where Wikidata records no P18.
+    extracts = commons.wikipedia_extracts(
+        [r["article"] for records in by_country.values() for r in records if r.get("article")],
+        refresh=refresh, subdir="cuisine/extracts",
+    )
+    for records in by_country.values():
+        for r in records:
+            summary = extracts.get(r.get("article") or "")
+            if not summary:
+                continue
+            blurb = commons.first_sentence(summary.get("extract") or "")
+            if blurb:
+                r["description"] = blurb
+            if not r["file"] and summary.get("pageimage"):
+                # The lead image is verified against Commons below like any
+                # other file; an enwiki-local (non-free) file simply misses.
+                r["file"] = summary["pageimage"]
 
     filenames = [
         r["file"]

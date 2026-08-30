@@ -17,7 +17,7 @@ import urllib.parse
 from typing import Any
 
 from .. import config
-from ..fetch import CachedResponse, fetch
+from ..fetch import CachedResponse, FetchError, fetch
 
 _BATCH = 20  # titles per API request, kept under URL-length limits
 _TAG = re.compile(r"<[^>]+>")
@@ -147,9 +147,96 @@ def image_record(
     }
 
 
+def wikipedia_summary(title: str, *, refresh: bool, subdir: str) -> dict[str, Any] | None:
+    """REST summary for an English Wikipedia article, or None if unavailable."""
+    try:
+        response = fetch(
+            config.WIKIPEDIA_REST_SUMMARY_TEMPLATE.format(
+                title=urllib.parse.quote(title.replace(" ", "_"))
+            ),
+            refresh=refresh, subdir=subdir, expect_json=True,
+        )
+    except FetchError:
+        return None
+    summary = response.read_json()
+    if summary.get("type") not in ("standard", None):
+        return None
+    return summary
+
+
+def wikipedia_extracts(
+    titles: list[str], *, refresh: bool, subdir: str
+) -> dict[str, dict[str, Any]]:
+    """{title: {extract, pageimage}} for many articles, 20 per request.
+
+    Per-title REST summaries tripped Wikimedia's rate limit within minutes
+    (2026-08-30); the Action API answers twenty titles per call with the
+    plain-text intro and the lead image name, which is all the cards need.
+    Redirects and normalisation are mapped back to the requested title.
+    URL-hash cache naming, a polite pause between uncached calls.
+    """
+    import time
+
+    out: dict[str, dict[str, Any]] = {}
+    ordered = sorted({t for t in titles if t})
+    for start in range(0, len(ordered), 20):
+        batch = ordered[start:start + 20]
+        url = (
+            f"{config.WIKIPEDIA_API_URL}?action=query&format=json"
+            f"&prop=extracts%7Cpageimages&exintro=1&explaintext=1&exlimit=20"
+            f"&piprop=name&redirects=1"
+            f"&titles={urllib.parse.quote('|'.join(batch))}"
+        )
+        try:
+            response = fetch(url, refresh=refresh, subdir=subdir, expect_json=True)
+        except FetchError:
+            continue
+        if not response.from_cache:
+            time.sleep(1.0)
+        payload = response.read_json().get("query", {})
+        back = {r["to"]: r["from"] for r in payload.get("redirects", [])}
+        norm = {n["to"]: n["from"] for n in payload.get("normalized", [])}
+        for page in payload.get("pages", {}).values():
+            if "missing" in page:
+                continue
+            title = page.get("title") or ""
+            original = back.get(title, title)
+            original = norm.get(original, original)
+            record = {
+                "extract": page.get("extract") or "",
+                "pageimage": (page.get("pageimage") or "").replace("_", " ") or None,
+            }
+            for key in {title, original}:
+                out[key] = record
+    return out
+
+
+def first_sentence(extract: str, limit: int = 220) -> str | None:
+    """The opening sentence of a lead, trimmed to a card-sized blurb."""
+    text = " ".join((extract or "").split())
+    # Pronunciation guides and other parenthetical asides in the opening
+    # clause ("(French pronunciation: [...])", "( OFF-ih-klyde)") are noise
+    # on a card; drop any parenthesis that is a respelling, IPA, or empty.
+    text = re.sub(
+        r"\s*\((?:[^()]*(?:pronunciation|pronounced|listen|IPA|\[|/)[^()]*|\s*[^()]*[A-Z]{2,}-[^()]*|\s*)\)",
+        "", text,
+    )
+    text = re.sub(r"\s+([,.;:])", r"\1", text)
+    if not text:
+        return None
+    match = re.search(r"^(.+?[.!?])(?:\s|$)", text)
+    sentence = match.group(1) if match else text
+    if len(sentence) > limit:
+        sentence = sentence[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    return sentence
+
+
 __all__ = [
     "FILEPATH_MARKER",
     "fetch_metadata",
+    "first_sentence",
+    "wikipedia_extracts",
+    "wikipedia_summary",
     "file_page_for",
     "filename_from_special_path",
     "filename_from_thumb_url",
