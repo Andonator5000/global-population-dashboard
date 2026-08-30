@@ -1,0 +1,143 @@
+{
+  "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
+  "stage": "subdivisions",
+  "checked": 3657,
+  "summary": {
+    "subdivisions.population": 19
+  },
+  "suppressed": [
+    {
+      "iso3": "ASM",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Rose Atoll"
+    },
+    {
+      "iso3": "ATF",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Scattered Islands in the Indian Ocean"
+    },
+    {
+      "iso3": "ATG",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Redonda"
+    },
+    {
+      "iso3": "AUS",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Ashmore and Cartier Islands"
+    },
+    {
+      "iso3": "AUS",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Heard Island and McDonald Islands"
+    },
+    {
+      "iso3": "FRA",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Clipperton Island"
+    },
+    {
+      "iso3": "MHL",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Jemo Island"
+    },
+    {
+      "iso3": "MHL",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Ujelang Atoll"
+    },
+    {
+      "iso3": "NOR",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Bouvet Island"
+    },
+    {
+      "iso3": "SPM",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "L'Ile-aux-Marins"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Howland Island"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Palmyra Atoll"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Johnston Atoll"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Kingman Reef"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Baker Island"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Bajo Nuevo Bank"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Jarvis Island"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Serranilla Bank"
+    },
+    {
+      "iso3": "UMI",
+      "metric": "subdivisions.population",
+      "value": 0.0,
+      "rule": "outside bounds [1, 2e+09]",
+      "label": "Navassa Island"
+    }
+  ]
+}

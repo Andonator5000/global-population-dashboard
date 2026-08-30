@@ -20,6 +20,7 @@ from typing import Any
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity
 from ..fetch import FetchError, fetch
+from ..validate import Plausibility
 
 
 def ingest(
@@ -93,6 +94,15 @@ def ingest(
             f"OurAirports roster resolved to only {len(by_country)} "
             f"countries; expected ~200. Column layout may have changed."
         )
+    plausibility = Plausibility("airports", registry)
+    for iso3, airports in by_country.items():
+        for airport in airports:
+            if airport["passengers"] is not None and not plausibility.check(
+                iso3, "airports.passengers", airport["passengers"],
+                label=airport["name"],
+            ):
+                airport["passengers"] = None
+    plausibility.flush(manifest)
 
     written = 0
     total = 0

@@ -1,0 +1,30 @@
+{
+  "note": "Figures the plausibility layer suppressed in this stage (etl/validate.py). Each shipped as explicitly unavailable instead of as a number.",
+  "stage": "unodc",
+  "checked": 312,
+  "summary": {
+    "unodc.prisoners": 2
+  },
+  "suppressed": [
+    {
+      "iso3": "MAF",
+      "metric": "unodc.prisoners",
+      "value": 1030.0,
+      "rule": "per_100k 3743 outside [0.5, 2500]",
+      "label": "Persons held",
+      "year": 2024,
+      "denominator": {
+        "kind": "per_100k",
+        "value": 27515.0
+      }
+    },
+    {
+      "iso3": "VAT",
+      "metric": "unodc.prisoners",
+      "value": 0.0,
+      "rule": "outside bounds [1, 5e+06]",
+      "label": "Persons held",
+      "year": 2023
+    }
+  ]
+}
