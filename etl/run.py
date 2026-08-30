@@ -299,6 +299,7 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "geometry": stage_geometry,
     "flags": stage_flags,
     "flagmeta": _simple_stage("flagmeta", "flagmeta"),
+    "history": _simple_stage("history", "history"),
     "factbook": stage_factbook,
     "leaders": stage_leaders,
     "heritage": stage_heritage,
