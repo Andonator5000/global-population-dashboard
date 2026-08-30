@@ -1,6 +1,8 @@
 import { useId, useState } from 'react'
 
+import { Icon } from '../Icon'
 import { capitalizeFirst, formatShare } from '../../lib/format'
+import type { BreakdownOther } from '../../types'
 import { OTHER_TOKEN, VintageBadge, seriesColour } from './primitives'
 
 export interface CompositionItem {
@@ -9,6 +11,8 @@ export interface CompositionItem {
   isUpperBound: boolean
   official: boolean
   qualifier: string | null
+  /** The source published this residual itself (land use "other"). */
+  fromSource?: boolean
 }
 
 export interface CompositionField {
@@ -25,6 +29,12 @@ export interface CompositionField {
   sourceTextMalformed?: boolean
   malformedReason?: string | null
   note?: string | null
+  /** Completion state from etl/breakdown.py (or src/lib/breakdown.ts). */
+  other?: BreakdownOther | null
+  overlapPercent?: number | null
+  overlapNote?: string | null
+  breakdownSuppressed?: boolean
+  breakdownNote?: string | null
 }
 
 /** Categories past this fold into an explicit "other" rather than a 9th hue. */
@@ -57,9 +67,9 @@ export function CompositionBar({
   field: CompositionField
   sourceName: string
   /**
-   * Decorative icon per category label (e.g. religion symbols). When set, the
-   * legend renders as a vertical bulleted list instead of an inline wrap, so
-   * each category reads as its own line with its symbol.
+   * Decorative OpenMoji hexcode per category label (e.g. religion symbols).
+   * When set, the legend renders as a vertical bulleted list instead of an
+   * inline wrap, so each category reads as its own line with its symbol.
    */
   iconFor?: (label: string) => string | null
 }) {
@@ -87,8 +97,10 @@ export function CompositionBar({
       item.percent !== null,
   )
 
-  // Prose or malformed source: show the published wording, never a chart.
-  if (!field.chartable) {
+  // Prose, malformed source, or a breakdown the completion rules suppressed
+  // (shares more than a couple of points over 100): show the published
+  // wording, never a chart.
+  if (!field.chartable || field.breakdownSuppressed) {
     return (
       <div>
         <h3 className="text-sm font-medium">
@@ -100,10 +112,12 @@ export function CompositionBar({
         </h3>
         <p className="mt-2 text-sm">{field.text}</p>
         <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
-          {field.sourceTextMalformed
-            ? field.malformedReason
-            : 'Published as a list without percentages, so no breakdown is shown. ' +
-              'Deriving one would mean inventing numbers the source does not give.'}
+          {field.breakdownSuppressed
+            ? field.breakdownNote
+            : field.sourceTextMalformed
+              ? field.malformedReason
+              : 'Published as a list without percentages, so no breakdown is shown. ' +
+                'Deriving one would mean inventing numbers the source does not give.'}
           {' '}Source: {sourceName}.
         </p>
         {field.note && (
@@ -119,6 +133,20 @@ export function CompositionBar({
   const head = sorted.slice(0, MAX_SLOTS)
   const tail = sorted.slice(MAX_SLOTS)
   const tailTotal = tail.reduce((sum, item) => sum + item.percent, 0)
+  // The explicit "Other" that makes the breakdown total exactly 100%. Always
+  // last, always the neutral token, and its meaning is spelled out in the
+  // legend/table -- the tooltip alone would fail the no-tooltip-only rule.
+  const other = field.other
+    ? {
+        label: field.other.label,
+        percent: field.other.percent,
+        isUpperBound: false,
+        official: false,
+        qualifier: field.other.tooltip,
+        colour: OTHER_TOKEN,
+        isOther: true,
+      }
+    : null
 
   const segments = [
     ...head.map((item, index) => ({
@@ -140,7 +168,9 @@ export function CompositionBar({
           },
         ]
       : []),
+    ...(other ? [other] : []),
   ]
+  const tableRows = other ? [...sorted, other] : sorted
 
   const total = segments.reduce((sum, s) => sum + s.percent, 0)
   const scale = total > 0 ? 100 / total : 0
@@ -189,10 +219,13 @@ export function CompositionBar({
         }
       >
         {(iconFor
-          ? sorted.map((item, index) => ({
-              ...item,
-              colour: index < MAX_SLOTS ? seriesColour(index) : OTHER_TOKEN,
-            }))
+          ? [
+              ...sorted.map((item, index) => ({
+                ...item,
+                colour: index < MAX_SLOTS ? seriesColour(index) : OTHER_TOKEN,
+              })),
+              ...(other ? [other] : []),
+            ]
           : segments
         ).map((segment, index) => (
           <li key={`${segment.label}-legend-${index}`} className="flex items-center gap-1.5">
@@ -202,9 +235,9 @@ export function CompositionBar({
               aria-hidden="true"
             />
             {iconFor && iconFor(segment.label) && (
-              <span aria-hidden="true">{iconFor(segment.label)}</span>
+              <Icon code={iconFor(segment.label)!} />
             )}
-            <span>
+            <span title={'isOther' in segment ? segment.qualifier ?? undefined : undefined}>
               {capitalizeFirst(segment.label)}
               {segment.official && ' (official)'}
             </span>
@@ -220,22 +253,19 @@ export function CompositionBar({
           </li>
         ))}
       </ul>
+      {other && (
+        <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+          “Other” ({formatShare(other.percent)}%) is the difference between the
+          published categories and 100%: {other.qualifier}
+        </p>
+      )}
 
       <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
         Source: {sourceName}
         {field.vintageYear ? `, ${field.vintageYear}` : ''}. Percentages are
         shown exactly as published and are not rescaled.
-        {field.percentTotal !== null &&
-          field.percentTotal !== undefined &&
-          field.sumsToApprox100 === false && (
-            <>
-              {' '}
-              They total {field.percentTotal}%
-              {field.sharesMayOverlap
-                ? ' because respondents may be counted in more than one category.'
-                : ', which the source does not reconcile to 100%.'}
-            </>
-          )}
+        {field.overlapNote && <> {field.overlapNote}</>}
+        {!field.overlapNote && field.breakdownNote && <> {field.breakdownNote}</>}
       </p>
 
       {unquantified.length > 0 && (
@@ -279,7 +309,7 @@ export function CompositionBar({
             </tr>
           </thead>
           <tbody>
-            {sorted.map((item, index) => (
+            {tableRows.map((item, index) => (
               <tr
                 key={`${item.label}-row-${index}`}
                 className="border-t"

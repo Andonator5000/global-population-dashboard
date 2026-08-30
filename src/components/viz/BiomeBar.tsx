@@ -1,8 +1,9 @@
 import { useId, useState } from 'react'
 
+import { Icon } from '../Icon'
 import { OTHER_TOKEN, seriesColour } from './primitives'
 import { biomeIcon } from '../../lib/icons'
-import type { BiomeShare } from '../../types'
+import type { BiomeShare, BreakdownOther } from '../../types'
 
 const MAX_SLOTS = 8
 
@@ -22,10 +23,15 @@ export function BiomeBar({
   ecoregions,
   areaDiffersFromPublishedPct,
   publishedAreaKm2,
+  other,
+  overlapNote,
 }: {
   biomes: BiomeShare[]
   coveredShare: number
   landAreaKm2: number
+  /** The explicit remainder that completes the breakdown to 100%. */
+  other?: BreakdownOther | null | undefined
+  overlapNote?: string | null | undefined
   ecoregions?: { name: string; share: number }[]
   /** Set when the drawn polygon disagrees with the published land area. */
   areaDiffersFromPublishedPct?: number | undefined
@@ -64,7 +70,8 @@ export function BiomeBar({
       : []),
   ]
 
-  const gap = Math.max(0, 100 - coveredShare)
+  const gap = other ? other.percent : 0
+  void coveredShare // kept in the props contract; the Other item now carries the remainder
 
   return (
     <div>
@@ -73,7 +80,7 @@ export function BiomeBar({
         role="img"
         aria-label={`Biome shares: ${segments
           .map((s) => `${s.biome} ${s.share.toFixed(1)}%`)
-          .join(', ')}${gap > 1 ? `. ${gap.toFixed(1)}% not covered by any ecoregion.` : ''}`}
+          .join(', ')}${gap > 0 ? `. Other ${gap.toFixed(1)}%.` : ''}`}
         style={{ background: 'var(--map-no-data)' }}
       >
         {segments.map((segment, index) => (
@@ -98,7 +105,7 @@ export function BiomeBar({
               aria-hidden="true"
             />
             {biomeIcon(segment.biome) && (
-              <span aria-hidden="true">{biomeIcon(segment.biome)}</span>
+              <Icon code={biomeIcon(segment.biome)!} />
             )}
             <span>{segment.biome}</span>
             <span
@@ -111,14 +118,14 @@ export function BiomeBar({
             </span>
           </li>
         ))}
-        {gap > 1 && (
+        {other && (
           <li className="flex items-center gap-1.5">
             <span
               className="inline-block h-2.5 w-2.5 shrink-0 rounded-sm"
               style={{ background: 'var(--map-no-data)' }}
               aria-hidden="true"
             />
-            <span>no ecoregion assigned</span>
+            <span title={other.tooltip}>{other.label}</span>
             <span
               style={{
                 color: 'var(--text-muted)',
@@ -134,14 +141,14 @@ export function BiomeBar({
       <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
         Shares are percentages of {Math.round(landAreaKm2).toLocaleString()} km²
         of land, measured in an equal-area projection (EPSG:6933).
-        {gap > 1 && (
+        {other && (
           <>
             {' '}
-            {gap.toFixed(1)}% carries no terrestrial ecoregion — inland water,
-            ice, or island area the source does not resolve. It is shown as a
-            gap rather than redistributed.
+            “Other” ({gap.toFixed(1)}%) is the difference between the biome
+            shares and 100%: {other.tooltip}
           </>
-        )}{' '}
+        )}
+        {overlapNote && <> {overlapNote}</>}{' '}
         Source: RESOLVE Ecoregions 2017.
       </p>
 
@@ -199,7 +206,12 @@ export function BiomeBar({
             </tr>
           </thead>
           <tbody>
-            {sorted.map((biome) => (
+            {[
+              ...sorted,
+              ...(other
+                ? [{ biome: `${other.label} — ${other.tooltip}`, share: other.percent, areaKm2: (landAreaKm2 * other.percent) / 100 }]
+                : []),
+            ].map((biome) => (
               <tr
                 key={biome.biome}
                 className="border-t"
@@ -207,7 +219,9 @@ export function BiomeBar({
               >
                 <th scope="row" className="py-1 text-left font-normal">
                   {biomeIcon(biome.biome) && (
-                    <span aria-hidden="true">{biomeIcon(biome.biome)} </span>
+                    <>
+                      <Icon code={biomeIcon(biome.biome)!} />{' '}
+                    </>
                   )}
                   {biome.biome}
                 </th>

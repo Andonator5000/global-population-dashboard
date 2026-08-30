@@ -51,7 +51,7 @@ import json
 import re
 from typing import Any
 
-from .. import config, manifest as manifest_mod
+from .. import breakdown, config, manifest as manifest_mod
 from ..crosswalk import (
     Entity,
     build_name_index,
@@ -299,7 +299,8 @@ def _unavailable(field: str) -> dict[str, Any]:
 
 
 def _composition_field(
-    section: dict[str, Any], key: str, label: str, *, kind: str = "generic"
+    section: dict[str, Any], key: str, label: str, *, kind: str = "generic",
+    iso3: str = "",
 ) -> dict[str, Any]:
     node = section.get(key)
     raw = _text_of(node)
@@ -307,7 +308,126 @@ def _composition_field(
         return _unavailable(label)
     parsed = parse_composition(raw, kind=kind)
     parsed["note"] = _note_of(node)
+    if parsed["chartable"]:
+        multi_response = bool(
+            _MULTI_RESPONSE.search(parsed["note"] or "")
+            or _MULTI_RESPONSE.search(parsed["text"] or "")
+        )
+        if multi_response:
+            parsed["sharesMayOverlap"] = True
+        parsed.update(breakdown.complete(
+            kind, parsed["percentTotal"], iso3=iso3, label=label,
+            overlapping=multi_response,
+        ))
     return parsed
+
+
+# The source's own admission that categories overlap: "percentages add up to
+# more than 100% because respondents were able to identify more than one
+# ethnic group" (New Zealand). Such fields are multi-response by design.
+_MULTI_RESPONSE = re.compile(
+    r"more than one|multiple (?:ethnic|religio|categor|respons)|"
+    r"may (?:be counted|identify|select)|add(?:s)? up to more than",
+    re.IGNORECASE,
+)
+
+
+_LAND_USE_PARTS: tuple[tuple[str, str], ...] = (
+    ("agricultural land", "Agricultural land"),
+    ("forest", "Forest"),
+    ("other", "Other"),
+)
+_LAND_USE_SUBPARTS: tuple[tuple[str, str], ...] = (
+    ("agricultural land: arable land", "arable land"),
+    ("agricultural land: permanent crops", "permanent crops"),
+    ("agricultural land: permanent pasture", "permanent pasture"),
+)
+
+
+def _land_use_field(geography: dict[str, Any], iso3: str) -> dict[str, Any]:
+    """Land use as a complete breakdown (added 2026-08-29).
+
+    The Factbook publishes agricultural land, forest AND its own "other"
+    (built-up, barren, inland water, unclassified), each with a vintage.
+    Shipping the source's residual beats subtracting World Bank forest and
+    agricultural shares -- which come from different vintages -- from 100.
+    The arable / permanent crops / permanent pasture split rides along as
+    the agricultural item's qualifier.
+    """
+    node = geography.get("Land use") or {}
+    if not isinstance(node, dict):
+        return _unavailable("land use")
+    items: list[dict[str, Any]] = []
+    years: set[int] = set()
+    qualifiers: set[str] = set()
+    for key, label in _LAND_USE_PARTS:
+        raw = _text_of(node.get(key))
+        if not raw:
+            continue
+        text = strip_html(raw)
+        year, qualifier = extract_vintage(text)
+        body = _VINTAGE.sub("", text).strip().rstrip(",;").strip()
+        match = _PERCENT.match(body if "%" in body else f"{body}%")
+        if not match:
+            continue
+        if year:
+            years.add(year)
+        if qualifier:
+            qualifiers.add(qualifier)
+        items.append({
+            "label": label,
+            "percent": float(match.group("value")),
+            "isUpperBound": False,
+            "official": False,
+            "qualifier": None,
+            "fromSource": True,
+        })
+    if len(items) < 2:
+        return _unavailable("a land-use breakdown")
+    sub: list[str] = []
+    for key, label in _LAND_USE_SUBPARTS:
+        raw = _text_of(node.get(key))
+        if raw:
+            text = _VINTAGE.sub("", strip_html(raw)).strip().rstrip(",;")
+            value = text.split(":")[-1].strip()
+            sub.append(f"{label} {value}")
+    if sub and items[0]["label"] == "Agricultural land":
+        items[0]["qualifier"] = "; ".join(sub)
+    total = round(sum(i["percent"] for i in items), 2)
+    field: dict[str, Any] = {
+        "available": True,
+        "text": "; ".join(f"{i['label']} {i['percent']:g}%" for i in items),
+        "vintageYear": max(years) if years else None,
+        "vintageQualifier": "est" if "est" in qualifiers else None,
+        "chartable": True,
+        "items": items,
+        "quantifiedCount": len(items),
+        "percentTotal": total,
+        "sumsToApprox100": bool(97.0 <= total <= 103.0),
+        "sharesMayOverlap": False,
+        "sourceTextMalformed": False,
+        "malformedReason": None,
+        "concatenatedSegments": None,
+        "note": _note_of(node.get("other")) or _note_of(node),
+    }
+    field.update(breakdown.complete("landUse", total, iso3=iso3, label="land use"))
+    # The source's own "Other" IS the residual; when the three parts still
+    # leave a rounding gap the completion rule folds it into that item
+    # rather than adding a second "Other".
+    if field["other"] and any(i["label"] == "Other" for i in items):
+        for item in items:
+            if item["label"] == "Other":
+                item["percent"] = round(item["percent"] + field["other"]["percent"], 2)
+                item["qualifier"] = breakdown.OTHER_TOOLTIPS["landUse"]
+        field["percentTotal"] = 100.0
+        field["sumsToApprox100"] = True
+        field["other"] = None
+    elif field["other"]:
+        field["other"]["tooltip"] = breakdown.OTHER_TOOLTIPS["landUse"]
+    for item in items:
+        if item["label"] == "Other" and not item["qualifier"]:
+            item["qualifier"] = breakdown.OTHER_TOOLTIPS["landUse"]
+    return field
 
 
 def _plain_field(section: dict[str, Any], key: str, label: str) -> dict[str, Any]:
@@ -452,6 +572,7 @@ def ingest(
         people = document.get("People and Society") or {}
         government = document.get("Government") or {}
         economy = document.get("Economy") or {}
+        geography = document.get("Geography") or {}
         capital = government.get("Capital") or {}
         executive = government.get("Executive branch") or {}
         legislative = government.get("Legislative branch") or {}
@@ -467,16 +588,19 @@ def ingest(
             "people": {
                 "ethnicGroups": _composition_field(
                     people, "Ethnic groups", "ethnic group composition",
-                    kind="ethnicGroups",
+                    kind="ethnicGroups", iso3=iso3,
                 ),
                 "religions": _composition_field(
                     people, "Religions", "religious composition",
-                    kind="religions",
+                    kind="religions", iso3=iso3,
                 ),
                 "languages": _composition_field(
                     people, "Languages", "language composition",
-                    kind="languages",
+                    kind="languages", iso3=iso3,
                 ),
+            },
+            "geography": {
+                "landUse": _land_use_field(geography, iso3),
             },
             "government": {
                 "governmentType": _plain_field(
@@ -512,10 +636,12 @@ def ingest(
                     economy, "Exports - commodities", "export commodities"
                 ),
                 "exportPartners": _composition_field(
-                    economy, "Exports - partners", "export partners"
+                    economy, "Exports - partners", "export partners",
+                    kind="exportPartners", iso3=iso3,
                 ),
                 "importPartners": _composition_field(
-                    economy, "Imports - partners", "import partners"
+                    economy, "Imports - partners", "import partners",
+                    kind="importPartners", iso3=iso3,
                 ),
             },
         }
@@ -596,9 +722,11 @@ def ingest(
             + ("..." if len(missing) > 15 else "")
         )
 
+    flagged = breakdown.flush("factbook", manifest)
     print(f"    matched {len(matched)} entities, "
           f"{len(unmatched)} files unmatched, "
-          f"{len(missing)} entities without a Factbook entry")
+          f"{len(missing)} entities without a Factbook entry, "
+          f"{flagged} breakdowns logged for review")
 
 
 __all__ = ["ingest", "parse_composition", "strip_html", "extract_vintage"]
