@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-30T03:15:03+00:00",
+  "generated_at": "2026-08-30T03:22:18+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-30T03:15:03+00:00",
+      "fetched_at": "2026-08-30T03:22:18+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -295,7 +295,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-30T03:15:03+00:00",
+      "fetched_at": "2026-08-30T03:22:18+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -312,6 +312,17 @@
       "citation": "Wikidata (P163/P571/P287); English Wikipedia flag articles",
       "files": [],
       "notes": "244 entities with a flag item; 234 with an adoption date, 38 with a designer, 242 with Wikipedia lead text."
+    },
+    "history_events": {
+      "title": "Human History timeline (editorial) with Commons images",
+      "url": "https://commons.wikimedia.org",
+      "licence": "Editorial text CC0 (this project); images per-file PD/CC (attributed)",
+      "fetched_at": "2026-08-30T00:58:03+00:00",
+      "upstream_release": null,
+      "vintage": "events file version 2",
+      "citation": "etl/reference/history_events.json; Wikimedia Commons",
+      "files": [],
+      "notes": "195 events, 181 with a free image; 2 lead images skipped as non-free."
     },
     "cia_factbook": {
       "title": "CIA World Factbook (factbook.json mirror)",
@@ -610,6 +621,14 @@
       "row_count": null,
       "entity_count": 244
     },
+    "history/events.json": {
+      "description": "Curated global human-history events with dates, precision, category, summary, sources, regions and attributed images.",
+      "sources": [
+        "history_events"
+      ],
+      "row_count": 195,
+      "entity_count": null
+    },
     "factbook/<ISO3>.json": {
       "description": "Qualitative country facts: government, people composition, industries and trade, each field with its own vintage.",
       "sources": [
@@ -663,6 +682,7 @@
     "airports: plausibility layer suppressed 10 figure(s) (airports.passengers x10); see etl/logs/plausibility-airports.json.",
     "63 populated entities are too small to render as polygons at 110m resolution and appear as point markers instead, among them Singapore, Malta, Hong Kong and Macao. Their area is not to scale on the map.",
     "Entities drawn by more than one Natural Earth polygon: CYP, SOM (Cyprus includes Northern Cyprus; Somalia includes Somaliland). Their fills paint multiple paths.",
+    "history: 2 event lead images are not free-licensed and were omitted: germ-theory-pasteur-koch (Copyrighted free use), iranian-revolution (GFDL).",
     "16 Factbook files could not be joined to a registry entity and were skipped: australia-oceania/at.json (Ashmore and Cartier Islands), europe/ax.json (Akrotiri), central-america-n-caribbean/bq.json (Navassa Island), australia-oceania/cr.json (Coral Sea Islands), europe/dx.json (Dhekelia), middle-east/gz.json (Gaza, Gaza Strip), north-america/ip.json (Clipperton Island), europe/jn.json (Jan Mayen), east-n-southeast-asia/pf.json (Paracel Islands), east-n-southeast-asia/pg.json (Spratly Islands), australia-oceania/um.json (Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Palmyra Atoll), australia-oceania/wq.json (Wake Island)...",
     "8 entities have no Factbook entry; their People, Government and industry sections render as not published: ALA, BES, GLP, GUF, MTQ, MYT, REU, UMI",
     "factbook: 25 percentage breakdown(s) do not reconcile to 100% beyond tolerance (suppressed or shipped without an Other item); see etl/logs/breakdowns-factbook.json.",
@@ -671,5 +691,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "784d99546788ee91f1184b7f22c2213892483c2246f2b8daf0095378a82c2b7c"
+  "content_fingerprint": "c42d7574b1f4cd28cbbee8c8759aecc04134b8a51f21ce6f8fd1bb9f55b222fa"
 }

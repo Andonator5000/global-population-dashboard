@@ -672,6 +672,37 @@ export interface FlagMetaFile {
   >
 }
 
+/** data/history/events.json (Phase 3) */
+export interface HistoryEvent {
+  id: string
+  title: string
+  startYear: number
+  endYear: number | null
+  datePrecision: 'exact' | 'decade' | 'century' | 'millennium' | 'approximate'
+  category: string
+  summary: string
+  image: {
+    url: string
+    license: string | null
+    attribution: string | null
+    commonsPage: string
+  } | null
+  sources: string[]
+  regions: string[]
+  wikipedia: string
+}
+
+export interface HistoryFile {
+  source: string
+  version: number
+  note: string
+  categories: string[]
+  regions: string[]
+  counts: { events: number; byCategory: Record<string, number>; byRegion: Record<string, number> }
+  imageNote: string
+  events: HistoryEvent[]
+}
+
 export interface MapPalette {
   note: string
   defaultDirection?: string

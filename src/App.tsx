@@ -1,8 +1,9 @@
-import { Link, Route, Routes } from 'react-router'
+import { Link, NavLink, Route, Routes } from 'react-router'
 
 import { FreshnessPanel } from './components/FreshnessPanel'
 import { ContinentPage } from './routes/ContinentPage'
 import { CountryPage } from './routes/CountryPage'
+import { HistoryPage } from './routes/HistoryPage'
 import { HomePage } from './routes/HomePage'
 import { NotFoundPage } from './routes/NotFoundPage'
 
@@ -37,6 +38,16 @@ export function App() {
           >
             Global Population Dashboard
           </Link>
+          <NavLink
+            to="/history"
+            className="text-sm underline-offset-2 hover:underline"
+            style={({ isActive }) => ({
+              color: isActive ? 'var(--text)' : 'var(--text-muted)',
+              fontWeight: isActive ? 600 : 400,
+            })}
+          >
+            Human History
+          </NavLink>
         </nav>
       </header>
 
@@ -45,6 +56,7 @@ export function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/continent/:id" element={<ContinentPage />} />
           <Route path="/country/:iso3" element={<CountryPage />} />
+          <Route path="/history" element={<HistoryPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

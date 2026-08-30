@@ -1582,6 +1582,56 @@ labels carry identity -- §6.3's finding that seven hues cannot clear every
 CVD pair still stands, which is why the label is never optional. Region
 pairs are gated at the same dE floor.
 
+## 24. The Human History timeline (2026-08-29, Phase 3)
+
+### 24.1 Editorial, versioned, resolved at build time
+
+The timeline is the one section whose content is written rather than
+fetched. `etl/reference/history_events.json` is the versioned source of
+truth: id, title, start/end year, a stated precision (exact / decade /
+century / millennium / approximate), one of seven categories, a 60-100
+word summary, source URLs, regions, and the English Wikipedia article
+that anchors the event. The `history` stage validates all of that (a
+malformed file fails the run) and resolves each event's IMAGE at build
+time from the anchor article's lead image, keeping it only when Commons
+records a public-domain or Creative Commons licence, with author and
+licence rendered. Nothing is scraped at runtime; `data/history/events.json`
+is an ordinary committed artifact inside the content fingerprint.
+
+### 24.2 Dates say how sure they are
+
+Every event carries a precision and the summary says in words when a date
+is contested (Sahelanthropus, the peopling of the Americas, the Buddha's
+death, Zoroaster, the Great Law of Peace). Prehistoric years render as
+"N years ago"; a decade-precision date never renders as a specific year.
+Astronomical year numbering is used internally (negative = BCE), which is
+adequate at the precisions involved.
+
+### 24.3 Coverage is deliberately global
+
+The full set (v2) has 195 events. Regional tags: Africa 43, West Asia 40,
+Europe 79, East Asia 27, South Asia 21, Central Asia 12, Southeast Asia
+11, the Americas 48 across North America / Mesoamerica / South America,
+Oceania 7, and 24 tagged Global -- many events carry several tags. Europe
+still leads because the categories asked for (scientific discovery,
+rights documents) are unevenly distributed in the historical record; the
+balance was pushed by adding events (Aksum, Great Zimbabwe, Benin, the
+Swahili coast, Songhai, Chavín, Tiwanaku, Cahokia, the Haudenosaunee,
+Lapita, Rapa Nui, Mabo, Bandung, the African Charter) rather than by
+removing European ones. Category counts: invention 39, other discovery
+37, war 35, science 29, rights documents 29, religion 18, evolution 9.
+
+### 24.4 The axis is piecewise, and says so
+
+Seven million years cannot share a linear axis with the last five
+centuries. The timeline uses eight era bands, each with its own pixel
+length and a linear scale inside it; every band states its scale ("1 px
+≈ N years") and bands alternate tint, so the change of scale is visible
+rather than implied. A sticky era rail tracks the reader's position.
+Interaction is tap-to-open on touch (labels are real buttons with
+`aria-expanded`), hover-to-open on mouse, Escape to close, and the cards
+are reachable and dismissible from the keyboard.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

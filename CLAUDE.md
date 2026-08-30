@@ -1,7 +1,7 @@
 # Operating guide (for Claude Code sessions)
 
 Read this before changing anything. `README.md` explains the project;
-`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–23 are
+`DATA_DECISIONS.md` records every editorial and sourcing ruling (§18–24 are
 the 2026-08 maintainer batches) — check it before re-litigating a source
 choice.
 
@@ -77,6 +77,9 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   Wikipedia symbolism text (CC BY-SA, verbatim, linked).
 - Map palette: two gated directions (atlas default, paper), chroma <= 0.045;
   continent view = cohesive regions + labels, no internal borders.
+- `/history` is EDITORIAL: edit `etl/reference/history_events.json` (bump
+  `version`), never `data/history/events.json`; the `history` stage
+  validates it and resolves free images. Keep regional balance in mind.
 - Inventions pass a Wikidata class gate (allow/deny roots in
   `etl/config.py`; food/drink still denied); cuisine and inventions
   coverage limits are stated in the UI, not padded.
