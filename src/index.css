@@ -4,6 +4,34 @@
 @import './generated/flag-fills.css';
 
 /*
+ * Interaction baseline (2026-08-29, from the UI UX Pro Max checklist):
+ * Tailwind v4 resets buttons to cursor: default, so clickable controls
+ * must opt back in; hover/focus colour changes ease over 150 ms; touch
+ * targets skip the legacy 300 ms tap delay; in-page anchors scroll
+ * smoothly unless the reader asked for reduced motion.
+ */
+button,
+[role='button'],
+select,
+summary {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  button,
+  a,
+  summary {
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+}
+
+/*
  * Monochrome OpenMoji glyphs (public/icons/openmoji, CC BY-SA 4.0), painted
  * in currentColor through a mask so one SVG follows both themes. Sized in
  * em so an icon scales with the text it decorates.
