@@ -29,7 +29,9 @@ npm run dev                                # dev server on :5173
 - **Always finish with a FULL cached `etl\run.py` before committing data.**
   `--only` writes a partial manifest; CI verifies `content_fingerprint`
   against /data and rejects mismatches.
-- Set `LEADERS_CACHED_ONLY=1` for local full runs — otherwise the leaders
+- Set `LEADERS_CACHED_ONLY=1 CURRENCY_CACHED_ONLY=1` for local full runs —
+  the banknote category walk (~1,500 Commons listings, rate-limited) takes
+  hours cold and the monthly refresh completes it; otherwise the leaders
   stage grinds against Commons rate limits re-downloading portraits. The
   monthly refresh (.github/workflows/refresh-data.yml) retries them.
 - The biomes stage takes ~10 min per full run. That's normal.

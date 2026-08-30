@@ -1485,6 +1485,21 @@ currencies with no compliant free image render a designed card (name, ISO
 code, symbol) — never a mismatched photo. Coverage is what Commons holds:
 many modern notes are copyrighted and absent by law.
 
+**Status at ship (2026-08-29): the category walk is OFF.** Two full walks
+(about 1,500 rate-limited Commons listings each, hours apiece) showed the
+candidate selection is not yet trustworthy: a currency Wikidata lists for
+several countries (yen → Zimbabwe, euro → Croatia and Monaco) pulls in
+those countries' banknote trees, and a name stem such as "Brazilian"
+admits the historic cruzado. Rather than delay the batch, the maintainer
+chose to hold the walk for another day. The stage therefore judges only
+the Wikidata P18 image and editorial overrides against the criteria
+(`CURRENCY_WALK=1` re-enables the walk; `CURRENCY_CACHED_ONLY=1` limits
+it to cached listings). The visible result is honest: a compliant single
+note where P18 supplies one, the designed card everywhere else. Open
+items for the walk: restrict country-named roots to single-country
+currencies; whole-word stem matching; rank by series year, not by any
+year in a photo's filename.
+
 ### 22.8 One icon set
 
 Industry, agriculture and export items used platform emoji through 104
