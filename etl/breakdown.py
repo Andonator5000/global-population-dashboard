@@ -62,11 +62,18 @@ OTHER_TOOLTIPS: dict[str, str] = {
         "Net taxes and subsidies on products, and statistical discrepancy "
         "-- the World Bank's sector shares exclude them."
     ),
+    "electricityMix": (
+        "Other renewables (geothermal, wave and tidal), other sources the "
+        "producer does not break out, and rounding."
+    ),
 }
 
 #: Kinds that are partial lists by construction (the source publishes its
 #: top N). Their "Other" is legitimate no matter how large.
-PARTIAL_BY_DESIGN = {"exportPartners", "importPartners"}
+# The electricity mix is partial by design too: geothermal, wave and tidal
+# are not broken out by the source, and for Kenya or Iceland they are the
+# largest "Other" there is.
+PARTIAL_BY_DESIGN = {"exportPartners", "importPartners", "electricityMix"}
 
 #: Kinds where shares overlap by nature; never padded, never suppressed.
 OVERLAPPING_BY_NATURE = {"languages"}

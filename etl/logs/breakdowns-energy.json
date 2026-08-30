@@ -1,0 +1,6 @@
+{
+  "note": "Percentage breakdowns whose components do not reconcile to 100% (etl/breakdown.py). 'suppressed' breakdowns render as prose; 'large gap' ones render without an Other item until reviewed; 'overlap within tolerance' ones render with a note.",
+  "stage": "energy",
+  "summary": {},
+  "entries": []
+}
