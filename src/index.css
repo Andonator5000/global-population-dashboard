@@ -57,9 +57,63 @@ summary {
  * dataviz guidance is applied.
  */
 
+/*
+ * Type (2026-08-29, from the UI UX Pro Max "News Editorial" pairing, chosen
+ * over its dashboard suggestion because this is a reference atlas, not an
+ * ops console): Newsreader, a text serif with an optical-size axis, for
+ * page and section titles; Public Sans, a humanist sans with tabular
+ * figures, for everything that carries data. Both OFL, self-hosted
+ * (public/fonts) so the site makes no third-party font request; system
+ * fonts remain the fallback stack and the layout must not depend on either
+ * face loading.
+ */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/newsreader-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/newsreader-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/public-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/public-sans-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @theme {
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    sans-serif;
+  --font-serif:
+    'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 }
 
@@ -219,10 +273,33 @@ body {
   background: var(--surface);
   color: var(--text);
   font-family: var(--font-sans);
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   /* Wide content (tables, the map) scrolls inside its own overflow container.
      The page itself must never scroll sideways. */
   overflow-x: hidden;
+}
+
+/* Editorial voice for titles only: page titles and section headings set in
+   the serif at a slightly heavier weight; data, labels, controls and every
+   number stay in the sans so figures align and tabular digits apply. */
+@layer base {
+  h1,
+  h2,
+  .font-display {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.1;
+  }
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 2.75rem;
+    }
+  }
 }
 
 /* Long entity names and ecoregion labels would otherwise force a table wider

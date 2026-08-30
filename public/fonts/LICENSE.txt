@@ -1,0 +1,4 @@
+Newsreader (Production Type) and Public Sans (US Web Design System) are
+licensed under the SIL Open Font License 1.1 (https://openfontlicense.org).
+Latin subsets, variable weight/optical-size axes, downloaded from Google
+Fonts and self-hosted so the site makes no third-party font requests.

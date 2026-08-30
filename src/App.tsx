@@ -30,7 +30,7 @@ export function App() {
         >
           <Link
             to="/"
-            className="rounded-md px-3 py-1.5 text-sm font-medium tracking-tight"
+            className="rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
             style={{
               background: 'var(--brand-bg)',
               color: 'var(--brand-text)',
