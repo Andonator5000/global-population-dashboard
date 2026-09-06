@@ -277,6 +277,24 @@ def ingest(
     intervals = _parse_chart(chart_response.read_text())
     print(f"    ICS chart: {len(intervals)} intervals", flush=True)
 
+    # Round-2 §40: editorial descriptions and cited etymologies for the
+    # units shown as banners. Keys must match the chart exactly — a note
+    # for a renamed unit fails loudly rather than silently vanishing.
+    unit_notes = json.loads(
+        (config.REFERENCE_DIR / "ics_unit_notes.json").read_text("utf-8")
+    )["units"]
+    by_key = {f"{i['name']}|{i['rank']}": i for i in intervals}
+    missing = sorted(set(unit_notes) - set(by_key))
+    if missing:
+        raise FetchError(
+            "ics_unit_notes.json keys not present in the chart: "
+            + ", ".join(missing)
+        )
+    for key, note in unit_notes.items():
+        by_key[key]["description"] = note["description"]
+        by_key[key]["etymology"] = note["etymology"]
+        by_key[key]["etymologySource"] = note["source"]
+
     # ---- events ----------------------------------------------------------
     source = json.loads(_SOURCE.read_text("utf-8"))
     events: list[dict[str, Any]] = source["events"]

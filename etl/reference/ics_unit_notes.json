@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "note": "EDITORIAL annotations for ICS chart units shown in the Evolution page banners (round-2 §40): a plain-language description of what the unit represents and the etymology of its name, each entry citing its unit's English Wikipedia article (the etymologies there carry the primary literature). Keyed by 'Name|Rank' as parsed from the ICS linked-data chart. The evolution stage fails loudly if a key stops matching the chart.",
+  "units": {
+    "Hadean|Eon": {
+      "description": "Earth's first eon: accretion, the Moon-forming impact, magma oceans and the first crust and water. Almost no rock record survives.",
+      "etymology": "From Hades, the Greek underworld — named for the hellish conditions of the young Earth.",
+      "source": "https://en.wikipedia.org/wiki/Hadean"
+    },
+    "Archean|Eon": {
+      "description": "The eon of the first continents and the first uncontested life: microbial mats and stromatolites under an oxygen-free sky.",
+      "etymology": "From Greek arkhē, 'beginning, origin'.",
+      "source": "https://en.wikipedia.org/wiki/Archean"
+    },
+    "Proterozoic|Eon": {
+      "description": "Nearly two billion years from the Great Oxidation to the first animals: eukaryotic cells, supercontinents, and global glaciations.",
+      "etymology": "From Greek proteros 'earlier' + zōē 'life' — the time of earlier life.",
+      "source": "https://en.wikipedia.org/wiki/Proterozoic"
+    },
+    "Phanerozoic|Eon": {
+      "description": "The current eon: the 539 million years of abundant, visible, shelly and bony life, from the Cambrian explosion to today.",
+      "etymology": "From Greek phaneros 'visible' + zōē 'life' — the age of visible life.",
+      "source": "https://en.wikipedia.org/wiki/Phanerozoic"
+    },
+    "Eoarchean|Era": {
+      "description": "The dawn of the Archean: the oldest surviving rocks and the first disputed traces of life.",
+      "etymology": "From Greek ēōs 'dawn' + arkhē 'beginning'.",
+      "source": "https://en.wikipedia.org/wiki/Eoarchean"
+    },
+    "Paleoarchean|Era": {
+      "description": "The era of the oldest widely accepted fossils, the Pilbara stromatolites.",
+      "etymology": "From Greek palaios 'ancient' + arkhē 'beginning'.",
+      "source": "https://en.wikipedia.org/wiki/Paleoarchean"
+    },
+    "Mesoarchean|Era": {
+      "description": "Middle Archean: growing microbial ecosystems and the first stirrings of plate motion.",
+      "etymology": "From Greek mesos 'middle' + arkhē 'beginning'.",
+      "source": "https://en.wikipedia.org/wiki/Mesoarchean"
+    },
+    "Neoarchean|Era": {
+      "description": "Late Archean: continents assemble in earnest and oxygenic photosynthesis is underway by its close.",
+      "etymology": "From Greek neos 'new' + arkhē 'beginning'.",
+      "source": "https://en.wikipedia.org/wiki/Neoarchean"
+    },
+    "Paleoproterozoic|Era": {
+      "description": "Opens with the Great Oxidation Event — oxygen transforms atmosphere and oceans — and sees the first eukaryote candidates.",
+      "etymology": "From Greek palaios 'ancient' + proteros 'earlier' + zōē 'life'.",
+      "source": "https://en.wikipedia.org/wiki/Paleoproterozoic"
+    },
+    "Mesoproterozoic|Era": {
+      "description": "The heart of the 'Boring Billion': stable, low-oxygen seas — yet sexual reproduction and multicellular algae appear.",
+      "etymology": "From Greek mesos 'middle' + proteros 'earlier' + zōē 'life'.",
+      "source": "https://en.wikipedia.org/wiki/Mesoproterozoic"
+    },
+    "Neoproterozoic|Era": {
+      "description": "Rodinia breaks up, Snowball Earth glaciations come and go, and the first animals — the Ediacaran biota — appear at its end.",
+      "etymology": "From Greek neos 'new' + proteros 'earlier' + zōē 'life'.",
+      "source": "https://en.wikipedia.org/wiki/Neoproterozoic"
+    },
+    "Paleozoic|Era": {
+      "description": "From the Cambrian explosion to the Great Dying: trilobites, the first fish, forests, and vertebrates walking onto land.",
+      "etymology": "From Greek palaios 'ancient' + zōē 'life' — the era of old life.",
+      "source": "https://en.wikipedia.org/wiki/Paleozoic"
+    },
+    "Mesozoic|Era": {
+      "description": "The age of reptiles: dinosaurs, the first mammals and birds, flowering plants — ended by the Chicxulub impact.",
+      "etymology": "From Greek mesos 'middle' + zōē 'life' — the era of middle life.",
+      "source": "https://en.wikipedia.org/wiki/Mesozoic"
+    },
+    "Cenozoic|Era": {
+      "description": "The age of mammals — and of birds, grasses and eventually humans — from the dinosaurs' end to the present.",
+      "etymology": "From Greek kainos 'new' + zōē 'life' — the era of recent life.",
+      "source": "https://en.wikipedia.org/wiki/Cenozoic"
+    },
+    "Siderian|Period": {
+      "description": "Named for its banded-iron formations, laid down as the first free oxygen rusted the oceans' dissolved iron.",
+      "etymology": "From Greek sidēros, 'iron'.",
+      "source": "https://en.wikipedia.org/wiki/Siderian"
+    },
+    "Rhyacian|Period": {
+      "description": "A period of great lava outpourings and the deposition of major ore bodies.",
+      "etymology": "From Greek rhyax, 'stream of lava'.",
+      "source": "https://en.wikipedia.org/wiki/Rhyacian"
+    },
+    "Orosirian|Period": {
+      "description": "A time of global mountain-building as continents collided, plus two of the largest known impact events (Vredefort, Sudbury).",
+      "etymology": "From Greek oroseira, 'mountain range'.",
+      "source": "https://en.wikipedia.org/wiki/Orosirian"
+    },
+    "Statherian|Period": {
+      "description": "Closes the Paleoproterozoic with newly stabilised continental platforms; the supercontinent Columbia assembles.",
+      "etymology": "From Greek statheros, 'stable, firm'.",
+      "source": "https://en.wikipedia.org/wiki/Statherian"
+    },
+    "Calymmian|Period": {
+      "description": "Named for the expansion of sedimentary covers on the stable platforms.",
+      "etymology": "From Greek calymma, 'cover'.",
+      "source": "https://en.wikipedia.org/wiki/Calymmian"
+    },
+    "Ectasian|Period": {
+      "description": "Continued spreading of platform covers; home of Bangiomorpha, the first known sexually reproducing organism.",
+      "etymology": "From Greek ectasis, 'extension'.",
+      "source": "https://en.wikipedia.org/wiki/Ectasian"
+    },
+    "Stenian|Period": {
+      "description": "Named for the narrow belts of deformed rock left as the supercontinent Rodinia assembled.",
+      "etymology": "From Greek stenos, 'narrow'.",
+      "source": "https://en.wikipedia.org/wiki/Stenian"
+    },
+    "Tonian|Period": {
+      "description": "Rodinia stretches and begins to rift; the first fungi and shell-building amoebae appear, and molecular clocks place the origin of animals here.",
+      "etymology": "From Greek tonos, 'stretch, tension' — for the stretching of the crust as Rodinia began to break up.",
+      "source": "https://en.wikipedia.org/wiki/Tonian"
+    },
+    "Cryogenian|Period": {
+      "description": "The period of the Snowball Earth glaciations — ice to the tropics, twice.",
+      "etymology": "From Greek cryos 'cold' + genesis 'birth' — the birth of ice.",
+      "source": "https://en.wikipedia.org/wiki/Cryogenian"
+    },
+    "Ediacaran|Period": {
+      "description": "The first period defined by a golden spike in over a century: the strange soft-bodied Ediacaran biota, life's first large organisms.",
+      "etymology": "From the Ediacara Hills of South Australia, where its fossils were found — likely from an Aboriginal word for a place near water.",
+      "source": "https://en.wikipedia.org/wiki/Ediacaran"
+    },
+    "Cambrian|Period": {
+      "description": "The explosion of animal life: nearly every major body plan enters the fossil record.",
+      "etymology": "From Cambria, the Latin name for Wales, where Adam Sedgwick first described its rocks in 1835.",
+      "source": "https://en.wikipedia.org/wiki/Cambrian"
+    },
+    "Ordovician|Period": {
+      "description": "Marine life diversifies enormously; the first ice-age extinction closes it.",
+      "etymology": "From the Ordovices, a Celtic tribe of north Wales — a diplomatic name chosen by Lapworth to settle the Cambrian–Silurian boundary dispute.",
+      "source": "https://en.wikipedia.org/wiki/Ordovician"
+    },
+    "Silurian|Period": {
+      "description": "Jawed fish appear and plants take root on land.",
+      "etymology": "From the Silures, another Celtic tribe of Wales, named by Murchison in 1835.",
+      "source": "https://en.wikipedia.org/wiki/Silurian"
+    },
+    "Devonian|Period": {
+      "description": "The age of fishes and of the first forests and tetrapods.",
+      "etymology": "From Devon, England, whose marine rocks defined it.",
+      "source": "https://en.wikipedia.org/wiki/Devonian"
+    },
+    "Carboniferous|Period": {
+      "description": "Vast coal swamps, sky-high oxygen, giant insects, and the first amniote eggs.",
+      "etymology": "From Latin carbo 'coal' + ferre 'to bear' — the coal-bearing period.",
+      "source": "https://en.wikipedia.org/wiki/Carboniferous"
+    },
+    "Permian|Period": {
+      "description": "Pangaea assembles; synapsids rule; the period ends in the worst extinction known.",
+      "etymology": "From Perm, the Russian city and region where Murchison described its strata in 1841.",
+      "source": "https://en.wikipedia.org/wiki/Permian"
+    },
+    "Triassic|Period": {
+      "description": "Life recovers from the Great Dying; dinosaurs and mammals both begin.",
+      "etymology": "From Latin trias, 'triad' — for the three-layered rock sequence of Germany.",
+      "source": "https://en.wikipedia.org/wiki/Triassic"
+    },
+    "Jurassic|Period": {
+      "description": "Giant sauropods, the first birds, and seas full of marine reptiles.",
+      "etymology": "From the Jura Mountains of France and Switzerland.",
+      "source": "https://en.wikipedia.org/wiki/Jurassic"
+    },
+    "Cretaceous|Period": {
+      "description": "Flowering plants spread and dinosaurs reach their peak — until the asteroid.",
+      "etymology": "From Latin creta, 'chalk' — for the chalk cliffs of northwest Europe.",
+      "source": "https://en.wikipedia.org/wiki/Cretaceous"
+    },
+    "Paleogene|Period": {
+      "description": "Mammals and birds radiate into the emptied world.",
+      "etymology": "From Greek palaios 'ancient' + -genēs 'born' — the older part of the age of new life.",
+      "source": "https://en.wikipedia.org/wiki/Paleogene"
+    },
+    "Neogene|Period": {
+      "description": "Grasslands spread, apes diverge, and the hominin story begins.",
+      "etymology": "From Greek neos 'new' + -genēs 'born'.",
+      "source": "https://en.wikipedia.org/wiki/Neogene"
+    },
+    "Quaternary|Period": {
+      "description": "The ice ages and the whole of human evolution.",
+      "etymology": "Latin quaternarius, 'fourth' — a survivor of the old fourfold division of Earth history.",
+      "source": "https://en.wikipedia.org/wiki/Quaternary"
+    }
+  }
+}
