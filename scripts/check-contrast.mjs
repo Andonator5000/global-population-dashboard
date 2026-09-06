@@ -67,6 +67,12 @@ const THEMES = {
     barTrack: 'oklch(93% 0.006 250)',
     positive: 'oklch(44% 0.13 150)',
     negative: 'oklch(50% 0.17 25)',
+    surfaceSunken: 'oklch(96.5% 0.004 250)',
+    navGlobaldata: 'oklch(44% 0.12 155)',
+    navHistory: 'oklch(46% 0.13 35)',
+    navTaxonomy: 'oklch(42% 0.09 200)',
+    navEvolution: 'oklch(48% 0.1 70)',
+    navSpace: 'oklch(43% 0.11 295)',
   },
   dark: {
     surface: 'oklch(17% 0.006 250)',
@@ -87,6 +93,12 @@ const THEMES = {
     barTrack: 'oklch(27% 0.008 250)',
     positive: 'oklch(78% 0.14 150)',
     negative: 'oklch(76% 0.15 25)',
+    surfaceSunken: 'oklch(15% 0.006 250)',
+    navGlobaldata: 'oklch(70% 0.12 155)',
+    navHistory: 'oklch(72% 0.12 35)',
+    navTaxonomy: 'oklch(70% 0.1 200)',
+    navEvolution: 'oklch(74% 0.1 75)',
+    navSpace: 'oklch(72% 0.1 295)',
   },
 }
 
@@ -98,6 +110,15 @@ const checks = (t) => [
   // Tinted page backgrounds (home page and flag-tinted country pages sit at
   // the same lightness/chroma band as this token).
   ['body text on page tint', t.text, t.pageTint, 4.5],
+  // Round-2 design pass (§34): zebra stripe and collapsed-sources ground.
+  ['body text on sunken surface', t.text, t.surfaceSunken, 4.5],
+  ['muted text on sunken surface', t.textMuted, t.surfaceSunken, 4.5],
+  // Nav active underlines are non-text indicators: 3:1 in both themes.
+  ['nav accent (global data) vs surface', t.navGlobaldata, t.surface, 3.0],
+  ['nav accent (history) vs surface', t.navHistory, t.surface, 3.0],
+  ['nav accent (taxonomy) vs surface', t.navTaxonomy, t.surface, 3.0],
+  ['nav accent (evolution) vs surface', t.navEvolution, t.surface, 3.0],
+  ['nav accent (space) vs surface', t.navSpace, t.surface, 3.0],
   ['muted text on page tint', t.textMuted, t.pageTint, 4.5],
   // Brand button and globe-view tokens are theme-invariant.
   ['brand button label', INVARIANT.brandText, INVARIANT.brandBg, 4.5],

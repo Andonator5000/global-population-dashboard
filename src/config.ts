@@ -63,18 +63,23 @@ export const MAP_PALETTE_LABELS: Record<MapPaletteKey, string> = {
 export type SiteSection = {
   path: string
   label: string
-  /** CSS custom properties declared and contrast-gated in index.css. */
-  bg: string
-  text: string
+  /** Themed nav-accent custom property, contrast-gated in index.css (§34). */
+  accent: string
   /** Match only the exact path — the root section would otherwise claim every route. */
   end?: boolean
 }
 
+/**
+ * Round-2 IA (2026-09, §34): Biology is gone as a grouping level; Taxonomy
+ * and Evolution are top-level pages. Old /biology/* paths redirect in
+ * App.tsx so bookmarks survive.
+ */
 export const SECTIONS: readonly SiteSection[] = [
-  { path: '/', label: 'Global Data', bg: 'var(--brand-bg)', text: 'var(--brand-text)', end: true },
-  { path: '/history', label: 'Human History', bg: 'var(--history-bg)', text: 'var(--history-text)' },
-  { path: '/biology', label: 'Biology', bg: 'var(--biology-bg)', text: 'var(--biology-text)' },
-  { path: '/space', label: 'Space', bg: 'var(--space-bg)', text: 'var(--space-text)' },
+  { path: '/', label: 'Global Data', accent: 'var(--nav-globaldata)', end: true },
+  { path: '/history', label: 'Human History', accent: 'var(--nav-history)' },
+  { path: '/taxonomy', label: 'Taxonomy', accent: 'var(--nav-taxonomy)' },
+  { path: '/evolution', label: 'Evolution', accent: 'var(--nav-evolution)' },
+  { path: '/space', label: 'Space', accent: 'var(--nav-space)' },
 ]
 
 /** Continents excluded from per-capita, density, and population rankings. */

@@ -243,15 +243,7 @@ export function EvolutionPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
       <header>
-        <p
-          className="font-sans text-xs font-medium uppercase tracking-widest"
-          style={{ color: 'var(--text-muted)' }}
-        >
-          Biology
-        </p>
-        <h1 className="mt-1 text-2xl font-semibold tracking-tight">
-          Evolution
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight">Evolution</h1>
         <p
           className="mt-2 max-w-3xl text-sm"
           style={{ color: 'var(--text-muted)' }}

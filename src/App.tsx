@@ -1,8 +1,7 @@
-import { Link, NavLink, Route, Routes } from 'react-router'
+import { Link, Navigate, NavLink, Route, Routes } from 'react-router'
 
 import { SECTIONS } from './config'
 import { FreshnessPanel } from './components/FreshnessPanel'
-import { BiologyPage } from './routes/BiologyPage'
 import { ContinentPage } from './routes/ContinentPage'
 import { EvolutionPage } from './routes/EvolutionPage'
 import { CountryPage } from './routes/CountryPage'
@@ -24,44 +23,36 @@ export function App() {
         Skip to content
       </a>
 
+      {/* Masthead (round-2 design pass, §34): a centred publication
+          nameplate — serif title, small-caps tagline, double hairline —
+          replacing the earlier left-edge title + coloured pill buttons.
+          The primary nav is an editorial link row whose active state is a
+          2px underline in the section's own hue plus a text-colour step,
+          so hue is never the only signal. */}
       <header
         className="border-b"
-        style={{ borderColor: 'var(--border)' }}
+        style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
       >
-        {/* Left-aligned deliberately (no mx-auto): the site title should sit
-            at the left edge of the viewport at 100% zoom. */}
-        <nav
-          className="flex flex-wrap items-center gap-x-5 gap-y-2 px-6 py-3"
-          aria-label="Primary"
-        >
-          {/* Masthead (2026-09-05, maintainer request): the site is named
-              Encyclopedia Andranika. Serif via .font-display -- the masthead
-              is a title, not data -- while the section buttons stay sans. */}
-          <Link
-            to="/"
-            className="font-display text-xl leading-none tracking-tight"
-            style={{ color: 'var(--text)' }}
-          >
+        <div className="mx-auto max-w-7xl px-4 pt-5 text-center">
+          <Link to="/" className="masthead-title font-display">
             Encyclopedia Andranika
           </Link>
-          {/* Section buttons render from the SECTIONS registry (2026-09-05):
-              each section owns a hue (2026-08-30 ruling — data atlas in the
-              brand green, history in a clay red opposite it on the wheel),
-              and new sections join by registering in src/config.ts. Active
-              section is marked with a ring as well as aria-current. */}
+          <p className="masthead-tagline font-sans">
+            A reference atlas with a source on every figure
+          </p>
+          <div className="masthead-rule" aria-hidden="true" />
+        </div>
+        <nav
+          className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-1 px-2"
+          aria-label="Primary"
+        >
           {SECTIONS.map((section) => (
             <NavLink
               key={section.path}
               to={section.path}
               {...(section.end ? { end: true } : {})}
-              className="section-link rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
-              style={({ isActive }) => ({
-                background: section.bg,
-                color: section.text,
-                boxShadow: isActive
-                  ? `0 0 0 2px var(--surface), 0 0 0 4px ${section.bg}`
-                  : 'none',
-              })}
+              className="nav-link font-sans"
+              style={{ '--nav-accent': section.accent } as React.CSSProperties}
             >
               {section.label}
             </NavLink>
@@ -75,11 +66,21 @@ export function App() {
           <Route path="/continent/:id" element={<ContinentPage />} />
           <Route path="/country/:iso3" element={<CountryPage />} />
           <Route path="/history" element={<HistoryPage />} />
-          <Route path="/biology" element={<BiologyPage />} />
-          <Route path="/biology/taxonomy" element={<TaxonomyPage />} />
-          <Route path="/biology/evolution" element={<EvolutionPage />} />
+          <Route path="/taxonomy" element={<TaxonomyPage />} />
+          <Route path="/evolution" element={<EvolutionPage />} />
           <Route path="/space" element={<SpacePage />} />
           <Route path="/space/solar-system" element={<SolarSystemPage />} />
+          {/* Round-2 IA: Biology dissolved into two top-level pages. The
+              old paths redirect so bookmarks and inbound links survive. */}
+          <Route path="/biology" element={<Navigate to="/taxonomy" replace />} />
+          <Route
+            path="/biology/taxonomy"
+            element={<Navigate to="/taxonomy" replace />}
+          />
+          <Route
+            path="/biology/evolution"
+            element={<Navigate to="/evolution" replace />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

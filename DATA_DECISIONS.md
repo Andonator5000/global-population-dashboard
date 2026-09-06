@@ -2089,6 +2089,44 @@ JPL SSD tables and SBDB join the monthly refresh (new moon discoveries
 arrive as ordinary data PRs — satellite counts move every year or two).
 The NSSDC snapshots and NASA portrait picks are pinned by construction.
 
+## 34. The round-2 design pass (2026-09, maintainer-requested)
+
+The maintainer reviewed the live site and asked for a professional
+design system, a real masthead, a flatter IA, and less permanent screen
+spent on provenance. UI UX Pro Max was consulted again; its style
+verdict (Minimalism & Swiss) and its nav guidance (active state = colour
+plus underline) were followed; its blue palette and Garamond pairing
+remain declined for the §25/§29 reasons.
+
+### 34.1 Masthead and navigation
+
+The header is now a centred publication nameplate — serif title,
+small-caps tagline ("A reference atlas with a source on every figure"),
+double hairline — REVERSING the earlier left-edge ruling, on maintainer
+request. The coloured section pills are gone; the primary nav is an
+editorial row of uppercase links whose active state is a 2 px underline
+in the section's own hue plus a text-colour step (never hue alone). The
+underline hues are new THEMED tokens (`--nav-*`), stepped lighter in
+dark mode to clear 3:1 as non-text indicators, and gated in both themes.
+The legacy pill tokens remain (they still colour in-page elements).
+
+### 34.2 IA: Biology dissolves
+
+Top-level sections are now Global Data, Human History, **Taxonomy**,
+**Evolution**, Space. `/biology/*` paths redirect to the new top-level
+routes so bookmarks survive.
+
+### 34.3 Sources collapse
+
+The data-freshness panel — previously always open on principle
+("burying warnings would leave readers to discover them by surprise") —
+is now COLLAPSED by default behind a "Sources & data freshness (N)" row
+on every page, by maintainer ruling: the principle bends to the screen
+cost, and discoverability survives via the count, the fixed position,
+and one keyboard-native click (<details>/<summary>). Nothing about the
+three-dates discipline or the warnings changed; they are one toggle
+away instead of permanently unrolled.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

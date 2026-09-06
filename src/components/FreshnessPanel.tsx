@@ -1,6 +1,7 @@
 import { ICON_ATTRIBUTION } from './Icon'
 import { useState } from 'react'
 
+import { CollapsibleSources } from './CollapsibleSources'
 import { useManifest } from '../lib/data'
 
 /**
@@ -54,13 +55,25 @@ export function FreshnessPanel() {
   return (
     <footer
       className="mt-16 border-t text-xs"
-      style={{ borderColor: 'var(--border)', color: 'var(--text-muted)' }}
+      style={{
+        borderColor: 'var(--border)',
+        color: 'var(--text-muted)',
+        background: 'var(--surface-sunken)',
+      }}
     >
-      <div className="mx-auto max-w-7xl px-6 py-8">
+      <div className="mx-auto max-w-7xl px-6 py-3">
+        {/* Round-2 §34: collapsed by default behind "Sources (N)". The
+            provenance principles are unchanged — three dates, never
+            conflated; warnings surfaced — one click away instead of
+            permanently unrolled on every page. */}
+        <CollapsibleSources
+          count={
+            state.status === 'ready'
+              ? Object.keys(state.data.sources).length
+              : undefined
+          }
+        >
         <p className="mb-4">{ICON_ATTRIBUTION}</p>
-        <h2 className="mb-3 font-medium" style={{ color: 'var(--text)' }}>
-          Data freshness
-        </h2>
 
         {state.status === 'loading' && <p>Loading provenance…</p>}
 
@@ -178,6 +191,7 @@ export function FreshnessPanel() {
             </p>
           </>
         )}
+        </CollapsibleSources>
       </div>
     </footer>
   )

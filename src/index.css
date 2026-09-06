@@ -143,11 +143,28 @@ summary {
 
   --surface: oklch(99% 0.002 250);
   --surface-raised: oklch(100% 0 0);
+  --surface-sunken: oklch(96.5% 0.004 250);
   --page-tint: oklch(95.5% 0.035 250);
   --border: oklch(90% 0.004 250);
+  --border-strong: oklch(78% 0.006 250);
   --text: oklch(22% 0.008 250);
   --text-muted: oklch(45% 0.008 250);
   --accent: oklch(52% 0.13 250);
+  /* One card shadow for the whole site (2026-09, round-2 design pass):
+     two soft layers, no hard edges. Dark mode swaps depth for a border. */
+  --shadow-card: 0 1px 2px oklch(20% 0.01 250 / 0.06),
+    0 4px 16px oklch(20% 0.01 250 / 0.05);
+
+  /* Per-section nav accents (round-2 §34): the header's active underline
+     hue. THEMED, unlike the legacy section pills -- a 44%-lightness hue
+     clears 3:1 as a non-text indicator on the light surface but not on
+     the dark one, so dark mode steps each hue up. Gated at 3:1 against
+     the surface in both themes. */
+  --nav-globaldata: oklch(44% 0.12 155);
+  --nav-history: oklch(46% 0.13 35);
+  --nav-taxonomy: oklch(42% 0.09 200);
+  --nav-evolution: oklch(48% 0.1 70);
+  --nav-space: oklch(43% 0.11 295);
 
   /* Map. Land/water is a shape boundary rather than text, so these carry
      perceptual minimums rather than WCAG text ratios. */
@@ -202,11 +219,19 @@ summary {
   :root:not([data-theme='light']) {
     --surface: oklch(17% 0.006 250);
     --surface-raised: oklch(21% 0.007 250);
+    --surface-sunken: oklch(15% 0.006 250);
     --page-tint: oklch(21% 0.025 250);
     --border: oklch(31% 0.008 250);
+    --border-strong: oklch(42% 0.008 250);
     --text: oklch(94% 0.003 250);
     --text-muted: oklch(72% 0.006 250);
     --accent: oklch(76% 0.11 250);
+    --shadow-card: 0 0 0 1px oklch(31% 0.008 250 / 0.6);
+    --nav-globaldata: oklch(70% 0.12 155);
+    --nav-history: oklch(72% 0.12 35);
+    --nav-taxonomy: oklch(70% 0.1 200);
+    --nav-evolution: oklch(74% 0.1 75);
+    --nav-space: oklch(72% 0.1 295);
 
     --map-water: oklch(13% 0.010 235);
     --map-land: oklch(34% 0.014 250);
@@ -240,11 +265,19 @@ summary {
 :root[data-theme='dark'] {
   --surface: oklch(17% 0.006 250);
   --surface-raised: oklch(21% 0.007 250);
+  --surface-sunken: oklch(15% 0.006 250);
   --page-tint: oklch(21% 0.025 250);
   --border: oklch(31% 0.008 250);
+  --border-strong: oklch(42% 0.008 250);
   --text: oklch(94% 0.003 250);
   --text-muted: oklch(72% 0.006 250);
   --accent: oklch(76% 0.11 250);
+  --shadow-card: 0 0 0 1px oklch(31% 0.008 250 / 0.6);
+  --nav-globaldata: oklch(70% 0.12 155);
+  --nav-history: oklch(72% 0.12 35);
+  --nav-taxonomy: oklch(70% 0.1 200);
+  --nav-evolution: oklch(74% 0.1 75);
+  --nav-space: oklch(72% 0.1 295);
 
   --map-water: oklch(13% 0.010 235);
   --map-land: oklch(34% 0.014 250);
@@ -312,6 +345,89 @@ body {
   }
 }
 
+/*
+ * Masthead and primary navigation (round-2 design pass, §34). The site
+ * name is set as a publication nameplate: centred serif over a double
+ * hairline, with the primary nav as an editorial link row beneath --
+ * uppercase sans links whose active state is a 2px underline in the
+ * section's own hue (--nav-accent, set per link). Text colour carries the
+ * state too, so hue is never the only signal.
+ */
+.masthead-title {
+  display: inline-block;
+  font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  color: var(--text);
+}
+
+.masthead-tagline {
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.masthead-rule {
+  margin-top: 0.9rem;
+  border-top: 3px double var(--border-strong);
+}
+
+.nav-link {
+  display: inline-block;
+  /* >=44px touch target: 13px type + 2x ~15px padding. */
+  padding: 0.9rem 0.85rem calc(0.9rem - 2px);
+  border-bottom: 2px solid transparent;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+  border-bottom-color: color-mix(in oklab, var(--nav-accent) 45%, transparent);
+}
+
+.nav-link[aria-current='page'] {
+  color: var(--text);
+  border-bottom-color: var(--nav-accent);
+}
+
+/*
+ * Collapsible Sources (round-2, §34): the provenance panel is one shared
+ * <details> per page, COLLAPSED by default behind a compact "Sources (N)"
+ * row. The keyboard gets the native summary semantics; the chevron
+ * rotation is decorative and dies under reduced motion (global rule).
+ */
+.sources-disclosure > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.sources-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.sources-disclosure > summary .sources-chevron {
+  color: var(--text-muted);
+  transition: transform 150ms ease;
+}
+
+.sources-disclosure[open] > summary .sources-chevron {
+  transform: rotate(90deg);
+}
+
 /* Entity table rows light up on hover/focus-within so a dense table stays
    scannable; the raised surface token keeps AA for every cell. */
 .entity-table tbody tr:hover,
@@ -336,16 +452,6 @@ select,
 summary,
 [role='button'] {
   cursor: pointer;
-}
-
-.section-link {
-  transition:
-    box-shadow 150ms ease,
-    filter 150ms ease;
-}
-
-.section-link:hover {
-  filter: brightness(1.07);
 }
 
 /* Keyboard focus must stay clearly visible -- full keyboard navigation of the
