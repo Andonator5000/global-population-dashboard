@@ -33,9 +33,11 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    # The biome overlay is the long pole (~5 minutes locally) and the raw
-    # downloads run to roughly 250 MB.
-    timeout-minutes: 60
+    # The long poles are the biome overlay (~5 minutes locally) and, since
+    # Phase 5, the Catalogue of Life traversal (~3,500 API calls, which
+    # --refresh re-fetches). Raw downloads run to roughly 350 MB including
+    # the Blue Marble imagery.
+    timeout-minutes: 150
 
     steps:
       - uses: actions/checkout@v4

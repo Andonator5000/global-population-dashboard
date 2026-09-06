@@ -73,6 +73,8 @@ export type SiteSection = {
 export const SECTIONS: readonly SiteSection[] = [
   { path: '/', label: 'Global Data', bg: 'var(--brand-bg)', text: 'var(--brand-text)', end: true },
   { path: '/history', label: 'Human History', bg: 'var(--history-bg)', text: 'var(--history-text)' },
+  { path: '/biology', label: 'Biology', bg: 'var(--biology-bg)', text: 'var(--biology-text)' },
+  { path: '/space', label: 'Space', bg: 'var(--space-bg)', text: 'var(--space-text)' },
 ]
 
 /** Continents excluded from per-capita, density, and population rankings. */

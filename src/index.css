@@ -129,6 +129,15 @@ summary {
      the hue wheel, white text at AA. Theme-invariant like the brand pill. */
   --history-bg: oklch(46% 0.13 35);
   --history-text: oklch(100% 0 0);
+  /* The Biology section button: deep teal, sitting between the brand green
+     and the accent blue on the wheel, white text at AA. Theme-invariant
+     like the other section pills. */
+  --biology-bg: oklch(42% 0.09 200);
+  --biology-text: oklch(100% 0 0);
+  /* The Space section button: deep violet, past the accent blue on the
+     wheel, white text at AA. Theme-invariant like the other section pills. */
+  --space-bg: oklch(43% 0.11 295);
+  --space-text: oklch(100% 0 0);
   --map-space: oklch(8% 0.005 260);
   --map-ocean: oklch(31% 0.06 255);
 

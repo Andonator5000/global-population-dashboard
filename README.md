@@ -10,9 +10,16 @@ The browser never calls an upstream API — it reads committed artifacts from
 > The repository keeps its original `global-population-dashboard` slug so the
 > GitHub Pages URL stays stable; only the site's name changed.
 
-> **Status: all 9 build phases complete.** The site is live, the verification
-> gates pass, and the monthly refresh is verified end to end on a real runner.
-> See [Build phases](#build-phases).
+> **Status: all 9 original build phases complete.** The site is live, the
+> verification gates pass, and the monthly refresh is verified end to end on
+> a real runner. See [Build phases](#build-phases).
+>
+> **2026-09 expansion:** the site grew from a population dashboard into a
+> general-knowledge reference — new Biology section (Taxonomy from the
+> Catalogue of Life, Evolution on the ICS chart), new Space section (the
+> Solar System from NASA/JPL), and a satellite/terrain view on the world
+> map (NASA Blue Marble + Natural Earth detail layers). Rulings in
+> DATA_DECISIONS.md §28–§33.
 
 ## Layout
 
@@ -120,6 +127,11 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Geometry | Natural Earth via TopoJSON | 110m render, 50m for biome math. |
 | Map detail: admin-1 borders, lakes, rivers, places | Natural Earth 10m/50m | Public domain; simplified in the ETL, zoom-lazy in the app — DATA_DECISIONS.md §30. |
 | Satellite/terrain imagery | NASA Blue Marble Next Generation (Aug 2004, topo & bathy) | Public domain, NASA credited on-map; ETL-baked JPEG tiers, no runtime tile server. |
+| Tree of life (Biology → Taxonomy) | Catalogue of Life via ChecklistBank (CC BY 4.0) | To family rank plus focus-family depth; Wikipedia links via Wikidata P10585 — DATA_DECISIONS.md §31. |
+| Geologic time (Biology → Evolution) | ICS International Chronostratigraphic Chart, linked-data publication (CC BY 4.0) | Boundary ages with stated errors and CGMW colours; events editorial — §32. |
+| Evolution illustrations | PhyloPic (CC0/PD only) + Wikipedia lead images via Commons | Per-image licence gate; attribution rendered; unillustrated events logged — §32.3. |
+| Planets, Sun, Earth's Moon (Space) | NSSDC Planetary Fact Sheets via pinned Internet Archive snapshots | NSSDC live site now redirects away; substitution documented — §33.1. |
+| Moons and dwarf planets (Space) | NASA/JPL Solar System Dynamics tables + Small-Body Database API | Full satellite catalogue; counts derived by counting it; portraits from the NASA Image Library — §33. |
 | Biomes | RESOLVE Ecoregions 2017 | Build-time overlay, never runtime. |
 | Democracy, human rights, governance, CO₂ per capita | V-Dem / Regimes of the World / Hanson & Sigman / Global Carbon Budget, via Our World in Data | Primary source for the Freedom and governance measures; citations name the underlying producer. |
 | World Heritage sites | UNESCO World Heritage List | Official syndication XML — see DATA_DECISIONS.md §16.3 on the WAF workaround. |

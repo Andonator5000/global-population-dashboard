@@ -317,6 +317,76 @@ BLUE_MARBLE_URL = (
 )
 BLUE_MARBLE_VINTAGE = "2004-08"
 
+# --------------------------------------------------------------------------
+# Biology: taxonomy (Phase 5, 2026-09-05). Catalogue of Life via the keyless
+# ChecklistBank API; '3LR' is the permanent alias for the latest COL release.
+# Wikipedia links come from Wikidata (P10585 = Catalogue of Life ID), batched
+# through the same SPARQL endpoint the leaders stage uses. DATA_DECISIONS §31.
+# --------------------------------------------------------------------------
+
+CHECKLISTBANK_API = "https://api.checklistbank.org"
+COL_DATASET = "3LR"
+# Children pages are capped; a node with more children than this is emitted
+# with a `truncated` flag rather than silently complete-looking.
+COL_CHILD_PAGE_LIMIT = 300
+# Genus/species depth is only fetched for the reference-listed families; a
+# genus with more species than this cap is truncated with the flag above.
+COL_SPECIES_PER_GENUS_LIMIT = 100
+
+# --------------------------------------------------------------------------
+# Biology: evolution timeline (Phase 6, 2026-09-05). The ICS International
+# Chronostratigraphic Chart from the commission's own linked-data
+# publication (CC BY 4.0); PhyloPic for silhouettes (per-image licences,
+# CC0/public-domain kept only). Events are editorial:
+# etl/reference/evolution_events.json. DATA_DECISIONS §32.
+# --------------------------------------------------------------------------
+
+ICS_CHART_TTL = (
+    "https://raw.githubusercontent.com/i-c-stratigraphy/chart/main/chart.ttl"
+)
+PHYLOPIC_API = "https://api.phylopic.org"
+
+# --------------------------------------------------------------------------
+# Space: the Solar System (Phase 7, 2026-09-05). DATA_DECISIONS §33.
+#
+# NSSDC's Planetary Fact Sheets were the brief's named source, but
+# nssdc.gsfc.nasa.gov now 307-redirects wholesale to a nasa.gov landing
+# page (checked 2026-09-05), so the sheets are fetched from PINNED Internet
+# Archive snapshots (the `id_` variant serves the original bytes). The
+# timestamps below are exact snapshots verified once; planetary constants
+# do not move month to month, so pinning is honest. If NSSDC returns, swap
+# the URLs back. Everything else is live JPL SSD (keyless).
+# --------------------------------------------------------------------------
+
+NSSDC_SNAPSHOTS: dict[str, str] = {
+    "sun": "20250813140840",
+    "mercury": "20250821200511",
+    "venus": "20250820171848",
+    "earth": "20250804210832",
+    "mars": "20250801211259",
+    "jupiter": "20250801140223",
+    "saturn": "20250821165423",
+    "uranus": "20250723171354",
+    "neptune": "20250723171356",
+    "pluto": "20250820171746",
+    "moon": "20250804210832",
+}
+NSSDC_FACT_URL = (
+    "https://web.archive.org/web/{timestamp}id_/"
+    "https://nssdc.gsfc.nasa.gov/planetary/factsheet/{page}fact.html"
+)
+
+JPL_SATS_ELEM = "https://ssd.jpl.nasa.gov/sats/elem/"
+JPL_SATS_PHYS = "https://ssd.jpl.nasa.gov/sats/phys_par/"
+JPL_SATS_DISCOVERY = "https://ssd.jpl.nasa.gov/sats/discovery.html"
+JPL_SBDB_API = "https://ssd-api.jpl.nasa.gov/sbdb.api"
+JPL_HORIZONS_API = "https://ssd.jpl.nasa.gov/api/horizons.api"
+
+# Cross-check tolerances for archived NSSDC figures vs live JPL Horizons
+# (maintainer-requested, 2026-09: the archive is trusted only as far as
+# live NASA agrees with it). Fractional differences above these abort.
+HORIZONS_CHECK_TOLERANCE = {"massKg": 0.01, "radiusKm": 0.01, "density": 0.03}
+
 # RESOLVE Ecoregions 2017 (WWF terrestrial ecoregions lineage).
 ECOREGIONS_URL = "https://storage.googleapis.com/teow2016/Ecoregions2017.zip"
 # Geometry is simplified to this tolerance (in EQUAL_AREA_CRS metres) before

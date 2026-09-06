@@ -2,11 +2,16 @@ import { Link, NavLink, Route, Routes } from 'react-router'
 
 import { SECTIONS } from './config'
 import { FreshnessPanel } from './components/FreshnessPanel'
+import { BiologyPage } from './routes/BiologyPage'
 import { ContinentPage } from './routes/ContinentPage'
+import { EvolutionPage } from './routes/EvolutionPage'
 import { CountryPage } from './routes/CountryPage'
 import { HistoryPage } from './routes/HistoryPage'
 import { HomePage } from './routes/HomePage'
 import { NotFoundPage } from './routes/NotFoundPage'
+import { SolarSystemPage } from './routes/SolarSystemPage'
+import { SpacePage } from './routes/SpacePage'
+import { TaxonomyPage } from './routes/TaxonomyPage'
 
 export function App() {
   return (
@@ -70,6 +75,11 @@ export function App() {
           <Route path="/continent/:id" element={<ContinentPage />} />
           <Route path="/country/:iso3" element={<CountryPage />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/biology" element={<BiologyPage />} />
+          <Route path="/biology/taxonomy" element={<TaxonomyPage />} />
+          <Route path="/biology/evolution" element={<EvolutionPage />} />
+          <Route path="/space" element={<SpacePage />} />
+          <Route path="/space/solar-system" element={<SolarSystemPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

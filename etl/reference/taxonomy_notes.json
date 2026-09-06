@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "note": "Contested-placement annotations shown on Taxonomy nodes. EDITORIAL: the classification itself follows Catalogue of Life; these notes say where that choice is genuinely disputed rather than presenting it as settled. Keyed by scientific name + rank as they appear in COL.",
+  "notes": {
+    "Life|root": "The tree follows the Catalogue of Life checklist: three domains of cellular life, plus viruses as a separate, unranked lineage. Whether viruses belong on a tree of life at all is itself debated.",
+    "Viruses|unranked": "Not cellular life. Catalogue of Life carries viruses (per the ICTV classification) as an unranked group alongside the three domains; many biologists exclude them from the tree of life entirely because they do not metabolise or self-replicate.",
+    "Chromista|kingdom": "A kingdom in Catalogue of Life following Cavalier-Smith, but not recovered as a natural (monophyletic) group in most molecular phylogenies; its members are scattered across several eukaryote supergroups in other classifications.",
+    "Protozoa|kingdom": "A kingdom in Catalogue of Life, but a holdover grouping rather than a natural clade: modern phylogenies distribute these lineages across several eukaryote supergroups. Retained here because the source retains it, and flagged for exactly that reason.",
+    "Archaea|domain": "The three-domain model (Woese) is followed here. Note that many current phylogenies place eukaryotes WITHIN the archaeal radiation (the two-domain or eocyte model), which would make Archaea paraphyletic."
+  }
+}
