@@ -538,7 +538,6 @@ export function WorldMap({
   }
   void landNeutral
 
-  const activeIso3 = focusTargets[activeIndex]?.iso3
   const tabIndexFor = (iso3: string) =>
     indexByIso3.get(iso3) === activeIndex ? 0 : -1
 
@@ -899,7 +898,12 @@ export function WorldMap({
           })}
       </g>
 
-      <title>{`World map with ${focusTargets.length} entities. Currently focused: ${activeIso3 ?? 'none'}.`}</title>
+      {/* Deliberately no <svg><title> here (2026-09-05, maintainer request):
+          browsers render it as a native tooltip over the whole map, which
+          surfaced on every country hover in fullscreen. The accessible name
+          is the aria-label on this <svg> (which wins over <title> for the
+          name anyway), and the focused country announces itself through the
+          per-shape aria-labels. */}
     </svg>
     </div>
   )
