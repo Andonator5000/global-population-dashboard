@@ -1816,6 +1816,37 @@ exists so upstream operators can trace our traffic to the repository; it
 matches the repo slug and URL, both of which are unchanged, so renaming
 it would only decouple the string from the place it points to.
 
+## 29. The 2026-09-05 design pass (UI UX Pro Max, maintainer-requested)
+
+The maintainer asked for a whole-site audit with the UI UX Pro Max design
+database before the site grows new sections (Biology, Space). Its
+design-system generator, queried for "encyclopedia reference atlas
+editorial authoritative", again matched **Minimalism & Swiss Style** — the
+same verdict §25 recorded — so the existing direction stands. Two of its
+suggestions were declined deliberately: its "knowledge blue" palette would
+override the gated flag-derived map hues and section colours, and its
+EB Garamond/Crimson pairing would re-litigate the settled §25 type ruling
+(Newsreader / Public Sans).
+
+What the audit did change:
+
+- **Section registry.** The header's section buttons now render from
+  `SECTIONS` in `src/config.ts`; a new section is one registry entry plus
+  a contrast-gated token pair in `index.css`, not header surgery. Needed
+  because the section list is about to grow.
+- **Favicon.** The site had none. `public/favicon.svg`: a serif "A"
+  monogram on the exact `--brand-bg` green. System serif, because SVG
+  favicons cannot load webfonts.
+- **Pointer and hover affordances.** Tailwind v4's preflight leaves
+  buttons on `cursor: default`; real controls get the pointer back, and
+  section buttons answer hover with a 150 ms brightness lift (a filter,
+  so gated token colours are untouched; `prefers-reduced-motion` zeroes
+  the transition).
+
+Verified against the audit checklist already in place from Phase 9:
+global `:focus-visible`, map focus strokes, forced-colors support,
+reduced-motion, table overflow handling, skip link, heading hierarchy.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

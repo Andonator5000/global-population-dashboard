@@ -317,6 +317,28 @@ td {
   overflow-wrap: break-word;
 }
 
+/* Interactive affordances (2026-09-05, Phase 2 design pass). Tailwind v4's
+   preflight leaves buttons on cursor:default; real controls get the pointer
+   back. Section buttons answer hover with a slight brightness lift -- a
+   filter, so the gated token colours themselves are untouched -- and the
+   reduced-motion block at the bottom zeroes the transition. */
+button:not(:disabled),
+select,
+summary,
+[role='button'] {
+  cursor: pointer;
+}
+
+.section-link {
+  transition:
+    box-shadow 150ms ease,
+    filter 150ms ease;
+}
+
+.section-link:hover {
+  filter: brightness(1.07);
+}
+
 /* Keyboard focus must stay clearly visible -- full keyboard navigation of the
    map and every detail page is an acceptance criterion. */
 :focus-visible {

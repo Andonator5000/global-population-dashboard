@@ -1,5 +1,6 @@
 import { Link, NavLink, Route, Routes } from 'react-router'
 
+import { SECTIONS } from './config'
 import { FreshnessPanel } from './components/FreshnessPanel'
 import { ContinentPage } from './routes/ContinentPage'
 import { CountryPage } from './routes/CountryPage'
@@ -38,35 +39,28 @@ export function App() {
           >
             Encyclopedia Andranika
           </Link>
-          {/* Two section buttons (2026-08-30, maintainer request): the data
-              atlas in the brand green, the history timeline in a clay red
-              that sits opposite green on the wheel. The label "Global Data"
-              replaced "Global Population Dashboard" because the atlas covers
-              far more than population. Active section is marked with a ring
-              as well as aria-current. */}
-          <NavLink
-            to="/"
-            end
-            className="rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
-            style={({ isActive }) => ({
-              background: 'var(--brand-bg)',
-              color: 'var(--brand-text)',
-              boxShadow: isActive ? '0 0 0 2px var(--surface), 0 0 0 4px var(--brand-bg)' : 'none',
-            })}
-          >
-            Global Data
-          </NavLink>
-          <NavLink
-            to="/history"
-            className="rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
-            style={({ isActive }) => ({
-              background: 'var(--history-bg)',
-              color: 'var(--history-text)',
-              boxShadow: isActive ? '0 0 0 2px var(--surface), 0 0 0 4px var(--history-bg)' : 'none',
-            })}
-          >
-            Human History
-          </NavLink>
+          {/* Section buttons render from the SECTIONS registry (2026-09-05):
+              each section owns a hue (2026-08-30 ruling — data atlas in the
+              brand green, history in a clay red opposite it on the wheel),
+              and new sections join by registering in src/config.ts. Active
+              section is marked with a ring as well as aria-current. */}
+          {SECTIONS.map((section) => (
+            <NavLink
+              key={section.path}
+              to={section.path}
+              {...(section.end ? { end: true } : {})}
+              className="section-link rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
+              style={({ isActive }) => ({
+                background: section.bg,
+                color: section.text,
+                boxShadow: isActive
+                  ? `0 0 0 2px var(--surface), 0 0 0 4px ${section.bg}`
+                  : 'none',
+              })}
+            >
+              {section.label}
+            </NavLink>
+          ))}
         </nav>
       </header>
 

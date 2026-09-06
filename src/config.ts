@@ -53,6 +53,28 @@ export const MAP_PALETTE_LABELS: Record<MapPaletteKey, string> = {
   paper: 'Paper — near-neutral tints',
 }
 
+/**
+ * Top-level site sections (2026-09-05, Phase 2 design pass). The header
+ * renders from this registry so adding a section (Biology, Space, …) is one
+ * entry here plus a contrast-gated colour token pair in index.css — not
+ * header surgery. Each section owns a hue so the buttons stay tellable at a
+ * glance as the list grows; every pair must clear AA (check:contrast).
+ */
+export type SiteSection = {
+  path: string
+  label: string
+  /** CSS custom properties declared and contrast-gated in index.css. */
+  bg: string
+  text: string
+  /** Match only the exact path — the root section would otherwise claim every route. */
+  end?: boolean
+}
+
+export const SECTIONS: readonly SiteSection[] = [
+  { path: '/', label: 'Global Data', bg: 'var(--brand-bg)', text: 'var(--brand-text)', end: true },
+  { path: '/history', label: 'Human History', bg: 'var(--history-bg)', text: 'var(--history-text)' },
+]
+
 /** Continents excluded from per-capita, density, and population rankings. */
 export const UNINHABITED_CONTINENTS: readonly ContinentKey[] = ['AN']
 
