@@ -5,7 +5,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type CSSProperties,
 } from 'react'
 
 import { historyCategoryIcon } from '../../lib/icons'
@@ -13,26 +12,23 @@ import { Icon } from '../Icon'
 import type { HistoryEvent, HistoryFile } from '../../types'
 
 /**
- * Vertical human-history timeline, oldest at the top (Phase 3; layout
- * reworked 2026-08-30 at the maintainer's request).
+ * Vertical human-history timeline, oldest at the top (Phase 3; two-column
+ * layout 2026-08-30; full-width era banners round-2 §38).
  *
  * DEEP TIME NEEDS A NON-LINEAR SCALE. Seven million years of hominin
  * evolution beside the seventy years since 1950 cannot share one linear
  * axis: everything after 1500 would be a sliver. The axis is therefore
  * PIECEWISE: a fixed list of eras, each given its own vertical length,
  * with years linear INSIDE an era. The change of scale is made visible
- * rather than hidden -- every era box states "1 px ≈ N years" and the
- * bands are tinted alternately.
+ * rather than hidden -- every era banner states "1 px ≈ N years".
  *
- * TWO COLUMNS. Era name, span and scale sit in a boxed label in the LEFT
- * column (sticky within its own band, so the reader always knows where
- * they are); events sit in the RIGHT column. Nothing in one column can
- * ever be covered by the other.
- *
- * NO OVERLAPS. Event labels wrap on narrow screens, so their heights are
- * MEASURED after render (ResizeObserver) and the layout pushes each row
- * below the previous one's real bottom edge; the pixel scale is honoured
- * wherever the events are sparse enough to allow it.
+ * FULL-WIDTH BANNERS (round-2 §38, replacing the left-column era boxes):
+ * each era opens with a banner spanning the timeline -- name, dates, a
+ * sentence on what defined the era, and the scale note. Banner heights
+ * are MEASURED (they wrap on phones) and the year scale starts below
+ * each banner, so nothing can overlap at any viewport width: the banner
+ * itself is normal flow layout, and event rows are pushed below both the
+ * banner and each other's measured bottom edges.
  *
  * Interaction: hovering an event label reveals its summary card on
  * pointer devices; on touch (and for keyboard users) the label is a real
@@ -46,19 +42,68 @@ export interface Era {
   from: number
   /** Exclusive end year. */
   to: number
-  /** Vertical length in px allotted to this era. */
+  /** Vertical length in px allotted to this era's events. */
   height: number
+  /** One or two sentences on what defined the era (round-2 §38). */
+  description: string
 }
 
 export const ERAS: Era[] = [
-  { key: 'deep', label: 'Deep Past', from: -7_000_000, to: -300_000, height: 260 },
-  { key: 'prehistory', label: 'Prehistory', from: -300_000, to: -10_000, height: 360 },
-  { key: 'neolithic', label: 'Neolithic', from: -10_000, to: -3_000, height: 360 },
-  { key: 'ancient', label: 'Ancient World', from: -3_000, to: 500, height: 900 },
-  { key: 'medieval', label: 'Post-Classical', from: 500, to: 1500, height: 700 },
-  { key: 'early-modern', label: 'Early Modern', from: 1500, to: 1800, height: 600 },
-  { key: 'industrial', label: 'Industrial Age', from: 1800, to: 1914, height: 600 },
-  { key: 'contemporary', label: 'Contemporary', from: 1914, to: 2030, height: 900 },
+  {
+    key: 'deep', label: 'Deep Past', from: -7_000_000, to: -300_000, height: 260,
+    description:
+      'From the split with the chimpanzee lineage to the archaic humans: ' +
+      'walking upright, the first stone tools, fire, and the long expansion ' +
+      'of hominins out of Africa.',
+  },
+  {
+    key: 'prehistory', label: 'Prehistory', from: -300_000, to: -10_000, height: 360,
+    description:
+      'Homo sapiens appears, thinks symbolically, and spreads across every ' +
+      'continent -- art, burial, language and the last ice age, all before ' +
+      'anyone farmed or wrote.',
+  },
+  {
+    key: 'neolithic', label: 'Neolithic', from: -10_000, to: -3_000, height: 360,
+    description:
+      'The farming revolution: crops and herds replace foraging, villages ' +
+      'become towns, and settled life invents pottery, weaving, the wheel ' +
+      'and, at its very end, writing.',
+  },
+  {
+    key: 'ancient', label: 'Ancient World', from: -3_000, to: 500, height: 900,
+    description:
+      'Writing begins recorded history. Egypt, Mesopotamia, Persia, Greece, ' +
+      'Rome, Han China and Maurya India build the first states, codes of ' +
+      'law, alphabets and world religions.',
+  },
+  {
+    key: 'medieval', label: 'Post-Classical', from: 500, to: 1500, height: 700,
+    description:
+      'Between Rome’s fall and Columbus: the rise of Islam, Byzantium, ' +
+      'Tang and Song China, the Mongol exchange, medieval Europe, and the ' +
+      'great states of Africa and the Americas.',
+  },
+  {
+    key: 'early-modern', label: 'Early Modern', from: 1500, to: 1800, height: 600,
+    description:
+      'Oceans connect the world -- colonisation, the printing press’s ' +
+      'aftershocks, the Scientific Revolution and Enlightenment, gunpowder ' +
+      'empires, and the first modern revolutions.',
+  },
+  {
+    key: 'industrial', label: 'Industrial Age', from: 1800, to: 1914, height: 600,
+    description:
+      'Steam, steel, railways and telegraphs remake work and cities; ' +
+      'nation-states and empires span the globe; science professionalises ' +
+      'and medicine finally starts saving lives.',
+  },
+  {
+    key: 'contemporary', label: 'Contemporary', from: 1914, to: 2030, height: 900,
+    description:
+      'The world wars and decolonisation, flight, antibiotics, computing ' +
+      'and the internet: a century in which change itself accelerated.',
+  },
 ]
 
 export const CATEGORY_LABELS: Record<string, string> = {
@@ -71,27 +116,13 @@ export const CATEGORY_LABELS: Record<string, string> = {
   'rights-document': 'Political Documents & Rights',
 }
 
-/** Left column (era boxes) width, px. */
-const LEFT_COL = 128
-const LEFT_COL_SM = 176
-/** Axis line offset inside the right column, px. */
+/** Axis line offset, px. */
 const GUTTER = 14
 /** Space between the bottom of one event row and the top of the next, px. */
 const ROW_GAP = 6
-/** Fallback row height until the browser has measured the real one, px. */
+/** Fallback heights until the browser has measured the real ones, px. */
 const ROW_ESTIMATE = 28
-
-function yFor(year: number): number {
-  let offset = 0
-  for (const era of ERAS) {
-    if (year < era.to || era === ERAS[ERAS.length - 1]) {
-      const clamped = Math.min(Math.max(year, era.from), era.to)
-      return offset + ((clamped - era.from) / (era.to - era.from)) * era.height
-    }
-    offset += era.height
-  }
-  return offset
-}
+const BANNER_ESTIMATE = 84
 
 export function formatYear(year: number, precision: HistoryEvent['datePrecision']): string {
   const abs = Math.abs(year)
@@ -123,27 +154,21 @@ function precisionNote(precision: HistoryEvent['datePrecision']): string | null 
 export function Timeline({
   data,
   categories,
+  civilization,
   query,
 }: {
   data: HistoryFile
   categories: Set<string>
+  /** Civilization/region tag filter (round-2 §38); null = all. */
+  civilization: string | null
   query: string
 }) {
   const [openId, setOpenId] = useState<string | null>(null)
   const [heights, setHeights] = useState<Record<string, number>>({})
-  const [wide, setWide] = useState(false)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const rowRefs = useRef(new Map<string, HTMLElement>())
+  const bannerRefs = useRef(new Map<string, HTMLElement>())
   const baseId = useId()
-
-  useEffect(() => {
-    const query = window.matchMedia('(min-width: 640px)')
-    const apply = () => setWide(query.matches)
-    apply()
-    query.addEventListener('change', apply)
-    return () => query.removeEventListener('change', apply)
-  }, [])
-  const leftCol = wide ? LEFT_COL_SM : LEFT_COL
 
   const needle = query.trim().toLowerCase()
   const events = useMemo(
@@ -151,20 +176,25 @@ export function Timeline({
       data.events.filter(
         (e) =>
           categories.has(e.category) &&
+          (civilization === null || e.civilization === civilization) &&
           (!needle ||
             e.title.toLowerCase().includes(needle) ||
             e.summary.toLowerCase().includes(needle) ||
+            (e.civilization ?? '').toLowerCase().includes(needle) ||
             e.regions.some((r) => r.toLowerCase().includes(needle))),
       ),
-    [data.events, categories, needle],
+    [data.events, categories, civilization, needle],
   )
 
-  // Measure every row's rendered label height (they wrap on phones) so the
-  // placement below can guarantee no two rows overlap.
+  // Measure every rendered row AND banner (both wrap on phones) so the
+  // placement below can guarantee nothing overlaps at any width.
   useLayoutEffect(() => {
     const observer = new ResizeObserver(() => {
       const next: Record<string, number> = {}
       for (const [id, node] of rowRefs.current) next[id] = node.offsetHeight
+      for (const [key, node] of bannerRefs.current) {
+        next[`banner:${key}`] = node.offsetHeight
+      }
       setHeights((prev) => {
         const keys = Object.keys(next)
         if (keys.length === Object.keys(prev).length && keys.every((k) => prev[k] === next[k])) {
@@ -174,28 +204,66 @@ export function Timeline({
       })
     })
     for (const node of rowRefs.current.values()) observer.observe(node)
+    for (const node of bannerRefs.current.values()) observer.observe(node)
     return () => observer.disconnect()
   }, [events])
 
-  // Lay events out top-to-bottom: each row sits at its scale position unless
-  // the previous row's measured bottom edge is lower, in which case it is
-  // pushed down. Rows never overlap; the scale bends only where it must.
-  const placed = useMemo(() => {
-    let bottom = -Infinity
-    return events.map((e) => {
-      let y = yFor(e.startYear) + 8
-      if (y < bottom + ROW_GAP) y = bottom + ROW_GAP
-      const h = heights[e.id] ?? ROW_ESTIMATE
-      bottom = y + h
-      return { event: e, y }
-    })
+  /**
+   * Single top-to-bottom pass (round-2 §38): each era's banner occupies its
+   * measured height, the era's year-scale starts below it, and every event
+   * row sits at its scale position unless the previous row's measured
+   * bottom would collide, in which case it is pushed down (stretching the
+   * band). Bands are packed sequentially, so no coordinate is ever shared
+   * between two elements.
+   */
+  const { bands, placed, totalHeight } = useMemo(() => {
+    const bannerH = (key: string) => heights[`banner:${key}`] ?? BANNER_ESTIMATE
+    const sorted = [...events].sort((a, b) => a.startYear - b.startYear)
+    const bandsOut: {
+      era: Era
+      top: number
+      height: number
+      yearsPerPx: number
+      index: number
+    }[] = []
+    const placedOut: { event: HistoryEvent; y: number }[] = []
+    let cursor = 0
+    let eventIndex = 0
+    for (let i = 0; i < ERAS.length; i += 1) {
+      const era = ERAS[i]!
+      const isLast = i === ERAS.length - 1
+      const top = cursor
+      const contentTop = top + bannerH(era.key)
+      let bottom = contentTop
+      while (
+        eventIndex < sorted.length &&
+        (isLast || sorted[eventIndex]!.startYear < era.to)
+      ) {
+        const event = sorted[eventIndex]!
+        const fraction =
+          (Math.min(Math.max(event.startYear, era.from), era.to) - era.from) /
+          (era.to - era.from)
+        let y = contentTop + fraction * era.height + 4
+        if (y < bottom + ROW_GAP) y = bottom + ROW_GAP
+        placedOut.push({ event, y })
+        bottom = y + (heights[event.id] ?? ROW_ESTIMATE)
+        eventIndex += 1
+      }
+      const height = Math.max(
+        bannerH(era.key) + era.height,
+        bottom + 12 - top,
+      )
+      bandsOut.push({
+        era,
+        top,
+        height,
+        yearsPerPx: Math.round((era.to - era.from) / era.height),
+        index: i,
+      })
+      cursor = top + height
+    }
+    return { bands: bandsOut, placed: placedOut, totalHeight: cursor }
   }, [events, heights])
-
-  const lastRow = placed[placed.length - 1]
-  const totalHeight = Math.max(
-    ERAS.reduce((s, e) => s + e.height, 0),
-    lastRow ? lastRow.y + (heights[lastRow.event.id] ?? ROW_ESTIMATE) + 24 : 0,
-  )
 
   useEffect(() => {
     if (!openId) return
@@ -206,88 +274,80 @@ export function Timeline({
     return () => window.removeEventListener('keydown', onKey)
   }, [openId])
 
-  // Era bands: when events overflow an era's allotted height the band
-  // stretches to the last event inside it, so the label box stays beside
-  // its own events. The final band absorbs any remaining height.
-  const bands = useMemo(() => {
-    let offset = 0
-    const out = ERAS.map((era, index) => {
-      const top = offset
-      offset += era.height
-      const yearsPerPx = Math.round((era.to - era.from) / era.height)
-      return { era, top, index, yearsPerPx, height: era.height }
-    })
-    for (let i = 0; i < out.length; i += 1) {
-      const band = out[i]!
-      const inBand = placed.filter(
-        (p) => p.event.startYear >= band.era.from && (i === out.length - 1 || p.event.startYear < band.era.to),
-      )
-      const last = inBand[inBand.length - 1]
-      const needed = last ? last.y + (heights[last.event.id] ?? ROW_ESTIMATE) + 12 - band.top : 0
-      if (needed > band.height) {
-        const grow = needed - band.height
-        band.height = needed
-        for (let j = i + 1; j < out.length; j += 1) out[j]!.top += grow
-      }
-    }
-    const lastBand = out[out.length - 1]!
-    lastBand.height = Math.max(lastBand.height, totalHeight - lastBand.top)
-    return out
-  }, [placed, heights, totalHeight])
-
   const registerRow = (id: string) => (node: HTMLElement | null) => {
     if (node) rowRefs.current.set(id, node)
     else rowRefs.current.delete(id)
   }
+  const registerBanner = (key: string) => (node: HTMLElement | null) => {
+    if (node) bannerRefs.current.set(key, node)
+    else bannerRefs.current.delete(key)
+  }
 
   return (
     <div ref={containerRef} className="relative" style={{ height: totalHeight }}>
-      {/* Era bands, full width, with the boxed label in the left column. */}
+      {/* Era bands with their full-width banners (round-2 §38). The banner
+          content is ordinary flow layout inside a measured box, so text can
+          wrap forever without overlapping anything. */}
       {bands.map(({ era, top, index, yearsPerPx, height }) => (
         <div
           key={era.key}
           data-era={era.key}
-          className="absolute left-0 right-0 border-t"
+          className="absolute left-0 right-0"
           style={{
             top,
             height,
-            borderColor: 'var(--border)',
             background: index % 2 === 0 ? 'transparent' : 'var(--page-tint)',
           }}
         >
           <div
-            className="sticky top-2 mt-2 rounded-md px-2.5 py-2 text-xs shadow-sm"
+            ref={registerBanner(era.key)}
+            className="border-t-2 px-3 py-2.5 sm:px-4"
             style={{
-              width: leftCol - 12,
-              background: 'var(--control-selected-bg)',
-              color: 'var(--control-selected-text)',
+              borderColor: 'var(--border-strong)',
+              background: 'var(--surface-sunken)',
             }}
           >
-            <div className="font-sans text-sm font-semibold leading-tight">{era.label}</div>
-            <div className="mt-1 leading-snug">
-              {formatYear(era.from, 'exact')}
-              <span aria-hidden="true"> → </span>
-              <span className="sr-only"> to </span>
-              {formatYear(era.to, 'exact')}
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-0.5">
+              <h3 className="font-display m-0 text-lg leading-tight">
+                {era.label}
+              </h3>
+              <span
+                className="text-xs"
+                style={{
+                  color: 'var(--text-muted)',
+                  fontVariantNumeric: 'tabular-nums',
+                }}
+              >
+                {formatYear(era.from, 'exact')}
+                <span aria-hidden="true"> → </span>
+                <span className="sr-only"> to </span>
+                {formatYear(era.to, 'exact')}
+                {' · 1 px ≈ '}
+                {yearsPerPx.toLocaleString()}{' '}
+                {yearsPerPx === 1 ? 'year' : 'years'}
+              </span>
             </div>
-            <div className="mt-1 opacity-80" style={{ fontVariantNumeric: 'tabular-nums' }}>
-              1 px ≈ {yearsPerPx.toLocaleString()} {yearsPerPx === 1 ? 'year' : 'years'}
-            </div>
+            <p
+              className="mb-0 mt-1 max-w-4xl text-xs leading-snug"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              {era.description}
+            </p>
           </div>
         </div>
       ))}
 
-      {/* Axis line, right column. */}
+      {/* Axis line. */}
       <div
         aria-hidden="true"
         className="absolute top-0 bottom-0 w-px"
-        style={{ left: leftCol + GUTTER, background: 'var(--border)' }}
+        style={{ left: GUTTER, background: 'var(--border)' }}
       />
 
       {placed.length === 0 && (
         <p
-          className="absolute top-8 text-sm"
-          style={{ left: leftCol + GUTTER + 16, color: 'var(--text-muted)' }}
+          className="absolute top-24 text-sm"
+          style={{ left: GUTTER + 16, color: 'var(--text-muted)' }}
         >
           No events match the current filters.
         </p>
@@ -301,8 +361,8 @@ export function Timeline({
           return (
             <li
               key={event.id}
-              className="absolute right-0"
-              style={{ top: y, left: leftCol, zIndex: open ? 20 : 1 }}
+              className="absolute left-0 right-0"
+              style={{ top: y, zIndex: open ? 20 : 1 }}
               onPointerEnter={(e) => {
                 if (e.pointerType === 'mouse') setOpenId(event.id)
               }}
@@ -359,22 +419,12 @@ export function Timeline({
                 role="region"
                 aria-label={`${event.title}: summary`}
                 hidden={!open}
-                className="mt-1 max-w-xl rounded-lg border p-3 text-sm shadow-lg"
-                style={
-                  {
-                    // On a phone the right column is ~200px, which left the
-                    // card 175px wide with a 96px image beside a 42px text
-                    // column -- the words ran outside the box (maintainer
-                    // report, 2026-08-30). Narrow: the open card breaks out
-                    // over the era column to span the whole timeline; the
-                    // open row already sits at z-index 20 above the boxes.
-                    marginLeft: wide ? GUTTER + 12 : -(leftCol - 8),
-                    width: wide ? undefined : `calc(100% + ${leftCol - 16}px)`,
-                    borderColor: 'var(--border)',
-                    background: 'var(--surface-raised)',
-                    color: 'var(--text)',
-                  } as CSSProperties
-                }
+                className="ml-2 mt-1 max-w-xl rounded-lg border p-3 text-sm shadow-lg sm:ml-6"
+                style={{
+                  borderColor: 'var(--border)',
+                  background: 'var(--surface-raised)',
+                  color: 'var(--text)',
+                }}
               >
                 <div className="flex flex-col gap-3 sm:flex-row">
                   {event.image && (
@@ -388,6 +438,7 @@ export function Timeline({
                   <div className="min-w-0 break-words">
                     <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
                       {CATEGORY_LABELS[event.category] ?? event.category}
+                      {event.civilization ? ` · ${event.civilization}` : ''}
                       {' · '}
                       {event.regions.join(', ')}
                       {precisionNote(event.datePrecision)

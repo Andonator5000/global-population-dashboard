@@ -713,6 +713,8 @@ export interface HistoryEvent {
   } | null
   sources: string[]
   regions: string[]
+  /** Civilization/polity tag (round-2 §38), e.g. "Roman", "Han China". */
+  civilization?: string
   wikipedia: string
 }
 
@@ -722,6 +724,7 @@ export interface HistoryFile {
   note: string
   categories: string[]
   regions: string[]
+  civilizations?: string[]
   counts: { events: number; byCategory: Record<string, number>; byRegion: Record<string, number> }
   imageNote: string
   events: HistoryEvent[]

@@ -44,6 +44,18 @@ REGIONS = (
     "Southeast Asia", "Central Asia", "North America", "Mesoamerica",
     "South America", "Oceania", "Global",
 )
+
+# Civilization/polity tags (round-2 §38): a controlled list so the filter
+# stays a filter rather than a folksonomy. Optional per event — plenty of
+# events (evolution, global science) belong to no single civilization.
+CIVILIZATIONS = (
+    "Egyptian", "Mesopotamian", "Persian", "Greek", "Roman", "Byzantine",
+    "Chinese", "Japanese", "Korean", "Indian", "Armenian", "Frankish & HRE",
+    "British", "French", "Spanish", "Portuguese", "Ottoman", "Mongol",
+    "Russian", "Islamic caliphates", "Mali & Songhai", "Aztec", "Maya",
+    "Inca", "Phoenician", "Hebrew", "Celtic", "Norse", "Ethiopian",
+    "Khmer", "American", "Austronesian",
+)
 _FREE = re.compile(r"public domain|cc0|cc[- ]by(?![- ]n[cd])|pd-", re.IGNORECASE)
 
 
@@ -75,6 +87,9 @@ def _validate(events: list[dict[str, Any]]) -> list[str]:
         for r in e.get("regions") or []:
             if r not in REGIONS:
                 problems.append(f"{eid}: unknown region {r!r}")
+        civ = e.get("civilization")
+        if civ is not None and civ not in CIVILIZATIONS:
+            problems.append(f"{eid}: unknown civilization {civ!r}")
     return problems
 
 
@@ -148,6 +163,8 @@ def ingest(
             "image": None,
             "sources": e["sources"],
             "regions": e["regions"],
+            **({"civilization": e["civilization"]}
+               if e.get("civilization") else {}),
             "wikipedia": f"https://en.wikipedia.org/wiki/{urllib.parse.quote(e['wikipedia'].replace(' ', '_'))}",
         }
         filename = lead.get(e["wikipedia"])
@@ -178,6 +195,7 @@ def ingest(
         "note": source.get("note", ""),
         "categories": list(CATEGORIES),
         "regions": list(REGIONS),
+        "civilizations": list(CIVILIZATIONS),
         "counts": {"events": len(out_events), "byCategory": by_category, "byRegion": by_region},
         "imageNote": (
             "Images are the lead image of each event's English Wikipedia "
