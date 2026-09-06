@@ -1,10 +1,14 @@
-# Global Population Dashboard
+# Encyclopedia Andranika
 
 **Live site: https://andonator5000.github.io/global-population-dashboard/**
 
-World population statistics on an equal-area map, built as a **static site fed
-by a versioned ETL pipeline**. The browser never calls an upstream API — it
-reads committed artifacts from `/data`, each carrying its own provenance.
+A general-knowledge reference site — world data and human history on an
+equal-area map, built as a **static site fed by a versioned ETL pipeline**.
+The browser never calls an upstream API — it reads committed artifacts from
+`/data`, each carrying its own provenance.
+
+> The repository keeps its original `global-population-dashboard` slug so the
+> GitHub Pages URL stays stable; only the site's name changed.
 
 > **Status: all 9 build phases complete.** The site is live, the verification
 > gates pass, and the monthly refresh is verified end to end on a real runner.

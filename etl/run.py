@@ -417,7 +417,7 @@ def validate_indicators() -> int:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="etl/run.py",
-        description="Rebuild /data for the Global Population Dashboard.",
+        description="Rebuild /data for Encyclopedia Andranika.",
     )
     parser.add_argument("--refresh", action="store_true",
                         help="re-fetch every source, ignoring the raw cache")
@@ -452,7 +452,7 @@ def main(argv: list[str] | None = None) -> int:
     selected = args.only or list(STAGES)
     if args.skip_flags:
         selected = [name for name in selected if name != "flags"]
-    print(f"Global Population Dashboard ETL "
+    print(f"Encyclopedia Andranika ETL "
           f"({'refresh' if args.refresh else 'cached'} mode)")
     print(f"stages: {', '.join(selected)}")
 

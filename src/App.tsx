@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from 'react-router'
+import { Link, NavLink, Route, Routes } from 'react-router'
 
 import { FreshnessPanel } from './components/FreshnessPanel'
 import { ContinentPage } from './routes/ContinentPage'
@@ -25,9 +25,19 @@ export function App() {
         {/* Left-aligned deliberately (no mx-auto): the site title should sit
             at the left edge of the viewport at 100% zoom. */}
         <nav
-          className="flex flex-wrap items-center gap-3 px-6 py-3"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2 px-6 py-3"
           aria-label="Primary"
         >
+          {/* Masthead (2026-09-05, maintainer request): the site is named
+              Encyclopedia Andranika. Serif via .font-display -- the masthead
+              is a title, not data -- while the section buttons stay sans. */}
+          <Link
+            to="/"
+            className="font-display text-xl leading-none tracking-tight"
+            style={{ color: 'var(--text)' }}
+          >
+            Encyclopedia Andranika
+          </Link>
           {/* Two section buttons (2026-08-30, maintainer request): the data
               atlas in the brand green, the history timeline in a clay red
               that sits opposite green on the wheel. The label "Global Data"

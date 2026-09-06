@@ -1800,6 +1800,22 @@ walk is now ON by default (`CURRENCY_WALK=0` opts out) so the monthly
 refresh keeps these images; `CURRENCY_CACHED_ONLY=1` still keeps local
 runs to cached listings.
 
+## 28. Site name: Encyclopedia Andranika (2026-09-05, maintainer-requested)
+
+The site is named **Encyclopedia Andranika**, reflecting its expansion from
+a population dashboard into a general-knowledge reference site. The name
+appears as a serif masthead (`.font-display`, per the §25 type ruling —
+the masthead is a title, not data) at the left of the header on every
+page, ahead of the §26 section buttons, and in the document title, meta
+description and Open Graph tags.
+
+What deliberately does **not** change: the GitHub repository slug, the
+local folder, the Pages base path (`/global-population-dashboard/` in
+`vite.config.ts`), and the ETL User-Agent in `etl/config.py`. The UA
+exists so upstream operators can trace our traffic to the repository; it
+matches the repo slug and URL, both of which are unchanged, so renaming
+it would only decouple the string from the place it points to.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

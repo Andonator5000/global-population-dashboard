@@ -101,8 +101,9 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   picks win; `etl/reference/currency_image_rejects.json` is the
   person-reviewed deny list. Review new picks on a contact sheet before
   shipping.
-- Header: two section buttons, "Global Data" (brand green) and "Human
-  History" (clay red); timeline = era boxes left, events right (§26).
+- Header: "Encyclopedia Andranika" serif masthead at the left (§28), then
+  two section buttons, "Global Data" (brand green) and "Human History"
+  (clay red); timeline = era boxes left, events right (§26).
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).

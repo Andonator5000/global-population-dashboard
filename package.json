@@ -1,5 +1,6 @@
 {
-  "name": "global-population-dashboard",
+  "name": "encyclopedia-andranika",
+  "description": "Encyclopedia Andranika — a static reference atlas of world data and human history, fed by a versioned ETL pipeline with provenance on every figure.",
   "private": true,
   "version": "0.1.0",
   "type": "module",
