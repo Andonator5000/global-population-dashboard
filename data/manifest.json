@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-06T01:28:46+00:00",
+  "generated_at": "2026-09-06T03:42:29+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-06T01:28:46+00:00",
+      "fetched_at": "2026-09-06T03:42:29+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -335,11 +335,77 @@
       "files": [],
       "notes": "21600x10800 (~1.85 km/px) cut into three resolution tiers of 2700 px JPEG tiles; shaded relief is baked into the imagery. The 500 m set exists upstream if the size budget is raised."
     },
+    "catalogue_of_life": {
+      "title": "Catalogue of Life, 2026-08-20 (ChecklistBank)",
+      "url": "https://api.checklistbank.org/dataset/3LR",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-09-06T01:36:46+00:00",
+      "upstream_release": "2026-08-20",
+      "vintage": "2026-08-20",
+      "citation": "Catalogue of Life Checklist, via ChecklistBank (CC BY 4.0); Wikipedia links via Wikidata P10585 (CC0)",
+      "files": [],
+      "notes": "Traversed to family rank via the tree API (30658 nodes); genus/species depth for 30 editorially chosen well-known families (etl/reference/taxonomy_focus.json). Contested placements annotated from etl/reference/taxonomy_notes.json. 9060 of 30658 tree nodes carry an English Wikipedia article; the rest say so explicitly."
+    },
+    "ics_chart": {
+      "title": "ICS International Chronostratigraphic Chart (linked data)",
+      "url": "https://raw.githubusercontent.com/i-c-stratigraphy/chart/main/chart.ttl",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-09-06T03:13:41+00:00",
+      "upstream_release": "W/\"6e4eb80d6813cf76deddfd5a5442bce0acc8cebee264516776d0cab5d2a9b43f\"",
+      "vintage": null,
+      "citation": "International Commission on Stratigraphy, International Chronostratigraphic Chart (CC BY 4.0)",
+      "files": [],
+      "notes": "177 intervals with boundary ages, stated margins of error, and CGMW colours, parsed from the commission's linked-data TTL."
+    },
+    "evolution_events": {
+      "title": "Evolution timeline (editorial) with PhyloPic and Commons images",
+      "url": "https://www.phylopic.org",
+      "licence": "Editorial text CC0 (this project); silhouettes CC0/PD (PhyloPic, attributed); photos per-file PD/CC (attributed)",
+      "fetched_at": "2026-09-06T03:15:09+00:00",
+      "upstream_release": "PhyloPic build 555",
+      "vintage": null,
+      "citation": "PhyloPic (per-image CC0/PD); Wikimedia Commons (per-file)",
+      "files": [],
+      "notes": "50 editorial events; 30 PhyloPic silhouettes, 18 Commons lead images, 2 events ship without an image because no verifiably free one was found."
+    },
+    "nssdc_factsheets": {
+      "title": "NSSDC Planetary Fact Sheets (pinned Internet Archive snapshots)",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+      "licence": "Public domain (NASA)",
+      "fetched_at": "2026-09-06T03:19:19+00:00",
+      "upstream_release": null,
+      "vintage": "2025 snapshots (see per-body vintage)",
+      "citation": "NASA NSSDCA Planetary Fact Sheets (D.R. Williams), via the Internet Archive",
+      "files": [],
+      "notes": "nssdc.gsfc.nasa.gov 307-redirects to a nasa.gov landing page (checked 2026-09-05); sheets are read from pinned snapshots whose dates ride with each body. Every planet's mass, volumetric radius and density are cross-checked against live JPL Horizons within tolerance on every run — the archive is trusted only as far as live NASA agrees with it. Swap back if NSSDC returns."
+    },
+    "jpl_horizons": {
+      "title": "JPL Horizons (live cross-check of archived fact sheets)",
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api",
+      "licence": "Public domain (NASA/JPL)",
+      "fetched_at": "2026-09-06T03:19:19+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "NASA/JPL Horizons System, physical-properties blocks",
+      "files": [],
+      "notes": "27 field comparisons for the nine Horizons-checked bodies; any disagreement beyond tolerance aborts the run. Full comparison table in etl/logs/space.log."
+    },
+    "jpl_ssd": {
+      "title": "JPL Solar System Dynamics: satellites and small bodies",
+      "url": "https://ssd.jpl.nasa.gov",
+      "licence": "Public domain (NASA/JPL)",
+      "fetched_at": "2026-09-06T03:06:13+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "NASA/JPL Solar System Dynamics: planetary satellite tables and the Small-Body Database",
+      "files": [],
+      "notes": "460 satellites across 7 planets; physical parameters where measured; discovery circumstances; dwarf planets via SBDB with nulls where SBDB publishes no value. 13 NASA-library portraits."
+    },
     "flagcdn": {
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-09-06T01:28:46+00:00",
+      "fetched_at": "2026-09-06T03:42:29+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -721,6 +787,55 @@
       "row_count": null,
       "entity_count": null
     },
+    "biology/taxonomy/tree.json": {
+      "description": "Tree of life from the synthetic Life root to family rank, with per-node name counts, Wikipedia links, and contested-placement notes.",
+      "sources": [
+        "catalogue_of_life"
+      ],
+      "row_count": 30658,
+      "entity_count": null
+    },
+    "biology/taxonomy/focus/": {
+      "description": "Genus/species subtrees for the focus families, fetched on expand.",
+      "sources": [
+        "catalogue_of_life"
+      ],
+      "row_count": 20314,
+      "entity_count": null
+    },
+    "biology/evolution/chart.json": {
+      "description": "ICS chart intervals with ages, errors, and colours.",
+      "sources": [
+        "ics_chart"
+      ],
+      "row_count": 177,
+      "entity_count": null
+    },
+    "biology/evolution/events.json": {
+      "description": "Editorial timeline of the history of life, with licence-gated illustrations.",
+      "sources": [
+        "evolution_events"
+      ],
+      "row_count": 50,
+      "entity_count": null
+    },
+    "space/bodies.json": {
+      "description": "Sun, planets, Earth's Moon, dwarf planets, and belt regions with sourced figures.",
+      "sources": [
+        "nssdc_factsheets",
+        "jpl_ssd"
+      ],
+      "row_count": 15,
+      "entity_count": null
+    },
+    "space/moons/": {
+      "description": "Full per-planet natural satellite catalogues.",
+      "sources": [
+        "jpl_ssd"
+      ],
+      "row_count": 460,
+      "entity_count": null
+    },
     "flags/map-palette.json": {
       "description": "Normalised map fills, continent accents, and per-entity flag accent colours with AA-safe text steps.",
       "sources": [
@@ -816,5 +931,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "6f55ab8ae96b28cbc8f41121eaee218c2bc2e00672715996161cbd29b72839f9"
+  "content_fingerprint": "7937b118c6028f17f14818969d87b2c36860a3e3143de17cefeb7bb60cce0d1c"
 }

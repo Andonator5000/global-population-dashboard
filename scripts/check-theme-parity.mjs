@@ -35,6 +35,10 @@ const LIGHT_ONLY = new Set([
   '--brand-text',
   '--history-bg',
   '--history-text',
+  '--biology-bg',
+  '--biology-text',
+  '--space-bg',
+  '--space-text',
   '--map-space',
   '--map-ocean',
 ])

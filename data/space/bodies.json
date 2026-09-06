@@ -1,0 +1,528 @@
+{
+  "bodies": [
+    {
+      "id": "sun",
+      "name": "Sun",
+      "kind": "star",
+      "primary": null,
+      "facts": {
+        "massKg": 1.9884e+30,
+        "equatorialRadiusKm": 695700.0,
+        "densityKgM3": 1408.0,
+        "gravityMS2": 274.0,
+        "escapeKmS": 617.6,
+        "rotationPeriodHours": 609.12,
+        "meanTempK": null
+      },
+      "moonCount": null,
+      "source": "NSSDC Sun Fact Sheet (archived)",
+      "vintage": "20250813",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Sun"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e002069/GSFC_20171208_Archive_e002069~thumb.jpg",
+        "title": "SDO:AIA Full-Disk View of Launching Filament",
+        "nasaId": "GSFC_20171208_Archive_e002069",
+        "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002069",
+        "credit": "GSFC"
+      }
+    },
+    {
+      "id": "mercury",
+      "name": "Mercury",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 3.301e+23,
+        "equatorialRadiusKm": 2440.5,
+        "densityKgM3": 5429.0,
+        "gravityMS2": 3.7,
+        "escapeKmS": 4.3,
+        "rotationPeriodHours": 1407.6,
+        "semimajorAxisKm": 57909000.0,
+        "orbitalPeriodDays": 87.969,
+        "eccentricity": 0.2056,
+        "axialTiltDeg": 0.034,
+        "semimajorAxisAu": 0.387098,
+        "meanTempK": 439.6
+      },
+      "moonCount": 0,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250821",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Mercury_%28planet%29"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001544/GSFC_20171208_Archive_e001544~thumb.jpg",
+        "title": "False Color View of Mercury",
+        "nasaId": "GSFC_20171208_Archive_e001544",
+        "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001544",
+        "credit": "GSFC"
+      }
+    },
+    {
+      "id": "venus",
+      "name": "Venus",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 4.8673e+24,
+        "equatorialRadiusKm": 6051.8,
+        "densityKgM3": 5243.0,
+        "gravityMS2": 8.87,
+        "escapeKmS": 10.36,
+        "rotationPeriodHours": -5832.6,
+        "semimajorAxisKm": 108210000.0,
+        "orbitalPeriodDays": 224.701,
+        "eccentricity": 0.0068,
+        "axialTiltDeg": 177.36,
+        "semimajorAxisAu": 0.723339,
+        "meanTempK": 226.6
+      },
+      "moonCount": 0,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250820",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Venus"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA23791/PIA23791~thumb.jpg",
+        "title": "Venus from Mariner 10",
+        "nasaId": "PIA23791",
+        "page": "https://images.nasa.gov/details/PIA23791",
+        "credit": "NASA/JPL-Caltech"
+      }
+    },
+    {
+      "id": "earth",
+      "name": "Earth",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 5.9722e+24,
+        "equatorialRadiusKm": 6378.137,
+        "densityKgM3": 5513.0,
+        "gravityMS2": 9.82,
+        "escapeKmS": 11.186,
+        "rotationPeriodHours": 23.9345,
+        "semimajorAxisKm": 149598000.0,
+        "orbitalPeriodDays": 365.256,
+        "eccentricity": 0.0167,
+        "axialTiltDeg": 23.44,
+        "semimajorAxisAu": 1.000001,
+        "meanTempK": 254.0
+      },
+      "moonCount": 1,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250804",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Earth"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001386/GSFC_20171208_Archive_e001386~thumb.jpg",
+        "title": "Most Amazing High Definition Image of Earth - Blue Marble 2012",
+        "nasaId": "GSFC_20171208_Archive_e001386",
+        "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001386",
+        "credit": "GSFC"
+      }
+    },
+    {
+      "id": "mars",
+      "name": "Mars",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 6.4169e+23,
+        "equatorialRadiusKm": 3396.2,
+        "densityKgM3": 3934.0,
+        "gravityMS2": 3.73,
+        "escapeKmS": 5.03,
+        "rotationPeriodHours": 24.6229,
+        "semimajorAxisKm": 227956000.0,
+        "orbitalPeriodDays": 686.98,
+        "eccentricity": 0.0935,
+        "axialTiltDeg": 25.19,
+        "semimajorAxisAu": 1.523792,
+        "meanTempK": 209.8
+      },
+      "moonCount": 2,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250801",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Mars"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA21488/PIA21488~thumb.jpg",
+        "title": "Mars Global Coverage by Context Camera on MRO",
+        "nasaId": "PIA21488",
+        "page": "https://images.nasa.gov/details/PIA21488",
+        "credit": "NASA/JPL-Caltech/MSSS"
+      }
+    },
+    {
+      "id": "jupiter",
+      "name": "Jupiter",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 1.89813e+27,
+        "equatorialRadiusKm": 71492.0,
+        "densityKgM3": 1326.0,
+        "gravityMS2": 25.92,
+        "escapeKmS": 59.5,
+        "rotationPeriodHours": 9.925,
+        "semimajorAxisKm": 778479000.0,
+        "orbitalPeriodDays": 4332.589,
+        "eccentricity": 0.0487,
+        "axialTiltDeg": 3.13,
+        "semimajorAxisAu": 5.203811,
+        "meanTempK": 109.9
+      },
+      "moonCount": 115,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250801",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Jupiter"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA04866/PIA04866~thumb.jpg",
+        "title": "Cassini Jupiter Portrait",
+        "nasaId": "PIA04866",
+        "page": "https://images.nasa.gov/details/PIA04866",
+        "credit": "NASA/JPL/Space Science Institute"
+      }
+    },
+    {
+      "id": "saturn",
+      "name": "Saturn",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 5.6832000000000005e+26,
+        "equatorialRadiusKm": 60268.0,
+        "densityKgM3": 687.0,
+        "gravityMS2": 11.19,
+        "escapeKmS": 35.5,
+        "rotationPeriodHours": 10.656,
+        "semimajorAxisKm": 1432041000.0,
+        "orbitalPeriodDays": 10755.699,
+        "eccentricity": 0.052,
+        "axialTiltDeg": 26.73,
+        "semimajorAxisAu": 9.572603,
+        "meanTempK": 81.0
+      },
+      "moonCount": 291,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250821",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Saturn"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA14582/PIA14582~thumb.jpg",
+        "title": "Hiding Little Brother",
+        "nasaId": "PIA14582",
+        "page": "https://images.nasa.gov/details/PIA14582",
+        "credit": "NASA/JPL-Caltech/Space Science Institute"
+      }
+    },
+    {
+      "id": "uranus",
+      "name": "Uranus",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 8.6811e+25,
+        "equatorialRadiusKm": 25559.0,
+        "densityKgM3": 1270.0,
+        "gravityMS2": 9.01,
+        "escapeKmS": 21.3,
+        "rotationPeriodHours": -17.24,
+        "semimajorAxisKm": 2867043000.0,
+        "orbitalPeriodDays": 30685.4,
+        "eccentricity": 0.0469,
+        "axialTiltDeg": 97.77,
+        "semimajorAxisAu": 19.164999,
+        "meanTempK": 58.1
+      },
+      "moonCount": 30,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250723",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Uranus"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA18182/PIA18182~thumb.jpg",
+        "title": "Uranus as seen by NASA Voyager 2",
+        "nasaId": "PIA18182",
+        "page": "https://images.nasa.gov/details/PIA18182",
+        "credit": "NASA/JPL-Caltech"
+      },
+      "discovery": {
+        "by": "William Herschel",
+        "year": 1781
+      }
+    },
+    {
+      "id": "neptune",
+      "name": "Neptune",
+      "kind": "planet",
+      "primary": "sun",
+      "facts": {
+        "massKg": 1.02409e+26,
+        "equatorialRadiusKm": 24764.0,
+        "densityKgM3": 1638.0,
+        "gravityMS2": 11.27,
+        "escapeKmS": 23.5,
+        "rotationPeriodHours": 16.11,
+        "semimajorAxisKm": 4514953000.0,
+        "orbitalPeriodDays": 60189.018,
+        "eccentricity": 0.0097,
+        "axialTiltDeg": 28.32,
+        "semimajorAxisAu": 30.180597,
+        "meanTempK": 46.6
+      },
+      "moonCount": 16,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250723",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Neptune"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/8910708/8910708~thumb.jpg",
+        "title": "Space Science",
+        "nasaId": "8910708",
+        "page": "https://images.nasa.gov/details/8910708",
+        "credit": "MSFC"
+      },
+      "discovery": {
+        "by": "Johann Galle, from Urbain Le Verrier's prediction",
+        "year": 1846
+      }
+    },
+    {
+      "id": "pluto",
+      "name": "Pluto",
+      "kind": "dwarf",
+      "primary": "sun",
+      "facts": {
+        "massKg": 1.303e+22,
+        "equatorialRadiusKm": 1188.0,
+        "densityKgM3": 1854.0,
+        "gravityMS2": 0.62,
+        "escapeKmS": 1.21,
+        "rotationPeriodHours": -153.2928,
+        "semimajorAxisKm": 5869656000.0,
+        "orbitalPeriodDays": 90560.0,
+        "eccentricity": 0.2444,
+        "axialTiltDeg": 119.51,
+        "semimajorAxisAu": 39.236227,
+        "meanTempK": 37.5
+      },
+      "moonCount": 5,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250820",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Pluto"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA19698/PIA19698~thumb.jpg",
+        "title": "Three Views of Pluto",
+        "nasaId": "PIA19698",
+        "page": "https://images.nasa.gov/details/PIA19698",
+        "credit": "NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute"
+      },
+      "discovery": {
+        "by": "Clyde Tombaugh",
+        "year": 1930
+      }
+    },
+    {
+      "id": "moon",
+      "name": "Moon",
+      "kind": "moon",
+      "primary": "earth",
+      "facts": {
+        "massKg": 7.3459999999999995e+22,
+        "equatorialRadiusKm": 1738.1,
+        "densityKgM3": 3344.0,
+        "gravityMS2": 1.62,
+        "escapeKmS": 2.38,
+        "rotationPeriodHours": 655.72,
+        "semimajorAxisKm": 384400.0,
+        "orbitalPeriodDays": 27.3217,
+        "eccentricity": 0.0549,
+        "axialTiltDeg": 6.68,
+        "semimajorAxisAu": 0.00257,
+        "meanTempK": 270.4
+      },
+      "moonCount": null,
+      "source": "NSSDC Planetary Fact Sheet (archived)",
+      "vintage": "20250804",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Moon"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001939/GSFC_20171208_Archive_e001939~thumb.jpg",
+        "title": "The Far Side of the Moon -- And All the Way Around",
+        "nasaId": "GSFC_20171208_Archive_e001939",
+        "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001939",
+        "credit": "GSFC"
+      }
+    },
+    {
+      "id": "ceres",
+      "name": "Ceres",
+      "kind": "dwarf",
+      "primary": "sun",
+      "facts": {
+        "semimajorAxisAu": 2.77,
+        "semimajorAxisKm": 414386102,
+        "orbitalPeriodDays": 1680.0,
+        "eccentricity": 0.0797,
+        "equatorialRadiusKm": 469.7,
+        "rotationPeriodHours": 9.07417,
+        "densityKgM3": 2162.0,
+        "massKg": 9.3835158743239e+20,
+        "gravityMS2": null,
+        "escapeKmS": null,
+        "axialTiltDeg": null,
+        "meanTempK": null
+      },
+      "moonCount": 0,
+      "source": "JPL Small-Body Database",
+      "vintage": "2021-01-28",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Ceres_%28dwarf_planet%29"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA20351/PIA20351~thumb.jpg",
+        "title": "Color Map of Ceres Elliptical Projection",
+        "nasaId": "PIA20351",
+        "page": "https://images.nasa.gov/details/PIA20351",
+        "credit": "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA"
+      }
+    },
+    {
+      "id": "eris",
+      "name": "Eris",
+      "kind": "dwarf",
+      "primary": "sun",
+      "facts": {
+        "semimajorAxisAu": 67.9,
+        "semimajorAxisKm": 10157695421,
+        "orbitalPeriodDays": 205000.0,
+        "eccentricity": 0.438,
+        "equatorialRadiusKm": null,
+        "rotationPeriodHours": 25.9,
+        "densityKgM3": null,
+        "massKg": null,
+        "gravityMS2": null,
+        "escapeKmS": null,
+        "axialTiltDeg": null,
+        "meanTempK": null
+      },
+      "moonCount": 0,
+      "source": "JPL Small-Body Database",
+      "vintage": "2026-02-06",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Eris_%28dwarf_planet%29"
+      },
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA17307/PIA17307~thumb.jpg",
+        "title": "Eris and Dysnomia Artist Concept",
+        "nasaId": "PIA17307",
+        "page": "https://images.nasa.gov/details/PIA17307",
+        "credit": "NASA/JPL-Caltech"
+      }
+    },
+    {
+      "id": "haumea",
+      "name": "Haumea",
+      "kind": "dwarf",
+      "primary": "sun",
+      "facts": {
+        "semimajorAxisAu": 43.1,
+        "semimajorAxisKm": 6447668227,
+        "orbitalPeriodDays": 103000.0,
+        "eccentricity": 0.194,
+        "equatorialRadiusKm": null,
+        "rotationPeriodHours": 3.9154,
+        "densityKgM3": null,
+        "massKg": null,
+        "gravityMS2": null,
+        "escapeKmS": null,
+        "axialTiltDeg": null,
+        "meanTempK": null
+      },
+      "moonCount": 0,
+      "source": "JPL Small-Body Database",
+      "vintage": "2026-04-14",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Haumea"
+      },
+      "image": null
+    },
+    {
+      "id": "makemake",
+      "name": "Makemake",
+      "kind": "dwarf",
+      "primary": "sun",
+      "facts": {
+        "semimajorAxisAu": 45.6,
+        "semimajorAxisKm": 6821662904,
+        "orbitalPeriodDays": 112000.0,
+        "eccentricity": 0.159,
+        "equatorialRadiusKm": null,
+        "rotationPeriodHours": 22.8266,
+        "densityKgM3": null,
+        "massKg": null,
+        "gravityMS2": null,
+        "escapeKmS": null,
+        "axialTiltDeg": null,
+        "meanTempK": null
+      },
+      "moonCount": 0,
+      "source": "JPL Small-Body Database",
+      "vintage": "2026-04-05",
+      "links": {
+        "wikipedia": "https://en.wikipedia.org/wiki/Makemake"
+      },
+      "image": null
+    }
+  ],
+  "regions": [
+    {
+      "id": "asteroid-belt",
+      "name": "Asteroid belt",
+      "innerAu": 2.1,
+      "outerAu": 3.3,
+      "note": "Millions of rocky bodies between Mars and Jupiter; Ceres, inside it, is the only dwarf planet of the inner Solar System.",
+      "wikipedia": "https://en.wikipedia.org/wiki/Asteroid_belt"
+    },
+    {
+      "id": "kuiper-belt",
+      "name": "Kuiper belt",
+      "innerAu": 30.0,
+      "outerAu": 50.0,
+      "note": "Icy bodies beyond Neptune, including Pluto, Haumea and Makemake; Eris orbits mostly beyond it, in the scattered disc.",
+      "wikipedia": "https://en.wikipedia.org/wiki/Kuiper_belt"
+    }
+  ],
+  "moonCatalog": {
+    "source": "JPL Solar System Dynamics: planetary satellite elements, physical parameters, discovery",
+    "counts": {
+      "earth": 1,
+      "mars": 2,
+      "jupiter": 115,
+      "saturn": 291,
+      "uranus": 30,
+      "neptune": 16,
+      "pluto": 5
+    }
+  },
+  "notes": {
+    "factSheets": "NSSDC fact sheets are read from pinned Internet Archive snapshots because nssdc.gsfc.nasa.gov currently redirects to a landing page; each body's vintage is its snapshot date. See DATA_DECISIONS.md §33.",
+    "nulls": "A null figure means the source does not publish it."
+  }
+}
