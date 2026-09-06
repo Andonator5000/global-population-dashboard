@@ -428,11 +428,117 @@ body {
   transform: rotate(90deg);
 }
 
+/*
+ * Map control tooltips (round-2 §36): appear on hover and keyboard focus;
+ * the outer .map-tooltip spans the gap to the button so the pointer can
+ * travel into the bubble (for the Show/Hide-slider link) without a
+ * hover-out. Hidden with visibility (not just opacity) so the slider
+ * link inside is only ever focusable while the tooltip is revealed:
+ * tabbing to the control button reveals it via :focus-within, and the
+ * NEXT tab reaches the link.
+ */
+.map-tooltip {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  padding-right: 8px;
+  transform: translateY(-50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 120ms ease;
+  white-space: nowrap;
+}
+
+.map-ctl:hover .map-tooltip,
+.map-ctl:focus-within .map-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.map-tooltip-bubble {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-card);
+  font-size: 0.6875rem;
+  color: var(--text);
+}
+
+/* Vertical zoom slider (round-2 §36), Google-Maps style. */
+.map-zoom-slider {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  height: 7rem;
+  width: 1.25rem;
+  accent-color: var(--accent);
+}
+
+/* The ⓘ methodology link (round-2 §36.4). */
+.method-info {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1rem;
+  min-height: 1.1rem;
+  border-radius: 999px;
+  font-style: normal;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.method-info:hover {
+  background: var(--surface-sunken);
+}
+
+/* Zebra striping for the entity table (round-2 §36.5): the two stripes are
+   the raised and sunken surfaces, both AA-gated for body and muted text;
+   hover/focus gets the page tint so it reads as a third, unmistakable
+   state. */
+.entity-table tbody tr:nth-child(even) {
+  background: var(--surface-raised);
+}
+
+.entity-table tbody tr:nth-child(odd) {
+  background: var(--surface-sunken);
+}
+
+/* Country popover (round-2 §36). */
+.map-popover {
+  width: 15rem;
+  max-width: calc(100% - 16px);
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-card);
+  font-size: 0.75rem;
+  color: var(--text);
+}
+
+.popover-close {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: -0.15rem -0.25rem 0 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--text-muted);
+}
+
+.popover-close:hover {
+  background: var(--surface-sunken);
+  color: var(--text);
+}
+
 /* Entity table rows light up on hover/focus-within so a dense table stays
-   scannable; the raised surface token keeps AA for every cell. */
+   scannable; the page-tint token keeps AA for every cell and reads as a
+   distinct state against both zebra stripes. */
 .entity-table tbody tr:hover,
 .entity-table tbody tr:focus-within {
-  background: var(--surface-raised);
+  background: var(--page-tint);
 }
 
 /* Long entity names and ecoregion labels would otherwise force a table wider

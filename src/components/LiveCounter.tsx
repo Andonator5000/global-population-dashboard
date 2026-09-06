@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 
 import {
-  anchorYearFor,
-  componentRates,
   interpolatePopulation,
-  type ComponentRates,
   type InterpolatedPopulation,
 } from '../lib/interpolate'
 import { formatExact } from '../lib/format'
+import { MethodInfoLink } from './MethodInfoLink'
 
 const TICK_MS = 100
 
@@ -64,12 +62,9 @@ export function LiveCounter({
     )
   }
 
-  const anchorYear = anchorYearFor(now, years)
-  const rates: ComponentRates | null =
-    series && anchorYear !== null
-      ? componentRates(years, series, anchorYear)
-      : null
-
+  // `series` fed the on-page components breakdown that now lives on the
+  // Methodology page in prose; the prop is kept so callers need not change.
+  void series
   const perDay = interpolated.perSecond * 86400
 
   return (
@@ -98,67 +93,17 @@ export function LiveCounter({
         day.
       </p>
 
+      {/* Round-2 §36.4: the method paragraphs moved to /methodology; the
+          figure keeps a compact, honest label and the ⓘ. The sr-only
+          description above still states the modelled nature in words. */}
       <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-        <strong style={{ fontWeight: 500 }}>
-          Modelled estimate, interpolated from UN WPP {revision}
-          {interpolated.isProjection ? ' medium-variant projection' : ''}.
-        </strong>{' '}
-        No source publishes live population. This figure is interpolated
-        between the published {interpolated.previous.year} and{' '}
-        {interpolated.next.year} annual figures (each dated 1 July) and advanced
-        continuously at the rate those two imply
-        {interpolated.isProjection && (
-          <>
-            {' '}
-            — and because UN WPP {revision} carries estimates only through{' '}
-            {estimatesThrough}, <strong>both ends of that interpolation are
-            projections, not measurements</strong>
-          </>
-        )}
-        .
+        UN WPP {revision} ·{' '}
+        {interpolated.isProjection ? 'projected' : 'modelled estimate'}{' '}
+        <MethodInfoLink
+          anchor="live-population"
+          label="How the live counter is computed"
+        />
       </p>
-
-      {rates && rates.birthsPerSecond !== null && rates.deathsPerSecond !== null && (
-        <details className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-          <summary className="cursor-pointer underline underline-offset-2">
-            How this number moves
-          </summary>
-          <div className="mt-2 space-y-1">
-            <p>
-              For {rates.year}, UN WPP publishes these annual totals, shown here
-              per second:
-            </p>
-            <ul className="ml-4 list-disc">
-              <li>
-                births {rates.birthsPerSecond.toFixed(2)}/s
-              </li>
-              <li>
-                deaths {rates.deathsPerSecond.toFixed(2)}/s
-              </li>
-              {rates.netMigrationPerSecond !== null && (
-                <li>
-                  net migration{' '}
-                  {rates.netMigrationPerSecond >= 0 ? '+' : '−'}
-                  {Math.abs(rates.netMigrationPerSecond).toFixed(2)}/s
-                </li>
-              )}
-            </ul>
-            <p>
-              Those components imply{' '}
-              {rates.componentNetPerSecond !== null
-                ? `${rates.componentNetPerSecond >= 0 ? '+' : '−'}${Math.abs(rates.componentNetPerSecond).toFixed(2)}/s`
-                : 'an unknown rate'}
-              , while the two annual figures imply{' '}
-              {interpolated.perSecond >= 0 ? '+' : '−'}
-              {Math.abs(interpolated.perSecond).toFixed(2)}/s. They differ
-              because population is a 1 July snapshot whereas births and deaths
-              are calendar-year totals. <strong>The counter follows the annual
-              figures</strong>, so it stays consistent with the published series
-              rather than drifting away from it.
-            </p>
-          </div>
-        </details>
-      )}
     </div>
   )
 }

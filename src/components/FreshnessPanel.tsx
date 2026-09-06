@@ -187,7 +187,16 @@ export function FreshnessPanel() {
                 </>
               )}
               . Editorial rules are documented in{' '}
-              {state.data.editorial_decisions_doc}.
+              {state.data.editorial_decisions_doc}. How derived figures are
+              computed is explained on the{' '}
+              <a
+                href={`${import.meta.env.BASE_URL}methodology`}
+                className="underline underline-offset-2"
+                style={{ color: 'var(--text)' }}
+              >
+                Methodology page
+              </a>
+              .
             </p>
           </>
         )}

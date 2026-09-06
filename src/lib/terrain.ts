@@ -308,17 +308,27 @@ export class TerrainRenderer {
         if (!src || src.sw <= 0 || src.sh <= 0) continue
 
         // Affine from the source rectangle to the projected quad, using
-        // three corners. The overdraw of ~half a source pixel on each side
-        // hides seams between neighbouring quads.
-        const a = (p10[0] - p00[0]) / src.sw
-        const b = (p10[1] - p00[1]) / src.sw
-        const c = (p01[0] - p00[0]) / src.sh
-        const d = (p01[1] - p00[1]) / src.sh
+        // three corners.
+        //
+        // SEAMS (the round-2 "graticule" bug): adjacent quads' affines
+        // disagree by sub-pixel amounts along shared edges (the affine is
+        // only an approximation of the curved projection), so hairline
+        // gaps opened between quads and the dark ocean showed through as
+        // a faint lon/lat grid. The fix is to OVERDRAW: each quad is
+        // scaled up ~1.5% about its own origin-corner axes (and the
+        // source rect padded to match), so neighbours overlap by roughly
+        // a pixel and there is never a gap for the background to leak
+        // into. Imagery overlapping imagery is invisible.
+        const overdraw = 1.015
+        const a = ((p10[0] - p00[0]) / src.sw) * overdraw
+        const b = ((p10[1] - p00[1]) / src.sw) * overdraw
+        const c = ((p01[0] - p00[0]) / src.sh) * overdraw
+        const d = ((p01[1] - p00[1]) / src.sh) * overdraw
         ctx.setTransform(a, b, c, d, p00[0], p00[1])
         ctx.drawImage(
           src.bitmap,
-          src.sx - 0.5, src.sy - 0.5, src.sw + 1, src.sh + 1,
-          -0.5, -0.5, src.sw + 1, src.sh + 1,
+          src.sx - 1, src.sy - 1, src.sw + 2, src.sh + 2,
+          -1, -1, src.sw + 2, src.sh + 2,
         )
       }
     }

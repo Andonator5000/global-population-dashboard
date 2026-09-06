@@ -2127,6 +2127,55 @@ and one keyboard-native click (<details>/<summary>). Nothing about the
 three-dates discipline or the warnings changed; they are one toggle
 away instead of permanently unrolled.
 
+## 35. Map rendering: drag frames on canvas (2026-09, round 2)
+
+The globe's drag sluggishness was architectural: every pointer-move
+re-projected and reconciled ~250 SVG paths through React. Now, while a
+drag or its inertia is live, rotation lives in a ref and each frame is
+painted to a canvas with d3's context renderer (fills resolved from the
+gated CSS variables once per gesture); the interactive SVG is hidden for
+the duration and returns with ONE React commit on release. Hover, click,
+keyboard navigation and the screen-reader surface are untouched — the
+SVG they live on sits out the animation rather than being replaced.
+Inertia (7%-per-frame decay) is skipped under prefers-reduced-motion;
+button zoom eases over 200 ms through the same d3-zoom behaviour
+(d3-transition added); wheel and pinch stay direct and cursor-anchored.
+
+The "graticule" artifact the maintainer saw in the satellite view was
+seams between the terrain mesh quads: adjacent quads' affine transforms
+disagree by sub-pixel amounts along shared edges, and the dark ocean
+leaked through as a faint lon/lat grid. Quads now overdraw ~1.5% so
+neighbours overlap; imagery over imagery is invisible. There is no
+actual graticule layer on the map.
+
+## 36. Round-2 Global Data page rulings (2026-09)
+
+- **Country popover.** Hovering a country (mouse) shows a card at the
+  cursor — name, flag, population, GDP, growth, each with vintage, and a
+  client-side "More info" link; on touch, tapping PINS the card above
+  the finger with a close control, and navigation happens only through
+  the link (a bare tap no longer navigates on touch). Works identically
+  in full screen (the card lives inside the fullscreen element) and on
+  every projection; flips away from viewport edges.
+- **Control tooltips + zoom slider.** The zoom and fullscreen buttons
+  grew hover/focus tooltips; the zoom tooltips carry a Show/Hide-slider
+  link revealing a vertical, logarithmic zoom slider (Google-Maps
+  style). The choice persists for the session (sessionStorage).
+  Tooltips hide with `visibility`, so the link inside is only focusable
+  while revealed.
+- **§36.4 Methodology page.** The maintainer ruled that method prose
+  (the live-counter interpolation paragraphs, projection explainers,
+  IMF modelling notes) exposed internals on every page. It moved to a
+  single /methodology page; figures keep a compact source label plus an
+  ⓘ anchor link. The honesty principle ("real time is honest") is
+  unchanged — the label still says "modelled"/"projected", the
+  screen-reader description still says it in words, and the full
+  explanation is one click away. The reasoning record stays here in
+  DATA_DECISIONS.md.
+- **§36.5 Entity table zebra.** Alternating raised/sunken surface
+  stripes (both AA-gated), hover/focus in the page tint as a third
+  state, sticky header unchanged.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

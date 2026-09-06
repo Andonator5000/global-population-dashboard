@@ -7,6 +7,7 @@ import { EvolutionPage } from './routes/EvolutionPage'
 import { CountryPage } from './routes/CountryPage'
 import { HistoryPage } from './routes/HistoryPage'
 import { HomePage } from './routes/HomePage'
+import { MethodologyPage } from './routes/MethodologyPage'
 import { NotFoundPage } from './routes/NotFoundPage'
 import { SolarSystemPage } from './routes/SolarSystemPage'
 import { SpacePage } from './routes/SpacePage'
@@ -70,6 +71,7 @@ export function App() {
           <Route path="/evolution" element={<EvolutionPage />} />
           <Route path="/space" element={<SpacePage />} />
           <Route path="/space/solar-system" element={<SolarSystemPage />} />
+          <Route path="/methodology" element={<MethodologyPage />} />
           {/* Round-2 IA: Biology dissolved into two top-level pages. The
               old paths redirect so bookmarks and inbound links survive. */}
           <Route path="/biology" element={<Navigate to="/taxonomy" replace />} />
