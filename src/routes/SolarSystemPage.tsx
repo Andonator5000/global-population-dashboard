@@ -6,10 +6,12 @@ import { BodyPanel, MoonPanel } from '../components/space/BodyPanels'
 import { Unavailable } from '../components/viz/primitives'
 import { DATA_BASE_URL } from '../config'
 import {
+  featureTypeGloss,
   loadMoons,
   loadNomenclature,
   useSpaceBodies,
   type MoonRecord,
+  type NomenclatureFeature,
   type SpaceBody,
 } from '../lib/space'
 
@@ -101,6 +103,169 @@ interface SceneBody {
   angle: number
 }
 
+// ---- card grid (round-2 feedback: a card per body under the 3D view) ----
+
+const KIND_LABEL: Record<SpaceBody['kind'], string> = {
+  star: 'star',
+  planet: 'planet',
+  dwarf: 'dwarf planet',
+  moon: 'moon',
+}
+
+function fmtSci(value: number | null | undefined, unit: string): string {
+  if (value == null) return 'not available'
+  const exponent = Math.floor(Math.log10(Math.abs(value)))
+  const mantissa = value / 10 ** exponent
+  return `${mantissa.toFixed(2)}×10${superscript(exponent)} ${unit}`
+}
+
+function superscript(n: number): string {
+  const digits: Record<string, string> = {
+    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹', '-': '⁻',
+  }
+  return String(n).split('').map((c) => digits[c] ?? c).join('')
+}
+
+function fmtKm(value: number | null | undefined): string {
+  return value == null ? 'not available' : `${value.toLocaleString()} km`
+}
+
+function fmtHours(value: number | null | undefined): string {
+  if (value == null) return 'not available'
+  const abs = Math.abs(value)
+  const note = value < 0 ? ' (retrograde)' : ''
+  if (abs >= 48) return `${(abs / 24).toFixed(1)} days${note}`
+  return `${abs.toFixed(1)} h${note}`
+}
+
+function fmtPeriod(days: number | null | undefined): string {
+  if (days == null) return 'not available'
+  if (days >= 365.25 * 2) return `${(days / 365.25).toFixed(1)} years`
+  return `${days.toLocaleString(undefined, { maximumFractionDigits: 1 })} days`
+}
+
+function BodyCard({
+  body,
+  onFlyTo,
+  onGlobe,
+}: {
+  body: SpaceBody
+  onFlyTo: () => void
+  onGlobe: (() => void) | null
+}) {
+  const facts: [string, string][] = [
+    ['Radius', fmtKm(body.facts.equatorialRadiusKm)],
+    ['Mass', fmtSci(body.facts.massKg, 'kg')],
+    ['Day', fmtHours(body.facts.rotationPeriodHours)],
+    ...(body.id === 'sun'
+      ? ([] as [string, string][])
+      : ([
+          ['Year', fmtPeriod(body.facts.orbitalPeriodDays)],
+          [
+            'Distance',
+            body.facts.semimajorAxisAu != null
+              ? `${body.facts.semimajorAxisAu.toLocaleString(undefined, {
+                  maximumFractionDigits: 2,
+                })} AU`
+              : 'not available',
+          ],
+        ] as [string, string][])),
+    ...(body.moonCount != null && body.kind !== 'moon'
+      ? ([[
+          'Moons',
+          body.moonCount.toLocaleString(),
+        ]] as [string, string][])
+      : []),
+  ]
+  return (
+    <article
+      className="flex h-full flex-col overflow-hidden rounded-xl border"
+      style={{
+        borderColor: 'var(--border)',
+        background: 'var(--surface-raised)',
+        boxShadow: 'var(--shadow-card)',
+      }}
+    >
+      {body.image ? (
+        <img
+          src={body.image.url}
+          alt={`${body.name} — ${body.image.title ?? 'NASA portrait'}`}
+          loading="lazy"
+          className="h-36 w-full object-cover"
+        />
+      ) : (
+        <div
+          className="flex h-36 w-full items-center justify-center text-xs"
+          style={{ background: 'var(--surface-sunken)', color: 'var(--text-muted)' }}
+        >
+          no free portrait available
+        </div>
+      )}
+      <div className="flex flex-1 flex-col px-4 py-3">
+        <h3 className="flex items-baseline gap-2 text-base font-semibold">
+          {body.name}
+          <span
+            className="font-sans text-[10px] font-normal uppercase tracking-wider"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            {KIND_LABEL[body.kind]}
+          </span>
+        </h3>
+        <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-xs">
+          {facts.map(([label, value]) => (
+            <div key={label} className="contents">
+              <dt style={{ color: 'var(--text-muted)' }}>{label}</dt>
+              <dd className="text-right tabular-nums">{value}</dd>
+            </div>
+          ))}
+        </dl>
+        {body.image && (
+          <p className="mt-1.5 text-[10px]" style={{ color: 'var(--text-muted)' }}>
+            {body.image.credit}
+          </p>
+        )}
+        <p className="mt-auto flex flex-wrap gap-x-3 gap-y-1 pt-2.5 text-xs">
+          <button
+            type="button"
+            className="underline underline-offset-2"
+            onClick={onFlyTo}
+          >
+            Fly to it above
+          </button>
+          {onGlobe && (
+            <button
+              type="button"
+              className="underline underline-offset-2"
+              onClick={onGlobe}
+            >
+              3D globe
+            </button>
+          )}
+          <a
+            className="underline underline-offset-2"
+            href={body.links.wikipedia}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Wikipedia
+          </a>
+          {body.image && (
+            <a
+              className="underline underline-offset-2"
+              href={body.image.page}
+              target="_blank"
+              rel="noreferrer"
+            >
+              NASA image
+            </a>
+          )}
+        </p>
+      </div>
+    </article>
+  )
+}
+
 export function SolarSystemPage() {
   const state = useSpaceBodies()
   const [mode, setMode] = useState<'compressed' | 'true'>('compressed')
@@ -114,6 +279,14 @@ export function SolarSystemPage() {
   const [moonList, setMoonList] = useState<MoonRecord[] | null>(null)
 
   const mountRef = useRef<HTMLDivElement | null>(null)
+  const viewportRef = useRef<HTMLDivElement | null>(null)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const sceneApiRef = useRef<{ zoom: (factor: number) => void } | null>(null)
+  /** Moon meshes currently in the scene, for picking (round-2 feedback:
+      clicking a moon should open its panel like clicking a planet). */
+  const moonClickable = useRef<THREE.Object3D[]>([])
+  const moonByUuid = useRef(new Map<string, MoonRecord>())
+  const selectMoonRef = useRef<(moon: MoonRecord) => void>(() => {})
   const sceneBodies = useRef<SceneBody[]>([])
   const controlsRef = useRef<OrbitControls | null>(null)
   const flyTarget = useRef<THREE.Vector3 | null>(null)
@@ -159,6 +332,13 @@ export function SolarSystemPage() {
     }
   }, [])
   selectRef.current = select
+  selectMoonRef.current = (moon) => setSelectedMoon(moon)
+
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(Boolean(document.fullscreenElement))
+    document.addEventListener('fullscreenchange', onChange)
+    return () => document.removeEventListener('fullscreenchange', onChange)
+  }, [])
 
   // ---- the scene ---------------------------------------------------------
   useEffect(() => {
@@ -182,6 +362,18 @@ export function SolarSystemPage() {
     controls.maxDistance = 400
     controls.minDistance = 0.2
     controlsRef.current = controls
+    sceneApiRef.current = {
+      zoom: (factor: number) => {
+        const offset = camera.position.clone().sub(controls.target)
+        offset.setLength(
+          Math.max(
+            controls.minDistance,
+            Math.min(controls.maxDistance, offset.length() * factor),
+          ),
+        )
+        camera.position.copy(controls.target).add(offset)
+      },
+    }
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.35))
     const sunLight = new THREE.PointLight(0xfff2d5, 3000, 0, 2)
@@ -356,9 +548,17 @@ export function SolarSystemPage() {
       pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
       pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
       raycaster.setFromCamera(pointer, camera)
-      const hits = raycaster.intersectObjects(clickable, false)
+      const hits = raycaster.intersectObjects(
+        [...clickable, ...moonClickable.current],
+        false,
+      )
       const hit = hits[0]
       if (hit) {
+        const moon = moonByUuid.current.get(hit.object.uuid)
+        if (moon) {
+          selectMoonRef.current(moon)
+          return
+        }
         const id = idOf.get(hit.object.uuid)
         if (id) selectRef.current(id)
       }
@@ -413,6 +613,7 @@ export function SolarSystemPage() {
 
     return () => {
       disposed = true
+      sceneApiRef.current = null
       resizeObserver.disconnect()
       renderer.domElement.removeEventListener('pointerdown', onPointerDown)
       renderer.domElement.removeEventListener('click', onClick)
@@ -443,6 +644,8 @@ export function SolarSystemPage() {
     const holder = moonGroupRef.current
     if (!holder) return
     holder.group.clear()
+    moonClickable.current = []
+    moonByUuid.current.clear()
     if (!selected || !moonList) return
     const entry = sceneBodies.current.find((b) => b.body.id === selected.id)
     if (!entry) return
@@ -476,6 +679,8 @@ export function SolarSystemPage() {
       moonMesh.add(label)
       entry.mesh.add(moonMesh)
       holder.group.attach(moonMesh)
+      moonClickable.current.push(moonMesh)
+      moonByUuid.current.set(moonMesh.uuid, moon)
     })
   }, [selected, moonList])
 
@@ -604,12 +809,54 @@ export function SolarSystemPage() {
               {scaleNote}
             </p>
             <div
-              ref={mountRef}
-              className="mt-3 h-[34rem] overflow-hidden rounded-lg border"
-              style={{ borderColor: 'var(--border)' }}
-              aria-label="3D Solar System viewport. Use the Jump-to list for keyboard access to each body."
-              role="img"
-            />
+              ref={viewportRef}
+              className={`relative mt-3 overflow-hidden rounded-lg border ${
+                isFullscreen ? 'h-full' : ''
+              }`}
+              style={{ borderColor: 'var(--border)', background: '#05070d' }}
+            >
+              <div
+                ref={mountRef}
+                className={isFullscreen ? 'h-full' : 'h-[34rem]'}
+                aria-label="3D Solar System viewport. Use the Jump-to list for keyboard access to each body."
+                role="img"
+              />
+              <div className="absolute right-2 top-2 flex flex-col gap-1.5">
+                <button
+                  type="button"
+                  aria-label="Zoom in"
+                  title="Zoom in"
+                  className="h-8 w-8 rounded border border-white/30 bg-black/60 text-base leading-none text-white"
+                  onClick={() => sceneApiRef.current?.zoom(0.7)}
+                >
+                  +
+                </button>
+                <button
+                  type="button"
+                  aria-label="Zoom out"
+                  title="Zoom out"
+                  className="h-8 w-8 rounded border border-white/30 bg-black/60 text-base leading-none text-white"
+                  onClick={() => sceneApiRef.current?.zoom(1 / 0.7)}
+                >
+                  −
+                </button>
+                <button
+                  type="button"
+                  aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
+                  title={isFullscreen ? 'Exit full screen' : 'Full screen'}
+                  className="h-8 w-8 rounded border border-white/30 bg-black/60 text-sm leading-none text-white"
+                  onClick={() => {
+                    if (document.fullscreenElement) {
+                      void document.exitFullscreen()
+                    } else {
+                      void viewportRef.current?.requestFullscreen()
+                    }
+                  }}
+                >
+                  {isFullscreen ? '🗗' : '⛶'}
+                </button>
+              </div>
+            </div>
             <p className="mt-1 text-[10px]" style={{ color: 'var(--text-muted)' }}>
               Textures: Solar System Scope (CC BY 4.0) · Figures: NASA
               NSSDC (archived, Horizons-checked) and JPL SSD.
@@ -624,8 +871,10 @@ export function SolarSystemPage() {
                   </span>
                 </h2>
                 <ul className="mt-1 flex flex-wrap gap-1.5 text-xs">
-                  {moonList.slice(0, 60).map((moon) => (
-                    <li key={moon.name}>
+                  {moonList.slice(0, 60).map((moon, index) => (
+                    // JPL's catalogue can repeat a name (Puck appears
+                    // twice); the index keeps keys unique.
+                    <li key={`${moon.name}-${index}`}>
                       <button
                         type="button"
                         className="rounded border px-1.5 py-0.5"
@@ -687,6 +936,53 @@ export function SolarSystemPage() {
         </div>
       )}
 
+      {file && (
+        <section className="mt-10" aria-label="All bodies, card by card">
+          <h2 className="text-xl font-semibold tracking-tight">
+            The bodies, card by card
+          </h2>
+          <p
+            className="mt-1 max-w-3xl text-sm"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            An alternative to the 3D view: every major body with its NASA
+            portrait and headline figures. “Fly to it above” selects it in
+            the scene, where the side panel carries the full figures with
+            their sources and vintages.
+          </p>
+          <ul className="mt-4 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
+            {bodies.map((body) => (
+              <li key={body.id} className="m-0">
+                <BodyCard
+                  body={body}
+                  onFlyTo={() => {
+                    select(body.kind === 'moon' ? 'earth' : body.id)
+                    if (body.kind === 'moon') {
+                      const moon = moonList?.find((m) => m.name === body.name)
+                      if (moon) setSelectedMoon(moon)
+                    }
+                    viewportRef.current?.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'center',
+                    })
+                  }}
+                  onGlobe={
+                    body.texture || body.trek
+                      ? () => setGlobeBodyId(body.id)
+                      : null
+                  }
+                />
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 text-[10px]" style={{ color: 'var(--text-muted)' }}>
+            Portraits: NASA Image and Video Library, credited per card ·
+            Figures: NASA NSSDC fact sheets (archived, Horizons-checked) and
+            JPL SSD, sourced per figure in the panel.
+          </p>
+        </section>
+      )}
+
       {globeBody && (
         <BodyGlobe body={globeBody} onClose={() => setGlobeBodyId(null)} />
       )}
@@ -702,9 +998,10 @@ export function SolarSystemPage() {
  */
 function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) {
   const mountRef = useRef<HTMLDivElement | null>(null)
-  const [features, setFeatures] = useState<
-    { name: string; lat: number; lon: number; dKm: number }[]
-  >([])
+  const [features, setFeatures] = useState<NomenclatureFeature[]>([])
+  const [activeFeature, setActiveFeature] = useState<NomenclatureFeature | null>(
+    null,
+  )
   const [tileLevel, setTileLevel] = useState(0)
 
   // Escape closes from anywhere — the canvas swallows focus otherwise.
@@ -760,9 +1057,24 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
     const globe = new THREE.Mesh(new THREE.SphereGeometry(1, 96, 64), material)
     scene.add(globe)
 
+    // Round-2 feedback ("very low resolution"): the globe loads the 8k
+    // variant where one is committed (Sun, Earth, Jupiter, Saturn); the
+    // 2k paints first as a placeholder so the sphere is never blank.
     const loader = new THREE.TextureLoader()
+    let sssApplied: '2k' | '8k' | null = null
     if (body.texture) {
       loader.load(`${DATA_BASE_URL}/${body.texture}`, (texture) => {
+        if (sssApplied === '8k') return
+        sssApplied = '2k'
+        texture.colorSpace = THREE.SRGBColorSpace
+        material.map = texture
+        material.color.set(0xffffff)
+        material.needsUpdate = true
+      })
+    }
+    if (body.texture8k) {
+      loader.load(`${DATA_BASE_URL}/${body.texture8k}`, (texture) => {
+        sssApplied = '8k'
         texture.colorSpace = THREE.SRGBColorSpace
         material.map = texture
         material.color.set(0xffffff)
@@ -770,10 +1082,40 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       })
     }
 
-    // Progressive Trek upgrade: level 2 (1024x512) then 3 then 4 as the
-    // camera closes in. Each level is assembled from WMTS tiles onto a
-    // canvas and swapped in as the globe texture.
-    let bestLevel = 0
+    // Saturn keeps its rings in the globe view too (round-2 feedback).
+    if (body.id === 'saturn') {
+      const ringTexture = loader.load(
+        `${DATA_BASE_URL}/space/textures/saturn-ring.png`,
+      )
+      ringTexture.colorSpace = THREE.SRGBColorSpace
+      const ringGeo = new THREE.RingGeometry(1.25, 2.2, 96)
+      const ringPos = ringGeo.attributes.position!
+      const ringUv = ringGeo.attributes.uv!
+      const v3 = new THREE.Vector3()
+      for (let i = 0; i < ringPos.count; i += 1) {
+        v3.fromBufferAttribute(ringPos as THREE.BufferAttribute, i)
+        ringUv.setXY(i, (v3.length() - 1.25) / 0.95, 0.5)
+      }
+      const ringMesh = new THREE.Mesh(
+        ringGeo,
+        new THREE.MeshBasicMaterial({
+          map: ringTexture,
+          side: THREE.DoubleSide,
+          transparent: true,
+        }),
+      )
+      ringMesh.rotation.x = -Math.PI / 2 + 0.45
+      scene.add(ringMesh)
+    }
+
+    // Progressive Trek upgrade. Levels 2 (1024x512) and 3 (4096x2048)
+    // are requested IMMEDIATELY — round-2 feedback: the globe should be
+    // sharp on open, not only after zooming — and level 4 (8192x4096)
+    // streams in when the camera closes. Each level is assembled from
+    // WMTS tiles onto a canvas; completions can land out of order, so a
+    // lower level finishing late must never overwrite a higher one.
+    let bestLevel = 0 // highest level requested
+    let appliedLevel = 0 // highest level actually on the material
     const upgrade = (level: number) => {
       if (!body.trek || level <= bestLevel) return
       bestLevel = level
@@ -791,7 +1133,8 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
           img.onload = () => {
             ctx.drawImage(img, col * 256, row * 256, 256, 256)
             loaded += 1
-            if (loaded === cols * rows) {
+            if (loaded === cols * rows && level > appliedLevel) {
+              appliedLevel = level
               const texture = new THREE.CanvasTexture(canvas)
               texture.colorSpace = THREE.SRGBColorSpace
               material.map = texture
@@ -808,13 +1151,19 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       }
     }
 
-    // Feature markers (IAU gazetteer) on the sphere surface.
+    // Feature markers (IAU gazetteer) on the sphere surface. Labels sit
+    // with their BOTTOM edge on the anchor point just above the terrain
+    // (sprite.center), so they read as pinned rather than floating
+    // (round-2 feedback); each marker carries an invisible hit sphere so
+    // clicking a label's dot opens the feature card.
     const markerGroup = new THREE.Group()
     globe.add(markerGroup)
-    const addMarkers = (
-      list: { name: string; lat: number; lon: number; dKm: number }[],
-    ) => {
+    const featureHits: THREE.Object3D[] = []
+    const featureByUuid = new Map<string, NomenclatureFeature>()
+    const addMarkers = (list: NomenclatureFeature[]) => {
       markerGroup.clear()
+      featureHits.length = 0
+      featureByUuid.clear()
       for (const feature of list.slice(0, 40)) {
         const phi = ((90 - feature.lat) * Math.PI) / 180
         const theta = ((feature.lon + 90) * Math.PI) / 180
@@ -824,18 +1173,49 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
           -Math.sin(phi) * Math.sin(theta),
         )
         const dot = new THREE.Mesh(
-          new THREE.SphereGeometry(0.004, 8, 6),
+          new THREE.SphereGeometry(0.005, 8, 6),
           new THREE.MeshBasicMaterial({ color: 0xffd479 }),
         )
         dot.position.copy(position.clone().multiplyScalar(1.002))
         markerGroup.add(dot)
+        const hit = new THREE.Mesh(
+          new THREE.SphereGeometry(0.03, 8, 6),
+          new THREE.MeshBasicMaterial({ visible: false }),
+        )
+        hit.position.copy(dot.position)
+        markerGroup.add(hit)
+        featureHits.push(hit)
+        featureByUuid.set(hit.uuid, feature)
         const label = labelSprite(feature.name, true)
-        label.scale.multiplyScalar(0.28)
-        label.position.copy(position.clone().multiplyScalar(1.03))
+        label.scale.multiplyScalar(0.26)
+        label.center.set(0.5, 0)
+        label.position.copy(position.clone().multiplyScalar(1.006))
         markerGroup.add(label)
       }
     }
     markersRef.current = addMarkers
+
+    // Click a marker -> feature card (drag is not a click).
+    const raycaster = new THREE.Raycaster()
+    const pointerNdc = new THREE.Vector2()
+    let downAt = 0
+    const onPointerDown = () => {
+      downAt = performance.now()
+    }
+    const onClick = (event: MouseEvent) => {
+      if (performance.now() - downAt > 250) return
+      const rect = renderer.domElement.getBoundingClientRect()
+      pointerNdc.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+      pointerNdc.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+      raycaster.setFromCamera(pointerNdc, camera)
+      const hit = raycaster.intersectObjects(featureHits, false)[0]
+      if (hit) {
+        const feature = featureByUuid.get(hit.object.uuid)
+        if (feature) setActiveFeature(feature)
+      }
+    }
+    renderer.domElement.addEventListener('pointerdown', onPointerDown)
+    renderer.domElement.addEventListener('click', onClick)
 
     let disposed = false
     const animate = () => {
@@ -844,13 +1224,11 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       controls.update()
       const distance = camera.position.length()
       markerGroup.visible = distance < 2.2
-      if (body.trek) {
-        if (distance < 1.35) upgrade(4)
-        else if (distance < 1.7) upgrade(3)
-        else if (distance < 2.4) upgrade(2)
-      }
+      if (body.trek && distance < 1.45) upgrade(4)
       renderer.render(scene, camera)
     }
+    upgrade(2)
+    upgrade(3)
     animate()
 
     const onResize = () => {
@@ -866,15 +1244,15 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
     return () => {
       disposed = true
       observer.disconnect()
+      renderer.domElement.removeEventListener('pointerdown', onPointerDown)
+      renderer.domElement.removeEventListener('click', onClick)
       controls.dispose()
       renderer.dispose()
       mount.removeChild(renderer.domElement)
     }
   }, [body])
 
-  const markersRef = useRef<
-    (list: { name: string; lat: number; lon: number; dKm: number }[]) => void
-  >(() => {})
+  const markersRef = useRef<(list: NomenclatureFeature[]) => void>(() => {})
   useEffect(() => {
     markersRef.current(features)
   }, [features])
@@ -890,7 +1268,9 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       <div className="flex items-center justify-between gap-3 pb-2 text-sm text-white">
         <p className="font-medium">
           {body.name} — drag to spin, scroll or pinch to zoom
-          {body.trek ? ' (zoom in for NASA Trek detail)' : ''}
+          {body.trek
+            ? ' · NASA Trek detail streams in; click a named feature for its story'
+            : ''}
         </p>
         <button
           type="button"
@@ -901,13 +1281,63 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
           Close (Esc)
         </button>
       </div>
-      <div
-        ref={mountRef}
-        className="min-h-0 flex-1 overflow-hidden rounded-lg"
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') onClose()
-        }}
-      />
+      <div className="relative min-h-0 flex-1">
+        <div
+          ref={mountRef}
+          className="h-full overflow-hidden rounded-lg"
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') onClose()
+          }}
+        />
+        {activeFeature && (
+          <aside
+            className="absolute bottom-3 left-3 max-w-xs rounded-lg border border-white/25 p-3 text-xs text-white"
+            style={{ background: 'rgba(10, 13, 20, 0.92)' }}
+            aria-label={`About ${activeFeature.name}`}
+          >
+            <div className="flex items-start justify-between gap-2">
+              <p className="text-sm font-semibold">{activeFeature.name}</p>
+              <button
+                type="button"
+                aria-label="Close feature card"
+                className="rounded border border-white/30 px-1.5 leading-tight"
+                onClick={() => setActiveFeature(null)}
+              >
+                ×
+              </button>
+            </div>
+            <p className="mt-1 text-white/85">
+              {activeFeature.type}
+              {featureTypeGloss(activeFeature.type)
+                ? ` — ${featureTypeGloss(activeFeature.type)}`
+                : ''}
+              {' · '}
+              {activeFeature.dKm.toLocaleString()} km across
+            </p>
+            {activeFeature.origin && (
+              <p className="mt-1.5 text-white/85">{activeFeature.origin}</p>
+            )}
+            <p className="mt-1.5 text-white/60">
+              {activeFeature.approved
+                ? `Name approved by the IAU in ${activeFeature.approved}`
+                : 'IAU-approved name'}
+              {activeFeature.culture ? ` · origin: ${activeFeature.culture}` : ''}
+            </p>
+            {activeFeature.link && (
+              <p className="mt-1.5">
+                <a
+                  className="underline underline-offset-2"
+                  href={activeFeature.link.replace(/^http:/, 'https:')}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  USGS Gazetteer entry →
+                </a>
+              </p>
+            )}
+          </aside>
+        )}
+      </div>
       <p className="pt-2 text-[11px] text-white/70">
         {body.trek
           ? `${body.trek.credit}${tileLevel > 0 ? ` · streaming tile level ${tileLevel}` : ''} · Named features: IAU Gazetteer of Planetary Nomenclature (USGS)`

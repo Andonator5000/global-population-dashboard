@@ -1,6 +1,6 @@
 {
  "version": 1,
- "note": "EDITORIAL entries for the Cosmic Phenomena page (round-2 §41). Each entry: description (55-130 words), key facts, a NASA Image Library search query (null = deliberately no image, e.g. purely theoretical objects) resolved to an attributed image at build time, and links. Theoretical objects are labelled as such in their own text. Facts follow the cited NASA/ESA pages and each entry's Wikipedia article.",
+ "note": "EDITORIAL entries for the Cosmic Phenomena page (round-2 §41). Each entry: description (55-130 words), key facts, a NASA Image Library search query (null = skip the NASA library; the build then falls back to the Wikipedia article's free-licensed lead image, e.g. a spacetime diagram for wormholes) resolved to an attributed image at build time, and links. Theoretical objects are labelled as such in their own text. Facts follow the cited NASA/ESA pages and each entry's Wikipedia article.",
  "entries": [
   {
    "id": "stellar-lifecycles",

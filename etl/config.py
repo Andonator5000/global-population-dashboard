@@ -408,6 +408,17 @@ SOLARSYSTEMSCOPE_TEXTURES: dict[str, str] = {
     "ceres": "2k_ceres_fictional.jpg",
 }
 SOLARSYSTEMSCOPE_RING = "2k_saturn_ring_alpha.png"
+# High-resolution variants for the full-screen globe view only (round-2
+# feedback: the 2k maps look soft on a globe filling the viewport). Only
+# bodies whose surface detail benefits AND that Trek does not already
+# deep-zoom; Uranus/Neptune's 8k files are upscales of featureless discs.
+# 3-4.5 MB each, loaded lazily by the globe modal, never by the scene.
+SOLARSYSTEMSCOPE_TEXTURES_8K: dict[str, str] = {
+    "sun": "8k_sun.jpg",
+    "earth": "8k_earth_daymap.jpg",
+    "jupiter": "8k_jupiter.jpg",
+    "saturn": "8k_saturn.jpg",
+}
 
 # NASA Solar System Treks WMTS layers (public NASA/USGS mosaics) for the
 # deep-zoom body globes. STREAMED at runtime — a documented exception to

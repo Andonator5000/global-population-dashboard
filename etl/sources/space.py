@@ -381,6 +381,7 @@ def _load_moons(refresh: bool) -> tuple[dict[str, list[dict[str, Any]]],
             }
 
     moons: dict[str, list[dict[str, Any]]] = {}
+    seen: set[tuple[str, str]] = set()
     for row in elem_rows[1:]:
         if len(row) <= max(c_planet, c_sat, c_a, c_e, c_i, c_p):
             continue
@@ -388,6 +389,11 @@ def _load_moons(refresh: bool) -> tuple[dict[str, list[dict[str, Any]]],
         name = row[c_sat]
         if not planet or not name or planet == "planet":
             continue
+        # JPL can list a moon twice with two element solutions (Puck);
+        # first row wins, and moon COUNTS are of distinct names (§42).
+        if (planet, name) in seen:
+            continue
+        seen.add((planet, name))
         physical = phys.get(name, {})
         gm = physical.get("gm")
         found = discovery.get(name, {})
@@ -510,6 +516,17 @@ def _build_textures(refresh: bool, out_dir: Path
         target = out_dir / f"{body_id}.jpg"
         shutil.copyfile(response.path, target)
         paths[body_id] = f"space/textures/{body_id}.jpg"
+    # 8k variants for the globe modal (round-2 feedback); the scene keeps
+    # loading the 2k files.
+    for body_id, filename in config.SOLARSYSTEMSCOPE_TEXTURES_8K.items():
+        response = fetch(
+            f"{config.SOLARSYSTEMSCOPE_BASE}/{filename}",
+            refresh=refresh, subdir="space", filename=f"tex-{filename}",
+        )
+        responses.append(response)
+        target = out_dir / f"{body_id}-8k.jpg"
+        shutil.copyfile(response.path, target)
+        paths[f"{body_id}-8k"] = f"space/textures/{body_id}-8k.jpg"
     ring = fetch(
         f"{config.SOLARSYSTEMSCOPE_BASE}/{config.SOLARSYSTEMSCOPE_RING}",
         refresh=refresh, subdir="space", filename="tex-saturn-ring.png",
@@ -550,17 +567,36 @@ def _build_nomenclature(refresh: bool, out_dir: Path
         frame = frame.sort_values(diam_col, ascending=False).head(
             config.GAZETTEER_TOP_FEATURES,
         )
+        # Round-2 feedback: the labels should open a card saying what the
+        # feature is, when it was named and after what — the gazetteer
+        # carries origin text, approval date, the name's cultural origin
+        # and the USGS feature page, so ship them.
+        origin_col = cols.get("origin")
+        approval_col = cols.get("approvaldt")
+        ethnicity_col = cols.get("ethnicity")
+        link_col = cols.get("link")
+
+        def _clean(value: Any) -> str | None:
+            text = str(value or "").strip().strip('"').strip()
+            return text or None
+
         features = []
         for _, row in frame.iterrows():
             geometry = row.geometry
             if geometry is None:
                 continue
+            approved = _clean(row[approval_col]) if approval_col else None
             features.append({
                 "name": str(row[name_col]),
                 "lat": round(float(geometry.y), 3),
                 "lon": round(float(geometry.x), 3),
                 "dKm": round(float(row[diam_col]), 1),
                 "type": str(row[type_col]) if type_col else None,
+                "origin": _clean(row[origin_col]) if origin_col else None,
+                "approved": approved[:4] if approved else None,
+                "culture": (_clean(row[ethnicity_col])
+                            if ethnicity_col else None),
+                "link": _clean(row[link_col]) if link_col else None,
             })
         (out_dir / f"{target.lower()}.json").write_text(
             json.dumps({"target": target.lower(), "features": features},
@@ -570,6 +606,48 @@ def _build_nomenclature(refresh: bool, out_dir: Path
         counts[target.lower()] = len(features)
     print(f"    nomenclature: {counts}", flush=True)
     return responses, counts
+
+
+_FREE_LICENCE = re.compile(
+    r"public domain|cc0|cc[- ]by(?![- ]n[cd])|pd-", re.IGNORECASE)
+
+
+def _wikipedia_lead_image(
+    title: str, *, refresh: bool,
+) -> tuple[dict[str, Any] | None, list[CachedResponse]]:
+    """The anchor article's lead image as a phenomena-image record, only
+    if Commons says its licence is free; None otherwise."""
+    from . import commons
+
+    responses: list[CachedResponse] = []
+    url = (
+        f"{config.WIKIPEDIA_API_URL}?action=query&format=json"
+        f"&prop=pageimages&piprop=name&redirects=1"
+        f"&titles={urllib.parse.quote(title)}"
+    )
+    response = fetch(url, refresh=refresh, subdir="space", expect_json=True)
+    responses.append(response)
+    pages = response.read_json().get("query", {}).get("pages", {})
+    filename = next(
+        (p.get("pageimage") for p in pages.values() if p.get("pageimage")),
+        None)
+    if not filename:
+        return None, responses
+    metadata, meta_responses = commons.fetch_metadata(
+        [filename], refresh=refresh, subdir="space")
+    responses.extend(meta_responses)
+    record = metadata.get(filename)
+    licence = (record or {}).get("license") or ""
+    if not record or not _FREE_LICENCE.search(licence):
+        return None, responses
+    credit_bits = [b for b in (record.get("author"), licence) if b]
+    return {
+        "url": commons.image_url_for(filename, 640),
+        "title": record.get("objectName") or filename,
+        "nasaId": None,
+        "page": commons.file_page_for(filename),
+        "credit": " · ".join(credit_bits) or "Wikimedia Commons",
+    }, responses
 
 
 def _build_phenomena(refresh: bool, out_dir: Path
@@ -627,6 +705,14 @@ def _build_phenomena(refresh: bool, out_dir: Path
                     or data.get("center") or "NASA",
                 }
                 break
+        if image is None:
+            # Round-2 feedback: no entry ships imageless if its anchor
+            # article has a FREE lead image — for wormholes that is a
+            # spacetime diagram, which is the honest illustration of a
+            # theoretical object. Same licence gate as everywhere else.
+            image, lead_responses = _wikipedia_lead_image(
+                entry["wikipedia"], refresh=refresh)
+            responses.extend(lead_responses)
         out_entries.append({
             "id": entry["id"],
             "title": entry["title"],
@@ -643,7 +729,8 @@ def _build_phenomena(refresh: bool, out_dir: Path
             "version": source.get("version", 1),
             "imageNote": (
                 "Images are NASA Image and Video Library media (NASA/ESA "
-                "and partners), credited per item."
+                "and partners) or, where NASA has none, the Wikipedia "
+                "article's free-licensed lead image — credited per item."
             ),
             "entries": out_entries,
         }, indent=2, ensure_ascii=False) + "\n",
@@ -806,6 +893,7 @@ def ingest(
                   "mercury": "Mercury"}
     for body in bodies:
         body["texture"] = texture_paths.get(body["id"])
+        body["texture8k"] = texture_paths.get(f"{body['id']}-8k")
         body["notes"] = notes_ref[body["id"]]
         trek = config.TREK_LAYERS.get(body["id"])
         if trek:
