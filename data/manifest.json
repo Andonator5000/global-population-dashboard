@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-08-30T07:14:06+00:00",
+  "generated_at": "2026-09-06T01:28:46+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-08-30T07:14:06+00:00",
+      "fetched_at": "2026-09-06T01:28:46+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -313,11 +313,33 @@
       "files": [],
       "notes": "Re-keyed from UN M49 to ISO3. Kosovo, Northern Cyprus and Somaliland carry no M49 code and are assigned explicitly (Kosovo to XKX; the other two to Cyprus and Somalia, matching how UN WPP and the World Bank report that territory, though each keeps its own name on the map and is hatched as contested). 63 populated entities are too small to appear at 110m and are emitted as point markers instead."
     },
+    "natural_earth_detail": {
+      "title": "Natural Earth 10m/50m detail layers (admin-1, lakes, rivers, places)",
+      "url": "https://www.naturalearthdata.com/",
+      "licence": "Public domain",
+      "fetched_at": "2026-09-06T01:15:53+00:00",
+      "upstream_release": "Fri, 13 May 2022 05:21:09 GMT",
+      "vintage": null,
+      "citation": "Natural Earth, 1:10m and 1:50m Cultural and Physical Vectors (public domain)",
+      "files": [],
+      "notes": "Admin-1 boundaries as dissolved border lines with label points computed from the polygons; lakes and rivers at both scales (10m filtered to scalerank <= 7 lakes / 8 rivers); populated places from the 'simple' subset. Simplified and rounded for rendering only -- no measurements are taken from these layers."
+    },
+    "nasa_blue_marble": {
+      "title": "NASA Blue Marble Next Generation, August 2004 (topo & bathy)",
+      "url": "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73776/world.topo.bathy.200408.3x21600x10800.jpg",
+      "licence": "Public domain (NASA; credit requested)",
+      "fetched_at": "2026-09-06T01:15:58+00:00",
+      "upstream_release": "Fri, 14 Dec 2012 19:03:49 GMT",
+      "vintage": "2004-08",
+      "citation": "NASA Earth Observatory, Blue Marble: Next Generation with Topography and Bathymetry (public domain)",
+      "files": [],
+      "notes": "21600x10800 (~1.85 km/px) cut into three resolution tiers of 2700 px JPEG tiles; shaded relief is baked into the imagery. The 500 m set exists upstream if the size budget is raised."
+    },
     "flagcdn": {
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-08-30T07:14:06+00:00",
+      "fetched_at": "2026-09-06T01:28:46+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -635,6 +657,70 @@
       "row_count": null,
       "entity_count": 63
     },
+    "geo/detail/admin1-lines.json": {
+      "description": "First-level administrative boundary lines (10m, simplified).",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/admin1-labels.json": {
+      "description": "Admin-1 label points: name, country code, representative point.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/lakes-50m.json": {
+      "description": "Lakes at 50m for low/mid zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/lakes-10m.json": {
+      "description": "Lakes at 10m for high zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/rivers-50m.json": {
+      "description": "Rivers at 50m for low/mid zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/rivers-10m.json": {
+      "description": "Rivers at 10m for high zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/places.json": {
+      "description": "Populated places with scalerank and population for zoom-gated labels.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/terrain/meta.json": {
+      "description": "Terrain tier index for the satellite view (Blue Marble tiles).",
+      "sources": [
+        "nasa_blue_marble"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
     "flags/map-palette.json": {
       "description": "Normalised map fills, continent accents, and per-entity flag accent colours with AA-safe text steps.",
       "sources": [
@@ -730,5 +816,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "7fd8ab5751458ad109b2bbcb7dc21529b1dc503f695a2bb367a3d11ec97ac1b2"
+  "content_fingerprint": "6f55ab8ae96b28cbc8f41121eaee218c2bc2e00672715996161cbd29b72839f9"
 }
