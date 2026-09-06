@@ -299,6 +299,10 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "florafauna": _simple_stage("florafauna", "florafauna"),
     "cuisine": _simple_stage("cuisine", "cuisine"),
     "geometry": stage_geometry,
+    "mapdetail": _simple_stage("mapdetail", "mapdetail"),
+    "taxonomy": _simple_stage("taxonomy", "taxonomy"),
+    "evolution": _simple_stage("evolution", "evolution"),
+    "space": _simple_stage("space", "space"),
     "flags": stage_flags,
     "flagmeta": _simple_stage("flagmeta", "flagmeta"),
     "history": _simple_stage("history", "history"),
@@ -324,6 +328,8 @@ def check_sources() -> int:
         ("Factbook mirror",
          f"{config.FACTBOOK_BASE}/north-america/us.json"),
         ("Natural Earth 110m TopoJSON", config.NATURAL_EARTH_TOPOJSON_110M),
+        ("Natural Earth 10m admin-1 lines", config.NATURAL_EARTH_ADMIN1_LINES_10M),
+        ("NASA Blue Marble imagery", config.BLUE_MARBLE_URL),
         ("RESOLVE Ecoregions 2017", config.ECOREGIONS_URL),
         ("Our World in Data", config.OWID_POPULATION_CSV),
         ("Our World in Data grapher",
@@ -417,7 +423,7 @@ def validate_indicators() -> int:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="etl/run.py",
-        description="Rebuild /data for the Global Population Dashboard.",
+        description="Rebuild /data for Encyclopedia Andranika.",
     )
     parser.add_argument("--refresh", action="store_true",
                         help="re-fetch every source, ignoring the raw cache")
@@ -452,7 +458,7 @@ def main(argv: list[str] | None = None) -> int:
     selected = args.only or list(STAGES)
     if args.skip_flags:
         selected = [name for name in selected if name != "flags"]
-    print(f"Global Population Dashboard ETL "
+    print(f"Encyclopedia Andranika ETL "
           f"({'refresh' if args.refresh else 'cached'} mode)")
     print(f"stages: {', '.join(selected)}")
 

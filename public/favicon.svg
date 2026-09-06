@@ -1,0 +1,16 @@
+<!-- Encyclopedia Andranika favicon (2026-09-05, Phase 2 design pass).
+     Typographic monogram on the brand green (the exact --brand-bg token
+     value). A single serif "A" survives 16 px where "EA" would smear; the
+     system serif stack is used because SVG favicons cannot load webfonts. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="oklch(44% 0.12 155)" />
+  <text
+    x="32"
+    y="46"
+    font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif"
+    font-size="40"
+    font-weight="600"
+    fill="#ffffff"
+    text-anchor="middle"
+  >A</text>
+</svg>

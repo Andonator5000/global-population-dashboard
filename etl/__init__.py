@@ -1,4 +1,4 @@
-"""ETL pipeline for the Global Population Dashboard.
+"""ETL pipeline for Encyclopedia Andranika.
 
 Run with `python -m etl.run --refresh` (or `python etl/run.py --refresh`).
 """

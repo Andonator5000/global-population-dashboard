@@ -1,5 +1,6 @@
 {
-  "name": "global-population-dashboard",
+  "name": "encyclopedia-andranika",
+  "description": "Encyclopedia Andranika — a static reference atlas of world data and human history, fed by a versioned ETL pipeline with provenance on every figure.",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -14,7 +15,8 @@
     "check:biome-areas": "node scripts/check-biome-areas.mjs",
     "check:theme-parity": "node scripts/check-theme-parity.mjs",
     "check:polygons": "node scripts/check-polygon-ownership.mjs",
-    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas && npm run check:polygons && npm run check:icons",
+    "check:taxonomy": "node scripts/check-taxonomy.mjs",
+    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas && npm run check:polygons && npm run check:icons && npm run check:taxonomy",
     "flags": "node scripts/extract-flag-colors.mjs",
     "palette": "node scripts/build-map-palette.mjs",
     "check:icons": "node scripts/check-icon-coverage.mjs --strict",

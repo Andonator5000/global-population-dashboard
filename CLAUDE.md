@@ -101,8 +101,25 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   picks win; `etl/reference/currency_image_rejects.json` is the
   person-reviewed deny list. Review new picks on a contact sheet before
   shipping.
-- Header: two section buttons, "Global Data" (brand green) and "Human
-  History" (clay red); timeline = era boxes left, events right (§26).
+- Header: "Encyclopedia Andranika" serif masthead at the left (§28), then
+  the section buttons from the SECTIONS registry in src/config.ts — Global
+  Data (brand green), Human History (clay red), Biology (teal), Space
+  (violet); a new section is one registry entry plus a contrast-gated
+  token pair (§29). Timeline = era boxes left, events right (§26).
+- Taxonomy (§31): the tree is NEVER hand-typed — it comes from Catalogue
+  of Life; which families get species depth is editorial
+  (etl/reference/taxonomy_focus.json), and contested placements carry
+  notes from etl/reference/taxonomy_notes.json. Every node has wiki or an
+  explicit null (check:taxonomy gates it).
+- Evolution (§32): events are EDITORIAL — edit
+  etl/reference/evolution_events.json (bump version), never
+  data/biology/evolution/. Summaries state their own uncertainty.
+  PhyloPic licences: CC0 preferred, BY/BY-SA accepted, NC/ND never.
+- Space (§33): NSSDC sheets come from PINNED archive snapshots
+  cross-checked against live JPL Horizons on every run; moon counts are
+  COUNTED from the JPL catalogue; a figure a source does not publish is
+  null and renders as "not available", never zero. Scale modes are
+  labelled; nothing is silently out of scale.
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).

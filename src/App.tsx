@@ -1,11 +1,17 @@
-import { NavLink, Route, Routes } from 'react-router'
+import { Link, NavLink, Route, Routes } from 'react-router'
 
+import { SECTIONS } from './config'
 import { FreshnessPanel } from './components/FreshnessPanel'
+import { BiologyPage } from './routes/BiologyPage'
 import { ContinentPage } from './routes/ContinentPage'
+import { EvolutionPage } from './routes/EvolutionPage'
 import { CountryPage } from './routes/CountryPage'
 import { HistoryPage } from './routes/HistoryPage'
 import { HomePage } from './routes/HomePage'
 import { NotFoundPage } from './routes/NotFoundPage'
+import { SolarSystemPage } from './routes/SolarSystemPage'
+import { SpacePage } from './routes/SpacePage'
+import { TaxonomyPage } from './routes/TaxonomyPage'
 
 export function App() {
   return (
@@ -25,38 +31,41 @@ export function App() {
         {/* Left-aligned deliberately (no mx-auto): the site title should sit
             at the left edge of the viewport at 100% zoom. */}
         <nav
-          className="flex flex-wrap items-center gap-3 px-6 py-3"
+          className="flex flex-wrap items-center gap-x-5 gap-y-2 px-6 py-3"
           aria-label="Primary"
         >
-          {/* Two section buttons (2026-08-30, maintainer request): the data
-              atlas in the brand green, the history timeline in a clay red
-              that sits opposite green on the wheel. The label "Global Data"
-              replaced "Global Population Dashboard" because the atlas covers
-              far more than population. Active section is marked with a ring
-              as well as aria-current. */}
-          <NavLink
+          {/* Masthead (2026-09-05, maintainer request): the site is named
+              Encyclopedia Andranika. Serif via .font-display -- the masthead
+              is a title, not data -- while the section buttons stay sans. */}
+          <Link
             to="/"
-            end
-            className="rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
-            style={({ isActive }) => ({
-              background: 'var(--brand-bg)',
-              color: 'var(--brand-text)',
-              boxShadow: isActive ? '0 0 0 2px var(--surface), 0 0 0 4px var(--brand-bg)' : 'none',
-            })}
+            className="font-display text-xl leading-none tracking-tight"
+            style={{ color: 'var(--text)' }}
           >
-            Global Data
-          </NavLink>
-          <NavLink
-            to="/history"
-            className="rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
-            style={({ isActive }) => ({
-              background: 'var(--history-bg)',
-              color: 'var(--history-text)',
-              boxShadow: isActive ? '0 0 0 2px var(--surface), 0 0 0 4px var(--history-bg)' : 'none',
-            })}
-          >
-            Human History
-          </NavLink>
+            Encyclopedia Andranika
+          </Link>
+          {/* Section buttons render from the SECTIONS registry (2026-09-05):
+              each section owns a hue (2026-08-30 ruling — data atlas in the
+              brand green, history in a clay red opposite it on the wheel),
+              and new sections join by registering in src/config.ts. Active
+              section is marked with a ring as well as aria-current. */}
+          {SECTIONS.map((section) => (
+            <NavLink
+              key={section.path}
+              to={section.path}
+              {...(section.end ? { end: true } : {})}
+              className="section-link rounded-md px-3 py-1.5 font-sans text-sm font-medium tracking-tight"
+              style={({ isActive }) => ({
+                background: section.bg,
+                color: section.text,
+                boxShadow: isActive
+                  ? `0 0 0 2px var(--surface), 0 0 0 4px ${section.bg}`
+                  : 'none',
+              })}
+            >
+              {section.label}
+            </NavLink>
+          ))}
         </nav>
       </header>
 
@@ -66,6 +75,11 @@ export function App() {
           <Route path="/continent/:id" element={<ContinentPage />} />
           <Route path="/country/:iso3" element={<CountryPage />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/biology" element={<BiologyPage />} />
+          <Route path="/biology/taxonomy" element={<TaxonomyPage />} />
+          <Route path="/biology/evolution" element={<EvolutionPage />} />
+          <Route path="/space" element={<SpacePage />} />
+          <Route path="/space/solar-system" element={<SolarSystemPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

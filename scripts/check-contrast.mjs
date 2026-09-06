@@ -38,6 +38,10 @@ const INVARIANT = {
   brandBg: 'oklch(44% 0.12 155)',
   historyBg: 'oklch(46% 0.13 35)',
   historyText: 'oklch(100% 0 0)',
+  biologyBg: 'oklch(42% 0.09 200)',
+  biologyText: 'oklch(100% 0 0)',
+  spaceBg: 'oklch(43% 0.11 295)',
+  spaceText: 'oklch(100% 0 0)',
   brandText: 'oklch(100% 0 0)',
   mapSpace: 'oklch(8% 0.005 260)',
   mapOcean: 'oklch(31% 0.06 255)',
@@ -102,6 +106,8 @@ const checks = (t) => [
   // matched in lightness, so a luminance ratio between them is not a
   // meaningful check and none is made.
   ['history button label', INVARIANT.historyText, INVARIANT.historyBg, 4.5],
+  ['biology button label', INVARIANT.biologyText, INVARIANT.biologyBg, 4.5],
+  ['space button label', INVARIANT.spaceText, INVARIANT.spaceBg, 4.5],
   ['globe ocean vs space', INVARIANT.mapOcean, INVARIANT.mapSpace, 1.5],
   ['muted text on surface', t.textMuted, t.surface, 4.5],
   ['muted text on raised', t.textMuted, t.raised, 4.5],

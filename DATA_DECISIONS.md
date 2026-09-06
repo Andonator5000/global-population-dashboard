@@ -1800,6 +1800,295 @@ walk is now ON by default (`CURRENCY_WALK=0` opts out) so the monthly
 refresh keeps these images; `CURRENCY_CACHED_ONLY=1` still keeps local
 runs to cached listings.
 
+## 28. Site name: Encyclopedia Andranika (2026-09-05, maintainer-requested)
+
+The site is named **Encyclopedia Andranika**, reflecting its expansion from
+a population dashboard into a general-knowledge reference site. The name
+appears as a serif masthead (`.font-display`, per the §25 type ruling —
+the masthead is a title, not data) at the left of the header on every
+page, ahead of the §26 section buttons, and in the document title, meta
+description and Open Graph tags.
+
+What deliberately does **not** change: the GitHub repository slug, the
+local folder, the Pages base path (`/global-population-dashboard/` in
+`vite.config.ts`), and the ETL User-Agent in `etl/config.py`. The UA
+exists so upstream operators can trace our traffic to the repository; it
+matches the repo slug and URL, both of which are unchanged, so renaming
+it would only decouple the string from the place it points to.
+
+## 29. The 2026-09-05 design pass (UI UX Pro Max, maintainer-requested)
+
+The maintainer asked for a whole-site audit with the UI UX Pro Max design
+database before the site grows new sections (Biology, Space). Its
+design-system generator, queried for "encyclopedia reference atlas
+editorial authoritative", again matched **Minimalism & Swiss Style** — the
+same verdict §25 recorded — so the existing direction stands. Two of its
+suggestions were declined deliberately: its "knowledge blue" palette would
+override the gated flag-derived map hues and section colours, and its
+EB Garamond/Crimson pairing would re-litigate the settled §25 type ruling
+(Newsreader / Public Sans).
+
+What the audit did change:
+
+- **Section registry.** The header's section buttons now render from
+  `SECTIONS` in `src/config.ts`; a new section is one registry entry plus
+  a contrast-gated token pair in `index.css`, not header surgery. Needed
+  because the section list is about to grow.
+- **Favicon.** The site had none. `public/favicon.svg`: a serif "A"
+  monogram on the exact `--brand-bg` green. System serif, because SVG
+  favicons cannot load webfonts.
+- **Pointer and hover affordances.** Tailwind v4's preflight leaves
+  buttons on `cursor: default`; real controls get the pointer back, and
+  section buttons answer hover with a 150 ms brightness lift (a filter,
+  so gated token colours are untouched; `prefers-reduced-motion` zeroes
+  the transition).
+
+Verified against the audit checklist already in place from Phase 9:
+global `:focus-visible`, map focus strokes, forced-colors support,
+reduced-motion, table overflow handling, skip link, heading hierarchy.
+
+## 30. Geographic detail and the satellite base view (2026-09-05, Phase 4)
+
+The maintainer asked for map detail closer to a general-purpose web map:
+a satellite/terrain base view, lakes and rivers, first-level
+administrative boundaries, and zoom-progressive labels down to towns.
+Roads were explicitly excluded.
+
+### 30.1 Imagery: baked NASA Blue Marble, not runtime tiles, not WebGL
+
+Three options were put to the maintainer with trade-offs; the ruling was
+**ETL-baked NASA imagery** — the only option that keeps both repo
+principles intact (keyless ETL; the browser never calls an upstream API).
+NASA GIBS runtime tiles were declined (a third and much heavier
+render-time upstream), as was a WebGL rearchitecture (would reimplement
+every settled map behaviour, and the best terrain sources need API keys a
+static site cannot hide).
+
+The image is **Blue Marble Next Generation, August 2004, WITH topography
+and bathymetry** (public domain; NASA requests credit, shown in the
+on-map attribution): the shaded relief is baked into the imagery, which
+satisfies the hillshade requirement without a separate elevation layer,
+and August snow cover hides the least terrain. The 21600×10800 source
+(~1.85 km/px) is cut by the `mapdetail` stage into three tiers of 2700 px
+JPEG tiles (~17 MB committed): one world image, 8 mid-zoom tiles, 32
+high-zoom tiles fetched only for the visible window. **Open question:**
+NASA's 500 m set (86400×43200) exists in the same family; adopting it is
+a config change plus ~100 MB of committed tiles.
+
+### 30.2 Rendering: forward mesh warp onto a canvas beneath the SVG
+
+The map stays d3/SVG. The satellite view draws imagery on a canvas
+UNDER the svg by forward mesh warping (45/2^n-degree quads aligned to
+the tile grid, one affine drawImage per quad), so every interactive
+surface — hover, click, keyboard, the French Guiana detachment — is the
+same SVG it always was, with fills turned transparent (`transparent`,
+never `none`, so hit-testing survives). Continent mode ignores the
+satellite toggle: region fills are that mode's identity.
+
+### 30.3 Vector detail: Natural Earth, simplified GeoJSON, zoom-lazy
+
+Admin-1 boundary lines and label points (10m), lakes and rivers (50m and
+10m, the 10m sets filtered by Natural Earth's own scalerank), and
+populated places (10m simple) are fetched and processed in the ETL —
+nothing hand-typed. They are emitted as simplified, 3-decimal-rounded
+GeoJSON rather than TopoJSON: these layers share no edges, so shared-arc
+encoding buys nothing, and ~110 m rounding is invisible at the map's
+maximum zoom. Each layer is fetched by the app only when the zoom
+crosses its threshold; labels are collision-culled with country names
+taking priority, then capitals, admin-1 names, towns by scalerank, and
+water names. During an active globe drag the vector layers hide and
+reproject 160 ms after the rotation settles — regenerating ~13k
+projected features per drag frame would kill the spin.
+
+River and lake names are placed at feature centroids, which for long
+rivers can sit noticeably off the channel; acceptable for now, recorded
+here rather than hidden.
+
+### 30.4 Refresh policy
+
+Natural Earth layers join the monthly refresh (they change rarely; a
+release shows up as an ordinary data PR). The Blue Marble URL is a
+pinned, dated NASA asset that will never change content — effectively
+pinned by construction.
+
+## 31. Taxonomy: the tree of life (2026-09-05, Phase 5)
+
+### 31.1 Backbone: Catalogue of Life
+
+Four machine-readable backbones were compared for the Biology section's
+Taxonomy page:
+
+- **Catalogue of Life (ChecklistBank, dataset alias 3LR) — CHOSEN.** The
+  curated consensus checklist; its 2026 releases root the tree in the
+  three domains (Archaea, Bacteria, Eukaryota — Woese) with viruses as an
+  unranked fourth lineage, which is exactly the structure the page needs;
+  every node carries a descendant-name count; the API is keyless with
+  stable tree/children endpoints. CC BY 4.0.
+- **GBIF Backbone** — an aggregation machine-built for occurrence
+  matching; known artifacts at higher ranks and duplicate lineages.
+  Declined as primary; not needed as secondary.
+- **NCBI Taxonomy** — public domain and a single small download, but only
+  covers taxa with sequence data and states itself that it is "not an
+  authority" for nomenclature.
+- **Open Tree of Life** — the best phylogenetic synthesis, but rankless,
+  and its synthetic-tree identifiers shift between versions; a rank-based
+  browsable tree cannot be built from it directly.
+
+Wikipedia links, English common names (P1843) and one-line descriptions
+come from **Wikidata via P10585 (Catalogue of Life ID)**, batched through
+the same SPARQL endpoint the leaders stage uses, with batch cache keys
+derived from batch CONTENT (the §21 lesson). No per-taxon Wikipedia
+scraping. A node with no article records `"wiki": null` — explicit,
+gated — and the page says "No English Wikipedia article recorded" rather
+than showing a dead link.
+
+### 31.2 Depth and the focus list
+
+The tree ships from the synthetic "Life" root down to **family** rank
+(~14k nodes) in one lazily-rendered artifact. Genus and species depth is
+fetched per family, and only for the families in
+`etl/reference/taxonomy_focus.json` — an EDITORIAL list of ~30 instantly
+recognisable groups spread across mammals, birds, reptiles, amphibians,
+fish, arthropods, molluscs, plants and fungi. The tree itself is never
+hand-typed; which groups get full depth is curation, and it is recorded
+there. Child lists are capped (300 children, 100 species per genus);
+a capped node carries `"truncated": true` and the page says so.
+
+### 31.3 Contested placements
+
+`etl/reference/taxonomy_notes.json` annotates nodes whose placement is
+genuinely disputed — Chromista and Protozoa (kingdoms in COL, not
+recovered as clades in molecular phylogenies), Viruses (not cellular
+life), Archaea (the two- vs three-domain question). The tree follows its
+source and marks the argument; it does not adjudicate.
+
+### 31.4 Refresh
+
+COL cuts monthly releases under the same 3LR alias; the taxonomy stage
+joins the monthly refresh (a new release arrives as an ordinary data PR
+whose diff shows exactly what moved). The `check:taxonomy` gate refuses
+a stump traversal, a node missing its explicit wiki-or-null flag, or a
+focus family whose depth artifact is missing.
+
+## 32. Evolution: the history of life (2026-09-05, Phase 6)
+
+### 32.1 The chart is data; the event list is editorial
+
+The timeline's skeleton is the **ICS International Chronostratigraphic
+Chart**, taken from the commission's own linked-data publication
+(i-c-stratigraphy/chart, CC BY 4.0) — every interval with its rank,
+parent, boundary ages in Ma, the stated margins of error, and the CGMW
+colours, which the page uses as band colours. The TTL is machine-generated
+and regular; it is parsed with a strict block parser that aborts if the
+shape shifts, rather than adding an RDF dependency for one file.
+
+The ~50 **events** follow the §24 history-timeline precedent exactly:
+which moments of 4.54 billion years make the cut is CURATION, so the list
+lives versioned in `etl/reference/evolution_events.json`, validated by the
+`evolution` stage (unique ids, sane Ma ranges, 40–130-word summaries,
+anchor article, at least one source). Every summary states its own
+uncertainty — the origin-of-life window spans 600 million years and says
+so; Lomekwi, Purgatorius, Rhyniognatha and the snowball/slushball and
+human/climate megafauna debates are carried as open questions in the text.
+
+### 32.2 Time axis
+
+The §26 ruling for the history timeline applies with more force here: a
+linear axis for 4.54 Ga would crush the Phanerozoic into a sliver. The
+page bands events by ICS interval at a reader-chosen rank (eons, eras,
+periods; the Precambrian falls back to eons where the chart has no finer
+interval), each band labels its own span, and every event prints its
+dates with uncertainty. Nothing implies a uniform scale.
+
+### 32.3 Illustrations
+
+Organism entries carry **PhyloPic silhouettes**, following the brief's
+"prefer CC0" ruling as a ranking: CC0/public-domain marks first, then
+CC BY, then CC BY-SA — NC and ND licences never (several classic taxa,
+Dimetrodon among them, exist on PhyloPic only as CC BY, and dropping
+them entirely served no one). Attribution and the licence link render
+with every image regardless. Other entries — and organisms whose
+PhyloPic matches are all unusable — fall back to their anchor
+Wikipedia article's lead image through the same Commons licence gate the
+history stage uses. An event with no verifiably free image ships without
+one, and `etl/logs/evolution.log` lists them. Silhouettes render on a
+fixed light chip so they survive dark mode.
+
+### 32.4 Refresh
+
+The ICS chart and PhyloPic joins the monthly refresh (the chart changes
+about once a year; a new version arrives as an ordinary data PR). The
+events file changes only by editing the reference file and bumping its
+version.
+
+## 33. Space: the Solar System (2026-09-05, Phase 7)
+
+### 33.1 NSSDC via pinned archive snapshots — a forced substitution
+
+The brief named the NSSDC Planetary Fact Sheets as the planetary source.
+During implementation, **nssdc.gsfc.nasa.gov was found to 307-redirect
+wholesale to a nasa.gov landing page** (checked 2026-09-05) — the classic
+fact sheets are not reachable live. Following the REST-Countries
+substitution precedent, the sheets are fetched from **pinned Internet
+Archive snapshots** (exact timestamps in `etl/config.py`, the `id_`
+variant that serves original bytes). Each body's panel shows its snapshot
+date as the figure's vintage. Planetary constants do not move month to
+month, so a pin is honest; if NSSDC returns, the swap back is one config
+edit. The 307 is nominally "temporary", which is exactly why the pin —
+not the moving redirect — is the reproducible choice.
+
+**The archive is trusted only as far as live NASA agrees with it**
+(maintainer ruling, 2026-09): on every run, each planet's mass,
+volumetric mean radius and density from the archived sheet are compared
+against live **JPL Horizons** physical-properties blocks (1% tolerance on
+mass and radius, 3% on density — Horizons and the sheets legitimately
+differ in rounding and reference epochs at the sub-percent level). A
+disagreement beyond tolerance aborts the run. The full comparison table
+lands in `etl/logs/space.log`; Horizons is recorded as its own manifest
+source. Radius compares volumetric-vs-volumetric, because Horizons does
+not report the equatorial figure the panels display.
+
+### 33.2 Live JPL SSD for everything the sheets cannot give
+
+- **Moons**: the full satellite catalogue is parsed from JPL SSD's
+  server-rendered tables — orbital elements for every known moon,
+  physical parameters for the ~46 with measured values, and discovery
+  year/discoverer. **Moon counts are counted from this catalogue**, never
+  copied from a fact sheet (the archived sheets are stale on counts —
+  Saturn's especially). A "major" moon is one with a measured radius in
+  the physical-parameters table: a JPL-derived criterion, not editorial.
+- **Dwarf planets** (Ceres, Eris, Haumea, Makemake): the JPL Small-Body
+  Database API. Fields SBDB does not publish (mean temperature, axial
+  tilt, surface gravity for most TNOs) are emitted as null and render as
+  "not available from JPL SBDB" — the missing-is-a-state rule applies in
+  space too. Pluto keeps its full NSSDC sheet.
+- Discovery of Uranus/Neptune/Pluto: three editorial constants of the
+  "capital of France" kind, recorded in `etl/sources/space.py`.
+
+### 33.3 Scale honesty
+
+Real distances and real sizes cannot share one drawing: at true scale
+across 70 AU, even the Sun is under a pixel. The map therefore has two
+labelled modes — compressed (log distances, enlarged bodies, marked "not
+to scale") and true-distance (linear to ~70 AU, bodies as minimum-size
+dots, with the caveat printed on the page). Nothing is silently out of
+scale; the true mode's emptiness is presented as the point, not a bug.
+
+### 33.4 Portraits
+
+One portrait per major body from the NASA Image and Video Library
+(keyless, NASA media), resolved from a curated search query per body;
+the chosen asset ids are logged in `etl/logs/space.log` for review, and
+credit plus a link to the library page render in the panel. Distant dwarf
+planets resolve to artist's impressions — labelled by their library
+titles as such.
+
+### 33.5 Refresh
+
+JPL SSD tables and SBDB join the monthly refresh (new moon discoveries
+arrive as ordinary data PRs — satellite counts move every year or two).
+The NSSDC snapshots and NASA portrait picks are pinned by construction.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
