@@ -1,7 +1,5 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { geoPath, type GeoPermissibleObjects } from 'd3-geo'
-import { feature } from 'topojson-client'
 
 import { EntityTable } from '../components/EntityTable'
 import { LiveCounter } from '../components/LiveCounter'
@@ -12,6 +10,7 @@ import { WorldMap, type HoverTarget } from '../components/WorldMap'
 import {
   BASE_VIEWS,
   BASE_VIEW_LABELS,
+  DATA_BASE_URL,
   DEFAULT_MAP_PALETTE,
   DEFAULT_PROJECTION,
   MAP_PALETTES,
@@ -32,7 +31,7 @@ import {
   usePopulationTimeline,
 } from '../lib/data'
 import { formatExact, formatGrowthRate, formatPopulation } from '../lib/format'
-import { PROJECTION_LABELS, createProjection } from '../lib/projection'
+import { PROJECTION_LABELS } from '../lib/projection'
 import type { GdpSummary, PopulationRow } from '../types'
 
 const compactUsd = new Intl.NumberFormat('en', {
@@ -51,52 +50,24 @@ function CountryPopoverContent({
   target,
   row,
   gdp,
-  topology,
 }: {
   target: HoverTarget
   row: PopulationRow | undefined
   gdp: GdpSummary['entities'][string] | undefined
-  topology: unknown
 }) {
-  // The country's own outline, equal-area and fitted, in the corner the
-  // flag used to occupy (round-2 feedback: the flag SVGs render as a
-  // broken box under the dev server's MIME quirk, and the shape says
-  // "this country" better than a 20px flag ever did).
-  const shapePath = useMemo(() => {
-    const topo = topology as {
-      objects?: { countries?: unknown }
-    } | null
-    if (!topo?.objects?.countries) return null
-    const collection = feature(topo as never, topo.objects.countries as never) as unknown as {
-      features: { properties: { iso3: string }; geometry: unknown }[]
-    }
-    const item = collection.features.find(
-      (f) => f.properties.iso3 === target.iso3,
-    )
-    if (!item) return null
-    const projection = createProjection('equalEarth').fitExtent(
-      [
-        [1.5, 1.5],
-        [26.5, 18.5],
-      ],
-      item as unknown as GeoPermissibleObjects,
-    )
-    return geoPath(projection)(item as unknown as GeoPermissibleObjects)
-  }, [target.iso3, topology])
-
+  // The corner carries the country's flag (Andy's preference once the
+  // dev-server MIME fix made flags render locally; the interim fitted
+  // country shape is gone).
   return (
     <div className="font-sans">
       <p className="flex items-center gap-2 text-sm font-semibold leading-tight">
-        {shapePath ? (
-          <svg
-            viewBox="0 0 28 20"
-            className="h-5 w-7 shrink-0 rounded-[2px] border"
-            style={{ borderColor: 'var(--border)', background: 'var(--surface-sunken)' }}
-            aria-hidden="true"
-          >
-            <path d={shapePath} fill="var(--text-muted)" />
-          </svg>
-        ) : null}
+        <img
+          src={`${DATA_BASE_URL}/flags/svg/${target.iso3}.svg`}
+          alt=""
+          className="h-4 w-6 shrink-0 rounded-[2px] border object-cover"
+          style={{ borderColor: 'var(--border)' }}
+          loading="lazy"
+        />
         {target.name}
       </p>
       <dl className="mt-1.5 space-y-0.5">
@@ -571,7 +542,6 @@ export function HomePage() {
               renderPopover={(target) => (
                 <CountryPopoverContent
                   target={target}
-                  topology={topologyState.data}
                   row={byIso3.get(target.iso3)}
                   gdp={
                     gdpState.status === 'ready'
