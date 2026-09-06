@@ -2341,6 +2341,105 @@ Treks and the gazetteer join the monthly refresh (features get named
 yearly); Solar System Scope textures are pinned by construction
 (byte-copies of a versioned pack).
 
+## 42. Round-2 review fixes (2026-09-06)
+
+Andy's hands-on review of the round-2 build, and the rulings that came
+out of it.
+
+**42.1 The frozen black globe.** A drag session could outlive its
+pointer: `pointerleave` removed the pointer from the tracking set, and
+if capture had not held, the `pointerup` fired outside the SVG and was
+never seen — leaving the SVG hidden behind the drag canvas's last frame
+forever ("map frozen, black, outlines stuck while zooming"). The fix is
+layered: pointer-leave with an empty set now starts inertia (which ends
+the session), `lostpointercapture` routes to the same end handler, zoom
+events with no pointers down force-end, and switching base view, fill
+mode or projection force-ends unconditionally. Force-end restores
+visibility synchronously — a one-frame orientation flash beats a dead
+map.
+
+**42.2 Longitudinal streaks (seam fix, second pass).** §35's overdraw
+padded the SOURCE rectangle by a pixel; at every 45° tile boundary that
+read past the tile bitmap's edge, and the browser's edge handling
+smeared border pixels into visible meridian streaks. The rule is now:
+overdraw the DESTINATION only (transform scale ~1.5% plus half a source
+pixel on each side); never sample outside the tile.
+
+**42.3 Popover thumbnail.** The flag SVG in the country popover renders
+as a broken box under the dev server's MIME quirk, and a 20px flag was
+weak identification anyway. Replaced with the country's own shape —
+equal-area, fitted, muted-ink fill — reusing the MapReadout thumbnail
+approach.
+
+**42.4 Era banner hues.** Every era banner was the same grey. Each era
+now carries an oklch hue (Deep Past 30 through Contemporary 250),
+applied as a light-dark() tint pair on the banner background and its
+top border; text stays on the ordinary tokens, so contrast never
+depends on the hue.
+
+**42.5 Civilization audit.** Filtering by civilization exposed thin
+coverage (Armenian had two events; the Armenian Genocide was missing).
+A per-civilization audit added 24 events — Armenia gets Urartu,
+Tigranes the Great, the Genocide, and 1991 independence; the rest fill
+the worst gaps (Peloponnesian War, the ancient Olympics, Boudica, the
+Edict of Milan, the Sasanian foundation, Gilgamesh, Chichén Itzá, the
+Althing, Sundiata, the 1054 Schism, Joan of Arc, the fall of Angkor,
+the Triple Alliance, Machu Picchu, the Armada, the Imjin War, the
+Ottoman dissolution, Israel 1948, Tutankhamun's tomb, the Soviet
+dissolution) — and 36 existing events gained tags they plainly
+deserved (Holocaust → Hebrew, Hiroshima → Japanese, Opium War →
+Chinese, …). 273 events, 171 tagged.
+
+**42.6 Ranks, all of them.** The data carries 37 rank strings (realm,
+gigaclass, megaclass, subterclass, "section zoology", …). The rank
+system now defines every one: realm and tribe join the hue table as
+first-class ranks (realm is the ICTV's virus rank), zoological
+section/series alias to the genus group, and prefix-derived ranks get
+composed definitions from a prefix glossary (sub-, super-, infra-,
+parv-, nano-, mega-, giga-, grand-, mir-, subter-). Legend chips are
+buttons that show definitions; a collapsible glossary lists every rank
+present with its definition; the panel shows the exact rank's text.
+
+**42.7 Representative photos.** 19% of tree nodes had their own free
+photo. A post-pass now bubbles the first photographed descendant's
+image onto ancestors that lack one (focus subtrees feed their family
+nodes in the main tree), labelled "Representative: <name>" wherever it
+shows — a photographed member IS a correct illustration of the group
+(standard taxobox practice); only taxa with no photographed member at
+all keep the placeholder. The alternative — fetching iNaturalist
+default photos for ~22k uncovered nodes — was rejected as a new
+rate-limited fetch surface for marginal gain.
+
+**42.8 Solar System polish.** Scene: zoom in/out buttons and a
+fullscreen toggle overlay the viewport (OrbitControls has no UI of its
+own); moon meshes joined the raycast set, so clicking a moon opens its
+panel like clicking a planet. Globe view: Trek levels 2 and 3 are
+requested on OPEN (sharp immediately; level 4 still streams on close
+zoom, with an out-of-order completion guard so a slow low level can
+never overwrite a sharp one); Sun/Earth/Jupiter/Saturn get committed
+8k textures (§42.9); Saturn keeps its rings in globe view; feature
+labels anchor bottom-edge to the terrain point instead of floating
+above it; clicking a feature opens a card with the feature type
+glossed in plain language (Mons — mountain), diameter, naming origin,
+IAU approval year, the name's cultural origin, and the USGS Gazetteer
+link — all of which ride from the gazetteer's own columns (origin,
+approvaldt, ethnicity, link). Below the scene, a card grid lists every
+body with portrait, headline figures, and links, as a non-3D way in.
+
+**42.9 8k textures.** The 2k Solar System Scope maps look soft on a
+fullscreen globe. 8k variants (3-4.5 MB each) are committed for the
+Sun, Earth, Jupiter and Saturn only — bodies whose detail benefits and
+that Trek does not already deep-zoom. Uranus and Neptune's 8k files
+are upscales of featureless discs and are not shipped. The globe loads
+2k first (never a blank sphere), then swaps in the 8k.
+
+**42.10 Phenomena images, completed.** The wormhole entry (and any
+future entry whose NASA query is null or dry) now falls back to its
+Wikipedia article's lead image through the standard Commons licence
+gate — for wormholes that is a CC BY-SA Einstein–Rosen bridge diagram,
+the honest illustration of a theoretical object. 13 of 13 entries are
+illustrated, credited per item.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
