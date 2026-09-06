@@ -320,10 +320,15 @@ export class TerrainRenderer {
         // only an approximation of the curved projection), so hairline
         // gaps opened between quads and the dark ocean showed through as
         // a faint lon/lat grid. The fix is to OVERDRAW: each quad is
-        // scaled up ~1.5% about its own origin-corner axes (and the
-        // source rect padded to match), so neighbours overlap by roughly
-        // a pixel and there is never a gap for the background to leak
-        // into. Imagery overlapping imagery is invisible.
+        // scaled up ~1.5% about its own origin-corner axes and its
+        // destination rectangle grows half a source pixel on every side,
+        // so neighbours overlap and there is never a gap for the
+        // background to leak into. Imagery overlapping imagery is
+        // invisible. The SOURCE rectangle is deliberately NOT padded: a
+        // padded read crosses the tile bitmap's edge at every 45-degree
+        // tile boundary, and the browser's edge handling smeared those
+        // border pixels into the longitudinal streaks of the second
+        // round-2 artifact report. Never sample outside the tile.
         const overdraw = 1.015
         const a = ((p10[0] - p00[0]) / src.sw) * overdraw
         const b = ((p10[1] - p00[1]) / src.sw) * overdraw
@@ -332,8 +337,8 @@ export class TerrainRenderer {
         ctx.setTransform(a, b, c, d, p00[0], p00[1])
         ctx.drawImage(
           src.bitmap,
-          src.sx - 1, src.sy - 1, src.sw + 2, src.sh + 2,
-          -1, -1, src.sw + 2, src.sh + 2,
+          src.sx, src.sy, src.sw, src.sh,
+          -0.5, -0.5, src.sw + 1, src.sh + 1,
         )
       }
     }

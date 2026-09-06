@@ -784,6 +784,36 @@ export function WorldMap({
     }
   }, [])
 
+  /** Round-2 fix: a drag session could survive a lost pointerup (release
+      outside the svg after a leave event when capture did not hold),
+      leaving the SVG hidden behind a stale canvas frame forever — the
+      "frozen black globe". This ends the session unconditionally and
+      restores visibility RIGHT NOW (the one-frame rotation flash is far
+      better than a dead map), and is wired into every escape hatch:
+      pointer leave/cancel/lost-capture, zoom events with no pointers
+      down, and view/mode/projection switches. */
+  const forceEndDragSession = useCallback(() => {
+    cancelInertia()
+    if (!isDragRendering.current) return
+    isDragRendering.current = false
+    if (svgRef.current) svgRef.current.style.visibility = ''
+    if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
+    setRotation([rotationRef.current[0], rotationRef.current[1]])
+  }, [cancelInertia])
+
+  /** The zoom behaviour is bound once and closes over nothing reactive;
+      it reaches the current force-end through this ref. */
+  const forceEndDragSessionRef = useRef(forceEndDragSession)
+  useEffect(() => {
+    forceEndDragSessionRef.current = forceEndDragSession
+  }, [forceEndDragSession])
+
+  useEffect(() => {
+    // Switching base view, fill mode or projection must never inherit a
+    // live drag session.
+    forceEndDragSession()
+  }, [baseView, mode, projectionKey, forceEndDragSession])
+
   /** Momentum after release: the last frame's delta decays at 7% per
       frame, so the globe has weight. Skipped under reduced motion. */
   const startInertia = useCallback(() => {
@@ -938,6 +968,9 @@ export function WorldMap({
         return false
       })
       .on('zoom', (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
+        if (isDragRendering.current && dragPointers.current.size === 0) {
+          forceEndDragSessionRef.current()
+        }
         setTransform(event.transform)
       })
     behaviourRef.current = behaviour
@@ -1515,12 +1548,17 @@ export function WorldMap({
       }}
       onPointerLeave={(event) => {
         dragPointers.current.delete(event.pointerId)
+        if (dragPointers.current.size === 0 && isDragRendering.current) {
+          startInertia()
+        }
         onHover(null)
         // Keep the popover if the pointer is moving INTO it (to reach its
         // "More info" link); clear otherwise, unless a tap pinned it.
-        const into = popoverRef.current?.contains(
-          event.relatedTarget as Node | null,
-        )
+        // relatedTarget can be the window (leaving the document) — only a
+        // real Node may be passed to contains(), or it throws (§42).
+        const related = event.relatedTarget
+        const into =
+          related instanceof Node && popoverRef.current?.contains(related)
         if (!into) setPopover((prev) => (prev?.pinned ? prev : null))
       }}
       onClick={(event) => {
@@ -1531,6 +1569,7 @@ export function WorldMap({
       onPointerMove={handleGlobePointerMove}
       onPointerUp={handleGlobePointerEnd}
       onPointerCancel={handleGlobePointerEnd}
+      onLostPointerCapture={handleGlobePointerEnd}
       onKeyDown={handleKeyDown}
     >
       <defs>
