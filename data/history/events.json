@@ -1,6 +1,6 @@
 {
   "source": "editorial",
-  "version": 3,
+  "version": 4,
   "note": "Editorial, versioned event list for the Human History timeline. Years are astronomical integers (negative = BCE; no year zero adjustment is attempted for prehistory). datePrecision states how firm the date is; contested or approximate dates say so in the summary. `wikipedia` is the English article that anchors the event and supplies its image at build time. 195 events, deliberately balanced across regions.",
   "categories": [
     "evolution-prehistory",
@@ -60,28 +60,28 @@
     "Austronesian"
   ],
   "counts": {
-    "events": 249,
+    "events": 273,
     "byCategory": {
       "evolution-prehistory": 9,
       "invention-technology": 43,
-      "other-discovery": 56,
-      "war-conflict": 47,
-      "rights-document": 39,
-      "religion": 23,
+      "other-discovery": 62,
+      "war-conflict": 61,
+      "rights-document": 41,
+      "religion": 25,
       "scientific-discovery": 32
     },
     "byRegion": {
-      "Africa": 52,
-      "West Asia": 57,
-      "East Asia": 33,
-      "Southeast Asia": 14,
-      "Europe": 104,
-      "Central Asia": 13,
+      "Africa": 54,
+      "West Asia": 66,
+      "East Asia": 34,
+      "Southeast Asia": 15,
+      "Europe": 114,
+      "Central Asia": 14,
       "South Asia": 24,
       "Oceania": 8,
       "North America": 33,
-      "South America": 12,
-      "Mesoamerica": 12,
+      "South America": 13,
+      "Mesoamerica": 14,
       "Global": 24
     }
   },
@@ -394,7 +394,7 @@
       "image": {
         "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fertile%20crescent%20Neolithic%20B%20circa%207500%20BC.svg?width=640",
         "license": "CC BY-SA 4.0",
-        "attribution": "Bjoertvedt, Lars A",
+        "attribution": "Bjoertvedt, Lars A\n\ntranslator: Manlleus (ca)",
         "commonsPage": "https://commons.wikimedia.org/wiki/File:Fertile%20crescent%20Neolithic%20B%20circa%207500%20BC.svg"
       },
       "sources": [
@@ -651,6 +651,7 @@
       "regions": [
         "South Asia"
       ],
+      "civilization": "Indian",
       "wikipedia": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation"
     },
     {
@@ -722,6 +723,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Sargon_of_Akkad"
     },
     {
+      "id": "epic-of-gilgamesh",
+      "title": "The Epic of Gilgamesh is composed",
+      "startYear": -2100,
+      "endYear": null,
+      "datePrecision": "approximate",
+      "category": "other-discovery",
+      "summary": "Sumerian poems about Gilgamesh, king of Uruk, circulate by around 2100 BCE and are later woven into a Babylonian epic — the oldest long literary work that survives. Its hero befriends the wild man Enkidu, grieves his death, and travels to the world's edge seeking immortality, meeting a survivor of a great flood along the way. Lost for two millennia, the epic was recovered from Nineveh's library and deciphered in 1872, stunning readers with a flood story older than Genesis.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/British%20Museum%20Flood%20Tablet.jpg?width=640",
+        "license": "CC0",
+        "attribution": null,
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:British%20Museum%20Flood%20Tablet.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh"
+      ],
+      "regions": [
+        "West Asia"
+      ],
+      "civilization": "Mesopotamian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh"
+    },
+    {
       "id": "code-of-hammurabi",
       "title": "The Code of Hammurabi",
       "startYear": -1755,
@@ -765,6 +789,7 @@
         "Oceania",
         "Southeast Asia"
       ],
+      "civilization": "Austronesian",
       "wikipedia": "https://en.wikipedia.org/wiki/Lapita_culture"
     },
     {
@@ -788,6 +813,7 @@
       "regions": [
         "South Asia"
       ],
+      "civilization": "Indian",
       "wikipedia": "https://en.wikipedia.org/wiki/Vedas"
     },
     {
@@ -927,6 +953,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Chav%C3%ADn_de_Hu%C3%A1ntar"
     },
     {
+      "id": "urartu-van",
+      "title": "The kingdom of Urartu rises around Lake Van",
+      "startYear": -860,
+      "endYear": -590,
+      "datePrecision": "decade",
+      "category": "other-discovery",
+      "summary": "From its rock-cut capital of Tushpa on Lake Van, the kingdom of Urartu dominates the Armenian highlands for nearly three centuries, building fortresses, irrigation canals still in use today, and a cuneiform bureaucracy that trades blows with Assyria itself. When Urartu falls around 590 BCE its lands and peoples pass to the emerging Armenian identity — Persian inscriptions soon call the same country Armina, and later Armenian tradition remembers Urartian sites such as Van as its own deep past.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Urartu%20743-en.svg?width=640",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Sémhur",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Urartu%20743-en.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Urartu"
+      ],
+      "regions": [
+        "West Asia"
+      ],
+      "civilization": "Armenian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Urartu"
+    },
+    {
       "id": "carthage-founding",
       "title": "Carthage is founded and comes to rule the western seas",
       "startYear": -814,
@@ -971,6 +1020,29 @@
       ],
       "civilization": "Celtic",
       "wikipedia": "https://en.wikipedia.org/wiki/Celts"
+    },
+    {
+      "id": "ancient-olympics",
+      "title": "The first recorded Olympic Games are held",
+      "startYear": -776,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "other-discovery",
+      "summary": "Greek tradition dates the first Olympic festival at Olympia to 776 BCE, and the victor lists that begin there become the backbone of Greek chronology — historians dated events by Olympiads. Held every four years in honour of Zeus, the games drew athletes from every Greek city under a sacred truce, and champions in the sprint, wrestling and chariot race won olive crowns and lasting fame. Suppressed under Christian emperors around 393 CE, they were revived as the modern Olympics in 1896.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/GR-olympia-palaestra.jpg?width=640",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Bgabel",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:GR-olympia-palaestra.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ancient_Olympic_Games"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "civilization": "Greek",
+      "wikipedia": "https://en.wikipedia.org/wiki/Ancient_Olympic_Games"
     },
     {
       "id": "nineveh-library",
@@ -1176,6 +1248,7 @@
       "regions": [
         "South Asia"
       ],
+      "civilization": "Indian",
       "wikipedia": "https://en.wikipedia.org/wiki/Gautama_Buddha"
     },
     {
@@ -1203,6 +1276,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Greco-Persian_Wars"
     },
     {
+      "id": "peloponnesian-war",
+      "title": "The Peloponnesian War breaks Athens",
+      "startYear": -431,
+      "endYear": -404,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "For twenty-seven years Athens and its maritime empire fight Sparta and its allies in a war that consumes the Greek world — plague kills Pericles and a third of Athens, a whole Athenian fleet and army are destroyed at Syracuse, and in 404 BCE the starved city surrenders and its walls are pulled down. Thucydides, an exiled Athenian general, chronicles it as 'a possession for all time': the founding work of critical history and of hard-nosed political realism.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pelop%20war%20en.png?width=640",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Translator was Kenmayer",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Pelop%20war%20en.png"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Peloponnesian_War"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "civilization": "Greek",
+      "wikipedia": "https://en.wikipedia.org/wiki/Peloponnesian_War"
+    },
+    {
       "id": "hippocrates",
       "title": "Hippocratic medicine",
       "startYear": -400,
@@ -1222,6 +1318,7 @@
       "regions": [
         "Europe"
       ],
+      "civilization": "Greek",
       "wikipedia": "https://en.wikipedia.org/wiki/Hippocrates"
     },
     {
@@ -1435,6 +1532,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Zhang_Qian"
     },
     {
+      "id": "tigranes-great",
+      "title": "Tigranes the Great builds an Armenian empire",
+      "startYear": -95,
+      "endYear": -55,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "Tigranes II takes the Armenian throne in 95 BCE and for a generation makes Armenia the strongest state in the Roman East, stretching from the Caspian to the Mediterranean and taking the Persian title 'king of kings'. He founds a new capital, Tigranocerta, populated by transplanted Greek craftsmen. Rome's generals Lucullus and Pompey eventually strip the conquests away, but the empire fixes Armenia's self-image: a nation that was once, briefly, the centre of its world.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coin%20of%20Tigranes%20II%20the%20Great%2C%20Antioch%20mint.jpg?width=640",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Classical Numismatic Group; [1]",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Coin%20of%20Tigranes%20II%20the%20Great%2C%20Antioch%20mint.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tigranes_the_Great"
+      ],
+      "regions": [
+        "West Asia"
+      ],
+      "civilization": "Armenian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Tigranes_the_Great"
+    },
+    {
       "id": "caesar-assassination",
       "title": "Julius Caesar is assassinated; the Roman Empire follows",
       "startYear": -44,
@@ -1497,6 +1617,29 @@
         "West Asia"
       ],
       "wikipedia": "https://en.wikipedia.org/wiki/Early_Christianity"
+    },
+    {
+      "id": "boudica-revolt",
+      "title": "Boudica leads the British revolt against Rome",
+      "startYear": 60,
+      "endYear": 61,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "When Rome annexes the Iceni kingdom, flogs its widowed queen Boudica and assaults her daughters, she raises the Celtic tribes of Britain in revolt. Her armies burn the Roman towns of Camulodunum, Verulamium and the young trading post of Londinium, killing tens of thousands, before the outnumbered legions annihilate the rebels in a final pitched battle. Boudica's death ends Celtic resistance in lowland Britain, but Tacitus' account makes her an enduring symbol of defiance against empire.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Queen%20Boudica%20by%20John%20Opie.jpg?width=640",
+        "license": "Public domain",
+        "attribution": "John Opie",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Queen%20Boudica%20by%20John%20Opie.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Boudica"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "civilization": "Celtic",
+      "wikipedia": "https://en.wikipedia.org/wiki/Boudica"
     },
     {
       "id": "second-temple-destruction",
@@ -1587,7 +1730,31 @@
       "regions": [
         "Africa"
       ],
+      "civilization": "Greek",
       "wikipedia": "https://en.wikipedia.org/wiki/Almagest"
+    },
+    {
+      "id": "sasanian-empire",
+      "title": "Ardashir I founds the Sasanian Empire",
+      "startYear": 224,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "Ardashir I, a local ruler from Persis, defeats the last Parthian king at Hormozdgan in 224 and crowns himself shahanshah — king of kings — restoring a centralised Persian empire that will fight Rome and Byzantium to a standstill for four centuries. The Sasanians make Zoroastrianism a state church, build the great academy at Gundeshapur, and set the imperial style that the caliphate later inherits. Their exhausting last war with Byzantium opens the door to the Arab conquests.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Sasanian%20Empire%20at%20its%20apex%20under%20Khosrow%20II.svg?width=640",
+        "license": "CC BY 4.0",
+        "attribution": "Original file by Ro4444, edited by me",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:The%20Sasanian%20Empire%20at%20its%20apex%20under%20Khosrow%20II.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sasanian_Empire"
+      ],
+      "regions": [
+        "West Asia"
+      ],
+      "civilization": "Persian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Sasanian_Empire"
     },
     {
       "id": "maya-classic",
@@ -1678,6 +1845,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Armenian_Apostolic_Church"
     },
     {
+      "id": "edict-of-milan",
+      "title": "The Edict of Milan legalises Christianity",
+      "startYear": 313,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "religion",
+      "summary": "Meeting at Milan in 313, the emperors Constantine and Licinius agree to tolerate every religion in the empire, ending the persecution of Christians and restoring their confiscated property. Constantine, victorious the year before under a Christian sign at the Milvian Bridge, goes further: imperial patronage builds churches, convenes the Council of Nicaea, and founds Constantinople as a Christian capital. Within eighty years Christianity moves from persecuted minority to the official religion of the Roman state.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Constantine%20Chiaramonti%20Inv1749.jpg?width=640",
+        "license": "Public domain",
+        "attribution": "Marie-Lan Nguyen",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Constantine%20Chiaramonti%20Inv1749.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Edict_of_Milan"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "civilization": "Roman",
+      "wikipedia": "https://en.wikipedia.org/wiki/Edict_of_Milan"
+    },
+    {
       "id": "aksum-christianity",
       "title": "Aksum: trading empire and early Christian kingdom",
       "startYear": 330,
@@ -1720,6 +1910,7 @@
       "regions": [
         "Africa"
       ],
+      "civilization": "Ethiopian",
       "wikipedia": "https://en.wikipedia.org/wiki/Kingdom_of_Aksum"
     },
     {
@@ -1807,6 +1998,7 @@
       "regions": [
         "South Asia"
       ],
+      "civilization": "Indian",
       "wikipedia": "https://en.wikipedia.org/wiki/Brahmagupta"
     },
     {
@@ -1971,6 +2163,7 @@
         "East Asia",
         "Central Asia"
       ],
+      "civilization": "Chinese",
       "wikipedia": "https://en.wikipedia.org/wiki/Tang_dynasty"
     },
     {
@@ -2155,6 +2348,7 @@
       "regions": [
         "West Asia"
       ],
+      "civilization": "Islamic caliphates",
       "wikipedia": "https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi"
     },
     {
@@ -2182,6 +2376,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Gunpowder"
     },
     {
+      "id": "chichen-itza",
+      "title": "Chichén Itzá dominates the Maya north",
+      "startYear": 900,
+      "endYear": 1200,
+      "datePrecision": "century",
+      "category": "other-discovery",
+      "summary": "As the southern Maya cities empty, Chichén Itzá rises in northern Yucatán into the peninsula's dominant power — a cosmopolitan capital whose stepped pyramid of Kukulcán casts a serpent-shaped shadow at the equinoxes, and whose Great Ball Court is the largest in Mesoamerica. Its art mixes Maya and central-Mexican styles, evidence of trade and ideas moving across the Gulf. The city declines by around 1200, but its sacred cenote keeps drawing pilgrims until the Spanish conquest.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chichen%20Itza%203.jpg?width=640",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Daniel Schwen",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Chichen%20Itza%203.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Chichen_Itza"
+      ],
+      "regions": [
+        "Mesoamerica"
+      ],
+      "civilization": "Maya",
+      "wikipedia": "https://en.wikipedia.org/wiki/Chichen_Itza"
+    },
+    {
       "id": "cordoba-al-andalus",
       "title": "Córdoba and the brilliance of al-Andalus",
       "startYear": 929,
@@ -2203,6 +2420,29 @@
       ],
       "civilization": "Islamic caliphates",
       "wikipedia": "https://en.wikipedia.org/wiki/Caliphate_of_C%C3%B3rdoba"
+    },
+    {
+      "id": "iceland-althing",
+      "title": "Iceland founds the Althing assembly",
+      "startYear": 930,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "rights-document",
+      "summary": "Norse settlers of Iceland, having no king, gather at Thingvellir in 930 to found the Althing: a general assembly where chieftains make law and judge disputes, with a Lawspeaker reciting the law aloud from the Law Rock. It is the oldest surviving parliament, and its most famous decision comes in 1000, when Iceland peacefully adopts Christianity by arbitration to avoid civil war. Suspended under Danish rule in 1800, the Althing was restored and continues as Iceland's legislature today.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Althing%20Logo.svg?width=640",
+        "license": "Public domain",
+        "attribution": "Great Brightstar",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Althing%20Logo.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Althing"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "civilization": "Norse",
+      "wikipedia": "https://en.wikipedia.org/wiki/Althing"
     },
     {
       "id": "song-economic-revolution",
@@ -2248,6 +2488,7 @@
       "regions": [
         "Europe"
       ],
+      "civilization": "Russian",
       "wikipedia": "https://en.wikipedia.org/wiki/Christianization_of_Kievan_Rus%27"
     },
     {
@@ -2318,6 +2559,7 @@
       "regions": [
         "Oceania"
       ],
+      "civilization": "Austronesian",
       "wikipedia": "https://en.wikipedia.org/wiki/Polynesian_navigation"
     },
     {
@@ -2413,6 +2655,7 @@
         "Africa",
         "West Asia"
       ],
+      "civilization": "Islamic caliphates",
       "wikipedia": "https://en.wikipedia.org/wiki/Ibn_al-Haytham"
     },
     {
@@ -2460,6 +2703,7 @@
       "regions": [
         "East Asia"
       ],
+      "civilization": "Chinese",
       "wikipedia": "https://en.wikipedia.org/wiki/Bi_Sheng"
     },
     {
@@ -2482,6 +2726,7 @@
       "regions": [
         "East Asia"
       ],
+      "civilization": "Chinese",
       "wikipedia": "https://en.wikipedia.org/wiki/Compass"
     },
     {
@@ -2505,6 +2750,30 @@
         "North America"
       ],
       "wikipedia": "https://en.wikipedia.org/wiki/Cahokia"
+    },
+    {
+      "id": "great-schism-1054",
+      "title": "The East–West Schism splits Christendom",
+      "startYear": 1054,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "religion",
+      "summary": "In 1054 papal legates lay a bull of excommunication on the altar of Hagia Sophia and the patriarch of Constantinople excommunicates them back — the symbolic break between Latin West and Greek East after centuries of drift over papal authority, the filioque clause and ritual. The split hardens irreversibly when the Fourth Crusade sacks Constantinople in 1204. Catholic and Orthodox Christianity develop separately from then on; the mutual excommunications were lifted only in 1965, the division itself never healed.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Great%20Schism%20with%20former%20borders%20%281054%29.png?width=640",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Barrikader (talk · contribs)",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Great%20Schism%20with%20former%20borders%20%281054%29.png"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/East–West_Schism"
+      ],
+      "regions": [
+        "Europe",
+        "West Asia"
+      ],
+      "civilization": "Byzantine",
+      "wikipedia": "https://en.wikipedia.org/wiki/East%E2%80%93West_Schism"
     },
     {
       "id": "investiture-canossa",
@@ -2694,6 +2963,24 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Jikji"
     },
     {
+      "id": "sundiata-mali",
+      "title": "Sundiata Keita founds the Mali Empire",
+      "startYear": 1235,
+      "endYear": null,
+      "datePrecision": "decade",
+      "category": "war-conflict",
+      "summary": "At the battle of Kirina around 1235, Sundiata Keita defeats the Sosso king Sumanguru and unites the Mande peoples into the Mali Empire, soon the master of the West African gold trade. The Epic of Sundiata, sung by griots for eight centuries, preserves his story — the crippled prince who rose to found an empire — and tradition links his assembly to the Kouroukan Fouga charter of laws. His successors, including Mansa Musa, make Mali a byword for wealth.",
+      "image": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Sundiata_Keita"
+      ],
+      "regions": [
+        "Africa"
+      ],
+      "civilization": "Mali & Songhai",
+      "wikipedia": "https://en.wikipedia.org/wiki/Sundiata_Keita"
+    },
+    {
       "id": "pax-mongolica-exchange",
       "title": "The Pax Mongolica links Eurasia end to end",
       "startYear": 1250,
@@ -2739,6 +3026,7 @@
       "regions": [
         "Oceania"
       ],
+      "civilization": "Austronesian",
       "wikipedia": "https://en.wikipedia.org/wiki/Moai"
     },
     {
@@ -2786,6 +3074,7 @@
         "Africa",
         "West Asia"
       ],
+      "civilization": "Mali & Songhai",
       "wikipedia": "https://en.wikipedia.org/wiki/Mansa_Musa"
     },
     {
@@ -2812,6 +3101,7 @@
         "East Asia",
         "Southeast Asia"
       ],
+      "civilization": "Islamic caliphates",
       "wikipedia": "https://en.wikipedia.org/wiki/Ibn_Battuta"
     },
     {
@@ -2857,6 +3147,7 @@
       "regions": [
         "South Asia"
       ],
+      "civilization": "Indian",
       "wikipedia": "https://en.wikipedia.org/wiki/Vijayanagara_Empire"
     },
     {
@@ -2953,7 +3244,77 @@
         "West Asia",
         "Africa"
       ],
+      "civilization": "Chinese",
       "wikipedia": "https://en.wikipedia.org/wiki/Ming_treasure_voyages"
+    },
+    {
+      "id": "aztec-triple-alliance",
+      "title": "The Aztec Triple Alliance is forged",
+      "startYear": 1428,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "In 1428 Tenochtitlan joins Texcoco and Tlacopan to overthrow the Tepanec overlords of the Valley of Mexico, founding the Triple Alliance that becomes the Aztec Empire. Under rulers like Moctezuma I, alliance armies push tribute networks to both coasts, feeding Tenochtitlan's markets and temples with cloth, cacao, jade and captives for sacrifice. Within a century the alliance rules perhaps five million people — the empire whose wealth and rivalries Cortés will exploit when he lands in 1519.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Aztec%20Empire%20ME%20%28orthographic%20projection%29.svg?width=640",
+        "license": "CC BY-SA 3.0",
+        "attribution": "File:Aztec Empire (orthographic projection).svg : Keepscases\nDerivative work : Giggette",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Aztec%20Empire%20ME%20%28orthographic%20projection%29.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Aztec_Empire"
+      ],
+      "regions": [
+        "Mesoamerica"
+      ],
+      "civilization": "Aztec",
+      "wikipedia": "https://en.wikipedia.org/wiki/Aztec_Empire"
+    },
+    {
+      "id": "joan-of-arc",
+      "title": "Joan of Arc turns the Hundred Years’ War",
+      "startYear": 1429,
+      "endYear": 1431,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "A seventeen-year-old peasant girl claiming saintly voices persuades the French court to give her an army, breaks the English siege of Orléans in nine days, and stands beside Charles VII at his coronation in Reims — reversing the momentum of the Hundred Years' War. Captured and sold to the English, Joan is burned as a heretic at Rouen in 1431, aged nineteen. A church court annuls the verdict in 1456; France expels the English by 1453.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Joan%20of%20Arc%20miniature%20graded.jpg?width=640",
+        "license": "Public domain",
+        "attribution": null,
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Joan%20of%20Arc%20miniature%20graded.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Joan_of_Arc"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "civilization": "French",
+      "wikipedia": "https://en.wikipedia.org/wiki/Joan_of_Arc"
+    },
+    {
+      "id": "fall-of-angkor",
+      "title": "Angkor falls to Ayutthaya",
+      "startYear": 1431,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "In 1431 the Siamese kingdom of Ayutthaya sacks Angkor, and the Khmer court soon abandons the vast temple-city for Phnom Penh, closer to the sea trade. The move ends the empire that had engineered Southeast Asia's greatest hydraulic city — recent surveys show droughts and floods had already been breaking its canal network. Angkor Wat itself is never wholly deserted: Buddhist monks keep it alive as a shrine, and it remains the largest religious monument on Earth.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Map-of-southeast-asia%20900%20CE.svg?width=640",
+        "license": "CC0",
+        "attribution": "Jembezmamy",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Map-of-southeast-asia%20900%20CE.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Khmer_Empire"
+      ],
+      "regions": [
+        "Southeast Asia"
+      ],
+      "civilization": "Khmer",
+      "wikipedia": "https://en.wikipedia.org/wiki/Khmer_Empire"
     },
     {
       "id": "inca-empire",
@@ -3071,6 +3432,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Iroquois"
     },
     {
+      "id": "machu-picchu",
+      "title": "The Inca build Machu Picchu",
+      "startYear": 1450,
+      "endYear": null,
+      "datePrecision": "approximate",
+      "category": "other-discovery",
+      "summary": "Around 1450 the Inca emperor Pachacuti orders a royal estate built on a ridge above the Urubamba gorge: Machu Picchu, some two hundred structures of mortarless stone fitted so precisely that a knife blade cannot enter the joints, watered by spring-fed fountains and terraced into the mountainside. Abandoned within a century amid the Spanish conquest, it was never found by the Spaniards. Hiram Bingham's 1911 expedition made it world-famous, and it stands as the most complete surviving Inca city.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%202023%20%28012%29.jpg?width=640",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Draceane",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Machu%20Picchu%2C%202023%20%28012%29.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Machu_Picchu"
+      ],
+      "regions": [
+        "South America"
+      ],
+      "civilization": "Inca",
+      "wikipedia": "https://en.wikipedia.org/wiki/Machu_Picchu"
+    },
+    {
       "id": "fall-of-constantinople",
       "title": "The Ottomans take Constantinople",
       "startYear": 1453,
@@ -3134,6 +3518,7 @@
       "regions": [
         "Africa"
       ],
+      "civilization": "Mali & Songhai",
       "wikipedia": "https://en.wikipedia.org/wiki/Songhai_Empire"
     },
     {
@@ -3157,6 +3542,7 @@
         "Africa",
         "Europe"
       ],
+      "civilization": "Portuguese",
       "wikipedia": "https://en.wikipedia.org/wiki/Bartolomeu_Dias"
     },
     {
@@ -3298,6 +3684,7 @@
       "regions": [
         "West Asia"
       ],
+      "civilization": "Persian",
       "wikipedia": "https://en.wikipedia.org/wiki/Safavid_Iran"
     },
     {
@@ -3338,6 +3725,7 @@
       "regions": [
         "Global"
       ],
+      "civilization": "Spanish",
       "wikipedia": "https://en.wikipedia.org/wiki/Magellan_expedition"
     },
     {
@@ -3552,6 +3940,52 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Akbar"
     },
     {
+      "id": "spanish-armada",
+      "title": "The Spanish Armada is defeated",
+      "startYear": 1588,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "Philip II sends some 130 ships to escort an invasion army from Flanders and bring England back to Catholic obedience. Harried up the Channel by faster English guns, scattered by fireships at Calais and battered at Gravelines, the Armada flees north around Scotland into Atlantic gales that wreck dozens of ships on Irish shores; barely half the fleet limps home. Spain remains the superpower for decades yet, but England's survival announces the sea power that will shape the coming centuries.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Armadaroute.jpg?width=640",
+        "license": "Public domain",
+        "attribution": "Robert Adams, Augustine Ryther",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Armadaroute.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Spanish_Armada"
+      ],
+      "regions": [
+        "Europe"
+      ],
+      "civilization": "Spanish",
+      "wikipedia": "https://en.wikipedia.org/wiki/Spanish_Armada"
+    },
+    {
+      "id": "imjin-war",
+      "title": "Korea repels the Japanese Imjin invasions",
+      "startYear": 1592,
+      "endYear": 1598,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "Toyotomi Hideyoshi hurls Japan's battle-hardened armies at Korea in 1592, aiming through it at Ming China. Seoul and Pyongyang fall within months, but admiral Yi Sun-sin's fleet — with its armoured turtle ships — strangles the invasion's supply lines, winning at Hansan Island and, with thirteen ships against well over a hundred, at Myeongnyang. Ming intervention and guerrilla 'righteous armies' grind the war to stalemate; Hideyoshi's death ends it. Korea is devastated but unconquered, and Yi becomes its greatest hero.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Siege-of-Busanjin-1592.jpg?width=640",
+        "license": "Public domain",
+        "attribution": "Unknown authorUnknown author",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Siege-of-Busanjin-1592.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Imjin_War"
+      ],
+      "regions": [
+        "East Asia"
+      ],
+      "civilization": "Korean",
+      "wikipedia": "https://en.wikipedia.org/wiki/Imjin_War"
+    },
+    {
       "id": "sekigahara-edo",
       "title": "Sekigahara and the Tokugawa peace",
       "startYear": 1600,
@@ -3636,6 +4070,7 @@
       "regions": [
         "Europe"
       ],
+      "civilization": "Frankish & HRE",
       "wikipedia": "https://en.wikipedia.org/wiki/Thirty_Years%27_War"
     },
     {
@@ -3749,6 +4184,7 @@
       "regions": [
         "Europe"
       ],
+      "civilization": "British",
       "wikipedia": "https://en.wikipedia.org/wiki/Bill_of_Rights_1689"
     },
     {
@@ -4171,6 +4607,7 @@
       "regions": [
         "Europe"
       ],
+      "civilization": "British",
       "wikipedia": "https://en.wikipedia.org/wiki/Liverpool_and_Manchester_Railway"
     },
     {
@@ -4242,6 +4679,7 @@
         "East Asia",
         "Europe"
       ],
+      "civilization": "Chinese",
       "wikipedia": "https://en.wikipedia.org/wiki/First_Opium_War"
     },
     {
@@ -4333,6 +4771,7 @@
       "regions": [
         "East Asia"
       ],
+      "civilization": "Chinese",
       "wikipedia": "https://en.wikipedia.org/wiki/Taiping_Rebellion"
     },
     {
@@ -4443,6 +4882,7 @@
       "regions": [
         "North America"
       ],
+      "civilization": "American",
       "wikipedia": "https://en.wikipedia.org/wiki/American_Civil_War"
     },
     {
@@ -4665,6 +5105,7 @@
       "regions": [
         "North America"
       ],
+      "civilization": "American",
       "wikipedia": "https://en.wikipedia.org/wiki/Wright_Flyer"
     },
     {
@@ -4825,6 +5266,29 @@
       "wikipedia": "https://en.wikipedia.org/wiki/World_War_I"
     },
     {
+      "id": "armenian-genocide",
+      "title": "The Armenian Genocide",
+      "startYear": 1915,
+      "endYear": 1917,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "Beginning with the arrest of Armenian notables in Constantinople on 24 April 1915, the Ottoman government deports the Armenian population of Anatolia toward the Syrian desert in death marches and massacres. Around one million people — estimates range from 600,000 to 1.5 million — are killed, and an ancient homeland is emptied. It is the crime for which Raphael Lemkin later coins the word 'genocide', and its recognition remains contested by Turkey while commemorated by Armenians worldwide every 24 April.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Column%20of%20deportees%20walking%20through%20Harput%20vilayet%20during%20the%20Armenian%20genocide%20%28cropped%29.jpg?width=640",
+        "license": "Public domain",
+        "attribution": "Unknown authorUnknown author",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Column%20of%20deportees%20walking%20through%20Harput%20vilayet%20during%20the%20Armenian%20genocide%20%28cropped%29.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Armenian_genocide"
+      ],
+      "regions": [
+        "West Asia"
+      ],
+      "civilization": "Armenian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Armenian_genocide"
+    },
+    {
       "id": "russian-revolution",
       "title": "The Russian Revolution",
       "startYear": 1917,
@@ -4869,6 +5333,53 @@
         "Global"
       ],
       "wikipedia": "https://en.wikipedia.org/wiki/Spanish_flu"
+    },
+    {
+      "id": "ottoman-end-1922",
+      "title": "The Ottoman Empire is dissolved",
+      "startYear": 1922,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "Defeated in the First World War, occupied and partitioned, the Ottoman state ends when the Grand National Assembly under Mustafa Kemal abolishes the sultanate on 1 November 1922; the last sultan leaves Constantinople on a British warship. The Republic of Turkey is proclaimed the next year and the caliphate itself is abolished in 1924, closing an empire of six centuries whose former Arab provinces, drawn into new borders by Britain and France, still shape the region's politics.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sultanvahideddin.jpg?width=640",
+        "license": "Public domain",
+        "attribution": "Unknown authorUnknown author",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Sultanvahideddin.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Abolition_of_the_Ottoman_sultanate"
+      ],
+      "regions": [
+        "West Asia",
+        "Europe"
+      ],
+      "civilization": "Ottoman",
+      "wikipedia": "https://en.wikipedia.org/wiki/Abolition_of_the_Ottoman_sultanate"
+    },
+    {
+      "id": "tutankhamun-discovery",
+      "title": "Tutankhamun’s tomb is found intact",
+      "startYear": 1922,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "other-discovery",
+      "summary": "On 26 November 1922 Howard Carter breaches a sealed doorway in the Valley of the Kings and, asked whether he can see anything, answers 'Yes, wonderful things'. The tomb of the minor pharaoh Tutankhamun, buried around 1323 BCE and protected by debris from later tomb-building, is the only royal burial of Egypt's New Kingdom found nearly intact — five thousand objects, including the solid-gold funerary mask that becomes ancient Egypt's global icon and transforms public fascination with archaeology.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Inside%20Pharaoh%20Tutankhamun%27s%20tomb%2C%2018th%20dynasty.jpg?width=640",
+        "license": "CC BY-SA 4.0",
+        "attribution": "EditorfromMars",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Inside%20Pharaoh%20Tutankhamun%27s%20tomb%2C%2018th%20dynasty.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Tomb_of_Tutankhamun"
+      ],
+      "regions": [
+        "Africa"
+      ],
+      "civilization": "Egyptian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Tomb_of_Tutankhamun"
     },
     {
       "id": "quantum-mechanics",
@@ -4959,6 +5470,7 @@
       "regions": [
         "South Asia"
       ],
+      "civilization": "Indian",
       "wikipedia": "https://en.wikipedia.org/wiki/Salt_March"
     },
     {
@@ -5003,6 +5515,7 @@
       "regions": [
         "Europe"
       ],
+      "civilization": "Hebrew",
       "wikipedia": "https://en.wikipedia.org/wiki/The_Holocaust"
     },
     {
@@ -5026,6 +5539,7 @@
         "East Asia",
         "North America"
       ],
+      "civilization": "Japanese",
       "wikipedia": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki"
     },
     {
@@ -5094,6 +5608,29 @@
         "North America"
       ],
       "wikipedia": "https://en.wikipedia.org/wiki/Transistor"
+    },
+    {
+      "id": "israel-founded-1948",
+      "title": "The State of Israel is declared",
+      "startYear": 1948,
+      "endYear": 1949,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "On 14 May 1948, as the British Mandate expires, David Ben-Gurion declares the State of Israel — a Jewish state in Palestine three years after the Holocaust, on the basis of the UN's 1947 partition plan. Five Arab armies invade the next day; Israel survives the war and expands beyond the partition lines, while some 700,000 Palestinian Arabs flee or are expelled — the Nakba. Statehood and displacement together define a conflict that remains unresolved today.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Declaration%20of%20State%20of%20Israel%201948.jpg?width=640",
+        "license": "Public domain",
+        "attribution": "Rudi Weissenstein",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Declaration%20of%20State%20of%20Israel%201948.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence"
+      ],
+      "regions": [
+        "West Asia"
+      ],
+      "civilization": "Hebrew",
+      "wikipedia": "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence"
     },
     {
       "id": "universal-declaration-human-rights",
@@ -5391,6 +5928,7 @@
       "regions": [
         "North America"
       ],
+      "civilization": "American",
       "wikipedia": "https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1964"
     },
     {
@@ -5480,6 +6018,7 @@
       "regions": [
         "West Asia"
       ],
+      "civilization": "Persian",
       "wikipedia": "https://en.wikipedia.org/wiki/Iranian_Revolution"
     },
     {
@@ -5568,6 +6107,53 @@
         "Global"
       ],
       "wikipedia": "https://en.wikipedia.org/wiki/Convention_on_the_Rights_of_the_Child"
+    },
+    {
+      "id": "armenia-independence-1991",
+      "title": "Armenia votes for independence from the USSR",
+      "startYear": 1991,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "rights-document",
+      "summary": "On 21 September 1991 Armenians vote almost unanimously to leave the collapsing Soviet Union, restoring an independent Armenian state for the first time since the short-lived republic of 1918–1920 was absorbed by Soviet Russia. The new republic inherits the 1988 earthquake's devastation and war with Azerbaijan over Nagorno-Karabakh, yet becomes the anchor of a global diaspora several times its own population — the latest chapter of a polity whose recorded history runs back to Urartu.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Armenia.svg?width=640",
+        "license": "Public domain",
+        "attribution": "Original: Stepan Malkhasyants Vector:  SKopp",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Flag%20of%20Armenia.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Armenia"
+      ],
+      "regions": [
+        "West Asia"
+      ],
+      "civilization": "Armenian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Armenia"
+    },
+    {
+      "id": "soviet-dissolution-1991",
+      "title": "The Soviet Union is dissolved",
+      "startYear": 1991,
+      "endYear": null,
+      "datePrecision": "exact",
+      "category": "war-conflict",
+      "summary": "After the Berlin Wall falls, Gorbachev's reforms outrun his control: a hard-line coup fails in August 1991, the republics declare independence one after another, and on 25 December the red flag comes down over the Kremlin as the USSR votes itself out of existence. Fifteen states replace it, Russia inheriting the nuclear arsenal and the UN seat. The Cold War ends without a great-power war between its principals — an outcome almost no one had predicted a decade earlier.",
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Map%20of%20USSR%20with%20SSR%20names.svg?width=640",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Special:Contributions/Saul ip. Derivative work by Σ (talk)",
+        "commonsPage": "https://commons.wikimedia.org/wiki/File:Map%20of%20USSR%20with%20SSR%20names.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union"
+      ],
+      "regions": [
+        "Europe",
+        "Central Asia"
+      ],
+      "civilization": "Russian",
+      "wikipedia": "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union"
     },
     {
       "id": "aboriginal-land-rights-mabo",

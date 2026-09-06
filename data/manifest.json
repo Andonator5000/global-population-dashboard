@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-06T08:11:05+00:00",
+  "generated_at": "2026-09-06T11:17:13+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-06T08:11:05+00:00",
+      "fetched_at": "2026-09-06T11:17:13+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -372,7 +372,7 @@
       "title": "NSSDC Planetary Fact Sheets (pinned Internet Archive snapshots)",
       "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
       "licence": "Public domain (NASA)",
-      "fetched_at": "2026-09-06T08:02:01+00:00",
+      "fetched_at": "2026-09-06T11:13:34+00:00",
       "upstream_release": null,
       "vintage": "2025 snapshots (see per-body vintage)",
       "citation": "NASA NSSDCA Planetary Fact Sheets (D.R. Williams), via the Internet Archive",
@@ -383,7 +383,7 @@
       "title": "JPL Horizons (live cross-check of archived fact sheets)",
       "url": "https://ssd.jpl.nasa.gov/api/horizons.api",
       "licence": "Public domain (NASA/JPL)",
-      "fetched_at": "2026-09-06T08:02:01+00:00",
+      "fetched_at": "2026-09-06T11:13:34+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "NASA/JPL Horizons System, physical-properties blocks",
@@ -399,13 +399,13 @@
       "vintage": null,
       "citation": "NASA/JPL Solar System Dynamics: planetary satellite tables and the Small-Body Database",
       "files": [],
-      "notes": "460 satellites across 7 planets; physical parameters where measured; discovery circumstances; dwarf planets via SBDB with nulls where SBDB publishes no value. 13 NASA-library portraits."
+      "notes": "459 satellites across 7 planets; physical parameters where measured; discovery circumstances; dwarf planets via SBDB with nulls where SBDB publishes no value. 13 NASA-library portraits."
     },
     "solarsystemscope_textures": {
       "title": "Solar System Scope planetary textures",
       "url": "https://www.solarsystemscope.com/textures/",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-09-06T08:02:01+00:00",
+      "fetched_at": "2026-09-06T11:13:34+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "Solar System Scope textures (CC BY 4.0), based on NASA imagery and elevation data",
@@ -427,7 +427,7 @@
       "title": "Cosmic Phenomena (editorial) with NASA-library images",
       "url": "https://images.nasa.gov",
       "licence": "Editorial text CC0 (this project); images NASA/partners, credited per item",
-      "fetched_at": "2026-09-06T08:10:54+00:00",
+      "fetched_at": "2026-09-06T09:16:00+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "NASA Image and Video Library; per-entry Wikipedia and NASA science pages",
@@ -438,7 +438,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-09-06T08:11:05+00:00",
+      "fetched_at": "2026-09-06T11:17:13+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -460,12 +460,12 @@
       "title": "Human History timeline (editorial) with Commons images",
       "url": "https://commons.wikimedia.org",
       "licence": "Editorial text CC0 (this project); images per-file PD/CC (attributed)",
-      "fetched_at": "2026-09-06T07:22:02+00:00",
+      "fetched_at": "2026-09-06T11:13:53+00:00",
       "upstream_release": null,
-      "vintage": "events file version 3",
+      "vintage": "events file version 4",
       "citation": "etl/reference/history_events.json; Wikimedia Commons",
       "files": [],
-      "notes": "249 events, 230 with a free image; 2 lead images skipped as non-free."
+      "notes": "273 events, 253 with a free image; 2 lead images skipped as non-free."
     },
     "cia_factbook": {
       "title": "CIA World Factbook (factbook.json mirror)",
@@ -874,7 +874,7 @@
       "sources": [
         "jpl_ssd"
       ],
-      "row_count": 460,
+      "row_count": 459,
       "entity_count": null
     },
     "space/textures/": {
@@ -930,7 +930,7 @@
       "sources": [
         "history_events"
       ],
-      "row_count": 249,
+      "row_count": 273,
       "entity_count": null
     },
     "factbook/<ISO3>.json": {
@@ -996,5 +996,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "6987bc15f0ac112efe108aadd9f770a247548e141ce99e8d7ac6f98e2eb3ddb9"
+  "content_fingerprint": "49c003f5ad6c4a43b22b82af7aca18913fe98b4a954cd5a058985e2d5f397ada"
 }

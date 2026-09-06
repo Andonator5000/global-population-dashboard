@@ -1,7 +1,7 @@
 {
   "source": "editorial",
   "version": 1,
-  "imageNote": "Images are NASA Image and Video Library media (NASA/ESA and partners), credited per item.",
+  "imageNote": "Images are NASA Image and Video Library media (NASA/ESA and partners) or, where NASA has none, the Wikipedia article's free-licensed lead image — credited per item.",
   "entries": [
     {
       "id": "stellar-lifecycles",
@@ -88,7 +88,13 @@
         "Einstein–Rosen bridge published 1935",
         "Traversable wormholes require exotic negative-energy matter"
       ],
-      "image": null,
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Einstein-rosen-bridge-model.png?width=640",
+        "title": "Einstein-rosen-bridge-model",
+        "nasaId": null,
+        "page": "https://commons.wikimedia.org/wiki/File:Einstein-rosen-bridge-model.png",
+        "credit": "MikeRun · CC BY-SA 4.0"
+      },
       "wikipedia": "https://en.wikipedia.org/wiki/Wormhole",
       "nasa": "https://science.nasa.gov/universe/"
     },
