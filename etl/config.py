@@ -274,6 +274,49 @@ NATURAL_EARTH_ADMIN0_110M = (
     "https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip"
 )
 
+# --------------------------------------------------------------------------
+# Map detail layers (Phase 4, 2026-09-05): sub-national borders, water,
+# populated places, and the satellite/terrain base imagery. All Natural Earth
+# vectors are public domain; Blue Marble is NASA imagery (public domain, NASA
+# credit requested). See DATA_DECISIONS.md §30.
+# --------------------------------------------------------------------------
+
+NATURAL_EARTH_ADMIN1_10M = (
+    "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces.zip"
+)
+NATURAL_EARTH_ADMIN1_LINES_10M = (
+    "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces_lines.zip"
+)
+NATURAL_EARTH_LAKES_50M = (
+    "https://naciscdn.org/naturalearth/50m/physical/ne_50m_lakes.zip"
+)
+NATURAL_EARTH_LAKES_10M = (
+    "https://naciscdn.org/naturalearth/10m/physical/ne_10m_lakes.zip"
+)
+NATURAL_EARTH_RIVERS_50M = (
+    "https://naciscdn.org/naturalearth/50m/physical/ne_50m_rivers_lake_centerlines.zip"
+)
+NATURAL_EARTH_RIVERS_10M = (
+    "https://naciscdn.org/naturalearth/10m/physical/ne_10m_rivers_lake_centerlines.zip"
+)
+NATURAL_EARTH_PLACES_10M = (
+    "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places_simple.zip"
+)
+
+# NASA Blue Marble Next Generation, August 2004, WITH topography and
+# bathymetry -- the shaded relief is baked into the imagery, which is what
+# makes mountains and deserts legible without a separate hillshade layer.
+# August: northern-hemisphere summer, so snow cover hides the least terrain.
+# 21600x10800 is ~1.85 km/px; NASA's 500 m set (86400x43200 across 8 tiles)
+# exists at the same imagerecord family if the committed-size budget is ever
+# raised. Public domain; NASA requests credit ("NASA Earth Observatory /
+# Blue Marble").
+BLUE_MARBLE_URL = (
+    "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73776/"
+    "world.topo.bathy.200408.3x21600x10800.jpg"
+)
+BLUE_MARBLE_VINTAGE = "2004-08"
+
 # RESOLVE Ecoregions 2017 (WWF terrestrial ecoregions lineage).
 ECOREGIONS_URL = "https://storage.googleapis.com/teow2016/Ecoregions2017.zip"
 # Geometry is simplified to this tolerance (in EQUAL_AREA_CRS metres) before

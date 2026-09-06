@@ -118,6 +118,8 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Government, ethnicity, religion, languages | CIA World Factbook (`factbook.json` mirror) | Public domain. |
 | Country metadata, borders, area | `mledoze/countries` | **Substituted for REST Countries v3.1** — see below. |
 | Geometry | Natural Earth via TopoJSON | 110m render, 50m for biome math. |
+| Map detail: admin-1 borders, lakes, rivers, places | Natural Earth 10m/50m | Public domain; simplified in the ETL, zoom-lazy in the app — DATA_DECISIONS.md §30. |
+| Satellite/terrain imagery | NASA Blue Marble Next Generation (Aug 2004, topo & bathy) | Public domain, NASA credited on-map; ETL-baked JPEG tiers, no runtime tile server. |
 | Biomes | RESOLVE Ecoregions 2017 | Build-time overlay, never runtime. |
 | Democracy, human rights, governance, CO₂ per capita | V-Dem / Regimes of the World / Hanson & Sigman / Global Carbon Budget, via Our World in Data | Primary source for the Freedom and governance measures; citations name the underlying producer. |
 | World Heritage sites | UNESCO World Heritage List | Official syndication XML — see DATA_DECISIONS.md §16.3 on the WAF workaround. |

@@ -1847,6 +1847,70 @@ Verified against the audit checklist already in place from Phase 9:
 global `:focus-visible`, map focus strokes, forced-colors support,
 reduced-motion, table overflow handling, skip link, heading hierarchy.
 
+## 30. Geographic detail and the satellite base view (2026-09-05, Phase 4)
+
+The maintainer asked for map detail closer to a general-purpose web map:
+a satellite/terrain base view, lakes and rivers, first-level
+administrative boundaries, and zoom-progressive labels down to towns.
+Roads were explicitly excluded.
+
+### 30.1 Imagery: baked NASA Blue Marble, not runtime tiles, not WebGL
+
+Three options were put to the maintainer with trade-offs; the ruling was
+**ETL-baked NASA imagery** — the only option that keeps both repo
+principles intact (keyless ETL; the browser never calls an upstream API).
+NASA GIBS runtime tiles were declined (a third and much heavier
+render-time upstream), as was a WebGL rearchitecture (would reimplement
+every settled map behaviour, and the best terrain sources need API keys a
+static site cannot hide).
+
+The image is **Blue Marble Next Generation, August 2004, WITH topography
+and bathymetry** (public domain; NASA requests credit, shown in the
+on-map attribution): the shaded relief is baked into the imagery, which
+satisfies the hillshade requirement without a separate elevation layer,
+and August snow cover hides the least terrain. The 21600×10800 source
+(~1.85 km/px) is cut by the `mapdetail` stage into three tiers of 2700 px
+JPEG tiles (~17 MB committed): one world image, 8 mid-zoom tiles, 32
+high-zoom tiles fetched only for the visible window. **Open question:**
+NASA's 500 m set (86400×43200) exists in the same family; adopting it is
+a config change plus ~100 MB of committed tiles.
+
+### 30.2 Rendering: forward mesh warp onto a canvas beneath the SVG
+
+The map stays d3/SVG. The satellite view draws imagery on a canvas
+UNDER the svg by forward mesh warping (45/2^n-degree quads aligned to
+the tile grid, one affine drawImage per quad), so every interactive
+surface — hover, click, keyboard, the French Guiana detachment — is the
+same SVG it always was, with fills turned transparent (`transparent`,
+never `none`, so hit-testing survives). Continent mode ignores the
+satellite toggle: region fills are that mode's identity.
+
+### 30.3 Vector detail: Natural Earth, simplified GeoJSON, zoom-lazy
+
+Admin-1 boundary lines and label points (10m), lakes and rivers (50m and
+10m, the 10m sets filtered by Natural Earth's own scalerank), and
+populated places (10m simple) are fetched and processed in the ETL —
+nothing hand-typed. They are emitted as simplified, 3-decimal-rounded
+GeoJSON rather than TopoJSON: these layers share no edges, so shared-arc
+encoding buys nothing, and ~110 m rounding is invisible at the map's
+maximum zoom. Each layer is fetched by the app only when the zoom
+crosses its threshold; labels are collision-culled with country names
+taking priority, then capitals, admin-1 names, towns by scalerank, and
+water names. During an active globe drag the vector layers hide and
+reproject 160 ms after the rotation settles — regenerating ~13k
+projected features per drag frame would kill the spin.
+
+River and lake names are placed at feature centroids, which for long
+rivers can sit noticeably off the channel; acceptable for now, recorded
+here rather than hidden.
+
+### 30.4 Refresh policy
+
+Natural Earth layers join the monthly refresh (they change rarely; a
+release shows up as an ordinary data PR). The Blue Marble URL is a
+pinned, dated NASA asset that will never change content — effectively
+pinned by construction.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
