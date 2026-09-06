@@ -36,12 +36,17 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import urllib.parse
 from typing import Any
 
 from .. import config, manifest as manifest_mod
 from ..crosswalk import Entity
 from ..fetch import FetchError, fetch
+from . import commons
+
+# Same free-licence gate the history and evolution stages apply to images.
+_FREE = re.compile(r"public domain|cc0|cc[- ]by(?![- ]n[cd])|pd-", re.IGNORECASE)
 
 # Ranks we stop descending at (family) and never descend past outside the
 # focus families. COL interleaves intermediate ranks (subphylum, suborder,
@@ -54,7 +59,8 @@ MAX_DEPTH = 14
 WIKIDATA_BATCH = 200
 
 _WIKIDATA_QUERY = """
-SELECT ?colid ?itemDescription ?article ?common WHERE {{
+SELECT ?colid ?itemDescription ?article ?common ?image ?ncbi ?ott
+       ?rangeStart WHERE {{
   VALUES ?colid {{ {values} }}
   ?item wdt:P10585 ?colid .
   OPTIONAL {{
@@ -62,6 +68,10 @@ SELECT ?colid ?itemDescription ?article ?common WHERE {{
              schema:isPartOf <https://en.wikipedia.org/> .
   }}
   OPTIONAL {{ ?item wdt:P1843 ?common . FILTER(LANG(?common) = "en") }}
+  OPTIONAL {{ ?item wdt:P18 ?image . }}
+  OPTIONAL {{ ?item wdt:P685 ?ncbi . }}
+  OPTIONAL {{ ?item wdt:P9157 ?ott . }}
+  OPTIONAL {{ ?item wdt:P523 ?rangeStart . }}
   SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }}
 }}
 """
@@ -247,13 +257,43 @@ def _wikidata_lookup(
             desc = row.get("itemDescription", {}).get("value")
             if desc and "desc" not in entry:
                 entry["desc"] = desc
+            # Round-2 §39: P18 image (Commons filename, licence checked
+            # later), NCBI/OTT ids for Lifemap and OneZoom links, and the
+            # stated start of the taxon's temporal range.
+            image = row.get("image", {}).get("value")
+            if image and "imageFile" not in entry:
+                entry["imageFile"] = urllib.parse.unquote(
+                    image.rsplit("/", 1)[-1]
+                ).replace("_", " ")
+            ncbi = row.get("ncbi", {}).get("value")
+            if ncbi and "ncbi" not in entry:
+                entry["ncbi"] = ncbi
+            ott = row.get("ott", {}).get("value")
+            if ott and "ott" not in entry:
+                entry["ott"] = ott
+            range_start = row.get("rangeStart", {}).get("value")
+            if range_start and "rangeStart" not in entry:
+                entry["rangeStart"] = range_start
     return lookup
+
+
+def _first_ma(range_start: str) -> float | None:
+    """Wikidata P523 time value -> millions of years before present."""
+    match = re.match(r"^(-\d+)", range_start)
+    if not match:
+        return None
+    year = int(match.group(1))
+    if year > -100_000:  # too recent to state in Ma; skip oddities
+        return None
+    return round(-year / 1e6, 2)
 
 
 def _apply_metadata(
     node: dict[str, Any],
     lookup: dict[str, dict[str, str]],
     notes: dict[str, str],
+    images: dict[str, dict[str, Any]],
+    pageimages: dict[str, str],
     stats: dict[str, int],
 ) -> None:
     entry = lookup.get(node.get("id", ""), {})
@@ -264,14 +304,33 @@ def _apply_metadata(
         node["common"] = entry["common"]
     if entry.get("desc"):
         node["desc"] = entry["desc"]
+    # Round-2 §39: photo (P18 preferred, article lead image as fallback,
+    # both licence-gated through the Commons metadata), external ids, and
+    # the stated start of the temporal range. img is ALWAYS present:
+    # an object, or null meaning "checked, no free image" (the page then
+    # shows its placeholder silhouette).
+    filename = entry.get("imageFile") or (
+        pageimages.get(node["wiki"]) if node["wiki"] else None
+    )
+    node["img"] = images.get(filename or "") or None
+    if entry.get("ncbi"):
+        node["ncbi"] = entry["ncbi"]
+    if entry.get("ott"):
+        node["ott"] = entry["ott"]
+    if entry.get("rangeStart"):
+        first = _first_ma(entry["rangeStart"])
+        if first is not None:
+            node["firstMa"] = first
     note = notes.get(f"{node['name']}|{node['rank']}")
     if note:
         node["note"] = note
     stats["nodes"] += 1
     if node["wiki"]:
         stats["with_wiki"] += 1
+    if node["img"]:
+        stats["with_image"] += 1
     for child in node.get("children", []):
-        _apply_metadata(child, lookup, notes, stats)
+        _apply_metadata(child, lookup, notes, images, pageimages, stats)
 
 
 def ingest(
@@ -367,11 +426,85 @@ def ingest(
           f"P10585...", flush=True)
     lookup = _wikidata_lookup(ids, refresh=refresh)
 
-    stats = {"nodes": 0, "with_wiki": 0}
-    _apply_metadata(root, lookup, notes, stats)
-    focus_stats = {"nodes": 0, "with_wiki": 0}
+    # ---- Round-2 §39: Wikipedia extracts and licence-gated photos --------
+    titles = sorted({e["wiki"] for e in lookup.values() if e.get("wiki")})
+    print(f"    fetching {len(titles)} Wikipedia extracts (batched)...",
+          flush=True)
+    extracts = commons.wikipedia_extracts(
+        titles, refresh=refresh, subdir="taxonomy",
+    )
+    pageimages = {
+        title: record["pageimage"]
+        for title, record in extracts.items()
+        if record.get("pageimage")
+    }
+    image_files = sorted(
+        {e["imageFile"] for e in lookup.values() if e.get("imageFile")}
+        | {
+            pageimages[e["wiki"]]
+            for e in lookup.values()
+            if e.get("wiki") and not e.get("imageFile")
+            and e["wiki"] in pageimages
+        }
+    )
+    print(f"    checking licences for {len(image_files)} candidate "
+          f"images...", flush=True)
+    metadata, _meta_resp = commons.fetch_metadata(
+        image_files, refresh=refresh, subdir="taxonomy",
+    )
+    images: dict[str, dict[str, Any]] = {}
+    for filename in image_files:
+        meta = metadata.get(filename)
+        licence = (meta or {}).get("license") or ""
+        if meta and _FREE.search(licence):
+            images[filename] = {
+                "url": commons.image_url_for(filename, 320),
+                "license": licence,
+                "author": meta.get("author"),
+                "page": commons.file_page_for(filename),
+            }
+
+    stats = {"nodes": 0, "with_wiki": 0, "with_image": 0}
+    _apply_metadata(root, lookup, notes, images, pageimages, stats)
+    focus_stats = {"nodes": 0, "with_wiki": 0, "with_image": 0}
     for subtree in focus_subtrees.values():
-        _apply_metadata(subtree, lookup, notes, focus_stats)
+        _apply_metadata(subtree, lookup, notes, images, pageimages,
+                        focus_stats)
+
+    # Extract shards: the full intro texts would balloon tree.json, so the
+    # page fetches them per-shard on selection. 32 shards keyed by the
+    # first two hex digits of the node id's sha1.
+    shard_count = 32
+    shards: list[dict[str, str]] = [{} for _ in range(shard_count)]
+
+    def shard_of(node_id: str) -> int:
+        return int(
+            hashlib.sha1(node_id.encode("utf-8")).hexdigest()[:2], 16,
+        ) % shard_count
+
+    def collect_extracts(node: dict[str, Any]) -> None:
+        wiki = node.get("wiki")
+        node_id = node.get("id")
+        if wiki and node_id:
+            extract = (extracts.get(wiki) or {}).get("extract")
+            if extract:
+                shards[shard_of(node_id)][node_id] = extract
+        for child in node.get("children", []):
+            collect_extracts(child)
+
+    collect_extracts(root)
+    for subtree in focus_subtrees.values():
+        collect_extracts(subtree)
+    extracts_dir = out_dir / "extracts"
+    extracts_dir.mkdir(parents=True, exist_ok=True)
+    for index, shard in enumerate(shards):
+        (extracts_dir / f"{index:02d}.json").write_text(
+            json.dumps(shard, separators=(",", ":"), ensure_ascii=False)
+            + "\n",
+            encoding="utf-8", newline="\n",
+        )
+    print(f"    extracts: {sum(len(s) for s in shards)} across "
+          f"{shard_count} shards; images kept: {len(images)}", flush=True)
 
     document = {
         "source": "Catalogue of Life (ChecklistBank dataset 3LR)",
@@ -379,6 +512,18 @@ def ingest(
         "rank_floor": FAMILY_RANK,
         "col_dataset_url":
             f"https://www.checklistbank.org/dataset/{config.COL_DATASET}",
+        # Round-2 §39: intro texts live in extracts/{00..1f}.json, fetched
+        # per shard on selection; this stamp is what "retrieved" means on
+        # the page. Photos are per-node (P18 or article lead image), kept
+        # only under PD/CC licences, attribution inline.
+        "extractShards": 32,
+        "extractsRetrieved": dataset_response.fetched_at[:10],
+        "imageNote": (
+            "Taxon photos come from Wikimedia Commons (Wikidata P18, or "
+            "the article's lead image), kept only under public-domain or "
+            "CC licences; attribution shows with each. Taxa without a "
+            "verifiably free photo show a placeholder silhouette."
+        ),
         "tree": root,
     }
     (out_dir / "tree.json").write_text(

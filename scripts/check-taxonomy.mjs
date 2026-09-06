@@ -55,6 +55,14 @@ function walk(node, where) {
     fail(`${where}: ${node.name} wiki is neither string nor null`)
   }
   if (node.wiki) stats.withWiki += 1
+  // Round-2 §39: every node carries img explicitly — an object (with a
+  // licence recorded) or null, meaning the page shows its placeholder.
+  if (!('img' in node)) {
+    fail(`${where}: ${node.name} (${node.rank}) lacks the img key`)
+  } else if (node.img !== null && !node.img.license) {
+    fail(`${where}: ${node.name} image has no licence recorded`)
+  }
+  if (node.img) stats.withImage = (stats.withImage ?? 0) + 1
   if (node.rank === 'family') stats.families += 1
   if (node.focus) stats.focusFlags.push(node)
   for (const child of node.children ?? []) walk(child, where)
@@ -96,6 +104,9 @@ for (const name of focusFiles) {
     if (!('wiki' in node)) {
       fail(`focus/${name}: ${node.name} (${node.rank}) lacks the wiki key`)
     }
+    if (!('img' in node)) {
+      fail(`focus/${name}: ${node.name} (${node.rank}) lacks the img key`)
+    }
     if (node.wiki) focusStats.withWiki += 1
     if (node.rank === 'genus') focusStats.genera += 1
     for (const child of node.children ?? []) walkFocus(child)
@@ -115,7 +126,8 @@ for (const family of stats.focusFlags) {
 console.log(
   `  tree: ${stats.nodes} nodes, ${stats.families} families, ` +
     `${domains.length} domains, ${stats.withWiki} with Wikipedia ` +
-    `(${((100 * stats.withWiki) / stats.nodes).toFixed(1)}%)`,
+    `(${((100 * stats.withWiki) / stats.nodes).toFixed(1)}%), ` +
+    `${stats.withImage ?? 0} with a free photo`,
 )
 console.log(
   `  focus: ${focusFiles.length} families, ${focusStats.nodes} nodes, ` +

@@ -12,6 +12,13 @@ import { useEffect, useState } from 'react'
 import { DATA_BASE_URL } from '../config'
 import type { AsyncState } from './data'
 
+export interface TaxonImage {
+  url: string
+  license: string
+  author: string | null
+  page: string
+}
+
 export interface TaxonNode {
   id: string
   name: string
@@ -23,6 +30,14 @@ export interface TaxonNode {
   wiki: string | null
   common?: string
   desc?: string
+  /** Licence-gated Commons photo, or null = "checked, none free" (§39). */
+  img: TaxonImage | null
+  /** NCBI taxid (Wikidata P685) — powers the Lifemap link. */
+  ncbi?: string
+  /** Open Tree of Life id (P9157). */
+  ott?: string
+  /** Stated start of the taxon's temporal range, Ma (Wikidata P523). */
+  firstMa?: number
   /** Contested-placement annotation (etl/reference/taxonomy_notes.json). */
   note?: string
   provisional?: boolean
@@ -38,8 +53,125 @@ export interface TaxonomyFile {
   release: string
   rank_floor: string
   col_dataset_url: string
+  extractShards?: number
+  extractsRetrieved?: string
+  imageNote?: string
   tree: TaxonNode
 }
+
+/**
+ * Rank colour system (round-2 §39): one hue per canonical rank, used for
+ * chips, the panel header and the legend. Chips are TINTED backgrounds
+ * with the ordinary text token on top (light-dark aware), so text
+ * contrast never depends on the hue; the hue is identity, not meaning.
+ * Intermediate ranks (subphylum, infraorder, …) inherit their base rank.
+ */
+export const RANK_HUES: Record<string, number> = {
+  root: 250,
+  domain: 300,
+  kingdom: 155,
+  phylum: 200,
+  class: 250,
+  order: 70,
+  family: 35,
+  genus: 320,
+  species: 120,
+}
+
+export function baseRank(rank: string): string {
+  const stripped = rank
+    .toLowerCase()
+    .replace(/^(sub|super|infra|parv|mega|grand|mir|nan|hypo|epi)+/, '')
+  return stripped in RANK_HUES ? stripped : 'root'
+}
+
+export const rankChipStyle = (rank: string): React.CSSProperties => {
+  const hue = RANK_HUES[baseRank(rank)] ?? 250
+  return {
+    background: `light-dark(oklch(92% 0.05 ${hue}), oklch(32% 0.05 ${hue}))`,
+    borderColor: `light-dark(oklch(70% 0.09 ${hue}), oklch(55% 0.09 ${hue}))`,
+  }
+}
+
+/** Plain-language rank definitions with the name's origin (round-2 §39). */
+export const RANK_DEFINITIONS: Record<string, string> = {
+  root: 'The root of the tree: all life, plus viruses as a contested guest.',
+  domain:
+    'A domain is the broadest rank of life — Bacteria, Archaea and ' +
+    'Eukarya — based on fundamental cell architecture (from Latin ' +
+    'dominium, “ownership, realm”; proposed by Carl Woese in 1990).',
+  kingdom:
+    'A kingdom is a major division within a domain, such as animals, ' +
+    'plants or fungi — the oldest rank in use, from Linnaeus’s regnum, ' +
+    '“royal realm”.',
+  phylum:
+    'A phylum groups organisms sharing a basic body plan — chordates, ' +
+    'arthropods, molluscs (from Greek phylon, “tribe, stock”; coined by ' +
+    'Haeckel in 1866).',
+  class:
+    'A class is a major division of a phylum, such as mammals or birds ' +
+    'within the chordates (from Latin classis, a summoned division of ' +
+    'the Roman people).',
+  order:
+    'An order groups related families — primates, beetles, roses (from ' +
+    'Latin ordo, “row, rank”).',
+  family:
+    'A family groups closely related genera that usually share an ' +
+    'evident likeness — cats, grasses, orchids (from Latin familia, ' +
+    '“household”). Family names end in -idae for animals, -aceae for ' +
+    'plants and fungi.',
+  genus:
+    'A genus is a group of closely related species and the first half ' +
+    'of every scientific name (from Latin genus, “birth, kind”; Panthera ' +
+    'in Panthera leo).',
+  species:
+    'A species is the basic unit of classification — in sexual ' +
+    'organisms, roughly a population that interbreeds (from Latin ' +
+    'species, “appearance, kind”). Its two-part name is unique.',
+}
+
+// ---- Extract shards (round-2 §39): intro texts fetched on selection ----
+
+const extractCache = new Map<number, Promise<Record<string, string>>>()
+
+async function sha1Hex(text: string): Promise<string> {
+  const digest = await crypto.subtle.digest(
+    'SHA-1',
+    new TextEncoder().encode(text),
+  )
+  return [...new Uint8Array(digest)]
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+}
+
+export async function loadExtract(
+  id: string,
+  shardCount: number,
+): Promise<string | null> {
+  const shard =
+    parseInt((await sha1Hex(id)).slice(0, 2), 16) % Math.max(shardCount, 1)
+  let pending = extractCache.get(shard)
+  if (!pending) {
+    pending = fetch(
+      `${DATA_BASE_URL}/biology/taxonomy/extracts/${String(shard).padStart(2, '0')}.json`,
+    ).then((response) => {
+      if (!response.ok) {
+        extractCache.delete(shard)
+        throw new Error(`extract shard ${shard}: HTTP ${response.status}`)
+      }
+      return response.json()
+    })
+    extractCache.set(shard, pending)
+  }
+  const map = await pending
+  return map[id] ?? null
+}
+
+export const oneZoomUrl = (name: string) =>
+  `https://www.onezoom.org/life/@${encodeURIComponent(name.replace(/ /g, '_'))}`
+
+export const lifemapUrl = (ncbi: string) =>
+  `https://lifemap.cnrs.fr/?tid=${encodeURIComponent(ncbi)}`
 
 const cache = new Map<string, Promise<unknown>>()
 
