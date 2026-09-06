@@ -46,60 +46,64 @@ export interface Era {
   height: number
   /** One or two sentences on what defined the era (round-2 §38). */
   description: string
+  /** oklch hue angle for the banner tint (round-2 feedback: every banner
+      was the same grey; each era now has its own colour identity, applied
+      as a light-dark() tint pair so both themes stay contrast-safe). */
+  hue: number
 }
 
 export const ERAS: Era[] = [
   {
-    key: 'deep', label: 'Deep Past', from: -7_000_000, to: -300_000, height: 260,
+    key: 'deep', hue: 30, label: 'Deep Past', from: -7_000_000, to: -300_000, height: 260,
     description:
       'From the split with the chimpanzee lineage to the archaic humans: ' +
       'walking upright, the first stone tools, fire, and the long expansion ' +
       'of hominins out of Africa.',
   },
   {
-    key: 'prehistory', label: 'Prehistory', from: -300_000, to: -10_000, height: 360,
+    key: 'prehistory', hue: 55, label: 'Prehistory', from: -300_000, to: -10_000, height: 360,
     description:
       'Homo sapiens appears, thinks symbolically, and spreads across every ' +
       'continent -- art, burial, language and the last ice age, all before ' +
       'anyone farmed or wrote.',
   },
   {
-    key: 'neolithic', label: 'Neolithic', from: -10_000, to: -3_000, height: 360,
+    key: 'neolithic', hue: 130, label: 'Neolithic', from: -10_000, to: -3_000, height: 360,
     description:
       'The farming revolution: crops and herds replace foraging, villages ' +
       'become towns, and settled life invents pottery, weaving, the wheel ' +
       'and, at its very end, writing.',
   },
   {
-    key: 'ancient', label: 'Ancient World', from: -3_000, to: 500, height: 900,
+    key: 'ancient', hue: 85, label: 'Ancient World', from: -3_000, to: 500, height: 900,
     description:
       'Writing begins recorded history. Egypt, Mesopotamia, Persia, Greece, ' +
       'Rome, Han China and Maurya India build the first states, codes of ' +
       'law, alphabets and world religions.',
   },
   {
-    key: 'medieval', label: 'Post-Classical', from: 500, to: 1500, height: 700,
+    key: 'medieval', hue: 280, label: 'Post-Classical', from: 500, to: 1500, height: 700,
     description:
       'Between Rome’s fall and Columbus: the rise of Islam, Byzantium, ' +
       'Tang and Song China, the Mongol exchange, medieval Europe, and the ' +
       'great states of Africa and the Americas.',
   },
   {
-    key: 'early-modern', label: 'Early Modern', from: 1500, to: 1800, height: 600,
+    key: 'early-modern', hue: 200, label: 'Early Modern', from: 1500, to: 1800, height: 600,
     description:
       'Oceans connect the world -- colonisation, the printing press’s ' +
       'aftershocks, the Scientific Revolution and Enlightenment, gunpowder ' +
       'empires, and the first modern revolutions.',
   },
   {
-    key: 'industrial', label: 'Industrial Age', from: 1800, to: 1914, height: 600,
+    key: 'industrial', hue: 25, label: 'Industrial Age', from: 1800, to: 1914, height: 600,
     description:
       'Steam, steel, railways and telegraphs remake work and cities; ' +
       'nation-states and empires span the globe; science professionalises ' +
       'and medicine finally starts saving lives.',
   },
   {
-    key: 'contemporary', label: 'Contemporary', from: 1914, to: 2030, height: 900,
+    key: 'contemporary', hue: 250, label: 'Contemporary', from: 1914, to: 2030, height: 900,
     description:
       'The world wars and decolonisation, flight, antibiotics, computing ' +
       'and the internet: a century in which change itself accelerated.',
@@ -303,8 +307,8 @@ export function Timeline({
             ref={registerBanner(era.key)}
             className="border-t-2 px-3 py-2.5 sm:px-4"
             style={{
-              borderColor: 'var(--border-strong)',
-              background: 'var(--surface-sunken)',
+              borderColor: `light-dark(oklch(58% 0.085 ${era.hue}), oklch(60% 0.08 ${era.hue}))`,
+              background: `light-dark(oklch(94.5% 0.032 ${era.hue}), oklch(25% 0.028 ${era.hue}))`,
             }}
           >
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-0.5">

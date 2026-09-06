@@ -1,5 +1,5 @@
 {
- "version": 3,
+ "version": 4,
  "note": "Editorial, versioned event list for the Human History timeline. Years are astronomical integers (negative = BCE; no year zero adjustment is attempted for prehistory). datePrecision states how firm the date is; contested or approximate dates say so in the summary. `wikipedia` is the English article that anchors the event and supplies its image at build time. 195 events, deliberately balanced across regions.",
  "events": [
   {
@@ -379,7 +379,8 @@
    "summary": "Between about 2600 and 1900 BCE cities such as Mohenjo-daro and Harappa, in present-day Pakistan and northwest India, housed tens of thousands of people on planned grids with baked-brick houses, covered drains, public baths and standardised weights. Its script, on thousands of seals, remains undeciphered, so its rulers, gods and language are unknown. The civilisation declined as rivers shifted and monsoons weakened; its people did not vanish but dispersed into smaller settlements.",
    "sources": [
     "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation"
-   ]
+   ],
+   "civilization": "Indian"
   },
   {
    "id": "great-pyramid",
@@ -446,7 +447,8 @@
    "summary": "Between about 1500 and 900 BCE seafarers making distinctive dentate-stamped pottery spread from the Bismarck Archipelago east through the Solomons, Vanuatu, New Caledonia, Fiji, Tonga and Samoa, the first people to reach these islands. Their ancestry combined Austronesian speakers from Taiwan and island Southeast Asia with Papuan populations. Carrying pigs, dogs, chickens, taro and yams in outrigger canoes, the Lapita are the ancestors of the Polynesians, whose later voyages settled the remote Pacific.",
    "sources": [
     "https://en.wikipedia.org/wiki/Lapita_culture"
-   ]
+   ],
+   "civilization": "Austronesian"
   },
   {
    "id": "hinduism-vedas",
@@ -463,7 +465,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Vedas",
     "https://en.wikipedia.org/wiki/Rigveda"
-   ]
+   ],
+   "civilization": "Indian"
   },
   {
    "id": "iron-age-anatolia",
@@ -634,7 +637,8 @@
    "summary": "Siddhartha Gautama, later the Buddha, taught in the Ganges plain of northern India in about the fifth century BCE; scholars place his death anywhere between roughly 480 and 400 BCE, so the century is firm and the decades are not. His teaching of a middle path, the four noble truths and release from suffering spread across Asia along trade routes, taking distinct Theravada, Mahayana and Vajrayana forms and shaping the art, ethics and politics of dozens of societies.",
    "sources": [
     "https://en.wikipedia.org/wiki/Gautama_Buddha"
-   ]
+   ],
+   "civilization": "Indian"
   },
   {
    "id": "greco-persian-wars",
@@ -668,7 +672,8 @@
    "summary": "Hippocrates of Kos and the physicians who wrote under his name around 400 BCE treated disease as a natural process with natural causes, to be understood by careful observation of the patient rather than attributed to the gods. The Hippocratic Corpus describes case histories, prognosis and the ethics later distilled into the Hippocratic Oath. Its humoral theory was wrong, and persisted for two thousand years, but its method of observation and its professional ethics are the roots of clinical medicine.",
    "sources": [
     "https://en.wikipedia.org/wiki/Hippocrates"
-   ]
+   ],
+   "civilization": "Greek"
   },
   {
    "id": "alexander-conquests",
@@ -879,7 +884,8 @@
    "summary": "Claudius Ptolemy, working in Alexandria around 150 CE, compiled Greek and Babylonian astronomy into a mathematical model of an Earth-centred cosmos that predicted planetary positions well enough to remain the standard for 1,400 years, in Greek, Arabic and Latin. His Geography, with its coordinates of thousands of places, guided mapmakers into the age of Columbus. The Almagest was wrong about the Earth's place, but its demand that theory match measured positions made it the model of quantitative science.",
    "sources": [
     "https://en.wikipedia.org/wiki/Almagest"
-   ]
+   ],
+   "civilization": "Greek"
   },
   {
    "id": "maya-classic-collapse",
@@ -913,7 +919,8 @@
    "summary": "Aksum, in the highlands of present-day Ethiopia and Eritrea, controlled Red Sea trade between Rome and India, minted its own gold coins and raised carved granite stelae over thirty metres tall. Around 330 CE King Ezana converted to Christianity, making Aksum one of the first states to adopt the faith, a decade or so after Armenia and before the Roman Empire did officially. The Ethiopian Orthodox Church, with its own script and scriptures, descends directly from this decision.",
    "sources": [
     "https://en.wikipedia.org/wiki/Kingdom_of_Aksum"
-   ]
+   ],
+   "civilization": "Ethiopian"
   },
   {
    "id": "fall-of-rome",
@@ -947,7 +954,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Brahmagupta",
     "https://en.wikipedia.org/wiki/Hindu%E2%80%93Arabic_numeral_system"
-   ]
+   ],
+   "civilization": "Indian"
   },
   {
    "id": "tiwanaku",
@@ -1034,7 +1042,8 @@
    "summary": "The Tang dynasty, founded in 618, ruled a China open to the world: its capital Chang'an, with about a million people, was probably the largest city on Earth, home to Persian, Sogdian, Turkic and Indian merchants, Buddhist monks, Nestorian Christians and Muslims. Tang armies reached the Pamirs; Tang poetry, law codes and administration were adopted in Japan, Korea and Vietnam. Woodblock printing appeared in this era. The dynasty declined after the An Lushan rebellion of 755 and fell in 907.",
    "sources": [
     "https://en.wikipedia.org/wiki/Tang_dynasty"
-   ]
+   ],
+   "civilization": "Chinese"
   },
   {
    "id": "arab-conquests",
@@ -1123,7 +1132,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi",
     "https://en.wikipedia.org/wiki/House_of_Wisdom"
-   ]
+   ],
+   "civilization": "Islamic caliphates"
   },
   {
    "id": "gunpowder",
@@ -1175,7 +1185,8 @@
    "summary": "In 988 Vladimir the Great, prince of Kiev, accepted baptism from Constantinople, married a Byzantine princess and had his people baptised in the Dnieper, choosing Orthodox Christianity over Islam, Judaism and Latin Christianity according to the Primary Chronicle's famous story. The decision bound the East Slavs to the Byzantine world, its Cyrillic script, church architecture and law. Russia, Ukraine and Belarus all trace their religious and cultural origins to this event, and compete over its legacy.",
    "sources": [
     "https://en.wikipedia.org/wiki/Christianization_of_Kievan_Rus%27"
-   ]
+   ],
+   "civilization": "Russian"
   },
   {
    "id": "polynesian-expansion",
@@ -1192,7 +1203,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Polynesian_navigation",
     "https://en.wikipedia.org/wiki/Polynesians"
-   ]
+   ],
+   "civilization": "Austronesian"
   },
   {
    "id": "swahili-coast-kilwa",
@@ -1228,7 +1240,8 @@
    "summary": "Working in Cairo, Ibn al-Haytham (Alhazen) completed his Book of Optics around 1021, showing by experiment that vision occurs when light reflected from objects enters the eye, refuting the ancient theory of rays emitted by the eye, and describing the camera obscura, refraction and the anatomy of the eye. His insistence on testing hypotheses by controlled experiment has earned him a claim to be the first modern scientist. Translated into Latin, his work influenced Kepler and the development of lenses.",
    "sources": [
     "https://en.wikipedia.org/wiki/Ibn_al-Haytham"
-   ]
+   ],
+   "civilization": "Islamic caliphates"
   },
   {
    "id": "ibn-sina-canon",
@@ -1263,7 +1276,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Bi_Sheng",
     "https://en.wikipedia.org/wiki/Jikji"
-   ]
+   ],
+   "civilization": "Chinese"
   },
   {
    "id": "magnetic-compass",
@@ -1279,7 +1293,8 @@
    "summary": "Chinese texts of the eleventh century describe magnetised needles floating in water to indicate south, first for geomancy, and Zhu Yu's Pingzhou Table Talks of 1117 records their use by ship pilots at sea, the earliest clear evidence of navigation by compass. Within a century the instrument appears in Arabic and European sources, probably transmitted along the maritime routes of the Indian Ocean. Together with the sternpost rudder and watertight bulkheads, also Chinese, it made long ocean voyages routine.",
    "sources": [
     "https://en.wikipedia.org/wiki/Compass"
-   ]
+   ],
+   "civilization": "Chinese"
   },
   {
    "id": "mississippian-cahokia",
@@ -1416,7 +1431,8 @@
    "summary": "On Rapa Nui (Easter Island), the most isolated inhabited place on Earth, Polynesian settlers carved nearly a thousand monolithic figures from volcanic tuff between about 1250 and 1500 and moved statues weighing up to 80 tonnes kilometres from the quarry, most likely by 'walking' them upright with ropes, as experiments have shown. The old story of ecological suicide through deforestation has been challenged; disease and slave raids after European contact in 1722 did the greatest damage to the population.",
    "sources": [
     "https://en.wikipedia.org/wiki/Moai"
-   ]
+   ],
+   "civilization": "Austronesian"
   },
   {
    "id": "mali-empire-mansa-musa",
@@ -1433,7 +1449,8 @@
    "summary": "Mansa Musa, ruler of the Mali Empire, travelled to Mecca in 1324 with a caravan of thousands and so much gold that its price in Cairo reportedly fell for years. The journey advertised West Africa's wealth to the Islamic world and to Europe, where Mali soon appeared on the Catalan Atlas. Musa returned with scholars and architects, and Timbuktu grew into a centre of Islamic learning whose manuscripts survive today.",
    "sources": [
     "https://en.wikipedia.org/wiki/Mansa_Musa"
-   ]
+   ],
+   "civilization": "Mali & Songhai"
   },
   {
    "id": "ibn-battuta",
@@ -1453,7 +1470,8 @@
    "summary": "Leaving Tangier on pilgrimage in 1325, the Moroccan scholar Ibn Battuta travelled for nearly thirty years through North and East Africa, Arabia, Persia, Central Asia, India, where he served as a judge in Delhi, the Maldives, Sri Lanka, Southeast Asia and, he claimed, China, then across the Sahara to Mali. His Rihla, dictated on his return, is the fullest picture of the fourteenth-century Islamic world, though some passages are borrowed and some journeys doubted.",
    "sources": [
     "https://en.wikipedia.org/wiki/Ibn_Battuta"
-   ]
+   ],
+   "civilization": "Islamic caliphates"
   },
   {
    "id": "delhi-sultanate-vijayanagara",
@@ -1469,7 +1487,8 @@
    "summary": "Founded in 1336, the Vijayanagara Empire ruled most of southern India for two centuries from a capital at Hampi that Portuguese and Persian visitors described as among the largest and richest cities in the world, with markets of gems and horses and temples whose towers still stand. Its kings patronised Telugu, Kannada, Tamil and Sanskrit literature and Carnatic music. A coalition of Deccan sultanates defeated the empire at Talikota in 1565 and sacked the city.",
    "sources": [
     "https://en.wikipedia.org/wiki/Vijayanagara_Empire"
-   ]
+   ],
+   "civilization": "Indian"
   },
   {
    "id": "black-death",
@@ -1524,7 +1543,8 @@
    "summary": "Between 1405 and 1433 the Ming admiral Zheng He led seven expeditions of up to hundreds of ships and tens of thousands of men through Southeast Asia to India, Hormuz, Arabia and the East African coast, exchanging gifts, collecting tribute and bringing back a giraffe for the emperor. The largest ships were far bigger than any European vessel of the time, though their exact size is disputed. The voyages ended when the court turned inward, decades before Portuguese ships entered the Indian Ocean.",
    "sources": [
     "https://en.wikipedia.org/wiki/Ming_treasure_voyages"
-   ]
+   ],
+   "civilization": "Chinese"
   },
   {
    "id": "inca-empire",
@@ -1644,7 +1664,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Songhai_Empire",
     "https://en.wikipedia.org/wiki/Timbuktu_Manuscripts"
-   ]
+   ],
+   "civilization": "Mali & Songhai"
   },
   {
    "id": "dias-cape",
@@ -1661,7 +1682,8 @@
    "summary": "In early 1488 the Portuguese captain Bartolomeu Dias, blown south by a storm, turned east and found open water beyond the southern tip of Africa, proving that the Indian Ocean could be reached by sea. Decades of Portuguese voyages down the West African coast, driven by the search for gold and a route to Asian spices, had led to this point. Vasco da Gama followed the route to India in 1498, and Portugal built a maritime empire on it.",
    "sources": [
     "https://en.wikipedia.org/wiki/Bartolomeu_Dias"
-   ]
+   ],
+   "civilization": "Portuguese"
   },
   {
    "id": "columbus-1492",
@@ -1713,7 +1735,8 @@
    "summary": "In 1501 Ismail I, head of a Sufi order, took Tabriz and proclaimed himself shah, making Twelver Shia Islam the state religion of Iran, until then mostly Sunni, and importing Shia scholars from Lebanon and Iraq to teach it. Under Abbas I after 1588 the capital Isfahan became one of the world's most beautiful cities. The Safavid conversion created the Sunni-Shia divide between Iran and its Ottoman and Uzbek neighbours that still shapes Middle Eastern politics.",
    "sources": [
     "https://en.wikipedia.org/wiki/Safavid_Iran"
-   ]
+   ],
+   "civilization": "Persian"
   },
   {
    "id": "protestant-reformation",
@@ -1746,7 +1769,8 @@
    "summary": "Five ships left Spain under Ferdinand Magellan in 1519 seeking a western route to the Spice Islands; they found the strait at the tip of South America, crossed the Pacific, and Magellan was killed in the Philippines in 1521. Juan Sebastián Elcano brought the Victoria home in 1522 with eighteen survivors of about 270 men, completing the first voyage around the world. It demonstrated the true size of the Pacific and the globe and revealed the problem of the international date line.",
    "sources": [
     "https://en.wikipedia.org/wiki/Magellan_expedition"
-   ]
+   ],
+   "civilization": "Spanish"
   },
   {
    "id": "ottoman-suleiman",
@@ -1903,7 +1927,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Thirty_Years%27_War",
     "https://en.wikipedia.org/wiki/Peace_of_Westphalia"
-   ]
+   ],
+   "civilization": "Frankish & HRE"
   },
   {
    "id": "scientific-method-bacon-descartes",
@@ -1969,7 +1994,8 @@
    "summary": "After the Glorious Revolution deposed James II, Parliament made William and Mary's accession conditional on a Declaration of Rights, enacted in December 1689. It forbade the monarch to suspend laws, levy taxes or keep a standing army without Parliament, guaranteed free elections and free speech in Parliament, and banned cruel and unusual punishments and excessive bail. It established parliamentary supremacy in Britain and was a direct model for the American Bill of Rights a century later.",
    "sources": [
     "https://en.wikipedia.org/wiki/Bill_of_Rights_1689"
-   ]
+   ],
+   "civilization": "British"
   },
   {
    "id": "seed-drill-agricultural-revolution",
@@ -2212,7 +2238,8 @@
    "summary": "The Liverpool and Manchester Railway opened on 15 September 1830, the first line to carry passengers and goods on a timetable between two cities entirely by steam locomotive, after George and Robert Stephenson's Rocket had won the Rainhill Trials the year before. A member of Parliament was killed by a train on opening day. Railways spread across Britain, Europe, India and the Americas within decades, collapsing distance, creating national markets and standard time.",
    "sources": [
     "https://en.wikipedia.org/wiki/Liverpool_and_Manchester_Railway"
-   ]
+   ],
+   "civilization": "British"
   },
   {
    "id": "british-abolition-1833",
@@ -2265,7 +2292,8 @@
    "summary": "When the Qing official Lin Zexu destroyed British opium at Canton in 1839, Britain sent a fleet whose steam gunboats and modern artillery overwhelmed Chinese defences. The Treaty of Nanking in 1842 ceded Hong Kong, opened five ports to foreign trade and residence and imposed an indemnity, the first of the 'unequal treaties'. The war began a century in which China lost sovereignty piece by piece to Western powers and Japan, a period Chinese historiography calls the century of humiliation.",
    "sources": [
     "https://en.wikipedia.org/wiki/First_Opium_War"
-   ]
+   ],
+   "civilization": "Chinese"
   },
   {
    "id": "anaesthesia",
@@ -2314,7 +2342,8 @@
    "summary": "Hong Xiuquan, a failed examination candidate who believed himself the younger brother of Jesus, led a millenarian movement that seized Nanjing in 1853 and ruled much of southern China as the Taiping Heavenly Kingdom, abolishing foot-binding and private landholding in principle. Qing armies, regional militias and Western-officered forces retook Nanjing in 1864. With an estimated twenty to thirty million dead from war, famine and disease, it was the deadliest civil war in history.",
    "sources": [
     "https://en.wikipedia.org/wiki/Taiping_Rebellion"
-   ]
+   ],
+   "civilization": "Chinese"
   },
   {
    "id": "indian-rebellion-1857",
@@ -2382,7 +2411,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/American_Civil_War",
     "https://en.wikipedia.org/wiki/Thirteenth_Amendment_to_the_United_States_Constitution"
-   ]
+   ],
+   "civilization": "American"
   },
   {
    "id": "meiji-restoration",
@@ -2532,7 +2562,8 @@
    "summary": "On 17 December 1903 at Kill Devil Hills, North Carolina, Orville Wright flew the Wright Flyer for twelve seconds and 37 metres, the first sustained, controlled flight of a powered, heavier-than-air machine; the fourth flight that day lasted nearly a minute. The brothers' key insight was control in three axes, achieved by warping the wings. Within a decade aircraft crossed the Channel and served in war; within fifty years jet airliners crossed oceans in hours.",
    "sources": [
     "https://en.wikipedia.org/wiki/Wright_Flyer"
-   ]
+   ],
+   "civilization": "American"
   },
   {
    "id": "special-relativity",
@@ -2753,7 +2784,8 @@
    "summary": "In March and April 1930 Mohandas Gandhi walked 390 kilometres from his ashram to the sea at Dandi and picked up a handful of salt, breaking the British monopoly and launching a nationwide campaign of civil disobedience in which some 60,000 people were jailed. It made satyagraha, non-violent resistance, the defining method of the Indian independence movement and a model for Martin Luther King Jr., Nelson Mandela and others. India became independent in August 1947, partitioned from Pakistan amid mass violence.",
    "sources": [
     "https://en.wikipedia.org/wiki/Salt_March"
-   ]
+   ],
+   "civilization": "Indian"
   },
   {
    "id": "world-war-ii",
@@ -2785,7 +2817,8 @@
    "summary": "Nazi Germany and its collaborators murdered about six million Jews, two-thirds of Europe's Jewish population, between 1941 and 1945 by mass shooting, starvation and gas in extermination camps such as Auschwitz and Treblinka, following years of persecution after 1933. Roma, disabled people, Soviet prisoners, Poles, political prisoners and gay men were also murdered in the millions. The Holocaust led to the Genocide Convention of 1948, the Nuremberg principle of individual responsibility, and shaped the modern idea of human rights.",
    "sources": [
     "https://en.wikipedia.org/wiki/The_Holocaust"
-   ]
+   ],
+   "civilization": "Hebrew"
   },
   {
    "id": "hiroshima",
@@ -2802,7 +2835,8 @@
    "summary": "On 6 and 9 August 1945 American aircraft dropped atomic bombs on Hiroshima and Nagasaki, killing between 150,000 and 250,000 people, most of them civilians, by blast, fire and radiation. Japan surrendered on 15 August. The bombs, built by the Manhattan Project after the discovery of nuclear fission in 1938, were the first and so far only nuclear weapons used in war. The arms race that followed produced arsenals capable of ending civilisation, and treaties that have so far contained them.",
    "sources": [
     "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki"
-   ]
+   ],
+   "civilization": "Japanese"
   },
   {
    "id": "united-nations-founded",
@@ -3058,7 +3092,8 @@
    "sources": [
     "https://en.wikipedia.org/wiki/Civil_Rights_Act_of_1964",
     "https://en.wikipedia.org/wiki/Voting_Rights_Act_of_1965"
-   ]
+   ],
+   "civilization": "American"
   },
   {
    "id": "green-revolution",
@@ -3128,7 +3163,8 @@
    "summary": "Mass demonstrations and strikes drove Shah Mohammad Reza Pahlavi from Iran in January 1979, and Ayatollah Ruhollah Khomeini returned from exile to found an Islamic Republic ruled under the guardianship of the jurist, approved by referendum in April. The first modern revolution to establish a state on religious principles, it reshaped politics across the Muslim world, brought a US embassy hostage crisis, and was followed by an eight-year war with Iraq that killed hundreds of thousands.",
    "sources": [
     "https://en.wikipedia.org/wiki/Iranian_Revolution"
-   ]
+   ],
+   "civilization": "Persian"
   },
   {
    "id": "smallpox-eradicated",
@@ -4286,6 +4322,417 @@
    "summary": "Beginning from Taiwan around 3000 BCE, Austronesian-speaking voyagers spread through the Philippines and Indonesia, west to Madagascar, and east across the open Pacific, reaching Hawaii, Rapa Nui and finally Aotearoa New Zealand by about 1250 CE. Navigating by stars, swells and birds in double-hulled canoes, they accomplish the most far-flung expansion of any people before modern times — one language family spanning half the globe.",
    "sources": [
     "https://en.wikipedia.org/wiki/Austronesian_peoples"
+   ]
+  },
+  {
+   "id": "urartu-van",
+   "title": "The kingdom of Urartu rises around Lake Van",
+   "startYear": -860,
+   "endYear": -590,
+   "datePrecision": "decade",
+   "category": "other-discovery",
+   "regions": [
+    "West Asia"
+   ],
+   "civilization": "Armenian",
+   "wikipedia": "Urartu",
+   "summary": "From its rock-cut capital of Tushpa on Lake Van, the kingdom of Urartu dominates the Armenian highlands for nearly three centuries, building fortresses, irrigation canals still in use today, and a cuneiform bureaucracy that trades blows with Assyria itself. When Urartu falls around 590 BCE its lands and peoples pass to the emerging Armenian identity — Persian inscriptions soon call the same country Armina, and later Armenian tradition remembers Urartian sites such as Van as its own deep past.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Urartu"
+   ]
+  },
+  {
+   "id": "tigranes-great",
+   "title": "Tigranes the Great builds an Armenian empire",
+   "startYear": -95,
+   "endYear": -55,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "West Asia"
+   ],
+   "civilization": "Armenian",
+   "wikipedia": "Tigranes the Great",
+   "summary": "Tigranes II takes the Armenian throne in 95 BCE and for a generation makes Armenia the strongest state in the Roman East, stretching from the Caspian to the Mediterranean and taking the Persian title 'king of kings'. He founds a new capital, Tigranocerta, populated by transplanted Greek craftsmen. Rome's generals Lucullus and Pompey eventually strip the conquests away, but the empire fixes Armenia's self-image: a nation that was once, briefly, the centre of its world.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tigranes_the_Great"
+   ]
+  },
+  {
+   "id": "armenian-genocide",
+   "title": "The Armenian Genocide",
+   "startYear": 1915,
+   "endYear": 1917,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "West Asia"
+   ],
+   "civilization": "Armenian",
+   "wikipedia": "Armenian genocide",
+   "summary": "Beginning with the arrest of Armenian notables in Constantinople on 24 April 1915, the Ottoman government deports the Armenian population of Anatolia toward the Syrian desert in death marches and massacres. Around one million people — estimates range from 600,000 to 1.5 million — are killed, and an ancient homeland is emptied. It is the crime for which Raphael Lemkin later coins the word 'genocide', and its recognition remains contested by Turkey while commemorated by Armenians worldwide every 24 April.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Armenian_genocide"
+   ]
+  },
+  {
+   "id": "armenia-independence-1991",
+   "title": "Armenia votes for independence from the USSR",
+   "startYear": 1991,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "rights-document",
+   "regions": [
+    "West Asia"
+   ],
+   "civilization": "Armenian",
+   "wikipedia": "Armenia",
+   "summary": "On 21 September 1991 Armenians vote almost unanimously to leave the collapsing Soviet Union, restoring an independent Armenian state for the first time since the short-lived republic of 1918–1920 was absorbed by Soviet Russia. The new republic inherits the 1988 earthquake's devastation and war with Azerbaijan over Nagorno-Karabakh, yet becomes the anchor of a global diaspora several times its own population — the latest chapter of a polity whose recorded history runs back to Urartu.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Armenia"
+   ]
+  },
+  {
+   "id": "epic-of-gilgamesh",
+   "title": "The Epic of Gilgamesh is composed",
+   "startYear": -2100,
+   "endYear": null,
+   "datePrecision": "approximate",
+   "category": "other-discovery",
+   "regions": [
+    "West Asia"
+   ],
+   "civilization": "Mesopotamian",
+   "wikipedia": "Epic of Gilgamesh",
+   "summary": "Sumerian poems about Gilgamesh, king of Uruk, circulate by around 2100 BCE and are later woven into a Babylonian epic — the oldest long literary work that survives. Its hero befriends the wild man Enkidu, grieves his death, and travels to the world's edge seeking immortality, meeting a survivor of a great flood along the way. Lost for two millennia, the epic was recovered from Nineveh's library and deciphered in 1872, stunning readers with a flood story older than Genesis.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh"
+   ]
+  },
+  {
+   "id": "ancient-olympics",
+   "title": "The first recorded Olympic Games are held",
+   "startYear": -776,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "other-discovery",
+   "regions": [
+    "Europe"
+   ],
+   "civilization": "Greek",
+   "wikipedia": "Ancient Olympic Games",
+   "summary": "Greek tradition dates the first Olympic festival at Olympia to 776 BCE, and the victor lists that begin there become the backbone of Greek chronology — historians dated events by Olympiads. Held every four years in honour of Zeus, the games drew athletes from every Greek city under a sacred truce, and champions in the sprint, wrestling and chariot race won olive crowns and lasting fame. Suppressed under Christian emperors around 393 CE, they were revived as the modern Olympics in 1896.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ancient_Olympic_Games"
+   ]
+  },
+  {
+   "id": "peloponnesian-war",
+   "title": "The Peloponnesian War breaks Athens",
+   "startYear": -431,
+   "endYear": -404,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "Europe"
+   ],
+   "civilization": "Greek",
+   "wikipedia": "Peloponnesian War",
+   "summary": "For twenty-seven years Athens and its maritime empire fight Sparta and its allies in a war that consumes the Greek world — plague kills Pericles and a third of Athens, a whole Athenian fleet and army are destroyed at Syracuse, and in 404 BCE the starved city surrenders and its walls are pulled down. Thucydides, an exiled Athenian general, chronicles it as 'a possession for all time': the founding work of critical history and of hard-nosed political realism.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Peloponnesian_War"
+   ]
+  },
+  {
+   "id": "boudica-revolt",
+   "title": "Boudica leads the British revolt against Rome",
+   "startYear": 60,
+   "endYear": 61,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "Europe"
+   ],
+   "civilization": "Celtic",
+   "wikipedia": "Boudica",
+   "summary": "When Rome annexes the Iceni kingdom, flogs its widowed queen Boudica and assaults her daughters, she raises the Celtic tribes of Britain in revolt. Her armies burn the Roman towns of Camulodunum, Verulamium and the young trading post of Londinium, killing tens of thousands, before the outnumbered legions annihilate the rebels in a final pitched battle. Boudica's death ends Celtic resistance in lowland Britain, but Tacitus' account makes her an enduring symbol of defiance against empire.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Boudica"
+   ]
+  },
+  {
+   "id": "edict-of-milan",
+   "title": "The Edict of Milan legalises Christianity",
+   "startYear": 313,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "religion",
+   "regions": [
+    "Europe"
+   ],
+   "civilization": "Roman",
+   "wikipedia": "Edict of Milan",
+   "summary": "Meeting at Milan in 313, the emperors Constantine and Licinius agree to tolerate every religion in the empire, ending the persecution of Christians and restoring their confiscated property. Constantine, victorious the year before under a Christian sign at the Milvian Bridge, goes further: imperial patronage builds churches, convenes the Council of Nicaea, and founds Constantinople as a Christian capital. Within eighty years Christianity moves from persecuted minority to the official religion of the Roman state.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Edict_of_Milan"
+   ]
+  },
+  {
+   "id": "sasanian-empire",
+   "title": "Ardashir I founds the Sasanian Empire",
+   "startYear": 224,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "West Asia"
+   ],
+   "civilization": "Persian",
+   "wikipedia": "Sasanian Empire",
+   "summary": "Ardashir I, a local ruler from Persis, defeats the last Parthian king at Hormozdgan in 224 and crowns himself shahanshah — king of kings — restoring a centralised Persian empire that will fight Rome and Byzantium to a standstill for four centuries. The Sasanians make Zoroastrianism a state church, build the great academy at Gundeshapur, and set the imperial style that the caliphate later inherits. Their exhausting last war with Byzantium opens the door to the Arab conquests.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sasanian_Empire"
+   ]
+  },
+  {
+   "id": "chichen-itza",
+   "title": "Chichén Itzá dominates the Maya north",
+   "startYear": 900,
+   "endYear": 1200,
+   "datePrecision": "century",
+   "category": "other-discovery",
+   "regions": [
+    "Mesoamerica"
+   ],
+   "civilization": "Maya",
+   "wikipedia": "Chichen Itza",
+   "summary": "As the southern Maya cities empty, Chichén Itzá rises in northern Yucatán into the peninsula's dominant power — a cosmopolitan capital whose stepped pyramid of Kukulcán casts a serpent-shaped shadow at the equinoxes, and whose Great Ball Court is the largest in Mesoamerica. Its art mixes Maya and central-Mexican styles, evidence of trade and ideas moving across the Gulf. The city declines by around 1200, but its sacred cenote keeps drawing pilgrims until the Spanish conquest.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chichen_Itza"
+   ]
+  },
+  {
+   "id": "iceland-althing",
+   "title": "Iceland founds the Althing assembly",
+   "startYear": 930,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "rights-document",
+   "regions": [
+    "Europe"
+   ],
+   "civilization": "Norse",
+   "wikipedia": "Althing",
+   "summary": "Norse settlers of Iceland, having no king, gather at Thingvellir in 930 to found the Althing: a general assembly where chieftains make law and judge disputes, with a Lawspeaker reciting the law aloud from the Law Rock. It is the oldest surviving parliament, and its most famous decision comes in 1000, when Iceland peacefully adopts Christianity by arbitration to avoid civil war. Suspended under Danish rule in 1800, the Althing was restored and continues as Iceland's legislature today.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Althing"
+   ]
+  },
+  {
+   "id": "sundiata-mali",
+   "title": "Sundiata Keita founds the Mali Empire",
+   "startYear": 1235,
+   "endYear": null,
+   "datePrecision": "decade",
+   "category": "war-conflict",
+   "regions": [
+    "Africa"
+   ],
+   "civilization": "Mali & Songhai",
+   "wikipedia": "Sundiata Keita",
+   "summary": "At the battle of Kirina around 1235, Sundiata Keita defeats the Sosso king Sumanguru and unites the Mande peoples into the Mali Empire, soon the master of the West African gold trade. The Epic of Sundiata, sung by griots for eight centuries, preserves his story — the crippled prince who rose to found an empire — and tradition links his assembly to the Kouroukan Fouga charter of laws. His successors, including Mansa Musa, make Mali a byword for wealth.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sundiata_Keita"
+   ]
+  },
+  {
+   "id": "great-schism-1054",
+   "title": "The East–West Schism splits Christendom",
+   "startYear": 1054,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "religion",
+   "regions": [
+    "Europe",
+    "West Asia"
+   ],
+   "civilization": "Byzantine",
+   "wikipedia": "East–West Schism",
+   "summary": "In 1054 papal legates lay a bull of excommunication on the altar of Hagia Sophia and the patriarch of Constantinople excommunicates them back — the symbolic break between Latin West and Greek East after centuries of drift over papal authority, the filioque clause and ritual. The split hardens irreversibly when the Fourth Crusade sacks Constantinople in 1204. Catholic and Orthodox Christianity develop separately from then on; the mutual excommunications were lifted only in 1965, the division itself never healed.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/East–West_Schism"
+   ]
+  },
+  {
+   "id": "joan-of-arc",
+   "title": "Joan of Arc turns the Hundred Years’ War",
+   "startYear": 1429,
+   "endYear": 1431,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "Europe"
+   ],
+   "civilization": "French",
+   "wikipedia": "Joan of Arc",
+   "summary": "A seventeen-year-old peasant girl claiming saintly voices persuades the French court to give her an army, breaks the English siege of Orléans in nine days, and stands beside Charles VII at his coronation in Reims — reversing the momentum of the Hundred Years' War. Captured and sold to the English, Joan is burned as a heretic at Rouen in 1431, aged nineteen. A church court annuls the verdict in 1456; France expels the English by 1453.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Joan_of_Arc"
+   ]
+  },
+  {
+   "id": "fall-of-angkor",
+   "title": "Angkor falls to Ayutthaya",
+   "startYear": 1431,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "Southeast Asia"
+   ],
+   "civilization": "Khmer",
+   "wikipedia": "Khmer Empire",
+   "summary": "In 1431 the Siamese kingdom of Ayutthaya sacks Angkor, and the Khmer court soon abandons the vast temple-city for Phnom Penh, closer to the sea trade. The move ends the empire that had engineered Southeast Asia's greatest hydraulic city — recent surveys show droughts and floods had already been breaking its canal network. Angkor Wat itself is never wholly deserted: Buddhist monks keep it alive as a shrine, and it remains the largest religious monument on Earth.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Khmer_Empire"
+   ]
+  },
+  {
+   "id": "aztec-triple-alliance",
+   "title": "The Aztec Triple Alliance is forged",
+   "startYear": 1428,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "Mesoamerica"
+   ],
+   "civilization": "Aztec",
+   "wikipedia": "Aztec Empire",
+   "summary": "In 1428 Tenochtitlan joins Texcoco and Tlacopan to overthrow the Tepanec overlords of the Valley of Mexico, founding the Triple Alliance that becomes the Aztec Empire. Under rulers like Moctezuma I, alliance armies push tribute networks to both coasts, feeding Tenochtitlan's markets and temples with cloth, cacao, jade and captives for sacrifice. Within a century the alliance rules perhaps five million people — the empire whose wealth and rivalries Cortés will exploit when he lands in 1519.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Aztec_Empire"
+   ]
+  },
+  {
+   "id": "machu-picchu",
+   "title": "The Inca build Machu Picchu",
+   "startYear": 1450,
+   "endYear": null,
+   "datePrecision": "approximate",
+   "category": "other-discovery",
+   "regions": [
+    "South America"
+   ],
+   "civilization": "Inca",
+   "wikipedia": "Machu Picchu",
+   "summary": "Around 1450 the Inca emperor Pachacuti orders a royal estate built on a ridge above the Urubamba gorge: Machu Picchu, some two hundred structures of mortarless stone fitted so precisely that a knife blade cannot enter the joints, watered by spring-fed fountains and terraced into the mountainside. Abandoned within a century amid the Spanish conquest, it was never found by the Spaniards. Hiram Bingham's 1911 expedition made it world-famous, and it stands as the most complete surviving Inca city.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Machu_Picchu"
+   ]
+  },
+  {
+   "id": "spanish-armada",
+   "title": "The Spanish Armada is defeated",
+   "startYear": 1588,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "Europe"
+   ],
+   "civilization": "Spanish",
+   "wikipedia": "Spanish Armada",
+   "summary": "Philip II sends some 130 ships to escort an invasion army from Flanders and bring England back to Catholic obedience. Harried up the Channel by faster English guns, scattered by fireships at Calais and battered at Gravelines, the Armada flees north around Scotland into Atlantic gales that wreck dozens of ships on Irish shores; barely half the fleet limps home. Spain remains the superpower for decades yet, but England's survival announces the sea power that will shape the coming centuries.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Spanish_Armada"
+   ]
+  },
+  {
+   "id": "imjin-war",
+   "title": "Korea repels the Japanese Imjin invasions",
+   "startYear": 1592,
+   "endYear": 1598,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "East Asia"
+   ],
+   "civilization": "Korean",
+   "wikipedia": "Imjin War",
+   "summary": "Toyotomi Hideyoshi hurls Japan's battle-hardened armies at Korea in 1592, aiming through it at Ming China. Seoul and Pyongyang fall within months, but admiral Yi Sun-sin's fleet — with its armoured turtle ships — strangles the invasion's supply lines, winning at Hansan Island and, with thirteen ships against well over a hundred, at Myeongnyang. Ming intervention and guerrilla 'righteous armies' grind the war to stalemate; Hideyoshi's death ends it. Korea is devastated but unconquered, and Yi becomes its greatest hero.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Imjin_War"
+   ]
+  },
+  {
+   "id": "ottoman-end-1922",
+   "title": "The Ottoman Empire is dissolved",
+   "startYear": 1922,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "West Asia",
+    "Europe"
+   ],
+   "civilization": "Ottoman",
+   "wikipedia": "Abolition of the Ottoman sultanate",
+   "summary": "Defeated in the First World War, occupied and partitioned, the Ottoman state ends when the Grand National Assembly under Mustafa Kemal abolishes the sultanate on 1 November 1922; the last sultan leaves Constantinople on a British warship. The Republic of Turkey is proclaimed the next year and the caliphate itself is abolished in 1924, closing an empire of six centuries whose former Arab provinces, drawn into new borders by Britain and France, still shape the region's politics.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Abolition_of_the_Ottoman_sultanate"
+   ]
+  },
+  {
+   "id": "israel-founded-1948",
+   "title": "The State of Israel is declared",
+   "startYear": 1948,
+   "endYear": 1949,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "West Asia"
+   ],
+   "civilization": "Hebrew",
+   "wikipedia": "Israeli Declaration of Independence",
+   "summary": "On 14 May 1948, as the British Mandate expires, David Ben-Gurion declares the State of Israel — a Jewish state in Palestine three years after the Holocaust, on the basis of the UN's 1947 partition plan. Five Arab armies invade the next day; Israel survives the war and expands beyond the partition lines, while some 700,000 Palestinian Arabs flee or are expelled — the Nakba. Statehood and displacement together define a conflict that remains unresolved today.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Israeli_Declaration_of_Independence"
+   ]
+  },
+  {
+   "id": "tutankhamun-discovery",
+   "title": "Tutankhamun’s tomb is found intact",
+   "startYear": 1922,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "other-discovery",
+   "regions": [
+    "Africa"
+   ],
+   "civilization": "Egyptian",
+   "wikipedia": "Tomb of Tutankhamun",
+   "summary": "On 26 November 1922 Howard Carter breaches a sealed doorway in the Valley of the Kings and, asked whether he can see anything, answers 'Yes, wonderful things'. The tomb of the minor pharaoh Tutankhamun, buried around 1323 BCE and protected by debris from later tomb-building, is the only royal burial of Egypt's New Kingdom found nearly intact — five thousand objects, including the solid-gold funerary mask that becomes ancient Egypt's global icon and transforms public fascination with archaeology.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tomb_of_Tutankhamun"
+   ]
+  },
+  {
+   "id": "soviet-dissolution-1991",
+   "title": "The Soviet Union is dissolved",
+   "startYear": 1991,
+   "endYear": null,
+   "datePrecision": "exact",
+   "category": "war-conflict",
+   "regions": [
+    "Europe",
+    "Central Asia"
+   ],
+   "civilization": "Russian",
+   "wikipedia": "Dissolution of the Soviet Union",
+   "summary": "After the Berlin Wall falls, Gorbachev's reforms outrun his control: a hard-line coup fails in August 1991, the republics declare independence one after another, and on 25 December the red flag comes down over the Kremlin as the USSR votes itself out of existence. Fifteen states replace it, Russia inheriting the nuclear arsenal and the UN seat. The Cold War ends without a great-power war between its principals — an outcome almost no one had predicted a decade earlier.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Dissolution_of_the_Soviet_Union"
    ]
   }
  ]
