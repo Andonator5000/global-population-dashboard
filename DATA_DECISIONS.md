@@ -2176,6 +2176,39 @@ actual graticule layer on the map.
   stripes (both AA-gated), hover/focus in the page tint as a third
   state, sticky header unchanged.
 
+## 37. Terrain view and the palette family (2026-09, round 2)
+
+### 37.1 Terrain view
+
+A third base view alongside Political and Satellite: **Natural Earth's
+Cross Blended Hypso with Shaded Relief and Water** (50m, public domain)
+— hypsometric tints from green lowlands through tan and brown uplands to
+white peaks, hillshade and light-blue water baked in. This matches the
+requested "Google Maps terrain" look from an open source; we match the
+look, not the tiles. The raster is cut by the ETL into the same
+tier/tile scheme as Blue Marble (two tiers, ~3 MB committed) and drawn
+by the same mesh-warp renderer, now parameterised by imagery directory.
+Borders and labels switch to dark warm strokes and dark-on-light halos,
+since the ground is light. Attribution renders on-map.
+
+### 37.2 Six palette directions, one meaning
+
+The political palette family grows from two directions to six — atlas,
+paper, **antique** (hues pulled 60% toward ochre over the parchment
+mood), **pastel** (flag hue, soft chroma), **nautical** (hues pulled
+toward chart-blue), and **mono** (chroma zero). Every direction goes
+through the identical gates: 4-tier lightness assignment by the same
+graph colouring, neighbour dE ≥ 4.0 in both themes, fill/water and
+globe-ocean contrast floors. **The lightness tiers are the data channel
+in every direction; hue is identity only** — so no palette changes what
+the map means, and mono is the colour-blind-safe option by construction
+(lightness is the one channel CVD never removes; it also happens to be
+how every direction stays CVD-legible). The ocean stays the standard
+dark blue in all directions — a period-correct parchment ocean would
+need its own contrast-floor rework and is recorded as an open question,
+not smuggled in ungated. Palette and base-view choices persist in
+localStorage.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

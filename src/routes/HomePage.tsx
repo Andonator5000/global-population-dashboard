@@ -8,6 +8,8 @@ import { MapReadout } from '../components/MapReadout'
 import { TimeScrubber } from '../components/TimeScrubber'
 import { WorldMap, type HoverTarget } from '../components/WorldMap'
 import {
+  BASE_VIEWS,
+  BASE_VIEW_LABELS,
   DATA_BASE_URL,
   DEFAULT_MAP_PALETTE,
   DEFAULT_PROJECTION,
@@ -15,6 +17,7 @@ import {
   MAP_PALETTE_LABELS,
   PROJECTIONS,
   UNINHABITED_CONTINENTS,
+  type BaseViewKey,
   type ContinentKey,
   type MapPaletteKey,
   type ProjectionKey,
@@ -110,12 +113,46 @@ export function HomePage() {
   const [projectionKey, setProjectionKey] =
     useState<ProjectionKey>(DEFAULT_PROJECTION)
   const [mode, setMode] = useState<'country' | 'continent'>('country')
-  const [paletteDirection, setPaletteDirection] =
-    useState<MapPaletteKey>(DEFAULT_MAP_PALETTE)
-  // Phase 4: political atlas colours, or Blue Marble terrain imagery.
-  const [baseView, setBaseView] = useState<'political' | 'satellite'>(
-    'political',
+  // Palette and base view persist across visits (round-2 §37) — they are
+  // presentation preferences, not data state, so localStorage is right.
+  const [paletteDirection, setPaletteDirection] = useState<MapPaletteKey>(
+    () => {
+      try {
+        const stored = localStorage.getItem('map-palette')
+        return MAP_PALETTES.includes(stored as MapPaletteKey)
+          ? (stored as MapPaletteKey)
+          : DEFAULT_MAP_PALETTE
+      } catch {
+        return DEFAULT_MAP_PALETTE
+      }
+    },
   )
+  const [baseView, setBaseView] = useState<BaseViewKey>(() => {
+    try {
+      const stored = localStorage.getItem('map-base-view')
+      return BASE_VIEWS.includes(stored as BaseViewKey)
+        ? (stored as BaseViewKey)
+        : 'political'
+    } catch {
+      return 'political'
+    }
+  })
+  const pickPalette = (value: MapPaletteKey) => {
+    setPaletteDirection(value)
+    try {
+      localStorage.setItem('map-palette', value)
+    } catch {
+      /* preference only */
+    }
+  }
+  const pickBaseView = (value: BaseViewKey) => {
+    setBaseView(value)
+    try {
+      localStorage.setItem('map-base-view', value)
+    } catch {
+      /* preference only */
+    }
+  }
   const [hovered, setHovered] = useState<HoverTarget | null>(null)
   const [activeContinent, setActiveContinent] = useState<ContinentKey | null>(null)
 
@@ -377,7 +414,7 @@ export function HomePage() {
 
         <fieldset className="flex items-center gap-2">
           <legend className="sr-only">Base view</legend>
-          {(['political', 'satellite'] as const).map((value) => (
+          {BASE_VIEWS.map((value) => (
             <button
               key={value}
               type="button"
@@ -386,7 +423,7 @@ export function HomePage() {
               // only applies to the country view, so the control locks
               // rather than silently doing nothing.
               disabled={mode === 'continent'}
-              onClick={() => setBaseView(value)}
+              onClick={() => pickBaseView(value)}
               className="rounded border px-2.5 py-1 disabled:opacity-45"
               style={{
                 borderColor: 'var(--border)',
@@ -400,7 +437,7 @@ export function HomePage() {
                     : 'inherit',
               }}
             >
-              {value === 'political' ? 'Political' : 'Satellite'}
+              {BASE_VIEW_LABELS[value]}
             </button>
           ))}
         </fieldset>
@@ -432,7 +469,7 @@ export function HomePage() {
           <select
             value={paletteDirection}
             onChange={(event) =>
-              setPaletteDirection(event.target.value as MapPaletteKey)
+              pickPalette(event.target.value as MapPaletteKey)
             }
             className="rounded border px-2 py-1"
             style={{

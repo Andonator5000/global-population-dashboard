@@ -45,12 +45,35 @@ export const DEFAULT_PROJECTION: ProjectionKey = 'globe'
  * by scripts/build-map-palette.mjs; the control on the home page switches
  * between them live. 'atlas' is the default.
  */
-export const MAP_PALETTES = ['atlas', 'paper'] as const
+export const MAP_PALETTES = [
+  'atlas',
+  'paper',
+  'antique',
+  'pastel',
+  'nautical',
+  'mono',
+] as const
 export type MapPaletteKey = (typeof MAP_PALETTES)[number]
 export const DEFAULT_MAP_PALETTE: MapPaletteKey = 'atlas'
 export const MAP_PALETTE_LABELS: Record<MapPaletteKey, string> = {
   atlas: 'Atlas — restrained flag hues',
   paper: 'Paper — near-neutral tints',
+  antique: 'Antique — parchment sepia',
+  pastel: 'Vintage pastel',
+  nautical: 'Old nautical — chart blues',
+  mono: 'Monochrome (colour-blind-safe)',
+}
+
+/**
+ * Base views for the country map (round-2 §37): political fills, Blue
+ * Marble satellite imagery, or the hypsometric terrain relief.
+ */
+export const BASE_VIEWS = ['political', 'satellite', 'terrain'] as const
+export type BaseViewKey = (typeof BASE_VIEWS)[number]
+export const BASE_VIEW_LABELS: Record<BaseViewKey, string> = {
+  political: 'Political',
+  satellite: 'Satellite',
+  terrain: 'Terrain',
 }
 
 /**

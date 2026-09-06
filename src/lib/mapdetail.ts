@@ -86,8 +86,8 @@ export const loadAdmin1Labels = () =>
 
 export const loadPlaces = () => loadJson<PlacePoint[]>('geo/detail/places.json')
 
-export const loadTerrainMeta = () =>
-  loadJson<TerrainMeta>('geo/terrain/meta.json')
+export const loadTerrainMeta = (base: string) =>
+  loadJson<TerrainMeta>(`${base}/meta.json`)
 
-export const terrainTileUrl = (name: string) =>
-  `${DATA_BASE_URL}/geo/terrain/${name}`
+export const terrainTileUrl = (base: string, name: string) =>
+  `${DATA_BASE_URL}/${base}/${name}`

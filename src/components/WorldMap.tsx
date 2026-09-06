@@ -20,6 +20,7 @@ import { TerrainRenderer } from '../lib/terrain'
 import {
   CONTINENTS,
   DEFAULT_MAP_PALETTE,
+  type BaseViewKey,
   type ContinentKey,
   type MapPaletteKey,
   type ProjectionKey,
@@ -87,7 +88,7 @@ interface WorldMapProps {
    * renders Blue Marble terrain imagery beneath transparent country shapes.
    * Continent mode ignores it -- region fills ARE that mode's identity.
    */
-  baseView?: 'political' | 'satellite'
+  baseView?: BaseViewKey
   /**
    * Round-2 §36: content for the country popover. When provided (country
    * mode only), hovering a country shows a small card at the cursor with
@@ -307,7 +308,12 @@ export function WorldMap({
 
   // ---- Phase 4: detail layers, terrain, and the satellite base view ------
 
-  const satellite = baseView === 'satellite' && mode === 'country'
+  /** Which imagery base is live, if any: satellite (Blue Marble, dark) or
+      terrain (hypsometric relief, light). Political fills otherwise.
+      Continent mode always uses its region fills. */
+  const imagery =
+    mode === 'country' && baseView !== 'political' ? baseView : null
+  const satellite = imagery !== null
   const [detail, setDetail] = useState<DetailData>({})
   const detailRequested = useRef(new Set<string>())
 
@@ -542,13 +548,16 @@ export function WorldMap({
 
   useEffect(() => {
     if (!satellite) return
-    const renderer = new TerrainRenderer(() => setTileVersion((v) => v + 1))
+    const renderer = new TerrainRenderer(
+      () => setTileVersion((v) => v + 1),
+      imagery === 'terrain' ? 'geo/terrain-hypso' : 'geo/terrain',
+    )
     rendererRef.current = renderer
     return () => {
       renderer.destroy()
       rendererRef.current = null
     }
-  }, [satellite])
+  }, [satellite, imagery])
 
   useEffect(() => {
     if (!satellite) return
@@ -596,9 +605,12 @@ export function WorldMap({
     tileVersion,
   ])
 
-  const attribution = satellite
-    ? 'Imagery: NASA Blue Marble (Aug 2004) · Borders, water, places: Natural Earth'
-    : 'Boundaries, water and places: Natural Earth (public domain)'
+  const attribution =
+    imagery === 'satellite'
+      ? 'Imagery: NASA Blue Marble (Aug 2004) · Borders, water, places: Natural Earth'
+      : imagery === 'terrain'
+        ? 'Terrain: Natural Earth cross-blended hypso & shaded relief (public domain)'
+        : 'Boundaries, water and places: Natural Earth (public domain)'
 
   // ---- Round-2 §35: canvas-rendered drag frames + inertia ----------------
   //
@@ -673,9 +685,14 @@ export function WorldMap({
     dragFills.current = {
       fills,
       ocean: readVar('--map-ocean', '#0b2740'),
-      stroke: satellite ? 'rgba(255, 255, 255, 0.78)' : readVar('--map-ocean', '#0b2740'),
+      stroke:
+        imagery === 'satellite'
+          ? 'rgba(255, 255, 255, 0.78)'
+          : imagery === 'terrain'
+            ? 'rgba(92, 71, 48, 0.7)'
+            : readVar('--map-ocean', '#0b2740'),
     }
-  }, [collection, satellite, mode, populationByIso3, paletteDirection])
+  }, [collection, satellite, imagery, mode, populationByIso3, paletteDirection])
 
   const drawDragFrame = useCallback(() => {
     const container = containerRef.current
@@ -1179,8 +1196,14 @@ export function WorldMap({
   }
 
   /** Country borders must read on imagery, where the dark ocean stroke
-   *  vanishes; satellite borders are light and slightly heavier. */
-  const countryStroke = satellite ? 'rgba(255, 255, 255, 0.78)' : landStroke
+   *  vanishes: light strokes on the dark satellite, dark warm strokes on
+   *  the light terrain relief (round-2 §37). */
+  const countryStroke =
+    imagery === 'satellite'
+      ? 'rgba(255, 255, 255, 0.78)'
+      : imagery === 'terrain'
+        ? 'rgba(92, 71, 48, 0.7)'
+        : landStroke
   const countryStrokeWidth = satellite ? strokeWidth * 1.5 : strokeWidth
   void landNeutral
 
@@ -1481,7 +1504,7 @@ export function WorldMap({
       role="group"
       aria-label={
         `World map, ${isGlobe ? 'globe view' : 'equal-area projection'}, ` +
-        `${satellite ? 'satellite base, ' : ''}` +
+        `${imagery ? `${imagery} base, ` : ''}` +
         `${focusTargets.length} entities. ` +
         `Use the arrow keys to move between countries and Enter to open one. ` +
         `Home and End jump to the westernmost and easternmost.`
@@ -1619,7 +1642,13 @@ export function WorldMap({
               <path
                 d={detailPaths.admin1}
                 fill="none"
-                stroke={satellite ? 'rgba(255, 255, 255, 0.55)' : landStroke}
+                stroke={
+                  imagery === 'satellite'
+                    ? 'rgba(255, 255, 255, 0.55)'
+                    : imagery === 'terrain'
+                      ? 'rgba(92, 71, 48, 0.5)'
+                      : landStroke
+                }
                 strokeOpacity={satellite ? 1 : 0.45}
                 strokeWidth={0.32 / transform.k}
                 strokeLinejoin="round"
@@ -1735,15 +1764,16 @@ export function WorldMap({
             {detailLabels.map((label) => {
               const fontSize = label.size / Math.sqrt(transform.k)
               const isPlace = label.kind === 'place' || label.kind === 'capital'
+              const dark = imagery === 'satellite'
               const fill =
                 label.kind === 'water'
-                  ? satellite
+                  ? dark
                     ? 'oklch(88% 0.05 240)'
                     : 'oklch(42% 0.08 250)'
-                  : satellite
+                  : dark
                     ? 'oklch(97% 0 0)'
                     : 'oklch(28% 0.01 250)'
-              const halo = satellite
+              const halo = dark
                 ? 'oklch(22% 0.02 250)'
                 : GLOBE_LAND_NEUTRAL
               return (

@@ -317,6 +317,14 @@ BLUE_MARBLE_URL = (
 )
 BLUE_MARBLE_VINTAGE = "2004-08"
 
+# Terrain view (round-2 §37): Natural Earth's Cross Blended Hypso with
+# Shaded Relief and Water — hypsometric tints (green lowlands to tan and
+# brown uplands to white peaks) with hillshade baked in, the classic
+# "terrain map" look. Public domain, 50m raster (10800x5400, ~1:50m).
+NATURAL_EARTH_HYPSO_50M = (
+    "https://naciscdn.org/naturalearth/50m/raster/HYP_50M_SR_W.zip"
+)
+
 # --------------------------------------------------------------------------
 # Biology: taxonomy (Phase 5, 2026-09-05). Catalogue of Life via the keyless
 # ChecklistBank API; '3LR' is the permanent alias for the latest COL release.

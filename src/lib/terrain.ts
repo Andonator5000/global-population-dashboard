@@ -52,7 +52,12 @@ export class TerrainRenderer {
   private pending = new Set<string>()
   private base: ImageBitmap | null = null
 
-  constructor(private readonly onTileReady: () => void) {}
+  /** `basePath` is the artifact directory under /data — 'geo/terrain'
+   *  (Blue Marble satellite) or 'geo/terrain-hypso' (§37 Terrain view). */
+  constructor(
+    private readonly onTileReady: () => void,
+    private readonly basePath: string = 'geo/terrain',
+  ) {}
 
   destroy(): void {
     this.tiles.forEach((bitmap) => bitmap.close())
@@ -64,7 +69,7 @@ export class TerrainRenderer {
   private ensureMeta(): void {
     if (this.metaRequested) return
     this.metaRequested = true
-    void loadTerrainMeta().then((meta) => {
+    void loadTerrainMeta(this.basePath).then((meta) => {
       this.meta = meta
       const tier0 = meta.tiers[0]
       if (tier0) this.request(tier0.tiles[0] ?? 't0.jpg', true)
@@ -82,7 +87,7 @@ export class TerrainRenderer {
     if (this.pending.has(key) || this.tiles.has(key)) return
     if (isBase && this.base) return
     this.pending.add(key)
-    void fetch(terrainTileUrl(name))
+    void fetch(terrainTileUrl(this.basePath, name))
       .then((response) => {
         if (!response.ok) throw new Error(`${name}: HTTP ${response.status}`)
         return response.blob()

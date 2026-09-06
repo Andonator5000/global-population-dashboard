@@ -102,6 +102,30 @@ const THEMES = {
 const DIRECTIONS = {
   atlas: { chroma: { light: 0.045, dark: 0.05 }, blendTo: null },
   paper: { chroma: { light: 0.022, dark: 0.028 }, blendTo: 80 },
+  // Round-2 §37: additional directions, every one through the same gates.
+  // The 4-tier lightness logic is the data channel in ALL of them; hue is
+  // identity only, so pulling hues toward a period palette changes the
+  // mood, never the meaning.
+  //
+  // antique: parchment sepia — hues pulled well toward ochre.
+  antique: {
+    chroma: { light: 0.038, dark: 0.042 },
+    blendTo: 70,
+    blendStrength: 0.6,
+  },
+  // pastel: the flag hue kept, soft chroma. Tiers are the standard ones —
+  // the top-tier/water floor was measured, so no lightening tricks here.
+  pastel: { chroma: { light: 0.032, dark: 0.036 }, blendTo: null },
+  // nautical: everything pulled toward chart-blue over the same tiers.
+  nautical: {
+    chroma: { light: 0.03, dark: 0.034 },
+    blendTo: 225,
+    blendStrength: 0.55,
+  },
+  // mono: chroma zero. Pure lightness tiers — the colourblind-safe option
+  // by construction, since lightness is the only channel in play and the
+  // graph colouring already guarantees adjacent countries differ in tier.
+  mono: { chroma: { light: 0, dark: 0 }, blendTo: null },
 }
 const DEFAULT_DIRECTION = 'atlas'
 
@@ -172,7 +196,7 @@ const fillFor = (theme, tierIndex, hue, direction = DEFAULT_DIRECTION) => {
   let h = hue
   if (spec.blendTo !== null) {
     const d = ((spec.blendTo - hue + 540) % 360) - 180
-    h = (hue + d / 3 + 360) % 360
+    h = (hue + d * (spec.blendStrength ?? 1 / 3) + 360) % 360
   }
   return formatHex(
     toRgb(
