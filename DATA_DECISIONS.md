@@ -2209,6 +2209,138 @@ need its own contrast-floor rework and is recorded as an open question,
 not smuggled in ungated. Palette and base-view choices persist in
 localStorage.
 
+## 38. Human History round 2: banners and civilizations (2026-09)
+
+The era boxes move from the left column to **full-width banners** heading
+each era's span — reversing the §26 two-column ruling on maintainer
+request. Each banner carries the era's name, dates, a one-sentence
+editorial description of what defined it, and the honest "1 px ≈ N
+years" scale note. Banner heights are measured at render (they wrap on
+phones) and the year scale starts below each banner in one sequential
+layout pass, so no text can overlap at any width. Era descriptions live
+in the Timeline component beside the era definitions themselves — they
+are UI copy, like the category labels.
+
+Events grow 195 → 249. Seventy-two civilization-specific additions were
+researched and written (55–110-word summaries, dated with stated
+precision, each with a cited source); eighteen of them turned out to
+duplicate existing curated entries under different ids and were dropped
+in favour of the established versions, with their civilization tags
+transferred. A controlled 31-tag civilization list joins the ETL
+validator (folksonomy resisted deliberately); 111 events carry a tag,
+surfaced as a filter beside categories and search. Existing events were
+auto-tagged only where the title made the attribution unambiguous, and
+the mapping was reviewed by eye.
+
+## 39. Taxonomy round 2: photos, prose, and two views (2026-09)
+
+The maintainer asked for a page that is neither dull nor thin; the
+ETL-built tree stays the backbone.
+
+- **Photos.** Each taxon's Wikidata P18 image — falling back to its
+  article's lead image — is licence-checked against the Commons
+  metadata in the ETL (same PD/CC gate as the history and evolution
+  stages) and shipped with author, licence, and file-page link. Every
+  node carries `img` explicitly: an object or null, and null renders as
+  a neutral placeholder silhouette. The `check:taxonomy` gate enforces
+  the key and the recorded licence.
+- **Prose.** Wikipedia intro extracts are fetched at BUILD time through
+  the batched Action API (the §27 lesson — per-title REST tripped rate
+  limits) for every article-bearing taxon, sharded into 32 files keyed
+  by node-id hash and fetched per shard on selection, because inlining
+  ~14k intros would balloon tree.json. The retrieval date shows with
+  the text. Rank definitions and rank-name etymologies are editorial
+  UI copy; per-taxon etymology was NOT attempted at scale — no
+  machine-readable source covers it honestly.
+- **Rank colours.** One hue per canonical rank (chips, panel header,
+  breadcrumbs, persistent legend); intermediate ranks inherit their
+  base rank. Chips are tinted grounds under the ordinary text token,
+  so hue never carries contrast or meaning.
+- **New sources.** OneZoom (per-taxon deep link by scientific name) and
+  Lifemap (deep link via the NCBI taxid from Wikidata P685) join the
+  panel links. Both are LINKS, not data sources: their trees are not
+  merged into ours — cross-checking backbones was judged §31's
+  already-documented job, and neither publishes a stable bulk API this
+  static site could gate. Wikidata additionally supplies P9157 (OTT id)
+  and P523 (temporal range start, shown as "first appearance").
+- **Views.** Tree view (unchanged machinery) plus a card explorer —
+  children as image cards with rank badges, breadcrumb drill-down —
+  and quick-start chips, an autocomplete-style search, and a random
+  taxon button.
+
+## 40. Evolution round 2: the chart made habitable (2026-09)
+
+- **Nested banners.** Eon > Era > Period banners span the page, each
+  with the chart's dates (stated uncertainties included — including the
+  chart's own "uncertain" boundary notes), a plain-language description
+  and the name's etymology with a cited source, from the new editorial
+  reference `etl/reference/ics_unit_notes.json` (36 units; the stage
+  fails loudly if a key stops matching the chart).
+- **Tinted spans.** Each unit's section is washed with a light
+  `color-mix` of its own CGMW colour, one step stronger per nesting
+  level; event cards sit on the raised surface so every tint stays
+  legible.
+- **The system explained.** A collapsed intro panel covers why deep
+  time is divided, how GSSPs ("golden spikes") define boundaries, why
+  Precambrian boundaries are round numbers, and who maintains the
+  chart — citing ICS and Wikipedia's GSSP article.
+- **Coverage.** The Tonian gap is filled with sourced entries (Rodinia,
+  Ourasphaira fungi, vase-shaped microfossils with predation borings,
+  the Bitter Springs anomaly, molecular-clock animal origins), plus
+  Vredefort, Columbia/Nuna and the Boring Billion for the other empty
+  Proterozoic periods — 50 → 58 events. The new `check:evolution` gate
+  enforces that EVERY period is covered by at least one event
+  (overlap-based), every event is dated and sourced, and every banner
+  unit carries its annotation.
+
+## 41. Space round 2: the 3D Solar System (2026-09)
+
+### 41.1 Scene and sources
+
+The static diagram gives way to a three.js scene (code-split so the
+~600 KB library loads only on the Space pages): animated orbits with
+play/pause and a time-scale control, the labelled compressed/true scale
+toggle, click-to-fly, belts as particle fields, and the selected
+planet's major moons in orbit with the full catalogue listed beside.
+Planetary textures are Solar System Scope's pack (CC BY 4.0, committed
+byte-for-byte); Ceres uses the pack's clearly-labelled "fictional"
+texture and the icy dwarfs get plain materials rather than invented
+surfaces. All figures stay NSSDC/JPL-sourced with per-body vintages;
+new per-body prose (naming and etymology, atmosphere per the fact
+sheets, notable features, missions) is editorial in
+`etl/reference/space_body_notes.json`, each body citing its reference.
+Pre-telescopic planets say "known since antiquity" rather than faking a
+discovery row.
+
+### 41.2 Deep zoom: a documented runtime exception
+
+The navigable per-body globes stream **NASA Solar System Treks** WMTS
+tiles (LRO WAC for the Moon, Viking MDIM for Mars, Magellan SAR for
+Venus, MESSENGER MDIS for Mercury — layer names and CORS verified) as
+the camera closes in, upgrading the globe texture through tile levels.
+This is the repo's third render-time upstream exception, after live FX
+and weather (§19.1), and the first sizeable one: a global tile pyramid
+cannot be committed to a static repository, and the maintainer's brief
+explicitly directed lazy tile loading from Treks. Credits render on
+screen. Named surface features come from the **IAU Gazetteer of
+Planetary Nomenclature** (USGS, public domain), fetched in the ETL,
+capped to the most prominent per body, and drawn on the globe with a
+zoom threshold.
+
+### 41.3 Cosmic Phenomena
+
+A new /space/phenomena page: 13 editorial entries (stellar life cycles
+through gravitational waves), each with a 55–130-word description
+(validated), key facts, NASA/Wikipedia links, and a NASA Image Library
+illustration credited per item. Wormholes are labelled theoretical in
+their own text — the page never presents speculation as observation.
+
+### 41.4 Refresh
+
+Treks and the gazetteer join the monthly refresh (features get named
+yearly); Solar System Scope textures are pinned by construction
+(byte-copies of a versioned pack).
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

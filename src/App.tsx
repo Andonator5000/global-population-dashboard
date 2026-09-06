@@ -8,10 +8,15 @@ import { CountryPage } from './routes/CountryPage'
 import { HistoryPage } from './routes/HistoryPage'
 import { HomePage } from './routes/HomePage'
 import { MethodologyPage } from './routes/MethodologyPage'
+import { lazy, Suspense } from 'react'
+
 import { NotFoundPage } from './routes/NotFoundPage'
-import { SolarSystemPage } from './routes/SolarSystemPage'
 import { SpacePage } from './routes/SpacePage'
 import { TaxonomyPage } from './routes/TaxonomyPage'
+
+// Code-split (round-2 §41): three.js only loads on the pages that use it.
+const SolarSystemPage = lazy(() => import('./routes/SolarSystemPage'))
+const CosmicPhenomenaPage = lazy(() => import('./routes/CosmicPhenomenaPage'))
 
 export function App() {
   return (
@@ -70,7 +75,26 @@ export function App() {
           <Route path="/taxonomy" element={<TaxonomyPage />} />
           <Route path="/evolution" element={<EvolutionPage />} />
           <Route path="/space" element={<SpacePage />} />
-          <Route path="/space/solar-system" element={<SolarSystemPage />} />
+          <Route
+            path="/space/solar-system"
+            element={
+              <Suspense
+                fallback={<p className="p-10 text-sm">Loading the Solar System…</p>}
+              >
+                <SolarSystemPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/space/phenomena"
+            element={
+              <Suspense
+                fallback={<p className="p-10 text-sm">Loading…</p>}
+              >
+                <CosmicPhenomenaPage />
+              </Suspense>
+            }
+          />
           <Route path="/methodology" element={<MethodologyPage />} />
           {/* Round-2 IA: Biology dissolved into two top-level pages. The
               old paths redirect so bookmarks and inbound links survive. */}

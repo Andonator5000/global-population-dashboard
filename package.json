@@ -16,7 +16,8 @@
     "check:theme-parity": "node scripts/check-theme-parity.mjs",
     "check:polygons": "node scripts/check-polygon-ownership.mjs",
     "check:taxonomy": "node scripts/check-taxonomy.mjs",
-    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas && npm run check:polygons && npm run check:icons && npm run check:taxonomy",
+    "check:evolution": "node scripts/check-evolution.mjs",
+    "check": "npm run typecheck && npm run check:theme-parity && npm run check:contrast && npm run check:equal-area && npm run check:palette && npm run check:biome-areas && npm run check:polygons && npm run check:icons && npm run check:taxonomy && npm run check:evolution",
     "flags": "node scripts/extract-flag-colors.mjs",
     "palette": "node scripts/build-map-palette.mjs",
     "check:icons": "node scripts/check-icon-coverage.mjs --strict",
@@ -38,6 +39,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.1",
+    "three": "^0.185.1",
     "topojson-client": "^3.1.0"
   },
   "devDependencies": {
@@ -55,6 +57,7 @@
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.185.4",
     "@types/topojson-client": "^3.1.5",
     "@vitejs/plugin-react": "^5.0.2",
     "sharp": "^0.34.3",

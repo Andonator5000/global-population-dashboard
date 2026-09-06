@@ -30,6 +30,20 @@ export interface BodyImage {
   credit: string
 }
 
+export interface BodyNotes {
+  naming: string
+  atmosphere: string
+  features: string
+  missions: string
+  source: string
+}
+
+export interface TrekLayer {
+  urlTemplate: string
+  ext: string
+  credit: string
+}
+
 export interface SpaceBody {
   id: string
   name: string
@@ -42,6 +56,37 @@ export interface SpaceBody {
   links: { wikipedia: string }
   image: BodyImage | null
   discovery?: { by: string; year: number }
+  /** Round-2 §41: committed CC-BY texture path under /data, or null. */
+  texture?: string | null
+  notes?: BodyNotes
+  /** NASA Trek WMTS layer for deep-zoom globes (streamed at runtime). */
+  trek?: TrekLayer
+}
+
+export interface Nomenclature {
+  target: string
+  features: {
+    name: string
+    lat: number
+    lon: number
+    dKm: number
+    type: string | null
+  }[]
+}
+
+export interface PhenomenaFile {
+  source: string
+  version: number
+  imageNote: string
+  entries: {
+    id: string
+    title: string
+    description: string
+    facts: string[]
+    image: BodyImage | null
+    wikipedia: string
+    nasa: string
+  }[]
 }
 
 export interface SpaceRegion {
@@ -120,6 +165,34 @@ export const loadMoons = (planetId: string) =>
   load<{ planet: string; moons: MoonRecord[] }>(
     `space/moons/${encodeURIComponent(planetId)}.json`,
   )
+
+export const loadNomenclature = (bodyId: string) =>
+  load<Nomenclature>(`space/nomenclature/${encodeURIComponent(bodyId)}.json`)
+
+export function usePhenomena(): AsyncState<PhenomenaFile> {
+  const [state, setState] = useState<AsyncState<PhenomenaFile>>({
+    status: 'loading',
+  })
+  useEffect(() => {
+    let cancelled = false
+    load<PhenomenaFile>('space/phenomena.json')
+      .then((data) => {
+        if (!cancelled) setState({ status: 'ready', data })
+      })
+      .catch((error: unknown) => {
+        if (!cancelled) {
+          setState({
+            status: 'error',
+            error: error instanceof Error ? error : new Error(String(error)),
+          })
+        }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+  return state
+}
 
 /** "1.898e27 kg" style scientific formatting for planetary masses. */
 export function formatKg(kg: number): string {

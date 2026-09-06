@@ -15,11 +15,13 @@ The browser never calls an upstream API — it reads committed artifacts from
 > a real runner. See [Build phases](#build-phases).
 >
 > **2026-09 expansion:** the site grew from a population dashboard into a
-> general-knowledge reference — new Biology section (Taxonomy from the
-> Catalogue of Life, Evolution on the ICS chart), new Space section (the
-> Solar System from NASA/JPL), and a satellite/terrain view on the world
-> map (NASA Blue Marble + Natural Earth detail layers). Rulings in
-> DATA_DECISIONS.md §28–§33.
+> general-knowledge reference. Top-level sections: Global Data, Human
+> History, **Taxonomy** (Catalogue of Life), **Evolution** (the ICS
+> chart), and **Space** (the Solar System from NASA/JPL) — plus
+> satellite and terrain views on the world map (NASA Blue Marble,
+> Natural Earth hypsometric relief and detail layers), a six-direction
+> gated palette family, and a /methodology page. Old `/biology/*` paths
+> redirect. Rulings in DATA_DECISIONS.md §28–§40.
 
 ## Layout
 
@@ -132,6 +134,9 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Evolution illustrations | PhyloPic (CC0/PD only) + Wikipedia lead images via Commons | Per-image licence gate; attribution rendered; unillustrated events logged — §32.3. |
 | Planets, Sun, Earth's Moon (Space) | NSSDC Planetary Fact Sheets via pinned Internet Archive snapshots | NSSDC live site now redirects away; substitution documented — §33.1. |
 | Moons and dwarf planets (Space) | NASA/JPL Solar System Dynamics tables + Small-Body Database API | Full satellite catalogue; counts derived by counting it; portraits from the NASA Image Library — §33. |
+| Planetary textures (3D scene) | Solar System Scope texture pack (CC BY 4.0) | Committed byte-for-byte; fictional textures labelled — §41.1. |
+| Deep-zoom globes | NASA Solar System Treks WMTS (streamed at runtime) + IAU Gazetteer of Planetary Nomenclature (USGS) | The documented §41.2 runtime exception; credits on screen. |
+| Cosmic Phenomena imagery | NASA Image and Video Library | Editorial entries; per-item credits — §41.3. |
 | Biomes | RESOLVE Ecoregions 2017 | Build-time overlay, never runtime. |
 | Democracy, human rights, governance, CO₂ per capita | V-Dem / Regimes of the World / Hanson & Sigman / Global Carbon Budget, via Our World in Data | Primary source for the Freedom and governance measures; citations name the underlying producer. |
 | World Heritage sites | UNESCO World Heritage List | Official syndication XML — see DATA_DECISIONS.md §16.3 on the WAF workaround. |

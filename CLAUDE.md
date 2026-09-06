@@ -101,11 +101,25 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   picks win; `etl/reference/currency_image_rejects.json` is the
   person-reviewed deny list. Review new picks on a contact sheet before
   shipping.
-- Header: "Encyclopedia Andranika" serif masthead at the left (§28), then
-  the section buttons from the SECTIONS registry in src/config.ts — Global
-  Data (brand green), Human History (clay red), Biology (teal), Space
-  (violet); a new section is one registry entry plus a contrast-gated
-  token pair (§29). Timeline = era boxes left, events right (§26).
+- Header (round 2, §34): centred publication nameplate + editorial
+  uppercase nav from the SECTIONS registry (src/config.ts) — five
+  top-level items (Global Data, Human History, Taxonomy, Evolution,
+  Space); active state = 2px underline in the section's THEMED --nav-*
+  hue plus a text-colour step. A new section = one registry entry + a
+  --nav-* pair in both themes, mirrored into check-contrast AND declared
+  in both dark blocks (theme parity). /biology/* redirects; don't remove.
+- Sources are COLLAPSED by default site-wide (CollapsibleSources, §34.3);
+  method prose lives once on /methodology (§36.4) — figures carry a
+  compact source label + MethodInfoLink, never paragraphs of methodology.
+- Map (round 2, §35–37): drag frames render to canvas with rotation in a
+  ref (React sees ONE commit per gesture — do not reintroduce per-frame
+  setState); the satellite/terrain quad mesh OVERDRAWS ~1.5% (seam fix —
+  don't "clean up" the pad); six palette directions all gated by
+  build-map-palette.mjs (lightness is the data channel in every one);
+  base views political/satellite/terrain, choices persisted.
+- Timeline (round 2, §38): full-width MEASURED era banners; era
+  descriptions are UI copy in Timeline.tsx; events carry an optional
+  civilization tag from the controlled list in etl/sources/history.py.
 - Taxonomy (§31): the tree is NEVER hand-typed — it comes from Catalogue
   of Life; which families get species depth is editorial
   (etl/reference/taxonomy_focus.json), and contested placements carry
