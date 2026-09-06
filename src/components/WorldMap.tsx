@@ -5,6 +5,16 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { feature } from 'topojson-client'
 
 import {
+  loadAdmin1Labels,
+  loadDetailLayer,
+  loadPlaces,
+  type Admin1Label,
+  type DetailCollection,
+  type PlacePoint,
+} from '../lib/mapdetail'
+import { TerrainRenderer } from '../lib/terrain'
+
+import {
   CONTINENTS,
   DEFAULT_MAP_PALETTE,
   type ContinentKey,
@@ -69,6 +79,43 @@ interface WorldMapProps {
   onActiveContinentChange: (continent: ContinentKey | null) => void
   /** Colour direction for country fills (Phase 2.4); 'atlas' by default. */
   paletteDirection?: MapPaletteKey
+  /**
+   * Base view (Phase 4): 'political' is the colour-coded atlas; 'satellite'
+   * renders Blue Marble terrain imagery beneath transparent country shapes.
+   * Continent mode ignores it -- region fills ARE that mode's identity.
+   */
+  baseView?: 'political' | 'satellite'
+}
+
+/** Zoom thresholds for the detail layers (Phase 4). Each names the factor
+ *  at which a layer is fetched AND shown; fetch happens once per session. */
+const DETAIL_ZOOM = {
+  water50: 2,
+  places: 3,
+  admin1: 5,
+  admin1Labels: 6,
+  water10: 12,
+  waterLabels: 12,
+} as const
+
+interface DetailData {
+  admin1Lines?: DetailCollection
+  lakes50?: DetailCollection
+  lakes10?: DetailCollection
+  rivers50?: DetailCollection
+  rivers10?: DetailCollection
+  admin1Labels?: Admin1Label[]
+  places?: PlacePoint[]
+}
+
+interface DetailLabel {
+  key: string
+  text: string
+  x: number
+  y: number
+  /** view-units font size before the 1/sqrt(k) zoom easing */
+  size: number
+  kind: 'admin1' | 'place' | 'capital' | 'water'
 }
 
 interface CountryShape {
@@ -155,6 +202,7 @@ export function WorldMap({
   activeContinent,
   onActiveContinentChange,
   paletteDirection = DEFAULT_MAP_PALETTE,
+  baseView = 'political',
 }: WorldMapProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -200,7 +248,7 @@ export function WorldMap({
     [topology],
   )
 
-  const { shapes, sphere, markerPoints } = useMemo(() => {
+  const { shapes, sphere, markerPoints, projection } = useMemo(() => {
     const base = createProjection(projectionKey)
     if (isGlobe) base.rotate([rotation[0], rotation[1], 0])
     const projection = fitProjection(base, VIEW_WIDTH, VIEW_HEIGHT)
@@ -240,8 +288,304 @@ export function WorldMap({
       shapes: built,
       sphere: path({ type: 'Sphere' }) ?? '',
       markerPoints: points,
+      projection,
     }
   }, [collection, markers, projectionKey, isGlobe, rotation])
+
+  // ---- Phase 4: detail layers, terrain, and the satellite base view ------
+
+  const satellite = baseView === 'satellite' && mode === 'country'
+  const [detail, setDetail] = useState<DetailData>({})
+  const detailRequested = useRef(new Set<string>())
+
+  /**
+   * Globe rotation invalidates every projected detail path, and regenerating
+   * ~13k simplified features per drag frame would kill the spin. So the
+   * detail layers follow the rotation with a short settle delay: they hide
+   * while the sphere is actively turning and reproject 160 ms after it
+   * stops. Zoom does NOT invalidate them -- the zoom <g> scales the strings.
+   */
+  const [settledRotation, setSettledRotation] = useState(rotation)
+  const rotationSettled =
+    settledRotation[0] === rotation[0] && settledRotation[1] === rotation[1]
+  useEffect(() => {
+    const timer = window.setTimeout(() => setSettledRotation(rotation), 160)
+    return () => window.clearTimeout(timer)
+  }, [rotation])
+
+  /** Fetch each layer the first time the zoom crosses its threshold. */
+  useEffect(() => {
+    const k = transform.k
+    const want = (
+      key: string,
+      threshold: number,
+      loader: () => Promise<unknown>,
+      assign: (data: never) => Partial<DetailData>,
+    ) => {
+      if (k < threshold || detailRequested.current.has(key)) return
+      detailRequested.current.add(key)
+      loader()
+        .then((data) => setDetail((prev) => ({ ...prev, ...assign(data as never) })))
+        .catch(() => detailRequested.current.delete(key))
+    }
+    want('lakes50', DETAIL_ZOOM.water50, () => loadDetailLayer('lakes-50m'),
+      (data) => ({ lakes50: data }))
+    want('rivers50', DETAIL_ZOOM.water50, () => loadDetailLayer('rivers-50m'),
+      (data) => ({ rivers50: data }))
+    want('places', DETAIL_ZOOM.places, loadPlaces, (data) => ({ places: data }))
+    want('admin1', DETAIL_ZOOM.admin1, () => loadDetailLayer('admin1-lines'),
+      (data) => ({ admin1Lines: data }))
+    want('admin1Labels', DETAIL_ZOOM.admin1Labels, loadAdmin1Labels,
+      (data) => ({ admin1Labels: data }))
+    want('lakes10', DETAIL_ZOOM.water10, () => loadDetailLayer('lakes-10m'),
+      (data) => ({ lakes10: data }))
+    want('rivers10', DETAIL_ZOOM.water10, () => loadDetailLayer('rivers-10m'),
+      (data) => ({ rivers10: data }))
+  }, [transform.k])
+
+  /**
+   * Projected path strings for the loaded vector layers. Recomputed only on
+   * settle (see above); d3's geoPath clips to the visible hemisphere on the
+   * globe, so the strings stay a fraction of the source size.
+   */
+  const detailPaths = useMemo(() => {
+    if (!rotationSettled) return null
+    const k = transform.k
+    const path = geoPath(projection)
+    const draw = (collection: DetailCollection | undefined) =>
+      collection ? path(collection as unknown as GeoPermissibleObjects) ?? '' : ''
+    const use10m = k >= DETAIL_ZOOM.water10
+    return {
+      lakes: draw(use10m ? detail.lakes10 ?? detail.lakes50 : detail.lakes50),
+      rivers: draw(use10m ? detail.rivers10 ?? detail.rivers50 : detail.rivers50),
+      admin1: k >= DETAIL_ZOOM.admin1 ? draw(detail.admin1Lines) : '',
+    }
+    // transform.k is deliberately bucketed by the DETAIL_ZOOM comparisons
+    // above; including it raw would reproject on every wheel tick.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    rotationSettled,
+    settledRotation,
+    projection,
+    detail,
+    transform.k >= DETAIL_ZOOM.water10,
+    transform.k >= DETAIL_ZOOM.admin1,
+  ])
+
+  /** Previous render's country labels, seeding detail-label collision. */
+  const countryLabelSeed = useRef<
+    { name: string; x: number; y: number; emphasized: boolean }[]
+  >([])
+
+  /**
+   * Zoom-progressive labels with collision culling: country names (already
+   * placed by visibleLabels below) seed the occupied set, then capitals,
+   * admin-1 names, towns by scalerank, and finally water names claim space
+   * in that order. Everything is compared in screen pixels.
+   */
+  const detailLabels = useMemo(() => {
+    if (!rotationSettled || mode === 'continent') return []
+    const k = transform.k
+    if (k < DETAIL_ZOOM.places) return []
+    const placed: { x: number; y: number; w: number; h: number }[] = []
+    const labels: DetailLabel[] = []
+
+    const viewCenter: [number, number] = [-rotation[0], -rotation[1]]
+    const projectPoint = (lon: number, lat: number): [number, number] | null => {
+      if (isGlobe && geoDistance([lon, lat], viewCenter) > Math.PI / 2 - 1e-4) {
+        return null
+      }
+      const point = projection([lon, lat])
+      if (!point || !Number.isFinite(point[0])) return null
+      // Into screen space (view coords times zoom) with the pan applied.
+      const x = point[0] * k + transform.x
+      const y = point[1] * k + transform.y
+      if (x < -40 || x > VIEW_WIDTH + 40 || y < -20 || y > VIEW_HEIGHT + 20) {
+        return null
+      }
+      return [point[0], point[1]]
+    }
+
+    const collides = (x: number, y: number, w: number, h: number) =>
+      placed.some(
+        (rect) =>
+          Math.abs(rect.x - x) < (rect.w + w) / 2 &&
+          Math.abs(rect.y - y) < (rect.h + h) / 2,
+      )
+
+    const tryPlace = (
+      key: string,
+      text: string,
+      lon: number,
+      lat: number,
+      size: number,
+      kind: DetailLabel['kind'],
+    ) => {
+      if (labels.length >= 130) return
+      const point = projectPoint(lon, lat)
+      if (!point) return
+      const screenSize = (size / Math.sqrt(k)) * k
+      const w = text.length * screenSize * 0.62
+      const h = screenSize * 1.5
+      const sx = point[0] * k
+      const sy = point[1] * k
+      if (collides(sx, sy, w, h)) return
+      placed.push({ x: sx, y: sy, w, h })
+      labels.push({ key, text, x: point[0], y: point[1], size, kind })
+    }
+
+    // Seed with the country labels so nothing overprints them.
+    for (const label of countryLabelSeed.current) {
+      const screenSize = (label.emphasized ? 13 : 10) * Math.sqrt(k)
+      placed.push({
+        x: label.x * k,
+        y: label.y * k,
+        w: label.name.length * screenSize * 0.62,
+        h: screenSize * 1.5,
+      })
+    }
+
+    const places = detail.places ?? []
+    for (const place of places) {
+      const bonus = place.cap === 1 ? 2 : 0
+      if (k < 3 + place.rank * 1.6 - bonus) continue
+      tryPlace(
+        `pl-${place.name}-${place.lon}`,
+        place.name,
+        place.lon,
+        place.lat,
+        place.cap === 1 ? 8.5 : 7.5,
+        place.cap === 1 ? 'capital' : 'place',
+      )
+    }
+    if (k >= DETAIL_ZOOM.admin1Labels) {
+      for (const label of detail.admin1Labels ?? []) {
+        tryPlace(
+          `a1-${label.a0}-${label.name}`,
+          label.name,
+          label.lon,
+          label.lat,
+          8,
+          'admin1',
+        )
+      }
+    }
+    if (k >= DETAIL_ZOOM.waterLabels) {
+      const path = geoPath(projection)
+      const nameWater = (collection: DetailCollection | undefined, prefix: string) => {
+        for (const item of collection?.features ?? []) {
+          const name = item.properties.name
+          if (!name) continue
+          const centroid = path.centroid(item as unknown as GeoPermissibleObjects)
+          if (!Number.isFinite(centroid[0])) continue
+          const inverted = projection.invert?.(centroid)
+          if (!inverted) continue
+          tryPlace(`${prefix}-${name}-${centroid[0].toFixed(1)}`, name,
+            inverted[0], inverted[1], 7, 'water')
+        }
+      }
+      nameWater(detail.lakes10 ?? detail.lakes50, 'lk')
+      nameWater(detail.rivers10 ?? detail.rivers50, 'rv')
+    }
+    return labels
+    // Bucketing k to quarter steps keeps this from re-running per wheel tick.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    rotationSettled,
+    settledRotation,
+    projection,
+    detail,
+    mode,
+    isGlobe,
+    Math.round(transform.k * 4),
+    Math.round(transform.x / 8),
+    Math.round(transform.y / 8),
+  ])
+
+  // ---- terrain canvas (satellite view) ----------------------------------
+
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const rendererRef = useRef<TerrainRenderer | null>(null)
+  const [tileVersion, setTileVersion] = useState(0)
+  const [containerSize, setContainerSize] = useState<{ w: number; h: number }>({
+    w: 0,
+    h: 0,
+  })
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+    const observer = new ResizeObserver((entries) => {
+      const entry = entries[0]
+      if (!entry) return
+      setContainerSize({
+        w: entry.contentRect.width,
+        h: entry.contentRect.height,
+      })
+    })
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!satellite) return
+    const renderer = new TerrainRenderer(() => setTileVersion((v) => v + 1))
+    rendererRef.current = renderer
+    return () => {
+      renderer.destroy()
+      rendererRef.current = null
+    }
+  }, [satellite])
+
+  useEffect(() => {
+    if (!satellite) return
+    const canvas = canvasRef.current
+    const renderer = rendererRef.current
+    if (!canvas || !renderer) return
+    const { w, h } = containerSize
+    if (w < 2 || h < 2) return
+    // 1.75 caps the buffer on high-density screens: terrain is imagery, not
+    // text, and the extra pixels cost more than they show.
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.75)
+    const bufferW = Math.round(w * dpr)
+    const bufferH = Math.round(h * dpr)
+    if (canvas.width !== bufferW) canvas.width = bufferW
+    if (canvas.height !== bufferH) canvas.height = bufferH
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+    const scale = Math.min(w / VIEW_WIDTH, h / VIEW_HEIGHT)
+    renderer.render(
+      ctx,
+      projection,
+      rotation,
+      transform,
+      {
+        scale,
+        offsetX: (w - VIEW_WIDTH * scale) / 2,
+        offsetY: (h - VIEW_HEIGHT * scale) / 2,
+        dpr,
+      },
+      w,
+      h,
+      sphere,
+      // Resolved ocean colour: canvas cannot use CSS custom properties.
+      getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#0b2740',
+      isGlobe,
+    )
+  }, [
+    satellite,
+    projection,
+    rotation,
+    transform,
+    containerSize,
+    sphere,
+    isGlobe,
+    tileVersion,
+  ])
+
+  const attribution = satellite
+    ? 'Imagery: NASA Blue Marble (Aug 2004) · Borders, water, places: Natural Earth'
+    : 'Boundaries, water and places: Natural Earth (public domain)'
 
   /** Every focusable entity, ordered west-to-east so Tab order is sensible. */
   const focusTargets: FocusTarget[] = useMemo(() => {
@@ -532,10 +876,24 @@ export function WorldMap({
     if (mode === 'continent') {
       return `var(--region-${shape.continent}, ${GLOBE_LAND_NEUTRAL})`
     }
+    // Satellite view: the imagery IS the fill. 'transparent' (never 'none')
+    // keeps the whole shape a pointer target, so hover/click/keyboard work
+    // exactly as in the political view; the hovered country reads as a
+    // translucent accent wash over the terrain.
+    if (satellite) {
+      return hovered?.iso3 === shape.iso3
+        ? 'var(--map-accent-fill)'
+        : 'transparent'
+    }
     if (!row?.available) return noDataFill
     if (hovered?.iso3 === shape.iso3) return 'var(--map-accent-fill)'
     return `var(--fill-globe-${paletteDirection}-${shape.iso3}, ${GLOBE_LAND_NEUTRAL})`
   }
+
+  /** Country borders must read on imagery, where the dark ocean stroke
+   *  vanishes; satellite borders are light and slightly heavier. */
+  const countryStroke = satellite ? 'rgba(255, 255, 255, 0.78)' : landStroke
+  const countryStrokeWidth = satellite ? strokeWidth * 1.5 : strokeWidth
   void landNeutral
 
   const tabIndexFor = (iso3: string) =>
@@ -589,6 +947,7 @@ export function WorldMap({
     }
     return labels
   }, [shapes, markerPoints, hovered, transform.k, mode])
+  countryLabelSeed.current = visibleLabels
 
   const registerNode = (iso3: string) => (node: SVGGraphicsElement | null) => {
     if (node) nodeRefs.current.set(iso3, node)
@@ -671,21 +1030,49 @@ export function WorldMap({
         </button>
       </div>
 
+      {/* Attribution (Phase 4): required for the NASA imagery, honest for
+          Natural Earth. Rendered as chrome, not data, and kept out of the
+          pointer path. */}
+      <div
+        className="pointer-events-none absolute bottom-1.5 right-1.5 z-10 rounded px-1.5 py-0.5 text-[10px] leading-tight"
+        style={{
+          background: 'rgba(10, 14, 20, 0.55)',
+          color: 'rgba(255, 255, 255, 0.85)',
+        }}
+      >
+        {attribution}
+      </div>
+
+      {/* Terrain canvas: BELOW the svg in paint order, so every interactive
+          surface stays untouched SVG. Mounted only in satellite view. */}
+      {satellite && (
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 h-full w-full"
+          aria-hidden="true"
+        />
+      )}
+
     <svg
       ref={svgRef}
       viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
       className={
-        isFullscreen ? 'h-full w-full touch-none' : 'h-auto w-full touch-none'
+        // `relative` matters: the terrain canvas is absolutely positioned,
+        // and only a positioned svg is guaranteed to paint above it.
+        isFullscreen
+          ? 'relative h-full w-full touch-none'
+          : 'relative h-auto w-full touch-none'
       }
       role="group"
       aria-label={
         `World map, ${isGlobe ? 'globe view' : 'equal-area projection'}, ` +
+        `${satellite ? 'satellite base, ' : ''}` +
         `${focusTargets.length} entities. ` +
         `Use the arrow keys to move between countries and Enter to open one. ` +
         `Home and End jump to the westernmost and easternmost.`
       }
       style={{
-        background: backgroundFill,
+        background: satellite ? 'transparent' : backgroundFill,
         cursor: isGlobe ? 'grab' : undefined,
       }}
       onPointerLeave={(event) => {
@@ -722,7 +1109,7 @@ export function WorldMap({
         {/* The ocean disc/outline lives INSIDE the zoom transform: outside
             it, zooming scaled the landmasses while the globe's blue circle
             stayed fixed -- land visibly outgrew its own planet. */}
-        <path d={sphere} fill={waterFill} />
+        <path d={sphere} fill={satellite ? 'transparent' : waterFill} />
         {shapes.map((shape, index) => {
           const row = populationByIso3.get(shape.iso3)
           const dimmed = isDimmed(shape.continent)
@@ -743,8 +1130,11 @@ export function WorldMap({
               ref={registerNode(shape.iso3)}
               d={shape.d}
               fill={fillFor(shape)}
-              stroke={mode === 'continent' ? fillFor(shape) : landStroke}
-              strokeWidth={strokeWidth}
+              fillOpacity={
+                satellite && hovered?.iso3 === shape.iso3 ? 0.45 : 1
+              }
+              stroke={mode === 'continent' ? fillFor(shape) : countryStroke}
+              strokeWidth={countryStrokeWidth}
               strokeLinejoin="round"
               opacity={dimmed ? 0.45 : 1}
               tabIndex={tabIndexFor(shape.iso3)}
@@ -768,6 +1158,43 @@ export function WorldMap({
             />
           )
         })}
+
+        {/* Phase 4 detail layers: lakes, rivers, admin-1 borders. Inert to
+            pointers (the country beneath keeps the hit target) and hidden
+            while the globe is actively spinning -- they reproject on settle
+            (see detailPaths). Zoom-gated so the world view stays clean. */}
+        {detailPaths && mode === 'country' && (
+          <g pointerEvents="none" aria-hidden="true">
+            {transform.k >= DETAIL_ZOOM.water50 && detailPaths.lakes && (
+              <path
+                d={detailPaths.lakes}
+                fill={waterFill}
+                fillOpacity={satellite ? 0.5 : 0.92}
+                stroke="none"
+              />
+            )}
+            {transform.k >= DETAIL_ZOOM.water50 && detailPaths.rivers && (
+              <path
+                d={detailPaths.rivers}
+                fill="none"
+                stroke={waterFill}
+                strokeOpacity={satellite ? 0.55 : 0.8}
+                strokeWidth={0.6 / transform.k}
+                strokeLinecap="round"
+              />
+            )}
+            {detailPaths.admin1 && (
+              <path
+                d={detailPaths.admin1}
+                fill="none"
+                stroke={satellite ? 'rgba(255, 255, 255, 0.55)' : landStroke}
+                strokeOpacity={satellite ? 1 : 0.45}
+                strokeWidth={0.32 / transform.k}
+                strokeLinejoin="round"
+              />
+            )}
+          </g>
+        )}
 
         {/* Contested overlay, drawn above fills and inert to pointer events so
             it never steals the hit target from the country beneath it. */}
@@ -862,6 +1289,69 @@ export function WorldMap({
             {label.name}
           </text>
         ))}
+
+        {/* Phase 4 detail labels: capitals, towns, states/provinces and water
+            names, zoom-progressive and collision-culled against the country
+            names (see detailLabels). Visual duplicates of nothing a screen
+            reader needs -- the readout panel stays the accessible surface --
+            so the group is aria-hidden like the country labels above. */}
+        {detailLabels.length > 0 && (
+          <g pointerEvents="none" aria-hidden="true">
+            {detailLabels.map((label) => {
+              const fontSize = label.size / Math.sqrt(transform.k)
+              const isPlace = label.kind === 'place' || label.kind === 'capital'
+              const fill =
+                label.kind === 'water'
+                  ? satellite
+                    ? 'oklch(88% 0.05 240)'
+                    : 'oklch(42% 0.08 250)'
+                  : satellite
+                    ? 'oklch(97% 0 0)'
+                    : 'oklch(28% 0.01 250)'
+              const halo = satellite
+                ? 'oklch(22% 0.02 250)'
+                : GLOBE_LAND_NEUTRAL
+              return (
+                <g key={label.key}>
+                  {isPlace && (
+                    <circle
+                      cx={label.x}
+                      cy={label.y}
+                      r={
+                        (label.kind === 'capital' ? 1.6 : 1.1) /
+                        Math.sqrt(transform.k)
+                      }
+                      fill={fill}
+                      stroke={halo}
+                      strokeWidth={0.5 / Math.sqrt(transform.k)}
+                    />
+                  )}
+                  <text
+                    x={label.x}
+                    y={
+                      isPlace
+                        ? label.y - 2.4 / Math.sqrt(transform.k)
+                        : label.y
+                    }
+                    textAnchor="middle"
+                    fontSize={fontSize}
+                    fontStyle={label.kind === 'water' ? 'italic' : undefined}
+                    style={{
+                      fill,
+                      paintOrder: 'stroke',
+                      stroke: halo,
+                      strokeWidth: 2 / Math.sqrt(transform.k),
+                      strokeLinejoin: 'round',
+                      fontWeight: label.kind === 'capital' ? 600 : 400,
+                    }}
+                  >
+                    {label.text}
+                  </text>
+                </g>
+              )
+            })}
+          </g>
+        )}
 
         {/* Continent labels. Identity comes from label + position, never hue --
             seven categorical fills cannot clear the all-pairs CVD floors, so

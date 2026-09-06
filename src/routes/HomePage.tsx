@@ -42,6 +42,10 @@ export function HomePage() {
   const [mode, setMode] = useState<'country' | 'continent'>('country')
   const [paletteDirection, setPaletteDirection] =
     useState<MapPaletteKey>(DEFAULT_MAP_PALETTE)
+  // Phase 4: political atlas colours, or Blue Marble terrain imagery.
+  const [baseView, setBaseView] = useState<'political' | 'satellite'>(
+    'political',
+  )
   const [hovered, setHovered] = useState<HoverTarget | null>(null)
   const [activeContinent, setActiveContinent] = useState<ContinentKey | null>(null)
 
@@ -302,6 +306,36 @@ export function HomePage() {
           ))}
         </fieldset>
 
+        <fieldset className="flex items-center gap-2">
+          <legend className="sr-only">Base view</legend>
+          {(['political', 'satellite'] as const).map((value) => (
+            <button
+              key={value}
+              type="button"
+              aria-pressed={baseView === value}
+              // Continent mode paints whole-region fills; the imagery base
+              // only applies to the country view, so the control locks
+              // rather than silently doing nothing.
+              disabled={mode === 'continent'}
+              onClick={() => setBaseView(value)}
+              className="rounded border px-2.5 py-1 disabled:opacity-45"
+              style={{
+                borderColor: 'var(--border)',
+                background:
+                  baseView === value && mode === 'country'
+                    ? 'var(--control-selected-bg)'
+                    : 'transparent',
+                color:
+                  baseView === value && mode === 'country'
+                    ? 'var(--control-selected-text)'
+                    : 'inherit',
+              }}
+            >
+              {value === 'political' ? 'Political' : 'Satellite'}
+            </button>
+          ))}
+        </fieldset>
+
         <label className="flex items-center gap-2">
           <span style={{ color: 'var(--text-muted)' }}>Projection</span>
           <select
@@ -395,6 +429,7 @@ export function HomePage() {
               projectionKey={projectionKey}
               mode={mode}
               paletteDirection={paletteDirection}
+              baseView={baseView}
               hovered={hovered}
               onHover={setHovered}
               onSelect={(target) =>
