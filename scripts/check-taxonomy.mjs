@@ -61,8 +61,15 @@ function walk(node, where) {
     fail(`${where}: ${node.name} (${node.rank}) lacks the img key`)
   } else if (node.img !== null && !node.img.license) {
     fail(`${where}: ${node.name} image has no licence recorded`)
+  } else if (
+    node.img?.rep !== undefined &&
+    (typeof node.img.rep !== 'string' || node.img.rep === '')
+  ) {
+    // §42.7: a borrowed photo must name the member it belongs to.
+    fail(`${where}: ${node.name} representative photo lacks its source name`)
   }
   if (node.img) stats.withImage = (stats.withImage ?? 0) + 1
+  if (node.img?.rep) stats.withRep = (stats.withRep ?? 0) + 1
   if (node.rank === 'family') stats.families += 1
   if (node.focus) stats.focusFlags.push(node)
   for (const child of node.children ?? []) walk(child, where)

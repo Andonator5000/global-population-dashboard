@@ -17,6 +17,9 @@ export interface TaxonImage {
   license: string
   author: string | null
   page: string
+  /** Set when the photo is borrowed from a photographed member: the name
+      of that descendant taxon (round-2 representative-photo pass). */
+  rep?: string
 }
 
 export interface TaxonNode {
@@ -68,20 +71,39 @@ export interface TaxonomyFile {
  */
 export const RANK_HUES: Record<string, number> = {
   root: 250,
+  realm: 0,
   domain: 300,
   kingdom: 155,
   phylum: 200,
   class: 250,
   order: 70,
   family: 35,
+  tribe: 15,
   genus: 320,
   species: 120,
 }
 
+/** COL rank names that are neither canonical nor prefix-derived map onto
+    the nearest canonical hue/definition family. */
+const RANK_ALIASES: Record<string, string> = {
+  'section zoology': 'genus',
+  'subsection zoology': 'genus',
+  'series zoology': 'genus',
+  'section botany': 'genus',
+  'series botany': 'genus',
+  unranked: 'root',
+}
+
 export function baseRank(rank: string): string {
-  const stripped = rank
-    .toLowerCase()
-    .replace(/^(sub|super|infra|parv|mega|grand|mir|nan|hypo|epi)+/, '')
+  const lower = rank.toLowerCase()
+  const alias = RANK_ALIASES[lower]
+  if (alias) return alias
+  // "ter" only ever occurs after "sub" (subterclass); the + lets stacked
+  // prefixes strip in sequence.
+  const stripped = lower.replace(
+    /^(sub|ter|super|infra|parv|mega|giga|grand|mir|nan|hypo|epi)+/,
+    '',
+  )
   return stripped in RANK_HUES ? stripped : 'root'
 }
 
@@ -128,6 +150,74 @@ export const RANK_DEFINITIONS: Record<string, string> = {
     'A species is the basic unit of classification — in sexual ' +
     'organisms, roughly a population that interbreeds (from Latin ' +
     'species, “appearance, kind”). Its two-part name is unique.',
+  realm:
+    'A realm is the highest rank used for VIRUSES — which sit outside ' +
+    'the tree of cellular life — grouping them by the deep ancestry of ' +
+    'their replication machinery (adopted by the ICTV in 2018; from Old ' +
+    'French reaume, “kingdom”). Riboviria, the RNA viruses, is the ' +
+    'largest.',
+  tribe:
+    'A tribe is a rank between subfamily and genus, used where a large ' +
+    'family needs finer structure — Hominini for humans and chimpanzees ' +
+    '(from Latin tribus, a division of the Roman people).',
+  'section zoology':
+    'In zoology, a section (with its sub- and series variants) is an ' +
+    'informal-feeling but governed rank slotted between subgenus and ' +
+    'species in very large genera (from Latin sectio, “a cutting”).',
+  unranked:
+    'An unranked node is a clade — a genuine branch of the tree of ' +
+    'life — that the Linnaean rank ladder has no free rung for; modern ' +
+    'classifications keep it rather than force a rank onto it.',
+  subspecies:
+    'A subspecies is a geographically or morphologically distinct ' +
+    'population within a species, named with a third word added to the ' +
+    'binomial.',
+}
+
+/** Prefix glossary for the intermediate ranks (round-2 feedback: every
+    rank on the page must explain itself, subphylum and gigaclass
+    included). {base} is replaced with the canonical rank name. */
+const RANK_PREFIXES: [RegExp, string][] = [
+  [/^subter/, 'below infra{base}'],
+  [/^sub/, 'immediately below {base}'],
+  [/^super/, 'immediately above {base}'],
+  [/^infra/, 'below sub{base}'],
+  [/^parv/, 'below infra{base}, as a small division'],
+  [/^nan/, 'below parv{base}, as a minor division'],
+  [/^mega/, 'above super{base}, as a large grouping'],
+  [/^giga/, 'above mega{base}, as the largest grouping of the {base} tier'],
+  [/^grand/, 'in the upper levels of the {base} tier'],
+  [/^mir/, 'in the upper levels of the {base} tier'],
+  [/^epi/, 'just above {base}'],
+  [/^hypo/, 'just below {base}'],
+]
+
+/**
+ * A definition for ANY rank string in the data: exact entries first, then
+ * a composed sentence for prefix-derived ranks (subphylum, gigaclass, …),
+ * so no chip is ever a dead end.
+ */
+export function rankDefinition(rank: string): string {
+  const fallback = RANK_DEFINITIONS.root ?? ''
+  const lower = rank.toLowerCase()
+  const exact = RANK_DEFINITIONS[lower]
+  if (exact) return exact
+  const alias = RANK_ALIASES[lower]
+  const aliased = alias ? RANK_DEFINITIONS[alias] : undefined
+  if (aliased) return aliased
+  const base = baseRank(lower)
+  const baseDef = RANK_DEFINITIONS[base]
+  const prefix = RANK_PREFIXES.find(([re]) => re.test(lower))
+  if (prefix && base !== 'root' && baseDef) {
+    const where = prefix[1].replaceAll('{base}', base)
+    return (
+      `A ${lower} is an intermediate rank ${where}, used where a ` +
+      `group's diversity needs finer structure than the main ranks ` +
+      `provide. ` +
+      baseDef
+    )
+  }
+  return baseDef ?? fallback
 }
 
 // ---- Extract shards (round-2 §39): intro texts fetched on selection ----

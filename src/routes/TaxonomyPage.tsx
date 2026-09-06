@@ -9,9 +9,9 @@ import {
   loadExtract,
   loadFocusFamily,
   oneZoomUrl,
-  RANK_DEFINITIONS,
   RANK_HUES,
   rankChipStyle,
+  rankDefinition,
   useTaxonomyTree,
   wikipediaUrl,
   type TaxonNode,
@@ -61,7 +61,29 @@ function TaxonName({ node }: { node: TaxonNode }) {
   return ITALIC_RANKS.has(node.rank) ? <i>{node.name}</i> : <>{node.name}</>
 }
 
-function RankChip({ rank }: { rank: string }) {
+function RankChip({
+  rank,
+  onInfo,
+}: {
+  rank: string
+  /** When set, the chip is a real button that shows the rank's
+      definition (round-2 feedback). Omit inside row/card buttons —
+      nested buttons are invalid HTML. */
+  onInfo?: (rank: string) => void
+}) {
+  if (onInfo) {
+    return (
+      <button
+        type="button"
+        className="cursor-pointer rounded border px-1 py-px font-sans text-[10px] leading-tight"
+        style={{ ...rankChipStyle(rank), color: 'var(--text)' }}
+        onClick={() => onInfo(rank)}
+        title={`What is a ${rank}?`}
+      >
+        {rank}
+      </button>
+    )
+  }
   return (
     <span
       className="rounded border px-1 py-px font-sans text-[10px] leading-tight"
@@ -139,6 +161,7 @@ export function TaxonomyPage() {
   const [expanded, setExpanded] = useState<Set<string>>(() => new Set(['']))
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [cardRootId, setCardRootId] = useState<string>('')
+  const [rankInfo, setRankInfo] = useState<string | null>(null)
   const [focusLoaded, setFocusLoaded] = useState<Map<string, TaxonNode>>(
     () => new Map(),
   )
@@ -165,6 +188,20 @@ export function TaxonomyPage() {
   }, [file, focusLoaded])
 
   const selected = selectedId !== null ? index.byId.get(selectedId) : undefined
+
+  /** Every rank present in the loaded data, canonical ladder order first
+      (by hue-table position of the base rank), then alphabetical. */
+  const allRanks = useMemo(() => {
+    const seen = new Set<string>()
+    for (const node of index.byId.values()) seen.add(node.rank)
+    seen.delete('root')
+    const ladder = Object.keys(RANK_HUES)
+    return [...seen].sort((a, b) => {
+      const da = ladder.indexOf(baseRank(a))
+      const db = ladder.indexOf(baseRank(b))
+      return da - db || a.localeCompare(b)
+    })
+  }, [index])
 
   // Intro text for the selected taxon, from its shard (round-2 §39).
   useEffect(() => {
@@ -587,14 +624,56 @@ export function TaxonomyPage() {
               aria-label="Rank colour legend"
             >
               <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                Ranks:
+                Ranks (click one for its definition):
               </span>
               {Object.keys(RANK_HUES)
                 .filter((rank) => rank !== 'root')
                 .map((rank) => (
-                  <RankChip key={rank} rank={rank} />
+                  <RankChip key={rank} rank={rank} onInfo={setRankInfo} />
                 ))}
             </div>
+            {rankInfo && (
+              <div
+                className="mt-2 flex items-start gap-2 rounded border px-3 py-2 text-xs leading-snug"
+                style={{
+                  borderColor: 'var(--border)',
+                  background: 'var(--surface-sunken)',
+                }}
+                role="note"
+              >
+                <RankChip rank={rankInfo} />
+                <span className="min-w-0 flex-1">{rankDefinition(rankInfo)}</span>
+                <button
+                  type="button"
+                  aria-label="Close rank definition"
+                  className="shrink-0 rounded px-1 font-sans"
+                  style={{ color: 'var(--text-muted)' }}
+                  onClick={() => setRankInfo(null)}
+                >
+                  ×
+                </button>
+              </div>
+            )}
+            <details className="mt-2 text-xs">
+              <summary
+                className="cursor-pointer font-sans"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                Every rank used on this page ({allRanks.length}), defined
+              </summary>
+              <dl className="mt-2 space-y-1.5">
+                {allRanks.map((rank) => (
+                  <div key={rank} className="flex items-start gap-2">
+                    <dt className="shrink-0">
+                      <RankChip rank={rank} />
+                    </dt>
+                    <dd className="m-0 leading-snug" style={{ color: 'var(--text-muted)' }}>
+                      {rankDefinition(rank)}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </details>
 
             {results ? (
               <ul className="mt-4" aria-label="Search results">
@@ -662,7 +741,7 @@ export function TaxonomyPage() {
                       <TaxonName node={selected} />
                     </h2>
                     <p className="mt-0.5 flex flex-wrap items-center gap-2 text-sm">
-                      <RankChip rank={selected.rank} />
+                      <RankChip rank={selected.rank} onInfo={setRankInfo} />
                       {selected.common && (
                         <span style={{ color: 'var(--text-muted)' }}>
                           {capitalizeFirst(selected.common)}
@@ -679,6 +758,11 @@ export function TaxonomyPage() {
                   <TaxonThumb node={selected} size="panel" />
                   {selected.img && (
                     <p className="mt-1 text-[10px] leading-snug" style={{ color: 'var(--text-muted)' }}>
+                      {selected.img.rep && (
+                        <>
+                          Representative: <i>{selected.img.rep}</i> ·{' '}
+                        </>
+                      )}
                       {selected.img.author ?? 'Unknown author'} ·{' '}
                       <a
                         className="underline underline-offset-2"
@@ -748,8 +832,7 @@ export function TaxonomyPage() {
                     className="mt-3 rounded px-3 py-2 text-xs leading-snug"
                     style={{ background: 'var(--surface-sunken)', color: 'var(--text-muted)' }}
                   >
-                    {RANK_DEFINITIONS[baseRank(selected.rank)] ??
-                      RANK_DEFINITIONS.root}
+                    {rankDefinition(selected.rank)}
                   </p>
 
                   {lineage.length > 1 && (

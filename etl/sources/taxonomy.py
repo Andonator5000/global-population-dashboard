@@ -333,6 +333,37 @@ def _apply_metadata(
         _apply_metadata(child, lookup, notes, images, pageimages, stats)
 
 
+def _bubble_images(
+    node: dict[str, Any],
+    focus_reps: dict[str, tuple[dict[str, Any], str]] | None,
+    stats: dict[str, int],
+) -> tuple[dict[str, Any], str] | None:
+    """Round-2 feedback pass: a taxon with no free photo of its own borrows
+    the first descendant's (depth-first), labelled with that descendant's
+    name — a photographed member IS a correct illustration of the group
+    (standard taxobox practice). Runs after _apply_metadata; `focus_reps`
+    lets the family nodes in the main tree borrow from their own focus
+    subtrees, whose depth lives in separate documents. Returns the node's
+    best (img-without-rep, source-name) for the parent to borrow.
+    """
+    best: tuple[dict[str, Any], str] | None = None
+    for child in node.get("children") or []:
+        found = _bubble_images(child, focus_reps, stats)
+        if best is None and found is not None:
+            best = found
+    img = node.get("img")
+    if img:
+        clean = {k: v for k, v in img.items() if k != "rep"}
+        return (clean, img.get("rep") or node["name"])
+    if best is None and focus_reps is not None:
+        best = focus_reps.get(node.get("id", ""))
+    if best is not None:
+        node["img"] = dict(best[0])
+        node["img"]["rep"] = best[1]
+        stats["bubbled"] += 1
+    return best
+
+
 def ingest(
     registry: dict[str, Entity],
     *,
@@ -471,6 +502,18 @@ def ingest(
         _apply_metadata(subtree, lookup, notes, images, pageimages,
                         focus_stats)
 
+    # Representative photos (round-2 feedback): focus subtrees first, so
+    # their family nodes in the main tree can borrow the same pick.
+    bubble_stats = {"bubbled": 0}
+    focus_reps: dict[str, tuple[dict[str, Any], str]] = {}
+    for family_id, subtree in focus_subtrees.items():
+        found = _bubble_images(subtree, None, bubble_stats)
+        if found is not None:
+            focus_reps[family_id] = found
+    _bubble_images(root, focus_reps, bubble_stats)
+    print(f"    representative photos bubbled onto {bubble_stats['bubbled']}"
+          " taxa without their own", flush=True)
+
     # Extract shards: the full intro texts would balloon tree.json, so the
     # page fetches them per-shard on selection. 32 shards keyed by the
     # first two hex digits of the node id's sha1.
@@ -521,8 +564,10 @@ def ingest(
         "imageNote": (
             "Taxon photos come from Wikimedia Commons (Wikidata P18, or "
             "the article's lead image), kept only under public-domain or "
-            "CC licences; attribution shows with each. Taxa without a "
-            "verifiably free photo show a placeholder silhouette."
+            "CC licences; attribution shows with each. A taxon without "
+            "its own free photo shows a member's, labelled as a "
+            "representative; only taxa with no photographed member at "
+            "all show the placeholder silhouette."
         ),
         "tree": root,
     }
