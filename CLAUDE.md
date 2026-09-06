@@ -101,25 +101,57 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   picks win; `etl/reference/currency_image_rejects.json` is the
   person-reviewed deny list. Review new picks on a contact sheet before
   shipping.
-- Header: "Encyclopedia Andranika" serif masthead at the left (§28), then
-  the section buttons from the SECTIONS registry in src/config.ts — Global
-  Data (brand green), Human History (clay red), Biology (teal), Space
-  (violet); a new section is one registry entry plus a contrast-gated
-  token pair (§29). Timeline = era boxes left, events right (§26).
-- Taxonomy (§31): the tree is NEVER hand-typed — it comes from Catalogue
-  of Life; which families get species depth is editorial
+- Header (round 2, §34): centred publication nameplate + editorial
+  uppercase nav from the SECTIONS registry (src/config.ts) — five
+  top-level items (Global Data, Human History, Taxonomy, Evolution,
+  Space); active state = 2px underline in the section's THEMED --nav-*
+  hue plus a text-colour step. A new section = one registry entry + a
+  --nav-* pair in both themes, mirrored into check-contrast AND declared
+  in both dark blocks (theme parity). /biology/* redirects; don't remove.
+- Sources are COLLAPSED by default site-wide (CollapsibleSources, §34.3);
+  method prose lives once on /methodology (§36.4) — figures carry a
+  compact source label + MethodInfoLink, never paragraphs of methodology.
+- Map (round 2, §35–37, §42): drag frames render to canvas with rotation
+  in a ref (React sees ONE commit per gesture — do not reintroduce
+  per-frame setState); every escape hatch (pointer leave/cancel/lost
+  capture, zoom with no pointers, view/mode/projection switch) must END
+  a live drag session — a session that outlives its pointer is the
+  frozen-black-globe bug (§42.1); the satellite/terrain quad mesh
+  overdraws its DESTINATION ~1.5% and never pads the SOURCE rect past
+  the tile edge (§42.2 — source padding smears tile borders into
+  meridian streaks); six palette directions all gated by
+  build-map-palette.mjs (lightness is the data channel in every one);
+  base views political/satellite/terrain, choices persisted; the country
+  popover's corner thumb is the country's own fitted shape, not a flag.
+- Timeline (round 2, §38, §42.4–5): full-width MEASURED era banners,
+  each tinted by its era's own oklch hue (light-dark pairs in
+  Timeline.tsx — text contrast never depends on the hue); era
+  descriptions are UI copy in Timeline.tsx; events carry an optional
+  civilization tag from the controlled list in etl/sources/history.py —
+  when adding events, check the per-civilization spread, not just the
+  regional one (§42.5).
+- Taxonomy (§31, §42.6–7): the tree is NEVER hand-typed — it comes from
+  Catalogue of Life; which families get species depth is editorial
   (etl/reference/taxonomy_focus.json), and contested placements carry
   notes from etl/reference/taxonomy_notes.json. Every node has wiki or an
-  explicit null (check:taxonomy gates it).
+  explicit null (check:taxonomy gates it). rankDefinition() must cover
+  EVERY rank string in the data (composed prefix definitions — no chip
+  is a dead end); borrowed photos always carry img.rep and render as
+  "Representative: <name>", never passed off as the taxon's own.
 - Evolution (§32): events are EDITORIAL — edit
   etl/reference/evolution_events.json (bump version), never
   data/biology/evolution/. Summaries state their own uncertainty.
   PhyloPic licences: CC0 preferred, BY/BY-SA accepted, NC/ND never.
-- Space (§33): NSSDC sheets come from PINNED archive snapshots
+- Space (§33, §41–42): NSSDC sheets come from PINNED archive snapshots
   cross-checked against live JPL Horizons on every run; moon counts are
   COUNTED from the JPL catalogue; a figure a source does not publish is
   null and renders as "not available", never zero. Scale modes are
-  labelled; nothing is silently out of scale.
+  labelled; nothing is silently out of scale. Trek tiles stream at
+  runtime (§41.2, documented exception); globe texture upgrades guard
+  against out-of-order completions; 8k textures exist ONLY for
+  Sun/Earth/Jupiter/Saturn and load only in the globe modal (§42.9);
+  gazetteer features ship origin/approval/culture/link — keep the
+  feature card sourced from those columns, never hand-typed.
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).

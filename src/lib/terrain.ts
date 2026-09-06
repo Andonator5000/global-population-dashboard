@@ -52,7 +52,12 @@ export class TerrainRenderer {
   private pending = new Set<string>()
   private base: ImageBitmap | null = null
 
-  constructor(private readonly onTileReady: () => void) {}
+  /** `basePath` is the artifact directory under /data — 'geo/terrain'
+   *  (Blue Marble satellite) or 'geo/terrain-hypso' (§37 Terrain view). */
+  constructor(
+    private readonly onTileReady: () => void,
+    private readonly basePath: string = 'geo/terrain',
+  ) {}
 
   destroy(): void {
     this.tiles.forEach((bitmap) => bitmap.close())
@@ -64,7 +69,7 @@ export class TerrainRenderer {
   private ensureMeta(): void {
     if (this.metaRequested) return
     this.metaRequested = true
-    void loadTerrainMeta().then((meta) => {
+    void loadTerrainMeta(this.basePath).then((meta) => {
       this.meta = meta
       const tier0 = meta.tiers[0]
       if (tier0) this.request(tier0.tiles[0] ?? 't0.jpg', true)
@@ -82,7 +87,7 @@ export class TerrainRenderer {
     if (this.pending.has(key) || this.tiles.has(key)) return
     if (isBase && this.base) return
     this.pending.add(key)
-    void fetch(terrainTileUrl(name))
+    void fetch(terrainTileUrl(this.basePath, name))
       .then((response) => {
         if (!response.ok) throw new Error(`${name}: HTTP ${response.status}`)
         return response.blob()
@@ -308,16 +313,31 @@ export class TerrainRenderer {
         if (!src || src.sw <= 0 || src.sh <= 0) continue
 
         // Affine from the source rectangle to the projected quad, using
-        // three corners. The overdraw of ~half a source pixel on each side
-        // hides seams between neighbouring quads.
-        const a = (p10[0] - p00[0]) / src.sw
-        const b = (p10[1] - p00[1]) / src.sw
-        const c = (p01[0] - p00[0]) / src.sh
-        const d = (p01[1] - p00[1]) / src.sh
+        // three corners.
+        //
+        // SEAMS (the round-2 "graticule" bug): adjacent quads' affines
+        // disagree by sub-pixel amounts along shared edges (the affine is
+        // only an approximation of the curved projection), so hairline
+        // gaps opened between quads and the dark ocean showed through as
+        // a faint lon/lat grid. The fix is to OVERDRAW: each quad is
+        // scaled up ~1.5% about its own origin-corner axes and its
+        // destination rectangle grows half a source pixel on every side,
+        // so neighbours overlap and there is never a gap for the
+        // background to leak into. Imagery overlapping imagery is
+        // invisible. The SOURCE rectangle is deliberately NOT padded: a
+        // padded read crosses the tile bitmap's edge at every 45-degree
+        // tile boundary, and the browser's edge handling smeared those
+        // border pixels into the longitudinal streaks of the second
+        // round-2 artifact report. Never sample outside the tile.
+        const overdraw = 1.015
+        const a = ((p10[0] - p00[0]) / src.sw) * overdraw
+        const b = ((p10[1] - p00[1]) / src.sw) * overdraw
+        const c = ((p01[0] - p00[0]) / src.sh) * overdraw
+        const d = ((p01[1] - p00[1]) / src.sh) * overdraw
         ctx.setTransform(a, b, c, d, p00[0], p00[1])
         ctx.drawImage(
           src.bitmap,
-          src.sx - 0.5, src.sy - 0.5, src.sw + 1, src.sh + 1,
+          src.sx, src.sy, src.sw, src.sh,
           -0.5, -0.5, src.sw + 1, src.sh + 1,
         )
       }

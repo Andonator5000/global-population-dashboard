@@ -1,0 +1,254 @@
+{
+  "source": "editorial",
+  "version": 1,
+  "imageNote": "Images are NASA Image and Video Library media (NASA/ESA and partners) or, where NASA has none, the Wikipedia article's free-licensed lead image — credited per item.",
+  "entries": [
+    {
+      "id": "stellar-lifecycles",
+      "title": "Stars and stellar life cycles",
+      "description": "Stars condense from collapsing clouds of gas and dust, ignite hydrogen fusion, and spend most of their lives on the main sequence balancing gravity against radiation. Their mass decides everything: red dwarfs will burn for trillions of years; Sun-like stars swell into red giants and shed planetary nebulae, leaving white dwarfs; stars above about eight solar masses forge elements up to iron and die as supernovae. Every element heavier than helium in your body was made this way.",
+      "facts": [
+        "Main-sequence lifetimes: ~10 billion years for the Sun; trillions for red dwarfs",
+        "Fusion in the Sun's core: ~600 million tonnes of hydrogen per second",
+        "End states by mass: white dwarf, neutron star, or black hole"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000732/GSFC_20171208_Archive_e000732~thumb.jpg",
+        "title": "Pillars of Creation Revealed in 3-D",
+        "nasaId": "GSFC_20171208_Archive_e000732",
+        "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000732",
+        "credit": "GSFC"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Stellar_evolution",
+      "nasa": "https://science.nasa.gov/universe/stars/"
+    },
+    {
+      "id": "neutron-stars",
+      "title": "Neutron stars and pulsars",
+      "description": "When a massive star's core collapses, protons and electrons are crushed together into a city-sized sphere of nearly pure neutrons — matter at the density of an atomic nucleus, where a teaspoonful would outweigh a mountain. Rapidly rotating, strongly magnetised neutron stars beam radiation from their poles; when a beam sweeps past Earth we see a pulsar, a cosmic lighthouse ticking with clock-grade regularity. Jocelyn Bell Burnell found the first in 1967.",
+      "facts": [
+        "Typical radius ~12 km holding 1.4+ solar masses",
+        "Fastest known pulsars spin over 700 times per second",
+        "The Crab pulsar powers the nebula of the 1054 supernova"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA17563/PIA17563~thumb.jpg",
+        "title": "Crab Nebula, as Seen by Herschel and Hubble",
+        "nasaId": "PIA17563",
+        "page": "https://images.nasa.gov/details/PIA17563",
+        "credit": "ESA/Herschel/PACS/MESS Key Programme Supernova Remnant Team; NASA, ESA and Allison Loll/Jeff Hester Arizona State University"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Neutron_star",
+      "nasa": "https://science.nasa.gov/universe/neutron-stars/"
+    },
+    {
+      "id": "black-holes",
+      "title": "Black holes",
+      "description": "A black hole is a region where gravity has won completely: within the event horizon, escape would require exceeding the speed of light, so nothing — not even light — returns. Stellar-mass black holes form from collapsing giant stars; intermediate-mass ones are rare and elusive; supermassive black holes of millions to billions of solar masses anchor most large galaxies, including Sagittarius A* in our own. The Event Horizon Telescope imaged M87's black hole shadow in 2019 and Sagittarius A* in 2022.",
+      "facts": [
+        "Sagittarius A*: ~4.3 million solar masses at the Milky Way's centre",
+        "M87*: ~6.5 billion solar masses, jet visible across 5,000 light-years",
+        "Nobel Prize 2020: Penrose, Genzel and Ghez for black-hole physics"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA23122/PIA23122~thumb.jpg",
+        "title": "Spitzer Captures Messier 87",
+        "nasaId": "PIA23122",
+        "page": "https://images.nasa.gov/details/PIA23122",
+        "credit": "NASA/JPL-Caltech/IPAC/Event Horizon Telescope Collaboration"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Black_hole",
+      "nasa": "https://science.nasa.gov/universe/black-holes/"
+    },
+    {
+      "id": "quasars-agn",
+      "title": "Quasars and active galactic nuclei",
+      "description": "When a supermassive black hole feeds, the infalling gas spirals through an accretion disc heated to millions of degrees, outshining the entire surrounding galaxy — an active galactic nucleus. The most luminous, quasars, are visible across most of the observable universe; some launch jets of near-light-speed plasma thousands of light-years long. Quasars were most common when the universe was a few billion years old, lighthouses from the era when galaxies and their black holes grew up together.",
+      "facts": [
+        "Brightest quasars outshine 10 trillion Suns",
+        "First identified: 3C 273 in 1963",
+        "Powered by accretion converting mass to energy at up to ~10% efficiency"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA15831/PIA15831~thumb.jpg",
+        "title": "The Homes of Quasars",
+        "nasaId": "PIA15831",
+        "page": "https://images.nasa.gov/details/PIA15831",
+        "credit": "NASA/ESA/Yale"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Quasar",
+      "nasa": "https://science.nasa.gov/universe/galaxies/active-galaxies/"
+    },
+    {
+      "id": "wormholes",
+      "title": "Wormholes (theoretical)",
+      "description": "A wormhole is a hypothetical shortcut through spacetime — a tunnel connecting two distant regions, permitted as a solution of Einstein's field equations (the Einstein–Rosen bridge, 1935). None has ever been observed, and known physics gives no way to hold one open: traversable versions would require 'exotic matter' with negative energy density in quantities nothing observed can supply. They remain a rigorous theoretical curiosity and science fiction's favourite engine, not an established feature of the universe — a distinction this page keeps explicit.",
+      "facts": [
+        "Status: theoretical only — never observed",
+        "Einstein–Rosen bridge published 1935",
+        "Traversable wormholes require exotic negative-energy matter"
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Einstein-rosen-bridge-model.png?width=640",
+        "title": "Einstein-rosen-bridge-model",
+        "nasaId": null,
+        "page": "https://commons.wikimedia.org/wiki/File:Einstein-rosen-bridge-model.png",
+        "credit": "MikeRun · CC BY-SA 4.0"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Wormhole",
+      "nasa": "https://science.nasa.gov/universe/"
+    },
+    {
+      "id": "gamma-ray-bursts",
+      "title": "Gamma-ray bursts",
+      "description": "For a few seconds, a gamma-ray burst can outshine every other source in the gamma-ray sky combined — the most luminous explosions known. Long bursts come from the collapse of massive, rapidly rotating stars into black holes, their energy funnelled into jets; short bursts come from neutron-star mergers, confirmed in 2017 when one arrived alongside gravitational waves. Discovered by Cold-War satellites watching for nuclear tests, they are now cosmological tools seen from the universe's first billion years.",
+      "facts": [
+        "Brightest recorded: GRB 221009A, October 2022",
+        "Short bursts = neutron-star mergers (GW170817)",
+        "Discovered 1967 by the Vela satellites, declassified 1973"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001097/GSFC_20171208_Archive_e001097~thumb.jpg",
+        "title": "Neutron Stars Rip Each Other Apart to Form Black Hole",
+        "nasaId": "GSFC_20171208_Archive_e001097",
+        "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001097",
+        "credit": "GSFC"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Gamma-ray_burst",
+      "nasa": "https://science.nasa.gov/universe/what-are-gamma-ray-bursts/"
+    },
+    {
+      "id": "supernovae",
+      "title": "Supernovae",
+      "description": "A supernova can briefly outshine its whole galaxy. Core-collapse supernovae end massive stars, forging and scattering heavy elements and leaving neutron stars or black holes; Type Ia supernovae detonate white dwarfs pushed over their mass limit, and burn so uniformly that they serve as 'standard candles' — the measuring sticks that revealed the accelerating universe in 1998. Supernova 1987A, in the Large Magellanic Cloud, was close enough that its neutrinos were caught by detectors on Earth.",
+      "facts": [
+        "Type Ia standard candles led to the dark-energy discovery (Nobel 2011)",
+        "SN 1987A: first supernova neutrinos detected",
+        "The Crab Nebula remains from a supernova Chinese astronomers logged in 1054"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/0203043/0203043~thumb.jpg",
+        "title": "Space Science",
+        "nasaId": "0203043",
+        "page": "https://images.nasa.gov/details/0203043",
+        "credit": "MSFC"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Supernova",
+      "nasa": "https://science.nasa.gov/universe/stars/supernovae/"
+    },
+    {
+      "id": "nebulae",
+      "title": "Nebulae",
+      "description": "Nebulae are the universe's clouds: vast reaches of gas and dust that are stellar nurseries, stellar graves, or both. Emission nebulae like Orion glow where newborn stars ionise hydrogen; dark nebulae are dust silhouettes; planetary nebulae are the shed envelopes of dying Sun-like stars (named by Herschel for their telescope appearance — nothing to do with planets); supernova remnants are explosions still expanding. The James Webb Space Telescope's infrared vision now sees stars forming inside the pillars themselves.",
+      "facts": [
+        "Orion Nebula: nearest massive star-forming region, ~1,300 light-years",
+        "'Planetary' nebulae are misnamed dying stars' envelopes",
+        "Star-forming pillars erode in a few million years"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/carina_nebula/carina_nebula~thumb.jpg",
+        "title": "James Webb Space Telescope NIRCam Image of the “Cosmic Cliffs” in Carina Nebula",
+        "nasaId": "carina_nebula",
+        "page": "https://images.nasa.gov/details/carina_nebula",
+        "credit": "STScI (Webb)"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Nebula",
+      "nasa": "https://science.nasa.gov/universe/what-are-nebulae/"
+    },
+    {
+      "id": "galaxies",
+      "title": "Galaxies and their types",
+      "description": "Galaxies are gravitationally bound cities of stars, gas, dust and dark matter, from dwarfs of a few million stars to giants of trillions. Hubble's classification still frames them: spirals like the Milky Way and Andromeda, with star-forming arms; ellipticals, old and red, built by mergers; and irregulars shaped by interaction. The observable universe holds perhaps two hundred billion to two trillion of them, and deep-field images find galaxies whose light left when the universe was under half a billion years old.",
+      "facts": [
+        "Milky Way: ~100-400 billion stars, ~100,000 light-years across",
+        "Andromeda approaches at ~110 km/s; merger due in ~4.5 billion years",
+        "Most large galaxies host a central supermassive black hole"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA12110/PIA12110~thumb.jpg",
+        "title": "Hubble Deep Field Image Unveils Myriad Galaxies Back to the Beginning of Time",
+        "nasaId": "PIA12110",
+        "page": "https://images.nasa.gov/details/PIA12110",
+        "credit": "NASA/JPL/STScI Hubble Deep Field Team"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Galaxy",
+      "nasa": "https://science.nasa.gov/universe/galaxies/"
+    },
+    {
+      "id": "dark-matter-energy",
+      "title": "Dark matter and dark energy",
+      "description": "Everything astronomy can see — stars, gas, dust, planets — is about 5% of the universe. Roughly 27% is dark matter, invisible mass whose gravity holds galaxies together, bends light, and sculpts cosmic structure; its particle identity is unknown. The remaining ~68% is dark energy, the still-mysterious agent driving the accelerating expansion discovered in 1998. Both are named for what we do not know; mapping them is the central task of missions such as ESA's Euclid and the Vera C. Rubin Observatory.",
+      "facts": [
+        "Cosmic budget: ~5% ordinary matter, ~27% dark matter, ~68% dark energy",
+        "Rotation-curve evidence: Rubin and Ford, 1970s",
+        "Acceleration discovered via Type Ia supernovae, 1998"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA26702/PIA26702~thumb.jpg",
+        "title": "Webb Data Reveals Dark Matter",
+        "nasaId": "PIA26702",
+        "page": "https://images.nasa.gov/details/PIA26702",
+        "credit": "NASA/STScI/J. DePasquale/A. Pagan"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Dark_matter",
+      "nasa": "https://science.nasa.gov/universe/dark-matter-dark-energy/"
+    },
+    {
+      "id": "exoplanets",
+      "title": "Exoplanets",
+      "description": "Planets beyond the Solar System went from speculation to census in one generation: since the 1995 discovery of 51 Pegasi b, thousands have been confirmed, most by the transit dips they carve in their stars' light. They include worlds with no Solar System analogue — hot Jupiters skimming their stars, super-Earths, planets orbiting two suns. The seven roughly Earth-sized planets of TRAPPIST-1 and the observations of JWST, which now reads the chemistry of exoplanet atmospheres, frame the field's central question: are any of them alive?",
+      "facts": [
+        "5,000+ confirmed exoplanets",
+        "First around a Sun-like star: 51 Pegasi b (Nobel 2019)",
+        "JWST detects atmospheric CO2 and water on transiting worlds"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA22098/PIA22098~thumb.jpg",
+        "title": "TRAPPIST-1 Planet Animations",
+        "nasaId": "PIA22098",
+        "page": "https://images.nasa.gov/details/PIA22098",
+        "credit": "NASA/JPL-Caltech"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Exoplanet",
+      "nasa": "https://science.nasa.gov/exoplanets/"
+    },
+    {
+      "id": "cmb-big-bang",
+      "title": "The Big Bang and the cosmic microwave background",
+      "description": "The universe began 13.8 billion years ago in a hot, dense state and has expanded and cooled since. Its baby picture survives: the cosmic microwave background, light released 380,000 years in, when the fog of plasma first cleared, now stretched to microwaves filling every direction at 2.7 kelvin. Found by accident in 1964 by Penzias and Wilson, its faint temperature ripples — mapped by COBE, WMAP and Planck — are the seeds of every galaxy and the strongest single pillar of Big Bang cosmology.",
+      "facts": [
+        "Age of the universe: 13.79 ± 0.02 billion years (Planck)",
+        "CMB temperature: 2.725 K, uniform to ~1 part in 100,000",
+        "Nobel Prizes: Penzias & Wilson 1978; COBE's Mather & Smoot 2006"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA17449/PIA17449~thumb.jpg",
+        "title": "Planck and the Cosmic Microwave Background Artist Concept",
+        "nasaId": "PIA17449",
+        "page": "https://images.nasa.gov/details/PIA17449",
+        "credit": "ESA and the Planck Collaboration - D. Ducros"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Cosmic_microwave_background",
+      "nasa": "https://science.nasa.gov/universe/overview/"
+    },
+    {
+      "id": "gravitational-waves",
+      "title": "Gravitational waves",
+      "description": "Einstein predicted in 1916 that accelerating masses ripple spacetime itself; a century later, on 14 September 2015, the LIGO detectors measured arms 4 km long changing length by a thousandth of a proton's width as the waves from two merging black holes passed through Earth. Gravitational-wave astronomy now logs mergers routinely, heard rather than seen, and the 2017 neutron-star merger GW170817 — observed in waves and light together — showed such collisions forge heavy elements like gold and platinum.",
+      "facts": [
+        "First detection GW150914: black holes of 36 and 29 solar masses",
+        "Nobel Prize 2017: Weiss, Barish, Thorne",
+        "GW170817 confirmed neutron-star mergers make heavy elements"
+      ],
+      "image": {
+        "url": "https://images-assets.nasa.gov/image/PIA17995/PIA17995~thumb.jpg",
+        "title": "Detectors See Gravitational Waves from Dawn of Universe",
+        "nasaId": "PIA17995",
+        "page": "https://images.nasa.gov/details/PIA17995",
+        "credit": "NASA/JPL-Caltech"
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Gravitational_wave",
+      "nasa": "https://science.nasa.gov/universe/"
+    }
+  ]
+}

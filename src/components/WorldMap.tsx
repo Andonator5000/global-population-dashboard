@@ -1,5 +1,8 @@
 import { geoDistance, geoPath, type GeoPermissibleObjects } from 'd3-geo'
 import { select } from 'd3-selection'
+// Side-effect import: gives d3 selections a .transition() so button zoom
+// can ease through the same zoom behaviour (round-2 §35).
+import 'd3-transition'
 import { zoom, zoomIdentity, type D3ZoomEvent } from 'd3-zoom'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { feature } from 'topojson-client'
@@ -17,6 +20,7 @@ import { TerrainRenderer } from '../lib/terrain'
 import {
   CONTINENTS,
   DEFAULT_MAP_PALETTE,
+  type BaseViewKey,
   type ContinentKey,
   type MapPaletteKey,
   type ProjectionKey,
@@ -84,7 +88,16 @@ interface WorldMapProps {
    * renders Blue Marble terrain imagery beneath transparent country shapes.
    * Continent mode ignores it -- region fills ARE that mode's identity.
    */
-  baseView?: 'political' | 'satellite'
+  baseView?: BaseViewKey
+  /**
+   * Round-2 §36: content for the country popover. When provided (country
+   * mode only), hovering a country shows a small card at the cursor with
+   * this content; on touch, tapping PINS it (with a close control) instead
+   * of navigating, and navigation happens through the content's own
+   * "More info" link. The caller supplies the content so the map component
+   * stays ignorant of routes and figures.
+   */
+  renderPopover?: (target: HoverTarget) => React.ReactNode
 }
 
 /** Zoom thresholds for the detail layers (Phase 4). Each names the factor
@@ -203,6 +216,7 @@ export function WorldMap({
   onActiveContinentChange,
   paletteDirection = DEFAULT_MAP_PALETTE,
   baseView = 'political',
+  renderPopover,
 }: WorldMapProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -294,7 +308,12 @@ export function WorldMap({
 
   // ---- Phase 4: detail layers, terrain, and the satellite base view ------
 
-  const satellite = baseView === 'satellite' && mode === 'country'
+  /** Which imagery base is live, if any: satellite (Blue Marble, dark) or
+      terrain (hypsometric relief, light). Political fills otherwise.
+      Continent mode always uses its region fills. */
+  const imagery =
+    mode === 'country' && baseView !== 'political' ? baseView : null
+  const satellite = imagery !== null
   const [detail, setDetail] = useState<DetailData>({})
   const detailRequested = useRef(new Set<string>())
 
@@ -529,13 +548,16 @@ export function WorldMap({
 
   useEffect(() => {
     if (!satellite) return
-    const renderer = new TerrainRenderer(() => setTileVersion((v) => v + 1))
+    const renderer = new TerrainRenderer(
+      () => setTileVersion((v) => v + 1),
+      imagery === 'terrain' ? 'geo/terrain-hypso' : 'geo/terrain',
+    )
     rendererRef.current = renderer
     return () => {
       renderer.destroy()
       rendererRef.current = null
     }
-  }, [satellite])
+  }, [satellite, imagery])
 
   useEffect(() => {
     if (!satellite) return
@@ -583,9 +605,246 @@ export function WorldMap({
     tileVersion,
   ])
 
-  const attribution = satellite
-    ? 'Imagery: NASA Blue Marble (Aug 2004) · Borders, water, places: Natural Earth'
-    : 'Boundaries, water and places: Natural Earth (public domain)'
+  const attribution =
+    imagery === 'satellite'
+      ? 'Imagery: NASA Blue Marble (Aug 2004) · Borders, water, places: Natural Earth'
+      : imagery === 'terrain'
+        ? 'Terrain: Natural Earth cross-blended hypso & shaded relief (public domain)'
+        : 'Boundaries, water and places: Natural Earth (public domain)'
+
+  // ---- Round-2 §35: canvas-rendered drag frames + inertia ----------------
+  //
+  // The old path was: pointermove -> setRotation -> React re-render ->
+  // re-project and reconcile ~250 SVG paths, EVERY frame. That is what made
+  // the globe sluggish. Now, while a drag (or its inertia) is live, the
+  // rotation lives in a ref and each frame is painted onto a canvas with
+  // d3's context renderer (a few ms for the whole world); the SVG is
+  // hidden for the duration and React is not involved at all. On release,
+  // ONE setRotation commits the final orientation and the interactive SVG
+  // returns — hover, click, keyboard and screen-reader behaviour are
+  // untouched because the SVG they live on never changed, it only sat out
+  // the animation.
+  const dragCanvasRef = useRef<HTMLCanvasElement | null>(null)
+  const rotationRef = useRef<[number, number]>(rotation)
+  const isDragRendering = useRef(false)
+  const restoreAfterCommit = useRef(false)
+  const lastFrameDelta = useRef({ dx: 0, dy: 0 })
+  const inertiaFrame = useRef<number | null>(null)
+  const dragFills = useRef<{
+    fills: string[]
+    ocean: string
+    stroke: string
+  }>({ fills: [], ocean: '#0b2740', stroke: '#0b2740' })
+
+  useEffect(() => {
+    if (!isDragRendering.current) rotationRef.current = rotation
+  }, [rotation])
+
+  /** Swap the SVG back in only AFTER React committed the final rotation,
+      or the old orientation would flash for one frame. */
+  useEffect(() => {
+    if (!restoreAfterCommit.current) return
+    restoreAfterCommit.current = false
+    if (svgRef.current) svgRef.current.style.visibility = ''
+    if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
+  }, [rotation])
+
+  const layoutFor = useCallback((w: number, h: number) => {
+    const scale = Math.min(w / VIEW_WIDTH, h / VIEW_HEIGHT)
+    return {
+      scale,
+      offsetX: (w - VIEW_WIDTH * scale) / 2,
+      offsetY: (h - VIEW_HEIGHT * scale) / 2,
+      dpr: Math.min(window.devicePixelRatio || 1, 1.75),
+    }
+  }, [])
+
+  /** Resolve every CSS-variable fill once per drag; canvases cannot read
+      custom properties, and 250 getComputedStyle calls per FRAME would
+      recreate the jank this exists to remove. */
+  const buildDragFills = useCallback(() => {
+    const svg = svgRef.current
+    if (!svg) return
+    const styles = getComputedStyle(svg)
+    const readVar = (name: string, fallback: string) =>
+      styles.getPropertyValue(name).trim() || fallback
+    const fills = collection.features.map((item) => {
+      const props = item.properties
+      if (satellite) return 'transparent'
+      if (mode === 'continent') {
+        return readVar(`--region-${props.continent}`, GLOBE_LAND_NEUTRAL)
+      }
+      if (!populationByIso3.get(props.iso3)?.available) {
+        return 'oklch(92% 0.003 250)'
+      }
+      return readVar(
+        `--fill-globe-${paletteDirection}-${props.iso3}`,
+        GLOBE_LAND_NEUTRAL,
+      )
+    })
+    dragFills.current = {
+      fills,
+      ocean: readVar('--map-ocean', '#0b2740'),
+      stroke:
+        imagery === 'satellite'
+          ? 'rgba(255, 255, 255, 0.78)'
+          : imagery === 'terrain'
+            ? 'rgba(92, 71, 48, 0.7)'
+            : readVar('--map-ocean', '#0b2740'),
+    }
+  }, [collection, satellite, imagery, mode, populationByIso3, paletteDirection])
+
+  const drawDragFrame = useCallback(() => {
+    const container = containerRef.current
+    const canvas = dragCanvasRef.current
+    if (!container || !canvas) return
+    const w = container.clientWidth
+    const h = container.clientHeight
+    if (w < 2 || h < 2) return
+    const { scale, offsetX, offsetY, dpr } = layoutFor(w, h)
+    const bufferW = Math.round(w * dpr)
+    const bufferH = Math.round(h * dpr)
+    if (canvas.width !== bufferW) canvas.width = bufferW
+    if (canvas.height !== bufferH) canvas.height = bufferH
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const [lambda, phi] = rotationRef.current
+    const base = createProjection('globe')
+    base.rotate([lambda, phi, 0])
+    const frameProjection = fitProjection(base, VIEW_WIDTH, VIEW_HEIGHT)
+
+    // Satellite imagery keeps tracking the finger: the terrain renderer is
+    // driven imperatively here because no React render happens mid-drag.
+    if (satellite && rendererRef.current && canvasRef.current) {
+      const terrainCtx = canvasRef.current.getContext('2d')
+      if (terrainCtx) {
+        const sphereD =
+          geoPath(frameProjection)({ type: 'Sphere' } as GeoPermissibleObjects) ?? ''
+        rendererRef.current.render(
+          terrainCtx, frameProjection, rotationRef.current, transform,
+          { scale, offsetX, offsetY, dpr }, w, h, sphereD,
+          dragFills.current.ocean, true,
+        )
+      }
+    }
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0)
+    ctx.clearRect(0, 0, bufferW, bufferH)
+    const view = dpr * scale
+    ctx.setTransform(
+      view * transform.k, 0, 0, view * transform.k,
+      dpr * (offsetX + scale * transform.x),
+      dpr * (offsetY + scale * transform.y),
+    )
+    const path = geoPath(frameProjection, ctx)
+    if (!satellite) {
+      ctx.beginPath()
+      path({ type: 'Sphere' } as GeoPermissibleObjects)
+      ctx.fillStyle = dragFills.current.ocean
+      ctx.fill()
+    }
+    ctx.lineJoin = 'round'
+    ctx.lineWidth = (satellite ? 0.75 : 0.5) / transform.k
+    ctx.strokeStyle = dragFills.current.stroke
+    collection.features.forEach((item, index) => {
+      ctx.beginPath()
+      path(item as unknown as GeoPermissibleObjects)
+      const fill = dragFills.current.fills[index]
+      if (fill && fill !== 'transparent') {
+        ctx.fillStyle = fill
+        ctx.fill()
+      }
+      ctx.stroke()
+    })
+  }, [collection, satellite, transform, layoutFor])
+
+  const beginDragRender = useCallback(() => {
+    if (isDragRendering.current) return
+    isDragRendering.current = true
+    // The popover would hover over a spinning globe pointing at nothing;
+    // one setState here, before frames leave React, is fine.
+    setPopover(null)
+    buildDragFills()
+    if (svgRef.current) svgRef.current.style.visibility = 'hidden'
+    if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'block'
+  }, [buildDragFills])
+
+  const endDragRender = useCallback(() => {
+    if (!isDragRendering.current) return
+    isDragRendering.current = false
+    restoreAfterCommit.current = true
+    setRotation([rotationRef.current[0], rotationRef.current[1]])
+  }, [])
+
+  const cancelInertia = useCallback(() => {
+    if (inertiaFrame.current !== null) {
+      cancelAnimationFrame(inertiaFrame.current)
+      inertiaFrame.current = null
+    }
+  }, [])
+
+  /** Round-2 fix: a drag session could survive a lost pointerup (release
+      outside the svg after a leave event when capture did not hold),
+      leaving the SVG hidden behind a stale canvas frame forever — the
+      "frozen black globe". This ends the session unconditionally and
+      restores visibility RIGHT NOW (the one-frame rotation flash is far
+      better than a dead map), and is wired into every escape hatch:
+      pointer leave/cancel/lost-capture, zoom events with no pointers
+      down, and view/mode/projection switches. */
+  const forceEndDragSession = useCallback(() => {
+    cancelInertia()
+    if (!isDragRendering.current) return
+    isDragRendering.current = false
+    if (svgRef.current) svgRef.current.style.visibility = ''
+    if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
+    setRotation([rotationRef.current[0], rotationRef.current[1]])
+  }, [cancelInertia])
+
+  /** The zoom behaviour is bound once and closes over nothing reactive;
+      it reaches the current force-end through this ref. */
+  const forceEndDragSessionRef = useRef(forceEndDragSession)
+  useEffect(() => {
+    forceEndDragSessionRef.current = forceEndDragSession
+  }, [forceEndDragSession])
+
+  useEffect(() => {
+    // Switching base view, fill mode or projection must never inherit a
+    // live drag session.
+    forceEndDragSession()
+  }, [baseView, mode, projectionKey, forceEndDragSession])
+
+  /** Momentum after release: the last frame's delta decays at 7% per
+      frame, so the globe has weight. Skipped under reduced motion. */
+  const startInertia = useCallback(() => {
+    const reduced = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+    let { dx, dy } = lastFrameDelta.current
+    if (reduced || Math.hypot(dx, dy) < 3) {
+      endDragRender()
+      return
+    }
+    const step = () => {
+      dx *= 0.93
+      dy *= 0.93
+      const sensitivity = 0.5625 / Math.sqrt(zoomLevel.current)
+      rotationRef.current = [
+        rotationRef.current[0] + dx * sensitivity,
+        Math.max(-90, Math.min(90, rotationRef.current[1] - dy * sensitivity)),
+      ]
+      drawDragFrame()
+      if (Math.hypot(dx, dy) < 0.4) {
+        inertiaFrame.current = null
+        endDragRender()
+        return
+      }
+      inertiaFrame.current = requestAnimationFrame(step)
+    }
+    inertiaFrame.current = requestAnimationFrame(step)
+  }, [drawDragFrame, endDragRender])
+
+  useEffect(() => () => cancelInertia(), [cancelInertia])
 
   /** Every focusable entity, ordered west-to-east so Tab order is sensible. */
   const focusTargets: FocusTarget[] = useMemo(() => {
@@ -709,6 +968,9 @@ export function WorldMap({
         return false
       })
       .on('zoom', (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
+        if (isDragRendering.current && dragPointers.current.size === 0) {
+          forceEndDragSessionRef.current()
+        }
         setTransform(event.transform)
       })
     behaviourRef.current = behaviour
@@ -721,12 +983,19 @@ export function WorldMap({
     }
   }, [isGlobe])
 
-  /** The +/- buttons drive the same d3-zoom behaviour as wheel and pinch. */
+  /** The +/- buttons drive the same d3-zoom behaviour as wheel and pinch,
+      eased over 200ms (round-2 §35) unless the reader asked for reduced
+      motion. Wheel and pinch stay direct — they are already continuous. */
   const zoomBy = useCallback((factor: number) => {
     const svg = svgRef.current
     const behaviour = behaviourRef.current
     if (!svg || !behaviour) return
-    behaviour.scaleBy(select(svg), factor)
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) {
+      behaviour.scaleBy(select(svg), factor)
+      return
+    }
+    select(svg).transition().duration(200).call(behaviour.scaleBy, factor)
   }, [])
 
   // Fullscreen state tracks the DOM, not a local boolean, so Esc (which
@@ -763,13 +1032,17 @@ export function WorldMap({
       // the stale flag swallowed every click on the flat map: countries
       // became unopenable until the page reloaded.
       if (event.isPrimary) dragSuppressesClick.current = false
+      lastPointerType.current = event.pointerType
+      // Grabbing a spinning globe stops it (and continues the drag-render
+      // session from wherever the inertia had carried it).
+      cancelInertia()
       if (!isGlobe) return
       dragPointers.current.set(event.pointerId, {
         x: event.clientX,
         y: event.clientY,
       })
     },
-    [isGlobe],
+    [isGlobe, cancelInertia],
   )
 
   /**
@@ -806,8 +1079,13 @@ export function WorldMap({
         dragSuppressesClick.current = true
         // From here the gesture is a drag, never a click, so capturing the
         // pointer costs nothing and keeps the spin alive when the finger
-        // wanders off the svg mid-gesture.
-        event.currentTarget.setPointerCapture(event.pointerId)
+        // wanders off the svg mid-gesture. Guarded: a pointer can be gone
+        // by the time the frame runs (and synthetic events have no id).
+        try {
+          event.currentTarget.setPointerCapture(event.pointerId)
+        } catch {
+          /* capture is an optimisation, never a requirement */
+        }
       }
       dragPointers.current.set(event.pointerId, {
         x: event.clientX,
@@ -820,33 +1098,93 @@ export function WorldMap({
         dragFrame.current = null
         const { dx: fdx, dy: fdy } = pendingDrag.current
         pendingDrag.current = { dx: 0, dy: 0 }
+        // Round-2 §35: rotation stays in a ref and the frame goes straight
+        // to canvas — React sees nothing until the gesture ends.
+        beginDragRender()
+        lastFrameDelta.current = { dx: fdx, dy: fdy }
         // Degrees per CSS pixel, eased down as the zoom tightens.
         // 0.25 -> 0.375 -> 0.5625 (2026-08-24): raised 50% twice on
         // maintainer request; the spin should track a finger briskly.
         const sensitivity = 0.5625 / Math.sqrt(zoomLevel.current)
-        setRotation(([lambda, phi]) => [
-          lambda + fdx * sensitivity,
-          Math.max(-90, Math.min(90, phi - fdy * sensitivity)),
-        ])
+        rotationRef.current = [
+          rotationRef.current[0] + fdx * sensitivity,
+          Math.max(
+            -90,
+            Math.min(90, rotationRef.current[1] - fdy * sensitivity),
+          ),
+        ]
+        drawDragFrame()
       })
     },
-    [isGlobe],
+    [isGlobe, beginDragRender, drawDragFrame],
   )
 
   const handleGlobePointerEnd = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
       dragPointers.current.delete(event.pointerId)
+      // Last finger up while a drag-render session is live: hand off to
+      // inertia (which commits the final rotation when it stops).
+      if (dragPointers.current.size === 0 && isDragRendering.current) {
+        startInertia()
+      }
+    },
+    [startInertia],
+  )
+
+  // ---- Round-2 §36: country popover --------------------------------------
+  const [popover, setPopover] = useState<{
+    target: HoverTarget
+    x: number
+    y: number
+    pinned: boolean
+  } | null>(null)
+  const popoverRef = useRef<HTMLDivElement | null>(null)
+  /** pointerType of the most recent pointerdown; click events do not carry
+      one reliably, and touch must pin the popover instead of navigating. */
+  const lastPointerType = useRef('mouse')
+
+  const popoverActive = renderPopover !== undefined && mode === 'country'
+
+  const containerPoint = useCallback(
+    (event: { clientX: number; clientY: number }): [number, number] => {
+      const rect = containerRef.current?.getBoundingClientRect()
+      return rect
+        ? [event.clientX - rect.left, event.clientY - rect.top]
+        : [0, 0]
     },
     [],
   )
 
-  /** Select, unless the pointer was busy spinning the globe. */
+  const showHoverPopover = useCallback(
+    (target: HoverTarget, event: React.PointerEvent) => {
+      if (!popoverActive || event.pointerType !== 'mouse') return
+      const [x, y] = containerPoint(event)
+      // A pinned (touch) popover holds until dismissed; hover never
+      // replaces it.
+      setPopover((prev) =>
+        prev?.pinned ? prev : { target, x, y, pinned: false },
+      )
+    },
+    [popoverActive, containerPoint],
+  )
+
+  /** Select, unless the pointer was busy spinning the globe. On touch the
+      tap pins the popover instead — navigation is its "More info" link. */
   const selectUnlessDragging = useCallback(
-    (target: HoverTarget) => {
+    (target: HoverTarget, event?: React.MouseEvent) => {
       if (dragSuppressesClick.current) return
+      if (
+        popoverActive &&
+        lastPointerType.current === 'touch' &&
+        event !== undefined
+      ) {
+        const [x, y] = containerPoint(event)
+        setPopover({ target, x, y, pinned: true })
+        return
+      }
       onSelect(target)
     },
-    [onSelect],
+    [onSelect, popoverActive, containerPoint],
   )
 
   const strokeWidth = 0.5 / transform.k
@@ -891,8 +1229,14 @@ export function WorldMap({
   }
 
   /** Country borders must read on imagery, where the dark ocean stroke
-   *  vanishes; satellite borders are light and slightly heavier. */
-  const countryStroke = satellite ? 'rgba(255, 255, 255, 0.78)' : landStroke
+   *  vanishes: light strokes on the dark satellite, dark warm strokes on
+   *  the light terrain relief (round-2 §37). */
+  const countryStroke =
+    imagery === 'satellite'
+      ? 'rgba(255, 255, 255, 0.78)'
+      : imagery === 'terrain'
+        ? 'rgba(92, 71, 48, 0.7)'
+        : landStroke
   const countryStrokeWidth = satellite ? strokeWidth * 1.5 : strokeWidth
   void landNeutral
 
@@ -960,6 +1304,41 @@ export function WorldMap({
     border: '1px solid var(--border)',
   }
 
+  // ---- Round-2 §36: control tooltips + optional zoom slider --------------
+  const [sliderVisible, setSliderVisible] = useState(() => {
+    try {
+      return sessionStorage.getItem('map-zoom-slider') === '1'
+    } catch {
+      return false
+    }
+  })
+  const toggleSlider = useCallback(() => {
+    setSliderVisible((visible) => {
+      const next = !visible
+      try {
+        sessionStorage.setItem('map-zoom-slider', next ? '1' : '0')
+      } catch {
+        /* per-session convenience only */
+      }
+      return next
+    })
+  }, [])
+
+  /** Continuous zoom for the slider — absolute, no easing (the handle IS
+      the easing). */
+  const zoomTo = useCallback((k: number) => {
+    const svg = svgRef.current
+    const behaviour = behaviourRef.current
+    if (!svg || !behaviour) return
+    behaviour.scaleTo(select(svg), Math.max(1, Math.min(MAX_ZOOM, k)))
+  }, [])
+
+  const sliderLink = (
+    <button type="button" className="underline underline-offset-2" onClick={toggleSlider}>
+      {sliderVisible ? 'Hide slider' : 'Show slider'}
+    </button>
+  )
+
   return (
     <div
       ref={containerRef}
@@ -970,24 +1349,60 @@ export function WorldMap({
           live OUTSIDE the svg so they are ordinary buttons for keyboard and
           screen reader users. */}
       <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
-        <button
-          type="button"
-          aria-label="Zoom in"
-          className="h-8 w-8 rounded text-lg leading-none"
-          style={controlButtonStyle}
-          onClick={() => zoomBy(1.5)}
-        >
-          +
-        </button>
-        <button
-          type="button"
-          aria-label="Zoom out"
-          className="h-8 w-8 rounded text-lg leading-none"
-          style={controlButtonStyle}
-          onClick={() => zoomBy(1 / 1.5)}
-        >
-          −
-        </button>
+        {/* Tooltips (round-2 §36): shown on hover AND focus-within, and
+            hoverable themselves so the Show/Hide-slider link inside stays
+            reachable. Buttons keep their aria-labels; tooltips are the
+            sighted-pointer duplicate, so aria-hidden. */}
+        <div className="map-ctl relative">
+          <button
+            type="button"
+            aria-label="Zoom in"
+            className="h-8 w-8 rounded text-lg leading-none"
+            style={controlButtonStyle}
+            onClick={() => zoomBy(1.5)}
+          >
+            +
+          </button>
+          <div className="map-tooltip">
+            <span className="map-tooltip-bubble">Zoom in · {sliderLink}</span>
+          </div>
+        </div>
+        {sliderVisible && (
+          <input
+            type="range"
+            className="map-zoom-slider self-center"
+            min={0}
+            max={100}
+            step={1}
+            value={Math.round(
+              (Math.log(transform.k) / Math.log(MAX_ZOOM)) * 100,
+            )}
+            onChange={(event) =>
+              zoomTo(
+                Math.exp(
+                  (Math.log(MAX_ZOOM) * Number(event.target.value)) / 100,
+                ),
+              )
+            }
+            aria-label="Zoom level"
+            aria-orientation="vertical"
+          />
+        )}
+        <div className="map-ctl relative">
+          <button
+            type="button"
+            aria-label="Zoom out"
+            className="h-8 w-8 rounded text-lg leading-none"
+            style={controlButtonStyle}
+            onClick={() => zoomBy(1 / 1.5)}
+          >
+            −
+          </button>
+          <div className="map-tooltip">
+            <span className="map-tooltip-bubble">Zoom out · {sliderLink}</span>
+          </div>
+        </div>
+        <div className="map-ctl relative">
         <button
           type="button"
           aria-label={isFullscreen ? 'Exit full screen' : 'View full screen'}
@@ -1028,6 +1443,12 @@ export function WorldMap({
             )}
           </svg>
         </button>
+          <div className="map-tooltip">
+            <span className="map-tooltip-bubble">
+              {isFullscreen ? 'Exit full screen' : 'Full screen'}
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Attribution (Phase 4): required for the NASA imagery, honest for
@@ -1053,6 +1474,56 @@ export function WorldMap({
         />
       )}
 
+      {/* Drag-frame canvas (round-2 §35): paints the globe while a drag or
+          its inertia is live, standing in for the hidden SVG. Inert. */}
+      <canvas
+        ref={dragCanvasRef}
+        className="absolute inset-0 h-full w-full"
+        style={{ display: 'none' }}
+        aria-hidden="true"
+      />
+
+      {/* Country popover (round-2 §36): near the cursor/tap point, flipped
+          away from whichever edges are close; pinned (touch) popovers sit
+          ABOVE the tap so the finger never covers them. */}
+      {popover && popoverActive && renderPopover && (
+        <div
+          ref={popoverRef}
+          role="dialog"
+          aria-label={`${popover.target.name} quick facts`}
+          className="map-popover absolute z-20"
+          style={(() => {
+            const w = containerSize.w || 1
+            const h = containerSize.h || 1
+            const style: React.CSSProperties = {}
+            if (popover.pinned) {
+              style.left = Math.max(8, Math.min(popover.x - 110, w - 248))
+              style.bottom = Math.min(h - 8, h - popover.y + 16)
+            } else {
+              if (popover.x < w * 0.55) style.left = popover.x + 14
+              else style.right = w - popover.x + 14
+              if (popover.y < h - 180) style.top = popover.y + 12
+              else style.bottom = h - popover.y + 12
+            }
+            return style
+          })()}
+        >
+          <div className="flex items-start gap-1.5">
+            <div className="min-w-0 flex-1">
+              {renderPopover(popover.target)}
+            </div>
+            <button
+              type="button"
+              aria-label="Close"
+              className="popover-close"
+              onClick={() => setPopover(null)}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
     <svg
       ref={svgRef}
       viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
@@ -1066,7 +1537,7 @@ export function WorldMap({
       role="group"
       aria-label={
         `World map, ${isGlobe ? 'globe view' : 'equal-area projection'}, ` +
-        `${satellite ? 'satellite base, ' : ''}` +
+        `${imagery ? `${imagery} base, ` : ''}` +
         `${focusTargets.length} entities. ` +
         `Use the arrow keys to move between countries and Enter to open one. ` +
         `Home and End jump to the westernmost and easternmost.`
@@ -1077,12 +1548,28 @@ export function WorldMap({
       }}
       onPointerLeave={(event) => {
         dragPointers.current.delete(event.pointerId)
+        if (dragPointers.current.size === 0 && isDragRendering.current) {
+          startInertia()
+        }
         onHover(null)
+        // Keep the popover if the pointer is moving INTO it (to reach its
+        // "More info" link); clear otherwise, unless a tap pinned it.
+        // relatedTarget can be the window (leaving the document) — only a
+        // real Node may be passed to contains(), or it throws (§42).
+        const related = event.relatedTarget
+        const into =
+          related instanceof Node && popoverRef.current?.contains(related)
+        if (!into) setPopover((prev) => (prev?.pinned ? prev : null))
+      }}
+      onClick={(event) => {
+        // A click on open water or space dismisses a pinned popover.
+        if (event.target === event.currentTarget) setPopover(null)
       }}
       onPointerDown={handleGlobePointerDown}
       onPointerMove={handleGlobePointerMove}
       onPointerUp={handleGlobePointerEnd}
       onPointerCancel={handleGlobePointerEnd}
+      onLostPointerCapture={handleGlobePointerEnd}
       onKeyDown={handleKeyDown}
     >
       <defs>
@@ -1109,7 +1596,11 @@ export function WorldMap({
         {/* The ocean disc/outline lives INSIDE the zoom transform: outside
             it, zooming scaled the landmasses while the globe's blue circle
             stayed fixed -- land visibly outgrew its own planet. */}
-        <path d={sphere} fill={satellite ? 'transparent' : waterFill} />
+        <path
+          d={sphere}
+          fill={satellite ? 'transparent' : waterFill}
+          onClick={() => setPopover(null)}
+        />
         {shapes.map((shape, index) => {
           const row = populationByIso3.get(shape.iso3)
           const dimmed = isDimmed(shape.continent)
@@ -1147,14 +1638,17 @@ export function WorldMap({
                     : `${shape.name}. No population data available. Open country page.`
               }
               className="map-target"
-              onPointerEnter={() => onHover(target)}
+              onPointerEnter={(event) => {
+                onHover(target)
+                showHoverPopover(target, event)
+              }}
               onFocus={() => {
                 const index = indexByIso3.get(shape.iso3)
                 if (index !== undefined) setActiveIndex(index)
                 onHover(target)
                 if (mode === 'continent') onActiveContinentChange(shape.continent)
               }}
-              onClick={() => selectUnlessDragging(target)}
+              onClick={(event) => selectUnlessDragging(target, event)}
             />
           )
         })}
@@ -1187,7 +1681,13 @@ export function WorldMap({
               <path
                 d={detailPaths.admin1}
                 fill="none"
-                stroke={satellite ? 'rgba(255, 255, 255, 0.55)' : landStroke}
+                stroke={
+                  imagery === 'satellite'
+                    ? 'rgba(255, 255, 255, 0.55)'
+                    : imagery === 'terrain'
+                      ? 'rgba(92, 71, 48, 0.5)'
+                      : landStroke
+                }
                 strokeOpacity={satellite ? 1 : 0.45}
                 strokeWidth={0.32 / transform.k}
                 strokeLinejoin="round"
@@ -1230,13 +1730,16 @@ export function WorldMap({
               role="link"
               aria-label={`${marker.name}. Too small to draw at this scale; shown as a marker. Open country page.`}
               className="map-target"
-              onPointerEnter={() => onHover(target)}
+              onPointerEnter={(event) => {
+                onHover(target)
+                showHoverPopover(target, event)
+              }}
               onFocus={() => {
                 const index = indexByIso3.get(marker.iso3)
                 if (index !== undefined) setActiveIndex(index)
                 onHover(target)
               }}
-              onClick={() => selectUnlessDragging(target)}
+              onClick={(event) => selectUnlessDragging(target, event)}
             >
               <circle
                 r={MARKER_HIT_RADIUS / transform.k}
@@ -1300,15 +1803,16 @@ export function WorldMap({
             {detailLabels.map((label) => {
               const fontSize = label.size / Math.sqrt(transform.k)
               const isPlace = label.kind === 'place' || label.kind === 'capital'
+              const dark = imagery === 'satellite'
               const fill =
                 label.kind === 'water'
-                  ? satellite
+                  ? dark
                     ? 'oklch(88% 0.05 240)'
                     : 'oklch(42% 0.08 250)'
-                  : satellite
+                  : dark
                     ? 'oklch(97% 0 0)'
                     : 'oklch(28% 0.01 250)'
-              const halo = satellite
+              const halo = dark
                 ? 'oklch(22% 0.02 250)'
                 : GLOBE_LAND_NEUTRAL
               return (

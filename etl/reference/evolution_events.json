@@ -1,668 +1,772 @@
 {
-  "version": 1,
-  "note": "EDITORIAL, like history_events.json: which moments in the history of life make the timeline is a curation call, recorded and versioned here. Dates are in Ma (millions of years before present); startMa > endMa; endMa null means a point estimate. Every summary states its own uncertainty where the science is unsettled. The evolution ETL stage validates this file, checks each Wikipedia anchor, resolves a CC0/public-domain PhyloPic silhouette for entries with a phylopic query, and falls back to the anchor article's free lead image. Kinds: event, organism, extinction.",
-  "events": [
-    {
-      "id": "earth-forms",
-      "title": "Earth forms from the solar nebula",
-      "kind": "event",
-      "startMa": 4567,
-      "endMa": 4540,
-      "summary": "Earth accretes from the disc of gas and dust left over from the Sun's formation, reaching most of its final mass within a few tens of millions of years. The age of 4.54 billion years, with an uncertainty of about one percent, comes from radiometric dating of meteorites and the oldest terrestrial and lunar samples.",
-      "wikipedia": "Age of Earth",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Age_of_Earth",
-        "https://pubs.usgs.gov/gip/geotime/age.html"
-      ]
-    },
-    {
-      "id": "moon-forming-impact",
-      "title": "The Moon-forming giant impact",
-      "kind": "event",
-      "startMa": 4510,
-      "endMa": 4440,
-      "summary": "A Mars-sized body, often called Theia, collides with the young Earth; debris from the impact coalesces into the Moon. This is the leading explanation for the Moon's composition and angular momentum, though the impact's exact timing and geometry remain actively modelled rather than measured, with estimates spanning roughly 4.51 to 4.44 billion years ago.",
-      "wikipedia": "Giant-impact hypothesis",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Giant-impact_hypothesis"
-      ]
-    },
-    {
-      "id": "early-oceans",
-      "title": "Liquid water and early oceans",
-      "kind": "event",
-      "startMa": 4400,
-      "endMa": 4000,
-      "summary": "Tiny zircon crystals from Western Australia, some older than 4.3 billion years, carry oxygen-isotope signatures suggesting liquid water and perhaps oceans far earlier than the Hadean's name implies. How continuous those early oceans were is unresolved; what is clear is that by 3.8 billion years ago sedimentary rocks record standing water.",
-      "wikipedia": "Hadean",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Hadean"
-      ]
-    },
-    {
-      "id": "origin-of-life",
-      "title": "Origin of life",
-      "kind": "event",
-      "startMa": 4100,
-      "endMa": 3500,
-      "summary": "Somewhere in this window, chemistry became biology. Claimed traces of life reach back 4.1 billion years (carbon isotopes in zircons) and 3.77 billion (disputed hydrothermal microfossils), while broadly accepted fossils begin around 3.5 billion. Where and how it happened — warm ponds, hydrothermal vents, or elsewhere — remains one of science's great open questions, and every date here is contested.",
-      "wikipedia": "Abiogenesis",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Abiogenesis"
-      ]
-    },
-    {
-      "id": "luca",
-      "title": "LUCA, the last universal common ancestor",
-      "kind": "organism",
-      "startMa": 4200,
-      "endMa": 3600,
-      "summary": "The most recent population from which all living cells — bacteria, archaea and eukaryotes — descend. Reconstructed from genes shared across all life, LUCA was already a sophisticated cell with DNA, ribosomes and membrane chemistry. Age estimates span 4.2 to 3.6 billion years depending on method; a 2024 molecular-clock study argued for the older end. It was an ancestor, not the first life.",
-      "wikipedia": "Last universal common ancestor",
-      "phylopic": "Escherichia coli",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Last_universal_common_ancestor"
-      ]
-    },
-    {
-      "id": "stromatolites",
-      "title": "Oldest widely accepted fossils: stromatolites",
-      "kind": "event",
-      "startMa": 3480,
-      "endMa": null,
-      "summary": "Layered mounds in the Dresser Formation of Western Australia's Pilbara region, built by microbial mats about 3.48 billion years ago, are the oldest fossils most palaeontologists accept. Older claims exist and are argued over; these layers, with their microbially textured surfaces, are where the fossil record of life becomes solid ground.",
-      "wikipedia": "Stromatolite",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Stromatolite"
-      ]
-    },
-    {
-      "id": "oxygenic-photosynthesis",
-      "title": "Cyanobacteria invent oxygenic photosynthesis",
-      "kind": "organism",
-      "startMa": 3000,
-      "endMa": 2500,
-      "summary": "Cyanobacteria evolve the water-splitting form of photosynthesis, exhaling oxygen as waste. When this machinery arose is debated — isotopic whiffs of oxygen suggest local production hundreds of millions of years before the atmosphere changed. Every breath of oxygen on Earth still traces to this single bacterial invention, later borrowed by plants as the chloroplast.",
-      "wikipedia": "Cyanobacteria",
-      "phylopic": "Cyanobacteria",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Cyanobacteria"
-      ]
-    },
-    {
-      "id": "great-oxidation",
-      "title": "The Great Oxidation Event",
-      "kind": "event",
-      "startMa": 2460,
-      "endMa": 2050,
-      "summary": "Oxygen from cyanobacteria finally overwhelms the planet's chemical sinks and begins accumulating in the atmosphere. For most existing life — anaerobes to which oxygen was poison — this was a catastrophe; it also drew down methane and likely triggered global glaciation. The transition shows up in rocks as the end of mass-independent sulfur isotope fractionation around 2.43 billion years ago.",
-      "wikipedia": "Great Oxidation Event",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Great_Oxidation_Event"
-      ]
-    },
-    {
-      "id": "eukaryotes",
-      "title": "Eukaryotic cells",
-      "kind": "event",
-      "startMa": 2100,
-      "endMa": 1600,
-      "summary": "Cells with nuclei arise — the lineage that would produce every animal, plant, fungus and protist. The defining moment was symbiotic: an archaeal host cell permanently incorporated a bacterium that became the mitochondrion. Possible eukaryote fossils appear by 1.9 to 1.6 billion years ago; molecular clocks and disputed older fossils push estimates in both directions.",
-      "wikipedia": "Eukaryote",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Eukaryote",
-        "https://en.wikipedia.org/wiki/Symbiogenesis"
-      ]
-    },
-    {
-      "id": "francevillian",
-      "title": "Francevillian biota: an early experiment in size?",
-      "kind": "event",
-      "startMa": 2100,
-      "endMa": null,
-      "summary": "Centimetre-scale structured fossils from Gabon, 2.1 billion years old, have been proposed as the earliest large multicellular organisms — appearing just after the Great Oxidation Event. Whether they were truly multicellular life, colonial microbes, or not organisms at all is unresolved; they are included here as a marked controversy, not a settled milestone.",
-      "wikipedia": "Francevillian biota",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Francevillian_biota"
-      ]
-    },
-    {
-      "id": "bangiomorpha",
-      "title": "Bangiomorpha: sex and multicellularity",
-      "kind": "organism",
-      "startMa": 1050,
-      "endMa": null,
-      "summary": "A fossil red alga from Arctic Canada, about 1.05 billion years old, is the oldest taxonomically resolved multicellular eukaryote and the earliest direct evidence of sexual reproduction — its spores come in distinct types. Its resemblance to the living genus Bangia is so close that a billion years changed it remarkably little.",
-      "wikipedia": "Bangiomorpha",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Bangiomorpha"
-      ]
-    },
-    {
-      "id": "snowball-earth",
-      "title": "Snowball Earth glaciations",
-      "kind": "event",
-      "startMa": 717,
-      "endMa": 635,
-      "summary": "Twice in the Cryogenian — the Sturtian and Marinoan glaciations — ice sheets reached the tropics, possibly encasing the whole planet. Whether the freeze was total (\"hard snowball\") or left open tropical seas (\"slushball\") is debated. The aftermath of extreme environmental swings may have set the stage for the rise of animals shortly after.",
-      "wikipedia": "Snowball Earth",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Snowball_Earth"
-      ]
-    },
-    {
-      "id": "ediacaran-biota",
-      "title": "The Ediacaran biota",
-      "kind": "event",
-      "startMa": 575,
-      "endMa": 539,
-      "summary": "The first communities of large, soft-bodied organisms: fronds, discs and quilted mattress-like forms such as Dickinsonia and Charnia. Cholesterol traces identify at least some as animals, but how most relate to living groups — animals, stem-animals, or extinct kingdoms — remains argued. Nearly all vanish at the Cambrian boundary.",
-      "wikipedia": "Ediacaran biota",
-      "phylopic": "Dickinsonia",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Ediacaran_biota"
-      ]
-    },
-    {
-      "id": "cambrian-explosion",
-      "title": "The Cambrian explosion",
-      "kind": "event",
-      "startMa": 539,
-      "endMa": 509,
-      "summary": "In a geologically brief window, nearly every major animal body plan enters the fossil record: arthropods, molluscs, chordates, and stranger things preserved in sites like the Burgess Shale and Chengjiang. Trigger hypotheses — rising oxygen, predation arms races, developmental genetics, ocean chemistry — are not mutually exclusive, and the 'explosion' had a longer Ediacaran fuse.",
-      "wikipedia": "Cambrian explosion",
-      "phylopic": "Anomalocaris",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Cambrian_explosion"
-      ]
-    },
-    {
-      "id": "first-vertebrates",
-      "title": "First vertebrates",
-      "kind": "organism",
-      "startMa": 518,
-      "endMa": null,
-      "summary": "Finger-length, jawless fish-like animals from China's Chengjiang biota — Haikouichthys and Myllokunmingia — are the earliest widely accepted vertebrates: a head, a notochord, and traces of vertebral elements, about 518 million years ago. Every fish, amphibian, reptile, bird and mammal continues their lineage.",
-      "wikipedia": "Haikouichthys",
-      "phylopic": "Haikouichthys",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Haikouichthys"
-      ]
-    },
-    {
-      "id": "gobe",
-      "title": "The Great Ordovician Biodiversification",
-      "kind": "event",
-      "startMa": 485,
-      "endMa": 445,
-      "summary": "Marine life diversifies at every scale: the number of genera in the oceans roughly triples, reefs expand, and plankton, filter feeders and predators build the first modern-style marine ecosystems. Less famous than the Cambrian explosion, it added more diversity — filling out the body plans the Cambrian had sketched.",
-      "wikipedia": "Great Ordovician Biodiversification Event",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Great_Ordovician_Biodiversification_Event"
-      ]
-    },
-    {
-      "id": "plants-on-land",
-      "title": "Plants colonise the land",
-      "kind": "event",
-      "startMa": 470,
-      "endMa": 425,
-      "summary": "Spores resembling those of liverworts appear around 470 million years ago; by the late Silurian, small vascular plants such as Cooksonia stand upright on land. Descended from freshwater green algae, land plants would remake the planet's atmosphere, soils and rivers. Molecular clocks suggest an earlier, fossil-poor prologue — dates here follow the fossils.",
-      "wikipedia": "Embryophyte",
-      "phylopic": "Cooksonia",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Embryophyte",
-        "https://en.wikipedia.org/wiki/Cooksonia"
-      ]
-    },
-    {
-      "id": "ordovician-extinction",
-      "title": "End-Ordovician mass extinction",
-      "kind": "extinction",
-      "startMa": 445,
-      "endMa": 444,
-      "summary": "The first of the five major mass extinctions: around 85 percent of marine species vanish in two pulses tied to a sudden Gondwanan glaciation and its equally sudden end. Life was still almost entirely marine, so the toll fell on trilobites, brachiopods, graptolites and early reef builders.",
-      "wikipedia": "Late Ordovician mass extinction",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Late_Ordovician_mass_extinction"
-      ]
-    },
-    {
-      "id": "jawed-fish",
-      "title": "Jaws: gnathostomes diversify",
-      "kind": "event",
-      "startMa": 439,
-      "endMa": 419,
-      "summary": "Vertebrates with jaws — evolved from the front gill arches — spread through Silurian seas. Recent fossil finds from China push recognisable jawed fish to about 439 million years ago. Jaws turned vertebrates from filter feeders and scavengers into predators, and more than 99 percent of living vertebrate species descend from these gnathostomes.",
-      "wikipedia": "Gnathostomata",
-      "phylopic": "Dunkleosteus",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Gnathostomata"
-      ]
-    },
-    {
-      "id": "insects",
-      "title": "Insects appear",
-      "kind": "event",
-      "startMa": 410,
-      "endMa": 400,
-      "summary": "The Rhynie chert of Scotland preserves early terrestrial ecosystems in exquisite detail, including Rhyniognatha, argued to be the oldest insect at about 410 million years — though whether it is truly an insect is disputed. However the debate lands, by the Devonian the most diverse animal lineage in history was underway.",
-      "wikipedia": "Evolution of insects",
-      "phylopic": "Insecta",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Evolution_of_insects"
-      ]
-    },
-    {
-      "id": "first-forests",
-      "title": "The first forests",
-      "kind": "event",
-      "startMa": 385,
-      "endMa": 359,
-      "summary": "Trees evolve — Wattieza and, later, the widespread Archaeopteris — and the first forests rise at Gilboa, New York and across the Devonian tropics. Deep roots weathered rock into true soils and drew down carbon dioxide, cooling the climate; some link this drawdown to the extinctions that closed the Devonian.",
-      "wikipedia": "Archaeopteris",
-      "phylopic": "Archaeopteris",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Archaeopteris"
-      ]
-    },
-    {
-      "id": "tetrapods",
-      "title": "Tetrapods: vertebrates walk onto land",
-      "kind": "organism",
-      "startMa": 375,
-      "endMa": 365,
-      "summary": "Lobe-finned fish evolve limbs. Tiktaalik (about 375 million years ago) had a neck, shoulders and wrist-like fins; by 365 million years, Acanthostega and Ichthyostega had true digits — eight per foot in Acanthostega's case. These animals were mostly aquatic; walking came before living on land. Trackways from Poland hint the story may start millions of years earlier.",
-      "wikipedia": "Tiktaalik",
-      "phylopic": "Tiktaalik roseae",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Tiktaalik",
-        "https://en.wikipedia.org/wiki/Tetrapod"
-      ]
-    },
-    {
-      "id": "devonian-extinction",
-      "title": "Late Devonian extinctions",
-      "kind": "extinction",
-      "startMa": 372,
-      "endMa": 359,
-      "summary": "The second of the five: a drawn-out series of pulses — the Kellwasser and Hangenberg events — rather than one blow, eliminating perhaps 75 percent of species. Reef ecosystems collapsed so thoroughly they took a hundred million years to recover. Causes are debated: ocean anoxia, climate swings, possibly driven in part by the spread of the first forests.",
-      "wikipedia": "Late Devonian extinction",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Late_Devonian_extinction"
-      ]
-    },
-    {
-      "id": "amniotes",
-      "title": "Amniotes: the egg leaves the water",
-      "kind": "organism",
-      "startMa": 318,
-      "endMa": null,
-      "summary": "Hylonomus, a small lizard-like animal found inside fossil tree stumps in Nova Scotia, is the earliest widely accepted amniote. The amniotic egg — an embryo packaged with its own pond — freed vertebrate reproduction from open water. Its descendants split almost immediately into the lines leading to mammals on one side and reptiles and birds on the other.",
-      "wikipedia": "Hylonomus",
-      "phylopic": "Hylonomus",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Hylonomus",
-        "https://en.wikipedia.org/wiki/Amniote"
-      ]
-    },
-    {
-      "id": "coal-forests",
-      "title": "Coal forests and giant insects",
-      "kind": "event",
-      "startMa": 315,
-      "endMa": 299,
-      "summary": "Vast tropical swamps of scale trees and horsetails bury so much carbon they become most of the world's coal. Atmospheric oxygen climbs toward 30-35 percent, and insects reach sizes never repeated: the griffinfly Meganeura spanned about 70 centimetres. The oxygen-gigantism link is well supported but still an active research question.",
-      "wikipedia": "Meganeura",
-      "phylopic": "Meganeurites gracilipes",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Meganeura",
-        "https://en.wikipedia.org/wiki/Carboniferous"
-      ]
-    },
-    {
-      "id": "synapsids",
-      "title": "Synapsids rule the Permian",
-      "kind": "organism",
-      "startMa": 295,
-      "endMa": 272,
-      "summary": "Long before dinosaurs, the sail-backed Dimetrodon and its synapsid relatives were the dominant land predators. Despite the reptilian look, synapsids are the mammal line — Dimetrodon is more closely related to humans than to any dinosaur or lizard. The sail's function, thermoregulation or display, remains debated.",
-      "wikipedia": "Dimetrodon",
-      "phylopic": "Dimetrodon",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Dimetrodon"
-      ]
-    },
-    {
-      "id": "permian-extinction",
-      "title": "End-Permian: the Great Dying",
-      "kind": "extinction",
-      "startMa": 252,
-      "endMa": null,
-      "summary": "The worst mass extinction known: roughly 81 percent of marine species and 70 percent of land vertebrate species die, and even insects suffer their only mass extinction. The Siberian Traps eruptions — flood basalts burning through coal beds — drove lethal warming, ocean acidification and anoxia. Life needed millions of years to recover; the wreckage opened the way for dinosaurs and mammals alike.",
-      "wikipedia": "Permian–Triassic extinction event",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Permian%E2%80%93Triassic_extinction_event"
-      ]
-    },
-    {
-      "id": "first-dinosaurs",
-      "title": "The first dinosaurs",
-      "kind": "organism",
-      "startMa": 243,
-      "endMa": 233,
-      "summary": "Small, bipedal and rare at first: Nyasasaurus (about 243 million years ago) is either the earliest dinosaur or its closest relative, and by 233 million years Eoraptor and Herrerasaurus were living in Argentina's Ischigualasto valley. Dinosaurs would not dominate until after the end-Triassic extinction cleared away their competitors.",
-      "wikipedia": "Eoraptor",
-      "phylopic": "Eoraptor lunensis",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Eoraptor",
-        "https://en.wikipedia.org/wiki/Evolution_of_dinosaurs"
-      ]
-    },
-    {
-      "id": "first-mammals",
-      "title": "First mammals",
-      "kind": "organism",
-      "startMa": 225,
-      "endMa": 200,
-      "summary": "Shrew-sized animals such as Morganucodon, with the jaw joint and precise molars that define mammals, appear in the late Triassic. For the next 150 million years mammals stayed mostly small and nocturnal in a dinosaur-dominated world — an ecological bottleneck that may explain traits like acute hearing and warm-bloodedness. Where exactly 'mammal' begins on the synapsid line is a definitional argument as much as a fossil one.",
-      "wikipedia": "Morganucodon",
-      "phylopic": "Morganucodon",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Morganucodon"
-      ]
-    },
-    {
-      "id": "triassic-extinction",
-      "title": "End-Triassic mass extinction",
-      "kind": "extinction",
-      "startMa": 201.4,
-      "endMa": null,
-      "summary": "The fourth of the five: eruptions of the Central Atlantic Magmatic Province, as Pangaea began to rift, drove abrupt warming and ocean acidification. About three-quarters of species vanish, including most large non-dinosaur reptiles on land. Dinosaurs, oddly resilient, inherit the emptied landscape — the true start of their age.",
-      "wikipedia": "Triassic–Jurassic extinction event",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Triassic%E2%80%93Jurassic_extinction_event"
-      ]
-    },
-    {
-      "id": "sauropods",
-      "title": "Giants of the Jurassic",
-      "kind": "organism",
-      "startMa": 174,
-      "endMa": 145,
-      "summary": "Sauropods — Brachiosaurus, Diplodocus, and kin — become the largest land animals ever, some exceeding 30 metres and 50 tonnes. Their size was enabled by bird-like air-sac breathing, column limbs and no chewing (gut fermentation instead). Alongside them, stegosaurs, allosaurs and the first birds fill out the classic Jurassic world of the Morrison Formation.",
-      "wikipedia": "Sauropoda",
-      "phylopic": "Brachiosaurus altithorax",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Sauropoda"
-      ]
-    },
-    {
-      "id": "archaeopteryx",
-      "title": "Archaeopteryx and the origin of birds",
-      "kind": "organism",
-      "startMa": 150,
-      "endMa": null,
-      "summary": "From Bavaria's Solnhofen limestone: a raven-sized animal with flight feathers on wings, and also teeth, clawed fingers and a long bony tail. Archaeopteryx remains the classic evidence that birds are living dinosaurs, though whether it sits on the direct bird line or a nearby branch is still refined with each new feathered-dinosaur find from China.",
-      "wikipedia": "Archaeopteryx",
-      "phylopic": "Archaeopteryx lithographica",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Archaeopteryx"
-      ]
-    },
-    {
-      "id": "flowering-plants",
-      "title": "Flowering plants bloom",
-      "kind": "event",
-      "startMa": 135,
-      "endMa": 100,
-      "summary": "Angiosperms appear in the early Cretaceous pollen record and, within a few tens of millions of years, overtake conifers and ferns across most landscapes — Darwin's 'abominable mystery'. Their partnership with insect pollinators drove diversification on both sides; today flowering plants are about nine in ten living plant species. Molecular clocks suggest older, hidden origins; the fossil dates are shown.",
-      "wikipedia": "Flowering plant",
-      "phylopic": "Magnolia",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Flowering_plant"
-      ]
-    },
-    {
-      "id": "tyrannosaurus",
-      "title": "Tyrannosaurus rex",
-      "kind": "organism",
-      "startMa": 68,
-      "endMa": 66,
-      "summary": "The most studied dinosaur: a 12-metre, eight-tonne predator of the last two million years of the Cretaceous, with bone-crushing bite force and, growth-ring studies suggest, a teenage growth spurt of over two kilograms a day. Whether it hunted, scavenged, or (the consensus) both, it stands here for the entire late-Cretaceous world the asteroid ended.",
-      "wikipedia": "Tyrannosaurus",
-      "phylopic": "Tyrannosaurus rex",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Tyrannosaurus"
-      ]
-    },
-    {
-      "id": "kpg-extinction",
-      "title": "End-Cretaceous impact",
-      "kind": "extinction",
-      "startMa": 66,
-      "endMa": null,
-      "summary": "A roughly 10-kilometre asteroid strikes Chicxulub, Yucatán. Impact winter kills about 75 percent of species, including every non-avian dinosaur, the pterosaurs, and the great marine reptiles. The Deccan Traps eruptions were underway too, and their contribution is still argued — but the iridium layer, the crater, and the abruptness of the boundary have made the impact the accepted primary cause.",
-      "wikipedia": "Cretaceous–Paleogene extinction event",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event"
-      ]
-    },
-    {
-      "id": "mammal-radiation",
-      "title": "Mammals inherit the Earth",
-      "kind": "event",
-      "startMa": 66,
-      "endMa": 56,
-      "summary": "Within a few hundred thousand years of the impact, mammals begin an explosive radiation into the emptied world; within ten million years the ancestors of most modern orders — primates, rodents, carnivorans, hoofed mammals — are in place, alongside crocodile-sized flightless birds. How much of this radiation was already primed before the extinction is an active debate between fossils and molecular clocks.",
-      "wikipedia": "Placentalia",
-      "phylopic": "Mus musculus",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Placentalia",
-        "https://en.wikipedia.org/wiki/Paleocene"
-      ]
-    },
-    {
-      "id": "petm",
-      "title": "The PETM: a natural global-warming experiment",
-      "kind": "event",
-      "startMa": 56,
-      "endMa": null,
-      "summary": "The Paleocene–Eocene Thermal Maximum: a massive release of carbon warms the planet by 5-8 °C in a few thousand years, acidifying oceans and reshuffling ecosystems. Mammals dwarf and disperse across northern continents — the first true primates and horses appear during it. It is the closest geological analogue, though still far slower, to present-day carbon emissions.",
-      "wikipedia": "Paleocene–Eocene Thermal Maximum",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Paleocene%E2%80%93Eocene_Thermal_Maximum"
-      ]
-    },
-    {
-      "id": "early-primates",
-      "title": "True primates appear",
-      "kind": "organism",
-      "startMa": 56,
-      "endMa": 47,
-      "summary": "Small, agile, grasping-handed and forward-eyed: Teilhardina spreads across three continents at the PETM, and by 47 million years the Messel pit's Darwinius shows a complete early primate skeleton. Older Purgatorius, from just after the dinosaur extinction, may be the very base of the lineage — its primate status is contested.",
-      "wikipedia": "Primate",
-      "phylopic": "Teilhardina asiatica",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Primate",
-        "https://en.wikipedia.org/wiki/Teilhardina"
-      ]
-    },
-    {
-      "id": "whales",
-      "title": "Whales return to the sea",
-      "kind": "organism",
-      "startMa": 50,
-      "endMa": 34,
-      "summary": "One of evolution's best-documented transitions: from wolf-like Pakicetus wading in Eocene rivers, through the 'walking whale' Ambulocetus, to fully marine Basilosaurus with vestigial hind legs — all inside about 15 million years. Molecular and fossil evidence agree whales' closest living relatives are hippos.",
-      "wikipedia": "Evolution of cetaceans",
-      "phylopic": "Pakicetus",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Evolution_of_cetaceans"
-      ]
-    },
-    {
-      "id": "grasslands",
-      "title": "Grasses remake the continents",
-      "kind": "event",
-      "startMa": 34,
-      "endMa": 6,
-      "summary": "Grasses existed in the Cretaceous, but open grassland ecosystems spread only as the Cenozoic cooled and dried — savannas by the Miocene, and a global expansion of C4 grasses around 8 to 6 million years ago. Grazing mammals co-evolved alongside: high-crowned teeth, long limbs, herds. Human evolution would later play out on these African savannas.",
-      "wikipedia": "Grassland",
-      "phylopic": "Poaceae",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Grassland",
-        "https://en.wikipedia.org/wiki/C4_carbon_fixation"
-      ]
-    },
-    {
-      "id": "apes",
-      "title": "Apes diverge from Old World monkeys",
-      "kind": "organism",
-      "startMa": 25,
-      "endMa": 18,
-      "summary": "In the forests of early Miocene Africa, the tailless, broad-chested ape body plan emerges — Proconsul and its kin are the classic early fossils, blending monkey-like and ape-like traits. Molecular clocks put the ape–Old World monkey split around 25-30 million years ago; gibbons, then orangutans, gorillas and chimpanzees branch off over the following epochs.",
-      "wikipedia": "Ape",
-      "phylopic": "Hylobates",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Ape"
-      ]
-    },
-    {
-      "id": "hominin-split",
-      "title": "The human–chimpanzee split",
-      "kind": "event",
-      "startMa": 10,
-      "endMa": 6,
-      "summary": "The lineages leading to humans and to chimpanzees and bonobos separate — genomic comparisons put the split anywhere from 10 to 6 million years ago, possibly with an interval of continued interbreeding. Sahelanthropus (about 7 million years) and Orrorin sit near this fork, and whether each is on the human side is argued case by case.",
-      "wikipedia": "Chimpanzee–human last common ancestor",
-      "phylopic": "Pan troglodytes",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Chimpanzee%E2%80%93human_last_common_ancestor"
-      ]
-    },
-    {
-      "id": "australopithecus",
-      "title": "Australopithecus walks upright",
-      "kind": "organism",
-      "startMa": 4.2,
-      "endMa": 1.9,
-      "summary": "Small-brained but committed bipeds. The Laetoli footprints (3.66 million years) and the famous 'Lucy' skeleton of Australopithecus afarensis (3.2 million years) show upright walking long before large brains. Which australopith species — if any known — is the direct ancestor of Homo remains one of palaeoanthropology's central open questions.",
-      "wikipedia": "Australopithecus",
-      "phylopic": "Australopithecus afarensis",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Australopithecus",
-        "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)"
-      ]
-    },
-    {
-      "id": "genus-homo",
-      "title": "Genus Homo and stone tools",
-      "kind": "organism",
-      "startMa": 2.8,
-      "endMa": null,
-      "summary": "A jaw from Ledi-Geraru, Ethiopia, pushes genus Homo to about 2.8 million years. Systematic Oldowan stone toolmaking appears by 2.6 million years — and the 3.3-million-year Lomekwi tools, if their dating and interpretation hold, would mean toolmaking predates our genus entirely. Both the boundary of Homo and the authorship of the first tools are live controversies.",
-      "wikipedia": "Homo",
-      "phylopic": "Homo habilis",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Homo",
-        "https://en.wikipedia.org/wiki/Oldowan"
-      ]
-    },
-    {
-      "id": "homo-erectus",
-      "title": "Homo erectus leaves Africa",
-      "kind": "organism",
-      "startMa": 1.9,
-      "endMa": 0.11,
-      "summary": "Tall, striding, larger-brained, and the first hominin found far beyond Africa — at Dmanisi, Georgia by 1.8 million years, and soon after in Java and China. Homo erectus mastered the Acheulean handaxe, probably used fire, and persisted for over 1.5 million years — by far the longest run of any human species, ending in Java perhaps 110,000 years ago.",
-      "wikipedia": "Homo erectus",
-      "phylopic": "Homo erectus",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Homo_erectus"
-      ]
-    },
-    {
-      "id": "fire",
-      "title": "Control of fire",
-      "kind": "event",
-      "startMa": 1.5,
-      "endMa": 0.4,
-      "summary": "Burnt bone and ash at Koobi Fora and Wonderwerk Cave suggest hominins used fire by 1.5 to 1 million years ago; unambiguous, habitual hearths become common only after about 400,000 years. Cooking may have reshaped human digestion and freed energy for larger brains — the 'cooking hypothesis' — though how early cooking became routine is exactly what the sparse evidence leaves open.",
-      "wikipedia": "Control of fire by early humans",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans"
-      ]
-    },
-    {
-      "id": "neanderthals",
-      "title": "Neanderthals",
-      "kind": "organism",
-      "startMa": 0.43,
-      "endMa": 0.04,
-      "summary": "Cold-adapted, heavy-browed, large-brained humans of Eurasia, emerging from about 430,000 years ago (the Sima de los Huesos fossils) and disappearing around 40,000 years ago. They buried dead, made composite tools, and interbred with modern humans — 1-2 percent of the genome of everyone with ancestry outside Africa is Neanderthal. Why they vanished is still argued: absorption, competition, climate, or all three.",
-      "wikipedia": "Neanderthal",
-      "phylopic": "Homo neanderthalensis",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Neanderthal"
-      ]
-    },
-    {
-      "id": "homo-sapiens",
-      "title": "Homo sapiens",
-      "kind": "organism",
-      "startMa": 0.3,
-      "endMa": 0,
-      "summary": "Fossils from Jebel Irhoud, Morocco, push our species' origins to about 300,000 years ago, with the modern skull shape assembling gradually across Africa. Major dispersals out of Africa succeed from about 70-50,000 years ago, meeting and mixing with Neanderthals and Denisovans. Everything in the Human History section of this site happens inside this entry's last sliver.",
-      "wikipedia": "Homo sapiens",
-      "phylopic": "Homo sapiens",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Homo_sapiens"
-      ]
-    },
-    {
-      "id": "megafauna-extinction",
-      "title": "Late Quaternary megafauna extinctions",
-      "kind": "extinction",
-      "startMa": 0.05,
-      "endMa": 0.01,
-      "summary": "Mammoths, ground sloths, sabre-toothed cats, giant kangaroos: most land animals over a tonne disappear, continent by continent, broadly tracking modern human arrival — but overlapping with rapid climate swings at the last glacial termination. The human-versus-climate weighting is still fought over per continent; the pattern's correlation with our spread is the uncomfortable part.",
-      "wikipedia": "Quaternary extinction event",
-      "phylopic": "Mammuthus primigenius",
-      "sources": [
-        "https://en.wikipedia.org/wiki/Quaternary_extinction_event"
-      ]
-    },
-    {
-      "id": "holocene-extinction",
-      "title": "The Holocene extinction, ongoing",
-      "kind": "extinction",
-      "startMa": 0.012,
-      "endMa": 0,
-      "summary": "Current extinction rates are estimated at tens to hundreds of times the background rate, driven by habitat loss, exploitation, introduced species and climate change. Whether it yet amounts to a sixth mass extinction on the scale of the Big Five is debated — mass extinctions are measured over millennia — but the trajectory, uniquely, is being written by a species that can read this timeline.",
-      "wikipedia": "Holocene extinction",
-      "phylopic": null,
-      "sources": [
-        "https://en.wikipedia.org/wiki/Holocene_extinction"
-      ]
-    }
-  ]
+ "version": 2,
+ "note": "EDITORIAL, like history_events.json: which moments in the history of life make the timeline is a curation call, recorded and versioned here. Dates are in Ma (millions of years before present); startMa > endMa; endMa null means a point estimate. Every summary states its own uncertainty where the science is unsettled. The evolution ETL stage validates this file, checks each Wikipedia anchor, resolves a CC0/public-domain PhyloPic silhouette for entries with a phylopic query, and falls back to the anchor article's free lead image. Kinds: event, organism, extinction.",
+ "events": [
+  {
+   "id": "earth-forms",
+   "title": "Earth forms from the solar nebula",
+   "kind": "event",
+   "startMa": 4567,
+   "endMa": 4540,
+   "summary": "Earth accretes from the disc of gas and dust left over from the Sun's formation, reaching most of its final mass within a few tens of millions of years. The age of 4.54 billion years, with an uncertainty of about one percent, comes from radiometric dating of meteorites and the oldest terrestrial and lunar samples.",
+   "wikipedia": "Age of Earth",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Age_of_Earth",
+    "https://pubs.usgs.gov/gip/geotime/age.html"
+   ]
+  },
+  {
+   "id": "moon-forming-impact",
+   "title": "The Moon-forming giant impact",
+   "kind": "event",
+   "startMa": 4510,
+   "endMa": 4440,
+   "summary": "A Mars-sized body, often called Theia, collides with the young Earth; debris from the impact coalesces into the Moon. This is the leading explanation for the Moon's composition and angular momentum, though the impact's exact timing and geometry remain actively modelled rather than measured, with estimates spanning roughly 4.51 to 4.44 billion years ago.",
+   "wikipedia": "Giant-impact hypothesis",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Giant-impact_hypothesis"
+   ]
+  },
+  {
+   "id": "early-oceans",
+   "title": "Liquid water and early oceans",
+   "kind": "event",
+   "startMa": 4400,
+   "endMa": 4000,
+   "summary": "Tiny zircon crystals from Western Australia, some older than 4.3 billion years, carry oxygen-isotope signatures suggesting liquid water and perhaps oceans far earlier than the Hadean's name implies. How continuous those early oceans were is unresolved; what is clear is that by 3.8 billion years ago sedimentary rocks record standing water.",
+   "wikipedia": "Hadean",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hadean"
+   ]
+  },
+  {
+   "id": "origin-of-life",
+   "title": "Origin of life",
+   "kind": "event",
+   "startMa": 4100,
+   "endMa": 3500,
+   "summary": "Somewhere in this window, chemistry became biology. Claimed traces of life reach back 4.1 billion years (carbon isotopes in zircons) and 3.77 billion (disputed hydrothermal microfossils), while broadly accepted fossils begin around 3.5 billion. Where and how it happened — warm ponds, hydrothermal vents, or elsewhere — remains one of science's great open questions, and every date here is contested.",
+   "wikipedia": "Abiogenesis",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Abiogenesis"
+   ]
+  },
+  {
+   "id": "luca",
+   "title": "LUCA, the last universal common ancestor",
+   "kind": "organism",
+   "startMa": 4200,
+   "endMa": 3600,
+   "summary": "The most recent population from which all living cells — bacteria, archaea and eukaryotes — descend. Reconstructed from genes shared across all life, LUCA was already a sophisticated cell with DNA, ribosomes and membrane chemistry. Age estimates span 4.2 to 3.6 billion years depending on method; a 2024 molecular-clock study argued for the older end. It was an ancestor, not the first life.",
+   "wikipedia": "Last universal common ancestor",
+   "phylopic": "Escherichia coli",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Last_universal_common_ancestor"
+   ]
+  },
+  {
+   "id": "stromatolites",
+   "title": "Oldest widely accepted fossils: stromatolites",
+   "kind": "event",
+   "startMa": 3480,
+   "endMa": null,
+   "summary": "Layered mounds in the Dresser Formation of Western Australia's Pilbara region, built by microbial mats about 3.48 billion years ago, are the oldest fossils most palaeontologists accept. Older claims exist and are argued over; these layers, with their microbially textured surfaces, are where the fossil record of life becomes solid ground.",
+   "wikipedia": "Stromatolite",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Stromatolite"
+   ]
+  },
+  {
+   "id": "oxygenic-photosynthesis",
+   "title": "Cyanobacteria invent oxygenic photosynthesis",
+   "kind": "organism",
+   "startMa": 3000,
+   "endMa": 2500,
+   "summary": "Cyanobacteria evolve the water-splitting form of photosynthesis, exhaling oxygen as waste. When this machinery arose is debated — isotopic whiffs of oxygen suggest local production hundreds of millions of years before the atmosphere changed. Every breath of oxygen on Earth still traces to this single bacterial invention, later borrowed by plants as the chloroplast.",
+   "wikipedia": "Cyanobacteria",
+   "phylopic": "Cyanobacteria",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cyanobacteria"
+   ]
+  },
+  {
+   "id": "great-oxidation",
+   "title": "The Great Oxidation Event",
+   "kind": "event",
+   "startMa": 2460,
+   "endMa": 2050,
+   "summary": "Oxygen from cyanobacteria finally overwhelms the planet's chemical sinks and begins accumulating in the atmosphere. For most existing life — anaerobes to which oxygen was poison — this was a catastrophe; it also drew down methane and likely triggered global glaciation. The transition shows up in rocks as the end of mass-independent sulfur isotope fractionation around 2.43 billion years ago.",
+   "wikipedia": "Great Oxidation Event",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Great_Oxidation_Event"
+   ]
+  },
+  {
+   "id": "eukaryotes",
+   "title": "Eukaryotic cells",
+   "kind": "event",
+   "startMa": 2100,
+   "endMa": 1600,
+   "summary": "Cells with nuclei arise — the lineage that would produce every animal, plant, fungus and protist. The defining moment was symbiotic: an archaeal host cell permanently incorporated a bacterium that became the mitochondrion. Possible eukaryote fossils appear by 1.9 to 1.6 billion years ago; molecular clocks and disputed older fossils push estimates in both directions.",
+   "wikipedia": "Eukaryote",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Eukaryote",
+    "https://en.wikipedia.org/wiki/Symbiogenesis"
+   ]
+  },
+  {
+   "id": "francevillian",
+   "title": "Francevillian biota: an early experiment in size?",
+   "kind": "event",
+   "startMa": 2100,
+   "endMa": null,
+   "summary": "Centimetre-scale structured fossils from Gabon, 2.1 billion years old, have been proposed as the earliest large multicellular organisms — appearing just after the Great Oxidation Event. Whether they were truly multicellular life, colonial microbes, or not organisms at all is unresolved; they are included here as a marked controversy, not a settled milestone.",
+   "wikipedia": "Francevillian biota",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Francevillian_biota"
+   ]
+  },
+  {
+   "id": "bangiomorpha",
+   "title": "Bangiomorpha: sex and multicellularity",
+   "kind": "organism",
+   "startMa": 1050,
+   "endMa": null,
+   "summary": "A fossil red alga from Arctic Canada, about 1.05 billion years old, is the oldest taxonomically resolved multicellular eukaryote and the earliest direct evidence of sexual reproduction — its spores come in distinct types. Its resemblance to the living genus Bangia is so close that a billion years changed it remarkably little.",
+   "wikipedia": "Bangiomorpha",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Bangiomorpha"
+   ]
+  },
+  {
+   "id": "snowball-earth",
+   "title": "Snowball Earth glaciations",
+   "kind": "event",
+   "startMa": 717,
+   "endMa": 635,
+   "summary": "Twice in the Cryogenian — the Sturtian and Marinoan glaciations — ice sheets reached the tropics, possibly encasing the whole planet. Whether the freeze was total (\"hard snowball\") or left open tropical seas (\"slushball\") is debated. The aftermath of extreme environmental swings may have set the stage for the rise of animals shortly after.",
+   "wikipedia": "Snowball Earth",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Snowball_Earth"
+   ]
+  },
+  {
+   "id": "ediacaran-biota",
+   "title": "The Ediacaran biota",
+   "kind": "event",
+   "startMa": 575,
+   "endMa": 539,
+   "summary": "The first communities of large, soft-bodied organisms: fronds, discs and quilted mattress-like forms such as Dickinsonia and Charnia. Cholesterol traces identify at least some as animals, but how most relate to living groups — animals, stem-animals, or extinct kingdoms — remains argued. Nearly all vanish at the Cambrian boundary.",
+   "wikipedia": "Ediacaran biota",
+   "phylopic": "Dickinsonia",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ediacaran_biota"
+   ]
+  },
+  {
+   "id": "cambrian-explosion",
+   "title": "The Cambrian explosion",
+   "kind": "event",
+   "startMa": 539,
+   "endMa": 509,
+   "summary": "In a geologically brief window, nearly every major animal body plan enters the fossil record: arthropods, molluscs, chordates, and stranger things preserved in sites like the Burgess Shale and Chengjiang. Trigger hypotheses — rising oxygen, predation arms races, developmental genetics, ocean chemistry — are not mutually exclusive, and the 'explosion' had a longer Ediacaran fuse.",
+   "wikipedia": "Cambrian explosion",
+   "phylopic": "Anomalocaris",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cambrian_explosion"
+   ]
+  },
+  {
+   "id": "first-vertebrates",
+   "title": "First vertebrates",
+   "kind": "organism",
+   "startMa": 518,
+   "endMa": null,
+   "summary": "Finger-length, jawless fish-like animals from China's Chengjiang biota — Haikouichthys and Myllokunmingia — are the earliest widely accepted vertebrates: a head, a notochord, and traces of vertebral elements, about 518 million years ago. Every fish, amphibian, reptile, bird and mammal continues their lineage.",
+   "wikipedia": "Haikouichthys",
+   "phylopic": "Haikouichthys",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Haikouichthys"
+   ]
+  },
+  {
+   "id": "gobe",
+   "title": "The Great Ordovician Biodiversification",
+   "kind": "event",
+   "startMa": 485,
+   "endMa": 445,
+   "summary": "Marine life diversifies at every scale: the number of genera in the oceans roughly triples, reefs expand, and plankton, filter feeders and predators build the first modern-style marine ecosystems. Less famous than the Cambrian explosion, it added more diversity — filling out the body plans the Cambrian had sketched.",
+   "wikipedia": "Great Ordovician Biodiversification Event",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Great_Ordovician_Biodiversification_Event"
+   ]
+  },
+  {
+   "id": "plants-on-land",
+   "title": "Plants colonise the land",
+   "kind": "event",
+   "startMa": 470,
+   "endMa": 425,
+   "summary": "Spores resembling those of liverworts appear around 470 million years ago; by the late Silurian, small vascular plants such as Cooksonia stand upright on land. Descended from freshwater green algae, land plants would remake the planet's atmosphere, soils and rivers. Molecular clocks suggest an earlier, fossil-poor prologue — dates here follow the fossils.",
+   "wikipedia": "Embryophyte",
+   "phylopic": "Cooksonia",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Embryophyte",
+    "https://en.wikipedia.org/wiki/Cooksonia"
+   ]
+  },
+  {
+   "id": "ordovician-extinction",
+   "title": "End-Ordovician mass extinction",
+   "kind": "extinction",
+   "startMa": 445,
+   "endMa": 444,
+   "summary": "The first of the five major mass extinctions: around 85 percent of marine species vanish in two pulses tied to a sudden Gondwanan glaciation and its equally sudden end. Life was still almost entirely marine, so the toll fell on trilobites, brachiopods, graptolites and early reef builders.",
+   "wikipedia": "Late Ordovician mass extinction",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Late_Ordovician_mass_extinction"
+   ]
+  },
+  {
+   "id": "jawed-fish",
+   "title": "Jaws: gnathostomes diversify",
+   "kind": "event",
+   "startMa": 439,
+   "endMa": 419,
+   "summary": "Vertebrates with jaws — evolved from the front gill arches — spread through Silurian seas. Recent fossil finds from China push recognisable jawed fish to about 439 million years ago. Jaws turned vertebrates from filter feeders and scavengers into predators, and more than 99 percent of living vertebrate species descend from these gnathostomes.",
+   "wikipedia": "Gnathostomata",
+   "phylopic": "Dunkleosteus",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Gnathostomata"
+   ]
+  },
+  {
+   "id": "insects",
+   "title": "Insects appear",
+   "kind": "event",
+   "startMa": 410,
+   "endMa": 400,
+   "summary": "The Rhynie chert of Scotland preserves early terrestrial ecosystems in exquisite detail, including Rhyniognatha, argued to be the oldest insect at about 410 million years — though whether it is truly an insect is disputed. However the debate lands, by the Devonian the most diverse animal lineage in history was underway.",
+   "wikipedia": "Evolution of insects",
+   "phylopic": "Insecta",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Evolution_of_insects"
+   ]
+  },
+  {
+   "id": "first-forests",
+   "title": "The first forests",
+   "kind": "event",
+   "startMa": 385,
+   "endMa": 359,
+   "summary": "Trees evolve — Wattieza and, later, the widespread Archaeopteris — and the first forests rise at Gilboa, New York and across the Devonian tropics. Deep roots weathered rock into true soils and drew down carbon dioxide, cooling the climate; some link this drawdown to the extinctions that closed the Devonian.",
+   "wikipedia": "Archaeopteris",
+   "phylopic": "Archaeopteris",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Archaeopteris"
+   ]
+  },
+  {
+   "id": "tetrapods",
+   "title": "Tetrapods: vertebrates walk onto land",
+   "kind": "organism",
+   "startMa": 375,
+   "endMa": 365,
+   "summary": "Lobe-finned fish evolve limbs. Tiktaalik (about 375 million years ago) had a neck, shoulders and wrist-like fins; by 365 million years, Acanthostega and Ichthyostega had true digits — eight per foot in Acanthostega's case. These animals were mostly aquatic; walking came before living on land. Trackways from Poland hint the story may start millions of years earlier.",
+   "wikipedia": "Tiktaalik",
+   "phylopic": "Tiktaalik roseae",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tiktaalik",
+    "https://en.wikipedia.org/wiki/Tetrapod"
+   ]
+  },
+  {
+   "id": "devonian-extinction",
+   "title": "Late Devonian extinctions",
+   "kind": "extinction",
+   "startMa": 372,
+   "endMa": 359,
+   "summary": "The second of the five: a drawn-out series of pulses — the Kellwasser and Hangenberg events — rather than one blow, eliminating perhaps 75 percent of species. Reef ecosystems collapsed so thoroughly they took a hundred million years to recover. Causes are debated: ocean anoxia, climate swings, possibly driven in part by the spread of the first forests.",
+   "wikipedia": "Late Devonian extinction",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Late_Devonian_extinction"
+   ]
+  },
+  {
+   "id": "amniotes",
+   "title": "Amniotes: the egg leaves the water",
+   "kind": "organism",
+   "startMa": 318,
+   "endMa": null,
+   "summary": "Hylonomus, a small lizard-like animal found inside fossil tree stumps in Nova Scotia, is the earliest widely accepted amniote. The amniotic egg — an embryo packaged with its own pond — freed vertebrate reproduction from open water. Its descendants split almost immediately into the lines leading to mammals on one side and reptiles and birds on the other.",
+   "wikipedia": "Hylonomus",
+   "phylopic": "Hylonomus",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hylonomus",
+    "https://en.wikipedia.org/wiki/Amniote"
+   ]
+  },
+  {
+   "id": "coal-forests",
+   "title": "Coal forests and giant insects",
+   "kind": "event",
+   "startMa": 315,
+   "endMa": 299,
+   "summary": "Vast tropical swamps of scale trees and horsetails bury so much carbon they become most of the world's coal. Atmospheric oxygen climbs toward 30-35 percent, and insects reach sizes never repeated: the griffinfly Meganeura spanned about 70 centimetres. The oxygen-gigantism link is well supported but still an active research question.",
+   "wikipedia": "Meganeura",
+   "phylopic": "Meganeurites gracilipes",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Meganeura",
+    "https://en.wikipedia.org/wiki/Carboniferous"
+   ]
+  },
+  {
+   "id": "synapsids",
+   "title": "Synapsids rule the Permian",
+   "kind": "organism",
+   "startMa": 295,
+   "endMa": 272,
+   "summary": "Long before dinosaurs, the sail-backed Dimetrodon and its synapsid relatives were the dominant land predators. Despite the reptilian look, synapsids are the mammal line — Dimetrodon is more closely related to humans than to any dinosaur or lizard. The sail's function, thermoregulation or display, remains debated.",
+   "wikipedia": "Dimetrodon",
+   "phylopic": "Dimetrodon",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Dimetrodon"
+   ]
+  },
+  {
+   "id": "permian-extinction",
+   "title": "End-Permian: the Great Dying",
+   "kind": "extinction",
+   "startMa": 252,
+   "endMa": null,
+   "summary": "The worst mass extinction known: roughly 81 percent of marine species and 70 percent of land vertebrate species die, and even insects suffer their only mass extinction. The Siberian Traps eruptions — flood basalts burning through coal beds — drove lethal warming, ocean acidification and anoxia. Life needed millions of years to recover; the wreckage opened the way for dinosaurs and mammals alike.",
+   "wikipedia": "Permian–Triassic extinction event",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Permian%E2%80%93Triassic_extinction_event"
+   ]
+  },
+  {
+   "id": "first-dinosaurs",
+   "title": "The first dinosaurs",
+   "kind": "organism",
+   "startMa": 243,
+   "endMa": 233,
+   "summary": "Small, bipedal and rare at first: Nyasasaurus (about 243 million years ago) is either the earliest dinosaur or its closest relative, and by 233 million years Eoraptor and Herrerasaurus were living in Argentina's Ischigualasto valley. Dinosaurs would not dominate until after the end-Triassic extinction cleared away their competitors.",
+   "wikipedia": "Eoraptor",
+   "phylopic": "Eoraptor lunensis",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Eoraptor",
+    "https://en.wikipedia.org/wiki/Evolution_of_dinosaurs"
+   ]
+  },
+  {
+   "id": "first-mammals",
+   "title": "First mammals",
+   "kind": "organism",
+   "startMa": 225,
+   "endMa": 200,
+   "summary": "Shrew-sized animals such as Morganucodon, with the jaw joint and precise molars that define mammals, appear in the late Triassic. For the next 150 million years mammals stayed mostly small and nocturnal in a dinosaur-dominated world — an ecological bottleneck that may explain traits like acute hearing and warm-bloodedness. Where exactly 'mammal' begins on the synapsid line is a definitional argument as much as a fossil one.",
+   "wikipedia": "Morganucodon",
+   "phylopic": "Morganucodon",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Morganucodon"
+   ]
+  },
+  {
+   "id": "triassic-extinction",
+   "title": "End-Triassic mass extinction",
+   "kind": "extinction",
+   "startMa": 201.4,
+   "endMa": null,
+   "summary": "The fourth of the five: eruptions of the Central Atlantic Magmatic Province, as Pangaea began to rift, drove abrupt warming and ocean acidification. About three-quarters of species vanish, including most large non-dinosaur reptiles on land. Dinosaurs, oddly resilient, inherit the emptied landscape — the true start of their age.",
+   "wikipedia": "Triassic–Jurassic extinction event",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Triassic%E2%80%93Jurassic_extinction_event"
+   ]
+  },
+  {
+   "id": "sauropods",
+   "title": "Giants of the Jurassic",
+   "kind": "organism",
+   "startMa": 174,
+   "endMa": 145,
+   "summary": "Sauropods — Brachiosaurus, Diplodocus, and kin — become the largest land animals ever, some exceeding 30 metres and 50 tonnes. Their size was enabled by bird-like air-sac breathing, column limbs and no chewing (gut fermentation instead). Alongside them, stegosaurs, allosaurs and the first birds fill out the classic Jurassic world of the Morrison Formation.",
+   "wikipedia": "Sauropoda",
+   "phylopic": "Brachiosaurus altithorax",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sauropoda"
+   ]
+  },
+  {
+   "id": "archaeopteryx",
+   "title": "Archaeopteryx and the origin of birds",
+   "kind": "organism",
+   "startMa": 150,
+   "endMa": null,
+   "summary": "From Bavaria's Solnhofen limestone: a raven-sized animal with flight feathers on wings, and also teeth, clawed fingers and a long bony tail. Archaeopteryx remains the classic evidence that birds are living dinosaurs, though whether it sits on the direct bird line or a nearby branch is still refined with each new feathered-dinosaur find from China.",
+   "wikipedia": "Archaeopteryx",
+   "phylopic": "Archaeopteryx lithographica",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Archaeopteryx"
+   ]
+  },
+  {
+   "id": "flowering-plants",
+   "title": "Flowering plants bloom",
+   "kind": "event",
+   "startMa": 135,
+   "endMa": 100,
+   "summary": "Angiosperms appear in the early Cretaceous pollen record and, within a few tens of millions of years, overtake conifers and ferns across most landscapes — Darwin's 'abominable mystery'. Their partnership with insect pollinators drove diversification on both sides; today flowering plants are about nine in ten living plant species. Molecular clocks suggest older, hidden origins; the fossil dates are shown.",
+   "wikipedia": "Flowering plant",
+   "phylopic": "Magnolia",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Flowering_plant"
+   ]
+  },
+  {
+   "id": "tyrannosaurus",
+   "title": "Tyrannosaurus rex",
+   "kind": "organism",
+   "startMa": 68,
+   "endMa": 66,
+   "summary": "The most studied dinosaur: a 12-metre, eight-tonne predator of the last two million years of the Cretaceous, with bone-crushing bite force and, growth-ring studies suggest, a teenage growth spurt of over two kilograms a day. Whether it hunted, scavenged, or (the consensus) both, it stands here for the entire late-Cretaceous world the asteroid ended.",
+   "wikipedia": "Tyrannosaurus",
+   "phylopic": "Tyrannosaurus rex",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tyrannosaurus"
+   ]
+  },
+  {
+   "id": "kpg-extinction",
+   "title": "End-Cretaceous impact",
+   "kind": "extinction",
+   "startMa": 66,
+   "endMa": null,
+   "summary": "A roughly 10-kilometre asteroid strikes Chicxulub, Yucatán. Impact winter kills about 75 percent of species, including every non-avian dinosaur, the pterosaurs, and the great marine reptiles. The Deccan Traps eruptions were underway too, and their contribution is still argued — but the iridium layer, the crater, and the abruptness of the boundary have made the impact the accepted primary cause.",
+   "wikipedia": "Cretaceous–Paleogene extinction event",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event"
+   ]
+  },
+  {
+   "id": "mammal-radiation",
+   "title": "Mammals inherit the Earth",
+   "kind": "event",
+   "startMa": 66,
+   "endMa": 56,
+   "summary": "Within a few hundred thousand years of the impact, mammals begin an explosive radiation into the emptied world; within ten million years the ancestors of most modern orders — primates, rodents, carnivorans, hoofed mammals — are in place, alongside crocodile-sized flightless birds. How much of this radiation was already primed before the extinction is an active debate between fossils and molecular clocks.",
+   "wikipedia": "Placentalia",
+   "phylopic": "Mus musculus",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Placentalia",
+    "https://en.wikipedia.org/wiki/Paleocene"
+   ]
+  },
+  {
+   "id": "petm",
+   "title": "The PETM: a natural global-warming experiment",
+   "kind": "event",
+   "startMa": 56,
+   "endMa": null,
+   "summary": "The Paleocene–Eocene Thermal Maximum: a massive release of carbon warms the planet by 5-8 °C in a few thousand years, acidifying oceans and reshuffling ecosystems. Mammals dwarf and disperse across northern continents — the first true primates and horses appear during it. It is the closest geological analogue, though still far slower, to present-day carbon emissions.",
+   "wikipedia": "Paleocene–Eocene Thermal Maximum",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Paleocene%E2%80%93Eocene_Thermal_Maximum"
+   ]
+  },
+  {
+   "id": "early-primates",
+   "title": "True primates appear",
+   "kind": "organism",
+   "startMa": 56,
+   "endMa": 47,
+   "summary": "Small, agile, grasping-handed and forward-eyed: Teilhardina spreads across three continents at the PETM, and by 47 million years the Messel pit's Darwinius shows a complete early primate skeleton. Older Purgatorius, from just after the dinosaur extinction, may be the very base of the lineage — its primate status is contested.",
+   "wikipedia": "Primate",
+   "phylopic": "Teilhardina asiatica",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Primate",
+    "https://en.wikipedia.org/wiki/Teilhardina"
+   ]
+  },
+  {
+   "id": "whales",
+   "title": "Whales return to the sea",
+   "kind": "organism",
+   "startMa": 50,
+   "endMa": 34,
+   "summary": "One of evolution's best-documented transitions: from wolf-like Pakicetus wading in Eocene rivers, through the 'walking whale' Ambulocetus, to fully marine Basilosaurus with vestigial hind legs — all inside about 15 million years. Molecular and fossil evidence agree whales' closest living relatives are hippos.",
+   "wikipedia": "Evolution of cetaceans",
+   "phylopic": "Pakicetus",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Evolution_of_cetaceans"
+   ]
+  },
+  {
+   "id": "grasslands",
+   "title": "Grasses remake the continents",
+   "kind": "event",
+   "startMa": 34,
+   "endMa": 6,
+   "summary": "Grasses existed in the Cretaceous, but open grassland ecosystems spread only as the Cenozoic cooled and dried — savannas by the Miocene, and a global expansion of C4 grasses around 8 to 6 million years ago. Grazing mammals co-evolved alongside: high-crowned teeth, long limbs, herds. Human evolution would later play out on these African savannas.",
+   "wikipedia": "Grassland",
+   "phylopic": "Poaceae",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Grassland",
+    "https://en.wikipedia.org/wiki/C4_carbon_fixation"
+   ]
+  },
+  {
+   "id": "apes",
+   "title": "Apes diverge from Old World monkeys",
+   "kind": "organism",
+   "startMa": 25,
+   "endMa": 18,
+   "summary": "In the forests of early Miocene Africa, the tailless, broad-chested ape body plan emerges — Proconsul and its kin are the classic early fossils, blending monkey-like and ape-like traits. Molecular clocks put the ape–Old World monkey split around 25-30 million years ago; gibbons, then orangutans, gorillas and chimpanzees branch off over the following epochs.",
+   "wikipedia": "Ape",
+   "phylopic": "Hylobates",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ape"
+   ]
+  },
+  {
+   "id": "hominin-split",
+   "title": "The human–chimpanzee split",
+   "kind": "event",
+   "startMa": 10,
+   "endMa": 6,
+   "summary": "The lineages leading to humans and to chimpanzees and bonobos separate — genomic comparisons put the split anywhere from 10 to 6 million years ago, possibly with an interval of continued interbreeding. Sahelanthropus (about 7 million years) and Orrorin sit near this fork, and whether each is on the human side is argued case by case.",
+   "wikipedia": "Chimpanzee–human last common ancestor",
+   "phylopic": "Pan troglodytes",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Chimpanzee%E2%80%93human_last_common_ancestor"
+   ]
+  },
+  {
+   "id": "australopithecus",
+   "title": "Australopithecus walks upright",
+   "kind": "organism",
+   "startMa": 4.2,
+   "endMa": 1.9,
+   "summary": "Small-brained but committed bipeds. The Laetoli footprints (3.66 million years) and the famous 'Lucy' skeleton of Australopithecus afarensis (3.2 million years) show upright walking long before large brains. Which australopith species — if any known — is the direct ancestor of Homo remains one of palaeoanthropology's central open questions.",
+   "wikipedia": "Australopithecus",
+   "phylopic": "Australopithecus afarensis",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Australopithecus",
+    "https://en.wikipedia.org/wiki/Lucy_(Australopithecus)"
+   ]
+  },
+  {
+   "id": "genus-homo",
+   "title": "Genus Homo and stone tools",
+   "kind": "organism",
+   "startMa": 2.8,
+   "endMa": null,
+   "summary": "A jaw from Ledi-Geraru, Ethiopia, pushes genus Homo to about 2.8 million years. Systematic Oldowan stone toolmaking appears by 2.6 million years — and the 3.3-million-year Lomekwi tools, if their dating and interpretation hold, would mean toolmaking predates our genus entirely. Both the boundary of Homo and the authorship of the first tools are live controversies.",
+   "wikipedia": "Homo",
+   "phylopic": "Homo habilis",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Homo",
+    "https://en.wikipedia.org/wiki/Oldowan"
+   ]
+  },
+  {
+   "id": "homo-erectus",
+   "title": "Homo erectus leaves Africa",
+   "kind": "organism",
+   "startMa": 1.9,
+   "endMa": 0.11,
+   "summary": "Tall, striding, larger-brained, and the first hominin found far beyond Africa — at Dmanisi, Georgia by 1.8 million years, and soon after in Java and China. Homo erectus mastered the Acheulean handaxe, probably used fire, and persisted for over 1.5 million years — by far the longest run of any human species, ending in Java perhaps 110,000 years ago.",
+   "wikipedia": "Homo erectus",
+   "phylopic": "Homo erectus",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Homo_erectus"
+   ]
+  },
+  {
+   "id": "fire",
+   "title": "Control of fire",
+   "kind": "event",
+   "startMa": 1.5,
+   "endMa": 0.4,
+   "summary": "Burnt bone and ash at Koobi Fora and Wonderwerk Cave suggest hominins used fire by 1.5 to 1 million years ago; unambiguous, habitual hearths become common only after about 400,000 years. Cooking may have reshaped human digestion and freed energy for larger brains — the 'cooking hypothesis' — though how early cooking became routine is exactly what the sparse evidence leaves open.",
+   "wikipedia": "Control of fire by early humans",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans"
+   ]
+  },
+  {
+   "id": "neanderthals",
+   "title": "Neanderthals",
+   "kind": "organism",
+   "startMa": 0.43,
+   "endMa": 0.04,
+   "summary": "Cold-adapted, heavy-browed, large-brained humans of Eurasia, emerging from about 430,000 years ago (the Sima de los Huesos fossils) and disappearing around 40,000 years ago. They buried dead, made composite tools, and interbred with modern humans — 1-2 percent of the genome of everyone with ancestry outside Africa is Neanderthal. Why they vanished is still argued: absorption, competition, climate, or all three.",
+   "wikipedia": "Neanderthal",
+   "phylopic": "Homo neanderthalensis",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Neanderthal"
+   ]
+  },
+  {
+   "id": "homo-sapiens",
+   "title": "Homo sapiens",
+   "kind": "organism",
+   "startMa": 0.3,
+   "endMa": 0,
+   "summary": "Fossils from Jebel Irhoud, Morocco, push our species' origins to about 300,000 years ago, with the modern skull shape assembling gradually across Africa. Major dispersals out of Africa succeed from about 70-50,000 years ago, meeting and mixing with Neanderthals and Denisovans. Everything in the Human History section of this site happens inside this entry's last sliver.",
+   "wikipedia": "Homo sapiens",
+   "phylopic": "Homo sapiens",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Homo_sapiens"
+   ]
+  },
+  {
+   "id": "megafauna-extinction",
+   "title": "Late Quaternary megafauna extinctions",
+   "kind": "extinction",
+   "startMa": 0.05,
+   "endMa": 0.01,
+   "summary": "Mammoths, ground sloths, sabre-toothed cats, giant kangaroos: most land animals over a tonne disappear, continent by continent, broadly tracking modern human arrival — but overlapping with rapid climate swings at the last glacial termination. The human-versus-climate weighting is still fought over per continent; the pattern's correlation with our spread is the uncomfortable part.",
+   "wikipedia": "Quaternary extinction event",
+   "phylopic": "Mammuthus primigenius",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Quaternary_extinction_event"
+   ]
+  },
+  {
+   "id": "holocene-extinction",
+   "title": "The Holocene extinction, ongoing",
+   "kind": "extinction",
+   "startMa": 0.012,
+   "endMa": 0,
+   "summary": "Current extinction rates are estimated at tens to hundreds of times the background rate, driven by habitat loss, exploitation, introduced species and climate change. Whether it yet amounts to a sixth mass extinction on the scale of the Big Five is debated — mass extinctions are measured over millennia — but the trajectory, uniquely, is being written by a species that can read this timeline.",
+   "wikipedia": "Holocene extinction",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Holocene_extinction"
+   ]
+  },
+  {
+   "id": "vredefort-impact",
+   "title": "Vredefort: the largest impact scar on Earth",
+   "kind": "event",
+   "startMa": 2023,
+   "endMa": null,
+   "summary": "An asteroid perhaps ten to fifteen kilometres across strikes what is now South Africa, excavating a crater originally some 250 to 300 kilometres wide — the largest verified impact structure on Earth, precisely dated to 2.023 billion years ago. Deeply eroded, its concentric rings still shape the landscape around the town of Vredefort. Together with Ontario's Sudbury impact 170 million years later, it brackets a violent stretch of the Orosirian period.",
+   "wikipedia": "Vredefort impact structure",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Vredefort_impact_structure"
+   ]
+  },
+  {
+   "id": "columbia-supercontinent",
+   "title": "Columbia, the first great supercontinent",
+   "kind": "event",
+   "startMa": 1600,
+   "endMa": 1300,
+   "summary": "By the Statherian period, most continental crust has gathered into a single landmass that geologists call Columbia or Nuna — the earliest supercontinent whose outline can be reconstructed with any confidence from matching rock belts on now-distant continents. Its slow breakup and the later reassembly into Rodinia establish the supercontinent cycle, the few-hundred-million-year rhythm of merging and rifting that has governed Earth's geography ever since.",
+   "wikipedia": "Columbia (supercontinent)",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Columbia_(supercontinent)"
+   ]
+  },
+  {
+   "id": "boring-billion",
+   "title": "The Boring Billion",
+   "kind": "event",
+   "startMa": 1500,
+   "endMa": 800,
+   "summary": "For roughly a billion years the rock record shows striking stability: mild climates, no great glaciations, sluggish oxygen levels and slow evolutionary change — palaeontologist Martin Brasier's 'Boring Billion'. The name is half a joke: beneath the quiet, eukaryotic cells diversified, sexual reproduction and multicellularity emerged, and the stage was set for the upheavals of the Neoproterozoic. Why oxygen stalled so long remains an active research question.",
+   "wikipedia": "Boring Billion",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Boring_Billion"
+   ]
+  },
+  {
+   "id": "rodinia",
+   "title": "Rodinia assembles, stretches, and begins to break",
+   "kind": "event",
+   "startMa": 1000,
+   "endMa": 720,
+   "summary": "Around the start of the Tonian period the continents stand united in the supercontinent Rodinia. Through the Tonian the great landmass stretches — the crustal tension that gives the period its name — and by about 750 to 720 million years ago rifting is tearing it apart. The breakup multiplies shallow coastal seas, and its weathering may have drawn down enough carbon dioxide to help trigger the Cryogenian snowball glaciations.",
+   "wikipedia": "Rodinia",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Rodinia"
+   ]
+  },
+  {
+   "id": "ourasphaira-fungi",
+   "title": "Ourasphaira: the earliest fossil fungi",
+   "kind": "organism",
+   "startMa": 1010,
+   "endMa": 890,
+   "summary": "Microscopic branching filaments from Arctic Canada, named Ourasphaira giraldae and dated to roughly one billion to 890 million years ago, preserve chitin in their walls — the strongest early evidence that fungi existed in the Tonian, hundreds of millions of years before their previously accepted record. If fungi were already diversifying then, the split between fungi and animals, their closest relatives, must be older still.",
+   "wikipedia": "Ourasphaira",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ourasphaira"
+   ]
+  },
+  {
+   "id": "bitter-springs",
+   "title": "The Bitter Springs carbon anomaly",
+   "kind": "event",
+   "startMa": 810,
+   "endMa": 790,
+   "summary": "Around 810 million years ago, carbon isotopes in marine rocks worldwide lurch through the Bitter Springs anomaly, named for an Australian formation — one of the first great disturbances after the Boring Billion's calm. Its cause is debated: true polar wander, changes in the burial of organic carbon, or shifts in early ecosystems. Whatever drove it, it marks the Earth system waking into the turbulent Neoproterozoic.",
+   "wikipedia": "Bitter Springs Group",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Bitter_Springs_Group"
+   ]
+  },
+  {
+   "id": "vase-shaped-microfossils",
+   "title": "Vase-shaped microfossils: amoebae with shells, and predation",
+   "kind": "organism",
+   "startMa": 789,
+   "endMa": 740,
+   "summary": "Tonian rocks from the Grand Canyon and elsewhere preserve flask-shaped shells of testate amoebae — among the earliest fossils confidently assigned to a living eukaryote group. Some shells bear neat half-moon holes, apparently drilled by other protists: direct evidence of eukaryotes preying on eukaryotes. Predation pressure of this kind is a favoured trigger for the evolution of shells, larger bodies and, eventually, animals.",
+   "wikipedia": "Testate amoebae",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Testate_amoebae"
+   ]
+  },
+  {
+   "id": "animal-molecular-origin",
+   "title": "Molecular clocks place the origin of animals",
+   "kind": "event",
+   "startMa": 800,
+   "endMa": 650,
+   "summary": "Comparisons of living animals' genes, calibrated against the fossil record, consistently place the last common ancestor of all animals — and the split of sponge lineages — somewhere between about 800 and 650 million years ago, deep in the Tonian and Cryogenian. Unambiguous animal fossils appear only near 574 million years, so either tiny early animals left no trace for over a hundred million years, or the clocks run fast. The gap is one of evolution's liveliest arguments.",
+   "wikipedia": "Evolutionary history of life",
+   "phylopic": null,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Evolutionary_history_of_life"
+   ]
+  }
+ ]
 }

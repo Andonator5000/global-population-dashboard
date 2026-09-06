@@ -14,6 +14,7 @@ export function HistoryPage() {
   const state = useHistory()
   const allCategories = useMemo(() => Object.keys(CATEGORY_LABELS), [])
   const [categories, setCategories] = useState<Set<string>>(() => new Set(allCategories))
+  const [civilization, setCivilization] = useState<string | null>(null)
   const [query, setQuery] = useState('')
 
   const toggle = (key: string) =>
@@ -60,6 +61,30 @@ export function HistoryPage() {
                 </label>
               ))}
             </fieldset>
+            {(state.data.civilizations?.length ?? 0) > 0 && (
+              <label className="flex items-center gap-2">
+                <span style={{ color: 'var(--text-muted)' }}>Civilization</span>
+                <select
+                  value={civilization ?? ''}
+                  onChange={(event) =>
+                    setCivilization(event.target.value || null)
+                  }
+                  className="rounded border px-2 py-1"
+                  style={{
+                    borderColor: 'var(--border)',
+                    background: 'var(--surface-raised)',
+                    color: 'var(--text)',
+                  }}
+                >
+                  <option value="">All civilizations</option>
+                  {state.data.civilizations?.map((civ) => (
+                    <option key={civ} value={civ}>
+                      {civ}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
             <label className="flex items-center gap-2">
               <span className="sr-only">Search events</span>
               <input
@@ -78,13 +103,18 @@ export function HistoryPage() {
           </div>
 
           <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-            {state.data.counts.events} events, version {state.data.version}. Eras and
-            their spans are boxed on the left; events sit on the right. Hover or tap an
-            event for its summary; Escape closes it. {state.data.imageNote}
+            {state.data.counts.events} events, version {state.data.version}.
+            Each era opens with its banner; hover or tap an event for its
+            summary; Escape closes it. {state.data.imageNote}
           </p>
 
           <div className="mt-6">
-            <Timeline data={state.data} categories={categories} query={query} />
+            <Timeline
+              data={state.data}
+              categories={categories}
+              civilization={civilization}
+              query={query}
+            />
           </div>
         </>
       )}

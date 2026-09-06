@@ -20,12 +20,29 @@ function dataArtifacts(): Plugin {
   return {
     name: 'data-artifacts',
     configureServer(server) {
+      // Content types by extension: most artifacts are JSON, but the tree
+      // also holds SVGs (flags) and raster imagery — and a browser will
+      // not render an SVG <img> served as application/json. (§42: this
+      // was why flags showed as broken boxes in dev but worked on Pages.)
+      const contentTypes: Record<string, string> = {
+        json: 'application/json; charset=utf-8',
+        svg: 'image/svg+xml',
+        png: 'image/png',
+        jpg: 'image/jpeg',
+        jpeg: 'image/jpeg',
+        webp: 'image/webp',
+        txt: 'text/plain; charset=utf-8',
+      }
       server.middlewares.use('/data', (req, res, next) => {
         const relative = (req.url ?? '').split('?')[0]?.replace(/^\/+/, '')
         if (!relative || relative.includes('..')) return next()
         const file = resolve(DATA_DIR, relative)
         if (!file.startsWith(DATA_DIR) || !existsSync(file)) return next()
-        res.setHeader('Content-Type', 'application/json; charset=utf-8')
+        const extension = file.split('.').pop()?.toLowerCase() ?? ''
+        res.setHeader(
+          'Content-Type',
+          contentTypes[extension] ?? 'application/octet-stream',
+        )
         res.end(readFileSync(file))
       })
     },

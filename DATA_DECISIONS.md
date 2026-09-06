@@ -2089,6 +2089,357 @@ JPL SSD tables and SBDB join the monthly refresh (new moon discoveries
 arrive as ordinary data PRs — satellite counts move every year or two).
 The NSSDC snapshots and NASA portrait picks are pinned by construction.
 
+## 34. The round-2 design pass (2026-09, maintainer-requested)
+
+The maintainer reviewed the live site and asked for a professional
+design system, a real masthead, a flatter IA, and less permanent screen
+spent on provenance. UI UX Pro Max was consulted again; its style
+verdict (Minimalism & Swiss) and its nav guidance (active state = colour
+plus underline) were followed; its blue palette and Garamond pairing
+remain declined for the §25/§29 reasons.
+
+### 34.1 Masthead and navigation
+
+The header is now a centred publication nameplate — serif title,
+small-caps tagline ("A reference atlas with a source on every figure"),
+double hairline — REVERSING the earlier left-edge ruling, on maintainer
+request. The coloured section pills are gone; the primary nav is an
+editorial row of uppercase links whose active state is a 2 px underline
+in the section's own hue plus a text-colour step (never hue alone). The
+underline hues are new THEMED tokens (`--nav-*`), stepped lighter in
+dark mode to clear 3:1 as non-text indicators, and gated in both themes.
+The legacy pill tokens remain (they still colour in-page elements).
+
+### 34.2 IA: Biology dissolves
+
+Top-level sections are now Global Data, Human History, **Taxonomy**,
+**Evolution**, Space. `/biology/*` paths redirect to the new top-level
+routes so bookmarks survive.
+
+### 34.3 Sources collapse
+
+The data-freshness panel — previously always open on principle
+("burying warnings would leave readers to discover them by surprise") —
+is now COLLAPSED by default behind a "Sources & data freshness (N)" row
+on every page, by maintainer ruling: the principle bends to the screen
+cost, and discoverability survives via the count, the fixed position,
+and one keyboard-native click (<details>/<summary>). Nothing about the
+three-dates discipline or the warnings changed; they are one toggle
+away instead of permanently unrolled.
+
+## 35. Map rendering: drag frames on canvas (2026-09, round 2)
+
+The globe's drag sluggishness was architectural: every pointer-move
+re-projected and reconciled ~250 SVG paths through React. Now, while a
+drag or its inertia is live, rotation lives in a ref and each frame is
+painted to a canvas with d3's context renderer (fills resolved from the
+gated CSS variables once per gesture); the interactive SVG is hidden for
+the duration and returns with ONE React commit on release. Hover, click,
+keyboard navigation and the screen-reader surface are untouched — the
+SVG they live on sits out the animation rather than being replaced.
+Inertia (7%-per-frame decay) is skipped under prefers-reduced-motion;
+button zoom eases over 200 ms through the same d3-zoom behaviour
+(d3-transition added); wheel and pinch stay direct and cursor-anchored.
+
+The "graticule" artifact the maintainer saw in the satellite view was
+seams between the terrain mesh quads: adjacent quads' affine transforms
+disagree by sub-pixel amounts along shared edges, and the dark ocean
+leaked through as a faint lon/lat grid. Quads now overdraw ~1.5% so
+neighbours overlap; imagery over imagery is invisible. There is no
+actual graticule layer on the map.
+
+## 36. Round-2 Global Data page rulings (2026-09)
+
+- **Country popover.** Hovering a country (mouse) shows a card at the
+  cursor — name, flag, population, GDP, growth, each with vintage, and a
+  client-side "More info" link; on touch, tapping PINS the card above
+  the finger with a close control, and navigation happens only through
+  the link (a bare tap no longer navigates on touch). Works identically
+  in full screen (the card lives inside the fullscreen element) and on
+  every projection; flips away from viewport edges.
+- **Control tooltips + zoom slider.** The zoom and fullscreen buttons
+  grew hover/focus tooltips; the zoom tooltips carry a Show/Hide-slider
+  link revealing a vertical, logarithmic zoom slider (Google-Maps
+  style). The choice persists for the session (sessionStorage).
+  Tooltips hide with `visibility`, so the link inside is only focusable
+  while revealed.
+- **§36.4 Methodology page.** The maintainer ruled that method prose
+  (the live-counter interpolation paragraphs, projection explainers,
+  IMF modelling notes) exposed internals on every page. It moved to a
+  single /methodology page; figures keep a compact source label plus an
+  ⓘ anchor link. The honesty principle ("real time is honest") is
+  unchanged — the label still says "modelled"/"projected", the
+  screen-reader description still says it in words, and the full
+  explanation is one click away. The reasoning record stays here in
+  DATA_DECISIONS.md.
+- **§36.5 Entity table zebra.** Alternating raised/sunken surface
+  stripes (both AA-gated), hover/focus in the page tint as a third
+  state, sticky header unchanged.
+
+## 37. Terrain view and the palette family (2026-09, round 2)
+
+### 37.1 Terrain view
+
+A third base view alongside Political and Satellite: **Natural Earth's
+Cross Blended Hypso with Shaded Relief and Water** (50m, public domain)
+— hypsometric tints from green lowlands through tan and brown uplands to
+white peaks, hillshade and light-blue water baked in. This matches the
+requested "Google Maps terrain" look from an open source; we match the
+look, not the tiles. The raster is cut by the ETL into the same
+tier/tile scheme as Blue Marble (two tiers, ~3 MB committed) and drawn
+by the same mesh-warp renderer, now parameterised by imagery directory.
+Borders and labels switch to dark warm strokes and dark-on-light halos,
+since the ground is light. Attribution renders on-map.
+
+### 37.2 Six palette directions, one meaning
+
+The political palette family grows from two directions to six — atlas,
+paper, **antique** (hues pulled 60% toward ochre over the parchment
+mood), **pastel** (flag hue, soft chroma), **nautical** (hues pulled
+toward chart-blue), and **mono** (chroma zero). Every direction goes
+through the identical gates: 4-tier lightness assignment by the same
+graph colouring, neighbour dE ≥ 4.0 in both themes, fill/water and
+globe-ocean contrast floors. **The lightness tiers are the data channel
+in every direction; hue is identity only** — so no palette changes what
+the map means, and mono is the colour-blind-safe option by construction
+(lightness is the one channel CVD never removes; it also happens to be
+how every direction stays CVD-legible). The ocean stays the standard
+dark blue in all directions — a period-correct parchment ocean would
+need its own contrast-floor rework and is recorded as an open question,
+not smuggled in ungated. Palette and base-view choices persist in
+localStorage.
+
+## 38. Human History round 2: banners and civilizations (2026-09)
+
+The era boxes move from the left column to **full-width banners** heading
+each era's span — reversing the §26 two-column ruling on maintainer
+request. Each banner carries the era's name, dates, a one-sentence
+editorial description of what defined it, and the honest "1 px ≈ N
+years" scale note. Banner heights are measured at render (they wrap on
+phones) and the year scale starts below each banner in one sequential
+layout pass, so no text can overlap at any width. Era descriptions live
+in the Timeline component beside the era definitions themselves — they
+are UI copy, like the category labels.
+
+Events grow 195 → 249. Seventy-two civilization-specific additions were
+researched and written (55–110-word summaries, dated with stated
+precision, each with a cited source); eighteen of them turned out to
+duplicate existing curated entries under different ids and were dropped
+in favour of the established versions, with their civilization tags
+transferred. A controlled 31-tag civilization list joins the ETL
+validator (folksonomy resisted deliberately); 111 events carry a tag,
+surfaced as a filter beside categories and search. Existing events were
+auto-tagged only where the title made the attribution unambiguous, and
+the mapping was reviewed by eye.
+
+## 39. Taxonomy round 2: photos, prose, and two views (2026-09)
+
+The maintainer asked for a page that is neither dull nor thin; the
+ETL-built tree stays the backbone.
+
+- **Photos.** Each taxon's Wikidata P18 image — falling back to its
+  article's lead image — is licence-checked against the Commons
+  metadata in the ETL (same PD/CC gate as the history and evolution
+  stages) and shipped with author, licence, and file-page link. Every
+  node carries `img` explicitly: an object or null, and null renders as
+  a neutral placeholder silhouette. The `check:taxonomy` gate enforces
+  the key and the recorded licence.
+- **Prose.** Wikipedia intro extracts are fetched at BUILD time through
+  the batched Action API (the §27 lesson — per-title REST tripped rate
+  limits) for every article-bearing taxon, sharded into 32 files keyed
+  by node-id hash and fetched per shard on selection, because inlining
+  ~14k intros would balloon tree.json. The retrieval date shows with
+  the text. Rank definitions and rank-name etymologies are editorial
+  UI copy; per-taxon etymology was NOT attempted at scale — no
+  machine-readable source covers it honestly.
+- **Rank colours.** One hue per canonical rank (chips, panel header,
+  breadcrumbs, persistent legend); intermediate ranks inherit their
+  base rank. Chips are tinted grounds under the ordinary text token,
+  so hue never carries contrast or meaning.
+- **New sources.** OneZoom (per-taxon deep link by scientific name) and
+  Lifemap (deep link via the NCBI taxid from Wikidata P685) join the
+  panel links. Both are LINKS, not data sources: their trees are not
+  merged into ours — cross-checking backbones was judged §31's
+  already-documented job, and neither publishes a stable bulk API this
+  static site could gate. Wikidata additionally supplies P9157 (OTT id)
+  and P523 (temporal range start, shown as "first appearance").
+- **Views.** Tree view (unchanged machinery) plus a card explorer —
+  children as image cards with rank badges, breadcrumb drill-down —
+  and quick-start chips, an autocomplete-style search, and a random
+  taxon button.
+
+## 40. Evolution round 2: the chart made habitable (2026-09)
+
+- **Nested banners.** Eon > Era > Period banners span the page, each
+  with the chart's dates (stated uncertainties included — including the
+  chart's own "uncertain" boundary notes), a plain-language description
+  and the name's etymology with a cited source, from the new editorial
+  reference `etl/reference/ics_unit_notes.json` (36 units; the stage
+  fails loudly if a key stops matching the chart).
+- **Tinted spans.** Each unit's section is washed with a light
+  `color-mix` of its own CGMW colour, one step stronger per nesting
+  level; event cards sit on the raised surface so every tint stays
+  legible.
+- **The system explained.** A collapsed intro panel covers why deep
+  time is divided, how GSSPs ("golden spikes") define boundaries, why
+  Precambrian boundaries are round numbers, and who maintains the
+  chart — citing ICS and Wikipedia's GSSP article.
+- **Coverage.** The Tonian gap is filled with sourced entries (Rodinia,
+  Ourasphaira fungi, vase-shaped microfossils with predation borings,
+  the Bitter Springs anomaly, molecular-clock animal origins), plus
+  Vredefort, Columbia/Nuna and the Boring Billion for the other empty
+  Proterozoic periods — 50 → 58 events. The new `check:evolution` gate
+  enforces that EVERY period is covered by at least one event
+  (overlap-based), every event is dated and sourced, and every banner
+  unit carries its annotation.
+
+## 41. Space round 2: the 3D Solar System (2026-09)
+
+### 41.1 Scene and sources
+
+The static diagram gives way to a three.js scene (code-split so the
+~600 KB library loads only on the Space pages): animated orbits with
+play/pause and a time-scale control, the labelled compressed/true scale
+toggle, click-to-fly, belts as particle fields, and the selected
+planet's major moons in orbit with the full catalogue listed beside.
+Planetary textures are Solar System Scope's pack (CC BY 4.0, committed
+byte-for-byte); Ceres uses the pack's clearly-labelled "fictional"
+texture and the icy dwarfs get plain materials rather than invented
+surfaces. All figures stay NSSDC/JPL-sourced with per-body vintages;
+new per-body prose (naming and etymology, atmosphere per the fact
+sheets, notable features, missions) is editorial in
+`etl/reference/space_body_notes.json`, each body citing its reference.
+Pre-telescopic planets say "known since antiquity" rather than faking a
+discovery row.
+
+### 41.2 Deep zoom: a documented runtime exception
+
+The navigable per-body globes stream **NASA Solar System Treks** WMTS
+tiles (LRO WAC for the Moon, Viking MDIM for Mars, Magellan SAR for
+Venus, MESSENGER MDIS for Mercury — layer names and CORS verified) as
+the camera closes in, upgrading the globe texture through tile levels.
+This is the repo's third render-time upstream exception, after live FX
+and weather (§19.1), and the first sizeable one: a global tile pyramid
+cannot be committed to a static repository, and the maintainer's brief
+explicitly directed lazy tile loading from Treks. Credits render on
+screen. Named surface features come from the **IAU Gazetteer of
+Planetary Nomenclature** (USGS, public domain), fetched in the ETL,
+capped to the most prominent per body, and drawn on the globe with a
+zoom threshold.
+
+### 41.3 Cosmic Phenomena
+
+A new /space/phenomena page: 13 editorial entries (stellar life cycles
+through gravitational waves), each with a 55–130-word description
+(validated), key facts, NASA/Wikipedia links, and a NASA Image Library
+illustration credited per item. Wormholes are labelled theoretical in
+their own text — the page never presents speculation as observation.
+
+### 41.4 Refresh
+
+Treks and the gazetteer join the monthly refresh (features get named
+yearly); Solar System Scope textures are pinned by construction
+(byte-copies of a versioned pack).
+
+## 42. Round-2 review fixes (2026-09-06)
+
+Andy's hands-on review of the round-2 build, and the rulings that came
+out of it.
+
+**42.1 The frozen black globe.** A drag session could outlive its
+pointer: `pointerleave` removed the pointer from the tracking set, and
+if capture had not held, the `pointerup` fired outside the SVG and was
+never seen — leaving the SVG hidden behind the drag canvas's last frame
+forever ("map frozen, black, outlines stuck while zooming"). The fix is
+layered: pointer-leave with an empty set now starts inertia (which ends
+the session), `lostpointercapture` routes to the same end handler, zoom
+events with no pointers down force-end, and switching base view, fill
+mode or projection force-ends unconditionally. Force-end restores
+visibility synchronously — a one-frame orientation flash beats a dead
+map.
+
+**42.2 Longitudinal streaks (seam fix, second pass).** §35's overdraw
+padded the SOURCE rectangle by a pixel; at every 45° tile boundary that
+read past the tile bitmap's edge, and the browser's edge handling
+smeared border pixels into visible meridian streaks. The rule is now:
+overdraw the DESTINATION only (transform scale ~1.5% plus half a source
+pixel on each side); never sample outside the tile.
+
+**42.3 Popover thumbnail.** The flag SVG in the country popover renders
+as a broken box under the dev server's MIME quirk, and a 20px flag was
+weak identification anyway. Replaced with the country's own shape —
+equal-area, fitted, muted-ink fill — reusing the MapReadout thumbnail
+approach.
+
+**42.4 Era banner hues.** Every era banner was the same grey. Each era
+now carries an oklch hue (Deep Past 30 through Contemporary 250),
+applied as a light-dark() tint pair on the banner background and its
+top border; text stays on the ordinary tokens, so contrast never
+depends on the hue.
+
+**42.5 Civilization audit.** Filtering by civilization exposed thin
+coverage (Armenian had two events; the Armenian Genocide was missing).
+A per-civilization audit added 24 events — Armenia gets Urartu,
+Tigranes the Great, the Genocide, and 1991 independence; the rest fill
+the worst gaps (Peloponnesian War, the ancient Olympics, Boudica, the
+Edict of Milan, the Sasanian foundation, Gilgamesh, Chichén Itzá, the
+Althing, Sundiata, the 1054 Schism, Joan of Arc, the fall of Angkor,
+the Triple Alliance, Machu Picchu, the Armada, the Imjin War, the
+Ottoman dissolution, Israel 1948, Tutankhamun's tomb, the Soviet
+dissolution) — and 36 existing events gained tags they plainly
+deserved (Holocaust → Hebrew, Hiroshima → Japanese, Opium War →
+Chinese, …). 273 events, 171 tagged.
+
+**42.6 Ranks, all of them.** The data carries 37 rank strings (realm,
+gigaclass, megaclass, subterclass, "section zoology", …). The rank
+system now defines every one: realm and tribe join the hue table as
+first-class ranks (realm is the ICTV's virus rank), zoological
+section/series alias to the genus group, and prefix-derived ranks get
+composed definitions from a prefix glossary (sub-, super-, infra-,
+parv-, nano-, mega-, giga-, grand-, mir-, subter-). Legend chips are
+buttons that show definitions; a collapsible glossary lists every rank
+present with its definition; the panel shows the exact rank's text.
+
+**42.7 Representative photos.** 19% of tree nodes had their own free
+photo. A post-pass now bubbles the first photographed descendant's
+image onto ancestors that lack one (focus subtrees feed their family
+nodes in the main tree), labelled "Representative: <name>" wherever it
+shows — a photographed member IS a correct illustration of the group
+(standard taxobox practice); only taxa with no photographed member at
+all keep the placeholder. The alternative — fetching iNaturalist
+default photos for ~22k uncovered nodes — was rejected as a new
+rate-limited fetch surface for marginal gain.
+
+**42.8 Solar System polish.** Scene: zoom in/out buttons and a
+fullscreen toggle overlay the viewport (OrbitControls has no UI of its
+own); moon meshes joined the raycast set, so clicking a moon opens its
+panel like clicking a planet. Globe view: Trek levels 2 and 3 are
+requested on OPEN (sharp immediately; level 4 still streams on close
+zoom, with an out-of-order completion guard so a slow low level can
+never overwrite a sharp one); Sun/Earth/Jupiter/Saturn get committed
+8k textures (§42.9); Saturn keeps its rings in globe view; feature
+labels anchor bottom-edge to the terrain point instead of floating
+above it; clicking a feature opens a card with the feature type
+glossed in plain language (Mons — mountain), diameter, naming origin,
+IAU approval year, the name's cultural origin, and the USGS Gazetteer
+link — all of which ride from the gazetteer's own columns (origin,
+approvaldt, ethnicity, link). Below the scene, a card grid lists every
+body with portrait, headline figures, and links, as a non-3D way in.
+
+**42.9 8k textures.** The 2k Solar System Scope maps look soft on a
+fullscreen globe. 8k variants (3-4.5 MB each) are committed for the
+Sun, Earth, Jupiter and Saturn only — bodies whose detail benefits and
+that Trek does not already deep-zoom. Uranus and Neptune's 8k files
+are upscales of featureless discs and are not shipped. The globe loads
+2k first (never a blank sphere), then swaps in the 8k.
+
+**42.10 Phenomena images, completed.** The wormhole entry (and any
+future entry whose NASA query is null or dry) now falls back to its
+Wikipedia article's lead image through the standard Commons licence
+gate — for wormholes that is a CC BY-SA Einstein–Rosen bridge diagram,
+the honest illustration of a theoretical object. 13 of 13 entries are
+illustrated, credited per item.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

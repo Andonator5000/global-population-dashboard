@@ -1,18 +1,23 @@
 import { useMemo, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 import { EntityTable } from '../components/EntityTable'
 import { LiveCounter } from '../components/LiveCounter'
+import { MethodInfoLink } from '../components/MethodInfoLink'
 import { MapReadout } from '../components/MapReadout'
 import { TimeScrubber } from '../components/TimeScrubber'
 import { WorldMap, type HoverTarget } from '../components/WorldMap'
 import {
+  BASE_VIEWS,
+  BASE_VIEW_LABELS,
+  DATA_BASE_URL,
   DEFAULT_MAP_PALETTE,
   DEFAULT_PROJECTION,
   MAP_PALETTES,
   MAP_PALETTE_LABELS,
   PROJECTIONS,
   UNINHABITED_CONTINENTS,
+  type BaseViewKey,
   type ContinentKey,
   type MapPaletteKey,
   type ProjectionKey,
@@ -25,9 +30,80 @@ import {
   usePopulationSummary,
   usePopulationTimeline,
 } from '../lib/data'
-import { formatExact, formatPopulation } from '../lib/format'
+import { formatExact, formatGrowthRate, formatPopulation } from '../lib/format'
 import { PROJECTION_LABELS } from '../lib/projection'
-import type { PopulationRow } from '../types'
+import type { GdpSummary, PopulationRow } from '../types'
+
+const compactUsd = new Intl.NumberFormat('en', {
+  style: 'currency',
+  currency: 'USD',
+  notation: 'compact',
+  maximumFractionDigits: 2,
+})
+
+/**
+ * Popover content for a hovered/tapped country (round-2 §36): the headline
+ * figures, each with its vintage, and the client-side route to the full
+ * page. The chrome (position, close control) is the map's job.
+ */
+function CountryPopoverContent({
+  target,
+  row,
+  gdp,
+}: {
+  target: HoverTarget
+  row: PopulationRow | undefined
+  gdp: GdpSummary['entities'][string] | undefined
+}) {
+  // The corner carries the country's flag (Andy's preference once the
+  // dev-server MIME fix made flags render locally; the interim fitted
+  // country shape is gone).
+  return (
+    <div className="font-sans">
+      <p className="flex items-center gap-2 text-sm font-semibold leading-tight">
+        <img
+          src={`${DATA_BASE_URL}/flags/svg/${target.iso3}.svg`}
+          alt=""
+          className="h-4 w-6 shrink-0 rounded-[2px] border object-cover"
+          style={{ borderColor: 'var(--border)' }}
+          loading="lazy"
+        />
+        {target.name}
+      </p>
+      <dl className="mt-1.5 space-y-0.5">
+        <div className="flex justify-between gap-3">
+          <dt style={{ color: 'var(--text-muted)' }}>Population</dt>
+          <dd className="text-right tabular-nums">
+            {row?.available && row.population != null
+              ? `${formatPopulation(row.population)} · ${row.year}`
+              : 'not available'}
+          </dd>
+        </div>
+        <div className="flex justify-between gap-3">
+          <dt style={{ color: 'var(--text-muted)' }}>GDP</dt>
+          <dd className="text-right tabular-nums">
+            {gdp ? `${compactUsd.format(gdp.value)} · ${gdp.year}` : 'not available'}
+          </dd>
+        </div>
+        <div className="flex justify-between gap-3">
+          <dt style={{ color: 'var(--text-muted)' }}>Growth</dt>
+          <dd className="text-right tabular-nums">
+            {row?.available && row.growthRate != null
+              ? `${formatGrowthRate(row.growthRate)} · ${row.year}`
+              : 'not available'}
+          </dd>
+        </div>
+      </dl>
+      <Link
+        to={`/country/${target.iso3}`}
+        className="mt-2 inline-block font-medium underline underline-offset-2"
+        style={{ color: 'var(--accent)' }}
+      >
+        More info →
+      </Link>
+    </div>
+  )
+}
 
 export function HomePage() {
   const summaryState = usePopulationSummary()
@@ -40,12 +116,46 @@ export function HomePage() {
   const [projectionKey, setProjectionKey] =
     useState<ProjectionKey>(DEFAULT_PROJECTION)
   const [mode, setMode] = useState<'country' | 'continent'>('country')
-  const [paletteDirection, setPaletteDirection] =
-    useState<MapPaletteKey>(DEFAULT_MAP_PALETTE)
-  // Phase 4: political atlas colours, or Blue Marble terrain imagery.
-  const [baseView, setBaseView] = useState<'political' | 'satellite'>(
-    'political',
+  // Palette and base view persist across visits (round-2 §37) — they are
+  // presentation preferences, not data state, so localStorage is right.
+  const [paletteDirection, setPaletteDirection] = useState<MapPaletteKey>(
+    () => {
+      try {
+        const stored = localStorage.getItem('map-palette')
+        return MAP_PALETTES.includes(stored as MapPaletteKey)
+          ? (stored as MapPaletteKey)
+          : DEFAULT_MAP_PALETTE
+      } catch {
+        return DEFAULT_MAP_PALETTE
+      }
+    },
   )
+  const [baseView, setBaseView] = useState<BaseViewKey>(() => {
+    try {
+      const stored = localStorage.getItem('map-base-view')
+      return BASE_VIEWS.includes(stored as BaseViewKey)
+        ? (stored as BaseViewKey)
+        : 'political'
+    } catch {
+      return 'political'
+    }
+  })
+  const pickPalette = (value: MapPaletteKey) => {
+    setPaletteDirection(value)
+    try {
+      localStorage.setItem('map-palette', value)
+    } catch {
+      /* preference only */
+    }
+  }
+  const pickBaseView = (value: BaseViewKey) => {
+    setBaseView(value)
+    try {
+      localStorage.setItem('map-base-view', value)
+    } catch {
+      /* preference only */
+    }
+  }
   const [hovered, setHovered] = useState<HoverTarget | null>(null)
   const [activeContinent, setActiveContinent] = useState<ContinentKey | null>(null)
 
@@ -235,12 +345,11 @@ export function HomePage() {
           )
         )}
 
+        {/* Round-2 §36.4: the projection explainer moved to /methodology;
+            the page keeps the compact source label. */}
         <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
-          {projectionKey === 'globe'
-            ? 'Globe view — drag to spin it. Shapes foreshorten toward the horizon as on a physical globe; the flat views use equal-area projections.'
-            : 'Equal-area projection, so land areas are shown in true relative size.'}{' '}
-          Source: UN World Population Prospects {revision || '—'}, medium
-          variant.
+          UN World Population Prospects {revision || '—'}, medium variant ·{' '}
+          <MethodInfoLink anchor="projections" label="About the map projections" />
         </p>
 
       {timeline && (
@@ -308,7 +417,7 @@ export function HomePage() {
 
         <fieldset className="flex items-center gap-2">
           <legend className="sr-only">Base view</legend>
-          {(['political', 'satellite'] as const).map((value) => (
+          {BASE_VIEWS.map((value) => (
             <button
               key={value}
               type="button"
@@ -317,7 +426,7 @@ export function HomePage() {
               // only applies to the country view, so the control locks
               // rather than silently doing nothing.
               disabled={mode === 'continent'}
-              onClick={() => setBaseView(value)}
+              onClick={() => pickBaseView(value)}
               className="rounded border px-2.5 py-1 disabled:opacity-45"
               style={{
                 borderColor: 'var(--border)',
@@ -331,7 +440,7 @@ export function HomePage() {
                     : 'inherit',
               }}
             >
-              {value === 'political' ? 'Political' : 'Satellite'}
+              {BASE_VIEW_LABELS[value]}
             </button>
           ))}
         </fieldset>
@@ -363,7 +472,7 @@ export function HomePage() {
           <select
             value={paletteDirection}
             onChange={(event) =>
-              setPaletteDirection(event.target.value as MapPaletteKey)
+              pickPalette(event.target.value as MapPaletteKey)
             }
             className="rounded border px-2 py-1"
             style={{
@@ -430,6 +539,17 @@ export function HomePage() {
               mode={mode}
               paletteDirection={paletteDirection}
               baseView={baseView}
+              renderPopover={(target) => (
+                <CountryPopoverContent
+                  target={target}
+                  row={byIso3.get(target.iso3)}
+                  gdp={
+                    gdpState.status === 'ready'
+                      ? (gdpState.data.entities[target.iso3] ?? undefined)
+                      : undefined
+                  }
+                />
+              )}
               hovered={hovered}
               onHover={setHovered}
               onSelect={(target) =>

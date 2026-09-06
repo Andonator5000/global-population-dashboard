@@ -1,3 +1,4 @@
+import { MethodInfoLink } from '../components/MethodInfoLink'
 import { useEffect, useRef, useState } from 'react'
 
 import { capitalizeFirst } from '../lib/format'
@@ -192,10 +193,9 @@ export function PublicDebtTiles({ iso3 }: { iso3: string }) {
         IMF World Economic Outlook
       </div>
       <MutedNote>
-        Modelled estimate, interpolated between IMF annual figures
-        {isProjected ? ' (currently in the projection range)' : ''}; the
-        US-dollar figure is derived from the same source’s nominal GDP. Not a
-        measured live number — no such number exists.
+        Modelled from IMF annual figures
+        {isProjected ? ' (projection range)' : ''} ·{' '}
+        <MethodInfoLink anchor="live-economy" label="How live economic figures are computed" />
       </MutedNote>
     </div>
   )

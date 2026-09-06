@@ -145,32 +145,15 @@ def _first_column(frame, candidates: list[str], *, url: str) -> str:
     )
 
 
-def _build_terrain(refresh: bool, out_dir: Path) -> tuple[CachedResponse, list[dict[str, Any]]]:
+def _emit_tiers(source, tiers: list[dict[str, int]], out_dir: Path,
+                label: str) -> list[dict[str, Any]]:
+    """Cut an equirectangular image into the resolution-tier tile scheme
+    shared by every imagery base (satellite, hypsometric terrain)."""
     from PIL import Image
 
-    response = fetch(
-        config.BLUE_MARBLE_URL,
-        refresh=refresh,
-        subdir="terrain",
-        filename="bluemarble-topo-bathy-21600.jpg",
-    )
-
-    # 21600x10800 = 233 Mpx exceeds Pillow's decompression-bomb guard (178
-    # Mpx), which exists to stop hostile images. This one is a known NASA
-    # file whose sha256 the manifest records; lifting the guard for exactly
-    # this decode is deliberate.
-    Image.MAX_IMAGE_PIXELS = None
-
     out_dir.mkdir(parents=True, exist_ok=True)
-    source = Image.open(response.path).convert("RGB")
-    if source.size != (21600, 10800):
-        raise FetchError(
-            f"Blue Marble source is {source.size}, expected (21600, 10800); "
-            f"the tier math below would emit misaligned tiles."
-        )
-
     tier_records: list[dict[str, Any]] = []
-    for tier in TIERS:
+    for tier in tiers:
         width, height = tier["width"], tier["height"]
         cols = max(1, width // TILE_PX)
         rows = max(1, height // TILE_PX)
@@ -206,10 +189,70 @@ def _build_terrain(refresh: bool, out_dir: Path) -> tuple[CachedResponse, list[d
             "tile_px": TILE_PX,
             "tiles": tiles,
         })
-        print(f"    terrain tier {tier['level']}: {width}x{height}, "
+        print(f"    {label} tier {tier['level']}: {width}x{height}, "
               f"{len(tiles)} tile(s)", flush=True)
+    return tier_records
 
-    return response, tier_records
+
+def _build_terrain(refresh: bool, out_dir: Path) -> tuple[CachedResponse, list[dict[str, Any]]]:
+    from PIL import Image
+
+    response = fetch(
+        config.BLUE_MARBLE_URL,
+        refresh=refresh,
+        subdir="terrain",
+        filename="bluemarble-topo-bathy-21600.jpg",
+    )
+
+    # 21600x10800 = 233 Mpx exceeds Pillow's decompression-bomb guard (178
+    # Mpx), which exists to stop hostile images. This one is a known NASA
+    # file whose sha256 the manifest records; lifting the guard for exactly
+    # this decode is deliberate.
+    Image.MAX_IMAGE_PIXELS = None
+
+    source = Image.open(response.path).convert("RGB")
+    if source.size != (21600, 10800):
+        raise FetchError(
+            f"Blue Marble source is {source.size}, expected (21600, 10800); "
+            f"the tier math below would emit misaligned tiles."
+        )
+    return response, _emit_tiers(source, TIERS, out_dir, "satellite")
+
+
+def _build_hypso(refresh: bool, out_dir: Path) -> tuple[CachedResponse, list[dict[str, Any]]]:
+    """Round-2 §37: the Terrain view's imagery — Natural Earth's Cross
+    Blended Hypso with Shaded Relief and Water (public domain), the classic
+    hypsometric-tint look with hillshade and light-blue water baked in."""
+    import zipfile
+
+    from PIL import Image
+
+    response = fetch(
+        config.NATURAL_EARTH_HYPSO_50M,
+        refresh=refresh,
+        subdir="terrain",
+        filename="hypso-50m.zip",
+    )
+    Image.MAX_IMAGE_PIXELS = None
+    with zipfile.ZipFile(response.path) as archive:
+        tif_names = [n for n in archive.namelist() if n.lower().endswith(".tif")]
+        if len(tif_names) != 1:
+            raise FetchError(
+                f"HYP_50M_SR_W.zip: expected exactly one .tif, found "
+                f"{tif_names}. The archive layout moved."
+            )
+        extract_dir = response.path.parent / "hypso-extract"
+        archive.extract(tif_names[0], extract_dir)
+        source = Image.open(extract_dir / tif_names[0]).convert("RGB")
+    if source.size != (10800, 5400):
+        raise FetchError(
+            f"Hypso raster is {source.size}, expected (10800, 5400)."
+        )
+    tiers = [
+        {"level": 0, "width": 2700, "height": 1350},
+        {"level": 1, "width": 10800, "height": 5400},
+    ]
+    return response, _emit_tiers(source, tiers, out_dir, "hypso")
 
 
 def ingest(
@@ -313,6 +356,18 @@ def ingest(
         "tiers": tier_records,
     })
 
+    # ---- hypsometric terrain view (round-2 §37) --------------------------
+    hypso_dir = config.DATA_DIR / "geo" / "terrain-hypso"
+    hypso_resp, hypso_tiers = _build_hypso(refresh, hypso_dir)
+    responses.append(hypso_resp)
+    _write_json(hypso_dir / "meta.json", {
+        "source": "Natural Earth Cross Blended Hypso with Shaded Relief "
+                  "and Water (50m)",
+        "vintage": None,
+        "attribution": "Terrain: Natural Earth (public domain)",
+        "tiers": hypso_tiers,
+    })
+
     # ---- provenance ------------------------------------------------------
     manifest_mod.record_source(
         manifest,
@@ -365,6 +420,9 @@ def ingest(
          "Populated places with scalerank and population for zoom-gated labels."),
         ("geo/terrain/meta.json",
          "Terrain tier index for the satellite view (Blue Marble tiles)."),
+        ("geo/terrain-hypso/meta.json",
+         "Tier index for the Terrain view (Natural Earth cross-blended "
+         "hypsometric relief tiles)."),
     ]:
         manifest_mod.record_artifact(
             manifest, filename,

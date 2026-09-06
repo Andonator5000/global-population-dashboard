@@ -30,6 +30,20 @@ export interface BodyImage {
   credit: string
 }
 
+export interface BodyNotes {
+  naming: string
+  atmosphere: string
+  features: string
+  missions: string
+  source: string
+}
+
+export interface TrekLayer {
+  urlTemplate: string
+  ext: string
+  credit: string
+}
+
 export interface SpaceBody {
   id: string
   name: string
@@ -42,6 +56,97 @@ export interface SpaceBody {
   links: { wikipedia: string }
   image: BodyImage | null
   discovery?: { by: string; year: number }
+  /** Round-2 §41: committed CC-BY texture path under /data, or null. */
+  texture?: string | null
+  /** 8k variant for the full-screen globe view only (round-2 feedback). */
+  texture8k?: string | null
+  notes?: BodyNotes
+  /** NASA Trek WMTS layer for deep-zoom globes (streamed at runtime). */
+  trek?: TrekLayer
+}
+
+export interface NomenclatureFeature {
+  name: string
+  lat: number
+  lon: number
+  dKm: number
+  type: string | null
+  /** Naming origin, e.g. '"Ocean of Storms."' or the person honoured. */
+  origin: string | null
+  /** IAU approval year. */
+  approved: string | null
+  /** Cultural/linguistic origin of the name (gazetteer "ethnicity"). */
+  culture: string | null
+  /** USGS Gazetteer feature page. */
+  link: string | null
+}
+
+export interface Nomenclature {
+  target: string
+  features: NomenclatureFeature[]
+}
+
+/** Plain-language gloss for IAU feature-type descriptors, keyed on the
+    first word of the gazetteer type string ("Mons, montes" -> "mons"). */
+const FEATURE_TYPE_GLOSS: Record<string, string> = {
+  crater: 'impact crater',
+  mons: 'mountain',
+  montes: 'mountain range',
+  vallis: 'valley',
+  valles: 'valley system',
+  mare: 'volcanic plain (a lunar "sea")',
+  oceanus: 'vast volcanic plain (an "ocean")',
+  sinus: 'bay-shaped plain',
+  lacus: 'small plain (a "lake")',
+  palus: 'small irregular plain (a "marsh")',
+  planitia: 'low-lying plain',
+  planum: 'high plateau',
+  terra: 'extensive highland region',
+  tholus: 'small domed mountain',
+  fossa: 'long narrow trench',
+  fossae: 'system of trenches',
+  rupes: 'scarp (cliff)',
+  dorsum: 'wrinkle ridge',
+  dorsa: 'system of ridges',
+  chasma: 'deep steep-sided canyon',
+  chasmata: 'canyon system',
+  patera: 'irregular shallow crater',
+  rima: 'narrow channel (rille)',
+  rimae: 'channel system',
+  promontorium: 'cape or headland',
+  catena: 'chain of craters',
+  regio: 'large distinctively coloured region',
+  labyrinthus: 'maze of intersecting valleys',
+  tessera: 'polygonal terrain (Venus)',
+  tesserae: 'polygonal terrain (Venus)',
+  corona: 'oval volcano-tectonic structure',
+  coronae: 'oval volcano-tectonic structures',
+  colles: 'field of small hills',
+  scopulus: 'lobate or irregular scarp',
+  vastitas: 'immense lowland plain',
+  'albedo feature': 'region named for its brightness contrast',
+  landing: 'spacecraft landing site',
+}
+
+export function featureTypeGloss(type: string | null): string | null {
+  if (!type) return null
+  const key = type.split(',')[0]?.trim().toLowerCase() ?? ''
+  return FEATURE_TYPE_GLOSS[key] ?? FEATURE_TYPE_GLOSS[type.toLowerCase()] ?? null
+}
+
+export interface PhenomenaFile {
+  source: string
+  version: number
+  imageNote: string
+  entries: {
+    id: string
+    title: string
+    description: string
+    facts: string[]
+    image: BodyImage | null
+    wikipedia: string
+    nasa: string
+  }[]
 }
 
 export interface SpaceRegion {
@@ -120,6 +225,34 @@ export const loadMoons = (planetId: string) =>
   load<{ planet: string; moons: MoonRecord[] }>(
     `space/moons/${encodeURIComponent(planetId)}.json`,
   )
+
+export const loadNomenclature = (bodyId: string) =>
+  load<Nomenclature>(`space/nomenclature/${encodeURIComponent(bodyId)}.json`)
+
+export function usePhenomena(): AsyncState<PhenomenaFile> {
+  const [state, setState] = useState<AsyncState<PhenomenaFile>>({
+    status: 'loading',
+  })
+  useEffect(() => {
+    let cancelled = false
+    load<PhenomenaFile>('space/phenomena.json')
+      .then((data) => {
+        if (!cancelled) setState({ status: 'ready', data })
+      })
+      .catch((error: unknown) => {
+        if (!cancelled) {
+          setState({
+            status: 'error',
+            error: error instanceof Error ? error : new Error(String(error)),
+          })
+        }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+  return state
+}
 
 /** "1.898e27 kg" style scientific formatting for planetary masses. */
 export function formatKg(kg: number): string {

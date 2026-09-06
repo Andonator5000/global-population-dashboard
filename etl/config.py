@@ -317,6 +317,14 @@ BLUE_MARBLE_URL = (
 )
 BLUE_MARBLE_VINTAGE = "2004-08"
 
+# Terrain view (round-2 §37): Natural Earth's Cross Blended Hypso with
+# Shaded Relief and Water — hypsometric tints (green lowlands to tan and
+# brown uplands to white peaks) with hillshade baked in, the classic
+# "terrain map" look. Public domain, 50m raster (10800x5400, ~1:50m).
+NATURAL_EARTH_HYPSO_50M = (
+    "https://naciscdn.org/naturalearth/50m/raster/HYP_50M_SR_W.zip"
+)
+
 # --------------------------------------------------------------------------
 # Biology: taxonomy (Phase 5, 2026-09-05). Catalogue of Life via the keyless
 # ChecklistBank API; '3LR' is the permanent alias for the latest COL release.
@@ -381,6 +389,73 @@ JPL_SATS_PHYS = "https://ssd.jpl.nasa.gov/sats/phys_par/"
 JPL_SATS_DISCOVERY = "https://ssd.jpl.nasa.gov/sats/discovery.html"
 JPL_SBDB_API = "https://ssd-api.jpl.nasa.gov/sbdb.api"
 JPL_HORIZONS_API = "https://ssd.jpl.nasa.gov/api/horizons.api"
+
+# Round-2 §41: planetary textures for the 3D scene, from Solar System
+# Scope's texture pack (CC BY 4.0, based on NASA elevation/imagery data).
+# Copied byte-for-byte into /data so the deployed site serves them itself.
+SOLARSYSTEMSCOPE_BASE = "https://www.solarsystemscope.com/textures/download"
+SOLARSYSTEMSCOPE_TEXTURES: dict[str, str] = {
+    "sun": "2k_sun.jpg",
+    "mercury": "2k_mercury.jpg",
+    "venus": "2k_venus_atmosphere.jpg",
+    "earth": "2k_earth_daymap.jpg",
+    "moon": "2k_moon.jpg",
+    "mars": "2k_mars.jpg",
+    "jupiter": "2k_jupiter.jpg",
+    "saturn": "2k_saturn.jpg",
+    "uranus": "2k_uranus.jpg",
+    "neptune": "2k_neptune.jpg",
+    "ceres": "2k_ceres_fictional.jpg",
+}
+SOLARSYSTEMSCOPE_RING = "2k_saturn_ring_alpha.png"
+# High-resolution variants for the full-screen globe view only (round-2
+# feedback: the 2k maps look soft on a globe filling the viewport). Only
+# bodies whose surface detail benefits AND that Trek does not already
+# deep-zoom; Uranus/Neptune's 8k files are upscales of featureless discs.
+# 3-4.5 MB each, loaded lazily by the globe modal, never by the scene.
+SOLARSYSTEMSCOPE_TEXTURES_8K: dict[str, str] = {
+    "sun": "8k_sun.jpg",
+    "earth": "8k_earth_daymap.jpg",
+    "jupiter": "8k_jupiter.jpg",
+    "saturn": "8k_saturn.jpg",
+}
+
+# NASA Solar System Treks WMTS layers (public NASA/USGS mosaics) for the
+# deep-zoom body globes. STREAMED at runtime — a documented exception to
+# the no-render-time-upstreams rule (§41.2): a global tile pyramid cannot
+# be committed to a static repo. Layer names verified 2026-09-06.
+TREK_LAYERS: dict[str, dict[str, str]] = {
+    "moon": {
+        "layer": "LRO_WAC_Mosaic_Global_303ppd_v02",
+        "ext": "jpg",
+        "credit": "NASA Moon Trek / LRO WAC mosaic (NASA/GSFC/ASU)",
+    },
+    "mars": {
+        "layer": "Mars_Viking_MDIM21_ClrMosaic_global_232m",
+        "ext": "jpg",
+        "credit": "NASA Mars Trek / Viking MDIM 2.1 (NASA/JPL/USGS)",
+    },
+    "venus": {
+        "layer": "Venus_Magellan_C3-MDIR_Global_Mosaic_2025m",
+        "ext": "png",
+        "credit": "NASA Venus Trek / Magellan SAR mosaic (NASA/JPL)",
+    },
+    "mercury": {
+        "layer": "Mercury_MESSENGER_MDIS_Basemap_BDR_Mosaic_Global_166m",
+        "ext": "jpg",
+        "credit": "NASA Mercury Trek / MESSENGER MDIS mosaic (NASA/JHUAPL/CIW)",
+    },
+}
+TREK_TILE_URL = "https://trek.nasa.gov/tiles/{body}/EQ/{layer}/1.0.0/default/default028mm"
+
+# IAU Gazetteer of Planetary Nomenclature (USGS Astrogeology, public
+# domain): named surface features as center-point shapefiles.
+GAZETTEER_URL = (
+    "https://asc-planetarynames-data.s3.us-west-2.amazonaws.com/"
+    "{target}_nomenclature_center_pts.zip"
+)
+GAZETTEER_BODIES = ("MOON", "MARS", "VENUS", "MERCURY")
+GAZETTEER_TOP_FEATURES = 250
 
 # Cross-check tolerances for archived NSSDC figures vs live JPL Horizons
 # (maintainer-requested, 2026-09: the archive is trusted only as far as

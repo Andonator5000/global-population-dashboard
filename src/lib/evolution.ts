@@ -16,8 +16,14 @@ export interface IcsInterval {
   endMa: number
   startError?: number
   endError?: number
+  startUncertain?: boolean
+  endUncertain?: boolean
   color?: string
   order?: number
+  /** Round-2 §40: editorial banner copy merged in the ETL. */
+  description?: string
+  etymology?: string
+  etymologySource?: string
 }
 
 export interface EvolutionChart {

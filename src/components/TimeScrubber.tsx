@@ -1,3 +1,4 @@
+import { MethodInfoLink } from './MethodInfoLink'
 import { useEffect, useId, useRef } from 'react'
 
 const PLAY_INTERVAL_MS = 260
@@ -133,10 +134,11 @@ export function TimeScrubber({
         </div>
       </div>
 
+      {/* Round-2 §36.4: compact label; the estimates-vs-projection
+          explanation lives once on /methodology. */}
       <p className="mt-1 text-xs" style={{ color: 'var(--text-muted)' }}>
-        {first}–{estimatesThrough} are UN WPP estimates; {estimatesThrough + 1}–
-        {last} are the medium-variant projection. The marked line on the track
-        is the boundary.
+        Estimates to {estimatesThrough}, projection after (marked on the
+        track) · <MethodInfoLink anchor="time-scrubber" label="About the estimate–projection boundary" />
       </p>
     </div>
   )
