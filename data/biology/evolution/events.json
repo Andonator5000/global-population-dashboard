@@ -1,6 +1,6 @@
 {
   "source": "editorial",
-  "version": 1,
+  "version": 2,
   "note": "EDITORIAL, like history_events.json: which moments in the history of life make the timeline is a curation call, recorded and versioned here. Dates are in Ma (millions of years before present); startMa > endMa; endMa null means a point estimate. Every summary states its own uncertainty where the science is unsettled. The evolution ETL stage validates this file, checks each Wikipedia anchor, resolves a CC0/public-domain PhyloPic silhouette for entries with a phylopic query, and falls back to the anchor article's free lead image. Kinds: event, organism, extinction.",
   "imageNote": "Organism silhouettes are PhyloPic images — CC0/public domain preferred, CC BY and CC BY-SA accepted, NC/ND never; other images are Wikipedia lead images kept only under PD/CC licences. Attribution and licence are rendered with each.",
   "events": [
@@ -199,6 +199,57 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Francevillian_biota"
     },
     {
+      "id": "vredefort-impact",
+      "title": "Vredefort: the largest impact scar on Earth",
+      "kind": "event",
+      "startMa": 2023,
+      "endMa": null,
+      "summary": "An asteroid perhaps ten to fifteen kilometres across strikes what is now South Africa, excavating a crater originally some 250 to 300 kilometres wide — the largest verified impact structure on Earth, precisely dated to 2.023 billion years ago. Deeply eroded, its concentric rings still shape the landscape around the town of Vredefort. Together with Ontario's Sudbury impact 170 million years later, it brackets a violent stretch of the Orosirian period.",
+      "image": {
+        "type": "commons",
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Vredefort%20Crater%2C%20South%20Africa%2C%20OLI%20satellite%20image%2C%2027%20June%202018%20cropped.png?width=640",
+        "license": "Public domain",
+        "attribution": "NASA Earth Observatory image created by Lauren Dauphin, using Operational Land Imager (OLI) on Landsat 8; data provided courtesy of the U.S. Geological Survey team.",
+        "page": "https://commons.wikimedia.org/wiki/File:Vredefort%20Crater%2C%20South%20Africa%2C%20OLI%20satellite%20image%2C%2027%20June%202018%20cropped.png"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Vredefort_impact_structure"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Vredefort_impact_structure"
+    },
+    {
+      "id": "columbia-supercontinent",
+      "title": "Columbia, the first great supercontinent",
+      "kind": "event",
+      "startMa": 1600,
+      "endMa": 1300,
+      "summary": "By the Statherian period, most continental crust has gathered into a single landmass that geologists call Columbia or Nuna — the earliest supercontinent whose outline can be reconstructed with any confidence from matching rock belts on now-distant continents. Its slow breakup and the later reassembly into Rodinia establish the supercontinent cycle, the few-hundred-million-year rhythm of merging and rifting that has governed Earth's geography ever since.",
+      "image": {
+        "type": "commons",
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Paleoglobe%20NO%201590%20mya-vector-colors.svg?width=640",
+        "license": "CC BY-SA 3.0",
+        "attribution": "Erlend Bjørtvedt (original author)",
+        "page": "https://commons.wikimedia.org/wiki/File:Paleoglobe%20NO%201590%20mya-vector-colors.svg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Columbia_(supercontinent)"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Columbia_%28supercontinent%29"
+    },
+    {
+      "id": "boring-billion",
+      "title": "The Boring Billion",
+      "kind": "event",
+      "startMa": 1500,
+      "endMa": 800,
+      "summary": "For roughly a billion years the rock record shows striking stability: mild climates, no great glaciations, sluggish oxygen levels and slow evolutionary change — palaeontologist Martin Brasier's 'Boring Billion'. The name is half a joke: beneath the quiet, eukaryotic cells diversified, sexual reproduction and multicellularity emerged, and the stage was set for the upheavals of the Neoproterozoic. Why oxygen stalled so long remains an active research question.",
+      "image": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Boring_Billion"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Boring_Billion"
+    },
+    {
       "id": "bangiomorpha",
       "title": "Bangiomorpha: sex and multicellularity",
       "kind": "organism",
@@ -210,6 +261,89 @@
         "https://en.wikipedia.org/wiki/Bangiomorpha"
       ],
       "wikipedia": "https://en.wikipedia.org/wiki/Bangiomorpha"
+    },
+    {
+      "id": "ourasphaira-fungi",
+      "title": "Ourasphaira: the earliest fossil fungi",
+      "kind": "organism",
+      "startMa": 1010,
+      "endMa": 890,
+      "summary": "Microscopic branching filaments from Arctic Canada, named Ourasphaira giraldae and dated to roughly one billion to 890 million years ago, preserve chitin in their walls — the strongest early evidence that fungi existed in the Tonian, hundreds of millions of years before their previously accepted record. If fungi were already diversifying then, the split between fungi and animals, their closest relatives, must be older still.",
+      "image": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Ourasphaira"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Ourasphaira"
+    },
+    {
+      "id": "rodinia",
+      "title": "Rodinia assembles, stretches, and begins to break",
+      "kind": "event",
+      "startMa": 1000,
+      "endMa": 720,
+      "summary": "Around the start of the Tonian period the continents stand united in the supercontinent Rodinia. Through the Tonian the great landmass stretches — the crustal tension that gives the period its name — and by about 750 to 720 million years ago rifting is tearing it apart. The breakup multiplies shallow coastal seas, and its weathering may have drawn down enough carbon dioxide to help trigger the Cryogenian snowball glaciations.",
+      "image": {
+        "type": "commons",
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Rodinia%20900Ma%20annotated.jpg?width=640",
+        "license": "CC BY-SA 4.0",
+        "attribution": "PebbleLetters",
+        "page": "https://commons.wikimedia.org/wiki/File:Rodinia%20900Ma%20annotated.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Rodinia"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Rodinia"
+    },
+    {
+      "id": "bitter-springs",
+      "title": "The Bitter Springs carbon anomaly",
+      "kind": "event",
+      "startMa": 810,
+      "endMa": 790,
+      "summary": "Around 810 million years ago, carbon isotopes in marine rocks worldwide lurch through the Bitter Springs anomaly, named for an Australian formation — one of the first great disturbances after the Boring Billion's calm. Its cause is debated: true polar wander, changes in the burial of organic carbon, or shifts in early ecosystems. Whatever drove it, it marks the Earth system waking into the turbulent Neoproterozoic.",
+      "image": {
+        "type": "commons",
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Inzeria%20intia%20%28stromatolite%29%20%28Neoproterozoic%2C%20800%20Ma%3B%20Bitter%20Springs%2C%20Australia%29%202%20%2828499466997%29.jpg?width=640",
+        "license": "CC BY 2.0",
+        "attribution": "James St. John",
+        "page": "https://commons.wikimedia.org/wiki/File:Inzeria%20intia%20%28stromatolite%29%20%28Neoproterozoic%2C%20800%20Ma%3B%20Bitter%20Springs%2C%20Australia%29%202%20%2828499466997%29.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Bitter_Springs_Group"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Bitter_Springs_Group"
+    },
+    {
+      "id": "animal-molecular-origin",
+      "title": "Molecular clocks place the origin of animals",
+      "kind": "event",
+      "startMa": 800,
+      "endMa": 650,
+      "summary": "Comparisons of living animals' genes, calibrated against the fossil record, consistently place the last common ancestor of all animals — and the split of sponge lineages — somewhere between about 800 and 650 million years ago, deep in the Tonian and Cryogenian. Unambiguous animal fossils appear only near 574 million years, so either tiny early animals left no trace for over a hundred million years, or the clocks run fast. The gap is one of evolution's liveliest arguments.",
+      "image": null,
+      "sources": [
+        "https://en.wikipedia.org/wiki/Evolutionary_history_of_life"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Evolutionary_history_of_life"
+    },
+    {
+      "id": "vase-shaped-microfossils",
+      "title": "Vase-shaped microfossils: amoebae with shells, and predation",
+      "kind": "organism",
+      "startMa": 789,
+      "endMa": 740,
+      "summary": "Tonian rocks from the Grand Canyon and elsewhere preserve flask-shaped shells of testate amoebae — among the earliest fossils confidently assigned to a living eukaryote group. Some shells bear neat half-moon holes, apparently drilled by other protists: direct evidence of eukaryotes preying on eukaryotes. Predation pressure of this kind is a favoured trigger for the evolution of shells, larger bodies and, eventually, animals.",
+      "image": {
+        "type": "commons",
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Difflugia%20acuminata.jpg?width=640",
+        "license": "CC BY-SA 4.0",
+        "attribution": "Deuterostome",
+        "page": "https://commons.wikimedia.org/wiki/File:Difflugia%20acuminata.jpg"
+      },
+      "sources": [
+        "https://en.wikipedia.org/wiki/Testate_amoebae"
+      ],
+      "wikipedia": "https://en.wikipedia.org/wiki/Testate_amoebae"
     },
     {
       "id": "snowball-earth",

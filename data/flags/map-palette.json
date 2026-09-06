@@ -38,6 +38,36 @@
         "dark": 0.028
       },
       "blendTo": 80
+    },
+    "antique": {
+      "chroma": {
+        "light": 0.038,
+        "dark": 0.042
+      },
+      "blendTo": 70,
+      "blendStrength": 0.6
+    },
+    "pastel": {
+      "chroma": {
+        "light": 0.032,
+        "dark": 0.036
+      },
+      "blendTo": null
+    },
+    "nautical": {
+      "chroma": {
+        "light": 0.03,
+        "dark": 0.034
+      },
+      "blendTo": 225,
+      "blendStrength": 0.55
+    },
+    "mono": {
+      "chroma": {
+        "light": 0,
+        "dark": 0
+      },
+      "blendTo": null
     }
   },
   "defaultDirection": "atlas",
@@ -137,6 +167,102 @@
           "floor": 2,
           "failures": []
         }
+      },
+      "antique": {
+        "light": {
+          "borderPairs": 325,
+          "minDeltaE": 5.27,
+          "medianDeltaE": 6.51,
+          "violations": [],
+          "minSurfaceContrast": 1.51,
+          "lowContrastEntities": []
+        },
+        "dark": {
+          "borderPairs": 325,
+          "minDeltaE": 5.73,
+          "medianDeltaE": 7.12,
+          "violations": [],
+          "minSurfaceContrast": 1.68,
+          "lowContrastEntities": []
+        },
+        "globe": {
+          "ocean": "oklch(31% 0.06 255)",
+          "minContrast": 4.48,
+          "floor": 2,
+          "failures": []
+        }
+      },
+      "pastel": {
+        "light": {
+          "borderPairs": 325,
+          "minDeltaE": 5.33,
+          "medianDeltaE": 7.93,
+          "violations": [],
+          "minSurfaceContrast": 1.5,
+          "lowContrastEntities": []
+        },
+        "dark": {
+          "borderPairs": 325,
+          "minDeltaE": 5.76,
+          "medianDeltaE": 8.84,
+          "violations": [],
+          "minSurfaceContrast": 1.67,
+          "lowContrastEntities": []
+        },
+        "globe": {
+          "ocean": "oklch(31% 0.06 255)",
+          "minContrast": 4.49,
+          "floor": 2,
+          "failures": []
+        }
+      },
+      "nautical": {
+        "light": {
+          "borderPairs": 325,
+          "minDeltaE": 5.3,
+          "medianDeltaE": 7.22,
+          "violations": [],
+          "minSurfaceContrast": 1.5,
+          "lowContrastEntities": []
+        },
+        "dark": {
+          "borderPairs": 325,
+          "minDeltaE": 5.81,
+          "medianDeltaE": 8,
+          "violations": [],
+          "minSurfaceContrast": 1.68,
+          "lowContrastEntities": []
+        },
+        "globe": {
+          "ocean": "oklch(31% 0.06 255)",
+          "minContrast": 4.52,
+          "floor": 2,
+          "failures": []
+        }
+      },
+      "mono": {
+        "light": {
+          "borderPairs": 325,
+          "minDeltaE": 5.41,
+          "medianDeltaE": 5.51,
+          "violations": [],
+          "minSurfaceContrast": 1.52,
+          "lowContrastEntities": []
+        },
+        "dark": {
+          "borderPairs": 325,
+          "minDeltaE": 5.87,
+          "medianDeltaE": 6.1,
+          "violations": [],
+          "minSurfaceContrast": 1.71,
+          "lowContrastEntities": []
+        },
+        "globe": {
+          "ocean": "oklch(31% 0.06 255)",
+          "minContrast": 4.56,
+          "floor": 2,
+          "failures": []
+        }
       }
     },
     "globe": {
@@ -225,6 +351,22 @@
         "paper": {
           "light": "#899d9c",
           "dark": "#263d3c"
+        },
+        "antique": {
+          "light": "#ad8f98",
+          "dark": "#4a2f38"
+        },
+        "pastel": {
+          "light": "#8a9aac",
+          "dark": "#2a394a"
+        },
+        "nautical": {
+          "light": "#879ca9",
+          "dark": "#273b47"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -265,6 +407,22 @@
         "paper": {
           "light": "#a5ac9d",
           "dark": "#434b3a"
+        },
+        "antique": {
+          "light": "#aeab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9baf9f",
+          "dark": "#3a4d3e"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#324e4c"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -305,6 +463,22 @@
         "paper": {
           "light": "#dac8c1",
           "dark": "#78645d"
+        },
+        "antique": {
+          "light": "#e2c6b6",
+          "dark": "#7d6253"
+        },
+        "pastel": {
+          "light": "#e1c4c3",
+          "dark": "#7d6160"
+        },
+        "nautical": {
+          "light": "#cdc9de",
+          "dark": "#6a657b"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -345,6 +519,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -385,6 +575,22 @@
         "paper": {
           "light": "#899d9c",
           "dark": "#263d3c"
+        },
+        "antique": {
+          "light": "#8c9f89",
+          "dark": "#2b3e29"
+        },
+        "pastel": {
+          "light": "#8a9aac",
+          "dark": "#2a3a4a"
+        },
+        "nautical": {
+          "light": "#879ca9",
+          "dark": "#263b47"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -422,6 +628,22 @@
         "paper": {
           "light": "#c7b7af",
           "dark": "#66534b"
+        },
+        "antique": {
+          "light": "#cfb5a4",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#ceb3af",
+          "dark": "#6b514c"
+        },
+        "nautical": {
+          "light": "#bdb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -462,6 +684,22 @@
         "paper": {
           "light": "#b6a59f",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bea394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda2a0",
+          "dark": "#5a403f"
+        },
+        "nautical": {
+          "light": "#aaa6bb",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -500,6 +738,22 @@
         "paper": {
           "light": "#b7bdaf",
           "dark": "#545b4a"
+        },
+        "antique": {
+          "light": "#bfbca0",
+          "dark": "#5c593e"
+        },
+        "pastel": {
+          "light": "#acc1b0",
+          "dark": "#4a5e4e"
+        },
+        "nautical": {
+          "light": "#a5c1bf",
+          "dark": "#425e5d"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -540,6 +794,22 @@
         "paper": {
           "light": "#9aaeac",
           "dark": "#364d4b"
+        },
+        "antique": {
+          "light": "#9db099",
+          "dark": "#3b4e38"
+        },
+        "pastel": {
+          "light": "#9aacbd",
+          "dark": "#384a5a"
+        },
+        "nautical": {
+          "light": "#98adba",
+          "dark": "#364b58"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -580,6 +850,22 @@
         "paper": {
           "light": "#d9c8c1",
           "dark": "#77645c"
+        },
+        "antique": {
+          "light": "#e1c6b6",
+          "dark": "#7d6353"
+        },
+        "pastel": {
+          "light": "#e0c5c1",
+          "dark": "#7d615e"
+        },
+        "nautical": {
+          "light": "#cec8de",
+          "dark": "#6b657a"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -620,6 +906,22 @@
         "paper": {
           "light": "#9f94a0",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4b2f35"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -658,6 +960,22 @@
         "paper": {
           "light": "#8a9d99",
           "dark": "#273d39"
+        },
+        "antique": {
+          "light": "#8e9e87",
+          "dark": "#2e3d27"
+        },
+        "pastel": {
+          "light": "#869caa",
+          "dark": "#253b48"
+        },
+        "nautical": {
+          "light": "#869ca7",
+          "dark": "#253b46"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -697,6 +1015,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ad8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8d99ad",
+          "dark": "#2d384b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -737,6 +1071,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -777,6 +1127,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -815,6 +1181,22 @@
         "paper": {
           "light": "#c8b6b0",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6c5243"
+        },
+        "pastel": {
+          "light": "#cfb3b1",
+          "dark": "#6b504f"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#595469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -855,6 +1237,22 @@
         "paper": {
           "light": "#adbfba",
           "dark": "#485d57"
+        },
+        "antique": {
+          "light": "#b2c0a7",
+          "dark": "#505d45"
+        },
+        "pastel": {
+          "light": "#a5bfca",
+          "dark": "#425d67"
+        },
+        "nautical": {
+          "light": "#a7bfc9",
+          "dark": "#435c66"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -895,6 +1293,22 @@
         "paper": {
           "light": "#b8bdad",
           "dark": "#565b49"
+        },
+        "antique": {
+          "light": "#c1bba0",
+          "dark": "#5e593d"
+        },
+        "pastel": {
+          "light": "#b0c0ad",
+          "dark": "#4d5d4a"
+        },
+        "nautical": {
+          "light": "#a6c1be",
+          "dark": "#425e5b"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -935,6 +1349,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -975,6 +1405,22 @@
         "paper": {
           "light": "#b6beaf",
           "dark": "#525b4b"
+        },
+        "antique": {
+          "light": "#bebca1",
+          "dark": "#5b5a3e"
+        },
+        "pastel": {
+          "light": "#abc1b2",
+          "dark": "#485e50"
+        },
+        "nautical": {
+          "light": "#a5c1c0",
+          "dark": "#415e5e"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -1015,6 +1461,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ad8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8d99ad",
+          "dark": "#2d384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1055,6 +1517,22 @@
         "paper": {
           "light": "#a5ac9d",
           "dark": "#444b3a"
+        },
+        "antique": {
+          "light": "#aeab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9caf9f",
+          "dark": "#3a4d3e"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#324e4c"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -1095,6 +1573,22 @@
         "paper": {
           "light": "#929c8f",
           "dark": "#313c2d"
+        },
+        "antique": {
+          "light": "#9a9b80",
+          "dark": "#3a3a1f"
+        },
+        "pastel": {
+          "light": "#869f94",
+          "dark": "#253e34"
+        },
+        "nautical": {
+          "light": "#839e9f",
+          "dark": "#213d3f"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1133,6 +1627,22 @@
         "paper": {
           "light": "#929c8f",
           "dark": "#313b2d"
+        },
+        "antique": {
+          "light": "#9a9b80",
+          "dark": "#3a3a1f"
+        },
+        "pastel": {
+          "light": "#869f94",
+          "dark": "#253e34"
+        },
+        "nautical": {
+          "light": "#839e9f",
+          "dark": "#213d3e"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1170,6 +1680,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1210,6 +1736,22 @@
         "paper": {
           "light": "#8c9d96",
           "dark": "#293d36"
+        },
+        "antique": {
+          "light": "#919d84",
+          "dark": "#323c24"
+        },
+        "pastel": {
+          "light": "#839ea5",
+          "dark": "#213d44"
+        },
+        "nautical": {
+          "light": "#859da5",
+          "dark": "#233c44"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1249,6 +1791,22 @@
         "paper": {
           "light": "#d3c8d5",
           "dark": "#716473"
+        },
+        "antique": {
+          "light": "#e3c2c9",
+          "dark": "#7e5f66"
+        },
+        "pastel": {
+          "light": "#c2cce2",
+          "dark": "#5e697e"
+        },
+        "nautical": {
+          "light": "#bccfdf",
+          "dark": "#586c7b"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -1289,6 +1847,22 @@
         "paper": {
           "light": "#9d9889",
           "dark": "#3d3827"
+        },
+        "antique": {
+          "light": "#a4967e",
+          "dark": "#43361e"
+        },
+        "pastel": {
+          "light": "#9d9983",
+          "dark": "#3d3822"
+        },
+        "nautical": {
+          "light": "#879f95",
+          "dark": "#263e34"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1329,6 +1903,22 @@
         "paper": {
           "light": "#d9c8c1",
           "dark": "#77645c"
+        },
+        "antique": {
+          "light": "#e1c6b6",
+          "dark": "#7d6353"
+        },
+        "pastel": {
+          "light": "#e0c5c1",
+          "dark": "#7d615e"
+        },
+        "nautical": {
+          "light": "#cec8de",
+          "dark": "#6b657a"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -1369,6 +1959,22 @@
         "paper": {
           "light": "#c2b6c2",
           "dark": "#615361"
+        },
+        "antique": {
+          "light": "#d1b1b7",
+          "dark": "#6d4e54"
+        },
+        "pastel": {
+          "light": "#b2bad0",
+          "dark": "#50576d"
+        },
+        "nautical": {
+          "light": "#abbdcd",
+          "dark": "#485a6a"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -1409,6 +2015,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1449,6 +2071,22 @@
         "paper": {
           "light": "#c7b7af",
           "dark": "#66544b"
+        },
+        "antique": {
+          "light": "#cfb5a4",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#ceb3af",
+          "dark": "#6b514c"
+        },
+        "nautical": {
+          "light": "#bdb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -1489,6 +2127,22 @@
         "paper": {
           "light": "#959b8c",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9d9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2b3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1528,6 +2182,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1568,6 +2238,22 @@
         "paper": {
           "light": "#9c9889",
           "dark": "#3c3827"
+        },
+        "antique": {
+          "light": "#a4977e",
+          "dark": "#43361e"
+        },
+        "pastel": {
+          "light": "#9c9983",
+          "dark": "#3c3923"
+        },
+        "nautical": {
+          "light": "#879f95",
+          "dark": "#263e35"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1608,6 +2294,22 @@
         "paper": {
           "light": "#c0baab",
           "dark": "#5f5746"
+        },
+        "antique": {
+          "light": "#c8b8a0",
+          "dark": "#65553d"
+        },
+        "pastel": {
+          "light": "#c2baa4",
+          "dark": "#5f5841"
+        },
+        "nautical": {
+          "light": "#aac1b6",
+          "dark": "#465e53"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -1648,6 +2350,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab9190",
+          "dark": "#493130"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1685,6 +2403,22 @@
         "paper": {
           "light": "#9baeab",
           "dark": "#364d4a"
+        },
+        "antique": {
+          "light": "#9eaf98",
+          "dark": "#3d4d37"
+        },
+        "pastel": {
+          "light": "#98adbc",
+          "dark": "#364b59"
+        },
+        "nautical": {
+          "light": "#97adb9",
+          "dark": "#354b57"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -1725,6 +2459,22 @@
         "paper": {
           "light": "#c0baab",
           "dark": "#5f5746"
+        },
+        "antique": {
+          "light": "#c8b8a0",
+          "dark": "#65553d"
+        },
+        "pastel": {
+          "light": "#c2baa4",
+          "dark": "#5f5841"
+        },
+        "nautical": {
+          "light": "#aac1b6",
+          "dark": "#465e53"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -1763,6 +2513,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a413c"
+        },
+        "nautical": {
+          "light": "#aba5ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -1803,6 +2569,22 @@
         "paper": {
           "light": "#969b8c",
           "dark": "#353a2a"
+        },
+        "antique": {
+          "light": "#9e997e",
+          "dark": "#3d381e"
+        },
+        "pastel": {
+          "light": "#8d9e8c",
+          "dark": "#2d3d2c"
+        },
+        "nautical": {
+          "light": "#849f9c",
+          "dark": "#223e3b"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1840,6 +2622,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1880,6 +2678,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1920,6 +2734,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312e"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -1960,6 +2790,22 @@
         "paper": {
           "light": "#a3968b",
           "dark": "#433529"
+        },
+        "antique": {
+          "light": "#aa9480",
+          "dark": "#473320"
+        },
+        "pastel": {
+          "light": "#a99386",
+          "dark": "#473326"
+        },
+        "nautical": {
+          "light": "#8c9e8e",
+          "dark": "#2c3d2e"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2000,6 +2846,22 @@
         "paper": {
           "light": "#9e9889",
           "dark": "#3e3727"
+        },
+        "antique": {
+          "light": "#a5967e",
+          "dark": "#44351e"
+        },
+        "pastel": {
+          "light": "#9f9882",
+          "dark": "#3e3822"
+        },
+        "nautical": {
+          "light": "#889f94",
+          "dark": "#273e34"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2040,6 +2902,22 @@
         "paper": {
           "light": "#899d9d",
           "dark": "#263d3d"
+        },
+        "antique": {
+          "light": "#ad8f97",
+          "dark": "#4a2f37"
+        },
+        "pastel": {
+          "light": "#8c9aac",
+          "dark": "#2c394b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#273b48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2080,6 +2958,22 @@
         "paper": {
           "light": "#a5ac9d",
           "dark": "#444b3a"
+        },
+        "antique": {
+          "light": "#aeab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9caf9f",
+          "dark": "#3a4d3d"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#324e4c"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -2120,6 +3014,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2160,6 +3070,22 @@
         "paper": {
           "light": "#c0baab",
           "dark": "#5f5746"
+        },
+        "antique": {
+          "light": "#c8b8a0",
+          "dark": "#65553d"
+        },
+        "pastel": {
+          "light": "#c2baa4",
+          "dark": "#605841"
+        },
+        "nautical": {
+          "light": "#aac1b6",
+          "dark": "#465e53"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -2200,6 +3126,22 @@
         "paper": {
           "light": "#9e9889",
           "dark": "#3e3727"
+        },
+        "antique": {
+          "light": "#a5967e",
+          "dark": "#44351e"
+        },
+        "pastel": {
+          "light": "#9f9882",
+          "dark": "#3e3822"
+        },
+        "nautical": {
+          "light": "#889e94",
+          "dark": "#273e34"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2240,6 +3182,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ad8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8d99ad",
+          "dark": "#2d384b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2280,6 +3238,22 @@
         "paper": {
           "light": "#b0a5b1",
           "dark": "#4f4351"
+        },
+        "antique": {
+          "light": "#bfa0a6",
+          "dark": "#5b3e45"
+        },
+        "pastel": {
+          "light": "#9faabe",
+          "dark": "#3e485c"
+        },
+        "nautical": {
+          "light": "#9aacbb",
+          "dark": "#384a59"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -2320,6 +3294,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2359,6 +3349,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2399,6 +3405,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2439,6 +3461,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2478,6 +3516,22 @@
         "paper": {
           "light": "#a2968a",
           "dark": "#423528"
+        },
+        "antique": {
+          "light": "#a99480",
+          "dark": "#473420"
+        },
+        "pastel": {
+          "light": "#a79485",
+          "dark": "#463425"
+        },
+        "nautical": {
+          "light": "#8b9e8f",
+          "dark": "#2b3d2f"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2518,6 +3572,22 @@
         "paper": {
           "light": "#d9c8c1",
           "dark": "#77645c"
+        },
+        "antique": {
+          "light": "#e1c6b6",
+          "dark": "#7d6353"
+        },
+        "pastel": {
+          "light": "#e0c5c1",
+          "dark": "#7d615e"
+        },
+        "nautical": {
+          "light": "#cec8de",
+          "dark": "#6b657a"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -2556,6 +3626,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a413c"
+        },
+        "nautical": {
+          "light": "#aba5ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -2596,6 +3682,22 @@
         "paper": {
           "light": "#969b8c",
           "dark": "#353a2a"
+        },
+        "antique": {
+          "light": "#9e997f",
+          "dark": "#3d381e"
+        },
+        "pastel": {
+          "light": "#8d9e8c",
+          "dark": "#2c3d2c"
+        },
+        "nautical": {
+          "light": "#849f9c",
+          "dark": "#223e3b"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2636,6 +3738,22 @@
         "paper": {
           "light": "#949b8d",
           "dark": "#333b2c"
+        },
+        "antique": {
+          "light": "#9c9a7f",
+          "dark": "#3c391f"
+        },
+        "pastel": {
+          "light": "#8a9e8f",
+          "dark": "#293e2f"
+        },
+        "nautical": {
+          "light": "#849e9d",
+          "dark": "#223e3d"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2674,6 +3792,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2714,6 +3848,22 @@
         "paper": {
           "light": "#899d9d",
           "dark": "#263d3d"
+        },
+        "antique": {
+          "light": "#ad8f97",
+          "dark": "#4a2f37"
+        },
+        "pastel": {
+          "light": "#8c9aac",
+          "dark": "#2c394b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#273b48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2754,6 +3904,22 @@
         "paper": {
           "light": "#a5ac9e",
           "dark": "#434b3b"
+        },
+        "antique": {
+          "light": "#adab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9bafa0",
+          "dark": "#394e3e"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#314e4c"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -2794,6 +3960,22 @@
         "paper": {
           "light": "#9d9889",
           "dark": "#3d3827"
+        },
+        "antique": {
+          "light": "#a4967e",
+          "dark": "#43361e"
+        },
+        "pastel": {
+          "light": "#9d9983",
+          "dark": "#3d3822"
+        },
+        "nautical": {
+          "light": "#879f95",
+          "dark": "#263e34"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2834,6 +4016,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bea394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403e"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -2874,6 +4072,22 @@
         "paper": {
           "light": "#b6a59f",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bea394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403e"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -2914,6 +4128,22 @@
         "paper": {
           "light": "#949b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9c9a7f",
+          "dark": "#3c391f"
+        },
+        "pastel": {
+          "light": "#8a9e8f",
+          "dark": "#2a3d2f"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2954,6 +4184,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312e"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -2992,6 +4238,22 @@
         "paper": {
           "light": "#abbfbf",
           "dark": "#465d5d"
+        },
+        "antique": {
+          "light": "#d0b1ba",
+          "dark": "#6c4e57"
+        },
+        "pastel": {
+          "light": "#acbccf",
+          "dark": "#4a5a6c"
+        },
+        "nautical": {
+          "light": "#a9becc",
+          "dark": "#465b69"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -3032,6 +4294,22 @@
         "paper": {
           "light": "#b7bdae",
           "dark": "#545b4a"
+        },
+        "antique": {
+          "light": "#c0bca0",
+          "dark": "#5d593d"
+        },
+        "pastel": {
+          "light": "#aec0af",
+          "dark": "#4b5e4c"
+        },
+        "nautical": {
+          "light": "#a6c1bf",
+          "dark": "#425e5c"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -3069,6 +4347,22 @@
         "paper": {
           "light": "#899d9d",
           "dark": "#263d3d"
+        },
+        "antique": {
+          "light": "#ad8f97",
+          "dark": "#4a2f37"
+        },
+        "pastel": {
+          "light": "#8c99ac",
+          "dark": "#2c394b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#273a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3109,6 +4403,22 @@
         "paper": {
           "light": "#8a9d9a",
           "dark": "#273d39"
+        },
+        "antique": {
+          "light": "#8e9e87",
+          "dark": "#2e3d27"
+        },
+        "pastel": {
+          "light": "#869caa",
+          "dark": "#253b48"
+        },
+        "nautical": {
+          "light": "#869ca7",
+          "dark": "#253b46"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3149,6 +4459,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3188,6 +4514,22 @@
         "paper": {
           "light": "#abbfbf",
           "dark": "#465d5d"
+        },
+        "antique": {
+          "light": "#d0b1b9",
+          "dark": "#6c4e57"
+        },
+        "pastel": {
+          "light": "#adbccf",
+          "dark": "#4b596c"
+        },
+        "nautical": {
+          "light": "#aabecc",
+          "dark": "#475b69"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -3228,6 +4570,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3266,6 +4624,22 @@
         "paper": {
           "light": "#8a9d9a",
           "dark": "#273d3a"
+        },
+        "antique": {
+          "light": "#8d9e88",
+          "dark": "#2d3d28"
+        },
+        "pastel": {
+          "light": "#879baa",
+          "dark": "#263b49"
+        },
+        "nautical": {
+          "light": "#869ca8",
+          "dark": "#253b47"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3305,6 +4679,22 @@
         "paper": {
           "light": "#b5beaf",
           "dark": "#525c4b"
+        },
+        "antique": {
+          "light": "#bebca1",
+          "dark": "#5b5a3e"
+        },
+        "pastel": {
+          "light": "#abc1b2",
+          "dark": "#485e50"
+        },
+        "nautical": {
+          "light": "#a5c1c0",
+          "dark": "#415e5e"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -3345,6 +4735,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3383,6 +4789,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3423,6 +4845,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3223"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3463,6 +4901,22 @@
         "paper": {
           "light": "#c8b6af",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#cfb3b0",
+          "dark": "#6b504e"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -3503,6 +4957,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a403d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -3543,6 +5013,22 @@
         "paper": {
           "light": "#a4ac9e",
           "dark": "#424b3c"
+        },
+        "antique": {
+          "light": "#acab90",
+          "dark": "#4b492e"
+        },
+        "pastel": {
+          "light": "#99b0a2",
+          "dark": "#374e41"
+        },
+        "nautical": {
+          "light": "#94b0af",
+          "dark": "#314e4d"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -3583,6 +5069,22 @@
         "paper": {
           "light": "#9f94a0",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4b2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3623,6 +5125,22 @@
         "paper": {
           "light": "#a7ab9c",
           "dark": "#464a39"
+        },
+        "antique": {
+          "light": "#afaa8f",
+          "dark": "#4e482d"
+        },
+        "pastel": {
+          "light": "#9fae9b",
+          "dark": "#3e4d3a"
+        },
+        "nautical": {
+          "light": "#95b0ac",
+          "dark": "#324e4a"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -3663,6 +5181,22 @@
         "paper": {
           "light": "#c0baab",
           "dark": "#5e5846"
+        },
+        "antique": {
+          "light": "#c8b8a0",
+          "dark": "#65563d"
+        },
+        "pastel": {
+          "light": "#c1bba4",
+          "dark": "#5f5841"
+        },
+        "nautical": {
+          "light": "#a9c1b6",
+          "dark": "#465e54"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -3703,6 +5237,22 @@
         "paper": {
           "light": "#a8ab9c",
           "dark": "#464a39"
+        },
+        "antique": {
+          "light": "#b0aa8f",
+          "dark": "#4e482d"
+        },
+        "pastel": {
+          "light": "#a0ae9b",
+          "dark": "#3e4c3a"
+        },
+        "nautical": {
+          "light": "#95b0ac",
+          "dark": "#324e4a"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -3741,6 +5291,22 @@
         "paper": {
           "light": "#bdd1d1",
           "dark": "#566e6e"
+        },
+        "antique": {
+          "light": "#e2c2cb",
+          "dark": "#7e5f68"
+        },
+        "pastel": {
+          "light": "#becee1",
+          "dark": "#5b6a7e"
+        },
+        "nautical": {
+          "light": "#bbd0de",
+          "dark": "#576c7b"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -3781,6 +5347,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3820,6 +5402,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3860,6 +5458,22 @@
         "paper": {
           "light": "#8a9d9b",
           "dark": "#273d3b"
+        },
+        "antique": {
+          "light": "#8d9e88",
+          "dark": "#2d3d28"
+        },
+        "pastel": {
+          "light": "#889bab",
+          "dark": "#273a49"
+        },
+        "nautical": {
+          "light": "#879ca8",
+          "dark": "#263b47"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3900,6 +5514,22 @@
         "paper": {
           "light": "#b7bdae",
           "dark": "#545b4a"
+        },
+        "antique": {
+          "light": "#c0bca0",
+          "dark": "#5d593d"
+        },
+        "pastel": {
+          "light": "#aec0af",
+          "dark": "#4b5e4c"
+        },
+        "nautical": {
+          "light": "#a6c1bf",
+          "dark": "#425e5c"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -3940,6 +5570,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -3980,6 +5626,22 @@
         "paper": {
           "light": "#b5beb0",
           "dark": "#515c4c"
+        },
+        "antique": {
+          "light": "#bdbda1",
+          "dark": "#5a5a3e"
+        },
+        "pastel": {
+          "light": "#a9c1b5",
+          "dark": "#465f52"
+        },
+        "nautical": {
+          "light": "#a5c1c1",
+          "dark": "#415e5e"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -4018,6 +5680,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda394",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4058,6 +5736,22 @@
         "paper": {
           "light": "#9f94a0",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4b2f35"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4096,6 +5790,22 @@
         "paper": {
           "light": "#9caea8",
           "dark": "#384d46"
+        },
+        "antique": {
+          "light": "#a1ae96",
+          "dark": "#404c34"
+        },
+        "pastel": {
+          "light": "#94aeb7",
+          "dark": "#314c55"
+        },
+        "nautical": {
+          "light": "#96aeb7",
+          "dark": "#334c55"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4136,6 +5846,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a413d"
+        },
+        "nautical": {
+          "light": "#aba5ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4176,6 +5902,22 @@
         "paper": {
           "light": "#b0a5b2",
           "dark": "#4f4351"
+        },
+        "antique": {
+          "light": "#bfa0a7",
+          "dark": "#5b3e45"
+        },
+        "pastel": {
+          "light": "#9faabe",
+          "dark": "#3e485c"
+        },
+        "nautical": {
+          "light": "#9aacbb",
+          "dark": "#384a59"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4215,6 +5957,22 @@
         "paper": {
           "light": "#959b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9d9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2a3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4252,6 +6010,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4292,6 +6066,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4332,6 +6122,22 @@
         "paper": {
           "light": "#b5a69d",
           "dark": "#544439"
+        },
+        "antique": {
+          "light": "#bca492",
+          "dark": "#594231"
+        },
+        "pastel": {
+          "light": "#bca39a",
+          "dark": "#594139"
+        },
+        "nautical": {
+          "light": "#ada5b9",
+          "dark": "#4c4357"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4372,6 +6178,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4412,6 +6234,22 @@
         "paper": {
           "light": "#a4ac9e",
           "dark": "#424b3b"
+        },
+        "antique": {
+          "light": "#acab90",
+          "dark": "#4b492e"
+        },
+        "pastel": {
+          "light": "#99b0a2",
+          "dark": "#374e40"
+        },
+        "nautical": {
+          "light": "#94b0af",
+          "dark": "#314e4d"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4452,6 +6290,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4492,6 +6346,22 @@
         "paper": {
           "light": "#c8b6af",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#cfb3b0",
+          "dark": "#6b504e"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -4532,6 +6402,22 @@
         "paper": {
           "light": "#899d9d",
           "dark": "#263d3d"
+        },
+        "antique": {
+          "light": "#ad8f97",
+          "dark": "#4a2f37"
+        },
+        "pastel": {
+          "light": "#8b9aac",
+          "dark": "#2b394a"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#273b48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4569,6 +6455,22 @@
         "paper": {
           "light": "#c1b6c3",
           "dark": "#605361"
+        },
+        "antique": {
+          "light": "#d1b1b8",
+          "dark": "#6d4e56"
+        },
+        "pastel": {
+          "light": "#b0bbd0",
+          "dark": "#4d586d"
+        },
+        "nautical": {
+          "light": "#aabdcd",
+          "dark": "#485b6a"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -4609,6 +6511,22 @@
         "paper": {
           "light": "#a5ac9d",
           "dark": "#434b3b"
+        },
+        "antique": {
+          "light": "#adab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9baf9f",
+          "dark": "#3a4d3e"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#324e4c"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4649,6 +6567,22 @@
         "paper": {
           "light": "#939b8e",
           "dark": "#333b2c"
+        },
+        "antique": {
+          "light": "#9b9a7f",
+          "dark": "#3b391f"
+        },
+        "pastel": {
+          "light": "#899f91",
+          "dark": "#283e31"
+        },
+        "nautical": {
+          "light": "#849e9e",
+          "dark": "#223e3d"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4689,6 +6623,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4729,6 +6679,22 @@
         "paper": {
           "light": "#a5ac9e",
           "dark": "#434b3b"
+        },
+        "antique": {
+          "light": "#adab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9bafa0",
+          "dark": "#394e3e"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#314e4c"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4768,6 +6734,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab9190",
+          "dark": "#493130"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4808,6 +6790,22 @@
         "paper": {
           "light": "#aebfb8",
           "dark": "#495d55"
+        },
+        "antique": {
+          "light": "#b4bfa5",
+          "dark": "#525d43"
+        },
+        "pastel": {
+          "light": "#a4c1c6",
+          "dark": "#405e64"
+        },
+        "nautical": {
+          "light": "#a6c0c8",
+          "dark": "#435d65"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -4848,6 +6846,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -4888,6 +6902,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a413c"
+        },
+        "nautical": {
+          "light": "#aba5ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -4928,6 +6958,22 @@
         "paper": {
           "light": "#c2b6c3",
           "dark": "#605361"
+        },
+        "antique": {
+          "light": "#d1b1b8",
+          "dark": "#6d4e55"
+        },
+        "pastel": {
+          "light": "#b0bbd0",
+          "dark": "#4e586d"
+        },
+        "nautical": {
+          "light": "#abbdcd",
+          "dark": "#485b6a"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -4968,6 +7014,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5008,6 +7070,22 @@
         "paper": {
           "light": "#959b8c",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9d997f",
+          "dark": "#3d391e"
+        },
+        "pastel": {
+          "light": "#8c9e8d",
+          "dark": "#2b3d2d"
+        },
+        "nautical": {
+          "light": "#849f9c",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5048,6 +7126,22 @@
         "paper": {
           "light": "#899d9d",
           "dark": "#263d3d"
+        },
+        "antique": {
+          "light": "#ad8f97",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8c99ac",
+          "dark": "#2c394b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5088,6 +7182,22 @@
         "paper": {
           "light": "#a5ac9e",
           "dark": "#434b3b"
+        },
+        "antique": {
+          "light": "#adab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9bafa0",
+          "dark": "#394d3e"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#314e4c"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -5128,6 +7238,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bea394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403e"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -5168,6 +7294,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bea394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403e"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -5208,6 +7350,22 @@
         "paper": {
           "light": "#c8b6b0",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#d0b4a5",
+          "dark": "#6c5143"
+        },
+        "pastel": {
+          "light": "#cfb3b2",
+          "dark": "#6b504f"
+        },
+        "nautical": {
+          "light": "#bbb7cc",
+          "dark": "#595569"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -5246,6 +7404,22 @@
         "paper": {
           "light": "#c7b7af",
           "dark": "#66534b"
+        },
+        "antique": {
+          "light": "#cfb4a4",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#ceb3af",
+          "dark": "#6b514d"
+        },
+        "nautical": {
+          "light": "#bdb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -5286,6 +7460,22 @@
         "paper": {
           "light": "#8a9d99",
           "dark": "#273d39"
+        },
+        "antique": {
+          "light": "#8e9e87",
+          "dark": "#2e3d27"
+        },
+        "pastel": {
+          "light": "#859ca9",
+          "dark": "#243b48"
+        },
+        "nautical": {
+          "light": "#869ca7",
+          "dark": "#253c46"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5326,6 +7516,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bea394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403e"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -5366,6 +7572,22 @@
         "paper": {
           "light": "#9f9789",
           "dark": "#3f3727"
+        },
+        "antique": {
+          "light": "#a6957f",
+          "dark": "#45351e"
+        },
+        "pastel": {
+          "light": "#a29782",
+          "dark": "#413622"
+        },
+        "nautical": {
+          "light": "#899e92",
+          "dark": "#283e32"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5405,6 +7627,22 @@
         "paper": {
           "light": "#9f94a0",
           "dark": "#3f3340"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4b2f35"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2f384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5444,6 +7682,22 @@
         "paper": {
           "light": "#c2b9ab",
           "dark": "#605747"
+        },
+        "antique": {
+          "light": "#c9b8a0",
+          "dark": "#66553e"
+        },
+        "pastel": {
+          "light": "#c5b9a4",
+          "dark": "#625641"
+        },
+        "nautical": {
+          "light": "#abc1b4",
+          "dark": "#485e52"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -5482,6 +7736,22 @@
         "paper": {
           "light": "#d9c8c1",
           "dark": "#78645c"
+        },
+        "antique": {
+          "light": "#e1c6b6",
+          "dark": "#7d6253"
+        },
+        "pastel": {
+          "light": "#e1c5c2",
+          "dark": "#7d615f"
+        },
+        "nautical": {
+          "light": "#cec9de",
+          "dark": "#6a657b"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -5519,6 +7789,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ad9284",
+          "dark": "#4a3124"
+        },
+        "pastel": {
+          "light": "#ab9191",
+          "dark": "#493031"
+        },
+        "nautical": {
+          "light": "#9995aa",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5559,6 +7845,22 @@
         "paper": {
           "light": "#a1ada1",
           "dark": "#3f4c3e"
+        },
+        "antique": {
+          "light": "#a9ac91",
+          "dark": "#484a2f"
+        },
+        "pastel": {
+          "light": "#95b0a8",
+          "dark": "#324e47"
+        },
+        "nautical": {
+          "light": "#94afb2",
+          "dark": "#314d50"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -5598,6 +7900,22 @@
         "paper": {
           "light": "#899d9d",
           "dark": "#263d3d"
+        },
+        "antique": {
+          "light": "#ad8f97",
+          "dark": "#4a2f37"
+        },
+        "pastel": {
+          "light": "#8c9aac",
+          "dark": "#2c394b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#273b48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5638,6 +7956,22 @@
         "paper": {
           "light": "#c8b6af",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#cfb3b0",
+          "dark": "#6b504e"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -5675,6 +8009,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5715,6 +8065,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#493130"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5755,6 +8121,22 @@
         "paper": {
           "light": "#949b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9c9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2a3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5795,6 +8177,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab9190",
+          "dark": "#493130"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5835,6 +8233,22 @@
         "paper": {
           "light": "#a3ad9f",
           "dark": "#414b3c"
+        },
+        "antique": {
+          "light": "#abab90",
+          "dark": "#4a492f"
+        },
+        "pastel": {
+          "light": "#98b0a3",
+          "dark": "#364e42"
+        },
+        "nautical": {
+          "light": "#94afb0",
+          "dark": "#314e4e"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -5875,6 +8289,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ad8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8d99ad",
+          "dark": "#2d384b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -5915,6 +8345,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda394",
+          "dark": "#5a4132"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -5955,6 +8401,22 @@
         "paper": {
           "light": "#b7bdae",
           "dark": "#555b4a"
+        },
+        "antique": {
+          "light": "#c0bca0",
+          "dark": "#5d593d"
+        },
+        "pastel": {
+          "light": "#aec0ae",
+          "dark": "#4c5e4c"
+        },
+        "nautical": {
+          "light": "#a6c1be",
+          "dark": "#425e5c"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -5994,6 +8456,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6034,6 +8512,22 @@
         "paper": {
           "light": "#c1baab",
           "dark": "#5f5746"
+        },
+        "antique": {
+          "light": "#c8b8a0",
+          "dark": "#65553d"
+        },
+        "pastel": {
+          "light": "#c2baa4",
+          "dark": "#605741"
+        },
+        "nautical": {
+          "light": "#aac1b6",
+          "dark": "#475e53"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -6074,6 +8568,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6114,6 +8624,22 @@
         "paper": {
           "light": "#c8b6b0",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6b5243"
+        },
+        "pastel": {
+          "light": "#cfb3b1",
+          "dark": "#6b504e"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -6154,6 +8680,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6194,6 +8736,22 @@
         "paper": {
           "light": "#9d9889",
           "dark": "#3d3827"
+        },
+        "antique": {
+          "light": "#a4977e",
+          "dark": "#43361e"
+        },
+        "pastel": {
+          "light": "#9c9983",
+          "dark": "#3c3922"
+        },
+        "nautical": {
+          "light": "#879f95",
+          "dark": "#263e35"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6234,6 +8792,22 @@
         "paper": {
           "light": "#c8cfc0",
           "dark": "#646c5b"
+        },
+        "antique": {
+          "light": "#d0ceb2",
+          "dark": "#6d6a4e"
+        },
+        "pastel": {
+          "light": "#bdd3c3",
+          "dark": "#596f5f"
+        },
+        "nautical": {
+          "light": "#b7d3d1",
+          "dark": "#526f6e"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -6274,6 +8848,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6314,6 +8904,22 @@
         "paper": {
           "light": "#949b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9c9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2a3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6354,6 +8960,22 @@
         "paper": {
           "light": "#9e9889",
           "dark": "#3e3727"
+        },
+        "antique": {
+          "light": "#a5967e",
+          "dark": "#43361e"
+        },
+        "pastel": {
+          "light": "#9e9882",
+          "dark": "#3e3822"
+        },
+        "nautical": {
+          "light": "#889f94",
+          "dark": "#263e34"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6394,6 +9016,22 @@
         "paper": {
           "light": "#d9c8c1",
           "dark": "#78645c"
+        },
+        "antique": {
+          "light": "#e1c6b6",
+          "dark": "#7d6253"
+        },
+        "pastel": {
+          "light": "#e1c5c2",
+          "dark": "#7d615f"
+        },
+        "nautical": {
+          "light": "#cec8de",
+          "dark": "#6b657b"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -6434,6 +9072,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a413d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -6474,6 +9128,22 @@
         "paper": {
           "light": "#a4958d",
           "dark": "#44342b"
+        },
+        "antique": {
+          "light": "#ac9382",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab928c",
+          "dark": "#49312c"
+        },
+        "nautical": {
+          "light": "#9b94a9",
+          "dark": "#3b3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6514,6 +9184,22 @@
         "paper": {
           "light": "#959b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9d9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2a3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6554,6 +9240,22 @@
         "paper": {
           "light": "#959b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9d9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2a3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6593,6 +9295,22 @@
         "paper": {
           "light": "#a4958c",
           "dark": "#44342a"
+        },
+        "antique": {
+          "light": "#ab9382",
+          "dark": "#483322"
+        },
+        "pastel": {
+          "light": "#aa9289",
+          "dark": "#483229"
+        },
+        "nautical": {
+          "light": "#9c94a8",
+          "dark": "#3c3446"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6632,6 +9350,22 @@
         "paper": {
           "light": "#959b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9d9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2b3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6670,6 +9404,22 @@
         "paper": {
           "light": "#c7cfc1",
           "dark": "#636d5c"
+        },
+        "antique": {
+          "light": "#cfceb2",
+          "dark": "#6c6b4e"
+        },
+        "pastel": {
+          "light": "#bcd3c4",
+          "dark": "#586f61"
+        },
+        "nautical": {
+          "light": "#b7d3d2",
+          "dark": "#526f6f"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -6710,6 +9460,22 @@
         "paper": {
           "light": "#899d9d",
           "dark": "#263d3d"
+        },
+        "antique": {
+          "light": "#ad8f97",
+          "dark": "#4a2f37"
+        },
+        "pastel": {
+          "light": "#8b9aac",
+          "dark": "#2b394a"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#273b48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6750,6 +9516,22 @@
         "paper": {
           "light": "#9d9889",
           "dark": "#3d3827"
+        },
+        "antique": {
+          "light": "#a4967e",
+          "dark": "#43361e"
+        },
+        "pastel": {
+          "light": "#9d9983",
+          "dark": "#3d3822"
+        },
+        "nautical": {
+          "light": "#879f95",
+          "dark": "#263e34"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6789,6 +9571,22 @@
         "paper": {
           "light": "#c1b6c3",
           "dark": "#5f5362"
+        },
+        "antique": {
+          "light": "#d1b1b8",
+          "dark": "#6d4e56"
+        },
+        "pastel": {
+          "light": "#afbbd0",
+          "dark": "#4d586d"
+        },
+        "nautical": {
+          "light": "#aabdcc",
+          "dark": "#475b6a"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -6829,6 +9627,22 @@
         "paper": {
           "light": "#c8b6b0",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#d0b4a5",
+          "dark": "#6c5143"
+        },
+        "pastel": {
+          "light": "#cfb3b2",
+          "dark": "#6b504f"
+        },
+        "nautical": {
+          "light": "#bbb7cc",
+          "dark": "#595569"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -6869,6 +9683,22 @@
         "paper": {
           "light": "#c8b6b0",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#d0b4a5",
+          "dark": "#6c5143"
+        },
+        "pastel": {
+          "light": "#cfb3b2",
+          "dark": "#6b5050"
+        },
+        "nautical": {
+          "light": "#bbb7cc",
+          "dark": "#595569"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -6907,6 +9737,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6947,6 +9793,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -6987,6 +9849,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda394",
+          "dark": "#5a4132"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -7025,6 +9903,22 @@
         "paper": {
           "light": "#b6bdaf",
           "dark": "#545b4b"
+        },
+        "antique": {
+          "light": "#bfbca0",
+          "dark": "#5c593e"
+        },
+        "pastel": {
+          "light": "#acc1b0",
+          "dark": "#4a5e4e"
+        },
+        "nautical": {
+          "light": "#a5c1bf",
+          "dark": "#425e5d"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -7064,6 +9958,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ad8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8d99ad",
+          "dark": "#2d384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7104,6 +10014,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7142,6 +10068,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bda394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403e"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -7182,6 +10124,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7222,6 +10180,22 @@
         "paper": {
           "light": "#899d9c",
           "dark": "#263d3c"
+        },
+        "antique": {
+          "light": "#8c9f89",
+          "dark": "#2c3e29"
+        },
+        "pastel": {
+          "light": "#899aac",
+          "dark": "#293a4a"
+        },
+        "nautical": {
+          "light": "#879ca9",
+          "dark": "#263b47"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7262,6 +10236,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433c"
+        },
+        "antique": {
+          "light": "#bea394",
+          "dark": "#5a4133"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403e"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#494458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -7299,6 +10289,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab9190",
+          "dark": "#493030"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7339,6 +10345,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7378,6 +10400,22 @@
         "paper": {
           "light": "#c7b6af",
           "dark": "#66534b"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#ceb3b0",
+          "dark": "#6b514d"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -7418,6 +10456,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a413c"
+        },
+        "nautical": {
+          "light": "#aba5ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -7458,6 +10512,22 @@
         "paper": {
           "light": "#d9c8c0",
           "dark": "#77645c"
+        },
+        "antique": {
+          "light": "#e1c6b6",
+          "dark": "#7d6352"
+        },
+        "pastel": {
+          "light": "#e0c5c0",
+          "dark": "#7c615d"
+        },
+        "nautical": {
+          "light": "#cec8de",
+          "dark": "#6b657a"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -7498,6 +10568,22 @@
         "paper": {
           "light": "#959b8c",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9d997f",
+          "dark": "#3d391e"
+        },
+        "pastel": {
+          "light": "#8c9e8d",
+          "dark": "#2b3d2d"
+        },
+        "nautical": {
+          "light": "#849f9c",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7538,6 +10624,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7577,6 +10679,22 @@
         "paper": {
           "light": "#b7a5a0",
           "dark": "#56423e"
+        },
+        "antique": {
+          "light": "#bfa296",
+          "dark": "#5b4134"
+        },
+        "pastel": {
+          "light": "#bca1a4",
+          "dark": "#594043"
+        },
+        "nautical": {
+          "light": "#a9a6bb",
+          "dark": "#474559"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -7617,6 +10735,22 @@
         "paper": {
           "light": "#9f94a0",
           "dark": "#3f3340"
+        },
+        "antique": {
+          "light": "#ae8f95",
+          "dark": "#4b2f35"
+        },
+        "pastel": {
+          "light": "#8f98ad",
+          "dark": "#2f384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7657,6 +10791,22 @@
         "paper": {
           "light": "#b0a5b2",
           "dark": "#4f4351"
+        },
+        "antique": {
+          "light": "#bfa0a7",
+          "dark": "#5b3e46"
+        },
+        "pastel": {
+          "light": "#9eaabe",
+          "dark": "#3d485b"
+        },
+        "nautical": {
+          "light": "#99acbb",
+          "dark": "#374a59"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -7696,6 +10846,22 @@
         "paper": {
           "light": "#b0a5b2",
           "dark": "#4f4351"
+        },
+        "antique": {
+          "light": "#bfa0a7",
+          "dark": "#5b3e45"
+        },
+        "pastel": {
+          "light": "#9eaabe",
+          "dark": "#3d485b"
+        },
+        "nautical": {
+          "light": "#99acbb",
+          "dark": "#374a59"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -7736,6 +10902,22 @@
         "paper": {
           "light": "#bdd1cd",
           "dark": "#576e6a"
+        },
+        "antique": {
+          "light": "#c1d2ba",
+          "dark": "#5e6f57"
+        },
+        "pastel": {
+          "light": "#b9d0de",
+          "dark": "#556d7b"
+        },
+        "nautical": {
+          "light": "#b9d0dc",
+          "dark": "#556d79"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -7774,6 +10956,22 @@
         "paper": {
           "light": "#939b8d",
           "dark": "#333b2c"
+        },
+        "antique": {
+          "light": "#9b9a7f",
+          "dark": "#3b391f"
+        },
+        "pastel": {
+          "light": "#899f90",
+          "dark": "#283e30"
+        },
+        "nautical": {
+          "light": "#849e9e",
+          "dark": "#223e3d"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7814,6 +11012,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab9190",
+          "dark": "#493130"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7854,6 +11068,22 @@
         "paper": {
           "light": "#949b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9c9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2a3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7892,6 +11122,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7932,6 +11178,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -7972,6 +11234,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8012,6 +11290,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab9190",
+          "dark": "#493130"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8052,6 +11346,22 @@
         "paper": {
           "light": "#949b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9c9a7f",
+          "dark": "#3c391e"
+        },
+        "pastel": {
+          "light": "#8b9e8e",
+          "dark": "#2a3d2e"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8091,6 +11401,22 @@
         "paper": {
           "light": "#959b8c",
           "dark": "#353b2a"
+        },
+        "antique": {
+          "light": "#9d997f",
+          "dark": "#3d391e"
+        },
+        "pastel": {
+          "light": "#8c9e8c",
+          "dark": "#2c3d2c"
+        },
+        "nautical": {
+          "light": "#849f9c",
+          "dark": "#223e3b"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8131,6 +11457,22 @@
         "paper": {
           "light": "#abbfc0",
           "dark": "#465d5e"
+        },
+        "antique": {
+          "light": "#d1b1b9",
+          "dark": "#6c4e56"
+        },
+        "pastel": {
+          "light": "#afbbd0",
+          "dark": "#4c596d"
+        },
+        "nautical": {
+          "light": "#aabecc",
+          "dark": "#475b69"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -8171,6 +11513,22 @@
         "paper": {
           "light": "#8a9d99",
           "dark": "#273d39"
+        },
+        "antique": {
+          "light": "#8e9e87",
+          "dark": "#2e3d27"
+        },
+        "pastel": {
+          "light": "#869ca9",
+          "dark": "#253b48"
+        },
+        "nautical": {
+          "light": "#869ca7",
+          "dark": "#253b46"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8209,6 +11567,22 @@
         "paper": {
           "light": "#9aaead",
           "dark": "#364d4c"
+        },
+        "antique": {
+          "light": "#bea0a9",
+          "dark": "#5b3e47"
+        },
+        "pastel": {
+          "light": "#9babbd",
+          "dark": "#39495b"
+        },
+        "nautical": {
+          "light": "#98adba",
+          "dark": "#364b58"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8249,6 +11623,22 @@
         "paper": {
           "light": "#8a9d99",
           "dark": "#273d39"
+        },
+        "antique": {
+          "light": "#8e9e87",
+          "dark": "#2e3d27"
+        },
+        "pastel": {
+          "light": "#869ca9",
+          "dark": "#253b48"
+        },
+        "nautical": {
+          "light": "#869ca7",
+          "dark": "#253b46"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8289,6 +11679,22 @@
         "paper": {
           "light": "#c8b6b0",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6b5243"
+        },
+        "pastel": {
+          "light": "#cfb3b1",
+          "dark": "#6b504e"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#595469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -8329,6 +11735,22 @@
         "paper": {
           "light": "#a5ac9e",
           "dark": "#434b3b"
+        },
+        "antique": {
+          "light": "#adab8f",
+          "dark": "#4c492e"
+        },
+        "pastel": {
+          "light": "#9bafa0",
+          "dark": "#394e3f"
+        },
+        "nautical": {
+          "light": "#94b0ae",
+          "dark": "#314e4d"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8369,6 +11791,22 @@
         "paper": {
           "light": "#959b8c",
           "dark": "#353b2b"
+        },
+        "antique": {
+          "light": "#9d997f",
+          "dark": "#3d391e"
+        },
+        "pastel": {
+          "light": "#8c9e8d",
+          "dark": "#2b3d2d"
+        },
+        "nautical": {
+          "light": "#849f9c",
+          "dark": "#223e3c"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8409,6 +11847,22 @@
         "paper": {
           "light": "#a6ac9d",
           "dark": "#444a3a"
+        },
+        "antique": {
+          "light": "#aeaa8f",
+          "dark": "#4d482e"
+        },
+        "pastel": {
+          "light": "#9daf9d",
+          "dark": "#3b4d3c"
+        },
+        "nautical": {
+          "light": "#95b0ad",
+          "dark": "#324e4b"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8449,6 +11903,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda394",
+          "dark": "#5a4132"
+        },
+        "pastel": {
+          "light": "#bda29f",
+          "dark": "#5a403d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8489,6 +11959,22 @@
         "paper": {
           "light": "#d3c8d5",
           "dark": "#716473"
+        },
+        "antique": {
+          "light": "#e3c2c9",
+          "dark": "#7e5f66"
+        },
+        "pastel": {
+          "light": "#c2cce2",
+          "dark": "#5e697e"
+        },
+        "nautical": {
+          "light": "#bccfdf",
+          "dark": "#586c7b"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -8527,6 +12013,22 @@
         "paper": {
           "light": "#9aaead",
           "dark": "#364d4c"
+        },
+        "antique": {
+          "light": "#bea0a9",
+          "dark": "#5b3e47"
+        },
+        "pastel": {
+          "light": "#9babbd",
+          "dark": "#39495b"
+        },
+        "nautical": {
+          "light": "#98adba",
+          "dark": "#364b58"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8567,6 +12069,22 @@
         "paper": {
           "light": "#b1a5b1",
           "dark": "#504350"
+        },
+        "antique": {
+          "light": "#bfa0a6",
+          "dark": "#5b3e45"
+        },
+        "pastel": {
+          "light": "#a0a9be",
+          "dark": "#3f475c"
+        },
+        "nautical": {
+          "light": "#9aacbb",
+          "dark": "#384a59"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8607,6 +12125,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a403d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8647,6 +12181,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8687,6 +12237,22 @@
         "paper": {
           "light": "#949b8d",
           "dark": "#343b2b"
+        },
+        "antique": {
+          "light": "#9c9a7f",
+          "dark": "#3c391f"
+        },
+        "pastel": {
+          "light": "#8a9e8f",
+          "dark": "#2a3d2f"
+        },
+        "nautical": {
+          "light": "#849f9d",
+          "dark": "#223e3d"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8727,6 +12293,22 @@
         "paper": {
           "light": "#899d9e",
           "dark": "#263c3e"
+        },
+        "antique": {
+          "light": "#ad8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8d99ad",
+          "dark": "#2d384b"
+        },
+        "nautical": {
+          "light": "#889ba9",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8767,6 +12349,22 @@
         "paper": {
           "light": "#9aaeaf",
           "dark": "#364c4e"
+        },
+        "antique": {
+          "light": "#bfa0a7",
+          "dark": "#5b3e46"
+        },
+        "pastel": {
+          "light": "#9eaabe",
+          "dark": "#3c485b"
+        },
+        "nautical": {
+          "light": "#99acbb",
+          "dark": "#374a58"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -8807,6 +12405,22 @@
         "paper": {
           "light": "#929c8f",
           "dark": "#313c2d"
+        },
+        "antique": {
+          "light": "#9a9b80",
+          "dark": "#3a3a1f"
+        },
+        "pastel": {
+          "light": "#869f94",
+          "dark": "#253e34"
+        },
+        "nautical": {
+          "light": "#839e9f",
+          "dark": "#213d3f"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8845,6 +12459,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ad9284",
+          "dark": "#4a3124"
+        },
+        "pastel": {
+          "light": "#ab9191",
+          "dark": "#493031"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8885,6 +12515,22 @@
         "paper": {
           "light": "#c7b7af",
           "dark": "#66534b"
+        },
+        "antique": {
+          "light": "#cfb5a4",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#ceb3af",
+          "dark": "#6b514c"
+        },
+        "nautical": {
+          "light": "#bdb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -8925,6 +12571,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -8965,6 +12627,22 @@
         "paper": {
           "light": "#c8cfc0",
           "dark": "#646c5b"
+        },
+        "antique": {
+          "light": "#d1ceb1",
+          "dark": "#6d6a4e"
+        },
+        "pastel": {
+          "light": "#bed2c2",
+          "dark": "#5a6f5e"
+        },
+        "nautical": {
+          "light": "#b7d3d1",
+          "dark": "#526f6e"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -9005,6 +12683,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda393",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a413c"
+        },
+        "nautical": {
+          "light": "#aba5ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -9043,6 +12737,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9082,6 +12792,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab918f",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9120,6 +12846,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312e"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9158,6 +12900,22 @@
         "paper": {
           "light": "#b6a59e",
           "dark": "#55433b"
+        },
+        "antique": {
+          "light": "#bda394",
+          "dark": "#5a4232"
+        },
+        "pastel": {
+          "light": "#bda29e",
+          "dark": "#5a403d"
+        },
+        "nautical": {
+          "light": "#aba6ba",
+          "dark": "#4a4458"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -9198,6 +12956,22 @@
         "paper": {
           "light": "#8a9d9a",
           "dark": "#273d3a"
+        },
+        "antique": {
+          "light": "#8e9e87",
+          "dark": "#2e3d27"
+        },
+        "pastel": {
+          "light": "#869caa",
+          "dark": "#263b48"
+        },
+        "nautical": {
+          "light": "#869ca8",
+          "dark": "#253b46"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9238,6 +13012,22 @@
         "paper": {
           "light": "#a5948d",
           "dark": "#45342c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918d",
+          "dark": "#49312d"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3447"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9278,6 +13068,22 @@
         "paper": {
           "light": "#a6ac9d",
           "dark": "#454a3a"
+        },
+        "antique": {
+          "light": "#aeaa8f",
+          "dark": "#4d482e"
+        },
+        "pastel": {
+          "light": "#9daf9d",
+          "dark": "#3c4d3c"
+        },
+        "nautical": {
+          "light": "#95b0ad",
+          "dark": "#324e4b"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -9318,6 +13124,22 @@
         "paper": {
           "light": "#bfbaab",
           "dark": "#5d5846"
+        },
+        "antique": {
+          "light": "#c7b9a0",
+          "dark": "#64563d"
+        },
+        "pastel": {
+          "light": "#bfbba4",
+          "dark": "#5d5941"
+        },
+        "nautical": {
+          "light": "#a9c1b7",
+          "dark": "#465e54"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -9358,6 +13180,22 @@
         "paper": {
           "light": "#abbfbf",
           "dark": "#465d5e"
+        },
+        "antique": {
+          "light": "#d0b1b9",
+          "dark": "#6c4e57"
+        },
+        "pastel": {
+          "light": "#aebccf",
+          "dark": "#4b596c"
+        },
+        "nautical": {
+          "light": "#aabecc",
+          "dark": "#475b69"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -9398,6 +13236,22 @@
         "paper": {
           "light": "#a5948f",
           "dark": "#45332e"
+        },
+        "antique": {
+          "light": "#ad9284",
+          "dark": "#4a3125"
+        },
+        "pastel": {
+          "light": "#ab9192",
+          "dark": "#493032"
+        },
+        "nautical": {
+          "light": "#9895aa",
+          "dark": "#383548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9438,6 +13292,22 @@
         "paper": {
           "light": "#c1b6c3",
           "dark": "#605362"
+        },
+        "antique": {
+          "light": "#d1b1b8",
+          "dark": "#6d4e56"
+        },
+        "pastel": {
+          "light": "#b0bbd0",
+          "dark": "#4d586d"
+        },
+        "nautical": {
+          "light": "#aabdcd",
+          "dark": "#475b6a"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -9478,6 +13348,22 @@
         "paper": {
           "light": "#a5948f",
           "dark": "#45332e"
+        },
+        "antique": {
+          "light": "#ad9284",
+          "dark": "#4a3125"
+        },
+        "pastel": {
+          "light": "#ab9192",
+          "dark": "#493032"
+        },
+        "nautical": {
+          "light": "#9895aa",
+          "dark": "#383548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9518,6 +13404,22 @@
         "paper": {
           "light": "#959b8c",
           "dark": "#353a2a"
+        },
+        "antique": {
+          "light": "#9d997f",
+          "dark": "#3d391e"
+        },
+        "pastel": {
+          "light": "#8d9e8c",
+          "dark": "#2c3d2c"
+        },
+        "nautical": {
+          "light": "#849f9c",
+          "dark": "#223e3b"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9558,6 +13460,22 @@
         "paper": {
           "light": "#9c9989",
           "dark": "#3c3827"
+        },
+        "antique": {
+          "light": "#a3977e",
+          "dark": "#42361e"
+        },
+        "pastel": {
+          "light": "#9b9a83",
+          "dark": "#3a3923"
+        },
+        "nautical": {
+          "light": "#879f96",
+          "dark": "#253e36"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9598,6 +13516,22 @@
         "paper": {
           "light": "#9e9889",
           "dark": "#3e3727"
+        },
+        "antique": {
+          "light": "#a5967e",
+          "dark": "#44351e"
+        },
+        "pastel": {
+          "light": "#9f9882",
+          "dark": "#3e3822"
+        },
+        "nautical": {
+          "light": "#889f94",
+          "dark": "#273e34"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9638,6 +13572,22 @@
         "paper": {
           "light": "#afa99a",
           "dark": "#4e4736"
+        },
+        "antique": {
+          "light": "#b7a78f",
+          "dark": "#54452d"
+        },
+        "pastel": {
+          "light": "#b1a993",
+          "dark": "#4f4731"
+        },
+        "nautical": {
+          "light": "#99b0a4",
+          "dark": "#364e43"
+        },
+        "mono": {
+          "light": "#a9a9a9",
+          "dark": "#484848"
         }
       },
       "accent": {
@@ -9678,6 +13628,22 @@
         "paper": {
           "light": "#9f94a1",
           "dark": "#3f3341"
+        },
+        "antique": {
+          "light": "#ae8f96",
+          "dark": "#4a2f36"
+        },
+        "pastel": {
+          "light": "#8e99ad",
+          "dark": "#2e384b"
+        },
+        "nautical": {
+          "light": "#899baa",
+          "dark": "#283a48"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9718,6 +13684,22 @@
         "paper": {
           "light": "#9e9889",
           "dark": "#3e3727"
+        },
+        "antique": {
+          "light": "#a6967e",
+          "dark": "#44351e"
+        },
+        "pastel": {
+          "light": "#a09882",
+          "dark": "#3f3722"
+        },
+        "nautical": {
+          "light": "#889e93",
+          "dark": "#273e33"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9758,6 +13740,22 @@
         "paper": {
           "light": "#d9c8c0",
           "dark": "#77645c"
+        },
+        "antique": {
+          "light": "#e1c6b6",
+          "dark": "#7d6352"
+        },
+        "pastel": {
+          "light": "#e0c5c0",
+          "dark": "#7c615d"
+        },
+        "nautical": {
+          "light": "#cec8de",
+          "dark": "#6b657a"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -9798,6 +13796,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332d"
+        },
+        "antique": {
+          "light": "#ac9284",
+          "dark": "#4a3224"
+        },
+        "pastel": {
+          "light": "#ab9190",
+          "dark": "#493130"
+        },
+        "nautical": {
+          "light": "#9995a9",
+          "dark": "#393548"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9837,6 +13851,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9875,6 +13905,22 @@
         "paper": {
           "light": "#a5948e",
           "dark": "#45332c"
+        },
+        "antique": {
+          "light": "#ac9283",
+          "dark": "#493223"
+        },
+        "pastel": {
+          "light": "#ab918e",
+          "dark": "#49312f"
+        },
+        "nautical": {
+          "light": "#9a95a9",
+          "dark": "#3a3448"
+        },
+        "mono": {
+          "light": "#989898",
+          "dark": "#383838"
         }
       },
       "accent": {
@@ -9914,6 +13960,22 @@
         "paper": {
           "light": "#d3c8d5",
           "dark": "#716473"
+        },
+        "antique": {
+          "light": "#e3c2c9",
+          "dark": "#7e5f66"
+        },
+        "pastel": {
+          "light": "#c2cce2",
+          "dark": "#5e697e"
+        },
+        "nautical": {
+          "light": "#bccfdf",
+          "dark": "#586c7b"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {
@@ -9952,6 +14014,22 @@
         "paper": {
           "light": "#c8b6b0",
           "dark": "#66534c"
+        },
+        "antique": {
+          "light": "#cfb4a5",
+          "dark": "#6b5242"
+        },
+        "pastel": {
+          "light": "#cfb3b0",
+          "dark": "#6b504e"
+        },
+        "nautical": {
+          "light": "#bcb7cc",
+          "dark": "#5a5469"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -9992,6 +14070,22 @@
         "paper": {
           "light": "#b5beaf",
           "dark": "#525c4b"
+        },
+        "antique": {
+          "light": "#bebca1",
+          "dark": "#5b5a3e"
+        },
+        "pastel": {
+          "light": "#aac1b3",
+          "dark": "#475e50"
+        },
+        "nautical": {
+          "light": "#a5c1c0",
+          "dark": "#415e5e"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -10032,6 +14126,22 @@
         "paper": {
           "light": "#b8bdad",
           "dark": "#565b49"
+        },
+        "antique": {
+          "light": "#c0bba0",
+          "dark": "#5e593d"
+        },
+        "pastel": {
+          "light": "#b0c0ad",
+          "dark": "#4d5d4b"
+        },
+        "nautical": {
+          "light": "#a6c1be",
+          "dark": "#425e5b"
+        },
+        "mono": {
+          "light": "#bababa",
+          "dark": "#585858"
         }
       },
       "accent": {
@@ -10072,6 +14182,22 @@
         "paper": {
           "light": "#cacfbf",
           "dark": "#666c5a"
+        },
+        "antique": {
+          "light": "#d2cdb1",
+          "dark": "#6f6a4e"
+        },
+        "pastel": {
+          "light": "#c1d2bf",
+          "dark": "#5d6f5b"
+        },
+        "nautical": {
+          "light": "#b7d3d0",
+          "dark": "#53706c"
+        },
+        "mono": {
+          "light": "#cccccc",
+          "dark": "#696969"
         }
       },
       "accent": {

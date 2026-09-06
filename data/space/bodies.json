@@ -26,6 +26,14 @@
         "nasaId": "GSFC_20171208_Archive_e002069",
         "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e002069",
         "credit": "GSFC"
+      },
+      "texture": "space/textures/sun.jpg",
+      "notes": {
+        "naming": "From Old English sunne; the Latin sol survives in 'solar'. Named long before naming conventions existed — every culture named it first.",
+        "atmosphere": "Not applicable — the Sun is a ball of plasma: about 73% hydrogen and 25% helium by mass, fusing ~600 million tonnes of hydrogen per second.",
+        "features": "The photosphere with its sunspot cycle; the million-degree corona visible during eclipses; flares and coronal mass ejections that drive space weather.",
+        "missions": "SOHO (1995), Parker Solar Probe (2018, first spacecraft to fly through the corona), Solar Orbiter (2020).",
+        "source": "https://en.wikipedia.org/wiki/Sun"
       }
     },
     {
@@ -59,6 +67,19 @@
         "nasaId": "GSFC_20171208_Archive_e001544",
         "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001544",
         "credit": "GSFC"
+      },
+      "texture": "space/textures/mercury.jpg",
+      "notes": {
+        "naming": "Named by the Romans for the fleet-footed messenger god, because it moves fastest across the sky.",
+        "atmosphere": "Essentially none — a vanishingly thin exosphere of oxygen, sodium, hydrogen, helium and potassium blasted off the surface by the solar wind.",
+        "features": "The 1,550-km Caloris impact basin; lobate scarps from the planet's slow shrinking; water ice in permanently shadowed polar craters.",
+        "missions": "Mariner 10 (1974-75), MESSENGER (orbited 2011-15), BepiColombo (arriving late 2020s).",
+        "source": "https://en.wikipedia.org/wiki/Mercury_(planet)"
+      },
+      "trek": {
+        "urlTemplate": "https://trek.nasa.gov/tiles/Mercury/EQ/Mercury_MESSENGER_MDIS_Basemap_BDR_Mosaic_Global_166m/1.0.0/default/default028mm",
+        "ext": "jpg",
+        "credit": "NASA Mercury Trek / MESSENGER MDIS mosaic (NASA/JHUAPL/CIW)"
       }
     },
     {
@@ -92,6 +113,19 @@
         "nasaId": "PIA23791",
         "page": "https://images.nasa.gov/details/PIA23791",
         "credit": "NASA/JPL-Caltech"
+      },
+      "texture": "space/textures/venus.jpg",
+      "notes": {
+        "naming": "Named for the Roman goddess of love and beauty — the brightest planet in the sky, the ancient morning and evening star.",
+        "atmosphere": "Crushing: ~96.5% carbon dioxide, 3.5% nitrogen, with sulfuric-acid clouds; surface pressure 92 times Earth's and a runaway-greenhouse surface hot enough to melt lead.",
+        "features": "Maxwell Montes (11 km high); thousands of volcanoes including Maat Mons; pancake domes and coronae unique to Venus; retrograde rotation slower than its year.",
+        "missions": "Venera 7 (first landing on another planet, 1970), Pioneer Venus, Magellan (radar-mapped 98% of the surface, 1990-94), Venus Express, Akatsuki.",
+        "source": "https://en.wikipedia.org/wiki/Venus"
+      },
+      "trek": {
+        "urlTemplate": "https://trek.nasa.gov/tiles/Venus/EQ/Venus_Magellan_C3-MDIR_Global_Mosaic_2025m/1.0.0/default/default028mm",
+        "ext": "png",
+        "credit": "NASA Venus Trek / Magellan SAR mosaic (NASA/JPL)"
       }
     },
     {
@@ -125,6 +159,14 @@
         "nasaId": "GSFC_20171208_Archive_e001386",
         "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001386",
         "credit": "GSFC"
+      },
+      "texture": "space/textures/earth.jpg",
+      "notes": {
+        "naming": "The one planet not named from Greco-Roman myth: from Old English eorþe, simply 'ground, soil'.",
+        "atmosphere": "78% nitrogen, 21% oxygen — the oxygen entirely biological in origin — with argon, ~0.04% carbon dioxide and variable water vapour.",
+        "features": "The only known liquid-water oceans (71% of the surface), active plate tectonics, a strong magnetic field, and the only known life.",
+        "missions": "Home. Observed continuously by thousands of satellites since Sputnik (1957); the Apollo 8 'Earthrise' and Voyager 'Pale Blue Dot' images reframed it.",
+        "source": "https://en.wikipedia.org/wiki/Earth"
       }
     },
     {
@@ -158,6 +200,19 @@
         "nasaId": "PIA21488",
         "page": "https://images.nasa.gov/details/PIA21488",
         "credit": "NASA/JPL-Caltech/MSSS"
+      },
+      "texture": "space/textures/mars.jpg",
+      "notes": {
+        "naming": "Named for the Roman god of war, for its blood-red colour — iron oxide dust. The month of March and the word 'martial' share the root.",
+        "atmosphere": "Thin: ~95% carbon dioxide, 2.8% nitrogen, 2% argon; surface pressure under 1% of Earth's; seasonal CO2 frost caps and planet-wide dust storms.",
+        "features": "Olympus Mons, the tallest volcano in the Solar System (~22 km); the 4,000-km Valles Marineris canyon; ancient river valleys and lakebeds; polar ice caps.",
+        "missions": "Mariner 4 (first flyby, 1965), Viking 1-2 (first landings, 1976), Pathfinder/Sojourner, Spirit and Opportunity, Curiosity (2012-), Perseverance and the Ingenuity helicopter (2021-).",
+        "source": "https://en.wikipedia.org/wiki/Mars"
+      },
+      "trek": {
+        "urlTemplate": "https://trek.nasa.gov/tiles/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm",
+        "ext": "jpg",
+        "credit": "NASA Mars Trek / Viking MDIM 2.1 (NASA/JPL/USGS)"
       }
     },
     {
@@ -191,6 +246,14 @@
         "nasaId": "PIA04866",
         "page": "https://images.nasa.gov/details/PIA04866",
         "credit": "NASA/JPL/Space Science Institute"
+      },
+      "texture": "space/textures/jupiter.jpg",
+      "notes": {
+        "naming": "Named for the king of the Roman gods — fittingly, the largest planet.",
+        "atmosphere": "About 90% hydrogen and 10% helium with traces of methane and ammonia; banded clouds, and no solid surface anywhere.",
+        "features": "The Great Red Spot, a storm wider than Earth raging for centuries; the strongest planetary magnetic field; faint rings; the four Galilean moons.",
+        "missions": "Pioneer 10/11, Voyager 1/2 (1979), Galileo (orbited 1995-2003, dropped an atmospheric probe), Juno (2016-), Europa Clipper and JUICE en route.",
+        "source": "https://en.wikipedia.org/wiki/Jupiter"
       }
     },
     {
@@ -224,6 +287,14 @@
         "nasaId": "PIA14582",
         "page": "https://images.nasa.gov/details/PIA14582",
         "credit": "NASA/JPL-Caltech/Space Science Institute"
+      },
+      "texture": "space/textures/saturn.jpg",
+      "notes": {
+        "naming": "Named for the Roman god of agriculture and time, father of Jupiter; 'Saturday' is his day.",
+        "atmosphere": "~96% hydrogen, 3% helium; the least dense planet — it would float in a sufficiently large ocean.",
+        "features": "The great ring system, mostly water ice, spanning 280,000 km yet often under 100 m thick; the hexagonal polar jet stream; 200+ moons including haze-shrouded Titan and geysering Enceladus.",
+        "missions": "Pioneer 11, Voyager 1/2, Cassini-Huygens (orbited 2004-17; Huygens landed on Titan, the most distant landing ever).",
+        "source": "https://en.wikipedia.org/wiki/Saturn"
       }
     },
     {
@@ -261,6 +332,14 @@
       "discovery": {
         "by": "William Herschel",
         "year": 1781
+      },
+      "texture": "space/textures/uranus.jpg",
+      "notes": {
+        "naming": "The Greek primordial sky god, father of Cronus (Saturn) — the only planet named from Greek rather than Roman myth, chosen to extend the generational sequence.",
+        "atmosphere": "Hydrogen and helium over ~2% methane, which absorbs red light and paints the planet pale cyan; the coldest planetary atmosphere measured, down to -224 °C.",
+        "features": "Rolls around the Sun on its side — axial tilt 98° — probably from a giant impact; faint dark rings; 28 known moons named for Shakespeare and Pope characters.",
+        "missions": "Voyager 2 only (1986 flyby); a dedicated Uranus orbiter is the top-priority flagship recommendation of the 2023-2032 US planetary decadal survey.",
+        "source": "https://en.wikipedia.org/wiki/Uranus"
       }
     },
     {
@@ -298,6 +377,14 @@
       "discovery": {
         "by": "Johann Galle, from Urbain Le Verrier's prediction",
         "year": 1846
+      },
+      "texture": "space/textures/neptune.jpg",
+      "notes": {
+        "naming": "Named for the Roman god of the sea, for its deep-blue colour — fittingly, the planet found by mathematics rather than by chance.",
+        "atmosphere": "Hydrogen, helium and methane; the fastest winds in the Solar System, over 2,000 km/h.",
+        "features": "The Great Dark Spot seen by Voyager 2 (since vanished); five faint rings with arcs; Triton, a captured Kuiper-belt world orbiting backwards with nitrogen geysers.",
+        "missions": "Voyager 2 only (1989 flyby) — every close-up image of Neptune humanity has comes from that single encounter.",
+        "source": "https://en.wikipedia.org/wiki/Neptune"
       }
     },
     {
@@ -335,6 +422,14 @@
       "discovery": {
         "by": "Clyde Tombaugh",
         "year": 1930
+      },
+      "texture": null,
+      "notes": {
+        "naming": "Named in 1930 for the Roman god of the underworld — suggested by eleven-year-old Venetia Burney of Oxford; the first two letters honour Percival Lowell.",
+        "atmosphere": "A thin, seasonal nitrogen atmosphere with methane and carbon monoxide that partially freezes out as Pluto recedes from the Sun.",
+        "features": "The bright nitrogen-ice heart, Sputnik Planitia; water-ice mountains; possible cryovolcanoes; a moon, Charon, half its own size.",
+        "missions": "New Horizons (2015 flyby — the images that turned a point of light into a world).",
+        "source": "https://en.wikipedia.org/wiki/Pluto"
       }
     },
     {
@@ -368,6 +463,19 @@
         "nasaId": "GSFC_20171208_Archive_e001939",
         "page": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001939",
         "credit": "GSFC"
+      },
+      "texture": "space/textures/moon.jpg",
+      "notes": {
+        "naming": "From Old English mōna. The Latin luna survives in 'lunar'; capitalised Moon distinguishes ours from all the others named after it.",
+        "atmosphere": "A negligible exosphere of argon, helium, neon and sodium — collisions between its atoms are rare.",
+        "features": "Dark basaltic maria ('seas') on the near side; the heavily cratered farside highlands; the South Pole–Aitken basin; permanently shadowed polar craters holding water ice.",
+        "missions": "Luna 2 (first impact, 1959), Apollo 11-17 (12 humans on foot, 1969-72), Lunar Reconnaissance Orbiter (2009-), Chang'e 4 (first farside landing, 2019), Artemis (upcoming crewed return).",
+        "source": "https://en.wikipedia.org/wiki/Moon"
+      },
+      "trek": {
+        "urlTemplate": "https://trek.nasa.gov/tiles/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0/default/default028mm",
+        "ext": "jpg",
+        "credit": "NASA Moon Trek / LRO WAC mosaic (NASA/GSFC/ASU)"
       }
     },
     {
@@ -401,6 +509,14 @@
         "nasaId": "PIA20351",
         "page": "https://images.nasa.gov/details/PIA20351",
         "credit": "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA"
+      },
+      "texture": "space/textures/ceres.jpg",
+      "notes": {
+        "naming": "Named for the Roman goddess of agriculture and harvests — 'cereal' shares the root. Discovered by Giuseppe Piazzi on 1 January 1801.",
+        "atmosphere": "None to speak of; transient water vapour has been detected escaping its surface.",
+        "features": "The brilliant salt deposits of Occator crater; the lonely 4-km mountain Ahuna Mons, likely a cryovolcano; a possible relict subsurface briny layer.",
+        "missions": "Dawn (orbited 2015-18 — the first spacecraft to orbit two different extraterrestrial bodies).",
+        "source": "https://en.wikipedia.org/wiki/Ceres_(dwarf_planet)"
       }
     },
     {
@@ -434,6 +550,14 @@
         "nasaId": "PIA17307",
         "page": "https://images.nasa.gov/details/PIA17307",
         "credit": "NASA/JPL-Caltech"
+      },
+      "texture": null,
+      "notes": {
+        "naming": "Named for the Greek goddess of strife and discord — aptly, since its 2005 discovery forced the debate that demoted Pluto.",
+        "atmosphere": "Any atmosphere is currently frozen to the surface; one may form near perihelion, centuries from now.",
+        "features": "Slightly more massive than Pluto though marginally smaller; among the most reflective bodies known, coated in fresh methane ice; one known moon, Dysnomia.",
+        "missions": "None — at roughly 96 AU at discovery, it is one of the most distant objects ever found orbiting the Sun.",
+        "source": "https://en.wikipedia.org/wiki/Eris_(dwarf_planet)"
       }
     },
     {
@@ -461,7 +585,15 @@
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Haumea"
       },
-      "image": null
+      "image": null,
+      "texture": null,
+      "notes": {
+        "naming": "Named for the Hawaiian goddess of childbirth, honouring the observatory on Mauna Kea; its moons Hiʻiaka and Namaka are her daughters.",
+        "atmosphere": "None detected.",
+        "features": "Spins in under four hours — fastest of any large body — stretching it into an egg shape; has a ring, the first found around a trans-Neptunian object; crystalline water ice surface.",
+        "missions": "None.",
+        "source": "https://en.wikipedia.org/wiki/Haumea"
+      }
     },
     {
       "id": "makemake",
@@ -488,7 +620,15 @@
       "links": {
         "wikipedia": "https://en.wikipedia.org/wiki/Makemake"
       },
-      "image": null
+      "image": null,
+      "texture": null,
+      "notes": {
+        "naming": "Named for the creator god of the Rapa Nui of Easter Island — discovered just after Easter 2005, and nicknamed 'Easterbunny' before formal naming.",
+        "atmosphere": "None detected at present; possibly transient near perihelion.",
+        "features": "A reddish surface of frozen methane and ethane; one known small, dark moon (MK2).",
+        "missions": "None.",
+        "source": "https://en.wikipedia.org/wiki/Makemake"
+      }
     }
   ],
   "regions": [

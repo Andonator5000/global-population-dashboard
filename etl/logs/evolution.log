@@ -1,10 +1,13 @@
 {
   "intervals": 177,
-  "events": 50,
+  "events": 58,
   "phylopic_silhouettes": 30,
-  "commons_lead_images": 18,
+  "commons_lead_images": 23,
   "unillustrated": [
+    "boring-billion",
     "bangiomorpha",
+    "ourasphaira-fungi",
+    "animal-molecular-origin",
     "gobe"
   ]
 }
