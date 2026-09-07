@@ -16,7 +16,9 @@
  * shows soft imagery that sharpens as tiles land -- never holes.
  */
 
-import { geoDistance, type GeoProjection } from 'd3-geo'
+import { geoDistance, geoPath, type GeoPermissibleObjects, type GeoProjection } from 'd3-geo'
+
+import type { ImageryRenderer, ImageryView } from './globegl'
 
 import {
   loadTerrainMeta,
@@ -343,5 +345,75 @@ export class TerrainRenderer {
       }
     }
     ctx.setTransform(1, 0, 0, 1, 0, 0)
+  }
+}
+
+/**
+ * Round 3: the 2-D quad warp survives ONLY as the fallback for browsers
+ * without WebGL2 (`GlobeGL` in globegl.ts is the real renderer). It keeps
+ * the old streak artefacts; the loading indicator and prefetch are no-ops.
+ */
+export class Canvas2DImagery implements ImageryRenderer {
+  private renderer: TerrainRenderer
+  private basePath: string
+  private lastView: ImageryView | null = null
+
+  constructor(
+    private readonly canvas: HTMLCanvasElement,
+    private readonly onReady: () => void,
+    basePath = 'geo/terrain',
+  ) {
+    this.basePath = basePath
+    this.renderer = new TerrainRenderer(() => this.repaint(), basePath)
+  }
+
+  private repaint(): void {
+    if (this.lastView) this.render(this.lastView)
+    this.onReady()
+  }
+
+  setImagery(basePath: string): void {
+    if (basePath === this.basePath) return
+    this.basePath = basePath
+    this.renderer.destroy()
+    this.renderer = new TerrainRenderer(() => this.repaint(), basePath)
+    if (this.lastView) this.render(this.lastView)
+  }
+
+  prefetch(): void {
+    /* the 2-D fallback loads on demand only */
+  }
+
+  setBorders(): void {
+    /* the fallback's drag frames stroke borders on the drag canvas */
+  }
+
+  ready(): boolean {
+    return true
+  }
+
+  attribution(): string | null {
+    return this.renderer.attribution()
+  }
+
+  render(view: ImageryView): void {
+    this.lastView = view
+    const { layout, cssWidth, cssHeight } = view
+    const bufferW = Math.round(cssWidth * layout.dpr)
+    const bufferH = Math.round(cssHeight * layout.dpr)
+    if (this.canvas.width !== bufferW) this.canvas.width = bufferW
+    if (this.canvas.height !== bufferH) this.canvas.height = bufferH
+    const ctx = this.canvas.getContext('2d')
+    if (!ctx) return
+    const sphere =
+      geoPath(view.projection)({ type: 'Sphere' } as GeoPermissibleObjects) ?? ''
+    this.renderer.render(
+      ctx, view.projection, view.rotation, view.transform, layout,
+      cssWidth, cssHeight, sphere, view.oceanFill, view.isGlobe,
+    )
+  }
+
+  destroy(): void {
+    this.renderer.destroy()
   }
 }

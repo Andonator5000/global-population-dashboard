@@ -116,10 +116,15 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   per-frame setState); every escape hatch (pointer leave/cancel/lost
   capture, zoom with no pointers, view/mode/projection switch) must END
   a live drag session — a session that outlives its pointer is the
-  frozen-black-globe bug (§42.1); the satellite/terrain quad mesh
-  overdraws its DESTINATION ~1.5% and never pads the SOURCE rect past
-  the tile edge (§42.2 — source padding smears tile borders into
-  meridian streaks); six palette directions all gated by
+  frozen-black-globe bug (§42.1); satellite/terrain imagery is a WebGL2
+  per-pixel inverse projection (`src/lib/globegl.ts`, §43) — one
+  renderer per map lifetime, textures resident across view switches,
+  outlines drawn in the SAME GL pass during drags from the SAME rotation
+  ref; the 2-D quad warp in terrain.ts is only the no-WebGL2 fallback
+  (never re-promote it: its affine quads ARE the meridian streaks);
+  verify globe visuals with `node scripts/globe-spin-capture.mjs <view>`
+  (Playwright, headed Chrome) before claiming a fix; six palette
+  directions all gated by
   build-map-palette.mjs (lightness is the data channel in every one);
   base views political/satellite/terrain, choices persisted; the country
   popover's corner thumb is the country's own fitted shape, not a flag.

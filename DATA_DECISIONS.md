@@ -2440,6 +2440,92 @@ gate — for wormholes that is a CC BY-SA Einstein–Rosen bridge diagram,
 the honest illustration of a theoretical object. 13 of 13 entries are
 illustrated, credited per item.
 
+## 43. Round 3, Phase 1: the globe imagery moves to WebGL (2026-09-07)
+
+Andy reported that the round-2 seam fix (§42.2) did not work: meridian
+streaks in both Satellite and Terrain views that thicken while
+spinning, outlines that detach from the imagery during fast spins,
+sluggish drags, and a slow Satellite -> Terrain switch. Reproduced
+with Playwright (`scripts/globe-spin-capture.mjs`, headed Chrome,
+scripted drag + flick, frames captured mid-gesture) before anything
+was changed.
+
+**43.1 Diagnosis.** The imagery was drawn as affine-warped 2-D-canvas
+quads (§30). An affine image of a lon/lat quad only approximates the
+orthographic projection near the centre of the disc; towards the limb
+and the poles neighbouring quads diverge and the ocean underlay shows
+through as wedge-shaped streaks along meridians — the Terrain view,
+whose 45-degree tiles are lighter, showed them worst — and any quad
+with a corner past the horizon was culled outright, cutting a hole
+around the visible pole. Rotation moves the limb across different
+quads every frame, hence "thicken while spinning". Overdraw (§42.2)
+could not fix a model error. Separately, a fine tile landing mid-drag
+re-rendered the imagery canvas from React's `rotation` STATE (stale
+until the gesture commits) while the outlines kept following the
+rotation ref — the imagery snapped back for a frame, which is the
+detached-outlines report.
+
+**43.2 The fix: per-pixel inverse projection on the GPU.**
+`src/lib/globegl.ts` renders the imagery with WebGL2. On the globe a
+full-screen fragment shader inverts d3's orthographic projection and
+rotation for EVERY device pixel — the same maths as `geoOrthographic`
+`.rotate([lambda, phi, 0])`, run forward for the SVG and backward
+here — and samples an equirectangular texture with mipmaps and
+anisotropic filtering. No quads, so no seams; the horizon is an exact
+circle, feathered over one pixel. The antimeridian mip seam (the usual
+blurry column where `u` wraps) is avoided by taking the smaller of two
+derivative estimates and `textureGrad`. Flat projections (Equal Earth,
+Mollweide, Eckert IV) draw a 1-degree mesh whose vertices were
+projected once by the same d3 projection the SVG uses. Finer tiers are
+still the ETL's 45-degree tiles, drawn as extra passes limited to their
+window, nearest-the-centre first, capped at an LRU budget of 8 (4 on
+devices reporting <= 4 GB) so wanting more than the cache holds can
+never evict-and-refetch every frame. Browsers without WebGL2 fall back
+to the round-2 renderer (`Canvas2DImagery`), streaks included; the
+imagery artifacts are unchanged (§30, §37).
+
+**43.3 One scene, one rotation.** During a drag the country outlines
+are drawn by the same renderer, in the same frame, from the same
+rotation ref, as `gl.LINES` on the sphere: the topology's shared-border
+mesh (595 arcs, 8.2k points at 110m) subdivided along great circles to
+<= 1 degree so the GL segments land where d3's resampled SVG strokes
+will when the gesture ends. The renderer keeps its own last view and
+repaints from THAT when a tile lands — React state is never consulted
+mid-gesture. The 2-D drag canvas still fills countries in the
+Political view (no imagery there).
+
+**43.4 Measured.** rAF callback time during a scripted drag at
+1200x900, headed Chrome on the maintainer's machine:
+
+| View | Before (median / p90) | After |
+| --- | --- | --- |
+| Satellite, world zoom | 10.0 / 10.6 ms | < 0.5 ms (GPU-bound) |
+| Terrain, world zoom | 9.9 / 10.6 ms | < 0.5 ms |
+| Satellite, zoom 3x | 13.4 / 26.8 ms | 0.6 / 0.9 ms |
+| Political, world zoom | 8.8 / 9.6 ms | 8.8 / 9.6 ms (unchanged, d3 canvas fills) |
+
+Screenshots at rest, mid-drag and mid-flick, both views, world and 3x
+zoom, show no streaks and no polar hole after; before-frames show
+both.
+
+**43.5 Switching views.** One renderer lives for the map component's
+lifetime; textures stay resident across Political / Satellite /
+Terrain switches, and both imagery sets' world bases (tier 0, ~0.3 MB
+each) are fetched, decoded and uploaded during idle time after first
+paint. A "Loading ... imagery" pill shows only while a base is
+genuinely absent. Measured switch-to-painted: 100-180 ms for every
+transition, including the second Satellite and Terrain switches.
+GPU-compressed (KTX2/Basis) textures were considered and not adopted:
+the bases are 0.3 MB JPEGs that decode off-thread in ~40 ms, and Basis
+transcoding would add a WASM transcoder to the bundle for no visible
+gain at this size.
+
+**43.6 Not changed.** Drag sensitivity (0.5625°/px), inertia, the
+escape-hatch rules of §42.1, the SVG as the interactive layer, and the
+palette gates. The Political-view drag frame remains d3 canvas fills
+at ~9 ms/frame; moving fills to triangulated GL geometry is the next
+step if that view is ever reported as sluggish.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

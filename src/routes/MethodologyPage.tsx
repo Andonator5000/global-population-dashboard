@@ -106,8 +106,9 @@ export function MethodologyPage() {
           flag's dominant colour, and its lightness encodes a four-tier
           population ranking — darker is more populous. Neighbouring
           countries are guaranteed perceptibly distinct fills by a gated
-          palette build. The satellite view is NASA Blue Marble imagery and
-          carries no data encoding.
+          palette build. The satellite and terrain views are NASA Blue Marble
+          and Natural Earth relief imagery, projected per pixel on the GPU
+          (WebGL) so the sphere has no seams, and carry no data encoding.
         </p>
       </Section>
 
