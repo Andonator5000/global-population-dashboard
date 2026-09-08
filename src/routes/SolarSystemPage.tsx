@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 import { BodyPanel, MoonPanel } from '../components/space/BodyPanels'
 import { Unavailable } from '../components/viz/primitives'
+import { ZoomControls } from '../components/ZoomControls'
 import { DATA_BASE_URL } from '../config'
 import {
   featureTypeGloss,
@@ -91,16 +92,34 @@ function labelSprite(text: string, small = false): THREE.Sprite {
     new THREE.SpriteMaterial({ map: texture, depthTest: false }),
   )
   sprite.scale.set(canvas.width / (30 * scale), canvas.height / (30 * scale), 1)
+  // CSS-pixel size of the label, for screen-constant sizing (globe view).
+  sprite.userData.px = { w: canvas.width / scale, h: canvas.height / scale }
   return sprite
 }
 
 interface SceneBody {
   body: SpaceBody
   mesh: THREE.Mesh
+  material: THREE.MeshStandardMaterial | THREE.MeshBasicMaterial
+  /** The 2k texture the scene opened with; restored when another body is
+      flown to and this one's hi-res upgrade is released. */
+  baseTexture: THREE.Texture | null
   pivot: THREE.Group
   au: number
   periodDays: number
   angle: number
+}
+
+/** Camera distance <-> the 0-100 zoom slider (log-scaled, 100 = closest). */
+const SCENE_MIN_DISTANCE = 0.2
+const SCENE_MAX_DISTANCE = 400
+function distanceToPercent(distance: number, min: number): number {
+  const t = Math.log(distance / min) / Math.log(SCENE_MAX_DISTANCE / min)
+  return Math.round(100 * (1 - Math.max(0, Math.min(1, t))))
+}
+function percentToDistance(percent: number, min: number): number {
+  const t = 1 - Math.max(0, Math.min(100, percent)) / 100
+  return min * (SCENE_MAX_DISTANCE / min) ** t
 }
 
 // ---- card grid (round-2 feedback: a card per body under the 3D view) ----
@@ -281,7 +300,19 @@ export function SolarSystemPage() {
   const mountRef = useRef<HTMLDivElement | null>(null)
   const viewportRef = useRef<HTMLDivElement | null>(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const sceneApiRef = useRef<{ zoom: (factor: number) => void } | null>(null)
+  const sceneApiRef = useRef<{
+    zoom: (factor: number) => void
+    zoomTo: (percent: number) => void
+  } | null>(null)
+  /** Camera distance as the slider's 0-100, updated at integer granularity
+      from OrbitControls' change event (one render per whole step, not per
+      frame). */
+  const [zoomPercent, setZoomPercent] = useState(0)
+  /** The one hi-res texture the scene holds at a time (the flown-to body;
+      §45.2) — released when the selection moves on or the scene rebuilds. */
+  const hiTextureRef = useRef<{ id: string; texture: THREE.Texture } | null>(
+    null,
+  )
   /** Moon meshes currently in the scene, for picking (round-2 feedback:
       clicking a moon should open its panel like clicking a planet). */
   const moonClickable = useRef<THREE.Object3D[]>([])
@@ -290,6 +321,10 @@ export function SolarSystemPage() {
   const sceneBodies = useRef<SceneBody[]>([])
   const controlsRef = useRef<OrbitControls | null>(null)
   const flyTarget = useRef<THREE.Vector3 | null>(null)
+  /** Viewing distance the fly-to glides to (§45.3): a few radii of the
+      body, so "fly to" lands where the hi-res texture is worth having
+      rather than leaving the camera parked at the previous body. */
+  const flyDistance = useRef<number | null>(null)
   const playingRef = useRef(playing)
   playingRef.current = playing
   const speedRef = useRef<number>(SPEEDS[1]!.daysPerSecond)
@@ -329,6 +364,17 @@ export function SolarSystemPage() {
       const position = new THREE.Vector3()
       entry.mesh.getWorldPosition(position)
       flyTarget.current = position
+      const radius = (entry.mesh.geometry as THREE.SphereGeometry).parameters
+        .radius
+      const controls = controlsRef.current
+      if (controls) {
+        // The camera may not enter the body (a sphere seen from inside is
+        // an empty viewport), and the fly-to settles between 4 and 8 radii
+        // — keeping the reader's own distance when it is already in range.
+        controls.minDistance = Math.max(SCENE_MIN_DISTANCE, radius * 1.15)
+        const current = controls.object.position.distanceTo(controls.target)
+        flyDistance.current = Math.max(radius * 4, Math.min(current, radius * 8))
+      }
     }
   }, [])
   selectRef.current = select
@@ -359,21 +405,42 @@ export function SolarSystemPage() {
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
     controls.dampingFactor = 0.08
-    controls.maxDistance = 400
-    controls.minDistance = 0.2
+    controls.maxDistance = SCENE_MAX_DISTANCE
+    // The default target is the Sun at the origin; stay outside it.
+    controls.minDistance = Math.max(
+      SCENE_MIN_DISTANCE,
+      1.15 *
+        (mode === 'true'
+          ? bodyRadius(byId.get('sun')?.facts.equatorialRadiusKm, 'true')
+          : 3),
+    )
     controlsRef.current = controls
-    sceneApiRef.current = {
-      zoom: (factor: number) => {
-        const offset = camera.position.clone().sub(controls.target)
-        offset.setLength(
-          Math.max(
-            controls.minDistance,
-            Math.min(controls.maxDistance, offset.length() * factor),
-          ),
-        )
-        camera.position.copy(controls.target).add(offset)
-      },
+    const setDistance = (distance: number) => {
+      const offset = camera.position.clone().sub(controls.target)
+      offset.setLength(
+        Math.max(
+          controls.minDistance,
+          Math.min(controls.maxDistance, distance),
+        ),
+      )
+      camera.position.copy(controls.target).add(offset)
+      onControlsChange()
     }
+    sceneApiRef.current = {
+      zoom: (factor: number) =>
+        setDistance(camera.position.distanceTo(controls.target) * factor),
+      zoomTo: (percent: number) =>
+        setDistance(percentToDistance(percent, controls.minDistance)),
+    }
+    const onControlsChange = () => {
+      const next = distanceToPercent(
+        camera.position.distanceTo(controls.target),
+        controls.minDistance,
+      )
+      setZoomPercent((current) => (current === next ? current : next))
+    }
+    controls.addEventListener('change', onControlsChange)
+    onControlsChange()
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.35))
     const sunLight = new THREE.PointLight(0xfff2d5, 3000, 0, 2)
@@ -417,7 +484,7 @@ export function SolarSystemPage() {
           : 3
         : bodyRadius(body.facts.equatorialRadiusKm, mode)
       const texture = loadBodyTexture(body)
-      const material = isSun
+      const material: THREE.MeshStandardMaterial | THREE.MeshBasicMaterial = isSun
         ? new THREE.MeshBasicMaterial({
             map: texture ?? null,
             color: texture ? 0xffffff : (BODY_COLORS[body.id] ?? 0x999999),
@@ -488,6 +555,8 @@ export function SolarSystemPage() {
       entries.push({
         body,
         mesh,
+        material,
+        baseTexture: texture,
         pivot,
         au,
         periodDays: body.facts.orbitalPeriodDays ?? 0,
@@ -495,6 +564,7 @@ export function SolarSystemPage() {
       })
     }
     sceneBodies.current = entries
+    hiTextureRef.current = null
 
     // Belts as particle annuli (labelled regions).
     const makeBelt = (innerAu: number, outerAu: number, name: string, y: number) => {
@@ -589,9 +659,22 @@ export function SolarSystemPage() {
         const id = selectedIdRef.current
         const entry = entries.find((b) => b.body.id === id)
         if (entry) entry.mesh.getWorldPosition(flyTarget.current)
+        const offset = camera.position.clone().sub(controls.target)
         controls.target.lerp(flyTarget.current, 0.08)
-        if (controls.target.distanceTo(flyTarget.current) < 0.05) {
+        // Glide the viewing distance too, so the camera arrives a few
+        // radii out instead of staying parked beside the previous body.
+        const wanted = flyDistance.current
+        const length =
+          wanted == null
+            ? offset.length()
+            : offset.length() + (wanted - offset.length()) * 0.08
+        camera.position.copy(controls.target).add(offset.setLength(length))
+        if (
+          controls.target.distanceTo(flyTarget.current) < 0.05 &&
+          (wanted == null || Math.abs(length - wanted) < 0.02)
+        ) {
           flyTarget.current = null
+          flyDistance.current = null
         }
       }
       controls.update()
@@ -617,13 +700,19 @@ export function SolarSystemPage() {
       resizeObserver.disconnect()
       renderer.domElement.removeEventListener('pointerdown', onPointerDown)
       renderer.domElement.removeEventListener('click', onClick)
+      controls.removeEventListener('change', onControlsChange)
       controls.dispose()
       renderer.dispose()
       mount.removeChild(renderer.domElement)
+      hiTextureRef.current?.texture.dispose()
+      hiTextureRef.current = null
       scene.traverse((object) => {
         if (object instanceof THREE.Mesh) {
           object.geometry.dispose()
-          const material = object.material as THREE.Material
+          const material = object.material as THREE.Material & {
+            map?: THREE.Texture | null
+          }
+          material.map?.dispose()
           material.dispose()
         }
       })
@@ -634,6 +723,48 @@ export function SolarSystemPage() {
   useEffect(() => {
     selectedIdRef.current = selectedId
   }, [selectedId])
+
+  // Progressive textures in the scene (§45.2): every body opens at 2k; the
+  // body flown to swaps in its hi-res file (4k/8k), and only ONE such
+  // upgrade is resident at a time — a 4096x2048 RGBA texture with mipmaps
+  // is ~43 MB of GPU memory, an 8192 one ~170 MB, so upgrading all eleven
+  // bodies at once would sink integrated GPUs. Moving on restores the
+  // previous body's 2k and releases its upgrade.
+  useEffect(() => {
+    const entries = sceneBodies.current
+    const previous = hiTextureRef.current
+    if (previous && previous.id !== selectedId) {
+      const prevEntry = entries.find((b) => b.body.id === previous.id)
+      if (prevEntry) {
+        prevEntry.material.map = prevEntry.baseTexture
+        prevEntry.material.needsUpdate = true
+      }
+      previous.texture.dispose()
+      hiTextureRef.current = null
+    }
+    const entry = entries.find((b) => b.body.id === selectedId)
+    if (!entry?.body.textureHi || hiTextureRef.current?.id === selectedId) {
+      return
+    }
+    let cancelled = false
+    new THREE.TextureLoader().load(
+      `${DATA_BASE_URL}/${entry.body.textureHi}`,
+      (texture) => {
+        if (cancelled || sceneBodies.current !== entries) {
+          texture.dispose()
+          return
+        }
+        texture.colorSpace = THREE.SRGBColorSpace
+        entry.material.map = texture
+        entry.material.needsUpdate = true
+        hiTextureRef.current = { id: entry.body.id, texture }
+      },
+    )
+    return () => {
+      cancelled = true
+    }
+    // `mode` is a dependency because a rebuild replaces every entry.
+  }, [selectedId, mode, bodies])
 
   // Major moons of the selected planet, in scene.
   const moonGroupRef = useRef<{
@@ -821,45 +952,39 @@ export function SolarSystemPage() {
                 aria-label="3D Solar System viewport. Use the Jump-to list for keyboard access to each body."
                 role="img"
               />
-              <div className="absolute right-2 top-2 flex flex-col gap-1.5">
-                <button
-                  type="button"
-                  aria-label="Zoom in"
-                  title="Zoom in"
-                  className="h-8 w-8 rounded border border-white/30 bg-black/60 text-base leading-none text-white"
-                  onClick={() => sceneApiRef.current?.zoom(0.7)}
-                >
-                  +
-                </button>
-                <button
-                  type="button"
-                  aria-label="Zoom out"
-                  title="Zoom out"
-                  className="h-8 w-8 rounded border border-white/30 bg-black/60 text-base leading-none text-white"
-                  onClick={() => sceneApiRef.current?.zoom(1 / 0.7)}
-                >
-                  −
-                </button>
-                <button
-                  type="button"
-                  aria-label={isFullscreen ? 'Exit full screen' : 'Full screen'}
-                  title={isFullscreen ? 'Exit full screen' : 'Full screen'}
-                  className="h-8 w-8 rounded border border-white/30 bg-black/60 text-sm leading-none text-white"
-                  onClick={() => {
-                    if (document.fullscreenElement) {
-                      void document.exitFullscreen()
-                    } else {
-                      void viewportRef.current?.requestFullscreen()
-                    }
-                  }}
-                >
-                  {isFullscreen ? '🗗' : '⛶'}
-                </button>
-              </div>
+              {/* The same control as the Global Data maps (§45.3): +/-,
+                  the optional zoom slider behind "Show slider", and full
+                  screen — ordinary buttons, so keyboard users get them
+                  without the canvas. */}
+              <ZoomControls
+                onZoomIn={() => sceneApiRef.current?.zoom(0.7)}
+                onZoomOut={() => sceneApiRef.current?.zoom(1 / 0.7)}
+                sliderValue={zoomPercent}
+                onSliderChange={(value) => sceneApiRef.current?.zoomTo(value)}
+                isFullscreen={isFullscreen}
+                onToggleFullscreen={() => {
+                  if (document.fullscreenElement) {
+                    void document.exitFullscreen()
+                  } else {
+                    void viewportRef.current?.requestFullscreen()
+                  }
+                }}
+                storageKey="space-zoom-slider"
+                buttonStyle={{
+                  background: 'rgba(0, 0, 0, 0.6)',
+                  color: '#fff',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                }}
+              />
             </div>
             <p className="mt-1 text-[10px]" style={{ color: 'var(--text-muted)' }}>
-              Textures: Solar System Scope (CC BY 4.0) · Figures: NASA
-              NSSDC (archived, Horizons-checked) and JPL SSD.
+              Textures: Solar System Scope (CC BY 4.0) — 2k for every body,
+              the selected body upgraded to its 4k/8k file
+              {selected?.textureHi && selected.textureHiPx
+                ? ` (${selected.name}: ${selected.textureHiPx.toLocaleString()} px)`
+                : ''}
+              ; Ceres is the pack's labelled fictional texture · Figures:
+              NASA NSSDC (archived, Horizons-checked) and JPL SSD.
             </p>
 
             {selected && moonList && moonList.length > 0 && (
@@ -1003,6 +1128,7 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
     null,
   )
   const [tileLevel, setTileLevel] = useState(0)
+  const [textureStage, setTextureStage] = useState<'2k' | 'hi' | null>(null)
 
   // Escape closes from anywhere — the canvas swallows focus otherwise.
   useEffect(() => {
@@ -1045,8 +1171,14 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
     controls.minDistance = 1.12
     controls.maxDistance = 5
 
-    scene.add(new THREE.AmbientLight(0xffffff, 1.1))
-    const light = new THREE.DirectionalLight(0xffffff, 1.6)
+    // Lighting (§45.5). three.js's physical light units divide by pi in the
+    // Lambert term, so ambient 1.1 + directional 1.6 rendered a fully lit
+    // surface at ~0.86x its texture value and the terminator side far
+    // darker — every globe read dim, the low-albedo LRO mosaic worst.
+    // Ambient 1.5 + directional 2.0 puts the sub-solar point at ~1.1x and
+    // the limb at ~0.5x: a brighter exposure, the same surface.
+    scene.add(new THREE.AmbientLight(0xffffff, 1.5))
+    const light = new THREE.DirectionalLight(0xffffff, 2.0)
     light.position.set(5, 2, 3)
     scene.add(light)
 
@@ -1057,28 +1189,38 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
     const globe = new THREE.Mesh(new THREE.SphereGeometry(1, 96, 64), material)
     scene.add(globe)
 
-    // Round-2 feedback ("very low resolution"): the globe loads the 8k
-    // variant where one is committed (Sun, Earth, Jupiter, Saturn); the
-    // 2k paints first as a placeholder so the sphere is never blank.
+    // Texture ladder (§45.2): 2k placeholder -> committed hi-res (4k/8k)
+    // -> streamed Trek levels 2, 3, 4. Every rung is ranked and a rung
+    // only ever REPLACES a lower one, so a slow 2k or a late tile level
+    // can never overwrite something sharper (round-2 §42.8 guard,
+    // generalised). A Trek mosaic carries its stated exposure gain.
+    const RANK_2K = 1
+    const RANK_HI = 2
+    const rankTrek = (level: number) => 10 + level
+    let appliedRank = 0
+    const applyMap = (rank: number, texture: THREE.Texture, exposure: number) => {
+      if (rank <= appliedRank) {
+        texture.dispose()
+        return false
+      }
+      appliedRank = rank
+      texture.colorSpace = THREE.SRGBColorSpace
+      const previous = material.map
+      material.map = texture
+      material.color.setScalar(exposure)
+      material.needsUpdate = true
+      previous?.dispose()
+      return true
+    }
     const loader = new THREE.TextureLoader()
-    let sssApplied: '2k' | '8k' | null = null
     if (body.texture) {
       loader.load(`${DATA_BASE_URL}/${body.texture}`, (texture) => {
-        if (sssApplied === '8k') return
-        sssApplied = '2k'
-        texture.colorSpace = THREE.SRGBColorSpace
-        material.map = texture
-        material.color.set(0xffffff)
-        material.needsUpdate = true
+        if (applyMap(RANK_2K, texture, 1)) setTextureStage('2k')
       })
     }
-    if (body.texture8k) {
-      loader.load(`${DATA_BASE_URL}/${body.texture8k}`, (texture) => {
-        sssApplied = '8k'
-        texture.colorSpace = THREE.SRGBColorSpace
-        material.map = texture
-        material.color.set(0xffffff)
-        material.needsUpdate = true
+    if (body.textureHi) {
+      loader.load(`${DATA_BASE_URL}/${body.textureHi}`, (texture) => {
+        if (applyMap(RANK_HI, texture, 1)) setTextureStage('hi')
       })
     }
 
@@ -1112,10 +1254,8 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
     // are requested IMMEDIATELY — round-2 feedback: the globe should be
     // sharp on open, not only after zooming — and level 4 (8192x4096)
     // streams in when the camera closes. Each level is assembled from
-    // WMTS tiles onto a canvas; completions can land out of order, so a
-    // lower level finishing late must never overwrite a higher one.
+    // WMTS tiles onto a canvas and enters the ladder above at its rank.
     let bestLevel = 0 // highest level requested
-    let appliedLevel = 0 // highest level actually on the material
     const upgrade = (level: number) => {
       if (!body.trek || level <= bestLevel) return
       bestLevel = level
@@ -1133,14 +1273,11 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
           img.onload = () => {
             ctx.drawImage(img, col * 256, row * 256, 256, 256)
             loaded += 1
-            if (loaded === cols * rows && level > appliedLevel) {
-              appliedLevel = level
+            if (loaded === cols * rows && !disposed) {
               const texture = new THREE.CanvasTexture(canvas)
-              texture.colorSpace = THREE.SRGBColorSpace
-              material.map = texture
-              material.color.set(0xffffff)
-              material.needsUpdate = true
-              setTileLevel(level)
+              if (applyMap(rankTrek(level), texture, body.trek!.exposure)) {
+                setTileLevel(level)
+              }
             }
           }
           img.onerror = () => {
@@ -1151,51 +1288,129 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       }
     }
 
-    // Feature markers (IAU gazetteer) on the sphere surface. Labels sit
-    // with their BOTTOM edge on the anchor point just above the terrain
-    // (sprite.center), so they read as pinned rather than floating
-    // (round-2 feedback); each marker carries an invisible hit sphere so
-    // clicking a label's dot opens the feature card.
+    // Named features (IAU gazetteer), anchored to the surface (§45.4).
+    //
+    // Each feature's anchor is its planetocentric latitude / east
+    // longitude on the unit sphere in the globe's own frame. The gazetteer
+    // shapefiles are +East 0-360 (their CRS says AXIS["Longitude",EAST];
+    // e.g. Olympus Mons 226.2E), and both the Solar System Scope maps and
+    // the Trek "EQ" tile sets are equirectangular with 180W at the left
+    // edge and 0 at the centre, which three.js's SphereGeometry wraps so
+    // that u=(lon+180)/360 lands at x=cos(lat)cos(lon), y=sin(lat),
+    // z=-cos(lat)sin(lon). (The round-2 formula was that vector rotated 90
+    // degrees about the pole — every label sat a quarter-turn east of its
+    // feature, and world-sized sprites with depth testing off then
+    // ballooned toward the camera and showed through the far side.)
+    //
+    // The sprites are children of the globe, so they ride with it; every
+    // frame they are re-sized to a constant screen size, faded out past
+    // the limb (an occlusion test against the sphere: the surface normal
+    // must face the camera), and decluttered greedily in screen space,
+    // largest feature first, within a budget that grows as the camera
+    // closes in.
+    const surfacePoint = (lat: number, lon: number) => {
+      const phi = (lat * Math.PI) / 180
+      const lambda = ((((lon + 180) % 360) + 360) % 360 - 180) * (Math.PI / 180)
+      return new THREE.Vector3(
+        Math.cos(phi) * Math.cos(lambda),
+        Math.sin(phi),
+        -Math.cos(phi) * Math.sin(lambda),
+      )
+    }
+    interface Marker {
+      feature: NomenclatureFeature
+      sprite: THREE.Sprite
+      dot: THREE.Mesh
+      w: number
+      h: number
+    }
     const markerGroup = new THREE.Group()
     globe.add(markerGroup)
-    const featureHits: THREE.Object3D[] = []
-    const featureByUuid = new Map<string, NomenclatureFeature>()
+    const markers: Marker[] = []
+    const dotGeometry = new THREE.SphereGeometry(1, 8, 6)
+    const dotMaterial = new THREE.MeshBasicMaterial({ color: 0xffd479 })
+    const MAX_MARKERS = 80
     const addMarkers = (list: NomenclatureFeature[]) => {
+      for (const marker of markers) {
+        marker.sprite.material.map?.dispose()
+        marker.sprite.material.dispose()
+      }
       markerGroup.clear()
-      featureHits.length = 0
-      featureByUuid.clear()
-      for (const feature of list.slice(0, 40)) {
-        const phi = ((90 - feature.lat) * Math.PI) / 180
-        const theta = ((feature.lon + 90) * Math.PI) / 180
-        const position = new THREE.Vector3(
-          Math.sin(phi) * Math.cos(theta),
-          Math.cos(phi),
-          -Math.sin(phi) * Math.sin(theta),
-        )
-        const dot = new THREE.Mesh(
-          new THREE.SphereGeometry(0.005, 8, 6),
-          new THREE.MeshBasicMaterial({ color: 0xffd479 }),
-        )
-        dot.position.copy(position.clone().multiplyScalar(1.002))
-        markerGroup.add(dot)
-        const hit = new THREE.Mesh(
-          new THREE.SphereGeometry(0.03, 8, 6),
-          new THREE.MeshBasicMaterial({ visible: false }),
-        )
-        hit.position.copy(dot.position)
-        markerGroup.add(hit)
-        featureHits.push(hit)
-        featureByUuid.set(hit.uuid, feature)
-        const label = labelSprite(feature.name, true)
-        label.scale.multiplyScalar(0.26)
-        label.center.set(0.5, 0)
-        label.position.copy(position.clone().multiplyScalar(1.006))
-        markerGroup.add(label)
+      markers.length = 0
+      for (const feature of list.slice(0, MAX_MARKERS)) {
+        const anchor = surfacePoint(feature.lat, feature.lon)
+        const dot = new THREE.Mesh(dotGeometry, dotMaterial)
+        dot.position.copy(anchor).multiplyScalar(1.002)
+        const sprite = labelSprite(feature.name, true)
+        sprite.center.set(0.5, -0.35) // bottom edge a few px above the dot
+        sprite.position.copy(anchor).multiplyScalar(1.004)
+        sprite.material.transparent = true
+        sprite.userData.feature = feature
+        sprite.visible = false
+        dot.visible = false
+        markerGroup.add(dot, sprite)
+        const px = sprite.userData.px as { w: number; h: number }
+        markers.push({ feature, sprite, dot, w: px.w, h: px.h })
       }
     }
     markersRef.current = addMarkers
 
-    // Click a marker -> feature card (drag is not a click).
+    const worldPos = new THREE.Vector3()
+    const normal = new THREE.Vector3()
+    const toCamera = new THREE.Vector3()
+    const ndc = new THREE.Vector3()
+    const placed: { x0: number; x1: number; y0: number; y1: number }[] = []
+    const updateMarkers = () => {
+      const distance = camera.position.length()
+      const budget =
+        distance > 2.4 ? 12 : distance > 1.9 ? 20 : distance > 1.5 ? 32 : 60
+      const viewW = renderer.domElement.clientWidth || 1
+      const viewH = renderer.domElement.clientHeight || 1
+      // World units per CSS pixel at unit distance for this camera.
+      const perPixelAtUnit = (2 * Math.tan((camera.fov * Math.PI) / 360)) / viewH
+      placed.length = 0
+      let shown = 0
+      for (const marker of markers) {
+        marker.sprite.getWorldPosition(worldPos)
+        normal.copy(worldPos).normalize()
+        toCamera.copy(camera.position).sub(worldPos)
+        const d = toCamera.length()
+        const facing = toCamera.dot(normal) / d
+        // Fade over the last ~13 degrees before the limb, gone past it.
+        const opacity = Math.max(0, Math.min(1, (facing - 0.08) / 0.22))
+        if (opacity <= 0 || shown >= budget) {
+          marker.sprite.visible = false
+          marker.dot.visible = false
+          continue
+        }
+        const perPixel = d * perPixelAtUnit
+        ndc.copy(worldPos).project(camera)
+        const sx = ((ndc.x + 1) / 2) * viewW
+        const sy = ((1 - ndc.y) / 2) * viewH
+        const rect = {
+          x0: sx - marker.w / 2 - 3,
+          x1: sx + marker.w / 2 + 3,
+          y0: sy - marker.h * 1.35 - 2,
+          y1: sy + 2,
+        }
+        const collides = placed.some(
+          (r) => rect.x0 < r.x1 && rect.x1 > r.x0 && rect.y0 < r.y1 && rect.y1 > r.y0,
+        )
+        marker.dot.visible = true
+        marker.dot.scale.setScalar(2.2 * perPixel)
+        if (collides) {
+          marker.sprite.visible = false
+          continue
+        }
+        placed.push(rect)
+        shown += 1
+        marker.sprite.visible = true
+        marker.sprite.scale.set(marker.w * perPixel, marker.h * perPixel, 1)
+        marker.sprite.material.opacity = opacity
+      }
+    }
+
+    // Click a label -> feature card (drag is not a click).
     const raycaster = new THREE.Raycaster()
     const pointerNdc = new THREE.Vector2()
     let downAt = 0
@@ -1208,9 +1423,12 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       pointerNdc.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
       pointerNdc.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
       raycaster.setFromCamera(pointerNdc, camera)
-      const hit = raycaster.intersectObjects(featureHits, false)[0]
+      const visibleSprites = markers
+        .filter((marker) => marker.sprite.visible)
+        .map((marker) => marker.sprite)
+      const hit = raycaster.intersectObjects(visibleSprites, false)[0]
       if (hit) {
-        const feature = featureByUuid.get(hit.object.uuid)
+        const feature = hit.object.userData.feature as NomenclatureFeature | undefined
         if (feature) setActiveFeature(feature)
       }
     }
@@ -1223,8 +1441,8 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       requestAnimationFrame(animate)
       controls.update()
       const distance = camera.position.length()
-      markerGroup.visible = distance < 2.2
       if (body.trek && distance < 1.45) upgrade(4)
+      updateMarkers()
       renderer.render(scene, camera)
     }
     upgrade(2)
@@ -1247,6 +1465,12 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
       renderer.domElement.removeEventListener('pointerdown', onPointerDown)
       renderer.domElement.removeEventListener('click', onClick)
       controls.dispose()
+      addMarkers([])
+      dotGeometry.dispose()
+      dotMaterial.dispose()
+      material.map?.dispose()
+      material.dispose()
+      globe.geometry.dispose()
       renderer.dispose()
       mount.removeChild(renderer.domElement)
     }
@@ -1339,9 +1563,26 @@ function BodyGlobe({ body, onClose }: { body: SpaceBody; onClose: () => void }) 
         )}
       </div>
       <p className="pt-2 text-[11px] text-white/70">
+        {/* The credit names what is ON the sphere right now: the Solar
+            System Scope stage (2k placeholder or the hi-res file with its
+            real width), then the Trek mosaic with its tile level and the
+            exposure gain it is displayed at (§45.5). */}
+        {tileLevel > 0 && body.trek
+          ? `${body.trek.credit} · streaming tile level ${tileLevel}${
+              body.trek.exposure !== 1
+                ? ` · displayed at ×${body.trek.exposure} exposure`
+                : ''
+            } (placeholder: Solar System Scope, CC BY 4.0)`
+          : `Texture: Solar System Scope (CC BY 4.0)${
+              textureStage === 'hi' && body.textureHiPx
+                ? `, ${body.textureHiPx.toLocaleString()} px`
+                : textureStage === '2k'
+                  ? ', 2,048 px'
+                  : ''
+            }${body.trek ? ' · NASA Trek detail loading' : ''}`}
         {body.trek
-          ? `${body.trek.credit}${tileLevel > 0 ? ` · streaming tile level ${tileLevel}` : ''} · Named features: IAU Gazetteer of Planetary Nomenclature (USGS)`
-          : 'Texture: Solar System Scope (CC BY 4.0)'}
+          ? ' · Named features: IAU Gazetteer of Planetary Nomenclature (USGS)'
+          : ''}
       </p>
     </div>
   )

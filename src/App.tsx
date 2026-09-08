@@ -17,6 +17,10 @@ import { TaxonomyPage } from './routes/TaxonomyPage'
 // Code-split (round-2 §41): three.js only loads on the pages that use it.
 const SolarSystemPage = lazy(() => import('./routes/SolarSystemPage'))
 const CosmicPhenomenaPage = lazy(() => import('./routes/CosmicPhenomenaPage'))
+// Round 3 §47: the periodic table (three.js atom model is split again
+// inside the page) and its glossary.
+const PeriodicTablePage = lazy(() => import('./routes/PeriodicTablePage'))
+const ChemistryGlossaryPage = lazy(() => import('./routes/ChemistryGlossaryPage'))
 
 export function App() {
   return (
@@ -92,6 +96,24 @@ export function App() {
                 fallback={<p className="p-10 text-sm">Loading…</p>}
               >
                 <CosmicPhenomenaPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/chemistry"
+            element={
+              <Suspense
+                fallback={<p className="p-10 text-sm">Loading the periodic table…</p>}
+              >
+                <PeriodicTablePage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/chemistry/glossary"
+            element={
+              <Suspense fallback={<p className="p-10 text-sm">Loading…</p>}>
+                <ChemistryGlossaryPage />
               </Suspense>
             }
           />

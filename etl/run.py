@@ -303,6 +303,8 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "taxonomy": _simple_stage("taxonomy", "taxonomy"),
     "evolution": _simple_stage("evolution", "evolution"),
     "space": _simple_stage("space", "space"),
+    "phenomena": _simple_stage("phenomena", "phenomena"),
+    "chemistry": _simple_stage("chemistry", "chemistry"),
     "flags": stage_flags,
     "flagmeta": _simple_stage("flagmeta", "flagmeta"),
     "history": _simple_stage("history", "history"),

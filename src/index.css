@@ -138,6 +138,10 @@ summary {
      wheel, white text at AA. Theme-invariant like the other section pills. */
   --space-bg: oklch(43% 0.11 295);
   --space-text: oklch(100% 0 0);
+  /* The Chemistry section pill (round 3 §47): rose, between the violet of
+     Space and the clay of History on the wheel, white text at AA. */
+  --chemistry-bg: oklch(45% 0.13 350);
+  --chemistry-text: oklch(100% 0 0);
   --map-space: oklch(8% 0.005 260);
   --map-ocean: oklch(31% 0.06 255);
 
@@ -165,6 +169,19 @@ summary {
   --nav-taxonomy: oklch(42% 0.09 200);
   --nav-evolution: oklch(48% 0.1 70);
   --nav-space: oklch(43% 0.11 295);
+  --nav-chemistry: oklch(45% 0.13 350);
+
+  /* Periodic table (round 3 §47). Category tints carry body text, so
+     their lightness/chroma band is fixed here and gated against --text;
+     the property-view ramp runs from --chem-scale-lo (low value, recedes
+     toward the surface) to --chem-scale-hi (high value) with lightness as
+     the data channel -- one hue, and --text stays >= 4.5:1 on BOTH ends,
+     so the ramp never needs to flip its label colour. No-data cells are
+     hatched, never coloured. */
+  --chem-tint-l: 90%;
+  --chem-tint-c: 0.07;
+  --chem-scale-lo: oklch(95% 0.02 250);
+  --chem-scale-hi: oklch(70% 0.16 250);
 
   /* Map. Land/water is a shape boundary rather than text, so these carry
      perceptual minimums rather than WCAG text ratios. */
@@ -232,6 +249,11 @@ summary {
     --nav-taxonomy: oklch(70% 0.1 200);
     --nav-evolution: oklch(74% 0.1 75);
     --nav-space: oklch(72% 0.1 295);
+    --nav-chemistry: oklch(74% 0.12 350);
+    --chem-tint-l: 36%;
+    --chem-tint-c: 0.08;
+    --chem-scale-lo: oklch(24% 0.03 250);
+    --chem-scale-hi: oklch(50% 0.14 250);
 
     --map-water: oklch(13% 0.010 235);
     --map-land: oklch(34% 0.014 250);
@@ -278,6 +300,11 @@ summary {
   --nav-taxonomy: oklch(70% 0.1 200);
   --nav-evolution: oklch(74% 0.1 75);
   --nav-space: oklch(72% 0.1 295);
+  --nav-chemistry: oklch(74% 0.12 350);
+  --chem-tint-l: 36%;
+  --chem-tint-c: 0.08;
+  --chem-scale-lo: oklch(24% 0.03 250);
+  --chem-scale-hi: oklch(50% 0.14 250);
 
   --map-water: oklch(13% 0.010 235);
   --map-land: oklch(34% 0.014 250);

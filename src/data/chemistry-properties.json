@@ -1,0 +1,80 @@
+{
+  "note": "The ONE list of element properties the panel renders (round 3 §47). ElementPanel.tsx reads it for order, labels and units; scripts/check-chemistry.mjs reads the same file to assert every element carries every key (value or explicit null with a reason) and that the glossary defines every key. Add a property here first; the check then fails until the ETL and glossary catch up.",
+  "sections": [
+    {
+      "title": "Identity",
+      "keys": ["atomicNumber", "symbol", "name", "standardAtomicWeight", "group", "period", "block", "category", "casNumber"]
+    },
+    {
+      "title": "Electrons",
+      "keys": ["electronConfiguration", "electronConfigurationFull", "electronShells", "electronegativity", "ionizationEnergies", "electronAffinity", "oxidationStates"]
+    },
+    {
+      "title": "Physical",
+      "keys": ["phaseAtStp", "meltingPoint", "boilingPoint", "density", "covalentRadius", "vanDerWaalsRadius", "crystalStructure", "thermalConductivity", "electricalConductivity", "specificHeat", "magneticOrdering"]
+    },
+    {
+      "title": "Nucleus",
+      "keys": ["stableIsotopes", "knownIsotopes", "notableIsotopes"]
+    },
+    {
+      "title": "Abundance and occurrence",
+      "keys": ["abundanceCrust", "abundanceUniverse", "naturalOccurrence"]
+    },
+    {
+      "title": "History",
+      "keys": ["discoveryYear", "discoverers", "discoveryPlace", "etymology"]
+    },
+    {
+      "title": "In the world",
+      "keys": ["description", "uses", "biologicalRole", "hazards"]
+    }
+  ],
+  "properties": {
+    "atomicNumber": { "label": "Atomic number", "unit": null, "kind": "integer" },
+    "symbol": { "label": "Symbol", "unit": null, "kind": "text" },
+    "name": { "label": "Name", "unit": null, "kind": "text" },
+    "standardAtomicWeight": { "label": "Standard atomic weight", "unit": "Da", "kind": "text" },
+    "group": { "label": "Group", "unit": null, "kind": "integer" },
+    "period": { "label": "Period", "unit": null, "kind": "integer" },
+    "block": { "label": "Block", "unit": null, "kind": "text" },
+    "category": { "label": "Category", "unit": null, "kind": "text" },
+    "casNumber": { "label": "CAS Registry Number", "unit": null, "kind": "text" },
+    "electronConfiguration": { "label": "Electron configuration", "unit": null, "kind": "text" },
+    "electronConfigurationFull": { "label": "Electron configuration (full)", "unit": null, "kind": "text" },
+    "electronShells": { "label": "Electrons per shell", "unit": null, "kind": "list" },
+    "electronegativity": { "label": "Electronegativity (Pauling)", "unit": null, "kind": "number" },
+    "ionizationEnergies": { "label": "Ionization energies (1st–3rd)", "unit": "eV", "kind": "list" },
+    "electronAffinity": { "label": "Electron affinity", "unit": "eV", "kind": "number" },
+    "oxidationStates": { "label": "Oxidation states", "unit": null, "kind": "text" },
+    "phaseAtStp": { "label": "Phase at STP", "unit": null, "kind": "text" },
+    "meltingPoint": { "label": "Melting point", "unit": "K", "kind": "number" },
+    "boilingPoint": { "label": "Boiling point", "unit": "K", "kind": "number" },
+    "density": { "label": "Density", "unit": "g/cm³", "kind": "number" },
+    "covalentRadius": { "label": "Covalent radius", "unit": "pm", "kind": "number" },
+    "vanDerWaalsRadius": { "label": "Van der Waals radius", "unit": "pm", "kind": "number" },
+    "crystalStructure": { "label": "Crystal structure", "unit": null, "kind": "text" },
+    "thermalConductivity": { "label": "Thermal conductivity", "unit": "W/(m·K)", "kind": "number" },
+    "electricalConductivity": { "label": "Electrical conductivity", "unit": "S/m", "kind": "number" },
+    "specificHeat": { "label": "Specific heat capacity", "unit": "J/(g·K)", "kind": "number" },
+    "magneticOrdering": { "label": "Magnetic ordering", "unit": null, "kind": "text" },
+    "stableIsotopes": { "label": "Stable isotopes", "unit": null, "kind": "integer" },
+    "knownIsotopes": { "label": "Known isotopes", "unit": null, "kind": "integer" },
+    "notableIsotopes": { "label": "Notable isotopes", "unit": null, "kind": "list" },
+    "abundanceCrust": { "label": "Abundance in Earth's crust", "unit": "mg/kg", "kind": "number" },
+    "abundanceUniverse": { "label": "Abundance in the Solar System", "unit": "atoms per 10⁶ Si atoms", "kind": "number" },
+    "naturalOccurrence": { "label": "Natural occurrence", "unit": null, "kind": "text" },
+    "discoveryYear": { "label": "Discovery", "unit": null, "kind": "text" },
+    "discoverers": { "label": "Discovered by", "unit": null, "kind": "list" },
+    "discoveryPlace": { "label": "Place of discovery", "unit": null, "kind": "text" },
+    "etymology": { "label": "Name origin", "unit": null, "kind": "text" },
+    "description": { "label": "Description", "unit": null, "kind": "prose" },
+    "uses": { "label": "Principal uses", "unit": null, "kind": "prose" },
+    "biologicalRole": { "label": "Biological role", "unit": null, "kind": "prose" },
+    "hazards": { "label": "Hazards and toxicity", "unit": null, "kind": "prose" }
+  },
+  "views": {
+    "note": "Property views that recolour the table; each key must be a numeric property above (or 'phaseAtStp' / 'category', which are categorical).",
+    "keys": ["category", "electronegativity", "vanDerWaalsRadius", "meltingPoint", "density", "abundanceCrust", "discoveryYear", "phaseAtStp"]
+  }
+}

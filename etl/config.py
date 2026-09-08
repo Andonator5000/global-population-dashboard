@@ -340,6 +340,19 @@ COL_CHILD_PAGE_LIMIT = 300
 # Genus/species depth is only fetched for the reference-listed families; a
 # genus with more species than this cap is truncated with the flag above.
 COL_SPECIES_PER_GENUS_LIMIT = 100
+# Round 3 phase 3 (DATA_DECISIONS §44.5): the tree and every family's genera
+# come from COL's monthly ColDP bulk export (one ~780 MB download, cached
+# under .cache/taxonomy/coldp/) instead of ~15k tree API calls. The template
+# takes the release date the dataset record reports.
+COL_COLDP_URL_TEMPLATE = (
+    "https://download.checklistbank.org/col/monthly/{release}_coldp.zip"
+)
+# Wikipedia/Wikidata enrichment of the ~217k genera is INCREMENTAL: each run
+# looks up at most this many not-yet-enriched genera-file nodes (largest
+# genera first); the committed genera files are the accumulating store.
+# TAXONOMY_GENUS_ENRICH_CAP=n overrides; TAXONOMY_CACHED_ONLY=1 sets it to 0
+# (the final local full run of a batch should not spend 15 minutes here).
+TAXONOMY_GENUS_ENRICH_CAP = 20000
 
 # --------------------------------------------------------------------------
 # Biology: evolution timeline (Phase 6, 2026-09-05). The ICS International
@@ -408,17 +421,26 @@ SOLARSYSTEMSCOPE_TEXTURES: dict[str, str] = {
     "ceres": "2k_ceres_fictional.jpg",
 }
 SOLARSYSTEMSCOPE_RING = "2k_saturn_ring_alpha.png"
-# High-resolution variants for the full-screen globe view only (round-2
-# feedback: the 2k maps look soft on a globe filling the viewport). Only
-# bodies whose surface detail benefits AND that Trek does not already
-# deep-zoom; Uranus/Neptune's 8k files are upscales of featureless discs.
-# 3-4.5 MB each, loaded lazily by the globe modal, never by the scene.
-SOLARSYSTEMSCOPE_TEXTURES_8K: dict[str, str] = {
-    "sun": "8k_sun.jpg",
-    "earth": "8k_earth_daymap.jpg",
-    "jupiter": "8k_jupiter.jpg",
-    "saturn": "8k_saturn.jpg",
+# High-resolution variants (round 3 §45): the pack's largest file per body,
+# committed at the width given here — the 2k file is always the placeholder
+# and the hi-res is loaded lazily (scene: the flown-to body only; globe
+# modal: always). Solar System Scope's "8k" Sun/Jupiter/Saturn files are
+# natively 4096x2048 and ship as-is; Earth's is a true 8192. Moon/Mars/
+# Mercury's 8k files (8-15 MB each) are Lanczos-downsampled to 4096 in the
+# ETL: their deep-zoom detail comes from the streamed Trek mosaics, and a
+# 4k derivative (1.5-3 MB) keeps the repo honest about size. No 8k Uranus/
+# Neptune/Venus-atmosphere/Ceres file exists in the pack (404, checked
+# 2026-09-07), so those bodies stay at 2k. Filename -> maximum width.
+SOLARSYSTEMSCOPE_TEXTURES_HI: dict[str, tuple[str, int]] = {
+    "sun": ("8k_sun.jpg", 8192),
+    "earth": ("8k_earth_daymap.jpg", 8192),
+    "jupiter": ("8k_jupiter.jpg", 8192),
+    "saturn": ("8k_saturn.jpg", 8192),
+    "moon": ("8k_moon.jpg", 4096),
+    "mars": ("8k_mars.jpg", 4096),
+    "mercury": ("8k_mercury.jpg", 4096),
 }
+SOLARSYSTEMSCOPE_HI_JPEG_QUALITY = 88
 
 # NASA Solar System Treks WMTS layers (public NASA/USGS mosaics) for the
 # deep-zoom body globes. STREAMED at runtime — a documented exception to
@@ -447,6 +469,20 @@ TREK_LAYERS: dict[str, dict[str, str]] = {
     },
 }
 TREK_TILE_URL = "https://trek.nasa.gov/tiles/{body}/EQ/{layer}/1.0.0/default/default028mm"
+# Display exposure gain applied to a Trek mosaic when it replaces the body's
+# Solar System Scope texture in the globe (round 3 §45.5). The streamed
+# mosaics are radiometric products with low mean luminance (measured on the
+# level-1 tiles, 2026-09-07: Moon WAC 79/255, Mercury MDIS 70, Mars MDIM
+# 105, Venus SAR 119, against 148/132/121/194 for the SSS textures); the
+# gain is the ratio that keeps the hand-off brightness-continuous. It is a
+# linear multiplier on the material, i.e. a camera exposure — relative
+# albedo is untouched, and the value is printed in the on-screen credit.
+TREK_EXPOSURE: dict[str, float] = {
+    "moon": 1.8,
+    "mercury": 1.8,
+    "mars": 1.15,
+    "venus": 1.0,
+}
 
 # IAU Gazetteer of Planetary Nomenclature (USGS Astrogeology, public
 # domain): named surface features as center-point shapefiles.
@@ -456,6 +492,22 @@ GAZETTEER_URL = (
 )
 GAZETTEER_BODIES = ("MOON", "MARS", "VENUS", "MERCURY")
 GAZETTEER_TOP_FEATURES = 250
+# Round 3 §45.4: the globe shows the largest features first and more as
+# the camera closes in, which by diameter alone hides the features a
+# reader actually looks for (Tycho is 85 km; the Moon has ~300 bigger
+# craters). These names are pulled from the SAME gazetteer rows — every
+# column still rides from USGS — and placed at the head of each body's
+# list so they label at every zoom level. A name missing from the
+# gazetteer download aborts the run rather than silently vanishing.
+GAZETTEER_FEATURED: dict[str, tuple[str, ...]] = {
+    "MOON": ("Tycho", "Copernicus", "Aristarchus", "Statio Tranquillitatis",
+             "Mare Tranquillitatis", "Mare Imbrium", "Clavius"),
+    "MARS": ("Olympus Mons", "Valles Marineris", "Gale", "Jezero",
+             "Hellas Planitia", "Tharsis Montes"),
+    "VENUS": ("Maxwell Montes", "Maat Mons", "Aphrodite Terra",
+              "Ishtar Terra"),
+    "MERCURY": ("Caloris Planitia", "Rachmaninoff", "Rembrandt"),
+}
 
 # Cross-check tolerances for archived NSSDC figures vs live JPL Horizons
 # (maintainer-requested, 2026-09: the archive is trusted only as far as

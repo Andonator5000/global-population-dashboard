@@ -42,6 +42,10 @@ export interface TrekLayer {
   urlTemplate: string
   ext: string
   credit: string
+  /** Display exposure gain applied when the mosaic replaces the Solar
+      System Scope texture (round 3 §45.5) — a stated camera-exposure
+      choice, shown in the credit line. */
+  exposure: number
 }
 
 export interface SpaceBody {
@@ -58,8 +62,11 @@ export interface SpaceBody {
   discovery?: { by: string; year: number }
   /** Round-2 §41: committed CC-BY texture path under /data, or null. */
   texture?: string | null
-  /** 8k variant for the full-screen globe view only (round-2 feedback). */
-  texture8k?: string | null
+  /** Hi-res variant (round 3 §45): loaded lazily — by the globe modal
+      always, by the scene only for the body flown to. */
+  textureHi?: string | null
+  /** Real pixel width of textureHi (4096 or 8192), for the credit line. */
+  textureHiPx?: number | null
   notes?: BodyNotes
   /** NASA Trek WMTS layer for deep-zoom globes (streamed at runtime). */
   trek?: TrekLayer
