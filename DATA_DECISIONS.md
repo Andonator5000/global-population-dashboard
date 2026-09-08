@@ -2526,6 +2526,47 @@ palette gates. The Political-view drag frame remains d3 canvas fills
 at ~9 ms/frame; moving fills to triangulated GL geometry is the next
 step if that view is ever reported as sluggish.
 
+## 48. Round 3, Phase 2: the Antique direction becomes "A / Blaeu 1635" (2026-09-07)
+
+Andy rejected the round-2 antique scheme and asked for one researched
+from real 16th-19th-century hand-coloured maps. Scans were sampled in
+OKLCH (Blaeu 1635, Mercator 1595, Ortelius 1570, Homann 1730, Cary
+1801, Colton 1855, Johnson 1864; Commons + Library of Congress, all
+public domain; sampling scripts in .scratch/antique_*.py, measured
+swatches were embedded in the candidate artifact). Three candidates
+(A Blaeu 1635 / B Cary 1801 / C Johnson 1864) were shown as swatch
+sheets plus draggable globes; **Andy picked A**.
+
+**48.1 The palette.** Measured from the Blaeu scan: parchment paper
+oklch(0.90 0.045 83) #eddcbd; parchment sea oklch(0.905 0.03 86)
+#e9dfca; umber line oklch(0.40 0.042 61) #594330; ink #422e1e; coast
+band #b7a087. Fills: flag hue pulled halfway toward ochre (blendTo 85,
+strength 0.5), chroma 0.055, light tiers L 0.70/0.75/0.80/0.85 (the
+measured wash range). The 4-tier lightness encoding and the graph
+colouring are unchanged; neighbour dE min 4.75.
+
+**48.2 Gate trade-off (agreed in the candidate sheet).** True
+hand-tint paleness puts these tiers too close to the parchment sea for
+the 1.35 fill-vs-water floor. As on the originals, the ENGRAVED
+COASTLINE carries the land/water separation, so for this direction
+only, build-map-palette.mjs verifies a coastline gate instead: the
+umber line must clear 3.0 contrast against the sea, the paper and
+every fill (currently 3.38 minimum). Every other direction keeps the
+water floor. Antique fills are theme-invariant (already true of all
+direction fills, --fill-globe-<dir>-*).
+
+**48.3 Rendering (WorldMap.tsx).** In the antique direction (country
+mode, political base) the map renders as a sheet: parchment sea AND
+parchment past the projection edge (the one exception to the
+black-space rule of 2026-08-24 -- black around an antique sheet reads
+as a screen; noted as an exception, not a reversal); umber country
+strokes; a soft double coast band stroked from the merged land
+outline under the fills; names in Newsreader italic umber with a
+parchment halo; a static feTurbulence paper grain (multiply, alpha
+0.09) and corner vignette above everything, view-fixed and inert.
+Drag frames (canvas + GL borders) use the same literal colours.
+Satellite/terrain and continent modes are untouched.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

@@ -17,6 +17,7 @@ import {
 } from '../lib/mapdetail'
 import { GlobeGL, supportsWebGL2, type ImageryRenderer } from '../lib/globegl'
 import { Canvas2DImagery } from '../lib/terrain'
+import { ZoomControls } from './ZoomControls'
 
 import {
   CONTINENTS,
@@ -158,6 +159,26 @@ const LABEL_MIN_AREA_PX2 = 900
  */
 const GLOBE_LAND_NEUTRAL = 'oklch(84% 0.014 250)'
 
+/**
+ * Antique direction (round 3, DATA_DECISIONS section 48; maintainer pick
+ * "A / Blaeu 1635"). The palette build emits its fills; these are the
+ * SHEET colours -- parchment paper and sea, umber engraved linework --
+ * measured from the Blaeu scan. Theme-invariant by design (a parchment
+ * sheet does not change at night), and the parchment continues past the
+ * projection edge in this one direction: black space around an antique
+ * sheet reads as a screen, not a map. Literal hex (not CSS vars) because
+ * the drag-frame canvas needs resolvable colours.
+ */
+const ANTIQUE = {
+  paper: '#eddcbd',
+  sea: '#e9dfca',
+  line: '#594330',
+  ink: '#422e1e',
+  coast: '#b7a087',
+  noData: '#ddd7c9',
+  lineRgba: [89 / 255, 67 / 255, 48 / 255, 0.85] as [number, number, number, number],
+}
+
 interface FocusTarget extends HoverTarget {
   x: number
   y: number
@@ -263,6 +284,15 @@ export function WorldMap({
     [topology],
   )
 
+  /** Merged land outline, for the antique coast band (section 48). */
+  const landFeature = useMemo(
+    () =>
+      topology.objects.land
+        ? (feature(topology as never, topology.objects.land as never) as unknown)
+        : null,
+    [topology],
+  )
+
   /**
    * Round 3 (§43): country outlines as great-circle line segments for the
    * WebGL drag frames. Shared borders come from the topology mesh once,
@@ -324,7 +354,7 @@ export function WorldMap({
     return new Float32Array(out)
   }, [topology])
 
-  const { shapes, sphere, markerPoints, projection } = useMemo(() => {
+  const { shapes, sphere, landD, markerPoints, projection } = useMemo(() => {
     const base = createProjection(projectionKey)
     if (isGlobe) base.rotate([rotation[0], rotation[1], 0])
     const projection = fitProjection(base, VIEW_WIDTH, VIEW_HEIGHT)
@@ -363,10 +393,11 @@ export function WorldMap({
     return {
       shapes: built,
       sphere: path({ type: 'Sphere' }) ?? '',
+      landD: landFeature ? path(landFeature as GeoPermissibleObjects) ?? '' : '',
       markerPoints: points,
       projection,
     }
-  }, [collection, markers, projectionKey, isGlobe, rotation])
+  }, [collection, landFeature, markers, projectionKey, isGlobe, rotation])
 
   // ---- Phase 4: detail layers, terrain, and the satellite base view ------
 
@@ -802,6 +833,12 @@ export function WorldMap({
         imagery === 'terrain'
           ? [92 / 255, 71 / 255, 48 / 255, 0.7]
           : [1, 1, 1, 0.78],
+    }
+    // Antique political frames: parchment sea, umber strokes (section 48).
+    if (!satellite && mode === 'country' && paletteDirection === 'antique') {
+      dragFills.current.ocean = ANTIQUE.sea
+      dragFills.current.stroke = ANTIQUE.line
+      dragFills.current.strokeRgba = ANTIQUE.lineRgba
     }
   }, [collection, satellite, imagery, mode, populationByIso3, paletteDirection])
 
@@ -1319,11 +1356,15 @@ export function WorldMap({
   // water. Since 2026-08-24 the area OUTSIDE the projected sphere is black
   // space on the flat views too (maintainer request) -- the ocean stops at
   // the planet's edge on every projection, not just the globe.
-  const waterFill = 'var(--map-ocean)'
-  const backgroundFill = 'var(--map-space)'
-  const landStroke = 'var(--map-ocean)'
+  /** Antique renders as a parchment sheet: its own sea, paper past the
+      projection edge, umber lines (section 48). Only outside imagery views
+      and continent mode -- imagery IS its own base. */
+  const antique = paletteDirection === 'antique' && mode === 'country' && !satellite
+  const waterFill = antique ? ANTIQUE.sea : 'var(--map-ocean)'
+  const backgroundFill = antique ? ANTIQUE.paper : 'var(--map-space)'
+  const landStroke = antique ? ANTIQUE.line : 'var(--map-ocean)'
   const landNeutral = GLOBE_LAND_NEUTRAL
-  const noDataFill = 'oklch(92% 0.003 250)'
+  const noDataFill = antique ? ANTIQUE.noData : 'oklch(92% 0.003 250)'
 
   // Continent view (Phase 2.4): each continent is ONE cohesive region --
   // every member takes the continent's region fill, the country strokes
@@ -1426,24 +1467,10 @@ export function WorldMap({
   }
 
   // ---- Round-2 §36: control tooltips + optional zoom slider --------------
-  const [sliderVisible, setSliderVisible] = useState(() => {
-    try {
-      return sessionStorage.getItem('map-zoom-slider') === '1'
-    } catch {
-      return false
-    }
-  })
-  const toggleSlider = useCallback(() => {
-    setSliderVisible((visible) => {
-      const next = !visible
-      try {
-        sessionStorage.setItem('map-zoom-slider', next ? '1' : '0')
-      } catch {
-        /* per-session convenience only */
-      }
-      return next
-    })
-  }, [])
+  // The control itself (buttons, tooltips, Show/Hide-slider link, the
+  // sessionStorage 'map-zoom-slider' preference) is the shared
+  // ZoomControls component since round 3 (§45); the map only supplies
+  // what its 0–100 slider position means: log-scaled d3-zoom k.
 
   /** Continuous zoom for the slider — absolute, no easing (the handle IS
       the easing). */
@@ -1454,12 +1481,6 @@ export function WorldMap({
     behaviour.scaleTo(select(svg), Math.max(1, Math.min(MAX_ZOOM, k)))
   }, [])
 
-  const sliderLink = (
-    <button type="button" className="underline underline-offset-2" onClick={toggleSlider}>
-      {sliderVisible ? 'Hide slider' : 'Show slider'}
-    </button>
-  )
-
   return (
     <div
       ref={containerRef}
@@ -1469,108 +1490,17 @@ export function WorldMap({
       {/* Map controls: zoom without a wheel or pinch, and fullscreen. They
           live OUTSIDE the svg so they are ordinary buttons for keyboard and
           screen reader users. */}
-      <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
-        {/* Tooltips (round-2 §36): shown on hover AND focus-within, and
-            hoverable themselves so the Show/Hide-slider link inside stays
-            reachable. Buttons keep their aria-labels; tooltips are the
-            sighted-pointer duplicate, so aria-hidden. */}
-        <div className="map-ctl relative">
-          <button
-            type="button"
-            aria-label="Zoom in"
-            className="h-8 w-8 rounded text-lg leading-none"
-            style={controlButtonStyle}
-            onClick={() => zoomBy(1.5)}
-          >
-            +
-          </button>
-          <div className="map-tooltip">
-            <span className="map-tooltip-bubble">Zoom in · {sliderLink}</span>
-          </div>
-        </div>
-        {sliderVisible && (
-          <input
-            type="range"
-            className="map-zoom-slider self-center"
-            min={0}
-            max={100}
-            step={1}
-            value={Math.round(
-              (Math.log(transform.k) / Math.log(MAX_ZOOM)) * 100,
-            )}
-            onChange={(event) =>
-              zoomTo(
-                Math.exp(
-                  (Math.log(MAX_ZOOM) * Number(event.target.value)) / 100,
-                ),
-              )
-            }
-            aria-label="Zoom level"
-            aria-orientation="vertical"
-          />
-        )}
-        <div className="map-ctl relative">
-          <button
-            type="button"
-            aria-label="Zoom out"
-            className="h-8 w-8 rounded text-lg leading-none"
-            style={controlButtonStyle}
-            onClick={() => zoomBy(1 / 1.5)}
-          >
-            −
-          </button>
-          <div className="map-tooltip">
-            <span className="map-tooltip-bubble">Zoom out · {sliderLink}</span>
-          </div>
-        </div>
-        <div className="map-ctl relative">
-        <button
-          type="button"
-          aria-label={isFullscreen ? 'Exit full screen' : 'View full screen'}
-          aria-pressed={isFullscreen}
-          className="flex h-8 w-8 items-center justify-center rounded"
-          style={controlButtonStyle}
-          onClick={toggleFullscreen}
-        >
-          {/* Inline SVG, not a glyph: the exit icon used to be U+1F87C,
-              which most Windows/Android system fonts have no glyph for --
-              so the button appeared EMPTY exactly while fullscreen. */}
-          <svg
-            viewBox="0 0 16 16"
-            className="h-4 w-4"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            {isFullscreen ? (
-              <>
-                {/* Arrows pointing inward: leave fullscreen. */}
-                <path d="M6 2v4H2" />
-                <path d="M10 2v4h4" />
-                <path d="M6 14v-4H2" />
-                <path d="M10 14v-4h4" />
-              </>
-            ) : (
-              <>
-                {/* Corner brackets pointing outward: enter fullscreen. */}
-                <path d="M2 6V2h4" />
-                <path d="M14 6V2h-4" />
-                <path d="M2 10v4h4" />
-                <path d="M14 10v4h-4" />
-              </>
-            )}
-          </svg>
-        </button>
-          <div className="map-tooltip">
-            <span className="map-tooltip-bubble">
-              {isFullscreen ? 'Exit full screen' : 'Full screen'}
-            </span>
-          </div>
-        </div>
-      </div>
+      <ZoomControls
+        onZoomIn={() => zoomBy(1.5)}
+        onZoomOut={() => zoomBy(1 / 1.5)}
+        sliderValue={(Math.log(transform.k) / Math.log(MAX_ZOOM)) * 100}
+        onSliderChange={(value) =>
+          zoomTo(Math.exp((Math.log(MAX_ZOOM) * value) / 100))
+        }
+        isFullscreen={isFullscreen}
+        onToggleFullscreen={toggleFullscreen}
+        buttonStyle={controlButtonStyle}
+      />
 
       {/* Attribution (Phase 4): required for the NASA imagery, honest for
           Natural Earth. Rendered as chrome, not data, and kept out of the
@@ -1705,6 +1635,28 @@ export function WorldMap({
       onKeyDown={handleKeyDown}
     >
       <defs>
+        {/* Antique paper grain + vignette (section 48): static filters, no
+            animation, so prefers-reduced-motion is moot. */}
+        {antique && (
+          <>
+            <filter id="antique-grain" x="0" y="0" width="1" height="1">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.9"
+                numOctaves="2"
+                seed="7"
+              />
+              <feColorMatrix type="saturate" values="0" />
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.09" />
+              </feComponentTransfer>
+            </filter>
+            <radialGradient id="antique-vignette" cx="50%" cy="50%" r="72%">
+              <stop offset="58%" stopColor={ANTIQUE.line} stopOpacity="0" />
+              <stop offset="100%" stopColor={ANTIQUE.line} stopOpacity="0.22" />
+            </radialGradient>
+          </>
+        )}
         {/* Hatch marks contested entities so their status is never carried by
             colour alone -- required for CVD readers and forced-colors mode. */}
         <pattern
@@ -1733,6 +1685,28 @@ export function WorldMap({
           fill={satellite ? 'transparent' : waterFill}
           onClick={() => setPopover(null)}
         />
+        {/* Antique coast band (section 48): a soft double stroke of the
+            merged land outline under the fills -- the engraved shading the
+            originals use to lift land off the sea. Inert to pointers. */}
+        {antique && landD && (
+          <g pointerEvents="none" aria-hidden="true">
+            <path
+              d={landD}
+              fill="none"
+              stroke={ANTIQUE.coast}
+              strokeWidth={5 / transform.k}
+              strokeOpacity={0.4}
+              strokeLinejoin="round"
+            />
+            <path
+              d={landD}
+              fill="none"
+              stroke={ANTIQUE.coast}
+              strokeWidth={2 / transform.k}
+              strokeOpacity={0.35}
+            />
+          </g>
+        )}
         {shapes.map((shape, index) => {
           const row = populationByIso3.get(shape.iso3)
           const dimmed = isDimmed(shape.continent)
@@ -1910,12 +1884,17 @@ export function WorldMap({
             // zoom names are twice as big, at 9x three times -- larger, but
             // never billboard-sized.
             fontSize={(label.emphasized ? 13 : 10) / Math.sqrt(transform.k)}
+            fontStyle={antique ? 'italic' : undefined}
             style={{
               // Land is light in every view now, so labels are dark text
-              // with a light halo regardless of theme.
-              fill: 'oklch(20% 0.01 250)',
+              // with a light halo regardless of theme. The antique sheet
+              // letters its names in the serif, italic, umber ink of the
+              // engraved originals (section 48).
+              fill: antique ? ANTIQUE.ink : 'oklch(20% 0.01 250)',
               paintOrder: 'stroke',
-              stroke: GLOBE_LAND_NEUTRAL,
+              stroke: antique ? ANTIQUE.paper : GLOBE_LAND_NEUTRAL,
+              fontFamily: antique ? 'Newsreader, Georgia, serif' : undefined,
+              letterSpacing: antique ? '0.05em' : undefined,
               strokeWidth: (label.emphasized ? 3.5 : 2.5) / Math.sqrt(transform.k),
               strokeLinejoin: 'round',
               fontWeight: label.emphasized ? 600 : 500,
@@ -2030,6 +2009,23 @@ export function WorldMap({
           is the aria-label on this <svg> (which wins over <title> for the
           name anyway), and the focused country announces itself through the
           per-shape aria-labels. */}
+      {/* Antique sheet texture, above everything and inert: multiply grain
+          plus a corner vignette, view-fixed (outside the zoom transform). */}
+      {antique && (
+        <g pointerEvents="none" aria-hidden="true">
+          <rect
+            width={VIEW_WIDTH}
+            height={VIEW_HEIGHT}
+            filter="url(#antique-grain)"
+            style={{ mixBlendMode: 'multiply' }}
+          />
+          <rect
+            width={VIEW_WIDTH}
+            height={VIEW_HEIGHT}
+            fill="url(#antique-vignette)"
+          />
+        </g>
+      )}
     </svg>
     </div>
   )

@@ -58,7 +58,7 @@ export const DEFAULT_MAP_PALETTE: MapPaletteKey = 'atlas'
 export const MAP_PALETTE_LABELS: Record<MapPaletteKey, string> = {
   atlas: 'Atlas — restrained flag hues',
   paper: 'Paper — near-neutral tints',
-  antique: 'Antique — parchment sepia',
+  antique: 'Antique — hand-coloured copperplate (Blaeu)',
   pastel: 'Vintage pastel',
   nautical: 'Old nautical — chart blues',
   mono: 'Monochrome (colour-blind-safe)',
@@ -103,6 +103,8 @@ export const SECTIONS: readonly SiteSection[] = [
   { path: '/taxonomy', label: 'Taxonomy', accent: 'var(--nav-taxonomy)' },
   { path: '/evolution', label: 'Evolution', accent: 'var(--nav-evolution)' },
   { path: '/space', label: 'Space', accent: 'var(--nav-space)' },
+  // Round 3, Phase 7 (§47): Chemistry — the periodic table and its glossary.
+  { path: '/chemistry', label: 'Chemistry', accent: 'var(--nav-chemistry)' },
 ]
 
 /** Continents excluded from per-capita, density, and population rankings. */
