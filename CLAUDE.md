@@ -177,8 +177,10 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   null and renders as "not available", never zero. Scale modes are
   labelled; nothing is silently out of scale. Trek tiles stream at
   runtime (§41.2, documented exception); globe texture upgrades guard
-  against out-of-order completions; 8k textures exist ONLY for
-  Sun/Earth/Jupiter/Saturn and load only in the globe modal (§42.9);
+  against out-of-order completions; hi-res textures (§45: earth-8k,
+  4k for sun/jupiter/saturn/mars/mercury/moon — the round-2 "8k" files
+  were natively 4096px and are now named honestly) load only in the
+  globe modal; Moon renders at 1.8x exposure, stated in its credit line;
   gazetteer features ship origin/approval/culture/link — keep the
   feature card sourced from those columns, never hand-typed.
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else

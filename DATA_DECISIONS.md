@@ -2744,6 +2744,233 @@ giant Wikidata batch) were already sound and are now verified end to end.
 
 **44.6 Gates.** `check:taxonomy` passes: tree 35,214 nodes / 39 rank strings all defined / descriptions wikipedia 9,088, wikidata 7,575, generated 18,551 (flagged); genera 14,196 files, 37.0 MB, 257,389 nodes, descriptions wikipedia 6,481, wikidata 12,563, generated 224,149 (flagged). Incremental genus enrichment runs at `TAXONOMY_GENUS_ENRICH_CAP` = 20,000 per ETL run, so full Wikipedia coverage of the 203k pending genera is roughly ten monthly refreshes away; raising the cap for the workflow only is the lever if Andy wants it faster.
 
+## 45. Round 3, Phases 4-5: Solar System textures, labels, and Moon exposure (2026-09-12/13)
+
+Audit and completion of a WIP checkpoint (`b245f1b`) covering the Solar
+System page's texture pipeline, the shared zoom control, surface-feature
+label anchoring, and the Moon's brightness. Most of the substantive work
+was already correct in the WIP; this pass verified it against the brief
+with Playwright (headed, real GPU), fixed the one thing that needed
+fixing (nothing did, after verification — see 45.3), and writes the
+record the WIP checkpoint never got to.
+
+**45.1 Hi-res textures, honestly labelled — and why not KTX2.**
+
+Round 2 (§42.9) recorded "8k variants... committed for the Sun, Earth,
+Jupiter and Saturn." That was wrong for three of the four: Sun, Jupiter
+and Saturn's "8k" Solar System Scope files are natively **4096×2048**
+(verified by opening each with Pillow) — only Earth's is a true 8192.
+The pack's own filename lied; §42.9 repeated it uncritically. The fix
+committed here renames the three to their real width (`sun-4k.jpg`,
+`jupiter-4k.jpg`, `saturn-4k.jpg`, same bytes — `git diff` shows these as
+pure renames) and adds genuinely-new hi-res files for **Moon, Mars and
+Mercury** at 4096×2048 (the pack's largest file for each is a "8k" that
+is honestly 8192-something; it is Lanczos-downsampled to 4096 and
+re-encoded as a quality-88 progressive JPEG in the ETL, because these
+three bodies get their real deep-zoom detail from the streamed NASA Trek
+mosaic — see 45.4/§41.2 — and a full 8-15 MB commit would buy nothing a
+reader can see before Trek tiles land). Venus, Uranus, Neptune, Ceres and
+the outer dwarfs have no hi-res file in the pack at all (404s, checked
+2026-09-07) and stay at 2k; Venus is compensated by its own Trek layer.
+The credit line and the ETL's manifest citation both now say the real
+pixel width per body — never "8k" for a 4096 file again.
+
+**Repo growth**: 6.87 MB of new binary — `mars-4k.jpg` (1.45 MB),
+`mercury-4k.jpg` (2.50 MB), `moon-4k.jpg` (2.91 MB). The three renamed
+files (sun/jupiter/saturn) and the pre-existing `earth-8k.jpg` (4.57 MB,
+genuinely 8192×4096) add no new bytes — they already lived in the repo.
+Total hi-res texture payload across all seven files is ~19.3 MB, all
+loaded lazily (never on first paint — see 45.2).
+
+**GPU compression (KTX2/Basis Universal): considered, not adopted.**
+Three reasons, together:
+1. **Toolchain.** KTX2/Basis encoding needs the `basisu`/`toktx` compiled
+   CLI in the ETL environment. This project's ETL is deliberately a
+   keyless-Python pipeline with no compiled binary dependency beyond the
+   couple of `curl` fallbacks CLAUDE.md already documents as exceptions;
+   adding a C++ toolchain for seven files is a heavier footprint than the
+   saving justifies.
+2. **Runtime cost cuts the other way.** three.js's `KTX2Loader` needs its
+   own ~250 KB WASM transcoder fetched by every page that shows a globe —
+   a second code-split payload on top of the ~600 KB three.js chunk
+   §41.1 already isolates to the Space pages. For seven textures under
+   20 MB total, that fixed cost is not obviously a win.
+3. **Provenance.** Every note in `etl/sources/space.py` for this pack
+   says textures are "copied byte-for-byte" or, where a resize is
+   unavoidable, "Lanczos-downsampled and re-encoded as progressive JPEG"
+   — an auditable one-hop relationship to the CC BY 4.0 source bytes that
+   the project has leaned on since round 1. Re-encoding into a
+   GPU-native container from an already-JPEG source would be a second,
+   lossy re-encode with no real Basis benefit (Basis's efficiency comes
+   from encoding the *original* art, not from transcoding a JPEG), for a
+   texture set the maintainer can no longer point at and say "these are
+   the pack's own bytes."
+
+The trade-off actually shipped is progressive JPEG (quality 88,
+`optimize=True`) plus the 2k-then-hi-res loading ladder (45.2), which
+already solves GPU compression's real user-facing complaint (a stall on
+first paint) by never showing a stall — the 2k placeholder (0.2-0.9 MB)
+paints immediately, the hi-res file swaps in after. Measured sizes and a
+calculated (size ÷ bandwidth, not a live capture) download time for the
+worst case (moon-4k, 2.91 MB) once it starts fetching:
+
+| Link | Speed | moon-4k.jpg |
+|---|---|---|
+| Constrained mobile | 10 Mbps | ~2.3 s |
+| Typical broadband | 50 Mbps | ~0.5 s |
+
+**45.2 Progressive texture loading, and a texture "ladder" that can't go backwards.**
+
+Every body's scene mesh and globe modal now open on the 2k Solar System
+Scope file; the globe modal always upgrades to the committed hi-res file
+when one exists (45.1), and the *scene* upgrades only the body currently
+flown to (one hi-res texture resident in the scene at a time — a 4096
+RGBA texture with mipmaps is ~43 MB of GPU memory, 8192 is ~170 MB;
+upgrading all eleven bodies at once risks integrated GPUs). Flying to a
+different body restores the previous one's 2k and releases its hi-res
+texture.
+
+The globe modal chains a third rung for Moon/Mars/Venus/Mercury: the
+streamed NASA Trek mosaic (§41.2), requested at levels 2 and 3
+immediately on open and level 4 on close zoom. Each rung carries a rank
+(2k=1, hi-res=2, Trek level *n*=10+*n*); a texture is only ever applied
+if its rank exceeds what is already showing, so a slow 2k or a Trek tile
+that lands out of order can never overwrite something sharper (this
+generalises the round-2 §42.8 out-of-order guard to the whole ladder,
+not just Trek-vs-Trek).
+
+**45.3 Zoom controls: one shared component, verified identical.**
+
+The Solar System scene's zoom in/out/fullscreen buttons and its optional
+vertical zoom slider now use the exact component the Global Data maps
+use (`src/components/ZoomControls.tsx`, extracted from `WorldMap.tsx`);
+each caller only supplies what its own 0-100 means (a d3-zoom scale for
+the map, `1 - log(distance/min)/log(max/min)` — camera distance — for
+the scene) and a `storageKey` so the two "show slider" preferences don't
+collide in `sessionStorage`.
+
+Verified with Playwright (headed Chrome) rather than by inspection alone,
+because a moderate drag on a 3D perspective scene and a 2D orthographic
+globe *look* different even when the underlying control is identical (a
+50%-of-track drag reads very differently on a log-scaled camera-distance
+axis than on a log-scaled d3-zoom-`k` axis). Reading the raw `<input>`
+value confirmed the two sliders are byte-for-byte identical in behaviour:
+dragging from 10% to 90% of the track sets the same raw value (3) on
+both; dragging the opposite way sets the same value (97) on both; the
+physical top of the track is value 100 (closest/most zoomed in) and the
+bottom is 0 on both. Screenshots at the extremes confirm the *meaning*
+matches too — value 100 shows a single country filling the map and the
+camera effectively inside the Sun's texture on the scene; value 0 shows
+the full globe and the full orbit diagram respectively. No fix was
+needed here; the WIP's extraction was correct.
+
+A related fly-to change (already in the WIP, verified working): clicking
+a body no longer just re-targets the camera, it also glides the viewing
+*distance* to 4-8 body radii (keeping the reader's current distance if
+already in range), so flying to a small body like Mercury from a wide
+view of the whole system doesn't leave the camera parked kilometres away
+showing a speck.
+
+**45.4 Surface-feature labels: anchored to the terrain, not floating near it.**
+
+Root cause of the round-2 anchoring bug (fixed in this WIP, verified
+here): the surface-point formula used `theta = (lon + 90)°` against
+three.js's `SphereGeometry` UV wrapping, which is a 90-degree offset
+from the equirectangular texture's actual `u = (lon+180)/360` mapping —
+every label sat a quarter-turn east of its feature. The gazetteer's
+longitude convention (checked against the shapefile CRS, which declares
+`AXIS["Longitude",EAST]`) is planetocentric, **east-positive, 0-360**
+(e.g. Olympus Mons 226.198°E, Tycho 348.785°E) and needed no conversion
+once the wrapping itself was fixed:
+
+```
+phi = lat * pi/180
+lambda = normalize(lon + 180, 360) - 180    // wrap into (-180, 180]
+anchor = (cos(phi)*cos(lambda), sin(phi), -cos(phi)*sin(lambda))
+```
+
+Each label is a `THREE.Sprite` **parented to the globe mesh**, so it
+rotates with the body for free; every frame it is: (a) re-scaled from
+its fixed CSS-pixel size so it reads as a constant size on screen
+regardless of zoom, (b) faded out over the last ~13° before the limb and
+hidden past it via an occlusion test (`dot(toCamera, surfaceNormal) >
+0.08` fading to 1 at 0.30), and (c) decluttered greedily in screen space
+(largest features placed first, later ones dropped on overlap) within a
+budget that grows from 12 to 60 labels as the camera closes in. A small
+always-visible dot marks the exact anchor point even when its label is
+hidden by declutter, so the geometry is never lying even when the text
+is.
+
+A second gap, also closed here: labelling purely by IAU diameter buries
+the features a reader actually looks for (Tycho is 85 km across; the
+Moon has ~300 larger craters). `etl/config.py`'s new
+`GAZETTEER_FEATURED` list pulls specific well-known names — Olympus
+Mons, Valles Marineris, Tycho, Copernicus, Maxwell Montes, Caloris
+Planitia, etc. — from the **same gazetteer rows** (nothing hand-typed)
+and places them at the head of each body's feature list, so they label
+at every zoom level instead of only once the camera is close enough for
+80-deep diameter ranking to reach them. A name missing from that year's
+gazetteer download aborts the ETL run rather than silently vanishing.
+
+**Verified** with Playwright at several camera angles per body
+(screenshots below): Olympus Mons's label sits exactly on the volcano's
+caldera on the Mars globe; Tycho's sits exactly on its bright ray-crater
+on the Moon globe; clicking either opens the feature card with the
+gazetteer's own origin/approval-year/culture/link columns (never
+hand-typed) — e.g. Olympus Mons: "Mons, montes — mountain · 610.1 km
+across / Classical albedo feature name. / Name approved by the IAU in
+1973 · origin: Greek / USGS Gazetteer entry".
+
+**45.5 The Moon reads bright now.**
+
+Two independent changes, both already in the WIP and verified working
+here with a genuine A/B (temporarily reverting each value, screenshotting,
+reverting back — not a description of intent):
+
+1. **Trek exposure gain.** The streamed LRO WAC mosaic (the LROC WAC
+   source the brief asked for) is a low-mean-luminance radiometric
+   product — measured on its own level-1 tiles at 79/255, against
+   132-194/255 for the Solar System Scope textures it replaces mid-zoom.
+   `etl/config.py`'s `TREK_EXPOSURE` applies a linear multiplier
+   (Moon and Mercury ×1.8, Mars ×1.15, Venus ×1.0) so the hand-off from
+   the placeholder texture to the Trek mosaic doesn't visibly darken the
+   globe; the value is a stated camera-exposure choice, not a relabelled
+   surface, and it prints in the on-screen credit ("...displayed at
+   ×1.8 exposure"). Verified by toggling the Moon's committed exposure
+   value 1.8 → 1.0 in `data/space/bodies.json` and back (reverted after
+   the screenshots; no net change): sampled pixels on the same frozen
+   camera angle read 78→103, 64→85, 87→113 (before→after, ~30%
+   brighter), and the credit line's conditional "displayed at ×N
+   exposure" clause correctly appears only when the multiplier is not 1.
+2. **Globe lighting.** three.js's physically-based lighting divides the
+   Lambertian term by π; the previous ambient 1.1 + directional 1.6 put
+   the fully-lit sub-solar point at ~0.86× its texture value and the
+   terminator side far darker — every globe read dim, worst on the
+   low-albedo mosaics. Ambient 1.5 + directional 2.0 puts the sub-solar
+   point at ~1.1× and the limb at ~0.5×: a brighter exposure of the same
+   surface, applied to every body's globe (not Moon-specific — the
+   modal is one component for all bodies). Verified by reverting to
+   1.1/1.6 and back on a frozen Trek-loaded frame: measurable but modest
+   brightening (mean per-pixel diff 4.4/255, max 29/255) since the
+   Trek exposure gain above already dominates the frame once a Trek
+   texture is showing; the effect is largest on bodies without a Trek
+   override (e.g. Jupiter, Saturn) where it is the only exposure control.
+
+Neither change touches the source imagery's actual albedo data — both
+are stated display-exposure multipliers, credited on screen, leaving the
+underlying LRO WAC mosaic and Solar System Scope textures exactly as
+downloaded.
+
+**45.6 What was verified but needed no change.**
+
+`npx tsc -b --noEmit` passes with zero errors. `prefers-reduced-motion`
+still starts orbital playback paused (unchanged code path). The zoom
+buttons and the "Show/Hide slider" link are ordinary `<button>`
+elements — keyboard- and screen-reader-reachable without touching the
+canvas, as before. Attribution renders in three places already: the
+scene's caption line, the globe modal's caption line (naming whatever
+rung of the texture ladder is currently showing), and each body card.
+
 ## 46. Round 3, Phase 6: Cosmic Phenomena becomes a full catalogue (2026-09)
 
 The 13-entry Cosmic Phenomena page (§41.3, §42.10) becomes a ~60-entry
