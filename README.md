@@ -31,6 +31,16 @@ The browser never calls an upstream API — it reads committed artifacts from
 > (§46); the Solar System and body globes got higher-resolution textures
 > and anchored surface labels (§45); and a sixth section, **Chemistry**,
 > opened with an interactive periodic table (§47).
+>
+> **2026-09 round 4:** map performance on phones (§51) — the political
+> globe's drag frames moved to the GPU (a baked world raster through the
+> same WebGL renderer as the imagery), zoomed drags cull to the visible
+> countries, zoom/pinch no longer rewrite stroke widths, and low-power
+> devices get smaller backing stores and tile budgets; the six colour
+> directions now tone the satellite and terrain views too; the antique
+> surround is black space. The God's Eye View project was evaluated for
+> this round: its rendering discipline was adopted, none of its keyed
+> live APIs (§51.0).
 
 ## Layout
 
@@ -137,7 +147,7 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Country metadata, borders, area | `mledoze/countries` | **Substituted for REST Countries v3.1** — see below. |
 | Geometry | Natural Earth via TopoJSON | 110m render, 50m for biome math. |
 | Map detail: admin-1 borders, lakes, rivers, places | Natural Earth 10m/50m | Public domain; simplified in the ETL, zoom-lazy in the app — DATA_DECISIONS.md §30. |
-| Satellite/terrain imagery | NASA Blue Marble Next Generation (Aug 2004, topo & bathy) | Public domain, NASA credited on-map; ETL-baked JPEG tiers, no runtime tile server. Rendered by a WebGL2 per-pixel inverse projection (§43), so the sphere has no seams; 2-D canvas fallback without WebGL2. |
+| Satellite/terrain imagery | NASA Blue Marble Next Generation (Aug 2004, topo & bathy) | Public domain, NASA credited on-map; ETL-baked JPEG tiers, no runtime tile server. Rendered by a WebGL2 per-pixel inverse projection (§43), so the sphere has no seams; 2-D canvas fallback without WebGL2. The political globe's drag frames go through the same renderer since round 4 (§51). |
 | Tree of life (Taxonomy) | Catalogue of Life via ChecklistBank (CC BY 4.0) | To family rank in one artifact, one genera file per family on demand, species live from ChecklistBank on expand (documented exception); every node's description states its source (Wikipedia, Wikidata, or a flagged generated summary) — §31, §44. |
 | Geologic time (Biology → Evolution) | ICS International Chronostratigraphic Chart, linked-data publication (CC BY 4.0) | Boundary ages with stated errors and CGMW colours; events editorial — §32. |
 | Evolution illustrations | PhyloPic (CC0/PD only) + Wikipedia lead images via Commons | Per-image licence gate; attribution rendered; unillustrated events logged — §32.3. |

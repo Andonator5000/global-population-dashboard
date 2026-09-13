@@ -3386,6 +3386,146 @@ and a bound such as chlorine's "> 10 ohm m" resistivity was parsed as
 a point value and inverted into a false 0.1 S/m conductivity
 (`parse_number` flags bounds; the field is a reasoned null).
 
+## 51. Round 4: map performance on phones, palettes on every base view (2026-09-13)
+
+Andy's brief: the Global Data maps were still sluggish on a phone
+(frame-rate drops while navigating, a slow Satellite globe), the
+colour directions did not apply to every base view ("Antique is not
+available for the Terrain map"), the antique surround should be black
+"to reflect space" — and evaluate the open-source **God's Eye View**
+project (bilawalsidhu/gods-eye-view, MIT) for what its approach could
+bring to our maps.
+
+**51.0 What God's Eye View is, and what carries over.** It is a Cesium
+globe (Google Photorealistic 3D Tiles or Esri World Imagery, Cesium
+World Terrain, keyed and server-brokered) with live layers — OpenSky /
+adsb.lol flights, AISStream vessels, CelesTrak satellites via SGP4,
+USGS earthquakes, NASA FIRMS fires, Launch Library 2, TomTom traffic,
+municipal CCTV, GBFS bikeshare, Radio Browser — and an OpenAI Realtime
+voice agent. Every one of those is a runtime API, most need a key, and
+the whole thing runs behind a Node key-broker. None of that fits this
+site's architecture (§28: static Pages, committed data, keyless ETL,
+two contained live fetches) or its licensing posture (OpenSky is
+non-commercial, Google tiles may not be cached). So NO God's Eye code
+or data source is imported. What DID carry over is its rendering
+discipline, which is exactly what the political globe lacked:
+
+- *Pixels on the GPU, CPU only for discrete changes.* GEV's globe is a
+  textured sphere; the CPU never re-tessellates the world per frame. Our
+  satellite globe already worked that way (§43) and was cheap; the
+  political globe still re-projected 250 polygons on the CPU per frame.
+- *A render governor* (`renderGovernor.js`): render continuously only
+  while something animates, one frame per discrete change otherwise.
+  Ours is the same shape — drag/inertia frames outside React, one
+  commit per gesture — and round 4 extends it to zoom (51.3).
+- *Budgets per view* (`localGeojsonLod.js`): bound per-frame work to
+  what is in view. Round 4's culled vector frames (51.2) are that.
+
+**51.1 Colour directions on every base view.** A direction colours the
+country fills, and there are no fills on imagery — hence "Map colours"
+did nothing on Satellite/Terrain. What a direction *can* carry onto
+imagery is its sheet: a tone, its lettering, its texture. Each
+direction now has an `ImageryGrade` (`src/lib/mapgrade.ts`) applied
+per pixel in the imagery shader — atlas: none; paper: desaturate 0.4,
+lift 0.08; antique: sepia 0.9, lift 0.06; pastel: desaturate 0.5, lift
+0.22; nautical: desaturate 0.25 + a luminance-preserving tint toward
+chart blue (0.55, 0.70, 0.82) at 0.3; mono: luminance only. The 2-D
+fallback approximates the same with a CSS `filter`. Antique on imagery
+also brings the sheet's lettering (Newsreader italic umber, parchment
+halo), paper grain and corner vignette; its parchment sea, umber
+strokes and coast band remain political-only because on imagery the
+relief IS the sea and coast. The grade is presentation, encodes
+nothing, and is never applied to the political fills (they already are
+the palette), so it sits outside the palette gates — /methodology says
+so. The "Map colours" control is therefore live in every base view.
+
+**51.2 Political drag frames move to the GPU.** Measured with
+`scripts/globe-spin-capture.mjs` (headed Chrome, desktop): a political
+drag frame cost a median **8.9 ms of main-thread time** (p90 9.8, 422
+frames per gesture); the satellite globe's cost **under 0.5 ms**. A
+phone's CPU is three to six times slower, which puts the political
+globe at 30–55 ms per frame — the sluggishness. Now:
+
+- The country fills are painted ONCE into an equirectangular canvas
+  (`src/lib/politicalraster.ts`: 4096×2048, 2048×1024 on low-power
+  devices; ocean underneath; no strokes) whenever their resolved
+  colours change — palette, fill mode, theme — during idle time, and
+  uploaded to the imagery renderer as a world raster
+  (`GlobeGL.setRaster`). A drag frame is then the SAME single
+  inverse-projection pass the satellite view runs, plus the GL border
+  lines from the same rotation uniform. Result: **2–4 frames above
+  0.5 ms per gesture, median 2.4 ms**, i.e. the political globe now
+  costs what the satellite globe costs.
+- Above 6× zoom a raster texel would span more than ~1.5 screen pixels
+  and fill edges would soften, so deeper drags use vector frames again
+  — but culled to the countries whose `geoBounds` touch the inverted
+  viewport window (`visibleLonLatWindow` / `boundsTouch`). At 6× and
+  12×: **median 1.0 ms** (was 9.2). The no-WebGL2 fallback keeps its
+  canvas frames and gains the same culling.
+- The settle after a gesture ran THREE geometry passes per country
+  (`path()`, `path.centroid()`, `path.area()`). Spherical centroid and
+  area (`geoCentroid`, `geoArea`) are now computed once per topology;
+  the label anchor is that point projected and the label-visibility
+  area is steradians × scale² (exact for the equal-area projections)
+  × cos(angular distance from the view centre) on the globe. Only a
+  country whose centroid is over the horizon while part of it is
+  visible still pays for the planar centroid and area. The merged
+  land outline (antique coast band) is projected only when it is drawn.
+- Resolving a CSS colour through a fresh GPU-backed canvas stalled
+  30–60 ms on the readback (measured — it was the whole first-frame
+  budget); the resolver now uses one `willReadFrequently` probe and a
+  cache.
+
+**51.3 Zoom, pinch and hover.** (a) Every stroke that scaled with the
+zoom (country borders, coast band, rivers, admin-1 lines, marker rings)
+now carries `vector-effect="non-scaling-stroke"`, so a wheel tick or
+pinch step rewrites NO path attribute — before, 250 `stroke-width`
+attributes changed per zoom event. A non-scaling width is in CSS
+pixels (measured: Chrome ignores the viewBox scale too), so the old
+viewBox-unit widths are converted through the viewBox-to-element scale
+— identical hairlines, at every zoom. (b) d3-zoom's events are
+coalesced to one React commit per animation frame (a pinch fires per
+touchmove, up to 120 Hz on a phone). (c) A hover or tap used to
+re-render the 250-row entity table because HomePage rebuilt its `rows`
+array inline; rows are memoised and the table is `memo`-wrapped.
+(d) Device tier (`src/lib/device.ts`): a coarse primary pointer, ≤4 GB
+reported memory or ≤4 logical cores marks a low-power device (Apple
+exposes neither memory nor cores, so the pointer is the signal that
+catches iPhones). Low-power: canvas backing stores capped at 1.25×
+(was 1.75× everywhere), anisotropic filtering 2× (was 8×), fine-tile
+budget 4 (was 8, and only when memory was reported) with tiles decoded
+at 1350² instead of 2700² (a quarter of the texture memory: eight full
+tiles were ~310 MB, which is where iOS Safari starts dropping the
+context). (e) Each fine-tile pass on the globe was a FULL-SCREEN
+triangle whose fragments ran the inverse projection and then discarded
+themselves outside the tile window — with eight tiles on screen, eight
+full-screen passes of transcendentals. Each pass is now scissored to
+the tile's projected bounding box (boundary samples forward-projected;
+a sample over the horizon falls back to the disc's box; an empty box
+skips the pass). Not measurable on a desktop GPU; it is the fill-rate
+term a phone pays.
+
+**51.4 Antique surround is black.** Reverses §48.3's exception on
+Andy's explicit ruling ("the background of the Antique colour political
+map type should be black to reflect space"): the parchment now stops at
+the planet's edge on every projection, like every other direction.
+`ANTIQUE.paper` survives as the label halo and the drag-frame colours
+are unchanged.
+
+**51.5 Data fix found on the way.** Seven admin-1 labels shipped with
+the literal name `"nan"` (Natural Earth polygons with no name: pandas
+hands a float NaN to `row.get`, which is truthy and stringifies). The
+mapdetail stage now accepts only non-blank strings as names (places
+too, defensively); the regenerated `admin1-labels.json` drops them.
+
+**51.6 Verification.** `scripts/globe-spin-capture.mjs` gained a
+`PALETTE=` option; captured before/after for political (world, 6×,
+12×), satellite (world, 6×, 12×), terrain-antique, political-antique
+and satellite-mono; frames compared against the pre-change captures
+for identical geometry. Phone-side numbers are inferred from the
+main-thread costs above, not measured on a device — Andy reviews the
+live site on his phone and that remains the acceptance test.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
