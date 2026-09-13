@@ -2526,6 +2526,224 @@ palette gates. The Political-view drag frame remains d3 canvas fills
 at ~9 ms/frame; moving fills to triangulated GL geometry is the next
 step if that view is ever reported as sluggish.
 
+## 44. Round 3, Phase 3: every rank, honest descriptions, depth on demand, and a mobile detail sheet (2026-09-12)
+
+Andy asked for the taxonomy page to go further on five fronts: the full
+rank system (not just the ones already met), a legend that stays aligned
+at every width, a description with its source on every node, a usable
+mobile experience, and real depth below family — genus and species,
+searchable, on demand. This section documents what shipped; it was
+largely built already (WIP commit b245f1b) and is audited, verified, and
+completed here.
+
+**44.1 The complete rank system.**
+
+The rank table (`RANK_SEEDS` in `src/lib/taxonomy.ts`) now carries **117
+rank entries** covering every rank asked for: the principal ranks; the
+upper/intermediate tiers (superkingdom through infrakingdom, superphylum
+through microphylum/nanophylum, gigaclass through parvclass, legion and
+cohort with their super-/sub-/infra- forms, gigaorder through
+falanx/phalanx, gigafamily through infratribe, supergenus through
+infragenus and the botanical section/subsection/series ladder, species
+aggregate); and the lower ranks (subspecies, variety/subvariety,
+form/subform, cultivar, cultivar group, grex, plus the bacteriological
+infrasubspecific set — pathovar, biovar, serovar, etc.). Botanical vs.
+zoological vs. bacteriological vs. viral differences are stated explicitly
+in `RANK_CODE_NOTE` and per-rank (division vs. phylum; ICN Art. 3/4 vs.
+ICZN Art. 35/42/45/10.4 vs. the 2021-added ICNP phylum rank vs. ICTV's own
+15-rung realm-to-species ladder with no infraspecific ranks).
+
+**Sources**, listed in `RANK_SOURCES` and rendered under the legend: the
+codes themselves (ICZN 4th ed., ICN Shenzhen Code, ICNP 2022 revision +
+Oren & Garrity 2021 for the phylum addition, ICTV Code Rule 3.22, ICNCP
+9th ed.) plus two textbook/synthesis references for the ranks no code
+governs — Ruggiero et al. 2015 (*A Higher Level Classification of All
+Living Organisms*, PLOS ONE, the superkingdom-to-order backbone Catalogue
+of Life itself follows) and McKenna & Bell 1997 (*Classification of
+Mammals Above the Species Level*, Columbia University Press, source of
+legion/cohort/grandorder/mirorder/parvorder) — and the ChecklistBank rank
+vocabulary as the definitive list of strings COL can attach to a node.
+
+Every rank has a colour (`hue` in `RANKS`, one anchor hue per tier —
+domain, kingdom, phylum, class, cohort, order, family, genus, species,
+root — with intermediate ranks shading the same hue lighter for
+super-/mega-/giga- and darker for sub-/infra-/parv-, so a whole tier reads
+as a colour family) and a definition (`def`, either an exact hand-written
+entry or, for a rank string never seen before, a definition COMPOSED at
+render time from a prefix glossary — `rankDefinition()` never returns
+empty, per the CLAUDE.md invariant "no chip is a dead end").
+
+**Verified** (2026-09-12, full scan of `tree.json` and every file in
+`genera/`, not a sample): the live data carries exactly **39 distinct
+rank strings** (class, domain, epifamily, family, genus, gigaclass,
+infraclass, infrakingdom, infraorder, infraphylum, infratribe, kingdom,
+megaclass, nanorder, order, parvorder, parvphylum, phylum, realm, root,
+section zoology, series zoology, species, subclass, subfamily, subgenus,
+subkingdom, suborder, subphylum, subsection zoology, subspecies,
+subterclass, subtribe, superclass, superfamily, superorder, supertribe,
+tribe, unranked) and every one of them is an exact entry in `RANK_SEEDS`
+— none had to fall through to the composed-prefix path. `node
+scripts/check-taxonomy.mjs` independently gates this on every run and
+reports "39 rank strings, all defined."
+
+Nothing needed fixing here; the prior agent's rank table was complete and
+accurate on inspection against the codes.
+
+**44.2 The rank legend: a two-column grid at every width.**
+
+`src/components/taxonomy/RankLegend.tsx` lays the full glossary out as
+`grid-cols-[7.5rem_minmax(0,1fr)]` (chip column fixed at 7.5rem, the
+description column flexible) inside `dl.rank-grid`, one `<dl>` per tier
+group. Verified with Playwright (headed Chrome) at 360, 768 and 1280px:
+at every width every `<dd>` in every tier's grid starts at the identical
+x-coordinate (measured: a single value, no spread, at all three widths).
+Screenshots: `.scratch/shots/taxonomy-legend-{360,768,1280}.png`.
+
+Nothing needed fixing here either.
+
+**44.3 Descriptions, sourced, generated ones flagged.**
+
+Every node — tree and genera files alike — carries `descSrc` in
+`wikipedia | wikidata | col | generated`, filled by the ETL in that
+priority order (Wikipedia intro extract, then Wikidata description, then
+a Catalogue of Life remark, then a summary GENERATED from structured
+facts: rank, parent, descendant/genus counts, up to three notable members,
+first appearance in Ma, extinct flag). `generatedSummary()` in
+`src/lib/taxonomy.ts` composes the same sentence shape the ETL uses for
+tree nodes, so live-loaded and not-yet-enriched genus nodes (`pending:
+true`) get an honest sentence instead of nothing. The UI (`TaxonDetail.tsx`
+→ `Description`) always shows a "Generated from Catalogue of Life facts"
+chip ahead of a generated description and a plain source line ("—
+Wikipedia, retrieved 2026-09-06" etc.) after any other source; there is no
+code path that can show a generated summary without the label.
+
+`check-taxonomy.mjs` gates a non-empty description with a valid recorded
+source on every node (`DESC_SOURCES` set) and fails loudly on a
+`wikidata`/`col` node with no `desc` string, a tree node whose extract
+shard lacks its text, or any node with a `descSrc` outside the four
+values. **Verified counts** (full data, both gate output and manual
+re-check):
+
+- Tree (35,214 nodes): wikipedia 9,088 · wikidata 7,575 · col 0 ·
+  generated 18,551 — all flagged, zero empty.
+- Genera files (257,389 nodes across 14,196 files): wikipedia 6,481 ·
+  wikidata 12,563 · col 0 · generated 224,149 — all flagged, zero empty.
+
+(`col` is 0 in both because the ETL's third tier — a Catalogue of Life
+prose remark — is empty for essentially every taxon in the 3LR release;
+the code path exists and is gated but has nothing to draw on. Not a bug,
+just an empty tier; noted so a future contributor does not go looking for
+a broken COL-remark fetch.)
+
+Nothing needed fixing here.
+
+**44.4 The mobile detail sheet.**
+
+`src/components/taxonomy/DetailSheet.tsx` is a modal bottom sheet
+(`role="dialog"`, `aria-modal`, `aria-labelledby`) that opens on
+`isNarrow` (`max-width: 1023px`) whenever a taxon is selected. Verified
+with Playwright at 390x844: tapping "Mammals" opens the sheet, focus
+lands on the Close button, `Escape` closes it and returns focus to the
+opener, the page behind gets `inert` while it is open, and Tab is trapped
+inside the sheet. Screenshot: `.scratch/shots/taxonomy-mobile-sheet.png`.
+
+**Gap found and fixed in this audit.** The sheet's `className` referenced
+`taxonomy-sheet` with a doc comment claiming "the slide-up transition is
+disabled under prefers-reduced-motion (the global rule in index.css)" —
+but no such rule existed anywhere in the codebase (`grep -rn
+"taxonomy-sheet\|slide-up\|translateY" src/` found only the component
+itself and one unrelated `translateY` in index.css). The sheet had NO
+transition at all: it simply appeared, and the comment was aspirational
+dead prose. Since `src/index.css` is off-limits for this audit (owned by
+another area) the fix lives entirely inside `DetailSheet.tsx`: an
+`entered` state flips `true` two animation frames after mount, the sheet
+transforms from `translateY(100%)` to `translateY(0)` over 220ms
+(scrim fades 0 → 1 over the same window), and BOTH are skipped outright
+(`transition: none`, final position immediately) when
+`matchMedia('(prefers-reduced-motion: reduce)').matches`. Verified with
+Playwright's `reducedMotion` context option: under `reduce` the computed
+transform is the identity matrix from the first frame the sheet exists;
+under `no-preference` the mid-open computed transform shows the sheet
+still ~210px below its resting position 40ms after it mounts, settling to
+identity within 500ms. This is a genuinely new capability (motion now
+exists to disable), not a regression — nothing before this audit animated
+either way, so no prior behaviour was removed.
+
+**44.5 Depth below family: on-demand genera, LIVE species.**
+
+**What the family-genus tier is.** One static file per family —
+`data/biology/taxonomy/genera/{familyId}.json` — holding the family's
+subfamilies/tribes/subtribes/genera exactly as Catalogue of Life nests
+them, fetched by the app only when that family is expanded
+(`loadGenera()`). 14,196 files, 37.0 MB total, largest Formicidae at
+1.86 MB; 257,389 nodes; 204,480 genera. Wikipedia/Wikidata enrichment of
+genus nodes is INCREMENTAL — `TAXONOMY_GENUS_ENRICH_CAP` (default 20,000
+per run, `etl/config.py`) new genera per ETL run — because looking up
+~204k genera against Wikidata/Wikipedia in one run is not realistic; a
+genus not yet reached carries `pending: true` alone (wiki/img/desc keys
+absent, expanded to explicit nulls + a generated description client-side
+by `expandPending()`), never a silent "no Wikipedia article" claim. As of
+this audit: 1,571 of 204,480 genera enriched (853 with a Wikipedia
+article), 202,909 still pending. **At the current 20,000/run cap this
+takes roughly ten more monthly runs to finish** — see the workflow note
+below; Andy may want a bigger cap or several catch-up runs if that pace
+is too slow.
+
+**What ships species, and how.** Two different depths below genus, by
+design, both verified live in the browser:
+
+1. **The ~30 editorial focus families** (`etl/reference/taxonomy_focus.json`
+   — Hominidae, Felidae, Canidae, Ursidae, Elephantidae, Equidae,
+   Delphinidae, Physeteridae, Macropodidae, Ornithorhynchidae, Accipitridae,
+   Falconidae, Corvidae, Spheniscidae, Strigidae, Crocodylidae,
+   Testudinidae, Varanidae, Salamandridae, Lamnidae, Salmonidae, Apidae,
+   Formicidae, Culicidae, Theraphosidae, Octopodidae, Rosaceae, Fagaceae,
+   Pinaceae, Amanitaceae) carry their species INLINE in the genera file,
+   fully enriched, no further fetch needed. 24,233 focus species ship this
+   way. Verified: Felidae -> Pantherinae -> Panthera shows five species
+   (leo, onca, pardus, tigris, uncia) immediately on expanding the genus,
+   each with rank chip, image, description and links.
+   (`.scratch/shots/taxonomy-depth-felidae-focus.png`)
+2. **Every other genus** (the other ~204k) loads its species LIVE from the
+   Catalogue of Life ChecklistBank API (`loadLiveChildren()`,
+   `CHECKLISTBANK_API`, dataset `3LR`) the moment it is expanded — a
+   documented render-time exception, same shape as the Trek tile
+   streaming of §41.2. Verified: Sciuridae (not a focus family) ->
+   Callosciurinae -> Callosciurus (`pending: true`, placeholder
+   silhouette, "Generated from Catalogue of Life facts" description)
+   expands to 14 live-loaded species rows, each tagged `live`.
+   (`.scratch/shots/taxonomy-depth-sciuridae-live.png`)
+
+**Search still finds species by name.** The static per-node index only
+covers what has been loaded into the page so far (tree + any expanded
+genera files); a query of 3+ characters with no local match ALSO fires a
+debounced live ChecklistBank name search (`liveNameSearch()`, prefix
+match on scientific name + English vernacular). Verified: searching
+"Vulpes lagopus" from a cold page (nothing expanded) returns 25 live
+hits; selecting one walks and loads every ancestor (genus, family, all
+the way to the domain) via `revealLive()` and lands on a fully-detailed
+species panel — photo (CC0, Commons), Wikipedia extract with retrieval
+date, rank chip, lineage breadcrumbs to Life, and the Wikipedia/COL/
+OneZoom links. (`.scratch/shots/taxonomy-live-search.png`,
+`taxonomy-live-reveal.png`)
+
+**Every new node — focus-species, live-genus-species, or live-search hit
+— carries rank colour** (`rankChipStyle`/`RankChip`, works on any rank
+string via `rankInfo()`), **image-or-placeholder** (`TaxonThumb`, the
+same neutral silhouette used everywhere else on the page), **a
+description** (source-flagged per §44.3; live nodes are always
+`generated` since no Wikipedia/photo lookup happens at render time — the
+panel says so explicitly: "Loaded live from the Catalogue of Life API;
+no Wikipedia or photo lookup happens at render time"), **and links**
+(Wikipedia — direct if known, else a pre-filled search; the Catalogue of
+Life source record; OneZoom by scientific name; Lifemap when a Wikidata
+NCBI taxid (P685) is on the node). Nothing needed fixing in this area —
+the design and its trade-offs (static-for-curated-depth vs.
+live-for-everything-else, capped incremental enrichment rather than one
+giant Wikidata batch) were already sound and are now verified end to end.
+
+**44.6 Gates.** `check:taxonomy` passes: tree 35,214 nodes / 39 rank strings all defined / descriptions wikipedia 9,088, wikidata 7,575, generated 18,551 (flagged); genera 14,196 files, 37.0 MB, 257,389 nodes, descriptions wikipedia 6,481, wikidata 12,563, generated 224,149 (flagged). Incremental genus enrichment runs at `TAXONOMY_GENUS_ENRICH_CAP` = 20,000 per ETL run, so full Wikipedia coverage of the 203k pending genera is roughly ten monthly refreshes away; raising the cap for the workflow only is the lever if Andy wants it faster.
+
 ## 48. Round 3, Phase 2: the Antique direction becomes "A / Blaeu 1635" (2026-09-07)
 
 Andy rejected the round-2 antique scheme and asked for one researched

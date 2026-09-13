@@ -8,10 +8,12 @@
  * aria-modal, focus moves to the close button on open and RETURNS to the
  * element that opened it on close, Escape closes, the scrim closes, and
  * the page behind is inert while it is open. The slide-up transition is
- * disabled under prefers-reduced-motion (the global rule in index.css).
+ * driven from here (no shared class in index.css to keep in sync) and
+ * skips the animation outright under prefers-reduced-motion: the sheet
+ * still opens and closes, just without the transform/opacity tween.
  */
 
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 import { rankAccent } from '../../lib/taxonomy'
 
@@ -31,6 +33,13 @@ export function DetailSheet({
   const closeRef = useRef<HTMLButtonElement>(null)
   const sheetRef = useRef<HTMLDivElement>(null)
   const openerRef = useRef<HTMLElement | null>(null)
+  // Starts below the viewport (or already in place under reduced motion)
+  // and is flipped to `true` a frame after mount so the browser has a
+  // starting position to transition FROM.
+  const [entered, setEntered] = useState(false)
+  const reducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   useEffect(() => {
     if (!open) return
@@ -38,12 +47,19 @@ export function DetailSheet({
     // Focus the close button once mounted; the sheet's heading is the
     // dialog's accessible name via aria-labelledby.
     const frame = window.requestAnimationFrame(() => closeRef.current?.focus())
+    // A second frame so the initial (off-screen) transform paints before
+    // flipping the class that transitions it into place.
+    const enterFrame = window.requestAnimationFrame(() =>
+      window.requestAnimationFrame(() => setEntered(true)),
+    )
     const previousOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     const main = document.getElementById('taxonomy-main')
     main?.setAttribute('inert', '')
     return () => {
       window.cancelAnimationFrame(frame)
+      window.cancelAnimationFrame(enterFrame)
+      setEntered(false)
       document.body.style.overflow = previousOverflow
       main?.removeAttribute('inert')
       const opener = openerRef.current
@@ -81,12 +97,21 @@ export function DetailSheet({
 
   if (!open) return null
 
+  // No transition at all under reduced motion (the sheet is simply present
+  // or absent); otherwise a 220ms ease-out slide/fade driven by `entered`.
+  const transition = reducedMotion ? 'none' : 'transform 220ms ease-out'
+  const scrimTransition = reducedMotion ? 'none' : 'opacity 220ms ease-out'
+
   return (
     <div className="fixed inset-0 z-50 lg:hidden" data-testid="detail-sheet">
       <div
         aria-hidden="true"
         className="absolute inset-0"
-        style={{ background: 'rgb(0 0 0 / 0.45)' }}
+        style={{
+          background: 'rgb(0 0 0 / 0.45)',
+          opacity: reducedMotion || entered ? 1 : 0,
+          transition: scrimTransition,
+        }}
         onClick={onClose}
       />
       <div
@@ -100,6 +125,8 @@ export function DetailSheet({
           borderColor: 'var(--border)',
           boxShadow: '0 -8px 24px rgb(0 0 0 / 0.18)',
           paddingBottom: 'env(safe-area-inset-bottom)',
+          transform: reducedMotion || entered ? 'translateY(0)' : 'translateY(100%)',
+          transition,
         }}
       >
         <div className="flex items-center justify-between gap-3 px-5 pt-2">
