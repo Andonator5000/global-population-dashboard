@@ -29,6 +29,7 @@ import {
   supportsWebGL2,
   type ImageryRenderer,
 } from '../lib/globegl'
+import { IMAGERY_GRADES } from '../lib/mapgrade'
 import {
   buildPoliticalRaster,
   politicalRasterSignature,
@@ -192,10 +193,12 @@ const GLOBE_LAND_NEUTRAL = 'oklch(84% 0.014 250)'
  * "A / Blaeu 1635"). The palette build emits its fills; these are the
  * SHEET colours -- parchment paper and sea, umber engraved linework --
  * measured from the Blaeu scan. Theme-invariant by design (a parchment
- * sheet does not change at night), and the parchment continues past the
- * projection edge in this one direction: black space around an antique
- * sheet reads as a screen, not a map. Literal hex (not CSS vars) because
- * the drag-frame canvas needs resolvable colours.
+ * sheet does not change at night). Since round 4 (section 51.4) the
+ * space past the projection edge is black in this direction too, like
+ * every other view -- Andy's ruling: the surround is space, and the
+ * parchment stops at the planet. `paper` survives as the label halo.
+ * Literal hex (not CSS vars) because the drag-frame canvas needs
+ * resolvable colours.
  */
 const ANTIQUE = {
   paper: '#eddcbd',
@@ -888,6 +891,8 @@ export function WorldMap({
       // Resolved ocean colour: canvas cannot use CSS custom properties.
       oceanFill:
         getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#0b2740',
+      // Section 51.1: the palette's tone over the imagery.
+      grade: IMAGERY_GRADES[paletteDirection],
     })
   }, [
     satellite,
@@ -898,6 +903,7 @@ export function WorldMap({
     containerSize,
     isGlobe,
     imageryVersion,
+    paletteDirection,
   ])
   const imageryReady = !satellite || (rendererRef.current?.ready() ?? false)
 
@@ -1117,6 +1123,7 @@ export function WorldMap({
         cssHeight: h,
         oceanFill: dragFills.current.ocean,
         raster: useRaster,
+        grade: satellite ? IMAGERY_GRADES[paletteDirection] : undefined,
         borders: glDrawsBorders
           ? { color: dragFills.current.strokeRgba }
           : undefined,
@@ -1159,7 +1166,7 @@ export function WorldMap({
       }
       ctx.stroke()
     })
-  }, [collection, staticGeometry, satellite, transform, layoutFor])
+  }, [collection, staticGeometry, satellite, transform, layoutFor, paletteDirection])
 
   const beginDragRender = useCallback(() => {
     if (isDragRendering.current) return
@@ -1628,16 +1635,19 @@ export function WorldMap({
   // water. Since 2026-08-24 the area OUTSIDE the projected sphere is black
   // space on the flat views too (maintainer request) -- the ocean stops at
   // the planet's edge on every projection, not just the globe.
-  /** Antique renders as a parchment sheet: its own sea, paper past the
-      projection edge, umber lines (section 48). Only outside imagery views
-      and continent mode -- imagery IS its own base. */
-  const antique = paletteDirection === 'antique' && mode === 'country' && !satellite
-  const antiquePolitical = antique
-  const waterFill = antique ? ANTIQUE.sea : 'var(--map-ocean)'
-  const backgroundFill = antique ? ANTIQUE.paper : 'var(--map-space)'
-  const landStroke = antique ? ANTIQUE.line : 'var(--map-ocean)'
+  /** Antique renders as an engraved sheet (section 48). Since round 4
+      (section 51.1) the direction reaches every base view in country
+      mode: the political map gets its parchment sea, umber lines and
+      coast band; the imagery views get the sheet's tone (graded in the
+      shader), lettering, grain and vignette over their own relief. The
+      surround is black space in every direction (section 51.4). */
+  const antique = paletteDirection === 'antique' && mode === 'country'
+  const antiquePolitical = antique && !satellite
+  const waterFill = antiquePolitical ? ANTIQUE.sea : 'var(--map-ocean)'
+  const backgroundFill = 'var(--map-space)'
+  const landStroke = antiquePolitical ? ANTIQUE.line : 'var(--map-ocean)'
   const landNeutral = GLOBE_LAND_NEUTRAL
-  const noDataFill = antique ? ANTIQUE.noData : 'oklch(92% 0.003 250)'
+  const noDataFill = antiquePolitical ? ANTIQUE.noData : 'oklch(92% 0.003 250)'
 
   // Continent view (Phase 2.4): each continent is ONE cohesive region --
   // every member takes the continent's region fill, the country strokes

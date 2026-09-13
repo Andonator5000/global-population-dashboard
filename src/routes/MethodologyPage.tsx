@@ -108,7 +108,10 @@ export function MethodologyPage() {
           countries are guaranteed perceptibly distinct fills by a gated
           palette build. The satellite and terrain views are NASA Blue Marble
           and Natural Earth relief imagery, projected per pixel on the GPU
-          (WebGL) so the sphere has no seams, and carry no data encoding.
+          (WebGL) so the sphere has no seams, and carry no data encoding. A
+          colour direction chosen under "Map colours" also tones those views
+          (sepia for Antique, greyscale for Monochrome, and so on); the tone
+          is presentation only and encodes nothing.
         </p>
       </Section>
 
