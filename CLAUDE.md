@@ -81,8 +81,13 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - ONE breakdown pattern: ranked horizontal bars (`Breakdown.tsx`); the
   stacked bar is gone. Flag is the hero of the country page with attributed
   Wikipedia symbolism text (CC BY-SA, verbatim, linked).
-- Map palette: two gated directions (atlas default, paper), chroma <= 0.045;
-  continent view = cohesive regions + labels, no internal borders.
+- Map palette: six gated directions (atlas default; paper, antique,
+  pastel, nautical, mono), lightness is the data channel in all; the
+  antique direction is the measured Blaeu 1635 sheet (§48: parchment sea
+  and surround, umber lines, coastline gate instead of the water floor,
+  ANTIQUE constants in WorldMap.tsx mirror DIRECTIONS.antique in
+  build-map-palette.mjs); continent view = cohesive regions + labels, no
+  internal borders.
 - `/history` is EDITORIAL: edit `etl/reference/history_events.json` (bump
   `version`), never `data/history/events.json`; the `history` stage
   validates it and resolves free images. Keep regional balance in mind.
@@ -161,4 +166,6 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).
 - Globe drag sensitivity is 0.5625°/px by explicit request (two ×1.5
-  raises). Space outside the projection is black on every view.
+  raises). Space outside the projection is black on every view, with ONE
+  exception: the antique direction continues its parchment past the edge
+  (§48.3, Andy's pick).
