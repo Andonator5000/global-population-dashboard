@@ -1,4 +1,11 @@
-import { geoDistance, geoPath, type GeoPermissibleObjects } from 'd3-geo'
+import {
+  geoArea,
+  geoBounds,
+  geoCentroid,
+  geoDistance,
+  geoPath,
+  type GeoPermissibleObjects,
+} from 'd3-geo'
 import { select } from 'd3-selection'
 // Side-effect import: gives d3 selections a .transition() so button zoom
 // can ease through the same zoom behaviour (round-2 §35).
@@ -15,7 +22,18 @@ import {
   type DetailCollection,
   type PlacePoint,
 } from '../lib/mapdetail'
-import { GlobeGL, supportsWebGL2, type ImageryRenderer } from '../lib/globegl'
+import { canvasPixelRatio } from '../lib/device'
+import {
+  GlobeGL,
+  resolveCssColor,
+  supportsWebGL2,
+  type ImageryRenderer,
+} from '../lib/globegl'
+import {
+  buildPoliticalRaster,
+  politicalRasterSignature,
+  type PoliticalRasterSpec,
+} from '../lib/politicalraster'
 import { Canvas2DImagery } from '../lib/terrain'
 import { ZoomControls } from './ZoomControls'
 
@@ -61,6 +79,16 @@ const MARKER_LABEL_MIN_ZOOM = 3
  */
 const MARKER_RADIUS = 3
 const MARKER_HIT_RADIUS = 12
+
+/**
+ * Political drag frames come from the GPU raster (section 51) up to this
+ * zoom factor. Past it a raster texel (0.088 degrees) would span more
+ * than ~1.5 screen pixels and the fill edges would visibly soften, so
+ * deeper drags go back to vector frames -- but CULLED to the countries
+ * whose bounds touch the viewport, which at 6x and beyond is a handful,
+ * not 250. Either way a frame stays a few milliseconds.
+ */
+const RASTER_DRAG_MAX_ZOOM = 6
 
 export interface HoverTarget {
   iso3: string
@@ -184,6 +212,78 @@ interface FocusTarget extends HoverTarget {
   y: number
 }
 
+interface LonLatWindow {
+  lonMin: number
+  lonMax: number
+  latMin: number
+  latMax: number
+}
+
+/**
+ * Lon/lat extent of the viewport under a zoomed globe (section 51.2), from
+ * inverting a coarse grid of screen points. Any sample that misses the
+ * sphere means the limb is in view, and then nothing is culled (null):
+ * a window that reaches the horizon has no cheap honest bound.
+ */
+function visibleLonLatWindow(
+  projection: { invert?: (p: [number, number]) => [number, number] | null },
+  transform: { x: number; y: number; k: number },
+  cssW: number,
+  cssH: number,
+  scale: number,
+  offsetX: number,
+  offsetY: number,
+): LonLatWindow | null {
+  if (!projection.invert || transform.k < 1.5) return null
+  const centre = projection.invert([
+    ((cssW / 2 - offsetX) / scale - transform.x) / transform.k,
+    ((cssH / 2 - offsetY) / scale - transform.y) / transform.k,
+  ])
+  if (!centre || !Number.isFinite(centre[0])) return null
+  const centreLon = centre[0]
+  let lonMin = Infinity
+  let lonMax = -Infinity
+  let latMin = Infinity
+  let latMax = -Infinity
+  for (let i = 0; i <= 4; i += 1) {
+    for (let j = 0; j <= 3; j += 1) {
+      const vx = (((cssW * i) / 4 - offsetX) / scale - transform.x) / transform.k
+      const vy = (((cssH * j) / 3 - offsetY) / scale - transform.y) / transform.k
+      const p = projection.invert([vx, vy])
+      if (!p || !Number.isFinite(p[0]) || !Number.isFinite(p[1])) return null
+      let lon = p[0]
+      while (lon - centreLon > 180) lon -= 360
+      while (lon - centreLon < -180) lon += 360
+      if (lon < lonMin) lonMin = lon
+      if (lon > lonMax) lonMax = lon
+      if (p[1] < latMin) latMin = p[1]
+      if (p[1] > latMax) latMax = p[1]
+    }
+  }
+  // d3's inverse is only exact on the front hemisphere; a screen point
+  // just past the limb inverts to a near-side point instead of failing,
+  // so pad generously. Culling only has to be safe, not tight.
+  return { lonMin: lonMin - 3, lonMax: lonMax + 3, latMin: latMin - 3, latMax: latMax + 3 }
+}
+
+/** Does a feature's geoBounds box touch the window? Longitudes are
+ *  compared on the circle, so both antimeridian conventions work. */
+function boundsTouch(
+  bounds: [[number, number], [number, number]],
+  window: LonLatWindow,
+): boolean {
+  const [[west, south], [east, north]] = bounds
+  if (north < window.latMin || south > window.latMax) return false
+  const spans: [number, number][] =
+    west <= east ? [[west, east]] : [[west, 180], [-180, east]]
+  for (const [a, b] of spans) {
+    for (const shift of [-360, 0, 360]) {
+      if (a + shift <= window.lonMax && b + shift >= window.lonMin) return true
+    }
+  }
+  return false
+}
+
 type Direction = 'up' | 'down' | 'left' | 'right'
 
 /**
@@ -284,6 +384,26 @@ export function WorldMap({
     [topology],
   )
 
+  /**
+   * Round 4 (section 51.2): spherical centroid and area of every feature,
+   * computed ONCE. The settle after a drag used to run three full
+   * geometry passes per country -- path(), path.centroid() and
+   * path.area() -- to place and gate its label; the last two are now a
+   * point projection and a multiplication (see the shapes memo).
+   */
+  const staticGeometry = useMemo(
+    () =>
+      collection.features.map((item) => ({
+        centroid: geoCentroid(item as unknown as GeoPermissibleObjects),
+        /** Steradians. */
+        area: geoArea(item as unknown as GeoPermissibleObjects),
+        /** [[west, south], [east, north]]; west > east straddles the
+            antimeridian. Used to cull zoomed-in vector drag frames. */
+        bounds: geoBounds(item as unknown as GeoPermissibleObjects),
+      })),
+    [collection],
+  )
+
   /** Merged land outline, for the antique coast band (section 48). */
   const landFeature = useMemo(
     () =>
@@ -354,33 +474,59 @@ export function WorldMap({
     return new Float32Array(out)
   }, [topology])
 
+  /** The merged land outline is only drawn by the antique political
+      sheet; its full geometry pass is skipped everywhere else. */
+  const needLand =
+    paletteDirection === 'antique' && mode === 'country' && baseView === 'political'
+
   const { shapes, sphere, landD, markerPoints, projection } = useMemo(() => {
     const base = createProjection(projectionKey)
     if (isGlobe) base.rotate([rotation[0], rotation[1], 0])
     const projection = fitProjection(base, VIEW_WIDTH, VIEW_HEIGHT)
     const path = geoPath(projection)
+    const viewCenter: [number, number] = [-rotation[0], -rotation[1]]
 
     /** On the globe, points past the horizon project onto the near side and
         must be culled by great-circle distance from the view centre. */
     const pointVisible = (coordinates: [number, number]) =>
-      !isGlobe ||
-      geoDistance(coordinates, [-rotation[0], -rotation[1]]) <= Math.PI / 2
+      !isGlobe || geoDistance(coordinates, viewCenter) <= Math.PI / 2
+
+    // Projected area from the spherical area (section 51.2): every flat
+    // projection here is equal-area, so px^2 = steradians x scale^2
+    // exactly; on the orthographic globe a patch foreshortens by the
+    // cosine of its angular distance from the view centre.
+    const scale2 = projection.scale() * projection.scale()
 
     const built: CountryShape[] = []
-    for (const item of collection.features) {
+    collection.features.forEach((item, index) => {
       const d = path(item as unknown as GeoPermissibleObjects)
-      if (!d) continue
-      const centroid = path.centroid(item as unknown as GeoPermissibleObjects)
+      if (!d) return
+      const stat = staticGeometry[index]!
+      let centroid: [number, number]
+      let areaPx: number
+      const dist = isGlobe ? geoDistance(stat.centroid, viewCenter) : 0
+      if (isGlobe && dist > Math.PI / 2 - 1e-6) {
+        // Straddling the limb with its heart over the horizon: the label
+        // must sit on the visible part, so this one still pays for the
+        // planar centroid and area (a handful of countries per view).
+        const pc = path.centroid(item as unknown as GeoPermissibleObjects)
+        centroid = [pc[0], pc[1]]
+        areaPx = path.area(item as unknown as GeoPermissibleObjects)
+      } else {
+        const p = projection(stat.centroid) ?? [NaN, NaN]
+        centroid = [p[0], p[1]]
+        areaPx = stat.area * scale2 * (isGlobe ? Math.cos(dist) : 1)
+      }
       built.push({
         iso3: item.properties.iso3,
         name: item.properties.name,
         continent: item.properties.continent,
         contested: item.properties.contested,
         d,
-        centroid: [centroid[0], centroid[1]],
-        areaPx: path.area(item as unknown as GeoPermissibleObjects),
+        centroid,
+        areaPx,
       })
-    }
+    })
 
     const points = markers
       .map((marker) => {
@@ -393,11 +539,23 @@ export function WorldMap({
     return {
       shapes: built,
       sphere: path({ type: 'Sphere' }) ?? '',
-      landD: landFeature ? path(landFeature as GeoPermissibleObjects) ?? '' : '',
+      landD:
+        needLand && landFeature
+          ? path(landFeature as GeoPermissibleObjects) ?? ''
+          : '',
       markerPoints: points,
       projection,
     }
-  }, [collection, landFeature, markers, projectionKey, isGlobe, rotation])
+  }, [
+    collection,
+    staticGeometry,
+    landFeature,
+    needLand,
+    markers,
+    projectionKey,
+    isGlobe,
+    rotation,
+  ])
 
   // ---- Phase 4: detail layers, terrain, and the satellite base view ------
 
@@ -708,9 +866,10 @@ export function WorldMap({
     if (!canvas || !renderer) return
     const { w, h } = containerSize
     if (w < 2 || h < 2) return
-    // 1.75 caps the buffer on high-density screens: terrain is imagery, not
-    // text, and the extra pixels cost more than they show.
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.75)
+    // Backing-store cap (section 51.3): imagery is a picture, not text,
+    // and past ~1.75 (1.25 on a phone) the extra pixels cost more than
+    // they show.
+    const dpr = canvasPixelRatio()
     const scale = Math.min(w / VIEW_WIDTH, h / VIEW_HEIGHT)
     renderer.render({
       projection,
@@ -785,7 +944,10 @@ export function WorldMap({
     restoreAfterCommit.current = false
     if (svgRef.current) svgRef.current.style.visibility = ''
     if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
-  }, [rotation])
+    // The GL canvas stood in for the political fills (section 51); at
+    // rest the SVG's own background covers the view again.
+    if (!satellite && canvasRef.current) canvasRef.current.style.display = 'none'
+  }, [rotation, satellite])
 
   const layoutFor = useCallback((w: number, h: number) => {
     const scale = Math.min(w / VIEW_WIDTH, h / VIEW_HEIGHT)
@@ -793,9 +955,37 @@ export function WorldMap({
       scale,
       offsetX: (w - VIEW_WIDTH * scale) / 2,
       offsetY: (h - VIEW_HEIGHT * scale) / 2,
-      dpr: Math.min(window.devicePixelRatio || 1, 1.75),
+      dpr: canvasPixelRatio(),
     }
   }, [])
+
+  /**
+   * Section 51: the political fills as a GPU raster. `rasterSignature`
+   * names the colours the resident raster was painted with; a drag whose
+   * resolved colours differ repaints it first (synchronously, once) and
+   * the idle prebuild below means that almost never happens at drag
+   * start. `rasterOnGpu` is false when the renderer is the 2-D fallback,
+   * which keeps its own canvas drag frames.
+   */
+  const rasterSignature = useRef<string | null>(null)
+  const rasterOnGpu = useRef(false)
+  /** Set once the renderer declines rasters (the 2-D fallback), so no
+      further paint is wasted on it. */
+  const rasterRefused = useRef(false)
+
+  const ensurePoliticalRaster = useCallback(
+    (spec: PoliticalRasterSpec) => {
+      const renderer = rendererRef.current
+      if (!renderer || rasterRefused.current) return
+      const signature = politicalRasterSignature(spec)
+      if (rasterOnGpu.current && rasterSignature.current === signature) return
+      const raster = buildPoliticalRaster(collection.features, spec)
+      rasterOnGpu.current = renderer.setRaster(raster)
+      rasterRefused.current = !rasterOnGpu.current
+      rasterSignature.current = rasterOnGpu.current ? signature : null
+    },
+    [collection],
+  )
 
   /** Resolve every CSS-variable fill once per drag; canvases cannot read
       custom properties, and 250 getComputedStyle calls per FRAME would
@@ -820,19 +1010,25 @@ export function WorldMap({
         GLOBE_LAND_NEUTRAL,
       )
     })
+    const ocean = readVar('--map-ocean', '#0b2740')
+    // Political frames stroke borders in the ocean colour, as the SVG
+    // does; the GL line pass needs it resolved to RGB (section 51).
+    const oceanRgb = resolveCssColor(ocean)
     dragFills.current = {
       fills,
-      ocean: readVar('--map-ocean', '#0b2740'),
+      ocean,
       stroke:
         imagery === 'satellite'
           ? 'rgba(255, 255, 255, 0.78)'
           : imagery === 'terrain'
             ? 'rgba(92, 71, 48, 0.7)'
-            : readVar('--map-ocean', '#0b2740'),
+            : ocean,
       strokeRgba:
         imagery === 'terrain'
           ? [92 / 255, 71 / 255, 48 / 255, 0.7]
-          : [1, 1, 1, 0.78],
+          : imagery === 'satellite'
+            ? [1, 1, 1, 0.78]
+            : [oceanRgb[0], oceanRgb[1], oceanRgb[2], 1],
     }
     // Antique political frames: parchment sea, umber strokes (section 48).
     if (!satellite && mode === 'country' && paletteDirection === 'antique') {
@@ -840,7 +1036,37 @@ export function WorldMap({
       dragFills.current.stroke = ANTIQUE.line
       dragFills.current.strokeRgba = ANTIQUE.lineRgba
     }
-  }, [collection, satellite, imagery, mode, populationByIso3, paletteDirection])
+    if (!satellite) {
+      ensurePoliticalRaster({ ocean: dragFills.current.ocean, fills })
+    }
+  }, [
+    collection,
+    satellite,
+    imagery,
+    mode,
+    populationByIso3,
+    paletteDirection,
+    ensurePoliticalRaster,
+  ])
+
+  /** Paint the political raster during idle time whenever its inputs
+      change, so the first drag after a palette switch starts at frame
+      rate instead of paying for the paint (section 51). */
+  useEffect(() => {
+    if (satellite || !isGlobe) return
+    const idle =
+      (window as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number })
+        .requestIdleCallback
+    const run = () => buildDragFills()
+    const handle = idle ? idle(run, { timeout: 2000 }) : window.setTimeout(run, 300)
+    return () => {
+      if (idle) {
+        (window as { cancelIdleCallback?: (h: number) => void }).cancelIdleCallback?.(handle)
+      } else {
+        window.clearTimeout(handle)
+      }
+    }
+  }, [satellite, isGlobe, buildDragFills])
 
   const drawDragFrame = useCallback(() => {
     const container = containerRef.current
@@ -864,9 +1090,21 @@ export function WorldMap({
 
     // Satellite imagery keeps tracking the finger: the imagery renderer is
     // driven imperatively here, from the SAME rotation ref as the borders
-    // below, because no React render happens mid-drag.
+    // below, because no React render happens mid-drag. Since round 4
+    // (section 51) the POLITICAL globe takes the same path: its fills are
+    // a resident world raster, so a frame is one GPU pass plus the border
+    // lines -- the 250-path canvas repaint below is now only the no-WebGL2
+    // fallback's frame.
     let glDrawsBorders = false
-    if (satellite && rendererRef.current) {
+    const useRaster =
+      !satellite && rasterOnGpu.current && transform.k < RASTER_DRAG_MAX_ZOOM
+    // Political raster frames paint on the GL canvas, which sits under
+    // the hidden SVG; it is shown for exactly those frames and put away
+    // again when the rotation commits (see the restore effect).
+    if (!satellite && canvasRef.current) {
+      canvasRef.current.style.display = useRaster ? 'block' : 'none'
+    }
+    if ((satellite || useRaster) && rendererRef.current) {
       glDrawsBorders = !(rendererRef.current instanceof Canvas2DImagery)
       rendererRef.current.render({
         projection: frameProjection,
@@ -878,6 +1116,7 @@ export function WorldMap({
         cssWidth: w,
         cssHeight: h,
         oceanFill: dragFills.current.ocean,
+        raster: useRaster,
         borders: glDrawsBorders
           ? { color: dragFills.current.strokeRgba }
           : undefined,
@@ -905,7 +1144,12 @@ export function WorldMap({
     ctx.lineJoin = 'round'
     ctx.lineWidth = (satellite ? 0.75 : 0.5) / transform.k
     ctx.strokeStyle = dragFills.current.stroke
+    // Vector frames (deep zoom, or the no-WebGL2 fallback): only the
+    // countries whose lon/lat bounds touch the visible window are
+    // projected. `null` window = whole hemisphere in view = draw all.
+    const window = visibleLonLatWindow(frameProjection, transform, w, h, scale, offsetX, offsetY)
     collection.features.forEach((item, index) => {
+      if (window && !boundsTouch(staticGeometry[index]!.bounds, window)) return
       ctx.beginPath()
       path(item as unknown as GeoPermissibleObjects)
       const fill = dragFills.current.fills[index]
@@ -915,7 +1159,7 @@ export function WorldMap({
       }
       ctx.stroke()
     })
-  }, [collection, satellite, transform, layoutFor])
+  }, [collection, staticGeometry, satellite, transform, layoutFor])
 
   const beginDragRender = useCallback(() => {
     if (isDragRendering.current) return
@@ -956,8 +1200,9 @@ export function WorldMap({
     isDragRendering.current = false
     if (svgRef.current) svgRef.current.style.visibility = ''
     if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
+    if (!satellite && canvasRef.current) canvasRef.current.style.display = 'none'
     setRotation([rotationRef.current[0], rotationRef.current[1]])
-  }, [cancelInertia])
+  }, [cancelInertia, satellite])
 
   /** The zoom behaviour is bound once and closes over nothing reactive;
       it reaches the current force-end through this ref. */
@@ -1105,6 +1350,8 @@ export function WorldMap({
   // In GLOBE mode the single-pointer drag is repurposed for rotation (below),
   // so d3-zoom is filtered down to wheel and two-finger pinch only -- it must
   // not also pan while a drag is spinning the sphere.
+  const pendingTransform = useRef<typeof zoomIdentity | null>(null)
+  const zoomFrame = useRef<number | null>(null)
   useEffect(() => {
     const svg = svgRef.current
     if (!svg) return
@@ -1129,7 +1376,16 @@ export function WorldMap({
         if (isDragRendering.current && dragPointers.current.size === 0) {
           forceEndDragSessionRef.current()
         }
-        setTransform(event.transform)
+        // Section 51.3: a pinch delivers a zoom event per touchmove, up to
+        // 120 Hz on a phone, and each used to be a full React commit.
+        // Coalesce to one commit per animation frame with the latest
+        // transform; nothing is lost, only the renders nobody could see.
+        pendingTransform.current = event.transform
+        if (zoomFrame.current !== null) return
+        zoomFrame.current = requestAnimationFrame(() => {
+          zoomFrame.current = null
+          if (pendingTransform.current) setTransform(pendingTransform.current)
+        })
       })
     behaviourRef.current = behaviour
     const selection = select(svg)
@@ -1138,6 +1394,10 @@ export function WorldMap({
     return () => {
       selection.on('.zoom', null)
       behaviourRef.current = null
+      if (zoomFrame.current !== null) {
+        cancelAnimationFrame(zoomFrame.current)
+        zoomFrame.current = null
+      }
     }
   }, [isGlobe])
 
@@ -1345,7 +1605,19 @@ export function WorldMap({
     [onSelect, popoverActive, containerPoint],
   )
 
-  const strokeWidth = 0.5 / transform.k
+  // Section 51.3: strokes carry vector-effect="non-scaling-stroke", so
+  // NO path attribute changes on a wheel tick or pinch -- the
+  // 250-attribute rewrite per zoom event is gone. A non-scaling width is
+  // in CSS pixels (measured: it ignores the viewBox scale too), so the
+  // old viewBox-unit widths (0.5 / k inside the k-scaled group) are
+  // converted through the viewBox-to-element scale, which only moves on
+  // resize. Same hairlines as before, at every zoom, for free.
+  const viewScale =
+    containerSize.w > 1 && containerSize.h > 1
+      ? Math.min(containerSize.w / VIEW_WIDTH, containerSize.h / VIEW_HEIGHT)
+      : 1
+  const px = (viewUnits: number) => viewUnits * viewScale
+  const strokeWidth = px(0.5)
   const isDimmed = (continent: ContinentKey) =>
     mode === 'continent' && activeContinent !== null && continent !== activeContinent
 
@@ -1360,6 +1632,7 @@ export function WorldMap({
       projection edge, umber lines (section 48). Only outside imagery views
       and continent mode -- imagery IS its own base. */
   const antique = paletteDirection === 'antique' && mode === 'country' && !satellite
+  const antiquePolitical = antique
   const waterFill = antique ? ANTIQUE.sea : 'var(--map-ocean)'
   const backgroundFill = antique ? ANTIQUE.paper : 'var(--map-space)'
   const landStroke = antique ? ANTIQUE.line : 'var(--map-ocean)'
@@ -1688,13 +1961,14 @@ export function WorldMap({
         {/* Antique coast band (section 48): a soft double stroke of the
             merged land outline under the fills -- the engraved shading the
             originals use to lift land off the sea. Inert to pointers. */}
-        {antique && landD && (
+        {antiquePolitical && landD && (
           <g pointerEvents="none" aria-hidden="true">
             <path
               d={landD}
               fill="none"
               stroke={ANTIQUE.coast}
-              strokeWidth={5 / transform.k}
+              strokeWidth={px(5)}
+              vectorEffect="non-scaling-stroke"
               strokeOpacity={0.4}
               strokeLinejoin="round"
             />
@@ -1702,7 +1976,8 @@ export function WorldMap({
               d={landD}
               fill="none"
               stroke={ANTIQUE.coast}
-              strokeWidth={2 / transform.k}
+              strokeWidth={px(2)}
+              vectorEffect="non-scaling-stroke"
               strokeOpacity={0.35}
             />
           </g>
@@ -1732,6 +2007,7 @@ export function WorldMap({
               }
               stroke={mode === 'continent' ? fillFor(shape) : countryStroke}
               strokeWidth={countryStrokeWidth}
+              vectorEffect="non-scaling-stroke"
               strokeLinejoin="round"
               opacity={dimmed ? 0.45 : 1}
               tabIndex={tabIndexFor(shape.iso3)}
@@ -1779,7 +2055,8 @@ export function WorldMap({
                 fill="none"
                 stroke={waterFill}
                 strokeOpacity={satellite ? 0.55 : 0.8}
-                strokeWidth={0.6 / transform.k}
+                strokeWidth={px(0.6)}
+                vectorEffect="non-scaling-stroke"
                 strokeLinecap="round"
               />
             )}
@@ -1795,7 +2072,8 @@ export function WorldMap({
                       : landStroke
                 }
                 strokeOpacity={satellite ? 1 : 0.45}
-                strokeWidth={0.32 / transform.k}
+                strokeWidth={px(0.32)}
+                vectorEffect="non-scaling-stroke"
                 strokeLinejoin="round"
               />
             )}
@@ -1857,6 +2135,7 @@ export function WorldMap({
                 fill={focused ? 'var(--map-accent-fill)' : landNeutral}
                 stroke={landStroke}
                 strokeWidth={strokeWidth}
+                vectorEffect="non-scaling-stroke"
               />
             </g>
           )
