@@ -824,6 +824,11 @@ export function WorldMap({
     }
     rendererRef.current = renderer
     renderer.setBorders(borderSegmentsRef.current)
+    // A fresh renderer holds no raster: forget the previous one's (StrictMode
+    // re-mounts this effect on the same component, and the refs survive).
+    rasterOnGpu.current = false
+    rasterSignature.current = null
+    rasterRefused.current = false
     const idle =
       (window as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number })
         .requestIdleCallback
@@ -1154,9 +1159,9 @@ export function WorldMap({
     // Vector frames (deep zoom, or the no-WebGL2 fallback): only the
     // countries whose lon/lat bounds touch the visible window are
     // projected. `null` window = whole hemisphere in view = draw all.
-    const window = visibleLonLatWindow(frameProjection, transform, w, h, scale, offsetX, offsetY)
+    const culling = visibleLonLatWindow(frameProjection, transform, w, h, scale, offsetX, offsetY)
     collection.features.forEach((item, index) => {
-      if (window && !boundsTouch(staticGeometry[index]!.bounds, window)) return
+      if (culling && !boundsTouch(staticGeometry[index]!.bounds, culling)) return
       ctx.beginPath()
       path(item as unknown as GeoPermissibleObjects)
       const fill = dragFills.current.fills[index]
