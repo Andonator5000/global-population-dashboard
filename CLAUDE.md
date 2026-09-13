@@ -81,8 +81,13 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - ONE breakdown pattern: ranked horizontal bars (`Breakdown.tsx`); the
   stacked bar is gone. Flag is the hero of the country page with attributed
   Wikipedia symbolism text (CC BY-SA, verbatim, linked).
-- Map palette: two gated directions (atlas default, paper), chroma <= 0.045;
-  continent view = cohesive regions + labels, no internal borders.
+- Map palette: six gated directions (atlas default; paper, antique,
+  pastel, nautical, mono), lightness is the data channel in all; the
+  antique direction is the measured Blaeu 1635 sheet (§48: parchment sea
+  and surround, umber lines, coastline gate instead of the water floor,
+  ANTIQUE constants in WorldMap.tsx mirror DIRECTIONS.antique in
+  build-map-palette.mjs); continent view = cohesive regions + labels, no
+  internal borders.
 - `/history` is EDITORIAL: edit `etl/reference/history_events.json` (bump
   `version`), never `data/history/events.json`; the `history` stage
   validates it and resolves free images. Keep regional balance in mind.
@@ -102,9 +107,9 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   person-reviewed deny list. Review new picks on a contact sheet before
   shipping.
 - Header (round 2, §34): centred publication nameplate + editorial
-  uppercase nav from the SECTIONS registry (src/config.ts) — five
+  uppercase nav from the SECTIONS registry (src/config.ts) — six
   top-level items (Global Data, Human History, Taxonomy, Evolution,
-  Space); active state = 2px underline in the section's THEMED --nav-*
+  Space, Chemistry since round 3 §47); active state = 2px underline in the section's THEMED --nav-*
   hue plus a text-colour step. A new section = one registry entry + a
   --nav-* pair in both themes, mirrored into check-contrast AND declared
   in both dark blocks (theme parity). /biology/* redirects; don't remove.
@@ -116,10 +121,15 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   per-frame setState); every escape hatch (pointer leave/cancel/lost
   capture, zoom with no pointers, view/mode/projection switch) must END
   a live drag session — a session that outlives its pointer is the
-  frozen-black-globe bug (§42.1); the satellite/terrain quad mesh
-  overdraws its DESTINATION ~1.5% and never pads the SOURCE rect past
-  the tile edge (§42.2 — source padding smears tile borders into
-  meridian streaks); six palette directions all gated by
+  frozen-black-globe bug (§42.1); satellite/terrain imagery is a WebGL2
+  per-pixel inverse projection (`src/lib/globegl.ts`, §43) — one
+  renderer per map lifetime, textures resident across view switches,
+  outlines drawn in the SAME GL pass during drags from the SAME rotation
+  ref; the 2-D quad warp in terrain.ts is only the no-WebGL2 fallback
+  (never re-promote it: its affine quads ARE the meridian streaks);
+  verify globe visuals with `node scripts/globe-spin-capture.mjs <view>`
+  (Playwright, headed Chrome) before claiming a fix; six palette
+  directions all gated by
   build-map-palette.mjs (lightness is the data channel in every one);
   base views political/satellite/terrain, choices persisted; the country
   popover's corner thumb is the country's own fitted shape, not a flag.
@@ -130,14 +140,33 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   civilization tag from the controlled list in etl/sources/history.py —
   when adding events, check the per-civilization spread, not just the
   regional one (§42.5).
-- Taxonomy (§31, §42.6–7): the tree is NEVER hand-typed — it comes from
+- Chemistry (§47): elements come from the `chemistry` ETL stage (PubChem,
+  NIST, IUPAC/CIAAW, IAEA, Wikidata/Wikipedia); a figure a source does not
+  give is null WITH a reason (never zero); photos are licence-gated Commons
+  files served locally, 20 no-sample elements show the discovering
+  facility; the property key list in src/data/chemistry-properties.json is
+  what both the panel and check:chemistry read — add a property there,
+  its glossary entry in etl/reference/chemistry_glossary.json, or the
+  gate fails. Editorial sample-photo overrides live in
+  etl/reference/chemistry_samples.json.
+- Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
+  .json, never data/space/phenomena*; the `phenomena` stage downloads
+  every image through the licence gate (no hotlinks) and check:phenomena
+  gates presence, decodability and attribution; status flags
+  observed/theoretical/hypothesis are required.
+- Taxonomy (§31, §42.6–7, §44): the tree is NEVER hand-typed — it comes from
   Catalogue of Life; which families get species depth is editorial
   (etl/reference/taxonomy_focus.json), and contested placements carry
   notes from etl/reference/taxonomy_notes.json. Every node has wiki or an
   explicit null (check:taxonomy gates it). rankDefinition() must cover
   EVERY rank string in the data (composed prefix definitions — no chip
   is a dead end); borrowed photos always carry img.rep and render as
-  "Representative: <name>", never passed off as the taxon's own.
+  "Representative: <name>", never passed off as the taxon's own. Depth
+  below family (§44): one genera file per family in data/biology/taxonomy/
+  genera (37 MB, ~14k files), species live from ChecklistBank on expand
+  (documented exception), descSrc on every node with generated summaries
+  flagged; genus Wikipedia enrichment is incremental
+  (TAXONOMY_GENUS_ENRICH_CAP, default 20k per run).
 - Evolution (§32): events are EDITORIAL — edit
   etl/reference/evolution_events.json (bump version), never
   data/biology/evolution/. Summaries state their own uncertainty.
@@ -148,12 +177,16 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   null and renders as "not available", never zero. Scale modes are
   labelled; nothing is silently out of scale. Trek tiles stream at
   runtime (§41.2, documented exception); globe texture upgrades guard
-  against out-of-order completions; 8k textures exist ONLY for
-  Sun/Earth/Jupiter/Saturn and load only in the globe modal (§42.9);
+  against out-of-order completions; hi-res textures (§45: earth-8k,
+  4k for sun/jupiter/saturn/mars/mercury/moon — the round-2 "8k" files
+  were natively 4096px and are now named honestly) load only in the
+  globe modal; Moon renders at 1.8x exposure, stated in its credit line;
   gazetteer features ship origin/approval/culture/link — keep the
   feature card sourced from those columns, never hand-typed.
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).
 - Globe drag sensitivity is 0.5625°/px by explicit request (two ×1.5
-  raises). Space outside the projection is black on every view.
+  raises). Space outside the projection is black on every view, with ONE
+  exception: the antique direction continues its parchment past the edge
+  (§48.3, Andy's pick).

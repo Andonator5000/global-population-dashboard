@@ -1,0 +1,54 @@
+{
+  "elements": 118,
+  "images": {
+    "total": 117,
+    "sample": 98,
+    "facility": 18,
+    "related": 1,
+    "noSampleFlagged": 20,
+    "licences": {
+      "FAL": 24,
+      "CC BY 3.0": 11,
+      "CC BY-SA 4.0": 5,
+      "CC BY-SA 3.0": 45,
+      "Public domain": 18,
+      "CC BY-SA 2.5": 4,
+      "CC BY-SA 3.0 de": 6,
+      "CC BY-SA 2.0 de": 1,
+      "CC BY 2.5": 1,
+      "CC BY 4.0": 1,
+      "CC BY 2.0": 1
+    },
+    "rejected": [],
+    "withoutAnyImage": [
+      87
+    ]
+  },
+  "pugviewRecords": 118,
+  "pugviewMissing": [],
+  "nullCounts": {
+    "group": 28,
+    "electronegativity": 23,
+    "ionizationEnergies": 10,
+    "electronAffinity": 61,
+    "oxidationStates": 1,
+    "meltingPoint": 15,
+    "boilingPoint": 25,
+    "density": 22,
+    "covalentRadius": 23,
+    "vanDerWaalsRadius": 19,
+    "crystalStructure": 5,
+    "thermalConductivity": 24,
+    "electricalConductivity": 64,
+    "specificHeat": 32,
+    "magneticOrdering": 22,
+    "stableIsotopes": 38,
+    "abundanceCrust": 24,
+    "abundanceUniverse": 35,
+    "discoverers": 11,
+    "discoveryPlace": 71,
+    "biologicalRole": 73,
+    "hazards": 29
+  },
+  "elapsedSeconds": 1.3
+}

@@ -164,23 +164,55 @@ def _parse_chart(ttl: str) -> list[dict[str, Any]]:
 # PhyloPic
 # --------------------------------------------------------------------------
 
+class _PhylopicBuild:
+    """PhyloPic's API is versioned by a `build` number that every query
+    must carry. The root document that names it is cached like any other
+    fetch, so a cached root can go stale while a NEW query (a name not
+    yet in the cache) hits the live API — which then answers HTTP 410
+    Gone for the retired build (seen 2026-09-13, build 555). The build is
+    therefore held here and re-read from the live root once on a 410,
+    after which the query is retried. Cached per-name responses are
+    keyed by name only (§21), so old builds' answers stay valid."""
+
+    def __init__(self, refresh: bool) -> None:
+        self.refresh = refresh
+        self.response = self._read(refresh)
+        self.build = int(self.response.read_json()["build"])
+
+    @staticmethod
+    def _read(refresh: bool):  # noqa: ANN205
+        return fetch(
+            f"{config.PHYLOPIC_API}/", refresh=refresh,
+            subdir="evolution", filename="phylopic-root.json", expect_json=True,
+        )
+
+    def renew(self) -> bool:
+        """Re-read the live root; True if the build number changed."""
+        previous = self.build
+        self.response = self._read(True)
+        self.build = int(self.response.read_json()["build"])
+        return self.build != previous
+
+
 def _phylopic_silhouette(
-    name: str, *, build: int, refresh: bool,
+    name: str, *, build: _PhylopicBuild, refresh: bool,
 ) -> dict[str, Any] | None:
     """First CC0/public-domain silhouette matching `name`, or None.
 
     PhyloPic answers HTTP 404 for a name with no matches at all — that is
     "no silhouette", not an outage, so it degrades to the genus (first
-    word) and then to None rather than aborting the run. Anything other
-    than a 404 still fails loudly. Cache keys derive from the query NAME
-    (content), never the build or a running index (§21). Attribution is
-    stored even for CC0 — courtesy costs nothing and the site renders it.
+    word) and then to None rather than aborting the run. HTTP 410 means
+    the build number is retired: the build is renewed once and the query
+    retried. Anything else still fails loudly. Cache keys derive from the
+    query NAME (content), never the build or a running index (§21).
+    Attribution is stored even for CC0 — courtesy costs nothing and the
+    site renders it.
     """
-    def page_for(query: str) -> list[dict[str, Any]]:
+    def page_for(query: str, renewed: bool = False) -> list[dict[str, Any]]:
         digest = hashlib.sha256(query.lower().encode("utf-8")).hexdigest()[:16]
         try:
             response = fetch(
-                f"{config.PHYLOPIC_API}/images?build={build}"
+                f"{config.PHYLOPIC_API}/images?build={build.build}"
                 f"&filter_name={urllib.parse.quote(query.lower())}"
                 f"&page=0&embed_items=true",
                 refresh=refresh,
@@ -191,6 +223,8 @@ def _phylopic_silhouette(
         except FetchError as exc:
             if "HTTP 404" in str(exc):
                 return []
+            if "HTTP 410" in str(exc) and not renewed and build.renew():
+                return page_for(query, renewed=True)
             raise
         return response.read_json().get("_embedded", {}).get("items", [])
 
@@ -305,11 +339,7 @@ def ingest(
             + "\n  ".join(problems[:20])
         )
 
-    build_response = fetch(
-        f"{config.PHYLOPIC_API}/", refresh=refresh,
-        subdir="evolution", filename="phylopic-root.json", expect_json=True,
-    )
-    build = int(build_response.read_json()["build"])
+    build = _PhylopicBuild(refresh)
 
     # Wikipedia lead images for events WITHOUT a silhouette query, through
     # the history stage's own helper so the licence gate is identical.
@@ -435,8 +465,8 @@ def ingest(
             "Editorial text CC0 (this project); silhouettes CC0/PD "
             "(PhyloPic, attributed); photos per-file PD/CC (attributed)"
         ),
-        fetched_at=build_response.fetched_at,
-        upstream_release=f"PhyloPic build {build}",
+        fetched_at=build.response.fetched_at,
+        upstream_release=f"PhyloPic build {build.build}",
         vintage=None,
         citation="PhyloPic (per-image CC0/PD); Wikimedia Commons (per-file)",
         notes=(

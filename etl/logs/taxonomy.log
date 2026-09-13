@@ -1,10 +1,41 @@
 {
   "release": "2026-08-20",
-  "tree_nodes": 30658,
-  "tree_with_wikipedia": 9060,
-  "focus_nodes": 20314,
-  "focus_with_wikipedia": 4649,
-  "families": 14857,
+  "bulk_export": "https://download.checklistbank.org/col/monthly/2026-08-20_coldp.zip",
+  "bulk_fetched_at": "2026-09-07T21:08:00+00:00",
+  "accepted_rows": 2705320,
+  "orphaned_rows": 0,
+  "tree": {
+    "nodes": 35214,
+    "with_wiki": 9137,
+    "with_image": 5896,
+    "wikipedia": 9088,
+    "wikidata": 7575,
+    "col": 0,
+    "generated": 18551
+  },
+  "genera_files": 14196,
+  "genera_files_bytes": 37049814,
+  "genera_largest_file": {
+    "bytes": 1857942,
+    "family": "Formicidae"
+  },
+  "genera": {
+    "nodes": 257389,
+    "genera": 204480,
+    "enriched": 54480,
+    "pending": 202909,
+    "with_wiki": 12761,
+    "with_image": 9723,
+    "wikipedia": 12729,
+    "wikidata": 15424,
+    "col": 0,
+    "generated": 229236,
+    "genera_enriched": 1571,
+    "genera_with_wiki": 853
+  },
+  "genera_enrichment_cap_this_run": 0,
+  "genera_looked_up_this_run": 0,
+  "genera_still_pending_after_run": 202909,
   "focus_families": [
     "Accipitridae",
     "Amanitaceae",
@@ -36,5 +67,6 @@
     "Theraphosidae",
     "Ursidae",
     "Varanidae"
-  ]
+  ],
+  "seconds": 197
 }

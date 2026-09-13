@@ -1,39 +1,42 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { Unavailable } from '../components/viz/primitives'
 import {
-  baseRank,
-  colTaxonUrl,
-  ITALIC_RANKS,
-  lifemapUrl,
+  Chip,
+  compactNumber,
+  countLabel,
+  RankChip,
+  TaxonName,
+  TaxonThumb,
+} from '../components/taxonomy/bits'
+import { DetailSheet } from '../components/taxonomy/DetailSheet'
+import { RankLegend } from '../components/taxonomy/RankLegend'
+import { TaxonDetail } from '../components/taxonomy/TaxonDetail'
+import {
+  liveNameSearch,
   loadExtract,
-  loadFocusFamily,
-  oneZoomUrl,
-  RANK_HUES,
+  loadGenera,
+  loadLiveChildren,
   rankChipStyle,
-  rankDefinition,
   useTaxonomyTree,
-  wikipediaUrl,
+  type LiveSearchHit,
   type TaxonNode,
 } from '../lib/taxonomy'
 import { capitalizeFirst } from '../lib/format'
 
 /**
- * /taxonomy — the tree of life (Phase 5; presentation rebuilt round-2 §39).
+ * /taxonomy — the tree of life (Phase 5; presentation rebuilt round-2 §39;
+ * on-demand depth, full rank system and the mobile sheet in round 3 §44).
  *
- * Two views over the same lazily loaded data: the collapsible TREE (one
- * button per visible row) and a CARD EXPLORER (a taxon's children as
- * image cards). Ranks are colour-coded — chips, panel, legend — with the
- * text token on tinted grounds so hue never carries contrast. Photos are
- * licence-gated Commons images resolved in the ETL; taxa without one get
- * a placeholder silhouette. Intro texts load per-shard on selection.
+ * Two views over the same lazily loaded data: the collapsible TREE (a
+ * caret button to expand, a name button to select) and a CARD EXPLORER.
+ * Depth below family is ON-DEMAND: a family's genera come from its static
+ * genera/{id}.json when it is expanded; species under a genus (and
+ * anything below) load LIVE from ChecklistBank — the documented render-
+ * time exception. Search covers the loaded static index and, when that
+ * has no hit, a live Catalogue of Life name search, labelled as live. On
+ * small viewports the detail card opens as a bottom sheet.
  */
-
-const compactNumber = new Intl.NumberFormat('en', {
-  notation: 'compact',
-  maximumFractionDigits: 1,
-})
-const exactNumber = new Intl.NumberFormat('en')
 
 const QUICK_START = [
   ['Mammals', 'Mammalia'],
@@ -57,102 +60,27 @@ function indexTree(node: TaxonNode, index: TreeIndex): void {
   }
 }
 
-function TaxonName({ node }: { node: TaxonNode }) {
-  return ITALIC_RANKS.has(node.rank) ? <i>{node.name}</i> : <>{node.name}</>
-}
-
-function RankChip({
-  rank,
-  onInfo,
-}: {
-  rank: string
-  /** When set, the chip is a real button that shows the rank's
-      definition (round-2 feedback). Omit inside row/card buttons —
-      nested buttons are invalid HTML. */
-  onInfo?: (rank: string) => void
-}) {
-  if (onInfo) {
-    return (
-      <button
-        type="button"
-        className="cursor-pointer rounded border px-1 py-px font-sans text-[10px] leading-tight"
-        style={{ ...rankChipStyle(rank), color: 'var(--text)' }}
-        onClick={() => onInfo(rank)}
-        title={`What is a ${rank}?`}
-      >
-        {rank}
-      </button>
-    )
+function findInSubtree(node: TaxonNode, id: string): TaxonNode | undefined {
+  if (node.id === id) return node
+  for (const child of node.children ?? []) {
+    const found = findInSubtree(child, id)
+    if (found) return found
   }
-  return (
-    <span
-      className="rounded border px-1 py-px font-sans text-[10px] leading-tight"
-      style={{ ...rankChipStyle(rank), color: 'var(--text)' }}
-    >
-      {rank}
-    </span>
-  )
+  return undefined
 }
 
-function Chip({ children, tone }: { children: React.ReactNode; tone?: 'flag' }) {
-  return (
-    <span
-      className="rounded border px-1 py-px font-sans text-[10px] leading-tight"
-      style={{
-        borderColor: 'var(--border)',
-        color: tone === 'flag' ? 'var(--text)' : 'var(--text-muted)',
-        background: tone === 'flag' ? 'var(--control-selected-bg)' : 'transparent',
-      }}
-    >
-      {children}
-    </span>
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(query).matches,
   )
-}
-
-/** Placeholder for taxa with no verifiably free photo (§39). */
-function PlaceholderSilhouette({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      className={className}
-      aria-hidden="true"
-      style={{ color: 'var(--text-muted)' }}
-    >
-      <g stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
-        <path d="M24 42V20" />
-        <path d="M24 30c-6-2-10-7-10-14" />
-        <path d="M24 26c5-2 9-6 9-12" />
-        <circle cx="14" cy="14" r="3" fill="currentColor" stroke="none" />
-        <circle cx="33" cy="12" r="3" fill="currentColor" stroke="none" />
-        <circle cx="24" cy="18" r="3" fill="currentColor" stroke="none" />
-      </g>
-    </svg>
-  )
-}
-
-function TaxonThumb({
-  node,
-  size,
-}: {
-  node: TaxonNode
-  size: 'card' | 'panel'
-}) {
-  const img = node.img ?? null
-  const classes =
-    size === 'card'
-      ? 'h-24 w-full rounded-t-lg object-cover'
-      : 'h-40 w-full rounded-lg object-cover'
-  if (!img) {
-    return (
-      <div
-        className={`${classes} flex items-center justify-center`}
-        style={{ background: 'var(--surface-sunken)' }}
-      >
-        <PlaceholderSilhouette className={size === 'card' ? 'h-12 w-12' : 'h-20 w-20'} />
-      </div>
-    )
-  }
-  return <img src={img.url} alt={node.name} loading="lazy" className={classes} />
+  useEffect(() => {
+    const list = window.matchMedia(query)
+    const onChange = () => setMatches(list.matches)
+    onChange()
+    list.addEventListener('change', onChange)
+    return () => list.removeEventListener('change', onChange)
+  }, [query])
+  return matches
 }
 
 export function TaxonomyPage() {
@@ -160,17 +88,29 @@ export function TaxonomyPage() {
   const [view, setView] = useState<'tree' | 'cards'>('tree')
   const [expanded, setExpanded] = useState<Set<string>>(() => new Set(['']))
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [sheetOpen, setSheetOpen] = useState(false)
   const [cardRootId, setCardRootId] = useState<string>('')
   const [rankInfo, setRankInfo] = useState<string | null>(null)
-  const [focusLoaded, setFocusLoaded] = useState<Map<string, TaxonNode>>(
+  const [generaLoaded, setGeneraLoaded] = useState<Map<string, TaxonNode>>(
     () => new Map(),
   )
-  const [focusErrors, setFocusErrors] = useState<Set<string>>(() => new Set())
+  const [liveLoaded, setLiveLoaded] = useState<Map<string, TaxonNode[]>>(
+    () => new Map(),
+  )
+  const [loadErrors, setLoadErrors] = useState<Map<string, string>>(() => new Map())
+  const [loadingIds, setLoadingIds] = useState<Set<string>>(() => new Set())
   const [query, setQuery] = useState('')
-  const [extract, setExtract] = useState<{ id: string; text: string | null }>({
-    id: '',
-    text: null,
-  })
+  const [liveSearch, setLiveSearch] = useState<{
+    query: string
+    status: 'idle' | 'searching' | 'ready' | 'error'
+    hits: LiveSearchHit[]
+  }>({ query: '', status: 'idle', hits: [] })
+  const [extract, setExtract] = useState<{
+    id: string
+    text: string | null
+    loading: boolean
+  }>({ id: '', text: null, loading: false })
+  const isNarrow = useMediaQuery('(max-width: 1023px)')
 
   const file = state.status === 'ready' ? state.data : null
 
@@ -178,42 +118,149 @@ export function TaxonomyPage() {
     const built: TreeIndex = { byId: new Map(), parents: new Map() }
     if (file) {
       indexTree(file.tree, built)
-      for (const subtree of focusLoaded.values()) {
-        const parent = built.parents.get(subtree.id)
-        indexTree(subtree, built)
-        if (parent) built.parents.set(subtree.id, parent)
+      // Genera files: the family node itself stays the tree's; the file's
+      // nested subfamilies/tribes/genera hang beneath it.
+      for (const subtree of generaLoaded.values()) {
+        for (const child of subtree.children ?? []) {
+          built.parents.set(child.id, subtree.id)
+          indexTree(child, built)
+        }
+      }
+      for (const [parentId, children] of liveLoaded) {
+        for (const child of children) {
+          built.parents.set(child.id, parentId)
+          indexTree(child, built)
+        }
       }
     }
     return built
-  }, [file, focusLoaded])
+  }, [file, generaLoaded, liveLoaded])
 
   const selected = selectedId !== null ? index.byId.get(selectedId) : undefined
 
-  /** Every rank present in the loaded data, canonical ladder order first
-      (by hue-table position of the base rank), then alphabetical. */
-  const allRanks = useMemo(() => {
-    const seen = new Set<string>()
-    for (const node of index.byId.values()) seen.add(node.rank)
-    seen.delete('root')
-    const ladder = Object.keys(RANK_HUES)
-    return [...seen].sort((a, b) => {
-      const da = ladder.indexOf(baseRank(a))
-      const db = ladder.indexOf(baseRank(b))
-      return da - db || a.localeCompare(b)
-    })
+  const rankCounts = useMemo(() => {
+    const counts = new Map<string, number>()
+    for (const node of index.byId.values()) {
+      counts.set(node.rank, (counts.get(node.rank) ?? 0) + 1)
+    }
+    return counts
   }, [index])
 
-  // Intro text for the selected taxon, from its shard (round-2 §39).
+  /** The children a node currently shows: static file children for a
+      loaded family, live children when loaded, else the inline list.
+      `gen` marks "this family has an on-demand genera file" even when
+      the file holds zero genus-rank rows (§44.6 finding 6) — a family
+      with accepted descendants but none at genus rank still expands to
+      whatever its genera file holds. */
+  const childrenOf = useCallback(
+    (node: TaxonNode): TaxonNode[] => {
+      if (node.gen !== undefined) {
+        return generaLoaded.get(node.id)?.children ?? []
+      }
+      const live = liveLoaded.get(node.id)
+      if (live) return live
+      return node.children ?? []
+    },
+    [generaLoaded, liveLoaded],
+  )
+
+  const isExpandable = useCallback(
+    (node: TaxonNode): boolean =>
+      (node.children?.length ?? 0) > 0 ||
+      node.gen !== undefined ||
+      (node.kids !== undefined && node.kids > 0),
+    [],
+  )
+
+  const needsLoad = useCallback(
+    (node: TaxonNode): 'genera' | 'live' | null => {
+      if (node.gen !== undefined) {
+        return generaLoaded.has(node.id) ? null : 'genera'
+      }
+      if (liveLoaded.has(node.id)) return null
+      // Static children already shipped (focus-family species, inline
+      // genera) are shown as-is even when the list is capped — the
+      // explicit "load all live" affordance handles the cap, not an
+      // automatic live fetch that would replace the shipped list.
+      if ((node.children?.length ?? 0) > 0) return null
+      if (node.kids !== undefined && node.kids > 0) return 'live'
+      return null
+    },
+    [generaLoaded, liveLoaded],
+  )
+
+  /** Drop a stale load error once its node loads successfully — a failed
+      fetch, collapse, re-expand success must not keep showing the old
+      error paragraph (or, in cards view, keep the retry gate shut). */
+  const clearLoadError = useCallback((id: string) => {
+    setLoadErrors((prev) => {
+      if (!prev.has(id)) return prev
+      const next = new Map(prev)
+      next.delete(id)
+      return next
+    })
+  }, [])
+
+  /** Resolve a node's children, loading its genera file or live list as
+      needed, and commit the result to state. Returns the children. */
+  const ensureChildren = useCallback(
+    async (node: TaxonNode, force?: 'live'): Promise<TaxonNode[]> => {
+      const kind = force ?? needsLoad(node)
+      if (kind === null) return childrenOf(node)
+      setLoadingIds((prev) => new Set(prev).add(node.id))
+      try {
+        if (kind === 'genera') {
+          const subtree = await loadGenera(node.id)
+          setGeneraLoaded((prev) => new Map(prev).set(node.id, subtree))
+          clearLoadError(node.id)
+          return subtree.children ?? []
+        }
+        // `truncated` describes THIS node's live list, not any one child
+        // (§44.6 finding 3) — carried on the node object itself, the same
+        // slot a statically-capped focus genus already uses.
+        const { children, truncated } = await loadLiveChildren(node.id)
+        node.truncated = truncated
+        setLiveLoaded((prev) => new Map(prev).set(node.id, children))
+        clearLoadError(node.id)
+        return children
+      } catch (error) {
+        setLoadErrors((prev) =>
+          new Map(prev).set(
+            node.id,
+            kind === 'genera'
+              ? 'Could not load this family’s genera. Reload the page to retry.'
+              : 'Could not reach Catalogue of Life for the live list. Check your connection and try again.',
+          ),
+        )
+        throw error
+      } finally {
+        setLoadingIds((prev) => {
+          const next = new Set(prev)
+          next.delete(node.id)
+          return next
+        })
+      }
+    },
+    [needsLoad, childrenOf, clearLoadError],
+  )
+
+  // Description text for the selected taxon, from its shard (tree nodes
+  // carry Wikipedia intros and generated summaries there).
   useEffect(() => {
     if (!selected || !file?.extractShards) return
+    const source = selected.descSrc
+    if (selected.live || selected.pending || (source !== 'wikipedia' && source !== 'generated')) {
+      setExtract({ id: selected.id, text: null, loading: false })
+      return
+    }
     let cancelled = false
-    setExtract({ id: selected.id, text: null })
+    setExtract({ id: selected.id, text: null, loading: true })
     loadExtract(selected.id, file.extractShards)
       .then((text) => {
-        if (!cancelled) setExtract({ id: selected.id, text })
+        if (!cancelled) setExtract({ id: selected.id, text, loading: false })
       })
       .catch(() => {
-        if (!cancelled) setExtract({ id: selected.id, text: null })
+        if (!cancelled) setExtract({ id: selected.id, text: null, loading: false })
       })
     return () => {
       cancelled = true
@@ -233,40 +280,54 @@ export function TaxonomyPage() {
     return chain
   }, [selected, index])
 
-  const ensureFocus = useCallback(
-    (node: TaxonNode) => {
-      if (node.focus && !focusLoaded.has(node.id)) {
-        loadFocusFamily(node.id)
-          .then((subtree) =>
-            setFocusLoaded((prev) => new Map(prev).set(node.id, subtree)),
-          )
-          .catch(() => setFocusErrors((prev) => new Set(prev).add(node.id)))
-      }
+  const parentOf = useCallback(
+    (node: TaxonNode): TaxonNode | undefined => {
+      const parentId = index.parents.get(node.id)
+      return parentId === undefined ? undefined : index.byId.get(parentId)
     },
-    [focusLoaded],
+    [index],
   )
 
-  const activate = useCallback(
+  const select = useCallback(
     (node: TaxonNode) => {
       setSelectedId(node.id)
-      const expandable = (node.children?.length ?? 0) > 0 || node.focus === true
-      if (!expandable) return
+      if (isNarrow) setSheetOpen(true)
+    },
+    [isNarrow],
+  )
+
+  const toggle = useCallback(
+    (node: TaxonNode) => {
+      if (!isExpandable(node)) return
       setExpanded((prev) => {
         const next = new Set(prev)
         if (next.has(node.id)) next.delete(node.id)
         else next.add(node.id)
         return next
       })
-      ensureFocus(node)
+      if (!expanded.has(node.id)) void ensureChildren(node).catch(() => undefined)
     },
-    [ensureFocus],
+    [isExpandable, expanded, ensureChildren],
+  )
+
+  /** Row click: select AND open (as before) — the caret alone toggles. */
+  const activate = useCallback(
+    (node: TaxonNode) => {
+      select(node)
+      if (!isExpandable(node)) return
+      if (!expanded.has(node.id)) {
+        setExpanded((prev) => new Set(prev).add(node.id))
+        void ensureChildren(node).catch(() => undefined)
+      }
+    },
+    [select, isExpandable, expanded, ensureChildren],
   )
 
   /** Select a node AND reveal it: expand every ancestor (quick-start,
       search results, random button, breadcrumbs). */
   const reveal = useCallback(
     (node: TaxonNode) => {
-      setSelectedId(node.id)
+      select(node)
       setExpanded((prev) => {
         const next = new Set(prev)
         let cursor: string | undefined = node.id
@@ -276,13 +337,69 @@ export function TaxonomyPage() {
         }
         return next
       })
-      ensureFocus(node)
+      if (isExpandable(node)) void ensureChildren(node).catch(() => undefined)
       if (view === 'cards') {
-        setCardRootId(index.parents.get(node.id) ?? '')
+        setCardRootId(
+          isExpandable(node) ? node.id : (index.parents.get(node.id) ?? ''),
+        )
       }
       setQuery('')
     },
-    [index, ensureFocus, view],
+    [index, select, isExpandable, ensureChildren, view],
+  )
+
+  /** A live search hit: walk its classification from the deepest ancestor
+      the static index knows, loading genera files and live children down
+      to the hit, then reveal it. */
+  const revealLive = useCallback(
+    async (hit: LiveSearchHit) => {
+      const chain = hit.classification
+      if (chain.length === 0 || chain[chain.length - 1]?.id !== hit.id) {
+        chain.push({ id: hit.id, name: hit.name, rank: hit.rank })
+      }
+      let position = chain.length - 1
+      while (position >= 0 && !index.byId.has(chain[position]!.id)) position -= 1
+      if (position < 0) return
+      let current = index.byId.get(chain[position]!.id)!
+      const opened: string[] = [current.id]
+      for (let step = position; step < chain.length - 1; step += 1) {
+        const nextId = chain[step + 1]!.id
+        let children = await ensureChildren(current)
+        let next = children.find((child) => child.id === nextId)
+        if (!next && current.truncated) {
+          children = await ensureChildren(current, 'live')
+          next = children.find((child) => child.id === nextId)
+        }
+        if (!next) {
+          // The file nests intermediate ranks the classification may
+          // skip. Search the subtree THIS load just returned — not
+          // `generaLoaded` state, which on a first-reveal (the genera
+          // file load a few lines up) is still the pre-click snapshot
+          // this closure captured, not the load that just landed.
+          for (const candidate of children) {
+            next = findInSubtree(candidate, nextId)
+            if (next) break
+          }
+        }
+        if (!next) break
+        opened.push(next.id)
+        current = next
+      }
+      setExpanded((prev) => {
+        const next = new Set(prev)
+        let cursor: string | undefined = opened[0]
+        while (cursor !== undefined) {
+          next.add(cursor)
+          cursor = index.parents.get(cursor)
+        }
+        for (const id of opened) next.add(id)
+        return next
+      })
+      setSelectedId(current.id)
+      if (isNarrow) setSheetOpen(true)
+      setQuery('')
+    },
+    [index, ensureChildren, isNarrow],
   )
 
   const randomTaxon = useCallback(() => {
@@ -310,6 +427,43 @@ export function TaxonomyPage() {
     return [...starts, ...contains].slice(0, 60)
   }, [query, index])
 
+  // Live Catalogue of Life name search, debounced, for names the static
+  // index does not hold (species and below).
+  const searchAbort = useRef<AbortController | null>(null)
+  useEffect(() => {
+    const needle = query.trim()
+    searchAbort.current?.abort()
+    if (needle.length < 3 || (results?.length ?? 0) >= 60) {
+      setLiveSearch({ query: needle, status: 'idle', hits: [] })
+      return
+    }
+    const controller = new AbortController()
+    searchAbort.current = controller
+    setLiveSearch({ query: needle, status: 'searching', hits: [] })
+    const timer = window.setTimeout(() => {
+      liveNameSearch(needle, controller.signal)
+        .then((hits) => {
+          if (controller.signal.aborted) return
+          setLiveSearch({
+            query: needle,
+            status: 'ready',
+            hits: hits.filter((hit) => !index.byId.has(hit.id)),
+          })
+        })
+        .catch(() => {
+          if (!controller.signal.aborted) {
+            setLiveSearch({ query: needle, status: 'error', hits: [] })
+          }
+        })
+    }, 350)
+    return () => {
+      window.clearTimeout(timer)
+      controller.abort()
+    }
+    // The static index is only consulted to drop duplicates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, results?.length])
+
   const lineageOf = useCallback(
     (node: TaxonNode): string => {
       const names: string[] = []
@@ -325,79 +479,147 @@ export function TaxonomyPage() {
     [index],
   )
 
+  const loadLiveList = useCallback(
+    (node: TaxonNode) => {
+      void ensureChildren(node, 'live').catch(() => undefined)
+      setExpanded((prev) => new Set(prev).add(node.id))
+    },
+    [ensureChildren],
+  )
+
   function renderNode(node: TaxonNode, depth: number): React.ReactNode {
-    const subtree = node.focus ? focusLoaded.get(node.id) : undefined
-    const children = subtree?.children ?? node.children ?? []
-    const expandable = children.length > 0 || node.focus === true
+    const children = childrenOf(node)
+    const expandable = isExpandable(node)
     const isOpen = expanded.has(node.id)
     const isSelected = selectedId === node.id
-    const awaitingFocus =
-      node.focus === true && isOpen && !subtree && !focusErrors.has(node.id)
+    const loading = loadingIds.has(node.id)
+    const error = loadErrors.get(node.id)
+    const pendingKind = isOpen && children.length === 0 && !error ? needsLoad(node) : null
+    const liveList = liveLoaded.has(node.id)
+    const count = countLabel(node)
 
     return (
       <li key={node.id || 'root'}>
-        <button
-          type="button"
-          onClick={() => activate(node)}
-          {...(expandable ? { 'aria-expanded': isOpen } : {})}
-          className="flex w-full flex-wrap items-center gap-x-2 gap-y-0.5 rounded px-1.5 py-1 text-left text-sm"
+        <div
+          className="flex items-start rounded"
           style={{
-            paddingLeft: `${6 + depth * 18}px`,
+            paddingLeft: `${depth * 18}px`,
             background: isSelected ? 'var(--control-selected-bg)' : 'transparent',
             color: isSelected ? 'var(--control-selected-text)' : 'var(--text)',
           }}
         >
-          <span
-            aria-hidden="true"
-            className="inline-block w-3 text-center font-sans text-xs"
+          <button
+            type="button"
+            onClick={() => toggle(node)}
+            aria-expanded={expandable ? isOpen : undefined}
+            aria-label={expandable ? `${isOpen ? 'Collapse' : 'Expand'} ${node.name}` : undefined}
+            tabIndex={expandable ? 0 : -1}
+            className="flex w-7 shrink-0 items-center justify-center self-stretch font-sans text-xs"
             style={{
               color: 'var(--text-muted)',
-              transform: isOpen ? 'rotate(90deg)' : 'none',
-              transition: 'transform 150ms ease',
               visibility: expandable ? 'visible' : 'hidden',
+              minHeight: 32,
             }}
           >
-            ▸
-          </span>
-          <span className="font-medium">
-            <TaxonName node={node} />
-          </span>
-          {node.common && (
-            <span style={{ color: 'var(--text-muted)' }}>
-              {capitalizeFirst(node.common)}
-            </span>
-          )}
-          <RankChip rank={node.rank} />
-          {node.names > 1 && (
             <span
-              className="font-sans text-xs tabular-nums"
-              style={{ color: 'var(--text-muted)' }}
+              aria-hidden="true"
+              className="inline-block"
+              style={{
+                transform: isOpen ? 'rotate(90deg)' : 'none',
+                transition: 'transform 150ms ease',
+              }}
             >
-              {compactNumber.format(node.names)} names
+              ▸
             </span>
-          )}
-          {node.note && <Chip tone="flag">contested</Chip>}
-          {node.provisional && <Chip>provisional</Chip>}
-          {(node.truncated || subtree?.truncated) && <Chip>list capped</Chip>}
-        </button>
-        {isOpen && awaitingFocus && (
+          </button>
+          <button
+            type="button"
+            onClick={() => activate(node)}
+            aria-current={isSelected ? 'true' : undefined}
+            className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-0.5 rounded py-1 pr-1.5 text-left text-sm"
+            style={{ minHeight: 32 }}
+          >
+            <span className="font-medium">
+              <TaxonName node={node} />
+            </span>
+            {node.common && (
+              <span style={{ color: 'var(--text-muted)' }}>
+                {capitalizeFirst(node.common)}
+              </span>
+            )}
+            <RankChip rank={node.rank} />
+            {count && (
+              <span
+                className="font-sans text-xs tabular-nums"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                {count}
+              </span>
+            )}
+            {node.note && <Chip tone="flag">contested</Chip>}
+            {node.provisional && <Chip>provisional</Chip>}
+            {node.extinct && <Chip title="Catalogue of Life marks this taxon extinct">extinct</Chip>}
+            {node.truncated && !liveList && <Chip>list capped</Chip>}
+            {node.live && <Chip title="Loaded live from Catalogue of Life">live</Chip>}
+            {node.pending && <Chip title="Wikipedia not looked up yet">not yet enriched</Chip>}
+          </button>
+        </div>
+        {isOpen && (loading || pendingKind) && !error && (
           <p
             className="py-1 text-xs"
-            style={{ paddingLeft: `${30 + depth * 18}px`, color: 'var(--text-muted)' }}
+            style={{ paddingLeft: `${28 + depth * 18}px`, color: 'var(--text-muted)' }}
+            aria-live="polite"
           >
-            Loading genera and species…
+            {pendingKind === 'live' || (loading && liveLoaded.has(node.id) === false && node.gen === undefined)
+              ? 'Loading live from Catalogue of Life…'
+              : 'Loading genera…'}
           </p>
         )}
-        {isOpen && focusErrors.has(node.id) && (
+        {isOpen && error && (
           <p
             className="py-1 text-xs"
-            style={{ paddingLeft: `${30 + depth * 18}px`, color: 'var(--text-muted)' }}
+            style={{ paddingLeft: `${28 + depth * 18}px`, color: 'var(--text-muted)' }}
           >
-            Could not load this family’s genera. Reload the page to retry.
+            {error}
           </p>
         )}
         {isOpen && children.length > 0 && (
-          <ul>{children.map((child) => renderNode(child, depth + 1))}</ul>
+          <ul>
+            {children.map((child) => renderNode(child, depth + 1))}
+            {node.truncated && !liveList && (
+              <li
+                className="py-1 text-xs"
+                style={{ paddingLeft: `${28 + (depth + 1) * 18}px`, color: 'var(--text-muted)' }}
+              >
+                Static list capped at {children.length}.{' '}
+                <button
+                  type="button"
+                  className="underline underline-offset-2"
+                  onClick={() => loadLiveList(node)}
+                >
+                  Load all {node.kids ?? ''} live from Catalogue of Life
+                </button>
+              </li>
+            )}
+            {node.truncated && liveList && (
+              <li
+                className="py-1 text-xs"
+                style={{ paddingLeft: `${28 + (depth + 1) * 18}px`, color: 'var(--text-muted)' }}
+              >
+                Live list capped at {children.length}; the rest is on the
+                Catalogue of Life record.
+              </li>
+            )}
+          </ul>
+        )}
+        {isOpen && !loading && !pendingKind && !error && children.length === 0 && (
+          <p
+            className="py-1 text-xs"
+            style={{ paddingLeft: `${28 + depth * 18}px`, color: 'var(--text-muted)' }}
+          >
+            No genus-rank children recorded in Catalogue of Life for this
+            taxon.
+          </p>
         )}
       </li>
     )
@@ -406,8 +628,11 @@ export function TaxonomyPage() {
   function renderCards() {
     const root = index.byId.get(cardRootId) ?? file?.tree
     if (!root) return null
-    const subtree = root.focus ? focusLoaded.get(root.id) : undefined
-    const children = subtree?.children ?? root.children ?? []
+    const children = childrenOf(root)
+    const pendingKind = children.length === 0 ? needsLoad(root) : null
+    if (pendingKind && !loadingIds.has(root.id) && !loadErrors.has(root.id)) {
+      void ensureChildren(root).catch(() => undefined)
+    }
     const crumbs: TaxonNode[] = []
     let cursor: string | undefined = root.id
     while (cursor !== undefined) {
@@ -432,7 +657,7 @@ export function TaxonomyPage() {
                 style={rankChipStyle(node.rank)}
                 onClick={() => {
                   setCardRootId(node.id)
-                  setSelectedId(node.id)
+                  select(node)
                 }}
               >
                 <TaxonName node={node} />
@@ -440,30 +665,42 @@ export function TaxonomyPage() {
             </span>
           ))}
         </nav>
-        {root.focus && !subtree && !focusErrors.has(root.id) && (
+        {pendingKind && !loadErrors.has(root.id) && (
+          <p className="mt-3 text-sm" style={{ color: 'var(--text-muted)' }} aria-live="polite">
+            {pendingKind === 'live' ? 'Loading live from Catalogue of Life…' : 'Loading genera…'}
+          </p>
+        )}
+        {loadErrors.has(root.id) && (
           <p className="mt-3 text-sm" style={{ color: 'var(--text-muted)' }}>
-            Loading genera and species…
+            {loadErrors.get(root.id)}{' '}
+            <button
+              type="button"
+              className="underline underline-offset-2"
+              onClick={() => void ensureChildren(root).catch(() => undefined)}
+            >
+              Retry
+            </button>
           </p>
         )}
         <ul className="mt-3 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 xl:grid-cols-4">
           {children.map((child) => {
-            const expandableChild =
-              (child.children?.length ?? 0) > 0 || child.focus === true
+            const expandableChild = isExpandable(child)
+            const label = countLabel(child)
             return (
               <li key={child.id}>
                 <button
                   type="button"
                   onClick={() => {
-                    setSelectedId(child.id)
-                    ensureFocus(child)
-                    if (expandableChild) setCardRootId(child.id)
+                    select(child)
+                    if (expandableChild) {
+                      setCardRootId(child.id)
+                      void ensureChildren(child).catch(() => undefined)
+                    }
                   }}
                   className="block w-full rounded-lg border text-left"
                   style={{
                     borderColor:
-                      selectedId === child.id
-                        ? 'var(--accent)'
-                        : 'var(--border)',
+                      selectedId === child.id ? 'var(--accent)' : 'var(--border)',
                     background: 'var(--surface-raised)',
                     boxShadow: 'var(--shadow-card)',
                   }}
@@ -473,20 +710,17 @@ export function TaxonomyPage() {
                     <p className="flex flex-wrap items-center gap-1.5 text-sm font-medium">
                       <TaxonName node={child} />
                       <RankChip rank={child.rank} />
+                      {child.live && <Chip>live</Chip>}
                     </p>
                     <p className="mt-0.5 text-xs" style={{ color: 'var(--text-muted)' }}>
-                      {child.common
-                        ? capitalizeFirst(child.common)
-                        : child.names > 1
-                          ? `${compactNumber.format(child.names)} names`
-                          : ' '}
+                      {child.common ? capitalizeFirst(child.common) : (label ?? ' ')}
                     </p>
                   </div>
                 </button>
               </li>
             )
           })}
-          {children.length === 0 && (
+          {children.length === 0 && !pendingKind && (
             <li className="col-span-full text-sm" style={{ color: 'var(--text-muted)' }}>
               No further subdivisions here — see the detail panel.
             </li>
@@ -496,14 +730,27 @@ export function TaxonomyPage() {
     )
   }
 
+  const detail =
+    file && selected ? (
+      <TaxonDetail
+        node={selected}
+        parent={parentOf(selected)}
+        lineage={lineage}
+        file={file}
+        extract={extract.id === selected.id ? extract.text : null}
+        extractLoading={extract.id === selected.id && extract.loading}
+        onReveal={reveal}
+        onRankInfo={setRankInfo}
+        onLoadLive={loadLiveList}
+        liveLoaded={liveLoaded.has(selected.id)}
+      />
+    ) : null
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">Taxonomy</h1>
-        <p
-          className="mt-2 max-w-3xl text-sm"
-          style={{ color: 'var(--text-muted)' }}
-        >
+        <p className="mt-2 max-w-3xl text-sm" style={{ color: 'var(--text-muted)' }}>
           The tree of life as recorded by the{' '}
           <a
             className="underline underline-offset-2"
@@ -514,10 +761,13 @@ export function TaxonomyPage() {
             Catalogue of Life
           </a>
           {file ? ` (release ${file.release})` : ''}, from the three domains
-          down to every family, with genus and species depth for well-known
-          groups. Disputed placements are marked <em>contested</em> — the
-          tree follows its source rather than settling arguments the source
-          has not settled.
+          down to every family, genus and species: genera load when a family
+          is opened
+          {file?.generaTotal ? ` (${compactNumber.format(file.generaTotal)} genera in ${compactNumber.format(file.generaFiles ?? 0)} family files)` : ''}
+          , and species load live from the Catalogue of Life API when a
+          genus is opened. Disputed placements are marked <em>contested</em>{' '}
+          — the tree follows its source rather than settling arguments the
+          source has not settled.
         </p>
       </header>
 
@@ -534,7 +784,7 @@ export function TaxonomyPage() {
 
       {file && (
         <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_24rem]">
-          <div>
+          <div id="taxonomy-main">
             <div className="flex flex-wrap items-center gap-2 text-sm">
               <fieldset className="flex items-center gap-2">
                 <legend className="sr-only">View</legend>
@@ -546,11 +796,10 @@ export function TaxonomyPage() {
                     onClick={() => {
                       setView(value)
                       if (value === 'cards') {
+                        const node = selectedId !== null ? index.byId.get(selectedId) : undefined
                         setCardRootId(
-                          selectedId !== null &&
-                            (index.byId.get(selectedId)?.children?.length ||
-                              index.byId.get(selectedId)?.focus)
-                            ? selectedId
+                          node && isExpandable(node)
+                            ? node.id
                             : (index.parents.get(selectedId ?? '') ?? ''),
                         )
                       }
@@ -558,14 +807,8 @@ export function TaxonomyPage() {
                     className="rounded border px-2.5 py-1"
                     style={{
                       borderColor: 'var(--border)',
-                      background:
-                        view === value
-                          ? 'var(--control-selected-bg)'
-                          : 'transparent',
-                      color:
-                        view === value
-                          ? 'var(--control-selected-text)'
-                          : 'inherit',
+                      background: view === value ? 'var(--control-selected-bg)' : 'transparent',
+                      color: view === value ? 'var(--control-selected-text)' : 'inherit',
                     }}
                   >
                     {value === 'tree' ? 'Tree' : 'Cards'}
@@ -597,7 +840,6 @@ export function TaxonomyPage() {
               </button>
             </div>
 
-            {/* Quick-start + persistent rank legend (round-2 §39). */}
             <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
               <span style={{ color: 'var(--text-muted)' }}>Start from:</span>
               {QUICK_START.map(([label, name]) => (
@@ -619,93 +861,99 @@ export function TaxonomyPage() {
                 </button>
               ))}
             </div>
-            <div
-              className="mt-2 flex flex-wrap items-center gap-1.5 text-[10px]"
-              aria-label="Rank colour legend"
-            >
-              <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                Ranks (click one for its definition):
-              </span>
-              {Object.keys(RANK_HUES)
-                .filter((rank) => rank !== 'root')
-                .map((rank) => (
-                  <RankChip key={rank} rank={rank} onInfo={setRankInfo} />
-                ))}
-            </div>
-            {rankInfo && (
-              <div
-                className="mt-2 flex items-start gap-2 rounded border px-3 py-2 text-xs leading-snug"
-                style={{
-                  borderColor: 'var(--border)',
-                  background: 'var(--surface-sunken)',
-                }}
-                role="note"
-              >
-                <RankChip rank={rankInfo} />
-                <span className="min-w-0 flex-1">{rankDefinition(rankInfo)}</span>
-                <button
-                  type="button"
-                  aria-label="Close rank definition"
-                  className="shrink-0 rounded px-1 font-sans"
-                  style={{ color: 'var(--text-muted)' }}
-                  onClick={() => setRankInfo(null)}
-                >
-                  ×
-                </button>
-              </div>
-            )}
-            <details className="mt-2 text-xs">
-              <summary
-                className="cursor-pointer font-sans"
-                style={{ color: 'var(--text-muted)' }}
-              >
-                Every rank used on this page ({allRanks.length}), defined
-              </summary>
-              <dl className="mt-2 space-y-1.5">
-                {allRanks.map((rank) => (
-                  <div key={rank} className="flex items-start gap-2">
-                    <dt className="shrink-0">
-                      <RankChip rank={rank} />
-                    </dt>
-                    <dd className="m-0 leading-snug" style={{ color: 'var(--text-muted)' }}>
-                      {rankDefinition(rank)}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </details>
+
+            <RankLegend
+              rankCounts={rankCounts}
+              rankInfoOpen={rankInfo}
+              onRankInfo={setRankInfo}
+            />
 
             {results ? (
-              <ul className="mt-4" aria-label="Search results">
-                {results.length === 0 && (
-                  <li className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                    No taxon matches “{query.trim()}”. Species inside focus
-                    families appear once that family has been opened.
-                  </li>
-                )}
-                {results.map((node) => (
-                  <li key={node.id}>
-                    <button
-                      type="button"
-                      onClick={() => reveal(node)}
-                      className="flex w-full flex-wrap items-baseline gap-x-2 rounded px-1.5 py-1 text-left text-sm"
-                    >
-                      <span className="font-medium">
-                        <TaxonName node={node} />
-                      </span>
-                      {node.common && (
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          {capitalizeFirst(node.common)}
+              <div className="mt-4">
+                <ul aria-label="Search results">
+                  {results.length === 0 && liveSearch.status !== 'searching' && liveSearch.hits.length === 0 && (
+                    <li className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                      No taxon matches “{query.trim()}” in the loaded tree
+                      {liveSearch.status === 'ready' ? ' or in the live Catalogue of Life search.' : '.'}
+                    </li>
+                  )}
+                  {results.map((node) => (
+                    <li key={node.id}>
+                      <button
+                        type="button"
+                        onClick={() => reveal(node)}
+                        className="flex w-full flex-wrap items-baseline gap-x-2 rounded px-1.5 py-1 text-left text-sm"
+                      >
+                        <span className="font-medium">
+                          <TaxonName node={node} />
                         </span>
-                      )}
-                      <RankChip rank={node.rank} />
-                      <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                        {lineageOf(node)}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
+                        {node.common && (
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            {capitalizeFirst(node.common)}
+                          </span>
+                        )}
+                        <RankChip rank={node.rank} />
+                        <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                          {lineageOf(node)}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                {(liveSearch.status !== 'idle') && (
+                  <section className="mt-3" aria-label="Live Catalogue of Life search">
+                    <h3
+                      className="font-sans text-[10px] font-medium uppercase tracking-widest"
+                      style={{ color: 'var(--text-muted)' }}
+                    >
+                      Live from Catalogue of Life
+                      {liveSearch.status === 'searching' ? ' — searching…' : ''}
+                    </h3>
+                    {liveSearch.status === 'error' && (
+                      <p className="mt-1 text-sm" style={{ color: 'var(--text-muted)' }}>
+                        The live search could not reach ChecklistBank.
+                      </p>
+                    )}
+                    {liveSearch.status === 'ready' && liveSearch.hits.length === 0 && results.length > 0 && (
+                      <p className="mt-1 text-sm" style={{ color: 'var(--text-muted)' }}>
+                        No further matches beyond the loaded tree.
+                      </p>
+                    )}
+                    <ul className="mt-1">
+                      {liveSearch.hits.map((hit) => (
+                        <li key={hit.id}>
+                          <button
+                            type="button"
+                            onClick={() => void revealLive(hit)}
+                            className="flex w-full flex-wrap items-baseline gap-x-2 rounded px-1.5 py-1 text-left text-sm"
+                          >
+                            <span className="font-medium">
+                              {hit.rank === 'species' || hit.rank === 'subspecies' || hit.rank === 'genus' ? (
+                                <i>{hit.name}</i>
+                              ) : (
+                                hit.name
+                              )}
+                            </span>
+                            {hit.common && (
+                              <span style={{ color: 'var(--text-muted)' }}>
+                                {capitalizeFirst(hit.common)}
+                              </span>
+                            )}
+                            <RankChip rank={hit.rank} />
+                            <Chip>live</Chip>
+                            <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                              {hit.classification
+                                .slice(0, -1)
+                                .map((ancestor) => ancestor.name)
+                                .join(' › ')}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+              </div>
             ) : view === 'tree' ? (
               <ul className="mt-4" aria-label="Tree of life">
                 {renderNode(file.tree, 0)}
@@ -715,7 +963,7 @@ export function TaxonomyPage() {
             )}
           </div>
 
-          <aside className="order-first lg:order-none">
+          <aside className="hidden lg:block">
             <div
               className="rounded-xl border px-5 py-5 lg:sticky lg:top-4"
               style={{
@@ -724,199 +972,26 @@ export function TaxonomyPage() {
                 boxShadow: 'var(--shadow-card)',
               }}
             >
-              {!selected ? (
+              {detail ?? (
                 <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
                   Select a taxon for its photo, description, rank, lineage and
                   links. {file.imageNote ?? ''}
                 </p>
-              ) : (
-                <>
-                  <div
-                    className="-mx-5 -mt-5 mb-3 rounded-t-xl border-b-4 px-5 pb-2 pt-3"
-                    style={{
-                      borderColor: `light-dark(oklch(70% 0.09 ${RANK_HUES[baseRank(selected.rank)] ?? 250}), oklch(55% 0.09 ${RANK_HUES[baseRank(selected.rank)] ?? 250}))`,
-                    }}
-                  >
-                    <h2 className="text-xl">
-                      <TaxonName node={selected} />
-                    </h2>
-                    <p className="mt-0.5 flex flex-wrap items-center gap-2 text-sm">
-                      <RankChip rank={selected.rank} onInfo={setRankInfo} />
-                      {selected.common && (
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          {capitalizeFirst(selected.common)}
-                        </span>
-                      )}
-                      {selected.auth && (
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          {selected.auth}
-                        </span>
-                      )}
-                    </p>
-                  </div>
-
-                  <TaxonThumb node={selected} size="panel" />
-                  {selected.img && (
-                    <p className="mt-1 text-[10px] leading-snug" style={{ color: 'var(--text-muted)' }}>
-                      {selected.img.rep && (
-                        <>
-                          Representative: <i>{selected.img.rep}</i> ·{' '}
-                        </>
-                      )}
-                      {selected.img.author ?? 'Unknown author'} ·{' '}
-                      <a
-                        className="underline underline-offset-2"
-                        href={selected.img.page}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Commons
-                      </a>{' '}
-                      · {selected.img.license}
-                    </p>
-                  )}
-
-                  {extract.id === selected.id && extract.text ? (
-                    <p className="mt-3 text-sm">
-                      {extract.text.length > 620
-                        ? `${extract.text.slice(0, 600).trimEnd()}…`
-                        : extract.text}
-                      {file.extractsRetrieved && selected.wiki && (
-                        <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                          {' '}
-                          — Wikipedia, retrieved {file.extractsRetrieved}
-                        </span>
-                      )}
-                    </p>
-                  ) : selected.desc ? (
-                    <p className="mt-3 text-sm">
-                      {capitalizeFirst(selected.desc)}
-                      <span style={{ color: 'var(--text-muted)' }}> — Wikidata</span>
-                    </p>
-                  ) : null}
-
-                  {selected.note && (
-                    <p
-                      className="mt-3 rounded border px-3 py-2 text-sm"
-                      style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
-                    >
-                      <strong style={{ fontWeight: 600 }}>Contested: </strong>
-                      {selected.note}
-                    </p>
-                  )}
-
-                  <dl className="mt-3 space-y-1 text-sm">
-                    {selected.names > 1 && (
-                      <div className="flex justify-between gap-3">
-                        <dt style={{ color: 'var(--text-muted)' }}>
-                          Names in Catalogue of Life
-                        </dt>
-                        <dd className="tabular-nums">
-                          {exactNumber.format(selected.names)}
-                        </dd>
-                      </div>
-                    )}
-                    {selected.firstMa !== undefined && (
-                      <div className="flex justify-between gap-3">
-                        <dt style={{ color: 'var(--text-muted)' }}>
-                          First appearance (Wikidata)
-                        </dt>
-                        <dd className="tabular-nums">
-                          ~{selected.firstMa} Ma
-                        </dd>
-                      </div>
-                    )}
-                  </dl>
-
-                  <p
-                    className="mt-3 rounded px-3 py-2 text-xs leading-snug"
-                    style={{ background: 'var(--surface-sunken)', color: 'var(--text-muted)' }}
-                  >
-                    {rankDefinition(selected.rank)}
-                  </p>
-
-                  {lineage.length > 1 && (
-                    <div className="mt-3">
-                      <h3
-                        className="font-sans text-xs font-medium uppercase tracking-widest"
-                        style={{ color: 'var(--text-muted)' }}
-                      >
-                        Lineage
-                      </h3>
-                      <nav
-                        aria-label="Lineage breadcrumbs"
-                        className="mt-1 flex flex-wrap items-center gap-1"
-                      >
-                        {lineage.map((ancestor, position) => (
-                          <span key={ancestor.id || 'root'} className="flex items-center gap-1">
-                            {position > 0 && (
-                              <span aria-hidden="true" style={{ color: 'var(--text-muted)' }}>
-                                ›
-                              </span>
-                            )}
-                            <button
-                              type="button"
-                              className="rounded border px-1.5 py-0.5 font-sans text-xs"
-                              style={rankChipStyle(ancestor.rank)}
-                              onClick={() => reveal(ancestor)}
-                            >
-                              <TaxonName node={ancestor} />
-                            </button>
-                          </span>
-                        ))}
-                      </nav>
-                    </div>
-                  )}
-
-                  <div className="mt-4 flex flex-col gap-1 text-sm">
-                    {selected.wiki ? (
-                      <a
-                        className="underline underline-offset-2"
-                        href={wikipediaUrl(selected.wiki)}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Wikipedia: {selected.wiki}
-                      </a>
-                    ) : (
-                      <span style={{ color: 'var(--text-muted)' }}>
-                        No English Wikipedia article recorded (via Wikidata).
-                      </span>
-                    )}
-                    {selected.id && (
-                      <a
-                        className="underline underline-offset-2"
-                        href={colTaxonUrl(file.col_dataset_url, selected.id)}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Source record in Catalogue of Life
-                      </a>
-                    )}
-                    <a
-                      className="underline underline-offset-2"
-                      href={oneZoomUrl(selected.name)}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View on OneZoom
-                    </a>
-                    {selected.ncbi && (
-                      <a
-                        className="underline underline-offset-2"
-                        href={lifemapUrl(selected.ncbi)}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        View on Lifemap
-                      </a>
-                    )}
-                  </div>
-                </>
               )}
             </div>
           </aside>
         </div>
+      )}
+
+      {file && selected && (
+        <DetailSheet
+          open={isNarrow && sheetOpen}
+          title={`${selected.rank} · ${selected.name}`}
+          rank={selected.rank}
+          onClose={() => setSheetOpen(false)}
+        >
+          {detail}
+        </DetailSheet>
       )}
     </div>
   )

@@ -107,11 +107,24 @@ const DIRECTIONS = {
   // identity only, so pulling hues toward a period palette changes the
   // mood, never the meaning.
   //
-  // antique: parchment sepia — hues pulled well toward ochre.
+  // antique (round 3 section 48, maintainer pick "A / Blaeu 1635"): aged
+  // Dutch copperplate. Hues pulled halfway toward ochre, chroma and tier
+  // lightness MEASURED from a scan of Blaeu's Nova totius terrarum orbis
+  // (washes L 0.70-0.85, chroma ~0.05). The direction carries its own
+  // parchment sea and umber linework, and its light tiers sit ABOVE the
+  // standard band (true hand-tint paleness), so the fill-vs-water floor is
+  // replaced for this direction by a COASTLINE gate: the umber line must
+  // clear 3.0 contrast against both the sea and every fill. The tiers are
+  // theme-invariant (a parchment sheet is parchment in dark mode too),
+  // like the globe fills.
   antique: {
-    chroma: { light: 0.038, dark: 0.042 },
-    blendTo: 70,
-    blendStrength: 0.6,
+    chroma: { light: 0.055, dark: 0.055 },
+    blendTo: 85,
+    blendStrength: 0.5,
+    lightTiers: [0.70, 0.75, 0.80, 0.85],
+    sea: '#e9dfca',
+    line: '#594330',
+    paper: '#eddcbd',
   },
   // pastel: the flag hue kept, soft chroma. Tiers are the standard ones —
   // the top-tier/water floor was measured, so no lightening tricks here.
@@ -198,6 +211,12 @@ const fillFor = (theme, tierIndex, hue, direction = DEFAULT_DIRECTION) => {
     const d = ((spec.blendTo - hue + 540) % 360) - 180
     h = (hue + d * (spec.blendStrength ?? 1 / 3) + 360) % 360
   }
+  // A direction may carry its own LIGHT tier ladder (antique). Dark tiers
+  // stay standard: direction dark fills exist only for the report.
+  const tierL =
+    theme === 'light' && spec.lightTiers
+      ? spec.lightTiers[tierIndex]
+      : THEMES[theme].tiers[tierIndex]
   return formatHex(
     toRgb(
       // clampChroma walks chroma down (holding L and H) until the colour is
@@ -208,7 +227,7 @@ const fillFor = (theme, tierIndex, hue, direction = DEFAULT_DIRECTION) => {
       clampChroma(
         {
           mode: 'oklch',
-          l: THEMES[theme].tiers[tierIndex],
+          l: tierL,
           c: spec.chroma[theme],
           h,
         },
@@ -403,11 +422,28 @@ function verifyDirection(direction) {
       }
     }
 
+    // Antique (section 48): the direction renders on its own parchment sea
+    // with umber coastlines, and its true hand-tint tiers sit too close to
+    // that sea for the water floor. The gate that carries the land/water
+    // separation there is the COASTLINE: the umber line must clear 3.0
+    // against the sea, the paper and every fill (as on the originals,
+    // where the engraved coast does this work). Verified here in place of
+    // the surface check for the light (rendered) side.
+    const spec = DIRECTIONS[direction]
+    const coastlineGate = theme === 'light' && spec.sea
+    const surfaceRef = coastlineGate ? spec.sea : surface
     const contrasts = entities.map((e) => ({
       iso3: e.iso3,
-      ratio: contrast(fillOf(e.iso3, theme), surface),
+      ratio: coastlineGate
+        ? Math.min(
+            contrast(spec.line, spec.sea),
+            contrast(spec.line, spec.paper),
+            contrast(spec.line, fillOf(e.iso3, theme)),
+          )
+        : contrast(fillOf(e.iso3, theme), surfaceRef),
     }))
-    const lowContrast = contrasts.filter((c) => c.ratio < MIN_SURFACE_CONTRAST)
+    const surfaceFloor = coastlineGate ? 3.0 : MIN_SURFACE_CONTRAST
+    const lowContrast = contrasts.filter((c) => c.ratio < surfaceFloor)
 
     // Light fills double as the globe's land colours; check them against
     // the globe ocean once (during the light pass).

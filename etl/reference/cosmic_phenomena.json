@@ -1,174 +1,979 @@
 {
- "version": 1,
- "note": "EDITORIAL entries for the Cosmic Phenomena page (round-2 §41). Each entry: description (55-130 words), key facts, a NASA Image Library search query (null = skip the NASA library; the build then falls back to the Wikipedia article's free-licensed lead image, e.g. a spacetime diagram for wormholes) resolved to an attributed image at build time, and links. Theoretical objects are labelled as such in their own text. Facts follow the cited NASA/ESA pages and each entry's Wikipedia article.",
+ "version": 2,
+ "note": "EDITORIAL catalogue for the Cosmic Phenomena page (round-2 §41.3, expanded in round-3 phase 6, DATA_DECISIONS §46). Every entry: category (from `categories`), status (observed | theoretical | hypothesis — hypotheses are worded as hypotheses in their own text), a 55-130-word description in plain encyclopaedic English, at least three key facts each carrying value + source name + URL + year (the vintage of the figure: the measurement, event or publication year; for undated encyclopaedic values, the year the cited page was consulted), NASA and Wikipedia links, and an image pin. Image pins resolve at build time in this order: `nasaId` (NASA Image and Video Library item, credited as the library credits it), `commons` (a Wikimedia Commons file that must pass the free-licence gate), `query` (a NASA library search, first hit), else the Wikipedia article's lead image through the same licence gate. Images are DOWNLOADED and served from /data/space/phenomena — never hotlinked. Numeric facts follow the cited page as read on the stated date; do not invent or 'improve' a figure without re-verifying it against the source.",
+ "categories": [
+  {"id": "stars", "label": "Stars and clusters"},
+  {"id": "remnants", "label": "Stellar deaths and remnants"},
+  {"id": "nebulae", "label": "Nebulae and star formation"},
+  {"id": "planets", "label": "Planets and planet formation"},
+  {"id": "solar-system", "label": "Solar System and space weather"},
+  {"id": "black-holes", "label": "Black holes, jets and spacetime"},
+  {"id": "high-energy", "label": "High-energy messengers"},
+  {"id": "galaxies", "label": "Galaxies and large-scale structure"},
+  {"id": "cosmology", "label": "Cosmology"}
+ ],
  "entries": [
   {
    "id": "stellar-lifecycles",
    "title": "Stars and stellar life cycles",
-   "query": "pillars of creation",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e000743",
    "wikipedia": "Stellar evolution",
    "nasa": "https://science.nasa.gov/universe/stars/",
-   "description": "Stars condense from collapsing clouds of gas and dust, ignite hydrogen fusion, and spend most of their lives on the main sequence balancing gravity against radiation. Their mass decides everything: red dwarfs will burn for trillions of years; Sun-like stars swell into red giants and shed planetary nebulae, leaving white dwarfs; stars above about eight solar masses forge elements up to iron and die as supernovae. Every element heavier than helium in your body was made this way.",
+   "description": "Stars condense from collapsing clouds of gas and dust, ignite hydrogen fusion, and spend most of their lives on the main sequence balancing gravity against radiation. Their mass decides everything: red dwarfs will burn for trillions of years; Sun-like stars swell into red giants and shed planetary nebulae, leaving white dwarfs; stars above about eight solar masses forge elements up to iron and die as supernovae. Every element heavier than helium in your body was made this way. The Hubble image here shows Westerlund 2, a young cluster whose newborn stars are still sculpting the cloud that formed them.",
    "facts": [
-    "Main-sequence lifetimes: ~10 billion years for the Sun; trillions for red dwarfs",
-    "Fusion in the Sun's core: ~600 million tonnes of hydrogen per second",
-    "End states by mass: white dwarf, neutron star, or black hole"
+    {"value": "Main-sequence lifetime of the Sun: roughly 10 billion years; stars under 0.1 solar masses may last over a trillion years", "source": "Wikipedia: Main sequence", "url": "https://en.wikipedia.org/wiki/Main_sequence", "year": 2026},
+    {"value": "Lifetime scales with mass as roughly M to the power -2.5; the most massive stars stay on the main sequence only a few million years", "source": "Wikipedia: Main sequence", "url": "https://en.wikipedia.org/wiki/Main_sequence", "year": 2026},
+    {"value": "About 90% of observed stars above 0.5 solar masses are on the main sequence", "source": "Wikipedia: Main sequence", "url": "https://en.wikipedia.org/wiki/Main_sequence", "year": 2026},
+    {"value": "End states by mass: white dwarf, neutron star, or black hole", "source": "NASA Science: Stars", "url": "https://science.nasa.gov/universe/stars/", "year": 2026}
    ]
   },
   {
-   "id": "neutron-stars",
-   "title": "Neutron stars and pulsars",
-   "query": "crab nebula composite",
-   "wikipedia": "Neutron star",
-   "nasa": "https://science.nasa.gov/universe/neutron-stars/",
-   "description": "When a massive star's core collapses, protons and electrons are crushed together into a city-sized sphere of nearly pure neutrons — matter at the density of an atomic nucleus, where a teaspoonful would outweigh a mountain. Rapidly rotating, strongly magnetised neutron stars beam radiation from their poles; when a beam sweeps past Earth we see a pulsar, a cosmic lighthouse ticking with clock-grade regularity. Jocelyn Bell Burnell found the first in 1967.",
+   "id": "protostars",
+   "title": "Protostars and Herbig–Haro jets",
+   "category": "nebulae",
+   "status": "observed",
+   "nasaId": "PIA16022",
+   "wikipedia": "Protostar",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "A protostar is a star that has not yet begun stable hydrogen fusion: a collapsing core inside a molecular cloud, still gathering mass from its surroundings and glowing from the heat of contraction. Buried in dust, it is seen mainly in the infrared. Many protostars drive narrow jets from their poles, and where those jets slam into surrounding gas they light up small shock-heated patches called Herbig–Haro objects. The Hubble image shows the twin jets of HH 24 emerging from a dark cloud.",
    "facts": [
-    "Typical radius ~12 km holding 1.4+ solar masses",
-    "Fastest known pulsars spin over 700 times per second",
-    "The Crab pulsar powers the nebula of the 1054 supernova"
+    {"value": "The protostar phase lasts about 500,000 years for a star of the Sun's mass or lower", "source": "Wikipedia: Protostar", "url": "https://en.wikipedia.org/wiki/Protostar", "year": 2026},
+    {"value": "More than a thousand Herbig–Haro objects are known; their jets move at several hundred km/s", "source": "Wikipedia: Herbig–Haro object", "url": "https://en.wikipedia.org/wiki/Herbig%E2%80%93Haro_object", "year": 2026},
+    {"value": "Herbig–Haro objects were recognised as a distinct class in the 1940s by George Herbig and Guillermo Haro, working independently", "source": "Wikipedia: Herbig–Haro object", "url": "https://en.wikipedia.org/wiki/Herbig%E2%80%93Haro_object", "year": 1949},
+    {"value": "The modern picture of protostars was proposed by Chushiro Hayashi in 1966", "source": "Wikipedia: Protostar", "url": "https://en.wikipedia.org/wiki/Protostar", "year": 1966}
    ]
   },
   {
-   "id": "black-holes",
-   "title": "Black holes",
-   "query": "black hole first image event horizon telescope",
-   "wikipedia": "Black hole",
-   "nasa": "https://science.nasa.gov/universe/black-holes/",
-   "description": "A black hole is a region where gravity has won completely: within the event horizon, escape would require exceeding the speed of light, so nothing — not even light — returns. Stellar-mass black holes form from collapsing giant stars; intermediate-mass ones are rare and elusive; supermassive black holes of millions to billions of solar masses anchor most large galaxies, including Sagittarius A* in our own. The Event Horizon Telescope imaged M87's black hole shadow in 2019 and Sagittarius A* in 2022.",
+   "id": "red-giants-supergiants",
+   "title": "Red giants and supergiants",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "PIA16680",
+   "wikipedia": "Red giant",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "When a star exhausts the hydrogen in its core, the core contracts and the outer layers balloon outward and cool, turning the star into a red giant — hundreds of times the Sun's diameter but with a surface cooler than the Sun's. The Sun itself will do this in about five billion years, swelling far enough to engulf Mercury and Venus. Stars born much more massive become red supergiants such as Betelgeuse in Orion, which is large enough that, placed at the Sun, its surface would reach past the asteroid belt. Betelgeuse is shown here in Herschel's far-infrared view.",
    "facts": [
-    "Sagittarius A*: ~4.3 million solar masses at the Milky Way's centre",
-    "M87*: ~6.5 billion solar masses, jet visible across 5,000 light-years",
-    "Nobel Prize 2020: Penrose, Genzel and Ghez for black-hole physics"
+    {"value": "The Sun will leave the main sequence in about 5 billion years and expand to roughly 256 solar radii (about 1.2 AU)", "source": "Wikipedia: Red giant", "url": "https://en.wikipedia.org/wiki/Red_giant", "year": 2026},
+    {"value": "Red-giant-branch stars reach radii up to about 200 times the Sun's with surface temperatures of 3,000–4,000 K", "source": "Wikipedia: Red giant", "url": "https://en.wikipedia.org/wiki/Red_giant", "year": 2026},
+    {"value": "Betelgeuse: radius about 640–764 solar radii and distance about 548 light-years (2020 estimates); a supernova is likely within 100,000 years", "source": "Wikipedia: Betelgeuse", "url": "https://en.wikipedia.org/wiki/Betelgeuse", "year": 2020}
    ]
   },
   {
-   "id": "quasars-agn",
-   "title": "Quasars and active galactic nuclei",
-   "query": "quasar",
-   "wikipedia": "Quasar",
-   "nasa": "https://science.nasa.gov/universe/galaxies/active-galaxies/",
-   "description": "When a supermassive black hole feeds, the infalling gas spirals through an accretion disc heated to millions of degrees, outshining the entire surrounding galaxy — an active galactic nucleus. The most luminous, quasars, are visible across most of the observable universe; some launch jets of near-light-speed plasma thousands of light-years long. Quasars were most common when the universe was a few billion years old, lighthouses from the era when galaxies and their black holes grew up together.",
+   "id": "hypergiants",
+   "title": "Hypergiants",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "PIA20294",
+   "wikipedia": "Hypergiant",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Hypergiants are the rarest and most luminous stars, so massive that they shed their outer layers in violent winds and eruptions. They occupy the top of the luminosity scale and live only a few million years. Eta Carinae, in the Carina Nebula, is the best-known example: in the 1840s it erupted to become the second-brightest star in the sky, throwing off many solar masses of gas that now form the Homunculus Nebula around it, seen here in Hubble's image. Red hypergiants such as Stephenson 2-18 are among the largest stars known, although their sizes are uncertain and contested.",
    "facts": [
-    "Brightest quasars outshine 10 trillion Suns",
-    "First identified: 3C 273 in 1963",
-    "Powered by accretion converting mass to energy at up to ~10% efficiency"
+    {"value": "Hypergiants carry luminosity class 0 (Ia-0 or Ia+), defined by extreme luminosity, mass, size and mass loss", "source": "Wikipedia: Hypergiant", "url": "https://en.wikipedia.org/wiki/Hypergiant", "year": 2026},
+    {"value": "Eta Carinae's primary is about 100 solar masses today with a luminosity of about 5 million Suns, at about 7,500 light-years", "source": "Wikipedia: Eta Carinae", "url": "https://en.wikipedia.org/wiki/Eta_Carinae", "year": 2026},
+    {"value": "The Great Eruption began in December 1837 and peaked on 11–14 March 1843, when Eta Carinae was the second-brightest star in the night sky", "source": "Wikipedia: Eta Carinae", "url": "https://en.wikipedia.org/wiki/Eta_Carinae", "year": 1843},
+    {"value": "Stephenson 2-18: a contested 2012 estimate of about 2,150 solar radii at an uncertain distance", "source": "Wikipedia: Stephenson 2-18", "url": "https://en.wikipedia.org/wiki/Stephenson_2-18", "year": 2012}
    ]
   },
   {
-   "id": "wormholes",
-   "title": "Wormholes (theoretical)",
-   "query": null,
-   "wikipedia": "Wormhole",
-   "nasa": "https://science.nasa.gov/universe/",
-   "description": "A wormhole is a hypothetical shortcut through spacetime — a tunnel connecting two distant regions, permitted as a solution of Einstein's field equations (the Einstein–Rosen bridge, 1935). None has ever been observed, and known physics gives no way to hold one open: traversable versions would require 'exotic matter' with negative energy density in quantities nothing observed can supply. They remain a rigorous theoretical curiosity and science fiction's favourite engine, not an established feature of the universe — a distinction this page keeps explicit.",
+   "id": "white-dwarfs",
+   "title": "White dwarfs",
+   "category": "remnants",
+   "status": "observed",
+   "commons": "Sirius A and B artwork.jpg",
+   "wikipedia": "White dwarf",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "A white dwarf is the exposed, burnt-out core left when a star of up to about ten solar masses sheds its envelope: an Earth-sized sphere of carbon and oxygen holding roughly the mass of the Sun, so dense that a teaspoon would weigh tonnes. It no longer fuses anything and simply cools over billions of years. The nearest well-known example is Sirius B, the faint companion of the brightest star in the night sky, shown here in a NASA/ESA artist's impression beside Sirius A. The great majority of stars, including the Sun, will end this way.",
    "facts": [
-    "Status: theoretical only — never observed",
-    "Einstein–Rosen bridge published 1935",
-    "Traversable wormholes require exotic negative-energy matter"
+    {"value": "Stars of about 0.07 to 10 solar masses — over 97% of the Milky Way's stars — will end as white dwarfs", "source": "Wikipedia: White dwarf", "url": "https://en.wikipedia.org/wiki/White_dwarf", "year": 2026},
+    {"value": "Typical density about 10^6 g/cm^3 — one tonne per cubic centimetre", "source": "Wikipedia: White dwarf", "url": "https://en.wikipedia.org/wiki/White_dwarf", "year": 2026},
+    {"value": "Maximum mass (the Chandrasekhar limit) about 1.44 solar masses for a non-rotating white dwarf", "source": "Wikipedia: White dwarf", "url": "https://en.wikipedia.org/wiki/White_dwarf", "year": 2026},
+    {"value": "Sirius B: 1.018 solar masses in a radius of about 5,634 km, surface 25,000 K, 8.6 light-years away; first seen by Alvan Graham Clark on 31 January 1862", "source": "Wikipedia: Sirius", "url": "https://en.wikipedia.org/wiki/Sirius", "year": 2026}
    ]
   },
   {
-   "id": "gamma-ray-bursts",
-   "title": "Gamma-ray bursts",
-   "query": "gamma ray burst neutron star merger",
-   "wikipedia": "Gamma-ray burst",
-   "nasa": "https://science.nasa.gov/universe/what-are-gamma-ray-bursts/",
-   "description": "For a few seconds, a gamma-ray burst can outshine every other source in the gamma-ray sky combined — the most luminous explosions known. Long bursts come from the collapse of massive, rapidly rotating stars into black holes, their energy funnelled into jets; short bursts come from neutron-star mergers, confirmed in 2017 when one arrived alongside gravitational waves. Discovered by Cold-War satellites watching for nuclear tests, they are now cosmological tools seen from the universe's first billion years.",
+   "id": "brown-dwarfs",
+   "title": "Brown dwarfs",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "PIA23685",
+   "wikipedia": "Brown dwarf",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Brown dwarfs are the objects between planets and stars: too massive to be planets, yet too light to sustain the hydrogen fusion that makes a star shine. They glow faintly from their own heat and slowly cool over billions of years, so the oldest are barely warmer than room temperature. Long predicted, they were only confirmed in the mid-1990s, and infrared surveys have since found them to be common in the Sun's neighbourhood. The NASA graphic compares a brown dwarf with a star and a giant planet.",
    "facts": [
-    "Brightest recorded: GRB 221009A, October 2022",
-    "Short bursts = neutron-star mergers (GW170817)",
-    "Discovered 1967 by the Vela satellites, declassified 1973"
+    {"value": "Mass range about 13 to 80 Jupiter masses; above about 80 Jupiter masses an object sustains hydrogen fusion and is a star", "source": "Wikipedia: Brown dwarf", "url": "https://en.wikipedia.org/wiki/Brown_dwarf", "year": 2026},
+    {"value": "First confirmed examples: Teide 1 in the Pleiades (imaged 6 January 1994) and Gliese 229B (discovered 1994, confirmed 1995)", "source": "Wikipedia: Brown dwarf", "url": "https://en.wikipedia.org/wiki/Brown_dwarf", "year": 1995},
+    {"value": "Coldest known: WISE 0855−0714, 7.2 light-years away, between −48 and −13 °C", "source": "Wikipedia: Brown dwarf", "url": "https://en.wikipedia.org/wiki/Brown_dwarf", "year": 2014}
+   ]
+  },
+  {
+   "id": "wolf-rayet-stars",
+   "title": "Wolf–Rayet stars",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "PIA25432",
+   "wikipedia": "Wolf–Rayet star",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Wolf–Rayet stars are massive stars in a brief, violent late stage of life. Having blown away their hydrogen envelopes in ferocious winds, they expose hot helium-burning interiors and drive gas outward at thousands of kilometres per second, so their spectra are dominated by broad emission lines rather than absorption lines. They are among the hottest stars known and are expected to end as supernovae. The Webb image shows Wolf-Rayet 140, where the wind of a Wolf–Rayet star collides with that of its companion and forms a new dust ring at each close approach.",
+   "facts": [
+    {"value": "Surface temperatures range from about 20,000 K to around 210,000 K", "source": "Wikipedia: Wolf–Rayet star", "url": "https://en.wikipedia.org/wiki/Wolf%E2%80%93Rayet_star", "year": 2026},
+    {"value": "Wind speeds of 300–2,400 km/s were inferred from the emission-line widths by about 1929", "source": "Wikipedia: Wolf–Rayet star", "url": "https://en.wikipedia.org/wiki/Wolf%E2%80%93Rayet_star", "year": 1929},
+    {"value": "About 600 catalogued in the Milky Way; an online catalogue listed 709 as of February 2025", "source": "Wikipedia: Wolf–Rayet star", "url": "https://en.wikipedia.org/wiki/Wolf%E2%80%93Rayet_star", "year": 2025},
+    {"value": "Discovered in 1867 by Charles Wolf and Georges Rayet at the Paris Observatory (three stars in Cygnus)", "source": "Wikipedia: Wolf–Rayet star", "url": "https://en.wikipedia.org/wiki/Wolf%E2%80%93Rayet_star", "year": 1867}
+   ]
+  },
+  {
+   "id": "variable-stars",
+   "title": "Variable stars: Cepheids and RR Lyrae",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e001283",
+   "wikipedia": "Cepheid variable",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Some stars pulse in brightness with clockwork regularity because their outer layers swell and shrink. Cepheid variables pulse over days to months, and the longer the period, the more luminous the star — a relationship Henrietta Leavitt discovered in the Magellanic Clouds, which turns them into 'standard candles' for measuring distances to other galaxies. RR Lyrae stars are fainter, older cousins with periods under a day, abundant in globular clusters. The Hubble image shows RS Puppis, a Cepheid whose light echoes ripple through the dust around it.",
+   "facts": [
+    {"value": "Leavitt found the period–luminosity relation in 1908 and published the fuller evidence in 1912", "source": "Wikipedia: Cepheid variable", "url": "https://en.wikipedia.org/wiki/Cepheid_variable", "year": 1912},
+    {"value": "Cepheid periods are typically 1–100 days; they anchor the distance ladder used to measure the Hubble constant", "source": "Wikipedia: Cepheid variable", "url": "https://en.wikipedia.org/wiki/Cepheid_variable", "year": 2026},
+    {"value": "RR Lyrae stars: periods typically under one day, absolute magnitude about +0.75 (40–50 Suns); over 80% of the variables known in globular clusters", "source": "Wikipedia: RR Lyrae variable", "url": "https://en.wikipedia.org/wiki/RR_Lyrae_variable", "year": 2026}
+   ]
+  },
+  {
+   "id": "binary-multiple-stars",
+   "title": "Binary and multiple star systems",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e000214",
+   "wikipedia": "Binary star",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Many stars do not live alone. A binary is a pair of stars orbiting their common centre of mass; triples and higher multiples are common too. Binaries matter because they are the only direct way to weigh stars, and because interacting pairs produce novae, X-ray sources, Type Ia supernovae and gravitational-wave mergers. The nearest star system, Alpha Centauri, is a bright binary with the faint red dwarf Proxima Centauri orbiting far outside; Hubble's image shows the bright pair.",
+   "facts": [
+    {"value": "About one third of the star systems in the Milky Way are binary or multiple; the remaining two thirds are single stars", "source": "Wikipedia: Binary star", "url": "https://en.wikipedia.org/wiki/Binary_star", "year": 2026},
+    {"value": "Mizar was seen to be double by Giovanni Battista Riccioli in 1650, the first telescopic binary", "source": "Wikipedia: Binary star", "url": "https://en.wikipedia.org/wiki/Binary_star", "year": 1650},
+    {"value": "William Herschel first used the term 'binary' for gravitationally bound pairs in 1802", "source": "Wikipedia: Binary star", "url": "https://en.wikipedia.org/wiki/Binary_star", "year": 1802},
+    {"value": "Alpha Centauri, the closest system to Earth at 4.3 light-years, is the binary A and B plus the red dwarf Proxima Centauri", "source": "NASA Image Library: Hubble's Best Image of Alpha Centauri A and B", "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e000214", "year": 2016}
+   ]
+  },
+  {
+   "id": "open-clusters",
+   "title": "Open star clusters",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "PIA09262",
+   "wikipedia": "Open cluster",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Open clusters are loose groups of tens to a few thousand stars that formed together from the same molecular cloud and still travel together through the galactic disc. Because their members share an age and composition, they are natural laboratories for testing how stars evolve. Their gravity is weak, so galactic tides and passing clouds disperse them within a few hundred million years. The Pleiades, the Seven Sisters visible to the naked eye, is the most famous example; Spitzer's infrared image shows its stars threaded through a passing dust cloud.",
+   "facts": [
+    {"value": "More than 1,100 open clusters are known in the Milky Way; the true total may be up to ten times higher", "source": "Wikipedia: Open cluster", "url": "https://en.wikipedia.org/wiki/Open_cluster", "year": 2026},
+    {"value": "Open clusters generally survive a few hundred million years; the most massive last a few billion", "source": "Wikipedia: Open cluster", "url": "https://en.wikipedia.org/wiki/Open_cluster", "year": 2026},
+    {"value": "Pleiades: about 442 light-years away (Gaia DR3), about 125 million years old, over 1,000 stars", "source": "Wikipedia: Pleiades", "url": "https://en.wikipedia.org/wiki/Pleiades", "year": 2023}
+   ]
+  },
+  {
+   "id": "globular-clusters",
+   "title": "Globular clusters",
+   "category": "stars",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e000846",
+   "wikipedia": "Globular cluster",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Globular clusters are dense, spherical swarms of hundreds of thousands to millions of ancient stars, bound so tightly by gravity that they have survived almost since the galaxy formed. They orbit in the Milky Way's halo rather than its disc and contain some of the oldest stars known, which makes them a lower limit on the age of the universe. Omega Centauri, the largest in our galaxy, may be the stripped core of a small galaxy. Hubble's image shows NGC 6535 in Serpens.",
+   "facts": [
+    {"value": "About 160 globular clusters were known in the Milky Way by 2011; the Andromeda Galaxy may have as many as 500", "source": "Wikipedia: Globular cluster", "url": "https://en.wikipedia.org/wiki/Globular_cluster", "year": 2011},
+    {"value": "Ages from white-dwarf cooling are often as old as 12.7 billion years", "source": "Wikipedia: Globular cluster", "url": "https://en.wikipedia.org/wiki/Globular_cluster", "year": 2026},
+    {"value": "Omega Centauri: about 10 million stars, about 4 million solar masses, about 17,000 light-years away, about 12 billion years old", "source": "Wikipedia: Omega Centauri", "url": "https://en.wikipedia.org/wiki/Omega_Centauri", "year": 2026},
+    {"value": "A 2024 study of seven fast-moving stars in Omega Centauri's core is consistent with an intermediate-mass black hole of at least 8,200 solar masses (still debated)", "source": "Wikipedia: Omega Centauri", "url": "https://en.wikipedia.org/wiki/Omega_Centauri", "year": 2024}
    ]
   },
   {
    "id": "supernovae",
    "title": "Supernovae",
+   "category": "remnants",
+   "status": "observed",
    "query": "supernova remnant cassiopeia a",
    "wikipedia": "Supernova",
-   "nasa": "https://science.nasa.gov/universe/stars/supernovae/",
-   "description": "A supernova can briefly outshine its whole galaxy. Core-collapse supernovae end massive stars, forging and scattering heavy elements and leaving neutron stars or black holes; Type Ia supernovae detonate white dwarfs pushed over their mass limit, and burn so uniformly that they serve as 'standard candles' — the measuring sticks that revealed the accelerating universe in 1998. Supernova 1987A, in the Large Magellanic Cloud, was close enough that its neutrinos were caught by detectors on Earth.",
+   "nasa": "https://science.nasa.gov/category/universe/stars/supernovae/",
+   "description": "A supernova can briefly outshine its whole galaxy. Core-collapse supernovae end massive stars, forging and scattering heavy elements and leaving neutron stars or black holes; Type Ia supernovae detonate white dwarfs pushed over their mass limit, and burn so uniformly that they serve as 'standard candles' — the measuring sticks that revealed the accelerating universe in 1998. Supernova 1987A, in the Large Magellanic Cloud, was close enough that its neutrinos were caught by detectors on Earth. The image shows the remnant of a supernova whose light reached Earth about 320 years ago.",
    "facts": [
-    "Type Ia standard candles led to the dark-energy discovery (Nobel 2011)",
-    "SN 1987A: first supernova neutrinos detected",
-    "The Crab Nebula remains from a supernova Chinese astronomers logged in 1054"
+    {"value": "The Milky Way's supernova rate is about 1.6 to 4.6 per century; the last one observed was Kepler's in 1604", "source": "Wikipedia: Supernova", "url": "https://en.wikipedia.org/wiki/Supernova", "year": 2026},
+    {"value": "Type Ia supernovae peak near absolute magnitude −19.3, about 5 billion times the Sun's luminosity, with little variation", "source": "Wikipedia: Supernova", "url": "https://en.wikipedia.org/wiki/Supernova", "year": 2026},
+    {"value": "Type Ia standard candles led to the dark-energy discovery (Nobel Prize 2011)", "source": "Wikipedia: Dark energy", "url": "https://en.wikipedia.org/wiki/Dark_energy", "year": 2011},
+    {"value": "SN 1987A: first supernova neutrinos detected", "source": "NASA Science: Supernovae", "url": "https://science.nasa.gov/category/universe/stars/supernovae/", "year": 1987}
+   ]
+  },
+  {
+   "id": "novae",
+   "title": "Novae",
+   "category": "remnants",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e000693",
+   "wikipedia": "Nova",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "A nova is a sudden brightening of a star, not its destruction. It happens in a close binary where a white dwarf steals hydrogen from a companion; when the stolen layer grows hot and dense enough, it ignites in a runaway thermonuclear flash that hurls the layer into space and makes the system thousands of times brighter for days or weeks. The white dwarf survives, and the cycle can repeat — recurrent novae such as T Coronae Borealis erupt every few decades. Hubble's 'Firework Nova' image shows the debris of a nova that erupted in 1901.",
+   "facts": [
+    {"value": "The Milky Way experiences roughly 25 to 75 novae per year, of which only about 10 are observed", "source": "Wikipedia: Nova", "url": "https://en.wikipedia.org/wiki/Nova", "year": 2026},
+    {"value": "Classical novae brighten by more than 12 magnitudes; recurrent novae by about 9", "source": "Wikipedia: Nova", "url": "https://en.wikipedia.org/wiki/Nova", "year": 2026},
+    {"value": "T Coronae Borealis erupted in 1217, 1787, 1866 and 1946, at intervals of 79–82 years", "source": "Wikipedia: Nova", "url": "https://en.wikipedia.org/wiki/Nova", "year": 1946},
+    {"value": "RS Ophiuchi has flared seven times: 1898, 1933, 1958, 1967, 1985, 2006 and 2021", "source": "Wikipedia: Nova", "url": "https://en.wikipedia.org/wiki/Nova", "year": 2021}
+   ]
+  },
+  {
+   "id": "neutron-stars",
+   "title": "Neutron stars",
+   "category": "remnants",
+   "status": "observed",
+   "nasaId": "PIA23863",
+   "wikipedia": "Neutron star",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
+   "description": "When a massive star's core collapses, protons and electrons are crushed together into a city-sized sphere of nearly pure neutrons — matter at the density of an atomic nucleus, where a teaspoonful would outweigh a mountain. A neutron star packs more than the Sun's mass into a radius of about ten kilometres, with gravity so strong that light bends visibly around it. Rapidly rotating and strongly magnetised examples appear as pulsars and magnetars. The NASA graphic compares the main types.",
+   "facts": [
+    {"value": "Typical radius about 12 km holding 1.4 solar masses or more", "source": "NASA Science: Neutron stars", "url": "https://science.nasa.gov/category/universe/stars/neutron-stars/", "year": 2026},
+    {"value": "Fastest known spin: PSR J1748−2446ad at about 716 rotations per second", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 2006},
+    {"value": "GW170817 (17 August 2017): the first neutron-star merger seen in gravitational waves and light, in NGC 4993 about 140 million light-years away", "source": "Wikipedia: GW170817", "url": "https://en.wikipedia.org/wiki/GW170817", "year": 2017}
+   ]
+  },
+  {
+   "id": "pulsars",
+   "title": "Pulsars",
+   "category": "remnants",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e000273",
+   "wikipedia": "Pulsar",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
+   "description": "A pulsar is a spinning neutron star whose magnetic poles beam radiation into space; each time a beam sweeps past Earth we receive a pulse, so the star ticks like a lighthouse with clock-grade regularity. Jocelyn Bell Burnell found the first in 1967 as a signal repeating every 1.3 seconds. The fastest, spun up by matter falling from a companion, rotate hundreds of times a second, and the slow decay of a binary pulsar's orbit gave the first evidence for gravitational waves. Hubble's image shows the beating heart of the Crab Nebula, powered by the pulsar left by the supernova of 1054.",
+   "facts": [
+    {"value": "First pulsar signals were seen by Jocelyn Bell in data recorded on 6 August 1967; the source is now PSR B1919+21", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 1967},
+    {"value": "PSR J1748−2446ad: period about 1.4 milliseconds, about 716 rotations per second", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 2006},
+    {"value": "The Hulse–Taylor binary pulsar PSR B1913+16, discovered 1974, earned the 1993 Nobel Prize in Physics", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 1993},
+    {"value": "The Crab pulsar powers the nebula of the supernova of 1054", "source": "NASA Science: Neutron stars", "url": "https://science.nasa.gov/category/universe/stars/neutron-stars/", "year": 2026}
+   ]
+  },
+  {
+   "id": "magnetars",
+   "title": "Magnetars",
+   "category": "remnants",
+   "status": "observed",
+   "nasaId": "PIA26274",
+   "wikipedia": "Magnetar",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
+   "description": "Magnetars are neutron stars with the strongest magnetic fields known — a thousand times stronger than an ordinary pulsar's and a trillion times stronger than Earth's. Stresses in that field crack the star's crust and release bursts of X-rays and gamma rays; rare giant flares can outshine everything else in the gamma-ray sky for a fraction of a second, even from across the galaxy. In 2020 a magnetar in the Milky Way was caught emitting a fast radio burst, tying the two phenomena together. The illustration shows a magnetar shedding material along its field lines.",
+   "facts": [
+    {"value": "Magnetic fields of about 10^9 to 10^11 tesla (10^13 to 10^15 gauss)", "source": "Wikipedia: Magnetar", "url": "https://en.wikipedia.org/wiki/Magnetar", "year": 2026},
+    {"value": "As of July 2021, 24 magnetars were confirmed with six more candidates", "source": "Wikipedia: Magnetar", "url": "https://en.wikipedia.org/wiki/Magnetar", "year": 2021},
+    {"value": "The giant flare of SGR 1806−20 on 27 December 2004 measurably affected Earth's upper atmosphere from about 50,000 light-years away", "source": "Wikipedia: Magnetar", "url": "https://en.wikipedia.org/wiki/Magnetar", "year": 2004},
+    {"value": "SGR 1935+2154 emitted a pair of luminous radio bursts on 28 April 2020 — the first fast radio burst traced to a magnetar", "source": "Wikipedia: Magnetar", "url": "https://en.wikipedia.org/wiki/Magnetar", "year": 2020}
+   ]
+  },
+  {
+   "id": "kilonovae",
+   "title": "Kilonovae",
+   "category": "remnants",
+   "status": "observed",
+   "nasaId": "PIA21910",
+   "wikipedia": "Kilonova",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
+   "description": "A kilonova is the glow of debris flung out when two neutron stars, or a neutron star and a black hole, spiral together and merge. The ejected matter is so rich in neutrons that heavy elements — gold, platinum, uranium — are forged within seconds by rapid neutron capture, and their radioactive decay powers a red-tinged afterglow lasting days. The first confirmed kilonova followed the gravitational-wave event GW170817 in 2017 and was observed by telescopes across the whole spectrum. Spitzer's image records that fading afterglow.",
+   "facts": [
+    {"value": "Kilonovae peak at about 1,000 times the brightness of a classical nova, a tenth to a hundredth of a supernova", "source": "Wikipedia: Kilonova", "url": "https://en.wikipedia.org/wiki/Kilonova", "year": 2026},
+    {"value": "The term was introduced by Metzger and colleagues in 2010", "source": "Wikipedia: Kilonova", "url": "https://en.wikipedia.org/wiki/Kilonova", "year": 2010},
+    {"value": "GW170817 (17 August 2017, NGC 4993, about 140 million light-years): the gamma-ray burst arrived 1.74 seconds after the merger", "source": "Wikipedia: GW170817", "url": "https://en.wikipedia.org/wiki/GW170817", "year": 2017},
+    {"value": "About 16,000 Earth masses of heavy elements are thought to have formed in GW170817, including about 10 Earth masses of gold and platinum", "source": "Wikipedia: GW170817", "url": "https://en.wikipedia.org/wiki/GW170817", "year": 2017}
+   ]
+  },
+  {
+   "id": "quark-stars",
+   "title": "Quark stars (hypothesis)",
+   "category": "remnants",
+   "status": "hypothesis",
+   "commons": "Illustration of relative sizes of Grand Canyon, neutron star and quark star (2002-0211-more-4).tiff",
+   "wikipedia": "Quark star",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
+   "description": "A quark star is a hypothetical object that would form if the pressure inside a neutron star grew so extreme that its neutrons dissolved into a soup of free quarks. Under the Bodmer–Witten hypothesis, 'strange' quark matter might even be stable, allowing whole stars made of it. No quark star has been confirmed: a few unusually small or cool compact objects have been proposed as candidates, but every case remains disputed, and the stability of quark matter is an unsolved problem in physics. The Chandra illustration compares a hypothetical quark star with a neutron star and the Grand Canyon.",
+   "facts": [
+    {"value": "Status: hypothetical and unconfirmed; the extreme conditions cannot be recreated in laboratories", "source": "Wikipedia: Quark star", "url": "https://en.wikipedia.org/wiki/Quark_star", "year": 2026},
+    {"value": "The Bodmer–Witten assumption holds that strange quark matter might be stable under interstellar conditions", "source": "Wikipedia: Quark star", "url": "https://en.wikipedia.org/wiki/Quark_star", "year": 1984},
+    {"value": "Proposed candidates such as RX J1856.5−3754 and the remnant 3C 58 remain controversial and inconclusive", "source": "Wikipedia: Quark star", "url": "https://en.wikipedia.org/wiki/Quark_star", "year": 2026}
    ]
   },
   {
    "id": "nebulae",
    "title": "Nebulae",
+   "category": "nebulae",
+   "status": "observed",
    "query": "carina nebula",
    "wikipedia": "Nebula",
-   "nasa": "https://science.nasa.gov/universe/what-are-nebulae/",
-   "description": "Nebulae are the universe's clouds: vast reaches of gas and dust that are stellar nurseries, stellar graves, or both. Emission nebulae like Orion glow where newborn stars ionise hydrogen; dark nebulae are dust silhouettes; planetary nebulae are the shed envelopes of dying Sun-like stars (named by Herschel for their telescope appearance — nothing to do with planets); supernova remnants are explosions still expanding. The James Webb Space Telescope's infrared vision now sees stars forming inside the pillars themselves.",
+   "nasa": "https://science.nasa.gov/category/universe/nebulae/",
+   "description": "Nebulae are the universe's clouds: vast reaches of gas and dust that are stellar nurseries, stellar graves, or both. Emission nebulae like Orion glow where newborn stars ionise hydrogen; reflection nebulae shine with scattered starlight; dark nebulae are dust silhouettes; planetary nebulae are the shed envelopes of dying Sun-like stars; supernova remnants are explosions still expanding. The James Webb Space Telescope's infrared vision now sees stars forming inside the clouds themselves, as in its image of the 'Cosmic Cliffs' of the Carina Nebula shown here.",
    "facts": [
-    "Orion Nebula: nearest massive star-forming region, ~1,300 light-years",
-    "'Planetary' nebulae are misnamed dying stars' envelopes",
-    "Star-forming pillars erode in a few million years"
+    {"value": "Orion Nebula: about 1,267 light-years away, about 25 light-years across, about 2,000 solar masses", "source": "Wikipedia: Orion Nebula", "url": "https://en.wikipedia.org/wiki/Orion_Nebula", "year": 2026},
+    {"value": "Hubble found more than 150 protoplanetary disks (proplyds) inside the Orion Nebula", "source": "Wikipedia: Orion Nebula", "url": "https://en.wikipedia.org/wiki/Orion_Nebula", "year": 2026},
+    {"value": "Nebula types: emission, reflection, dark, planetary and supernova remnants", "source": "NASA Science: Nebulae", "url": "https://science.nasa.gov/category/universe/nebulae/", "year": 2026}
    ]
   },
   {
-   "id": "galaxies",
-   "title": "Galaxies and their types",
-   "query": "hubble deep field galaxies",
-   "wikipedia": "Galaxy",
-   "nasa": "https://science.nasa.gov/universe/galaxies/",
-   "description": "Galaxies are gravitationally bound cities of stars, gas, dust and dark matter, from dwarfs of a few million stars to giants of trillions. Hubble's classification still frames them: spirals like the Milky Way and Andromeda, with star-forming arms; ellipticals, old and red, built by mergers; and irregulars shaped by interaction. The observable universe holds perhaps two hundred billion to two trillion of them, and deep-field images find galaxies whose light left when the universe was under half a billion years old.",
+   "id": "planetary-nebulae",
+   "title": "Planetary nebulae",
+   "category": "nebulae",
+   "status": "observed",
+   "nasaId": "southern_ring_nebula",
+   "wikipedia": "Planetary nebula",
+   "nasa": "https://science.nasa.gov/category/universe/nebulae/planetary-nebulae/",
+   "description": "A planetary nebula is the glowing shell of gas that a dying Sun-like star throws off at the end of its life, lit from within by the hot exposed core that will become a white dwarf. They have nothing to do with planets: William Herschel named them for their round, planet-like appearance in eighteenth-century telescopes. Shaped by winds, magnetic fields and companion stars into rings, hourglasses and butterflies, they last only tens of thousands of years before dispersing. Webb's image shows the Southern Ring Nebula in near- and mid-infrared light.",
    "facts": [
-    "Milky Way: ~100-400 billion stars, ~100,000 light-years across",
-    "Andromeda approaches at ~110 km/s; merger due in ~4.5 billion years",
-    "Most large galaxies host a central supermassive black hole"
+    {"value": "About 3,000 planetary nebulae are known in the Milky Way", "source": "Wikipedia: Planetary nebula", "url": "https://en.wikipedia.org/wiki/Planetary_nebula", "year": 2026},
+    {"value": "Roughly one light-year across; the gas expands at a few kilometres per second and fades within about 10,000 years", "source": "Wikipedia: Planetary nebula", "url": "https://en.wikipedia.org/wiki/Planetary_nebula", "year": 2026},
+    {"value": "Central stars reach temperatures around 100,000 K before cooling", "source": "Wikipedia: Planetary nebula", "url": "https://en.wikipedia.org/wiki/Planetary_nebula", "year": 2026},
+    {"value": "William Herschel discovered the Saturn Nebula in 1782 and applied the term 'planetary nebula'", "source": "Wikipedia: Planetary nebula", "url": "https://en.wikipedia.org/wiki/Planetary_nebula", "year": 1782}
    ]
   },
   {
-   "id": "dark-matter-energy",
-   "title": "Dark matter and dark energy",
-   "query": "dark matter",
-   "wikipedia": "Dark matter",
-   "nasa": "https://science.nasa.gov/universe/dark-matter-dark-energy/",
-   "description": "Everything astronomy can see — stars, gas, dust, planets — is about 5% of the universe. Roughly 27% is dark matter, invisible mass whose gravity holds galaxies together, bends light, and sculpts cosmic structure; its particle identity is unknown. The remaining ~68% is dark energy, the still-mysterious agent driving the accelerating expansion discovered in 1998. Both are named for what we do not know; mapping them is the central task of missions such as ESA's Euclid and the Vera C. Rubin Observatory.",
+   "id": "molecular-clouds",
+   "title": "Molecular clouds and dark nebulae",
+   "category": "nebulae",
+   "status": "observed",
+   "nasaId": "PIA23405",
+   "wikipedia": "Molecular cloud",
+   "nasa": "https://science.nasa.gov/category/universe/nebulae/star-forming-nebulae/",
+   "description": "Molecular clouds are the coldest, densest parts of the interstellar medium — regions where hydrogen exists as molecules rather than atoms, shielded from starlight by dust. They are where all stars are born. The largest, giant molecular clouds, hold up to millions of solar masses across hundreds of light-years, and where a dense one lies in front of a bright background it appears as a dark nebula, an apparently starless hole in the sky. Spitzer's infrared image shows the Perseus Molecular Cloud, a nursery of young stars 500 light-years across.",
    "facts": [
-    "Cosmic budget: ~5% ordinary matter, ~27% dark matter, ~68% dark energy",
-    "Rotation-curve evidence: Rubin and Ford, 1970s",
-    "Acceleration discovered via Type Ia supernovae, 1998"
+    {"value": "Giant molecular clouds: about 10 thousand to 10 million solar masses, 15 to 600 light-years across", "source": "Wikipedia: Molecular cloud", "url": "https://en.wikipedia.org/wiki/Molecular_cloud", "year": 2026},
+    {"value": "Molecular clouds fill less than one percent of the interstellar medium's volume yet are its densest part, concentrated in a ring 11,000–24,000 light-years from the galactic centre", "source": "Wikipedia: Molecular cloud", "url": "https://en.wikipedia.org/wiki/Molecular_cloud", "year": 2026},
+    {"value": "Barnard 68, a dark nebula about 500 light-years away and 0.5 light-years across, is a small molecular cloud seen in silhouette", "source": "Wikipedia: Molecular cloud", "url": "https://en.wikipedia.org/wiki/Molecular_cloud", "year": 2026}
+   ]
+  },
+  {
+   "id": "protoplanetary-disks",
+   "title": "Protoplanetary disks",
+   "category": "planets",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e001454",
+   "wikipedia": "Protoplanetary disk",
+   "nasa": "https://science.nasa.gov/exoplanets/",
+   "description": "A protoplanetary disk is the flattened rotating disc of gas and dust left around a newly formed star — the raw material of a planetary system. Dust grains in the disc stick together, grow into pebbles and planetesimals, and eventually into planets, which carve gaps and rings into the disc as they grow. Such discs are common around young stars and disappear within a few million years, setting the deadline for planet formation. Hubble's image of the disc around TW Hydrae shows a gap where a planet may be forming far from its star.",
+   "facts": [
+    {"value": "Disks have radii up to about 1,000 AU; only their innermost parts exceed 1,000 K", "source": "Wikipedia: Protoplanetary disk", "url": "https://en.wikipedia.org/wiki/Protoplanetary_disk", "year": 2026},
+    {"value": "Gas accretion onto the star continues for about 10 million years before the disk disappears; the oldest disk found is 25 million years old", "source": "Wikipedia: Protoplanetary disk", "url": "https://en.wikipedia.org/wiki/Protoplanetary_disk", "year": 2026},
+    {"value": "Hubble has revealed more than 150 protoplanetary disks in the Orion Nebula", "source": "Wikipedia: Orion Nebula", "url": "https://en.wikipedia.org/wiki/Orion_Nebula", "year": 2026}
    ]
   },
   {
    "id": "exoplanets",
    "title": "Exoplanets",
+   "category": "planets",
+   "status": "observed",
    "query": "trappist-1 system illustration",
    "wikipedia": "Exoplanet",
    "nasa": "https://science.nasa.gov/exoplanets/",
-   "description": "Planets beyond the Solar System went from speculation to census in one generation: since the 1995 discovery of 51 Pegasi b, thousands have been confirmed, most by the transit dips they carve in their stars' light. They include worlds with no Solar System analogue — hot Jupiters skimming their stars, super-Earths, planets orbiting two suns. The seven roughly Earth-sized planets of TRAPPIST-1 and the observations of JWST, which now reads the chemistry of exoplanet atmospheres, frame the field's central question: are any of them alive?",
+   "description": "Planets beyond the Solar System went from speculation to census in one generation: since the 1995 discovery of 51 Pegasi b, thousands have been confirmed, most by the transit dips they carve in their stars' light. They include worlds with no Solar System analogue — hot Jupiters skimming their stars, super-Earths, planets orbiting two suns. The seven roughly Earth-sized planets of TRAPPIST-1, shown in this illustration, and the observations of JWST, which now reads the chemistry of exoplanet atmospheres, frame the field's central question: are any of them alive?",
    "facts": [
-    "5,000+ confirmed exoplanets",
-    "First around a Sun-like star: 51 Pegasi b (Nobel 2019)",
-    "JWST detects atmospheric CO2 and water on transiting worlds"
+    {"value": "More than 6,000 confirmed exoplanets; NASA's Roman Space Telescope is expected to discover some 100,000 more", "source": "NASA Science: Exoplanets", "url": "https://science.nasa.gov/exoplanets/", "year": 2026},
+    {"value": "First planet around a Sun-like star: 51 Pegasi b, 1995 (Nobel Prize 2019)", "source": "Wikipedia: Exoplanet", "url": "https://en.wikipedia.org/wiki/Exoplanet", "year": 1995},
+    {"value": "JWST detects atmospheric carbon dioxide and water on transiting worlds", "source": "NASA Science: Exoplanets", "url": "https://science.nasa.gov/exoplanets/", "year": 2026}
    ]
   },
   {
-   "id": "cmb-big-bang",
-   "title": "The Big Bang and the cosmic microwave background",
-   "query": "planck cosmic microwave background map",
-   "wikipedia": "Cosmic microwave background",
-   "nasa": "https://science.nasa.gov/universe/overview/",
-   "description": "The universe began 13.8 billion years ago in a hot, dense state and has expanded and cooled since. Its baby picture survives: the cosmic microwave background, light released 380,000 years in, when the fog of plasma first cleared, now stretched to microwaves filling every direction at 2.7 kelvin. Found by accident in 1964 by Penzias and Wilson, its faint temperature ripples — mapped by COBE, WMAP and Planck — are the seeds of every galaxy and the strongest single pillar of Big Bang cosmology.",
+   "id": "rogue-planets",
+   "title": "Rogue planets",
+   "category": "planets",
+   "status": "observed",
+   "commons": "Icy Earth-mass Rogue Planet (SVS14380).jpg",
+   "wikipedia": "Rogue planet",
+   "nasa": "https://science.nasa.gov/exoplanets/",
+   "description": "Rogue planets, also called free-floating or interstellar planets, orbit no star at all. Some were flung out of their birth systems by gravitational encounters; others may have formed alone, like failed stars, from collapsing gas. With no sun to light them they are extraordinarily hard to see, and most detections come from their infrared glow when young or from brief gravitational-microlensing events when one drifts in front of a background star. Their total number in the Milky Way is unknown but may rival the number of stars. The NASA visualisation imagines an icy Earth-mass rogue world.",
    "facts": [
-    "Age of the universe: 13.79 ± 0.02 billion years (Planck)",
-    "CMB temperature: 2.725 K, uniform to ~1 part in 100,000",
-    "Nobel Prizes: Penzias & Wilson 1978; COBE's Mather & Smoot 2006"
+    {"value": "A 2017 microlensing study set an upper limit of about 0.25 Jupiter-mass free-floating or wide-orbit planets per main-sequence star", "source": "Wikipedia: Rogue planet", "url": "https://en.wikipedia.org/wiki/Rogue_planet", "year": 2017},
+    {"value": "PSO J318.5−22, discovered 2013: about 6–8 Jupiter masses, about 72 light-years away, in the Beta Pictoris moving group", "source": "Wikipedia: Rogue planet", "url": "https://en.wikipedia.org/wiki/Rogue_planet", "year": 2013},
+    {"value": "In September 2020 astronomers announced the first detection of an Earth-mass rogue planet (OGLE-2016-BLG-1928) by microlensing", "source": "Wikipedia: Rogue planet", "url": "https://en.wikipedia.org/wiki/Rogue_planet", "year": 2020},
+    {"value": "The Roman Space Telescope is expected to count rogue planets at least 10 times more precisely than current estimates, which range from tens of billions to trillions", "source": "Wikipedia: Rogue planet", "url": "https://en.wikipedia.org/wiki/Rogue_planet", "year": 2026}
+   ]
+  },
+  {
+   "id": "solar-wind-heliosphere",
+   "title": "The solar wind and the heliosphere",
+   "category": "solar-system",
+   "status": "observed",
+   "nasaId": "PIA22835",
+   "wikipedia": "Solar wind",
+   "nasa": "https://science.nasa.gov/heliophysics/",
+   "description": "The Sun continuously blows a thin, hot wind of charged particles outward at hundreds of kilometres per second. This solar wind inflates a vast bubble around the whole Solar System, the heliosphere, which holds back the interstellar gas outside; its outer boundary, the heliopause, lies more than a hundred times farther from the Sun than Earth. The two Voyager spacecraft crossed it in 2012 and 2018, becoming the first human-made objects in interstellar space. The illustration shows their positions outside the heliosphere.",
+   "facts": [
+    {"value": "Slow solar wind: 300–500 km/s; fast solar wind: typically about 750 km/s", "source": "Wikipedia: Solar wind", "url": "https://en.wikipedia.org/wiki/Solar_wind", "year": 2026},
+    {"value": "The wind removes about (2–3) × 10^-14 solar masses per year — an Earth mass every 150 million years", "source": "Wikipedia: Solar wind", "url": "https://en.wikipedia.org/wiki/Solar_wind", "year": 2026},
+    {"value": "Eugene Parker submitted his theory of the solar wind in November 1958", "source": "Wikipedia: Solar wind", "url": "https://en.wikipedia.org/wiki/Solar_wind", "year": 1958},
+    {"value": "Voyager 1 crossed the heliopause on 25 August 2012 at 121 AU; Voyager 2 on 5 November 2018 at 119 AU", "source": "Wikipedia: Heliosphere", "url": "https://en.wikipedia.org/wiki/Heliosphere", "year": 2018}
+   ]
+  },
+  {
+   "id": "solar-flares-cmes",
+   "title": "Solar flares and coronal mass ejections",
+   "category": "solar-system",
+   "status": "observed",
+   "nasaId": "PIA21836",
+   "wikipedia": "Coronal mass ejection",
+   "nasa": "https://science.nasa.gov/sun/solar-storms-and-flares/",
+   "description": "The Sun's tangled magnetic field stores enormous energy, and when it snaps into a new configuration the result is a solar flare — a flash of radiation across the spectrum — often accompanied by a coronal mass ejection, a billion-tonne cloud of magnetised plasma hurled into space at hundreds or thousands of kilometres per second. When such a cloud strikes Earth's magnetic field it drives a geomagnetic storm that can brighten auroras, disturb satellites and power grids, and endanger astronauts. The Solar Dynamics Observatory image shows a flare and the loops of an eruption on 14 July 2017.",
+   "facts": [
+    {"value": "Average mass ejected per CME about 1.6 × 10^12 kg; speeds from 20 to 3,200 km/s", "source": "Wikipedia: Coronal mass ejection", "url": "https://en.wikipedia.org/wiki/Coronal_mass_ejection", "year": 2026},
+    {"value": "Frequency: about one CME every five days at solar minimum, about three per day at solar maximum; they reach Earth one to five days after leaving the Sun", "source": "Wikipedia: Coronal mass ejection", "url": "https://en.wikipedia.org/wiki/Coronal_mass_ejection", "year": 2026},
+    {"value": "The largest recorded geomagnetic storm, the Carrington Event, coincided with the first observed solar flare on 1 September 1859", "source": "Wikipedia: Coronal mass ejection", "url": "https://en.wikipedia.org/wiki/Coronal_mass_ejection", "year": 1859}
+   ]
+  },
+  {
+   "id": "auroras",
+   "title": "Auroras",
+   "category": "solar-system",
+   "status": "observed",
+   "nasaId": "iss072e159172",
+   "wikipedia": "Aurora",
+   "nasa": "https://science.nasa.gov/sun/auroras/",
+   "description": "Auroras — the northern and southern lights — are the glow of Earth's upper atmosphere where charged particles guided by the planet's magnetic field crash into it. The particles come ultimately from the solar wind, funnelled toward the poles, so auroras ring the magnetic poles in ovals and spread toward the equator during geomagnetic storms. Their colours are the fingerprints of air: green and red from oxygen, blue and purple from nitrogen. Jupiter and Saturn have auroras too. The photograph was taken from the International Space Station over Canada in October 2024.",
+   "facts": [
+    {"value": "Auroras occur mostly around 100 km altitude; virtually none below 70 km and only about 6.5% above 150 km", "source": "Wikipedia: Aurora", "url": "https://en.wikipedia.org/wiki/Aurora", "year": 2026},
+    {"value": "Green light at 557.7 nm and red at 630 nm come from oxygen; blue at 428 nm from ionised nitrogen", "source": "Wikipedia: Aurora", "url": "https://en.wikipedia.org/wiki/Aurora", "year": 2026},
+    {"value": "The auroral ovals are about 6° (about 660 km) wide, centred near 67° north and south; storms push them equatorward", "source": "Wikipedia: Aurora", "url": "https://en.wikipedia.org/wiki/Aurora", "year": 2026},
+    {"value": "The May 2024 solar storms produced auroras seen as far south as Puerto Rico", "source": "Wikipedia: Coronal mass ejection", "url": "https://en.wikipedia.org/wiki/Coronal_mass_ejection", "year": 2024}
+   ]
+  },
+  {
+   "id": "lagrange-points",
+   "title": "Lagrange points",
+   "category": "solar-system",
+   "status": "observed",
+   "commons": "Lagrange points simple.svg",
+   "wikipedia": "Lagrange point",
+   "nasa": "https://science.nasa.gov/resource/what-is-a-lagrange-point/",
+   "description": "Lagrange points are the five places in the orbital plane of two bodies — the Sun and Earth, say — where the pull of both and the motion of the orbit balance so that a small third body can stay fixed relative to them. L1, L2 and L3 lie on the Sun–Earth line and are unstable but cheap to hover near; L4 and L5, sixty degrees ahead of and behind Earth, are stable and collect debris, as Jupiter's L4 and L5 collect its Trojan asteroids. Sun–Earth L1 hosts solar observatories, and L2 hosts the James Webb Space Telescope. The diagram shows the five points.",
+   "facts": [
+    {"value": "Euler found the three collinear points around 1750; Lagrange found L4 and L5 and published in 1772", "source": "Wikipedia: Lagrange point", "url": "https://en.wikipedia.org/wiki/Lagrange_point", "year": 1772},
+    {"value": "Sun–Earth L1 and L2 are each about 1,500,000 km from Earth", "source": "Wikipedia: Lagrange point", "url": "https://en.wikipedia.org/wiki/Lagrange_point", "year": 2026},
+    {"value": "SOHO, ACE and DSCOVR work near L1; JWST reached L2 on 24 January 2022, joining Gaia and Euclid", "source": "Wikipedia: Lagrange point", "url": "https://en.wikipedia.org/wiki/Lagrange_point", "year": 2022},
+    {"value": "Jupiter's L4 and L5 hold more than a million Trojan asteroids", "source": "Wikipedia: Lagrange point", "url": "https://en.wikipedia.org/wiki/Lagrange_point", "year": 2026}
+   ]
+  },
+  {
+   "id": "comets",
+   "title": "Comets",
+   "category": "solar-system",
+   "status": "observed",
+   "nasaId": "NHQ202007120001",
+   "wikipedia": "Comet",
+   "nasa": "https://science.nasa.gov/solar-system/comets/",
+   "description": "Comets are leftover building blocks of the Solar System: kilometre-scale bodies of ice, rock and dust that spend most of their lives in the cold outer reaches. When one swings close to the Sun its ices vaporise, releasing gas and dust that form a glowing coma and tails stretching millions of kilometres, always pointing away from the Sun. Short-period comets return within two centuries; long-period ones fall in from the Oort cloud on orbits of thousands of years. ESA's Rosetta orbited comet 67P for two years and landed a probe on it. The photograph shows Comet NEOWISE over Washington in July 2020.",
+   "facts": [
+    {"value": "4,584 known comets as of November 2021", "source": "Wikipedia: Comet", "url": "https://en.wikipedia.org/wiki/Comet", "year": 2021},
+    {"value": "Short-period comets have orbital periods under 200 years; Halley's Comet returns about every 75–76 years", "source": "Wikipedia: Comet", "url": "https://en.wikipedia.org/wiki/Comet", "year": 2026},
+    {"value": "Nuclei with radii up to 30 km have been observed; long-period comets are typically 4–20 km across, short-period ones mostly 1.5–5 km", "source": "Wikipedia: Comet", "url": "https://en.wikipedia.org/wiki/Comet", "year": 2026},
+    {"value": "ESA's Rosetta reached comet 67P/Churyumov–Gerasimenko in 2014 and its Philae lander made the first landing on a comet", "source": "Wikipedia: Comet", "url": "https://en.wikipedia.org/wiki/Comet", "year": 2014}
+   ]
+  },
+  {
+   "id": "asteroids-neos",
+   "title": "Asteroids and near-Earth objects",
+   "category": "solar-system",
+   "status": "observed",
+   "nasaId": "PIA25329",
+   "wikipedia": "Near-Earth object",
+   "nasa": "https://science.nasa.gov/solar-system/asteroids/",
+   "description": "Asteroids are rocky and metallic remnants of the early Solar System, most of them in the belt between Mars and Jupiter. Those whose orbits bring them within 1.3 AU of the Sun are near-Earth objects, and the largest of those that can pass close to Earth are tracked as potentially hazardous. Impacts are rare but real: a 20-metre asteroid exploded over Chelyabinsk in 2013. In 2022 NASA's DART spacecraft deliberately struck the small moon Dimorphos and measurably shortened its orbit — the first test of deflecting an asteroid. The illustration shows DART approaching the Didymos system.",
+   "facts": [
+    {"value": "37,255 near-Earth asteroids known as of 30 December 2024, 2,465 of them potentially hazardous; 867 are at least 1 km across", "source": "Wikipedia: Near-Earth object", "url": "https://en.wikipedia.org/wiki/Near-Earth_object", "year": 2024},
+    {"value": "Chelyabinsk, 2013: a previously unknown 20 m asteroid exploded with a yield of 400–500 kilotons", "source": "Wikipedia: Near-Earth object", "url": "https://en.wikipedia.org/wiki/Near-Earth_object", "year": 2013},
+    {"value": "DART struck the 160 m moonlet Dimorphos on 26 September 2022 at about 6.6 km/s, shortening its orbit by about 32–33 minutes", "source": "Wikipedia: Double Asteroid Redirection Test", "url": "https://en.wikipedia.org/wiki/Double_Asteroid_Redirection_Test", "year": 2022}
+   ]
+  },
+  {
+   "id": "meteor-showers",
+   "title": "Meteor showers",
+   "category": "solar-system",
+   "status": "observed",
+   "nasaId": "NHQ202108110003",
+   "wikipedia": "Meteor shower",
+   "nasa": "https://science.nasa.gov/solar-system/meteors-meteorites/",
+   "description": "A meteor is the streak of light made when a speck of space dust hits the atmosphere at tens of kilometres per second and burns up. Comets and some asteroids leave trails of such debris along their orbits, and when Earth crosses a trail at the same point each year we get a meteor shower, its meteors appearing to radiate from one spot in the sky — the Perseids in August, the Geminids in December. Occasionally a dense trail produces a storm of thousands of meteors an hour. The photograph shows a Perseid in August 2021.",
+   "facts": [
+    {"value": "Perseids: parent Comet Swift–Tuttle (period 133 years), peak around 13 August, zenithal hourly rate about 100, entry speed 58.8 km/s", "source": "Wikipedia: Perseids", "url": "https://en.wikipedia.org/wiki/Perseids", "year": 2026},
+    {"value": "Geminids come from the asteroid 3200 Phaethon; Leonids from Comet 55P/Tempel–Tuttle", "source": "Wikipedia: Meteor shower", "url": "https://en.wikipedia.org/wiki/Meteor_shower", "year": 2026},
+    {"value": "The 1833 Leonid storm reached an estimated peak of over one hundred thousand meteors an hour", "source": "Wikipedia: Meteor shower", "url": "https://en.wikipedia.org/wiki/Meteor_shower", "year": 1833},
+    {"value": "Entry speeds range from about 27 km/s (Taurids) to about 71 km/s (Leonids)", "source": "Wikipedia: Meteor shower", "url": "https://en.wikipedia.org/wiki/Meteor_shower", "year": 2026}
+   ]
+  },
+  {
+   "id": "interstellar-objects",
+   "title": "Interstellar objects",
+   "category": "solar-system",
+   "status": "observed",
+   "nasaId": "PIA22357",
+   "wikipedia": "Interstellar object",
+   "nasa": "https://science.nasa.gov/solar-system/comets/",
+   "description": "Interstellar objects are comets or asteroids from other star systems passing through ours on hyperbolic orbits, never to return. The first, ʻOumuamua, was spotted in 2017 as an elongated body already leaving; the second, Comet Borisov in 2019, behaved like an ordinary comet; the third, 3I/ATLAS, arrived in 2025 travelling faster than either. They are ejected planetary debris from around other stars, and so are the first samples of other planetary systems to visit ours. The illustration shows ʻOumuamua racing out of the Solar System.",
+   "facts": [
+    {"value": "1I/ʻOumuamua: discovered 19 October 2017 by Pan-STARRS, travelling at 26.33 km/s relative to the Sun at infinity", "source": "Wikipedia: Interstellar object", "url": "https://en.wikipedia.org/wiki/Interstellar_object", "year": 2017},
+    {"value": "2I/Borisov: discovered 30 August 2019 by Gennadiy Borisov with a home-built 0.65 m telescope, at 32.3 km/s", "source": "Wikipedia: Interstellar object", "url": "https://en.wikipedia.org/wiki/Interstellar_object", "year": 2019},
+    {"value": "3I/ATLAS: discovered 1 July 2025 by the ATLAS survey at about 58 km/s; perihelion 29 October 2025 at 1.357 AU", "source": "Wikipedia: Interstellar object", "url": "https://en.wikipedia.org/wiki/Interstellar_object", "year": 2025}
+   ]
+  },
+  {
+   "id": "oort-cloud",
+   "title": "The Oort cloud",
+   "category": "solar-system",
+   "status": "theoretical",
+   "nasaId": "GSFC_20171208_Archive_e001171",
+   "wikipedia": "Oort cloud",
+   "nasa": "https://science.nasa.gov/solar-system/oort-cloud/",
+   "description": "The Oort cloud is the theorised spherical shell of icy bodies surrounding the Solar System at distances of thousands to a hundred thousand times the Earth–Sun distance, marking the edge of the Sun's gravitational domain. Jan Oort proposed it in 1950 to explain where long-period comets come from: passing stars and galactic tides nudge its members inward on orbits lasting millions of years. No object has been imaged in place — the cloud is inferred from the comets it sends us, and is far too faint and distant to observe directly with present technology. The NASA graphic places it on a logarithmic scale of distances.",
+   "facts": [
+    {"value": "Inner edge about 2,000–5,000 AU; outer edge about 100,000–200,000 AU (1.6–3.2 light-years)", "source": "Wikipedia: Oort cloud", "url": "https://en.wikipedia.org/wiki/Oort_cloud", "year": 2026},
+    {"value": "The outer cloud may hold trillions of objects larger than 1 km, with a total mass of roughly five Earth masses", "source": "Wikipedia: Oort cloud", "url": "https://en.wikipedia.org/wiki/Oort_cloud", "year": 2026},
+    {"value": "Jan Oort presented the theory in 1950; no direct observation is possible with present imaging technology", "source": "Wikipedia: Oort cloud", "url": "https://en.wikipedia.org/wiki/Oort_cloud", "year": 1950},
+    {"value": "Voyager 1 will not reach the Oort cloud for about 300 years and would take about 30,000 years to pass through it", "source": "Wikipedia: Oort cloud", "url": "https://en.wikipedia.org/wiki/Oort_cloud", "year": 2026}
+   ]
+  },
+  {
+   "id": "black-holes",
+   "title": "Black holes",
+   "category": "black-holes",
+   "status": "observed",
+   "query": "black hole first image event horizon telescope",
+   "wikipedia": "Black hole",
+   "nasa": "https://science.nasa.gov/universe/black-holes/",
+   "description": "A black hole is a region where gravity has won completely: within the event horizon, escape would require exceeding the speed of light, so nothing — not even light — returns. Stellar-mass black holes form from collapsing giant stars; intermediate-mass ones are rare and elusive; supermassive black holes of millions to billions of solar masses anchor most large galaxies, including Sagittarius A* in our own. The Event Horizon Telescope imaged M87's black hole shadow in 2019 and Sagittarius A* in 2022. The image shows M87 with the EHT view of its black hole inset.",
+   "facts": [
+    {"value": "Sagittarius A*: about 4.0 million solar masses from the orbit of the star S2, about 26,000 light-years away", "source": "Wikipedia: Supermassive black hole", "url": "https://en.wikipedia.org/wiki/Supermassive_black_hole", "year": 2026},
+    {"value": "M87*: (6.5 ± 0.7) billion solar masses; the EHT image was published on 10 April 2019 from data taken in April 2017", "source": "Wikipedia: Messier 87", "url": "https://en.wikipedia.org/wiki/Messier_87", "year": 2019},
+    {"value": "Nobel Prize 2020: Penrose, Genzel and Ghez for black-hole physics and the compact object at the galactic centre", "source": "Wikipedia: Supermassive black hole", "url": "https://en.wikipedia.org/wiki/Supermassive_black_hole", "year": 2020}
+   ]
+  },
+  {
+   "id": "supermassive-black-holes",
+   "title": "Supermassive black holes",
+   "category": "black-holes",
+   "status": "observed",
+   "nasaId": "PIA16695",
+   "wikipedia": "Supermassive black hole",
+   "nasa": "https://science.nasa.gov/universe/black-holes/",
+   "description": "Nearly every large galaxy carries a supermassive black hole at its centre, from hundreds of thousands to tens of billions of solar masses. How they grew so large so early in cosmic history is an open question, and their mass tracks the properties of the surrounding galaxy closely enough that the two seem to have grown together. Ours, Sagittarius A*, was weighed by tracking stars whirling around it, work recognised with the 2020 Nobel Prize; the largest known are tens of billions of solar masses. The illustration depicts a supermassive black hole feeding at a galaxy's heart.",
+   "facts": [
+    {"value": "Classically defined as black holes above 100,000 (10^5) solar masses", "source": "Wikipedia: Supermassive black hole", "url": "https://en.wikipedia.org/wiki/Supermassive_black_hole", "year": 2026},
+    {"value": "Sagittarius A*: about 4.0 million solar masses; the Event Horizon Telescope imaged it in May 2022", "source": "Wikipedia: Supermassive black hole", "url": "https://en.wikipedia.org/wiki/Supermassive_black_hole", "year": 2022},
+    {"value": "TON 618 has an estimated mass of about 40.7 billion solar masses", "source": "Wikipedia: Supermassive black hole", "url": "https://en.wikipedia.org/wiki/Supermassive_black_hole", "year": 2026},
+    {"value": "Andrea Ghez and Reinhard Genzel shared the 2020 Nobel Prize for the discovery of a supermassive compact object at the centre of our galaxy", "source": "Wikipedia: Supermassive black hole", "url": "https://en.wikipedia.org/wiki/Supermassive_black_hole", "year": 2020}
+   ]
+  },
+  {
+   "id": "accretion-disks-jets",
+   "title": "Accretion disks and relativistic jets",
+   "category": "black-holes",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e001618",
+   "wikipedia": "Accretion disk",
+   "nasa": "https://science.nasa.gov/universe/black-holes/",
+   "description": "Matter cannot fall straight into a compact object; it spirals inward through a flattened accretion disk, and friction in the disk heats it until it glows in ultraviolet and X-rays. Accretion is the most efficient known way to turn mass into light, far outstripping nuclear fusion. Twisted magnetic fields threading the disk can launch a fraction of the infalling gas back out along the rotation axis as a pair of jets moving at nearly the speed of light, some stretching for millions of light-years. The image shows the jets of the radio galaxy Hercules A, seen by Hubble and the Very Large Array.",
+   "facts": [
+    {"value": "Accretion can convert about 10% to over 40% of infalling mass into energy, compared with about 0.7% for nuclear fusion", "source": "Wikipedia: Accretion disk", "url": "https://en.wikipedia.org/wiki/Accretion_disk", "year": 2026},
+    {"value": "The standard thin-disk model was developed by Shakura and Sunyaev in 1973", "source": "Wikipedia: Accretion disk", "url": "https://en.wikipedia.org/wiki/Accretion_disk", "year": 1973},
+    {"value": "M87's jet extends at least 1.5 kiloparsecs (5,000 light-years); Heber Curtis noted the 'curious straight ray' in 1918", "source": "Wikipedia: Messier 87", "url": "https://en.wikipedia.org/wiki/Messier_87", "year": 1918},
+    {"value": "The Blandford–Znajek mechanism (1977) explains how a spinning black hole's magnetic field can power a jet; Centaurus A's jets extend over a million light-years", "source": "Wikipedia: Astrophysical jet", "url": "https://en.wikipedia.org/wiki/Astrophysical_jet", "year": 1977}
+   ]
+  },
+  {
+   "id": "quasars-agn",
+   "title": "Quasars and active galactic nuclei",
+   "category": "black-holes",
+   "status": "observed",
+   "query": "quasar",
+   "wikipedia": "Quasar",
+   "nasa": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-are-active-galactic-nuclei/",
+   "description": "When a supermassive black hole feeds, the infalling gas spirals through an accretion disc heated to millions of degrees, outshining the entire surrounding galaxy — an active galactic nucleus. The most luminous, quasars, are visible across most of the observable universe; some launch jets of near-light-speed plasma thousands of light-years long. Quasars were most common when the universe was a few billion years old, lighthouses from the era when galaxies and their black holes grew up together.",
+   "facts": [
+    {"value": "3C 273 was identified in 1963 by Maarten Schmidt, whose spectrum showed hydrogen lines redshifted by 15.8%", "source": "Wikipedia: Quasar", "url": "https://en.wikipedia.org/wiki/Quasar", "year": 1963},
+    {"value": "More than 900,000 quasars had been found as of July 2023", "source": "Wikipedia: Quasar", "url": "https://en.wikipedia.org/wiki/Quasar", "year": 2023},
+    {"value": "Quasar activity peaked about 10 billion years ago", "source": "Wikipedia: Quasar", "url": "https://en.wikipedia.org/wiki/Quasar", "year": 2026},
+    {"value": "Powered by accretion converting mass to energy at up to roughly 10% efficiency or more", "source": "Wikipedia: Accretion disk", "url": "https://en.wikipedia.org/wiki/Accretion_disk", "year": 2026}
+   ]
+  },
+  {
+   "id": "blazars",
+   "title": "Blazars",
+   "category": "black-holes",
+   "status": "observed",
+   "nasaId": "PIA20912",
+   "wikipedia": "Blazar",
+   "nasa": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-are-active-galactic-nuclei/",
+   "description": "A blazar is an active galactic nucleus whose jet happens to point almost straight at Earth. Looking down the barrel of a jet moving at nearly the speed of light, we see its emission enormously brightened and its variability compressed, so blazars flicker violently across the spectrum from radio waves to gamma rays and are the most common sources in the gamma-ray sky. In 2017 a high-energy neutrino was traced to a flaring blazar, the first time a neutrino detector had pointed to a specific object in space. The illustration shows a blazar's jet aimed at the viewer.",
+   "facts": [
+    {"value": "A blazar is an AGN with a relativistic jet directed very nearly towards the observer", "source": "Wikipedia: Blazar", "url": "https://en.wikipedia.org/wiki/Blazar", "year": 2026},
+    {"value": "The name, combining BL Lacertae and quasar, was coined by Edward Spiegel in 1978", "source": "Wikipedia: Blazar", "url": "https://en.wikipedia.org/wiki/Blazar", "year": 1978},
+    {"value": "In July 2018 IceCube traced a neutrino detected in September 2017 to the blazar TXS 0506+056, 3.7 billion light-years away", "source": "Wikipedia: Blazar", "url": "https://en.wikipedia.org/wiki/Blazar", "year": 2018},
+    {"value": "Over three thousand BL Lac-type sources were catalogued as of 2015 (Roma-BZCAT)", "source": "Wikipedia: Blazar", "url": "https://en.wikipedia.org/wiki/Blazar", "year": 2015}
+   ]
+  },
+  {
+   "id": "microquasars",
+   "title": "Microquasars",
+   "category": "black-holes",
+   "status": "observed",
+   "nasaId": "PIA24574",
+   "wikipedia": "Microquasar",
+   "nasa": "https://science.nasa.gov/universe/black-holes/",
+   "description": "A microquasar is a quasar in miniature inside our own galaxy: a binary star in which a black hole or neutron star pulls gas from its companion into an accretion disk and fires a pair of relativistic jets. Because they are so much smaller than the black holes at galaxy centres, they change over hours instead of centuries, which makes them the best laboratories for watching how jets are launched. SS 433, whose jets precess like a lawn sprinkler, was the first known. The illustration depicts SS 433 and its changing X-ray brightness.",
+   "facts": [
+    {"value": "SS 433 became the first microquasar to be recognised in 1979, when its relativistic jets were observed", "source": "Wikipedia: Microquasar", "url": "https://en.wikipedia.org/wiki/Microquasar", "year": 1979},
+    {"value": "SS 433's jets have a mean velocity of 0.26 times the speed of light", "source": "Wikipedia: Astrophysical jet", "url": "https://en.wikipedia.org/wiki/Astrophysical_jet", "year": 2026},
+    {"value": "Apparent superluminal motion of radio knots in GRS 1915+105 was discovered by Mirabel and Rodríguez in 1994", "source": "Wikipedia: Microquasar", "url": "https://en.wikipedia.org/wiki/Microquasar", "year": 1994}
+   ]
+  },
+  {
+   "id": "tidal-disruption-events",
+   "title": "Tidal disruption events",
+   "category": "black-holes",
+   "status": "observed",
+   "nasaId": "PIA25440",
+   "wikipedia": "Tidal disruption event",
+   "nasa": "https://science.nasa.gov/universe/black-holes/",
+   "description": "When a star wanders too close to a supermassive black hole, the black hole's tides stretch it into a stream of gas — an event astronomers call spaghettification. Roughly half the debris escapes; the rest falls back, forms a short-lived accretion disk, and produces a flare that can outshine the host galaxy for months. Predicted in the 1970s and 1980s and first seen in the 1990s, tidal disruption events are now found by the dozen by wide-field surveys, and a few have launched relativistic jets. The illustration shows a stream of stellar gas feeding a black hole's disk.",
+   "facts": [
+    {"value": "Martin Rees predicted in 1988 that about half of the disrupted star's material stays bound and accretes, forming a luminous disk", "source": "Wikipedia: Tidal disruption event", "url": "https://en.wikipedia.org/wiki/Tidal_disruption_event", "year": 1988},
+    {"value": "About 100 tidal disruption events had been discovered as of May 2024", "source": "Wikipedia: Tidal disruption event", "url": "https://en.wikipedia.org/wiki/Tidal_disruption_event", "year": 2024},
+    {"value": "Swift J1644+57 (2011) launched a relativistic jet from a disruption 3.8 billion light-years away that lasted 1.5 years; AT2022cmc (2022) is another jetted event", "source": "Wikipedia: Tidal disruption event", "url": "https://en.wikipedia.org/wiki/Tidal_disruption_event", "year": 2022}
+   ]
+  },
+  {
+   "id": "hawking-radiation",
+   "title": "Hawking radiation (theoretical)",
+   "category": "black-holes",
+   "status": "theoretical",
+   "commons": "Black hole (NASA).jpg",
+   "wikipedia": "Hawking radiation",
+   "nasa": "https://science.nasa.gov/universe/black-holes/",
+   "description": "In 1974 Stephen Hawking showed that when quantum mechanics is applied near an event horizon, a black hole should not be perfectly black: it should emit a faint thermal glow and, over unimaginable spans of time, evaporate. The effect is a firm prediction of combining general relativity with quantum field theory, but it has never been observed. For any black hole formed from a star, the radiation is far colder than the cosmic microwave background, so such holes absorb more than they emit and cannot yet shrink. The NASA illustration shows a black hole with its accretion disk.",
+   "facts": [
+    {"value": "Predicted by Stephen Hawking in 1974; such radiation has not yet been detected", "source": "Wikipedia: Hawking radiation", "url": "https://en.wikipedia.org/wiki/Hawking_radiation", "year": 1974},
+    {"value": "Temperature is inversely proportional to mass: stellar black holes are colder than the 2.7 K cosmic microwave background and so cannot currently evaporate", "source": "Wikipedia: Hawking radiation", "url": "https://en.wikipedia.org/wiki/Hawking_radiation", "year": 2026},
+    {"value": "A solar-mass black hole would take more than 10^67 years to evaporate, against a universe age of about 1.4 × 10^10 years", "source": "Wikipedia: Hawking radiation", "url": "https://en.wikipedia.org/wiki/Hawking_radiation", "year": 2026}
+   ]
+  },
+  {
+   "id": "primordial-black-holes",
+   "title": "Primordial black holes (hypothesis)",
+   "category": "black-holes",
+   "status": "hypothesis",
+   "commons": "Primordial Black Holes (SVS14524 - PBH Lifetimes Infographic FINAL).jpg",
+   "wikipedia": "Primordial black hole",
+   "nasa": "https://science.nasa.gov/universe/black-holes/",
+   "description": "Primordial black holes are a hypothesis, not an observed class: black holes that might have formed in the first fraction of a second after the Big Bang from unusually dense patches of the early universe, rather than from collapsing stars. If they exist they could span an enormous range of masses, and those below about a trillion kilograms would already have evaporated through Hawking radiation. They are a candidate for some or all of the dark matter, but searches have so far been inconclusive and their existence remains unproven. The NASA infographic relates a primordial black hole's mass to its lifetime.",
+   "facts": [
+    {"value": "First proposed by Zel'dovich and Novikov in 1966; the first in-depth study was Hawking's in 1971", "source": "Wikipedia: Primordial black hole", "url": "https://en.wikipedia.org/wiki/Primordial_black_hole", "year": 1971},
+    {"value": "Possible initial masses range from 10^-8 kg (Planck relics) to more than thousands of solar masses; those below about 10^12 kg would not survive to today", "source": "Wikipedia: Primordial black hole", "url": "https://en.wikipedia.org/wiki/Primordial_black_hole", "year": 2026},
+    {"value": "Their existence remains hypothetical; evidence that they constitute dark matter was inconclusive as of 2023", "source": "Wikipedia: Primordial black hole", "url": "https://en.wikipedia.org/wiki/Primordial_black_hole", "year": 2023}
+   ]
+  },
+  {
+   "id": "wormholes",
+   "title": "Wormholes (hypothesis)",
+   "category": "black-holes",
+   "status": "hypothesis",
+   "wikipedia": "Wormhole",
+   "nasa": "https://science.nasa.gov/universe/",
+   "description": "A wormhole is a hypothetical shortcut through spacetime — a tunnel connecting two distant regions, permitted as a solution of Einstein's field equations (the Einstein–Rosen bridge, 1935). None has ever been observed, and known physics gives no way to hold one open: traversable versions would require 'exotic matter' with negative energy density in quantities nothing observed can supply. They remain a rigorous theoretical curiosity and science fiction's favourite engine, not an established feature of the universe — a distinction this page keeps explicit. The diagram is a spacetime model of an Einstein–Rosen bridge.",
+   "facts": [
+    {"value": "Status: hypothetical only — never observed", "source": "Wikipedia: Wormhole", "url": "https://en.wikipedia.org/wiki/Wormhole", "year": 2026},
+    {"value": "The Einstein–Rosen bridge was published in 1935", "source": "Wikipedia: Wormhole", "url": "https://en.wikipedia.org/wiki/Wormhole", "year": 1935},
+    {"value": "Traversable wormholes would require exotic matter with negative energy density", "source": "Wikipedia: Wormhole", "url": "https://en.wikipedia.org/wiki/Wormhole", "year": 2026}
+   ]
+  },
+  {
+   "id": "gamma-ray-bursts",
+   "title": "Gamma-ray bursts",
+   "category": "high-energy",
+   "status": "observed",
+   "commons": "Gamma-ray-burst-illustration.jpg",
+   "wikipedia": "Gamma-ray burst",
+   "nasa": "https://science.nasa.gov/universe/gamma-ray-bursts-harvesting-knowledge-from-the-universes-most-powerful-explosions/",
+   "description": "For a few seconds, a gamma-ray burst can outshine every other source in the gamma-ray sky combined — the most luminous explosions known. Long bursts come from the collapse of massive, rapidly rotating stars into black holes, their energy funnelled into narrow jets; short bursts come from neutron-star mergers, confirmed in 2017 when one arrived alongside gravitational waves. Discovered by Cold-War satellites watching for nuclear tests, they are now cosmological tools seen from the universe's first billion years. The NASA Goddard illustration shows a burst's jets punching out of a collapsing star.",
+   "facts": [
+    {"value": "Brightest recorded: GRB 221009A on 9 October 2022, about 2.4 billion light-years away (redshift 0.151), thought to be a once-in-10,000-years event", "source": "Wikipedia: GRB 221009A", "url": "https://en.wikipedia.org/wiki/GRB_221009A", "year": 2022},
+    {"value": "Short bursts are neutron-star mergers: GRB 170817A followed the gravitational-wave event GW170817 by 1.74 seconds", "source": "Wikipedia: GW170817", "url": "https://en.wikipedia.org/wiki/GW170817", "year": 2017},
+    {"value": "Discovered in 1967 by the Vela satellites and declassified in 1973", "source": "NASA Science: What are gamma-ray bursts?", "url": "https://science.nasa.gov/universe/gamma-ray-bursts-harvesting-knowledge-from-the-universes-most-powerful-explosions/", "year": 1973}
+   ]
+  },
+  {
+   "id": "fast-radio-bursts",
+   "title": "Fast radio bursts",
+   "category": "high-energy",
+   "status": "observed",
+   "commons": "Canadian Hydrogen Intensity Mapping Experiment - overall.jpg",
+   "wikipedia": "Fast radio burst",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
+   "description": "Fast radio bursts are flashes of radio waves lasting about a millisecond that release, in that instant, as much energy as the Sun emits in days. The first was found in 2007 in archived data, and for years their origin was a mystery; most come from distant galaxies, some repeat, and in 2020 a burst from a magnetar inside the Milky Way showed that at least some are produced by these hyper-magnetised neutron stars. The CHIME telescope in Canada, pictured, now catalogues them by the hundred and uses them to weigh the gas between galaxies.",
+   "facts": [
+    {"value": "The first (Lorimer) burst was discovered in 2007 in Parkes Observatory data recorded on 24 July 2001", "source": "Wikipedia: Fast radio burst", "url": "https://en.wikipedia.org/wiki/Fast_radio_burst", "year": 2007},
+    {"value": "Durations range from a fraction of a millisecond to about 3 seconds; as many as 10,000 may occur per day over the whole sky", "source": "Wikipedia: Fast radio burst", "url": "https://en.wikipedia.org/wiki/Fast_radio_burst", "year": 2026},
+    {"value": "FRB 121102 (found 2012) was the first repeating source; on 28 April 2020 a burst was detected from the Milky Way magnetar SGR 1935+2154", "source": "Wikipedia: Fast radio burst", "url": "https://en.wikipedia.org/wiki/Fast_radio_burst", "year": 2020},
+    {"value": "CHIME's first catalogue held 474 non-repeating and 18 repeating sources from August 2018 to July 2019", "source": "Wikipedia: Fast radio burst", "url": "https://en.wikipedia.org/wiki/Fast_radio_burst", "year": 2021}
+   ]
+  },
+  {
+   "id": "cosmic-rays",
+   "title": "Cosmic rays",
+   "category": "high-energy",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e001552",
+   "wikipedia": "Cosmic ray",
+   "nasa": "https://science.nasa.gov/universe/",
+   "description": "Cosmic rays are not rays but particles — mostly bare protons, with some heavier nuclei and electrons — travelling at nearly the speed of light and striking Earth's atmosphere from every direction. Most are accelerated by the shock waves of supernova remnants in our galaxy; the rarest carry the energy of a thrown baseball in a single subatomic particle and must come from beyond the Milky Way, from sources still unidentified. Victor Hess discovered them from a balloon in 1912. The image shows the supernova remnant W44, where Fermi caught cosmic-ray protons colliding with gas.",
+   "facts": [
+    {"value": "Discovered by Victor Hess in 1912 on a balloon flight to 5,300 m (Nobel Prize 1936)", "source": "Wikipedia: Cosmic ray", "url": "https://en.wikipedia.org/wiki/Cosmic_ray", "year": 1912},
+    {"value": "About 90% protons, about 9% helium nuclei, about 1% heavier nuclei", "source": "Wikipedia: Cosmic ray", "url": "https://en.wikipedia.org/wiki/Cosmic_ray", "year": 2026},
+    {"value": "The spectrum extends beyond 10^20 eV; the 'Oh-My-God' particle of 1991 approached 3 × 10^20 eV", "source": "Wikipedia: Cosmic ray", "url": "https://en.wikipedia.org/wiki/Cosmic_ray", "year": 1991},
+    {"value": "Fermi's gamma-ray observations of the remnant W44 showed supernova remnants accelerate cosmic-ray protons", "source": "NASA Image Library: NASA's Fermi Proves Supernova Remnants Produce Cosmic Rays", "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001552", "year": 2013}
+   ]
+  },
+  {
+   "id": "neutrino-astronomy",
+   "title": "Neutrino astronomy",
+   "category": "high-energy",
+   "status": "observed",
+   "commons": "IceCube Neutrino Observatory in 2023 02.jpg",
+   "wikipedia": "Neutrino astronomy",
+   "nasa": "https://science.nasa.gov/universe/",
+   "description": "Neutrinos are ghostly particles that pass through stars and planets almost untouched, which makes them terrible to catch and wonderful messengers: they escape from places light cannot, such as the core of the Sun or the heart of a collapsing star. A burst of neutrinos from Supernova 1987A was the first ever detected from beyond the Solar System. IceCube, a cubic kilometre of instrumented Antarctic ice, now sees high-energy neutrinos from distant galaxies and, since 2023, from the plane of the Milky Way itself. The photograph shows the IceCube laboratory at the South Pole.",
+   "facts": [
+    {"value": "Raymond Davis Jr. and John Bahcall first detected solar neutrinos with the Homestake experiment in 1968", "source": "Wikipedia: Neutrino astronomy", "url": "https://en.wikipedia.org/wiki/Neutrino_astronomy", "year": 1968},
+    {"value": "Neutrinos from Supernova 1987A confirmed the prediction that supernovae produce neutrino bursts", "source": "Wikipedia: Neutrino astronomy", "url": "https://en.wikipedia.org/wiki/Neutrino_astronomy", "year": 1987},
+    {"value": "IceCube reported the first astrophysical high-energy neutrinos in 2013, traced one to the blazar TXS 0506+056 (2018), found 79 from the galaxy NGC 1068 (2022) and detected the Milky Way's plane in neutrinos (2023)", "source": "Wikipedia: Neutrino astronomy", "url": "https://en.wikipedia.org/wiki/Neutrino_astronomy", "year": 2023}
    ]
   },
   {
    "id": "gravitational-waves",
    "title": "Gravitational waves",
+   "category": "high-energy",
+   "status": "observed",
    "query": "gravitational waves",
    "wikipedia": "Gravitational wave",
    "nasa": "https://science.nasa.gov/universe/",
-   "description": "Einstein predicted in 1916 that accelerating masses ripple spacetime itself; a century later, on 14 September 2015, the LIGO detectors measured arms 4 km long changing length by a thousandth of a proton's width as the waves from two merging black holes passed through Earth. Gravitational-wave astronomy now logs mergers routinely, heard rather than seen, and the 2017 neutron-star merger GW170817 — observed in waves and light together — showed such collisions forge heavy elements like gold and platinum.",
+   "description": "Einstein predicted in 1916 that accelerating masses would ripple spacetime itself, stretching and squeezing space as they pass. A century later, on 14 September 2015, the LIGO detectors measured arms 4 km long changing length by a thousandth of a proton's width as the waves from two merging black holes swept through Earth. Gravitational-wave astronomy now logs mergers routinely, heard rather than seen, and the 2017 neutron-star merger GW170817 — observed in waves and light together — showed such collisions forge heavy elements like gold and platinum. A growing network of detectors, including Virgo and KAGRA alongside the two LIGO instruments, now triangulates each merger's location on the sky.",
    "facts": [
-    "First detection GW150914: black holes of 36 and 29 solar masses",
-    "Nobel Prize 2017: Weiss, Barish, Thorne",
-    "GW170817 confirmed neutron-star mergers make heavy elements"
+    {"value": "First detection GW150914: black holes of 36 and 29 solar masses", "source": "Wikipedia: Gravitational wave", "url": "https://en.wikipedia.org/wiki/Gravitational_wave", "year": 2015},
+    {"value": "Nobel Prize 2017: Weiss, Barish and Thorne", "source": "Wikipedia: Gravitational wave", "url": "https://en.wikipedia.org/wiki/Gravitational_wave", "year": 2017},
+    {"value": "GW170817 was observed by more than 70 observatories; the paper had almost 4,000 authors", "source": "Wikipedia: GW170817", "url": "https://en.wikipedia.org/wiki/GW170817", "year": 2017},
+    {"value": "The GWTC-3 catalogue lists 90 events through the third observing run", "source": "Wikipedia: List of gravitational wave observations", "url": "https://en.wikipedia.org/wiki/List_of_gravitational_wave_observations", "year": 2021}
+   ]
+  },
+  {
+   "id": "gravitational-lensing",
+   "title": "Gravitational lensing",
+   "category": "cosmology",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e001983",
+   "wikipedia": "Gravitational lens",
+   "nasa": "https://science.nasa.gov/universe/dark-matter-dark-energy/",
+   "description": "Mass bends the path of light, so a galaxy or cluster lying between us and a more distant source acts as a lens: it magnifies the background object, distorts it into arcs, or splits it into multiple images. Eddington's 1919 eclipse measurement of starlight bent by the Sun was the first test of general relativity, and the first lensed quasar was found sixty years later. Lensing now maps dark matter directly — because it responds to all mass, visible or not — and lets telescopes see galaxies far too faint to detect otherwise. Hubble's image of Abell 1689 shows dozens of lensed arcs.",
+   "facts": [
+    {"value": "Eddington, Dyson and colleagues observed the deflection of starlight by the Sun at the total eclipse of 29 May 1919", "source": "Wikipedia: Gravitational lens", "url": "https://en.wikipedia.org/wiki/Gravitational_lens", "year": 1919},
+    {"value": "Einstein published 'Lens-like action of a star by the deviation of light in the gravitational field' in Science in 1936", "source": "Wikipedia: Gravitational lens", "url": "https://en.wikipedia.org/wiki/Gravitational_lens", "year": 1936},
+    {"value": "The first gravitational lens, the Twin Quasar SBS 0957+561, was discovered in 1979 by Walsh, Carswell and Weymann", "source": "Wikipedia: Gravitational lens", "url": "https://en.wikipedia.org/wiki/Gravitational_lens", "year": 1979},
+    {"value": "In the Einstein Cross, four images of one distant quasar appear around a foreground galaxy", "source": "Wikipedia: Gravitational lens", "url": "https://en.wikipedia.org/wiki/Gravitational_lens", "year": 2026}
+   ]
+  },
+  {
+   "id": "galaxies",
+   "title": "Galaxies and their types",
+   "category": "galaxies",
+   "status": "observed",
+   "query": "hubble deep field galaxies",
+   "wikipedia": "Galaxy",
+   "nasa": "https://science.nasa.gov/universe/galaxies/",
+   "description": "Galaxies are gravitationally bound cities of stars, gas, dust and dark matter, from dwarfs of a few million stars to giants of trillions. Hubble's classification still frames them: spirals like the Milky Way and Andromeda, with star-forming arms; ellipticals, old and red, built by mergers; and irregulars shaped by interaction. The observable universe holds perhaps two hundred billion to two trillion of them, and deep-field images find galaxies whose light left when the universe was under half a billion years old.",
+   "facts": [
+    {"value": "A 2016 study estimated at least two trillion galaxies in the observable universe; earlier Hubble estimates gave about 125 billion", "source": "Wikipedia: Galaxy", "url": "https://en.wikipedia.org/wiki/Galaxy", "year": 2016},
+    {"value": "Edwin Hubble's morphological classification dates from 1926", "source": "Wikipedia: Galaxy", "url": "https://en.wikipedia.org/wiki/Galaxy", "year": 1926},
+    {"value": "The Milky Way holds about 200 billion stars and is at least 87,400 light-years across; Andromeda lies about 2.4 million light-years away", "source": "Wikipedia: Galaxy", "url": "https://en.wikipedia.org/wiki/Galaxy", "year": 2026},
+    {"value": "Most large galaxies host a central supermassive black hole", "source": "NASA Science: Galaxies", "url": "https://science.nasa.gov/universe/galaxies/", "year": 2026}
+   ]
+  },
+  {
+   "id": "galaxy-mergers",
+   "title": "Galaxy collisions and mergers",
+   "category": "galaxies",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e001327",
+   "wikipedia": "Interacting galaxy",
+   "nasa": "https://science.nasa.gov/universe/galaxies/",
+   "description": "Galaxies are so far apart relative to their size that they rarely collide head-on, yet over billions of years gravity draws neighbours together. Their stars almost never hit one another; instead tides pull out long streamers, gas clouds crash and ignite bursts of star formation, and after a few hundred million years the pair settles into a single larger galaxy, often an elliptical. Mergers built most big galaxies, and the Milky Way and Andromeda are approaching each other now. Hubble's image shows the Antennae galaxies mid-collision.",
+   "facts": [
+    {"value": "Andromeda approaches the Milky Way at about 110 km/s; a merger has been predicted in about 4.5–5 billion years", "source": "Wikipedia: Andromeda–Milky Way collision", "url": "https://en.wikipedia.org/wiki/Andromeda%E2%80%93Milky_Way_collision", "year": 2026},
+    {"value": "A 2025 study using Gaia and Hubble data put the chance of a head-on collision within 10 billion years at only about 50%, and about 2% within 4–5 billion years", "source": "Wikipedia: Andromeda–Milky Way collision", "url": "https://en.wikipedia.org/wiki/Andromeda%E2%80%93Milky_Way_collision", "year": 2025},
+    {"value": "When two spiral galaxies collide, compressed hydrogen in their disks produces strong star formation, as in the Antennae galaxies", "source": "Wikipedia: Andromeda–Milky Way collision", "url": "https://en.wikipedia.org/wiki/Andromeda%E2%80%93Milky_Way_collision", "year": 2026}
+   ]
+  },
+  {
+   "id": "galaxy-clusters",
+   "title": "Galaxy clusters and superclusters",
+   "category": "galaxies",
+   "status": "observed",
+   "nasaId": "PIA17569",
+   "wikipedia": "Galaxy cluster",
+   "nasa": "https://science.nasa.gov/universe/galaxies/",
+   "description": "Galaxy clusters are the largest gravitationally bound structures in the universe: hundreds to thousands of galaxies moving through a common halo of dark matter and a bath of gas so hot it shines in X-rays. The galaxies themselves are a minor ingredient — most of a cluster's ordinary matter is that gas, and most of its mass is dark. Clusters gather into loose superclusters such as Laniakea, which contains the Milky Way. Studying the Coma cluster in 1933, Fritz Zwicky found the first evidence for dark matter. Hubble's deep image shows Abell 2744, the 'Pandora' cluster.",
+   "facts": [
+    {"value": "Clusters contain 100 to 1,000 galaxies and 10^14 to 10^15 solar masses: about 1% galaxies, 9% hot gas and 90% dark matter", "source": "Wikipedia: Galaxy cluster", "url": "https://en.wikipedia.org/wiki/Galaxy_cluster", "year": 2026},
+    {"value": "The Coma Cluster: over 1,000 galaxies, about 321 million light-years away, about 7 × 10^14 solar masses; Zwicky inferred dark matter from it in 1933", "source": "Wikipedia: Coma Cluster", "url": "https://en.wikipedia.org/wiki/Coma_Cluster", "year": 1933},
+    {"value": "Laniakea, defined in 2014, spans about 400 million light-years, holds about 100,000 galaxies and about 10^17 solar masses", "source": "Wikipedia: Laniakea Supercluster", "url": "https://en.wikipedia.org/wiki/Laniakea_Supercluster", "year": 2014}
+   ]
+  },
+  {
+   "id": "cosmic-web-voids",
+   "title": "The cosmic web and voids",
+   "category": "galaxies",
+   "status": "observed",
+   "commons": "Large-scale structure of light distribution in the universe.jpg",
+   "wikipedia": "Galaxy filament",
+   "nasa": "https://science.nasa.gov/universe/galaxies/",
+   "description": "On the largest scales, matter is not spread evenly. Galaxies and clusters lie along filaments and sheets that surround vast, nearly empty voids, forming a foam-like pattern called the cosmic web. It grew from tiny density ripples in the early universe, amplified by gravity, with dark matter providing the scaffolding on which galaxies formed. The voids are the largest structures of all — hundreds of millions of light-years across, containing only a few galaxies. The image is a computer simulation of the web's light distribution.",
+   "facts": [
+    {"value": "Voids typically span 10 to 100 megaparsecs (30 to 300 million light-years) with less than a tenth of the universe's mean density", "source": "Wikipedia: Cosmic void", "url": "https://en.wikipedia.org/wiki/Cosmic_void", "year": 2026},
+    {"value": "Voids were first identified in 1978 by Stephen Gregory and Laird Thompson at Kitt Peak", "source": "Wikipedia: Cosmic void", "url": "https://en.wikipedia.org/wiki/Cosmic_void", "year": 1978},
+    {"value": "The Boötes Void, found by Robert Kirshner in 1981, has a radius of about 62 megaparsecs (nearly 200 million light-years) and contains only about 60 galaxies", "source": "Wikipedia: Boötes Void", "url": "https://en.wikipedia.org/wiki/Bo%C3%B6tes_Void", "year": 1981},
+    {"value": "The Milky Way sits inside a large under-density known as the KBC Void", "source": "Wikipedia: Cosmic void", "url": "https://en.wikipedia.org/wiki/Cosmic_void", "year": 2026}
+   ]
+  },
+  {
+   "id": "fermi-bubbles",
+   "title": "The Fermi bubbles",
+   "category": "galaxies",
+   "status": "observed",
+   "nasaId": "GSFC_20171208_Archive_e001981",
+   "wikipedia": "Fermi bubbles",
+   "nasa": "https://science.nasa.gov/universe/galaxies/",
+   "description": "The Fermi bubbles are two enormous lobes of gamma-ray-emitting plasma extending above and below the centre of the Milky Way, together spanning roughly half the visible sky's height though invisible to the eye. They were an unexpected discovery in 2010 from data of the Fermi Gamma-ray Space Telescope. Their sharp edges and symmetry suggest a single powerful event in the galaxy's past — most likely an outburst from the central black hole, Sagittarius A*, or an intense burst of star formation millions of years ago. The Fermi data are shown here overlaid on the galaxy.",
+   "facts": [
+    {"value": "Announced in November 2010 from Fermi data; the 2014 Bruno Rossi Prize went to Tracy Slatyer, Douglas Finkbeiner and Meng Su for the discovery", "source": "Wikipedia: Fermi bubbles", "url": "https://en.wikipedia.org/wiki/Fermi_bubbles", "year": 2010},
+    {"value": "They extend up to about 25,000 light-years above and below the galactic centre", "source": "Wikipedia: Fermi bubbles", "url": "https://en.wikipedia.org/wiki/Fermi_bubbles", "year": 2026},
+    {"value": "By 2022, detailed simulations supported an origin in activity of the Sagittarius A* black hole", "source": "Wikipedia: Fermi bubbles", "url": "https://en.wikipedia.org/wiki/Fermi_bubbles", "year": 2022}
+   ]
+  },
+  {
+   "id": "cmb-big-bang",
+   "title": "The Big Bang and the cosmic microwave background",
+   "category": "cosmology",
+   "status": "observed",
+   "query": "planck cosmic microwave background map",
+   "wikipedia": "Cosmic microwave background",
+   "nasa": "https://science.nasa.gov/universe/overview/",
+   "description": "The universe began 13.8 billion years ago in a hot, dense state and has expanded and cooled since. Its baby picture survives: the cosmic microwave background, light released about 380,000 years in, when the fog of plasma first cleared, now stretched to microwaves filling every direction at 2.7 kelvin. Found by accident in 1964 by Penzias and Wilson, its faint temperature ripples — mapped by COBE, WMAP and Planck — are the seeds of every galaxy and the strongest single pillar of Big Bang cosmology.",
+   "facts": [
+    {"value": "Age of the universe: 13.799 ± 0.021 billion years (Planck)", "source": "Wikipedia: Cosmic microwave background", "url": "https://en.wikipedia.org/wiki/Cosmic_microwave_background", "year": 2015},
+    {"value": "CMB temperature 2.72548 ± 0.00057 K; released about 379,000 years after the Big Bang", "source": "Wikipedia: Cosmic microwave background", "url": "https://en.wikipedia.org/wiki/Cosmic_microwave_background", "year": 2026},
+    {"value": "Discovered on 20 May 1964 by Arno Penzias and Robert Wilson (Nobel Prize 1978); COBE's Mather and Smoot won in 2006", "source": "Wikipedia: Cosmic microwave background", "url": "https://en.wikipedia.org/wiki/Cosmic_microwave_background", "year": 1964},
+    {"value": "Temperature variations are just over 100 microkelvin after removing the dipole — isotropic to roughly one part in 25,000", "source": "Wikipedia: Cosmic microwave background", "url": "https://en.wikipedia.org/wiki/Cosmic_microwave_background", "year": 2026}
+   ]
+  },
+  {
+   "id": "cosmic-inflation",
+   "title": "Cosmic inflation (theoretical)",
+   "category": "cosmology",
+   "status": "theoretical",
+   "nasaId": "PIA16876",
+   "wikipedia": "Cosmic inflation",
+   "nasa": "https://science.nasa.gov/universe/overview/",
+   "description": "Inflation is the theory that in its first tiny fraction of a second the universe expanded exponentially, growing by an enormous factor before settling into the ordinary expansion seen today. Proposed around 1980, it explains why the universe is so uniform and so flat, and why the cosmic microwave background carries ripples of just the size observed — those ripples would be quantum fluctuations stretched to cosmic scale. Inflation is the standard framework of modern cosmology, but no direct signature such as primordial gravitational waves has been confirmed; a 2014 claim of one was later attributed to galactic dust. ESA's Planck graphic summarises the history of the universe.",
+   "facts": [
+    {"value": "Alan Guth proposed inflation in January 1981 and coined the term; Starobinsky and Linde made major contributions in the same period", "source": "Wikipedia: Cosmic inflation", "url": "https://en.wikipedia.org/wiki/Cosmic_inflation", "year": 1981},
+    {"value": "Distances doubled every 10^-37 seconds and the expansion lasted at least 10^-35 seconds", "source": "Wikipedia: Cosmic inflation", "url": "https://en.wikipedia.org/wiki/Cosmic_inflation", "year": 2026},
+    {"value": "BICEP2's March 2014 claim of primordial B-mode polarisation was withdrawn as later data showed the tensor-to-scalar ratio r is 0.06 or lower at 95% confidence", "source": "Wikipedia: Cosmic inflation", "url": "https://en.wikipedia.org/wiki/Cosmic_inflation", "year": 2015},
+    {"value": "Observations show the universe flat to within half a percent and homogeneous to one part in 100,000, as inflation predicts", "source": "Wikipedia: Cosmic inflation", "url": "https://en.wikipedia.org/wiki/Cosmic_inflation", "year": 2026}
+   ]
+  },
+  {
+   "id": "redshift-expansion",
+   "title": "Redshift and the expanding universe",
+   "category": "cosmology",
+   "status": "observed",
+   "nasaId": "PIA15818",
+   "wikipedia": "Hubble's law",
+   "nasa": "https://science.nasa.gov/universe/overview/",
+   "description": "The light of distant galaxies is shifted toward the red because space itself is expanding, stretching the waves as they travel. The farther a galaxy, the faster it recedes — Hubble's law, derived by Lemaître in 1927 and confirmed by Hubble's observations in 1929. The rate today, the Hubble constant, is measured two ways: from the early universe via the microwave background, and from the nearby universe via a ladder of Cepheids and supernovae. The two disagree by several percent, a 'Hubble tension' that remains unexplained. The illustration shows the cosmic distance ladder.",
+   "facts": [
+    {"value": "Lemaître derived the expanding universe and what became Hubble's law in 1927; Hubble's 1929 observations gave a rate of about 500 km/s/Mpc, far too high because of calibration errors", "source": "Wikipedia: Hubble tension", "url": "https://en.wikipedia.org/wiki/Hubble_tension", "year": 1929},
+    {"value": "Planck 2018 (early universe): 67.4 ± 0.5 km/s/Mpc; SH0ES distance ladder: 74.03 ± 1.42 km/s/Mpc, confirmed by JWST in 2023", "source": "Wikipedia: Hubble tension", "url": "https://en.wikipedia.org/wiki/Hubble_tension", "year": 2023},
+    {"value": "The two methods disagree at more than 5 sigma", "source": "Wikipedia: Hubble tension", "url": "https://en.wikipedia.org/wiki/Hubble_tension", "year": 2026}
+   ]
+  },
+  {
+   "id": "dark-matter",
+   "title": "Dark matter",
+   "category": "cosmology",
+   "status": "observed",
+   "nasaId": "PIA26702",
+   "wikipedia": "Dark matter",
+   "nasa": "https://science.nasa.gov/universe/dark-matter-dark-energy/",
+   "description": "Dark matter is the invisible mass whose gravity holds galaxies and clusters together, bends light, and sculpted the cosmic web. It outweighs ordinary matter about five to one and has been detected only through gravity: galaxies rotate too fast for their visible stars, clusters would fly apart without it, and lensing maps its distribution directly. Its nature is unknown — decades of searches for weakly interacting particles have found nothing, and attention has shifted to alternatives such as axions. Webb's image here is overlaid with a lensing map of dark matter in blue.",
+   "facts": [
+    {"value": "Dark matter is 26.8% of the universe's mass-energy and about 85% of all matter (Planck)", "source": "Wikipedia: Dark matter", "url": "https://en.wikipedia.org/wiki/Dark_matter", "year": 2013},
+    {"value": "Fritz Zwicky estimated in 1933 that the Coma Cluster had about 400 times more mass than was visible", "source": "Wikipedia: Dark matter", "url": "https://en.wikipedia.org/wiki/Dark_matter", "year": 1933},
+    {"value": "Vera Rubin and Kent Ford measured flat galaxy rotation curves in the 1970s; the Bullet Cluster (2006) showed mass separated from visible matter", "source": "Wikipedia: Dark matter", "url": "https://en.wikipedia.org/wiki/Dark_matter", "year": 2006},
+    {"value": "Liquid-xenon detectors report null results for WIMPs across the GeV–TeV mass range; axions have gained in popularity", "source": "Wikipedia: Dark matter", "url": "https://en.wikipedia.org/wiki/Dark_matter", "year": 2026}
+   ]
+  },
+  {
+   "id": "dark-energy",
+   "title": "Dark energy",
+   "category": "cosmology",
+   "status": "observed",
+   "nasaId": "PIA14094",
+   "wikipedia": "Dark energy",
+   "nasa": "https://science.nasa.gov/universe/dark-matter-dark-energy/",
+   "description": "Dark energy is the name for whatever is driving the expansion of the universe to accelerate — discovered in 1998 when distant supernovae turned out fainter, and so farther, than a decelerating universe allowed. It makes up about two thirds of the universe's energy today. The simplest explanation is Einstein's cosmological constant, an energy inherent to empty space, but recent galaxy surveys hint that it may be weakening over time. Mapping it is the central task of ESA's Euclid, NASA's Roman telescope and the DESI survey. The illustration contrasts dark energy with gravity.",
+   "facts": [
+    {"value": "Dark energy is 68.3% of the universe's mass-energy, with dark matter 26.8% and ordinary matter 4.9% (Planck)", "source": "Wikipedia: Dark energy", "url": "https://en.wikipedia.org/wiki/Dark_energy", "year": 2013},
+    {"value": "Accelerating expansion was reported by the High-Z Supernova Search Team in 1998 and the Supernova Cosmology Project in 1999; Perlmutter, Schmidt and Riess shared the 2011 Nobel Prize", "source": "Wikipedia: Dark energy", "url": "https://en.wikipedia.org/wiki/Dark_energy", "year": 2011},
+    {"value": "In March 2025 the DESI collaboration reported evidence (2.8–4.2 sigma) that dark energy may be evolving, about 10% weaker than 4.5 billion years ago", "source": "Wikipedia: Dark energy", "url": "https://en.wikipedia.org/wiki/Dark_energy", "year": 2025}
+   ]
+  },
+  {
+   "id": "reionization",
+   "title": "Reionization and the first galaxies",
+   "category": "cosmology",
+   "status": "observed",
+   "commons": "Illustration of Reionization (2011-cdfs-more-6 - label).jpg",
+   "wikipedia": "Reionization",
+   "nasa": "https://science.nasa.gov/universe/overview/",
+   "description": "After the cosmic microwave background was released, the universe filled with neutral hydrogen and went dark for a hundred million years or more. Then the first stars and galaxies switched on, and their ultraviolet light gradually ionised the hydrogen between them again — the epoch of reionization, complete about a billion years after the Big Bang. Its imprint shows in the spectra of distant quasars, whose light is absorbed by the remaining neutral gas, and in the polarisation of the microwave background. JWST now observes galaxies from inside this era. The illustration traces the universe from the dark ages through reionization.",
+   "facts": [
+    {"value": "Reionization took place between about 150 million and one billion years after the Big Bang (redshift 20 > z > 6)", "source": "Wikipedia: Reionization", "url": "https://en.wikipedia.org/wiki/Reionization", "year": 2026},
+    {"value": "In 2001 the Sloan Digital Sky Survey found quasars at z = 5.82–6.28 whose spectra showed the Gunn–Peterson trough of remaining neutral gas above z = 6", "source": "Wikipedia: Reionization", "url": "https://en.wikipedia.org/wiki/Reionization", "year": 2001},
+    {"value": "Planck 2018 data give an instantaneous reionization redshift of 7.68 ± 0.79", "source": "Wikipedia: Reionization", "url": "https://en.wikipedia.org/wiki/Reionization", "year": 2018}
+   ]
+  },
+  {
+   "id": "population-iii",
+   "title": "Population III stars (theoretical)",
+   "category": "cosmology",
+   "status": "theoretical",
+   "nasaId": "PIA14875",
+   "wikipedia": "Stellar population",
+   "nasa": "https://science.nasa.gov/universe/stars/",
+   "description": "Population III stars are the theorised first generation of stars, formed from the pristine hydrogen and helium of the Big Bang before any heavier elements existed. Without those elements to cool their birth clouds, they are expected to have been enormous, hot and short-lived, seeding the universe with the first metals and helping drive reionization. None has been confirmed: they should be gone within a few million years of forming, and their light is extraordinarily faint at such distances. JWST has produced candidate signatures, but the class remains theoretical. The image is from a simulation of first-star formation.",
+   "facts": [
+    {"value": "Models predict very massive stars of several hundred, possibly up to 1,000, solar masses living only 2–5 million years", "source": "Wikipedia: Stellar population", "url": "https://en.wikipedia.org/wiki/Stellar_population", "year": 2026},
+    {"value": "No direct observation has confirmed their existence; analysis of metal-poor Population II stars suggests progenitors of 20–130 solar masses", "source": "Wikipedia: Stellar population", "url": "https://en.wikipedia.org/wiki/Stellar_population", "year": 2026},
+    {"value": "Candidates: a possible detection in the galaxy RX J2129−z8He II (2022) and the cluster LAP1-B at redshift 6.6 (2025), neither confirmed", "source": "Wikipedia: Stellar population", "url": "https://en.wikipedia.org/wiki/Stellar_population", "year": 2025}
+   ]
+  },
+  {
+   "id": "fate-of-universe",
+   "title": "The ultimate fate of the universe (hypotheses)",
+   "category": "cosmology",
+   "status": "hypothesis",
+   "commons": "WMAP 2012.png",
+   "wikipedia": "Ultimate fate of the universe",
+   "nasa": "https://science.nasa.gov/universe/overview/",
+   "description": "How the universe ends is a question of hypotheses, all of them hinging on the unknown nature of dark energy. If expansion continues as it does now, the universe slides toward heat death: star formation ends, stars burn out, and after unimaginable ages even black holes evaporate — the scenario current evidence favours. If dark energy strengthens, a Big Rip could tear apart galaxies, stars and finally atoms. If expansion instead reverses, a Big Crunch collapses everything, perhaps into a Big Bounce. None of these is established; each is a projection of physics we do not fully understand. The NASA graphic depicts the universe's expansion history.",
+   "facts": [
+    {"value": "Heat death is considered the most likely fate; stars are expected to form normally for 10^12 to 10^14 years, after which black holes dominate and slowly evaporate", "source": "Wikipedia: Ultimate fate of the universe", "url": "https://en.wikipedia.org/wiki/Ultimate_fate_of_the_universe", "year": 2026},
+    {"value": "The Big Rip (Caldwell and colleagues, 2003) requires phantom energy with w < −1; for w = −1.5 it would occur about 22 billion years from now", "source": "Wikipedia: Big Rip", "url": "https://en.wikipedia.org/wiki/Big_Rip", "year": 2003},
+    {"value": "Planck data put w at −1.028 ± 0.031, pushing any Big Rip to at least about 200 billion years in the future", "source": "Wikipedia: Big Rip", "url": "https://en.wikipedia.org/wiki/Big_Rip", "year": 2026},
+    {"value": "A Big Crunch is considered unlikely but has not been ruled out; a Big Bounce conflicts with the second law of thermodynamics", "source": "Wikipedia: Ultimate fate of the universe", "url": "https://en.wikipedia.org/wiki/Ultimate_fate_of_the_universe", "year": 2026}
    ]
   }
  ]

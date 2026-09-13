@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-06T11:17:13+00:00",
+  "generated_at": "2026-09-13T06:07:29+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-06T11:17:13+00:00",
+      "fetched_at": "2026-09-13T06:07:29+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -337,14 +337,14 @@
     },
     "catalogue_of_life": {
       "title": "Catalogue of Life, 2026-08-20 (ChecklistBank)",
-      "url": "https://api.checklistbank.org/dataset/3LR",
+      "url": "https://download.checklistbank.org/col/monthly/2026-08-20_coldp.zip",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-09-06T01:36:46+00:00",
+      "fetched_at": "2026-09-07T21:08:00+00:00",
       "upstream_release": "2026-08-20",
       "vintage": "2026-08-20",
-      "citation": "Catalogue of Life Checklist, via ChecklistBank (CC BY 4.0); Wikipedia links via Wikidata P10585 (CC0)",
+      "citation": "Catalogue of Life Checklist, via ChecklistBank ColDP bulk export (CC BY 4.0); Wikipedia links via Wikidata P10585 (CC0); intro texts from English Wikipedia (CC BY-SA 4.0)",
       "files": [],
-      "notes": "Traversed to family rank via the tree API (30658 nodes); genus/species depth for 30 editorially chosen well-known families (etl/reference/taxonomy_focus.json). Contested placements annotated from etl/reference/taxonomy_notes.json. 9060 of 30658 tree nodes carry an English Wikipedia article; the rest say so explicitly."
+      "notes": "Bulk export parsed to family rank (35214 tree nodes, every intermediate rank kept) plus one genera file per family (14196 files, 204480 genera); species load live from ChecklistBank. Descriptions: tree 9088 Wikipedia / 7575 Wikidata / 0 COL / 18551 generated; genera-file nodes 12729 / 15424 / 0 / 229236 (202909 not yet looked up). Contested placements annotated from etl/reference/taxonomy_notes.json."
     },
     "ics_chart": {
       "title": "ICS International Chronostratigraphic Chart (linked data)",
@@ -361,8 +361,8 @@
       "title": "Evolution timeline (editorial) with PhyloPic and Commons images",
       "url": "https://www.phylopic.org",
       "licence": "Editorial text CC0 (this project); silhouettes CC0/PD (PhyloPic, attributed); photos per-file PD/CC (attributed)",
-      "fetched_at": "2026-09-06T03:15:09+00:00",
-      "upstream_release": "PhyloPic build 555",
+      "fetched_at": "2026-09-13T04:43:52+00:00",
+      "upstream_release": "PhyloPic build 556",
       "vintage": null,
       "citation": "PhyloPic (per-image CC0/PD); Wikimedia Commons (per-file)",
       "files": [],
@@ -372,7 +372,7 @@
       "title": "NSSDC Planetary Fact Sheets (pinned Internet Archive snapshots)",
       "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
       "licence": "Public domain (NASA)",
-      "fetched_at": "2026-09-06T11:13:34+00:00",
+      "fetched_at": "2026-09-08T01:43:48+00:00",
       "upstream_release": null,
       "vintage": "2025 snapshots (see per-body vintage)",
       "citation": "NASA NSSDCA Planetary Fact Sheets (D.R. Williams), via the Internet Archive",
@@ -383,7 +383,7 @@
       "title": "JPL Horizons (live cross-check of archived fact sheets)",
       "url": "https://ssd.jpl.nasa.gov/api/horizons.api",
       "licence": "Public domain (NASA/JPL)",
-      "fetched_at": "2026-09-06T11:13:34+00:00",
+      "fetched_at": "2026-09-08T01:43:48+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "NASA/JPL Horizons System, physical-properties blocks",
@@ -405,12 +405,12 @@
       "title": "Solar System Scope planetary textures",
       "url": "https://www.solarsystemscope.com/textures/",
       "licence": "CC BY 4.0",
-      "fetched_at": "2026-09-06T11:13:34+00:00",
+      "fetched_at": "2026-09-08T01:43:48+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "Solar System Scope textures (CC BY 4.0), based on NASA imagery and elevation data",
       "files": [],
-      "notes": "Copied byte-for-byte; Ceres uses the pack's clearly-labelled 'fictional' texture; the icy dwarf planets get untextured materials rather than invented surfaces."
+      "notes": "2k files copied byte-for-byte; hi-res variants copied byte-for-byte at or under their configured width, else Lanczos-downsampled and re-encoded (progressive JPEG q88): sun 4096px; earth 8192px; jupiter 4096px; saturn 4096px; moon 4096px from 8k_moon.jpg (8192x4096); mars 4096px from 8k_mars.jpg (8192x4096); mercury 4096px from 8k_mercury.jpg (8192x4096). Ceres uses the pack's clearly-labelled 'fictional' texture; the icy dwarf planets get untextured materials rather than invented surfaces."
     },
     "iau_gazetteer": {
       "title": "IAU Gazetteer of Planetary Nomenclature (USGS)",
@@ -424,21 +424,208 @@
       "notes": "Top named features by diameter per body: {'moon': 250, 'mars': 250, 'venus': 250, 'mercury': 250}. NASA Solar System Treks tiles for the deep-zoom globes are STREAMED at runtime (documented exception, §41.2) — a global tile pyramid cannot be committed to a static repo."
     },
     "cosmic_phenomena": {
-      "title": "Cosmic Phenomena (editorial) with NASA-library images",
+      "title": "Cosmic Phenomena (editorial) with downloaded NASA/Commons images",
       "url": "https://images.nasa.gov",
-      "licence": "Editorial text CC0 (this project); images NASA/partners, credited per item",
-      "fetched_at": "2026-09-06T09:16:00+00:00",
+      "licence": "Editorial text CC0 (this project); images NASA media or Commons free licences, credited per item (data/space/phenomena/manifest.json)",
+      "fetched_at": "2026-09-13T04:02:34+00:00",
       "upstream_release": null,
-      "vintage": null,
-      "citation": "NASA Image and Video Library; per-entry Wikipedia and NASA science pages",
+      "vintage": "per fact (year field)",
+      "citation": "NASA Image and Video Library; Wikimedia Commons; per-fact NASA science pages and Wikipedia articles",
       "files": [],
-      "notes": "13 entries; wormholes and other theoretical objects are labelled as theoretical in their own text."
+      "notes": "62 entries ({'observed': 54, 'hypothesis': 4, 'theoretical': 4}); images resolved via {'nasaId': 41, 'commons': 12, 'query': 8, 'wikipedia': 1}. Theoretical objects and hypotheses carry a status flag and say so in their own text."
+    },
+    "chemistry_pubchem": {
+      "title": "PubChem Periodic Table (NIH/NCBI)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/periodic-table/",
+      "licence": "Public domain (US Government work)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Kim S. et al. (2021) PubChem Periodic Table and Element pages, J. Cheminform. 13:3",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_pugview": {
+      "title": "PubChem element records (PUG-View), per-statement references",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/docs/pug-view",
+      "licence": "Public domain compilation; each statement cites its own source",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-13",
+      "citation": "PubChem element records (PUG-View), per-statement references",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_nist_asd": {
+      "title": "NIST Atomic Spectra Database — ionization energies",
+      "url": "https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html",
+      "licence": "Public domain (NIST)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "NIST Atomic Spectra Database — ionization energies",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_ciaaw": {
+      "title": "IUPAC/CIAAW Standard Atomic Weights",
+      "url": "https://ciaaw.org/atomic-weights.htm",
+      "licence": "IUPAC; reproduced as data with attribution",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "revisions to 2024",
+      "citation": "IUPAC/CIAAW Standard Atomic Weights",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wikidata": {
+      "title": "Wikidata (P18, P61, P138, P189, P231, P373, P575)",
+      "url": "https://www.wikidata.org/",
+      "licence": "CC0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikidata (P18, P61, P138, P189, P231, P373, P575)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_list": {
+      "title": "Wikipedia: List of chemical elements (CRC-cited columns)",
+      "url": "https://en.wikipedia.org/wiki/List_of_chemical_elements",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: List of chemical elements (CRC-cited columns)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_crc_crust": {
+      "title": "CRC Handbook, Abundance of elements in the Earth's crust — via Wikipedia 'Abundances of the elements (data page)', column C1",
+      "url": "https://en.wikipedia.org/wiki/Abundances_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0 (tabulation); CRC values",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "CRC Handbook 85th ed. (2005) as tabulated; retrieved 2026-09-08",
+      "citation": "CRC Handbook, Abundance of elements in the Earth's crust — via Wikipedia 'Abundances of the elements (data page)', column C1",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_anders_grevesse": {
+      "title": "Anders & Grevesse (1989) Solar-System abundances — via Wikipedia 'Abundances of the elements (data page)', column Y2",
+      "url": "https://en.wikipedia.org/wiki/Abundances_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0 (tabulation)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "1989 compilation; retrieved 2026-09-08",
+      "citation": "Anders & Grevesse (1989) Solar-System abundances — via Wikipedia 'Abundances of the elements (data page)', column Y2",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_thermal": {
+      "title": "Wikipedia: Thermal conductivities of the elements (data page), CRC-based usable value",
+      "url": "https://en.wikipedia.org/wiki/Thermal_conductivities_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Thermal conductivities of the elements (data page), CRC-based usable value",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_heat": {
+      "title": "Wikipedia: Heat capacities of the elements (data page), CRC-based usable value",
+      "url": "https://en.wikipedia.org/wiki/Heat_capacities_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Heat capacities of the elements (data page), CRC-based usable value",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_resistivity": {
+      "title": "Wikipedia: Electrical resistivities of the elements (data page), CRC-based value at 293 K",
+      "url": "https://en.wikipedia.org/wiki/Electrical_resistivities_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Electrical resistivities of the elements (data page), CRC-based value at 293 K",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_radii": {
+      "title": "Wikipedia: Atomic radii of the elements (data page) — covalent (Cordero 2008) and van der Waals (Bondi/Mantina)",
+      "url": "https://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Atomic radii of the elements (data page) — covalent (Cordero 2008) and van der Waals (Bondi/Mantina)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_infobox": {
+      "title": "Wikipedia element infobox templates (crystal structure, magnetic ordering)",
+      "url": "https://en.wikipedia.org/wiki/Template:Infobox_element",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia element infobox templates (crystal structure, magnetic ordering)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_etymology": {
+      "title": "Wikipedia: List of chemical element name etymologies",
+      "url": "https://en.wikipedia.org/wiki/List_of_chemical_element_name_etymologies",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: List of chemical element name etymologies",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wikipedia": {
+      "title": "Wikipedia article text (lead; applications / biological role / precautions sections)",
+      "url": "https://en.wikipedia.org/",
+      "licence": "CC BY-SA 4.0 (verbatim, attributed, linked)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia article text (lead; applications / biological role / precautions sections)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_iaea": {
+      "title": "IAEA Nuclear Data Section, Live Chart of Nuclides API (NUBASE2020 / ENSDF ground states)",
+      "url": "https://nds.iaea.org/relnsd/vcharthtml/VChartHTML.html",
+      "licence": "IAEA open data",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "IAEA extraction 2023-10-18",
+      "citation": "IAEA Nuclear Data Section, Live Chart of Nuclides API (NUBASE2020 / ENSDF ground states)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_commons": {
+      "title": "Wikimedia Commons (per-file licence and author)",
+      "url": "https://commons.wikimedia.org/",
+      "licence": "per file: PD / CC0 / CC BY / CC BY-SA / FAL",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-13",
+      "citation": "Wikimedia Commons (per-file licence and author)",
+      "files": [],
+      "notes": null
     },
     "flagcdn": {
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-09-06T11:17:13+00:00",
+      "fetched_at": "2026-09-13T06:07:29+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -829,19 +1016,27 @@
       "entity_count": null
     },
     "biology/taxonomy/tree.json": {
-      "description": "Tree of life from the synthetic Life root to family rank, with per-node name counts, Wikipedia links, and contested-placement notes.",
+      "description": "Tree of life from the synthetic Life root to family rank, with per-node counts, Wikipedia links, description sources, and contested-placement notes.",
       "sources": [
         "catalogue_of_life"
       ],
-      "row_count": 30658,
+      "row_count": 35214,
       "entity_count": null
     },
-    "biology/taxonomy/focus/": {
-      "description": "Genus/species subtrees for the focus families, fetched on expand.",
+    "biology/taxonomy/genera/": {
+      "description": "One file per family: subfamilies, tribes and genera as COL records them, fetched on expand; focus families carry species inline.",
       "sources": [
         "catalogue_of_life"
       ],
-      "row_count": 20314,
+      "row_count": 257389,
+      "entity_count": null
+    },
+    "biology/taxonomy/extracts/": {
+      "description": "Description texts for tree nodes (Wikipedia intros, generated summaries), 32 shards fetched on selection.",
+      "sources": [
+        "catalogue_of_life"
+      ],
+      "row_count": 27638,
       "entity_count": null
     },
     "biology/evolution/chart.json": {
@@ -894,11 +1089,51 @@
       "entity_count": null
     },
     "space/phenomena.json": {
-      "description": "Cosmic Phenomena entries with credited NASA imagery.",
+      "description": "Cosmic Phenomena catalogue: categorised, status-flagged entries with per-fact sources and local image references.",
       "sources": [
         "cosmic_phenomena"
       ],
-      "row_count": 13,
+      "row_count": 62,
+      "entity_count": null
+    },
+    "space/phenomena/": {
+      "description": "One re-encoded JPEG per phenomenon plus manifest.json (source URL, author, licence, credit line per image).",
+      "sources": [
+        "cosmic_phenomena"
+      ],
+      "row_count": 62,
+      "entity_count": null
+    },
+    "chemistry/elements.json": {
+      "description": "Periodic table: 118 elements, every figure sourced and dated; licence-gated photographs served locally.",
+      "sources": [
+        "chemistry_pubchem",
+        "chemistry_pugview",
+        "chemistry_nist_asd",
+        "chemistry_ciaaw",
+        "chemistry_wikidata",
+        "chemistry_wp_list",
+        "chemistry_crc_crust",
+        "chemistry_anders_grevesse",
+        "chemistry_wp_thermal",
+        "chemistry_wp_heat",
+        "chemistry_wp_resistivity",
+        "chemistry_wp_radii",
+        "chemistry_wp_infobox",
+        "chemistry_wp_etymology",
+        "chemistry_wikipedia",
+        "chemistry_iaea",
+        "chemistry_commons"
+      ],
+      "row_count": 118,
+      "entity_count": null
+    },
+    "chemistry/glossary.json": {
+      "description": "Chemistry glossary: plain-language definitions with units and a cited source for every property the panel shows.",
+      "sources": [
+        "editorial"
+      ],
+      "row_count": 44,
       "entity_count": null
     },
     "flags/map-palette.json": {
@@ -996,5 +1231,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "49c003f5ad6c4a43b22b82af7aca18913fe98b4a954cd5a058985e2d5f397ada"
+  "content_fingerprint": "9de007af86ad112a58fc52e2913150bcb443ce6b7d9d67f0b962c692f8c00c8d"
 }

@@ -42,6 +42,10 @@ export interface TrekLayer {
   urlTemplate: string
   ext: string
   credit: string
+  /** Display exposure gain applied when the mosaic replaces the Solar
+      System Scope texture (round 3 §45.5) — a stated camera-exposure
+      choice, shown in the credit line. */
+  exposure: number
 }
 
 export interface SpaceBody {
@@ -58,8 +62,11 @@ export interface SpaceBody {
   discovery?: { by: string; year: number }
   /** Round-2 §41: committed CC-BY texture path under /data, or null. */
   texture?: string | null
-  /** 8k variant for the full-screen globe view only (round-2 feedback). */
-  texture8k?: string | null
+  /** Hi-res variant (round 3 §45): loaded lazily — by the globe modal
+      always, by the scene only for the body flown to. */
+  textureHi?: string | null
+  /** Real pixel width of textureHi (4096 or 8192), for the credit line. */
+  textureHiPx?: number | null
   notes?: BodyNotes
   /** NASA Trek WMTS layer for deep-zoom globes (streamed at runtime). */
   trek?: TrekLayer
@@ -134,20 +141,63 @@ export function featureTypeGloss(type: string | null): string | null {
   return FEATURE_TYPE_GLOSS[key] ?? FEATURE_TYPE_GLOSS[type.toLowerCase()] ?? null
 }
 
+export type PhenomenonStatus = 'observed' | 'theoretical' | 'hypothesis'
+
+export interface PhenomenonFact {
+  value: string
+  source: string
+  url: string
+  year: number
+}
+
+/** A downloaded, licence-gated image served from data/space/phenomena/. */
+export interface PhenomenonImage {
+  file: string
+  width: number
+  height: number
+  title: string
+  credit: string
+  licence: string
+  source: string
+  page: string
+}
+
+export interface PhenomenaCategory {
+  id: string
+  label: string
+}
+
+export interface PhenomenaStatusInfo {
+  id: PhenomenonStatus
+  label: string
+  note: string
+}
+
+export interface PhenomenonEntry {
+  id: string
+  title: string
+  category: string
+  status: PhenomenonStatus
+  description: string
+  facts: PhenomenonFact[]
+  image: PhenomenonImage
+  wikipedia: string
+  nasa: string
+}
+
 export interface PhenomenaFile {
   source: string
   version: number
+  note: string
   imageNote: string
-  entries: {
-    id: string
-    title: string
-    description: string
-    facts: string[]
-    image: BodyImage | null
-    wikipedia: string
-    nasa: string
-  }[]
+  categories: PhenomenaCategory[]
+  statuses: PhenomenaStatusInfo[]
+  entries: PhenomenonEntry[]
 }
+
+/** data/space/phenomena/<id>.jpg is served from /data; build its URL. */
+export const phenomenonImageUrl = (image: PhenomenonImage): string =>
+  `${DATA_BASE_URL}/${image.file}`
 
 export interface SpaceRegion {
   id: string

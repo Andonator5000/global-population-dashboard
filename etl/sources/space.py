@@ -500,13 +500,22 @@ def _nasa_portrait(body_id: str, *, refresh: bool) -> tuple[dict[str, Any] | Non
 # --------------------------------------------------------------------------
 
 def _build_textures(refresh: bool, out_dir: Path
-                    ) -> tuple[list[CachedResponse], dict[str, str]]:
-    """Solar System Scope textures (CC BY 4.0), copied byte-for-byte."""
+                    ) -> tuple[list[CachedResponse], dict[str, str],
+                               dict[str, dict[str, Any]]]:
+    """Solar System Scope textures (CC BY 4.0). The 2k placeholders are
+    copied byte-for-byte; the hi-res variants (round 3 §45) are copied
+    byte-for-byte when at or under their configured width and otherwise
+    Lanczos-downsampled to it and re-encoded as a progressive JPEG. Returns
+    (responses, 2k paths by body, hi-res records by body)."""
     import shutil
 
+    from PIL import Image
+
+    Image.MAX_IMAGE_PIXELS = None
     out_dir.mkdir(parents=True, exist_ok=True)
     responses: list[CachedResponse] = []
     paths: dict[str, str] = {}
+    hi: dict[str, dict[str, Any]] = {}
     for body_id, filename in config.SOLARSYSTEMSCOPE_TEXTURES.items():
         response = fetch(
             f"{config.SOLARSYSTEMSCOPE_BASE}/{filename}",
@@ -516,17 +525,41 @@ def _build_textures(refresh: bool, out_dir: Path
         target = out_dir / f"{body_id}.jpg"
         shutil.copyfile(response.path, target)
         paths[body_id] = f"space/textures/{body_id}.jpg"
-    # 8k variants for the globe modal (round-2 feedback); the scene keeps
-    # loading the 2k files.
-    for body_id, filename in config.SOLARSYSTEMSCOPE_TEXTURES_8K.items():
+    # Hi-res variants, named by their ACTUAL width (the pack's "8k" Sun,
+    # Jupiter and Saturn are 4096 wide). Loaded lazily by the app — the
+    # globe modal always, the scene only for the body flown to.
+    for body_id, (filename, max_width) in (
+            config.SOLARSYSTEMSCOPE_TEXTURES_HI.items()):
         response = fetch(
             f"{config.SOLARSYSTEMSCOPE_BASE}/{filename}",
             refresh=refresh, subdir="space", filename=f"tex-{filename}",
         )
         responses.append(response)
-        target = out_dir / f"{body_id}-8k.jpg"
-        shutil.copyfile(response.path, target)
-        paths[f"{body_id}-8k"] = f"space/textures/{body_id}-8k.jpg"
+        with Image.open(response.path) as image:
+            source_size = image.size
+            width = min(source_size[0], max_width)
+            label = f"{width // 1024}k"
+            target = out_dir / f"{body_id}-{label}.jpg"
+            if width == source_size[0]:
+                shutil.copyfile(response.path, target)
+                derived = False
+            else:
+                height = round(source_size[1] * width / source_size[0])
+                image.convert("RGB").resize(
+                    (width, height), Image.Resampling.LANCZOS,
+                ).save(
+                    target, "JPEG",
+                    quality=config.SOLARSYSTEMSCOPE_HI_JPEG_QUALITY,
+                    optimize=True, progressive=True,
+                )
+                derived = True
+        hi[body_id] = {
+            "path": f"space/textures/{target.name}",
+            "px": width,
+            "bytes": target.stat().st_size,
+            "derivedFrom": (f"{filename} ({source_size[0]}x{source_size[1]})"
+                            if derived else None),
+        }
     ring = fetch(
         f"{config.SOLARSYSTEMSCOPE_BASE}/{config.SOLARSYSTEMSCOPE_RING}",
         refresh=refresh, subdir="space", filename="tex-saturn-ring.png",
@@ -534,8 +567,11 @@ def _build_textures(refresh: bool, out_dir: Path
     responses.append(ring)
     shutil.copyfile(ring.path, out_dir / "saturn-ring.png")
     paths["saturn-ring"] = "space/textures/saturn-ring.png"
-    print(f"    textures: {len(paths)} files", flush=True)
-    return responses, paths
+    hi_mb = sum(record["bytes"] for record in hi.values()) / 1e6
+    print(f"    textures: {len(paths)} 2k files + {len(hi)} hi-res "
+          f"({hi_mb:.1f} MB): "
+          + ", ".join(f"{k}@{v['px']}" for k, v in hi.items()), flush=True)
+    return responses, paths, hi
 
 
 def _build_nomenclature(refresh: bool, out_dir: Path
@@ -564,9 +600,26 @@ def _build_nomenclature(refresh: bool, out_dir: Path
                 f"gazetteer {target}: expected name/diameter columns, got "
                 f"{sorted(frame.columns)[:15]}"
             )
-        frame = frame.sort_values(diam_col, ascending=False).head(
-            config.GAZETTEER_TOP_FEATURES,
+        frame = frame.sort_values(diam_col, ascending=False)
+        # Round 3 §45.4: the well-known features ride at the head of the
+        # list (labelled at every zoom level), then the largest by
+        # diameter — all from the same gazetteer rows.
+        featured_names = list(config.GAZETTEER_FEATURED.get(target, ()))
+        featured = frame[frame[name_col].isin(featured_names)]
+        missing_featured = sorted(
+            set(featured_names) - set(featured[name_col].astype(str)))
+        if missing_featured:
+            raise FetchError(
+                f"gazetteer {target}: featured names not found: "
+                + ", ".join(missing_featured)
+            )
+        featured = featured.set_index(name_col).loc[featured_names].reset_index()
+        rest = frame[~frame[name_col].isin(featured_names)].head(
+            config.GAZETTEER_TOP_FEATURES - len(featured),
         )
+        import pandas as pd
+        frame = pd.concat([featured, rest], ignore_index=True)
+        featured_set = set(featured_names)
         # Round-2 feedback: the labels should open a card saying what the
         # feature is, when it was named and after what — the gazetteer
         # carries origin text, approval date, the name's cultural origin
@@ -597,6 +650,7 @@ def _build_nomenclature(refresh: bool, out_dir: Path
                 "culture": (_clean(row[ethnicity_col])
                             if ethnicity_col else None),
                 "link": _clean(row[link_col]) if link_col else None,
+                "featured": str(row[name_col]) in featured_set,
             })
         (out_dir / f"{target.lower()}.json").write_text(
             json.dumps({"target": target.lower(), "features": features},
@@ -608,137 +662,7 @@ def _build_nomenclature(refresh: bool, out_dir: Path
     return responses, counts
 
 
-_FREE_LICENCE = re.compile(
-    r"public domain|cc0|cc[- ]by(?![- ]n[cd])|pd-", re.IGNORECASE)
-
-
-def _wikipedia_lead_image(
-    title: str, *, refresh: bool,
-) -> tuple[dict[str, Any] | None, list[CachedResponse]]:
-    """The anchor article's lead image as a phenomena-image record, only
-    if Commons says its licence is free; None otherwise."""
-    from . import commons
-
-    responses: list[CachedResponse] = []
-    url = (
-        f"{config.WIKIPEDIA_API_URL}?action=query&format=json"
-        f"&prop=pageimages&piprop=name&redirects=1"
-        f"&titles={urllib.parse.quote(title)}"
-    )
-    response = fetch(url, refresh=refresh, subdir="space", expect_json=True)
-    responses.append(response)
-    pages = response.read_json().get("query", {}).get("pages", {})
-    filename = next(
-        (p.get("pageimage") for p in pages.values() if p.get("pageimage")),
-        None)
-    if not filename:
-        return None, responses
-    metadata, meta_responses = commons.fetch_metadata(
-        [filename], refresh=refresh, subdir="space")
-    responses.extend(meta_responses)
-    record = metadata.get(filename)
-    licence = (record or {}).get("license") or ""
-    if not record or not _FREE_LICENCE.search(licence):
-        return None, responses
-    credit_bits = [b for b in (record.get("author"), licence) if b]
-    return {
-        "url": commons.image_url_for(filename, 640),
-        "title": record.get("objectName") or filename,
-        "nasaId": None,
-        "page": commons.file_page_for(filename),
-        "credit": " · ".join(credit_bits) or "Wikimedia Commons",
-    }, responses
-
-
-def _build_phenomena(refresh: bool, out_dir: Path
-                     ) -> tuple[list[CachedResponse], int]:
-    """Cosmic Phenomena entries: editorial text + NASA-library images."""
-    source = json.loads(
-        (config.REFERENCE_DIR / "cosmic_phenomena.json").read_text("utf-8")
-    )
-    responses: list[CachedResponse] = []
-    out_entries: list[dict[str, Any]] = []
-    for entry in source["entries"]:
-        for key in ("id", "title", "query", "wikipedia", "nasa",
-                    "description", "facts"):
-            if key not in entry:
-                raise FetchError(f"cosmic_phenomena: {entry.get('id')} "
-                                 f"missing {key}")
-        # query: null means "deliberately unillustrated" (theoretical
-        # objects get no stock photo pretending otherwise).
-        words = len(entry["description"].split())
-        if not 55 <= words <= 130:
-            raise FetchError(
-                f"cosmic_phenomena: {entry['id']} description is {words} "
-                f"words (want 55-130)"
-            )
-        image = None
-        items: list[dict[str, Any]] = []
-        if entry["query"]:
-            import hashlib as _h
-            digest = _h.sha256(
-                entry["query"].encode("utf-8")).hexdigest()[:10]
-            response = fetch(
-                "https://images-api.nasa.gov/search?media_type=image&q="
-                + urllib.parse.quote(entry["query"]),
-                refresh=refresh, subdir="space",
-                filename=f"phen-{entry['id']}-{digest}.json",
-                expect_json=True,
-            )
-            responses.append(response)
-            items = response.read_json().get("collection", {}).get(
-                "items", [])
-        for item in items:
-            data = (item.get("data") or [{}])[0]
-            links = item.get("links") or []
-            preview = next(
-                (l.get("href") for l in links if l.get("rel") == "preview"),
-                None)
-            if preview:
-                image = {
-                    "url": preview,
-                    "title": data.get("title"),
-                    "nasaId": data.get("nasa_id"),
-                    "page": "https://images.nasa.gov/details/"
-                    + urllib.parse.quote(data.get("nasa_id") or ""),
-                    "credit": data.get("secondary_creator")
-                    or data.get("center") or "NASA",
-                }
-                break
-        if image is None:
-            # Round-2 feedback: no entry ships imageless if its anchor
-            # article has a FREE lead image — for wormholes that is a
-            # spacetime diagram, which is the honest illustration of a
-            # theoretical object. Same licence gate as everywhere else.
-            image, lead_responses = _wikipedia_lead_image(
-                entry["wikipedia"], refresh=refresh)
-            responses.extend(lead_responses)
-        out_entries.append({
-            "id": entry["id"],
-            "title": entry["title"],
-            "description": entry["description"],
-            "facts": entry["facts"],
-            "image": image,
-            "wikipedia": "https://en.wikipedia.org/wiki/"
-            + urllib.parse.quote(entry["wikipedia"].replace(" ", "_")),
-            "nasa": entry["nasa"],
-        })
-    (out_dir / "phenomena.json").write_text(
-        json.dumps({
-            "source": "editorial",
-            "version": source.get("version", 1),
-            "imageNote": (
-                "Images are NASA Image and Video Library media (NASA/ESA "
-                "and partners) or, where NASA has none, the Wikipedia "
-                "article's free-licensed lead image — credited per item."
-            ),
-            "entries": out_entries,
-        }, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8", newline="\n",
-    )
-    print(f"    phenomena: {len(out_entries)} entries", flush=True)
-    return responses, len(out_entries)
-
+# Cosmic Phenomena builders moved to etl/sources/phenomena.py (round 3, §46).
 
 # --------------------------------------------------------------------------
 
@@ -875,7 +799,7 @@ def ingest(
         })
 
     # ---- round-2 §41: textures, notes, trek layers, gazetteer, phenomena -
-    texture_responses, texture_paths = _build_textures(
+    texture_responses, texture_paths, texture_hi = _build_textures(
         refresh, out_dir / "textures",
     )
     notes_ref = json.loads(
@@ -893,7 +817,11 @@ def ingest(
                   "mercury": "Mercury"}
     for body in bodies:
         body["texture"] = texture_paths.get(body["id"])
-        body["texture8k"] = texture_paths.get(f"{body['id']}-8k")
+        # Round 3 §45: the hi-res variant with its real width, so the app
+        # and the credit line never call a 4096 file "8k".
+        hi_record = texture_hi.get(body["id"])
+        body["textureHi"] = hi_record["path"] if hi_record else None
+        body["textureHiPx"] = hi_record["px"] if hi_record else None
         body["notes"] = notes_ref[body["id"]]
         trek = config.TREK_LAYERS.get(body["id"])
         if trek:
@@ -903,11 +831,15 @@ def ingest(
                 ),
                 "ext": trek["ext"],
                 "credit": trek["credit"],
+                # Display exposure gain (§45.5) — a stated camera-exposure
+                # choice, printed in the on-screen credit.
+                "exposure": config.TREK_EXPOSURE.get(body["id"], 1.0),
             }
     gaz_responses, gaz_counts = _build_nomenclature(
         refresh, out_dir / "nomenclature",
     )
-    phen_responses, phen_count = _build_phenomena(refresh, out_dir)
+    # Cosmic Phenomena moved to its own stage in round 3 (§46):
+    # etl/sources/phenomena.py owns data/space/phenomena*.
     fact_responses.extend(texture_responses)
 
     # ---- regions ---------------------------------------------------------
@@ -1049,9 +981,17 @@ def ingest(
         vintage=None,
         citation="Solar System Scope textures (CC BY 4.0), based on NASA "
                  "imagery and elevation data",
-        notes="Copied byte-for-byte; Ceres uses the pack's clearly-labelled "
-              "'fictional' texture; the icy dwarf planets get untextured "
-              "materials rather than invented surfaces.",
+        notes="2k files copied byte-for-byte; hi-res variants copied "
+              "byte-for-byte at or under their configured width, else "
+              "Lanczos-downsampled and re-encoded (progressive JPEG q"
+              f"{config.SOLARSYSTEMSCOPE_HI_JPEG_QUALITY}): "
+              + "; ".join(
+                  f"{k} {v['px']}px"
+                  + (f" from {v['derivedFrom']}" if v["derivedFrom"] else "")
+                  for k, v in texture_hi.items())
+              + ". Ceres uses the pack's clearly-labelled 'fictional' "
+              "texture; the icy dwarf planets get untextured materials "
+              "rather than invented surfaces.",
     )
     manifest_mod.record_source(
         manifest,
@@ -1069,21 +1009,6 @@ def ingest(
               f"STREAMED at runtime (documented exception, §41.2) — a "
               f"global tile pyramid cannot be committed to a static repo.",
     )
-    manifest_mod.record_source(
-        manifest,
-        "cosmic_phenomena",
-        title="Cosmic Phenomena (editorial) with NASA-library images",
-        url="https://images.nasa.gov",
-        licence="Editorial text CC0 (this project); images NASA/partners, "
-                "credited per item",
-        fetched_at=max(r.fetched_at for r in phen_responses),
-        upstream_release=None,
-        vintage=None,
-        citation="NASA Image and Video Library; per-entry Wikipedia and "
-                 "NASA science pages",
-        notes=f"{phen_count} entries; wormholes and other theoretical "
-              f"objects are labelled as theoretical in their own text.",
-    )
     manifest_mod.record_artifact(
         manifest, "space/textures/",
         description="Planetary textures for the 3D scene (CC BY 4.0).",
@@ -1093,11 +1018,6 @@ def ingest(
         manifest, "space/nomenclature/",
         description="Named surface features for the deep-zoom globes.",
         sources=["iau_gazetteer"],
-    )
-    manifest_mod.record_artifact(
-        manifest, "space/phenomena.json",
-        description="Cosmic Phenomena entries with credited NASA imagery.",
-        sources=["cosmic_phenomena"], row_count=phen_count,
     )
     print(f"    bodies: {len(bodies)}; portraits: {portraits_used}",
           flush=True)

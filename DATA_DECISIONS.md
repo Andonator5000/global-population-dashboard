@@ -2440,6 +2440,952 @@ gate — for wormholes that is a CC BY-SA Einstein–Rosen bridge diagram,
 the honest illustration of a theoretical object. 13 of 13 entries are
 illustrated, credited per item.
 
+## 43. Round 3, Phase 1: the globe imagery moves to WebGL (2026-09-07)
+
+Andy reported that the round-2 seam fix (§42.2) did not work: meridian
+streaks in both Satellite and Terrain views that thicken while
+spinning, outlines that detach from the imagery during fast spins,
+sluggish drags, and a slow Satellite -> Terrain switch. Reproduced
+with Playwright (`scripts/globe-spin-capture.mjs`, headed Chrome,
+scripted drag + flick, frames captured mid-gesture) before anything
+was changed.
+
+**43.1 Diagnosis.** The imagery was drawn as affine-warped 2-D-canvas
+quads (§30). An affine image of a lon/lat quad only approximates the
+orthographic projection near the centre of the disc; towards the limb
+and the poles neighbouring quads diverge and the ocean underlay shows
+through as wedge-shaped streaks along meridians — the Terrain view,
+whose 45-degree tiles are lighter, showed them worst — and any quad
+with a corner past the horizon was culled outright, cutting a hole
+around the visible pole. Rotation moves the limb across different
+quads every frame, hence "thicken while spinning". Overdraw (§42.2)
+could not fix a model error. Separately, a fine tile landing mid-drag
+re-rendered the imagery canvas from React's `rotation` STATE (stale
+until the gesture commits) while the outlines kept following the
+rotation ref — the imagery snapped back for a frame, which is the
+detached-outlines report.
+
+**43.2 The fix: per-pixel inverse projection on the GPU.**
+`src/lib/globegl.ts` renders the imagery with WebGL2. On the globe a
+full-screen fragment shader inverts d3's orthographic projection and
+rotation for EVERY device pixel — the same maths as `geoOrthographic`
+`.rotate([lambda, phi, 0])`, run forward for the SVG and backward
+here — and samples an equirectangular texture with mipmaps and
+anisotropic filtering. No quads, so no seams; the horizon is an exact
+circle, feathered over one pixel. The antimeridian mip seam (the usual
+blurry column where `u` wraps) is avoided by taking the smaller of two
+derivative estimates and `textureGrad`. Flat projections (Equal Earth,
+Mollweide, Eckert IV) draw a 1-degree mesh whose vertices were
+projected once by the same d3 projection the SVG uses. Finer tiers are
+still the ETL's 45-degree tiles, drawn as extra passes limited to their
+window, nearest-the-centre first, capped at an LRU budget of 8 (4 on
+devices reporting <= 4 GB) so wanting more than the cache holds can
+never evict-and-refetch every frame. Browsers without WebGL2 fall back
+to the round-2 renderer (`Canvas2DImagery`), streaks included; the
+imagery artifacts are unchanged (§30, §37).
+
+**43.3 One scene, one rotation.** During a drag the country outlines
+are drawn by the same renderer, in the same frame, from the same
+rotation ref, as `gl.LINES` on the sphere: the topology's shared-border
+mesh (595 arcs, 8.2k points at 110m) subdivided along great circles to
+<= 1 degree so the GL segments land where d3's resampled SVG strokes
+will when the gesture ends. The renderer keeps its own last view and
+repaints from THAT when a tile lands — React state is never consulted
+mid-gesture. The 2-D drag canvas still fills countries in the
+Political view (no imagery there).
+
+**43.4 Measured.** rAF callback time during a scripted drag at
+1200x900, headed Chrome on the maintainer's machine:
+
+| View | Before (median / p90) | After |
+| --- | --- | --- |
+| Satellite, world zoom | 10.0 / 10.6 ms | < 0.5 ms (GPU-bound) |
+| Terrain, world zoom | 9.9 / 10.6 ms | < 0.5 ms |
+| Satellite, zoom 3x | 13.4 / 26.8 ms | 0.6 / 0.9 ms |
+| Political, world zoom | 8.8 / 9.6 ms | 8.8 / 9.6 ms (unchanged, d3 canvas fills) |
+
+Screenshots at rest, mid-drag and mid-flick, both views, world and 3x
+zoom, show no streaks and no polar hole after; before-frames show
+both.
+
+**43.5 Switching views.** One renderer lives for the map component's
+lifetime; textures stay resident across Political / Satellite /
+Terrain switches, and both imagery sets' world bases (tier 0, ~0.3 MB
+each) are fetched, decoded and uploaded during idle time after first
+paint. A "Loading ... imagery" pill shows only while a base is
+genuinely absent. Measured switch-to-painted: 100-180 ms for every
+transition, including the second Satellite and Terrain switches.
+GPU-compressed (KTX2/Basis) textures were considered and not adopted:
+the bases are 0.3 MB JPEGs that decode off-thread in ~40 ms, and Basis
+transcoding would add a WASM transcoder to the bundle for no visible
+gain at this size.
+
+**43.6 Not changed.** Drag sensitivity (0.5625°/px), inertia, the
+escape-hatch rules of §42.1, the SVG as the interactive layer, and the
+palette gates. The Political-view drag frame remains d3 canvas fills
+at ~9 ms/frame; moving fills to triangulated GL geometry is the next
+step if that view is ever reported as sluggish.
+
+## 44. Round 3, Phase 3: every rank, honest descriptions, depth on demand, and a mobile detail sheet (2026-09-12)
+
+Andy asked for the taxonomy page to go further on five fronts: the full
+rank system (not just the ones already met), a legend that stays aligned
+at every width, a description with its source on every node, a usable
+mobile experience, and real depth below family — genus and species,
+searchable, on demand. This section documents what shipped; it was
+largely built already (WIP commit b245f1b) and is audited, verified, and
+completed here.
+
+**44.1 The complete rank system.**
+
+The rank table (`RANK_SEEDS` in `src/lib/taxonomy.ts`) now carries **117
+rank entries** covering every rank asked for: the principal ranks; the
+upper/intermediate tiers (superkingdom through infrakingdom, superphylum
+through microphylum/nanophylum, gigaclass through parvclass, legion and
+cohort with their super-/sub-/infra- forms, gigaorder through
+falanx/phalanx, gigafamily through infratribe, supergenus through
+infragenus and the botanical section/subsection/series ladder, species
+aggregate); and the lower ranks (subspecies, variety/subvariety,
+form/subform, cultivar, cultivar group, grex, plus the bacteriological
+infrasubspecific set — pathovar, biovar, serovar, etc.). Botanical vs.
+zoological vs. bacteriological vs. viral differences are stated explicitly
+in `RANK_CODE_NOTE` and per-rank (division vs. phylum; ICN Art. 3/4 vs.
+ICZN Art. 35/42/45/10.4 vs. the 2021-added ICNP phylum rank vs. ICTV's own
+15-rung realm-to-species ladder with no infraspecific ranks).
+
+**Sources**, listed in `RANK_SOURCES` and rendered under the legend: the
+codes themselves (ICZN 4th ed., ICN Shenzhen Code, ICNP 2022 revision +
+Oren & Garrity 2021 for the phylum addition, ICTV Code Rule 3.22, ICNCP
+9th ed.) plus two textbook/synthesis references for the ranks no code
+governs — Ruggiero et al. 2015 (*A Higher Level Classification of All
+Living Organisms*, PLOS ONE, the superkingdom-to-order backbone Catalogue
+of Life itself follows) and McKenna & Bell 1997 (*Classification of
+Mammals Above the Species Level*, Columbia University Press, source of
+legion/cohort/grandorder/mirorder/parvorder) — and the ChecklistBank rank
+vocabulary as the definitive list of strings COL can attach to a node.
+
+Every rank has a colour (`hue` in `RANKS`, one anchor hue per tier —
+domain, kingdom, phylum, class, cohort, order, family, genus, species,
+root — with intermediate ranks shading the same hue lighter for
+super-/mega-/giga- and darker for sub-/infra-/parv-, so a whole tier reads
+as a colour family) and a definition (`def`, either an exact hand-written
+entry or, for a rank string never seen before, a definition COMPOSED at
+render time from a prefix glossary — `rankDefinition()` never returns
+empty, per the CLAUDE.md invariant "no chip is a dead end").
+
+**Verified** (2026-09-12, full scan of `tree.json` and every file in
+`genera/`, not a sample): the live data carries exactly **39 distinct
+rank strings** (class, domain, epifamily, family, genus, gigaclass,
+infraclass, infrakingdom, infraorder, infraphylum, infratribe, kingdom,
+megaclass, nanorder, order, parvorder, parvphylum, phylum, realm, root,
+section zoology, series zoology, species, subclass, subfamily, subgenus,
+subkingdom, suborder, subphylum, subsection zoology, subspecies,
+subterclass, subtribe, superclass, superfamily, superorder, supertribe,
+tribe, unranked) and every one of them is an exact entry in `RANK_SEEDS`
+— none had to fall through to the composed-prefix path. `node
+scripts/check-taxonomy.mjs` independently gates this on every run and
+reports "39 rank strings, all defined."
+
+Nothing needed fixing here; the prior agent's rank table was complete and
+accurate on inspection against the codes.
+
+**44.2 The rank legend: a two-column grid at every width.**
+
+`src/components/taxonomy/RankLegend.tsx` lays the full glossary out as
+`grid-cols-[7.5rem_minmax(0,1fr)]` (chip column fixed at 7.5rem, the
+description column flexible) inside `dl.rank-grid`, one `<dl>` per tier
+group. Verified with Playwright (headed Chrome) at 360, 768 and 1280px:
+at every width every `<dd>` in every tier's grid starts at the identical
+x-coordinate (measured: a single value, no spread, at all three widths).
+Screenshots: `.scratch/shots/taxonomy-legend-{360,768,1280}.png`.
+
+Nothing needed fixing here either.
+
+**44.3 Descriptions, sourced, generated ones flagged.**
+
+Every node — tree and genera files alike — carries `descSrc` in
+`wikipedia | wikidata | col | generated`, filled by the ETL in that
+priority order (Wikipedia intro extract, then Wikidata description, then
+a Catalogue of Life remark, then a summary GENERATED from structured
+facts: rank, parent, descendant/genus counts, up to three notable members,
+first appearance in Ma, extinct flag). `generatedSummary()` in
+`src/lib/taxonomy.ts` composes the same sentence shape the ETL uses for
+tree nodes, so live-loaded and not-yet-enriched genus nodes (`pending:
+true`) get an honest sentence instead of nothing. The UI (`TaxonDetail.tsx`
+→ `Description`) always shows a "Generated from Catalogue of Life facts"
+chip ahead of a generated description and a plain source line ("—
+Wikipedia, retrieved 2026-09-06" etc.) after any other source; there is no
+code path that can show a generated summary without the label.
+
+`check-taxonomy.mjs` gates a non-empty description with a valid recorded
+source on every node (`DESC_SOURCES` set) and fails loudly on a
+`wikidata`/`col` node with no `desc` string, a tree node whose extract
+shard lacks its text, or any node with a `descSrc` outside the four
+values. **Verified counts** (full data, both gate output and manual
+re-check):
+
+- Tree (35,214 nodes): wikipedia 9,088 · wikidata 7,575 · col 0 ·
+  generated 18,551 — all flagged, zero empty.
+- Genera files (257,389 nodes across 14,196 files): wikipedia 6,481 ·
+  wikidata 12,563 · col 0 · generated 224,149 — all flagged, zero empty.
+
+(`col` is 0 in both because the ETL's third tier — a Catalogue of Life
+prose remark — is empty for essentially every taxon in the 3LR release;
+the code path exists and is gated but has nothing to draw on. Not a bug,
+just an empty tier; noted so a future contributor does not go looking for
+a broken COL-remark fetch.)
+
+Nothing needed fixing here.
+
+**44.4 The mobile detail sheet.**
+
+`src/components/taxonomy/DetailSheet.tsx` is a modal bottom sheet
+(`role="dialog"`, `aria-modal`, `aria-labelledby`) that opens on
+`isNarrow` (`max-width: 1023px`) whenever a taxon is selected. Verified
+with Playwright at 390x844: tapping "Mammals" opens the sheet, focus
+lands on the Close button, `Escape` closes it and returns focus to the
+opener, the page behind gets `inert` while it is open, and Tab is trapped
+inside the sheet. Screenshot: `.scratch/shots/taxonomy-mobile-sheet.png`.
+
+**Gap found and fixed in this audit.** The sheet's `className` referenced
+`taxonomy-sheet` with a doc comment claiming "the slide-up transition is
+disabled under prefers-reduced-motion (the global rule in index.css)" —
+but no such rule existed anywhere in the codebase (`grep -rn
+"taxonomy-sheet\|slide-up\|translateY" src/` found only the component
+itself and one unrelated `translateY` in index.css). The sheet had NO
+transition at all: it simply appeared, and the comment was aspirational
+dead prose. Since `src/index.css` is off-limits for this audit (owned by
+another area) the fix lives entirely inside `DetailSheet.tsx`: an
+`entered` state flips `true` two animation frames after mount, the sheet
+transforms from `translateY(100%)` to `translateY(0)` over 220ms
+(scrim fades 0 → 1 over the same window), and BOTH are skipped outright
+(`transition: none`, final position immediately) when
+`matchMedia('(prefers-reduced-motion: reduce)').matches`. Verified with
+Playwright's `reducedMotion` context option: under `reduce` the computed
+transform is the identity matrix from the first frame the sheet exists;
+under `no-preference` the mid-open computed transform shows the sheet
+still ~210px below its resting position 40ms after it mounts, settling to
+identity within 500ms. This is a genuinely new capability (motion now
+exists to disable), not a regression — nothing before this audit animated
+either way, so no prior behaviour was removed.
+
+**44.5 Depth below family: on-demand genera, LIVE species.**
+
+**What the family-genus tier is.** One static file per family —
+`data/biology/taxonomy/genera/{familyId}.json` — holding the family's
+subfamilies/tribes/subtribes/genera exactly as Catalogue of Life nests
+them, fetched by the app only when that family is expanded
+(`loadGenera()`). 14,196 files, 37.0 MB total, largest Formicidae at
+1.86 MB; 257,389 nodes; 204,480 genera. Wikipedia/Wikidata enrichment of
+genus nodes is INCREMENTAL — `TAXONOMY_GENUS_ENRICH_CAP` (default 20,000
+per run, `etl/config.py`) new genera per ETL run — because looking up
+~204k genera against Wikidata/Wikipedia in one run is not realistic; a
+genus not yet reached carries `pending: true` alone (wiki/img/desc keys
+absent, expanded to explicit nulls + a generated description client-side
+by `expandPending()`), never a silent "no Wikipedia article" claim. As of
+this audit: 1,571 of 204,480 genera enriched (853 with a Wikipedia
+article), 202,909 still pending. **At the current 20,000/run cap this
+takes roughly ten more monthly runs to finish** — see the workflow note
+below; Andy may want a bigger cap or several catch-up runs if that pace
+is too slow.
+
+**What ships species, and how.** Two different depths below genus, by
+design, both verified live in the browser:
+
+1. **The ~30 editorial focus families** (`etl/reference/taxonomy_focus.json`
+   — Hominidae, Felidae, Canidae, Ursidae, Elephantidae, Equidae,
+   Delphinidae, Physeteridae, Macropodidae, Ornithorhynchidae, Accipitridae,
+   Falconidae, Corvidae, Spheniscidae, Strigidae, Crocodylidae,
+   Testudinidae, Varanidae, Salamandridae, Lamnidae, Salmonidae, Apidae,
+   Formicidae, Culicidae, Theraphosidae, Octopodidae, Rosaceae, Fagaceae,
+   Pinaceae, Amanitaceae) carry their species INLINE in the genera file,
+   fully enriched, no further fetch needed. 24,233 focus species ship this
+   way. Verified: Felidae -> Pantherinae -> Panthera shows five species
+   (leo, onca, pardus, tigris, uncia) immediately on expanding the genus,
+   each with rank chip, image, description and links.
+   (`.scratch/shots/taxonomy-depth-felidae-focus.png`)
+2. **Every other genus** (the other ~204k) loads its species LIVE from the
+   Catalogue of Life ChecklistBank API (`loadLiveChildren()`,
+   `CHECKLISTBANK_API`, dataset `3LR`) the moment it is expanded — a
+   documented render-time exception, same shape as the Trek tile
+   streaming of §41.2. Verified: Sciuridae (not a focus family) ->
+   Callosciurinae -> Callosciurus (`pending: true`, placeholder
+   silhouette, "Generated from Catalogue of Life facts" description)
+   expands to 14 live-loaded species rows, each tagged `live`.
+   (`.scratch/shots/taxonomy-depth-sciuridae-live.png`)
+
+**Search still finds species by name.** The static per-node index only
+covers what has been loaded into the page so far (tree + any expanded
+genera files); a query of 3+ characters with no local match ALSO fires a
+debounced live ChecklistBank name search (`liveNameSearch()`, prefix
+match on scientific name + English vernacular). Verified: searching
+"Vulpes lagopus" from a cold page (nothing expanded) returns 25 live
+hits; selecting one walks and loads every ancestor (genus, family, all
+the way to the domain) via `revealLive()` and lands on a fully-detailed
+species panel — photo (CC0, Commons), Wikipedia extract with retrieval
+date, rank chip, lineage breadcrumbs to Life, and the Wikipedia/COL/
+OneZoom links. (`.scratch/shots/taxonomy-live-search.png`,
+`taxonomy-live-reveal.png`)
+
+**Every new node — focus-species, live-genus-species, or live-search hit
+— carries rank colour** (`rankChipStyle`/`RankChip`, works on any rank
+string via `rankInfo()`), **image-or-placeholder** (`TaxonThumb`, the
+same neutral silhouette used everywhere else on the page), **a
+description** (source-flagged per §44.3; live nodes are always
+`generated` since no Wikipedia/photo lookup happens at render time — the
+panel says so explicitly: "Loaded live from the Catalogue of Life API;
+no Wikipedia or photo lookup happens at render time"), **and links**
+(Wikipedia — direct if known, else a pre-filled search; the Catalogue of
+Life source record; OneZoom by scientific name; Lifemap when a Wikidata
+NCBI taxid (P685) is on the node). Nothing needed fixing in this area —
+the design and its trade-offs (static-for-curated-depth vs.
+live-for-everything-else, capped incremental enrichment rather than one
+giant Wikidata batch) were already sound and are now verified end to end.
+
+**44.6 Gates.** `check:taxonomy` passes: tree 35,214 nodes / 39 rank strings all defined / descriptions wikipedia 9,088, wikidata 7,575, generated 18,551 (flagged); genera 14,196 files, 37.0 MB, 257,389 nodes, descriptions wikipedia 6,481, wikidata 12,563, generated 224,149 (flagged). Incremental genus enrichment runs at `TAXONOMY_GENUS_ENRICH_CAP` = 20,000 per ETL run, so full Wikipedia coverage of the 203k pending genera is roughly ten monthly refreshes away; raising the cap for the workflow only is the lever if Andy wants it faster.
+
+## 45. Round 3, Phases 4-5: Solar System textures, labels, and Moon exposure (2026-09-12/13)
+
+Audit and completion of a WIP checkpoint (`b245f1b`) covering the Solar
+System page's texture pipeline, the shared zoom control, surface-feature
+label anchoring, and the Moon's brightness. Most of the substantive work
+was already correct in the WIP; this pass verified it against the brief
+with Playwright (headed, real GPU), fixed the one thing that needed
+fixing (nothing did, after verification — see 45.3), and writes the
+record the WIP checkpoint never got to.
+
+**45.1 Hi-res textures, honestly labelled — and why not KTX2.**
+
+Round 2 (§42.9) recorded "8k variants... committed for the Sun, Earth,
+Jupiter and Saturn." That was wrong for three of the four: Sun, Jupiter
+and Saturn's "8k" Solar System Scope files are natively **4096×2048**
+(verified by opening each with Pillow) — only Earth's is a true 8192.
+The pack's own filename lied; §42.9 repeated it uncritically. The fix
+committed here renames the three to their real width (`sun-4k.jpg`,
+`jupiter-4k.jpg`, `saturn-4k.jpg`, same bytes — `git diff` shows these as
+pure renames) and adds genuinely-new hi-res files for **Moon, Mars and
+Mercury** at 4096×2048 (the pack's largest file for each is a "8k" that
+is honestly 8192-something; it is Lanczos-downsampled to 4096 and
+re-encoded as a quality-88 progressive JPEG in the ETL, because these
+three bodies get their real deep-zoom detail from the streamed NASA Trek
+mosaic — see 45.4/§41.2 — and a full 8-15 MB commit would buy nothing a
+reader can see before Trek tiles land). Venus, Uranus, Neptune, Ceres and
+the outer dwarfs have no hi-res file in the pack at all (404s, checked
+2026-09-07) and stay at 2k; Venus is compensated by its own Trek layer.
+The credit line and the ETL's manifest citation both now say the real
+pixel width per body — never "8k" for a 4096 file again.
+
+**Repo growth**: 6.87 MB of new binary — `mars-4k.jpg` (1.45 MB),
+`mercury-4k.jpg` (2.50 MB), `moon-4k.jpg` (2.91 MB). The three renamed
+files (sun/jupiter/saturn) and the pre-existing `earth-8k.jpg` (4.57 MB,
+genuinely 8192×4096) add no new bytes — they already lived in the repo.
+Total hi-res texture payload across all seven files is ~19.3 MB, all
+loaded lazily (never on first paint — see 45.2).
+
+**GPU compression (KTX2/Basis Universal): considered, not adopted.**
+Three reasons, together:
+1. **Toolchain.** KTX2/Basis encoding needs the `basisu`/`toktx` compiled
+   CLI in the ETL environment. This project's ETL is deliberately a
+   keyless-Python pipeline with no compiled binary dependency beyond the
+   couple of `curl` fallbacks CLAUDE.md already documents as exceptions;
+   adding a C++ toolchain for seven files is a heavier footprint than the
+   saving justifies.
+2. **Runtime cost cuts the other way.** three.js's `KTX2Loader` needs its
+   own ~250 KB WASM transcoder fetched by every page that shows a globe —
+   a second code-split payload on top of the ~600 KB three.js chunk
+   §41.1 already isolates to the Space pages. For seven textures under
+   20 MB total, that fixed cost is not obviously a win.
+3. **Provenance.** Every note in `etl/sources/space.py` for this pack
+   says textures are "copied byte-for-byte" or, where a resize is
+   unavoidable, "Lanczos-downsampled and re-encoded as progressive JPEG"
+   — an auditable one-hop relationship to the CC BY 4.0 source bytes that
+   the project has leaned on since round 1. Re-encoding into a
+   GPU-native container from an already-JPEG source would be a second,
+   lossy re-encode with no real Basis benefit (Basis's efficiency comes
+   from encoding the *original* art, not from transcoding a JPEG), for a
+   texture set the maintainer can no longer point at and say "these are
+   the pack's own bytes."
+
+The trade-off actually shipped is progressive JPEG (quality 88,
+`optimize=True`) plus the 2k-then-hi-res loading ladder (45.2), which
+already solves GPU compression's real user-facing complaint (a stall on
+first paint) by never showing a stall — the 2k placeholder (0.2-0.9 MB)
+paints immediately, the hi-res file swaps in after. Measured sizes and a
+calculated (size ÷ bandwidth, not a live capture) download time for the
+worst case (moon-4k, 2.91 MB) once it starts fetching:
+
+| Link | Speed | moon-4k.jpg |
+|---|---|---|
+| Constrained mobile | 10 Mbps | ~2.3 s |
+| Typical broadband | 50 Mbps | ~0.5 s |
+
+**45.2 Progressive texture loading, and a texture "ladder" that can't go backwards.**
+
+Every body's scene mesh and globe modal now open on the 2k Solar System
+Scope file; the globe modal always upgrades to the committed hi-res file
+when one exists (45.1), and the *scene* upgrades only the body currently
+flown to (one hi-res texture resident in the scene at a time — a 4096
+RGBA texture with mipmaps is ~43 MB of GPU memory, 8192 is ~170 MB;
+upgrading all eleven bodies at once risks integrated GPUs). Flying to a
+different body restores the previous one's 2k and releases its hi-res
+texture.
+
+The globe modal chains a third rung for Moon/Mars/Venus/Mercury: the
+streamed NASA Trek mosaic (§41.2), requested at levels 2 and 3
+immediately on open and level 4 on close zoom. Each rung carries a rank
+(2k=1, hi-res=2, Trek level *n*=10+*n*); a texture is only ever applied
+if its rank exceeds what is already showing, so a slow 2k or a Trek tile
+that lands out of order can never overwrite something sharper (this
+generalises the round-2 §42.8 out-of-order guard to the whole ladder,
+not just Trek-vs-Trek).
+
+**45.3 Zoom controls: one shared component, verified identical.**
+
+The Solar System scene's zoom in/out/fullscreen buttons and its optional
+vertical zoom slider now use the exact component the Global Data maps
+use (`src/components/ZoomControls.tsx`, extracted from `WorldMap.tsx`);
+each caller only supplies what its own 0-100 means (a d3-zoom scale for
+the map, `1 - log(distance/min)/log(max/min)` — camera distance — for
+the scene) and a `storageKey` so the two "show slider" preferences don't
+collide in `sessionStorage`.
+
+Verified with Playwright (headed Chrome) rather than by inspection alone,
+because a moderate drag on a 3D perspective scene and a 2D orthographic
+globe *look* different even when the underlying control is identical (a
+50%-of-track drag reads very differently on a log-scaled camera-distance
+axis than on a log-scaled d3-zoom-`k` axis). Reading the raw `<input>`
+value confirmed the two sliders are byte-for-byte identical in behaviour:
+dragging from 10% to 90% of the track sets the same raw value (3) on
+both; dragging the opposite way sets the same value (97) on both; the
+physical top of the track is value 100 (closest/most zoomed in) and the
+bottom is 0 on both. Screenshots at the extremes confirm the *meaning*
+matches too — value 100 shows a single country filling the map and the
+camera effectively inside the Sun's texture on the scene; value 0 shows
+the full globe and the full orbit diagram respectively. No fix was
+needed here; the WIP's extraction was correct.
+
+A related fly-to change (already in the WIP, verified working): clicking
+a body no longer just re-targets the camera, it also glides the viewing
+*distance* to 4-8 body radii (keeping the reader's current distance if
+already in range), so flying to a small body like Mercury from a wide
+view of the whole system doesn't leave the camera parked kilometres away
+showing a speck.
+
+**45.4 Surface-feature labels: anchored to the terrain, not floating near it.**
+
+Root cause of the round-2 anchoring bug (fixed in this WIP, verified
+here): the surface-point formula used `theta = (lon + 90)°` against
+three.js's `SphereGeometry` UV wrapping, which is a 90-degree offset
+from the equirectangular texture's actual `u = (lon+180)/360` mapping —
+every label sat a quarter-turn east of its feature. The gazetteer's
+longitude convention (checked against the shapefile CRS, which declares
+`AXIS["Longitude",EAST]`) is planetocentric, **east-positive, 0-360**
+(e.g. Olympus Mons 226.198°E, Tycho 348.785°E) and needed no conversion
+once the wrapping itself was fixed:
+
+```
+phi = lat * pi/180
+lambda = normalize(lon + 180, 360) - 180    // wrap into (-180, 180]
+anchor = (cos(phi)*cos(lambda), sin(phi), -cos(phi)*sin(lambda))
+```
+
+Each label is a `THREE.Sprite` **parented to the globe mesh**, so it
+rotates with the body for free; every frame it is: (a) re-scaled from
+its fixed CSS-pixel size so it reads as a constant size on screen
+regardless of zoom, (b) faded out over the last ~13° before the limb and
+hidden past it via an occlusion test (`dot(toCamera, surfaceNormal) >
+0.08` fading to 1 at 0.30), and (c) decluttered greedily in screen space
+(largest features placed first, later ones dropped on overlap) within a
+budget that grows from 12 to 60 labels as the camera closes in. A small
+always-visible dot marks the exact anchor point even when its label is
+hidden by declutter, so the geometry is never lying even when the text
+is.
+
+A second gap, also closed here: labelling purely by IAU diameter buries
+the features a reader actually looks for (Tycho is 85 km across; the
+Moon has ~300 larger craters). `etl/config.py`'s new
+`GAZETTEER_FEATURED` list pulls specific well-known names — Olympus
+Mons, Valles Marineris, Tycho, Copernicus, Maxwell Montes, Caloris
+Planitia, etc. — from the **same gazetteer rows** (nothing hand-typed)
+and places them at the head of each body's feature list, so they label
+at every zoom level instead of only once the camera is close enough for
+80-deep diameter ranking to reach them. A name missing from that year's
+gazetteer download aborts the ETL run rather than silently vanishing.
+
+**Verified** with Playwright at several camera angles per body
+(screenshots below): Olympus Mons's label sits exactly on the volcano's
+caldera on the Mars globe; Tycho's sits exactly on its bright ray-crater
+on the Moon globe; clicking either opens the feature card with the
+gazetteer's own origin/approval-year/culture/link columns (never
+hand-typed) — e.g. Olympus Mons: "Mons, montes — mountain · 610.1 km
+across / Classical albedo feature name. / Name approved by the IAU in
+1973 · origin: Greek / USGS Gazetteer entry".
+
+**45.5 The Moon reads bright now.**
+
+Two independent changes, both already in the WIP and verified working
+here with a genuine A/B (temporarily reverting each value, screenshotting,
+reverting back — not a description of intent):
+
+1. **Trek exposure gain.** The streamed LRO WAC mosaic (the LROC WAC
+   source the brief asked for) is a low-mean-luminance radiometric
+   product — measured on its own level-1 tiles at 79/255, against
+   132-194/255 for the Solar System Scope textures it replaces mid-zoom.
+   `etl/config.py`'s `TREK_EXPOSURE` applies a linear multiplier
+   (Moon and Mercury ×1.8, Mars ×1.15, Venus ×1.0) so the hand-off from
+   the placeholder texture to the Trek mosaic doesn't visibly darken the
+   globe; the value is a stated camera-exposure choice, not a relabelled
+   surface, and it prints in the on-screen credit ("...displayed at
+   ×1.8 exposure"). Verified by toggling the Moon's committed exposure
+   value 1.8 → 1.0 in `data/space/bodies.json` and back (reverted after
+   the screenshots; no net change): sampled pixels on the same frozen
+   camera angle read 78→103, 64→85, 87→113 (before→after, ~30%
+   brighter), and the credit line's conditional "displayed at ×N
+   exposure" clause correctly appears only when the multiplier is not 1.
+2. **Globe lighting.** three.js's physically-based lighting divides the
+   Lambertian term by π; the previous ambient 1.1 + directional 1.6 put
+   the fully-lit sub-solar point at ~0.86× its texture value and the
+   terminator side far darker — every globe read dim, worst on the
+   low-albedo mosaics. Ambient 1.5 + directional 2.0 puts the sub-solar
+   point at ~1.1× and the limb at ~0.5×: a brighter exposure of the same
+   surface, applied to every body's globe (not Moon-specific — the
+   modal is one component for all bodies). Verified by reverting to
+   1.1/1.6 and back on a frozen Trek-loaded frame: measurable but modest
+   brightening (mean per-pixel diff 4.4/255, max 29/255) since the
+   Trek exposure gain above already dominates the frame once a Trek
+   texture is showing; the effect is largest on bodies without a Trek
+   override (e.g. Jupiter, Saturn) where it is the only exposure control.
+
+Neither change touches the source imagery's actual albedo data — both
+are stated display-exposure multipliers, credited on screen, leaving the
+underlying LRO WAC mosaic and Solar System Scope textures exactly as
+downloaded.
+
+**45.6 What was verified but needed no change.**
+
+`npx tsc -b --noEmit` passes with zero errors. `prefers-reduced-motion`
+still starts orbital playback paused (unchanged code path). The zoom
+buttons and the "Show/Hide slider" link are ordinary `<button>`
+elements — keyboard- and screen-reader-reachable without touching the
+canvas, as before. Attribution renders in three places already: the
+scene's caption line, the globe modal's caption line (naming whatever
+rung of the texture ladder is currently showing), and each body card.
+
+## 46. Round 3, Phase 6: Cosmic Phenomena becomes a full catalogue (2026-09)
+
+The 13-entry Cosmic Phenomena page (§41.3, §42.10) becomes a ~60-entry
+categorised, searchable catalogue with every image downloaded, licence-gated
+and served locally. A prior WIP pass (commit `b245f1b`) had already written
+`etl/sources/phenomena.py`, `scripts/check-phenomena.mjs` and expanded
+`etl/reference/cosmic_phenomena.json` to 62 entries, but the stage had never
+been run end to end and the page itself was still the old 13-card layout
+reading the old (string-array facts, hotlink-shaped) schema. This phase
+finished the job: ran the stage, fixed what broke, rebuilt the page, and
+re-verified sourcing.
+
+**46.1 The two originally bare cards.** Andy's brief called out "Stars and
+stellar life cycles" and "Gamma-ray bursts" as having no appropriate photo.
+The expanded reference file already carried fixes for both, verified before
+shipping: `stellar-lifecycles` pins NASA Image Library item
+`GSFC_20171208_Archive_e000743` — Hubble's Westerlund 2 star-forming
+cluster, released for Hubble's 25th anniversary — and `gamma-ray-bursts`
+pins the Commons file `Gamma-ray-burst-illustration.jpg`, confirmed to be
+NASA Goddard's Dana Berry GRB-jet illustration (public domain, "NASA
+material is not protected by copyright unless noted"). Both now render with
+full credit and licence lines.
+
+**46.2 Image pipeline: download, gate, never hotlink.** Every entry pins one
+of `nasaId` (NASA Image and Video Library item), `commons` (a Wikimedia file
+that must clear the free-licence gate: public domain, CC0, CC BY, CC BY-SA,
+Attribution — never NC/ND), `query` (a NASA library search, first hit with a
+preview), or falls back to the pinned Wikipedia article's lead image through
+the same Commons gate. `etl/sources/phenomena.py` downloads the chosen
+rendition, re-encodes it to a bounded progressive JPEG (max 960×720, q82,
+alpha composited onto white), and writes it under
+`data/space/phenomena/<id>.jpg` with a provenance row in
+`data/space/phenomena/manifest.json` (source URL, author, licence, credit
+line). Nothing is hotlinked at render time. Running the stage cold-cached
+resolved all 62 entries with zero rejects: 41 via `nasaId`, 12 via
+`commons`, 8 via `query`, 1 via the Wikipedia fallback (wormholes, per
+§42.10) — 4.47 MB total.
+
+**46.3 Two upstream data-quality bugs found and fixed in our code.** (a) The
+NASA Image and Video Library's `/asset/<id>` endpoint sometimes serves
+rendition hrefs as plain `http://images-assets.nasa.gov/...` even though the
+same host answers `https` (verified with a HEAD probe); `check-phenomena.mjs`
+correctly failed 49 entries on "manifest sourceUrl is not https". Fixed by
+normalising the scheme to https wherever an asset or preview href is read
+in `phenomena.py`, before it is fetched or recorded — the file itself was
+never insecurely served, only the recorded provenance URL was. (b) One
+Commons file's Artist template renders the literal, un-filled string
+"NASA's Scientific Visualization Studio - null" (verified against the file's
+own page) — a known class of Commons authoring bug, not a real credit.
+`_commons_image` now strips a trailing `- null` artefact from the author
+field (a narrow regex, scoped to this file only) rather than inventing a
+credit; if a Commons page ever lacks an author entirely the existing
+"Wikimedia Commons contributor" fallback still applies.
+
+**46.4 Broken NASA reference links from earlier rounds.** A HEAD probe (per
+the standing note that some round-2 NASA links fail) found five dead
+`science.nasa.gov` paths reused across the expanded catalogue's `nasa` field
+and several facts' citation URLs: `/universe/stars/supernovae/`,
+`/universe/neutron-stars/`, `/universe/what-are-nebulae/`,
+`/universe/galaxies/active-galaxies/` and
+`/universe/what-are-gamma-ray-bursts/` — all genuine 404s, not redirects.
+Replaced with current equivalents verified live: the neutron-star family
+(neutron-stars, pulsars, magnetars, kilonovae, quark-stars, fast-radio-bursts)
+now cites `/category/universe/stars/neutron-stars/`; supernovae cites
+`/category/universe/stars/supernovae/`; the three nebula entries split by
+specificity (`/category/universe/nebulae/`,
+`/category/universe/nebulae/planetary-nebulae/`,
+`/category/universe/nebulae/star-forming-nebulae/`); quasars-agn and
+blazars cite Webb's "What Are Active Galactic Nuclei?" explainer; and
+gamma-ray-bursts cites NASA's dedicated GRB explainer article. All other
+`nasa` links, all 62 Wikipedia links, and every fact URL (111 unique URLs in
+total) were HEAD-probed and resolve 200 with a descriptive User-Agent
+(Wikipedia rate-limits anonymous curl bursts with 429s — a probing artefact,
+not a link problem).
+
+**46.5 One description failed its own word/sentence gate.** `gravitational-waves`
+had a 2-sentence description against the reference file's own 3–6-sentence
+rule; expanded to four sentences (adding the Virgo/KAGRA multi-detector
+network) without changing any figure.
+
+**46.6 Fact spot-checks.** A sample across categories (GW170817's merger
+delay and host galaxy, Betelgeuse's 2020 radius/distance, Planck 2018's
+reionization redshift, magnetar counts and field strengths, the two
+previously-bare cards' image provenance) was independently re-fetched via
+Wikipedia/NASA and matched the reference file's values and cited years
+exactly. Not every one of the 62×3-plus facts was re-verified line by line;
+the sample targeted the entries most likely to have drifted (recent
+observational records) and the two cards the maintainer flagged by name.
+
+**46.7 The page: category filter + search, same tokens as the rest of the
+site.** `CosmicPhenomenaPage.tsx` is a full rewrite (the old version still
+read the pre-expansion schema: string-array facts, a single `BodyImage`-typed
+hotlink field). Cards show the image (with a category chip and a status
+badge — Observed muted, Theoretical `--accent`, Hypothesis `--negative`,
+both already AA-gated against `--surface`/`--surface-raised` by
+`check-contrast.mjs`), the description, an expandable "Key facts" list (each
+fact linking its own source and year), NASA/Wikipedia links, and the image's
+credit + licence + source-page link. A `role="group"` row of
+`aria-pressed` category buttons (the same pattern as `TaxonomyPage`'s view
+toggle) and a `type="search"` input filter the 62 entries client-side on
+every keystroke; a live region announces "N of 62 entries"; an empty result
+set shows a named "No phenomena match…" state with a one-click "clear the
+filters" recovery rather than a bare "0 results" (per the no-dead-ends UX
+guideline). No new colours, motion, or CSS were introduced — the global
+`prefers-reduced-motion` rule in `index.css` already applies, and the type
+additions (`PhenomenonFact`, `PhenomenonImage`, `PhenomenaCategory`,
+`PhenomenaStatusInfo`, `PhenomenonEntry`, `phenomenonImageUrl`) live
+alongside the existing `PhenomenaFile`/`usePhenomena` in `src/lib/space.ts`
+without touching any other export there (bodies, moons, nomenclature
+untouched).
+
+**46.8 Refresh.** `cosmic_phenomena` joins the manifest as its own source
+row (editorial text CC0, images NASA media or Commons free licences per
+item); NASA and Commons links are static citations re-verified whenever the
+reference file is next edited, not polled independently. No new runtime
+exception: everything ships as a committed artifact under `data/space/`.
+
+**46.9 Left for a full pipeline run.** This phase ran
+`etl/run.py --only phenomena` under `LEADERS_CACHED_ONLY=1
+CURRENCY_CACHED_ONLY=1` per the coordination brief, which — per the
+CLAUDE.md hard rule — writes a partial `data/manifest.json` (crosswalk +
+phenomena stages only). **Before this lands in a PR, run a full cached
+`etl/run.py`** so the committed manifest's `content_fingerprint` covers the
+whole pipeline again; nothing else about `/data` needs to change for this
+phase.
+
+## 47. Round 3, Phase 7: the periodic table of the elements (2026-09-12)
+
+A prior agent (transcript lost; WIP commit `b245f1b`) built the Chemistry
+section: the ETL stage (`etl/sources/chemistry.py`), the table and panel
+components, the three.js Bohr-model schematic, the glossary, and the
+Chemistry SECTIONS/token registration. Typecheck, contrast and
+theme-parity passed; `node scripts/check-chemistry.mjs` failed with 43
+problems. This entry records the diagnosis, the fixes, and the sourcing
+for every field the panel shows.
+
+**47.1 What already worked and was left alone.**
+
+The table (`PeriodicTable.tsx`) renders all 118 elements in the IUPAC
+18x7 layout with the f-block as two footer rows, category colouring with
+a legend, and seven property views (electronegativity, atomic radius,
+melting point, density, crustal abundance, discovery year, phase at STP)
+on a sequential ramp with a HATCHED no-data swatch and legend entry —
+exactly the seven the spec asked for, plus category. The grid uses a
+roving tabindex; arrow keys skip empty cells and move between real
+elements, Home/End jump to the row ends, Enter/Space opens the panel —
+verified with a scripted Playwright session (Hydrogen -> 2x ArrowRight ->
+Helium -> ArrowDown -> Neon -> Enter opens the panel). The element panel
+(`ElementPanel.tsx`) shows the Commons photograph with author/licence/
+Commons-page attribution, the animated three.js Bohr-model schematic
+(`AtomModel.tsx`, nucleus + one ring per shell from the electron
+configuration, OrbitControls, paused by default under
+`prefers-reduced-motion` with an always-present Play/Pause control,
+labelled "Bohr-model schematic" with a "not to scale" caption), and every
+property with an `InfoTip` (a real `<button>`, `aria-describedby`,
+click-to-pin so the glossary link is Tab-reachable, Escape closes) linked
+to `/chemistry/glossary#<key>`. None of this needed changing.
+
+**47.2 The 43 gate failures, by class.**
+
+**Two elements with no image and no `noSample` flag (He, Pu).** Both had
+a Wikidata P18 image that failed the licence gate: Helium's
+`Helium discharge tube.jpg` (Alchemist-hp) is GFDL-1.2-only, and
+Plutonium's `Plutonium ring.jpg` (Los Alamos National Laboratory) carries
+a bespoke "Attribution" licence with no linked terms — both genuinely
+outside the accepted set (PD / CC0 / CC BY / CC BY-SA / FAL), so the
+rejection was correct. Neither element is a case for `noSample`,
+though — free-licensed photographs of both exist — so
+`etl/sources/chemistry.py` gained a `file` override in
+`chemistry_samples.json` that lets an editorial pick replace the
+automatic P18 choice. He now uses `Glowing ultrapure helium.jpg`
+(images-of-elements.com, CC BY 3.0 — an ultrapure-helium discharge tube,
+matching the spec's "gases: discharge tube" rule); Pu now uses
+`Pubutton.jpg` (US Department of Energy, public domain — a plutonium
+metal button). Both were verified against the live Commons API before
+being picked (`LicenseShortName` checked directly, not guessed from the
+element name).
+
+**Three elements with `electricalConductivity: 0` (S, Br, I).** Not an
+absence — a rounding bug. Conductivity is computed as 1/resistivity, and
+sulfur's resistivity (~2x10^15 Ohm*m) gives a real conductivity of
+~5x10^-16 S/m; `round(x, 4)` (fixed decimal places) crushed that, and
+bromine's and iodine's smaller-but-still-tiny values, to `0.0`, which the
+gate correctly refuses to accept as a bare zero. Fixed with a new
+`round_sig()` helper (significant figures, not decimal places); the true
+values (S: 5e-16, Br: 1.282e-11, I: 7.692e-08 S/m) now carry their
+`computed as 1/rho from resistivity ...` note, and the front end's
+existing `formatNumber()` already renders sub-0.001 magnitudes in
+scientific notation, so no UI change was needed.
+
+**38 elements with `stableIsotopes: 0` (Tc, Pm, and every element Z >=
+83).** Also not an absence in the "no data" sense — these elements
+really do have zero stable isotopes, every known isotope being
+radioactive — but this site's convention (stated in the gate and matched
+elsewhere, e.g. Space §33: "a figure a source does not publish is null")
+treats the *display* of a bare `0` as indistinguishable from a missing
+figure, so a definitional zero is rendered as an explicit null with a
+reason rather than a number. `stableIsotopes` now emits
+`{value: null, reason: "no stable isotopes -- every known isotope is
+radioactive"}` when the IAEA count is 0, and the true count otherwise.
+
+**Root cause behind the two image failures being visible at all, and
+behind biologicalRole's high null rate.** `.cache/chemistry` held zero
+cached PUG-View records (`pugviewRecords: 0` in the prior manifest) —
+every one of the 118 fetches had apparently been skipped or failed
+silently in the build that produced `b245f1b`. Re-running
+`.venv/Scripts/python etl/run.py --only chemistry` (no
+`CHEMISTRY_PUGVIEW_CACHED_ONLY`, PubChem's stated ~2.5 req/s pacing
+already in the fetch loop) retrieved all 118 PUG-View records cleanly in
+this pass (0 throttled, 0 missing) and dropped `biologicalRole` nulls
+from 73 to 66 by supplying real PubChem-cited biological-role prose where
+it exists. The remaining 66 are elements PubChem's PUG-View genuinely has
+no biological-role section for, and whose Wikipedia article also has no
+matching section — checked by inspection, not assumed.
+
+**47.3 Honesty audit of the remaining nulls (not gate failures, checked anyway).**
+
+The spec asked for gaps to be filled from real sources where they exist,
+not just null-with-a-reason to satisfy the gate. The worst-null fields
+after the fixes above were spot-checked against their actual upstream
+source rather than taken on faith:
+
+- **discoveryPlace (71 null).** Queried Wikidata directly for every
+  element's P189 (`discovery place`): only 49 of 118 items carry it at
+  all. This is a real gap in Wikidata, not a parsing bug — confirmed by
+  running the SPARQL query standalone and inspecting the raw bindings.
+  Left as an honestly-sourced null; a future pass could try each
+  element's Wikipedia infobox for a "discovered" narrative field, but
+  the standard `{{Infobox element}}` template has no place-of-discovery
+  parameter to mine, so that would mean parsing free text per element —
+  out of scope for this pass.
+- **electronAffinity (61 null), abundanceUniverse (35 null),
+  specificHeat (32 null).** All three check out against their sources:
+  PubChem's `ElectronAffinity` field is empty for elements with no
+  measured or bound anion (mostly noble gases, plus much of the
+  d/f-block); Anders & Grevesse (1989) is a stable/long-lived-primordial
+  solar-system compilation, so its 35 absences are exactly the elements
+  with no stable isotope (Tc, Pm, Z>=84 minus none — an exact match);
+  Wikipedia's heat-capacities data page simply has no tabulated value for
+  32, mostly synthetic, elements.
+
+No other `round()`-on-a-small-value bug was found elsewhere in the
+module (`ionizationEnergies` is the only other rounded figure, and eV
+values are never sub-0.001).
+
+**47.4 Per-field source mapping (as shipped, vintages from this run).**
+
+| Panel field | Source id | Title | Vintage |
+| --- | --- | --- | --- |
+| Atomic number, symbol, name, category, electron config (short + full), electron shells, electronegativity, ionization-energy fallback, electron affinity, oxidation states, phase at STP, melting/boiling point, density, van der Waals radius | `pubchem` | PubChem Periodic Table (NIH/NCBI) | retrieved 2026-09-08 |
+| Uses, biological role, hazards (PubChem-sourced prose where present) | `pugview` | PubChem element records (PUG-View), per-statement references | retrieved 2026-09-13 |
+| Standard atomic weight | `ciaaw` | IUPAC/CIAAW Standard Atomic Weights | revisions to 2024 |
+| First three ionization energies | `nist_asd` | NIST Atomic Spectra Database | retrieved 2026-09-08 |
+| Group, period, block, natural occurrence, specific heat (list fallback) | `wp_list` | Wikipedia: List of chemical elements (CRC-cited columns) | retrieved 2026-09-08 |
+| CAS number, discovery year, discoverers, discovery place | `wikidata` | Wikidata (P18/P61/P138/P189/P231/P373/P575) | retrieved 2026-09-08 |
+| Covalent radius | `wp_radii` | Wikipedia: Atomic radii of the elements (data page) | retrieved 2026-09-08 |
+| Crystal structure, magnetic ordering | `wp_infobox` | Wikipedia element infobox templates | retrieved 2026-09-08 |
+| Thermal conductivity | `wp_thermal` | Wikipedia: Thermal conductivities of the elements (data page) | retrieved 2026-09-08 |
+| Electrical conductivity | `wp_resistivity` | Wikipedia: Electrical resistivities of the elements (data page) | retrieved 2026-09-08 |
+| Specific heat (data-page value, where tabulated) | `wp_heat` | Wikipedia: Heat capacities of the elements (data page) | retrieved 2026-09-08 |
+| Crustal abundance | `crc_crust` | CRC Handbook via Wikipedia "Abundances of the elements", column C1 | CRC 85th ed. (2005); retrieved 2026-09-08 |
+| Universe (solar-system) abundance | `anders_grevesse` | Anders & Grevesse (1989) via the same Wikipedia data page, column Y2 | 1989 compilation; retrieved 2026-09-08 |
+| Etymology | `wp_etymology` | Wikipedia: List of chemical element name etymologies | retrieved 2026-09-08 |
+| Description, uses/biological role/hazards (Wikipedia fallback) | `wikipedia` | Wikipedia article text (CC BY-SA, attributed) | retrieved 2026-09-08 |
+| Stable/known isotope counts, notable isotopes | `iaea` | IAEA Nuclear Data Section, Live Chart of Nuclides (NUBASE2020/ENSDF) | IAEA extraction 2023-10-18 |
+| Element photographs | `commons` (per file) | Wikimedia Commons | licence gated per file: PD / CC0 / CC BY / CC BY-SA / FAL |
+| noSample reasons, facility photos, editorial image overrides | `editorial` | `etl/reference/chemistry_samples.json` | v1 |
+
+RSC's periodic table (periodic-table.rsc.org) was inspected, confirmed to
+carry an RSC copyright notice with no reuse licence, and is linked from
+the panel as further reading only, not scraped — unchanged from the
+prior pass, restated here because the spec calls it out explicitly.
+
+**47.5 Coverage, after this pass.**
+
+118 elements, all with a full property set. 117 with an image (18 of
+those are discovering-facility photos for atom-at-a-time elements, 1 is
+a labelled "related" image for radon); 20 elements carry an explicit
+`noSample` flag with a reason (unchanged set: At has a sample photo with
+a `sampleNote` instead of `noSample`, since one exists; Rn, Fr, Md
+through Og do not). 647 null figures remain across 22 properties, every
+one carrying a reason; worst offenders after this pass: discoveryPlace
+71, biologicalRole 66, electricalConductivity 63 (now all genuinely
+untabulated resistivities, not rounding artefacts), electronAffinity 61,
+stableIsotopes 38 (all "no stable isotopes" reasons, not zeros),
+abundanceUniverse 35. 44 glossary entries, one per property key the
+panel renders, each with a >=60-character definition and an http(s)
+source (IUPAC Gold Book, NIST, CAS, IAEA, OpenStax CC BY 4.0, or the
+relevant Wikipedia data page).
+
+**47.6 Not changed.**
+
+The table layout, colouring, legends, keyboard model, the Bohr-model
+renderer, the glossary content and structure, and every property key and
+its glossary entry. The `file` override added to the samples schema is
+additive — existing `noSample`/`facility`/`dropWikidataImage` entries are
+untouched and still take the same precedence order (override file, then
+Wikidata P18, then facility fallback).
+
+**47.7 Open question.**
+
+`discoveryPlace` is null for 71/118 elements because Wikidata's P189
+simply isn't populated for most elements, not because of a bug. A future
+pass could mine each element's Wikipedia infobox free text (not a
+structured template field) for a discovery-place mention, but that is
+per-element prose parsing rather than a table extraction and was judged
+out of scope here.
+
+## 48. Round 3, Phase 2: the Antique direction becomes "A / Blaeu 1635" (2026-09-07)
+
+Andy rejected the round-2 antique scheme and asked for one researched
+from real 16th-19th-century hand-coloured maps. Scans were sampled in
+OKLCH (Blaeu 1635, Mercator 1595, Ortelius 1570, Homann 1730, Cary
+1801, Colton 1855, Johnson 1864; Commons + Library of Congress, all
+public domain; sampling scripts in .scratch/antique_*.py, measured
+swatches were embedded in the candidate artifact). Three candidates
+(A Blaeu 1635 / B Cary 1801 / C Johnson 1864) were shown as swatch
+sheets plus draggable globes; **Andy picked A**.
+
+**48.1 The palette.** Measured from the Blaeu scan: parchment paper
+oklch(0.90 0.045 83) #eddcbd; parchment sea oklch(0.905 0.03 86)
+#e9dfca; umber line oklch(0.40 0.042 61) #594330; ink #422e1e; coast
+band #b7a087. Fills: flag hue pulled halfway toward ochre (blendTo 85,
+strength 0.5), chroma 0.055, light tiers L 0.70/0.75/0.80/0.85 (the
+measured wash range). The 4-tier lightness encoding and the graph
+colouring are unchanged; neighbour dE min 4.75.
+
+**48.2 Gate trade-off (agreed in the candidate sheet).** True
+hand-tint paleness puts these tiers too close to the parchment sea for
+the 1.35 fill-vs-water floor. As on the originals, the ENGRAVED
+COASTLINE carries the land/water separation, so for this direction
+only, build-map-palette.mjs verifies a coastline gate instead: the
+umber line must clear 3.0 contrast against the sea, the paper and
+every fill (currently 3.38 minimum). Every other direction keeps the
+water floor. Antique fills are theme-invariant (already true of all
+direction fills, --fill-globe-<dir>-*).
+
+**48.3 Rendering (WorldMap.tsx).** In the antique direction (country
+mode, political base) the map renders as a sheet: parchment sea AND
+parchment past the projection edge (the one exception to the
+black-space rule of 2026-08-24 -- black around an antique sheet reads
+as a screen; noted as an exception, not a reversal); umber country
+strokes; a soft double coast band stroked from the merged land
+outline under the fills; names in Newsreader italic umber with a
+parchment halo; a static feTurbulence paper grain (multiply, alpha
+0.09) and corner vignette above everything, view-fixed and inert.
+Drag frames (canvas + GL borders) use the same literal colours.
+Satellite/terrain and continent modes are untouched.
+
+## 49. PhyloPic build rollover (2026-09-13)
+
+The first full ETL run of round 3 aborted in the `evolution` stage:
+PhyloPic's API answered HTTP 410 Gone for `build=555`. The API is
+versioned by a build number every query must carry; the root document
+naming it is cached like any other fetch, so a cached root goes stale
+while a NEW name query (one not yet in the cache) reaches the live API
+with a retired build. `etl/sources/evolution.py` now holds the build in
+a small `_PhylopicBuild` object and, on a 410, re-reads the live root
+once and retries the query. Per-name cache keys were already
+build-independent (§21), so cached answers stay valid across
+rollovers. A 404 still means "no silhouette" and anything else still
+aborts the run.
+
+## 50. Round-3 code review fixes (2026-09-13)
+
+A high-effort review of the round-3 diff (`/code-review main high`)
+found 15 defects, all fixed before the PR.
+
+**50.1 Globe renderer (§43).** (a) The drag lambda is never wrapped,
+so after more than 180 degrees of spin the visible-window unwrap in
+`globegl.ts` fell outside the tile grid and no fine tile was requested
+again: the centre longitude is now normalised before unwrapping, the
+window is returned unwrapped, and `drawTiles` wraps column indices
+modulo the tile count, which also fixes the second finding that a view
+centred near the antimeridian never fetched the far-side tiles
+(verified: tiles keep arriving through a scripted >360-degree spin at
+9x zoom, columns 0-3 all requested). (b) A WebGL context restore
+relinked programs but kept stale uniform locations, a dead clip buffer
+and no blend state: GPU setup now lives in `initGpu()` and runs on
+restore too. (c) `destroy()` sets a flag so an in-flight base fetch
+no longer uploads into a discarded context or calls back an unmounted
+map (StrictMode double-mount leak).
+
+**50.2 Solar System (§45).** In true-scale mode every body radius sat
+at the 0.02 floor, so the fly-to distance (4-8 radii) was below
+`minDistance`, the lerp could never settle, and every later zoom-out
+was dragged back to the floor. The fly distance is now clamped to the
+controls' own range.
+
+**50.3 Taxonomy (§44).** Expanding a capped focus genus (Bombus,
+100/292 species shipped) silently live-fetched over the shipped
+species; load errors stuck through collapse/re-expand and cards view
+had no retry; `loadLiveChildren` flagged the cap on the last child
+instead of the parent; `revealLive` read genera state from a stale
+closure; `_bubble_images` could give a photo to a `pending` node
+(latent); and 18 families with descendants but no genus-rank rows
+(Sarcomeniaceae ...) had a genera file the UI never offered to expand
+(`gen` is now set, possibly 0, whenever the file exists). All six
+verified in Playwright, two with mocked network failures.
+
+**50.4 Chemistry (§47).** PubChem's "Isotopes in Biology" heading
+matched the loose `biolog` needle ahead of the real biological-role
+fallback (18 elements, Fe among them, showed tracer text; now anchored
+headings, "Isotopes in ..." excluded); any coarse-precision Wikidata
+date was treated as antiquity (Arsenic, 1300 AD at century precision,
+now shows 1300 / Albertus Magnus; only non-positive years are ancient);
+the -3000 antiquity sentinel sat inside the discovery-year colour
+domain and crushed all real dates into 9% of the ramp (ancient
+elements now get their own legended `--chem-ancient` swatch, gated in
+check-contrast); Escape on a pinned tooltip closed the whole element
+panel (handled on the tooltip's root with stopPropagation while open);
+and a bound such as chlorine's "> 10 ohm m" resistivity was parsed as
+a point value and inverted into a false 0.1 S/m conductivity
+(`parse_number` flags bounds; the field is a reasoned null).
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

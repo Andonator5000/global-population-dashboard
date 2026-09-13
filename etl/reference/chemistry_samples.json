@@ -1,0 +1,56 @@
+{
+  "version": 2,
+  "note": "EDITORIAL rulings on element photographs (round 3 §47.3). The chemistry stage takes each element's Wikidata P18 image through the Commons licence gate; this file overrides the automatic choice where P18 is not a photograph of the element itself, or (a 'file' entry) where P18 fails the licence gate but a properly-licensed alternative photograph exists. An entry with noSample:true says, with a reason, that no macroscopic sample of the element has ever been photographed (or exists); the panel then shows the discovering facility's photo (facility = Wikidata id, whose own P18 is licence-gated in the same way) or a labelled placeholder, never a substitute passed off as a sample. sampleNote annotates a genuine sample photo that needs context. v2 (2026-09-12): added 'file' overrides for helium and plutonium, whose automatic P18 picks failed the licence gate (GFDL-only and a bespoke 'Attribution' licence respectively).",
+  "facilities": {
+    "Q1133630": "Lawrence Berkeley National Laboratory, Berkeley, California",
+    "Q259517": "Joint Institute for Nuclear Research (JINR), Dubna, Russia",
+    "Q703993": "GSI Helmholtz Centre for Heavy Ion Research, Darmstadt, Germany",
+    "Q1153275": "RIKEN, Wakō, Japan"
+  },
+  "elements": {
+    "2": {
+      "file": "Glowing ultrapure helium.jpg",
+      "imageKind": "sample",
+      "sampleNote": "Ultrapure helium glowing in a gas discharge tube. The automatic Wikidata pick ('Helium discharge tube.jpg', Alchemist-hp) carries a GFDL-1.2-only licence outside this site's image gate; this CC BY 3.0 photo (images-of-elements.com) is used instead."
+    },
+    "85": {
+      "sampleNote": "The only photograph of astatine ever taken: the blue glow of about 40 nanograms of astatine-211 in solution. No visible solid sample can exist — the element's radioactivity would vaporise it."
+    },
+    "86": {
+      "noSample": true,
+      "reason": "Radon is a colourless radioactive gas prepared only in microgram quantities; there is no photograph of the element itself. The Commons image on its Wikidata item shows radon-water apparatus, not radon.",
+      "imageKind": "related"
+    },
+    "87": {
+      "noSample": true,
+      "reason": "Francium has never been isolated in a weighable quantity: its longest-lived isotope has a 22-minute half-life, and the largest sample ever assembled was some 300,000 atoms held in a magneto-optical trap. The Commons image on its Wikidata item is a museum placard, so it is not used.",
+      "dropWikidataImage": true
+    },
+    "94": {
+      "file": "Pubutton.jpg",
+      "imageKind": "sample",
+      "sampleNote": "A plutonium metal button produced by the US Department of Energy. The automatic Wikidata pick ('Plutonium ring.jpg', Los Alamos National Laboratory) carries a bespoke 'Attribution' licence with no linked terms, outside this site's image gate; this public-domain US-government photo is used instead."
+    },
+    "100": {
+      "sampleNote": "A fermium–ytterbium alloy used to measure fermium's enthalpy of vaporisation; fermium has never been isolated as a bulk metal on its own."
+    },
+    "101": { "noSample": true, "reason": "Mendelevium has only been produced atom by atom (a few atoms per experiment); no macroscopic sample exists. The Wikidata image is an electron-shell diagram, not a photograph.", "dropWikidataImage": true, "facility": "Q1133630" },
+    "102": { "noSample": true, "reason": "Nobelium has only been produced atom by atom; no macroscopic sample exists. The Wikidata image is an electron-shell diagram.", "dropWikidataImage": true, "facility": "Q1133630" },
+    "103": { "noSample": true, "reason": "Lawrencium has only been produced atom by atom; no macroscopic sample exists. The Wikidata image is an electron-shell diagram.", "dropWikidataImage": true, "facility": "Q1133630" },
+    "104": { "noSample": true, "reason": "Rutherfordium has only been produced atom by atom; no macroscopic sample exists. The Wikidata image is an electron-shell diagram.", "dropWikidataImage": true, "facility": "Q1133630" },
+    "105": { "noSample": true, "reason": "Dubnium has only been produced atom by atom; no macroscopic sample exists. The Wikidata image is an electron-shell diagram.", "dropWikidataImage": true, "facility": "Q259517" },
+    "106": { "noSample": true, "reason": "Seaborgium has only been produced atom by atom (first at Berkeley in 1974); no macroscopic sample exists.", "facility": "Q1133630" },
+    "107": { "noSample": true, "reason": "Bohrium has only been produced atom by atom (first confirmed at GSI Darmstadt in 1981); no macroscopic sample exists.", "facility": "Q703993" },
+    "108": { "noSample": true, "reason": "Hassium has only been produced atom by atom (GSI Darmstadt, 1984); no macroscopic sample exists.", "facility": "Q703993" },
+    "109": { "noSample": true, "reason": "Meitnerium has only been produced atom by atom (GSI Darmstadt, 1982); no macroscopic sample exists.", "facility": "Q703993" },
+    "110": { "noSample": true, "reason": "Darmstadtium has only been produced atom by atom (GSI Darmstadt, 1994); no macroscopic sample exists.", "facility": "Q703993" },
+    "111": { "noSample": true, "reason": "Roentgenium has only been produced atom by atom (GSI Darmstadt, 1994); no macroscopic sample exists.", "facility": "Q703993" },
+    "112": { "noSample": true, "reason": "Copernicium has only been produced atom by atom (GSI Darmstadt, 1996); no macroscopic sample exists.", "facility": "Q703993" },
+    "113": { "noSample": true, "reason": "Nihonium has only been produced atom by atom (RIKEN, 2004; JINR claim 2003); no macroscopic sample exists.", "facility": "Q1153275" },
+    "114": { "noSample": true, "reason": "Flerovium has only been produced atom by atom (JINR Dubna, 1998); no macroscopic sample exists.", "facility": "Q259517" },
+    "115": { "noSample": true, "reason": "Moscovium has only been produced atom by atom (JINR Dubna with Lawrence Livermore, 2003); no macroscopic sample exists. The Wikidata image is a simulation still, not a photograph.", "dropWikidataImage": true, "facility": "Q259517" },
+    "116": { "noSample": true, "reason": "Livermorium has only been produced atom by atom (JINR Dubna with Lawrence Livermore, 2000); no macroscopic sample exists.", "facility": "Q259517" },
+    "117": { "noSample": true, "reason": "Tennessine has only been produced atom by atom (JINR Dubna with Oak Ridge and Vanderbilt, 2010); no macroscopic sample exists.", "facility": "Q259517" },
+    "118": { "noSample": true, "reason": "Oganesson has only been produced atom by atom — five or six atoms in total (JINR Dubna with Lawrence Livermore, 2002–2005); no macroscopic sample exists.", "facility": "Q259517" }
+  }
+}

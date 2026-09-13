@@ -1,0 +1,27 @@
+{
+  "entries": 62,
+  "by_category": {
+    "stars": 9,
+    "nebulae": 4,
+    "remnants": 8,
+    "planets": 3,
+    "solar-system": 9,
+    "black-holes": 10,
+    "high-energy": 5,
+    "cosmology": 9,
+    "galaxies": 5
+  },
+  "by_status": {
+    "observed": 54,
+    "hypothesis": 4,
+    "theoretical": 4
+  },
+  "images_by_source": {
+    "nasaId": 41,
+    "commons": 12,
+    "query": 8,
+    "wikipedia": 1
+  },
+  "image_bytes": 4471500,
+  "rejects": []
+}

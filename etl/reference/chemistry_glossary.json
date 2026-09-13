@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "note": "EDITORIAL glossary for the Chemistry section (round 3 §47). Every property key in src/data/chemistry-properties.json has an entry here; the chemistry stage validates that and emits data/chemistry/glossary.json. Definitions are plain-language paraphrases written for this site; each cites the reference it follows. IUPAC Gold Book codes were verified against Wikipedia's GoldBookRef citations (the Gold Book site blocks automated fetches); other sources are open textbooks (OpenStax, CC BY 4.0), NIST, CAS, IAEA and named Wikipedia list pages.",
+  "entries": [
+    {
+      "key": "atomicNumber",
+      "term": "Atomic number (Z)",
+      "definition": "The number of protons in the nucleus of an atom. It is what makes an element that element: every carbon atom has six protons, every gold atom seventy-nine. In a neutral atom it also equals the number of electrons, and it fixes the element's place in the periodic table.",
+      "unit": "none (a count)",
+      "source": { "title": "OpenStax Chemistry 2e, §2.3 Atomic Structure and Symbolism", "url": "https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "symbol",
+      "term": "Chemical symbol",
+      "definition": "The one- or two-letter abbreviation for an element, always with a capital first letter (H, He, Fe). Symbols are assigned by IUPAC and are the same in every language; a few come from Latin names (Fe from ferrum, Na from natrium).",
+      "unit": null,
+      "source": { "title": "IUPAC Periodic Table of the Elements", "url": "https://iupac.org/what-we-do/periodic-table-of-elements/", "publisher": "IUPAC" }
+    },
+    {
+      "key": "name",
+      "term": "Element name",
+      "definition": "The IUPAC-approved English name. Elements 1–118 all have permanent names; the newest four (nihonium, moscovium, tennessine, oganesson) were approved in 2016.",
+      "unit": null,
+      "source": { "title": "IUPAC Periodic Table of the Elements", "url": "https://iupac.org/what-we-do/periodic-table-of-elements/", "publisher": "IUPAC" }
+    },
+    {
+      "key": "standardAtomicWeight",
+      "term": "Standard atomic weight",
+      "definition": "The average mass of an element's atoms as found in normal terrestrial material, relative to one twelfth of the mass of a carbon-12 atom (the dalton, Da). Because isotope ratios vary from place to place, IUPAC gives some elements an interval — hydrogen is [1.007 84, 1.008 11] — rather than a single value; a number in square brackets for a radioactive element is the mass number of its longest-lived isotope, not a weight.",
+      "unit": "Da (dimensionless relative mass)",
+      "source": { "title": "IUPAC Gold Book: standard atomic weight (S05907)", "url": "https://goldbook.iupac.org/terms/view/S05907", "publisher": "IUPAC" },
+      "alsoSee": { "title": "CIAAW, Standard Atomic Weights", "url": "https://www.ciaaw.org/atomic-weights.htm" }
+    },
+    {
+      "key": "group",
+      "term": "Group",
+      "definition": "A vertical column of the periodic table, numbered 1 to 18. Elements in a group have the same number of outer-shell electrons and so react in similar ways — the alkali metals of group 1, the halogens of group 17, the noble gases of group 18. The lanthanides and actinides sit outside the group numbering.",
+      "unit": "none (1–18)",
+      "source": { "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table", "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "period",
+      "term": "Period",
+      "definition": "A horizontal row of the periodic table, numbered 1 to 7. Moving along a period adds one proton and one electron per step; the period number is the highest principal shell that holds electrons in the element's ground state.",
+      "unit": "none (1–7)",
+      "source": { "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table", "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "block",
+      "term": "Block",
+      "definition": "The set of elements whose last-filled electron subshell has the same letter: s-block (groups 1–2 and helium), p-block (groups 13–18), d-block (the transition metals, groups 3–12) and f-block (the lanthanides and actinides). The letters name the orbital shapes, s, p, d and f.",
+      "unit": null,
+      "source": { "title": "OpenStax Chemistry 2e, §6.4 Electronic Structure of Atoms (Electron Configurations)", "url": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "category",
+      "term": "Element category",
+      "definition": "A conventional grouping by chemical behaviour used to colour periodic tables: alkali metals, alkaline earth metals, transition metals, post-transition metals, metalloids, reactive nonmetals, noble gases, lanthanides and actinides. The boundaries (especially of the metalloids and post-transition metals) are a matter of convention, not IUPAC definition; the heaviest synthetic elements are marked 'unknown properties' because too few atoms have ever been made to test their chemistry.",
+      "unit": null,
+      "source": { "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table", "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "casNumber",
+      "term": "CAS Registry Number",
+      "definition": "A unique identifier assigned by the Chemical Abstracts Service to every substance in its registry, written as up to seven digits, a hyphen, two digits, a hyphen and a check digit (iron is 7439-89-6). It identifies the substance regardless of what it is called in any language.",
+      "unit": null,
+      "source": { "title": "CAS REGISTRY", "url": "https://www.cas.org/cas-data/cas-registry", "publisher": "CAS, a division of the American Chemical Society" }
+    },
+    {
+      "key": "electronConfiguration",
+      "term": "Electron configuration",
+      "definition": "How an atom's electrons are distributed among its shells and subshells in the ground state, written as a list like 1s² 2s² 2p⁶ 3s¹ (sodium). The shorthand form replaces the filled inner shells with the preceding noble gas in brackets: [Ne] 3s¹. The outermost (valence) electrons govern the element's chemistry.",
+      "unit": null,
+      "source": { "title": "IUPAC Gold Book: configuration (electronic) (C01248)", "url": "https://goldbook.iupac.org/terms/view/C01248", "publisher": "IUPAC" },
+      "alsoSee": { "title": "OpenStax Chemistry 2e, §6.4", "url": "https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations" }
+    },
+    {
+      "key": "electronConfigurationFull",
+      "term": "Electron configuration (full)",
+      "definition": "The same distribution written out subshell by subshell with no noble-gas abbreviation, so every electron is accounted for. For the heaviest elements the configuration is predicted from theory rather than measured, and is labelled as such.",
+      "unit": null,
+      "source": { "title": "IUPAC Gold Book: configuration (electronic) (C01248)", "url": "https://goldbook.iupac.org/terms/view/C01248", "publisher": "IUPAC" }
+    },
+    {
+      "key": "electronShells",
+      "term": "Electrons per shell",
+      "definition": "The number of electrons in each principal shell (n = 1, 2, 3 …), counted from the electron configuration by adding up the subshells with the same n. Iron's [Ar] 3d⁶ 4s² gives 2, 8, 14, 2. This is the occupancy the Bohr-style diagram draws; real electrons occupy orbitals, not circular tracks.",
+      "unit": "none (counts)",
+      "source": { "title": "OpenStax Chemistry 2e, §6.3 Development of Quantum Theory", "url": "https://openstax.org/books/chemistry-2e/pages/6-3-development-of-quantum-theory", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "electronegativity",
+      "term": "Electronegativity (Pauling scale)",
+      "definition": "A measure of how strongly an atom in a molecule pulls shared electrons toward itself. On Pauling's dimensionless scale fluorine is the most electronegative element at 3.98 and the alkali metals sit near 0.7–0.9; a large difference between two bonded atoms makes the bond polar or ionic. Noble gases that form no compounds have no value.",
+      "unit": "dimensionless (Pauling units)",
+      "source": { "title": "IUPAC Gold Book: electronegativity (E01990)", "url": "https://goldbook.iupac.org/terms/view/E01990", "publisher": "IUPAC" }
+    },
+    {
+      "key": "ionizationEnergies",
+      "term": "Ionization energy",
+      "definition": "The minimum energy needed to remove an electron from a gaseous atom or ion. The first ionization energy removes one electron from the neutral atom; the second removes the next from the resulting +1 ion, and so on — each step costs more. Shown here in electronvolts (1 eV = 96.485 kJ/mol) from NIST's Atomic Spectra Database.",
+      "unit": "eV",
+      "source": { "title": "IUPAC Gold Book: ionization potential (I03208)", "url": "https://goldbook.iupac.org/terms/view/I03208", "publisher": "IUPAC" },
+      "alsoSee": { "title": "NIST Atomic Spectra Database: Ionization Energies", "url": "https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html" }
+    },
+    {
+      "key": "electronAffinity",
+      "term": "Electron affinity",
+      "definition": "The energy released when a gaseous atom gains an electron to form a negative ion. A large positive value (chlorine, 3.61 eV) means the atom binds an extra electron readily; a value near zero or a negative one means the anion is unstable, which is why the noble gases and some group-2 metals have none.",
+      "unit": "eV",
+      "source": { "title": "IUPAC Gold Book: electron affinity (E01977)", "url": "https://goldbook.iupac.org/terms/view/E01977", "publisher": "IUPAC" }
+    },
+    {
+      "key": "oxidationStates",
+      "term": "Oxidation state",
+      "definition": "The charge an atom would carry if every bond it makes were fully ionic — a bookkeeping number for electrons gained or lost in compounds. Iron is +2 in FeO and +3 in Fe₂O₃. The list shows the states an element is known to adopt; the most common ones are usually listed first by the source.",
+      "unit": "none (signed integers)",
+      "source": { "title": "IUPAC Gold Book: oxidation state (O04365)", "url": "https://goldbook.iupac.org/terms/view/O04365", "publisher": "IUPAC" }
+    },
+    {
+      "key": "phaseAtStp",
+      "term": "Phase at STP",
+      "definition": "Whether the element is a solid, liquid or gas at standard temperature and pressure — IUPAC's standard pressure is 100 kPa (1 bar) and the reference temperature here is 0 °C (273.15 K). Only bromine and mercury are liquid; eleven elements are gases; everything else is solid. For the heaviest synthetic elements the phase is a prediction.",
+      "unit": null,
+      "source": { "title": "IUPAC Gold Book: standard pressure (S05921)", "url": "https://goldbook.iupac.org/terms/view/S05921", "publisher": "IUPAC" },
+      "alsoSee": { "title": "OpenStax Chemistry 2e, §10.3 Phase Transitions", "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions" }
+    },
+    {
+      "key": "meltingPoint",
+      "term": "Melting point",
+      "definition": "The temperature at which the solid and liquid forms of the element are in equilibrium at standard pressure — the temperature at which it melts. Given in kelvin (K); subtract 273.15 for °C. Some elements (carbon, arsenic) sublime instead of melting at ordinary pressure, and the source then reports a triple point or a value under pressure.",
+      "unit": "K",
+      "source": { "title": "OpenStax Chemistry 2e, §10.3 Phase Transitions", "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "boilingPoint",
+      "term": "Boiling point",
+      "definition": "The temperature at which the element's liquid and vapour are in equilibrium at standard pressure — the temperature at which it boils. Given in kelvin (K); subtract 273.15 for °C.",
+      "unit": "K",
+      "source": { "title": "OpenStax Chemistry 2e, §10.3 Phase Transitions", "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "density",
+      "term": "Density",
+      "definition": "Mass per unit volume, here in grams per cubic centimetre at or near room temperature for solids and liquids. For gases the value is the density at standard temperature and pressure and is a thousand times smaller (hydrogen, 0.00009 g/cm³). Osmium and iridium, at about 22.6 g/cm³, are the densest elements.",
+      "unit": "g/cm³",
+      "source": { "title": "OpenStax Chemistry 2e, §1.4 Measurements", "url": "https://openstax.org/books/chemistry-2e/pages/1-4-measurements", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "covalentRadius",
+      "term": "Covalent radius",
+      "definition": "Half the distance between the nuclei of two atoms of the element joined by a single covalent bond — the atom's effective size when bonded. Radii shrink across a period and grow down a group. Given in picometres (1 pm = 10⁻¹² m).",
+      "unit": "pm",
+      "source": { "title": "OpenStax Chemistry 2e, §6.5 Periodic Variations in Element Properties", "url": "https://openstax.org/books/chemistry-2e/pages/6-5-periodic-variations-in-element-properties", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "vanDerWaalsRadius",
+      "term": "Van der Waals radius",
+      "definition": "Half the closest distance two non-bonded atoms of the element approach each other — the atom's size when it is only touching a neighbour, not bonded to it. It is always larger than the covalent radius. Given in picometres.",
+      "unit": "pm",
+      "source": { "title": "LibreTexts Chemistry: Atomic Radii", "url": "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Physical_Properties_of_Matter/Atomic_and_Molecular_Properties/Atomic_Radii", "publisher": "LibreTexts" }
+    },
+    {
+      "key": "crystalStructure",
+      "term": "Crystal structure",
+      "definition": "The repeating arrangement of atoms in the solid element: body-centred cubic (one atom at each cube corner and one in the middle), face-centred cubic, hexagonal close-packed, and less symmetric arrangements for elements like sulfur or plutonium. Some elements have several forms (allotropes); the entry names the one stable at room temperature.",
+      "unit": null,
+      "source": { "title": "OpenStax Chemistry 2e, §10.6 Lattice Structures in Crystalline Solids", "url": "https://openstax.org/books/chemistry-2e/pages/10-6-lattice-structures-in-crystalline-solids", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "thermalConductivity",
+      "term": "Thermal conductivity",
+      "definition": "How readily heat flows through the element: the rate of heat transfer through a 1 m thickness per square metre for each kelvin of temperature difference, in watts per metre-kelvin. Diamond and the coinage metals conduct best; gases and the heavier nonmetals conduct poorly.",
+      "unit": "W/(m·K)",
+      "source": { "title": "OpenStax University Physics Vol. 2, §1.6 Mechanisms of Heat Transfer", "url": "https://openstax.org/books/university-physics-volume-2/pages/1-6-mechanisms-of-heat-transfer", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "electricalConductivity",
+      "term": "Electrical conductivity",
+      "definition": "How readily electric current flows through the element, in siemens per metre; it is the reciprocal of electrical resistivity (ρ), so a resistivity of 96 nΩ·m (iron) is a conductivity of about 1.0×10⁷ S/m. Silver is the best conductor; the figures here are computed from tabulated resistivities near 20 °C.",
+      "unit": "S/m",
+      "source": { "title": "OpenStax University Physics Vol. 2, §9.3 Resistivity and Resistance", "url": "https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "specificHeat",
+      "term": "Specific heat capacity",
+      "definition": "The heat needed to raise the temperature of one gram of the element by one kelvin, in joules per gram-kelvin. Light elements have high values (hydrogen 14.3, lithium 3.6); heavy metals need little heat per gram (lead 0.13).",
+      "unit": "J/(g·K)",
+      "source": { "title": "OpenStax Chemistry 2e, §5.1 Energy Basics", "url": "https://openstax.org/books/chemistry-2e/pages/5-1-energy-basics", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "magneticOrdering",
+      "term": "Magnetic ordering",
+      "definition": "How the element responds to a magnetic field at room temperature. Diamagnetic materials are weakly repelled (most elements); paramagnetic ones are weakly attracted because of unpaired electrons; ferromagnetic ones (iron, cobalt, nickel, gadolinium below 20 °C) keep their magnetisation; antiferromagnetic ones (chromium, manganese) have neighbouring moments that cancel.",
+      "unit": null,
+      "source": { "title": "OpenStax University Physics Vol. 2, §12.7 Magnetism in Matter", "url": "https://openstax.org/books/university-physics-volume-2/pages/12-7-magnetism-in-matter", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "stableIsotopes",
+      "term": "Stable isotopes",
+      "definition": "Isotopes are atoms of the same element (same proton count) with different numbers of neutrons. A stable isotope has never been observed to decay. Tin has the most (ten); 80 elements have at least one; technetium, promethium and everything from polonium onward have none.",
+      "unit": "none (a count)",
+      "source": { "title": "IUPAC Gold Book: isotopes (I03331)", "url": "https://goldbook.iupac.org/terms/view/I03331", "publisher": "IUPAC" },
+      "alsoSee": { "title": "IAEA Live Chart of Nuclides (NUBASE2020 ground states)", "url": "https://nds.iaea.org/relnsd/vcharthtml/VChartHTML.html" }
+    },
+    {
+      "key": "knownIsotopes",
+      "term": "Known isotopes",
+      "definition": "The number of isotopes of the element whose ground state has been identified and recorded in the IAEA/NUBASE evaluation, stable and radioactive together. Most are made in accelerators and live for fractions of a second; the count grows as new nuclides are discovered.",
+      "unit": "none (a count)",
+      "source": { "title": "IAEA Live Chart of Nuclides (NUBASE2020 ground states)", "url": "https://nds.iaea.org/relnsd/vcharthtml/VChartHTML.html", "publisher": "IAEA Nuclear Data Section" }
+    },
+    {
+      "key": "notableIsotopes",
+      "term": "Notable isotopes",
+      "definition": "The isotopes worth knowing: the stable ones with their natural abundance, and for radioactive elements the longest-lived isotope with its half-life — the time for half of a sample to decay. Written as mass number and symbol (⁵⁶Fe, ²³⁸U).",
+      "unit": null,
+      "source": { "title": "OpenStax Chemistry 2e, §21.3 Radioactive Decay", "url": "https://openstax.org/books/chemistry-2e/pages/21-3-radioactive-decay", "publisher": "OpenStax (CC BY 4.0)" },
+      "alsoSee": { "title": "IAEA Live Chart of Nuclides", "url": "https://nds.iaea.org/relnsd/vcharthtml/VChartHTML.html" }
+    },
+    {
+      "key": "abundanceCrust",
+      "term": "Abundance in Earth's crust",
+      "definition": "The element's share of the continental crust by mass, in milligrams per kilogram (equivalent to parts per million). Oxygen (about 461,000 mg/kg) and silicon make up three quarters of the crust; the rarest stable elements are below 0.001 mg/kg. The figures are the CRC Handbook compilation as reproduced on Wikipedia's data page; estimates by different authors differ by tens of per cent for many elements.",
+      "unit": "mg/kg (ppm by mass)",
+      "source": { "title": "IUPAC Gold Book: mass fraction (M03722)", "url": "https://goldbook.iupac.org/terms/view/M03722", "publisher": "IUPAC" },
+      "alsoSee": { "title": "Abundances of the elements (data page), column C1 — CRC Handbook", "url": "https://en.wikipedia.org/wiki/Abundances_of_the_elements_(data_page)" }
+    },
+    {
+      "key": "abundanceUniverse",
+      "term": "Abundance in the Solar System",
+      "definition": "How many atoms of the element there are for every million silicon atoms in the Solar System, from the Anders & Grevesse (1989) meteoritic and solar compilation as reproduced on Wikipedia's data page. Hydrogen (2.8×10¹⁰) and helium dominate; this atom-count scale is the standard cosmochemical one and is not a mass fraction.",
+      "unit": "atoms per 10⁶ Si atoms",
+      "source": { "title": "IUPAC Gold Book: amount fraction (A00296)", "url": "https://goldbook.iupac.org/terms/view/A00296", "publisher": "IUPAC" },
+      "alsoSee": { "title": "Abundances of the elements (data page), column Y2 — Anders & Grevesse 1989", "url": "https://en.wikipedia.org/wiki/Abundances_of_the_elements_(data_page)" }
+    },
+    {
+      "key": "naturalOccurrence",
+      "term": "Natural occurrence",
+      "definition": "Whether the element is found in nature and how. Primordial elements have survived since the Solar System formed (hydrogen through uranium, minus a few gaps). 'From decay' elements exist only in traces as short-lived products of radioactive decay chains or cosmic-ray reactions (technetium, promethium, polonium through actinium, neptunium, plutonium). Synthetic elements have only ever been made in reactors or accelerators.",
+      "unit": null,
+      "source": { "title": "Wikipedia: Primordial nuclide; Synthetic element", "url": "https://en.wikipedia.org/wiki/Primordial_nuclide", "publisher": "Wikipedia (CC BY-SA 4.0)" },
+      "alsoSee": { "title": "List of chemical elements, 'Origin' column", "url": "https://en.wikipedia.org/wiki/List_of_chemical_elements" }
+    },
+    {
+      "key": "discoveryYear",
+      "term": "Discovery",
+      "definition": "The year the element was first isolated or unambiguously identified. Elements known since antiquity (gold, copper, iron, sulfur …) have no discoverer and are dated only as 'ancient'. For synthetic elements the date is the first accepted synthesis, which IUPAC adjudicates.",
+      "unit": "year",
+      "source": { "title": "Wikipedia: Timeline of chemical element discoveries", "url": "https://en.wikipedia.org/wiki/Timeline_of_chemical_element_discoveries", "publisher": "Wikipedia (CC BY-SA 4.0)" }
+    },
+    {
+      "key": "discoverers",
+      "term": "Discovered by",
+      "definition": "The person, people or institution credited with the discovery, as recorded in Wikidata (property P61). Credit is often shared or contested; the Wikidata statement is the list shown, not a ruling.",
+      "unit": null,
+      "source": { "title": "Wikipedia: Timeline of chemical element discoveries", "url": "https://en.wikipedia.org/wiki/Timeline_of_chemical_element_discoveries", "publisher": "Wikipedia (CC BY-SA 4.0)" }
+    },
+    {
+      "key": "discoveryPlace",
+      "term": "Place of discovery",
+      "definition": "The country or institution where the element was first isolated or synthesised, as recorded in Wikidata (property P189). Wikidata records a place for fewer than half of the elements, so this field is often 'not available'.",
+      "unit": null,
+      "source": { "title": "Wikipedia: Timeline of chemical element discoveries", "url": "https://en.wikipedia.org/wiki/Timeline_of_chemical_element_discoveries", "publisher": "Wikipedia (CC BY-SA 4.0)" }
+    },
+    {
+      "key": "etymology",
+      "term": "Name origin",
+      "definition": "Where the element's name comes from: a Greek or Latin word describing it (hydrogen, 'water-former'), a place (francium, polonium, tennessine), a person (curium, einsteinium), a mythological figure (thorium, promethium) or a mineral it was found in (beryllium, from beryl).",
+      "unit": null,
+      "source": { "title": "Wikipedia: List of chemical element name etymologies", "url": "https://en.wikipedia.org/wiki/List_of_chemical_element_name_etymologies", "publisher": "Wikipedia (CC BY-SA 4.0)" }
+    },
+    {
+      "key": "description",
+      "term": "Description",
+      "definition": "A short characterisation of the element — what it looks like, what family it belongs to, what it is known for — taken verbatim from the opening of its English Wikipedia article and attributed as such.",
+      "unit": null,
+      "source": { "title": "IUPAC Gold Book: chemical element (C01022)", "url": "https://goldbook.iupac.org/terms/view/C01022", "publisher": "IUPAC" }
+    },
+    {
+      "key": "uses",
+      "term": "Principal uses",
+      "definition": "The main things the element and its compounds are used for. Taken from PubChem's element record (which cites its own sources per statement) where PubChem carries a 'Uses' section, otherwise from the Wikipedia article's applications section, attributed either way.",
+      "unit": null,
+      "source": { "title": "PubChem Periodic Table and Element pages (Kim et al. 2021)", "url": "https://doi.org/10.1186/s13321-021-00554-8", "publisher": "NIH / NCBI (CC BY 4.0 article; PubChem data public domain)" }
+    },
+    {
+      "key": "biologicalRole",
+      "term": "Biological role",
+      "definition": "Whether living things need the element (essential, like iron in haemoglobin or iodine in thyroid hormone), tolerate it, or are harmed by it, and how it moves through organisms. Source as for uses: PubChem's element record where present, otherwise Wikipedia, attributed.",
+      "unit": null,
+      "source": { "title": "PubChem Periodic Table and Element pages (Kim et al. 2021)", "url": "https://doi.org/10.1186/s13321-021-00554-8", "publisher": "NIH / NCBI" }
+    },
+    {
+      "key": "hazards",
+      "term": "Hazards and toxicity",
+      "definition": "The main dangers the element poses — toxicity, radioactivity, flammability, reactivity with air or water — as summarised by the source; not a safety data sheet. Radioactive elements are hazardous by radiation regardless of chemistry.",
+      "unit": null,
+      "source": { "title": "PubChem Periodic Table and Element pages (Kim et al. 2021)", "url": "https://doi.org/10.1186/s13321-021-00554-8", "publisher": "NIH / NCBI" }
+    },
+    {
+      "key": "halfLife",
+      "term": "Half-life",
+      "definition": "The time it takes for half of the atoms in a sample of a radioactive isotope to decay. It ranges from less than a microsecond (the heaviest synthetic nuclides) to longer than the age of the universe (tellurium-128, at 2×10²⁴ years). It is a property of the isotope, not the element.",
+      "unit": "s, min, h, d or years",
+      "source": { "title": "OpenStax Chemistry 2e, §21.3 Radioactive Decay", "url": "https://openstax.org/books/chemistry-2e/pages/21-3-radioactive-decay", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "bohrModel",
+      "term": "Bohr model (the atom diagram)",
+      "definition": "The 1913 picture of the atom as a nucleus orbited by electrons on fixed circular shells. It is a useful schematic for counting electrons per shell but is not what an atom looks like: electrons occupy three-dimensional orbitals described by quantum mechanics, and the nucleus is about 100,000 times smaller than the atom. The animated model on this site is drawn to that schematic and is not to scale.",
+      "unit": null,
+      "source": { "title": "OpenStax Chemistry 2e, §6.2 The Bohr Model", "url": "https://openstax.org/books/chemistry-2e/pages/6-2-the-bohr-model", "publisher": "OpenStax (CC BY 4.0)" }
+    },
+    {
+      "key": "nuclide",
+      "term": "Nuclide",
+      "definition": "A species of atom defined by both its proton number and its neutron number (and, strictly, its nuclear energy state). 'Isotope' names the relationship between nuclides of one element; 'nuclide' names the individual kind — carbon-14 is a nuclide and an isotope of carbon.",
+      "unit": null,
+      "source": { "title": "IUPAC Gold Book: nuclide (N04257)", "url": "https://goldbook.iupac.org/terms/view/N04257", "publisher": "IUPAC" }
+    }
+  ]
+}

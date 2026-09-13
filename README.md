@@ -22,6 +22,15 @@ The browser never calls an upstream API — it reads committed artifacts from
 > Natural Earth hypsometric relief and detail layers), a six-direction
 > gated palette family, and a /methodology page. Old `/biology/*` paths
 > redirect. Rulings in DATA_DECISIONS.md §28–§40.
+>
+> **2026-09 round 3:** the satellite/terrain globe moved to a WebGL
+> per-pixel renderer (§43); the Antique palette became a scan-measured
+> Blaeu 1635 sheet (§48); Taxonomy gained every rank, a sourced
+> description on every node, and on-demand genus/species depth (§44);
+> Cosmic Phenomena became a 62-entry catalogue with locally served images
+> (§46); the Solar System and body globes got higher-resolution textures
+> and anchored surface labels (§45); and a sixth section, **Chemistry**,
+> opened with an interactive periodic table (§47).
 
 ## Layout
 
@@ -128,15 +137,16 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Country metadata, borders, area | `mledoze/countries` | **Substituted for REST Countries v3.1** — see below. |
 | Geometry | Natural Earth via TopoJSON | 110m render, 50m for biome math. |
 | Map detail: admin-1 borders, lakes, rivers, places | Natural Earth 10m/50m | Public domain; simplified in the ETL, zoom-lazy in the app — DATA_DECISIONS.md §30. |
-| Satellite/terrain imagery | NASA Blue Marble Next Generation (Aug 2004, topo & bathy) | Public domain, NASA credited on-map; ETL-baked JPEG tiers, no runtime tile server. |
-| Tree of life (Biology → Taxonomy) | Catalogue of Life via ChecklistBank (CC BY 4.0) | To family rank plus focus-family depth; Wikipedia links via Wikidata P10585 — DATA_DECISIONS.md §31. |
+| Satellite/terrain imagery | NASA Blue Marble Next Generation (Aug 2004, topo & bathy) | Public domain, NASA credited on-map; ETL-baked JPEG tiers, no runtime tile server. Rendered by a WebGL2 per-pixel inverse projection (§43), so the sphere has no seams; 2-D canvas fallback without WebGL2. |
+| Tree of life (Taxonomy) | Catalogue of Life via ChecklistBank (CC BY 4.0) | To family rank in one artifact, one genera file per family on demand, species live from ChecklistBank on expand (documented exception); every node's description states its source (Wikipedia, Wikidata, or a flagged generated summary) — §31, §44. |
 | Geologic time (Biology → Evolution) | ICS International Chronostratigraphic Chart, linked-data publication (CC BY 4.0) | Boundary ages with stated errors and CGMW colours; events editorial — §32. |
 | Evolution illustrations | PhyloPic (CC0/PD only) + Wikipedia lead images via Commons | Per-image licence gate; attribution rendered; unillustrated events logged — §32.3. |
 | Planets, Sun, Earth's Moon (Space) | NSSDC Planetary Fact Sheets via pinned Internet Archive snapshots | NSSDC live site now redirects away; substitution documented — §33.1. |
 | Moons and dwarf planets (Space) | NASA/JPL Solar System Dynamics tables + Small-Body Database API | Full satellite catalogue; counts derived by counting it; portraits from the NASA Image Library — §33. |
 | Planetary textures (3D scene) | Solar System Scope texture pack (CC BY 4.0) | Committed byte-for-byte; fictional textures labelled — §41.1. |
 | Deep-zoom globes | NASA Solar System Treks WMTS (streamed at runtime) + IAU Gazetteer of Planetary Nomenclature (USGS) | The documented §41.2 runtime exception; credits on screen. |
-| Cosmic Phenomena imagery | NASA Image and Video Library | Editorial entries; per-item credits — §41.3. |
+| Cosmic Phenomena | Editorial catalogue (62 entries) with facts cited to NASA/ESA/Wikipedia; images from the NASA Image and Video Library and Wikimedia Commons | Downloaded at build time through the free-licence gate and served locally; observed / theoretical / hypothesis flag on every entry — §41.3, §46. |
+| Periodic table (Chemistry) | PubChem Periodic Table + PUG-View element records (NIH), NIST ASD ionization energies, IUPAC/CIAAW standard atomic weights, IAEA nuclide data, Wikidata/Wikipedia for discovery, etymology, CAS and photographs; CRC-derived abundance and transport tables as reproduced by Wikipedia | Every figure carries source + vintage; absent figures are null with a reason; photographs licence-gated from Commons, facility photos for elements never isolated in bulk — §47. |
 | Biomes | RESOLVE Ecoregions 2017 | Build-time overlay, never runtime. |
 | Democracy, human rights, governance, CO₂ per capita | V-Dem / Regimes of the World / Hanson & Sigman / Global Carbon Budget, via Our World in Data | Primary source for the Freedom and governance measures; citations name the underlying producer. |
 | World Heritage sites | UNESCO World Heritage List | Official syndication XML — see DATA_DECISIONS.md §16.3 on the WAF workaround. |
@@ -200,6 +210,10 @@ monthly refresh workflow will not open a pull request unless they pass.
 | `check:biome-areas` | Polygon areas match published figures with **no latitude trend** — the signature a non-equal-area CRS would leave. |
 | `check:theme-parity` | The two duplicated dark-mode CSS blocks declare identical tokens. This trap silently shipped light-mode chart colours to the dark toggle three times before it was gated. |
 | `typecheck` | Strict TS, including `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess`. |
+| `check:taxonomy` | Every node has a Wikipedia title or an explicit null, a description with its source (generated ones flagged), and a defined rank; genera chunks complete — §31, §44. |
+| `check:evolution` | Every geologic period is inhabited by at least one sourced event — §32. |
+| `check:phenomena` | Every phenomenon is categorised, status-flagged, fact-sourced, and its image exists locally, decodes, and carries licence + credit — §46. |
+| `check:chemistry` | All 118 elements carry every required field (or a reasoned null), a photograph or an explicit no-sample flag, and a glossary entry for every property the panel shows — §47. |
 
 ## Accessibility
 
