@@ -255,6 +255,13 @@ def _build_hypso(refresh: bool, out_dir: Path) -> tuple[CachedResponse, list[dic
     return response, _emit_tiers(source, tiers, out_dir, "hypso")
 
 
+def _clean_name(value: Any) -> str:
+    """A label name, or '' for None/NaN/blank."""
+    if isinstance(value, str):
+        return value.strip()
+    return ""
+
+
 def ingest(
     registry: dict[str, Entity],
     *,
@@ -284,7 +291,11 @@ def ingest(
     name_col = _first_column(polygons, ["name", "name_en"], url=poly_resp.url)
     labels: list[dict[str, Any]] = []
     for _, row in polygons.iterrows():
-        name = row.get(name_col) or row.get("name_en")
+        # A missing name arrives from pandas as float NaN, which is truthy
+        # and stringifies to "nan" -- seven such labels shipped and rendered
+        # literally on the map (round 4, section 51.5). Only a non-blank
+        # string is a name.
+        name = _clean_name(row.get(name_col)) or _clean_name(row.get("name_en"))
         shape = row.geometry
         if not name or shape is None or shape.is_empty:
             continue
@@ -328,7 +339,7 @@ def ingest(
     place_name = _first_column(places_frame, ["name", "NAME"], url=places_resp.url)
     places: list[dict[str, Any]] = []
     for _, row in places_frame.iterrows():
-        name = row.get(place_name)
+        name = _clean_name(row.get(place_name))
         if not name or row.geometry is None:
             continue
         entry = {

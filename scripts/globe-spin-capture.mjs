@@ -1,7 +1,7 @@
 // Globe visual-regression capture (DATA_DECISIONS section 43).
 //
 //   npm run dev            (in another terminal, port 5173)
-//   HEADED=1 node scripts/globe-spin-capture.mjs <political|satellite|terrain> <tag> [wheelSteps]
+//   HEADED=1 [PALETTE=antique] node scripts/globe-spin-capture.mjs <political|satellite|terrain> <tag> [wheelSteps]
 //
 // Loads the home page with the chosen base view, drags the globe, flicks
 // it, and writes frames (static, mid-drag, inertia, settled, mid-flick,
@@ -21,12 +21,16 @@ const browser = await chromium.launch(headed ? { headless: false, channel: 'chro
 const page = await browser.newPage({ viewport: { width: 1200, height: 900 }, deviceScaleFactor: 1 })
 page.on('console', (m) => { if (m.type() === 'error') console.log('console:', m.text()) })
 page.on('pageerror', (e) => console.log('pageerror:', e.message))
-await page.addInitScript((v) => {
+// Optional PALETTE=<atlas|paper|antique|pastel|nautical|mono> picks the
+// colour direction (round 4: it applies to every base view).
+const palette = process.env.PALETTE || 'atlas'
+await page.addInitScript(([v, p]) => {
   localStorage.setItem('map-base-view', v)
+  localStorage.setItem('map-palette', p)
   window.__frames = []
   const orig = window.requestAnimationFrame.bind(window)
   window.requestAnimationFrame = (cb) => orig((t) => { const s = performance.now(); cb(t); window.__frames.push(performance.now() - s) })
-}, view)
+}, [view, palette])
 await page.goto('http://localhost:5173/', { waitUntil: 'networkidle' })
 await page.waitForSelector('svg[role="group"]')
 await page.waitForTimeout(2500)

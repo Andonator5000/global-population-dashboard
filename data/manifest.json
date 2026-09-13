@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-13T06:07:29+00:00",
+  "generated_at": "2026-09-13T22:54:48+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-13T06:07:29+00:00",
+      "fetched_at": "2026-09-13T22:54:48+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -344,7 +344,7 @@
       "vintage": "2026-08-20",
       "citation": "Catalogue of Life Checklist, via ChecklistBank ColDP bulk export (CC BY 4.0); Wikipedia links via Wikidata P10585 (CC0); intro texts from English Wikipedia (CC BY-SA 4.0)",
       "files": [],
-      "notes": "Bulk export parsed to family rank (35214 tree nodes, every intermediate rank kept) plus one genera file per family (14196 files, 204480 genera); species load live from ChecklistBank. Descriptions: tree 9088 Wikipedia / 7575 Wikidata / 0 COL / 18551 generated; genera-file nodes 12729 / 15424 / 0 / 229236 (202909 not yet looked up). Contested placements annotated from etl/reference/taxonomy_notes.json."
+      "notes": "Bulk export parsed to family rank (35214 tree nodes, every intermediate rank kept) plus one genera file per family (14196 files, 204480 genera); species load live from ChecklistBank. Descriptions: tree 9088 Wikipedia / 7575 Wikidata / 0 COL / 18551 generated; genera-file nodes 22847 / 19131 / 0 / 215411 (182909 not yet looked up). Contested placements annotated from etl/reference/taxonomy_notes.json."
     },
     "ics_chart": {
       "title": "ICS International Chronostratigraphic Chart (linked data)",
@@ -625,7 +625,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-09-13T06:07:29+00:00",
+      "fetched_at": "2026-09-13T22:54:48+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -1133,7 +1133,7 @@
       "sources": [
         "editorial"
       ],
-      "row_count": 44,
+      "row_count": 54,
       "entity_count": null
     },
     "flags/map-palette.json": {
@@ -1231,5 +1231,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "9de007af86ad112a58fc52e2913150bcb443ce6b7d9d67f0b962c692f8c00c8d"
+  "content_fingerprint": "add65296a717265e542e8b3ba21fdc23beaec50b6ffa657c3a218e44a962679b"
 }

@@ -14,7 +14,7 @@
     "generated": 18551
   },
   "genera_files": 14196,
-  "genera_files_bytes": 37049814,
+  "genera_files_bytes": 42443300,
   "genera_largest_file": {
     "bytes": 1857942,
     "family": "Formicidae"
@@ -22,20 +22,20 @@
   "genera": {
     "nodes": 257389,
     "genera": 204480,
-    "enriched": 54480,
-    "pending": 202909,
-    "with_wiki": 12761,
-    "with_image": 9723,
-    "wikipedia": 12729,
-    "wikidata": 15424,
+    "enriched": 74480,
+    "pending": 182909,
+    "with_wiki": 22879,
+    "with_image": 18868,
+    "wikipedia": 22847,
+    "wikidata": 19131,
     "col": 0,
-    "generated": 229236,
-    "genera_enriched": 1571,
-    "genera_with_wiki": 853
+    "generated": 215411,
+    "genera_enriched": 21571,
+    "genera_with_wiki": 10971
   },
   "genera_enrichment_cap_this_run": 0,
   "genera_looked_up_this_run": 0,
-  "genera_still_pending_after_run": 202909,
+  "genera_still_pending_after_run": 182909,
   "focus_families": [
     "Accipitridae",
     "Amanitaceae",
@@ -68,5 +68,5 @@
     "Ursidae",
     "Varanidae"
   ],
-  "seconds": 197
+  "seconds": 77
 }

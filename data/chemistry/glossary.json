@@ -1,7 +1,7 @@
 {
  "source": "editorial",
- "version": 1,
- "note": "EDITORIAL glossary for the Chemistry section (round 3 §47). Every property key in src/data/chemistry-properties.json has an entry here; the chemistry stage validates that and emits data/chemistry/glossary.json. Definitions are plain-language paraphrases written for this site; each cites the reference it follows. IUPAC Gold Book codes were verified against Wikipedia's GoldBookRef citations (the Gold Book site blocks automated fetches); other sources are open textbooks (OpenStax, CC BY 4.0), NIST, CAS, IAEA and named Wikipedia list pages.",
+ "version": 2,
+ "note": "EDITORIAL glossary for the Chemistry section (round 3 §47). Every property key in src/data/chemistry-properties.json has an entry here; the chemistry stage validates that and emits data/chemistry/glossary.json. Definitions are plain-language paraphrases written for this site; each cites the reference it follows. IUPAC Gold Book codes were verified against Wikipedia's GoldBookRef citations (the Gold Book site blocks automated fetches); other sources are open textbooks (OpenStax, CC BY 4.0), NIST, CAS, IAEA and named Wikipedia list pages. Since round 4 (§52) the ten element CATEGORIES have entries too (keys category.<name>), surfaced as ⓘ definitions on the table legend and in the element panel.",
  "entries": [
   {
    "key": "abundanceCrust",
@@ -31,6 +31,39 @@
    "alsoSee": {
     "title": "Abundances of the elements (data page), column Y2 — Anders & Grevesse 1989",
     "url": "https://en.wikipedia.org/wiki/Abundances_of_the_elements_(data_page)"
+   }
+  },
+  {
+   "key": "category.actinide",
+   "term": "Actinides",
+   "definition": "The fifteen f-block elements from actinium (89) to lawrencium (103), drawn as the second footer row. All are radioactive; only thorium and uranium occur in quantity in nature, and everything beyond uranium is made in reactors or accelerators. Like the lanthanides they are inner transition metals with a filling f subshell, but their heavier members show a wider range of oxidation states.",
+   "unit": null,
+   "source": {
+    "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table",
+    "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
+    "publisher": "OpenStax (CC BY 4.0)"
+   }
+  },
+  {
+   "key": "category.alkaliMetal",
+   "term": "Alkali metals",
+   "definition": "The metals of group 1: lithium, sodium, potassium, rubidium, caesium and francium (hydrogen sits in the column but is a nonmetal). Each has a single outer-shell electron that it gives up readily, so they are soft, low-melting metals that react violently with water and are never found uncombined in nature.",
+   "unit": null,
+   "source": {
+    "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table",
+    "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
+    "publisher": "OpenStax (CC BY 4.0)"
+   }
+  },
+  {
+   "key": "category.alkalineEarthMetal",
+   "term": "Alkaline earth metals",
+   "definition": "The metals of group 2: beryllium, magnesium, calcium, strontium, barium and radium. Two outer-shell electrons make them reactive, though less so than the alkali metals; they are harder, melt higher, and form the +2 ions of common minerals such as limestone (calcium) and dolomite (magnesium).",
+   "unit": null,
+   "source": {
+    "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table",
+    "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
+    "publisher": "OpenStax (CC BY 4.0)"
    }
   },
   {
@@ -328,6 +361,17 @@
    }
   },
   {
+   "key": "category.lanthanide",
+   "term": "Lanthanides",
+   "definition": "The fifteen f-block elements from lanthanum (57) to lutetium (71), drawn as the first footer row of the table. Their filling 4f subshell barely affects their outer chemistry, so they are chemically alike, mostly trivalent, silvery metals; together with scandium and yttrium they are the rare-earth elements of magnets, phosphors and catalysts. Also called inner transition metals.",
+   "unit": null,
+   "source": {
+    "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table",
+    "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
+    "publisher": "OpenStax (CC BY 4.0)"
+   }
+  },
+  {
    "key": "magneticOrdering",
    "term": "Magnetic ordering",
    "definition": "How the element responds to a magnetic field at room temperature. Diamagnetic materials are weakly repelled (most elements); paramagnetic ones are weakly attracted because of unpaired electrons; ferromagnetic ones (iron, cobalt, nickel, gadolinium below 20 °C) keep their magnetisation; antiferromagnetic ones (chromium, manganese) have neighbouring moments that cancel.",
@@ -346,6 +390,17 @@
    "source": {
     "title": "OpenStax Chemistry 2e, §10.3 Phase Transitions",
     "url": "https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions",
+    "publisher": "OpenStax (CC BY 4.0)"
+   }
+  },
+  {
+   "key": "category.metalloid",
+   "term": "Metalloids",
+   "definition": "Elements with properties between those of metals and nonmetals, lying along the diagonal from boron to astatine: boron, silicon, germanium, arsenic, antimony and tellurium are the usual members. They look metallic but are brittle and conduct electricity only modestly, which is what makes silicon and germanium the semiconductors of electronics. Which elements count is a matter of convention.",
+   "unit": null,
+   "source": {
+    "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table",
+    "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
     "publisher": "OpenStax (CC BY 4.0)"
    }
   },
@@ -373,6 +428,17 @@
    "alsoSee": {
     "title": "List of chemical elements, 'Origin' column",
     "url": "https://en.wikipedia.org/wiki/List_of_chemical_elements"
+   }
+  },
+  {
+   "key": "category.nobleGas",
+   "term": "Noble gases",
+   "definition": "The elements of group 18: helium, neon, argon, krypton, xenon, radon and oganesson. Their outer electron shells are complete, so they are colourless, odourless gases that scarcely react at all; only the heavier ones form any compounds, and those only under forcing conditions.",
+   "unit": null,
+   "source": {
+    "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table",
+    "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
+    "publisher": "OpenStax (CC BY 4.0)"
    }
   },
   {
@@ -450,6 +516,17 @@
    }
   },
   {
+   "key": "category.postTransitionMetal",
+   "term": "Post-transition metals",
+   "definition": "The metals of the p-block that sit between the transition metals and the metalloids: aluminium, gallium, indium, tin, thallium, lead, bismuth, and by many conventions the heaviest synthetic p-block elements. They are softer and lower-melting than the transition metals, with weaker metallic bonding and a tendency towards covalent chemistry. The set is a convention rather than an IUPAC definition and its edges vary between tables.",
+   "unit": null,
+   "source": {
+    "title": "Wikipedia, \"Post-transition metal\"",
+    "url": "https://en.wikipedia.org/wiki/Post-transition_metal",
+    "publisher": "Wikipedia (CC BY-SA 4.0)"
+   }
+  },
+  {
    "key": "uses",
    "term": "Principal uses",
    "definition": "The main things the element and its compounds are used for. Taken from PubChem's element record (which cites its own sources per statement) where PubChem carries a 'Uses' section, otherwise from the Wikipedia article's applications section, attributed either way.",
@@ -458,6 +535,17 @@
     "title": "PubChem Periodic Table and Element pages (Kim et al. 2021)",
     "url": "https://doi.org/10.1186/s13321-021-00554-8",
     "publisher": "NIH / NCBI (CC BY 4.0 article; PubChem data public domain)"
+   }
+  },
+  {
+   "key": "category.reactiveNonmetal",
+   "term": "Reactive nonmetals",
+   "definition": "The nonmetals other than the noble gases: hydrogen, carbon, nitrogen, oxygen, phosphorus, sulfur, selenium and the halogens (fluorine, chlorine, bromine, iodine). They gain or share electrons rather than losing them, are poor conductors, and are mostly gases or brittle solids at room temperature. The name groups the halogens with the other nonmetals that readily form compounds, as distinct from the inert noble gases.",
+   "unit": null,
+   "source": {
+    "title": "Wikipedia, \"Nonmetal\"",
+    "url": "https://en.wikipedia.org/wiki/Nonmetal",
+    "publisher": "Wikipedia (CC BY-SA 4.0)"
    }
   },
   {
@@ -510,6 +598,28 @@
     "title": "OpenStax University Physics Vol. 2, §1.6 Mechanisms of Heat Transfer",
     "url": "https://openstax.org/books/university-physics-volume-2/pages/1-6-mechanisms-of-heat-transfer",
     "publisher": "OpenStax (CC BY 4.0)"
+   }
+  },
+  {
+   "key": "category.transitionMetal",
+   "term": "Transition metals",
+   "definition": "The d-block elements of groups 3 to 12 (iron, copper, gold, platinum among them). Their partly filled d subshells let them take several oxidation states, form coloured compounds and act as catalysts; as a family they are the dense, high-melting, workable metals of engineering and coinage.",
+   "unit": null,
+   "source": {
+    "title": "OpenStax Chemistry 2e, §2.5 The Periodic Table",
+    "url": "https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table",
+    "publisher": "OpenStax (CC BY 4.0)"
+   }
+  },
+  {
+   "key": "category.unknown",
+   "term": "Unknown properties",
+   "definition": "Elements 109 to 118 (meitnerium to oganesson). Each exists only as a handful of atoms that decay within seconds or less, far too few to measure a melting point, a density or a chemistry, so no category can honestly be assigned; predictions from their place in the table are marked as predictions. Elements 104 to 108 have had just enough chemistry done to be placed with the transition metals.",
+   "unit": null,
+   "source": {
+    "title": "Wikipedia, \"Superheavy element\"",
+    "url": "https://en.wikipedia.org/wiki/Superheavy_element",
+    "publisher": "Wikipedia (CC BY-SA 4.0)"
    }
   },
   {

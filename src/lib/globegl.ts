@@ -35,6 +35,8 @@
 
 import { geoDistance, type GeoProjection } from 'd3-geo'
 
+import { lowPowerDevice } from './device'
+import { type ImageryGrade } from './mapgrade'
 import {
   loadTerrainMeta,
   terrainTileUrl,
@@ -59,6 +61,17 @@ export interface ImageryView {
   /** Draw the country outlines in the same pass (drag frames on the globe;
    *  at rest the SVG owns them). */
   borders?: BorderStyle | undefined
+  /**
+   * Round 4 (§51): draw the client-supplied world raster (see setRaster)
+   * as the base instead of the imagery set. This is how the POLITICAL
+   * globe's drag frames reach the GPU: the country fills are baked into
+   * one equirectangular picture whenever the palette changes, and a drag
+   * frame is then the same single inverse-projection pass the satellite
+   * view already paid for — not 250 d3 canvas paths per frame.
+   */
+  raster?: boolean | undefined
+  /** Per-pixel tone over the imagery (never applied to the raster). */
+  grade?: ImageryGrade | undefined
   projection: GeoProjection
   /** Identity of the flat projection, for mesh caching. */
   projectionKey: string
@@ -82,17 +95,32 @@ export interface ImageryRenderer {
   prefetch(basePath: string): void
   /** True once the active set's world base is on the GPU. */
   ready(): boolean
+  /**
+   * Supply (or clear) the world raster drawn when a view asks for
+   * `raster`. Equirectangular, whole world, north up. Returns false when
+   * this renderer cannot draw rasters at all (the 2-D fallback), so the
+   * caller keeps its own drag frames.
+   */
+  setRaster(source: TexImageSource | null): boolean
   render(view: ImageryView): void
   attribution(): string | null
   destroy(): void
 }
 
-/** Resident fine-tier tiles (each 2700² RGB + mipmaps ≈ 39 MB on the GPU).
- *  Eviction is LRU. Devices that report little memory get a smaller budget. */
+/** Resident fine-tier tiles (each 2700² RGB + mipmaps ≈ 39 MB on the GPU,
+ *  ~10 MB at the low-power decode size). Eviction is LRU. Phones get half
+ *  the count AND quarter-size tiles (§51): eight full tiles are ~310 MB of
+ *  texture, which is where iOS Safari starts losing the context. */
 function tileBudget(): number {
-  const mem = (navigator as { deviceMemory?: number }).deviceMemory
-  if (mem !== undefined && mem <= 4) return 4
-  return 8
+  return lowPowerDevice() ? 4 : 8
+}
+
+/** Decode fine tiles at this edge length on low-power devices (the tiles
+ *  are 2700² on disk). At a phone's capped backing store a 90-degree tile
+ *  at 1350 px is still ~15 px per degree, finer than the screen can show
+ *  until the zoom passes 9x, where the next tier takes over anyway. */
+function tileDecodeSize(): number | null {
+  return lowPowerDevice() ? 1350 : null
 }
 
 const MESH_STEP_DEG = 1
@@ -166,9 +194,21 @@ uniform vec2 u_rot;
 /* lon0, lat0, lon1, lat1 in radians of the texture window. */
 uniform vec4 u_window;
 uniform vec3 u_ocean;
+/* Tone grade (section 51): desaturate, sepia, lift, tint amount. */
+uniform vec4 u_grade;
+uniform vec3 u_tint;
 in vec2 v_lonlat;
 out vec4 o;
 const float PI = 3.141592653589793;
+const vec3 LUMA = vec3(0.2126, 0.7152, 0.0722);
+vec3 grade(vec3 c) {
+  float l = dot(c, LUMA);
+  c = mix(c, vec3(l), u_grade.x);
+  c = mix(c, l * vec3(1.20, 1.02, 0.76), u_grade.y);
+  c = mix(c, l * u_tint / max(dot(u_tint, LUMA), 1e-3), u_grade.w);
+  c += u_grade.z * (1.0 - c);
+  return clamp(c, 0.0, 1.0);
+}
 void main() {
   float lon; float lat; float alpha = 1.0;
   if (u_globe == 1) {
@@ -214,7 +254,7 @@ void main() {
   float dyu2 = dFdy(u2);
   if (abs(dxu2) < abs(dx.x)) dx.x = dxu2;
   if (abs(dyu2) < abs(dy.x)) dy.x = dyu2;
-  vec3 c = textureGrad(u_tex, uv, dx, dy).rgb;
+  vec3 c = grade(textureGrad(u_tex, uv, dx, dy).rgb);
   o = vec4(c * alpha, alpha);
 }
 `
@@ -264,29 +304,65 @@ function link(
   return program
 }
 
+/** Resolve any CSS colour (oklch included) to straight RGB in 0..1. The
+ *  map's drag frames use it for the GL border colour (section 51). */
+export function resolveCssColor(css: string): [number, number, number] {
+  return parseColor(css)
+}
+
+const colorCache = new Map<string, [number, number, number]>()
+let colorProbe: CanvasRenderingContext2D | null | undefined
+
 function parseColor(css: string): [number, number, number] {
-  // Canvas resolves any CSS colour (oklch included) to rgb() for us.
-  const probe = document.createElement('canvas')
-  probe.width = probe.height = 1
-  const ctx = probe.getContext('2d')
+  const cached = colorCache.get(css)
+  if (cached) return cached
+  // Canvas resolves any CSS colour (oklch included) to rgb() for us. ONE
+  // software probe for the page: a fresh GPU-backed canvas per call
+  // stalled 30-60 ms on the readback (measured, section 51), which was
+  // the first drag frame's whole budget.
+  if (colorProbe === undefined) {
+    const probe = document.createElement('canvas')
+    probe.width = probe.height = 1
+    colorProbe = probe.getContext('2d', { willReadFrequently: true })
+  }
+  const ctx = colorProbe
   if (!ctx) return [0.04, 0.15, 0.25]
+  ctx.clearRect(0, 0, 1, 1)
   ctx.fillStyle = css
   ctx.fillRect(0, 0, 1, 1)
   const data = ctx.getImageData(0, 0, 1, 1).data
-  return [(data[0] ?? 0) / 255, (data[1] ?? 0) / 255, (data[2] ?? 0) / 255]
+  const rgb: [number, number, number] = [
+    (data[0] ?? 0) / 255,
+    (data[1] ?? 0) / 255,
+    (data[2] ?? 0) / 255,
+  ]
+  colorCache.set(css, rgb)
+  return rgb
 }
 
 /** Decoded world-base bitmaps survive remounts (route away and back). */
 const baseBitmapCache = new Map<string, Promise<ImageBitmap>>()
 const metaCache = new Map<string, Promise<TerrainMeta>>()
 
-function fetchBitmap(url: string): Promise<ImageBitmap> {
+function fetchBitmap(url: string, edge: number | null = null): Promise<ImageBitmap> {
   return fetch(url)
     .then((response) => {
       if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`)
       return response.blob()
     })
-    .then((blob) => createImageBitmap(blob, { premultiplyAlpha: 'none' }))
+    .then((blob) =>
+      createImageBitmap(
+        blob,
+        edge === null
+          ? { premultiplyAlpha: 'none' }
+          : {
+              premultiplyAlpha: 'none',
+              resizeWidth: edge,
+              resizeHeight: edge,
+              resizeQuality: 'high',
+            },
+      ),
+    )
 }
 
 export class GlobeGL implements ImageryRenderer {
@@ -314,6 +390,10 @@ export class GlobeGL implements ImageryRenderer {
   private lastView: ImageryView | null = null
   private oceanCache: { css: string; rgb: [number, number, number] } | null = null
   private drawQueued = false
+  /** Client world raster (§51) and the source it came from, kept so a
+   *  context restore can re-upload without asking the map. */
+  private raster: GpuTexture | null = null
+  private rasterSource: TexImageSource | null = null
 
   constructor(
     private readonly canvas: HTMLCanvasElement,
@@ -366,6 +446,7 @@ export class GlobeGL implements ImageryRenderer {
       for (const u of [
         'u_tex', 'u_globe', 'u_hasTex', 'u_isBase', 'u_ortho', 'u_height',
         'u_rot', 'u_window', 'u_ocean', 'u_affine', 'u_size', 'u_color',
+        'u_grade', 'u_tint',
       ]) {
         map.set(u, gl.getUniformLocation(program, u))
       }
@@ -384,8 +465,11 @@ export class GlobeGL implements ImageryRenderer {
       gl.getExtension('WEBKIT_EXT_texture_filter_anisotropic')
     this.anisotropy = 1
     if (this.anisoExt) {
+      // Anisotropic sampling matters at the limb, where one screen pixel
+      // spans many texels along one axis; 8 taps is where it stops showing
+      // on a desktop, and on a phone 2 is the most the fill rate can spare.
       this.anisotropy = Math.min(
-        8,
+        lowPowerDevice() ? 2 : 8,
         gl.getParameter(this.anisoExt.MAX_TEXTURE_MAX_ANISOTROPY_EXT) as number,
       )
     }
@@ -408,6 +492,7 @@ export class GlobeGL implements ImageryRenderer {
     this.tiles.clear()
     this.pending.clear()
     this.meshes.clear()
+    this.raster = null
     try {
       const gpu = this.initGpu()
       this.progGlobe = gpu.progGlobe
@@ -419,8 +504,21 @@ export class GlobeGL implements ImageryRenderer {
     }
     this.borderBuffer = null
     if (this.borderData) this.setBorders(this.borderData)
+    if (this.rasterSource) this.setRaster(this.rasterSource)
     this.ensureMeta(this.basePath)
     if (this.lastView) this.render(this.lastView)
+  }
+
+  setRaster(source: TexImageSource | null): boolean {
+    this.rasterSource = source
+    if (this.raster) {
+      this.gl.deleteTexture(this.raster.texture)
+      this.raster = null
+    }
+    if (source && !this.lost && !this.destroyed) {
+      this.raster = this.upload(source, true)
+    }
+    return true
   }
 
   setImagery(basePath: string): void {
@@ -464,6 +562,9 @@ export class GlobeGL implements ImageryRenderer {
     const gl = this.gl
     this.bases.forEach((t) => gl.deleteTexture(t.texture))
     this.tiles.forEach((t) => gl.deleteTexture(t.texture))
+    if (this.raster) gl.deleteTexture(this.raster.texture)
+    this.raster = null
+    this.rasterSource = null
     if (this.borderBuffer) gl.deleteBuffer(this.borderBuffer)
     this.borderBuffer = null
     this.meshes.forEach((mesh) => {
@@ -528,7 +629,7 @@ export class GlobeGL implements ImageryRenderer {
     const key = `${basePath}/${name}`
     if (this.tiles.has(key) || this.pending.has(key)) return
     this.pending.add(key)
-    void fetchBitmap(terrainTileUrl(basePath, name))
+    void fetchBitmap(terrainTileUrl(basePath, name), tileDecodeSize())
       .then((image) => {
         this.pending.delete(key)
         if (this.lost || this.destroyed) {
@@ -551,7 +652,7 @@ export class GlobeGL implements ImageryRenderer {
       })
   }
 
-  private upload(image: ImageBitmap, wrapS: boolean): GpuTexture {
+  private upload(image: TexImageSource, wrapS: boolean): GpuTexture {
     const gl = this.gl
     const texture = gl.createTexture()
     if (!texture) throw new Error('texture alloc failed')
@@ -573,7 +674,11 @@ export class GlobeGL implements ImageryRenderer {
         this.anisotropy,
       )
     }
-    return { texture, width: image.width, height: image.height }
+    const size =
+      'width' in image && typeof image.width === 'number'
+        ? { width: image.width, height: (image as { height: number }).height }
+        : { width: 0, height: 0 }
+    return { texture, ...size }
   }
 
   /** Tile arrivals repaint from the renderer's own last view, coalesced to
@@ -756,7 +861,23 @@ export class GlobeGL implements ImageryRenderer {
       const rad = Math.PI / 180
       gl.uniform4f(loc('u_window'), lon0 * rad, lat0 * rad, lon1 * rad, lat1 * rad)
       if (isGlobe) {
+        // Section 51: a tile pass used to be a FULL-SCREEN triangle whose
+        // fragments each ran the inverse projection and then discarded
+        // themselves outside the tile's lon/lat window -- eight tiles on
+        // screen meant eight full-screen passes of transcendentals, which
+        // is what a phone GPU could not keep up with. Scissor each pass to
+        // the tile's projected bounding box (the whole world needs none).
+        const whole = lon1 - lon0 >= 360
+        const box = whole
+          ? null
+          : this.tileScissor(view, lon0, lat0, lon1, lat1, ax, ay, b, bufferW, bufferH)
+        if (box === undefined) return
+        if (box) {
+          gl.enable(gl.SCISSOR_TEST)
+          gl.scissor(box[0], box[1], box[2], box[3])
+        }
         gl.drawArrays(gl.TRIANGLES, 0, 3)
+        if (box) gl.disable(gl.SCISSOR_TEST)
       } else if (mesh) {
         const idx = this.meshIndices(mesh, lon0, lat0, lon1, lat1)
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idx.buffer)
@@ -764,10 +885,29 @@ export class GlobeGL implements ImageryRenderer {
       }
     }
 
-    // Pass 1: the world base (or the ocean disc while it loads).
+    // Tone grade (section 51): imagery only -- the political raster
+    // already carries its palette, so it draws ungraded.
+    // A raster view with no raster resident (context just restored) draws
+    // the ocean disc, never the other view's imagery.
+    const useRaster = view.raster === true
+    const grade = useRaster ? null : view.grade ?? null
+    gl.uniform4f(
+      loc('u_grade'),
+      grade?.desaturate ?? 0,
+      grade?.sepia ?? 0,
+      grade?.lift ?? 0,
+      grade?.tintAmount ?? 0,
+    )
+    const tint = grade?.tint ?? [1, 1, 1]
+    gl.uniform3f(loc('u_tint'), tint[0], tint[1], tint[2])
+
+    // Pass 1: the world base (or the ocean disc while it loads). With a
+    // client raster requested and resident, the raster IS the world and
+    // no imagery tile is drawn over it.
     gl.uniform1i(loc('u_isBase'), 1)
-    if (base) {
-      gl.bindTexture(gl.TEXTURE_2D, base.texture)
+    const baseTexture = useRaster ? this.raster : base
+    if (baseTexture) {
+      gl.bindTexture(gl.TEXTURE_2D, baseTexture.texture)
       gl.uniform1i(loc('u_hasTex'), 1)
     } else {
       gl.uniform1i(loc('u_hasTex'), 0)
@@ -775,7 +915,7 @@ export class GlobeGL implements ImageryRenderer {
     drawWindow(-180, -90, 180, 90)
 
     // Passes 2..n: finer tiles intersecting the visible window.
-    if (meta && tier && base && tier.cols * tier.rows > 1) {
+    if (!useRaster && meta && tier && base && tier.cols * tier.rows > 1) {
       this.drawTiles(view, tier, loc, drawWindow)
     }
 
@@ -797,6 +937,91 @@ export class GlobeGL implements ImageryRenderer {
       gl.disableVertexAttribArray(1)
       gl.drawArrays(gl.LINES, 0, this.borderCount)
     }
+  }
+
+  /**
+   * Device-pixel scissor box for a lon/lat window on the globe:
+   * [x, y(bottom-up), w, h], clipped to the canvas. `undefined` means the
+   * window is entirely off screen (skip the pass); `null` means no useful
+   * bound (draw unscissored).
+   *
+   * The window's boundary is sampled and forward-projected; the
+   * orthographic projection is injective on the visible hemisphere, so
+   * the projected region's extent IS its boundary's extent. A boundary
+   * sample past the horizon means the region reaches the limb, and the
+   * disc's own bounding box is the bound then.
+   */
+  private tileScissor(
+    view: ImageryView,
+    lon0: number,
+    lat0: number,
+    lon1: number,
+    lat1: number,
+    ax: number,
+    ay: number,
+    b: number,
+    bufferW: number,
+    bufferH: number,
+  ): [number, number, number, number] | null | undefined {
+    const { projection, rotation } = view
+    const center: [number, number] = [-rotation[0], -rotation[1]]
+    const t = projection.translate()
+    const r = projection.scale()
+    const discX0 = ax + b * (t[0] - r)
+    const discX1 = ax + b * (t[0] + r)
+    const discY0 = ay + b * (t[1] - r)
+    const discY1 = ay + b * (t[1] + r)
+    let x0 = Infinity
+    let x1 = -Infinity
+    let y0 = Infinity
+    let y1 = -Infinity
+    let limb = false
+    const SAMPLES = 8
+    const visit = (lon: number, lat: number) => {
+      if (geoDistance([lon, lat], center) > Math.PI / 2) {
+        limb = true
+        return
+      }
+      const p = projection([lon, lat])
+      if (!p || !Number.isFinite(p[0]) || !Number.isFinite(p[1])) {
+        limb = true
+        return
+      }
+      const dx = ax + b * p[0]
+      const dy = ay + b * p[1]
+      if (dx < x0) x0 = dx
+      if (dx > x1) x1 = dx
+      if (dy < y0) y0 = dy
+      if (dy > y1) y1 = dy
+    }
+    for (let i = 0; i <= SAMPLES; i += 1) {
+      const f = i / SAMPLES
+      visit(lon0 + (lon1 - lon0) * f, lat0)
+      visit(lon0 + (lon1 - lon0) * f, lat1)
+      visit(lon0, lat0 + (lat1 - lat0) * f)
+      visit(lon1, lat0 + (lat1 - lat0) * f)
+    }
+    if (limb) {
+      x0 = discX0
+      x1 = discX1
+      y0 = discY0
+      y1 = discY1
+    } else if (x0 === Infinity) {
+      return null
+    }
+    // The disc bounds every visible fragment regardless of the samples.
+    x0 = Math.max(x0, discX0)
+    x1 = Math.min(x1, discX1)
+    y0 = Math.max(y0, discY0)
+    y1 = Math.min(y1, discY1)
+    const pad = 2
+    const sx0 = Math.max(0, Math.floor(x0 - pad))
+    const sx1 = Math.min(bufferW, Math.ceil(x1 + pad))
+    // Device y is top-down; gl.scissor counts from the bottom.
+    const sy0 = Math.max(0, Math.floor(bufferH - (y1 + pad)))
+    const sy1 = Math.min(bufferH, Math.ceil(bufferH - (y0 - pad)))
+    if (sx1 <= sx0 || sy1 <= sy0) return undefined
+    return [sx0, sy0, sx1 - sx0, sy1 - sy0]
   }
 
   private drawTiles(

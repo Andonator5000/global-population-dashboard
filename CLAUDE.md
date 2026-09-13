@@ -83,11 +83,14 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   Wikipedia symbolism text (CC BY-SA, verbatim, linked).
 - Map palette: six gated directions (atlas default; paper, antique,
   pastel, nautical, mono), lightness is the data channel in all; the
-  antique direction is the measured Blaeu 1635 sheet (§48: parchment sea
-  and surround, umber lines, coastline gate instead of the water floor,
-  ANTIQUE constants in WorldMap.tsx mirror DIRECTIONS.antique in
-  build-map-palette.mjs); continent view = cohesive regions + labels, no
-  internal borders.
+  antique direction is the measured Blaeu 1635 sheet (§48: parchment sea,
+  umber lines, coastline gate instead of the water floor, ANTIQUE
+  constants in WorldMap.tsx mirror DIRECTIONS.antique in
+  build-map-palette.mjs; the surround is BLACK space since §51.4);
+  every direction also tones the satellite/terrain imagery through an
+  ImageryGrade in src/lib/mapgrade.ts (§51.1) — presentation only, never
+  applied to political fills, outside the gates; continent view =
+  cohesive regions + labels, no internal borders.
 - `/history` is EDITORIAL: edit `etl/reference/history_events.json` (bump
   `version`), never `data/history/events.json`; the `history` stage
   validates it and resolves free images. Keep regional balance in mind.
@@ -127,12 +130,23 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   outlines drawn in the SAME GL pass during drags from the SAME rotation
   ref; the 2-D quad warp in terrain.ts is only the no-WebGL2 fallback
   (never re-promote it: its affine quads ARE the meridian streaks);
-  verify globe visuals with `node scripts/globe-spin-capture.mjs <view>`
-  (Playwright, headed Chrome) before claiming a fix; six palette
-  directions all gated by
-  build-map-palette.mjs (lightness is the data channel in every one);
-  base views political/satellite/terrain, choices persisted; the country
-  popover's corner thumb is the country's own fitted shape, not a flag.
+  verify globe visuals with `HEADED=1 [PALETTE=x] node
+  scripts/globe-spin-capture.mjs <view> <tag> [wheelSteps]` (Playwright,
+  headed Chrome; it prints per-frame main-thread ms) before claiming a
+  fix; six palette directions all gated by build-map-palette.mjs
+  (lightness is the data channel in every one); base views
+  political/satellite/terrain, choices persisted; the country popover's
+  corner thumb is the country's own fitted shape, not a flag.
+  Round 4 (§51): the POLITICAL globe's drag frames are a baked world
+  raster (src/lib/politicalraster.ts → GlobeGL.setRaster) drawn by the
+  same GL pass as the imagery below 6× zoom, and CULLED vector frames
+  above it — never reintroduce the 250-path-per-frame canvas loop
+  outside the no-WebGL2 fallback; strokes are non-scaling (CSS px,
+  converted through the viewBox scale — do not put `/ transform.k`
+  back); zoom events coalesce to one commit per frame; device tier in
+  src/lib/device.ts governs dpr caps, tile budgets/decode size and
+  anisotropy — no user-agent sniffing; resolve CSS colours through
+  resolveCssColor (cached probe), never a fresh canvas per call.
 - Timeline (round 2, §38, §42.4–5): full-width MEASURED era banners,
   each tinted by its era's own oklch hue (light-dark pairs in
   Timeline.tsx — text contrast never depends on the hue); era
@@ -148,7 +162,12 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   what both the panel and check:chemistry read — add a property there,
   its glossary entry in etl/reference/chemistry_glossary.json, or the
   gate fails. Editorial sample-photo overrides live in
-  etl/reference/chemistry_samples.json.
+  etl/reference/chemistry_samples.json. The ten element categories have
+  glossary entries keyed category.<key> (§52.2) — extra glossary entries
+  are allowed, property keys are required. Table layout (§52.1): panel
+  beside the table only from xl; the grid fits its column from lg
+  (container-query cell type, no min-width) — do not put the 54rem floor
+  back above lg, that was the desktop sideways scroll.
 - Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
   .json, never data/space/phenomena*; the `phenomena` stage downloads
   every image through the licence gate (no hotlinks) and check:phenomena
@@ -187,6 +206,5 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).
 - Globe drag sensitivity is 0.5625°/px by explicit request (two ×1.5
-  raises). Space outside the projection is black on every view, with ONE
-  exception: the antique direction continues its parchment past the edge
-  (§48.3, Andy's pick).
+  raises). Space outside the projection is black on EVERY view and
+  direction (the §48.3 parchment surround was reversed by Andy in §51.4).

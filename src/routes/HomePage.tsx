@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { memo, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 
 import { EntityTable } from '../components/EntityTable'
@@ -33,6 +33,14 @@ import {
 import { formatExact, formatGrowthRate, formatPopulation } from '../lib/format'
 import { PROJECTION_LABELS } from '../lib/projection'
 import type { GdpSummary, PopulationRow } from '../types'
+
+/**
+ * Round 4 (§51.3): every hover on the map is a HomePage state change, and
+ * the 250-row table used to re-render on each one because its `rows`
+ * array was rebuilt inline. Memoised props + a memoised table mean a
+ * hover (or a tap on a phone) re-renders the readout and the map only.
+ */
+const MemoEntityTable = memo(EntityTable)
 
 const compactUsd = new Intl.NumberFormat('en', {
   style: 'currency',
@@ -249,6 +257,8 @@ export function HomePage() {
     }
     return merged
   }, [rows, scrubPopulation, scrubYear])
+
+  const tableRows = useMemo(() => [...byIso3.values()], [byIso3])
 
   const worldTotal = useMemo(
     () =>
@@ -596,8 +606,8 @@ export function HomePage() {
       )}
 
       {summaryState.status === 'ready' && (
-        <EntityTable
-          rows={[...byIso3.values()]}
+        <MemoEntityTable
+          rows={tableRows}
           year={scrubYear ?? year}
           revision={revision}
           gdp={gdpState.status === 'ready' ? gdpState.data : null}

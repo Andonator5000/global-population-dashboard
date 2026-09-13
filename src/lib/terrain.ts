@@ -19,6 +19,7 @@
 import { geoDistance, geoPath, type GeoPermissibleObjects, type GeoProjection } from 'd3-geo'
 
 import type { ImageryRenderer, ImageryView } from './globegl'
+import { gradeFilter } from './mapgrade'
 
 import {
   loadTerrainMeta,
@@ -392,6 +393,12 @@ export class Canvas2DImagery implements ImageryRenderer {
     return true
   }
 
+  /** The fallback has no texture path for a client raster: the political
+   *  drag frames stay on the map's own 2-D canvas (section 51). */
+  setRaster(): boolean {
+    return false
+  }
+
   attribution(): string | null {
     return this.renderer.attribution()
   }
@@ -407,10 +414,14 @@ export class Canvas2DImagery implements ImageryRenderer {
     if (!ctx) return
     const sphere =
       geoPath(view.projection)({ type: 'Sphere' } as GeoPermissibleObjects) ?? ''
+    // Tone grade (section 51) as a CSS filter -- approximate, like the
+    // rest of this fallback.
+    ctx.filter = view.grade ? gradeFilter(view.grade) : 'none'
     this.renderer.render(
       ctx, view.projection, view.rotation, view.transform, layout,
       cssWidth, cssHeight, sphere, view.oceanFill, view.isGlobe,
     )
+    ctx.filter = 'none'
   }
 
   destroy(): void {
