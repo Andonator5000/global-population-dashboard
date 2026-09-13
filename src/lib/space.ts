@@ -141,20 +141,63 @@ export function featureTypeGloss(type: string | null): string | null {
   return FEATURE_TYPE_GLOSS[key] ?? FEATURE_TYPE_GLOSS[type.toLowerCase()] ?? null
 }
 
+export type PhenomenonStatus = 'observed' | 'theoretical' | 'hypothesis'
+
+export interface PhenomenonFact {
+  value: string
+  source: string
+  url: string
+  year: number
+}
+
+/** A downloaded, licence-gated image served from data/space/phenomena/. */
+export interface PhenomenonImage {
+  file: string
+  width: number
+  height: number
+  title: string
+  credit: string
+  licence: string
+  source: string
+  page: string
+}
+
+export interface PhenomenaCategory {
+  id: string
+  label: string
+}
+
+export interface PhenomenaStatusInfo {
+  id: PhenomenonStatus
+  label: string
+  note: string
+}
+
+export interface PhenomenonEntry {
+  id: string
+  title: string
+  category: string
+  status: PhenomenonStatus
+  description: string
+  facts: PhenomenonFact[]
+  image: PhenomenonImage
+  wikipedia: string
+  nasa: string
+}
+
 export interface PhenomenaFile {
   source: string
   version: number
+  note: string
   imageNote: string
-  entries: {
-    id: string
-    title: string
-    description: string
-    facts: string[]
-    image: BodyImage | null
-    wikipedia: string
-    nasa: string
-  }[]
+  categories: PhenomenaCategory[]
+  statuses: PhenomenaStatusInfo[]
+  entries: PhenomenonEntry[]
 }
+
+/** data/space/phenomena/<id>.jpg is served from /data; build its URL. */
+export const phenomenonImageUrl = (image: PhenomenonImage): string =>
+  `${DATA_BASE_URL}/${image.file}`
 
 export interface SpaceRegion {
   id: string

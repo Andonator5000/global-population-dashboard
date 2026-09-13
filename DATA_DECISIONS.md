@@ -2744,6 +2744,132 @@ giant Wikidata batch) were already sound and are now verified end to end.
 
 **44.6 Gates.** `check:taxonomy` passes: tree 35,214 nodes / 39 rank strings all defined / descriptions wikipedia 9,088, wikidata 7,575, generated 18,551 (flagged); genera 14,196 files, 37.0 MB, 257,389 nodes, descriptions wikipedia 6,481, wikidata 12,563, generated 224,149 (flagged). Incremental genus enrichment runs at `TAXONOMY_GENUS_ENRICH_CAP` = 20,000 per ETL run, so full Wikipedia coverage of the 203k pending genera is roughly ten monthly refreshes away; raising the cap for the workflow only is the lever if Andy wants it faster.
 
+## 46. Round 3, Phase 6: Cosmic Phenomena becomes a full catalogue (2026-09)
+
+The 13-entry Cosmic Phenomena page (§41.3, §42.10) becomes a ~60-entry
+categorised, searchable catalogue with every image downloaded, licence-gated
+and served locally. A prior WIP pass (commit `b245f1b`) had already written
+`etl/sources/phenomena.py`, `scripts/check-phenomena.mjs` and expanded
+`etl/reference/cosmic_phenomena.json` to 62 entries, but the stage had never
+been run end to end and the page itself was still the old 13-card layout
+reading the old (string-array facts, hotlink-shaped) schema. This phase
+finished the job: ran the stage, fixed what broke, rebuilt the page, and
+re-verified sourcing.
+
+**46.1 The two originally bare cards.** Andy's brief called out "Stars and
+stellar life cycles" and "Gamma-ray bursts" as having no appropriate photo.
+The expanded reference file already carried fixes for both, verified before
+shipping: `stellar-lifecycles` pins NASA Image Library item
+`GSFC_20171208_Archive_e000743` — Hubble's Westerlund 2 star-forming
+cluster, released for Hubble's 25th anniversary — and `gamma-ray-bursts`
+pins the Commons file `Gamma-ray-burst-illustration.jpg`, confirmed to be
+NASA Goddard's Dana Berry GRB-jet illustration (public domain, "NASA
+material is not protected by copyright unless noted"). Both now render with
+full credit and licence lines.
+
+**46.2 Image pipeline: download, gate, never hotlink.** Every entry pins one
+of `nasaId` (NASA Image and Video Library item), `commons` (a Wikimedia file
+that must clear the free-licence gate: public domain, CC0, CC BY, CC BY-SA,
+Attribution — never NC/ND), `query` (a NASA library search, first hit with a
+preview), or falls back to the pinned Wikipedia article's lead image through
+the same Commons gate. `etl/sources/phenomena.py` downloads the chosen
+rendition, re-encodes it to a bounded progressive JPEG (max 960×720, q82,
+alpha composited onto white), and writes it under
+`data/space/phenomena/<id>.jpg` with a provenance row in
+`data/space/phenomena/manifest.json` (source URL, author, licence, credit
+line). Nothing is hotlinked at render time. Running the stage cold-cached
+resolved all 62 entries with zero rejects: 41 via `nasaId`, 12 via
+`commons`, 8 via `query`, 1 via the Wikipedia fallback (wormholes, per
+§42.10) — 4.47 MB total.
+
+**46.3 Two upstream data-quality bugs found and fixed in our code.** (a) The
+NASA Image and Video Library's `/asset/<id>` endpoint sometimes serves
+rendition hrefs as plain `http://images-assets.nasa.gov/...` even though the
+same host answers `https` (verified with a HEAD probe); `check-phenomena.mjs`
+correctly failed 49 entries on "manifest sourceUrl is not https". Fixed by
+normalising the scheme to https wherever an asset or preview href is read
+in `phenomena.py`, before it is fetched or recorded — the file itself was
+never insecurely served, only the recorded provenance URL was. (b) One
+Commons file's Artist template renders the literal, un-filled string
+"NASA's Scientific Visualization Studio - null" (verified against the file's
+own page) — a known class of Commons authoring bug, not a real credit.
+`_commons_image` now strips a trailing `- null` artefact from the author
+field (a narrow regex, scoped to this file only) rather than inventing a
+credit; if a Commons page ever lacks an author entirely the existing
+"Wikimedia Commons contributor" fallback still applies.
+
+**46.4 Broken NASA reference links from earlier rounds.** A HEAD probe (per
+the standing note that some round-2 NASA links fail) found five dead
+`science.nasa.gov` paths reused across the expanded catalogue's `nasa` field
+and several facts' citation URLs: `/universe/stars/supernovae/`,
+`/universe/neutron-stars/`, `/universe/what-are-nebulae/`,
+`/universe/galaxies/active-galaxies/` and
+`/universe/what-are-gamma-ray-bursts/` — all genuine 404s, not redirects.
+Replaced with current equivalents verified live: the neutron-star family
+(neutron-stars, pulsars, magnetars, kilonovae, quark-stars, fast-radio-bursts)
+now cites `/category/universe/stars/neutron-stars/`; supernovae cites
+`/category/universe/stars/supernovae/`; the three nebula entries split by
+specificity (`/category/universe/nebulae/`,
+`/category/universe/nebulae/planetary-nebulae/`,
+`/category/universe/nebulae/star-forming-nebulae/`); quasars-agn and
+blazars cite Webb's "What Are Active Galactic Nuclei?" explainer; and
+gamma-ray-bursts cites NASA's dedicated GRB explainer article. All other
+`nasa` links, all 62 Wikipedia links, and every fact URL (111 unique URLs in
+total) were HEAD-probed and resolve 200 with a descriptive User-Agent
+(Wikipedia rate-limits anonymous curl bursts with 429s — a probing artefact,
+not a link problem).
+
+**46.5 One description failed its own word/sentence gate.** `gravitational-waves`
+had a 2-sentence description against the reference file's own 3–6-sentence
+rule; expanded to four sentences (adding the Virgo/KAGRA multi-detector
+network) without changing any figure.
+
+**46.6 Fact spot-checks.** A sample across categories (GW170817's merger
+delay and host galaxy, Betelgeuse's 2020 radius/distance, Planck 2018's
+reionization redshift, magnetar counts and field strengths, the two
+previously-bare cards' image provenance) was independently re-fetched via
+Wikipedia/NASA and matched the reference file's values and cited years
+exactly. Not every one of the 62×3-plus facts was re-verified line by line;
+the sample targeted the entries most likely to have drifted (recent
+observational records) and the two cards the maintainer flagged by name.
+
+**46.7 The page: category filter + search, same tokens as the rest of the
+site.** `CosmicPhenomenaPage.tsx` is a full rewrite (the old version still
+read the pre-expansion schema: string-array facts, a single `BodyImage`-typed
+hotlink field). Cards show the image (with a category chip and a status
+badge — Observed muted, Theoretical `--accent`, Hypothesis `--negative`,
+both already AA-gated against `--surface`/`--surface-raised` by
+`check-contrast.mjs`), the description, an expandable "Key facts" list (each
+fact linking its own source and year), NASA/Wikipedia links, and the image's
+credit + licence + source-page link. A `role="group"` row of
+`aria-pressed` category buttons (the same pattern as `TaxonomyPage`'s view
+toggle) and a `type="search"` input filter the 62 entries client-side on
+every keystroke; a live region announces "N of 62 entries"; an empty result
+set shows a named "No phenomena match…" state with a one-click "clear the
+filters" recovery rather than a bare "0 results" (per the no-dead-ends UX
+guideline). No new colours, motion, or CSS were introduced — the global
+`prefers-reduced-motion` rule in `index.css` already applies, and the type
+additions (`PhenomenonFact`, `PhenomenonImage`, `PhenomenaCategory`,
+`PhenomenaStatusInfo`, `PhenomenonEntry`, `phenomenonImageUrl`) live
+alongside the existing `PhenomenaFile`/`usePhenomena` in `src/lib/space.ts`
+without touching any other export there (bodies, moons, nomenclature
+untouched).
+
+**46.8 Refresh.** `cosmic_phenomena` joins the manifest as its own source
+row (editorial text CC0, images NASA media or Commons free licences per
+item); NASA and Commons links are static citations re-verified whenever the
+reference file is next edited, not polled independently. No new runtime
+exception: everything ships as a committed artifact under `data/space/`.
+
+**46.9 Left for a full pipeline run.** This phase ran
+`etl/run.py --only phenomena` under `LEADERS_CACHED_ONLY=1
+CURRENCY_CACHED_ONLY=1` per the coordination brief, which — per the
+CLAUDE.md hard rule — writes a partial `data/manifest.json` (crosswalk +
+phenomena stages only). **Before this lands in a PR, run a full cached
+`etl/run.py`** so the committed manifest's `content_fingerprint` covers the
+whole pipeline again; nothing else about `/data` needs to change for this
+phase.
+
 ## 47. Round 3, Phase 7: the periodic table of the elements (2026-09-12)
 
 A prior agent (transcript lost; WIP commit `b245f1b`) built the Chemistry

@@ -218,6 +218,12 @@ def _nasa_asset_url(nasa_id: str, *, refresh: bool,
                 "~medium.png", "~small.png", "~orig.png"):
         for href in hrefs:
             if href.lower().endswith(tag):
+                # The library's asset API sometimes serves hrefs as plain
+                # http even though the CDN answers https on the same host
+                # (verified) -- normalise so nothing is fetched or recorded
+                # as an insecure URL.
+                if href.startswith("http://"):
+                    href = "https://" + href[len("http://"):]
                 return href
     return None
 
@@ -234,6 +240,8 @@ def _nasa_image(nasa_id: str, *, refresh: bool,
                     if l.get("rel") == "preview"), None)
     if not url:
         return None
+    if url.startswith("http://"):
+        url = "https://" + url[len("http://"):]
     return {
         "source": "NASA Image and Video Library",
         "sourceUrl": url,
@@ -287,13 +295,19 @@ def _commons_image(filename: str, *, refresh: bool,
     if mime not in _RENDERABLE_MIME:
         rejects.append(f"{filename}: mime {mime!r} is not a renderable image")
         return None
+    author = record.get("author") or ""
+    # A handful of Commons pages render an unfilled template field as the
+    # literal word "null" (e.g. "NASA's Scientific Visualization Studio -
+    # null") -- a known upstream authoring bug, not a real name. Trim only
+    # that exact trailing artefact; never invent a credit that isn't there.
+    author = re.sub(r"\s*[-–—]\s*null\s*$", "", author, flags=re.I).strip()
     return {
         "source": "Wikimedia Commons",
         "sourceUrl": commons.image_url_for(filename, COMMONS_FETCH_WIDTH),
         "sourcePage": commons.file_page_for(filename),
         "sourceId": filename,
         "title": record.get("objectName") or filename.rsplit(".", 1)[0],
-        "credit": record.get("author") or "Wikimedia Commons contributor",
+        "credit": author or "Wikimedia Commons contributor",
         "licence": licence,
         "dateCreated": None,
     }

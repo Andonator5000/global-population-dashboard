@@ -192,13 +192,13 @@
    "status": "observed",
    "query": "supernova remnant cassiopeia a",
    "wikipedia": "Supernova",
-   "nasa": "https://science.nasa.gov/universe/stars/supernovae/",
+   "nasa": "https://science.nasa.gov/category/universe/stars/supernovae/",
    "description": "A supernova can briefly outshine its whole galaxy. Core-collapse supernovae end massive stars, forging and scattering heavy elements and leaving neutron stars or black holes; Type Ia supernovae detonate white dwarfs pushed over their mass limit, and burn so uniformly that they serve as 'standard candles' — the measuring sticks that revealed the accelerating universe in 1998. Supernova 1987A, in the Large Magellanic Cloud, was close enough that its neutrinos were caught by detectors on Earth. The image shows the remnant of a supernova whose light reached Earth about 320 years ago.",
    "facts": [
     {"value": "The Milky Way's supernova rate is about 1.6 to 4.6 per century; the last one observed was Kepler's in 1604", "source": "Wikipedia: Supernova", "url": "https://en.wikipedia.org/wiki/Supernova", "year": 2026},
     {"value": "Type Ia supernovae peak near absolute magnitude −19.3, about 5 billion times the Sun's luminosity, with little variation", "source": "Wikipedia: Supernova", "url": "https://en.wikipedia.org/wiki/Supernova", "year": 2026},
     {"value": "Type Ia standard candles led to the dark-energy discovery (Nobel Prize 2011)", "source": "Wikipedia: Dark energy", "url": "https://en.wikipedia.org/wiki/Dark_energy", "year": 2011},
-    {"value": "SN 1987A: first supernova neutrinos detected", "source": "NASA Science: Supernovae", "url": "https://science.nasa.gov/universe/stars/supernovae/", "year": 1987}
+    {"value": "SN 1987A: first supernova neutrinos detected", "source": "NASA Science: Supernovae", "url": "https://science.nasa.gov/category/universe/stars/supernovae/", "year": 1987}
    ]
   },
   {
@@ -224,10 +224,10 @@
    "status": "observed",
    "nasaId": "PIA23863",
    "wikipedia": "Neutron star",
-   "nasa": "https://science.nasa.gov/universe/neutron-stars/",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
    "description": "When a massive star's core collapses, protons and electrons are crushed together into a city-sized sphere of nearly pure neutrons — matter at the density of an atomic nucleus, where a teaspoonful would outweigh a mountain. A neutron star packs more than the Sun's mass into a radius of about ten kilometres, with gravity so strong that light bends visibly around it. Rapidly rotating and strongly magnetised examples appear as pulsars and magnetars. The NASA graphic compares the main types.",
    "facts": [
-    {"value": "Typical radius about 12 km holding 1.4 solar masses or more", "source": "NASA Science: Neutron stars", "url": "https://science.nasa.gov/universe/neutron-stars/", "year": 2026},
+    {"value": "Typical radius about 12 km holding 1.4 solar masses or more", "source": "NASA Science: Neutron stars", "url": "https://science.nasa.gov/category/universe/stars/neutron-stars/", "year": 2026},
     {"value": "Fastest known spin: PSR J1748−2446ad at about 716 rotations per second", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 2006},
     {"value": "GW170817 (17 August 2017): the first neutron-star merger seen in gravitational waves and light, in NGC 4993 about 140 million light-years away", "source": "Wikipedia: GW170817", "url": "https://en.wikipedia.org/wiki/GW170817", "year": 2017}
    ]
@@ -239,13 +239,13 @@
    "status": "observed",
    "nasaId": "GSFC_20171208_Archive_e000273",
    "wikipedia": "Pulsar",
-   "nasa": "https://science.nasa.gov/universe/neutron-stars/",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
    "description": "A pulsar is a spinning neutron star whose magnetic poles beam radiation into space; each time a beam sweeps past Earth we receive a pulse, so the star ticks like a lighthouse with clock-grade regularity. Jocelyn Bell Burnell found the first in 1967 as a signal repeating every 1.3 seconds. The fastest, spun up by matter falling from a companion, rotate hundreds of times a second, and the slow decay of a binary pulsar's orbit gave the first evidence for gravitational waves. Hubble's image shows the beating heart of the Crab Nebula, powered by the pulsar left by the supernova of 1054.",
    "facts": [
     {"value": "First pulsar signals were seen by Jocelyn Bell in data recorded on 6 August 1967; the source is now PSR B1919+21", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 1967},
     {"value": "PSR J1748−2446ad: period about 1.4 milliseconds, about 716 rotations per second", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 2006},
     {"value": "The Hulse–Taylor binary pulsar PSR B1913+16, discovered 1974, earned the 1993 Nobel Prize in Physics", "source": "Wikipedia: Pulsar", "url": "https://en.wikipedia.org/wiki/Pulsar", "year": 1993},
-    {"value": "The Crab pulsar powers the nebula of the supernova of 1054", "source": "NASA Science: Neutron stars", "url": "https://science.nasa.gov/universe/neutron-stars/", "year": 2026}
+    {"value": "The Crab pulsar powers the nebula of the supernova of 1054", "source": "NASA Science: Neutron stars", "url": "https://science.nasa.gov/category/universe/stars/neutron-stars/", "year": 2026}
    ]
   },
   {
@@ -255,7 +255,7 @@
    "status": "observed",
    "nasaId": "PIA26274",
    "wikipedia": "Magnetar",
-   "nasa": "https://science.nasa.gov/universe/neutron-stars/",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
    "description": "Magnetars are neutron stars with the strongest magnetic fields known — a thousand times stronger than an ordinary pulsar's and a trillion times stronger than Earth's. Stresses in that field crack the star's crust and release bursts of X-rays and gamma rays; rare giant flares can outshine everything else in the gamma-ray sky for a fraction of a second, even from across the galaxy. In 2020 a magnetar in the Milky Way was caught emitting a fast radio burst, tying the two phenomena together. The illustration shows a magnetar shedding material along its field lines.",
    "facts": [
     {"value": "Magnetic fields of about 10^9 to 10^11 tesla (10^13 to 10^15 gauss)", "source": "Wikipedia: Magnetar", "url": "https://en.wikipedia.org/wiki/Magnetar", "year": 2026},
@@ -271,7 +271,7 @@
    "status": "observed",
    "nasaId": "PIA21910",
    "wikipedia": "Kilonova",
-   "nasa": "https://science.nasa.gov/universe/neutron-stars/",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
    "description": "A kilonova is the glow of debris flung out when two neutron stars, or a neutron star and a black hole, spiral together and merge. The ejected matter is so rich in neutrons that heavy elements — gold, platinum, uranium — are forged within seconds by rapid neutron capture, and their radioactive decay powers a red-tinged afterglow lasting days. The first confirmed kilonova followed the gravitational-wave event GW170817 in 2017 and was observed by telescopes across the whole spectrum. Spitzer's image records that fading afterglow.",
    "facts": [
     {"value": "Kilonovae peak at about 1,000 times the brightness of a classical nova, a tenth to a hundredth of a supernova", "source": "Wikipedia: Kilonova", "url": "https://en.wikipedia.org/wiki/Kilonova", "year": 2026},
@@ -287,7 +287,7 @@
    "status": "hypothesis",
    "commons": "Illustration of relative sizes of Grand Canyon, neutron star and quark star (2002-0211-more-4).tiff",
    "wikipedia": "Quark star",
-   "nasa": "https://science.nasa.gov/universe/neutron-stars/",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
    "description": "A quark star is a hypothetical object that would form if the pressure inside a neutron star grew so extreme that its neutrons dissolved into a soup of free quarks. Under the Bodmer–Witten hypothesis, 'strange' quark matter might even be stable, allowing whole stars made of it. No quark star has been confirmed: a few unusually small or cool compact objects have been proposed as candidates, but every case remains disputed, and the stability of quark matter is an unsolved problem in physics. The Chandra illustration compares a hypothetical quark star with a neutron star and the Grand Canyon.",
    "facts": [
     {"value": "Status: hypothetical and unconfirmed; the extreme conditions cannot be recreated in laboratories", "source": "Wikipedia: Quark star", "url": "https://en.wikipedia.org/wiki/Quark_star", "year": 2026},
@@ -302,12 +302,12 @@
    "status": "observed",
    "query": "carina nebula",
    "wikipedia": "Nebula",
-   "nasa": "https://science.nasa.gov/universe/what-are-nebulae/",
+   "nasa": "https://science.nasa.gov/category/universe/nebulae/",
    "description": "Nebulae are the universe's clouds: vast reaches of gas and dust that are stellar nurseries, stellar graves, or both. Emission nebulae like Orion glow where newborn stars ionise hydrogen; reflection nebulae shine with scattered starlight; dark nebulae are dust silhouettes; planetary nebulae are the shed envelopes of dying Sun-like stars; supernova remnants are explosions still expanding. The James Webb Space Telescope's infrared vision now sees stars forming inside the clouds themselves, as in its image of the 'Cosmic Cliffs' of the Carina Nebula shown here.",
    "facts": [
     {"value": "Orion Nebula: about 1,267 light-years away, about 25 light-years across, about 2,000 solar masses", "source": "Wikipedia: Orion Nebula", "url": "https://en.wikipedia.org/wiki/Orion_Nebula", "year": 2026},
     {"value": "Hubble found more than 150 protoplanetary disks (proplyds) inside the Orion Nebula", "source": "Wikipedia: Orion Nebula", "url": "https://en.wikipedia.org/wiki/Orion_Nebula", "year": 2026},
-    {"value": "Nebula types: emission, reflection, dark, planetary and supernova remnants", "source": "NASA Science: What are nebulae?", "url": "https://science.nasa.gov/universe/what-are-nebulae/", "year": 2026}
+    {"value": "Nebula types: emission, reflection, dark, planetary and supernova remnants", "source": "NASA Science: Nebulae", "url": "https://science.nasa.gov/category/universe/nebulae/", "year": 2026}
    ]
   },
   {
@@ -317,7 +317,7 @@
    "status": "observed",
    "nasaId": "southern_ring_nebula",
    "wikipedia": "Planetary nebula",
-   "nasa": "https://science.nasa.gov/universe/what-are-nebulae/",
+   "nasa": "https://science.nasa.gov/category/universe/nebulae/planetary-nebulae/",
    "description": "A planetary nebula is the glowing shell of gas that a dying Sun-like star throws off at the end of its life, lit from within by the hot exposed core that will become a white dwarf. They have nothing to do with planets: William Herschel named them for their round, planet-like appearance in eighteenth-century telescopes. Shaped by winds, magnetic fields and companion stars into rings, hourglasses and butterflies, they last only tens of thousands of years before dispersing. Webb's image shows the Southern Ring Nebula in near- and mid-infrared light.",
    "facts": [
     {"value": "About 3,000 planetary nebulae are known in the Milky Way", "source": "Wikipedia: Planetary nebula", "url": "https://en.wikipedia.org/wiki/Planetary_nebula", "year": 2026},
@@ -333,7 +333,7 @@
    "status": "observed",
    "nasaId": "PIA23405",
    "wikipedia": "Molecular cloud",
-   "nasa": "https://science.nasa.gov/universe/what-are-nebulae/",
+   "nasa": "https://science.nasa.gov/category/universe/nebulae/star-forming-nebulae/",
    "description": "Molecular clouds are the coldest, densest parts of the interstellar medium — regions where hydrogen exists as molecules rather than atoms, shielded from starlight by dust. They are where all stars are born. The largest, giant molecular clouds, hold up to millions of solar masses across hundreds of light-years, and where a dense one lies in front of a bright background it appears as a dark nebula, an apparently starless hole in the sky. Spitzer's infrared image shows the Perseus Molecular Cloud, a nursery of young stars 500 light-years across.",
    "facts": [
     {"value": "Giant molecular clouds: about 10 thousand to 10 million solar masses, 15 to 600 light-years across", "source": "Wikipedia: Molecular cloud", "url": "https://en.wikipedia.org/wiki/Molecular_cloud", "year": 2026},
@@ -582,7 +582,7 @@
    "status": "observed",
    "query": "quasar",
    "wikipedia": "Quasar",
-   "nasa": "https://science.nasa.gov/universe/galaxies/active-galaxies/",
+   "nasa": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-are-active-galactic-nuclei/",
    "description": "When a supermassive black hole feeds, the infalling gas spirals through an accretion disc heated to millions of degrees, outshining the entire surrounding galaxy — an active galactic nucleus. The most luminous, quasars, are visible across most of the observable universe; some launch jets of near-light-speed plasma thousands of light-years long. Quasars were most common when the universe was a few billion years old, lighthouses from the era when galaxies and their black holes grew up together.",
    "facts": [
     {"value": "3C 273 was identified in 1963 by Maarten Schmidt, whose spectrum showed hydrogen lines redshifted by 15.8%", "source": "Wikipedia: Quasar", "url": "https://en.wikipedia.org/wiki/Quasar", "year": 1963},
@@ -598,7 +598,7 @@
    "status": "observed",
    "nasaId": "PIA20912",
    "wikipedia": "Blazar",
-   "nasa": "https://science.nasa.gov/universe/galaxies/active-galaxies/",
+   "nasa": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-are-active-galactic-nuclei/",
    "description": "A blazar is an active galactic nucleus whose jet happens to point almost straight at Earth. Looking down the barrel of a jet moving at nearly the speed of light, we see its emission enormously brightened and its variability compressed, so blazars flicker violently across the spectrum from radio waves to gamma rays and are the most common sources in the gamma-ray sky. In 2017 a high-energy neutrino was traced to a flaring blazar, the first time a neutrino detector had pointed to a specific object in space. The illustration shows a blazar's jet aimed at the viewer.",
    "facts": [
     {"value": "A blazar is an AGN with a relativistic jet directed very nearly towards the observer", "source": "Wikipedia: Blazar", "url": "https://en.wikipedia.org/wiki/Blazar", "year": 2026},
@@ -688,12 +688,12 @@
    "status": "observed",
    "commons": "Gamma-ray-burst-illustration.jpg",
    "wikipedia": "Gamma-ray burst",
-   "nasa": "https://science.nasa.gov/universe/what-are-gamma-ray-bursts/",
+   "nasa": "https://science.nasa.gov/universe/gamma-ray-bursts-harvesting-knowledge-from-the-universes-most-powerful-explosions/",
    "description": "For a few seconds, a gamma-ray burst can outshine every other source in the gamma-ray sky combined — the most luminous explosions known. Long bursts come from the collapse of massive, rapidly rotating stars into black holes, their energy funnelled into narrow jets; short bursts come from neutron-star mergers, confirmed in 2017 when one arrived alongside gravitational waves. Discovered by Cold-War satellites watching for nuclear tests, they are now cosmological tools seen from the universe's first billion years. The NASA Goddard illustration shows a burst's jets punching out of a collapsing star.",
    "facts": [
     {"value": "Brightest recorded: GRB 221009A on 9 October 2022, about 2.4 billion light-years away (redshift 0.151), thought to be a once-in-10,000-years event", "source": "Wikipedia: GRB 221009A", "url": "https://en.wikipedia.org/wiki/GRB_221009A", "year": 2022},
     {"value": "Short bursts are neutron-star mergers: GRB 170817A followed the gravitational-wave event GW170817 by 1.74 seconds", "source": "Wikipedia: GW170817", "url": "https://en.wikipedia.org/wiki/GW170817", "year": 2017},
-    {"value": "Discovered in 1967 by the Vela satellites and declassified in 1973", "source": "NASA Science: What are gamma-ray bursts?", "url": "https://science.nasa.gov/universe/what-are-gamma-ray-bursts/", "year": 1973}
+    {"value": "Discovered in 1967 by the Vela satellites and declassified in 1973", "source": "NASA Science: What are gamma-ray bursts?", "url": "https://science.nasa.gov/universe/gamma-ray-bursts-harvesting-knowledge-from-the-universes-most-powerful-explosions/", "year": 1973}
    ]
   },
   {
@@ -703,7 +703,7 @@
    "status": "observed",
    "commons": "Canadian Hydrogen Intensity Mapping Experiment - overall.jpg",
    "wikipedia": "Fast radio burst",
-   "nasa": "https://science.nasa.gov/universe/neutron-stars/",
+   "nasa": "https://science.nasa.gov/category/universe/stars/neutron-stars/",
    "description": "Fast radio bursts are flashes of radio waves lasting about a millisecond that release, in that instant, as much energy as the Sun emits in days. The first was found in 2007 in archived data, and for years their origin was a mystery; most come from distant galaxies, some repeat, and in 2020 a burst from a magnetar inside the Milky Way showed that at least some are produced by these hyper-magnetised neutron stars. The CHIME telescope in Canada, pictured, now catalogues them by the hundred and uses them to weigh the gas between galaxies.",
    "facts": [
     {"value": "The first (Lorimer) burst was discovered in 2007 in Parkes Observatory data recorded on 24 July 2001", "source": "Wikipedia: Fast radio burst", "url": "https://en.wikipedia.org/wiki/Fast_radio_burst", "year": 2007},
@@ -751,7 +751,7 @@
    "query": "gravitational waves",
    "wikipedia": "Gravitational wave",
    "nasa": "https://science.nasa.gov/universe/",
-   "description": "Einstein predicted in 1916 that accelerating masses ripple spacetime itself; a century later, on 14 September 2015, the LIGO detectors measured arms 4 km long changing length by a thousandth of a proton's width as the waves from two merging black holes passed through Earth. Gravitational-wave astronomy now logs mergers routinely, heard rather than seen, and the 2017 neutron-star merger GW170817 — observed in waves and light together — showed such collisions forge heavy elements like gold and platinum.",
+   "description": "Einstein predicted in 1916 that accelerating masses would ripple spacetime itself, stretching and squeezing space as they pass. A century later, on 14 September 2015, the LIGO detectors measured arms 4 km long changing length by a thousandth of a proton's width as the waves from two merging black holes swept through Earth. Gravitational-wave astronomy now logs mergers routinely, heard rather than seen, and the 2017 neutron-star merger GW170817 — observed in waves and light together — showed such collisions forge heavy elements like gold and platinum. A growing network of detectors, including Virgo and KAGRA alongside the two LIGO instruments, now triangulates each merger's location on the sky.",
    "facts": [
     {"value": "First detection GW150914: black holes of 36 and 29 solar masses", "source": "Wikipedia: Gravitational wave", "url": "https://en.wikipedia.org/wiki/Gravitational_wave", "year": 2015},
     {"value": "Nobel Prize 2017: Weiss, Barish and Thorne", "source": "Wikipedia: Gravitational wave", "url": "https://en.wikipedia.org/wiki/Gravitational_wave", "year": 2017},
