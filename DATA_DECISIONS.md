@@ -3320,6 +3320,20 @@ parchment halo; a static feTurbulence paper grain (multiply, alpha
 Drag frames (canvas + GL borders) use the same literal colours.
 Satellite/terrain and continent modes are untouched.
 
+## 49. PhyloPic build rollover (2026-09-13)
+
+The first full ETL run of round 3 aborted in the `evolution` stage:
+PhyloPic's API answered HTTP 410 Gone for `build=555`. The API is
+versioned by a build number every query must carry; the root document
+naming it is cached like any other fetch, so a cached root goes stale
+while a NEW name query (one not yet in the cache) reaches the live API
+with a retired build. `etl/sources/evolution.py` now holds the build in
+a small `_PhylopicBuild` object and, on a 410, re-reads the live root
+once and retries the query. Per-name cache keys were already
+build-independent (§21), so cached answers stay valid across
+rollovers. A 404 still means "no silhouette" and anything else still
+aborts the run.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

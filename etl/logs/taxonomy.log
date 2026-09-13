@@ -33,8 +33,8 @@
     "genera_enriched": 1571,
     "genera_with_wiki": 853
   },
-  "genera_enrichment_cap_this_run": 20000,
-  "genera_looked_up_this_run": 20000,
+  "genera_enrichment_cap_this_run": 0,
+  "genera_looked_up_this_run": 0,
   "genera_still_pending_after_run": 202909,
   "focus_families": [
     "Accipitridae",
@@ -68,5 +68,5 @@
     "Ursidae",
     "Varanidae"
   ],
-  "seconds": 617
+  "seconds": 225
 }

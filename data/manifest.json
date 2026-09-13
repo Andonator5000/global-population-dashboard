@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-08T01:55:57+00:00",
+  "generated_at": "2026-09-13T04:55:13+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,12 +9,331 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-08T01:55:57+00:00",
+      "fetched_at": "2026-09-13T04:55:13+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
       "files": [],
       "notes": "Replaces REST Countries v3.1, which was deprecated in favour of a key-gated v5 (see DATA_DECISIONS.md #1). This is the dataset REST Countries is built from. Used only for country metadata (names, ISO codes, borders, capital, area, currencies, languages). Never used for population or economic figures -- its population field is undated and disagrees with UN WPP. One documented upstream correction is applied (Vatican City UN membership)."
+    },
+    "un_wpp": {
+      "title": "UN World Population Prospects 2024",
+      "url": "https://population.un.org/wpp/",
+      "licence": "CC BY 3.0 IGO",
+      "fetched_at": "2026-08-30T06:16:59+00:00",
+      "upstream_release": "Fri, 13 Dec 2024 19:11:17 GMT",
+      "vintage": "estimates 1950-2023; projections 2024-2100",
+      "citation": "United Nations, Department of Economic and Social Affairs, Population Division (2024). World Population Prospects 2024, Online Edition. Medium variant.",
+      "files": [
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
+          "sha256": "286ac36bb1415e2e1ade03acfef0a29f0e4c087e2f78e38c48f50c5df89082bc",
+          "size_bytes": 16557272,
+          "fetched_at": "2026-08-30T06:16:43+00:00"
+        },
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_OtherVariants.csv.gz",
+          "sha256": "a860504df54877e4c19788bf6e16920d6017d021b4c149eaf8b5662674180a54",
+          "size_bytes": 75342445,
+          "fetched_at": "2026-08-30T06:16:51+00:00"
+        },
+        {
+          "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_PopulationByAge5GroupSex_Medium.csv.gz",
+          "sha256": "a04d7d1486a5eb2832cc812d599448f0a71e8ac9e1e7e6fa4066673d6a2487cd",
+          "size_bytes": 29948947,
+          "fetched_at": "2026-08-30T06:16:59+00:00"
+        }
+      ],
+      "notes": "Counts converted from the published thousands to persons. Estimates run through 2023; later years are the medium-variant projection, with low/high variants supplied as bands. Bulk CSV rather than the Data Portal API, which requires a token (see DATA_DECISIONS.md)."
+    },
+    "world_bank": {
+      "title": "World Bank World Development Indicators",
+      "url": "https://api.worldbank.org/v2",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-30T06:18:04+00:00",
+      "upstream_release": "2026-07-13",
+      "vintage": "per indicator and country; newest observation 2025",
+      "citation": "World Bank, World Development Indicators (api.worldbank.org/v2)",
+      "files": [
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&per_page=20000&page=1",
+          "sha256": "337b37071281a128340331068a39abae870868ab49c4032b56e17b89871deed1",
+          "size_bytes": 3675128,
+          "fetched_at": "2026-08-30T06:17:05+00:00"
+        },
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.CD?format=json&per_page=20000&page=1",
+          "sha256": "ddd7c4777b51f18262a2a67db60e1bdd0b1f850e2a84e1b18f141b57868bcaa5",
+          "size_bytes": 4152536,
+          "fetched_at": "2026-08-30T06:17:05+00:00"
+        },
+        {
+          "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&page=1",
+          "sha256": "d95fabbb5731225261778b7febda96eceadd66a557ce81a9f3255520703ad0b6",
+          "size_bytes": 3803123,
+          "fetched_at": "2026-08-30T06:17:06+00:00"
+        }
+      ],
+      "notes": "42 indicators. Every value carries its own observation year -- there is no single current year across indicators. Regional and income aggregates are excluded via the API's region.id == 'NA' flag."
+    },
+    "owid_indicators": {
+      "title": "Our World in Data — curated indicators",
+      "url": "https://ourworldindata.org/grapher",
+      "licence": "CC BY 4.0 (underlying producers' terms apply)",
+      "fetched_at": "2026-08-30T06:18:26+00:00",
+      "upstream_release": null,
+      "vintage": "per indicator and country; newest observation 2026",
+      "citation": "Global Carbon Budget (2025); Population based on various sources (2024); Institute for Crime & Justice Policy Research (2026); Institute for Crime & Justice Policy Research (2026); Population based on various sources (2024); Jonathan Hanson and Rachel Sigman (2021); Population based on various sources (2023); V-Dem (2026), via Our World in Data",
+      "files": [
+        {
+          "url": "https://ourworldindata.org/grapher/electoral-democracy-index.csv",
+          "sha256": "b10099af07ae1c4900edb9e7cd8d2d3876bbca5b3bb1bae69e70932fcdb4bd7e",
+          "size_bytes": 1115469,
+          "fetched_at": "2026-08-30T06:18:05+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/liberal-democracy-index.csv",
+          "sha256": "d6c331b8ea80027599e1bca8e28aab544382c1625b2536ea62f4df4fcb122de6",
+          "size_bytes": 1073845,
+          "fetched_at": "2026-08-30T06:18:08+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/human-rights-index-vdem.csv",
+          "sha256": "6303ce0a230c707b9e05e5248ee7c462494eda19ba71bbd2e3204ef25378cd97",
+          "size_bytes": 1137721,
+          "fetched_at": "2026-08-30T06:18:11+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/political-regime.csv",
+          "sha256": "1e0d045bc702591c95c9885a6dbe5e8bed13bcca9b2a236464caa7c6098851ff",
+          "size_bytes": 647110,
+          "fetched_at": "2026-08-30T06:18:13+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/political-corruption-index.csv",
+          "sha256": "fd1733e084221ec2a6e6a8b01b9f6b4baeedfa179c25d9e3d3d57348d2b4df8f",
+          "size_bytes": 930777,
+          "fetched_at": "2026-08-30T06:18:15+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/rule-of-law-index.csv",
+          "sha256": "20aa91fad74cbd3c5ef2db1abf6f4d69b9abf0f03fbe6ee0461080d02bd8372b",
+          "size_bytes": 1137564,
+          "fetched_at": "2026-08-30T06:18:18+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/state-capacity-index.csv",
+          "sha256": "cfd0cab19277043fccdda3f5e16d42b4a936ae3787d6dceb99664cc54f6b4a40",
+          "size_bytes": 237821,
+          "fetched_at": "2026-08-30T06:18:21+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/co-emissions-per-capita.csv",
+          "sha256": "11a3a3531e4d814f96c5b6ce1ce4888be554cab5a48fe1394ba72f1b590e976e",
+          "size_bytes": 801498,
+          "fetched_at": "2026-08-30T06:18:22+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/prison-population-rate.csv",
+          "sha256": "65d8476363f800f9795b1f567f6f0394e48b9a76baeae8678955ccc12de34c77",
+          "size_bytes": 51544,
+          "fetched_at": "2026-08-30T06:18:24+00:00"
+        },
+        {
+          "url": "https://ourworldindata.org/grapher/prison-capacity.csv",
+          "sha256": "8b1e979f48c83df30675787689d31355466092051b3b3f87d79dfb46d99d40d9",
+          "size_bytes": 5149,
+          "fetched_at": "2026-08-30T06:18:26+00:00"
+        }
+      ],
+      "notes": "10 series, primary source for the Freedom section (V-Dem democracy and human-rights indices, Regimes of the World classification) and CO2 per capita (Global Carbon Budget). Distinct from the population cross-check, which remains validation-only."
+    },
+    "rsf_press_freedom": {
+      "title": "RSF World Press Freedom Index",
+      "url": "https://rsf.org/sites/default/files/import_classement/2026.csv",
+      "licence": "© Reporters Without Borders; reproduced with attribution",
+      "fetched_at": "2026-08-30T06:18:28+00:00",
+      "upstream_release": "Thu, 30 Apr 2026 02:45:58 GMT",
+      "vintage": "2026",
+      "citation": "Reporters Without Borders (RSF), World Press Freedom Index 2026",
+      "files": [],
+      "notes": "178 countries matched to the registry. First-party CSV; the OWID mirror was rejected (frozen in 2021 on the old inverted 0-is-best methodology)."
+    },
+    "unodc_prisons": {
+      "title": "UNODC — persons held in prisons and penal facilities",
+      "url": "https://data.unodc.org/sites/dataportal.unodc.org/files/2026-07/data_cts_prisons_and_prisoners.xlsx",
+      "licence": "United Nations / UNODC terms; free reuse with attribution",
+      "fetched_at": "2026-08-30T06:18:38+00:00",
+      "upstream_release": "Wed, 26 Aug 2026 12:58:34 GMT",
+      "vintage": "per country; newest observations 2024",
+      "citation": "UNODC, Data Portal — Prisons and prisoners (CTS)",
+      "files": [],
+      "notes": "226 countries with prisoner totals, 93 with facility counts. The xlsx href is re-discovered from the landing page each run because its path is release-dated."
+    },
+    "wikipedia_capital_punishment": {
+      "title": "Capital punishment by country (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Capital_punishment_by_country",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-08-30T06:18:47+00:00",
+      "upstream_release": "Fri, 28 Aug 2026 11:20:30 GMT",
+      "vintage": "page as retrieved; execution figures 2024",
+      "citation": "Wikipedia, 'Capital punishment by country' (execution figures originally compiled by Amnesty International)",
+      "files": [],
+      "notes": "195 countries matched. Amnesty publishes only PDFs and no keyless structured source exists; Wikipedia's tables are the machine-readable secondary source, used with per-page attribution."
+    },
+    "education_extras": {
+      "title": "University counts; CWUR rankings",
+      "url": "https://cwur.org/2026.php",
+      "licence": "Hipolabs MIT; CWUR © Center for World University Rankings, displayed with attribution",
+      "fetched_at": "2026-08-30T06:18:49+00:00",
+      "upstream_release": null,
+      "vintage": "CWUR 2026; counts as retrieved",
+      "citation": "Hipolabs university-domains-list; Center for World University Rankings (CWUR) 2026",
+      "files": [],
+      "notes": "200 countries with university counts, 93 with CWUR-ranked institutions. Public library counts dropped 2026-08-29: no reliable keyless source."
+    },
+    "ifla_library_map": {
+      "title": "IFLA Library Map of the World",
+      "url": "https://librarymap.ifla.org/",
+      "licence": "© IFLA; data contributed by national library associations, reused with attribution",
+      "fetched_at": "2026-08-30T05:06:33+00:00",
+      "upstream_release": null,
+      "vintage": "per country, report years 2013–2025",
+      "citation": "IFLA Library Map of the World (librarymap.ifla.org)",
+      "files": [],
+      "notes": "133 countries with a public-library service-point count. Replaces the Wikidata item count dropped 2026-08-29."
+    },
+    "owid_electricity": {
+      "title": "Electricity mix (Our World in Data) and nuclear plants (Wikidata)",
+      "url": "https://ourworldindata.org/grapher/share-electricity-nuclear.csv",
+      "licence": "OWID CC BY 4.0 (Ember CC BY 4.0; Energy Institute); Wikidata CC0",
+      "fetched_at": "2026-08-30T05:06:54+00:00",
+      "upstream_release": null,
+      "vintage": "latest year per entity",
+      "citation": "Ember (2026) and other sources – with major processing by Our World in Data",
+      "files": [],
+      "notes": "199 entities with an electricity mix, 31 with nuclear plants."
+    },
+    "imf_weo": {
+      "title": "IMF World Economic Outlook (DataMapper API)",
+      "url": "https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP",
+      "licence": "IMF terms; cited with attribution",
+      "fetched_at": "2026-08-30T06:19:12+00:00",
+      "upstream_release": null,
+      "vintage": "annual series incl. projections; boundary 2026",
+      "citation": "IMF World Economic Outlook, via the DataMapper API",
+      "files": [],
+      "notes": "192 entities with debt (% of GDP), 195 with nominal GDP. Not CORS-enabled, so build-time only."
+    },
+    "currency_images": {
+      "title": "Banknote images (Wikimedia Commons banknote categories)",
+      "url": "https://commons.wikimedia.org/w/api.php",
+      "licence": "Per-file Commons licences, recorded per image",
+      "fetched_at": "2026-08-30T07:00:13+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved",
+      "citation": "Wikimedia Commons (per-file attribution in artifact); Wikidata P373/P18",
+      "files": [],
+      "notes": "51 of 158 currencies have a compliant banknote image (4577 candidate files judged); 107 render the fallback card. Criteria in etl/sources/currencyimages.py; verdicts in etl/logs/currency-images.json. Built with CURRENCY_CACHED_ONLY=1: only cached category listings were consulted. Commons category walk enabled."
+    },
+    "wikidata_subdivisions": {
+      "title": "Wikidata — first-level administrative divisions",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "CC0",
+      "fetched_at": "2026-08-30T06:19:22+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved; division populations carry their own vintages",
+      "citation": "Wikidata (P150 contains administrative territorial entity)",
+      "files": [],
+      "notes": "215 countries, 4117 divisions, 3657 with a population figure. Former administrative entities excluded by P31 filter."
+    },
+    "climate": {
+      "title": "Copernicus ERA5 country temperatures (via OWID); GeoNames capitals",
+      "url": "https://ourworldindata.org/grapher/average-annual-surface-temperature.csv",
+      "licence": "Copernicus/OWID CC BY 4.0; GeoNames CC BY 4.0",
+      "fetched_at": "2026-08-30T06:19:35+00:00",
+      "upstream_release": "Sun, 30 Aug 2026 06:19:24 GMT",
+      "vintage": "temperature through 2025",
+      "citation": "Contains modified Copernicus Climate Change Service information (2026); GeoNames",
+      "files": [],
+      "notes": "193 entities with temperature series, 241 capitals. Live weather itself is fetched by the BROWSER from Open-Meteo (CC BY 4.0, non-commercial API) and never enters /data."
+    },
+    "wikidata_inventions": {
+      "title": "Inventions: Wikidata origin tags + Wikipedia list articles",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "Wikidata CC0; Wikipedia CC BY-SA 4.0; per-file Commons licences on images",
+      "fetched_at": "2026-08-30T06:15:35+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved",
+      "citation": "Wikidata (P495/P61/P575, P31/P279 class gate); English Wikipedia per-country invention lists; Wikimedia Commons",
+      "files": [],
+      "notes": "44 countries with qualifying items, 324 inventions. Class gate rejected 1279 candidates (denied class ancestry: 1096, no allowed class ancestry: 183); see etl/logs/inventions-rejected.json. Wikidata origin tags plus 50 curated Wikipedia list articles."
+    },
+    "airports": {
+      "title": "OurAirports roster; Wikidata annual passengers",
+      "url": "https://davidmegginson.github.io/ourairports-data/airports.csv",
+      "licence": "OurAirports: public domain. Wikidata: CC0",
+      "fetched_at": "2026-08-30T06:19:48+00:00",
+      "upstream_release": "Sun, 30 Aug 2026 01:53:58 GMT",
+      "vintage": "roster as retrieved; passenger figures carry their own years",
+      "citation": "OurAirports; Wikidata (P3872 patronage)",
+      "files": [],
+      "notes": "234 countries, 1640 airports listed, 1210 with a passenger figure. Traffic ranking is best-available, not exhaustive."
+    },
+    "wikipedia_national_symbols": {
+      "title": "Wikipedia — lists of national animals, trees and flowers",
+      "url": "https://en.wikipedia.org/wiki/List_of_national_animals",
+      "licence": "CC BY-SA 4.0 (text); images CC0/CC-BY via iNaturalist or per-file Commons licences",
+      "fetched_at": "2026-08-30T06:20:04+00:00",
+      "upstream_release": "Thu, 27 Aug 2026 20:04:52 GMT",
+      "vintage": "pages as retrieved",
+      "citation": "Wikipedia: List of national animals; List of national trees; List of national flowers. Photos: iNaturalist (CC0/CC-BY, research grade) with Wikimedia Commons fallback",
+      "files": [],
+      "notes": "142 countries with at least one symbol; 334 symbol images with Commons attribution. Unmatched rows: Central America and the Caribbean, Macedonia."
+    },
+    "wikidata_cuisine": {
+      "title": "Cuisine: TheMealDB (primary) + Wikidata dishes (fallback)",
+      "url": "https://www.themealdb.com/api/json/v1/1/list.php?a=list",
+      "licence": "TheMealDB free/educational tier, attributed; Wikidata CC0; per-file Commons licences on fallback images",
+      "fetched_at": "2026-08-30T05:40:04+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved",
+      "citation": "TheMealDB (themealdb.com); Wikidata (P495 on dish items); Wikimedia Commons",
+      "files": [],
+      "notes": "116 countries, 579 dishes; 62 countries served by TheMealDB's uniform 700x700 photography, the rest by Wikidata+Commons. Countries covered by neither render as unavailable."
+    },
+    "natural_earth": {
+      "title": "Natural Earth 110m Admin 0 (via world-atlas TopoJSON)",
+      "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+      "licence": "Public domain",
+      "fetched_at": "2026-08-30T06:30:47+00:00",
+      "upstream_release": "W/\"1a4f1-8dtjGzlGpmC8r8Twr0B+StMP8nE\"",
+      "vintage": null,
+      "citation": "Natural Earth, 1:110m Cultural Vectors (public domain)",
+      "files": [],
+      "notes": "Re-keyed from UN M49 to ISO3. Kosovo, Northern Cyprus and Somaliland carry no M49 code and are assigned explicitly (Kosovo to XKX; the other two to Cyprus and Somalia, matching how UN WPP and the World Bank report that territory, though each keeps its own name on the map and is hatched as contested). 63 populated entities are too small to appear at 110m and are emitted as point markers instead."
+    },
+    "natural_earth_detail": {
+      "title": "Natural Earth 10m/50m detail layers (admin-1, lakes, rivers, places)",
+      "url": "https://www.naturalearthdata.com/",
+      "licence": "Public domain",
+      "fetched_at": "2026-09-06T06:59:21+00:00",
+      "upstream_release": "Fri, 13 May 2022 05:21:09 GMT",
+      "vintage": null,
+      "citation": "Natural Earth, 1:10m and 1:50m Cultural and Physical Vectors (public domain)",
+      "files": [],
+      "notes": "Admin-1 boundaries as dissolved border lines with label points computed from the polygons; lakes and rivers at both scales (10m filtered to scalerank <= 7 lakes / 8 rivers); populated places from the 'simple' subset. Simplified and rounded for rendering only -- no measurements are taken from these layers."
+    },
+    "nasa_blue_marble": {
+      "title": "NASA Blue Marble Next Generation, August 2004 (topo & bathy)",
+      "url": "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73776/world.topo.bathy.200408.3x21600x10800.jpg",
+      "licence": "Public domain (NASA; credit requested)",
+      "fetched_at": "2026-09-06T01:15:58+00:00",
+      "upstream_release": "Fri, 14 Dec 2012 19:03:49 GMT",
+      "vintage": "2004-08",
+      "citation": "NASA Earth Observatory, Blue Marble: Next Generation with Topography and Bathymetry (public domain)",
+      "files": [],
+      "notes": "21600x10800 (~1.85 km/px) cut into three resolution tiers of 2700 px JPEG tiles; shaded relief is baked into the imagery. The 500 m set exists upstream if the size budget is raised."
     },
     "catalogue_of_life": {
       "title": "Catalogue of Life, 2026-08-20 (ChecklistBank)",
@@ -26,6 +345,383 @@
       "citation": "Catalogue of Life Checklist, via ChecklistBank ColDP bulk export (CC BY 4.0); Wikipedia links via Wikidata P10585 (CC0); intro texts from English Wikipedia (CC BY-SA 4.0)",
       "files": [],
       "notes": "Bulk export parsed to family rank (35214 tree nodes, every intermediate rank kept) plus one genera file per family (14196 files, 204480 genera); species load live from ChecklistBank. Descriptions: tree 9088 Wikipedia / 7575 Wikidata / 0 COL / 18551 generated; genera-file nodes 12729 / 15424 / 0 / 229236 (202909 not yet looked up). Contested placements annotated from etl/reference/taxonomy_notes.json."
+    },
+    "ics_chart": {
+      "title": "ICS International Chronostratigraphic Chart (linked data)",
+      "url": "https://raw.githubusercontent.com/i-c-stratigraphy/chart/main/chart.ttl",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-09-06T03:13:41+00:00",
+      "upstream_release": "W/\"6e4eb80d6813cf76deddfd5a5442bce0acc8cebee264516776d0cab5d2a9b43f\"",
+      "vintage": null,
+      "citation": "International Commission on Stratigraphy, International Chronostratigraphic Chart (CC BY 4.0)",
+      "files": [],
+      "notes": "177 intervals with boundary ages, stated margins of error, and CGMW colours, parsed from the commission's linked-data TTL."
+    },
+    "evolution_events": {
+      "title": "Evolution timeline (editorial) with PhyloPic and Commons images",
+      "url": "https://www.phylopic.org",
+      "licence": "Editorial text CC0 (this project); silhouettes CC0/PD (PhyloPic, attributed); photos per-file PD/CC (attributed)",
+      "fetched_at": "2026-09-13T04:43:52+00:00",
+      "upstream_release": "PhyloPic build 556",
+      "vintage": null,
+      "citation": "PhyloPic (per-image CC0/PD); Wikimedia Commons (per-file)",
+      "files": [],
+      "notes": "58 editorial events; 30 PhyloPic silhouettes, 23 Commons lead images, 5 events ship without an image because no verifiably free one was found."
+    },
+    "nssdc_factsheets": {
+      "title": "NSSDC Planetary Fact Sheets (pinned Internet Archive snapshots)",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+      "licence": "Public domain (NASA)",
+      "fetched_at": "2026-09-08T01:43:48+00:00",
+      "upstream_release": null,
+      "vintage": "2025 snapshots (see per-body vintage)",
+      "citation": "NASA NSSDCA Planetary Fact Sheets (D.R. Williams), via the Internet Archive",
+      "files": [],
+      "notes": "nssdc.gsfc.nasa.gov 307-redirects to a nasa.gov landing page (checked 2026-09-05); sheets are read from pinned snapshots whose dates ride with each body. Every planet's mass, volumetric radius and density are cross-checked against live JPL Horizons within tolerance on every run — the archive is trusted only as far as live NASA agrees with it. Swap back if NSSDC returns."
+    },
+    "jpl_horizons": {
+      "title": "JPL Horizons (live cross-check of archived fact sheets)",
+      "url": "https://ssd.jpl.nasa.gov/api/horizons.api",
+      "licence": "Public domain (NASA/JPL)",
+      "fetched_at": "2026-09-08T01:43:48+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "NASA/JPL Horizons System, physical-properties blocks",
+      "files": [],
+      "notes": "27 field comparisons for the nine Horizons-checked bodies; any disagreement beyond tolerance aborts the run. Full comparison table in etl/logs/space.log."
+    },
+    "jpl_ssd": {
+      "title": "JPL Solar System Dynamics: satellites and small bodies",
+      "url": "https://ssd.jpl.nasa.gov",
+      "licence": "Public domain (NASA/JPL)",
+      "fetched_at": "2026-09-06T03:06:13+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "NASA/JPL Solar System Dynamics: planetary satellite tables and the Small-Body Database",
+      "files": [],
+      "notes": "459 satellites across 7 planets; physical parameters where measured; discovery circumstances; dwarf planets via SBDB with nulls where SBDB publishes no value. 13 NASA-library portraits."
+    },
+    "solarsystemscope_textures": {
+      "title": "Solar System Scope planetary textures",
+      "url": "https://www.solarsystemscope.com/textures/",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-09-08T01:43:48+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "Solar System Scope textures (CC BY 4.0), based on NASA imagery and elevation data",
+      "files": [],
+      "notes": "2k files copied byte-for-byte; hi-res variants copied byte-for-byte at or under their configured width, else Lanczos-downsampled and re-encoded (progressive JPEG q88): sun 4096px; earth 8192px; jupiter 4096px; saturn 4096px; moon 4096px from 8k_moon.jpg (8192x4096); mars 4096px from 8k_mars.jpg (8192x4096); mercury 4096px from 8k_mercury.jpg (8192x4096). Ceres uses the pack's clearly-labelled 'fictional' texture; the icy dwarf planets get untextured materials rather than invented surfaces."
+    },
+    "iau_gazetteer": {
+      "title": "IAU Gazetteer of Planetary Nomenclature (USGS)",
+      "url": "https://planetarynames.wr.usgs.gov/",
+      "licence": "Public domain (USGS/IAU)",
+      "fetched_at": "2026-09-06T08:02:10+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "Gazetteer of Planetary Nomenclature, IAU Working Group for Planetary System Nomenclature (USGS Astrogeology)",
+      "files": [],
+      "notes": "Top named features by diameter per body: {'moon': 250, 'mars': 250, 'venus': 250, 'mercury': 250}. NASA Solar System Treks tiles for the deep-zoom globes are STREAMED at runtime (documented exception, §41.2) — a global tile pyramid cannot be committed to a static repo."
+    },
+    "cosmic_phenomena": {
+      "title": "Cosmic Phenomena (editorial) with downloaded NASA/Commons images",
+      "url": "https://images.nasa.gov",
+      "licence": "Editorial text CC0 (this project); images NASA media or Commons free licences, credited per item (data/space/phenomena/manifest.json)",
+      "fetched_at": "2026-09-13T04:02:34+00:00",
+      "upstream_release": null,
+      "vintage": "per fact (year field)",
+      "citation": "NASA Image and Video Library; Wikimedia Commons; per-fact NASA science pages and Wikipedia articles",
+      "files": [],
+      "notes": "62 entries ({'observed': 54, 'hypothesis': 4, 'theoretical': 4}); images resolved via {'nasaId': 41, 'commons': 12, 'query': 8, 'wikipedia': 1}. Theoretical objects and hypotheses carry a status flag and say so in their own text."
+    },
+    "chemistry_pubchem": {
+      "title": "PubChem Periodic Table (NIH/NCBI)",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/periodic-table/",
+      "licence": "Public domain (US Government work)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Kim S. et al. (2021) PubChem Periodic Table and Element pages, J. Cheminform. 13:3",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_pugview": {
+      "title": "PubChem element records (PUG-View), per-statement references",
+      "url": "https://pubchem.ncbi.nlm.nih.gov/docs/pug-view",
+      "licence": "Public domain compilation; each statement cites its own source",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-13",
+      "citation": "PubChem element records (PUG-View), per-statement references",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_nist_asd": {
+      "title": "NIST Atomic Spectra Database — ionization energies",
+      "url": "https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html",
+      "licence": "Public domain (NIST)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "NIST Atomic Spectra Database — ionization energies",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_ciaaw": {
+      "title": "IUPAC/CIAAW Standard Atomic Weights",
+      "url": "https://ciaaw.org/atomic-weights.htm",
+      "licence": "IUPAC; reproduced as data with attribution",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "revisions to 2024",
+      "citation": "IUPAC/CIAAW Standard Atomic Weights",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wikidata": {
+      "title": "Wikidata (P18, P61, P138, P189, P231, P373, P575)",
+      "url": "https://www.wikidata.org/",
+      "licence": "CC0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikidata (P18, P61, P138, P189, P231, P373, P575)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_list": {
+      "title": "Wikipedia: List of chemical elements (CRC-cited columns)",
+      "url": "https://en.wikipedia.org/wiki/List_of_chemical_elements",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: List of chemical elements (CRC-cited columns)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_crc_crust": {
+      "title": "CRC Handbook, Abundance of elements in the Earth's crust — via Wikipedia 'Abundances of the elements (data page)', column C1",
+      "url": "https://en.wikipedia.org/wiki/Abundances_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0 (tabulation); CRC values",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "CRC Handbook 85th ed. (2005) as tabulated; retrieved 2026-09-08",
+      "citation": "CRC Handbook, Abundance of elements in the Earth's crust — via Wikipedia 'Abundances of the elements (data page)', column C1",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_anders_grevesse": {
+      "title": "Anders & Grevesse (1989) Solar-System abundances — via Wikipedia 'Abundances of the elements (data page)', column Y2",
+      "url": "https://en.wikipedia.org/wiki/Abundances_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0 (tabulation)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "1989 compilation; retrieved 2026-09-08",
+      "citation": "Anders & Grevesse (1989) Solar-System abundances — via Wikipedia 'Abundances of the elements (data page)', column Y2",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_thermal": {
+      "title": "Wikipedia: Thermal conductivities of the elements (data page), CRC-based usable value",
+      "url": "https://en.wikipedia.org/wiki/Thermal_conductivities_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Thermal conductivities of the elements (data page), CRC-based usable value",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_heat": {
+      "title": "Wikipedia: Heat capacities of the elements (data page), CRC-based usable value",
+      "url": "https://en.wikipedia.org/wiki/Heat_capacities_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Heat capacities of the elements (data page), CRC-based usable value",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_resistivity": {
+      "title": "Wikipedia: Electrical resistivities of the elements (data page), CRC-based value at 293 K",
+      "url": "https://en.wikipedia.org/wiki/Electrical_resistivities_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Electrical resistivities of the elements (data page), CRC-based value at 293 K",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_radii": {
+      "title": "Wikipedia: Atomic radii of the elements (data page) — covalent (Cordero 2008) and van der Waals (Bondi/Mantina)",
+      "url": "https://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: Atomic radii of the elements (data page) — covalent (Cordero 2008) and van der Waals (Bondi/Mantina)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_infobox": {
+      "title": "Wikipedia element infobox templates (crystal structure, magnetic ordering)",
+      "url": "https://en.wikipedia.org/wiki/Template:Infobox_element",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia element infobox templates (crystal structure, magnetic ordering)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wp_etymology": {
+      "title": "Wikipedia: List of chemical element name etymologies",
+      "url": "https://en.wikipedia.org/wiki/List_of_chemical_element_name_etymologies",
+      "licence": "CC BY-SA 4.0",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia: List of chemical element name etymologies",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_wikipedia": {
+      "title": "Wikipedia article text (lead; applications / biological role / precautions sections)",
+      "url": "https://en.wikipedia.org/",
+      "licence": "CC BY-SA 4.0 (verbatim, attributed, linked)",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-08",
+      "citation": "Wikipedia article text (lead; applications / biological role / precautions sections)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_iaea": {
+      "title": "IAEA Nuclear Data Section, Live Chart of Nuclides API (NUBASE2020 / ENSDF ground states)",
+      "url": "https://nds.iaea.org/relnsd/vcharthtml/VChartHTML.html",
+      "licence": "IAEA open data",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "IAEA extraction 2023-10-18",
+      "citation": "IAEA Nuclear Data Section, Live Chart of Nuclides API (NUBASE2020 / ENSDF ground states)",
+      "files": [],
+      "notes": null
+    },
+    "chemistry_commons": {
+      "title": "Wikimedia Commons (per-file licence and author)",
+      "url": "https://commons.wikimedia.org/",
+      "licence": "per file: PD / CC0 / CC BY / CC BY-SA / FAL",
+      "fetched_at": "2026-09-08T01:50:44+00:00",
+      "upstream_release": null,
+      "vintage": "retrieved 2026-09-13",
+      "citation": "Wikimedia Commons (per-file licence and author)",
+      "files": [],
+      "notes": null
+    },
+    "flagcdn": {
+      "title": "flagcdn.com flag SVGs",
+      "url": "https://flagcdn.com",
+      "licence": "Public domain / free to use",
+      "fetched_at": "2026-09-13T04:55:13+00:00",
+      "upstream_release": null,
+      "vintage": null,
+      "citation": "flagcdn.com",
+      "files": [],
+      "notes": "Flag SVGs rasterised and quantised to a dominant non-neutral colour for 250 entities. Map fills take the flag hue at one of four graph-coloured lightness tiers so no two bordering countries share a fill."
+    },
+    "flag_metadata": {
+      "title": "Flag metadata (Wikidata) and symbolism text (Wikipedia)",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "Wikidata CC0; Wikipedia text CC BY-SA 4.0 (attributed, linked)",
+      "fetched_at": "2026-08-30T06:32:35+00:00",
+      "upstream_release": null,
+      "vintage": "as retrieved",
+      "citation": "Wikidata (P163/P571/P287); English Wikipedia flag articles",
+      "files": [],
+      "notes": "244 entities with a flag item; 234 with an adoption date, 38 with a designer, 242 with Wikipedia lead text."
+    },
+    "history_events": {
+      "title": "Human History timeline (editorial) with Commons images",
+      "url": "https://commons.wikimedia.org",
+      "licence": "Editorial text CC0 (this project); images per-file PD/CC (attributed)",
+      "fetched_at": "2026-09-06T11:13:53+00:00",
+      "upstream_release": null,
+      "vintage": "events file version 4",
+      "citation": "etl/reference/history_events.json; Wikimedia Commons",
+      "files": [],
+      "notes": "273 events, 253 with a free image; 2 lead images skipped as non-free."
+    },
+    "cia_factbook": {
+      "title": "CIA World Factbook (factbook.json mirror)",
+      "url": "https://github.com/factbook/factbook.json",
+      "licence": "Public domain (US Government work)",
+      "fetched_at": "2026-08-30T06:35:12+00:00",
+      "upstream_release": "W/\"57c29caa90955152af5a78d177ca86223fec144ff20c73964fc7cdffda88f0fe\"",
+      "vintage": "per field; each composition figure carries its own census or estimate year",
+      "citation": "Central Intelligence Agency, The World Factbook",
+      "files": [],
+      "notes": "Joined to ISO3 by country name read from each file, not by GEC code. 242 entities matched. Composition percentages are passed through exactly as published -- never rescaled to 100, never interpolated, never projected. Fields with no published percentage are marked non-chartable and render as prose."
+    },
+    "wikidata_leaders": {
+      "title": "Wikidata heads of state and government, portraits via Wikimedia Commons",
+      "url": "https://query.wikidata.org/sparql",
+      "licence": "Wikidata: CC0. Portraits: individual Commons licences, attributed via the linked file page.",
+      "fetched_at": "2026-08-30T06:35:14+00:00",
+      "upstream_release": null,
+      "vintage": "current incumbents at fetch time",
+      "citation": "Wikidata (P35/P6/P18); Wikimedia Commons",
+      "files": [
+        {
+          "url": "https://query.wikidata.org/sparql?format=json&query=%0ASELECT%20%3Fiso3%20%3Frole%20%3Fperson%20%3FpersonLabel%20%3Fimage%20WHERE%20%7B%0A%20%20%3Fcountry%20wdt%3AP298%20%3Fiso3%20.%0A%20%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP35%20%3Fperson%20.%20BIND%28%22hos%22%20AS%20%3Frole%29%0A%20%20%7D%20UNION%20%7B%0A%20%20%20%20%3Fcountry%20wdt%3AP6%20%3Fperson%20.%20BIND%28%22hog%22%20AS%20%3Frole%29%0A%20%20%7D%0A%20%20OPTIONAL%20%7B%20%3Fperson%20wdt%3AP18%20%3Fimage%20.%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0A",
+          "sha256": "4f756f36704657b27f6cf1c0ae17ee65d7a0a7f190f42ef10c8e8d23aa6d6081",
+          "size_bytes": 322979,
+          "fetched_at": "2026-08-30T06:35:14+00:00"
+        }
+      ],
+      "notes": "233 entities, 0 portraits. Collective offices without a single incumbent ship no portrait: AND:hos(2), BEN:hog(3), BIH:hos(2), CUW:hog(2), DJI:hog(2), GNB:hos(3), KGZ:hog(9), MAC:hog(4), SMR:hos(2), SXM:hos(2), TCD:hog(2), WSM:hog(2)."
+    },
+    "unesco_whc": {
+      "title": "UNESCO World Heritage List",
+      "url": "https://whc.unesco.org/en/list/xml",
+      "licence": "© UNESCO World Heritage Centre; syndication feed",
+      "fetched_at": "2026-08-30T06:35:15+00:00",
+      "upstream_release": null,
+      "vintage": "inscription years 1978 onward",
+      "citation": "UNESCO World Heritage Centre, World Heritage List",
+      "files": [
+        {
+          "url": "https://whc.unesco.org/en/list/xml",
+          "sha256": "3349a442c926fea57eda4f7c099da2e3519a16bf217e3b66dd4bedfb5fc3db81",
+          "size_bytes": 2496432,
+          "fetched_at": "2026-08-30T06:35:15+00:00"
+        }
+      ],
+      "notes": "1272 inscribed properties across 173 entities. Transboundary sites listed under every member state."
+    },
+    "resolve_ecoregions": {
+      "title": "RESOLVE Ecoregions 2017",
+      "url": "https://storage.googleapis.com/teow2016/Ecoregions2017.zip",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-30T06:35:21+00:00",
+      "upstream_release": "Tue, 07 May 2019 00:52:59 GMT",
+      "vintage": "2017",
+      "citation": "Dinerstein et al. (2017), An Ecoregion-Based Approach to Protecting Half the Terrestrial Realm, BioScience 67(6)",
+      "files": [],
+      "notes": "Intersected with Natural Earth 50m country polygons in EPSG:6933. Ecoregion geometry simplified at 1000 m in projected metres before the overlay. Shares are percentages of each entity's own land area."
+    },
+    "owid": {
+      "title": "Our World in Data — Population",
+      "url": "https://ourworldindata.org/grapher/population",
+      "licence": "CC BY 4.0",
+      "fetched_at": "2026-08-30T06:39:12+00:00",
+      "upstream_release": "Sun, 30 Aug 2026 05:01:00 GMT",
+      "vintage": "10,000 BCE - 2023",
+      "citation": "HYDE (2023); Gapminder (2022); UN WPP (2024), via Our World in Data",
+      "files": [],
+      "notes": "Cross-check only, never a primary source. Its modern series is UN WPP 2024, so this validates our parsing rather than the underlying estimates."
     }
   },
   "artifacts": {
@@ -37,6 +733,287 @@
       ],
       "row_count": null,
       "entity_count": 250
+    },
+    "population/summary.json": {
+      "description": "Per-entity population snapshot for 2023.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "population/series/<ISO3>.json": {
+      "description": "Full 1950-2100 demographic series per entity, medium variant with low/high projection bands.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "population/timeline.json": {
+      "description": "Population by year for every entity, continent and the world, in thousands. Feeds the time scrubber; lazy-loaded.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "population/pyramids/<ISO3>.json": {
+      "description": "Age x sex population by five-year age group, every 5th year.",
+      "sources": [
+        "un_wpp"
+      ],
+      "row_count": null,
+      "entity_count": 237
+    },
+    "indicators/gdp-summary.json": {
+      "description": "Latest GDP (current US$) per entity, for the entity table.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": null,
+      "entity_count": 213
+    },
+    "indicators/catalogue.json": {
+      "description": "Indicator metadata, units, sections, and entity coverage.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": 42,
+      "entity_count": null
+    },
+    "indicators/by-country/<ISO3>.json": {
+      "description": "Full World Bank indicator series per entity, each value carrying its own observation year.",
+      "sources": [
+        "world_bank"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "owid/catalogue.json": {
+      "description": "OWID indicator metadata, citations, and coverage.",
+      "sources": [
+        "owid_indicators"
+      ],
+      "row_count": 10,
+      "entity_count": null
+    },
+    "owid/by-country/<ISO3>.json": {
+      "description": "Our World in Data indicator series per entity (V-Dem democracy and rights indices, regime classification, CO2 per capita), each value carrying its own observation year.",
+      "sources": [
+        "owid_indicators"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "freedom/press-freedom.json": {
+      "description": "RSF press-freedom score and rank per entity.",
+      "sources": [
+        "rsf_press_freedom"
+      ],
+      "row_count": null,
+      "entity_count": 178
+    },
+    "crime/unodc-prisons.json": {
+      "description": "Total persons held in prison and number of penal facilities per entity, latest reported year.",
+      "sources": [
+        "unodc_prisons"
+      ],
+      "row_count": null,
+      "entity_count": 221
+    },
+    "crime/death-penalty.json": {
+      "description": "Death penalty legal status, last execution year, and latest Amnesty execution figure per entity.",
+      "sources": [
+        "wikipedia_capital_punishment"
+      ],
+      "row_count": null,
+      "entity_count": 195
+    },
+    "education/education.json": {
+      "description": "University count and CWUR top-10 universities per entity.",
+      "sources": [
+        "education_extras"
+      ],
+      "row_count": null,
+      "entity_count": 200
+    },
+    "education/libraries.json": {
+      "description": "Public library service points per entity with report year and collection method (IFLA).",
+      "sources": [
+        "ifla_library_map"
+      ],
+      "row_count": null,
+      "entity_count": 133
+    },
+    "energy/energy.json": {
+      "description": "Electricity generation mix by source, renewable and nuclear shares, and operating nuclear power plants per entity.",
+      "sources": [
+        "owid_electricity"
+      ],
+      "row_count": null,
+      "entity_count": 213
+    },
+    "economy/debt.json": {
+      "description": "General government gross debt (% of GDP) and nominal GDP annual series per entity, IMF WEO, including projections.",
+      "sources": [
+        "imf_weo"
+      ],
+      "row_count": null,
+      "entity_count": 195
+    },
+    "economy/currency-images.json": {
+      "description": "One verified single-banknote (obverse) image per ISO 4217 code, with Commons file page, licence and author.",
+      "sources": [
+        "currency_images"
+      ],
+      "row_count": 51,
+      "entity_count": null
+    },
+    "subdivisions/<ISO3>.json": {
+      "description": "First-level administrative divisions (states, provinces, cantons...) with latest Wikidata populations, sorted by population.",
+      "sources": [
+        "wikidata_subdivisions"
+      ],
+      "row_count": null,
+      "entity_count": 215
+    },
+    "climate/climate.json": {
+      "description": "Annual mean surface temperature (latest year) and 50-year decade-mean warming per entity.",
+      "sources": [
+        "climate"
+      ],
+      "row_count": null,
+      "entity_count": 193
+    },
+    "climate/capitals.json": {
+      "description": "Capital coordinates for the live weather panel.",
+      "sources": [
+        "climate"
+      ],
+      "row_count": null,
+      "entity_count": 241
+    },
+    "inventions/<ISO3>.json": {
+      "description": "Notable inventions (name, inventor, approximate year, Commons image with attribution) for countries with coverage after the class gate.",
+      "sources": [
+        "wikidata_inventions"
+      ],
+      "row_count": null,
+      "entity_count": 44
+    },
+    "airports/<ISO3>.json": {
+      "description": "Top airports per entity (name, IATA, city, annual passengers where recorded), large first.",
+      "sources": [
+        "airports"
+      ],
+      "row_count": null,
+      "entity_count": 234
+    },
+    "flora-fauna/<ISO3>.json": {
+      "description": "National animal(s), tree and flower with verified images and attribution, per entity; mythical/heraldic emblems listed separately.",
+      "sources": [
+        "wikipedia_national_symbols"
+      ],
+      "row_count": null,
+      "entity_count": 142
+    },
+    "cuisine/<ISO3>.json": {
+      "description": "Signature dishes with Commons images and attribution, per entity.",
+      "sources": [
+        "wikidata_cuisine"
+      ],
+      "row_count": null,
+      "entity_count": 116
+    },
+    "geo/countries-110m.json": {
+      "description": "Country polygons keyed by ISO3, for map rendering.",
+      "sources": [
+        "natural_earth"
+      ],
+      "row_count": null,
+      "entity_count": 176
+    },
+    "geo/markers.json": {
+      "description": "Point markers for populated entities with no polygon at 110m.",
+      "sources": [
+        "natural_earth",
+        "country_metadata"
+      ],
+      "row_count": null,
+      "entity_count": 63
+    },
+    "geo/detail/admin1-lines.json": {
+      "description": "First-level administrative boundary lines (10m, simplified).",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/admin1-labels.json": {
+      "description": "Admin-1 label points: name, country code, representative point.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/lakes-50m.json": {
+      "description": "Lakes at 50m for low/mid zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/lakes-10m.json": {
+      "description": "Lakes at 10m for high zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/rivers-50m.json": {
+      "description": "Rivers at 50m for low/mid zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/rivers-10m.json": {
+      "description": "Rivers at 10m for high zoom.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/detail/places.json": {
+      "description": "Populated places with scalerank and population for zoom-gated labels.",
+      "sources": [
+        "natural_earth_detail"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/terrain/meta.json": {
+      "description": "Terrain tier index for the satellite view (Blue Marble tiles).",
+      "sources": [
+        "nasa_blue_marble"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "geo/terrain-hypso/meta.json": {
+      "description": "Tier index for the Terrain view (Natural Earth cross-blended hypsometric relief tiles).",
+      "sources": [
+        "nasa_blue_marble"
+      ],
+      "row_count": null,
+      "entity_count": null
     },
     "biology/taxonomy/tree.json": {
       "description": "Tree of life from the synthetic Life root to family rank, with per-node counts, Wikipedia links, description sources, and contested-placement notes.",
@@ -61,10 +1038,198 @@
       ],
       "row_count": 27638,
       "entity_count": null
+    },
+    "biology/evolution/chart.json": {
+      "description": "ICS chart intervals with ages, errors, and colours.",
+      "sources": [
+        "ics_chart"
+      ],
+      "row_count": 177,
+      "entity_count": null
+    },
+    "biology/evolution/events.json": {
+      "description": "Editorial timeline of the history of life, with licence-gated illustrations.",
+      "sources": [
+        "evolution_events"
+      ],
+      "row_count": 58,
+      "entity_count": null
+    },
+    "space/bodies.json": {
+      "description": "Sun, planets, Earth's Moon, dwarf planets, and belt regions with sourced figures.",
+      "sources": [
+        "nssdc_factsheets",
+        "jpl_ssd"
+      ],
+      "row_count": 15,
+      "entity_count": null
+    },
+    "space/moons/": {
+      "description": "Full per-planet natural satellite catalogues.",
+      "sources": [
+        "jpl_ssd"
+      ],
+      "row_count": 459,
+      "entity_count": null
+    },
+    "space/textures/": {
+      "description": "Planetary textures for the 3D scene (CC BY 4.0).",
+      "sources": [
+        "solarsystemscope_textures"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "space/nomenclature/": {
+      "description": "Named surface features for the deep-zoom globes.",
+      "sources": [
+        "iau_gazetteer"
+      ],
+      "row_count": null,
+      "entity_count": null
+    },
+    "space/phenomena.json": {
+      "description": "Cosmic Phenomena catalogue: categorised, status-flagged entries with per-fact sources and local image references.",
+      "sources": [
+        "cosmic_phenomena"
+      ],
+      "row_count": 62,
+      "entity_count": null
+    },
+    "space/phenomena/": {
+      "description": "One re-encoded JPEG per phenomenon plus manifest.json (source URL, author, licence, credit line per image).",
+      "sources": [
+        "cosmic_phenomena"
+      ],
+      "row_count": 62,
+      "entity_count": null
+    },
+    "chemistry/elements.json": {
+      "description": "Periodic table: 118 elements, every figure sourced and dated; licence-gated photographs served locally.",
+      "sources": [
+        "chemistry_pubchem",
+        "chemistry_pugview",
+        "chemistry_nist_asd",
+        "chemistry_ciaaw",
+        "chemistry_wikidata",
+        "chemistry_wp_list",
+        "chemistry_crc_crust",
+        "chemistry_anders_grevesse",
+        "chemistry_wp_thermal",
+        "chemistry_wp_heat",
+        "chemistry_wp_resistivity",
+        "chemistry_wp_radii",
+        "chemistry_wp_infobox",
+        "chemistry_wp_etymology",
+        "chemistry_wikipedia",
+        "chemistry_iaea",
+        "chemistry_commons"
+      ],
+      "row_count": 118,
+      "entity_count": null
+    },
+    "chemistry/glossary.json": {
+      "description": "Chemistry glossary: plain-language definitions with units and a cited source for every property the panel shows.",
+      "sources": [
+        "editorial"
+      ],
+      "row_count": 44,
+      "entity_count": null
+    },
+    "flags/map-palette.json": {
+      "description": "Normalised map fills, continent accents, and per-entity flag accent colours with AA-safe text steps.",
+      "sources": [
+        "flagcdn"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "flags/svg/": {
+      "description": "The flag SVGs themselves, one per entity keyed by ISO3, shown on country detail pages. Committed because the app never calls an upstream at render time.",
+      "sources": [
+        "flagcdn"
+      ],
+      "row_count": null,
+      "entity_count": 250
+    },
+    "flags/meta.json": {
+      "description": "Flag adoption date, designer and attributed symbolism text per entity.",
+      "sources": [
+        "flag_metadata"
+      ],
+      "row_count": null,
+      "entity_count": 244
+    },
+    "history/events.json": {
+      "description": "Curated global human-history events with dates, precision, category, summary, sources, regions and attributed images.",
+      "sources": [
+        "history_events"
+      ],
+      "row_count": 273,
+      "entity_count": null
+    },
+    "factbook/<ISO3>.json": {
+      "description": "Qualitative country facts: government, people composition, industries and trade, each field with its own vintage.",
+      "sources": [
+        "cia_factbook"
+      ],
+      "row_count": null,
+      "entity_count": 242
+    },
+    "leaders/leaders.json": {
+      "description": "Heads of state and government with portrait paths and Commons attribution links.",
+      "sources": [
+        "wikidata_leaders"
+      ],
+      "row_count": null,
+      "entity_count": 233
+    },
+    "heritage/sites.json": {
+      "description": "World Heritage properties per entity: name, category, inscription year, in-danger and transboundary flags.",
+      "sources": [
+        "unesco_whc"
+      ],
+      "row_count": 1272,
+      "entity_count": 173
+    },
+    "biomes/biomes.json": {
+      "description": "Biome and ecoregion shares by entity and by continent.",
+      "sources": [
+        "resolve_ecoregions",
+        "natural_earth"
+      ],
+      "row_count": null,
+      "entity_count": 235
+    },
+    "crosscheck_owid.json": {
+      "description": "WPP-vs-OWID parsing cross-check results.",
+      "sources": [
+        "un_wpp",
+        "owid"
+      ],
+      "row_count": 1180,
+      "entity_count": null
     }
   },
   "warnings": [
-    "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe."
+    "crosswalk: border asymmetry in country metadata (LKA->IND not mirrored); resolved by union so the adjacency colouring stays safe.",
+    "UN WPP 2024 publishes no population series for 13 registry entities (ALA, ATA, ATF, BVT, CCK, CXR, HMD, IOT, NFK, PCN, SGS, SJM, UMI); these render as unavailable rather than zero. Most are uninhabited territories, but Aland Islands and Svalbard are inhabited and are reported within Finland and Norway respectively.",
+    "worldbank: plausibility layer suppressed 23 figure(s) (IT.CEL.SETS.P2 x1, PA.NUS.FCRF x14, SH.DYN.MORT x1, SH.STA.MMRT x7); see etl/logs/plausibility-worldbank.json.",
+    "RSF index carried 2 ISO3 codes absent from the registry: CSS, CTU.",
+    "Capital punishment table rows not matched to the registry: Congo, Democratic Republic of the, Congo, Republic of the.",
+    "CWUR locations not matched to the registry: Northern Cyprus, Turkey.",
+    "libraries: plausibility layer suppressed 1 figure(s) (libraries.public x1); see etl/logs/plausibility-libraries.json.",
+    "airports: plausibility layer suppressed 10 figure(s) (airports.passengers x10); see etl/logs/plausibility-airports.json.",
+    "63 populated entities are too small to render as polygons at 110m resolution and appear as point markers instead, among them Singapore, Malta, Hong Kong and Macao. Their area is not to scale on the map.",
+    "Entities drawn by more than one Natural Earth polygon: CYP, SOM (Cyprus includes Northern Cyprus; Somalia includes Somaliland). Their fills paint multiple paths.",
+    "history: 2 event lead images are not free-licensed and were omitted: germ-theory-pasteur-koch (Copyrighted free use), iranian-revolution (GFDL).",
+    "16 Factbook files could not be joined to a registry entity and were skipped: australia-oceania/at.json (Ashmore and Cartier Islands), europe/ax.json (Akrotiri), central-america-n-caribbean/bq.json (Navassa Island), australia-oceania/cr.json (Coral Sea Islands), europe/dx.json (Dhekelia), middle-east/gz.json (Gaza, Gaza Strip), north-america/ip.json (Clipperton Island), europe/jn.json (Jan Mayen), east-n-southeast-asia/pf.json (Paracel Islands), east-n-southeast-asia/pg.json (Spratly Islands), australia-oceania/um.json (Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Palmyra Atoll), australia-oceania/wq.json (Wake Island)...",
+    "8 entities have no Factbook entry; their People, Government and industry sections render as not published: ALA, BES, GLP, GUF, MTQ, MYT, REU, UMI",
+    "factbook: 25 percentage breakdown(s) do not reconcile to 100% beyond tolerance (suppressed or shipped without an Other item); see etl/logs/breakdowns-factbook.json.",
+    "Biome shares fall outside 1.0% of 100 for 114 entities. 78 are small territories under 50,000 km2 that RESOLVE Ecoregions does not resolve (verified: a 4x finer simplification tolerance did not improve them). 36 are larger countries whose polygons include substantial inland water or ice that carries no terrestrial ecoregion -- Tanzania's great lakes, Canada's Great Lakes, the Greenland ice sheet. Shares are reported as computed and never rescaled to 100.",
+    "5 entities' measured polygon area differs from their published land area by more than 25% (ESH -66%, ALA -52%, PYF -38%, MAR +30%, FRO -25%). These are boundary-definition differences, not measurement errors. Most significant: Natural Earth draws the de facto administered boundary in Western Sahara at both the 110m map and 50m biome resolutions, which agree with each other. Both give Western Sahara roughly a third of its internationally recognised extent (about 96,000 of 266,000 sq km), with the remainder drawn inside Morocco. Area and biome figures for both entities should be read with that in mind.",
+    "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
+    "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "fe9e901e3aebf91fec79d9316ec479c6cf1e5251542ab8ecb72b4900d58a0970"
+  "content_fingerprint": "18e72712286114d2ab680ff0281b61190b0b2507b08405a56c3381f97264d41f"
 }
