@@ -107,9 +107,9 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   person-reviewed deny list. Review new picks on a contact sheet before
   shipping.
 - Header (round 2, §34): centred publication nameplate + editorial
-  uppercase nav from the SECTIONS registry (src/config.ts) — five
+  uppercase nav from the SECTIONS registry (src/config.ts) — six
   top-level items (Global Data, Human History, Taxonomy, Evolution,
-  Space); active state = 2px underline in the section's THEMED --nav-*
+  Space, Chemistry since round 3 §47); active state = 2px underline in the section's THEMED --nav-*
   hue plus a text-colour step. A new section = one registry entry + a
   --nav-* pair in both themes, mirrored into check-contrast AND declared
   in both dark blocks (theme parity). /biology/* redirects; don't remove.
@@ -140,14 +140,33 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   civilization tag from the controlled list in etl/sources/history.py —
   when adding events, check the per-civilization spread, not just the
   regional one (§42.5).
-- Taxonomy (§31, §42.6–7): the tree is NEVER hand-typed — it comes from
+- Chemistry (§47): elements come from the `chemistry` ETL stage (PubChem,
+  NIST, IUPAC/CIAAW, IAEA, Wikidata/Wikipedia); a figure a source does not
+  give is null WITH a reason (never zero); photos are licence-gated Commons
+  files served locally, 20 no-sample elements show the discovering
+  facility; the property key list in src/data/chemistry-properties.json is
+  what both the panel and check:chemistry read — add a property there,
+  its glossary entry in etl/reference/chemistry_glossary.json, or the
+  gate fails. Editorial sample-photo overrides live in
+  etl/reference/chemistry_samples.json.
+- Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
+  .json, never data/space/phenomena*; the `phenomena` stage downloads
+  every image through the licence gate (no hotlinks) and check:phenomena
+  gates presence, decodability and attribution; status flags
+  observed/theoretical/hypothesis are required.
+- Taxonomy (§31, §42.6–7, §44): the tree is NEVER hand-typed — it comes from
   Catalogue of Life; which families get species depth is editorial
   (etl/reference/taxonomy_focus.json), and contested placements carry
   notes from etl/reference/taxonomy_notes.json. Every node has wiki or an
   explicit null (check:taxonomy gates it). rankDefinition() must cover
   EVERY rank string in the data (composed prefix definitions — no chip
   is a dead end); borrowed photos always carry img.rep and render as
-  "Representative: <name>", never passed off as the taxon's own.
+  "Representative: <name>", never passed off as the taxon's own. Depth
+  below family (§44): one genera file per family in data/biology/taxonomy/
+  genera (37 MB, ~14k files), species live from ChecklistBank on expand
+  (documented exception), descSrc on every node with generated summaries
+  flagged; genus Wikipedia enrichment is incremental
+  (TAXONOMY_GENUS_ENRICH_CAP, default 20k per run).
 - Evolution (§32): events are EDITORIAL — edit
   etl/reference/evolution_events.json (bump version), never
   data/biology/evolution/. Summaries state their own uncertainty.

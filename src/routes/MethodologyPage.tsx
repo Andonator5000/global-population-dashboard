@@ -123,6 +123,53 @@ export function MethodologyPage() {
         </p>
       </Section>
 
+      <Section id="taxonomy" title="The tree of life">
+        <p>
+          The tree comes from the Catalogue of Life (ChecklistBank, CC BY
+          4.0): machine-derived down to family rank in one artifact and,
+          below that, one file per family fetched on demand. Species beneath
+          most genera load live from the same Catalogue of Life API when a
+          genus is opened; around thirty well-known families ship their
+          species ahead of time. Every node states where its description
+          came from: Wikipedia, Wikidata, or, for the majority of the
+          200,000-plus genera not yet reached by the incremental Wikipedia
+          enrichment, a sentence generated from the structured facts the
+          Catalogue itself records, always labelled as such. Which families
+          get full depth and where a placement is disputed are editorial
+          calls recorded in the repository; the classification itself is
+          never hand-typed.
+        </p>
+      </Section>
+
+      <Section id="cosmic-phenomena" title="Cosmic Phenomena">
+        <p>
+          Every entry carries a status flag: observed, theoretical, or
+          hypothesis, and the non-observed entries say so in their own
+          text. Key facts cite the NASA, ESA or Wikipedia page they come
+          from with a year. Images are downloaded at build time from the
+          NASA Image and Video Library or Wikimedia Commons through the
+          site's free-licence gate and served from this site, never
+          hotlinked, with the credit and licence under each card.
+        </p>
+      </Section>
+
+      <Section id="periodic-table" title="The periodic table">
+        <p>
+          The 118 elements combine PubChem's Periodic Table and PUG-View
+          element records, NIST's Atomic Spectra Database, IUPAC/CIAAW
+          standard atomic weights, IAEA nuclide data, and several
+          CRC-sourced data pages on Wikipedia (thermal conductivity,
+          resistivity, heat capacity, radii, abundances), cross-checked
+          against the Royal Society of Chemistry's table without scraping
+          it. Photographs come from Wikimedia Commons through the same
+          licence gate used elsewhere; elements never isolated in bulk show
+          the discovering facility instead, labelled as such. A missing
+          figure is always an explicit "not available" with a reason, never
+          a blank or a zero. The atom model is a Bohr-model schematic, not
+          to scale and not a depiction of orbitals.
+        </p>
+      </Section>
+
       <Section id="freshness" title="Three dates, never conflated">
         <p>
           Every source in the Sources panel shows three separate dates: the
