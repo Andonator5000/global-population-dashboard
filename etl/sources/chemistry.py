@@ -194,10 +194,19 @@ def _strip_footnotes(t: str) -> str:
     return re.sub(r"\[[^\]]*\]", "", t).strip()
 
 
-def parse_number(text: str | None) -> tuple[float | None, dict[str, bool]]:
+def parse_number(text: str | None) -> tuple[float | None, dict[str, Any]]:
     """(value, flags) from a table cell like '1.40×10−3', '~ 3×10−9',
-    '(7.1–7.3)', '92.8 nΩm'. Flags: approx, predicted (parenthesised)."""
-    flags = {"approx": False, "predicted": False}
+    '(7.1–7.3)', '92.8 nΩm', '> 10 Ωm'. Flags: approx, predicted
+    (parenthesised), bound ('>' or '<' -- a published inequality, not a
+    measured point value; e.g. chlorine's resistivity is only published as
+    "> 10 Ωm" -- see DATA_DECISIONS §47). The numeric part is still
+    returned so a caller that only wants the qualifier text need not
+    re-parse, but a caller that would treat the number as exact (e.g.
+    inverting resistivity into conductivity) MUST check `flags["bound"]`
+    first: inverting an inequality flips its direction (a lower bound on
+    resistivity is an UPPER bound on conductivity), so silently using the
+    number as-is manufactures a false-precision reading."""
+    flags: dict[str, Any] = {"approx": False, "predicted": False, "bound": None}
     if text is None:
         return None, flags
     t = _strip_footnotes(_text(text)).replace("−", "-").replace("–", "-")
@@ -205,6 +214,9 @@ def parse_number(text: str | None) -> tuple[float | None, dict[str, bool]]:
         return None, flags
     if t.startswith("~"):
         flags["approx"] = True
+    bound_match = re.match(r"(>=|<=|>|<)", t)
+    if bound_match:
+        flags["bound"] = bound_match.group(1)
     if t.startswith("(") and ")" in t:
         flags["predicted"] = True
     t = t.replace(",", "")
@@ -407,7 +419,11 @@ def _pv_extract(record: dict[str, Any]) -> dict[str, Any]:
     property_refs: dict[str, list[str]] = {}
     wanted_prose = {
         "uses": ("uses", "use and manufacturing", "applications"),
-        "biologicalRole": ("biolog",),
+        # Anchored on "role"/"effects" so this never matches PubChem's
+        # "Isotopes in Biology" (an isotope-tracer/production section, not
+        # the element's own biological role) — see DATA_DECISIONS §47.
+        "biologicalRole": ("biological role", "biologic role", "biological effects",
+                           "physiological role"),
         "hazards": ("hazard", "toxic", "safety", "health"),
         "history": ("history",),
         "etymology": ("name origin", "etymolog", "origin of name"),
@@ -439,6 +455,13 @@ def _pv_extract(record: dict[str, Any]) -> dict[str, Any]:
                 for n in names:
                     if n not in property_refs[wanted_props[heading]]:
                         property_refs[wanted_props[heading]].append(n)
+        # "Isotopes in Biology/Medicine/Industry/..." describe using a
+        # radioisotope of the element as a tracer or source — never the
+        # element's own biological role, hazards, uses, etc. Exclude the
+        # whole "Isotopes in ..." family from the general prose match
+        # rather than trying to out-guess it with more needles.
+        if low.startswith("isotopes in") or low.startswith("isotopes used"):
+            continue
         for key, needles in wanted_prose.items():
             if key in prose or not any(n in low for n in needles):
                 continue
@@ -716,10 +739,19 @@ def _wp_thermal(page: str) -> dict[int, float]:
     return out
 
 
-def _wp_grouped(page: str, use_index: int, kind: str) -> dict[int, tuple[float, str]]:
+def _wp_grouped(
+    page: str, use_index: int, kind: str,
+) -> tuple[dict[int, tuple[float, str]], dict[int, str]]:
     """Heat-capacity and resistivity pages: an element header row, then a
-    'use' row of values. Returns Z -> (value, raw cell)."""
+    'use' row of values. Returns (Z -> (value, raw cell), Z -> raw cell for
+    an element whose only published reading is a BOUND, e.g. chlorine's
+    resistivity is published only as '> 10 Ohm*m' at every tabulated
+    temperature. A bound is a real, sourced fact -- but inverting it for
+    conductivity would silently flip a lower bound on resistivity into a
+    false-precision reading, so it is kept out of the value map entirely
+    and returned separately with its qualifier intact (DATA_DECISIONS §47)."""
     out: dict[int, tuple[float, str]] = {}
+    bounds: dict[int, str] = {}
     current: int | None = None
     for row in _rows(_tables(page)[0]):
         if not row:
@@ -732,23 +764,31 @@ def _wp_grouped(page: str, use_index: int, kind: str) -> dict[int, tuple[float, 
             continue
         if kind == "resistivity":
             # Columns: T, 80 K, 273 K, 293 K, 298 K, 300 K, 500 K. Prefer 293 K.
+            bound_cell: str | None = None
             for index in (3, 2, 4, 5):
                 cell = row[index] if index < len(row) else ""
-                value, _ = parse_number(cell)
-                if value is not None:
-                    prefix = re.search(r"([numμµkMGTP]?)\s*Ω", cell)
-                    scale = {"n": 1e-9, "u": 1e-6, "μ": 1e-6, "µ": 1e-6, "m": 1e-3,
-                             "k": 1e3, "M": 1e6, "G": 1e9, "T": 1e12, "P": 1e15,
-                             "": 1.0}.get(prefix.group(1) if prefix else "", 1.0)
-                    out[current] = (value * scale, cell)
-                    break
+                value, flags = parse_number(cell)
+                if value is None:
+                    continue
+                if flags.get("bound"):
+                    bound_cell = bound_cell or cell
+                    continue
+                prefix = re.search(r"([numμµkMGTP]?)\s*Ω", cell)
+                scale = {"n": 1e-9, "u": 1e-6, "μ": 1e-6, "µ": 1e-6, "m": 1e-3,
+                         "k": 1e3, "M": 1e6, "G": 1e9, "T": 1e12, "P": 1e15,
+                         "": 1.0}.get(prefix.group(1) if prefix else "", 1.0)
+                out[current] = (value * scale, cell)
+                break
+            else:
+                if bound_cell:
+                    bounds[current] = bound_cell
         else:
             cell = row[use_index] if use_index < len(row) else ""
             value, _ = parse_number(cell)
             if value is not None:
                 out[current] = (value, cell)
         current = None
-    return out
+    return out, bounds
 
 
 def _wp_radii(page: str) -> dict[int, dict[str, float | None]]:
@@ -984,9 +1024,22 @@ def _num(text: str | None) -> float | None:
         return None
 
 
+_WD_PRECISION_LABELS = {
+    0: "billion-year", 1: "hundred-million-year", 2: "ten-million-year",
+    3: "million-year", 4: "hundred-thousand-year", 5: "ten-thousand-year",
+    6: "millennium", 7: "century", 8: "decade",
+}
+
+
 def _wikidata_discovery_year(entries: list[tuple[str, int]]) -> tuple[int | str | None, str | None]:
     """(year or 'ancient', note). Wikidata precision 9 = year, 10 = month,
-    11 = day; <= 8 (decade, century, millennium) for the ancient metals."""
+    11 = day; <= 8 is a coarser date (decade/century/millennium/...), which
+    is still a real calendar year and NOT automatically antiquity — e.g.
+    Arsenic is dated to circa 1300 AD at century precision (credited to
+    Albertus Magnus), not "known since antiquity". Only a non-positive
+    astronomical year (BCE, or year 0) — e.g. Iron at -5000, millennium
+    precision — becomes the 'ancient' sentinel; a coarse-but-positive year
+    keeps its year with the precision noted. See DATA_DECISIONS §47."""
     if not entries:
         return None, None
     best = min(entries, key=lambda e: e[0])
@@ -995,8 +1048,11 @@ def _wikidata_discovery_year(entries: list[tuple[str, int]]) -> tuple[int | str 
     if not m:
         return None, None
     year = int(m.group(2)) * (-1 if m.group(1) else 1)
-    if precision <= 8 or year <= 0:
-        return "ancient", f"Wikidata dates it to about {abs(year)} {'BC' if year < 0 else 'AD'} (precision {precision})"
+    if year <= 0:
+        return "ancient", f"Wikidata dates it to about {abs(year)} BC (precision {precision})"
+    if precision <= 8:
+        label = _WD_PRECISION_LABELS.get(precision, f"precision {precision}")
+        return year, f"Wikidata gives only {label} precision (circa {year} AD)"
     return year, None
 
 
@@ -1050,8 +1106,8 @@ def ingest(
     wp_list = _wp_list(wp_pages["list"])
     wp_abundance = _wp_abundance(wp_pages["abundance"])
     wp_thermal = _wp_thermal(wp_pages["thermal"])
-    wp_heat = _wp_grouped(wp_pages["heat"], 2, "heat")
-    wp_resist = _wp_grouped(wp_pages["resistivity"], 3, "resistivity")
+    wp_heat, _wp_heat_bounds = _wp_grouped(wp_pages["heat"], 2, "heat")
+    wp_resist, wp_resist_bounds = _wp_grouped(wp_pages["resistivity"], 3, "resistivity")
     wp_radii = _wp_radii(wp_pages["radii"])
     wp_etym = _wp_etymology(wp_pages["etymology"])
     print(f"    Wikipedia data pages: abundance {len(wp_abundance)}, thermal "
@@ -1368,6 +1424,7 @@ def ingest(
         heat = wp_heat.get(z)
         heat_value = heat[0] if heat else lst.get("specificHeat")
         resist = wp_resist.get(z)
+        resist_bound = wp_resist_bounds.get(z)
         conductivity = (1.0 / resist[0]) if resist and resist[0] else None
 
         ib = infoboxes.get(f"Template:Infobox {enwiki[z].lower()}", {})
@@ -1500,7 +1557,10 @@ def ingest(
                 "electricalConductivity": fig(round_sig(conductivity) if conductivity is not None else None, "S/m", "wp_resistivity",
                                               sources["wp_resistivity"]["vintage"],
                                               note=f"computed as 1/ρ from resistivity {resist[1]}" if resist else None,
-                                              reason="no tabulated resistivity"),
+                                              reason=(f"resistivity is published only as a bound ({resist_bound}), "
+                                                      f"not a measured point value -- inverting a bound would flip "
+                                                      f"its direction into a false-precision reading"
+                                                      if resist_bound else "no tabulated resistivity")),
                 "specificHeat": fig(heat_value, "J/(g·K)", "wp_heat" if heat else "wp_list",
                                     sources["wp_heat"]["vintage"] if heat else sources["wp_list"]["vintage"],
                                     reason="no tabulated specific heat capacity"),

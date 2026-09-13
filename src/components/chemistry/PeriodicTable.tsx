@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
+  ANCIENT_FILL,
   CATEGORY_ORDER,
   NO_DATA_FILL,
   PHASE_HUES,
@@ -8,6 +9,7 @@ import {
   categoryAccent,
   categoryFill,
   formatNumber,
+  isAncientDiscovery,
   scaleColour,
   viewDomain,
   viewPosition,
@@ -123,14 +125,18 @@ export function PeriodicTable({
       const phase = element.properties.phaseAtStp.value as string | null
       return { background: phaseFill(phase), noData: phase === null, label: phase ?? 'no data' }
     }
+    // "Known since antiquity" is a category, not a point on the year
+    // ramp — its own swatch, checked before the domain even matters
+    // (review fix, §47).
+    if (spec.key === 'discoveryYear' && isAncientDiscovery(element)) {
+      return { background: ANCIENT_FILL, noData: false, label: 'known since antiquity' }
+    }
     const value = viewValue(element, spec.key)
     if (value === null || !domain || (spec.scale === 'log' && value <= 0)) {
       return { background: NO_DATA_FILL, noData: true, label: 'no data' }
     }
     const t = viewPosition(value, domain, spec)
-    const text = spec.key === 'discoveryYear'
-      ? (value === -3000 ? 'ancient' : String(value))
-      : formatNumber(value, spec.unit ?? null)
+    const text = formatNumber(value, spec.unit ?? null)
     return { background: scaleColour(t), noData: false, label: text }
   }
 
@@ -323,8 +329,7 @@ export function TableLegend({
   const domain = viewDomain(file.elements, spec)
   if (!domain) return null
   const [lo, hi] = domain
-  const fmt = (v: number) =>
-    spec.key === 'discoveryYear' ? (v === -3000 ? 'ancient' : String(v)) : formatNumber(v, spec.unit ?? null)
+  const fmt = (v: number) => (spec.key === 'discoveryYear' ? String(v) : formatNumber(v, spec.unit ?? null))
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs" aria-label={`${spec.label} scale`}>
       <span className="tabular-nums">{fmt(lo)}</span>
@@ -339,6 +344,12 @@ export function TableLegend({
       <span className="tabular-nums">{fmt(hi)}</span>
       {spec.scale === 'log' && (
         <span style={{ color: 'var(--text-muted)' }}>(logarithmic)</span>
+      )}
+      {spec.key === 'discoveryYear' && (
+        <span className="inline-flex items-center gap-1.5">
+          <span aria-hidden="true" className="inline-block h-3 w-3 rounded-sm border" style={{ background: ANCIENT_FILL, borderColor: 'var(--border-strong)' }} />
+          Known since antiquity
+        </span>
       )}
       <span className="inline-flex items-center gap-1.5">
         <span aria-hidden="true" className="inline-block h-3 w-3 rounded-sm border" style={{ background: NO_DATA_FILL, borderColor: 'var(--border-strong)' }} />

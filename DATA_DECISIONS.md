@@ -3334,6 +3334,58 @@ build-independent (§21), so cached answers stay valid across
 rollovers. A 404 still means "no silhouette" and anything else still
 aborts the run.
 
+## 50. Round-3 code review fixes (2026-09-13)
+
+A high-effort review of the round-3 diff (`/code-review main high`)
+found 15 defects, all fixed before the PR.
+
+**50.1 Globe renderer (§43).** (a) The drag lambda is never wrapped,
+so after more than 180 degrees of spin the visible-window unwrap in
+`globegl.ts` fell outside the tile grid and no fine tile was requested
+again: the centre longitude is now normalised before unwrapping, the
+window is returned unwrapped, and `drawTiles` wraps column indices
+modulo the tile count, which also fixes the second finding that a view
+centred near the antimeridian never fetched the far-side tiles
+(verified: tiles keep arriving through a scripted >360-degree spin at
+9x zoom, columns 0-3 all requested). (b) A WebGL context restore
+relinked programs but kept stale uniform locations, a dead clip buffer
+and no blend state: GPU setup now lives in `initGpu()` and runs on
+restore too. (c) `destroy()` sets a flag so an in-flight base fetch
+no longer uploads into a discarded context or calls back an unmounted
+map (StrictMode double-mount leak).
+
+**50.2 Solar System (§45).** In true-scale mode every body radius sat
+at the 0.02 floor, so the fly-to distance (4-8 radii) was below
+`minDistance`, the lerp could never settle, and every later zoom-out
+was dragged back to the floor. The fly distance is now clamped to the
+controls' own range.
+
+**50.3 Taxonomy (§44).** Expanding a capped focus genus (Bombus,
+100/292 species shipped) silently live-fetched over the shipped
+species; load errors stuck through collapse/re-expand and cards view
+had no retry; `loadLiveChildren` flagged the cap on the last child
+instead of the parent; `revealLive` read genera state from a stale
+closure; `_bubble_images` could give a photo to a `pending` node
+(latent); and 18 families with descendants but no genus-rank rows
+(Sarcomeniaceae ...) had a genera file the UI never offered to expand
+(`gen` is now set, possibly 0, whenever the file exists). All six
+verified in Playwright, two with mocked network failures.
+
+**50.4 Chemistry (§47).** PubChem's "Isotopes in Biology" heading
+matched the loose `biolog` needle ahead of the real biological-role
+fallback (18 elements, Fe among them, showed tracer text; now anchored
+headings, "Isotopes in ..." excluded); any coarse-precision Wikidata
+date was treated as antiquity (Arsenic, 1300 AD at century precision,
+now shows 1300 / Albertus Magnus; only non-positive years are ancient);
+the -3000 antiquity sentinel sat inside the discovery-year colour
+domain and crushed all real dates into 9% of the ramp (ancient
+elements now get their own legended `--chem-ancient` swatch, gated in
+check-contrast); Escape on a pinned tooltip closed the whole element
+panel (handled on the tooltip's root with stopPropagation while open);
+and a bound such as chlorine's "> 10 ohm m" resistivity was parsed as
+a point value and inverted into a false 0.1 S/m conductivity
+(`parse_number` flags bounds; the field is a reasoned null).
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

@@ -251,6 +251,13 @@ export function scaleColour(t: number): string {
 export const NO_DATA_FILL =
   'repeating-linear-gradient(45deg, var(--surface-sunken) 0 3px, var(--border-strong) 3px 4px)'
 
+/** Flat swatch for "known since antiquity" elements on the discovery-year
+ * view — a fixed hue outside the ramp, gated against --text (review fix,
+ * §47; see `isAncientDiscovery`). A texture (like NO_DATA_FILL) would read
+ * as "no data", which is wrong: an ancient element has a real, sourced
+ * answer, just not a specific year. */
+export const ANCIENT_FILL = 'var(--chem-ancient)'
+
 // ---------------------------------------------------------------------------
 // Property views
 // ---------------------------------------------------------------------------
@@ -286,17 +293,28 @@ export const VIEWS: ViewSpec[] = [
 
 export const PHASE_HUES: Record<string, number> = { solid: 60, liquid: 220, gas: 300 }
 
-/** Numeric value of a property for a view, or null when there is none. */
+/**
+ * Numeric value of a property for a view, or null when there is none.
+ *
+ * "ancient" is a categorical marker ("known since antiquity, no specific
+ * year"), not a point on the discovery-year axis — it must NEVER enter the
+ * numeric domain. It used to be smuggled in as a -3000 sentinel, which put
+ * it inside viewDomain()'s [min, max] and compressed the 109 real dated
+ * elements (1557-2010) into the top ~9% of the ramp (review fix, §47).
+ * Ancient elements are rendered with their own swatch instead — see
+ * `isAncientDiscovery` and `ANCIENT_FILL`.
+ */
 export function viewValue(element: ElementRecord, key: ViewKey): number | null {
   const figure = element.properties[key as PropertyKey]
   if (!figure) return null
   const v = figure.value
-  if (key === 'discoveryYear') {
-    if (typeof v === 'number') return v
-    // "ancient": earlier than any dated discovery; placed at the scale's floor.
-    return v === 'ancient' ? -3000 : null
-  }
   return typeof v === 'number' ? v : null
+}
+
+/** True when an element's discovery year is "known since antiquity" rather
+ * than a dated year — render with `ANCIENT_FILL`, never on the ramp. */
+export function isAncientDiscovery(element: ElementRecord): boolean {
+  return element.properties.discoveryYear?.value === 'ancient'
 }
 
 export function viewDomain(elements: ElementRecord[], spec: ViewSpec): [number, number] | null {

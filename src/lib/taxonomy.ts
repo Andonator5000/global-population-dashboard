@@ -714,7 +714,15 @@ interface LiveChildRow {
   childCount?: number
 }
 
-const liveChildrenCache = new Map<string, Promise<TaxonNode[]>>()
+export interface LiveChildrenResult {
+  children: TaxonNode[]
+  /** The page was capped: this is knowingly incomplete. Callers set this
+      on the PARENT node they loaded children for (never on a child —
+      the cap describes the parent's list, not any one of its members). */
+  truncated: boolean
+}
+
+const liveChildrenCache = new Map<string, Promise<LiveChildrenResult>>()
 
 function liveNode(row: LiveChildRow): TaxonNode {
   const node: TaxonNode = {
@@ -734,10 +742,10 @@ function liveNode(row: LiveChildRow): TaxonNode {
 }
 
 /** Accepted children of a taxon, live from ChecklistBank; sorted by name.
-    A truncated page sets `truncated` on the returned array's marker. */
+    `truncated` describes the PARENT's list, not any one child. */
 export function loadLiveChildren(
   id: string,
-): Promise<TaxonNode[]> {
+): Promise<LiveChildrenResult> {
   let pending = liveChildrenCache.get(id)
   if (!pending) {
     pending = fetch(
@@ -755,12 +763,10 @@ export function loadLiveChildren(
         )
         const nodes = rows.map(liveNode)
         nodes.sort((a, b) => a.name.localeCompare(b.name))
-        if ((page.total ?? 0) > LIVE_CHILDREN_LIMIT && nodes.length > 0) {
-          // Flag the LAST node so the caller can show "list capped".
-          const last = nodes[nodes.length - 1]
-          if (last) last.truncated = true
+        return {
+          children: nodes,
+          truncated: (page.total ?? 0) > LIVE_CHILDREN_LIMIT && nodes.length > 0,
         }
-        return nodes
       })
     liveChildrenCache.set(id, pending)
     pending.catch(() => liveChildrenCache.delete(id))

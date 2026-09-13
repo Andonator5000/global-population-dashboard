@@ -303,6 +303,7 @@ export class GlobeGL implements ImageryRenderer {
   private anisoExt: EXT_texture_filter_anisotropic | null = null
   private meshes = new Map<string, FlatMesh>()
   private lost = false
+  private destroyed = false
 
   private basePath: string
   private metas = new Map<string, TerrainMeta>()
@@ -329,13 +330,37 @@ export class GlobeGL implements ImageryRenderer {
     if (!gl) throw new Error('WebGL2 unavailable')
     this.gl = gl
     this.basePath = basePath
-    this.progGlobe = link(gl, VERT_GLOBE, FRAG, ['a_clip'])
-    this.progFlat = link(gl, VERT_FLAT, FRAG, ['a_view', 'a_lonlat'])
-    this.progLine = link(gl, VERT_LINE, FRAG_LINE, ['a_lonlat'])
+    const gpu = this.initGpu()
+    this.progGlobe = gpu.progGlobe
+    this.progFlat = gpu.progFlat
+    this.progLine = gpu.progLine
+    this.clipBuffer = gpu.clipBuffer
+
+    canvas.addEventListener('webglcontextlost', this.handleLost)
+    canvas.addEventListener('webglcontextrestored', this.handleRestored)
+    this.ensureMeta(basePath)
+  }
+
+  /** Everything that lives in the GL context: programs, uniform
+   *  locations, the full-screen triangle, filtering and blend state. Run
+   *  at construction AND after a context restore, when all of it is gone
+   *  (a restore that only relinked the programs left stale uniform
+   *  locations and a dead clip buffer behind — review finding, round 3). */
+  private initGpu(): {
+    progGlobe: WebGLProgram
+    progFlat: WebGLProgram
+    progLine: WebGLProgram
+    clipBuffer: WebGLBuffer
+  } {
+    const gl = this.gl
+    const progGlobe = link(gl, VERT_GLOBE, FRAG, ['a_clip'])
+    const progFlat = link(gl, VERT_FLAT, FRAG, ['a_view', 'a_lonlat'])
+    const progLine = link(gl, VERT_LINE, FRAG_LINE, ['a_lonlat'])
+    this.uniforms = {}
     for (const [name, program] of [
-      ['globe', this.progGlobe],
-      ['flat', this.progFlat],
-      ['line', this.progLine],
+      ['globe', progGlobe],
+      ['flat', progFlat],
+      ['line', progLine],
     ] as const) {
       const map = new Map<string, WebGLUniformLocation | null>()
       for (const u of [
@@ -346,10 +371,9 @@ export class GlobeGL implements ImageryRenderer {
       }
       this.uniforms[name] = map
     }
-    const clip = gl.createBuffer()
-    if (!clip) throw new Error('buffer alloc failed')
-    this.clipBuffer = clip
-    gl.bindBuffer(gl.ARRAY_BUFFER, clip)
+    const clipBuffer = gl.createBuffer()
+    if (!clipBuffer) throw new Error('buffer alloc failed')
+    gl.bindBuffer(gl.ARRAY_BUFFER, clipBuffer)
     gl.bufferData(
       gl.ARRAY_BUFFER,
       new Float32Array([-1, -1, 3, -1, -1, 3]),
@@ -358,6 +382,7 @@ export class GlobeGL implements ImageryRenderer {
     this.anisoExt =
       gl.getExtension('EXT_texture_filter_anisotropic') ??
       gl.getExtension('WEBKIT_EXT_texture_filter_anisotropic')
+    this.anisotropy = 1
     if (this.anisoExt) {
       this.anisotropy = Math.min(
         8,
@@ -367,10 +392,7 @@ export class GlobeGL implements ImageryRenderer {
     gl.disable(gl.DEPTH_TEST)
     gl.enable(gl.BLEND)
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
-
-    canvas.addEventListener('webglcontextlost', this.handleLost)
-    canvas.addEventListener('webglcontextrestored', this.handleRestored)
-    this.ensureMeta(basePath)
+    return { progGlobe, progFlat, progLine, clipBuffer }
   }
 
   private handleLost = (event: Event) => {
@@ -387,9 +409,11 @@ export class GlobeGL implements ImageryRenderer {
     this.pending.clear()
     this.meshes.clear()
     try {
-      this.progGlobe = link(this.gl, VERT_GLOBE, FRAG, ['a_clip'])
-      this.progFlat = link(this.gl, VERT_FLAT, FRAG, ['a_view', 'a_lonlat'])
-      this.progLine = link(this.gl, VERT_LINE, FRAG_LINE, ['a_lonlat'])
+      const gpu = this.initGpu()
+      this.progGlobe = gpu.progGlobe
+      this.progFlat = gpu.progFlat
+      this.progLine = gpu.progLine
+      this.clipBuffer = gpu.clipBuffer
     } catch {
       return
     }
@@ -431,6 +455,10 @@ export class GlobeGL implements ImageryRenderer {
   }
 
   destroy(): void {
+    // In-flight fetches resolve later; they must not upload into a context
+    // nobody will draw from (StrictMode's double mount would leak a full
+    // base texture into the live context) nor call back an unmounted map.
+    this.destroyed = true
     this.canvas.removeEventListener('webglcontextlost', this.handleLost)
     this.canvas.removeEventListener('webglcontextrestored', this.handleRestored)
     const gl = this.gl
@@ -482,7 +510,7 @@ export class GlobeGL implements ImageryRenderer {
     void bitmap
       .then((image) => {
         this.pending.delete(basePath)
-        if (this.lost) return
+        if (this.lost || this.destroyed) return
         // REPEAT on S: the world map's first and last columns are
         // neighbours, and filtering across the antimeridian must blend
         // them, never clamp.
@@ -503,7 +531,7 @@ export class GlobeGL implements ImageryRenderer {
     void fetchBitmap(terrainTileUrl(basePath, name))
       .then((image) => {
         this.pending.delete(key)
-        if (this.lost) {
+        if (this.lost || this.destroyed) {
           image.close()
           return
         }
@@ -783,18 +811,26 @@ export class GlobeGL implements ImageryRenderer {
     if (!window) return
     const degPerTileX = 360 / tier.cols
     const degPerTileY = 180 / tier.rows
-    const col0 = Math.max(0, Math.floor((window.lonMin + 180) / degPerTileX))
-    const col1 = Math.min(tier.cols - 1, Math.floor((window.lonMax + 180 - 1e-9) / degPerTileX))
+    // Unwrapped column range (may exceed [0, cols)); each index wraps
+    // modulo the column count so an antimeridian-straddling window draws
+    // both edges of the map in one frame.
+    const col0 = Math.floor((window.lonMin + 180) / degPerTileX)
+    const col1 = Math.floor((window.lonMax + 180 - 1e-9) / degPerTileX)
     const row0 = Math.max(0, Math.floor((90 - window.latMax) / degPerTileY))
     const row1 = Math.min(tier.rows - 1, Math.floor((90 - window.latMin - 1e-9) / degPerTileY))
     gl.uniform1i(loc('u_isBase'), 0)
     // Nearest-the-centre first, and never more tiles than fit the budget:
     // wanting more than the LRU holds would evict and refetch every frame.
-    const wantLon = isGlobe ? -view.rotation[0] : (window.lonMin + window.lonMax) / 2
+    const wantLon = (window.lonMin + window.lonMax) / 2
     const wantLat = isGlobe ? -view.rotation[1] : (window.latMin + window.latMax) / 2
     const wanted: { col: number; row: number; d: number }[] = []
+    const seen = new Set<string>()
     for (let row = row0; row <= row1; row += 1) {
-      for (let col = col0; col <= col1; col += 1) {
+      for (let rawCol = col0; rawCol <= Math.min(col1, col0 + tier.cols - 1); rawCol += 1) {
+        const col = ((rawCol % tier.cols) + tier.cols) % tier.cols
+        const key = `${col},${row}`
+        if (seen.has(key)) continue
+        seen.add(key)
         const cLon = -180 + (col + 0.5) * degPerTileX
         const cLat = 90 - (row + 0.5) * degPerTileY
         let dLon = Math.abs(cLon - wantLon)
@@ -834,8 +870,14 @@ export class GlobeGL implements ImageryRenderer {
     const { projection, transform, layout, cssWidth, cssHeight, isGlobe } = view
     if (!projection.invert) return null
     const { scale, offsetX, offsetY } = layout
-    const centerLon = isGlobe ? -view.rotation[0] : 0
-    const center: [number, number] = [-view.rotation[0], -view.rotation[1]]
+    // The drag lambda is never wrapped by the map (only phi is clamped), so
+    // after a full spin it can sit at -580 or +1000. Normalise the centre
+    // to [-180, 180) before unwrapping samples around it, or the window
+    // lands outside the tile grid and no fine tile is ever requested
+    // (review finding, round 3).
+    const rawCenterLon = isGlobe ? -view.rotation[0] : 0
+    const centerLon = ((((rawCenterLon + 180) % 360) + 360) % 360) - 180
+    const center: [number, number] = [centerLon, -view.rotation[1]]
     let lonMin = Infinity
     let lonMax = -Infinity
     let latMin = Infinity
@@ -879,18 +921,18 @@ export class GlobeGL implements ImageryRenderer {
     if (count === 0 || missed > 0) {
       if (!isGlobe) return { lonMin: -180, lonMax: 180, latMin: -90, latMax: 90 }
       return {
-        lonMin: Math.max(-180, centerLon - 90),
-        lonMax: Math.min(180, centerLon + 90),
+        lonMin: centerLon - 90,
+        lonMax: centerLon + 90,
         latMin: Math.max(-90, center[1] - 90),
         latMax: Math.min(90, center[1] + 90),
       }
     }
-    // Tiles are addressed in [-180, 180): an unwrapped window past the
-    // antimeridian is split by clamping — the far side comes in on the
-    // next frame as the view crosses.
+    // Longitudes are returned UNWRAPPED (they may run past +-180, spanning
+    // at most 360 degrees); drawTiles wraps column indices, so a window
+    // straddling the antimeridian fetches both sides in the same frame.
     return {
-      lonMin: Math.max(-180, lonMin - 2),
-      lonMax: Math.min(180, lonMax + 2),
+      lonMin: Math.max(centerLon - 180, lonMin - 2),
+      lonMax: Math.min(centerLon + 180, lonMax + 2),
       latMin: Math.max(-90, latMin - 2),
       latMax: Math.min(90, latMax + 2),
     }

@@ -158,7 +158,10 @@ function walk(node, where) {
   if (node.img) stats.withImage += 1
   if (node.img?.rep) stats.withRep += 1
   if (node.rank === 'family') stats.families += 1
-  if (node.gen) stats.gen.push(node)
+  // `gen` can legitimately be 0 (a family with accepted descendants but
+  // no genus-rank row among them, e.g. Sarcomeniaceae) -- it still owns a
+  // genera file and must be checked for one, so key on presence not truth.
+  if (node.gen !== undefined) stats.gen.push(node)
   if (node.focus) stats.focus.push(node)
   if (DESC_SOURCES.has(node.descSrc)) stats.desc[node.descSrc] += 1
   for (const child of node.children ?? []) walk(child, where)

@@ -373,7 +373,17 @@ export function SolarSystemPage() {
         // — keeping the reader's own distance when it is already in range.
         controls.minDistance = Math.max(SCENE_MIN_DISTANCE, radius * 1.15)
         const current = controls.object.position.distanceTo(controls.target)
-        flyDistance.current = Math.max(radius * 4, Math.min(current, radius * 8))
+        // Clamped to the controls' own range: in true-scale mode a body
+        // radius sits at the 0.02 floor, so 4-8 radii is INSIDE
+        // minDistance, and a fly-to that can never settle would drag every
+        // later zoom-out back to the floor (review finding, round 3).
+        flyDistance.current = Math.max(
+          controls.minDistance,
+          Math.min(
+            controls.maxDistance,
+            Math.max(radius * 4, Math.min(current, radius * 8)),
+          ),
+        )
       }
     }
   }, [])

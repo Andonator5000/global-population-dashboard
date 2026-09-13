@@ -39,7 +39,7 @@
     "vanDerWaalsRadius": 19,
     "crystalStructure": 5,
     "thermalConductivity": 24,
-    "electricalConductivity": 63,
+    "electricalConductivity": 64,
     "specificHeat": 32,
     "magneticOrdering": 22,
     "stableIsotopes": 38,
@@ -47,7 +47,7 @@
     "abundanceUniverse": 35,
     "discoverers": 11,
     "discoveryPlace": 71,
-    "biologicalRole": 66,
+    "biologicalRole": 73,
     "hazards": 29
   },
   "elapsedSeconds": 1.1

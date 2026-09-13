@@ -10,6 +10,14 @@ import { Link } from 'react-router'
  * PINS the bubble so the glossary link inside it is reachable by Tab,
  * Escape closes. Plain text glyph — the site's icon set is OpenMoji only
  * and no emoji is used.
+ *
+ * Escape is handled on this component's own root span (bubble phase),
+ * covering both the ⓘ button and the pinned bubble's glossary link (a
+ * sibling of the button, so a button-only handler would miss it), and
+ * calls stopPropagation() so the keypress never reaches PeriodicTablePage's
+ * own Escape-closes-the-panel handler — dismissing a pinned definition
+ * must close only the innermost open thing, not the whole element panel
+ * (review fix, §47).
  */
 export function InfoTip({
   term,
@@ -33,14 +41,9 @@ export function InfoTip({
     const onDown = (event: PointerEvent) => {
       if (root.current && !root.current.contains(event.target as Node)) setPinned(false)
     }
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setPinned(false)
-    }
     document.addEventListener('pointerdown', onDown)
-    document.addEventListener('keydown', onKey)
     return () => {
       document.removeEventListener('pointerdown', onDown)
-      document.removeEventListener('keydown', onKey)
     }
   }, [pinned])
 
@@ -50,6 +53,18 @@ export function InfoTip({
       className="relative inline-block align-middle"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onKeyDown={(event) => {
+        // Bubble handler on the shared root, not the button: the pinned
+        // bubble's glossary link is a SIBLING of the button, so a
+        // button-only handler would miss Escape pressed there. Only
+        // stopPropagation while something of ours is actually open —
+        // otherwise Escape should keep bubbling to close outer UI.
+        if (event.key === 'Escape' && open) {
+          event.stopPropagation()
+          setPinned(false)
+          setHover(false)
+        }
+      }}
     >
       <button
         type="button"
@@ -60,12 +75,6 @@ export function InfoTip({
         onFocus={() => setHover(true)}
         onBlur={() => setHover(false)}
         onClick={() => setPinned((value) => !value)}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') {
-            setPinned(false)
-            setHover(false)
-          }
-        }}
       >
         ⓘ
       </button>

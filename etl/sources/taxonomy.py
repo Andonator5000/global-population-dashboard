@@ -401,9 +401,14 @@ def _build_tree(
     child_ids = kids.get(row.id, [])
     if row.rank == FAMILY_RANK:
         bucket = counts.get(row.id) or [0, 0, 0]
-        if bucket[2]:
-            node["gen"] = bucket[2]
         if child_ids:
+            # `gen` marks "this family has an on-demand genera file" --
+            # set even when the count is 0 (18 families in the tree, e.g.
+            # Sarcomeniaceae, have accepted descendants but no genus-rank
+            # row among them). Without it the tree node carries neither
+            # `gen`, `kids` nor `children`, so the UI can never expand a
+            # family whose genera file the ETL writes and populates below.
+            node["gen"] = bucket[2]
             families[row.id] = node
         return node
     if _at_or_below_genus(row.rank):
@@ -784,7 +789,13 @@ def _bubble_images(
         return (clean, img.get("rep") or node["name"])
     if best is None and reps is not None:
         best = reps.get(node.get("id", ""))
-    if best is not None:
+    if best is not None and not node.get("pending"):
+        # A pending node (§44.5) ships the flag ALONE -- wiki/img/desc are
+        # all implied null until enrichment reaches it. Giving it a
+        # bubbled `img` here would violate that (check-taxonomy.mjs
+        # rejects pending + img together) even though nothing was wrong
+        # with the photo itself. Still RETURN `best` unassigned so the
+        # bubble reaches a non-pending ancestor further up.
         node["img"] = dict(best[0])
         node["img"]["rep"] = best[1]
         stats["bubbled"] += 1

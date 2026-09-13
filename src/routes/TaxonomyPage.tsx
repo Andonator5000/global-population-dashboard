@@ -147,10 +147,14 @@ export function TaxonomyPage() {
   }, [index])
 
   /** The children a node currently shows: static file children for a
-      loaded family, live children when loaded, else the inline list. */
+      loaded family, live children when loaded, else the inline list.
+      `gen` marks "this family has an on-demand genera file" even when
+      the file holds zero genus-rank rows (§44.6 finding 6) — a family
+      with accepted descendants but none at genus rank still expands to
+      whatever its genera file holds. */
   const childrenOf = useCallback(
     (node: TaxonNode): TaxonNode[] => {
-      if (node.gen !== undefined && node.gen > 0) {
+      if (node.gen !== undefined) {
         return generaLoaded.get(node.id)?.children ?? []
       }
       const live = liveLoaded.get(node.id)
@@ -163,23 +167,39 @@ export function TaxonomyPage() {
   const isExpandable = useCallback(
     (node: TaxonNode): boolean =>
       (node.children?.length ?? 0) > 0 ||
-      (node.gen !== undefined && node.gen > 0) ||
+      node.gen !== undefined ||
       (node.kids !== undefined && node.kids > 0),
     [],
   )
 
   const needsLoad = useCallback(
     (node: TaxonNode): 'genera' | 'live' | null => {
-      if (node.gen !== undefined && node.gen > 0) {
+      if (node.gen !== undefined) {
         return generaLoaded.has(node.id) ? null : 'genera'
       }
       if (liveLoaded.has(node.id)) return null
-      if ((node.children?.length ?? 0) > 0 && !node.truncated) return null
+      // Static children already shipped (focus-family species, inline
+      // genera) are shown as-is even when the list is capped — the
+      // explicit "load all live" affordance handles the cap, not an
+      // automatic live fetch that would replace the shipped list.
+      if ((node.children?.length ?? 0) > 0) return null
       if (node.kids !== undefined && node.kids > 0) return 'live'
       return null
     },
     [generaLoaded, liveLoaded],
   )
+
+  /** Drop a stale load error once its node loads successfully — a failed
+      fetch, collapse, re-expand success must not keep showing the old
+      error paragraph (or, in cards view, keep the retry gate shut). */
+  const clearLoadError = useCallback((id: string) => {
+    setLoadErrors((prev) => {
+      if (!prev.has(id)) return prev
+      const next = new Map(prev)
+      next.delete(id)
+      return next
+    })
+  }, [])
 
   /** Resolve a node's children, loading its genera file or live list as
       needed, and commit the result to state. Returns the children. */
@@ -192,10 +212,16 @@ export function TaxonomyPage() {
         if (kind === 'genera') {
           const subtree = await loadGenera(node.id)
           setGeneraLoaded((prev) => new Map(prev).set(node.id, subtree))
+          clearLoadError(node.id)
           return subtree.children ?? []
         }
-        const children = await loadLiveChildren(node.id)
+        // `truncated` describes THIS node's live list, not any one child
+        // (§44.6 finding 3) — carried on the node object itself, the same
+        // slot a statically-capped focus genus already uses.
+        const { children, truncated } = await loadLiveChildren(node.id)
+        node.truncated = truncated
         setLiveLoaded((prev) => new Map(prev).set(node.id, children))
+        clearLoadError(node.id)
         return children
       } catch (error) {
         setLoadErrors((prev) =>
@@ -215,7 +241,7 @@ export function TaxonomyPage() {
         })
       }
     },
-    [needsLoad, childrenOf],
+    [needsLoad, childrenOf, clearLoadError],
   )
 
   // Description text for the selected taxon, from its shard (tree nodes
@@ -345,9 +371,15 @@ export function TaxonomyPage() {
           next = children.find((child) => child.id === nextId)
         }
         if (!next) {
-          // The file nests intermediate ranks the classification may skip.
-          const subtree = generaLoaded.get(current.id)
-          next = subtree ? findInSubtree(subtree, nextId) : undefined
+          // The file nests intermediate ranks the classification may
+          // skip. Search the subtree THIS load just returned — not
+          // `generaLoaded` state, which on a first-reveal (the genera
+          // file load a few lines up) is still the pre-click snapshot
+          // this closure captured, not the load that just landed.
+          for (const candidate of children) {
+            next = findInSubtree(candidate, nextId)
+            if (next) break
+          }
         }
         if (!next) break
         opened.push(next.id)
@@ -367,7 +399,7 @@ export function TaxonomyPage() {
       if (isNarrow) setSheetOpen(true)
       setQuery('')
     },
-    [index, ensureChildren, generaLoaded, isNarrow],
+    [index, ensureChildren, isNarrow],
   )
 
   const randomTaxon = useCallback(() => {
@@ -569,7 +601,7 @@ export function TaxonomyPage() {
                 </button>
               </li>
             )}
-            {children[children.length - 1]?.truncated && (
+            {node.truncated && liveList && (
               <li
                 className="py-1 text-xs"
                 style={{ paddingLeft: `${28 + (depth + 1) * 18}px`, color: 'var(--text-muted)' }}
@@ -579,6 +611,15 @@ export function TaxonomyPage() {
               </li>
             )}
           </ul>
+        )}
+        {isOpen && !loading && !pendingKind && !error && children.length === 0 && (
+          <p
+            className="py-1 text-xs"
+            style={{ paddingLeft: `${28 + depth * 18}px`, color: 'var(--text-muted)' }}
+          >
+            No genus-rank children recorded in Catalogue of Life for this
+            taxon.
+          </p>
         )}
       </li>
     )
@@ -631,7 +672,14 @@ export function TaxonomyPage() {
         )}
         {loadErrors.has(root.id) && (
           <p className="mt-3 text-sm" style={{ color: 'var(--text-muted)' }}>
-            {loadErrors.get(root.id)}
+            {loadErrors.get(root.id)}{' '}
+            <button
+              type="button"
+              className="underline underline-offset-2"
+              onClick={() => void ensureChildren(root).catch(() => undefined)}
+            >
+              Retry
+            </button>
           </p>
         )}
         <ul className="mt-3 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 xl:grid-cols-4">

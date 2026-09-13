@@ -81,6 +81,8 @@ const THEMES = {
     chemTintWorst: 'oklch(90% 0.07 20)',
     chemScaleLo: 'oklch(95% 0.02 250)',
     chemScaleHi: 'oklch(70% 0.16 250)',
+    // "Known since antiquity" swatch, outside the ramp (review fix, §47).
+    chemAncient: 'oklch(88% 0.07 75)',
   },
   dark: {
     surface: 'oklch(17% 0.006 250)',
@@ -111,6 +113,7 @@ const THEMES = {
     chemTintWorst: 'oklch(36% 0.08 100)',
     chemScaleLo: 'oklch(24% 0.03 250)',
     chemScaleHi: 'oklch(50% 0.14 250)',
+    chemAncient: 'oklch(38% 0.10 75)',
   },
 }
 
@@ -137,6 +140,11 @@ const checks = (t) => [
   ['body text on periodic scale (low end)', t.text, t.chemScaleLo, 4.5],
   ['body text on periodic scale (high end)', t.text, t.chemScaleHi, 4.5],
   ['periodic scale ends distinguishable', t.chemScaleHi, t.chemScaleLo, 2.0],
+  // The "known since antiquity" swatch sits outside the ramp entirely
+  // (review fix, §47), distinguished from it by hue the same way the
+  // category tints are distinguished from each other — its own AA text
+  // check, same treatment as chemTintWorst above.
+  ['body text on ancient swatch', t.text, t.chemAncient, 4.5],
   ['muted text on page tint', t.textMuted, t.pageTint, 4.5],
   // Brand button and globe-view tokens are theme-invariant.
   ['brand button label', INVARIANT.brandText, INVARIANT.brandBg, 4.5],

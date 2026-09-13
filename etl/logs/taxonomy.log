@@ -14,7 +14,7 @@
     "generated": 18551
   },
   "genera_files": 14196,
-  "genera_files_bytes": 37049670,
+  "genera_files_bytes": 37049814,
   "genera_largest_file": {
     "bytes": 1857942,
     "family": "Formicidae"
@@ -68,5 +68,5 @@
     "Ursidae",
     "Varanidae"
   ],
-  "seconds": 225
+  "seconds": 138
 }

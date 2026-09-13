@@ -182,6 +182,13 @@ summary {
   --chem-tint-c: 0.07;
   --chem-scale-lo: oklch(95% 0.02 250);
   --chem-scale-hi: oklch(70% 0.16 250);
+  /* "Known since antiquity" swatch for the discovery-year view: a fixed
+     amber hue OUTSIDE the ramp (hue 250) and the category tints, so an
+     ancient element can never be mistaken for a point on the year scale
+     (review fix, §47: the "ancient" sentinel used to sit inside the
+     ramp's own numeric domain, collapsing every real date into ~9% of
+     the ramp). Gated against --text below. */
+  --chem-ancient: oklch(88% 0.07 75);
 
   /* Map. Land/water is a shape boundary rather than text, so these carry
      perceptual minimums rather than WCAG text ratios. */
@@ -254,6 +261,7 @@ summary {
     --chem-tint-c: 0.08;
     --chem-scale-lo: oklch(24% 0.03 250);
     --chem-scale-hi: oklch(50% 0.14 250);
+    --chem-ancient: oklch(38% 0.10 75);
 
     --map-water: oklch(13% 0.010 235);
     --map-land: oklch(34% 0.014 250);
@@ -305,6 +313,7 @@ summary {
   --chem-tint-c: 0.08;
   --chem-scale-lo: oklch(24% 0.03 250);
   --chem-scale-hi: oklch(50% 0.14 250);
+  --chem-ancient: oklch(38% 0.10 75);
 
   --map-water: oklch(13% 0.010 235);
   --map-land: oklch(34% 0.014 250);

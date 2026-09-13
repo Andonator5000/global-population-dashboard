@@ -2055,17 +2055,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Because of above-ground nuclear bomb testing, the neutrons released reacted with CO2 to increase atmospheric 14C via the 14N (n, p) 14C reaction, and 14C started rising in about 1955 (Fig. IUPAC.6.1) and reached a peak in the mid-1960s [59]. With the curtailment of above-ground nuclear testing in the 1960s, the atmospheric 14C concentration has since been decreasing exponentially (Fig. IUPAC.6.1).",
+     "value": null,
      "unit": null,
      "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "vintage": null,
+     "reason": "neither PubChem's element record nor the Wikipedia article has a biologicalRole section"
     },
     "hazards": {
      "value": "Pure carbon has extremely low toxicity to humans and can be handled safely in the form of graphite or charcoal. It is resistant to dissolution or chemical attack, even in the acidic contents of the digestive tract. Consequently, once it enters into the body's tissues it is likely to remain there indefinitely.",
@@ -2381,17 +2375,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Isotopic fractionation can cause the isotope-amount ratio n(15N)/n(14N) to increase systematically through food chains through assimilation of nitrogen compounds in biomolecules such as proteins. When lower-order organisms are ingested by higher-order organisms, 15N may be selectively retained and 14N may be selectively excreted such that higher-order organisms tend to have higher n(15N)/n(14N) ratios than their food sources.",
+     "value": null,
      "unit": null,
      "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "vintage": null,
+     "reason": "neither PubChem's element record nor the Wikipedia article has a biologicalRole section"
     },
     "hazards": {
      "value": "Although nitrogen is non-toxic, when released into an enclosed space it can displace oxygen, and therefore presents an asphyxiation hazard. This may happen with few warning symptoms, since the human carotid body is a relatively poor and slow low-oxygen (hypoxia) sensing system.",
@@ -3686,17 +3674,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Both 22Na and 24Na have been used as radioactive tracers to study electrolytes in the human body [108], [109], [110].",
+     "value": "In humans, sodium is an essential mineral that regulates blood volume, blood pressure, osmotic equilibrium and pH. The minimum physiological requirement for sodium is estimated to range from about 120 milligrams per day in newborns to 500 milligrams per day over the age of 10.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Sodium"
     },
     "hazards": {
      "value": "Sodium forms flammable hydrogen and caustic sodium hydroxide on contact with water; ingestion and contact with moisture on skin, eyes or mucous membranes can cause severe burns. Sodium spontaneously explodes in the presence of water due to the formation of hydrogen (highly explosive) and sodium hydroxide (which dissolves in the water, liberating more surface).",
@@ -4019,17 +4001,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Natural magnesium enriched in the stable isotopes 25Mg and 26Mg has been used as tracers in human studies to assess absorption, excretion, distribution, and utilization of magnesium in basic and applied research [108], [113], [114].",
+     "value": "The important interaction between phosphate and magnesium ions makes magnesium essential to the basic nucleic acid chemistry of all cells of all known living organisms. More than 300 enzymes require magnesium ions for their catalytic action, including all enzymes using or synthesizing ATP and those that use other nucleotides to synthesize DNA and RNA. The ATP molecule is normally found in a chelate with a magnesium ion.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Magnesium"
     },
     "hazards": {
      "value": "Magnesium metal and its alloys can be explosive hazards; they are highly flammable in their pure form when molten or in powder or ribbon form. Burning or molten magnesium reacts violently with water. When working with powdered magnesium, safety glasses with eye protection and UV filters (such as welders use) are employed because burning magnesium produces ultraviolet light that can permanently damage the retina of a human eye.",
@@ -4350,17 +4326,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "26Al is a radioactive isotope (half-life of 7.1×105 years) that can be detected at the ultra-trace level (attogram range; 10−18 g levels) using accelerator mass spectrometry. 26Al is used as a tracer to study the uptake, distribution, and retention of aluminium in plants, animals, and humans under different physiological conditions [117], [118].",
+     "value": "Despite its widespread occurrence in the Earth's crust, aluminium has very few known functions in biology. At pH 6–9 (relevant for most natural waters), aluminium precipitates out of water as the hydroxide and is hence not available; most elements behaving this way have no biological role or are toxic. Aluminium sulfate has an LD50 of 6207 mg/kg (oral, mouse).",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Aluminum"
     },
     "hazards": {
      "value": null,
@@ -5008,17 +4978,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "32P (half-life of 14.3 days) is a radioactive isotope of phosphorus that is used to help understand the biological and chemical processes in plants. It is chemically identical to other isotopes of phosphorous and can be substituted in biological and chemical reactions. For example, a phosphate solution containing 32P (which has the identical behavior of non-radioactive 31P) can be inserted into the roots of a plant and its movement can then be tracked throughout the plant with the use of a Geiger counter.",
+     "value": "Inorganic phosphorus in the form of the phosphate PO3−4 is required for all known forms of life. Phosphorus plays a major role in the structural framework of DNA and RNA. Living cells use phosphate to transport cellular energy with adenosine triphosphate (ATP), necessary for every cellular process that uses energy.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Phosphorus"
     },
     "hazards": {
      "value": "Elemental phosphorus poses by far the greatest danger in its white form, red phosphorus being relatively nontoxic. In the past, external exposure to white phosphorus was treated by washing the affected area with 2% copper(II) sulfate solution to form harmless compounds that are then washed away. According to 2009 United States Navy guidelines: Cupric (copper) sulfate has been used by U.S. personnel in the past and is still being used by some nations.",
@@ -5343,17 +5307,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "The stable sulfur isotope-amount ratio n(34S)/n(32S) has been used to distinguish whether animal tissues grew in freshwater or in marine ecosystems. The isotopes do not fractionate (separate) substantially with trophic influences (the movement of sulfur through and into plant and animal systems), and the isotope-amount ratio n(34S)/n(32S) is usually substantially different between freshwater and marine environments.",
+     "value": "Sulfur is an essential component of all living cells. It is the eighth most abundant element in the human body by weight, about equal in abundance to potassium, and slightly greater than sodium and chlorine. A 70 kg (150 lb) human body contains about 140 grams (4.9 oz) of sulfur.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Sulfur"
     },
     "hazards": {
      "value": "Though elemental sulfur is only minimally absorbed through the skin and is of low toxicity to humans, inhalation of sulfur dust or contact with eyes or skin may cause irritation. Excessive ingestion of sulfur can cause a burning sensation or diarrhea, and cases of life-threatening metabolic acidosis have been reported after patients deliberately consumed sulfur as a folk remedy. When sulfur burns in air, it produces sulfur dioxide.",
@@ -5563,11 +5521,11 @@
      "vintage": "retrieved 2026-09-08"
     },
     "electricalConductivity": {
-     "value": 0.1,
+     "value": null,
      "unit": "S/m",
      "source": "wp_resistivity",
      "vintage": "retrieved 2026-09-08",
-     "note": "computed as 1/ρ from resistivity > 10 Ωm"
+     "reason": "resistivity is published only as a bound (> 10 Ωm), not a measured point value -- inverting a bound would flip its direction into a false-precision reading"
     },
     "specificHeat": {
      "value": 0.479,
@@ -6331,17 +6289,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "The mole fraction of 40K, n(40K)/n(K), is used to study the effects of potassium in soil on the growth of plants. Plants need potassium to promote growth and reproduction, and potassium also helps plants resist drought and diseases. The mole fraction of 40K is being studied at different depths in several soil types to determine how soil properties affect the fractionation of 40K [178].",
+     "value": "Potassium is crucial for diverse plant species. It has a vital role in maintaining cell sap and internal root pressure required for plant growth. Potassium increases plant metabolism and uptake of carbon dioxide.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Potassium"
     },
     "hazards": {
      "value": "Potassium metal can react violently with water producing KOH and hydrogen gas. 2 K(s) + 2 H2O(l) → 2 KOH(aq) + H2(g)↑ This reaction is exothermic and releases sufficient heat to ignite the resulting hydrogen in the presence of oxygen. Finely powdered potassium ignites in air at room temperature.",
@@ -6990,17 +6942,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Radioactive 46Sc is used as a non-absorbed isotopic reference material for determining digestibility, absorption in the gut, and secretion sites for nutrients associated with feed residues in ruminating animals (animals that chew their food repeatedly for an extended period of time) [190].",
+     "value": null,
      "unit": null,
      "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "vintage": null,
+     "reason": "neither PubChem's element record nor the Wikipedia article has a biologicalRole section"
     },
     "hazards": {
      "value": "Elemental scandium is considered non-toxic, though extensive animal testing of scandium compounds has not been done. The median lethal dose (LD50) levels for scandium chloride for rats have been determined as 755 mg/kg for intraperitoneal and 4 g/kg for oral administration. In the light of these results, compounds of scandium should be handled as compounds of moderate toxicity.",
@@ -8626,17 +8572,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Natural iron enriched in its least abundant stable isotopes, 57Fe and 58Fe, are used as a tracer in human studies to assess absorption, excretion, distribution, and utilization of iron in basic and applied research [108], [109], [110], [214], [215], [216].",
+     "value": "Iron is required for life. The iron–sulfur clusters are pervasive and include nitrogenase, the enzymes responsible for biological nitrogen fixation. Iron-containing proteins participate in transport, storage and use of oxygen.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Iron"
     },
     "hazards": {
      "value": null,
@@ -10860,11 +10800,11 @@
      "vintage": "retrieved 2026-09-08"
     },
     "discoveryYear": {
-     "value": "ancient",
+     "value": 1300,
      "unit": null,
      "source": "wikidata",
      "vintage": "retrieved 2026-09-08",
-     "note": "Wikidata dates it to about 1300 AD (precision 7)"
+     "note": "Wikidata gives only century precision (circa 1300 AD); PubChem gives Ancient"
     },
     "discoverers": {
      "value": [
@@ -10913,17 +10853,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "73As and 76As (with half-lives of 80.3 days and 1.1 days, respectively) are important radioactive tracers used in environmental and biomedical studies to quantify arsenic uptake [270]. 74As (with a half-life of 17.8 days) has been used to investigate the biotransformation (modification of a chemical compound by an organism) of arsenate by mammals. In one study rabbits were injected with 74As-labeled arsenate.",
+     "value": "Some species of bacteria obtain their energy in the absence of oxygen by oxidizing various fuels while reducing arsenate to arsenite. Under oxidative environmental conditions some bacteria use arsenite as fuel, which they oxidize to arsenate. The enzymes involved are known as arsenate reductases (Arr).",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Arsenic"
     },
     "hazards": {
      "value": "Arsenic and many of its compounds (arsine, for instance) are potent poisons. Elemental arsenic and arsenic sulfate and trioxide compounds are classified as \"toxic\" and \"dangerous for the environment\" in the European Union under directive 67/548/EEC. The International Agency for Research on Cancer (IARC) recognizes arsenic and inorganic arsenic compounds as group 1 carcinogens, and the EU lists arsenic trioxide, arsenic pentoxide, and arsenate salts as category 1 carcinogens.",
@@ -12228,17 +12162,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Due to biological similarities between rubidium and potassium, the radionuclide 86Rb (with a half-life of 18.7 days) is used as a tracer in biological or medical investigations for applications where the half-life of the radioactive-tracer 42K (half-life of 0.5 day) is too short [110]. 86Rb (with a half-life of 18.7 days) has been used measure the metabolism in small vertebrates (Fig. IUPAC.37.1), such as dunnarts (furry, narrow-footed marsupials about the size of a mouse) [291].",
+     "value": "Rubidium reacts violently with water and can cause fires. To ensure safety and purity, this metal is usually kept under dry mineral oil or sealed in glass ampoules in an inert atmosphere. Rubidium forms peroxides on exposure even to a small amount of air diffused into the oil, and storage is subject to similar precautions as the storage of metallic potassium.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Rubidium"
     },
     "hazards": {
      "value": "Rubidium reacts violently with water and can cause fires. To ensure safety and purity, this metal is usually kept under dry mineral oil or sealed in glass ampoules in an inert atmosphere. Rubidium forms peroxides on exposure even to a small amount of air diffused into the oil, and storage is subject to similar precautions as the storage of metallic potassium.",
@@ -13545,17 +13473,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "95Nb (with a half-life of 35 days) and 95Nb-oxalates have been used to study the absorption, retention and distribution of niobium in the body [309], [310].",
+     "value": null,
      "unit": null,
      "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "vintage": null,
+     "reason": "neither PubChem's element record nor the Wikipedia article has a biologicalRole section"
     },
     "hazards": {
      "value": "Niobium has no known biological role. While niobium dust is an eye and skin irritant and a potential fire hazard, elemental niobium on a larger scale is physiologically inert (and thus hypoallergenic) and harmless. It is often used in jewelry and has been tested for use in some medical implants.",
@@ -15845,17 +15767,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Metal accumulation is a threat to our world’s water systems and wildlife. As a way to measure the influence of heavy metals on wildlife utilizing mass spectrometric techniques, some researchers use animal food enriched in specific cadmium isotopes. These experiments work by exposing the animals to a diet enriched in 106Cd and/or other stable isotopes of metals (for example, 65Cu and/or 62Ni) for a period of time.",
+     "value": "Cadmium has no known function in higher organisms, and is toxic. Cadmium is considered an environmental pollutant hazardous to living organisms. A cadmium-dependent carbonic anhydrase has been found in some marine diatoms, which live in environments with low zinc concentrations.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Cadmium"
     },
     "hazards": {
      "value": "Individuals and organizations have been reviewing cadmium's bioinorganic aspects for its toxicity. The most dangerous form of occupational exposure to cadmium is inhalation of fine dust and fumes, or ingestion of highly soluble cadmium compounds. Inhalation of cadmium fumes can result initially in metal fume fever, but may progress to chemical pneumonitis, pulmonary edema, necrosis and death.",
@@ -18133,17 +18049,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "137Cs (with a half-life of 30 years) can be used as a tracer in fungal mycelia (an extensive matrix of underground hyphae (stems of growth from a fungus)) to monitor the immobilization of this radioactive caesium isotope. After the nuclear reactor accident at Chernobyl, large quantities of 137Cs were released as fission products into the environment. Areas with large fungal populations and fungal mycelia seemed to immobilize the 137Cs isotope, which limited the spread of the radioactive isotope [399], [400].",
+     "value": null,
      "unit": null,
      "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "vintage": null,
+     "reason": "neither PubChem's element record nor the Wikipedia article has a biologicalRole section"
     },
     "hazards": {
      "value": "Nonradioactive caesium compounds are only mildly toxic, and nonradioactive caesium is not a significant environmental hazard. Because biochemical processes can confuse and substitute caesium with potassium, excess caesium can lead to hypokalemia, arrhythmia, and acute cardiac arrest, but such amounts would not ordinarily be encountered in natural sources.",
@@ -22419,17 +22329,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "Radiolabeled 171Er (with a half-life of 7.5 h) tablets have been used to study bowel movements of individuals using external scintigraphy. Such tablets have an enteric coating and contain small amounts of stable erbium oxide (170Er) initially. The tablets are then irradiated at a low neutron flux to produce radioactively labeled 171Er tablets, via the 170Er (n, γ) 171Er reaction.",
+     "value": "Erbium does not have a biological role, but erbium salts can stimulate metabolism. Humans consume 1 milligram of erbium a year on average. The highest concentration of erbium in humans is in the bones, but there is also erbium in the human kidneys and liver.",
      "unit": null,
-     "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "source": "wikipedia",
+     "vintage": "retrieved 2026-09-08",
+     "note": "Wikipedia article section; PubChem carries no such section for Erbium"
     },
     "hazards": {
      "value": "Erbium does not have a biological role, but erbium salts can stimulate metabolism. Humans consume 1 milligram of erbium a year on average. The highest concentration of erbium in humans is in the bones, but there is also erbium in the human kidneys and liver.",
@@ -23413,17 +23317,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "176Lu (with a half-life of 3.73×1010 years) is used in labeling experiments to quantify absolute protein abundance (absolute quantities of proteins in a cell) and examine the extent of synthesis of proteins under specific biological conditions [500]. 175Lu has been used as a yield tracer in inductively coupled plasma mass spectrometry (ICP-MS) determination of plutonium in urine [500].",
+     "value": null,
      "unit": null,
      "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "vintage": null,
+     "reason": "neither PubChem's element record nor the Wikipedia article has a biologicalRole section"
     },
     "hazards": {
      "value": "Like other rare-earth metals, lutetium is regarded as having a low degree of toxicity, but its compounds should be handled with care nonetheless: for example, lutetium fluoride inhalation is dangerous and the compound irritates skin. Lutetium nitrate may be dangerous as it may explode and burn once heated. Lutetium oxide powder is toxic as well if inhaled or ingested.",
@@ -26053,17 +25951,11 @@
      "heading": "Uses"
     },
     "biologicalRole": {
-     "value": "195Au (with a half-life of about 0.51 year) has been used to study particle movement within the lungs of rats [528]. 198Au (with a half-life of 2.7 days) was used in a study to model gold cycling in plants. This study demonstrated that gold particles are retained by humates (organic constituents of soil), which contain fulvic acid, humic acid, ulmic acid, and lignin and would therefore be likely to accumulate in mull humus or forest litter [529].",
+     "value": null,
      "unit": null,
      "source": "pugview",
-     "vintage": "retrieved 2026-09-13",
-     "citations": [
-      {
-       "name": "IUPAC Periodic Table of the Elements and Isotopes (IPTEI)",
-       "url": "https://doi.org/10.1515/pac-2015-0703"
-      }
-     ],
-     "heading": "Isotopes in Biology"
+     "vintage": null,
+     "reason": "neither PubChem's element record nor the Wikipedia article has a biologicalRole section"
     },
     "hazards": {
      "value": "Pure metallic (elemental) gold is non-toxic and non-irritating when ingested and is sometimes used as a food decoration in the form of gold leaf. Metallic gold is also a component of the alcoholic drinks Goldschläger, Gold Strike, and Goldwasser. Metallic gold is approved as a food additive in the EU (E175 in the Codex Alimentarius).",
