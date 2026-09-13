@@ -171,6 +171,18 @@ def fig(value: Any, unit: str | None, source: str, vintage: str | None,
     return out
 
 
+def round_sig(value: float | None, sig: int = 4) -> float | None:
+    """Round to SIGNIFICANT figures, not decimal places — a fixed-decimal
+    round() crushes a real but tiny value (e.g. sulfur's ~5e-16 S/m
+    electrical conductivity) to 0.0, which this site's gate treats as a
+    dishonest zero standing in for an absent figure. See §47.2."""
+    if value is None or value == 0:
+        return value
+    import math
+    digits = sig - int(math.floor(math.log10(abs(value)))) - 1
+    return round(value, digits)
+
+
 def _text(cell: str) -> str:
     t = re.sub(r"<[^>]+>", "", cell)
     t = html.unescape(t).replace("\xa0", " ").replace(" ", " ")
@@ -1096,7 +1108,12 @@ def ingest(
     for z in range(1, 119):
         rule = samples.get(z, {})
         files = [f for f in wikidata[z]["images"] if not f.lower().endswith(".svg")]
-        if files and not rule.get("dropWikidataImage"):
+        if rule.get("file"):
+            # An editorial pick (chemistry_samples.json) overrides the
+            # automatic Wikidata P18 choice — used where P18 fails the
+            # licence gate but a properly-licensed alternative exists.
+            candidates[z] = (rule["file"], rule.get("imageKind") or "sample")
+        elif files and not rule.get("dropWikidataImage"):
             kind = rule.get("imageKind") or ("sample" if not rule.get("noSample") else "related")
             candidates[z] = (files[0], kind)
         elif rule.get("facility") and facilities.get(rule["facility"], {}).get("image"):
@@ -1480,7 +1497,7 @@ def ingest(
                                         reason="no crystal structure in the element's infobox (never observed as a solid in bulk)"),
                 "thermalConductivity": fig(thermal, "W/(m·K)", "wp_thermal", sources["wp_thermal"]["vintage"],
                                            reason="no tabulated thermal conductivity"),
-                "electricalConductivity": fig(round(conductivity, 4) if conductivity else None, "S/m", "wp_resistivity",
+                "electricalConductivity": fig(round_sig(conductivity) if conductivity is not None else None, "S/m", "wp_resistivity",
                                               sources["wp_resistivity"]["vintage"],
                                               note=f"computed as 1/ρ from resistivity {resist[1]}" if resist else None,
                                               reason="no tabulated resistivity"),
@@ -1489,7 +1506,9 @@ def ingest(
                                     reason="no tabulated specific heat capacity"),
                 "magneticOrdering": fig(magnetic, None, "wp_infobox", sources["wp_infobox"]["vintage"],
                                         reason="no magnetic ordering in the element's infobox (not measured)"),
-                "stableIsotopes": fig(iso.get("stable"), None, "iaea", sources["iaea"]["vintage"]),
+                "stableIsotopes": fig(iso.get("stable") or None, None, "iaea", sources["iaea"]["vintage"],
+                                      reason="no stable isotopes — every known isotope is radioactive"
+                                      if iso.get("stable") == 0 else None),
                 "knownIsotopes": fig(iso.get("known"), None, "iaea", sources["iaea"]["vintage"],
                                      note="ground states in the IAEA evaluation"),
                 "notableIsotopes": fig(iso.get("notable") or None, None, "iaea", sources["iaea"]["vintage"],

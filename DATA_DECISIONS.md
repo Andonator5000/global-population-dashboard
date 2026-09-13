@@ -2744,6 +2744,188 @@ giant Wikidata batch) were already sound and are now verified end to end.
 
 **44.6 Gates.** `check:taxonomy` passes: tree 35,214 nodes / 39 rank strings all defined / descriptions wikipedia 9,088, wikidata 7,575, generated 18,551 (flagged); genera 14,196 files, 37.0 MB, 257,389 nodes, descriptions wikipedia 6,481, wikidata 12,563, generated 224,149 (flagged). Incremental genus enrichment runs at `TAXONOMY_GENUS_ENRICH_CAP` = 20,000 per ETL run, so full Wikipedia coverage of the 203k pending genera is roughly ten monthly refreshes away; raising the cap for the workflow only is the lever if Andy wants it faster.
 
+## 47. Round 3, Phase 7: the periodic table of the elements (2026-09-12)
+
+A prior agent (transcript lost; WIP commit `b245f1b`) built the Chemistry
+section: the ETL stage (`etl/sources/chemistry.py`), the table and panel
+components, the three.js Bohr-model schematic, the glossary, and the
+Chemistry SECTIONS/token registration. Typecheck, contrast and
+theme-parity passed; `node scripts/check-chemistry.mjs` failed with 43
+problems. This entry records the diagnosis, the fixes, and the sourcing
+for every field the panel shows.
+
+**47.1 What already worked and was left alone.**
+
+The table (`PeriodicTable.tsx`) renders all 118 elements in the IUPAC
+18x7 layout with the f-block as two footer rows, category colouring with
+a legend, and seven property views (electronegativity, atomic radius,
+melting point, density, crustal abundance, discovery year, phase at STP)
+on a sequential ramp with a HATCHED no-data swatch and legend entry —
+exactly the seven the spec asked for, plus category. The grid uses a
+roving tabindex; arrow keys skip empty cells and move between real
+elements, Home/End jump to the row ends, Enter/Space opens the panel —
+verified with a scripted Playwright session (Hydrogen -> 2x ArrowRight ->
+Helium -> ArrowDown -> Neon -> Enter opens the panel). The element panel
+(`ElementPanel.tsx`) shows the Commons photograph with author/licence/
+Commons-page attribution, the animated three.js Bohr-model schematic
+(`AtomModel.tsx`, nucleus + one ring per shell from the electron
+configuration, OrbitControls, paused by default under
+`prefers-reduced-motion` with an always-present Play/Pause control,
+labelled "Bohr-model schematic" with a "not to scale" caption), and every
+property with an `InfoTip` (a real `<button>`, `aria-describedby`,
+click-to-pin so the glossary link is Tab-reachable, Escape closes) linked
+to `/chemistry/glossary#<key>`. None of this needed changing.
+
+**47.2 The 43 gate failures, by class.**
+
+**Two elements with no image and no `noSample` flag (He, Pu).** Both had
+a Wikidata P18 image that failed the licence gate: Helium's
+`Helium discharge tube.jpg` (Alchemist-hp) is GFDL-1.2-only, and
+Plutonium's `Plutonium ring.jpg` (Los Alamos National Laboratory) carries
+a bespoke "Attribution" licence with no linked terms — both genuinely
+outside the accepted set (PD / CC0 / CC BY / CC BY-SA / FAL), so the
+rejection was correct. Neither element is a case for `noSample`,
+though — free-licensed photographs of both exist — so
+`etl/sources/chemistry.py` gained a `file` override in
+`chemistry_samples.json` that lets an editorial pick replace the
+automatic P18 choice. He now uses `Glowing ultrapure helium.jpg`
+(images-of-elements.com, CC BY 3.0 — an ultrapure-helium discharge tube,
+matching the spec's "gases: discharge tube" rule); Pu now uses
+`Pubutton.jpg` (US Department of Energy, public domain — a plutonium
+metal button). Both were verified against the live Commons API before
+being picked (`LicenseShortName` checked directly, not guessed from the
+element name).
+
+**Three elements with `electricalConductivity: 0` (S, Br, I).** Not an
+absence — a rounding bug. Conductivity is computed as 1/resistivity, and
+sulfur's resistivity (~2x10^15 Ohm*m) gives a real conductivity of
+~5x10^-16 S/m; `round(x, 4)` (fixed decimal places) crushed that, and
+bromine's and iodine's smaller-but-still-tiny values, to `0.0`, which the
+gate correctly refuses to accept as a bare zero. Fixed with a new
+`round_sig()` helper (significant figures, not decimal places); the true
+values (S: 5e-16, Br: 1.282e-11, I: 7.692e-08 S/m) now carry their
+`computed as 1/rho from resistivity ...` note, and the front end's
+existing `formatNumber()` already renders sub-0.001 magnitudes in
+scientific notation, so no UI change was needed.
+
+**38 elements with `stableIsotopes: 0` (Tc, Pm, and every element Z >=
+83).** Also not an absence in the "no data" sense — these elements
+really do have zero stable isotopes, every known isotope being
+radioactive — but this site's convention (stated in the gate and matched
+elsewhere, e.g. Space §33: "a figure a source does not publish is null")
+treats the *display* of a bare `0` as indistinguishable from a missing
+figure, so a definitional zero is rendered as an explicit null with a
+reason rather than a number. `stableIsotopes` now emits
+`{value: null, reason: "no stable isotopes -- every known isotope is
+radioactive"}` when the IAEA count is 0, and the true count otherwise.
+
+**Root cause behind the two image failures being visible at all, and
+behind biologicalRole's high null rate.** `.cache/chemistry` held zero
+cached PUG-View records (`pugviewRecords: 0` in the prior manifest) —
+every one of the 118 fetches had apparently been skipped or failed
+silently in the build that produced `b245f1b`. Re-running
+`.venv/Scripts/python etl/run.py --only chemistry` (no
+`CHEMISTRY_PUGVIEW_CACHED_ONLY`, PubChem's stated ~2.5 req/s pacing
+already in the fetch loop) retrieved all 118 PUG-View records cleanly in
+this pass (0 throttled, 0 missing) and dropped `biologicalRole` nulls
+from 73 to 66 by supplying real PubChem-cited biological-role prose where
+it exists. The remaining 66 are elements PubChem's PUG-View genuinely has
+no biological-role section for, and whose Wikipedia article also has no
+matching section — checked by inspection, not assumed.
+
+**47.3 Honesty audit of the remaining nulls (not gate failures, checked anyway).**
+
+The spec asked for gaps to be filled from real sources where they exist,
+not just null-with-a-reason to satisfy the gate. The worst-null fields
+after the fixes above were spot-checked against their actual upstream
+source rather than taken on faith:
+
+- **discoveryPlace (71 null).** Queried Wikidata directly for every
+  element's P189 (`discovery place`): only 49 of 118 items carry it at
+  all. This is a real gap in Wikidata, not a parsing bug — confirmed by
+  running the SPARQL query standalone and inspecting the raw bindings.
+  Left as an honestly-sourced null; a future pass could try each
+  element's Wikipedia infobox for a "discovered" narrative field, but
+  the standard `{{Infobox element}}` template has no place-of-discovery
+  parameter to mine, so that would mean parsing free text per element —
+  out of scope for this pass.
+- **electronAffinity (61 null), abundanceUniverse (35 null),
+  specificHeat (32 null).** All three check out against their sources:
+  PubChem's `ElectronAffinity` field is empty for elements with no
+  measured or bound anion (mostly noble gases, plus much of the
+  d/f-block); Anders & Grevesse (1989) is a stable/long-lived-primordial
+  solar-system compilation, so its 35 absences are exactly the elements
+  with no stable isotope (Tc, Pm, Z>=84 minus none — an exact match);
+  Wikipedia's heat-capacities data page simply has no tabulated value for
+  32, mostly synthetic, elements.
+
+No other `round()`-on-a-small-value bug was found elsewhere in the
+module (`ionizationEnergies` is the only other rounded figure, and eV
+values are never sub-0.001).
+
+**47.4 Per-field source mapping (as shipped, vintages from this run).**
+
+| Panel field | Source id | Title | Vintage |
+| --- | --- | --- | --- |
+| Atomic number, symbol, name, category, electron config (short + full), electron shells, electronegativity, ionization-energy fallback, electron affinity, oxidation states, phase at STP, melting/boiling point, density, van der Waals radius | `pubchem` | PubChem Periodic Table (NIH/NCBI) | retrieved 2026-09-08 |
+| Uses, biological role, hazards (PubChem-sourced prose where present) | `pugview` | PubChem element records (PUG-View), per-statement references | retrieved 2026-09-13 |
+| Standard atomic weight | `ciaaw` | IUPAC/CIAAW Standard Atomic Weights | revisions to 2024 |
+| First three ionization energies | `nist_asd` | NIST Atomic Spectra Database | retrieved 2026-09-08 |
+| Group, period, block, natural occurrence, specific heat (list fallback) | `wp_list` | Wikipedia: List of chemical elements (CRC-cited columns) | retrieved 2026-09-08 |
+| CAS number, discovery year, discoverers, discovery place | `wikidata` | Wikidata (P18/P61/P138/P189/P231/P373/P575) | retrieved 2026-09-08 |
+| Covalent radius | `wp_radii` | Wikipedia: Atomic radii of the elements (data page) | retrieved 2026-09-08 |
+| Crystal structure, magnetic ordering | `wp_infobox` | Wikipedia element infobox templates | retrieved 2026-09-08 |
+| Thermal conductivity | `wp_thermal` | Wikipedia: Thermal conductivities of the elements (data page) | retrieved 2026-09-08 |
+| Electrical conductivity | `wp_resistivity` | Wikipedia: Electrical resistivities of the elements (data page) | retrieved 2026-09-08 |
+| Specific heat (data-page value, where tabulated) | `wp_heat` | Wikipedia: Heat capacities of the elements (data page) | retrieved 2026-09-08 |
+| Crustal abundance | `crc_crust` | CRC Handbook via Wikipedia "Abundances of the elements", column C1 | CRC 85th ed. (2005); retrieved 2026-09-08 |
+| Universe (solar-system) abundance | `anders_grevesse` | Anders & Grevesse (1989) via the same Wikipedia data page, column Y2 | 1989 compilation; retrieved 2026-09-08 |
+| Etymology | `wp_etymology` | Wikipedia: List of chemical element name etymologies | retrieved 2026-09-08 |
+| Description, uses/biological role/hazards (Wikipedia fallback) | `wikipedia` | Wikipedia article text (CC BY-SA, attributed) | retrieved 2026-09-08 |
+| Stable/known isotope counts, notable isotopes | `iaea` | IAEA Nuclear Data Section, Live Chart of Nuclides (NUBASE2020/ENSDF) | IAEA extraction 2023-10-18 |
+| Element photographs | `commons` (per file) | Wikimedia Commons | licence gated per file: PD / CC0 / CC BY / CC BY-SA / FAL |
+| noSample reasons, facility photos, editorial image overrides | `editorial` | `etl/reference/chemistry_samples.json` | v1 |
+
+RSC's periodic table (periodic-table.rsc.org) was inspected, confirmed to
+carry an RSC copyright notice with no reuse licence, and is linked from
+the panel as further reading only, not scraped — unchanged from the
+prior pass, restated here because the spec calls it out explicitly.
+
+**47.5 Coverage, after this pass.**
+
+118 elements, all with a full property set. 117 with an image (18 of
+those are discovering-facility photos for atom-at-a-time elements, 1 is
+a labelled "related" image for radon); 20 elements carry an explicit
+`noSample` flag with a reason (unchanged set: At has a sample photo with
+a `sampleNote` instead of `noSample`, since one exists; Rn, Fr, Md
+through Og do not). 647 null figures remain across 22 properties, every
+one carrying a reason; worst offenders after this pass: discoveryPlace
+71, biologicalRole 66, electricalConductivity 63 (now all genuinely
+untabulated resistivities, not rounding artefacts), electronAffinity 61,
+stableIsotopes 38 (all "no stable isotopes" reasons, not zeros),
+abundanceUniverse 35. 44 glossary entries, one per property key the
+panel renders, each with a >=60-character definition and an http(s)
+source (IUPAC Gold Book, NIST, CAS, IAEA, OpenStax CC BY 4.0, or the
+relevant Wikipedia data page).
+
+**47.6 Not changed.**
+
+The table layout, colouring, legends, keyboard model, the Bohr-model
+renderer, the glossary content and structure, and every property key and
+its glossary entry. The `file` override added to the samples schema is
+additive — existing `noSample`/`facility`/`dropWikidataImage` entries are
+untouched and still take the same precedence order (override file, then
+Wikidata P18, then facility fallback).
+
+**47.7 Open question.**
+
+`discoveryPlace` is null for 71/118 elements because Wikidata's P189
+simply isn't populated for most elements, not because of a bug. A future
+pass could mine each element's Wikipedia infobox free text (not a
+structured template field) for a discovery-place mention, but that is
+per-element prose parsing rather than a table extraction and was judged
+out of scope here.
+
 ## 48. Round 3, Phase 2: the Antique direction becomes "A / Blaeu 1635" (2026-09-07)
 
 Andy rejected the round-2 antique scheme and asked for one researched
