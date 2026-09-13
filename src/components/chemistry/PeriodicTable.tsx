@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { InfoTip } from './InfoTip'
+
 import {
   ANCIENT_FILL,
   CATEGORY_ORDER,
@@ -17,6 +19,7 @@ import {
   type CategoryKey,
   type ElementRecord,
   type ElementsFile,
+  type GlossaryEntry,
   type ViewKey,
   type ViewSpec,
 } from '../../lib/chemistry'
@@ -34,6 +37,13 @@ import {
  * property view fills cells from one sequential hue ramp with lightness
  * as the data channel; a cell with no value is HATCHED and says so in
  * its label — never a colour that could be mistaken for a value.
+ *
+ * Width (round 4, §52.1): from the lg breakpoint the grid FITS its
+ * container — 18 equal columns of minmax(0, 1fr) — and the cell type is
+ * sized in container-query units so the symbols shrink with the cells
+ * instead of overflowing them. Below lg the grid keeps a 54rem floor and
+ * scrolls sideways (a phone cannot show 18 readable columns). The
+ * sideways scroll on a desktop was the complaint this answers.
  */
 
 const COLS = 18
@@ -184,15 +194,15 @@ export function PeriodicTable({
             minWidth: 0,
           }}
         >
-          <span className="text-[9px] tabular-nums" style={{ color: 'var(--text-muted)' }}>
+          <span className="ptable-small tabular-nums" style={{ color: 'var(--text-muted)' }}>
             {element.z}
           </span>
-          <span className="text-[clamp(11px,1.45vw,17px)] font-semibold">
+          <span className="ptable-symbol font-semibold">
             {element.symbol}
           </span>
           <span
-            className="ptable-name w-full truncate text-[8px]"
-            style={{ color: noData ? 'var(--text-muted)' : 'var(--text-muted)' }}
+            className="ptable-name ptable-small w-full truncate"
+            style={{ color: 'var(--text-muted)' }}
           >
             {spec.scale === 'category' ? element.name : noData ? 'no data' : label}
           </span>
@@ -203,15 +213,14 @@ export function PeriodicTable({
 
   return (
     <div>
-      <div className="overflow-x-auto pb-2" role="region" aria-label="Periodic table, scrollable">
+      <div className="ptable-scroll overflow-x-auto pb-2" role="region" aria-label="Periodic table">
         <div
           role="grid"
           aria-label="Periodic table of the elements"
-          className="grid gap-[3px]"
+          className="ptable-grid grid gap-[3px]"
           style={{
-            gridTemplateColumns: `1.4rem repeat(${COLS}, minmax(2.45rem, 1fr))`,
+            gridTemplateColumns: `1.4rem repeat(${COLS}, minmax(0, 1fr))`,
             gridTemplateRows: `1rem repeat(7, auto) 0.6rem repeat(2, auto)`,
-            minWidth: '54rem',
           }}
         >
           {Array.from({ length: COLS }, (_, i) => (
@@ -251,7 +260,7 @@ export function PeriodicTable({
           {cells}
         </div>
       </div>
-      <p className="mt-1 text-[11px] sm:hidden" style={{ color: 'var(--text-muted)' }}>
+      <p className="mt-1 text-[11px] lg:hidden" style={{ color: 'var(--text-muted)' }}>
         Scroll sideways to see all 18 groups.
       </p>
     </div>
@@ -276,37 +285,52 @@ export function TableLegend({
   view,
   highlight,
   onHighlight,
+  glossaryEntries = [],
 }: {
   file: ElementsFile
   view: ViewKey
   highlight: CategoryKey | null
   onHighlight: (category: CategoryKey | null) => void
+  /** Round 4 (§52.2): the glossary's `category.<key>` entries put a ⓘ
+   *  definition beside every category chip. */
+  glossaryEntries?: GlossaryEntry[]
 }) {
   const spec: ViewSpec = VIEWS.find((v) => v.key === view) ?? VIEWS[0]!
   if (spec.scale === 'category') {
     return (
       <ul className="flex flex-wrap gap-x-3 gap-y-1 text-xs" aria-label="Category legend">
-        {CATEGORY_ORDER.map((category) => (
-          <li key={category}>
-            <button
-              type="button"
-              aria-pressed={highlight === category}
-              onClick={() => onHighlight(highlight === category ? null : category)}
-              className="inline-flex items-center gap-1.5 rounded px-1 py-0.5"
-              style={{
-                background: highlight === category ? 'var(--control-selected-bg)' : undefined,
-                color: highlight === category ? 'var(--control-selected-text)' : 'var(--text)',
-              }}
-            >
-              <span
-                aria-hidden="true"
-                className="inline-block h-3 w-3 rounded-sm border"
-                style={{ background: categoryFill(category), borderColor: categoryAccent(category) }}
-              />
-              {file.categories[category]}
-            </button>
-          </li>
-        ))}
+        {CATEGORY_ORDER.map((category) => {
+          const entry = glossaryEntries.find((e) => e.key === `category.${category}`)
+          return (
+            <li key={category} className="inline-flex items-center gap-0.5">
+              <button
+                type="button"
+                aria-pressed={highlight === category}
+                onClick={() => onHighlight(highlight === category ? null : category)}
+                className="inline-flex items-center gap-1.5 rounded px-1 py-0.5"
+                style={{
+                  background: highlight === category ? 'var(--control-selected-bg)' : undefined,
+                  color: highlight === category ? 'var(--control-selected-text)' : 'var(--text)',
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-3 w-3 rounded-sm border"
+                  style={{ background: categoryFill(category), borderColor: categoryAccent(category) }}
+                />
+                {file.categories[category]}
+              </button>
+              {entry && (
+                <InfoTip
+                  term={entry.term}
+                  definition={entry.definition}
+                  unit={entry.unit}
+                  glossaryKey={entry.key}
+                />
+              )}
+            </li>
+          )
+        })}
       </ul>
     )
   }

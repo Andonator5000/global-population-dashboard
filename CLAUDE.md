@@ -162,7 +162,12 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   what both the panel and check:chemistry read — add a property there,
   its glossary entry in etl/reference/chemistry_glossary.json, or the
   gate fails. Editorial sample-photo overrides live in
-  etl/reference/chemistry_samples.json.
+  etl/reference/chemistry_samples.json. The ten element categories have
+  glossary entries keyed category.<key> (§52.2) — extra glossary entries
+  are allowed, property keys are required. Table layout (§52.1): panel
+  beside the table only from xl; the grid fits its column from lg
+  (container-query cell type, no min-width) — do not put the 54rem floor
+  back above lg, that was the desktop sideways scroll.
 - Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
   .json, never data/space/phenomena*; the `phenomena` stage downloads
   every image through the licence gate (no hotlinks) and check:phenomena

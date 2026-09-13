@@ -55,7 +55,8 @@ export function PeriodicTablePage() {
       setSelected(z)
       const element = file?.elements.find((e) => e.z === z)
       if (element) history.replaceState(null, '', `#${element.symbol}`)
-      if (window.innerWidth < 1024) {
+      // Below the xl breakpoint the panel sits under the table (§52.1).
+      if (window.innerWidth < 1280) {
         requestAnimationFrame(() => {
           panelHost.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
         })
@@ -132,10 +133,20 @@ export function PeriodicTablePage() {
             </div>
           </div>
           <div className="mt-3">
-            <TableLegend file={file} view={view} highlight={highlight} onHighlight={setHighlight} />
+            <TableLegend
+              file={file}
+              view={view}
+              highlight={highlight}
+              onHighlight={setHighlight}
+              glossaryEntries={glossary.status === 'ready' ? glossary.data.entries : []}
+            />
           </div>
 
-          <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,26rem)]">
+          {/* Round 4 (§52.1): the panel sits BESIDE the table only from xl
+              (1280px). At lg the two columns left the table ~630px, which
+              forced the sideways scroll Andy hit on a desktop; below xl the
+              table takes the full width and the panel follows underneath. */}
+          <div className="mt-4 grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(20rem,24rem)]">
             <div className="min-w-0">
               <PeriodicTable
                 file={file}
@@ -151,7 +162,7 @@ export function PeriodicTablePage() {
                 to test their chemistry.
               </p>
             </div>
-            <div ref={panelHost} className="min-w-0 lg:sticky lg:top-4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
+            <div ref={panelHost} className="min-w-0 xl:sticky xl:top-4 xl:max-h-[calc(100vh-2rem)] xl:overflow-y-auto">
               {element ? (
                 <div
                   onKeyDown={(event) => {

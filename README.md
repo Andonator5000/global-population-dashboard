@@ -40,7 +40,9 @@ The browser never calls an upstream API — it reads committed artifacts from
 > directions now tone the satellite and terrain views too; the antique
 > surround is black space. The God's Eye View project was evaluated for
 > this round: its rendering discipline was adopted, none of its keyed
-> live APIs (§51.0).
+> live APIs (§51.0). The periodic table now fits a desktop without a
+> sideways scroll and every element category has a sourced definition
+> (§52).
 
 ## Layout
 

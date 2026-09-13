@@ -692,6 +692,31 @@ dialog.lightbox {
   margin: auto;
 }
 
+/* Periodic table sizing (round 4, §52.1). The grid is its own container so the
+   cell type is set in cqw of the GRID (not the scroll region) and shrinks
+   with the cells: at lg+ the table
+   FITS its column (no sideways scroll on a desktop); below lg it keeps a
+   54rem floor inside its scroll region, where 1cqw = 8.64px and the
+   clamps land on their upper bounds. */
+.ptable-grid {
+  container-type: inline-size;
+  min-width: 54rem;
+}
+
+@media (min-width: 1024px) {
+  .ptable-grid {
+    min-width: 0;
+  }
+}
+
+.ptable-symbol {
+  font-size: clamp(10px, 2.1cqw, 18px);
+}
+
+.ptable-small {
+  font-size: clamp(7px, 0.95cqw, 9px);
+}
+
 dialog.lightbox::backdrop {
   background: rgb(0 0 0 / 0.82);
 }

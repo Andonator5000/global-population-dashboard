@@ -3526,6 +3526,44 @@ for identical geometry. Phone-side numbers are inferred from the
 main-thread costs above, not measured on a device — Andy reviews the
 live site on his phone and that remains the acceptance test.
 
+## 52. Round 4: the periodic table fits a desktop, and the categories are defined (2026-09-13)
+
+Andy: on a desktop the Chemistry table needed a sideways slider to
+reach the last column; and the element types (transition metals and
+the rest) had no definitions.
+
+**52.1 Fit.** The table sat beside the element panel from the lg
+breakpoint (1024px) with a hard 54rem floor, which at 1024–1279px left
+it ~630px of column and forced the scroll; at 1280px it fitted only
+with nothing else in the way (a scrollbar or a larger font tipped it
+over). Now: the two-column layout starts at **xl (1280px)** with the
+panel capped at 24rem; below that the table takes the full width and
+the panel follows underneath (the select handler scrolls to it below
+1280 instead of 1024). From lg the grid drops its floor and is 18
+columns of `minmax(0, 1fr)` in a `container-type: inline-size` grid,
+with the cell type in container-query units — symbol
+`clamp(10px, 2.1cqw, 18px)`, number and name `clamp(7px, 0.95cqw, 9px)`
+— so the cells and their lettering shrink together. Below lg the 54rem
+floor and the sideways scroll remain (a phone cannot show 18 readable
+columns) and the hint says so up to lg. Verified in headed Chrome at
+1024/1280/1366/1600: the grid equals its region's width, nothing
+scrolls, oganesson's right edge is inside the column, symbol 17–18px.
+
+**52.2 Category definitions.** Ten EDITORIAL entries join
+`etl/reference/chemistry_glossary.json` (version 2), keyed
+`category.<key>` for the ten `CATEGORY_ORDER` keys, each a
+plain-language paraphrase with a cited source: OpenStax Chemistry 2e
+§2.5 for alkali metals, alkaline earth metals, transition metals,
+metalloids, noble gases, lanthanides and actinides; Wikipedia
+("Post-transition metal", "Nonmetal", "Superheavy element", CC BY-SA)
+for the three that are conventions rather than textbook terms, and the
+entries say so. They surface as the same ⓘ InfoTip beside each chip of
+the category legend and beside the category name in the element
+panel's header, and they list on /chemistry/glossary with everything
+else. check:chemistry accepts extra glossary entries by design (it
+requires an entry per property key and validates every entry's
+definition and source); the chemistry stage's own guard is unchanged.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

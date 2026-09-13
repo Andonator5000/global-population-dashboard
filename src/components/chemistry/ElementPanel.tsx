@@ -214,6 +214,22 @@ export function ElementPanel({
             </h2>
             <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
               Atomic number {element.z} · {file.categories[element.category]}
+              {/* Round 4 (§52.2): the category's own definition, from the
+                  glossary's category.<key> entry, beside its name. */}
+              {(() => {
+                const entry = glossary.get(`category.${element.category}`)
+                return entry ? (
+                  <>
+                    {' '}
+                    <InfoTip
+                      term={entry.term}
+                      definition={entry.definition}
+                      unit={entry.unit}
+                      glossaryKey={entry.key}
+                    />
+                  </>
+                ) : null
+              })()}
               {element.properties.group.value !== null && ` · Group ${String(element.properties.group.value)}`}
               {element.properties.period.value !== null && ` · Period ${String(element.properties.period.value)}`}
             </p>
