@@ -147,6 +147,16 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   src/lib/device.ts governs dpr caps, tile budgets/decode size and
   anisotropy — no user-agent sniffing; resolve CSS colours through
   resolveCssColor (cached probe), never a fresh canvas per call.
+  Round 5 (§53, the phone layout): the viewBox is per-render
+  (`viewW`/`viewH` — 1000×1000 for the globe on a compact stage, never
+  the VIEW_* constants directly); touch selection opens the in-flow
+  bottom sheet (`renderSheet`), never a pinned popover; the svg is
+  touch-pan-y embedded and touch-none in explore mode; `frameRef` is
+  what goes full screen (with the CSS pseudo-fullscreen fallback for
+  iOS), `containerRef` the measured stage; the search box drives
+  `WorldMapHandle.flyTo`; label growth is capped at LABEL_GROWTH_CAP;
+  Tailwind's source scan is restricted to src/ + index.html (§53.7) —
+  never let it walk /data again.
 - Timeline (round 2, §38, §42.4–5): full-width MEASURED era banners,
   each tinted by its era's own oklch hue (light-dark pairs in
   Timeline.tsx — text contrast never depends on the hue); era

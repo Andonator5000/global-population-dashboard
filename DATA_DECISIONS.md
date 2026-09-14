@@ -3564,6 +3564,105 @@ else. check:chemistry accepts extra glossary entries by design (it
 requires an entry per property key and validates every entry's
 definition and source); the chemistry stage's own guard is unchanged.
 
+## 53. Round 5: the phone globe — square frame, bottom sheet, explore mode, search (2026-09-13)
+
+Andy's brief, after checking WorldMap.tsx himself: the map keeps a
+1000×480 frame, so at 350 px wide the globe is 168 px tall and the
+popup competes for that space. His list, in his order: a near-square
+globe that fills the width with the counter compressed and the year
+controls underneath; a bottom information panel instead of floating
+popups (tap → highlight → name/population/growth; swipe up for more,
+down to keep exploring; selected country stays visible); scrolling
+separated from globe gestures with the fullscreen option as an obvious
+"Explore globe" button; "Search countries" directly above the globe
+that flies to the result; thumb-sized controls (Globe/Map, zoom, Reset)
+with the rest in one Map settings panel; more forgiving selection (more
+labels with zoom, a short list of nearby countries on an ambiguous tap).
+
+**53.1 Square frame.** The viewBox is now a per-render value: 1000×1000
+for the globe on a compact stage (< 640 px), 1000×480 otherwise. Every
+consumer of the frame — projection fit, layouts for both canvases, the
+zoom extent, the label bounds, the antique rects, the stroke conversion
+— takes `viewW`/`viewH`; `compact` is decided by the measured stage
+width, seeded from the window so the first paint is already right.
+Measured on a Pixel 7 (412 px viewport): the svg is 361×361 (was
+361×174). The page container is a flex column so the phone order
+differs without duplicating anything: header → toolbar+search+map →
+year controls (order-4 on phones, order-2 on wider screens) → table.
+The counter drops a size on phones and the header loses padding.
+
+**53.2 Bottom sheet.** `renderSheet(target, expanded)` is a new WorldMap
+prop; when it is set and the tap is a touch (or the stage is compact),
+`selectUnlessDragging` no longer pins a popover — it highlights the
+country (through `onHover`) and opens `.map-sheet` IN FLOW under the
+stage, so it never covers the globe. In explore mode the frame is a
+flex column and the stage shrinks above the sheet, so the selected
+country stays visible whatever the sheet's height. Collapsed: flag,
+name, population, growth, More info. Expanded (swipe up, or tap the
+grip): the full popover card plus the MapReadout, which the phone
+layout no longer shows beside the map (`aside` is hidden below sm).
+Swipe thresholds ±30 px; swipe down collapses, then closes. The swipe
+uses native non-passive touch listeners on the grip — React's touch
+handlers are passive, so the page scrolled under the first attempt
+(measured with CDP touch events; expanded stayed false). Mouse users
+get the same through pointer events. The desktop hover popover is
+unchanged; a search on a desktop shows the result in the readout, not a
+sheet.
+
+**53.3 Explore mode.** The svg's touch-action is `pan-y` when embedded:
+a vertical swipe scrolls the page (the browser takes it and fires
+pointercancel, which ends any drag session), a horizontal drag still
+spins, a pinch still zooms. "Explore globe" (a labelled pill, top-left,
+compact only) is the fullscreen control: inside, touch-action is
+`none`, one finger spins and two zoom, "Done" leaves. iOS Safari has no
+element fullscreen, so the frame falls back to a CSS pin (`fixed
+inset-0`, body scroll locked, Escape leaves) when `requestFullscreen`
+is missing or rejects. The fullscreen element is the FRAME (stage +
+sheet), and the stage is what is measured — `containerRef` is the
+stage, `frameRef` the frame.
+
+**53.4 Search.** `CountrySearch` (combobox + listbox, no library;
+accent-folded prefix-on-any-word then substring) sits directly above
+the map on every width. Picking a result calls `WorldMapHandle.flyTo`
+(the map is now a forwardRef): the globe rotates to the entity's
+spherical centroid, the fit projects it under that orientation and
+zooms so it fills about a third of the frame (markers get a small
+context box), through the d3-zoom behaviour with a 650 ms transition
+(none under reduced motion), then the sheet opens (touch/compact) or
+the readout shows it (pointer). Flat projections zoom without rotating.
+
+**53.5 Thumb controls.** On phones the toolbar is a Globe / Map
+segmented toggle (Map returns to the last flat projection) plus a "Map
+settings" disclosure holding fill mode, base view, projection and
+colours; on wider screens the same controls render as the toolbar
+(one DOM, CSS decides). ZoomControls gains `large` (44 px targets),
+`horizontal` (a row for the short flat map, where a column of four hung
+below it) and `onReset` (initial orientation, zoom 1, sheet closed).
+
+**53.6 Forgiving selection.** Label growth is capped at 3× the zoom-1
+size (`LABEL_GROWTH_CAP`; it used to grow without bound — "Cuneo" was a
+billboard at 48×), and compact stages show country names at 0.6× the
+area threshold. On a touch tap, nine probe points on a 14 px ring go
+through `elementFromPoint`; every distinct `data-iso3` under them
+becomes a "Nearby" chip in the sheet (e.g. a tap on the Central African
+Republic offers DR Congo, Cameroon, Chad).
+
+**53.7 Dev-server fix found on the way.** Tailwind v4 scans every
+non-gitignored file for class names, and /data is 224 MB in ~20k
+committed files: every dev CSS rebuild walked it, and index.html took
+10–20 s after an ETL run touched 4k genera files. `@import
+'tailwindcss' source(none)` with explicit `@source '../src'` and
+`'../index.html'` — index.html now serves in 7 ms; the production CSS
+still carries every class (built size grew only by the new
+components).
+
+**53.8 Verification.** Pixel 7 emulation with CDP touch: tap → sheet
+with nearby chips; swipe → expanded; search "mona" → Monaco flown to
+and sheeted; Explore → Done; Map settings; flat Map with a horizontal
+control row; search "japan" on the flat map. Desktop 1280: hover
+popover intact, search "nepal" flies without a sheet. No console
+errors. The live site on Andy's phone remains the acceptance test.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

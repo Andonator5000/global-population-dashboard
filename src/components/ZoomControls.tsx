@@ -31,6 +31,9 @@ export function ZoomControls({
   storageKey = 'map-zoom-slider',
   buttonStyle,
   buttonClassName = '',
+  onReset,
+  large = false,
+  horizontal = false,
 }: {
   onZoomIn: () => void
   onZoomOut: () => void
@@ -42,7 +45,17 @@ export function ZoomControls({
   storageKey?: string
   buttonStyle?: React.CSSProperties
   buttonClassName?: string
+  /** Round 5 (§53.5): a "Reset view" button (initial orientation, zoom 1). */
+  onReset?: () => void
+  /** Thumb-sized 44 px targets for phones (§53.5). */
+  large?: boolean
+  /** A row instead of a column — for a short, wide stage (the flat map on
+   *  a phone), where a column of four would hang below the map. */
+  horizontal?: boolean
 }) {
+  // 44 px is the touch-target floor; 32 px is fine for a pointer.
+  const size = large ? 'h-11 w-11 text-xl' : 'h-8 w-8 text-lg'
+  const iconSize = large ? 'h-11 w-11' : 'h-8 w-8'
   const [sliderVisible, setSliderVisible] = useState(() => {
     try {
       return sessionStorage.getItem(storageKey) === '1'
@@ -69,12 +82,12 @@ export function ZoomControls({
   )
 
   return (
-    <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
+    <div className={`absolute right-3 top-3 z-10 flex gap-1.5 ${horizontal ? 'flex-row' : 'flex-col'}`}>
       <div className="map-ctl relative">
         <button
           type="button"
           aria-label="Zoom in"
-          className={`h-8 w-8 rounded text-lg leading-none ${buttonClassName}`}
+          className={`${size} rounded leading-none ${buttonClassName}`}
           style={buttonStyle}
           onClick={onZoomIn}
         >
@@ -101,7 +114,7 @@ export function ZoomControls({
         <button
           type="button"
           aria-label="Zoom out"
-          className={`h-8 w-8 rounded text-lg leading-none ${buttonClassName}`}
+          className={`${size} rounded leading-none ${buttonClassName}`}
           style={buttonStyle}
           onClick={onZoomOut}
         >
@@ -116,7 +129,7 @@ export function ZoomControls({
           type="button"
           aria-label={isFullscreen ? 'Exit full screen' : 'View full screen'}
           aria-pressed={isFullscreen}
-          className={`flex h-8 w-8 items-center justify-center rounded ${buttonClassName}`}
+          className={`flex ${iconSize} items-center justify-center rounded ${buttonClassName}`}
           style={buttonStyle}
           onClick={onToggleFullscreen}
         >
@@ -158,6 +171,35 @@ export function ZoomControls({
           </span>
         </div>
       </div>
+      {onReset && (
+        <div className="map-ctl relative">
+          <button
+            type="button"
+            aria-label="Reset view"
+            className={`flex ${iconSize} items-center justify-center rounded ${buttonClassName}`}
+            style={buttonStyle}
+            onClick={onReset}
+          >
+            {/* A counter-clockwise arrow: back to the first view. */}
+            <svg
+              viewBox="0 0 16 16"
+              className="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3.5 8a4.5 4.5 0 1 0 1.3-3.2" />
+              <path d="M3 2.5v3h3" />
+            </svg>
+          </button>
+          <div className="map-tooltip">
+            <span className="map-tooltip-bubble">Reset view</span>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

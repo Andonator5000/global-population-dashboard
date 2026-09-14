@@ -1,12 +1,13 @@
-import { memo, useMemo, useState } from 'react'
+import { memo, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 
+import { CountrySearch } from '../components/CountrySearch'
 import { EntityTable } from '../components/EntityTable'
 import { LiveCounter } from '../components/LiveCounter'
 import { MethodInfoLink } from '../components/MethodInfoLink'
 import { MapReadout } from '../components/MapReadout'
 import { TimeScrubber } from '../components/TimeScrubber'
-import { WorldMap, type HoverTarget } from '../components/WorldMap'
+import { WorldMap, type HoverTarget, type WorldMapHandle } from '../components/WorldMap'
 import {
   BASE_VIEWS,
   BASE_VIEW_LABELS,
@@ -113,6 +114,65 @@ function CountryPopoverContent({
   )
 }
 
+/**
+ * Bottom-sheet content for a tapped country (round 5, §53.2). Collapsed:
+ * flag, name, and the two figures a reader wants first. Expanded (swiped
+ * up): the popover's full card with its "More info" link, plus the
+ * readout panel that the phone layout no longer shows beside the map.
+ */
+function CountrySheetContent({
+  target,
+  row,
+  gdp,
+  expanded,
+  readout,
+}: {
+  target: HoverTarget
+  row: PopulationRow | undefined
+  gdp: GdpSummary['entities'][string] | undefined
+  expanded: boolean
+  readout: React.ReactNode
+}) {
+  if (expanded) {
+    return (
+      <div className="space-y-3">
+        <CountryPopoverContent target={target} row={row} gdp={gdp} />
+        {readout}
+      </div>
+    )
+  }
+  return (
+    <div className="font-sans">
+      <p className="flex items-center gap-2 text-base font-semibold leading-tight">
+        <img
+          src={`${DATA_BASE_URL}/flags/svg/${target.iso3}.svg`}
+          alt=""
+          className="h-4 w-6 shrink-0 rounded-[2px] border object-cover"
+          style={{ borderColor: 'var(--border)' }}
+          loading="lazy"
+        />
+        {target.name}
+      </p>
+      <p className="mt-1 text-sm tabular-nums" style={{ color: 'var(--text-muted)' }}>
+        {row?.available && row.population != null
+          ? `${formatPopulation(row.population)} people`
+          : 'population not available'}
+        {row?.available && row.growthRate != null
+          ? ` · ${formatGrowthRate(row.growthRate)} growth`
+          : ''}
+        {' · '}
+        <Link
+          to={`/country/${target.iso3}`}
+          className="underline underline-offset-2"
+          style={{ color: 'var(--accent)' }}
+        >
+          More info
+        </Link>
+      </p>
+    </div>
+  )
+}
+
 export function HomePage() {
   const summaryState = usePopulationSummary()
   const paletteState = useMapPalette()
@@ -166,6 +226,12 @@ export function HomePage() {
   }
   const [hovered, setHovered] = useState<HoverTarget | null>(null)
   const [activeContinent, setActiveContinent] = useState<ContinentKey | null>(null)
+  const mapRef = useRef<WorldMapHandle>(null)
+  /** Phone toolbar (§53.5): the settings panel is collapsed by default. */
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  /** The flat projection the Globe/Map toggle returns to. */
+  const lastFlat = useRef<ProjectionKey>('equalEarth')
+  if (projectionKey !== 'globe') lastFlat.current = projectionKey
 
   // null means "now" -- the live counter runs. A number pins every figure to
   // that year and stops the ticking, because a running count only means
@@ -259,6 +325,13 @@ export function HomePage() {
   }, [rows, scrubPopulation, scrubYear])
 
   const tableRows = useMemo(() => [...byIso3.values()], [byIso3])
+  const searchEntities = useMemo(
+    () =>
+      tableRows
+        .map((row) => ({ iso3: row.iso3, name: row.name }))
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    [tableRows],
+  )
 
   const worldTotal = useMemo(
     () =>
@@ -297,9 +370,13 @@ export function HomePage() {
     // things to find instead of one green field. Every colour is a gated
     // theme token; no new colour was introduced.
     <div className="min-h-full" style={{ background: 'var(--page-tint)' }}>
-    <div className="mx-auto max-w-[110rem] px-6 py-8">
+    {/* Round 5 (§53.1): a flex column so the phone order differs from the
+        desktop order without rendering anything twice — on a phone the
+        year controls move BELOW the map (order-4) so the globe comes
+        sooner; on wider screens they follow the header as before. */}
+    <div className="mx-auto flex max-w-[110rem] flex-col px-4 py-6 sm:px-6 sm:py-8">
       <header
-        className="rounded-xl border px-6 py-6"
+        className="order-1 rounded-xl border px-4 py-4 sm:px-6 sm:py-6"
         style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
       >
         <p
@@ -362,10 +439,12 @@ export function HomePage() {
           <MethodInfoLink anchor="projections" label="About the map projections" />
         </p>
 
+      </header>
+
       {timeline && (
         <div
-          className="mt-5 rounded-lg border px-4 py-3"
-          style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
+          className="order-4 mt-4 rounded-xl border px-4 py-3 sm:order-2 sm:mt-3"
+          style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
         >
           <TimeScrubber
             years={timeline.years}
@@ -393,11 +472,59 @@ export function HomePage() {
           )}
         </div>
       )}
-      </header>
+
+      <div className="order-3 mt-4 sm:mt-6">
+      {/* Phone toolbar (§53.5): Globe / Map and a Map settings disclosure
+          with generous tap areas; the full control set below is the
+          settings panel on a phone and the toolbar on wider screens. */}
+      <div
+        className="flex items-center gap-2 rounded-t-xl border border-b-0 px-3 py-2.5 text-sm sm:hidden"
+        style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+      >
+        <fieldset className="flex flex-1 items-center gap-1">
+          <legend className="sr-only">Globe or flat map</legend>
+          {(['globe', 'flat'] as const).map((value) => {
+            const active = value === 'globe' ? projectionKey === 'globe' : projectionKey !== 'globe'
+            return (
+              <button
+                key={value}
+                type="button"
+                aria-pressed={active}
+                onClick={() =>
+                  setProjectionKey(value === 'globe' ? 'globe' : lastFlat.current)
+                }
+                className="min-h-11 flex-1 rounded-lg border px-3 py-2 font-medium"
+                style={{
+                  borderColor: 'var(--border)',
+                  background: active ? 'var(--control-selected-bg)' : 'transparent',
+                  color: active ? 'var(--control-selected-text)' : 'inherit',
+                }}
+              >
+                {value === 'globe' ? 'Globe' : 'Map'}
+              </button>
+            )
+          })}
+        </fieldset>
+        <button
+          type="button"
+          aria-expanded={settingsOpen}
+          aria-controls="map-settings"
+          onClick={() => setSettingsOpen((open) => !open)}
+          className="min-h-11 rounded-lg border px-3 py-2 font-medium"
+          style={{
+            borderColor: 'var(--border)',
+            background: settingsOpen ? 'var(--control-selected-bg)' : 'transparent',
+            color: settingsOpen ? 'var(--control-selected-text)' : 'inherit',
+          }}
+        >
+          Map settings
+        </button>
+      </div>
 
       {/* Map toolbar: fill mode, projection, colours, and the interaction hint. */}
       <div
-        className="mt-6 flex flex-wrap items-center gap-4 rounded-t-xl border border-b-0 px-4 py-3 text-sm"
+        id="map-settings"
+        className={`${settingsOpen ? 'flex' : 'hidden'} flex-wrap items-center gap-4 border border-b-0 px-4 py-3 text-sm sm:flex sm:rounded-t-xl`}
         style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
       >
         <fieldset className="flex items-center gap-2">
@@ -455,14 +582,14 @@ export function HomePage() {
           ))}
         </fieldset>
 
-        <label className="flex items-center gap-2">
+        <label className="flex w-full items-center gap-2 sm:w-auto">
           <span style={{ color: 'var(--text-muted)' }}>Projection</span>
           <select
             value={projectionKey}
             onChange={(event) =>
               setProjectionKey(event.target.value as ProjectionKey)
             }
-            className="rounded border px-2 py-1"
+            className="min-w-0 flex-1 rounded border px-2 py-1 sm:flex-none"
             style={{
               borderColor: 'var(--border)',
               background: 'var(--surface-raised)',
@@ -477,14 +604,14 @@ export function HomePage() {
           </select>
         </label>
 
-        <label className="flex items-center gap-2">
+        <label className="flex w-full items-center gap-2 sm:w-auto">
           <span style={{ color: 'var(--text-muted)' }}>Map colours</span>
           <select
             value={paletteDirection}
             onChange={(event) =>
               pickPalette(event.target.value as MapPaletteKey)
             }
-            className="rounded border px-2 py-1"
+            className="min-w-0 flex-1 rounded border px-2 py-1 sm:flex-none"
             style={{
               borderColor: 'var(--border)',
               background: 'var(--surface-raised)',
@@ -499,7 +626,7 @@ export function HomePage() {
           </select>
         </label>
 
-        <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+        <span className="hidden text-xs sm:inline" style={{ color: 'var(--text-muted)' }}>
           {projectionKey === 'globe'
             ? 'Drag to spin the globe; scroll or pinch to zoom.'
             : 'Scroll or pinch to zoom, drag to pan.'}{' '}
@@ -507,6 +634,20 @@ export function HomePage() {
           and Enter to open one.
         </span>
       </div>
+
+      {/* Search countries (§53.4), directly above the map: a result flies
+          the map to the country and opens its details. */}
+      {!loading && !error && (
+        <div
+          className="border border-b-0 px-3 py-2.5 sm:px-4"
+          style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+        >
+          <CountrySearch
+            entities={searchEntities}
+            onPick={(iso3) => mapRef.current?.flyTo(iso3)}
+          />
+        </div>
+      )}
 
       {error && (
         <p className="mt-8" style={{ color: 'var(--text-muted)' }}>
@@ -522,7 +663,7 @@ export function HomePage() {
 
       {!loading && !error && topologyState.status === 'ready' && (
         <div
-          className="map-layout grid gap-6 rounded-b-xl border border-t-0 p-4 lg:grid-cols-[minmax(0,1fr)_17rem]"
+          className="map-layout grid gap-6 rounded-b-xl border border-t-0 p-2 sm:p-4 lg:grid-cols-[minmax(0,1fr)_17rem]"
           style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
         >
           {/* Escape hatch for keyboard users. The map is a single tab stop
@@ -540,6 +681,7 @@ export function HomePage() {
             style={{ borderColor: 'var(--border)' }}
           >
             <WorldMap
+              ref={mapRef}
               topology={topologyState.data}
               markers={
                 markersState.status === 'ready' ? markersState.data.markers : []
@@ -557,6 +699,30 @@ export function HomePage() {
                     gdpState.status === 'ready'
                       ? (gdpState.data.entities[target.iso3] ?? undefined)
                       : undefined
+                  }
+                />
+              )}
+              renderSheet={(target, expanded) => (
+                <CountrySheetContent
+                  target={target}
+                  row={byIso3.get(target.iso3)}
+                  gdp={
+                    gdpState.status === 'ready'
+                      ? (gdpState.data.entities[target.iso3] ?? undefined)
+                      : undefined
+                  }
+                  expanded={expanded}
+                  readout={
+                    <MapReadout
+                      target={target}
+                      row={byIso3.get(target.iso3)}
+                      year={scrubYear ?? year}
+                      revision={revision}
+                      topology={topologyState.data}
+                      palette={
+                        paletteState.status === 'ready' ? paletteState.data : null
+                      }
+                    />
                   }
                 />
               )}
@@ -590,7 +756,8 @@ export function HomePage() {
             )}
           </div>
 
-          <aside className="space-y-4">
+          {/* On a phone the bottom sheet is the readout (§53.2). */}
+          <aside className="hidden space-y-4 sm:block">
             <MapReadout
               target={hovered}
               row={hovered ? byIso3.get(hovered.iso3) : undefined}
@@ -604,8 +771,10 @@ export function HomePage() {
           </aside>
         </div>
       )}
+      </div>
 
       {summaryState.status === 'ready' && (
+        <div className="order-5">
         <MemoEntityTable
           rows={tableRows}
           year={scrubYear ?? year}
@@ -617,6 +786,7 @@ export function HomePage() {
               : `Only population varies with the selected year. Growth rate and density are left blank rather than carried over from ${year}, which would pair a ${year} rate with a ${scrubYear} population.`
           }
         />
+        </div>
       )}
     </div>
     </div>
