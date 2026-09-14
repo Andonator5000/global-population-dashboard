@@ -86,9 +86,17 @@ const INITIAL_ROTATION: [number, number] = [-10, -20]
  * Andy asked for it back down in round 6 ("I don't need the globe to
  * spin that quickly"). Eased by the square root of the zoom.
  */
-const DRAG_SENSITIVITY = 0.375
+const DRAG_SENSITIVITY = 0.25
 /** Inertia decay per frame; 0.9 stops a flick in about a second. */
 const INERTIA_DECAY = 0.9
+/**
+ * Round 7 (section 57.2): a flick's starting speed is capped, in CSS px
+ * per frame, so the fastest spin is about what Google Earth allows -- a
+ * hard flick carries the globe a quarter turn or so, never a blur of
+ * revolutions. Andy: "slow down the speed ... to match the maximum
+ * movement speed of the globe on Google Earth."
+ */
+const INERTIA_MAX_PX_PER_FRAME = 18
 
 /**
  * Keep lambda in [-180, 180). The drag accumulates it without bound (a
@@ -521,6 +529,13 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       for (let i = 1; i < line.length; i += 1) {
         const [lon0, lat0] = line[i - 1] as [number, number]
         const [lon1, lat1] = line[i] as [number, number]
+        // Natural Earth splits Russia, Fiji and Antarctica at the
+        // antimeridian and closes Antarctica along the pole; those cut
+        // edges are data seams, not borders, and the GL pass (which now
+        // draws the outlines at rest too, section 57.2) must not stroke a
+        // line down the middle of the Pacific.
+        if (Math.abs(lon0) >= 179.999 && Math.abs(lon1) >= 179.999) continue
+        if (Math.abs(lat0) >= 89.999 && Math.abs(lat1) >= 89.999) continue
         const distance = geoDistance([lon0, lat0], [lon1, lat1]) / rad
         const pieces = Math.max(1, Math.ceil(distance))
         if (pieces === 1) {
@@ -990,6 +1005,22 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#0b2740',
       // Section 51.1: the palette's tone over the imagery.
       grade: IMAGERY_GRADES[paletteDirection],
+      // Round 7 (section 57.2): at rest the outlines come from the SAME
+      // GL pass as the imagery, exactly as during a drag. Two renderers
+      // (SVG strokes over a GL picture) can only ever agree if they paint
+      // in the same frame from the same numbers, and on Andy's phone they
+      // did not; one renderer cannot disagree with itself. The SVG keeps
+      // its transparent country shapes for hover, tap and keyboard, with
+      // no stroke of its own in these views.
+      borders:
+        rendererRef.current instanceof Canvas2DImagery
+          ? undefined
+          : {
+              color:
+                imagery === 'terrain'
+                  ? [92 / 255, 71 / 255, 48 / 255, 0.7]
+                  : [1, 1, 1, 0.78],
+            },
     })
   }, [
     satellite,
@@ -1350,6 +1381,11 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     if (reduced || Math.hypot(dx, dy) < 3) {
       endDragRender()
       return
+    }
+    const speed = Math.hypot(dx, dy)
+    if (speed > INERTIA_MAX_PX_PER_FRAME) {
+      dx *= INERTIA_MAX_PX_PER_FRAME / speed
+      dy *= INERTIA_MAX_PX_PER_FRAME / speed
     }
     const step = () => {
       dx *= INERTIA_DECAY
@@ -1992,8 +2028,12 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   /** Country borders must read on imagery, where the dark ocean stroke
    *  vanishes: light strokes on the dark satellite, dark warm strokes on
    *  the light terrain relief (round-2 §37). */
-  const countryStroke =
-    imagery === 'satellite'
+  // Imagery views: the GL pass draws the outlines (section 57.2); the SVG
+  // strokes only on the 2-D fallback, which has no GL pass at rest.
+  const glOutlines = satellite && !(rendererRef.current instanceof Canvas2DImagery)
+  const countryStroke = glOutlines
+    ? 'none'
+    : imagery === 'satellite'
       ? 'rgba(255, 255, 255, 0.78)'
       : imagery === 'terrain'
         ? 'rgba(92, 71, 48, 0.7)'
@@ -2342,18 +2382,6 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
             animation, so prefers-reduced-motion is moot. */}
         {antique && (
           <>
-            <filter id="antique-grain" x="0" y="0" width="1" height="1">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.9"
-                numOctaves="2"
-                seed="7"
-              />
-              <feColorMatrix type="saturate" values="0" />
-              <feComponentTransfer>
-                <feFuncA type="linear" slope="0.09" />
-              </feComponentTransfer>
-            </filter>
             <radialGradient id="antique-vignette" cx="50%" cy="50%" r="72%">
               <stop offset="58%" stopColor={ANTIQUE.line} stopOpacity="0" />
               <stop offset="100%" stopColor={ANTIQUE.line} stopOpacity="0.22" />
@@ -2722,14 +2750,13 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
           per-shape aria-labels. */}
       {/* Antique sheet texture, above everything and inert: multiply grain
           plus a corner vignette, view-fixed (outside the zoom transform). */}
+      {/* Round 7 (section 57.3): the feTurbulence paper-grain rect is gone.
+          Andy saw a faint darker rectangle across the middle of the antique
+          view -- the filter's rendered region, which GPUs tile and clamp at
+          large sizes, so the multiply landed on part of the sheet only. The
+          vignette (a plain gradient) stays. */}
       {antique && (
         <g pointerEvents="none" aria-hidden="true">
-          <rect
-            width={viewW}
-            height={viewH}
-            filter="url(#antique-grain)"
-            style={{ mixBlendMode: 'multiply' }}
-          />
           <rect
             width={viewW}
             height={viewH}
