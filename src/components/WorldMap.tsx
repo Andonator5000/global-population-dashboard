@@ -16,6 +16,7 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -78,6 +79,29 @@ const VIEW_HEIGHT_COMPACT_GLOBE = 1000
 const COMPACT_MAX_WIDTH = 640
 /** Initial orientation, also what "Reset view" returns to. */
 const INITIAL_ROTATION: [number, number] = [-10, -20]
+
+/**
+ * Drag sensitivity in degrees per CSS pixel (round 6, section 54.2).
+ * History: 0.25 -> 0.375 -> 0.5625 by two maintainer raises in 2026-08;
+ * Andy asked for it back down in round 6 ("I don't need the globe to
+ * spin that quickly"). Eased by the square root of the zoom.
+ */
+const DRAG_SENSITIVITY = 0.375
+/** Inertia decay per frame; 0.9 stops a flick in about a second. */
+const INERTIA_DECAY = 0.9
+
+/**
+ * Keep lambda in [-180, 180). The drag accumulates it without bound (a
+ * few fast spins reach thousands of degrees) and d3 does not care -- but
+ * the GPU does: mobile GPUs evaluate sin/cos of large arguments with
+ * visibly reduced precision, and the imagery (inverse path, atan/asin)
+ * and the outline lines (forward path, sin/cos) then land in different
+ * places. That was the "white outlines drift when the globe spins fast"
+ * report (section 54.2). Wrapped at every write of the rotation ref.
+ */
+function wrapLongitude(lambda: number): number {
+  return ((((lambda + 180) % 360) + 360) % 360) - 180
+}
 
 /**
  * Zoom ceiling. Raised from 12 (2026-08-23, maintainer request): at 12x the
@@ -927,8 +951,15 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     setImageryVersion((v) => v + 1)
   }, [imagery])
 
-  useEffect(() => {
-    if (!satellite) return
+  // useLayoutEffect, not useEffect (section 54.2): the SVG's outlines and
+  // the GL imagery must change in the SAME paint. A passive effect ran
+  // after the browser painted the re-projected SVG over the previous
+  // imagery -- one frame of outlines out of step, every time the stage
+  // resized or the sheet opened. And never mid-drag: the drag frames own
+  // the canvas then, and a React commit during a gesture (a tile landing,
+  // a pinch) must not repaint it from stale state.
+  useLayoutEffect(() => {
+    if (!satellite || isDragRendering.current) return
     const canvas = canvasRef.current
     const renderer = rendererRef.current
     if (!canvas || !renderer) return
@@ -1303,11 +1334,11 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       return
     }
     const step = () => {
-      dx *= 0.93
-      dy *= 0.93
-      const sensitivity = 0.5625 / Math.sqrt(zoomLevel.current)
+      dx *= INERTIA_DECAY
+      dy *= INERTIA_DECAY
+      const sensitivity = DRAG_SENSITIVITY / Math.sqrt(zoomLevel.current)
       rotationRef.current = [
-        rotationRef.current[0] + dx * sensitivity,
+        wrapLongitude(rotationRef.current[0] + dx * sensitivity),
         Math.max(-90, Math.min(90, rotationRef.current[1] - dy * sensitivity)),
       ]
       drawDragFrame()
@@ -1621,12 +1652,11 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         // to canvas — React sees nothing until the gesture ends.
         beginDragRender()
         lastFrameDelta.current = { dx: fdx, dy: fdy }
-        // Degrees per CSS pixel, eased down as the zoom tightens.
-        // 0.25 -> 0.375 -> 0.5625 (2026-08-24): raised 50% twice on
-        // maintainer request; the spin should track a finger briskly.
-        const sensitivity = 0.5625 / Math.sqrt(zoomLevel.current)
+        // Degrees per CSS pixel, eased down as the zoom tightens (see
+        // DRAG_SENSITIVITY for the history).
+        const sensitivity = DRAG_SENSITIVITY / Math.sqrt(zoomLevel.current)
         rotationRef.current = [
-          rotationRef.current[0] + fdx * sensitivity,
+          wrapLongitude(rotationRef.current[0] + fdx * sensitivity),
           Math.max(
             -90,
             Math.min(90, rotationRef.current[1] - fdy * sensitivity),
@@ -1810,7 +1840,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       forceEndDragSession()
       setPopover(null)
       const nextRotation: [number, number] = isGlobe
-        ? [-centre[0], -centre[1]]
+        ? [wrapLongitude(-centre[0]), -centre[1]]
         : rotation
       if (isGlobe) {
         rotationRef.current = nextRotation
