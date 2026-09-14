@@ -2459,9 +2459,13 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         // Round 9 (section 59.2): once ZOOMED IN the embedded map owns
         // every gesture too -- with pan-y a vertical drag over a zoomed
         // globe scrolled the page instead of panning, which read as "the
-        // map froze"; at zoom 1 the page still scrolls over it.
+        // map froze". Round 11 (section 61): the GLOBE owns every gesture
+        // at every zoom. Under pan-y iOS waits to classify each touch and
+        // hands over only the strictly horizontal ones, coalesced -- a
+        // finger spin moved the globe "ever so slightly", rigidly. Only
+        // the flat maps at world zoom (no pan there anyway) keep pan-y.
         `relative ${isFullscreen ? 'h-full' : 'h-auto'} w-full ${
-          isFullscreen || transform.k > 1.05 ? 'touch-none' : 'touch-pan-y'
+          isFullscreen || isGlobe || transform.k > 1.05 ? 'touch-none' : 'touch-pan-y'
         }`
       }
       role="group"
