@@ -3929,6 +3929,42 @@ its parchment sea, umber lines, coast band and lettering with nothing
 view-fixed on top; if the bar survives this, it is not ours and a
 screenshot is the next step.
 
+## 59. Round 9: pace up again, gestures at zoom, and a compass that reorients instead of relocating (2026-09-14)
+
+Andy after round 8: the globe now moves "way too slowly"; zoomed in,
+the map sometimes "freezes so I can no longer move it"; and the compass
+must not jump back to the default view — it should reorient so north is
+up, the way Google Earth's and Google Maps' compasses do.
+
+**59.1 Pace.** Round 7's 0.25°/px and 18 px/frame flick cap were set
+while the double inertia loop (§58.1) was still making every flick look
+wild; with that fixed they were simply slow. Now 0.375°/px and a 40 px
+cap: a hard flick carries the globe about half a turn and stops within
+a second.
+
+**59.2 The "freeze" at zoom.** Embedded, the svg had `touch-action:
+pan-y` so a page scroll could start over the map (§53.3). Zoomed in,
+the natural gesture is a vertical drag — and the browser took every one
+of those as a page scroll and cancelled the pointer, so the map would
+not move. The svg is `touch-none` whenever the zoom is above 1.05 (the
+map owns every gesture once you are in it) and `pan-y` only at world
+zoom, where the page still scrolls over it.
+
+**59.3 Compass = north up, not reset.** This globe has no heading axis:
+at the disc centre the meridian is always vertical. What makes a
+zoomed-and-panned view feel "not north-up" is that the screen centre is
+then off the disc centre, where the meridians lean toward the pole — the
+moment a Google Earth user reaches for the compass. North up therefore
+means: find the place under the screen centre, rotate the globe so that
+place becomes the disc centre (its meridian now straight up), and bring
+the pan back to centre, keeping the zoom. The place stays where the
+reader is looking; the globe reorients around it. Animated over 500 ms
+through the drag-frame path with the zoom transform driven from a ref
+(`transformRef`, which the drag frames now read instead of React state),
+committed once at the end; instant under reduced motion. Round 5's Reset
+view (initial orientation, zoom 1) is gone; the handle exposes `northUp`
+and the flat maps, always north-up, show no compass.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
