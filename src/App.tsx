@@ -21,6 +21,8 @@ const CosmicPhenomenaPage = lazy(() => import('./routes/CosmicPhenomenaPage'))
 // inside the page) and its glossary.
 const PeriodicTablePage = lazy(() => import('./routes/PeriodicTablePage'))
 const ChemistryGlossaryPage = lazy(() => import('./routes/ChemistryGlossaryPage'))
+// Round 6 (§55): the anatomy reference is ~8k words plus diagrams; split.
+const AnatomyPage = lazy(() => import('./routes/AnatomyPage'))
 
 export function App() {
   return (
@@ -114,6 +116,14 @@ export function App() {
             element={
               <Suspense fallback={<p className="p-10 text-sm">Loading…</p>}>
                 <ChemistryGlossaryPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/anatomy"
+            element={
+              <Suspense fallback={<p className="p-10 text-sm">Loading the anatomy reference…</p>}>
+                <AnatomyPage />
               </Suspense>
             }
           />

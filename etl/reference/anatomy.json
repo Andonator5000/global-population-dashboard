@@ -1,0 +1,2141 @@
+{
+  "version": 1,
+  "note": "EDITORIAL reference for the Human Anatomy section (round 6, DATA_DECISIONS section 55). Prose is plain-language paraphrase written for this site, following OpenStax Anatomy and Physiology 2e (CC BY 4.0), cited per system and organ by chapter. Figures are Wikimedia Commons files that the anatomy stage downloads through the free-licence gate and credits per image. Regenerate with `python etl/reference/build_anatomy.py`.",
+  "layers": [
+    {
+      "id": "body",
+      "label": "Body surface",
+      "system": "integumentary",
+      "commons": "Human silhouette gender neutral front.svg",
+      "caption": "The body as it presents to the world: the skin, the largest organ, wrapping everything below."
+    },
+    {
+      "id": "muscles",
+      "label": "Muscles",
+      "system": "muscular",
+      "commons": "Muscles anterior labeled.png",
+      "caption": "The superficial skeletal muscles from the front, the layer just beneath the skin and fat."
+    },
+    {
+      "id": "circulatory",
+      "label": "Heart and vessels",
+      "system": "circulatory",
+      "commons": "Circulatory System en.svg",
+      "caption": "The heart with the great arteries (red) and veins (blue) that carry blood to and from every tissue."
+    },
+    {
+      "id": "respiratory",
+      "label": "Airways and lungs",
+      "system": "respiratory",
+      "commons": "Respiratory system complete en.svg",
+      "caption": "Nose, pharynx, larynx, trachea, bronchi and the two lungs, with the diaphragm beneath."
+    },
+    {
+      "id": "digestive",
+      "label": "Digestive tract",
+      "system": "digestive",
+      "commons": "Digestive system diagram en.svg",
+      "caption": "The alimentary canal from mouth to anus and the glands that pour into it."
+    },
+    {
+      "id": "lymphatic",
+      "label": "Lymphatic vessels and nodes",
+      "system": "lymphatic",
+      "commons": "TE-Lymphatic system diagram.svg",
+      "author": "LadyofHats (Mariana Ruiz Villarreal)",
+      "caption": "The one-way drainage network: vessels, node clusters, the thymus and the spleen."
+    },
+    {
+      "id": "nervous",
+      "label": "Brain, cord and nerves",
+      "system": "nervous",
+      "commons": "Nervous system diagram-en.svg",
+      "caption": "The central nervous system (brain and spinal cord) and the peripheral nerves that branch from it."
+    },
+    {
+      "id": "endocrine",
+      "label": "Endocrine glands",
+      "system": "endocrine",
+      "commons": "Illu endocrine system New.png",
+      "caption": "The glands that release hormones into the blood, from the pineal gland to the gonads."
+    },
+    {
+      "id": "urinary",
+      "label": "Kidneys and bladder",
+      "system": "urinary",
+      "commons": "Urinary system ver 2.svg",
+      "caption": "Two kidneys, two ureters, the bladder and the urethra."
+    },
+    {
+      "id": "skeleton",
+      "label": "Skeleton",
+      "system": "skeletal",
+      "commons": "Human skeleton front en.svg",
+      "caption": "The 206 bones of the adult skeleton from the front: the frame everything else hangs on."
+    }
+  ],
+  "figures": [
+    {
+      "id": "skin-layers",
+      "system": "integumentary",
+      "commons": "Skin layers.svg",
+      "caption": "A slice through the skin: epidermis, dermis and the hypodermis beneath, with hair follicles, glands and vessels."
+    },
+    {
+      "id": "female-reproductive",
+      "system": "reproductive",
+      "commons": "Scheme female reproductive system-en.svg",
+      "caption": "The female reproductive organs in section: ovaries, uterine tubes, uterus, cervix and vagina."
+    },
+    {
+      "id": "male-reproductive",
+      "system": "reproductive",
+      "commons": "Male internal reproductive organs.svg",
+      "caption": "The male reproductive organs in section: testes, epididymis, ductus deferens, seminal vesicles, prostate and urethra."
+    }
+  ],
+  "systems": [
+    {
+      "id": "integumentary",
+      "name": "Integumentary system",
+      "summary": "The skin and its hair, nails and glands: the body's boundary, its first defence, its thermostat and its largest sense organ.",
+      "description": [
+        "The skin is the largest organ of the body, about two square metres and roughly a sixth of body weight in an adult. It is built in three layers. The epidermis is a thin, constantly renewing sheet of keratin-filled cells: new cells divide at its base and are pushed outward, flattening, hardening and dying over about four weeks until they flake away at the surface. Beneath it the dermis is a thick, tough layer of collagen and elastic fibres that carries the blood vessels, nerve endings, hair follicles, sweat glands and oil (sebaceous) glands. Under that, the hypodermis of loose connective tissue and fat anchors the skin to the muscle beneath, insulates, and stores energy.",
+        "Its jobs are as varied as its structure. It is a physical and chemical barrier against water loss, microbes and ultraviolet light (melanocytes in the epidermis make the pigment melanin, which absorbs UV). It regulates temperature: sweat glands can shed litres of water a day, and the dermal blood vessels dilate to dump heat or constrict to conserve it. It is a sense organ, with receptors for touch, pressure, vibration, temperature and pain. It makes vitamin D when sunlight reaches it. And it is a signal, flushing, paling and sweating with emotion.",
+        "The skin repairs itself constantly; a shallow wound is closed by epidermal cells migrating across it, a deeper one by a scaffold of new collagen that becomes a scar. Hair and nails are dead keratin products of the epidermis, hair growing from follicles that reach into the dermis and nails from a root under the cuticle."
+      ],
+      "functions": [
+        "Barrier against water loss, microbes and ultraviolet light",
+        "Temperature regulation by sweating and blood-flow control",
+        "Touch, pressure, temperature and pain sensation",
+        "Vitamin D synthesis",
+        "Fat storage and insulation in the hypodermis"
+      ],
+      "organs": [
+        "skin",
+        "hair-nails",
+        "sweat-sebaceous-glands"
+      ],
+      "worksWith": [
+        {
+          "system": "nervous",
+          "how": "Its receptors feed the peripheral nerves; the autonomic nervous system drives sweating and the skin's blood flow."
+        },
+        {
+          "system": "circulatory",
+          "how": "Dermal vessels are the body's radiator: dilated they shed heat, constricted they keep it."
+        },
+        {
+          "system": "lymphatic",
+          "how": "Skin is the first line of immune defence; its Langerhans cells carry antigens to lymph nodes."
+        },
+        {
+          "system": "skeletal",
+          "how": "The vitamin D the skin makes is what lets the gut absorb the calcium bone needs."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 5: The Integumentary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "skeletal",
+      "name": "Skeletal system",
+      "summary": "The 206 bones, their joints, and the cartilage and ligaments that connect them: the body's frame, its levers, its mineral bank and the factory for its blood cells.",
+      "description": [
+        "An adult skeleton has 206 bones (a newborn has around 270, many of which fuse). They are grouped into the axial skeleton, the 80 bones of the skull, vertebral column and rib cage that form the body's central axis, and the appendicular skeleton, the 126 bones of the limbs and the girdles (shoulder and pelvis) that attach them. Bones come in shapes suited to their work: long bones such as the femur act as levers, short bones such as the wrist's carpals give stability with a little movement, flat bones such as the skull and sternum protect and provide broad muscle attachments, and irregular bones such as the vertebrae do several jobs at once.",
+        "Bone is living tissue, not a dead scaffold. It is a composite of collagen fibres, which give it flexibility, and crystals of calcium phosphate (hydroxyapatite), which give it hardness; the combination is stronger than either. Compact bone forms a dense outer shell; spongy bone inside is a lattice of struts arranged along the lines of stress, light but strong, with red marrow in its spaces. Bone is remodelled throughout life by two cell types in balance: osteoclasts dissolve old bone and osteoblasts lay down new, so that the skeleton is replaced roughly every ten years and reshaped by the loads put on it.",
+        "Beyond support and movement, the skeleton protects the brain, spinal cord, heart and lungs; stores about 99 percent of the body's calcium and much of its phosphate, releasing them into the blood on demand; and houses the red marrow that makes all the body's blood cells. Joints connect bones: fibrous joints such as the skull sutures barely move, cartilaginous joints such as those between vertebrae move a little, and synovial joints, the knee, hip, shoulder and fingers, move freely on a film of lubricating fluid inside a capsule held by ligaments."
+      ],
+      "functions": [
+        "Support and shape",
+        "Protection of the brain, spinal cord, heart and lungs",
+        "Levers for movement",
+        "Calcium and phosphate storage",
+        "Blood cell production in red marrow"
+      ],
+      "organs": [
+        "skull",
+        "vertebral-column",
+        "rib-cage",
+        "pelvis",
+        "femur",
+        "joints",
+        "bone-marrow"
+      ],
+      "worksWith": [
+        {
+          "system": "muscular",
+          "how": "Muscles pull on bones across joints; bone gives the lever, muscle the force. Together they are the musculoskeletal system."
+        },
+        {
+          "system": "circulatory",
+          "how": "Red marrow supplies every red cell, white cell and platelet in the blood; bone stores the calcium the blood must keep constant."
+        },
+        {
+          "system": "endocrine",
+          "how": "Parathyroid hormone and calcitonin move calcium into and out of bone; growth hormone and sex hormones drive its growth and density."
+        },
+        {
+          "system": "nervous",
+          "how": "The skull and vertebral column encase the brain and spinal cord."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 7: Axial Skeleton (and chapters 6, 8 and 9)",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "muscular",
+      "name": "Muscular system",
+      "summary": "About 600 skeletal muscles that move the skeleton, hold posture, breathe, speak and keep the body warm, plus the cardiac and smooth muscle of the organs.",
+      "description": [
+        "There are three kinds of muscle tissue. Skeletal muscle is attached to bone by tendons, is striped under the microscope, and is under voluntary control; it makes up about 40 percent of body mass. Cardiac muscle is found only in the heart, striped like skeletal muscle but branching and self-exciting, beating without any command from the brain. Smooth muscle lines hollow organs and vessels, the gut, bladder, uterus, airways and arteries, contracting slowly and involuntarily to move contents along or change a tube's width.",
+        "A skeletal muscle is a bundle of bundles: fascicles of long muscle fibres, each fibre a single cell packed with myofibrils, each myofibril a chain of contractile units called sarcomeres. In a sarcomere, thin filaments of actin slide past thick filaments of myosin when the myosin heads grab, pull and release them, powered by ATP; the muscle shortens because thousands of sarcomeres in series each shorten a little. A nerve impulse arriving at the neuromuscular junction releases calcium inside the fibre, which uncovers the binding sites and starts the cycle; when the signal stops the calcium is pumped away and the fibre relaxes.",
+        "Muscles work in pairs and groups across joints, because a muscle can only pull. The biceps flexes the elbow and the triceps extends it; when one contracts the other relaxes. Muscles also hold posture by continuous low-level contraction, drive breathing (the diaphragm and intercostals), shape speech and expression (the face has more than 40 muscles), and generate most of the body's heat, which is why shivering warms."
+      ],
+      "functions": [
+        "Movement of the skeleton",
+        "Posture and joint stability",
+        "Breathing",
+        "Heat production",
+        "Movement of contents through hollow organs (smooth muscle)",
+        "Pumping blood (cardiac muscle)"
+      ],
+      "organs": [
+        "diaphragm",
+        "skeletal-muscle",
+        "tendons"
+      ],
+      "worksWith": [
+        {
+          "system": "skeletal",
+          "how": "Tendons bind muscle to bone; every movement is a muscle pulling a bone across a joint."
+        },
+        {
+          "system": "nervous",
+          "how": "Motor neurons of the somatic nervous system command every skeletal contraction; the autonomic system runs smooth and cardiac muscle."
+        },
+        {
+          "system": "circulatory",
+          "how": "Working muscle demands up to twenty times its resting blood flow; the calf muscles squeeze veins to return blood to the heart."
+        },
+        {
+          "system": "respiratory",
+          "how": "The diaphragm and intercostal muscles are the pump that moves air in and out."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 11: The Muscular System (and chapter 10)",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "nervous",
+      "name": "Nervous system",
+      "summary": "The brain and spinal cord (central nervous system) and the nerves that reach every part of the body (peripheral nervous system): the fastest control system, sensing, deciding and commanding in milliseconds.",
+      "description": [
+        "The nervous system has two divisions by anatomy. The central nervous system (CNS) is the brain and the spinal cord, encased in the skull and vertebral column, wrapped in three membranes (the meninges) and floated in cerebrospinal fluid. The peripheral nervous system (PNS) is everything else: 12 pairs of cranial nerves from the brain, 31 pairs of spinal nerves from the cord, and the ganglia and nerve endings they lead to. Nerves are bundles of axons, the long fibres of neurons, carrying signals to and from the CNS.",
+        "By function, the PNS has a sensory (afferent) side, bringing information from the skin, muscles, joints and internal organs inward, and a motor (efferent) side sending commands out. The motor side is itself divided: the somatic nervous system controls skeletal muscle voluntarily, and the autonomic nervous system controls smooth muscle, cardiac muscle and glands automatically, through its sympathetic branch (fight-or-flight: faster heart, wider pupils, blood to muscle) and parasympathetic branch (rest-and-digest: slower heart, active gut). A third, semi-independent enteric nervous system lines the gut wall.",
+        "The working unit is the neuron: a cell body, branching dendrites that receive signals, and a single axon that conducts an electrical impulse, the action potential, at up to 120 metres per second along fibres insulated with myelin. At the axon's end a synapse releases a chemical neurotransmitter onto the next cell. The brain has roughly 86 billion neurons and at least as many glial cells that support, insulate and feed them. Reflexes such as pulling a hand from a flame are wired through the spinal cord alone; everything else, perception, movement, memory, language and emotion, is the work of the brain's regions acting together."
+      ],
+      "functions": [
+        "Sensation from every organ and the skin",
+        "Integration, memory, thought and emotion",
+        "Voluntary movement (somatic division)",
+        "Automatic control of heart, vessels, gut and glands (autonomic division)",
+        "Reflexes through the spinal cord"
+      ],
+      "organs": [
+        "brain",
+        "cerebrum",
+        "cerebellum",
+        "brainstem",
+        "spinal-cord",
+        "peripheral-nerves",
+        "autonomic-ganglia",
+        "eye",
+        "ear"
+      ],
+      "worksWith": [
+        {
+          "system": "endocrine",
+          "how": "The hypothalamus links the two control systems, driving the pituitary and so most other glands; adrenaline is released by nerve command."
+        },
+        {
+          "system": "muscular",
+          "how": "Every skeletal muscle fibre is commanded by a motor neuron; the cerebellum tunes the timing."
+        },
+        {
+          "system": "circulatory",
+          "how": "The brainstem sets heart rate and vessel width breath by breath, holding blood pressure steady."
+        },
+        {
+          "system": "respiratory",
+          "how": "The medulla's respiratory centres set the rhythm of breathing from blood carbon dioxide."
+        },
+        {
+          "system": "integumentary",
+          "how": "The skin is the largest sensory surface, reporting touch, temperature and pain."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 12: The Nervous System and Nervous Tissue (and chapters 13-15)",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/12-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "endocrine",
+      "name": "Endocrine system",
+      "summary": "Glands that release hormones into the blood: the slow, body-wide control system that sets growth, metabolism, salt and water balance, blood sugar, stress responses and reproduction.",
+      "description": [
+        "Where the nervous system sends fast, targeted signals down wires, the endocrine system broadcasts chemical messages, hormones, into the blood; they act only on cells with matching receptors, over seconds to months. The major glands are the hypothalamus and pituitary at the base of the brain, the pineal gland, the thyroid and parathyroids in the neck, the adrenals on top of the kidneys, the islets of the pancreas, and the gonads (ovaries and testes). Many other organs, the heart, kidneys, gut, fat and even bone, also secrete hormones.",
+        "The hypothalamus is the master link between nerve and hormone. It measures the blood and receives the brain's state, then controls the pituitary, whose hormones in turn drive the thyroid, adrenal cortex and gonads and directly regulate growth (growth hormone), water retention (antidiuretic hormone), milk (prolactin) and labour (oxytocin). Most hormone systems run on negative feedback: a rising level of thyroid hormone, for instance, suppresses the pituitary signal that made it, holding the level steady.",
+        "The thyroid sets the pace of metabolism in nearly every cell; the parathyroids raise blood calcium; the adrenal medulla pours out adrenaline in emergencies and the cortex releases cortisol (stress, blood sugar) and aldosterone (salt retention); the pancreatic islets balance blood sugar with insulin and glucagon; the gonads produce the sex hormones that drive puberty, fertility and secondary sexual characteristics. Together they keep the internal environment constant, homeostasis, and time the body's long programmes of growth, maturation and reproduction.",
+        "Hormones come in two chemical families that act differently. Water-soluble ones, such as insulin, adrenaline and the pituitary hormones, cannot enter cells; they bind receptors on the surface and trigger a cascade inside within seconds. Fat-soluble steroids (cortisol, aldosterone, the sex hormones) and thyroid hormone pass through the membrane and bind receptors in the nucleus, switching genes on or off over hours to days. Endocrine disease is almost always too much or too little of one hormone: diabetes, thyroid disorders and growth disorders are the commonest."
+      ],
+      "functions": [
+        "Growth and development",
+        "Metabolic rate",
+        "Blood sugar regulation",
+        "Salt, water and calcium balance",
+        "Stress responses",
+        "Reproduction and sexual development"
+      ],
+      "organs": [
+        "hypothalamus",
+        "pituitary",
+        "pineal",
+        "thyroid",
+        "parathyroids",
+        "adrenals",
+        "pancreas",
+        "ovaries",
+        "testes"
+      ],
+      "worksWith": [
+        {
+          "system": "nervous",
+          "how": "The hypothalamus is nervous tissue that commands the pituitary; adrenaline is released on sympathetic nerve signals."
+        },
+        {
+          "system": "circulatory",
+          "how": "Blood carries every hormone; the heart's own hormone (ANP) lowers blood volume, and adrenaline raises heart rate."
+        },
+        {
+          "system": "urinary",
+          "how": "Antidiuretic hormone and aldosterone tell the kidney how much water and salt to keep."
+        },
+        {
+          "system": "skeletal",
+          "how": "Parathyroid hormone, calcitonin, growth hormone and sex hormones govern bone growth, density and calcium release."
+        },
+        {
+          "system": "digestive",
+          "how": "Insulin and glucagon from the pancreas manage the sugar the gut absorbs; gut hormones time digestion."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "circulatory",
+      "name": "Circulatory (cardiovascular) system",
+      "summary": "The heart, blood and about 100,000 kilometres of vessels: the transport network that delivers oxygen, nutrients, hormones and heat to every cell and carries away carbon dioxide and waste.",
+      "description": [
+        "The heart is a double pump. Its right side receives oxygen-poor blood from the body and sends it to the lungs (the pulmonary circuit); its left side receives oxygen-rich blood from the lungs and sends it around the body (the systemic circuit). Each side has a thin-walled atrium that collects blood and a muscular ventricle that ejects it; four valves keep the flow one-way. The heart beats about 100,000 times a day, driven by its own pacemaker, the sinoatrial node, and adjusted by nerves and hormones; at rest it moves about five litres a minute, the whole blood volume, and several times that in exercise.",
+        "Blood leaves the heart in arteries, thick elastic tubes that smooth the pulse and branch into muscular arterioles that control how much blood each tissue receives. It reaches the tissues in capillaries, vessels one cell thick and so numerous that no cell is more than a few cells away from one, where oxygen and nutrients diffuse out and carbon dioxide and waste diffuse in. Venules and veins, thinner-walled and fitted with valves, return it to the heart, helped by the squeeze of surrounding muscles.",
+        "Blood itself is about 55 percent plasma, water carrying dissolved proteins, salts, sugars, hormones and waste, and 45 percent cells: red cells packed with haemoglobin that carry oxygen and give blood its colour, white cells of the immune system, and platelets that plug leaks and start clotting. An adult has about five litres. The system also distributes heat from the muscles and core to the skin, and its pressure is held within a narrow range by the brainstem, the kidneys and hormones."
+      ],
+      "functions": [
+        "Oxygen and carbon dioxide transport",
+        "Nutrient, hormone and waste transport",
+        "Heat distribution",
+        "Immune cell delivery",
+        "Clotting and wound sealing",
+        "Blood pressure and tissue perfusion"
+      ],
+      "organs": [
+        "heart",
+        "arteries",
+        "veins",
+        "capillaries",
+        "blood"
+      ],
+      "worksWith": [
+        {
+          "system": "respiratory",
+          "how": "The pulmonary circuit takes every drop of blood past the lungs to unload carbon dioxide and load oxygen."
+        },
+        {
+          "system": "digestive",
+          "how": "The hepatic portal vein carries everything absorbed by the gut to the liver before it reaches the rest of the body."
+        },
+        {
+          "system": "urinary",
+          "how": "A fifth of the heart's output goes to the kidneys, which filter the plasma and set blood volume and pressure."
+        },
+        {
+          "system": "lymphatic",
+          "how": "Fluid that leaks from capillaries is returned to the veins by the lymphatic vessels; white cells move between the two."
+        },
+        {
+          "system": "nervous",
+          "how": "The autonomic nervous system sets heart rate and vessel width from second to second."
+        },
+        {
+          "system": "skeletal",
+          "how": "All blood cells are born in the bone marrow."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 19: The Cardiovascular System: The Heart (and chapters 18 and 20)",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "respiratory",
+      "name": "Respiratory (pulmonary) system",
+      "summary": "The airways and lungs: the gas exchanger that brings oxygen into the blood and removes carbon dioxide, about 20,000 breaths a day.",
+      "description": [
+        "Air enters through the nose (or mouth), where it is warmed, moistened and filtered, passes the pharynx and the larynx, whose vocal folds make the voice, and descends the trachea, a tube held open by C-shaped rings of cartilage. The trachea splits into two bronchi, one to each lung, and these branch some 23 times into ever-smaller bronchioles ending in about 300 million alveoli, thin-walled air sacs wrapped in capillaries. Spread flat, the alveolar surface would cover about 70 square metres, and only two cells separate air from blood: oxygen diffuses in and carbon dioxide out along their concentration gradients.",
+        "Breathing is mechanical. The diaphragm, a dome of muscle under the lungs, contracts and flattens, and the intercostal muscles lift the ribs; the chest cavity enlarges, pressure inside falls, and air flows in. Relaxation reverses it, and the lungs' own elastic recoil pushes air out. A surfactant film lowers surface tension in the alveoli so they do not collapse on each exhalation. The rhythm is set by respiratory centres in the brainstem, which respond above all to carbon dioxide levels in the blood: hold your breath and rising CO2, not falling oxygen, is what forces the next one.",
+        "The airways defend themselves with mucus and cilia, a moving carpet that sweeps trapped particles up to the throat to be swallowed, and with cough and sneeze reflexes. The lungs also help regulate blood pH (breathing off CO2 makes the blood less acidic), filter small clots, and, through the larynx, give speech its sound."
+      ],
+      "functions": [
+        "Oxygen uptake and carbon dioxide removal",
+        "Regulation of blood pH",
+        "Voice production",
+        "Filtering, warming and humidifying air",
+        "Smell (the nasal cavity)"
+      ],
+      "organs": [
+        "nose-pharynx",
+        "larynx",
+        "trachea",
+        "bronchi",
+        "lungs",
+        "alveoli",
+        "diaphragm"
+      ],
+      "worksWith": [
+        {
+          "system": "circulatory",
+          "how": "Gas exchange only works because the pulmonary circuit brings blood to the alveoli; the two systems are one loop."
+        },
+        {
+          "system": "muscular",
+          "how": "The diaphragm and intercostals are the pump; abdominal muscles drive a forced exhalation or a cough."
+        },
+        {
+          "system": "nervous",
+          "how": "The brainstem sets the rhythm; the cortex can override it to speak, sing or hold a breath."
+        },
+        {
+          "system": "urinary",
+          "how": "Lungs and kidneys together hold blood pH: the lungs adjust in minutes, the kidneys in days."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "lymphatic",
+      "name": "Lymphatic and immune system",
+      "summary": "A one-way network of vessels, nodes and organs that drains excess tissue fluid back to the blood, absorbs dietary fat, and houses the immune cells that recognise and destroy invaders.",
+      "description": [
+        "Every day about three litres of fluid leak out of the blood capillaries into the tissues and do not return by the veins. The lymphatic vessels collect it as lymph, a clear fluid, and carry it through a series of lymph nodes back to the great veins at the base of the neck; without this drainage tissues swell. The vessels begin as blind-ended capillaries in almost every tissue, join into larger trunks, and empty through two ducts. Special lymphatic vessels in the small intestine, the lacteals, absorb digested fat, which is why lymph from the gut is milky after a meal.",
+        "The lymphatic organs are where the immune system lives. Red bone marrow makes every immune cell; the thymus, large in childhood and shrinking after puberty, trains T lymphocytes to tell self from non-self. The roughly 600 lymph nodes, clustered in the neck, armpits, groin, chest and abdomen, filter lymph through beds of lymphocytes and macrophages that trap and destroy microbes, which is why nodes swell during infection. The spleen filters blood the same way, removing worn-out red cells and blood-borne pathogens. The tonsils, appendix and patches in the gut wall guard the body's openings.",
+        "Immunity has two arms. Innate defences are fast and general: skin, mucus, stomach acid, fever, inflammation, and cells that engulf or poison anything foreign. Adaptive immunity is slower and precise: B lymphocytes make antibodies that tag a specific invader, T lymphocytes kill infected cells or coordinate the response, and both leave memory cells so a second encounter is met at once. Vaccination is that memory made deliberately."
+      ],
+      "functions": [
+        "Return of tissue fluid to the blood",
+        "Absorption of dietary fat",
+        "Filtering lymph and blood",
+        "Production and training of immune cells",
+        "Innate and adaptive defence against infection",
+        "Immune memory"
+      ],
+      "organs": [
+        "lymph-nodes",
+        "lymphatic-vessels",
+        "spleen",
+        "thymus",
+        "tonsils",
+        "bone-marrow"
+      ],
+      "worksWith": [
+        {
+          "system": "circulatory",
+          "how": "Lymph returns to the veins; white cells patrol both networks."
+        },
+        {
+          "system": "digestive",
+          "how": "Lacteals absorb fat; gut-associated lymphoid tissue guards the largest surface open to the outside."
+        },
+        {
+          "system": "integumentary",
+          "how": "The skin is the outer wall; dendritic cells in it deliver antigens to the nodes."
+        },
+        {
+          "system": "skeletal",
+          "how": "Every lymphocyte begins in the red marrow."
+        },
+        {
+          "system": "endocrine",
+          "how": "Cortisol from the adrenals damps immunity; the thymus is itself a hormone-producing gland."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "digestive",
+      "name": "Digestive system",
+      "summary": "A nine-metre tube from mouth to anus with the liver, gallbladder and pancreas attached: it breaks food into molecules small enough to absorb, takes them up, and disposes of the rest.",
+      "description": [
+        "Digestion begins in the mouth, where teeth cut and grind and saliva moistens and starts to break starch. Swallowing sends the bolus down the oesophagus by waves of muscle contraction (peristalsis) to the stomach, a muscular bag that churns food with acid and the enzyme pepsin for a few hours into a paste called chyme. The acid also kills most microbes and unfolds proteins for digestion; the stomach lining protects itself with a thick coat of mucus, renewed every few days.",
+        "Most digestion and almost all absorption happen in the small intestine, six metres of tube in three parts (duodenum, jejunum, ileum). Into its first part the pancreas pours enzymes for protein, fat and carbohydrate plus bicarbonate to neutralise the acid, and the liver's bile, stored in the gallbladder, emulsifies fat into droplets the enzymes can reach. The lining is folded, and the folds carry finger-like villi, and the villi microvilli, giving an absorptive surface of some 30 square metres. Sugars, amino acids, vitamins and minerals pass into the blood, fats into the lymph.",
+        "The large intestine, a metre and a half long, reclaims water and salt from what remains, and its resident bacteria ferment fibre, make vitamin K and some B vitamins, and crowd out invaders; the residue is stored in the rectum and expelled. The liver, the largest internal organ, receives everything the gut absorbs through the portal vein: it stores glucose as glycogen, makes plasma proteins and clotting factors, detoxifies drugs and alcohol, breaks down old red cells and makes bile. The whole process is coordinated by the enteric nervous system and by gut hormones that time the release of acid, enzymes and bile."
+      ],
+      "functions": [
+        "Ingestion and mechanical breakdown",
+        "Chemical digestion by enzymes, acid and bile",
+        "Absorption of nutrients, water and salts",
+        "Elimination of waste",
+        "Liver processing, storage and detoxification",
+        "Housing the gut microbiome"
+      ],
+      "organs": [
+        "mouth",
+        "oesophagus",
+        "stomach",
+        "small-intestine",
+        "large-intestine",
+        "liver",
+        "gallbladder",
+        "pancreas"
+      ],
+      "worksWith": [
+        {
+          "system": "circulatory",
+          "how": "Absorbed nutrients travel by the portal vein to the liver and then to every cell."
+        },
+        {
+          "system": "endocrine",
+          "how": "Insulin and glucagon store or release the sugar the gut delivers; gut hormones time digestion."
+        },
+        {
+          "system": "nervous",
+          "how": "The enteric nervous system runs the gut; the parasympathetic branch switches digestion on."
+        },
+        {
+          "system": "lymphatic",
+          "how": "Fats are absorbed into lymph, and the gut wall holds the largest mass of immune tissue in the body."
+        },
+        {
+          "system": "muscular",
+          "how": "Smooth muscle in the gut wall mixes and moves food; skeletal muscle chews and swallows."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "urinary",
+      "name": "Urinary system",
+      "summary": "Two kidneys, two ureters, the bladder and the urethra: the filters that clean the blood, set its volume, salt and acidity, and remove nitrogen waste as urine.",
+      "description": [
+        "Each kidney, a fist-sized organ behind the abdomen, holds about a million nephrons. In each, a tuft of capillaries (the glomerulus) filters water and small molecules out of the blood under pressure, about 180 litres of filtrate a day, and a long looping tubule then reclaims what the body needs: nearly all the water, all the glucose and amino acids, and as much salt as the hormones call for. What remains, about 1.5 litres a day carrying urea, excess salts, acids and drug residues, is urine.",
+        "The kidneys are the body's fine control of its internal fluid. They set blood volume and so blood pressure (and secrete renin to raise it); they hold plasma sodium, potassium and calcium within narrow limits; they excrete or retain acid to steady blood pH; they make erythropoietin, which tells the marrow to make red cells, and activate vitamin D. Antidiuretic hormone from the pituitary and aldosterone from the adrenals are their main instructions.",
+        "Urine drains from each kidney down a ureter by peristalsis into the bladder, a muscular reservoir that stretches to hold about half a litre. Stretch receptors report fullness to the spinal cord and brain; emptying (micturition) is a reflex that the brain learns to hold or release through the external sphincter, and the urethra carries urine out.",
+        "Urine is a report on the body: its colour tracks hydration, and sugar, protein or blood in it are early signs of diabetes, kidney disease or injury, which is why a urine test is part of nearly every medical examination. When the kidneys fail, dialysis takes over the filtering; a single transplanted kidney can do the whole job."
+      ],
+      "functions": [
+        "Removal of urea and other wastes",
+        "Regulation of blood volume and pressure",
+        "Salt and water balance",
+        "Acid-base balance",
+        "Red cell production signal (erythropoietin)",
+        "Vitamin D activation"
+      ],
+      "organs": [
+        "kidneys",
+        "ureters",
+        "bladder",
+        "urethra"
+      ],
+      "worksWith": [
+        {
+          "system": "circulatory",
+          "how": "The kidneys filter the whole plasma volume many times a day and set blood pressure through volume and renin."
+        },
+        {
+          "system": "endocrine",
+          "how": "ADH and aldosterone instruct the kidney; the kidney's own erythropoietin and calcitriol instruct the marrow and gut."
+        },
+        {
+          "system": "respiratory",
+          "how": "Kidneys and lungs share the control of blood pH."
+        },
+        {
+          "system": "nervous",
+          "how": "Bladder filling and emptying is a spinal reflex under cortical control."
+        },
+        {
+          "system": "skeletal",
+          "how": "Activated vitamin D from the kidney lets the gut absorb the calcium bone needs."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "reproductive",
+      "name": "Reproductive system",
+      "summary": "The gonads, ducts, glands and external organs that produce gametes and sex hormones and, in the female, carry, nourish and deliver a child.",
+      "description": [
+        "The female system centres on the two ovaries, which from puberty to menopause release usually one egg a month and produce oestrogen and progesterone. The egg is swept into a uterine (Fallopian) tube, where fertilisation happens if sperm are present, and carried to the uterus, a muscular organ whose lining thickens each cycle to receive an embryo and is shed as menstruation if none arrives. The cervix opens the uterus to the vagina, the birth canal. The breasts, modified sweat glands, make milk under the hormones of pregnancy.",
+        "The male system centres on the two testes, held outside the body in the scrotum because sperm form best a few degrees below core temperature. From puberty they make sperm continuously, hundreds of millions a day, and the hormone testosterone. Sperm mature in the epididymis, travel through the ductus deferens, are mixed with fluid from the seminal vesicles and prostate to form semen, and leave through the urethra in the penis.",
+        "Both systems are driven by the hypothalamus and pituitary, whose hormones switch the gonads on at puberty and time the female cycle. A fertilised egg divides as it travels, implants in the uterine wall, and grows a placenta, the organ through which the mother's blood supplies oxygen and nutrients and removes waste for nine months without the two bloodstreams mixing.",
+        "Both systems change across life. They are formed before birth from the same embryonic tissue, rest through childhood, switch on at puberty under pituitary hormones, and in the female wind down at menopause when the ovaries' egg supply is spent; the male system slows more gradually. The sex hormones they make shape far more than reproduction: bone density, muscle mass, fat distribution, skin, hair and mood all follow them."
+      ],
+      "functions": [
+        "Production of eggs and sperm",
+        "Sex hormone production",
+        "Fertilisation, pregnancy and birth",
+        "Lactation"
+      ],
+      "organs": [
+        "ovaries",
+        "uterus",
+        "testes",
+        "prostate"
+      ],
+      "worksWith": [
+        {
+          "system": "endocrine",
+          "how": "The gonads are endocrine glands; the pituitary times them."
+        },
+        {
+          "system": "urinary",
+          "how": "In the male the urethra is shared; in both sexes the organs share the pelvic floor."
+        },
+        {
+          "system": "circulatory",
+          "how": "The placenta is a vascular organ; pregnancy raises blood volume by about half."
+        },
+        {
+          "system": "skeletal",
+          "how": "Sex hormones close the growth plates at the end of puberty and maintain bone density."
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    }
+  ],
+  "organs": [
+    {
+      "id": "skin",
+      "name": "Skin",
+      "systems": [
+        "integumentary"
+      ],
+      "location": "The whole body surface",
+      "description": [
+        "Three layers: the epidermis, a renewing sheet of keratinised cells with pigment-making melanocytes and immune Langerhans cells; the dermis, collagen and elastin carrying vessels, nerves, follicles and glands; and the fatty hypodermis. About two square metres and 4-5 kg in an adult, replaced at the surface roughly every four weeks.",
+        "It is barrier, thermostat, sense organ and vitamin D factory at once. Fingerprints are ridges of the dermis pushing up the epidermis; skin colour comes from melanin, blood and the carotene in fat."
+      ],
+      "function": "Protects, senses, regulates temperature, makes vitamin D.",
+      "facts": [
+        {
+          "label": "Area",
+          "value": "about 2 m²"
+        },
+        {
+          "label": "Epidermal turnover",
+          "value": "about 4 weeks"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 5: The Integumentary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "hair-nails",
+      "name": "Hair and nails",
+      "systems": [
+        "integumentary"
+      ],
+      "location": "Scalp and body (hair); fingers and toes (nails)",
+      "description": [
+        "Both are dead keratin made by living epidermal cells. Hair grows about a centimetre a month from follicles that reach into the dermis, each with a tiny muscle that raises it (goose bumps) and an oil gland. Nails grow from a root under the cuticle over the nail bed; a fingernail takes about six months to grow out."
+      ],
+      "function": "Hair insulates, senses touch and protects the scalp and eyes; nails protect fingertips and help grip.",
+      "facts": [
+        {
+          "label": "Hair growth",
+          "value": "about 1 cm per month"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 5: The Integumentary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "sweat-sebaceous-glands",
+      "name": "Sweat and sebaceous glands",
+      "systems": [
+        "integumentary"
+      ],
+      "location": "Throughout the dermis",
+      "description": [
+        "Some 2-4 million eccrine sweat glands secrete watery sweat onto the skin for evaporative cooling, up to several litres a day in heat; apocrine glands in the armpits and groin release a thicker secretion that bacteria turn into body odour. Sebaceous glands open into hair follicles and coat hair and skin with sebum, an oily film that waterproofs and softens."
+      ],
+      "function": "Cooling, waterproofing, and antimicrobial cover of the skin.",
+      "facts": [
+        {
+          "label": "Sweat glands",
+          "value": "2-4 million"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 5: The Integumentary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "skull",
+      "name": "Skull",
+      "systems": [
+        "skeletal"
+      ],
+      "location": "Head",
+      "description": [
+        "Twenty-two bones (plus the six ossicles of the ears and the hyoid): eight cranial bones form the vault around the brain, joined by immovable sutures, and fourteen facial bones shape the face, hold the teeth and frame the eyes and nose. The mandible is the only freely movable skull bone. In an infant the vault bones are separated by soft fontanelles that let the head pass at birth and the brain grow."
+      ],
+      "function": "Encases the brain, houses the sense organs, anchors the muscles of chewing and expression.",
+      "facts": [
+        {
+          "label": "Bones",
+          "value": "22 (plus 6 ear ossicles)"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 7: Axial Skeleton",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "vertebral-column",
+      "name": "Vertebral column",
+      "systems": [
+        "skeletal"
+      ],
+      "location": "Back, from skull to pelvis",
+      "description": [
+        "Thirty-three vertebrae: 7 cervical, 12 thoracic, 5 lumbar, and the 5 sacral and 4 coccygeal that fuse in adulthood into the sacrum and coccyx. Each vertebra has a body that bears weight and an arch that encloses the spinal cord; between the bodies, intervertebral discs of fibrous cartilage with a gel core cushion shocks and allow bending. The column's four curves make it a spring rather than a rod."
+      ],
+      "function": "Supports the head and trunk, protects the spinal cord, allows bending and twisting.",
+      "facts": [
+        {
+          "label": "Vertebrae",
+          "value": "33 (24 movable)"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 7: Axial Skeleton",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "rib-cage",
+      "name": "Rib cage",
+      "systems": [
+        "skeletal"
+      ],
+      "location": "Chest",
+      "description": [
+        "Twelve pairs of ribs curve from the thoracic vertebrae around to the sternum: seven true pairs join it directly by cartilage, three false pairs join through the cartilage above, and two floating pairs end in the muscle. The cage is flexible enough to rise with every breath and strong enough to shield the heart and lungs."
+      ],
+      "function": "Protects the heart and lungs and moves with breathing.",
+      "facts": [
+        {
+          "label": "Ribs",
+          "value": "12 pairs"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 7: Axial Skeleton",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "pelvis",
+      "name": "Pelvis",
+      "systems": [
+        "skeletal"
+      ],
+      "location": "Lower trunk",
+      "description": [
+        "A basin of two hip bones, each fused from ilium, ischium and pubis, joined behind to the sacrum and in front at the pubic symphysis. It transfers the weight of the trunk to the legs, protects the bladder, rectum and reproductive organs, and anchors the largest muscles of the body. The female pelvis is wider and shallower for childbirth."
+      ],
+      "function": "Weight transfer to the legs, protection of pelvic organs, attachment for the leg and trunk muscles.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 8: The Appendicular Skeleton",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "femur",
+      "name": "Femur (and the long bones)",
+      "systems": [
+        "skeletal"
+      ],
+      "location": "Thigh",
+      "description": [
+        "The femur is the longest and strongest bone, about a quarter of height, running from the hip's ball-and-socket to the knee. Like every long bone it has a shaft of compact bone around a marrow cavity and expanded spongy ends capped with cartilage; in childhood a growth plate near each end adds length until the sex hormones of late puberty close it. It can bear loads many times body weight."
+      ],
+      "function": "Lever for walking and running; supports the body's weight; houses marrow.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about a quarter of standing height"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 8: The Appendicular Skeleton",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "joints",
+      "name": "Joints",
+      "systems": [
+        "skeletal",
+        "muscular"
+      ],
+      "location": "Wherever bones meet",
+      "description": [
+        "Fibrous joints (skull sutures) do not move; cartilaginous joints (between vertebrae, at the pubic symphysis) move a little; synovial joints move freely. A synovial joint has cartilage-capped bone ends inside a capsule lined by a membrane that secretes lubricating synovial fluid, held by ligaments and often padded by menisci and bursae. Hinge (elbow, knee), ball-and-socket (hip, shoulder), pivot (neck), saddle (thumb) and gliding joints give the body its range."
+      ],
+      "function": "Allow and limit movement between bones.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 9: Joints",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "bone-marrow",
+      "name": "Bone marrow",
+      "systems": [
+        "skeletal",
+        "lymphatic",
+        "circulatory"
+      ],
+      "location": "Inside the spongy bone of the skull, ribs, sternum, vertebrae, pelvis and the ends of long bones (red); the shafts of long bones (yellow)",
+      "description": [
+        "Red marrow is the body's blood factory: from a pool of stem cells it makes red cells, all the white cells and the platelets, on the order of a few hundred billion cells a day. In childhood most marrow is red; by adulthood the shafts of the long bones hold yellow, fatty marrow that can revert to red under demand. It is the birthplace of every immune cell, and B lymphocytes mature there."
+      ],
+      "function": "Blood and immune cell production.",
+      "facts": [
+        {
+          "label": "Output",
+          "value": "hundreds of billions of cells a day"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 6: Bone Tissue and the Skeletal System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/6-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "skeletal-muscle",
+      "name": "Skeletal muscle",
+      "systems": [
+        "muscular"
+      ],
+      "location": "Attached to bones throughout the body",
+      "description": [
+        "About 600 named muscles, from the tiny stapedius in the ear to the gluteus maximus. Each is bundles of long striped fibres, each fibre a single cell with many nuclei, packed with actin and myosin filaments that slide to contract. Fibres come in slow, fatigue-resistant types built for posture and endurance and fast types for power; training changes their size, not their number. Muscle is also the body's largest store of protein and its main heat source."
+      ],
+      "function": "Voluntary movement, posture, breathing, heat.",
+      "facts": [
+        {
+          "label": "Share of body mass",
+          "value": "about 40%"
+        },
+        {
+          "label": "Named muscles",
+          "value": "about 600"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 10: Muscle Tissue",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "tendons",
+      "name": "Tendons",
+      "systems": [
+        "muscular",
+        "skeletal"
+      ],
+      "location": "Between muscle and bone",
+      "description": [
+        "Cords and sheets of dense, parallel collagen that transmit a muscle's pull to bone. The Achilles tendon, the thickest, carries the calf muscles' force to the heel and stores elastic energy with each stride. Tendons have a poor blood supply and heal slowly; sheaths of synovial fluid let long tendons slide in the hands and feet."
+      ],
+      "function": "Transmit muscle force to bone; store elastic energy.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 11: The Muscular System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "diaphragm",
+      "name": "Diaphragm",
+      "systems": [
+        "muscular",
+        "respiratory"
+      ],
+      "location": "Between the chest and the abdomen",
+      "description": [
+        "A dome of skeletal muscle sealing the floor of the chest, pierced by the oesophagus, aorta and vena cava. When it contracts it flattens and pulls the lungs down, drawing air in; it does about three quarters of the work of quiet breathing. It is under automatic control from the brainstem but can be commanded, which is what makes speech, singing and breath-holding possible. Hiccups are its spasms."
+      ],
+      "function": "The main muscle of breathing.",
+      "facts": [
+        {
+          "label": "Share of quiet breathing",
+          "value": "about 75%"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "brain",
+      "name": "Brain",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Skull",
+      "description": [
+        "About 1.3-1.4 kg of nervous tissue, some 86 billion neurons and their support cells, using a fifth of the body's energy at rest. It has three main parts: the cerebrum, the cerebellum and the brainstem, with the diencephalon (thalamus and hypothalamus) at its core. It is protected by the skull, three meninges and a bath of cerebrospinal fluid, and fed by a dense arterial network with a selective blood-brain barrier. Every perception, decision, memory and voluntary movement is its work."
+      ],
+      "function": "Integration, thought, memory, sensation, control of movement and of the internal organs.",
+      "facts": [
+        {
+          "label": "Mass",
+          "value": "about 1.3-1.4 kg"
+        },
+        {
+          "label": "Neurons",
+          "value": "about 86 billion"
+        },
+        {
+          "label": "Energy use at rest",
+          "value": "about 20%"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "cerebrum",
+      "name": "Cerebrum",
+      "systems": [
+        "nervous"
+      ],
+      "location": "The upper, largest part of the brain",
+      "description": [
+        "Two hemispheres joined by the corpus callosum, each with an outer cortex of grey matter folded into gyri and sulci to fit some 2,500 square centimetres into the skull. Each hemisphere has four lobes: frontal (planning, movement, speech, personality), parietal (touch and spatial sense), temporal (hearing, language, memory) and occipital (vision). The left hemisphere controls the right side of the body and vice versa. Beneath the cortex the basal nuclei tune movement and the limbic structures, the hippocampus and amygdala, form memories and emotions."
+      ],
+      "function": "Conscious thought, sensation, voluntary movement, language, memory, emotion.",
+      "facts": [
+        {
+          "label": "Cortex area",
+          "value": "about 2,500 cm²"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "cerebellum",
+      "name": "Cerebellum",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Below the back of the cerebrum",
+      "description": [
+        "The 'little brain' holds more than half of all the brain's neurons in a tenth of its volume. It compares what the cerebrum intends with what the muscles and balance organs report and corrects the movement in progress, giving it smoothness, timing and accuracy; it also learns skills, so that a practised movement becomes automatic. Damage causes clumsy, shaky movement rather than paralysis."
+      ],
+      "function": "Coordination, balance, timing and motor learning.",
+      "facts": [
+        {
+          "label": "Share of brain neurons",
+          "value": "over half"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "brainstem",
+      "name": "Brainstem",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Between the brain and the spinal cord",
+      "description": [
+        "Midbrain, pons and medulla oblongata, the stalk that carries every pathway between brain and body and runs the functions that keep it alive: the medulla's centres set breathing, heart rate and blood pressure and drive swallowing, coughing and vomiting; the pons helps time breathing and relays to the cerebellum; the midbrain handles eye movement and reflex responses to sight and sound. Ten of the twelve cranial nerves arise here, and its reticular formation governs wakefulness."
+      ],
+      "function": "Vital reflexes (breathing, heart rate, blood pressure), cranial nerve control, arousal, relay.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "spinal-cord",
+      "name": "Spinal cord",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Inside the vertebral canal, from the skull to the upper lumbar spine",
+      "description": [
+        "About 45 cm of nervous tissue as thick as a finger, ending around the first lumbar vertebra, below which the spinal nerves fan out as the cauda equina. Its grey core holds the cell bodies of motor neurons and the circuits of spinal reflexes; its white outer tracts carry sensation up and commands down. Thirty-one pairs of spinal nerves leave through the gaps between vertebrae. A reflex such as the knee jerk runs through the cord in milliseconds without the brain's involvement."
+      ],
+      "function": "Conducts signals between brain and body; runs spinal reflexes.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about 45 cm"
+        },
+        {
+          "label": "Spinal nerves",
+          "value": "31 pairs"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "peripheral-nerves",
+      "name": "Peripheral nerves",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Throughout the body",
+      "description": [
+        "Bundles of axons wrapped in connective tissue, some carrying sensation inward, some commands outward, most both. Twelve pairs of cranial nerves serve the head (smell, sight, eye movement, face, hearing and balance, taste, and the vagus, which wanders down to the heart, lungs and gut); thirty-one pairs of spinal nerves serve the trunk and limbs, regrouping in plexuses into named nerves such as the sciatic, the body's largest. Damaged peripheral axons can regrow slowly; those of the CNS largely cannot."
+      ],
+      "function": "Carry sensation to, and commands from, the central nervous system.",
+      "facts": [
+        {
+          "label": "Cranial nerves",
+          "value": "12 pairs"
+        },
+        {
+          "label": "Spinal nerves",
+          "value": "31 pairs"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "autonomic-ganglia",
+      "name": "Autonomic nervous system",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Chains of ganglia beside the spine and near the organs",
+      "description": [
+        "The motor pathways that run the organs without conscious command, in two opposing branches. The sympathetic branch, from the thoracic and lumbar cord through a chain of ganglia, prepares the body for action: faster, stronger heartbeat, dilated pupils and airways, blood diverted from gut to muscle, sweat, and adrenaline from the adrenal medulla. The parasympathetic branch, mostly through the vagus nerve, restores and digests: slower heart, active gut and glands, constricted pupils. Most organs receive both and their balance sets the moment's state."
+      ],
+      "function": "Automatic control of heart, vessels, airways, gut, glands and pupils.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 15: The Autonomic Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "eye",
+      "name": "Eye",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Orbits of the skull",
+      "description": [
+        "A fluid-filled sphere about 24 mm across. Light enters through the clear cornea, which does most of the focusing, passes the pupil (the hole in the coloured iris, which adjusts its size), and is fine-focused by the lens, which muscles thicken for near vision, onto the retina at the back. There some 120 million rods (dim light, no colour) and 6 million cones (colour, detail, concentrated in the fovea) convert light to signals that the optic nerve carries to the brain, where the two eyes' pictures become depth."
+      ],
+      "function": "Vision.",
+      "facts": [
+        {
+          "label": "Photoreceptors",
+          "value": "about 126 million"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 14: The Somatic Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "ear",
+      "name": "Ear",
+      "systems": [
+        "nervous"
+      ],
+      "location": "Sides of the skull",
+      "description": [
+        "The outer ear funnels sound to the eardrum; the three ossicles of the middle ear (malleus, incus, stapes, the smallest bones in the body) lever its vibration into the fluid of the inner ear's cochlea, where hair cells along a spiral membrane fire for different pitches. The inner ear also holds the balance organs: three semicircular canals that sense rotation and two chambers that sense gravity and linear motion. Both send signals through the vestibulocochlear nerve."
+      ],
+      "function": "Hearing and balance.",
+      "facts": [
+        {
+          "label": "Smallest bone",
+          "value": "stapes, about 3 mm"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 14: The Somatic Nervous System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "hypothalamus",
+      "name": "Hypothalamus",
+      "systems": [
+        "endocrine",
+        "nervous"
+      ],
+      "location": "Base of the brain, above the pituitary",
+      "description": [
+        "A few grams of brain tissue that read the blood's temperature, salt, sugar and hormone levels and the body's state of hunger, thirst, sleep and stress, and act on all of them: through the autonomic nerves, through releasing hormones that control the front of the pituitary, and by making two hormones (ADH and oxytocin) that the back of the pituitary stores and releases. It is the point where the nervous and endocrine systems become one."
+      ],
+      "function": "Master regulator of homeostasis, the pituitary and the autonomic system.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "pituitary",
+      "name": "Pituitary gland",
+      "systems": [
+        "endocrine"
+      ],
+      "location": "In a bony pocket at the base of the skull",
+      "description": [
+        "A pea-sized gland hanging from the hypothalamus. Its anterior lobe makes growth hormone, prolactin, and the tropic hormones that drive the thyroid (TSH), adrenal cortex (ACTH) and gonads (FSH and LH); its posterior lobe releases the hypothalamus's antidiuretic hormone (water retention by the kidney) and oxytocin (labour, milk let-down, bonding). Once called the master gland, it is better seen as the hypothalamus's amplifier."
+      ],
+      "function": "Controls growth, the thyroid, adrenals and gonads, water balance, milk and labour.",
+      "facts": [
+        {
+          "label": "Size",
+          "value": "about 1 cm, 0.5 g"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "pineal",
+      "name": "Pineal gland",
+      "systems": [
+        "endocrine"
+      ],
+      "location": "Centre of the brain",
+      "description": [
+        "A rice-grain gland that secretes melatonin in darkness and stops in light, as signalled from the retina through the hypothalamus. Melatonin sets the body's clock to the day and night, promotes sleep, and in many animals times the breeding season."
+      ],
+      "function": "Sets the daily rhythm through melatonin.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "thyroid",
+      "name": "Thyroid gland",
+      "systems": [
+        "endocrine"
+      ],
+      "location": "Front of the neck, below the larynx",
+      "description": [
+        "A butterfly of two lobes over the trachea that makes the iodine-containing hormones T3 and T4, which set the metabolic rate of nearly every cell, the heart's pace, body heat, and growth and brain development in children. Too little makes a person cold, slow and tired; too much makes them hot, thin and anxious. It also makes calcitonin, which lowers blood calcium by slowing bone breakdown."
+      ],
+      "function": "Metabolic rate, heat, growth; calcium lowering.",
+      "facts": [
+        {
+          "label": "Mass",
+          "value": "about 25 g"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "parathyroids",
+      "name": "Parathyroid glands",
+      "systems": [
+        "endocrine"
+      ],
+      "location": "Behind the thyroid",
+      "description": [
+        "Four glands the size of rice grains whose single hormone, parathyroid hormone, is the main control of blood calcium: when calcium falls it releases calcium from bone, makes the kidney keep it and activate vitamin D, and so raises gut absorption. Nerves and muscles cannot work without steady calcium, which is why these tiny glands are essential."
+      ],
+      "function": "Raises blood calcium.",
+      "facts": [
+        {
+          "label": "Number",
+          "value": "usually 4"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "adrenals",
+      "name": "Adrenal glands",
+      "systems": [
+        "endocrine"
+      ],
+      "location": "On top of each kidney",
+      "description": [
+        "Two glands, each two glands in one. The outer cortex makes steroid hormones: cortisol, which raises blood sugar and damps inflammation in stress and follows a daily rhythm; aldosterone, which tells the kidney to keep sodium and so water; and small amounts of sex hormones. The inner medulla is modified nervous tissue that pours adrenaline and noradrenaline into the blood within seconds of a sympathetic signal, the chemical half of fight-or-flight."
+      ],
+      "function": "Stress responses, blood sugar, salt and water balance, adrenaline.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "pancreas",
+      "name": "Pancreas",
+      "systems": [
+        "digestive",
+        "endocrine"
+      ],
+      "location": "Behind the stomach",
+      "description": [
+        "A 15 cm gland with two jobs. Most of it is exocrine tissue that secretes about a litre a day of digestive juice into the duodenum: enzymes for protein, fat, carbohydrate and nucleic acids and bicarbonate to neutralise stomach acid. Scattered through it are a million islets of Langerhans, endocrine tissue whose beta cells release insulin when blood sugar rises (telling cells to take up and store glucose) and whose alpha cells release glucagon when it falls (telling the liver to release it). Diabetes is the failure of the insulin side."
+      ],
+      "function": "Digestive enzymes; blood sugar control by insulin and glucagon.",
+      "facts": [
+        {
+          "label": "Digestive juice",
+          "value": "about 1 litre a day"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "ovaries",
+      "name": "Ovaries",
+      "systems": [
+        "reproductive",
+        "endocrine"
+      ],
+      "location": "Pelvis, either side of the uterus",
+      "description": [
+        "Two almond-sized organs holding, at birth, all the eggs a woman will ever have, about a million, of which some 400 will mature and be released, one a month, between puberty and menopause. The follicle around a maturing egg makes oestrogen; after ovulation its remains make progesterone, which prepares the uterus for pregnancy. These hormones also drive the female body form, bone density and the cycle itself."
+      ],
+      "function": "Egg production; oestrogen and progesterone.",
+      "facts": [
+        {
+          "label": "Eggs released in a lifetime",
+          "value": "about 400"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "testes",
+      "name": "Testes",
+      "systems": [
+        "reproductive",
+        "endocrine"
+      ],
+      "location": "Scrotum",
+      "description": [
+        "Two oval glands in which coiled seminiferous tubules, several hundred metres in total, make sperm continuously from puberty at a rate of hundreds of millions a day, each taking about 64 days to mature. Between the tubules, Leydig cells make testosterone, which drives sperm production, the male body form, muscle and bone mass, and libido. They hang outside the body because sperm need a temperature a few degrees below the core."
+      ],
+      "function": "Sperm production; testosterone.",
+      "facts": [
+        {
+          "label": "Sperm maturation",
+          "value": "about 64 days"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "heart",
+      "name": "Heart",
+      "systems": [
+        "circulatory"
+      ],
+      "location": "Centre of the chest, tilted to the left",
+      "description": [
+        "A fist-sized muscle of about 300 g with four chambers. The right atrium collects oxygen-poor blood from the body and passes it to the right ventricle, which pumps it to the lungs; the left atrium collects oxygen-rich blood from the lungs and the thick-walled left ventricle drives it round the body. Four valves (tricuspid, pulmonary, mitral, aortic) keep flow one-way and make the heart sounds when they close. The sinoatrial node fires about 70 times a minute at rest, the impulse spreading through conducting fibres so that atria contract before ventricles.",
+        "The heart feeds itself through the coronary arteries, the first branches of the aorta; blocking one is a heart attack. It beats about 2.5 billion times in a lifetime and moves about 7,000 litres a day."
+      ],
+      "function": "Pumps blood through the pulmonary and systemic circuits.",
+      "facts": [
+        {
+          "label": "Mass",
+          "value": "about 300 g"
+        },
+        {
+          "label": "Resting output",
+          "value": "about 5 litres a minute"
+        },
+        {
+          "label": "Beats per day",
+          "value": "about 100,000"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 19: The Cardiovascular System: The Heart",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "arteries",
+      "name": "Arteries",
+      "systems": [
+        "circulatory"
+      ],
+      "location": "From the heart outward to every organ",
+      "description": [
+        "Thick-walled vessels with elastic and muscular layers that carry blood away from the heart under pressure. The aorta, about 2.5 cm wide, arches from the left ventricle and gives off the arteries to the head, arms, organs and legs; each branches into smaller arteries and then arterioles, whose muscular walls constrict or relax to direct blood to whichever tissues need it most. The elastic recoil of the large arteries keeps blood moving between beats and is the pulse you feel."
+      ],
+      "function": "Carry blood from the heart; regulate its distribution and pressure.",
+      "facts": [
+        {
+          "label": "Aorta diameter",
+          "value": "about 2.5 cm"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 20: The Cardiovascular System: Blood Vessels and Circulation",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "veins",
+      "name": "Veins",
+      "systems": [
+        "circulatory"
+      ],
+      "location": "From every organ back to the heart",
+      "description": [
+        "Thinner-walled, wider vessels that return blood to the heart at low pressure and hold about 60 percent of the blood volume at any moment, a reservoir the body can draw on. Valves in the veins of the limbs stop blood falling back, and the squeeze of surrounding muscles and the suction of breathing push it upward; the two venae cavae deliver it to the right atrium. Varicose veins are valves that have failed."
+      ],
+      "function": "Return blood to the heart; store blood volume.",
+      "facts": [
+        {
+          "label": "Share of blood volume",
+          "value": "about 60%"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 20: The Cardiovascular System: Blood Vessels and Circulation",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "capillaries",
+      "name": "Capillaries",
+      "systems": [
+        "circulatory"
+      ],
+      "location": "Every tissue",
+      "description": [
+        "The smallest vessels, one cell thick and barely wider than a red cell, and by far the most numerous: tens of billions, with a total exchange surface of hundreds of square metres. Here, and only here, blood does its work: oxygen, glucose and hormones diffuse out to the cells, carbon dioxide and wastes diffuse in, and plasma filters out to become tissue fluid. Only a fraction of the capillaries are open at any moment; the arterioles decide which."
+      ],
+      "function": "Exchange of gases, nutrients and wastes with the tissues.",
+      "facts": [
+        {
+          "label": "Wall thickness",
+          "value": "one cell"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 20: The Cardiovascular System: Blood Vessels and Circulation",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "blood",
+      "name": "Blood",
+      "systems": [
+        "circulatory"
+      ],
+      "location": "The vessels and heart",
+      "description": [
+        "About five litres, 7-8 percent of body weight: 55 percent plasma (water, proteins such as albumin and antibodies and clotting factors, salts, glucose, hormones, wastes) and 45 percent cells. Red cells, 25 trillion of them, are discs full of haemoglobin that carry oxygen and live about 120 days; white cells, far fewer, are the immune system's mobile force; platelets are cell fragments that plug damaged vessels and trigger clotting. Blood carries heat as well as chemistry, and its groups (ABO, Rh) are surface markers on the red cells."
+      ],
+      "function": "Transport, defence, clotting, heat distribution.",
+      "facts": [
+        {
+          "label": "Volume",
+          "value": "about 5 litres"
+        },
+        {
+          "label": "Red cell lifespan",
+          "value": "about 120 days"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 18: The Cardiovascular System: Blood",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/18-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "nose-pharynx",
+      "name": "Nose and pharynx",
+      "systems": [
+        "respiratory"
+      ],
+      "location": "Face and throat",
+      "description": [
+        "The nasal cavity, divided by the septum and enlarged by the scroll-like conchae, warms, moistens and filters air over a large mucous surface and carries the smell receptors on its roof. The pharynx behind it is shared with the digestive tract: air and food both pass the oropharynx before the epiglottis directs each to its own tube. The tonsils sit in its walls."
+      ],
+      "function": "Conditions incoming air; smell; shared passage for air and food.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "larynx",
+      "name": "Larynx",
+      "systems": [
+        "respiratory"
+      ],
+      "location": "Top of the trachea, front of the neck",
+      "description": [
+        "The voice box: a frame of cartilages (the thyroid cartilage is the Adam's apple) holding the vocal folds, two bands that the passing air sets vibrating; tightening them raises the pitch, and the mouth and tongue shape the sound into speech. The epiglottis above it folds over the airway during swallowing. It is also the airway's guard: anything that touches the folds triggers a cough."
+      ],
+      "function": "Voice; protects the airway during swallowing.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "trachea",
+      "name": "Trachea",
+      "systems": [
+        "respiratory"
+      ],
+      "location": "Neck and upper chest",
+      "description": [
+        "The windpipe, about 12 cm long and 2 cm wide, held open by 16-20 C-shaped rings of cartilage whose open sides face the oesophagus behind. Its lining of ciliated cells and mucus glands traps dust and microbes and sweeps them upward to be swallowed, the mucociliary escalator that smoking paralyses."
+      ],
+      "function": "Conducts and cleans air to the bronchi.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about 12 cm"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "bronchi",
+      "name": "Bronchi and bronchioles",
+      "systems": [
+        "respiratory"
+      ],
+      "location": "Inside the lungs",
+      "description": [
+        "The trachea divides into a right and left main bronchus, one per lung, and each branches into lobar and segmental bronchi and then into bronchioles less than a millimetre wide, some 23 generations of branching in all, a tree with tens of thousands of terminal twigs. Cartilage disappears as they narrow and smooth muscle takes over; its tightening in asthma is what makes breathing hard."
+      ],
+      "function": "Distribute air to every part of the lungs.",
+      "facts": [
+        {
+          "label": "Branchings",
+          "value": "about 23"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "lungs",
+      "name": "Lungs",
+      "systems": [
+        "respiratory"
+      ],
+      "location": "Chest, either side of the heart",
+      "description": [
+        "Two spongy, elastic organs, the right in three lobes and the left in two (with a notch for the heart), each wrapped in a double pleural membrane whose thin film of fluid lets them slide as the chest moves and keeps them stuck to its wall so they expand with it. Together they weigh about a kilogram, hold about six litres of air at full inflation, and exchange about half a litre with each quiet breath. Their capillary bed receives the entire output of the right ventricle."
+      ],
+      "function": "Gas exchange between air and blood.",
+      "facts": [
+        {
+          "label": "Total capacity",
+          "value": "about 6 litres"
+        },
+        {
+          "label": "Tidal breath",
+          "value": "about 0.5 litre"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "alveoli",
+      "name": "Alveoli",
+      "systems": [
+        "respiratory"
+      ],
+      "location": "The ends of the bronchial tree",
+      "description": [
+        "About 300 million microscopic air sacs, each wrapped in capillaries, with a combined surface of some 70 square metres. Their walls are a single flat cell, the capillary wall another, so oxygen crosses into the blood and carbon dioxide out in a fraction of a second. Special cells secrete surfactant, a detergent that stops the sacs collapsing; macrophages patrol them for dust and microbes. Emphysema is their destruction."
+      ],
+      "function": "The actual site of gas exchange.",
+      "facts": [
+        {
+          "label": "Number",
+          "value": "about 300 million"
+        },
+        {
+          "label": "Surface",
+          "value": "about 70 m²"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "lymph-nodes",
+      "name": "Lymph nodes",
+      "systems": [
+        "lymphatic"
+      ],
+      "location": "Along the lymphatic vessels, clustered in the neck, armpits, groin, chest and abdomen",
+      "description": [
+        "Some 600 bean-shaped filters, a few millimetres to a couple of centimetres long, through which lymph percolates past sheets of lymphocytes and macrophages. Anything foreign is trapped and presented to the immune cells, which multiply, which is why nodes swell and ache near an infection. Cancers spread through them, and surgeons check the nodes nearest a tumour for that reason."
+      ],
+      "function": "Filter lymph and stage the immune response.",
+      "facts": [
+        {
+          "label": "Number",
+          "value": "about 600"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "lymphatic-vessels",
+      "name": "Lymphatic vessels",
+      "systems": [
+        "lymphatic"
+      ],
+      "location": "Almost every tissue",
+      "description": [
+        "A network of thin, valved vessels that begins blind in the tissues, collects the fluid that leaks from blood capillaries (about three litres a day) and the fats absorbed by the gut, and returns it through the thoracic duct and right lymphatic duct to the veins at the base of the neck. There is no pump; lymph moves by the squeeze of muscles, the pulse of nearby arteries and the vessels' own slow contractions, one-way because of the valves."
+      ],
+      "function": "Drain tissue fluid and absorbed fat back to the blood.",
+      "facts": [
+        {
+          "label": "Lymph returned",
+          "value": "about 3 litres a day"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "spleen",
+      "name": "Spleen",
+      "systems": [
+        "lymphatic"
+      ],
+      "location": "Upper left abdomen, behind the stomach",
+      "description": [
+        "The largest lymphatic organ, about the size of a fist, that filters blood as the nodes filter lymph: its red pulp removes worn-out red cells and recycles their iron, and its white pulp of lymphocytes responds to blood-borne pathogens. It also holds a reserve of blood and platelets. A person can live without it, but is more vulnerable to certain bacteria."
+      ],
+      "function": "Filters blood; recycles red cells; mounts immune responses to blood-borne microbes.",
+      "facts": [
+        {
+          "label": "Mass",
+          "value": "about 150 g"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "thymus",
+      "name": "Thymus",
+      "systems": [
+        "lymphatic",
+        "endocrine"
+      ],
+      "location": "Upper chest, behind the sternum",
+      "description": [
+        "The school of the T lymphocytes. Immature cells from the marrow arrive here to be tested: those that would attack the body's own tissues are destroyed, those that recognise foreign material are released. It is largest in childhood, when the immune repertoire is being built, and shrinks to fat after puberty, its work largely done; its hormones (thymosins) drive that maturation."
+      ],
+      "function": "Maturation and selection of T cells.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "tonsils",
+      "name": "Tonsils and gut lymphoid tissue",
+      "systems": [
+        "lymphatic"
+      ],
+      "location": "Throat; the wall of the small intestine and appendix",
+      "description": [
+        "Patches of lymphoid tissue placed where the outside world enters: the palatine, lingual and pharyngeal tonsils (adenoids) ring the throat and sample what is breathed and swallowed; Peyer's patches in the ileum and the appendix do the same for the gut, which is the body's largest interface with the outside and holds most of its immune cells."
+      ],
+      "function": "Immune surveillance at the body's entrances.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "mouth",
+      "name": "Mouth, teeth and salivary glands",
+      "systems": [
+        "digestive"
+      ],
+      "location": "Head",
+      "description": [
+        "Thirty-two adult teeth (20 in childhood) cut, tear and grind; the tongue, a bundle of muscles carrying the taste buds, positions food and forms the bolus; three pairs of salivary glands secrete about 1.5 litres of saliva a day, which moistens, begins starch digestion with amylase, protects the teeth and carries antibodies. Swallowing, once started, is a reflex that closes the airway and drives the bolus into the oesophagus."
+      ],
+      "function": "Ingestion, chewing, taste, the start of digestion, swallowing.",
+      "facts": [
+        {
+          "label": "Saliva",
+          "value": "about 1.5 litres a day"
+        },
+        {
+          "label": "Adult teeth",
+          "value": "32"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "oesophagus",
+      "name": "Oesophagus",
+      "systems": [
+        "digestive"
+      ],
+      "location": "Behind the trachea, through the diaphragm to the stomach",
+      "description": [
+        "A 25 cm muscular tube that carries swallowed food to the stomach by peristalsis, a wave of contraction that works even upside down. A sphincter at its lower end opens to let food through and closes to keep acid in the stomach; heartburn is that valve leaking."
+      ],
+      "function": "Moves food from throat to stomach.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about 25 cm"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "stomach",
+      "name": "Stomach",
+      "systems": [
+        "digestive"
+      ],
+      "location": "Upper left abdomen, under the diaphragm",
+      "description": [
+        "A J-shaped muscular bag that stretches from about 50 ml empty to a litre or more after a meal. Its glands secrete about two litres a day of juice: hydrochloric acid strong enough to dissolve metal, which kills microbes and unfolds proteins; pepsin, which begins to cut them; and mucus, which stops the stomach digesting itself. Three layers of muscle churn the mix into chyme and release it in squirts through the pyloric sphincter into the duodenum over two to four hours. It also makes intrinsic factor, without which vitamin B12 cannot be absorbed."
+      ],
+      "function": "Stores, churns and begins protein digestion; sterilises food.",
+      "facts": [
+        {
+          "label": "Capacity",
+          "value": "about 1-1.5 litres"
+        },
+        {
+          "label": "Gastric juice",
+          "value": "about 2 litres a day"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "small-intestine",
+      "name": "Small intestine",
+      "systems": [
+        "digestive"
+      ],
+      "location": "Central abdomen, coiled below the stomach",
+      "description": [
+        "About six metres of tube in three parts: the short duodenum, where bile and pancreatic juice enter and most chemical digestion happens; the jejunum, where most absorption happens; and the ileum, which absorbs bile salts and vitamin B12. Circular folds, villi and microvilli multiply its lining to about 30 square metres. Sugars and amino acids pass into blood capillaries in the villi and on to the liver; fats are rebuilt in the lining cells and pass into lymph. Transit takes three to five hours."
+      ],
+      "function": "Completes digestion; absorbs almost all nutrients.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about 6 m"
+        },
+        {
+          "label": "Absorptive surface",
+          "value": "about 30 m²"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "large-intestine",
+      "name": "Large intestine",
+      "systems": [
+        "digestive"
+      ],
+      "location": "Framing the abdomen: caecum and appendix, ascending, transverse, descending and sigmoid colon, rectum",
+      "description": [
+        "About 1.5 metres of wider tube that absorbs the last litre or so of water and salts from the residue, over 12 to 48 hours, and hosts trillions of bacteria, more cells than the rest of the body, that ferment fibre into short-chain fatty acids the colon lining feeds on, make vitamin K and some B vitamins, and keep harmful species in check. The rectum stores the result; the anal sphincters, one automatic and one voluntary, control its release."
+      ],
+      "function": "Water and salt absorption; the microbiome; storage and elimination of faeces.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about 1.5 m"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "liver",
+      "name": "Liver",
+      "systems": [
+        "digestive"
+      ],
+      "location": "Upper right abdomen, under the diaphragm",
+      "description": [
+        "The largest internal organ, about 1.5 kg, with several hundred jobs. Everything absorbed by the gut reaches it first through the portal vein: it stores glucose as glycogen and releases it between meals, makes and breaks down fats and cholesterol, builds most plasma proteins including albumin and the clotting factors, converts ammonia from protein breakdown into urea for the kidneys, detoxifies alcohol and drugs, stores iron and vitamins A, D and B12, breaks down old red cells and turns their haemoglobin into bile pigment, and secretes about a litre of bile a day. It can regrow from a third of itself."
+      ],
+      "function": "Metabolic hub: storage, synthesis, detoxification, bile.",
+      "facts": [
+        {
+          "label": "Mass",
+          "value": "about 1.5 kg"
+        },
+        {
+          "label": "Bile",
+          "value": "about 1 litre a day"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "gallbladder",
+      "name": "Gallbladder",
+      "systems": [
+        "digestive"
+      ],
+      "location": "Under the liver",
+      "description": [
+        "A small sac that stores and concentrates the liver's bile between meals and, when fat enters the duodenum and the hormone cholecystokinin is released, squeezes it down the bile duct. Bile salts emulsify fat into droplets small enough for the pancreas's lipase to digest. Concentrated bile can crystallise into gallstones; the organ can be removed and bile then drips steadily instead."
+      ],
+      "function": "Stores and releases bile.",
+      "facts": [
+        {
+          "label": "Capacity",
+          "value": "about 50 ml"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "kidneys",
+      "name": "Kidneys",
+      "systems": [
+        "urinary"
+      ],
+      "location": "Either side of the spine, behind the abdominal organs, under the ribs",
+      "description": [
+        "Two bean-shaped organs about 11 cm long, each with about a million nephrons. They receive a fifth of the heart's output, filter about 180 litres of plasma a day and return all but about 1.5 litres, adjusting the amount of water, sodium, potassium, calcium, acid and urea that leaves in the urine to hold the blood's composition constant. They also make renin (blood pressure), erythropoietin (red cell production) and active vitamin D. A person can live well with one."
+      ],
+      "function": "Blood filtration; water, salt and acid balance; blood pressure; hormones.",
+      "facts": [
+        {
+          "label": "Nephrons",
+          "value": "about 1 million each"
+        },
+        {
+          "label": "Filtrate",
+          "value": "about 180 litres a day"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "ureters",
+      "name": "Ureters",
+      "systems": [
+        "urinary"
+      ],
+      "location": "From each kidney down to the bladder",
+      "description": [
+        "Two muscular tubes about 25-30 cm long that carry urine to the bladder by peristaltic waves, several times a minute, and enter it obliquely so that a full bladder pinches them shut and nothing flows back. A kidney stone lodged in one causes some of the worst pain known."
+      ],
+      "function": "Convey urine from kidney to bladder.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about 25-30 cm"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "bladder",
+      "name": "Bladder",
+      "systems": [
+        "urinary"
+      ],
+      "location": "Pelvis, behind the pubic bone",
+      "description": [
+        "A hollow muscular organ lined with an epithelium that stretches as it fills, from empty to a comfortable 300-400 ml and a maximum near a litre. Stretch receptors signal the spinal cord; the emptying reflex contracts the bladder wall and opens the internal sphincter, and the brain decides, through the external sphincter, whether to allow it. Infants empty by reflex alone; control is learned."
+      ],
+      "function": "Stores urine and empties it under control.",
+      "facts": [
+        {
+          "label": "Comfortable capacity",
+          "value": "about 300-400 ml"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "urethra",
+      "name": "Urethra",
+      "systems": [
+        "urinary",
+        "reproductive"
+      ],
+      "location": "From the bladder to the outside",
+      "description": [
+        "The final tube, about 4 cm long in the female and 20 cm in the male, where it runs through the prostate and the penis and also carries semen. Its shortness in the female is why bladder infections are commoner. The external sphincter around it is skeletal muscle under voluntary control."
+      ],
+      "function": "Carries urine (and, in the male, semen) out of the body.",
+      "facts": [
+        {
+          "label": "Length",
+          "value": "about 4 cm (female), 20 cm (male)"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "uterus",
+      "name": "Uterus",
+      "systems": [
+        "reproductive"
+      ],
+      "location": "Pelvis, between bladder and rectum",
+      "description": [
+        "A pear-sized organ of thick smooth muscle with an inner lining, the endometrium, that thickens with blood vessels and glands each month under oestrogen and progesterone and is shed as menstruation if no embryo implants. In pregnancy it grows to hold a full-term child and several litres, and its muscle, stimulated by oxytocin, delivers the child at birth. The cervix at its base holds a mucus plug in pregnancy and dilates to ten centimetres in labour."
+      ],
+      "function": "Receives the embryo, carries the pregnancy, delivers the child.",
+      "facts": [
+        {
+          "label": "Growth in pregnancy",
+          "value": "from about 60 g to about 1 kg of muscle"
+        }
+      ],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    },
+    {
+      "id": "prostate",
+      "name": "Prostate and seminal vesicles",
+      "systems": [
+        "reproductive"
+      ],
+      "location": "Below the bladder, around the urethra",
+      "description": [
+        "The walnut-sized prostate and the two seminal vesicles behind it make most of the fluid of semen: the vesicles contribute a fructose-rich fluid that fuels the sperm, the prostate a thin milky secretion that helps them swim and buffers the acidity of the vagina. The prostate tends to enlarge with age and squeeze the urethra it surrounds."
+      ],
+      "function": "Produce the fluid part of semen.",
+      "facts": [],
+      "source": {
+        "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
+        "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
+        "publisher": "OpenStax (CC BY 4.0)"
+      }
+    }
+  ],
+  "cooperation": [
+    {
+      "title": "Getting oxygen to a cell",
+      "systems": [
+        "respiratory",
+        "circulatory",
+        "muscular",
+        "nervous"
+      ],
+      "text": "The brainstem, reading carbon dioxide in the blood, fires the phrenic nerve; the diaphragm contracts and air fills the alveoli. Oxygen diffuses into the pulmonary capillaries and binds haemoglobin in the red cells; the left heart drives that blood through the aorta and the arterioles open the way to whichever tissue is working. In the capillaries oxygen diffuses out to the cell's mitochondria, and the carbon dioxide they make rides back to the lungs. Four systems, one breath, about a minute round the loop."
+    },
+    {
+      "title": "Turning a meal into energy",
+      "systems": [
+        "digestive",
+        "circulatory",
+        "endocrine",
+        "nervous",
+        "lymphatic"
+      ],
+      "text": "The sight and smell of food start saliva and gastric juice flowing by nerve reflex; the stomach and small intestine, timed by gut hormones, break the meal down; sugars and amino acids enter the blood and pass through the liver, fats enter the lymph. Rising blood sugar makes the pancreas release insulin, which tells muscle, fat and liver to take the glucose in and store it; hours later, as it falls, glucagon makes the liver give it back. The gut's lymphoid tissue and the liver screen everything that comes in."
+    },
+    {
+      "title": "Making a movement",
+      "systems": [
+        "nervous",
+        "muscular",
+        "skeletal",
+        "circulatory"
+      ],
+      "text": "The motor cortex plans; the basal nuclei and cerebellum shape and time the plan; a command travels down the spinal cord and out along a motor nerve to hundreds of muscle fibres, which contract and pull a bone across a joint. Sensors in the muscle and joint report back within milliseconds so the cerebellum can correct the movement as it happens. The sympathetic system meanwhile raises heart rate and opens the muscle's arterioles, because working muscle needs up to twenty times its resting blood flow."
+    },
+    {
+      "title": "Holding the body's water and salt",
+      "systems": [
+        "urinary",
+        "endocrine",
+        "circulatory",
+        "nervous"
+      ],
+      "text": "When the hypothalamus senses the blood growing concentrated it makes you thirsty and releases antidiuretic hormone, and the kidneys pull water back from the urine. When blood pressure falls the kidneys release renin, which ends in aldosterone from the adrenals and sodium retention, and the brainstem tightens the arterioles and quickens the heart. When volume rises the heart's own hormone tells the kidneys to shed salt. Fluid the capillaries leak is returned by the lymphatic vessels. The result is a blood volume and salt content that vary by a few percent through feast, fast, heat and exercise."
+    },
+    {
+      "title": "Fighting an infection",
+      "systems": [
+        "integumentary",
+        "lymphatic",
+        "circulatory",
+        "nervous",
+        "endocrine"
+      ],
+      "text": "The skin and mucous membranes keep most microbes out. Those that get in meet the innate defences at once: local cells release signals that widen and leak the capillaries (redness, swelling, heat) and summon white cells from the blood. Dendritic cells carry pieces of the invader through the lymphatic vessels to a node, where matching B and T cells multiply for days, then antibodies and killer cells flood back through the blood. The hypothalamus raises body temperature to hinder the microbe; cortisol from the adrenals later reins the response in; memory cells remain for next time."
+    },
+    {
+      "title": "Keeping the temperature at 37 degrees",
+      "systems": [
+        "nervous",
+        "integumentary",
+        "circulatory",
+        "muscular",
+        "endocrine"
+      ],
+      "text": "The hypothalamus reads blood temperature and skin sensors. Too warm, and it dilates the skin's vessels and starts the sweat glands, so the blood carries heat to the surface and evaporation removes it. Too cold, and it constricts those vessels, raises the hairs, and sets the muscles shivering, whose contractions make heat; over weeks the thyroid raises the resting metabolic rate. Fat in the hypodermis insulates throughout."
+    },
+    {
+      "title": "Building and keeping bone",
+      "systems": [
+        "skeletal",
+        "endocrine",
+        "digestive",
+        "urinary",
+        "integumentary",
+        "muscular"
+      ],
+      "text": "Sunlight on the skin makes vitamin D, the kidney activates it, and it lets the small intestine absorb calcium. Parathyroid hormone and calcitonin move that calcium into and out of the skeleton to hold the blood level exact, because nerves and muscles fail without it. Growth hormone lengthens the long bones in childhood and the sex hormones of puberty finish and then fuse them; through life the pull of muscle tells the osteoblasts where to lay bone down, which is why loading strengthens a skeleton and rest weakens it."
+    },
+    {
+      "title": "Homeostasis: the common thread",
+      "systems": [
+        "nervous",
+        "endocrine"
+      ],
+      "text": "Every example above is the same idea: a sensor, a set point, a controller and an effector, arranged as a negative feedback loop that opposes any change. The nervous system supplies the fast loops, in milliseconds to seconds, through nerves; the endocrine system the slow ones, in minutes to months, through hormones; and the hypothalamus is where the two meet. The other systems are the effectors. Health is these loops holding; disease is one of them failing."
+    }
+  ]
+}

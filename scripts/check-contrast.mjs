@@ -44,6 +44,8 @@ const INVARIANT = {
   spaceText: 'oklch(100% 0 0)',
   chemistryBg: 'oklch(45% 0.13 350)',
   chemistryText: 'oklch(100% 0 0)',
+  anatomyBg: 'oklch(46% 0.15 20)',
+  anatomyText: 'oklch(100% 0 0)',
   brandText: 'oklch(100% 0 0)',
   mapSpace: 'oklch(8% 0.005 260)',
   mapOcean: 'oklch(31% 0.06 255)',
@@ -76,6 +78,7 @@ const THEMES = {
     navEvolution: 'oklch(48% 0.1 70)',
     navSpace: 'oklch(43% 0.11 295)',
     navChemistry: 'oklch(45% 0.13 350)',
+    navAnatomy: 'oklch(46% 0.15 20)',
     // Periodic table (§47): the darkest/most-saturated category tint (hue
     // 20 is the worst case for luminance) and the ramp endpoints.
     chemTintWorst: 'oklch(90% 0.07 20)',
@@ -110,6 +113,7 @@ const THEMES = {
     navEvolution: 'oklch(74% 0.1 75)',
     navSpace: 'oklch(72% 0.1 295)',
     navChemistry: 'oklch(74% 0.12 350)',
+    navAnatomy: 'oklch(74% 0.13 20)',
     chemTintWorst: 'oklch(36% 0.08 100)',
     chemScaleLo: 'oklch(24% 0.03 250)',
     chemScaleHi: 'oklch(50% 0.14 250)',
@@ -135,6 +139,7 @@ const checks = (t) => [
   ['nav accent (evolution) vs surface', t.navEvolution, t.surface, 3.0],
   ['nav accent (space) vs surface', t.navSpace, t.surface, 3.0],
   ['nav accent (chemistry) vs surface', t.navChemistry, t.surface, 3.0],
+  ['nav accent (anatomy) vs surface', t.navAnatomy, t.surface, 3.0],
   // Periodic table cells carry body text on their fills (§47).
   ['body text on periodic category tint', t.text, t.chemTintWorst, 4.5],
   ['body text on periodic scale (low end)', t.text, t.chemScaleLo, 4.5],
@@ -156,6 +161,7 @@ const checks = (t) => [
   ['biology button label', INVARIANT.biologyText, INVARIANT.biologyBg, 4.5],
   ['space button label', INVARIANT.spaceText, INVARIANT.spaceBg, 4.5],
   ['chemistry button label', INVARIANT.chemistryText, INVARIANT.chemistryBg, 4.5],
+  ['anatomy button label', INVARIANT.anatomyText, INVARIANT.anatomyBg, 4.5],
   ['globe ocean vs space', INVARIANT.mapOcean, INVARIANT.mapSpace, 1.5],
   ['muted text on surface', t.textMuted, t.surface, 4.5],
   ['muted text on raised', t.textMuted, t.raised, 4.5],
