@@ -231,6 +231,10 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   the at-rest imagery render is a layout effect that never runs
   mid-drag. Reset view is the compass icon. Space outside the
   projection is black on EVERY view and direction (the §48.3 parchment
-  surround was reversed by Andy in §51.4). Satellite imagery stays
-  Blue Marble 2004 for licence/bake reasons (§54.3) — EOX Sentinel-2
-  cloudless (CC BY-NC-SA) is the recorded candidate, not adopted.
+  surround was reversed by Andy in §51.4). Satellite imagery is EOX
+  Sentinel-2 cloudless 2025 (§56, Andy's ruling): CC BY-NC-SA 4.0,
+  attribution sentence VERBATIM on the map credit line, 41 WMS windows
+  fetched by the mapdetail stage (per-call fetch timeout 900 s; cached
+  under .cache/terrain/eox-*); Blue Marble 2004 only via
+  SATELLITE_SOURCE=bluemarble. Never switch the imagery to a runtime
+  tile server.

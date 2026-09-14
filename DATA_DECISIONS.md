@@ -3708,10 +3708,9 @@ site can carry. The options, checked on 2026-09-13:
 | EOX Sentinel-2 cloudless (s2maps.eu) | 2016–2024, yearly | CC BY-NC-SA 4.0 (non-commercial); commercial licence otherwise | The best-looking recent option. Non-commercial use fits this site, but share-alike would attach to the committed tiles and the free tile service is not offered for bulk download of the ~10k tiles the tiers need. Not adopted without Andy's ruling. |
 | Copernicus Sentinel-2 Global Mosaic / Data Space quarterly mosaics | 2023–, quarterly | Copernicus free and open | Registration-gated, 10 m COGs measured in terabytes; no world-scale rendition to bake. |
 
-Decision: keep Blue Marble 2004 as the default, state the vintage in
-the attribution (it already reads "Aug 2004"), and record the EOX
-route as the candidate if Andy accepts a CC BY-NC-SA data folder and
-a one-off, throttled fetch of its WMTS tiles for the three tiers.
+Decision at the time: keep Blue Marble 2004 and record the EOX route
+as the candidate. Andy then ruled "Use EOX Sentinel-2 cloudless" the
+same day — see §56 for what shipped.
 
 ## 55. Round 6: Human Anatomy — the body in layers (2026-09-13)
 
@@ -3789,6 +3788,55 @@ upgrade if Andy wants the layers to overlay.
 reachability); headed Chrome at 1280 (layers step, organ opens, the
 reproductive view, no console errors) and Pixel 7 (stage stacks above
 the panel).
+
+## 56. Round 6: the satellite view moves to EOX Sentinel-2 cloudless 2025 (2026-09-13)
+
+Andy's ruling on §54.3: "Use EOX Sentinel-2 cloudless." This reverses
+the 2004 default and accepts the licence trade-off recorded there.
+
+**56.1 Source.** EOxCloudless (https://cloudless.eox.at), EOX IT
+Services GmbH: a cloud-free Sentinel-2 mosaic published per year; the
+WMS at tiles.maps.eox.at offers `s2cloudless-2016` … `s2cloudless-2025`
+in EPSG:4326 and Web Mercator. **2025** is used — the newest layer the
+capabilities document lists (fetched 2026-09-13). Licence for
+non-commercial use: **CC BY-NC-SA 4.0**, attribution required verbatim:
+"EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH
+(Contains modified Copernicus Sentinel data 2025)". This site is
+non-commercial; the committed tiles under `data/geo/terrain/` are a
+derived work and carry the same licence (README says so; the map's
+credit line carries the sentence verbatim with a link and names the
+licence; the manifest's source record and /methodology repeat it).
+The repo's MIT licence covers code only, as it already does for the
+other carved-out data folders.
+
+**56.2 How the tiers are built (mapdetail stage).** The three tiers are
+unchanged in shape — 2700×1350 world; 10800×5400 as 8 tiles; 21600×
+10800 as 32 tiles of 2700 px — but instead of cutting one giant source
+image, each tile is ONE WMS GetMap request for exactly its lon/lat
+window at exactly its pixel size (`eox_tile_request`), so nothing is
+resampled: 41 requests in all, sequential, cached under
+`.cache/terrain/eox-s2cloudless-2025-t*.png`. A 2700 px window renders
+server-side for about three minutes before the first byte, so
+`fetch()` gained a per-call `timeout` (EOX_TIMEOUT_SECONDS = 900;
+requests' timeout is per read). The server answers PNG with alpha
+regardless of the requested format; transparent areas (beyond
+Sentinel-2's coverage at the poles) are composited onto white, which
+is what the ice there is, and each tile is re-encoded as progressive
+JPEG q72 under the same file names the renderer already reads, so
+`src/lib/globegl.ts` and the tier meta needed no change beyond the
+attribution. The equal-area flat views and the antimeridian handling
+are unaffected: the equirectangular layout is identical. NASA Blue
+Marble 2004 stays in the pipeline as `SATELLITE_SOURCE=bluemarble`,
+the documented public-domain fallback; the manifest source id stays
+`nasa_blue_marble` so artifact references and the freshness panel keep
+working, with the title/licence/citation fields now describing EOX.
+
+**56.3 What changed on screen.** The satellite globe shows 2025 land
+cover — current reservoirs, cities, deforestation fronts, the Aral
+Sea as it is — with the ocean rendered as EOX's bathymetric blue (no
+shaded relief, unlike Blue Marble's baked hillshade). Polar caps are
+flat white where Sentinel-2 does not image. The imagery tone grades
+(§51.1) apply as before.
 
 ## Resolved questions
 

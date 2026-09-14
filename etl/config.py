@@ -317,6 +317,26 @@ BLUE_MARBLE_URL = (
 )
 BLUE_MARBLE_VINTAGE = "2004-08"
 
+# Satellite view since round 6 (section 56, Andy's ruling "Use EOX
+# Sentinel-2 cloudless"): EOxCloudless, a cloud-free Sentinel-2 mosaic
+# published yearly by EOX IT Services GmbH, fetched as EPSG:4326 WMS
+# windows that match the tile scheme exactly (one request per tile, 41 in
+# all, never the ~10k WMTS tiles). Licence CC BY-NC-SA 4.0 for
+# non-commercial use -- this site is non-commercial; the committed tiles
+# are a derived work under the same licence and are credited on the map.
+# Blue Marble stays in the pipeline only as the documented fallback.
+EOX_WMS_URL = "https://tiles.maps.eox.at/wms"
+EOX_S2CLOUDLESS_LAYER = "s2cloudless-2025"
+EOX_S2CLOUDLESS_VINTAGE = "2025"
+EOX_S2CLOUDLESS_ATTRIBUTION = (
+    "EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH "
+    "(Contains modified Copernicus Sentinel data 2025)"
+)
+EOX_S2CLOUDLESS_LICENCE = "CC BY-NC-SA 4.0"
+# A 2700 px window renders server-side for ~3 minutes before the first
+# byte; requests' timeout is per-read, so it must cover the whole wait.
+EOX_TIMEOUT_SECONDS = 900
+
 # Terrain view (round-2 §37): Natural Earth's Cross Blended Hypso with
 # Shaded Relief and Water — hypsometric tints (green lowlands to tan and
 # brown uplands to white peaks) with hillshade baked in, the classic

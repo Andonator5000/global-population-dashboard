@@ -170,7 +170,8 @@ interface WorldMapProps {
   paletteDirection?: MapPaletteKey
   /**
    * Base view (Phase 4): 'political' is the colour-coded atlas; 'satellite'
-   * renders Blue Marble terrain imagery beneath transparent country shapes.
+   * renders satellite imagery (EOX Sentinel-2 cloudless since round 6,
+   * section 56) beneath transparent country shapes.
    * Continent mode ignores it -- region fills ARE that mode's identity.
    */
   baseView?: BaseViewKey
@@ -650,7 +651,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
 
   // ---- Phase 4: detail layers, terrain, and the satellite base view ------
 
-  /** Which imagery base is live, if any: satellite (Blue Marble, dark) or
+  /** Which imagery base is live, if any: satellite (Sentinel-2, dark) or
       terrain (hypsometric relief, light). Political fills otherwise.
       Continent mode always uses its region fills. */
   const imagery =
@@ -1005,9 +1006,26 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   ])
   const imageryReady = !satellite || (rendererRef.current?.ready() ?? false)
 
+  // Satellite credit (round 6, section 56): EOX requires its attribution
+  // string verbatim, and CC BY-NC-SA asks for the licence to be named.
   const attribution =
     imagery === 'satellite'
-      ? 'Imagery: NASA Blue Marble (Aug 2004) · Borders, water, places: Natural Earth'
+      ? (
+          <>
+            Imagery:{' '}
+            <a
+              href="https://cloudless.eox.at"
+              target="_blank"
+              rel="noreferrer"
+              className="pointer-events-auto underline underline-offset-2"
+              style={{ color: 'inherit' }}
+            >
+              EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains
+              modified Copernicus Sentinel data 2025)
+            </a>
+            , CC BY-NC-SA 4.0 · Borders, water, places: Natural Earth
+          </>
+        )
       : imagery === 'terrain'
         ? 'Terrain: Natural Earth cross-blended hypso & shaded relief (public domain)'
         : 'Boundaries, water and places: Natural Earth (public domain)'
@@ -2187,7 +2205,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
           Natural Earth. Rendered as chrome, not data, and kept out of the
           pointer path. */}
       <div
-        className="pointer-events-none absolute bottom-1.5 right-1.5 z-10 rounded px-1.5 py-0.5 text-[10px] leading-tight"
+        className="pointer-events-none absolute bottom-1.5 right-1.5 z-10 max-w-[calc(100%-1rem)] rounded px-1.5 py-0.5 text-[10px] leading-tight"
         style={{
           background: 'rgba(10, 14, 20, 0.55)',
           color: 'rgba(255, 255, 255, 0.85)',

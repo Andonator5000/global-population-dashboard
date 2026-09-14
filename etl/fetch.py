@@ -102,8 +102,13 @@ def fetch(
     filename: str | None = None,
     headers: dict[str, str] | None = None,
     expect_json: bool = False,
+    timeout: float | None = None,
 ) -> CachedResponse:
     """Fetch `url`, caching the raw bytes under .cache/<subdir>/.
+
+    `timeout` overrides HTTP_TIMEOUT_SECONDS for a single call: a WMS
+    server renders a 2700 px tile for minutes before its first byte (the
+    EOX imagery, section 56), and requests' timeout is per-read.
 
     Raises FetchError on any non-200, on a network failure that survives
     HTTP_MAX_RETRIES, or -- when expect_json is set -- on a body that does not
@@ -141,7 +146,7 @@ def fetch(
             response = requests.get(
                 url,
                 headers=request_headers,
-                timeout=config.HTTP_TIMEOUT_SECONDS,
+                timeout=timeout or config.HTTP_TIMEOUT_SECONDS,
                 stream=True,
             )
             # Rate limiting and transient overload are RETRYABLE, honouring
