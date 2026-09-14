@@ -105,5 +105,13 @@ export default defineConfig(({ command, isPreview }) => ({
   },
   server: {
     port: 5173,
+    // /data is served by the middleware above and is never part of the
+    // module graph, so the watcher has no reason to track its ~20k files:
+    // with it watched, an ETL run rewriting them made every dev request
+    // take seconds (round 6, section 54). Edits to data still show on
+    // reload; they just do not trigger HMR.
+    watch: {
+      ignored: ['**/data/**', '**/.cache/**', '**/etl/**'],
+    },
   },
 }))
