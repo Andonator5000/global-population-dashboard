@@ -1,70 +1,82 @@
 {
   "systems": 11,
   "organs": 60,
-  "layers": 10,
-  "figures": 3,
+  "layers": 11,
+  "figures": 4,
   "cooperation": 8,
   "words": 7995,
   "images": [
     {
       "id": "body",
-      "licence": "CC0",
-      "author": "Sebastian Wallroth",
-      "bytes": 9428
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 30154
     },
     {
       "id": "muscles",
-      "licence": "Public domain",
-      "author": "Mikael Häggström",
-      "bytes": 877040
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 43483
     },
     {
       "id": "circulatory",
-      "licence": "Public domain",
-      "author": "LadyofHats, Mariana Ruiz Villarreal",
-      "bytes": 745485
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 50489
     },
     {
       "id": "respiratory",
-      "licence": "Public domain",
-      "author": "LadyofHats, Jmarchn",
-      "bytes": 282267
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 32398
     },
     {
       "id": "digestive",
-      "licence": "Public domain",
-      "author": "Mariana Ruiz, Jmarchn",
-      "bytes": 415148
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 40697
     },
     {
       "id": "lymphatic",
       "licence": "CC BY 3.0",
-      "author": "LadyofHats (Mariana Ruiz Villarreal)",
-      "bytes": 100709
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 46925
     },
     {
       "id": "nervous",
-      "licence": "CC BY-SA 4.0",
-      "author": "Medium69, Jmarchn",
-      "bytes": 498707
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 48296
     },
     {
       "id": "endocrine",
-      "licence": "Public domain",
-      "author": "US Government",
-      "bytes": 45579
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 39067
     },
     {
       "id": "urinary",
-      "licence": "CC BY-SA 3.0",
-      "author": "Urinary_system.svg: Jordi March i Nogué [1]",
-      "bytes": 316469
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 31728
+    },
+    {
+      "id": "reproductive",
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 36540
     },
     {
       "id": "skeleton",
-      "licence": "Public domain",
-      "author": "LadyofHats Mariana Ruiz Villarreal",
-      "bytes": 862210
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 40212
+    },
+    {
+      "id": "male-reproductive-panel",
+      "licence": "CC BY 3.0",
+      "author": "Connexions (OpenStax Anatomy and Physiology, Figure 1.4)",
+      "bytes": 32885
     },
     {
       "id": "skin-layers",
@@ -85,5 +97,5 @@
       "bytes": 453624
     }
   ],
-  "image_bytes": 6972162
+  "image_bytes": 3291994
 }

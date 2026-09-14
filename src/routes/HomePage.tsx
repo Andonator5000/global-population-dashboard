@@ -370,10 +370,10 @@ export function HomePage() {
     // things to find instead of one green field. Every colour is a gated
     // theme token; no new colour was introduced.
     <div className="min-h-full" style={{ background: 'var(--page-tint)' }}>
-    {/* Round 5 (§53.1): a flex column so the phone order differs from the
-        desktop order without rendering anything twice — on a phone the
-        year controls move BELOW the map (order-4) so the globe comes
-        sooner; on wider screens they follow the header as before. */}
+    {/* Round 5 (§53.1) made this a flex column so the phone order could
+        differ; round 7 (§57.5, Andy) puts the year controls directly under
+        the World population box on EVERY width, so the order is the same
+        everywhere and the column simply keeps the cards stacked. */}
     <div className="mx-auto flex max-w-[110rem] flex-col px-4 py-6 sm:px-6 sm:py-8">
       <header
         className="order-1 rounded-xl border px-4 py-4 sm:px-6 sm:py-6"
@@ -443,7 +443,7 @@ export function HomePage() {
 
       {timeline && (
         <div
-          className="order-4 mt-4 rounded-xl border px-4 py-3 sm:order-2 sm:mt-3"
+          className="order-2 mt-3 rounded-xl border px-4 py-3"
           style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
         >
           <TimeScrubber

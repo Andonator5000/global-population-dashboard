@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-14T02:28:46+00:00",
+  "generated_at": "2026-09-14T03:23:15+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-14T02:28:46+00:00",
+      "fetched_at": "2026-09-14T03:23:15+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -625,18 +625,18 @@
       "title": "Human Anatomy (editorial, after OpenStax Anatomy and Physiology 2e) with Commons diagrams",
       "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/1-introduction",
       "licence": "Editorial text CC0 (this project), paraphrasing OpenStax A&P 2e (CC BY 4.0); diagrams Wikimedia Commons free licences, credited per image (data/anatomy/images/manifest.json)",
-      "fetched_at": "2026-09-14T01:11:57+00:00",
+      "fetched_at": "2026-09-14T03:13:55+00:00",
       "upstream_release": null,
       "vintage": "OpenStax A&P 2e (2022)",
       "citation": "OpenStax, Anatomy and Physiology 2e (Rice University, CC BY 4.0); Wikimedia Commons diagrams by LadyofHats, Mikael Häggström, NCI and others",
       "files": [],
-      "notes": "11 systems, 60 organs, 10 whole-body layers, ~7995 words."
+      "notes": "11 systems, 60 organs, 11 whole-body layers, ~7995 words."
     },
     "flagcdn": {
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-09-14T02:28:46+00:00",
+      "fetched_at": "2026-09-14T03:23:15+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -1160,7 +1160,7 @@
       "sources": [
         "anatomy"
       ],
-      "row_count": 13,
+      "row_count": 15,
       "entity_count": null
     },
     "flags/map-palette.json": {
@@ -1258,5 +1258,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "3fd74cfb79b4bcd13ddb056d2f8db3f23b29e145516b7bc2a482a41bb244db7c"
+  "content_fingerprint": "c946a5c6d4fbbd8de36026bccc81d7e85c374d5de46bf87279579abf0942287a"
 }

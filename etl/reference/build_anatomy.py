@@ -29,41 +29,53 @@ def src(chapter: int, title: str) -> dict[str, str]:
 # of the system's organs) at a common scale, shown as a stack the reader
 # steps through from the skin to the skeleton.
 # --------------------------------------------------------------------------
+OS1 = "Organ Systems I.jpg"
+OS2 = "Organ Systems II.jpg"
 LAYERS = [
+    # Round 7 (section 57.6, Andy: "adopt the OpenStax organ system"): every
+    # layer is one panel of OpenStax A&P Figure 1.4 (Commons "Organ Systems
+    # I/II.jpg", CC BY 3.0), drawn on ONE body pose at one scale, so the
+    # layers register with each other as the reader steps inward.
     {"id": "body", "label": "Body surface", "system": "integumentary",
-     "commons": "Human silhouette gender neutral front.svg",
-     "caption": "The body as it presents to the world: the skin, the largest organ, wrapping everything below."},
+     "panel": {"commons": OS1, "col": 0, "row": 0},
+     "caption": "The integumentary system: skin, hair and nails, the body as it presents to the world."},
     {"id": "muscles", "label": "Muscles", "system": "muscular",
-     "commons": "Muscles anterior labeled.png",
-     "caption": "The superficial skeletal muscles from the front, the layer just beneath the skin and fat."},
+     "panel": {"commons": OS1, "col": 0, "row": 1},
+     "caption": "The muscular system: the skeletal muscles and their tendons, the layer beneath the skin."},
     {"id": "circulatory", "label": "Heart and vessels", "system": "circulatory",
-     "commons": "Circulatory System en.svg",
-     "caption": "The heart with the great arteries (red) and veins (blue) that carry blood to and from every tissue."},
+     "panel": {"commons": OS1, "col": 1, "row": 2},
+     "caption": "The cardiovascular system: the heart and the blood vessels that reach every tissue."},
     {"id": "respiratory", "label": "Airways and lungs", "system": "respiratory",
-     "commons": "Respiratory system complete en.svg",
-     "caption": "Nose, pharynx, larynx, trachea, bronchi and the two lungs, with the diaphragm beneath."},
+     "panel": {"commons": OS2, "col": 1, "row": 0},
+     "caption": "The respiratory system: nasal passage, trachea and the two lungs."},
     {"id": "digestive", "label": "Digestive tract", "system": "digestive",
-     "commons": "Digestive system diagram en.svg",
-     "caption": "The alimentary canal from mouth to anus and the glands that pour into it."},
+     "panel": {"commons": OS2, "col": 0, "row": 1},
+     "caption": "The digestive system: stomach, liver, gall bladder, small and large intestine."},
     {"id": "lymphatic", "label": "Lymphatic vessels and nodes", "system": "lymphatic",
-     "commons": "TE-Lymphatic system diagram.svg", "author": "LadyofHats (Mariana Ruiz Villarreal)",
-     "caption": "The one-way drainage network: vessels, node clusters, the thymus and the spleen."},
+     "panel": {"commons": OS2, "col": 0, "row": 0},
+     "caption": "The lymphatic system: thymus, lymph nodes, spleen and the lymphatic vessels."},
     {"id": "nervous", "label": "Brain, cord and nerves", "system": "nervous",
-     "commons": "Nervous system diagram-en.svg",
-     "caption": "The central nervous system (brain and spinal cord) and the peripheral nerves that branch from it."},
+     "panel": {"commons": OS1, "col": 1, "row": 1},
+     "caption": "The nervous system: brain and spinal cord (central) and the peripheral nerves."},
     {"id": "endocrine", "label": "Endocrine glands", "system": "endocrine",
-     "commons": "Illu endocrine system New.png",
-     "caption": "The glands that release hormones into the blood, from the pineal gland to the gonads."},
+     "panel": {"commons": OS1, "col": 0, "row": 2},
+     "caption": "The endocrine system: pituitary, thyroid, pancreas, adrenal glands, testes and ovaries."},
     {"id": "urinary", "label": "Kidneys and bladder", "system": "urinary",
-     "commons": "Urinary system ver 2.svg",
-     "caption": "Two kidneys, two ureters, the bladder and the urethra."},
+     "panel": {"commons": OS2, "col": 1, "row": 1},
+     "caption": "The urinary system: the kidneys and the urinary bladder."},
+    {"id": "reproductive", "label": "Reproductive organs", "system": "reproductive",
+     "panel": {"commons": OS2, "col": 1, "row": 2},
+     "caption": "The female reproductive system: ovaries, uterus and mammary glands; the male panel is among the figures."},
     {"id": "skeleton", "label": "Skeleton", "system": "skeletal",
-     "commons": "Human skeleton front en.svg",
-     "caption": "The 206 bones of the adult skeleton from the front: the frame everything else hangs on."},
+     "panel": {"commons": OS1, "col": 1, "row": 0},
+     "caption": "The skeletal system: bones, cartilage and joints, the frame everything else hangs on."},
 ]
 
 # Extra figures that belong to a system but are not whole-body layers.
 FIGURES = [
+    {"id": "male-reproductive-panel", "system": "reproductive",
+     "panel": {"commons": OS2, "col": 0, "row": 2},
+     "caption": "The male reproductive system: testes and epididymis (OpenStax Figure 1.4)."},
     {"id": "skin-layers", "system": "integumentary", "commons": "Skin layers.svg",
      "caption": "A slice through the skin: epidermis, dermis and the hypodermis beneath, with hair follicles, glands and vessels."},
     {"id": "female-reproductive", "system": "reproductive",
@@ -679,6 +691,7 @@ def main() -> None:
             assert sid in system_ids, (organ["id"], sid)
     for layer in LAYERS + FIGURES:
         assert layer["system"] in system_ids, layer
+        assert ("commons" in layer) != ("panel" in layer), layer
     for item in COOPERATION:
         for sid in item["systems"]:
             assert sid in system_ids, (item["title"], sid)

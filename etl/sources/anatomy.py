@@ -99,8 +99,14 @@ def _validate(doc: dict[str, Any]) -> None:
             _require(fact.get("label") and fact.get("value"), f"organ {oid}: bad fact {fact!r}")
     seen_layer_systems: set[str] = set()
     for item in doc["layers"] + doc["figures"]:
-        _require(item.get("id") and item.get("commons") and item.get("caption"),
-                 f"layer/figure {item!r} incomplete")
+        _require(bool(item.get("id")) and bool(item.get("caption")) and
+                 (bool(item.get("commons")) != bool(item.get("panel"))),
+                 f"layer/figure {item.get('id')!r} incomplete (needs commons OR panel)")
+        panel = item.get("panel")
+        if panel:
+            _require(bool(panel.get("commons")) and panel.get("col") in (0, 1)
+                     and panel.get("row") in (0, 1, 2),
+                     f"layer {item['id']}: bad panel {panel!r}")
         _require(item["system"] in systems, f"layer {item['id']}: unknown system")
     for layer in doc["layers"]:
         seen_layer_systems.add(layer["system"])
@@ -154,8 +160,65 @@ def _check_decodes(raw: bytes, ext: str, context: str) -> tuple[int, int]:
         raise AnatomyError(f"{context}: downloaded image does not decode ({exc!r})") from exc
 
 
+PANEL_COLS = 2
+PANEL_ROWS = 3
+
+
+def _resolve_panel(item: dict[str, Any], img_dir: Path, *, refresh: bool,
+                   responses: list[CachedResponse]) -> dict[str, Any]:
+    """One panel of an OpenStax Figure 1.4 composite (round 7, section
+    57.6): the composite is fetched once (cached), the panel cut on the
+    2x3 grid, and saved as its own JPEG with the composite's provenance."""
+    from PIL import Image
+
+    panel = item["panel"]
+    filename = panel["commons"].replace("_", " ")
+    context = item["id"]
+    metadata, meta_responses = commons.fetch_metadata([filename], refresh=refresh, subdir=SUBDIR)
+    responses.extend(meta_responses)
+    record = metadata.get(filename)
+    if not record:
+        raise AnatomyError(f"{context}: {filename!r} is not on Commons")
+    licence = record.get("license") or ""
+    if not _FREE_LICENCE.search(licence):
+        raise AnatomyError(f"{context}: {filename!r} licence {licence or 'unrecorded'!r} is not free")
+    url = _original_url(filename)
+    response = _polite(fetch(url, refresh=refresh, subdir=SUBDIR))
+    responses.append(response)
+    with Image.open(response.path) as composite:
+        composite = composite.convert("RGB")
+        w, h = composite.size
+        col, row = int(panel["col"]), int(panel["row"])
+        box = (round(col * w / PANEL_COLS), round(row * h / PANEL_ROWS),
+               round((col + 1) * w / PANEL_COLS), round((row + 1) * h / PANEL_ROWS))
+        tile = composite.crop(box)
+    target = img_dir / f"{context}.jpg"
+    tile.save(target, "JPEG", quality=90, optimize=True, progressive=True)
+    raw = target.read_bytes()
+    author = (record.get("author") or "").split("\n")[0].strip() or "OpenStax College"
+    author = item.get("author") or f"{author} (OpenStax Anatomy and Physiology, Figure 1.4)"
+    return {
+        "id": context,
+        "file": f"anatomy/images/{context}.jpg",
+        "source": "Wikimedia Commons",
+        "sourceId": filename,
+        "sourceUrl": url,
+        "sourcePage": commons.file_page_for(filename),
+        "title": f"{record.get('objectName') or filename.rsplit('.', 1)[0]} (panel {col},{row})",
+        "author": author,
+        "licence": licence,
+        "creditLine": f"{filename.rsplit('.', 1)[0]}, panel ({col},{row}) — {author} · {licence} · Wikimedia Commons",
+        "width": tile.width,
+        "height": tile.height,
+        "bytes": len(raw),
+        "sha256": hashlib.sha256(raw).hexdigest(),
+    }
+
+
 def _resolve(item: dict[str, Any], img_dir: Path, *, refresh: bool,
              responses: list[CachedResponse]) -> dict[str, Any]:
+    if item.get("panel"):
+        return _resolve_panel(item, img_dir, refresh=refresh, responses=responses)
     filename = item["commons"].replace("_", " ")
     context = item["id"]
     metadata, meta_responses = commons.fetch_metadata([filename], refresh=refresh, subdir=SUBDIR)

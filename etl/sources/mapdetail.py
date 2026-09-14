@@ -253,6 +253,16 @@ def _build_terrain_eox(refresh: bool, out_dir: Path
                     image = flat
                 else:
                     image = image.convert("RGB")
+                # The WMS antialiases the outermost pixel of every window
+                # against transparency, which the white composite turned
+                # into a pale 1 px frame -- a bright seam down the
+                # antimeridian and along every tile edge on the globe (round
+                # 7, section 57.2). Extend the second column/row over it.
+                w, h = image.size
+                image.paste(image.crop((1, 0, 2, h)), (0, 0))
+                image.paste(image.crop((w - 2, 0, w - 1, h)), (w - 1, 0))
+                image.paste(image.crop((0, 1, w, 2)), (0, 0))
+                image.paste(image.crop((0, h - 2, w, h - 1)), (0, h - 1))
                 name = (f"t{tier['level']}.jpg" if cols == 1 and rows == 1
                         else f"t{tier['level']}-{col}-{row}.jpg")
                 image.save(out_dir / name, "JPEG", quality=72, optimize=True,
