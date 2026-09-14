@@ -305,7 +305,10 @@ export function Timeline({
         >
           <div
             ref={registerBanner(era.key)}
-            className="border-t-2 px-3 py-2.5 sm:px-4"
+            // Above the axis line (round 6, section 54.1): the banner is an
+            // opaque box, and the line simply passes behind it -- it used to
+            // be drawn later in the DOM and cut straight through the text.
+            className="relative z-[1] border-t-2 px-3 py-2.5 sm:px-4"
             style={{
               borderColor: `light-dark(oklch(58% 0.085 ${era.hue}), oklch(60% 0.08 ${era.hue}))`,
               background: `light-dark(oklch(94.5% 0.032 ${era.hue}), oklch(25% 0.028 ${era.hue}))`,
