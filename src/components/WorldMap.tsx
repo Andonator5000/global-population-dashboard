@@ -11,7 +11,15 @@ import { select } from 'd3-selection'
 // can ease through the same zoom behaviour (round-2 §35).
 import 'd3-transition'
 import { zoom, zoomIdentity, type D3ZoomEvent } from 'd3-zoom'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { feature, mesh } from 'topojson-client'
 
 import {
@@ -56,6 +64,20 @@ import type {
 
 const VIEW_WIDTH = 1000
 const VIEW_HEIGHT = 480
+/**
+ * Round 5 (§53.1): on a phone the globe gets a SQUARE frame. The 1000×480
+ * viewBox is right for a 2:1 equal-area world map, but it gave the globe
+ * a disc 480 units tall in the middle of a wide strip — at 350 css px
+ * that was a 168 px globe. A 1000×1000 viewBox fits the disc to the full
+ * width, so the globe is as large as the screen allows. Flat projections
+ * keep 1000×480.
+ */
+const VIEW_HEIGHT_COMPACT_GLOBE = 1000
+/** Container widths below this get the phone layout: square globe,
+ *  bottom sheet, thumb-sized controls. */
+const COMPACT_MAX_WIDTH = 640
+/** Initial orientation, also what "Reset view" returns to. */
+const INITIAL_ROTATION: [number, number] = [-10, -20]
 
 /**
  * Zoom ceiling. Raised from 12 (2026-08-23, maintainer request): at 12x the
@@ -99,6 +121,14 @@ export interface HoverTarget {
   isMarker: boolean
 }
 
+/** Imperative surface for the search box (round 5, §53.4). */
+export interface WorldMapHandle {
+  /** Rotate/zoom to an entity and open its sheet (or popover). */
+  flyTo: (iso3: string) => void
+  /** Initial orientation, zoom 1, nothing selected. */
+  resetView: () => void
+}
+
 interface WorldMapProps {
   topology: CountryTopology
   markers: MapMarker[]
@@ -129,6 +159,15 @@ interface WorldMapProps {
    * stays ignorant of routes and figures.
    */
   renderPopover?: (target: HoverTarget) => React.ReactNode
+  /**
+   * Round 5 (§53.2): on touch and on compact widths a tap no longer pins
+   * a popover over the globe; it highlights the country and opens a
+   * bottom sheet under the map with this content. `expanded` is the
+   * swiped-up state (more detail); collapsed shows the headline only.
+   */
+  renderSheet?: (target: HoverTarget, expanded: boolean) => React.ReactNode
+  /** Notified when the sheet's selection changes (null = closed). */
+  onPick?: (target: HoverTarget | null) => void
 }
 
 /** Zoom thresholds for the detail layers (Phase 4). Each names the factor
@@ -180,6 +219,8 @@ interface CountryShape {
  * so the map never turns into 250 overlapping strings.
  */
 const LABEL_MIN_AREA_PX2 = 900
+/** Labels stop growing once they are this many times their zoom-1 size. */
+const LABEL_GROWTH_CAP = 3
 
 /**
  * Neutral land colour for the globe view, mirroring the LIGHT --map-land.
@@ -328,7 +369,7 @@ function nearestInDirection(
   return best
 }
 
-export function WorldMap({
+export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function WorldMap({
   topology,
   markers,
   populationByIso3,
@@ -342,20 +383,41 @@ export function WorldMap({
   paletteDirection = DEFAULT_MAP_PALETTE,
   baseView = 'political',
   renderPopover,
-}: WorldMapProps) {
+  renderSheet,
+  onPick,
+}: WorldMapProps, handleRef) {
   const svgRef = useRef<SVGSVGElement | null>(null)
+  /** The stage: canvases + svg + overlay controls; what is measured. */
   const containerRef = useRef<HTMLDivElement | null>(null)
+  /** The frame: stage + bottom sheet; what goes full screen (§53.3). */
+  const frameRef = useRef<HTMLDivElement | null>(null)
   const behaviourRef = useRef<ReturnType<typeof zoom<SVGSVGElement, unknown>> | null>(null)
   const nodeRefs = useRef(new Map<string, SVGGraphicsElement>())
   const [transform, setTransform] = useState(() => zoomIdentity)
-  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [nativeFullscreen, setNativeFullscreen] = useState(false)
+  /** iOS Safari has no element fullscreen: "Explore globe" then pins the
+      frame over the page with CSS instead (§53.3). */
+  const [pseudoFullscreen, setPseudoFullscreen] = useState(false)
+  const isFullscreen = nativeFullscreen || pseudoFullscreen
 
   const isGlobe = projectionKey === 'globe'
+  const [containerSize, setContainerSize] = useState<{ w: number; h: number }>({
+    w: 0,
+    h: 0,
+  })
+  /** Phone layout (§53): decided by the stage's own width, seeded from the
+      window before the first measurement so the first paint is right. */
+  const compact =
+    containerSize.w > 0
+      ? containerSize.w < COMPACT_MAX_WIDTH
+      : typeof window !== 'undefined' && window.innerWidth < COMPACT_MAX_WIDTH
+  const viewW = VIEW_WIDTH
+  const viewH = isGlobe && compact ? VIEW_HEIGHT_COMPACT_GLOBE : VIEW_HEIGHT
   /**
    * Globe orientation: [lambda, phi] in degrees, driven by dragging. A slight
    * initial tilt so the first view is not dead-on the equator/meridian cross.
    */
-  const [rotation, setRotation] = useState<[number, number]>([-10, -20])
+  const [rotation, setRotation] = useState<[number, number]>(INITIAL_ROTATION)
   /** Active pointers; the globe rotates only under exactly one. */
   const dragPointers = useRef(new Map<number, { x: number; y: number }>())
   /** Set once a drag moves far enough that the trailing click must not select. */
@@ -485,7 +547,7 @@ export function WorldMap({
   const { shapes, sphere, landD, markerPoints, projection } = useMemo(() => {
     const base = createProjection(projectionKey)
     if (isGlobe) base.rotate([rotation[0], rotation[1], 0])
-    const projection = fitProjection(base, VIEW_WIDTH, VIEW_HEIGHT)
+    const projection = fitProjection(base, viewW, viewH)
     const path = geoPath(projection)
     const viewCenter: [number, number] = [-rotation[0], -rotation[1]]
 
@@ -558,6 +620,8 @@ export function WorldMap({
     projectionKey,
     isGlobe,
     rotation,
+    viewW,
+    viewH,
   ])
 
   // ---- Phase 4: detail layers, terrain, and the satellite base view ------
@@ -673,7 +737,7 @@ export function WorldMap({
       // Into screen space (view coords times zoom) with the pan applied.
       const x = point[0] * k + transform.x
       const y = point[1] * k + transform.y
-      if (x < -40 || x > VIEW_WIDTH + 40 || y < -20 || y > VIEW_HEIGHT + 20) {
+      if (x < -40 || x > viewW + 40 || y < -20 || y > viewH + 20) {
         return null
       }
       return [point[0], point[1]]
@@ -697,7 +761,7 @@ export function WorldMap({
       if (labels.length >= 130) return
       const point = projectPoint(lon, lat)
       if (!point) return
-      const screenSize = (size / Math.sqrt(k)) * k
+      const screenSize = size * Math.min(Math.sqrt(k), LABEL_GROWTH_CAP)
       const w = text.length * screenSize * 0.62
       const h = screenSize * 1.5
       const sx = point[0] * k
@@ -709,7 +773,7 @@ export function WorldMap({
 
     // Seed with the country labels so nothing overprints them.
     for (const label of countryLabelSeed.current) {
-      const screenSize = (label.emphasized ? 13 : 10) * Math.sqrt(k)
+      const screenSize = (label.emphasized ? 13 : 10) * Math.min(Math.sqrt(k), LABEL_GROWTH_CAP)
       placed.push({
         x: label.x * k,
         y: label.y * k,
@@ -782,10 +846,6 @@ export function WorldMap({
   /** Bumps when the active imagery's world base reaches the GPU; drives the
       loading pill only (tile arrivals repaint inside the renderer). */
   const [imageryVersion, setImageryVersion] = useState(0)
-  const [containerSize, setContainerSize] = useState<{ w: number; h: number }>({
-    w: 0,
-    h: 0,
-  })
 
   useEffect(() => {
     const container = containerRef.current
@@ -878,7 +938,7 @@ export function WorldMap({
     // and past ~1.75 (1.25 on a phone) the extra pixels cost more than
     // they show.
     const dpr = canvasPixelRatio()
-    const scale = Math.min(w / VIEW_WIDTH, h / VIEW_HEIGHT)
+    const scale = Math.min(w / viewW, h / viewH)
     renderer.render({
       projection,
       projectionKey,
@@ -887,8 +947,8 @@ export function WorldMap({
       transform,
       layout: {
         scale,
-        offsetX: (w - VIEW_WIDTH * scale) / 2,
-        offsetY: (h - VIEW_HEIGHT * scale) / 2,
+        offsetX: (w - viewW * scale) / 2,
+        offsetY: (h - viewH * scale) / 2,
         dpr,
       },
       cssWidth: w,
@@ -909,6 +969,8 @@ export function WorldMap({
     isGlobe,
     imageryVersion,
     paletteDirection,
+    viewW,
+    viewH,
   ])
   const imageryReady = !satellite || (rendererRef.current?.ready() ?? false)
 
@@ -961,14 +1023,14 @@ export function WorldMap({
   }, [rotation, satellite])
 
   const layoutFor = useCallback((w: number, h: number) => {
-    const scale = Math.min(w / VIEW_WIDTH, h / VIEW_HEIGHT)
+    const scale = Math.min(w / viewW, h / viewH)
     return {
       scale,
-      offsetX: (w - VIEW_WIDTH * scale) / 2,
-      offsetY: (h - VIEW_HEIGHT * scale) / 2,
+      offsetX: (w - viewW * scale) / 2,
+      offsetY: (h - viewH * scale) / 2,
       dpr: canvasPixelRatio(),
     }
-  }, [])
+  }, [viewW, viewH])
 
   /**
    * Section 51: the political fills as a GPU raster. `rasterSignature`
@@ -1097,7 +1159,7 @@ export function WorldMap({
     const [lambda, phi] = rotationRef.current
     const base = createProjection('globe')
     base.rotate([lambda, phi, 0])
-    const frameProjection = fitProjection(base, VIEW_WIDTH, VIEW_HEIGHT)
+    const frameProjection = fitProjection(base, viewW, viewH)
 
     // Satellite imagery keeps tracking the finger: the imagery renderer is
     // driven imperatively here, from the SAME rotation ref as the borders
@@ -1171,7 +1233,7 @@ export function WorldMap({
       }
       ctx.stroke()
     })
-  }, [collection, staticGeometry, satellite, transform, layoutFor, paletteDirection])
+  }, [collection, staticGeometry, satellite, transform, layoutFor, paletteDirection, viewW, viewH])
 
   const beginDragRender = useCallback(() => {
     if (isDragRendering.current) return
@@ -1371,7 +1433,7 @@ export function WorldMap({
       .scaleExtent([1, MAX_ZOOM])
       .translateExtent([
         [0, 0],
-        [VIEW_WIDTH, VIEW_HEIGHT],
+        [viewW, viewH],
       ])
       .filter((event) => {
         if (!isGlobe) {
@@ -1411,7 +1473,7 @@ export function WorldMap({
         zoomFrame.current = null
       }
     }
-  }, [isGlobe])
+  }, [isGlobe, viewW, viewH])
 
   /** The +/- buttons drive the same d3-zoom behaviour as wheel and pinch,
       eased over 200ms (round-2 §35) unless the reader asked for reduced
@@ -1432,20 +1494,47 @@ export function WorldMap({
   // exits fullscreen without clicking our button) stays in sync.
   useEffect(() => {
     const onChange = () =>
-      setIsFullscreen(document.fullscreenElement === containerRef.current)
+      setNativeFullscreen(document.fullscreenElement === frameRef.current)
     document.addEventListener('fullscreenchange', onChange)
     return () => document.removeEventListener('fullscreenchange', onChange)
   }, [])
 
-  const toggleFullscreen = useCallback(() => {
-    const container = containerRef.current
-    if (!container) return
-    if (document.fullscreenElement === container) {
-      void document.exitFullscreen()
-    } else {
-      void container.requestFullscreen()
+  /** Pseudo full screen (§53.3): the frame is pinned over the page and
+      the page behind it stops scrolling; Escape leaves, like the real
+      thing. */
+  useEffect(() => {
+    if (!pseudoFullscreen) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setPseudoFullscreen(false)
     }
-  }, [])
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = previous
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [pseudoFullscreen])
+
+  const toggleFullscreen = useCallback(() => {
+    const frame = frameRef.current
+    if (!frame) return
+    if (pseudoFullscreen) {
+      setPseudoFullscreen(false)
+      return
+    }
+    if (document.fullscreenElement === frame) {
+      void document.exitFullscreen()
+      return
+    }
+    // iOS Safari (every iPhone) has no element fullscreen; the CSS pin is
+    // the same experience from the reader's side.
+    if (typeof frame.requestFullscreen === 'function' && document.fullscreenEnabled) {
+      frame.requestFullscreen().catch(() => setPseudoFullscreen(true))
+    } else {
+      setPseudoFullscreen(true)
+    }
+  }, [pseudoFullscreen])
 
   /**
    * Globe rotation by dragging -- pointer events, so mouse and touch share
@@ -1575,6 +1664,88 @@ export function WorldMap({
 
   const popoverActive = renderPopover !== undefined && mode === 'country'
 
+  // ---- Round 5 (§53.2): the bottom sheet ----------------------------------
+  const [picked, setPicked] = useState<HoverTarget | null>(null)
+  const [sheetExpanded, setSheetExpanded] = useState(false)
+  /** Other entities under a fat finger (§53.6): offered as a short list. */
+  const [nearby, setNearby] = useState<HoverTarget[]>([])
+  const sheetActive = renderSheet !== undefined && mode === 'country'
+
+  const closeSheet = useCallback(() => {
+    setPicked(null)
+    setNearby([])
+    setSheetExpanded(false)
+    onHover(null)
+    onPick?.(null)
+  }, [onHover, onPick])
+
+  const pick = useCallback(
+    (target: HoverTarget, alternatives: HoverTarget[] = []) => {
+      setPicked(target)
+      setNearby(alternatives.filter((t) => t.iso3 !== target.iso3))
+      setPopover(null)
+      onHover(target)
+      onPick?.(target)
+    },
+    [onHover, onPick],
+  )
+
+  /** Every entity keyed by iso3, for turning a hit-tested node back into a
+      target. */
+  const targetByIso3 = useMemo(() => {
+    const map = new Map<string, HoverTarget>()
+    for (const shape of shapes) {
+      if (!map.has(shape.iso3)) {
+        map.set(shape.iso3, {
+          iso3: shape.iso3,
+          name: shape.name,
+          continent: shape.continent,
+          contested: shape.contested,
+          isMarker: false,
+        })
+      }
+    }
+    for (const { marker } of markerPoints) {
+      if (!map.has(marker.iso3)) {
+        map.set(marker.iso3, {
+          iso3: marker.iso3,
+          name: marker.name,
+          continent: marker.continent,
+          contested: marker.contested,
+          isMarker: true,
+        })
+      }
+    }
+    return map
+  }, [shapes, markerPoints])
+
+  /**
+   * Entities within a fingertip of a tap (§53.6): the map nodes under nine
+   * probe points on a 14 px ring around the tap. Crowded islands and
+   * tight borders then offer a list instead of demanding a precise tap.
+   */
+  const entitiesNear = useCallback(
+    (clientX: number, clientY: number): HoverTarget[] => {
+      const found = new Map<string, HoverTarget>()
+      const radius = 14
+      const probes: [number, number][] = [[0, 0]]
+      for (let i = 0; i < 8; i += 1) {
+        const a = (i / 8) * Math.PI * 2
+        probes.push([Math.cos(a) * radius, Math.sin(a) * radius])
+      }
+      for (const [dx, dy] of probes) {
+        const node = document.elementFromPoint(clientX + dx, clientY + dy)
+        const hit = node?.closest?.('[data-iso3]') as HTMLElement | null
+        const iso3 = hit?.dataset.iso3
+        if (!iso3 || found.has(iso3)) continue
+        const target = targetByIso3.get(iso3)
+        if (target) found.set(iso3, target)
+      }
+      return [...found.values()]
+    },
+    [targetByIso3],
+  )
+
   const containerPoint = useCallback(
     (event: { clientX: number; clientY: number }): [number, number] => {
       const rect = containerRef.current?.getBoundingClientRect()
@@ -1598,24 +1769,109 @@ export function WorldMap({
     [popoverActive, containerPoint],
   )
 
-  /** Select, unless the pointer was busy spinning the globe. On touch the
-      tap pins the popover instead — navigation is its "More info" link. */
+  /** Select, unless the pointer was busy spinning the globe. On touch, and
+      on compact widths, the tap opens the bottom sheet (§53.2) — navigation
+      is its "More info" link; without a sheet a touch tap pins the popover
+      as before. */
   const selectUnlessDragging = useCallback(
     (target: HoverTarget, event?: React.MouseEvent) => {
       if (dragSuppressesClick.current) return
-      if (
-        popoverActive &&
-        lastPointerType.current === 'touch' &&
-        event !== undefined
-      ) {
+      const touch = lastPointerType.current === 'touch'
+      if (sheetActive && event !== undefined && (touch || compact)) {
+        pick(target, touch ? entitiesNear(event.clientX, event.clientY) : [])
+        return
+      }
+      if (popoverActive && touch && event !== undefined) {
         const [x, y] = containerPoint(event)
         setPopover({ target, x, y, pinned: true })
         return
       }
       onSelect(target)
     },
-    [onSelect, popoverActive, containerPoint],
+    [onSelect, popoverActive, sheetActive, compact, pick, entitiesNear, containerPoint],
   )
+
+  // ---- Round 5 (§53.4): fly-to and reset ----------------------------------
+  const flyTo = useCallback(
+    (iso3: string) => {
+      const svg = svgRef.current
+      const behaviour = behaviourRef.current
+      const target = targetByIso3.get(iso3)
+      if (!svg || !behaviour || !target) return
+      const index = collection.features.findIndex((f) => f.properties.iso3 === iso3)
+      const marker = markers.find((m) => m.iso3 === iso3)
+      const centre: [number, number] | null =
+        index >= 0
+          ? staticGeometry[index]!.centroid
+          : marker
+            ? marker.coordinates
+            : null
+      if (!centre) return
+      forceEndDragSession()
+      setPopover(null)
+      const nextRotation: [number, number] = isGlobe
+        ? [-centre[0], -centre[1]]
+        : rotation
+      if (isGlobe) {
+        rotationRef.current = nextRotation
+        setRotation(nextRotation)
+      }
+      // Fit: project the entity under its new orientation and zoom so it
+      // fills about a third of the frame — enough to read its neighbours.
+      const base = createProjection(projectionKey)
+      if (isGlobe) base.rotate([nextRotation[0], nextRotation[1], 0])
+      const projection = fitProjection(base, viewW, viewH)
+      let box: [[number, number], [number, number]]
+      if (index >= 0) {
+        box = geoPath(projection).bounds(
+          collection.features[index] as unknown as GeoPermissibleObjects,
+        )
+      } else {
+        const p = projection(centre) ?? [viewW / 2, viewH / 2]
+        box = [[p[0] - 12, p[1] - 12], [p[0] + 12, p[1] + 12]]
+      }
+      const bw = Math.max(1, box[1][0] - box[0][0])
+      const bh = Math.max(1, box[1][1] - box[0][1])
+      const cx = (box[0][0] + box[1][0]) / 2
+      const cy = (box[0][1] + box[1][1]) / 2
+      const k = Math.max(1, Math.min(MAX_ZOOM, Math.min(viewW / bw, viewH / bh) * 0.35))
+      const next = zoomIdentity.translate(viewW / 2 - cx * k, viewH / 2 - cy * k).scale(k)
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (reduced) behaviour.transform(select(svg), next)
+      else select(svg).transition().duration(650).call(behaviour.transform, next)
+      // The sheet is the phone/touch surface; with a pointer the readout
+      // beside the map shows the flown-to country.
+      if (sheetActive && (compact || lastPointerType.current === 'touch')) pick(target)
+      else onHover(target)
+    },
+    [
+      targetByIso3, collection, markers, staticGeometry, isGlobe, rotation,
+      projectionKey, viewW, viewH, forceEndDragSession, sheetActive, compact, pick, onHover,
+    ],
+  )
+
+  const resetView = useCallback(() => {
+    const svg = svgRef.current
+    const behaviour = behaviourRef.current
+    forceEndDragSession()
+    rotationRef.current = INITIAL_ROTATION
+    setRotation(INITIAL_ROTATION)
+    if (svg && behaviour) {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (reduced) behaviour.transform(select(svg), zoomIdentity)
+      else select(svg).transition().duration(400).call(behaviour.transform, zoomIdentity)
+    }
+    closeSheet()
+    setPopover(null)
+  }, [forceEndDragSession, closeSheet])
+
+  useImperativeHandle(handleRef, () => ({ flyTo, resetView }), [flyTo, resetView])
+
+  // A sheet cannot outlive its mode: continent view, or the sheet prop
+  // going away, closes it.
+  useEffect(() => {
+    if (!sheetActive && picked) closeSheet()
+  }, [sheetActive, picked, closeSheet])
 
   // Section 51.3: strokes carry vector-effect="non-scaling-stroke", so
   // NO path attribute changes on a wheel tick or pinch -- the
@@ -1626,10 +1882,17 @@ export function WorldMap({
   // resize. Same hairlines as before, at every zoom, for free.
   const viewScale =
     containerSize.w > 1 && containerSize.h > 1
-      ? Math.min(containerSize.w / VIEW_WIDTH, containerSize.h / VIEW_HEIGHT)
+      ? Math.min(containerSize.w / viewW, containerSize.h / viewH)
       : 1
   const px = (viewUnits: number) => viewUnits * viewScale
   const strokeWidth = px(0.5)
+  /**
+   * Label size inside the k-scaled group. Names grow with the square root
+   * of the zoom (twice as big at 4x) up to LABEL_GROWTH_CAP times, then
+   * hold: past 9x the old unbounded growth made "Cuneo" a billboard at
+   * 48x (round 5, section 53.6).
+   */
+  const labelScale = Math.min(Math.sqrt(transform.k), LABEL_GROWTH_CAP) / transform.k
   const isDimmed = (continent: ContinentKey) =>
     mode === 'continent' && activeContinent !== null && continent !== activeContinent
 
@@ -1705,6 +1968,9 @@ export function WorldMap({
     // would fight them and imply country-level interaction.
     if (mode === 'continent') return []
     const k2 = transform.k * transform.k
+    // Phones get labels a little sooner (§53.6): the square frame already
+    // doubles the globe, and a name is the cheapest hit target there is.
+    const labelMinArea = compact ? LABEL_MIN_AREA_PX2 * 0.6 : LABEL_MIN_AREA_PX2
     // The key must be STABLE and UNIQUE per drawn shape, not per iso3: two
     // polygons share iso3 SOM (Somalia + Somaliland) and CYP. Keying labels
     // by iso3 alone gave React duplicate keys, and panning while zoomed left
@@ -1712,7 +1978,7 @@ export function WorldMap({
     const labels: { key: string; iso3: string; name: string; x: number; y: number; emphasized: boolean }[] = []
     shapes.forEach((shape, index) => {
       const isHovered = hovered?.iso3 === shape.iso3
-      if (!isHovered && shape.areaPx * k2 < LABEL_MIN_AREA_PX2) return
+      if (!isHovered && shape.areaPx * k2 < labelMinArea) return
       if (!Number.isFinite(shape.centroid[0])) return
       labels.push({
         key: `shape-${shape.iso3}-${index}`,
@@ -1735,12 +2001,12 @@ export function WorldMap({
         iso3: marker.iso3,
         name: marker.name,
         x,
-        y: y - 6 / Math.sqrt(transform.k),
+        y: y - 6 * labelScale,
         emphasized: isHovered,
       })
     }
     return labels
-  }, [shapes, markerPoints, hovered, transform.k, mode])
+  }, [shapes, markerPoints, hovered, transform.k, mode, compact])
   countryLabelSeed.current = visibleLabels
 
   const registerNode = (iso3: string) => (node: SVGGraphicsElement | null) => {
@@ -1769,15 +2035,85 @@ export function WorldMap({
     behaviour.scaleTo(select(svg), Math.max(1, Math.min(MAX_ZOOM, k)))
   }, [])
 
+  // ---- Round 5 (§53.2): sheet swipe ------------------------------------
+  // Native touch listeners, registered non-passive: React's own touch
+  // handlers are passive, so preventDefault() there cannot stop the page
+  // from scrolling under the swipe, and a swipe that scrolls the page is
+  // not a swipe. Mouse users get the same thresholds through pointer
+  // events, and a plain tap on the handle toggles.
+  const sheetHandleRef = useRef<HTMLDivElement | null>(null)
+  const sheetDrag = useRef<{ y: number; id: number } | null>(null)
+  const settleSheetSwipe = useCallback(
+    (dy: number) => {
+      if (dy < -30) setSheetExpanded(true)
+      else if (dy > 30) {
+        if (sheetExpanded) setSheetExpanded(false)
+        else closeSheet()
+      }
+    },
+    [sheetExpanded, closeSheet],
+  )
+  useEffect(() => {
+    const handle = sheetHandleRef.current
+    if (!handle) return
+    let startY: number | null = null
+    let lastY = 0
+    const onStart = (event: TouchEvent) => {
+      const touch = event.touches[0]
+      if (!touch) return
+      startY = touch.clientY
+      lastY = startY
+    }
+    const onMove = (event: TouchEvent) => {
+      const touch = event.touches[0]
+      if (startY === null || !touch) return
+      lastY = touch.clientY
+      event.preventDefault()
+    }
+    const onEnd = () => {
+      if (startY === null) return
+      const dy = lastY - startY
+      startY = null
+      if (Math.abs(dy) > 30) settleSheetSwipe(dy)
+    }
+    handle.addEventListener('touchstart', onStart, { passive: true })
+    handle.addEventListener('touchmove', onMove, { passive: false })
+    handle.addEventListener('touchend', onEnd)
+    handle.addEventListener('touchcancel', onEnd)
+    return () => {
+      handle.removeEventListener('touchstart', onStart)
+      handle.removeEventListener('touchmove', onMove)
+      handle.removeEventListener('touchend', onEnd)
+      handle.removeEventListener('touchcancel', onEnd)
+    }
+  }, [settleSheetSwipe, picked])
+  const onSheetPointerDown = (event: React.PointerEvent) => {
+    if (event.pointerType === 'touch') return
+    sheetDrag.current = { y: event.clientY, id: event.pointerId }
+  }
+  const onSheetPointerUp = (event: React.PointerEvent) => {
+    const start = sheetDrag.current
+    sheetDrag.current = null
+    if (!start || start.id !== event.pointerId) return
+    settleSheetSwipe(event.clientY - start.y)
+  }
+
+  const frameClass = pseudoFullscreen
+    ? 'fixed inset-0 z-50 flex flex-col'
+    : nativeFullscreen
+      ? 'flex h-full flex-col'
+      : 'relative flex flex-col'
+
   return (
+    <div ref={frameRef} className={frameClass} style={{ background: backgroundFill }}>
     <div
       ref={containerRef}
-      className="relative"
+      className={isFullscreen ? 'relative min-h-0 flex-1' : 'relative'}
       style={{ background: backgroundFill }}
     >
       {/* Map controls: zoom without a wheel or pinch, and fullscreen. They
           live OUTSIDE the svg so they are ordinary buttons for keyboard and
-          screen reader users. */}
+          screen reader users. Compact (§53.5): thumb-sized, with Reset. */}
       <ZoomControls
         onZoomIn={() => zoomBy(1.5)}
         onZoomOut={() => zoomBy(1 / 1.5)}
@@ -1787,8 +2123,35 @@ export function WorldMap({
         }
         isFullscreen={isFullscreen}
         onToggleFullscreen={toggleFullscreen}
+        onReset={resetView}
+        large={compact && (isGlobe || isFullscreen)}
+        horizontal={compact && !isGlobe && !isFullscreen}
         buttonStyle={controlButtonStyle}
       />
+
+      {/* Round 5 (§53.3): the fullscreen control as a labelled button on
+          phones — "Explore globe" is the mode where one finger spins and two
+          zoom; the embedded map lets the page scroll over it. */}
+      {compact && !isFullscreen && (
+        <button
+          type="button"
+          onClick={toggleFullscreen}
+          className="absolute left-3 top-3 z-10 rounded-full border px-4 py-2.5 text-sm font-medium shadow"
+          style={controlButtonStyle}
+        >
+          {isGlobe ? 'Explore globe' : 'Explore map'}
+        </button>
+      )}
+      {isFullscreen && (
+        <button
+          type="button"
+          onClick={toggleFullscreen}
+          className="absolute left-3 top-3 z-10 rounded-full border px-4 py-2 text-sm font-medium shadow"
+          style={controlButtonStyle}
+        >
+          Done
+        </button>
+      )}
 
       {/* Attribution (Phase 4): required for the NASA imagery, honest for
           Natural Earth. Rendered as chrome, not data, and kept out of the
@@ -1876,13 +2239,17 @@ export function WorldMap({
 
     <svg
       ref={svgRef}
-      viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
+      viewBox={`0 0 ${viewW} ${viewH}`}
       className={
         // `relative` matters: the terrain canvas is absolutely positioned,
         // and only a positioned svg is guaranteed to paint above it.
+        // touch-action (§53.3): full screen owns every gesture; embedded,
+        // vertical swipes scroll the PAGE (pan-y) — a horizontal drag still
+        // spins the globe and a pinch still zooms, but a reader flicking
+        // down the page is no longer trapped on the map.
         isFullscreen
           ? 'relative h-full w-full touch-none'
-          : 'relative h-auto w-full touch-none'
+          : 'relative h-auto w-full touch-pan-y'
       }
       role="group"
       aria-label={
@@ -2026,6 +2393,7 @@ export function WorldMap({
               strokeLinejoin="round"
               opacity={dimmed ? 0.45 : 1}
               tabIndex={tabIndexFor(shape.iso3)}
+              data-iso3={shape.iso3}
               role="link"
               aria-label={
                 mode === 'continent'
@@ -2126,6 +2494,7 @@ export function WorldMap({
               ref={registerNode(marker.iso3)}
               transform={`translate(${x},${y})`}
               tabIndex={tabIndexFor(marker.iso3)}
+              data-iso3={marker.iso3}
               role="link"
               aria-label={`${marker.name}. Too small to draw at this scale; shown as a marker. Open country page.`}
               className="map-target"
@@ -2177,7 +2546,7 @@ export function WorldMap({
             // on-screen size grow with the square root of the zoom: at 4x
             // zoom names are twice as big, at 9x three times -- larger, but
             // never billboard-sized.
-            fontSize={(label.emphasized ? 13 : 10) / Math.sqrt(transform.k)}
+            fontSize={(label.emphasized ? 13 : 10) * labelScale}
             fontStyle={antique ? 'italic' : undefined}
             style={{
               // Land is light in every view now, so labels are dark text
@@ -2189,7 +2558,7 @@ export function WorldMap({
               stroke: antique ? ANTIQUE.paper : GLOBE_LAND_NEUTRAL,
               fontFamily: antique ? 'Newsreader, Georgia, serif' : undefined,
               letterSpacing: antique ? '0.05em' : undefined,
-              strokeWidth: (label.emphasized ? 3.5 : 2.5) / Math.sqrt(transform.k),
+              strokeWidth: (label.emphasized ? 3.5 : 2.5) * labelScale,
               strokeLinejoin: 'round',
               fontWeight: label.emphasized ? 600 : 500,
             }}
@@ -2206,7 +2575,7 @@ export function WorldMap({
         {detailLabels.length > 0 && (
           <g pointerEvents="none" aria-hidden="true">
             {detailLabels.map((label) => {
-              const fontSize = label.size / Math.sqrt(transform.k)
+              const fontSize = label.size * labelScale
               const isPlace = label.kind === 'place' || label.kind === 'capital'
               const dark = imagery === 'satellite'
               const fill =
@@ -2232,14 +2601,14 @@ export function WorldMap({
                       }
                       fill={fill}
                       stroke={halo}
-                      strokeWidth={0.5 / Math.sqrt(transform.k)}
+                      strokeWidth={0.5 * labelScale}
                     />
                   )}
                   <text
                     x={label.x}
                     y={
                       isPlace
-                        ? label.y - 2.4 / Math.sqrt(transform.k)
+                        ? label.y - 2.4 * labelScale
                         : label.y
                     }
                     textAnchor="middle"
@@ -2249,7 +2618,7 @@ export function WorldMap({
                       fill,
                       paintOrder: 'stroke',
                       stroke: halo,
-                      strokeWidth: 2 / Math.sqrt(transform.k),
+                      strokeWidth: 2 * labelScale,
                       strokeLinejoin: 'round',
                       fontWeight: label.kind === 'capital' ? 600 : 400,
                     }}
@@ -2281,12 +2650,12 @@ export function WorldMap({
                 y={y}
                 textAnchor="middle"
                 pointerEvents="none"
-                fontSize={12 / Math.sqrt(transform.k)}
+                fontSize={12 * labelScale}
                 style={{
                   fill: 'oklch(20% 0.01 250)',
                   paintOrder: 'stroke',
                   stroke: GLOBE_LAND_NEUTRAL,
-                  strokeWidth: 3 / Math.sqrt(transform.k),
+                  strokeWidth: 3 * labelScale,
                   strokeLinejoin: 'round',
                   fontWeight: 600,
                 }}
@@ -2308,19 +2677,87 @@ export function WorldMap({
       {antique && (
         <g pointerEvents="none" aria-hidden="true">
           <rect
-            width={VIEW_WIDTH}
-            height={VIEW_HEIGHT}
+            width={viewW}
+            height={viewH}
             filter="url(#antique-grain)"
             style={{ mixBlendMode: 'multiply' }}
           />
           <rect
-            width={VIEW_WIDTH}
-            height={VIEW_HEIGHT}
+            width={viewW}
+            height={viewH}
             fill="url(#antique-vignette)"
           />
         </g>
       )}
     </svg>
     </div>
+
+    {/* Bottom sheet (§53.2): in flow under the stage, never over the globe —
+        in full screen the stage shrinks above it, so the selected country
+        stays visible. Swipe up for more, down to collapse, down again to
+        close. */}
+    {picked && sheetActive && renderSheet && (
+      <section
+        className="map-sheet"
+        role="region"
+        aria-label={`${picked.name} details`}
+        aria-live="polite"
+        style={{
+          maxHeight: sheetExpanded ? (isFullscreen ? '55%' : '24rem') : undefined,
+          overflowY: sheetExpanded ? 'auto' : 'hidden',
+        }}
+      >
+        <div
+          ref={sheetHandleRef}
+          className="map-sheet-handle"
+          onPointerDown={onSheetPointerDown}
+          onPointerUp={onSheetPointerUp}
+          onPointerCancel={() => { sheetDrag.current = null }}
+          onClick={() => setSheetExpanded((v) => !v)}
+          role="button"
+          tabIndex={0}
+          aria-expanded={sheetExpanded}
+          aria-label={sheetExpanded ? 'Show less' : 'Show more'}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              setSheetExpanded((v) => !v)
+            }
+          }}
+        >
+          <span className="map-sheet-grip" aria-hidden="true" />
+        </div>
+        <div className="flex items-start gap-2 px-4 pb-3">
+          <div className="min-w-0 flex-1">
+            {renderSheet(picked, sheetExpanded)}
+            {nearby.length > 0 && (
+              <div className="mt-2 text-xs" style={{ color: 'var(--text-muted)' }}>
+                Nearby:{' '}
+                {nearby.map((t) => (
+                  <button
+                    key={t.iso3}
+                    type="button"
+                    className="mr-1.5 mt-1 inline-block rounded-full border px-2.5 py-1 text-xs"
+                    style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+                    onClick={() => pick(t)}
+                  >
+                    {t.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            aria-label="Close"
+            className="popover-close"
+            onClick={closeSheet}
+          >
+            ×
+          </button>
+        </div>
+      </section>
+    )}
+    </div>
   )
-}
+})
