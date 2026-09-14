@@ -133,8 +133,11 @@ function EventCard({ event }: { event: EvolutionEvent }) {
             </figcaption>
           </figure>
         )}
-        <div className="min-w-56 flex-1">
-          <p className="max-w-2xl text-sm">{event.summary}</p>
+        {/* Round 7 (section 57.4): a flex BASIS, not a min-width -- min-w-56
+            could not shrink inside a narrow period column, so the text ran
+            past the box's right edge on phones. */}
+        <div className="min-w-0 flex-[1_1_14rem]">
+          <p className="max-w-2xl break-words text-sm">{event.summary}</p>
           <p className="mt-2 flex flex-wrap gap-x-4 text-sm">
             <a
               className="underline underline-offset-2"
