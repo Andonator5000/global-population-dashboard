@@ -3965,6 +3965,30 @@ committed once at the end; instant under reduced motion. Round 5's Reset
 view (initial orientation, zoom 1) is gone; the handle exposes `northUp`
 and the flat maps, always north-up, show no compass.
 
+## 60. Round 10: the freeze was the settle (2026-09-14)
+
+Andy: "Still freezes on mobile." Measured with a long-task observer in
+headed Chrome: after every drag on a zoomed map the main thread blocked
+for **~950 ms on a desktop** (three to five seconds on a phone), at any
+zoom past about 2×. It was the settle, 160 ms after the rotation
+commits: `detailPaths` projected EVERY feature of the loaded detail
+layers (10m rivers alone, 300 ms) and `detailLabels` ran
+`path.centroid` over every lake and river and the collision loop over
+every place and admin-1 label — almost all of it geometry off screen,
+because at 18× the viewport is a few degrees wide. §59.2's gesture fix
+was real but not this; this is what "cannot move it" felt like.
+
+Fix: per-feature `geoBounds` are computed once per collection (WeakMap)
+and only the features whose bounds touch the visible lon/lat window
+(`visibleLonLatWindow`, the culling the drag frames already used) are
+projected, centroided or offered to the collision loop; places and
+admin-1 points get the same window test before their projection. The
+window is null at world zoom or when the limb is in view, and then
+everything is drawn as before. Long task after a drag: **~950 ms →
+70–100 ms** at 4 and 12 wheel steps (the remainder is the rotation
+commit of the 250 country paths). Nothing about what is drawn changed
+— a feature outside the window has no pixels to lose.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

@@ -231,7 +231,12 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   NORTH UP (§59.3): recentre the globe on the place under the screen
   centre and reset the pan, keep the zoom — never a jump to the default
   view. Embedded touch-action is pan-y at zoom 1 and none above 1.05
-  (§59.2). Drag/animation frames read the zoom from transformRef. Rotation lambda
+  (§59.2). Drag/animation frames read the zoom from transformRef. The
+  settle (§60) projects only features whose geoBounds touch the visible
+  window (detailBounds WeakMap + boundsTouch) — never reintroduce a
+  whole-collection path()/centroid() per settle; measure with a
+  PerformanceObserver('longtask') after a zoomed drag (.scratch/
+  longtask.mjs pattern) before claiming a phone fix. Rotation lambda
   is WRAPPED to [-180, 180) at every write (§54.2). In the imagery
   views the OUTLINES ARE DRAWN BY THE GL PASS AT REST TOO (§57.1) and
   the SVG shapes have no stroke there — never reintroduce SVG strokes
