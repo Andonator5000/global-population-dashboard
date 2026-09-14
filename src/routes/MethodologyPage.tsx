@@ -106,8 +106,10 @@ export function MethodologyPage() {
           flag's dominant colour, and its lightness encodes a four-tier
           population ranking — darker is more populous. Neighbouring
           countries are guaranteed perceptibly distinct fills by a gated
-          palette build. The satellite and terrain views are NASA Blue Marble
-          and Natural Earth relief imagery, projected per pixel on the GPU
+          palette build. The satellite view is the EOX Sentinel-2 cloudless
+          mosaic for 2025 (EOxCloudless by EOX IT Services GmbH, containing
+          modified Copernicus Sentinel data; CC BY-NC-SA 4.0), the terrain view
+          Natural Earth relief imagery; both are projected per pixel on the GPU
           (WebGL) so the sphere has no seams, and carry no data encoding. A
           colour direction chosen under "Map colours" also tones those views
           (sepia for Antique, greyscale for Monochrome, and so on); the tone

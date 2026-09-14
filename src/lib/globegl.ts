@@ -833,7 +833,12 @@ export class GlobeGL implements ImageryRenderer {
     gl.uniform3f(loc('u_ocean'), ocean[0], ocean[1], ocean[2])
     gl.uniform1f(loc('u_height'), bufferH)
 
-    const [lambda, phi] = view.rotation
+    // Lambda wrapped to [-180, 180) before it becomes a shader argument:
+    // mobile GPUs lose sin/cos precision on large angles and the lines and
+    // the imagery drift apart (section 54.2). The map wraps at source too.
+    const rawLambda = view.rotation[0]
+    const lambda = ((((rawLambda + 180) % 360) + 360) % 360) - 180
+    const phi = view.rotation[1]
     gl.uniform2f(loc('u_rot'), (lambda * Math.PI) / 180, (phi * Math.PI) / 180)
 
     let mesh: FlatMesh | null = null

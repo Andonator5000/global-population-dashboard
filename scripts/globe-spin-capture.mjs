@@ -31,7 +31,7 @@ await page.addInitScript(([v, p]) => {
   const orig = window.requestAnimationFrame.bind(window)
   window.requestAnimationFrame = (cb) => orig((t) => { const s = performance.now(); cb(t); window.__frames.push(performance.now() - s) })
 }, [view, palette])
-await page.goto('http://localhost:5173/', { waitUntil: 'networkidle' })
+await page.goto('http://localhost:5173/', { waitUntil: 'load' })
 await page.waitForSelector('svg[role="group"]')
 await page.waitForTimeout(2500)
 const svg = page.locator('svg[role="group"]')

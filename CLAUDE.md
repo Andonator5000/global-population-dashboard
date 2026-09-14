@@ -112,7 +112,7 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - Header (round 2, §34): centred publication nameplate + editorial
   uppercase nav from the SECTIONS registry (src/config.ts) — six
   top-level items (Global Data, Human History, Taxonomy, Evolution,
-  Space, Chemistry since round 3 §47); active state = 2px underline in the section's THEMED --nav-*
+  Space, Chemistry since round 3 §47, Anatomy since round 6 §55); active state = 2px underline in the section's THEMED --nav-*
   hue plus a text-colour step. A new section = one registry entry + a
   --nav-* pair in both themes, mirrored into check-contrast AND declared
   in both dark blocks (theme parity). /biology/* redirects; don't remove.
@@ -178,6 +178,14 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   beside the table only from xl; the grid fits its column from lg
   (container-query cell type, no min-width) — do not put the 54rem floor
   back above lg, that was the desktop sideways scroll.
+- Anatomy (§55): EDITORIAL — run `python etl/reference/build_anatomy.py`
+  to write etl/reference/anatomy.json (never hand-edit the JSON, never
+  data/anatomy/); every system and organ cites its OpenStax A&P 2e
+  chapter; an organ's FIRST system is where it is listed and that system
+  must list it back; diagrams are Commons originals through the
+  free-licence gate (SVG stays SVG), credited per image; the `anatomy`
+  stage and check:anatomy gate all of it. Timeline (§54.1): era banners
+  sit above the axis line (z-index) — keep the line drawn behind them.
 - Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
   .json, never data/space/phenomena*; the `phenomena` stage downloads
   every image through the licence gate (no hotlinks) and check:phenomena
@@ -215,6 +223,18 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).
-- Globe drag sensitivity is 0.5625°/px by explicit request (two ×1.5
-  raises). Space outside the projection is black on EVERY view and
-  direction (the §48.3 parchment surround was reversed by Andy in §51.4).
+- Globe drag sensitivity is 0.375°/px (DRAG_SENSITIVITY; raised twice
+  in 2026-08, brought back down by Andy in §54.2 — do not raise it
+  again unasked); rotation lambda is WRAPPED to [-180, 180) at every
+  write of the ref and before the shader uniform (mobile GPUs lose
+  sin/cos precision on large angles — that was the drifting outlines);
+  the at-rest imagery render is a layout effect that never runs
+  mid-drag. Reset view is the compass icon. Space outside the
+  projection is black on EVERY view and direction (the §48.3 parchment
+  surround was reversed by Andy in §51.4). Satellite imagery is EOX
+  Sentinel-2 cloudless 2025 (§56, Andy's ruling): CC BY-NC-SA 4.0,
+  attribution sentence VERBATIM on the map credit line, 41 WMS windows
+  fetched by the mapdetail stage (per-call fetch timeout 900 s; cached
+  under .cache/terrain/eox-*); Blue Marble 2004 only via
+  SATELLITE_SOURCE=bluemarble. Never switch the imagery to a runtime
+  tile server.

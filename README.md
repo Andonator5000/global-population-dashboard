@@ -47,7 +47,13 @@ The browser never calls an upstream API — it reads committed artifacts from
 > "Explore globe" mode that owns the gestures while the embedded map
 > lets the page scroll; a country search that flies to its result;
 > thumb-sized controls with a Map settings panel; nearby-country chips
-> on an ambiguous tap.
+> on an ambiguous tap. **Round 6 (§54–§55):** a seventh section,
+> **Anatomy** — the human body in ten layers from skin to skeleton,
+> eleven systems and sixty organs described after OpenStax A&P 2e with
+> Commons diagrams; the timeline axis passes behind era banners; the
+> globe's outline drift on phones is fixed (longitude wrapping), the
+> spin is slower and a compass resets the view; why the satellite view
+> stays Blue Marble 2004 is recorded (§54.3).
 
 ## Layout
 
@@ -154,7 +160,8 @@ Area math happens in EPSG:6933. Mercator is not an option.
 | Country metadata, borders, area | `mledoze/countries` | **Substituted for REST Countries v3.1** — see below. |
 | Geometry | Natural Earth via TopoJSON | 110m render, 50m for biome math. |
 | Map detail: admin-1 borders, lakes, rivers, places | Natural Earth 10m/50m | Public domain; simplified in the ETL, zoom-lazy in the app — DATA_DECISIONS.md §30. |
-| Satellite/terrain imagery | NASA Blue Marble Next Generation (Aug 2004, topo & bathy) | Public domain, NASA credited on-map; ETL-baked JPEG tiers, no runtime tile server. Rendered by a WebGL2 per-pixel inverse projection (§43), so the sphere has no seams; 2-D canvas fallback without WebGL2. The political globe's drag frames go through the same renderer since round 4 (§51). |
+| Satellite imagery | EOX Sentinel-2 cloudless 2025 (EOxCloudless by EOX IT Services GmbH, containing modified Copernicus Sentinel data 2025) | **CC BY-NC-SA 4.0** — non-commercial, credited verbatim on the map (§56); the committed tiles under `data/geo/terrain/` are a derived work under the same licence. 41 EPSG:4326 WMS windows baked into three JPEG tiers by the ETL, no runtime tile server. Rendered by a WebGL2 per-pixel inverse projection (§43); 2-D canvas fallback without WebGL2. The political globe's drag frames go through the same renderer since round 4 (§51). NASA Blue Marble 2004 (public domain) remains the `SATELLITE_SOURCE=bluemarble` fallback. |
+| Terrain imagery | Natural Earth cross-blended hypso with shaded relief and water | Public domain; ETL-baked JPEG tiers. |
 | Tree of life (Taxonomy) | Catalogue of Life via ChecklistBank (CC BY 4.0) | To family rank in one artifact, one genera file per family on demand, species live from ChecklistBank on expand (documented exception); every node's description states its source (Wikipedia, Wikidata, or a flagged generated summary) — §31, §44. |
 | Geologic time (Biology → Evolution) | ICS International Chronostratigraphic Chart, linked-data publication (CC BY 4.0) | Boundary ages with stated errors and CGMW colours; events editorial — §32. |
 | Evolution illustrations | PhyloPic (CC0/PD only) + Wikipedia lead images via Commons | Per-image licence gate; attribution rendered; unillustrated events logged — §32.3. |
@@ -229,6 +236,7 @@ monthly refresh workflow will not open a pull request unless they pass.
 | `typecheck` | Strict TS, including `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess`. |
 | `check:taxonomy` | Every node has a Wikipedia title or an explicit null, a description with its source (generated ones flagged), and a defined rank; genera chunks complete — §31, §44. |
 | `check:evolution` | Every geologic period is inhabited by at least one sourced event — §32. |
+| `check:anatomy` | Every anatomy system and organ is described, sourced and reachable from a layer; every diagram exists locally and is credited under a free licence. |
 | `check:phenomena` | Every phenomenon is categorised, status-flagged, fact-sourced, and its image exists locally, decodes, and carries licence + credit — §46. |
 | `check:chemistry` | All 118 elements carry every required field (or a reasoned null), a photograph or an explicit no-sample flag, and a glossary entry for every property the panel shows — §47. |
 

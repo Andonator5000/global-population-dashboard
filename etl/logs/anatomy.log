@@ -1,0 +1,89 @@
+{
+  "systems": 11,
+  "organs": 60,
+  "layers": 10,
+  "figures": 3,
+  "cooperation": 8,
+  "words": 7995,
+  "images": [
+    {
+      "id": "body",
+      "licence": "CC0",
+      "author": "Sebastian Wallroth",
+      "bytes": 9428
+    },
+    {
+      "id": "muscles",
+      "licence": "Public domain",
+      "author": "Mikael Häggström",
+      "bytes": 877040
+    },
+    {
+      "id": "circulatory",
+      "licence": "Public domain",
+      "author": "LadyofHats, Mariana Ruiz Villarreal",
+      "bytes": 745485
+    },
+    {
+      "id": "respiratory",
+      "licence": "Public domain",
+      "author": "LadyofHats, Jmarchn",
+      "bytes": 282267
+    },
+    {
+      "id": "digestive",
+      "licence": "Public domain",
+      "author": "Mariana Ruiz, Jmarchn",
+      "bytes": 415148
+    },
+    {
+      "id": "lymphatic",
+      "licence": "CC BY 3.0",
+      "author": "LadyofHats (Mariana Ruiz Villarreal)",
+      "bytes": 100709
+    },
+    {
+      "id": "nervous",
+      "licence": "CC BY-SA 4.0",
+      "author": "Medium69, Jmarchn",
+      "bytes": 498707
+    },
+    {
+      "id": "endocrine",
+      "licence": "Public domain",
+      "author": "US Government",
+      "bytes": 45579
+    },
+    {
+      "id": "urinary",
+      "licence": "CC BY-SA 3.0",
+      "author": "Urinary_system.svg: Jordi March i Nogué [1]",
+      "bytes": 316469
+    },
+    {
+      "id": "skeleton",
+      "licence": "Public domain",
+      "author": "LadyofHats Mariana Ruiz Villarreal",
+      "bytes": 862210
+    },
+    {
+      "id": "skin-layers",
+      "licence": "CC BY-SA 3.0",
+      "author": "Madhero88 and M.Komorniczak",
+      "bytes": 1902365
+    },
+    {
+      "id": "female-reproductive",
+      "licence": "Public domain",
+      "author": "CDC, Mysid",
+      "bytes": 463131
+    },
+    {
+      "id": "male-reproductive",
+      "licence": "CC BY-SA 4.0",
+      "author": "RWhitwam",
+      "bytes": 453624
+    }
+  ],
+  "image_bytes": 6972162
+}

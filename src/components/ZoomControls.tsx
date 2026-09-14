@@ -175,28 +175,31 @@ export function ZoomControls({
         <div className="map-ctl relative">
           <button
             type="button"
-            aria-label="Reset view"
+            aria-label="Reset view (compass)"
             className={`flex ${iconSize} items-center justify-center rounded ${buttonClassName}`}
             style={buttonStyle}
             onClick={onReset}
           >
-            {/* A counter-clockwise arrow: back to the first view. */}
+            {/* A compass (round 6, section 54.2, Andy's request): a ring
+                with a needle, north filled. Reorients the globe or map to
+                its default state. */}
             <svg
               viewBox="0 0 16 16"
               className="h-4 w-4"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.6"
+              strokeWidth="1.4"
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
             >
-              <path d="M3.5 8a4.5 4.5 0 1 0 1.3-3.2" />
-              <path d="M3 2.5v3h3" />
+              <circle cx="8" cy="8" r="6.3" />
+              <path d="M8 2.6l2 5.4-2 5.4-2-5.4z" />
+              <path d="M8 2.6l2 5.4h-4z" fill="currentColor" />
             </svg>
           </button>
           <div className="map-tooltip">
-            <span className="map-tooltip-bubble">Reset view</span>
+            <span className="map-tooltip-bubble">Reset view · back to the default orientation</span>
           </div>
         </div>
       )}

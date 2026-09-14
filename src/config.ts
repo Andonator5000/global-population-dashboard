@@ -105,6 +105,8 @@ export const SECTIONS: readonly SiteSection[] = [
   { path: '/space', label: 'Space', accent: 'var(--nav-space)' },
   // Round 3, Phase 7 (§47): Chemistry — the periodic table and its glossary.
   { path: '/chemistry', label: 'Chemistry', accent: 'var(--nav-chemistry)' },
+  // Round 6 (§55): Anatomy — the human body in layers.
+  { path: '/anatomy', label: 'Anatomy', accent: 'var(--nav-anatomy)' },
 ]
 
 /** Continents excluded from per-capita, density, and population rankings. */

@@ -194,7 +194,82 @@ def _emit_tiers(source, tiers: list[dict[str, int]], out_dir: Path,
     return tier_records
 
 
+def eox_tile_request(level: int, col: int, row: int, cols: int, rows: int,
+                     width: int, height: int) -> tuple[str, str]:
+    """(WMS GetMap URL, cache filename) for one tile of the EOX mosaic in
+    EPSG:4326: the tile's exact lon/lat window at its exact pixel size, so
+    the returned image IS the tile and nothing is resampled."""
+    deg_x = 360 / cols
+    deg_y = 180 / rows
+    lon0 = -180 + col * deg_x
+    lon1 = lon0 + deg_x
+    lat1 = 90 - row * deg_y
+    lat0 = lat1 - deg_y
+    url = (
+        f"{config.EOX_WMS_URL}?service=WMS&request=GetMap&version=1.1.1"
+        f"&layers={config.EOX_S2CLOUDLESS_LAYER}&srs=EPSG:4326"
+        f"&bbox={lon0:g},{lat0:g},{lon1:g},{lat1:g}"
+        f"&width={width}&height={height}&format=image/png"
+    )
+    name = f"eox-{config.EOX_S2CLOUDLESS_LAYER}-t{level}-{col}-{row}.png"
+    return url, name
+
+
+def _build_terrain_eox(refresh: bool, out_dir: Path
+                       ) -> tuple[list[CachedResponse], list[dict[str, Any]]]:
+    """Round 6 (section 56): the satellite tiers straight from the EOX
+    WMS, one request per tile. Transparent areas (beyond Sentinel-2's
+    coverage at the poles) composite onto white, which is what the ice
+    there looks like."""
+    from PIL import Image
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    responses: list[CachedResponse] = []
+    tier_records: list[dict[str, Any]] = []
+    for tier in TIERS:
+        width, height = tier["width"], tier["height"]
+        cols = max(1, width // TILE_PX)
+        rows = max(1, height // TILE_PX)
+        tiles: list[str] = []
+        for row in range(rows):
+            for col in range(cols):
+                tile_w = TILE_PX if cols > 1 else width
+                tile_h = TILE_PX if rows > 1 else height
+                url, cache_name = eox_tile_request(
+                    tier["level"], col, row, cols, rows, tile_w, tile_h)
+                response = fetch(url, refresh=refresh, subdir="terrain",
+                                 filename=cache_name,
+                                 timeout=config.EOX_TIMEOUT_SECONDS)
+                responses.append(response)
+                image = Image.open(response.path)
+                if image.size != (tile_w, tile_h):
+                    raise FetchError(
+                        f"EOX tile t{tier['level']}-{col}-{row} is {image.size}, "
+                        f"expected {(tile_w, tile_h)}")
+                if image.mode in ("RGBA", "LA", "P"):
+                    rgba = image.convert("RGBA")
+                    flat = Image.new("RGB", rgba.size, (255, 255, 255))
+                    flat.paste(rgba, mask=rgba.getchannel("A"))
+                    image = flat
+                else:
+                    image = image.convert("RGB")
+                name = (f"t{tier['level']}.jpg" if cols == 1 and rows == 1
+                        else f"t{tier['level']}-{col}-{row}.jpg")
+                image.save(out_dir / name, "JPEG", quality=72, optimize=True,
+                           progressive=True)
+                tiles.append(name)
+        tier_records.append({
+            "level": tier["level"], "width": width, "height": height,
+            "cols": cols, "rows": rows, "tile_px": TILE_PX, "tiles": tiles,
+        })
+        print(f"    satellite (EOX) tier {tier['level']}: {width}x{height}, "
+              f"{len(tiles)} tile(s)", flush=True)
+    return responses, tier_records
+
+
 def _build_terrain(refresh: bool, out_dir: Path) -> tuple[CachedResponse, list[dict[str, Any]]]:
+    """Blue Marble 2004: the documented fallback (section 54.3), kept for
+    a `SATELLITE_SOURCE=bluemarble` run."""
     from PIL import Image
 
     response = fetch(
@@ -359,13 +434,31 @@ def ingest(
     print(f"    places: {len(places)} points", flush=True)
 
     # ---- terrain imagery -------------------------------------------------
-    terrain_resp, tier_records = _build_terrain(refresh, terrain_dir)
-    _write_json(terrain_dir / "meta.json", {
-        "source": "NASA Blue Marble Next Generation (topography & bathymetry)",
-        "vintage": config.BLUE_MARBLE_VINTAGE,
-        "attribution": "NASA Earth Observatory (Blue Marble)",
-        "tiers": tier_records,
-    })
+    # EOX Sentinel-2 cloudless since round 6 (section 56); Blue Marble
+    # 2004 only on SATELLITE_SOURCE=bluemarble.
+    import os
+    use_bluemarble = os.environ.get("SATELLITE_SOURCE") == "bluemarble"
+    if use_bluemarble:
+        terrain_resp, tier_records = _build_terrain(refresh, terrain_dir)
+        terrain_responses = [terrain_resp]
+        _write_json(terrain_dir / "meta.json", {
+            "source": "NASA Blue Marble Next Generation (topography & bathymetry)",
+            "vintage": config.BLUE_MARBLE_VINTAGE,
+            "attribution": "NASA Earth Observatory (Blue Marble)",
+            "licence": "Public domain",
+            "tiers": tier_records,
+        })
+    else:
+        terrain_responses, tier_records = _build_terrain_eox(refresh, terrain_dir)
+        terrain_resp = terrain_responses[0]
+        _write_json(terrain_dir / "meta.json", {
+            "source": f"EOX Sentinel-2 cloudless {config.EOX_S2CLOUDLESS_VINTAGE}",
+            "vintage": config.EOX_S2CLOUDLESS_VINTAGE,
+            "attribution": config.EOX_S2CLOUDLESS_ATTRIBUTION,
+            "licence": config.EOX_S2CLOUDLESS_LICENCE,
+            "licenceUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "tiers": tier_records,
+        })
 
     # ---- hypsometric terrain view (round-2 §37) --------------------------
     hypso_dir = config.DATA_DIR / "geo" / "terrain-hypso"
@@ -399,25 +492,48 @@ def ingest(
             "no measurements are taken from these layers."
         ),
     )
-    manifest_mod.record_source(
-        manifest,
-        "nasa_blue_marble",
-        title="NASA Blue Marble Next Generation, August 2004 (topo & bathy)",
-        url=config.BLUE_MARBLE_URL,
-        licence="Public domain (NASA; credit requested)",
-        fetched_at=terrain_resp.fetched_at,
-        upstream_release=terrain_resp.upstream_release,
-        vintage=config.BLUE_MARBLE_VINTAGE,
-        citation=(
-            "NASA Earth Observatory, Blue Marble: Next Generation with "
-            "Topography and Bathymetry (public domain)"
-        ),
-        notes=(
-            "21600x10800 (~1.85 km/px) cut into three resolution tiers of "
-            "2700 px JPEG tiles; shaded relief is baked into the imagery. "
-            "The 500 m set exists upstream if the size budget is raised."
-        ),
-    )
+    if use_bluemarble:
+        manifest_mod.record_source(
+            manifest,
+            "nasa_blue_marble",
+            title="NASA Blue Marble Next Generation, August 2004 (topo & bathy)",
+            url=config.BLUE_MARBLE_URL,
+            licence="Public domain (NASA; credit requested)",
+            fetched_at=terrain_resp.fetched_at,
+            upstream_release=terrain_resp.upstream_release,
+            vintage=config.BLUE_MARBLE_VINTAGE,
+            citation=(
+                "NASA Earth Observatory, Blue Marble: Next Generation with "
+                "Topography and Bathymetry (public domain)"
+            ),
+            notes=(
+                "21600x10800 (~1.85 km/px) cut into three resolution tiers of "
+                "2700 px JPEG tiles; shaded relief is baked into the imagery. "
+                "The 500 m set exists upstream if the size budget is raised."
+            ),
+        )
+    else:
+        manifest_mod.record_source(
+            manifest,
+            "nasa_blue_marble",
+            title=f"EOX Sentinel-2 cloudless {config.EOX_S2CLOUDLESS_VINTAGE} (satellite view)",
+            url="https://cloudless.eox.at",
+            licence=f"{config.EOX_S2CLOUDLESS_LICENCE} (non-commercial); "
+                    f"attribution required: {config.EOX_S2CLOUDLESS_ATTRIBUTION}",
+            fetched_at=max(r.fetched_at for r in terrain_responses),
+            upstream_release=None,
+            vintage=config.EOX_S2CLOUDLESS_VINTAGE,
+            citation=config.EOX_S2CLOUDLESS_ATTRIBUTION,
+            notes=(
+                "Three resolution tiers (2700x1350; 10800x5400 as 8 tiles; "
+                "21600x10800 as 32 tiles of 2700 px) fetched as 41 EPSG:4326 WMS "
+                "windows from tiles.maps.eox.at, each the tile's exact bounds and "
+                "size, re-encoded as progressive JPEG q72. Polar areas beyond "
+                "Sentinel-2 coverage are white. Source id kept as "
+                "'nasa_blue_marble' so artifact references stay stable; the "
+                "Blue Marble fallback is SATELLITE_SOURCE=bluemarble."
+            ),
+        )
     for filename, description in [
         ("geo/detail/admin1-lines.json",
          "First-level administrative boundary lines (10m, simplified)."),
@@ -430,7 +546,8 @@ def ingest(
         ("geo/detail/places.json",
          "Populated places with scalerank and population for zoom-gated labels."),
         ("geo/terrain/meta.json",
-         "Terrain tier index for the satellite view (Blue Marble tiles)."),
+         "Terrain tier index for the satellite view (EOX Sentinel-2 cloudless "
+         "tiles; Blue Marble on SATELLITE_SOURCE=bluemarble)."),
         ("geo/terrain-hypso/meta.json",
          "Tier index for the Terrain view (Natural Earth cross-blended "
          "hypsometric relief tiles)."),
