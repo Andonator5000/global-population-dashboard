@@ -345,6 +345,20 @@ function visibleLonLatWindow(
   return { lonMin: lonMin - 3, lonMax: lonMax + 3, latMin: latMin - 3, latMax: latMax + 3 }
 }
 
+/** Per-feature geoBounds for a detail collection, computed once (WeakMap
+ *  keyed by the collection object; the loaders cache collections). */
+const detailBoundsCache = new WeakMap<object, [[number, number], [number, number]][]>()
+function detailBounds(collection: DetailCollection): [[number, number], [number, number]][] {
+  let bounds = detailBoundsCache.get(collection)
+  if (!bounds) {
+    bounds = collection.features.map((feature) =>
+      geoBounds(feature as unknown as GeoPermissibleObjects),
+    )
+    detailBoundsCache.set(collection, bounds)
+  }
+  return bounds
+}
+
 /** Does a feature's geoBounds box touch the window? Longitudes are
  *  compared on the circle, so both antimeridian conventions work. */
 function boundsTouch(
@@ -735,8 +749,22 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     if (!rotationSettled) return null
     const k = transform.k
     const path = geoPath(projection)
-    const draw = (collection: DetailCollection | undefined) =>
-      collection ? path(collection as unknown as GeoPermissibleObjects) ?? '' : ''
+    // Round 10 (section 60): only the features whose bounds touch the
+    // visible window are projected. At 18x the 10m rivers took 300 ms of
+    // main thread per settle on a desktop -- seconds on a phone, which is
+    // the "freezes so I can no longer move it" -- and nearly all of it was
+    // geometry off screen.
+    const window = visibleLonLatWindow(projection, transform, viewW, viewH, 1, 0, 0)
+    const draw = (collection: DetailCollection | undefined) => {
+      if (!collection) return ''
+      if (!window) return path(collection as unknown as GeoPermissibleObjects) ?? ''
+      const bounds = detailBounds(collection)
+      const features = collection.features.filter((_, index) =>
+        boundsTouch(bounds[index]!, window),
+      )
+      if (features.length === 0) return ''
+      return path({ type: 'FeatureCollection', features } as unknown as GeoPermissibleObjects) ?? ''
+    }
     const use10m = k >= DETAIL_ZOOM.water10
     return {
       lakes: draw(use10m ? detail.lakes10 ?? detail.lakes50 : detail.lakes50),
@@ -753,6 +781,10 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     detail,
     transform.k >= DETAIL_ZOOM.water10,
     transform.k >= DETAIL_ZOOM.admin1,
+    Math.round(transform.x / 8),
+    Math.round(transform.y / 8),
+    viewW,
+    viewH,
   ])
 
   /** Previous render's country labels, seeding detail-label collision. */
@@ -829,9 +861,12 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     }
 
     const places = detail.places ?? []
+    const window = visibleLonLatWindow(projection, transform, viewW, viewH, 1, 0, 0)
     for (const place of places) {
       const bonus = place.cap === 1 ? 2 : 0
       if (k < 3 + place.rank * 1.6 - bonus) continue
+      // Cheap lon/lat window test before the projection (section 60).
+      if (window && !boundsTouch([[place.lon, place.lat], [place.lon, place.lat]], window)) continue
       tryPlace(
         `pl-${place.name}-${place.lon}`,
         place.name,
@@ -843,6 +878,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     }
     if (k >= DETAIL_ZOOM.admin1Labels) {
       for (const label of detail.admin1Labels ?? []) {
+        if (window && !boundsTouch([[label.lon, label.lat], [label.lon, label.lat]], window)) continue
         tryPlace(
           `a1-${label.a0}-${label.name}`,
           label.name,
@@ -856,9 +892,13 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     if (k >= DETAIL_ZOOM.waterLabels) {
       const path = geoPath(projection)
       const nameWater = (collection: DetailCollection | undefined, prefix: string) => {
-        for (const item of collection?.features ?? []) {
+        if (!collection) return
+        const bounds = detailBounds(collection)
+        for (const [index, item] of collection.features.entries()) {
           const name = item.properties.name
           if (!name) continue
+          // path.centroid is a full geometry pass; skip what is off screen.
+          if (window && !boundsTouch(bounds[index]!, window)) continue
           const centroid = path.centroid(item as unknown as GeoPermissibleObjects)
           if (!Number.isFinite(centroid[0])) continue
           const inverted = projection.invert?.(centroid)
