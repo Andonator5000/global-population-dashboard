@@ -3838,6 +3838,66 @@ shaded relief, unlike Blue Marble's baked hillshade). Polar caps are
 flat white where Sentinel-2 does not image. The imagery tone grades
 (§51.1) apply as before.
 
+## 57. Round 7: outlines drawn by one renderer, Google-Earth pace, OpenStax layers, three small fixes (2026-09-13)
+
+**57.1 Outlines and imagery from ONE renderer.** Andy's phone still
+showed the white outlines parting from the countries after a fast spin,
+so the longitude wrap of §54.2 was necessary but not sufficient. The
+remaining way two things on screen can disagree is if two renderers
+draw them: at rest the outlines were SVG strokes over a GL picture,
+and any difference in when or from what each painted showed as a
+gap. Now, in the satellite and terrain views, the GL pass draws the
+outlines at rest as well as during drags (the same `borders` option
+the drag frames use, from the same rotation), and the SVG country
+shapes carry no stroke in those views — they stay as transparent hit
+targets for hover, tap, keyboard and the highlight fill. One renderer
+cannot disagree with itself. The 2-D fallback keeps its SVG strokes
+(it has no GL pass). Two seams surfaced once the GL lines were always
+on: Natural Earth's antimeridian and pole cuts (Russia, Fiji,
+Antarctica) are data edges, not borders, and are dropped from the
+border mesh; and the EOX WMS antialiases the outermost pixel of every
+window against transparency, which the white composite turned into a
+pale one-pixel frame — a bright line down the antimeridian — so the
+mapdetail stage now extends the second column and row over the first
+in every tile.
+
+**57.2 Pace.** "Match the maximum movement speed of the globe on
+Google Earth": sensitivity 0.375 → **0.25°/px** (the original value), and
+a flick's starting speed is capped at 18 CSS px per frame
+(`INERTIA_MAX_PX_PER_FRAME`) before the 0.9 decay, so the hardest flick
+carries the globe about a quarter turn and stops within a second —
+Google Earth's feel, no blur of revolutions.
+
+**57.3 Antique: the faint bar.** The feTurbulence paper-grain rect is
+removed. Its rendered region is what GPUs tile and clamp at large
+sizes, so the multiply landed on a rectangle of the sheet and not the
+rest — Andy's "transparent bar, slightly darker inside". The vignette
+(a plain radial gradient) stays; the sheet is otherwise unchanged.
+
+**57.4 Evolution event box.** The description column had `min-w-56`,
+which cannot shrink inside a narrow period column, so on phones the
+text ran past the box's right edge. It is a flex basis now
+(`flex-[1_1_14rem]`, `min-w-0`) with `break-words`.
+
+**57.5 Year controls.** Directly under the World population box on
+every width (the round-5 phone-only reordering under the map is
+reversed on Andy's request).
+
+**57.6 Anatomy layers are the OpenStax panels.** "Adopt the OpenStax
+organ system": the eleven whole-body layers are now the twelve panels
+of OpenStax Anatomy and Physiology Figure 1.4 (Commons "Organ Systems
+I.jpg" and "Organ Systems II.jpg", OpenStax College/Connexions,
+**CC BY 3.0**), cut on the 2×3 grid by the anatomy stage from the
+cached composite (`panel: {commons, col, row}` in the reference, JPEG
+q90, provenance from the composite with the panel noted). They are
+one artist's drawings on one pose at one scale, so stepping inward now
+registers: skin → muscles → heart and vessels → airways → gut →
+lymph → nerves → glands → kidneys → reproductive (female panel; the
+male panel is a figure) → skeleton. The LadyofHats and other
+whole-body diagrams are retired; the skin-section and the two
+reproductive sectional figures stay as supplementary figures. Layer
+images total 3.3 MB (was 7.0).
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
