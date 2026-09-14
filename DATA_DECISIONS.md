@@ -3898,6 +3898,37 @@ whole-body diagrams are retired; the skin-section and the two
 reproductive sectional figures stay as supplementary figures. Layer
 images total 3.3 MB (was 7.0).
 
+## 58. Round 8: one inertia loop, and the antique sheet with nothing on top (2026-09-13)
+
+Andy, from his phone after round 7: labels and outlines separate AFTER
+the spin stops, with some freezing; and the faint darker bar in the
+antique view is still there.
+
+**58.1 The double inertia loop.** A release fires `pointerup` and then
+`lostpointercapture` (the drag captures the pointer), and on touch
+`pointerleave` as well; all three reach `handleGlobePointerEnd`, which
+started an inertia loop each time the session was still live. Two or
+three loops then advanced the same rotation ref in parallel. The first
+to settle committed the rotation to React and brought the SVG back; the
+others kept painting GL frames that carried the imagery on (and, in the
+political view, switched the GL canvas back on under the SVG), so once
+everything stopped the SVG's labels and outlines stood where the first
+loop ended and the imagery where the last one did. That is exactly
+"separate after the spin stops"; the doubled per-frame work on a phone
+GPU was the freezing. On a desktop the two loops started in the same
+tick with the same delta and finished on the same frame, which is why
+no capture here ever showed it. `startInertia` now returns if a loop is
+already running, and `drawDragFrame` refuses to paint outside a live
+session, so a stray frame can never move a canvas after the commit.
+
+**58.2 Antique overlays.** The vignette rect follows the grain rect
+(§57.3) out: a gradient-filled rectangle painted across the whole
+viewport was the last thing left over the sheet, and Andy still saw a
+darker rectangle after the grain went. The antique direction is now
+its parchment sea, umber lines, coast band and lettering with nothing
+view-fixed on top; if the bar survives this, it is not ours and a
+screenshot is the next step.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

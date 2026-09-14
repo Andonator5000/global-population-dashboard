@@ -1222,6 +1222,9 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   }, [satellite, isGlobe, buildDragFills])
 
   const drawDragFrame = useCallback(() => {
+    // Section 58.1: nothing paints outside a live session -- a stray frame
+    // after the commit would move the canvas away from the SVG.
+    if (!isDragRendering.current) return
     const container = containerRef.current
     const canvas = dragCanvasRef.current
     if (!container || !canvas) return
@@ -1374,6 +1377,14 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   /** Momentum after release: the last frame's delta decays at 7% per
       frame, so the globe has weight. Skipped under reduced motion. */
   const startInertia = useCallback(() => {
+    // Round 8 (section 58.1): a release fires pointerup AND lostpointercapture
+    // (and on touch, pointerleave too), and each reached here. Two or three
+    // inertia loops then advanced the same rotation ref in parallel; the
+    // first to settle committed the rotation to React and restored the SVG,
+    // while the others kept painting GL frames that carried the imagery on
+    // -- the labels and outlines "separating after the spin stops" on
+    // Andy's phone, and the doubled work was the freezing. One loop only.
+    if (inertiaFrame.current !== null) return
     const reduced = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches
@@ -2378,16 +2389,6 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       onKeyDown={handleKeyDown}
     >
       <defs>
-        {/* Antique paper grain + vignette (section 48): static filters, no
-            animation, so prefers-reduced-motion is moot. */}
-        {antique && (
-          <>
-            <radialGradient id="antique-vignette" cx="50%" cy="50%" r="72%">
-              <stop offset="58%" stopColor={ANTIQUE.line} stopOpacity="0" />
-              <stop offset="100%" stopColor={ANTIQUE.line} stopOpacity="0.22" />
-            </radialGradient>
-          </>
-        )}
         {/* Hatch marks contested entities so their status is never carried by
             colour alone -- required for CVD readers and forced-colors mode. */}
         <pattern
@@ -2748,22 +2749,12 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
           is the aria-label on this <svg> (which wins over <title> for the
           name anyway), and the focused country announces itself through the
           per-shape aria-labels. */}
-      {/* Antique sheet texture, above everything and inert: multiply grain
-          plus a corner vignette, view-fixed (outside the zoom transform). */}
-      {/* Round 7 (section 57.3): the feTurbulence paper-grain rect is gone.
-          Andy saw a faint darker rectangle across the middle of the antique
-          view -- the filter's rendered region, which GPUs tile and clamp at
-          large sizes, so the multiply landed on part of the sheet only. The
-          vignette (a plain gradient) stays. */}
-      {antique && (
-        <g pointerEvents="none" aria-hidden="true">
-          <rect
-            width={viewW}
-            height={viewH}
-            fill="url(#antique-vignette)"
-          />
-        </g>
-      )}
+      {/* No view-fixed overlays in the antique direction any more (section
+          57.3 removed the feTurbulence grain, section 58.2 the vignette):
+          Andy still saw a faint darker rectangle over the sheet on his
+          phone, and a gradient-filled rect over the whole viewport was the
+          last thing painted across the map. The sheet is its sea, lines,
+          coast band and lettering now, nothing on top. */}
     </svg>
     </div>
 
