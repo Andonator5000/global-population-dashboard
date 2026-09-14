@@ -86,17 +86,18 @@ const INITIAL_ROTATION: [number, number] = [-10, -20]
  * Andy asked for it back down in round 6 ("I don't need the globe to
  * spin that quickly"). Eased by the square root of the zoom.
  */
-const DRAG_SENSITIVITY = 0.25
+const DRAG_SENSITIVITY = 0.375
 /** Inertia decay per frame; 0.9 stops a flick in about a second. */
 const INERTIA_DECAY = 0.9
 /**
- * Round 7 (section 57.2): a flick's starting speed is capped, in CSS px
- * per frame, so the fastest spin is about what Google Earth allows -- a
- * hard flick carries the globe a quarter turn or so, never a blur of
- * revolutions. Andy: "slow down the speed ... to match the maximum
- * movement speed of the globe on Google Earth."
+ * A flick's starting speed is capped, in CSS px per frame, so the fastest
+ * spin stays about what Google Earth allows. History: 18 px at 0.25 deg/px
+ * (round 7) turned out "way too slow" once the double inertia loop that
+ * had made every flick look wild was fixed (section 58); round 9 (section
+ * 59.1) settles on 0.375 deg/px and 40 px -- a hard flick carries the globe
+ * about half a turn and stops within a second.
  */
-const INERTIA_MAX_PX_PER_FRAME = 18
+const INERTIA_MAX_PX_PER_FRAME = 40
 
 /**
  * Keep lambda in [-180, 180). The drag accumulates it without bound (a
@@ -157,8 +158,9 @@ export interface HoverTarget {
 export interface WorldMapHandle {
   /** Rotate/zoom to an entity and open its sheet (or popover). */
   flyTo: (iso3: string) => void
-  /** Initial orientation, zoom 1, nothing selected. */
-  resetView: () => void
+  /** Level the globe so north is straight up, keeping the longitude under
+   *  the centre and the zoom (round 9, section 59.3). */
+  northUp: () => void
 }
 
 interface WorldMapProps {
@@ -427,6 +429,10 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   const behaviourRef = useRef<ReturnType<typeof zoom<SVGSVGElement, unknown>> | null>(null)
   const nodeRefs = useRef(new Map<string, SVGGraphicsElement>())
   const [transform, setTransform] = useState(() => zoomIdentity)
+  /** The zoom transform as the drag/animation frames read it (round 9):
+      React state lags a frame behind an animation that moves the pan. */
+  const transformRef = useRef(transform)
+  transformRef.current = transform
   const [nativeFullscreen, setNativeFullscreen] = useState(false)
   /** iOS Safari has no element fullscreen: "Explore globe" then pins the
       frame over the page with CSS instead (§53.3). */
@@ -1253,7 +1259,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     // fallback's frame.
     let glDrawsBorders = false
     const useRaster =
-      !satellite && rasterOnGpu.current && transform.k < RASTER_DRAG_MAX_ZOOM
+      !satellite && rasterOnGpu.current && transformRef.current.k < RASTER_DRAG_MAX_ZOOM
     // Political raster frames paint on the GL canvas, which sits under
     // the hidden SVG; it is shown for exactly those frames and put away
     // again when the rotation commits (see the restore effect).
@@ -1267,7 +1273,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         projectionKey: 'globe',
         isGlobe: true,
         rotation: rotationRef.current,
-        transform,
+        transform: transformRef.current,
         layout: { scale, offsetX, offsetY, dpr },
         cssWidth: w,
         cssHeight: h,
@@ -1287,9 +1293,9 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     if (glDrawsBorders) return
     const view = dpr * scale
     ctx.setTransform(
-      view * transform.k, 0, 0, view * transform.k,
-      dpr * (offsetX + scale * transform.x),
-      dpr * (offsetY + scale * transform.y),
+      view * transformRef.current.k, 0, 0, view * transformRef.current.k,
+      dpr * (offsetX + scale * transformRef.current.x),
+      dpr * (offsetY + scale * transformRef.current.y),
     )
     const path = geoPath(frameProjection, ctx)
     if (!satellite) {
@@ -1299,12 +1305,12 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       ctx.fill()
     }
     ctx.lineJoin = 'round'
-    ctx.lineWidth = (satellite ? 0.75 : 0.5) / transform.k
+    ctx.lineWidth = (satellite ? 0.75 : 0.5) / transformRef.current.k
     ctx.strokeStyle = dragFills.current.stroke
     // Vector frames (deep zoom, or the no-WebGL2 fallback): only the
     // countries whose lon/lat bounds touch the visible window are
     // projected. `null` window = whole hemisphere in view = draw all.
-    const culling = visibleLonLatWindow(frameProjection, transform, w, h, scale, offsetX, offsetY)
+    const culling = visibleLonLatWindow(frameProjection, transformRef.current, w, h, scale, offsetX, offsetY)
     collection.features.forEach((item, index) => {
       if (culling && !boundsTouch(staticGeometry[index]!.bounds, culling)) return
       ctx.beginPath()
@@ -1316,7 +1322,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       }
       ctx.stroke()
     })
-  }, [collection, staticGeometry, satellite, transform, layoutFor, paletteDirection, viewW, viewH])
+  }, [collection, staticGeometry, satellite, layoutFor, paletteDirection, viewW, viewH])
 
   const beginDragRender = useCallback(() => {
     if (isDragRendering.current) return
@@ -1945,22 +1951,86 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     ],
   )
 
-  const resetView = useCallback(() => {
+  /**
+   * The compass (round 9, section 59.3). This globe has no heading axis --
+   * at the DISC centre the meridian is always vertical -- but once the
+   * reader has zoomed and panned, the screen centre sits off the disc
+   * centre and the meridians there lean toward the pole: the moment a
+   * Google Earth user reaches for the compass. North-up here therefore
+   * means: rotate the globe so the place under the screen centre becomes
+   * the disc centre (its meridian now straight up), and bring the pan back
+   * to centre, keeping the zoom. The place stays where it is; the globe
+   * reorients around it. Round 5's Reset view, which jumped back to the
+   * default Africa view, is what Andy did not want. Animated through the
+   * drag-frame path (imagery and outlines move together), committed once;
+   * instant under reduced motion.
+   */
+  const northUp = useCallback(() => {
+    if (!isGlobe) return
     const svg = svgRef.current
     const behaviour = behaviourRef.current
-    forceEndDragSession()
-    rotationRef.current = INITIAL_ROTATION
-    setRotation(INITIAL_ROTATION)
-    if (svg && behaviour) {
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      if (reduced) behaviour.transform(select(svg), zoomIdentity)
-      else select(svg).transition().duration(400).call(behaviour.transform, zoomIdentity)
+    if (!svg || !behaviour) return
+    cancelInertia()
+    const t0 = transformRef.current
+    const from: [number, number] = isDragRendering.current ? rotationRef.current : rotation
+    // The geographic point under the screen centre (falls back to the
+    // disc centre when the screen centre is off the sphere).
+    const base = createProjection('globe')
+    base.rotate([from[0], from[1], 0])
+    const proj = fitProjection(base, viewW, viewH)
+    const centreView: [number, number] = [
+      (viewW / 2 - t0.x) / t0.k,
+      (viewH / 2 - t0.y) / t0.k,
+    ]
+    const under = proj.invert?.(centreView)
+    const place: [number, number] =
+      under && Number.isFinite(under[0]) && Number.isFinite(under[1])
+        ? under
+        : [-from[0], -from[1]]
+    const to: [number, number] = [wrapLongitude(-place[0]), Math.max(-90, Math.min(90, -place[1]))]
+    // Pan that puts the disc centre at the screen centre at this zoom.
+    const t1 = zoomIdentity.translate((viewW / 2) * (1 - t0.k), (viewH / 2) * (1 - t0.k)).scale(t0.k)
+    const dLambda = wrapLongitude(to[0] - from[0])
+    const dPhi = to[1] - from[1]
+    if (Math.abs(dLambda) < 0.01 && Math.abs(dPhi) < 0.01 &&
+        Math.abs(t1.x - t0.x) < 0.5 && Math.abs(t1.y - t0.y) < 0.5) return
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) {
+      forceEndDragSession()
+      rotationRef.current = to
+      setRotation(to)
+      behaviour.transform(select(svg), t1)
+      return
     }
-    closeSheet()
-    setPopover(null)
-  }, [forceEndDragSession, closeSheet])
+    beginDragRender()
+    const duration = 500
+    const started = performance.now()
+    const step = (now: number) => {
+      const t = Math.min(1, (now - started) / duration)
+      const eased = 1 - (1 - t) * (1 - t) * (1 - t)
+      rotationRef.current = [wrapLongitude(from[0] + dLambda * eased), from[1] + dPhi * eased]
+      const tx = t0.x + (t1.x - t0.x) * eased
+      const ty = t0.y + (t1.y - t0.y) * eased
+      transformRef.current = zoomIdentity.translate(tx, ty).scale(t0.k)
+      drawDragFrame()
+      if (t < 1) {
+        inertiaFrame.current = requestAnimationFrame(step)
+        return
+      }
+      inertiaFrame.current = null
+      rotationRef.current = to
+      // Commit the pan through d3-zoom (one event, one React commit) and
+      // the rotation through the usual end-of-session path.
+      behaviour.transform(select(svg), t1)
+      endDragRender()
+    }
+    inertiaFrame.current = requestAnimationFrame(step)
+  }, [
+    isGlobe, rotation, viewW, viewH, cancelInertia, forceEndDragSession,
+    beginDragRender, drawDragFrame, endDragRender,
+  ])
 
-  useImperativeHandle(handleRef, () => ({ flyTo, resetView }), [flyTo, resetView])
+  useImperativeHandle(handleRef, () => ({ flyTo, northUp }), [flyTo, northUp])
 
   // A sheet cannot outlive its mode: continent view, or the sheet prop
   // going away, closes it.
@@ -2222,7 +2292,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         }
         isFullscreen={isFullscreen}
         onToggleFullscreen={toggleFullscreen}
-        onReset={resetView}
+        onNorthUp={isGlobe ? northUp : undefined}
         large={compact && (isGlobe || isFullscreen)}
         horizontal={compact && !isGlobe && !isFullscreen}
         buttonStyle={controlButtonStyle}
@@ -2346,9 +2416,13 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         // vertical swipes scroll the PAGE (pan-y) — a horizontal drag still
         // spins the globe and a pinch still zooms, but a reader flicking
         // down the page is no longer trapped on the map.
-        isFullscreen
-          ? 'relative h-full w-full touch-none'
-          : 'relative h-auto w-full touch-pan-y'
+        // Round 9 (section 59.2): once ZOOMED IN the embedded map owns
+        // every gesture too -- with pan-y a vertical drag over a zoomed
+        // globe scrolled the page instead of panning, which read as "the
+        // map froze"; at zoom 1 the page still scrolls over it.
+        `relative ${isFullscreen ? 'h-full' : 'h-auto'} w-full ${
+          isFullscreen || transform.k > 1.05 ? 'touch-none' : 'touch-pan-y'
+        }`
       }
       role="group"
       aria-label={

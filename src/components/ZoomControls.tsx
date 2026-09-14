@@ -31,7 +31,7 @@ export function ZoomControls({
   storageKey = 'map-zoom-slider',
   buttonStyle,
   buttonClassName = '',
-  onReset,
+  onNorthUp,
   large = false,
   horizontal = false,
 }: {
@@ -45,8 +45,9 @@ export function ZoomControls({
   storageKey?: string
   buttonStyle?: React.CSSProperties
   buttonClassName?: string
-  /** Round 5 (§53.5): a "Reset view" button (initial orientation, zoom 1). */
-  onReset?: () => void
+  /** The compass (round 9, §59.3): level the globe so north is up, keeping
+   *  position and zoom. Omitted on flat maps, which are always north-up. */
+  onNorthUp?: (() => void) | undefined
   /** Thumb-sized 44 px targets for phones (§53.5). */
   large?: boolean
   /** A row instead of a column — for a short, wide stage (the flat map on
@@ -171,14 +172,14 @@ export function ZoomControls({
           </span>
         </div>
       </div>
-      {onReset && (
+      {onNorthUp && (
         <div className="map-ctl relative">
           <button
             type="button"
-            aria-label="Reset view (compass)"
+            aria-label="North up (compass)"
             className={`flex ${iconSize} items-center justify-center rounded ${buttonClassName}`}
             style={buttonStyle}
-            onClick={onReset}
+            onClick={onNorthUp}
           >
             {/* A compass (round 6, section 54.2, Andy's request): a ring
                 with a needle, north filled. Reorients the globe or map to
@@ -199,7 +200,7 @@ export function ZoomControls({
             </svg>
           </button>
           <div className="map-tooltip">
-            <span className="map-tooltip-bubble">Reset view · back to the default orientation</span>
+            <span className="map-tooltip-bubble">North up · reorients the globe around the place at the centre; zoom unchanged</span>
           </div>
         </div>
       )}

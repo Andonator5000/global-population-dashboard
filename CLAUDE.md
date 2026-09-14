@@ -225,9 +225,13 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).
-- Globe drag sensitivity is 0.25°/px (DRAG_SENSITIVITY) with a flick
-  cap of 18 px/frame (INERTIA_MAX_PX_PER_FRAME) — Google Earth pace by
-  Andy's request (§57.2); do not raise either unasked. Rotation lambda
+- Globe drag sensitivity is 0.375°/px (DRAG_SENSITIVITY) with a flick
+  cap of 40 px/frame (INERTIA_MAX_PX_PER_FRAME) — settled in §59.1 after
+  0.25/18 proved too slow; change only on Andy's word. The compass is
+  NORTH UP (§59.3): recentre the globe on the place under the screen
+  centre and reset the pan, keep the zoom — never a jump to the default
+  view. Embedded touch-action is pan-y at zoom 1 and none above 1.05
+  (§59.2). Drag/animation frames read the zoom from transformRef. Rotation lambda
   is WRAPPED to [-180, 180) at every write (§54.2). In the imagery
   views the OUTLINES ARE DRAWN BY THE GL PASS AT REST TOO (§57.1) and
   the SVG shapes have no stroke there — never reintroduce SVG strokes
