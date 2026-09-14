@@ -234,8 +234,11 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   over GL imagery, two renderers cannot be kept in step on a phone; the
   border mesh drops antimeridian/pole cut edges; the EOX tiles get
   their edge pixel extended (WMS antialiases against transparency).
-  The antique direction has NO feTurbulence grain (§57.3). Reset view
-  is the compass icon. Space outside the
+  The antique direction has NO view-fixed overlay at all — no grain
+  (§57.3), no vignette (§58.2). `startInertia` is idempotent and
+  `drawDragFrame` paints only inside a live session (§58.1: a release
+  fires pointerup + lostpointercapture + pointerleave — never start a
+  second loop). Reset view is the compass icon. Space outside the
   projection is black on EVERY view and direction (the §48.3 parchment
   surround was reversed by Andy in §51.4). Satellite imagery is EOX
   Sentinel-2 cloudless 2025 (§56, Andy's ruling): CC BY-NC-SA 4.0,
