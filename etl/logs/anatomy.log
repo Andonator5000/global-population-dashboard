@@ -22,7 +22,7 @@
       "id": "circulatory",
       "licence": "Public domain",
       "author": "LadyofHats, Mariana Ruiz Villarreal",
-      "bytes": 751359
+      "bytes": 745485
     },
     {
       "id": "respiratory",
@@ -40,7 +40,7 @@
       "id": "lymphatic",
       "licence": "CC BY 3.0",
       "author": "LadyofHats (Mariana Ruiz Villarreal)",
-      "bytes": 101637
+      "bytes": 100709
     },
     {
       "id": "nervous",
@@ -76,7 +76,7 @@
       "id": "female-reproductive",
       "licence": "Public domain",
       "author": "CDC, Mysid",
-      "bytes": 467483
+      "bytes": 463131
     },
     {
       "id": "male-reproductive",
@@ -85,5 +85,5 @@
       "bytes": 453624
     }
   ],
-  "image_bytes": 6983316
+  "image_bytes": 6972162
 }

@@ -188,6 +188,11 @@ def _resolve(item: dict[str, Any], img_dir: Path, *, refresh: bool,
         responses.append(response)
         raw = response.read_bytes()
         ext = "png" if mime == "image/png" else "jpg"
+    if ext == "svg":
+        # LF in the repo: .gitattributes normalises text on checkout, and the
+        # manifest fingerprint hashes SVG byte-for-byte, so a CRLF original
+        # would hash differently on the Linux runner than here.
+        raw = raw.replace(b"\r\n", b"\n")
     width, height = _check_decodes(raw, ext, context)
     target = img_dir / f"{context}.{ext}"
     target.write_bytes(raw)
