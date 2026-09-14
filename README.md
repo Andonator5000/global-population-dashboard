@@ -42,7 +42,12 @@ The browser never calls an upstream API — it reads committed artifacts from
 > this round: its rendering discipline was adopted, none of its keyed
 > live APIs (§51.0). The periodic table now fits a desktop without a
 > sideways scroll and every element category has a sourced definition
-> (§52).
+> (§52). **Round 5 (§53):** the phone layout of the Global Data map — a
+> square, full-width globe; a bottom sheet instead of popups; an
+> "Explore globe" mode that owns the gestures while the embedded map
+> lets the page scroll; a country search that flies to its result;
+> thumb-sized controls with a Map settings panel; nearby-country chips
+> on an ambiguous tap.
 
 ## Layout
 
