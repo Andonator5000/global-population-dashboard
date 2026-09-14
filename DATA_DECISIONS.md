@@ -3663,6 +3663,133 @@ control row; search "japan" on the flat map. Desktop 1280: hover
 popover intact, search "nepal" flies without a sheet. No console
 errors. The live site on Andy's phone remains the acceptance test.
 
+## 54. Round 6: timeline banners, the drifting outlines, the compass, and the 2004 imagery (2026-09-13)
+
+**54.1 The axis line no longer cuts through era banners.** On /history
+the vertical axis was drawn after the era bands in the DOM, so it
+painted over the banner boxes and through their text. The banner is
+now `position: relative; z-index: 1` — an opaque box the line passes
+behind — and nothing else moved (Andy: "it can disappear behind it").
+
+**54.2 White outlines drifting from the imagery when the globe spins
+fast.** Andy's report persisted after round 4 on his phone. The cause
+is not a stale frame: mid-drag the outlines and the imagery are drawn
+by the same GL pass from the same rotation uniform. What differs is
+the ARITHMETIC. The drag accumulated lambda without bound — a few fast
+spins reach thousands of degrees — and while d3 does not care, mobile
+GPUs evaluate sin/cos of large arguments with visibly reduced
+precision. The imagery is the inverse path (atan/asin per fragment) and
+the outline lines the forward path (sin/cos per vertex), so their
+errors differ and the lines land beside the coast. Fix: lambda is
+wrapped to [-180, 180) at every write of the rotation ref (drag frame,
+inertia step, fly-to) and, defensively, before it becomes a shader
+uniform. Two further guards found on the way: the at-rest imagery
+render is now a layout effect (it painted a frame after the SVG's new
+outlines, one frame of mismatch on every stage resize or sheet open)
+and it never runs while a drag session is live (a tile landing or a
+pinch mid-gesture used to repaint the canvas from stale React state).
+Sensitivity comes down from 0.5625 to **0.375°/px** and inertia decay
+from 0.93 to 0.9 on Andy's request ("I don't need the globe to spin
+that quickly") — this reverses the second of the two 2026-08 raises.
+The Reset view control is now a **compass** icon (ring and needle,
+north filled) that returns the globe or map to its default orientation
+and zoom and closes any selection; it shows on every width.
+
+**54.3 Why the satellite view is still Blue Marble 2004.** Andy asked
+for something more recent. What the satellite base needs is a
+cloud-free, true-colour, global mosaic that can be BAKED into
+committed tiles (§30: no runtime tile servers) under a licence this
+site can carry. The options, checked on 2026-09-13:
+
+| Source | Vintage | Licence | Verdict |
+|---|---|---|---|
+| NASA Blue Marble Next Generation | 2004 (monthly) | Public domain | Shipped. Still the newest cloud-free global true-colour composite NASA has published as a downloadable mosaic. |
+| NASA GIBS VIIRS / MODIS Corrected Reflectance | daily, current | Public domain | Daily scenes with cloud; no cloud-free annual composite is published. Would need our own compositing of a year of daily tiles. |
+| EOX Sentinel-2 cloudless (s2maps.eu) | 2016–2024, yearly | CC BY-NC-SA 4.0 (non-commercial); commercial licence otherwise | The best-looking recent option. Non-commercial use fits this site, but share-alike would attach to the committed tiles and the free tile service is not offered for bulk download of the ~10k tiles the tiers need. Not adopted without Andy's ruling. |
+| Copernicus Sentinel-2 Global Mosaic / Data Space quarterly mosaics | 2023–, quarterly | Copernicus free and open | Registration-gated, 10 m COGs measured in terabytes; no world-scale rendition to bake. |
+
+Decision: keep Blue Marble 2004 as the default, state the vintage in
+the attribution (it already reads "Aug 2004"), and record the EOX
+route as the candidate if Andy accepts a CC BY-NC-SA data folder and
+a one-off, throttled fetch of its WMTS tiles for the three tiers.
+
+## 55. Round 6: Human Anatomy — the body in layers (2026-09-13)
+
+Andy's brief: a new page with a comprehensive diagram of the human body
+presented in LAYERS, from the outer layer inward to the skeleton;
+information on every organ and every system — lymphatic, central and
+peripheral nervous, circulatory, pulmonary, musculoskeletal and the
+rest — with detailed definitions and descriptions, and how the organs
+work together.
+
+**55.1 Shape.** A seventh top-level section, `/anatomy` (SECTIONS
+registry, `--nav-anatomy` and the `--anatomy-bg/-text` pill, hue 20,
+gated in check-contrast and check-theme-parity). The page is one stage
+showing a whole-body diagram, a depth control (Outward / Deeper
+buttons, the numbered chip list, arrow keys) that steps through TEN
+layers in order — body surface, muscles, heart and vessels, airways
+and lungs, digestive tract, lymphatic vessels and nodes, brain/cord/
+nerves, endocrine glands, kidneys and bladder, skeleton — and, beside
+it, the layer's system: summary, description, functions, the systems
+it works with (chips that jump to that layer), its figures, and its
+organs as expandable entries (location, description, function, facts,
+source). The reproductive system, which has no whole-body diagram, is
+an eleventh view built from its two figures; the integumentary system
+carries a skin-section figure beside its body-surface layer. Below the
+viewer, eight "how the systems work together" notes trace one job each
+across the systems that share it (oxygen to a cell; a meal to energy;
+a movement; water and salt; an infection; 37 degrees; building bone;
+homeostasis as the common thread), then an alphabetical index of every
+organ. Deep links: `#skeleton` opens a layer, `#organ-heart` opens an
+organ.
+
+**55.2 Content and sources.** EDITORIAL — `etl/reference/anatomy.json`,
+written by `etl/reference/build_anatomy.py` (prose is easier to keep
+honest in Python literals than in hand-edited JSON; run the script,
+never edit the JSON). Eleven systems (integumentary, skeletal,
+muscular, nervous with its central/peripheral/autonomic divisions,
+endocrine, circulatory, respiratory, lymphatic and immune, digestive,
+urinary, reproductive) and sixty organs, ~8,000 words, every entry a
+plain-language paraphrase citing the OpenStax Anatomy and Physiology
+2e chapter it follows (CC BY 4.0; chapter-introduction URLs). Figures
+are given where OpenStax gives them (skin area, alveolar surface,
+nephron counts, cardiac output, blood volume) and stated as "about".
+An organ belongs to every system it serves (`systems`, the first is
+where it is listed; the pancreas is digestive first and endocrine
+second, the diaphragm muscular first and respiratory second) and the
+secondary systems list it as "also under". The `anatomy` ETL stage
+validates all of this — minimum description lengths, every organ
+listed by its primary system, every worksWith pointing at a real other
+system, every system reachable from a layer or figure — and
+`check:anatomy` proves it again on the shipped artifact.
+
+**55.3 Diagrams.** Wikimedia Commons files, resolved through the same
+free-licence gate as the phenomena (PD, CC0, CC BY, CC BY-SA; NC/ND
+refused) and downloaded as the ORIGINAL file — SVG stays SVG, because
+these are labelled line drawings and a JPEG rendition blurs the
+labels; PNG originals over 2.5 MB would be re-fetched at 1600 px (none
+were). The set: Human silhouette gender neutral front (CC0, Sebastian
+Wallroth); Muscles anterior labeled (PD, Mikael Häggström);
+Circulatory System en, Respiratory system complete en, Digestive
+system diagram en, Human skeleton front en (PD, LadyofHats / Mariana
+Ruiz Villarreal); TE-Lymphatic system diagram (CC BY 3.0, LadyofHats);
+Nervous system diagram-en (CC BY-SA 4.0, Medium69/Jmarchn); Illu
+endocrine system New (PD, NCI); Urinary system ver 2 (CC BY-SA 3.0,
+Jordi March i Nogué); Skin layers (CC BY-SA 3.0, Madhero88/
+M.Komorniczak); Scheme female reproductive system-en (PD, CDC/Mysid);
+Male internal reproductive organs (CC BY-SA 4.0, RWhitwam). 7.0 MB in
+all, credited under the stage and in the sources list, provenance in
+data/anatomy/images/manifest.json. The layers are different artists'
+drawings at different scales, so the stage cross-fades between them
+rather than pretending they register pixel for pixel; a single
+consistent set (OpenStax's own Figure 1.4 panels, CC BY) would be the
+upgrade if Andy wants the layers to overlay.
+
+**55.4 Verification.** check:anatomy (systems, organs, images, licences,
+reachability); headed Chrome at 1280 (layers step, organ opens, the
+reproductive view, no console errors) and Pixel 7 (stage stacks above
+the panel).
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

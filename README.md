@@ -47,7 +47,13 @@ The browser never calls an upstream API — it reads committed artifacts from
 > "Explore globe" mode that owns the gestures while the embedded map
 > lets the page scroll; a country search that flies to its result;
 > thumb-sized controls with a Map settings panel; nearby-country chips
-> on an ambiguous tap.
+> on an ambiguous tap. **Round 6 (§54–§55):** a seventh section,
+> **Anatomy** — the human body in ten layers from skin to skeleton,
+> eleven systems and sixty organs described after OpenStax A&P 2e with
+> Commons diagrams; the timeline axis passes behind era banners; the
+> globe's outline drift on phones is fixed (longitude wrapping), the
+> spin is slower and a compass resets the view; why the satellite view
+> stays Blue Marble 2004 is recorded (§54.3).
 
 ## Layout
 
@@ -229,6 +235,7 @@ monthly refresh workflow will not open a pull request unless they pass.
 | `typecheck` | Strict TS, including `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess`. |
 | `check:taxonomy` | Every node has a Wikipedia title or an explicit null, a description with its source (generated ones flagged), and a defined rank; genera chunks complete — §31, §44. |
 | `check:evolution` | Every geologic period is inhabited by at least one sourced event — §32. |
+| `check:anatomy` | Every anatomy system and organ is described, sourced and reachable from a layer; every diagram exists locally and is credited under a free licence. |
 | `check:phenomena` | Every phenomenon is categorised, status-flagged, fact-sourced, and its image exists locally, decodes, and carries licence + credit — §46. |
 | `check:chemistry` | All 118 elements carry every required field (or a reasoned null), a photograph or an explicit no-sample flag, and a glossary entry for every property the panel shows — §47. |
 
