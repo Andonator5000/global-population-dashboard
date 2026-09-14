@@ -230,8 +230,9 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   0.25/18 proved too slow; change only on Andy's word. The compass is
   NORTH UP (§59.3): recentre the globe on the place under the screen
   centre and reset the pan, keep the zoom — never a jump to the default
-  view. Embedded touch-action is pan-y at zoom 1 and none above 1.05
-  (§59.2). Drag/animation frames read the zoom from transformRef. The
+  view. The globe's touch-action is NONE at every zoom (§61 — pan-y
+  made iOS hold, coalesce and cancel spins); only flat maps at world
+  zoom keep pan-y. Drag/animation frames read the zoom from transformRef. The
   settle (§60) projects only features whose geoBounds touch the visible
   window (detailBounds WeakMap + boundsTouch) — never reintroduce a
   whole-collection path()/centroid() per settle; measure with a

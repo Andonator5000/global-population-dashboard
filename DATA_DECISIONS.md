@@ -3989,6 +3989,25 @@ everything is drawn as before. Long task after a drag: **~950 ms →
 commit of the 250 country paths). Nothing about what is drawn changed
 — a feature outside the window has no pixels to lose.
 
+## 61. Round 11: the globe owns every touch gesture (2026-09-14)
+
+Andy: on the phone the map "does not smoothly move, nor does it move much
+when I use my finger to spin — ever so slightly, very rigid."
+
+That is what `touch-action: pan-y` does to a globe on iOS: the browser
+holds each touch until it has classified the direction, hands the map
+only the strictly horizontal ones, coalesces their pointer events, and
+cancels the pointer the moment the finger drifts vertically — so a
+natural spinning motion, which always has some vertical component, was
+being cut off after a few pixels. §53.3 chose pan-y at world zoom so the
+page could still be scrolled from over the embedded map; §59.2 already
+withdrew it above zoom 1.05. Now the globe is `touch-action: none` at
+every zoom, embedded or not, and only the flat maps at world zoom (where
+d3-zoom allows no pan anyway) keep pan-y. The cost is deliberate: to
+scroll the page on a phone you start the swipe outside the globe — the
+same trade every embedded globe makes, and the one Andy's report asks
+for.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
