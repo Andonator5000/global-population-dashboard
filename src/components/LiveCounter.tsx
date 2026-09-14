@@ -71,7 +71,7 @@ export function LiveCounter({
     <div>
       <div className="flex flex-wrap items-baseline gap-x-3">
         <span
-          className="text-4xl font-semibold tracking-tight"
+          className="text-3xl font-semibold tracking-tight sm:text-4xl"
           // aria-live would re-announce ten times a second, which is unusable
           // with a screen reader. The static figure and its date are announced
           // through the description below instead.
