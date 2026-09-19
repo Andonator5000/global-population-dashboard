@@ -197,6 +197,8 @@ uniform vec3 u_ocean;
 /* Tone grade (section 51): desaturate, sepia, lift, tint amount. */
 uniform vec4 u_grade;
 uniform vec3 u_tint;
+/* Round 12: chroma boost and contrast (x, y); 0 = as shot. */
+uniform vec2 u_grade2;
 in vec2 v_lonlat;
 out vec4 o;
 const float PI = 3.141592653589793;
@@ -207,6 +209,8 @@ vec3 grade(vec3 c) {
   c = mix(c, l * vec3(1.20, 1.02, 0.76), u_grade.y);
   c = mix(c, l * u_tint / max(dot(u_tint, LUMA), 1e-3), u_grade.w);
   c += u_grade.z * (1.0 - c);
+  c = mix(vec3(dot(c, LUMA)), c, 1.0 + u_grade2.x);
+  c = (c - 0.5) * (1.0 + u_grade2.y) + 0.5;
   return clamp(c, 0.0, 1.0);
 }
 void main() {
@@ -446,7 +450,7 @@ export class GlobeGL implements ImageryRenderer {
       for (const u of [
         'u_tex', 'u_globe', 'u_hasTex', 'u_isBase', 'u_ortho', 'u_height',
         'u_rot', 'u_window', 'u_ocean', 'u_affine', 'u_size', 'u_color',
-        'u_grade', 'u_tint',
+        'u_grade', 'u_tint', 'u_grade2',
       ]) {
         map.set(u, gl.getUniformLocation(program, u))
       }
@@ -905,6 +909,7 @@ export class GlobeGL implements ImageryRenderer {
     )
     const tint = grade?.tint ?? [1, 1, 1]
     gl.uniform3f(loc('u_tint'), tint[0], tint[1], tint[2])
+    gl.uniform2f(loc('u_grade2'), grade?.saturate ?? 0, grade?.contrast ?? 0)
 
     // Pass 1: the world base (or the ocean disc while it loads). With a
     // client raster requested and resident, the raster IS the world and

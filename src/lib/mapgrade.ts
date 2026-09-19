@@ -26,6 +26,10 @@ export interface ImageryGrade {
   /** Recolour toward this hue at equal luminance, by `tintAmount`. */
   tint: [number, number, number]
   tintAmount: number
+  /** Chroma boost at equal luminance: 0 = as shot, 0.35 = +35% (round 12). */
+  saturate: number
+  /** Contrast about mid-grey: 0 = as shot, 0.15 = +15% (round 12). */
+  contrast: number
 }
 
 const NONE: ImageryGrade = {
@@ -34,6 +38,8 @@ const NONE: ImageryGrade = {
   lift: 0,
   tint: [1, 1, 1],
   tintAmount: 0,
+  saturate: 0,
+  contrast: 0,
 }
 
 export const IMAGERY_GRADES: Record<MapPaletteKey, ImageryGrade> = {
@@ -52,7 +58,9 @@ export function isIdentityGrade(grade: ImageryGrade): boolean {
     grade.desaturate === 0 &&
     grade.sepia === 0 &&
     grade.lift === 0 &&
-    grade.tintAmount === 0
+    grade.tintAmount === 0 &&
+    grade.saturate === 0 &&
+    grade.contrast === 0
   )
 }
 
@@ -63,6 +71,8 @@ export function gradeFilter(grade: ImageryGrade): string {
   if (isIdentityGrade(grade)) return 'none'
   const parts: string[] = []
   if (grade.desaturate > 0) parts.push(`saturate(${(1 - grade.desaturate).toFixed(2)})`)
+  if (grade.saturate > 0) parts.push(`saturate(${(1 + grade.saturate).toFixed(2)})`)
+  if (grade.contrast > 0) parts.push(`contrast(${(1 + grade.contrast).toFixed(2)})`)
   if (grade.sepia > 0) parts.push(`sepia(${grade.sepia.toFixed(2)})`)
   if (grade.lift > 0) parts.push(`brightness(${(1 + grade.lift * 0.6).toFixed(2)})`)
   return parts.join(' ') || 'none'
