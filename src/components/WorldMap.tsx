@@ -46,6 +46,15 @@ import {
 } from '../lib/politicalraster'
 import { Canvas2DImagery } from '../lib/terrain'
 import { GLOW_CSS, GLOW_REACH, drawGlowRing } from '../lib/globegl'
+import {
+  createSky,
+  fovForDisc,
+  loadSky,
+  skyCentreForGlobe,
+  type SkyData,
+  type SkyRenderer,
+} from '../lib/sky'
+import { DATA_BASE_URL } from '../config'
 import { ZoomControls } from './ZoomControls'
 
 import {
@@ -120,6 +129,12 @@ const GLOW_STOPS: [number, number][] = [0, 0.02, 0.04, 0.07, 0.1, 0.14, 0.2].map
   d,
   Math.exp(-d / 0.06) * (1 - Math.min(1, d / 0.2)),
 ])
+/** Sky field of view gain over the physically exact value (section 67).
+    1 = exact: the orthographic Earth occults exactly the hemisphere behind
+    it, so its limb is 90 degrees of sky. Wider values shrink the sky's scale
+    until the limb passes 90 degrees and every visible star is culled behind
+    the disc -- measured, not guessed: 1.5 painted nothing. */
+const SKY_FOV_GAIN = 1
 /** The most a single drag frame may turn the globe (degrees). Near the
     limb the exact solve asks for huge turns from small finger movements
     (the "spinning rapidly and uncontrollably" report, round 13); beyond
@@ -1198,6 +1213,95 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     }
   }, [viewW, viewH])
 
+  /** The fitted globe's disc: centre and radius in view coordinates. */
+  const disc = useMemo(() => {
+    const proj = fitProjection(createProjection('globe'), viewW, viewH)
+    const [cx, cy] = proj.translate()
+    return { cx, cy, r: proj.scale() }
+  }, [viewW, viewH])
+
+  // ---- Round 13 (section 67): the real sky behind the Earth ------------
+  //
+  // A canvas beneath everything paints the Yale Bright Star Catalogue and
+  // the IAU constellation figures as seen from the camera's side of the
+  // Earth (src/lib/sky.ts): the direction the viewer looks from, at the
+  // sidereal time of one date captured at mount. It is redrawn per drag
+  // frame from the same rotation ref as the globe (0.6 ms), and at rest
+  // from state. The antique direction keeps its engraved sheet free of it
+  // (sections 57.3, 58.2), and the flat maps have no view direction.
+  const showSky = isGlobe && paletteDirection !== 'antique'
+  const skyCanvasRef = useRef<HTMLCanvasElement | null>(null)
+  const skyRef = useRef<SkyRenderer | null>(null)
+  const [skyData, setSkyData] = useState<SkyData | null>(null)
+  const skyEpochRef = useRef(new Date())
+  const skyDarkRef = useRef(
+    typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches,
+  )
+  const skyReducedRef = useRef(
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+  useEffect(() => {
+    if (!showSky || skyData) return
+    let live = true
+    loadSky(`${DATA_BASE_URL}/geo/sky.json`)
+      .then((data) => {
+        if (live) setSkyData(data)
+      })
+      .catch(() => {
+        /* no sky is the plain black surround of every earlier round */
+      })
+    return () => {
+      live = false
+    }
+  }, [showSky, skyData])
+  useEffect(() => {
+    const canvas = skyCanvasRef.current
+    if (!canvas || !skyData) return
+    skyRef.current = createSky(canvas, skyData)
+    // First paint: the at-rest effect below may already have run this
+    // commit, before the renderer existed.
+    const container = containerRef.current
+    if (container) renderSky(container.clientWidth, container.clientHeight)
+    return () => {
+      skyRef.current?.destroy()
+      skyRef.current = null
+    }
+    // renderSky is stable for a given layout; a new one re-creates nothing.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skyData])
+  /** Paint the sky for the current rotation/zoom refs at the given stage
+      size. Cheap and idempotent; called per drag frame and at rest. */
+  const renderSky = useCallback(
+    (w: number, h: number) => {
+      const sky = skyRef.current
+      if (!sky || !showSky || w < 2 || h < 2) return
+      const { scale, offsetX, offsetY } = layoutFor(w, h)
+      const t = transformRef.current
+      const cssDisc = {
+        cx: offsetX + scale * (t.x + t.k * disc.cx),
+        cy: offsetY + scale * (t.y + t.k * disc.cy),
+        r: scale * t.k * disc.r,
+      }
+      sky.render({
+        width: w,
+        height: h,
+        dpr: canvasPixelRatio(),
+        disc: cssDisc,
+        centre: skyCentreForGlobe(rotationRef.current, skyEpochRef.current),
+        fov: fovForDisc(cssDisc, w, h) * SKY_FOV_GAIN,
+        theme: skyDarkRef.current ? 'dark' : 'light',
+        reducedMotion: skyReducedRef.current,
+      })
+    },
+    [showSky, layoutFor, disc],
+  )
+  // At rest: the same inputs as the imagery render.
+  useLayoutEffect(() => {
+    if (isDragRendering.current) return
+    const { w, h } = containerSize
+    renderSky(w, h)
+  }, [renderSky, rotation, transform, containerSize, skyData])
+
   /**
    * Section 51: the political fills as a GPU raster. `rasterSignature`
    * names the colours the resident raster was painted with; a drag whose
@@ -1325,6 +1429,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    renderSky(w, h)
     const base = createProjection('globe')
     base.rotate(rotationRef.current)
     const frameProjection = fitProjection(base, viewW, viewH)
@@ -1413,7 +1518,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       }
       ctx.stroke()
     })
-  }, [collection, staticGeometry, satellite, layoutFor, paletteDirection, viewW, viewH])
+  }, [collection, staticGeometry, satellite, layoutFor, paletteDirection, viewW, viewH, renderSky])
 
   /** Round 13 watchdog: a drag session with no pointer down and no
       animation frame scheduled is a session nothing will ever end -- the
@@ -1834,13 +1939,6 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     },
     [layoutFor, viewW, viewH],
   )
-
-  /** The fitted globe's disc: centre and radius in view coordinates. */
-  const disc = useMemo(() => {
-    const proj = fitProjection(createProjection('globe'), viewW, viewH)
-    const [cx, cy] = proj.translate()
-    return { cx, cy, r: proj.scale() }
-  }, [viewW, viewH])
 
   /** A view point clamped to just inside the limb, so a finger past the
       edge still holds a stable place. */
@@ -2693,6 +2791,15 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         {attribution}
       </div>
 
+      {/* Sky canvas (round 13, section 67): the bottom of the stack, under
+          the imagery and the SVG; transparent, the black surround shows
+          through. Inert. */}
+      <canvas
+        ref={skyCanvasRef}
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        style={{ display: showSky ? 'block' : 'none' }}
+        aria-hidden="true"
+      />
       {/* Terrain canvas: BELOW the svg in paint order, so every interactive
           surface stays untouched SVG. Mounted only in satellite view. */}
       <canvas
@@ -2797,7 +2904,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         `Home and End jump to the westernmost and easternmost.`
       }
       style={{
-        background: satellite ? 'transparent' : backgroundFill,
+        background: satellite || showSky ? 'transparent' : backgroundFill,
         cursor: isGlobe ? 'grab' : undefined,
       }}
       onPointerLeave={(event) => {
