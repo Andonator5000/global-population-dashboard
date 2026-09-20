@@ -3210,6 +3210,7 @@
           "quadrate lobe",
           "falciform",
           "bare area",
+          "^(left|right) [a-z]+ segment\\d?$",
           "hepatis",
           "segment of liver",
           "impression of liver",

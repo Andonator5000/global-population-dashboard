@@ -871,6 +871,9 @@ MESH = {
                         "except": [r"nodes", r"artery", r"\bvein", r"region", r"impression", r"plexus", r"nerve",
                                    r"epiploic", r"ligament", r"sinus", r"surface of spleen"]},
     "liver": {"match": [r"liver", r"hepatic", r"caudate lobe", r"quadrate lobe", r"falciform", r"bare area",
+                        # HRA Couinaud segments carry no "liver" in the name ("Left anterolateral
+                        # segment"); the builder's system gate keeps this off the lungs.
+                        r"^(left|right) [a-z]+ segment\d?$",
                         r"hepatis", r"segment of liver", r"impression of liver", r"ligamentum venosum"],
               "except": [r"duct", r"nodes", r"artery", r"\bvein", r"plexus", r"nerve", r"flexure", r"portal"]},
     "gallbladder": {"match": [r"gall ?bladder", r"bile duct", r"biliary", r"hepatic duct", r"cystic duct",
