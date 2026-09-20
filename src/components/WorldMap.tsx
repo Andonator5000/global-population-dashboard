@@ -45,6 +45,7 @@ import {
   type PoliticalRasterSpec,
 } from '../lib/politicalraster'
 import { Canvas2DImagery } from '../lib/terrain'
+import { GLOW_CSS, GLOW_REACH, drawGlowRing } from '../lib/globegl'
 import { ZoomControls } from './ZoomControls'
 
 import {
@@ -103,9 +104,28 @@ const INERTIA_STOP_DEG = 0.02
 /** A release more than this long after the last movement is a hold, not
     a flick: no momentum. */
 const INERTIA_STALE_MS = 80
-/** Anchors sit just inside the limb: a finger dragged past the edge keeps
-    a stable point to hold on to. Fraction of the disc radius. */
-const DISC_CLAMP = 0.985
+/** Anchors sit inside the limb: a finger dragged past the edge keeps a
+    stable point to hold on to. Fraction of the disc radius. Round 13: 0.985
+    let a finger at the very edge, where a pixel is many degrees, whip the
+    globe round; 0.95 keeps the outermost anchor a sane distance in. */
+const DISC_CLAMP = 0.95
+/** Atmosphere glow strength (round 13): the soft blue halo outside the
+    limb, as Google Earth draws it. Shared by the GL pass, the SVG ring at
+    rest on the political globe, and the 2-D fallbacks. */
+const GLOBE_GLOW = 0.85
+/** The halo's profile as [distance outside the limb in disc radii, alpha
+    factor]: the same exp(-d / 0.06) fall-off the GL shader computes, so
+    the political globe at rest and the imagery views agree. */
+const GLOW_STOPS: [number, number][] = [0, 0.02, 0.04, 0.07, 0.1, 0.14, 0.2].map((d) => [
+  d,
+  Math.exp(-d / 0.06) * (1 - Math.min(1, d / 0.2)),
+])
+/** The most a single drag frame may turn the globe (degrees). Near the
+    limb the exact solve asks for huge turns from small finger movements
+    (the "spinning rapidly and uncontrollably" report, round 13); beyond
+    this the frame moves the anchor as far as it can and re-anchors, so
+    the globe follows the hand at a bounded pace instead of flying. */
+const DRAG_MAX_DEG_PER_FRAME = 8
 /** A single pointer must move this far (CSS px) before it is a drag. */
 const DRAG_START_PX = 4
 
@@ -1063,6 +1083,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#00355c',
       // Section 51.1: the palette's tone over the imagery.
       grade: IMAGERY_GRADES[paletteDirection],
+      glow: GLOBE_GLOW,
       // Round 7 (section 57.2): at rest the outlines come from the SAME
       // GL pass as the imagery, exactly as during a drag. Two renderers
       // (SVG strokes over a GL picture) can only ever agree if they paint
@@ -1316,15 +1337,22 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     // lines -- the 250-path canvas repaint below is now only the no-WebGL2
     // fallback's frame.
     let glDrawsBorders = false
+    // Round 13: a lost WebGL context painted nothing during a drag -- the
+    // SVG hidden, the GL frames blank: "the globe disappears". A dead
+    // context hands the frame to the 2-D vector path below.
+    const glLost =
+      rendererRef.current !== null &&
+      !(rendererRef.current instanceof Canvas2DImagery) &&
+      (rendererRef.current as { isLost?: () => boolean }).isLost?.() === true
     const useRaster =
-      !satellite && rasterOnGpu.current && transformRef.current.k < RASTER_DRAG_MAX_ZOOM
+      !satellite && !glLost && rasterOnGpu.current && transformRef.current.k < RASTER_DRAG_MAX_ZOOM
     // Political raster frames paint on the GL canvas, which sits under
     // the hidden SVG; it is shown for exactly those frames and put away
     // again when the rotation commits (see the restore effect).
     if (!satellite && canvasRef.current) {
       canvasRef.current.style.display = useRaster ? 'block' : 'none'
     }
-    if ((satellite || useRaster) && rendererRef.current) {
+    if ((satellite || useRaster) && rendererRef.current && !glLost) {
       glDrawsBorders = !(rendererRef.current instanceof Canvas2DImagery)
       rendererRef.current.render({
         projection: frameProjection,
@@ -1338,6 +1366,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         oceanFill: dragFills.current.ocean,
         raster: useRaster,
         grade: satellite ? IMAGERY_GRADES[paletteDirection] : undefined,
+        glow: GLOBE_GLOW,
         borders: glDrawsBorders
           ? { color: dragFills.current.strokeRgba }
           : undefined,
@@ -1356,7 +1385,11 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       dpr * (offsetY + scale * transformRef.current.y),
     )
     const path = geoPath(frameProjection, ctx)
-    if (!satellite) {
+    {
+      const t = frameProjection.translate()
+      drawGlowRing(ctx, t[0], t[1], frameProjection.scale(), GLOBE_GLOW)
+    }
+    if (!satellite || glLost) {
       ctx.beginPath()
       path({ type: 'Sphere' } as GeoPermissibleObjects)
       ctx.fillStyle = dragFills.current.ocean
@@ -1382,9 +1415,27 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     })
   }, [collection, staticGeometry, satellite, layoutFor, paletteDirection, viewW, viewH])
 
+  /** Round 13 watchdog: a drag session with no pointer down and no
+      animation frame scheduled is a session nothing will ever end -- the
+      frozen globe (section 42.1) by whatever new route a phone finds. It
+      is checked a few times a second while a session is live. */
+  const watchdog = useRef<number | null>(null)
+
   const beginDragRender = useCallback(() => {
     if (isDragRendering.current) return
     isDragRendering.current = true
+    if (watchdog.current === null) {
+      watchdog.current = window.setInterval(() => {
+        if (!isDragRendering.current) {
+          if (watchdog.current !== null) window.clearInterval(watchdog.current)
+          watchdog.current = null
+          return
+        }
+        if (dragPointers.current.size === 0 && inertiaFrame.current === null && dragFrame.current === null) {
+          forceEndDragSessionRef.current()
+        }
+      }, 400)
+    }
     // The popover would hover over a spinning globe pointing at nothing;
     // one setState here, before frames leave React, is fine.
     setPopover(null)
@@ -1506,6 +1557,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   }, [drawDragFrame, endDragRender, writeRotation])
 
   useEffect(() => () => cancelInertia(), [cancelInertia])
+  useEffect(() => () => { if (watchdog.current !== null) window.clearInterval(watchdog.current) }, [])
 
   /** Every focusable entity, ordered west-to-east so Tab order is sensible. */
   const focusTargets: FocusTarget[] = useMemo(() => {
@@ -1906,7 +1958,16 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     q1 = versor.normalize(q1)
     lastFrameWasRoll.current = !(anchor.count === 1 && anchor.g0 && !anchor.roll)
     const prev = versor.fromEuler(rotationRef.current)
-    frameVelocity.current = versor.multiply(q1, versor.conjugate(prev))
+    let step = versor.multiply(q1, versor.conjugate(prev))
+    const stepAngle = versor.angle(step)
+    if (stepAngle > DRAG_MAX_DEG_PER_FRAME) {
+      // Bounded pace: take the same rotation, shortened, and let the next
+      // frame anchor afresh under the finger.
+      step = versor.pow(step, DRAG_MAX_DEG_PER_FRAME / stepAngle)
+      q1 = versor.normalize(versor.multiply(step, prev))
+      reanchor = true
+    }
+    frameVelocity.current = step
     const now = performance.now()
     frameVelocityMs.current = prevFrameAt.current ? Math.min(50, now - prevFrameAt.current) : 16.7
     prevFrameAt.current = now
@@ -2777,9 +2838,26 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
             opacity="0.75"
           />
         </pattern>
+        {/* Round 13: the atmosphere ring (the GL pass paints the same halo
+            in the imagery views and during drags). */}
+        <radialGradient id="globe-glow">
+          {GLOW_STOPS.map(([d, a]) => (
+            <stop key={d} offset={(1 + d) / GLOW_REACH} stopColor={GLOW_CSS} stopOpacity={GLOBE_GLOW * a} />
+          ))}
+        </radialGradient>
       </defs>
 
       <g transform={`translate(${transform.x},${transform.y}) scale(${transform.k})`}>
+        {isGlobe && !satellite && (
+          <circle
+            cx={disc.cx}
+            cy={disc.cy}
+            r={disc.r * GLOW_REACH}
+            fill="url(#globe-glow)"
+            pointerEvents="none"
+            aria-hidden="true"
+          />
+        )}
         {/* The ocean disc/outline lives INSIDE the zoom transform: outside
             it, zooming scaled the landmasses while the globe's blue circle
             stayed fixed -- land visibly outgrew its own planet. */}
