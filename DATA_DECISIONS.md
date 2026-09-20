@@ -5013,6 +5013,33 @@ deep links), `src/components/anatomy/BodyViewer.tsx`, `BodyStage.tsx`,
 `.scratch/anatomy3d-shots.mjs`, `anatomy3d-bytes.mjs`, `anatomy3d-pick-debug.mjs`,
 `anatomy-alias-report.md`, `shots3d/`, this draft, `anatomy-notes.md`.
 
+**65.9 The female stomach and oesophagus (2026-09-19, after the PR).**
+Andy: "Fix the issue with the missing stomach and oesophagus." The Human
+Reference Atlas has neither organ for EITHER sex: its reference-organ
+index (81 objects, read from the HRA API on 2026-09-19) runs from the
+mouth to the small and large intestine and skips the two between. So the
+female digestive tract stopped at the duodenum, and no free female mesh
+exists to fill the gap. The fix is the male Z-Anatomy stomach (with its
+mucosa) and oesophagus FITTED into the female body: a per-axis affine
+from the union bounding box of the organs both models share and that the
+stomach sits between -- liver, spleen, pancreas -- and, for the
+oesophagus, a blend from that map at its stomach end to a trachea-aligned
+map at its top, so it runs behind the female trachea and reaches the
+fitted stomach. The builder asserts both models agree on left/right
+(spleen minus liver centre) before fitting. This is the one deliberate
+exception to "never borrow the male model for the female view", and it
+is labelled everywhere it could be mistaken: the structure card says
+"fitted from the male model ... position indicative, not measured"; the
+manifest records the fit (method, scale, landmark boxes) and the reason;
+the credit line under the stage names the supplement and its licence.
+The two ship in their own file (`female-organs-fitted.glb`) so the HRA
+file stays CC BY 4.0 and the supplement is CC BY-SA 4.0 (share-alike,
+NOTICE-male.txt), gated by check:anatomy like every layer file. Found on
+the same pass: the HRA liver's Couinaud segments ("Left anterolateral
+segment") were opening the LUNGS entry through the "(left|right) ...
+segment" pattern; alias resolution now lets an entry claim only
+structures of its own systems, and the liver takes the pattern.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

@@ -210,9 +210,14 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   data/anatomy/models (never hand-edit); organ↔structure aliases are the
   `MESH` table in build_anatomy.py; the female skeleton/muscles/nerves are
   PARTIAL and the page says so — never borrow the male model for the
-  female view; the share-alike credit line under the stage must name CC
-  BY-SA 4.0; check:anatomy gates GLB validity, licences, attribution and
-  the byte budgets. Timeline (§54.1): era banners
+  female view, with ONE labelled exception (§65.9): the female stomach
+  and oesophagus are the male organs fitted in (the HRA has neither for
+  either sex), in their own CC BY-SA file (`female-organs-fitted.glb`, a
+  layer `supplements` entry) and marked `fitted` on the structure card;
+  alias resolution is system-gated (an entry claims only structures of
+  its own systems); the share-alike credit line under the stage must name
+  CC BY-SA 4.0; check:anatomy gates GLB validity, licences, attribution
+  and the byte budgets, supplements included. Timeline (§54.1): era banners
   sit above the axis line (z-index) — keep the line drawn behind them.
 - Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
   .json, never data/space/phenomena*; the `phenomena` stage downloads
