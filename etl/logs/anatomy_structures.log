@@ -1,0 +1,62 @@
+{
+  "generated": "2026-09-20T09:01:38+00:00",
+  "baseNames": 2381,
+  "structureRows": 6817,
+  "described": 2364,
+  "exact": 1354,
+  "broader": 1010,
+  "coverage": 0.9929,
+  "exactCoverage": 0.5687,
+  "byRung": {
+    "head": 115,
+    "name": 945,
+    "ontology": 163,
+    "override": 105,
+    "override-broader": 373,
+    "parent": 308,
+    "shortened": 214,
+    "singular": 2,
+    "stripped": 139
+  },
+  "ontologyIds": 502,
+  "ontologyResolved": 154,
+  "ontologyQueryFailures": [],
+  "titlesJudged": 2965,
+  "titlesAccepted": 1382,
+  "rejectReasons": {
+    "no article": 6,
+    "Allen Human Brain Atlas internal label, not a term": 4,
+    "disambiguation": 3,
+    "Allen Human Brain Atlas cytoarchitectonic area; no Wikipedia article": 2,
+    "Z-Anatomy marks this label provisional (*); no Wikipedia article": 1,
+    "Z-Anatomy label artefact (trailing apostrophe)": 1
+  },
+  "uncoveredByGroup": {
+    "(no group)": 10,
+    "Brain": 3,
+    "Systemic arteries": 2,
+    "Uterus": 1,
+    "Central nervous system": 1
+  },
+  "uncovered": [
+    "(Communicating branch of median nerve with ulnar nerve)",
+    "Anterior occipital sulcus*",
+    "Anterior temporal branch",
+    "Central canal'",
+    "Cornua",
+    "Frontal agranular insular cortex area Fl",
+    "Frontal branches of callosomarginal artery",
+    "Intermediomedial nucleus",
+    "Lat_Fis-ant-Horizont",
+    "Lat_Fis-ant-Vertical",
+    "Lat_Fis-post",
+    "Lateral nucleus",
+    "Postcentral arterial branch",
+    "Posterior temporal branch",
+    "Sulcus interm_prim-Jensen",
+    "Temporal agranular insular cortex area Tl",
+    "Temporo-occipital branch"
+  ],
+  "requests": 218,
+  "elapsedSeconds": 0.5
+}

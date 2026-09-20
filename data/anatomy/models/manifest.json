@@ -304,7 +304,48 @@
           "triangles": 339576,
           "sourceTriangles": 565844,
           "coverage": "partial",
-          "note": "vertebral column, sacrum, pelvis and the bones of the knee only; the HRA models no skull, rib cage or limb bones"
+          "supplements": [
+            {
+              "id": "skeleton-fitted",
+              "layer": "skeleton",
+              "file": "anatomy/models/female-skeleton-fitted.glb",
+              "bytes": 2463596,
+              "sha256": "f6710537804cd84c48a5ea6e1b5289a6fc7056eaa133e1127a0b6e1a13651b69",
+              "structures": 634,
+              "triangles": 521240,
+              "sourceTriangles": 521240,
+              "licence": "CC BY-SA 4.0",
+              "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "note": "634 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
+              "omitted": [
+                {
+                  "what": "the HRA models it natively",
+                  "count": 56,
+                  "why": "the HRA models it (\"left arytenoid cartilage\")",
+                  "examples": [
+                    "Arytenoid cartilage.l",
+                    "Arytenoid cartilage.r",
+                    "Atlas (C1)",
+                    "Axis (C2)",
+                    "Coccyx",
+                    "Corniculate cartilage.l",
+                    "Corniculate cartilage.r",
+                    "Cricoid cartilage",
+                    "Femur.l",
+                    "Femur.r",
+                    "Fibula.l",
+                    "Fibula.r"
+                  ]
+                }
+              ],
+              "clampedInsideSkin": {
+                "moved": 3251,
+                "unresolved": 318,
+                "depthMetres": 0.003
+              }
+            }
+          ],
+          "note": "the HRA models the vertebral column, sacrum, coccyx, pelvis, femur, patella, tibia, fibula and the knee ligaments; fitted from the male model and labelled so: skull and teeth, hyoid and laryngeal cartilages, ribs and sternum, clavicles and scapulae, the bones of the arms, hands and feet, the intervertebral discs and the joints and ligaments (634 structures)"
         },
         {
           "id": "nervous",
@@ -316,7 +357,95 @@
           "triangles": 509756,
           "sourceTriangles": 1696540,
           "coverage": "partial",
-          "note": "brain (Allen Human Brain Atlas regions), spinal cord, eyes and the nerves of the eye; no peripheral nerves"
+          "supplements": [
+            {
+              "id": "nervous-fitted",
+              "layer": "nervous",
+              "file": "anatomy/models/female-nervous-fitted.glb",
+              "bytes": 1573452,
+              "sha256": "2ca8569e4271eb5a69d4a566024a05545bd819db729cc0f110d138a24e0feed2",
+              "structures": 271,
+              "triangles": 389341,
+              "sourceTriangles": 389341,
+              "licence": "CC BY-SA 4.0",
+              "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "note": "271 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
+              "omitted": [
+                {
+                  "what": "group: ungrouped",
+                  "count": 61,
+                  "why": "the HRA models the brain (Allen atlas regions) and the spinal cord by segment; only the dura, falx, cauda equina and spinal roots are taken from this group",
+                  "examples": [
+                    " Posterior transverse collateral sulcus.l",
+                    " Posterior transverse collateral sulcus.r",
+                    "(Abdominal part of pectoralis major muscle).l",
+                    "(Abdominal part of pectoralis major muscle).r",
+                    "(Communicating branch of median nerve with ulnar nerve).l",
+                    "(Communicating branch of median nerve with ulnar nerve).r",
+                    "(Opponens digiti minimi muscle of foot).l",
+                    "(Opponens digiti minimi muscle of foot).r",
+                    "Anterior occipital sulcus*.l",
+                    "Anterior occipital sulcus*.r",
+                    "Central canal'",
+                    "Cingulate gyrus (Posteroventral part*).l"
+                  ]
+                },
+                {
+                  "what": "group: Central nervous system",
+                  "count": 228,
+                  "why": "the HRA models the brain (Allen atlas regions) and the spinal cord by segment; only the dura, falx, cauda equina and spinal roots are taken from this group",
+                  "examples": [
+                    "Accessory nucleus of oculomotor nerve.l",
+                    "Accessory nucleus of oculomotor nerve.r",
+                    "Amygdaloid body.l",
+                    "Amygdaloid body.r",
+                    "Angular gyrus.l",
+                    "Angular gyrus.r",
+                    "Anterior cochlear nucleus.l",
+                    "Anterior cochlear nucleus.r",
+                    "Anterior commissure",
+                    "Anterior corticospinal tract",
+                    "Anterior fasciculus proprius",
+                    "Anterior horn of spinal cord"
+                  ]
+                },
+                {
+                  "what": "never",
+                  "count": 24,
+                  "why": "the HRA models the eye in its own detail (retina, sclera, lens, iris, humours)",
+                  "examples": [
+                    "Anterior chamber of eyeball.l",
+                    "Anterior chamber of eyeball.r",
+                    "Anterior segment of eyeball.l",
+                    "Anterior segment of eyeball.r",
+                    "Choroid plexus.l",
+                    "Choroid plexus.r",
+                    "Cornea.l",
+                    "Cornea.r",
+                    "Iris.l",
+                    "Iris.r",
+                    "Lens.l",
+                    "Lens.r"
+                  ]
+                },
+                {
+                  "what": "the HRA models it natively",
+                  "count": 2,
+                  "why": "the HRA models it (\"left optic nerve\")",
+                  "examples": [
+                    "Optic nerve (II).l",
+                    "Optic nerve (II).r"
+                  ]
+                }
+              ],
+              "clampedInsideSkin": {
+                "moved": 2023,
+                "unresolved": 244,
+                "depthMetres": 0.003
+              }
+            }
+          ],
+          "note": "the HRA models the brain (Allen Human Brain Atlas regions), the spinal cord by segment, the eyes and the optic nerves; fitted from the male model and labelled so: the cranial nerves (except the optic), spinal nerves, plexuses and every peripheral nerve, the sympathetic trunk, dura and falx, cauda equina and the ear (271 structures)"
         },
         {
           "id": "organs",
@@ -328,7 +457,6 @@
           "triangles": 745810,
           "sourceTriangles": 2133366,
           "coverage": "full",
-          "note": "digestive, urinary, respiratory, lymphatic and reproductive organs and the mammary glands; the stomach and oesophagus are fitted from the male model (the HRA has neither for either sex) and are labelled so",
           "supplements": [
             {
               "id": "organs-fitted",
@@ -342,8 +470,48 @@
               "licence": "CC BY-SA 4.0",
               "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
               "note": "stomach and oesophagus fitted from the male Z-Anatomy model; position indicative"
+            },
+            {
+              "id": "organs-fitted-more",
+              "layer": "organs",
+              "file": "anatomy/models/female-organs-fitted-more.glb",
+              "bytes": 179024,
+              "sha256": "8c4cf486f40ea9e04e5485bf97b52976d444ede9d9db7453d0d60105c553a494",
+              "structures": 30,
+              "triangles": 40694,
+              "sourceTriangles": 40694,
+              "licence": "CC BY-SA 4.0",
+              "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "note": "30 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
+              "omitted": [
+                {
+                  "what": "not fitted",
+                  "count": 90,
+                  "why": "only the glands and mouth/throat organs the HRA lacks are fitted: the digestive, urinary and respiratory organs are the HRA's own (the stomach and oesophagus are the separate §65.9 fit), the male genital organs and urethra are sex-specific, and the omenta, mesocolon, taeniae and pleura are membranes shaped to the male viscera that would not follow the female organs",
+                  "examples": [
+                    "(Anteromedial basal segmental bronchus of left lung)",
+                    "Greater omentum",
+                    "Lesser omentum",
+                    "Meso-appendix",
+                    "Mesocolon",
+                    "Accessory pancreatic duct",
+                    "Anterior lateral segment of liver (VI)",
+                    "Anterior medial segment of liver (V)",
+                    "Ascending colon",
+                    "Bile duct",
+                    "Descending colon",
+                    "Duodenum"
+                  ]
+                }
+              ],
+              "clampedInsideSkin": {
+                "moved": 2,
+                "unresolved": 20,
+                "depthMetres": 0.003
+              }
             }
-          ]
+          ],
+          "note": "the HRA models the digestive, urinary, respiratory, lymphatic and reproductive organs and the mammary glands; fitted from the male model and labelled so: thyroid and parathyroid glands, suprarenal glands, pituitary, pharynx, tongue, salivary glands, soft palate, uvula, gingiva and nasal mucosa (30 structures)"
         },
         {
           "id": "vessels",
@@ -355,7 +523,84 @@
           "triangles": 215964,
           "sourceTriangles": 480128,
           "coverage": "partial",
-          "note": "heart and the major blood vessels of the trunk; no lymphatic vessels beyond one lymph node"
+          "supplements": [
+            {
+              "id": "vessels-fitted",
+              "layer": "vessels",
+              "file": "anatomy/models/female-vessels-fitted.glb",
+              "bytes": 4026164,
+              "sha256": "932591b126105866690110283a12632a0fc53519c421c5579d4b2640e1861ff0",
+              "structures": 755,
+              "triangles": 953380,
+              "sourceTriangles": 953380,
+              "licence": "CC BY-SA 4.0",
+              "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "note": "755 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
+              "omitted": [
+                {
+                  "what": "the HRA models it natively",
+                  "count": 54,
+                  "why": "the HRA models it (\"descending aorta\")",
+                  "examples": [
+                    "Abdominal aorta",
+                    "Aortic arch",
+                    "Ascending aorta",
+                    "Bifurcation of pulmonary trunk",
+                    "Brachiocephalic trunk",
+                    "Central retinal artery.l",
+                    "Central retinal artery.r",
+                    "Coeliac trunk",
+                    "Common hepatic artery",
+                    "Common iliac vein.l",
+                    "Common iliac vein.r",
+                    "Hepatic portal vein"
+                  ]
+                },
+                {
+                  "what": "group: Cardiac vessels",
+                  "count": 10,
+                  "why": "the HRA models the heart (chambers, valves, papillary muscles, septum) and its coronary arteries and cardiac veins",
+                  "examples": [
+                    "Anterior interventricular artery",
+                    "Circumflex artery of heart",
+                    "Coronary sinus",
+                    "Great cardiac vein",
+                    "Inferior vein of left ventricle",
+                    "Left coronary artery",
+                    "Middle cardiac vein",
+                    "Right coronary artery",
+                    "Right inferolateral branch of right coronary artery",
+                    "Septal branches of anterior interventricular artery"
+                  ]
+                },
+                {
+                  "what": "group: Heart",
+                  "count": 17,
+                  "why": "the HRA models the heart (chambers, valves, papillary muscles, septum) and its coronary arteries and cardiac veins",
+                  "examples": [
+                    "Anterior papillary muscle of right ventricle",
+                    "Anterior semilunar leaflet of pulmonary valve",
+                    "Inferior leaflet of right atrioventricular valve",
+                    "Inferior papillary muscle of left ventricle",
+                    "Inferior papillary muscle of right ventricle",
+                    "Left atrium",
+                    "Left coronary leaflet",
+                    "Left semilunar leaflet of pulmonary valve",
+                    "Left ventricle",
+                    "Non-coronary leaflet",
+                    "Posterior leaflet of left atrioventricular valve",
+                    "Right atrium"
+                  ]
+                }
+              ],
+              "clampedInsideSkin": {
+                "moved": 6795,
+                "unresolved": 959,
+                "depthMetres": 0.003
+              }
+            }
+          ],
+          "note": "the HRA models the heart, its coronary vessels and the major vessels of the trunk (aorta, venae cavae, pulmonary, hepatic, splenic, mesenteric, renal, iliac, uterine, ophthalmic); fitted from the male model and labelled so: the arteries and veins of the head, neck, limbs and body wall, the pulmonary branches, lymph nodes and lymphatic trunks (755 structures)"
         },
         {
           "id": "muscles",
@@ -367,19 +612,122 @@
           "triangles": 66414,
           "sourceTriangles": 110716,
           "coverage": "partial",
-          "note": "the HRA models only the muscles of the eye and knee; no skeletal musculature"
+          "supplements": [
+            {
+              "id": "muscles-fitted",
+              "layer": "muscles",
+              "file": "anatomy/models/female-muscles-fitted.glb",
+              "bytes": 3879228,
+              "sha256": "d65ae9e3e62262b688fb49460ea48d6da7241aabd50f8d875ad3a9e4f4105553",
+              "structures": 833,
+              "triangles": 851860,
+              "sourceTriangles": 851860,
+              "licence": "CC BY-SA 4.0",
+              "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "note": "833 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
+              "omitted": [
+                {
+                  "what": "the HRA models it natively",
+                  "count": 14,
+                  "why": "the HRA models it (\"left inferior oblique\")",
+                  "examples": [
+                    "Inferior oblique muscle.l",
+                    "Inferior oblique muscle.r",
+                    "Inferior rectus muscle.l",
+                    "Inferior rectus muscle.r",
+                    "Lateral rectus muscle.l",
+                    "Lateral rectus muscle.r",
+                    "Medial rectus muscle.l",
+                    "Medial rectus muscle.r",
+                    "Rectus femoris muscle.l",
+                    "Rectus femoris muscle.r",
+                    "Superior oblique muscle.l",
+                    "Superior oblique muscle.r"
+                  ]
+                }
+              ],
+              "clampedInsideSkin": {
+                "moved": 15977,
+                "unresolved": 1710,
+                "depthMetres": 0.003
+              }
+            }
+          ],
+          "note": "the HRA models only the muscles of the eye, the rectus femoris and the quadriceps tendon; fitted from the male model and labelled so: every skeletal muscle, tendon, fascia, bursa and tendon sheath (833 structures)"
         },
         {
           "id": "skin",
           "label": "Skin",
           "file": "anatomy/models/female-skin.glb",
-          "bytes": 603820,
-          "sha256": "58cec5f75df8c01f0060b01a925014ff5697ba79f61e92d4d700a859c86b5727",
+          "bytes": 495516,
+          "sha256": "6352fa0c7c30a6426b0f43e98b9d3328e08af21a58d4dd8c4542fa478b91985d",
           "structures": 1,
-          "triangles": 191320,
-          "sourceTriangles": 382640,
+          "triangles": 156252,
+          "sourceTriangles": 312506,
           "coverage": "full",
-          "note": "the whole-body skin surface"
+          "supplements": [
+            {
+              "id": "skin-fitted",
+              "layer": "skin",
+              "file": "anatomy/models/female-skin-fitted.glb",
+              "bytes": 282924,
+              "sha256": "574142fb412a277aebc822d262ea413ef11797f9b6e5288e57de7e514e871449",
+              "structures": 76,
+              "triangles": 58166,
+              "sourceTriangles": 58166,
+              "licence": "CC BY-SA 4.0",
+              "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "note": "76 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
+              "omitted": [
+                {
+                  "what": "not fitted",
+                  "count": 180,
+                  "why": "the female skin is the HRA's own above the ankles and the distal forearms; the hair (head, eyebrows, eyelashes, pubic) is fitted because the HRA skin has none, and the skin of the feet, ankles, hands and wrists is fitted because the Visible Human Female's feet are deformed in the source and her hands are posed unlike the fitted hand bones",
+                  "examples": [
+                    "Anal region.l",
+                    "Anal region.r",
+                    "Angle of mouth.l",
+                    "Angle of mouth.r",
+                    "Anterior notch of auricle.l",
+                    "Anterior notch of auricle.r",
+                    "Anterior region of arm.l",
+                    "Anterior region of arm.r",
+                    "Anterior region of elbow.l",
+                    "Anterior region of elbow.r",
+                    "Anterior region of knee.l",
+                    "Anterior region of knee.r"
+                  ]
+                }
+              ],
+              "skinReplacement": {
+                "planes": {
+                  "leg": {
+                    "l": -0.6632955047330024,
+                    "r": -0.6632954872553153
+                  },
+                  "arm": {
+                    "l": 0.15697397513654238,
+                    "r": 0.1569740436721501
+                  }
+                },
+                "taperMetres": 0.06,
+                "rimVerticesTapered": 2023,
+                "hairVerticesProjected": 1781,
+                "headHairShiftMetres": {},
+                "patchesEmptied": [],
+                "hraSkinCut": {
+                  "dropped": 70134,
+                  "kept": 312506,
+                  "lifted": 466,
+                  "insideTest": {
+                    "columns": 5538,
+                    "oddColumns": 0
+                  }
+                }
+              }
+            }
+          ],
+          "note": "the skin is the Visible Human Female (a 59-year-old woman) as the HRA reconstructed it, unreshaped, above the ankles and the distal forearms; fitted from the male model and labelled so: the feet and ankles and the hands and wrists (the Visible Human Female's feet are deformed in the source and her hands are posed unlike the fitted hand bones), and the hair of the head, eyebrows, eyelashes and pubic hair (76 structures)"
         }
       ],
       "omitted": [
@@ -455,10 +803,951 @@
               "sha256": "0f6b1ddc17ba93c318910db111322d53a4779b677df1bb24d99dd60c21963a08"
             }
           ]
+        },
+        {
+          "id": "z-anatomy-fitted-region",
+          "title": "Skeleton, nerves, vessels, muscles, glands and hair the HRA lacks, fitted from the male model",
+          "author": "Z-Anatomy (after BodyParts3D, DBCLS), via the Anatria3D GLB export; fitted into the female body for this site by a region field",
+          "licence": "CC BY-SA 4.0",
+          "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "sourcePage": "https://github.com/Nurkan1/Anatria-3D/tree/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy",
+          "upstream": [
+            {
+              "title": "Z-Anatomy, the libre 3D atlas of anatomy",
+              "url": "https://www.z-anatomy.com/",
+              "licence": "CC BY-SA 4.0"
+            },
+            {
+              "title": "BodyParts3D, Database Center for Life Science (DBCLS), Japan",
+              "url": "https://lifesciencedb.jp/bp3d/",
+              "licence": "CC BY-SA 2.1 JP"
+            }
+          ],
+          "pinned": {
+            "repository": "https://github.com/Nurkan1/Anatria-3D",
+            "commit": "949ac80cc9763539afc48e60b5246132f00468db"
+          },
+          "notice": "anatomy/models/NOTICE-male.txt",
+          "why": "no free female whole-body skeleton, muscle, nerve or vessel set exists (2026-09-19 search: the HRA united-female has only the spine, pelvis, knees, brain, cord, eyes, heart and trunk vessels); the male structures are fitted region-wise so that every layer is complete, and each is marked as fitted",
+          "fit": {
+            "method": "region field: each male vertex takes the classes of its nearest male skin patches (Terminologia Anatomica regions, Gaussian weights) and is moved by the blend of the class maps; trunk = piecewise-linear height through matched vertebra centres with width/depth scaled about the spine per level; head = per-axis affine of the brain+eyes box; limbs = similarity (rotation + uniform scale) of each segment axis (femur and tibia from the bones both models have; upper arm, forearm, hand and the feet from landmarks measured on the female skin silhouette)",
+            "sigmaMetres": 0.03,
+            "maps": {
+              "trunk": {
+                "vertebrae": [
+                  {
+                    "level": "coccyx",
+                    "male": [
+                      0,
+                      0.8457,
+                      -0.0765
+                    ],
+                    "female": [
+                      -0.0077,
+                      0.0317,
+                      -0.1593
+                    ]
+                  },
+                  {
+                    "level": "sacrum",
+                    "male": [
+                      0,
+                      0.9233,
+                      -0.0493
+                    ],
+                    "female": [
+                      -0.0081,
+                      0.0934,
+                      -0.13
+                    ]
+                  },
+                  {
+                    "level": "L5",
+                    "male": [
+                      0,
+                      0.9828,
+                      -0.0292
+                    ],
+                    "female": [
+                      -0.005,
+                      0.1764,
+                      -0.1162
+                    ]
+                  },
+                  {
+                    "level": "L4",
+                    "male": [
+                      0,
+                      1.015,
+                      -0.024
+                    ],
+                    "female": [
+                      -0.0051,
+                      0.2051,
+                      -0.1201
+                    ]
+                  },
+                  {
+                    "level": "L3",
+                    "male": [
+                      0,
+                      1.0434,
+                      -0.0232
+                    ],
+                    "female": [
+                      -0.0052,
+                      0.2353,
+                      -0.1232
+                    ]
+                  },
+                  {
+                    "level": "L2",
+                    "male": [
+                      0,
+                      1.0749,
+                      -0.0241
+                    ],
+                    "female": [
+                      -0.0042,
+                      0.2737,
+                      -0.1264
+                    ]
+                  },
+                  {
+                    "level": "L1",
+                    "male": [
+                      0,
+                      1.1039,
+                      -0.0292
+                    ],
+                    "female": [
+                      -0.0029,
+                      0.3079,
+                      -0.1306
+                    ]
+                  },
+                  {
+                    "level": "T12",
+                    "male": [
+                      0,
+                      1.139,
+                      -0.0367
+                    ],
+                    "female": [
+                      -0.0049,
+                      0.3427,
+                      -0.1326
+                    ]
+                  },
+                  {
+                    "level": "T11",
+                    "male": [
+                      0,
+                      1.1693,
+                      -0.0451
+                    ],
+                    "female": [
+                      -0.0059,
+                      0.3692,
+                      -0.1351
+                    ]
+                  },
+                  {
+                    "level": "T10",
+                    "male": [
+                      0.0001,
+                      1.1975,
+                      -0.0532
+                    ],
+                    "female": [
+                      -0.0055,
+                      0.3928,
+                      -0.1352
+                    ]
+                  },
+                  {
+                    "level": "T9",
+                    "male": [
+                      0,
+                      1.2285,
+                      -0.0586
+                    ],
+                    "female": [
+                      -0.006,
+                      0.4146,
+                      -0.1367
+                    ]
+                  },
+                  {
+                    "level": "T8",
+                    "male": [
+                      0,
+                      1.256,
+                      -0.0634
+                    ],
+                    "female": [
+                      -0.0067,
+                      0.436,
+                      -0.1381
+                    ]
+                  },
+                  {
+                    "level": "T7",
+                    "male": [
+                      0,
+                      1.286,
+                      -0.0649
+                    ],
+                    "female": [
+                      -0.0078,
+                      0.4591,
+                      -0.1374
+                    ]
+                  },
+                  {
+                    "level": "T6",
+                    "male": [
+                      0,
+                      1.3142,
+                      -0.0668
+                    ],
+                    "female": [
+                      -0.0089,
+                      0.4833,
+                      -0.134
+                    ]
+                  },
+                  {
+                    "level": "T5",
+                    "male": [
+                      0,
+                      1.3473,
+                      -0.0659
+                    ],
+                    "female": [
+                      -0.008,
+                      0.5061,
+                      -0.1332
+                    ]
+                  },
+                  {
+                    "level": "T4",
+                    "male": [
+                      0,
+                      1.3753,
+                      -0.0652
+                    ],
+                    "female": [
+                      -0.0083,
+                      0.5275,
+                      -0.1295
+                    ]
+                  },
+                  {
+                    "level": "T3",
+                    "male": [
+                      0,
+                      1.3988,
+                      -0.0615
+                    ],
+                    "female": [
+                      -0.009,
+                      0.551,
+                      -0.1233
+                    ]
+                  },
+                  {
+                    "level": "T2",
+                    "male": [
+                      0,
+                      1.4201,
+                      -0.0528
+                    ],
+                    "female": [
+                      -0.009,
+                      0.5713,
+                      -0.1167
+                    ]
+                  },
+                  {
+                    "level": "T1",
+                    "male": [
+                      -0.0001,
+                      1.438,
+                      -0.0474
+                    ],
+                    "female": [
+                      -0.0105,
+                      0.5896,
+                      -0.1084
+                    ]
+                  },
+                  {
+                    "level": "C7",
+                    "male": [
+                      0,
+                      1.452,
+                      -0.0421
+                    ],
+                    "female": [
+                      -0.0101,
+                      0.6061,
+                      -0.0985
+                    ]
+                  },
+                  {
+                    "level": "C6",
+                    "male": [
+                      0,
+                      1.466,
+                      -0.0349
+                    ],
+                    "female": [
+                      -0.0123,
+                      0.6216,
+                      -0.0864
+                    ]
+                  },
+                  {
+                    "level": "C5",
+                    "male": [
+                      0,
+                      1.4801,
+                      -0.0298
+                    ],
+                    "female": [
+                      -0.0119,
+                      0.6367,
+                      -0.0761
+                    ]
+                  },
+                  {
+                    "level": "C4",
+                    "male": [
+                      0.0001,
+                      1.4931,
+                      -0.0265
+                    ],
+                    "female": [
+                      -0.0128,
+                      0.6507,
+                      -0.0721
+                    ]
+                  },
+                  {
+                    "level": "C3",
+                    "male": [
+                      0,
+                      1.5064,
+                      -0.027
+                    ],
+                    "female": [
+                      -0.0129,
+                      0.6654,
+                      -0.0694
+                    ]
+                  },
+                  {
+                    "level": "C2",
+                    "male": [
+                      0,
+                      1.53,
+                      -0.026
+                    ],
+                    "female": [
+                      -0.0137,
+                      0.6913,
+                      -0.0704
+                    ]
+                  },
+                  {
+                    "level": "C1",
+                    "male": [
+                      0,
+                      1.543,
+                      -0.0214
+                    ],
+                    "female": [
+                      -0.012,
+                      0.7028,
+                      -0.0658
+                    ]
+                  }
+                ],
+                "scaleLevels": [
+                  {
+                    "maleY": 0.7957,
+                    "at": "below the coccyx (pelvis box)",
+                    "sx": 1.1744,
+                    "sz": 1.1608
+                  },
+                  {
+                    "maleY": 0.9233,
+                    "at": "sacrum (pelvis box)",
+                    "sx": 1.1744,
+                    "sz": 1.1608
+                  },
+                  {
+                    "maleY": 0.9828,
+                    "at": "L5 (liver, spleen, kidneys, pancreas box)",
+                    "sx": 1.1427,
+                    "sz": 1.0856
+                  },
+                  {
+                    "maleY": 1.1975,
+                    "at": "T10 (liver, spleen, kidneys, pancreas box)",
+                    "sx": 1.1427,
+                    "sz": 1.0856
+                  },
+                  {
+                    "maleY": 1.3753,
+                    "at": "T4 (lungs box)",
+                    "sx": 0.9623,
+                    "sz": 0.8217
+                  },
+                  {
+                    "maleY": 1.4931,
+                    "at": "C4 (neck, unscaled)",
+                    "sx": 1,
+                    "sz": 1
+                  }
+                ]
+              },
+              "head": {
+                "from": {
+                  "min": [
+                    -0.0681,
+                    1.5388,
+                    -0.0991
+                  ],
+                  "max": [
+                    0.0681,
+                    1.6992,
+                    0.0808
+                  ]
+                },
+                "to": {
+                  "min": [
+                    -0.0714,
+                    0.7114,
+                    -0.1481
+                  ],
+                  "max": [
+                    0.0605,
+                    0.8571,
+                    0.0325
+                  ]
+                },
+                "scale": [
+                  0.968,
+                  0.9087,
+                  1.004
+                ]
+              },
+              "upperarm.l": {
+                "from": [
+                  [
+                    0.1731,
+                    1.3905,
+                    -0.0245
+                  ],
+                  [
+                    0.2165,
+                    1.0983,
+                    -0.0347
+                  ]
+                ],
+                "to": [
+                  [
+                    0.175,
+                    0.555,
+                    -0.095
+                  ],
+                  [
+                    0.255,
+                    0.265,
+                    -0.085
+                  ]
+                ],
+                "scale": 1.0183,
+                "rotationDeg": 7.9852
+              },
+              "forearm.l": {
+                "from": [
+                  [
+                    0.2165,
+                    1.0983,
+                    -0.0347
+                  ],
+                  [
+                    0.2591,
+                    0.8629,
+                    0.0144
+                  ]
+                ],
+                "to": [
+                  [
+                    0.255,
+                    0.265,
+                    -0.085
+                  ],
+                  [
+                    0.395,
+                    0.05,
+                    -0.05
+                  ]
+                ],
+                "scale": 1.0602,
+                "rotationDeg": 22.797
+              },
+              "hand.l": {
+                "from": [
+                  [
+                    0.2591,
+                    0.8629,
+                    0.0144
+                  ],
+                  [
+                    0.2852,
+                    0.7056,
+                    0.0881
+                  ]
+                ],
+                "to": [
+                  [
+                    0.395,
+                    0.05,
+                    -0.05
+                  ],
+                  [
+                    0.42,
+                    -0.078,
+                    -0.01
+                  ]
+                ],
+                "scale": 0.7769,
+                "rotationDeg": 7.9156
+              },
+              "thigh.l": {
+                "from": [
+                  [
+                    0.087,
+                    0.8694,
+                    -0.0065
+                  ],
+                  [
+                    0.077,
+                    0.4435,
+                    -0.0329
+                  ]
+                ],
+                "to": [
+                  [
+                    0.1016,
+                    0.0235,
+                    -0.0676
+                  ],
+                  [
+                    0.1082,
+                    -0.3675,
+                    -0.0685
+                  ]
+                ],
+                "scale": 0.9163,
+                "rotationDeg": 4.1258
+              },
+              "leg.l": {
+                "from": [
+                  [
+                    0.0767,
+                    0.423,
+                    -0.0375
+                  ],
+                  [
+                    0.0708,
+                    0.0864,
+                    -0.0389
+                  ]
+                ],
+                "to": [
+                  [
+                    0.1168,
+                    -0.387,
+                    -0.0815
+                  ],
+                  [
+                    0.1225,
+                    -0.7102,
+                    -0.0793
+                  ]
+                ],
+                "scale": 0.96,
+                "rotationDeg": 2.1059
+              },
+              "foot.l": {
+                "from": {
+                  "min": [
+                    0.0424,
+                    -0.0004,
+                    -0.1088
+                  ],
+                  "max": [
+                    0.1494,
+                    0.0921,
+                    0.1456
+                  ]
+                },
+                "to": {
+                  "min": [
+                    0.088,
+                    -0.7948,
+                    -0.167
+                  ],
+                  "max": [
+                    0.181,
+                    -0.7,
+                    0.107
+                  ]
+                },
+                "scale": [
+                  0.8688,
+                  1.0248,
+                  1.0768
+                ]
+              },
+              "upperarm.r": {
+                "from": [
+                  [
+                    -0.1731,
+                    1.3905,
+                    -0.0245
+                  ],
+                  [
+                    -0.2165,
+                    1.0983,
+                    -0.0347
+                  ]
+                ],
+                "to": [
+                  [
+                    -0.185,
+                    0.555,
+                    -0.095
+                  ],
+                  [
+                    -0.268,
+                    0.265,
+                    -0.085
+                  ]
+                ],
+                "scale": 1.021,
+                "rotationDeg": 8.4671
+              },
+              "forearm.r": {
+                "from": [
+                  [
+                    -0.2165,
+                    1.0983,
+                    -0.0347
+                  ],
+                  [
+                    -0.2591,
+                    0.8629,
+                    0.0144
+                  ]
+                ],
+                "to": [
+                  [
+                    -0.268,
+                    0.265,
+                    -0.085
+                  ],
+                  [
+                    -0.415,
+                    0.05,
+                    -0.05
+                  ]
+                ],
+                "scale": 1.076,
+                "rotationDeg": 24.0734
+              },
+              "hand.r": {
+                "from": [
+                  [
+                    -0.2591,
+                    0.8629,
+                    0.0144
+                  ],
+                  [
+                    -0.2852,
+                    0.7056,
+                    0.0881
+                  ]
+                ],
+                "to": [
+                  [
+                    -0.415,
+                    0.05,
+                    -0.05
+                  ],
+                  [
+                    -0.43,
+                    -0.078,
+                    -0.01
+                  ]
+                ],
+                "scale": 0.7685,
+                "rotationDeg": 7.9954
+              },
+              "thigh.r": {
+                "from": [
+                  [
+                    -0.087,
+                    0.8694,
+                    -0.0065
+                  ],
+                  [
+                    -0.077,
+                    0.4435,
+                    -0.0329
+                  ]
+                ],
+                "to": [
+                  [
+                    -0.1225,
+                    0.0235,
+                    -0.0639
+                  ],
+                  [
+                    -0.1291,
+                    -0.3675,
+                    -0.0648
+                  ]
+                ],
+                "scale": 0.9163,
+                "rotationDeg": 4.1258
+              },
+              "leg.r": {
+                "from": [
+                  [
+                    -0.0767,
+                    0.423,
+                    -0.0375
+                  ],
+                  [
+                    -0.0708,
+                    0.0864,
+                    -0.0389
+                  ]
+                ],
+                "to": [
+                  [
+                    -0.1384,
+                    -0.387,
+                    -0.0777
+                  ],
+                  [
+                    -0.1441,
+                    -0.7102,
+                    -0.0755
+                  ]
+                ],
+                "scale": 0.96,
+                "rotationDeg": 2.1059
+              },
+              "foot.r": {
+                "from": {
+                  "min": [
+                    -0.1494,
+                    -0.0004,
+                    -0.1088
+                  ],
+                  "max": [
+                    -0.0424,
+                    0.0921,
+                    0.1456
+                  ]
+                },
+                "to": {
+                  "min": [
+                    -0.205,
+                    -0.7948,
+                    -0.155
+                  ],
+                  "max": [
+                    -0.109,
+                    -0.7,
+                    0.107
+                  ]
+                },
+                "scale": [
+                  0.8968,
+                  1.0248,
+                  1.0297
+                ]
+              }
+            },
+            "femaleSkinLandmarks": {
+              "shoulder": {
+                "l": [
+                  0.175,
+                  0.555,
+                  -0.095
+                ],
+                "r": [
+                  -0.185,
+                  0.555,
+                  -0.095
+                ]
+              },
+              "elbow": {
+                "l": [
+                  0.255,
+                  0.265,
+                  -0.085
+                ],
+                "r": [
+                  -0.268,
+                  0.265,
+                  -0.085
+                ]
+              },
+              "wrist": {
+                "l": [
+                  0.395,
+                  0.05,
+                  -0.05
+                ],
+                "r": [
+                  -0.415,
+                  0.05,
+                  -0.05
+                ]
+              },
+              "fingertip": {
+                "l": [
+                  0.42,
+                  -0.078,
+                  -0.01
+                ],
+                "r": [
+                  -0.43,
+                  -0.078,
+                  -0.01
+                ]
+              },
+              "foot": {
+                "l": {
+                  "min": [
+                    0.088,
+                    -0.7948,
+                    -0.167
+                  ],
+                  "max": [
+                    0.181,
+                    -0.7,
+                    0.107
+                  ]
+                },
+                "r": {
+                  "min": [
+                    -0.205,
+                    -0.7948,
+                    -0.155
+                  ],
+                  "max": [
+                    -0.109,
+                    -0.7,
+                    0.107
+                  ]
+                }
+              }
+            }
+          },
+          "files": [
+            {
+              "file": "skeletal_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/skeletal_male.glb",
+              "bytes": 2823900,
+              "sha256": "b49d71788bfa0b4a3188e2954d59728a699b08ec280e70df1c2a95e13d4b81f8"
+            },
+            {
+              "file": "articular_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/articular_male.glb",
+              "bytes": 1541408,
+              "sha256": "894533f99658c1428dce59e5225f6b1099aaf4720b3cdd7b39ac76cfbb0aec98"
+            },
+            {
+              "file": "nervous_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/nervous_male.glb",
+              "bytes": 8535424,
+              "sha256": "e7a3a2de6c6f098152e3619dd75613531749235cfa9f687d971c8b334a08dcb8"
+            },
+            {
+              "file": "visceral_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/visceral_male.glb",
+              "bytes": 1700280,
+              "sha256": "5b336f2e8964345adcd69b7a31919f059248b11c0ada97851efda5af6a18ebcf"
+            },
+            {
+              "file": "digestive_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/digestive_male.glb",
+              "bytes": 929984,
+              "sha256": "0f6b1ddc17ba93c318910db111322d53a4779b677df1bb24d99dd60c21963a08"
+            },
+            {
+              "file": "respiratory_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/respiratory_male.glb",
+              "bytes": 585232,
+              "sha256": "afc1f18329b877c04d7f27ad4f09e6de0c3c143fcb2ae9ad7fdd4e2dc9261e76"
+            },
+            {
+              "file": "renal_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/renal_male.glb",
+              "bytes": 59040,
+              "sha256": "4a3f95dbf8519a069703817ec63f1e9374d3cb1f0827f7fa1e10cc84bf411db1"
+            },
+            {
+              "file": "reproductive_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/reproductive_male.glb",
+              "bytes": 63600,
+              "sha256": "2402674f2d222589f24b4b32c0f13b85588b5adda5878b2e2c405677d6e1891c"
+            },
+            {
+              "file": "endocrine_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/endocrine_male.glb",
+              "bytes": 39824,
+              "sha256": "44ffd5a7de6731bfd36a83e7806b02c05685cabbae902ef85abb6b1681ae9684"
+            },
+            {
+              "file": "cardiovascular_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/cardiovascular_male.glb",
+              "bytes": 7217588,
+              "sha256": "05f373a294ab809b9a628bc1474a66028642997330fddc553a33d4ac6409b757"
+            },
+            {
+              "file": "lymphatic_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/lymphatic_male.glb",
+              "bytes": 509592,
+              "sha256": "b73830220fb9d67cbf9f30ebc448c88483c1b3bd1c014f49eb10aefa70dfbfbd"
+            },
+            {
+              "file": "muscular_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/muscular_male.glb",
+              "bytes": 11972116,
+              "sha256": "53a004c7b8af38fcbb88d5d1a7ab9dc3f6db2f5bb52188d81c5ddbfb4fb30243"
+            },
+            {
+              "file": "regional_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/regional_male.glb",
+              "bytes": 765860,
+              "sha256": "ffb30c89330ad50dac4c352a252e1c1ddaf7c8547c6d726e833308cc082f8680"
+            }
+          ]
         }
       ],
-      "totalBytes": 8374740,
-      "structureCount": 883
+      "totalBytes": 20670824,
+      "structureCount": 3482
     }
   }
 }
