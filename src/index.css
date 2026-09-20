@@ -129,7 +129,47 @@ summary {
   /* Theme-INVARIANT tokens, declared only here so the dark-block parity gate
      stays meaningful. Space is space in both themes; the brand button keeps
      one identity everywhere. */
-  --brand-bg: oklch(44% 0.12 155);
+
+  /*
+   * IDENTITY (round 12, Andy: "make use of the colours Supernova Yellow and
+   * Stark Black … take inspiration from National Geographic magazine").
+   *
+   * --supernova  oklch(87% 0.178 92) == #fecf00. Chosen to land inside the
+   *              National Geographic register (their Pantone 116 C reads
+   *              ~#FFCD00); #FFCE00 is oklch(86.9% 0.1777 91.3), so this is
+   *              the same colour rounded to values a human can read.
+   * --stark      oklch(11% 0 0) == #040404. Near-pure black, achromatic, so
+   *              it never fights the flag-derived map fills for hue.
+   *
+   * MEASURED (scripts/check-contrast.mjs mirrors every one of these):
+   *   stark on supernova   13.77  AAA
+   *   white on stark       20.46  AAA
+   *   supernova on stark   13.77  AAA
+   *   supernova on the LIGHT surface  1.44  <-- FAILS, deliberately
+   *
+   * That last line is the rule the whole system hangs on: yellow is a FILL,
+   * a RULE, a FRAME and a HIGHLIGHT on light surfaces, and a TEXT colour
+   * only on stark black. There is no yellow body text anywhere on a light
+   * ground, and check-contrast has no pair that would let one in.
+   */
+  --supernova: oklch(87% 0.178 92);
+  --stark: oklch(11% 0 0);
+  /* Derived "on" pairs, so a component never has to pick. */
+  --on-supernova: oklch(11% 0 0);
+  --on-stark: oklch(100% 0 0);
+  /* Secondary text on the black bands (tagline, resting nav links): 11.72
+     against --stark, still AAA, but a step below white so the yellow active
+     state is the brightest warm thing on the band. */
+  --on-stark-muted: oklch(82% 0 0);
+  /* Yellow AS TEXT — only ever on --stark. 13.77. */
+  --on-stark-accent: oklch(87% 0.178 92);
+
+  /* The primary (filled) button role. Round 12 repoints it from the old
+     brand green to the stark black band colour: black button, white label,
+     yellow focus ring. Nothing renders one today — the site's controls are
+     all outline/selected states — so this is the role definition the first
+     one built will land on, not a restyle. */
+  --brand-bg: oklch(11% 0 0);
   --brand-text: oklch(100% 0 0);
   /* The Human History section button: clay red, opposite the brand green on
      the hue wheel, white text at AA. Theme-invariant like the brand pill. */
@@ -153,7 +193,11 @@ summary {
   --anatomy-bg: oklch(46% 0.15 20);
   --anatomy-text: oklch(100% 0 0);
   --map-space: oklch(8% 0.005 260);
-  --map-ocean: oklch(31% 0.06 255);
+  /* Globe ocean, theme-invariant. Round 12: deepened and saturated from
+     oklch(31% 0.06 255) to a printed-atlas navy. Gated both ways — every
+     light fill still clears 4.15 against it (floor 2.0) and it still clears
+     1.64 against space (floor 1.5). */
+  --map-ocean: oklch(32% 0.10 248);
 
   --surface: oklch(99% 0.002 250);
   --surface-raised: oklch(100% 0 0);
@@ -169,18 +213,20 @@ summary {
   --shadow-card: 0 1px 2px oklch(20% 0.01 250 / 0.06),
     0 4px 16px oklch(20% 0.01 250 / 0.05);
 
-  /* Per-section nav accents (round-2 §34): the header's active underline
-     hue. THEMED, unlike the legacy section pills -- a 44%-lightness hue
-     clears 3:1 as a non-text indicator on the light surface but not on
-     the dark one, so dark mode steps each hue up. Gated at 3:1 against
-     the surface in both themes. */
-  --nav-globaldata: oklch(44% 0.12 155);
-  --nav-history: oklch(46% 0.13 35);
-  --nav-taxonomy: oklch(42% 0.09 200);
-  --nav-evolution: oklch(48% 0.1 70);
-  --nav-space: oklch(43% 0.11 295);
-  --nav-chemistry: oklch(45% 0.13 350);
-  --nav-anatomy: oklch(46% 0.15 20);
+  /* Per-section nav hues (round-2 §34). Round 12 makes them THEME-INVARIANT
+     at the bright (former dark-mode) step, because the masthead band they
+     live on is stark black in BOTH themes now — the 44%-lightness light-mode
+     step existed only to clear the light surface, and the light surface is
+     no longer behind them. They are also no longer the ACTIVE signal: yellow
+     is (see .nav-link). What they still carry is section identity, as a small
+     dot beside the label. Gated at 3:1 against --stark (worst 7.87). */
+  --nav-globaldata: oklch(70% 0.12 155);
+  --nav-history: oklch(72% 0.12 35);
+  --nav-taxonomy: oklch(70% 0.1 200);
+  --nav-evolution: oklch(74% 0.1 75);
+  --nav-space: oklch(72% 0.1 295);
+  --nav-chemistry: oklch(74% 0.12 350);
+  --nav-anatomy: oklch(74% 0.13 20);
 
   /* Periodic table (round 3 §47). Category tints carry body text, so
      their lightness/chroma band is fixed here and gated against --text;
@@ -202,19 +248,27 @@ summary {
   --chem-ancient: oklch(88% 0.07 75);
 
   /* Map. Land/water is a shape boundary rather than text, so these carry
-     perceptual minimums rather than WCAG text ratios. */
-  --map-water: oklch(98% 0.010 235);
+     perceptual minimums rather than WCAG text ratios.
+     Round 12: the flat-map water takes real sea colour (0.010 -> 0.028
+     chroma) at very nearly the same lightness. It cannot go DARKER than
+     this: the top lightness tier sits at 0.845 and the fill/water floor of
+     1.35 is what stops a pale country washing into the sea (measured — a
+     96.5%/0.035 sea drops the worst fill to 1.388, a 94%/0.040 sea to 1.27,
+     which fails). Depth of colour belongs to the globe ocean, which has no
+     such neighbour. */
+  --map-water: oklch(97.5% 0.028 232);
   --map-land: oklch(84% 0.014 250);
-  --map-land-stroke: oklch(98% 0.010 235);
+  --map-land-stroke: oklch(97.5% 0.028 232);
   --map-accent-fill: oklch(70% 0.13 250);
   --map-no-data: oklch(92% 0.003 250);
 
-  /* Selected toggle/segmented-control state.
-     Distinct from --map-accent-fill: that token is tuned for large polygons
-     with no text on them, and reusing it behind button labels produced a
-     3.3:1 contrast failure in dark mode. */
-  --control-selected-bg: oklch(88% 0.065 250);
-  --control-selected-text: oklch(25% 0.02 250);
+  /* Selected toggle/segmented-control state. Round 12: the identity pair.
+     A selected control is supernova yellow with stark black text in BOTH
+     themes (13.77:1), which makes "what is switched on" the same shape of
+     signal as the masthead's active section. Declared in all three blocks
+     rather than exempted, so the parity gate keeps checking it. */
+  --control-selected-bg: oklch(87% 0.178 92);
+  --control-selected-text: oklch(11% 0 0);
 
   /*
    * Categorical chart series. Fixed order, assigned by slot and never cycled.
@@ -262,27 +316,20 @@ summary {
     --text-muted: oklch(72% 0.006 250);
     --accent: oklch(76% 0.11 250);
     --shadow-card: 0 0 0 1px oklch(31% 0.008 250 / 0.6);
-    --nav-globaldata: oklch(70% 0.12 155);
-    --nav-history: oklch(72% 0.12 35);
-    --nav-taxonomy: oklch(70% 0.1 200);
-    --nav-evolution: oklch(74% 0.1 75);
-    --nav-space: oklch(72% 0.1 295);
-    --nav-chemistry: oklch(74% 0.12 350);
-    --nav-anatomy: oklch(74% 0.13 20);
     --chem-tint-l: 36%;
     --chem-tint-c: 0.08;
     --chem-scale-lo: oklch(24% 0.03 250);
     --chem-scale-hi: oklch(50% 0.14 250);
     --chem-ancient: oklch(38% 0.10 75);
 
-    --map-water: oklch(13% 0.010 235);
+    --map-water: oklch(15% 0.040 245);
     --map-land: oklch(34% 0.014 250);
-    --map-land-stroke: oklch(13% 0.010 235);
+    --map-land-stroke: oklch(15% 0.040 245);
     --map-accent-fill: oklch(60% 0.13 250);
     --map-no-data: oklch(22% 0.004 250);
 
-    --control-selected-bg: oklch(38% 0.075 250);
-    --control-selected-text: oklch(96% 0.005 250);
+    --control-selected-bg: oklch(87% 0.178 92);
+    --control-selected-text: oklch(11% 0 0);
 
     /* Dark is a SELECTED set stepped for the dark surface, not an inversion.
        All eight clear 3:1 against it. */
@@ -315,27 +362,20 @@ summary {
   --text-muted: oklch(72% 0.006 250);
   --accent: oklch(76% 0.11 250);
   --shadow-card: 0 0 0 1px oklch(31% 0.008 250 / 0.6);
-  --nav-globaldata: oklch(70% 0.12 155);
-  --nav-history: oklch(72% 0.12 35);
-  --nav-taxonomy: oklch(70% 0.1 200);
-  --nav-evolution: oklch(74% 0.1 75);
-  --nav-space: oklch(72% 0.1 295);
-  --nav-chemistry: oklch(74% 0.12 350);
-  --nav-anatomy: oklch(74% 0.13 20);
   --chem-tint-l: 36%;
   --chem-tint-c: 0.08;
   --chem-scale-lo: oklch(24% 0.03 250);
   --chem-scale-hi: oklch(50% 0.14 250);
   --chem-ancient: oklch(38% 0.10 75);
 
-  --map-water: oklch(13% 0.010 235);
+  --map-water: oklch(15% 0.040 245);
   --map-land: oklch(34% 0.014 250);
-  --map-land-stroke: oklch(13% 0.010 235);
+  --map-land-stroke: oklch(15% 0.040 245);
   --map-accent-fill: oklch(60% 0.13 250);
   --map-no-data: oklch(22% 0.004 250);
 
-  --control-selected-bg: oklch(38% 0.075 250);
-  --control-selected-text: oklch(96% 0.005 250);
+  --control-selected-bg: oklch(87% 0.178 92);
+  --control-selected-text: oklch(11% 0 0);
 
   --series-1: #3987e5;
   --series-2: #d95926;
@@ -387,6 +427,23 @@ body {
     font-size: 2.25rem;
     line-height: 1.1;
   }
+  /*
+   * The department rule (round 12): a short supernova bar under every page
+   * title. One rule carries the identity to every route without a per-page
+   * edit, and h1 is the only heading level that is always a block-level page
+   * title -- h2 is used as a flex-item panel heading in several components
+   * (MapReadout, EntityTable, ElementPanel), where a full-bleed rule reads
+   * as an underlined word rather than a section break. That is why the rule
+   * is here and not on h2.
+   */
+  h1::after {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 4px;
+    margin-top: 0.6rem;
+    background: var(--supernova);
+  }
   @media (min-width: 640px) {
     h1 {
       font-size: 2.75rem;
@@ -395,57 +452,182 @@ body {
 }
 
 /*
- * Masthead and primary navigation (round-2 design pass, §34). The site
- * name is set as a publication nameplate: centred serif over a double
- * hairline, with the primary nav as an editorial link row beneath --
- * uppercase sans links whose active state is a 2px underline in the
- * section's own hue (--nav-accent, set per link). Text colour carries the
- * state too, so hue is never the only signal.
+ * Masthead and primary navigation.
+ *
+ * Round-2 (§34) set the site name as a centred publication nameplate over a
+ * double hairline. Round 12 (Andy: National Geographic) keeps the nameplate
+ * and puts it where a magazine puts it — inside the border mark, a thick
+ * SUPERNOVA rectangle, on a STARK BLACK band that spans the page in BOTH
+ * themes. The band is the one piece of the site that does not switch with
+ * the theme: a magazine's front is its front.
+ *
+ * The nameplate is set in two lines so the frame is roughly portrait, which
+ * is the mark's proportion; it is also what makes the header survive a
+ * 390 px phone without the frame clipping — the words were always going to
+ * wrap there, so they wrap on purpose, at every width.
+ *
+ * ACTIVE SECTION = YELLOW (text + 2px underline). The per-section hue is
+ * demoted to a 6px dot beside the label, so section identity survives but
+ * is no longer the state signal; `aria-current` still carries the state for
+ * assistive tech, and the underline carries it without relying on colour.
  */
-.masthead-title {
+.masthead {
+  background: var(--stark);
+  color: var(--on-stark);
+  /* In DARK mode the band sits at 1.07 against the page surface, so the
+     hairline is what separates them, not a luminance step. It is white
+     rather than supernova on purpose: a yellow bottom rule here would sit
+     directly behind the nav's 2px yellow active underline and swallow it. */
+  border-bottom: 1px solid oklch(100% 0 0 / 0.14);
+}
+
+.masthead-inner {
+  padding-top: 1.5rem;
+}
+
+.masthead-frame {
   display: inline-block;
-  font-size: clamp(1.7rem, 4.5vw, 2.5rem);
-  line-height: 1.08;
-  letter-spacing: -0.012em;
-  color: var(--text);
+  /* The border mark. Scales with the viewport so it never outgrows a phone. */
+  border: clamp(3px, 0.8vw, 6px) solid var(--supernova);
+  padding: clamp(0.4rem, 1.3vw, 0.8rem) clamp(0.8rem, 3vw, 1.9rem);
+  text-decoration: none;
+}
+
+.masthead-title {
+  display: block;
+  font-size: clamp(1.25rem, 4.4vw, 2.2rem);
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--on-stark);
+}
+
+/* Each word on its own line: the frame reads as the mark, not as a box
+   drawn round a sentence. */
+.masthead-title-line {
+  display: block;
 }
 
 .masthead-tagline {
-  margin-top: 0.15rem;
-  font-size: 0.6875rem;
-  letter-spacing: 0.22em;
+  margin-top: 0.7rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--on-stark-muted);
 }
 
 .masthead-rule {
-  margin-top: 0.9rem;
-  border-top: 3px double var(--border-strong);
+  margin-top: 0.8rem;
+  /* A hairline on black, not the old double rule on paper. */
+  border-top: 1px solid oklch(100% 0 0 / 0.16);
 }
 
 .nav-link {
-  display: inline-block;
-  /* >=44px touch target: 13px type + 2x ~15px padding. */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  /* >=44px touch target: 13px type + 2x ~14px padding. */
   padding: 0.9rem 0.85rem calc(0.9rem - 2px);
   border-bottom: 2px solid transparent;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--on-stark-muted);
   transition:
     color 150ms ease,
     border-color 150ms ease;
 }
 
+.nav-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--nav-accent);
+}
+
 .nav-link:hover {
-  color: var(--text);
-  border-bottom-color: color-mix(in oklab, var(--nav-accent) 45%, transparent);
+  color: var(--on-stark);
+  border-bottom-color: color-mix(in oklab, var(--supernova) 55%, transparent);
 }
 
 .nav-link[aria-current='page'] {
-  color: var(--text);
-  border-bottom-color: var(--nav-accent);
+  color: var(--on-stark-accent);
+  border-bottom-color: var(--supernova);
+}
+
+/* Phones (<=480px). The nav wraps to two or three rows, so everything that
+   is not a touch target gets tighter: the nav's HORIZONTAL padding and
+   tracking come down, the vertical padding does not (measured 45.3px, floor
+   44). The nameplate block loses a third of its air, and the tagline's
+   tracking drops far enough to keep it on one line from 360 up. Measured
+   header height at 320/360/390: 276/276/231px before this block,
+   257/244/198px after it. Nothing overflows: document scrollWidth equals
+   the viewport width at all three. */
+@media (max-width: 480px) {
+  .masthead-inner {
+    padding-top: 1rem;
+  }
+  .masthead-tagline {
+    margin-top: 0.45rem;
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+  }
+  .masthead-rule {
+    margin-top: 0.55rem;
+  }
+  .nav-link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+/*
+ * Colophon band (round 12): the footer counterpart of the masthead. Stark
+ * black, a supernova rule across the top, the name in the display serif and
+ * the one promise the site makes. The provenance footer (FreshnessPanel)
+ * keeps its own surface and sits above this.
+ */
+/* The map card's supernova rule (round 12). On a phone the settings panel
+   opens BELOW the Globe/Map toolbar, which already carries the rule, so the
+   panel only takes it from sm up — where it IS the top of the card. */
+@media (min-width: 640px) {
+  .map-settings-panel {
+    /* !important because the panel carries its border colour as an INLINE
+       style (it shares the token with the rest of the card chrome), and an
+       inline declaration outranks any stylesheet rule regardless of
+       specificity. The width does not need it; the colour does. */
+    border-top-color: var(--supernova) !important;
+    border-top-width: 3px;
+  }
+}
+
+.site-colophon {
+  border-top: 3px solid var(--supernova);
+  background: var(--stark);
+  color: var(--on-stark-muted);
+}
+
+.colophon-name {
+  font-size: 1rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--on-stark);
+}
+
+.colophon-line {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* Yellow AS TEXT, on stark black only: 13.77:1. */
+.colophon-link {
+  color: var(--on-stark-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /*
@@ -609,11 +791,24 @@ summary,
   cursor: pointer;
 }
 
-/* Keyboard focus must stay clearly visible -- full keyboard navigation of the
-   map and every detail page is an acceptance criterion. */
+/*
+ * Keyboard focus must stay clearly visible -- full keyboard navigation of the
+ * map and every detail page is an acceptance criterion.
+ *
+ * Round 12 makes the ring SUPERNOVA, with a STARK keyline outside it. The
+ * keyline is not decoration: supernova scores 1.44:1 against the light
+ * surface, which is nowhere near the 3:1 WCAG asks of a focus indicator, so
+ * a bare yellow ring on a white page would be a downgrade dressed as
+ * branding. The composite ring is yellow hugging the control (3px, drawn by
+ * the box-shadow in the outline's offset gap) with the black outline
+ * immediately outside it, and BLACK clears 19.9:1 on the light surface while
+ * YELLOW clears 12.9:1 on the dark one -- so whichever theme is on, one of
+ * the two bands is doing the work and the pair always reads.
+ */
 :focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--stark);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--supernova);
   border-radius: 2px;
 }
 
@@ -638,6 +833,12 @@ summary,
   stroke: var(--accent) !important;
   stroke-width: 2.5px !important;
   paint-order: stroke fill;
+  /* The global focus ring's box-shadow does not render on SVG geometry;
+     clear it so nothing is half-drawn. The map keeps the blue accent
+     stroke rather than the yellow ring on purpose: supernova over the
+     LIGHT country fills is ~1.4:1, and the stark keyline that rescues it
+     elsewhere needs a second stroke, which one path cannot have. */
+  box-shadow: none;
 }
 
 .map-target:focus-visible circle {

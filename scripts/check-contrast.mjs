@@ -35,7 +35,28 @@ const hex = (value) => formatHex(rgb(parse(value)))
 
 // Theme-invariant tokens (declared once in :root, inherited by dark).
 const INVARIANT = {
-  brandBg: 'oklch(44% 0.12 155)',
+  // Round 12 identity pair (National Geographic register). Yellow is a
+  // fill/rule/frame/highlight on light surfaces and a TEXT colour only on
+  // stark black — there is deliberately no `supernova vs light surface`
+  // text pair below, because it would score 1.44 and it should never exist.
+  supernova: 'oklch(87% 0.178 92)',
+  stark: 'oklch(11% 0 0)',
+  onSupernova: 'oklch(11% 0 0)',
+  onStark: 'oklch(100% 0 0)',
+  onStarkMuted: 'oklch(82% 0 0)',
+  onStarkAccent: 'oklch(87% 0.178 92)',
+  // The masthead nav hues became theme-invariant in round 12: the band they
+  // sit on is stark black in both themes, so they no longer need a light
+  // step (see index.css). They are now a 6px identity dot, not the active
+  // state — the active state is supernova.
+  navGlobaldata: 'oklch(70% 0.12 155)',
+  navHistory: 'oklch(72% 0.12 35)',
+  navTaxonomy: 'oklch(70% 0.1 200)',
+  navEvolution: 'oklch(74% 0.1 75)',
+  navSpace: 'oklch(72% 0.1 295)',
+  navChemistry: 'oklch(74% 0.12 350)',
+  navAnatomy: 'oklch(74% 0.13 20)',
+  brandBg: 'oklch(11% 0 0)',
   historyBg: 'oklch(46% 0.13 35)',
   historyText: 'oklch(100% 0 0)',
   biologyBg: 'oklch(42% 0.09 200)',
@@ -48,7 +69,7 @@ const INVARIANT = {
   anatomyText: 'oklch(100% 0 0)',
   brandText: 'oklch(100% 0 0)',
   mapSpace: 'oklch(8% 0.005 260)',
-  mapOcean: 'oklch(31% 0.06 255)',
+  mapOcean: 'oklch(32% 0.10 248)',
 }
 
 const THEMES = {
@@ -60,25 +81,18 @@ const THEMES = {
     text: 'oklch(22% 0.008 250)',
     textMuted: 'oklch(45% 0.008 250)',
     accent: 'oklch(52% 0.13 250)',
-    mapWater: 'oklch(98% 0.010 235)',
+    mapWater: 'oklch(97.5% 0.028 232)',
     mapLand: 'oklch(84% 0.014 250)',
-    mapLandStroke: 'oklch(98% 0.010 235)',
+    mapLandStroke: 'oklch(97.5% 0.028 232)',
     mapAccentFill: 'oklch(70% 0.13 250)',
     mapNoData: 'oklch(92% 0.003 250)',
-    controlSelectedBg: 'oklch(88% 0.065 250)',
-    controlSelectedText: 'oklch(25% 0.02 250)',
+    controlSelectedBg: 'oklch(87% 0.178 92)',
+    controlSelectedText: 'oklch(11% 0 0)',
     barFill: 'oklch(52% 0.11 250)',
     barTrack: 'oklch(93% 0.006 250)',
     positive: 'oklch(44% 0.13 150)',
     negative: 'oklch(50% 0.17 25)',
     surfaceSunken: 'oklch(96.5% 0.004 250)',
-    navGlobaldata: 'oklch(44% 0.12 155)',
-    navHistory: 'oklch(46% 0.13 35)',
-    navTaxonomy: 'oklch(42% 0.09 200)',
-    navEvolution: 'oklch(48% 0.1 70)',
-    navSpace: 'oklch(43% 0.11 295)',
-    navChemistry: 'oklch(45% 0.13 350)',
-    navAnatomy: 'oklch(46% 0.15 20)',
     // Periodic table (§47): the darkest/most-saturated category tint (hue
     // 20 is the worst case for luminance) and the ramp endpoints.
     chemTintWorst: 'oklch(90% 0.07 20)',
@@ -95,25 +109,18 @@ const THEMES = {
     text: 'oklch(94% 0.003 250)',
     textMuted: 'oklch(72% 0.006 250)',
     accent: 'oklch(76% 0.11 250)',
-    mapWater: 'oklch(13% 0.010 235)',
+    mapWater: 'oklch(15% 0.040 245)',
     mapLand: 'oklch(34% 0.014 250)',
-    mapLandStroke: 'oklch(13% 0.010 235)',
+    mapLandStroke: 'oklch(15% 0.040 245)',
     mapAccentFill: 'oklch(60% 0.13 250)',
     mapNoData: 'oklch(22% 0.004 250)',
-    controlSelectedBg: 'oklch(38% 0.075 250)',
-    controlSelectedText: 'oklch(96% 0.005 250)',
+    controlSelectedBg: 'oklch(87% 0.178 92)',
+    controlSelectedText: 'oklch(11% 0 0)',
     barFill: 'oklch(72% 0.11 250)',
     barTrack: 'oklch(27% 0.008 250)',
     positive: 'oklch(78% 0.14 150)',
     negative: 'oklch(76% 0.15 25)',
     surfaceSunken: 'oklch(15% 0.006 250)',
-    navGlobaldata: 'oklch(70% 0.12 155)',
-    navHistory: 'oklch(72% 0.12 35)',
-    navTaxonomy: 'oklch(70% 0.1 200)',
-    navEvolution: 'oklch(74% 0.1 75)',
-    navSpace: 'oklch(72% 0.1 295)',
-    navChemistry: 'oklch(74% 0.12 350)',
-    navAnatomy: 'oklch(74% 0.13 20)',
     chemTintWorst: 'oklch(36% 0.08 100)',
     chemScaleLo: 'oklch(24% 0.03 250)',
     chemScaleHi: 'oklch(50% 0.14 250)',
@@ -132,14 +139,44 @@ const checks = (t) => [
   // Round-2 design pass (§34): zebra stripe and collapsed-sources ground.
   ['body text on sunken surface', t.text, t.surfaceSunken, 4.5],
   ['muted text on sunken surface', t.textMuted, t.surfaceSunken, 4.5],
-  // Nav active underlines are non-text indicators: 3:1 in both themes.
-  ['nav accent (global data) vs surface', t.navGlobaldata, t.surface, 3.0],
-  ['nav accent (history) vs surface', t.navHistory, t.surface, 3.0],
-  ['nav accent (taxonomy) vs surface', t.navTaxonomy, t.surface, 3.0],
-  ['nav accent (evolution) vs surface', t.navEvolution, t.surface, 3.0],
-  ['nav accent (space) vs surface', t.navSpace, t.surface, 3.0],
-  ['nav accent (chemistry) vs surface', t.navChemistry, t.surface, 3.0],
-  ['nav accent (anatomy) vs surface', t.navAnatomy, t.surface, 3.0],
+  // ---- Round 12 identity pair. Theme-invariant, so these read the same in
+  // both passes; they are listed here (rather than once) so a regression in
+  // either theme is impossible to miss.
+  ['stark black text on supernova', INVARIANT.onSupernova, INVARIANT.supernova, 4.5],
+  ['white text on stark black', INVARIANT.onStark, INVARIANT.stark, 4.5],
+  ['supernova text on stark black', INVARIANT.onStarkAccent, INVARIANT.stark, 4.5],
+  ['muted white text on stark black', INVARIANT.onStarkMuted, INVARIANT.stark, 4.5],
+  // There is deliberately NO 'stark band vs dark surface' pair: the masthead
+  // and colophon bands sit at 1.07 against the dark surface, which is the
+  // point -- a black band on a near-black page is meant to read as one
+  // continuous field, and what separates them is a 14%-white hairline plus
+  // the yellow frame, not a luminance step.
+  //
+  // The supernova rule/frame is a non-text graphic drawn ON the page
+  // surface (the h1 department rule, the card rules): it has to be a
+  // visible mark, not an AA text pair -- it is never text on a light ground.
+  ['supernova rule vs surface', INVARIANT.supernova, t.surface, 1.2],
+  // The focus ring is supernova with a stark keyline OUTSIDE it. WCAG asks
+  // 3:1 of the indicator as a whole against the adjacent colour, and this
+  // indicator has two bands: on a light page the BLACK keyline carries it
+  // (19.9), on a dark page the YELLOW band does (12.9). So the check is on
+  // the stronger band per theme, which is what a reader actually sees.
+  [
+    'focus ring (stronger band) vs surface',
+    contrast(INVARIANT.stark, t.surface) >= contrast(INVARIANT.supernova, t.surface)
+      ? INVARIANT.stark
+      : INVARIANT.supernova,
+    t.surface,
+    3.0,
+  ],
+  // Nav identity dots are non-text indicators on the stark black band.
+  ['nav dot (global data) vs stark', INVARIANT.navGlobaldata, INVARIANT.stark, 3.0],
+  ['nav dot (history) vs stark', INVARIANT.navHistory, INVARIANT.stark, 3.0],
+  ['nav dot (taxonomy) vs stark', INVARIANT.navTaxonomy, INVARIANT.stark, 3.0],
+  ['nav dot (evolution) vs stark', INVARIANT.navEvolution, INVARIANT.stark, 3.0],
+  ['nav dot (space) vs stark', INVARIANT.navSpace, INVARIANT.stark, 3.0],
+  ['nav dot (chemistry) vs stark', INVARIANT.navChemistry, INVARIANT.stark, 3.0],
+  ['nav dot (anatomy) vs stark', INVARIANT.navAnatomy, INVARIANT.stark, 3.0],
   // Periodic table cells carry body text on their fills (§47).
   ['body text on periodic category tint', t.text, t.chemTintWorst, 4.5],
   ['body text on periodic scale (low end)', t.text, t.chemScaleLo, 4.5],

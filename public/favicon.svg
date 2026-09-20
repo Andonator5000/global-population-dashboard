@@ -1,16 +1,25 @@
-<!-- Encyclopedia Andranika favicon (2026-09-05, Phase 2 design pass).
-     Typographic monogram on the brand green (the exact --brand-bg token
-     value). A single serif "A" survives 16 px where "EA" would smear; the
-     system serif stack is used because SVG favicons cannot load webfonts. -->
+<!-- Encyclopedia Andranika favicon (round 12, 2026-09-19).
+     The masthead mark, reduced to what survives 16 px: the supernova
+     border mark on stark black. The earlier serif "A" monogram on brand
+     green is gone with the green. The two values below are the exact
+     supernova and stark tokens from src/index.css.
+
+     NOTE: no double hyphen may appear in this comment. XML forbids it
+     inside a comment, and an invalid favicon renders as the browser's
+     parse-error page rather than failing quietly. The round-2 file named
+     its token with the CSS custom-property prefix and was invalid for
+     that reason. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="oklch(44% 0.12 155)" />
-  <text
-    x="32"
-    y="46"
-    font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif"
-    font-size="40"
-    font-weight="600"
-    fill="#ffffff"
-    text-anchor="middle"
-  >A</text>
+  <rect width="64" height="64" fill="oklch(11% 0 0)" />
+  <!-- Portrait rectangle outline, stroke-centred on the path, so the mark
+       keeps an even 8 px frame at 64 and a clean 2 px one at 16. -->
+  <rect
+    x="16"
+    y="10"
+    width="32"
+    height="44"
+    fill="none"
+    stroke="oklch(87% 0.178 92)"
+    stroke-width="8"
+  />
 </svg>

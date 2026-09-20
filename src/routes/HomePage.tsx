@@ -375,9 +375,17 @@ export function HomePage() {
         the World population box on EVERY width, so the order is the same
         everywhere and the column simply keeps the cards stacked. */}
     <div className="mx-auto flex max-w-[110rem] flex-col px-4 py-6 sm:px-6 sm:py-8">
+      {/* Round 12: a supernova rule across the top of each raised card. It is
+          the card's own top border re-coloured and thickened, so nothing
+          shifts in the layout and the rounded corner still clips it. */}
       <header
         className="order-1 rounded-xl border px-4 py-4 sm:px-6 sm:py-6"
-        style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+        style={{
+          borderColor: 'var(--border)',
+          borderTopColor: 'var(--supernova)',
+          borderTopWidth: '3px',
+          background: 'var(--surface-raised)',
+        }}
       >
         <p
           className="font-sans text-xs font-medium uppercase tracking-widest"
@@ -479,7 +487,12 @@ export function HomePage() {
           settings panel on a phone and the toolbar on wider screens. */}
       <div
         className="flex items-center gap-2 rounded-t-xl border border-b-0 px-3 py-2.5 text-sm sm:hidden"
-        style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+        style={{
+          borderColor: 'var(--border)',
+          borderTopColor: 'var(--supernova)',
+          borderTopWidth: '3px',
+          background: 'var(--surface-raised)',
+        }}
       >
         <fieldset className="flex flex-1 items-center gap-1">
           <legend className="sr-only">Globe or flat map</legend>
@@ -524,7 +537,7 @@ export function HomePage() {
       {/* Map toolbar: fill mode, projection, colours, and the interaction hint. */}
       <div
         id="map-settings"
-        className={`${settingsOpen ? 'flex' : 'hidden'} flex-wrap items-center gap-4 border border-b-0 px-4 py-3 text-sm sm:flex sm:rounded-t-xl`}
+        className={`${settingsOpen ? 'flex' : 'hidden'} map-settings-panel flex-wrap items-center gap-4 border border-b-0 px-4 py-3 text-sm sm:flex sm:rounded-t-xl`}
         style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
       >
         <fieldset className="flex items-center gap-2">
