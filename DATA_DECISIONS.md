@@ -5646,6 +5646,342 @@ every one of them that way (scope is part of the interface). No
 the function it is in the extract, and where it does not, writing one
 would be fabrication. Article lead images are not used.
 
+## 69. Round 13: Anatomy — the female completed by fitting, labels for every part, full screen, diagrams rendered from the models (2026-09-20)
+
+
+Andy's brief (verbatim, abridged): the female skeleton "is missing many parts
+of the skeleton, including skull, ribcage, arms, hands, etc."; the female "is
+distinctly more obese than the male"; the female "does not have hair, while
+the male version does. Be consistent"; "the skeleton layer needs to have all
+of the bones"; "create a way of viewing this anatomy in full screen mode for
+both the desktop version and the mobile version"; "fix the feet on the female
+version ... they appear warped"; "make sure there are labels for all parts of
+the anatomy. Currently, on the skin layer of the male version of the body,
+there are only labels for 'Ear' and 'Hair and nails'"; and, for the Diagrams
+tab, "a comprehensive static representation of the human body, with each
+layer sitting flush atop the layer before it ... a female and male version
+... comprehensive labels of each part and when I click on the label, I am
+provided with the description of that part and its function."
+
+The standing rules held throughout: free licences only (the male atlas CC
+BY-SA 4.0, the HRA CC BY 4.0, Wikipedia text CC BY-SA 4.0), provenance in
+the manifests, attribution rendered where the reader sees the thing, and
+nothing faked — everything borrowed from the male model is marked "fitted"
+on its card, in its label and in the manifest, and everything the sources
+do not have is said to be missing rather than invented.
+
+**69.1 The female completed by fitting (extends §65.9).** No free female
+whole-body skeleton, muscle, nerve or vessel set exists (§65.2 stands; the
+HRA united-female v1.5 has the spine, sacrum, coccyx, pelvis, femur, patella,
+tibia, fibula and the knee ligaments; the brain by Allen-atlas region, the
+cord by segment, the eyes and optic nerves; the heart, coronaries and the
+trunk vessels; the eye muscles, rectus femoris and quadriceps tendon; and no
+hair). So the §65.9 exception — one male organ fitted into the female with a
+labelled affine — is extended to EVERY structure of the four partial layers,
+by a **region field** in `scripts/build-anatomy-models.mjs`:
+
+- The male skin's Terminologia Anatomica regions (the 256 patches of
+  `regional_male.glb`) partition the male body into eleven classes: head,
+  trunk incl. neck, and per side upper arm, forearm, hand, thigh, leg, foot
+  (`PATCH_CLASS`). Every male vertex takes the classes of its nearest skin
+  patches — 27,679 sampled skin vertices in a 3 cm grid, Gaussian weights
+  with sigma 3 cm — so a structure that spans two regions (pectoralis major,
+  the sciatic nerve, the aorta) is bent smoothly rather than torn.
+- Each class has its own map from the male frame to the female one:
+  - *trunk*: height is piecewise-linear through the centres of the matched
+    vertebrae C1..L5, sacrum and coccyx (both models name them; the female's
+    sixth lumbar vertebra, an anatomical variant, sits inside the L5–sacrum
+    interval); width and depth scale about the spine centre at each level —
+    pelvis box at the sacrum and below (x 1.174, z 1.161), the liver +
+    spleen + kidneys + pancreas box from L5 to T10 (1.143, 1.086), the lungs
+    box at T4 (0.962, 0.822), unscaled at C4;
+  - *head*: a per-axis affine from the union box of the brain and the eyes
+    (scale 0.968, 0.909, 1.004);
+  - *thigh, leg*: a similarity (rotation + uniform scale) taking the male
+    femur axis (head centroid to condyle centroid) onto the female's (scale
+    0.916, 4.1°), and the tibia plateau-to-ankle axis (0.960, 2.1°);
+  - *upper arm, forearm, hand*: the same, from the humerus, radius/ulna and
+    third-finger landmarks in the male to landmarks measured on the female
+    skin silhouette (`FEMALE_SKIN_LANDMARKS`: shoulder, elbow, wrist,
+    fingertip per side — upper arm scale 1.018/1.021 at 8.0°/8.5°, forearm
+    1.060/1.076 at 22.8°/24.1°, hand 0.777/0.769 at 7.9°/8.0°). A first
+    attempt with one straight shoulder-to-fingertip axis missed the female
+    upper arm by 4 cm (her upper arm hangs near vertical, the forearm
+    abducted 30°), and the fitted muscles showed through the skin; the
+    three-segment fit sits inside the arm;
+  - *foot*: a box affine from the male foot patches to the female foot
+    box measured on the skin (scale 0.869/0.897, 1.025, 1.077/1.030).
+  The female skin landmarks are asserted against the skin's bounding box
+  (2 mm) so a source change fails the build instead of silently mis-fitting.
+- A male structure the HRA already provides is NOT duplicated: names are
+  matched after normalisation (side prefix/suffix, "muscle", the HRA's
+  " a/b/c" pieces) through a synonym table ("Vertebra L3" = "Lumbar vertebra
+  3", "Brachiocephalic trunk" = "Brachiocephalic artery", "Hip bone" =
+  "Ilium compact bone", "Coeliac trunk" = "Celiac trunk", the two parts of
+  the tibial collateral ligament = "Tibial collateral ligament" ...), and
+  whole male groups the HRA covers are dropped (the central nervous system
+  except dura, falx, cauda equina and spinal roots; the heart and cardiac
+  vessels; the eye's parts). Where the HRA is fragmentary (pulmonary and
+  trunk vessels) the native pieces stay and only the branches it lacks are
+  fitted; the male Rectus femoris is dropped because the HRA has it, so the
+  female thigh shows the HRA's own rectus femoris in front of the fitted
+  muscles. Never fitted: sex-specific organs (penis, prostate, testes,
+  seminal glands, ductus deferens, epididymis, the male urethra), and the
+  omenta, mesocolon, taeniae and pleura (membranes shaped to the male viscera
+  that would not follow the female organs).
+- The fitted meshes are the SHIPPED male layer files read back
+  (dequantised), so the female supplements are exactly the male meshes the
+  reader sees on the male body, moved; mirrored-side nodes that share one
+  mesh in the male files get their own fitted copy with the winding flipped.
+  The male files are untouched and byte-identical to round 12 (sha256s
+  checked before and after).
+
+Result per layer (female; `structures-female.json` marks every fitted node
+`fitted: 'male'`, the manifest lists each supplement with what was left out
+and why, and `.scratch/anatomy-fit-report.md` names every omitted node):
+
+| layer | native (HRA) | fitted from the male | left out | file |
+|---|---|---|---|---|
+| skeleton | 91 | 634: skull and teeth, hyoid and laryngeal cartilages, ribs and sternum, clavicles and scapulae, arm, hand and foot bones, intervertebral discs, joints and ligaments | 56 the HRA has (vertebrae, sacrum, coccyx, hip bones, femur, patella, tibia, fibula, knee ligaments, menisci, laryngeal cartilages) | female-skeleton-fitted.glb 2.46 MB |
+| nervous | 362 | 271: cranial nerves (not the optic), spinal nerves, plexuses, every peripheral nerve, sympathetic trunk, dura and falx, cauda equina, the ear | 315: 228 CNS + 61 ungrouped sulci/gyri (the HRA has the brain and cord), 24 eye parts, 2 optic nerves | female-nervous-fitted.glb 1.57 MB |
+| organs | 286 (+3 §65.9) | 30: thyroid, parathyroids, suprarenals, pituitary, pharynx, tongue, salivary glands and ducts, soft palate, uvula, gingiva, nasal mucosa | 90 not fitted (sex-specific, membranes, or the HRA's own) | female-organs-fitted-more.glb 0.18 MB |
+| vessels | 124 | 755: arteries and veins of head, neck, limbs and body wall, pulmonary branches, lymph nodes and trunks | 54 the HRA has by name, 17 heart parts, 10 cardiac vessels | female-vessels-fitted.glb 4.02 MB |
+| muscles | 16 | 833: every skeletal muscle, tendon, fascia, bursa, sheath | 14 the HRA has (eye muscles, rectus femoris, quadriceps tendon) | female-muscles-fitted.glb 3.88 MB |
+| skin | 1 | 6: hair of the head, eyebrows, eyelashes, pubic hair | 250 skin regions (the HRA skin is the skin) | female-skin-fitted.glb 0.07 MB |
+
+Female total 20.56 MB (budget 28 MB, not raised), 3,412 structures; male
+10.88 MB, 3,335, unchanged. Every supplement is CC BY-SA 4.0 (share-alike,
+NOTICE-male.txt), listed under the layer in the manifest, credited under the
+stage as a second supplement source (`z-anatomy-fitted-region`, with the
+method, sigma, every map's numbers and the skin landmarks recorded in
+`fit`). The chip keeps its "partial" mark (◐, "partly fitted from the male
+model"), the coverage note under the stage states per layer what is native
+and what is fitted, the card says "Fitted from the male model ... position
+indicative, not measured", the label carries a dashed frame and "(fitted
+from the male model)" in its accessible name, and the index says "fitted".
+Known limits, stated rather than hidden: the fitted hand is rigid, so the
+male's straight fingers poke through the female's splayed fingers; slivers
+of muscle show at the upper arms and the knees where the fit is a
+centimetre out; the sternum grazes the skin of the upper chest (the HRA's
+lungs reach the skin there).
+
+**69.2 The feet, the hair and the body shape.** *Feet*: the raw HRA skin
+(382,640 triangles, extracted from the united GLB with no simplification)
+renders the feet exactly as the shipped file does — plantar-flexed,
+inverted, toes unresolved (`.scratch/shots-r13/female-feet-raw.png` vs
+`female-feet-front.png`). The warp is in the source: the Visible Human
+Female was frozen supine and the HRA's skin is a smoothed reconstruction of
+the cryosection outline (its metadata records ankle and torso adjustments
+made for the organ set, none for the feet). Simplification (error 0.01 of
+the mesh radius) is exonerated, and no HRA skin version with different feet
+exists (skin-female v1.5 is the same object; later united versions carry the
+same skin). Reshaping the feet would be editing a measured dataset, which
+the rules forbid, so the skin ships as it is and the coverage note says
+"the Visible Human Female ... feet included, and is not reshaped". *Hair*:
+the male "Hairs of head", "Hairs of eyebrow", "Eyelashes" and "Pubic hairs"
+are meshes of their own in Z-Anatomy; they are fitted through the head and
+trunk maps (`female-skin-fitted.glb`) and land on the scalp, brows and pubis
+of the female head (verified in `fit-face.png`); hair is now drawn dark on
+BOTH sexes (it was skin-coloured on the male, which is why it read as a
+"cap"). *Body shape*: 30 minutes were spent on a free replacement skin.
+MakeHuman's base mesh is CC0 (makehumancommunity/makehuman
+`data/3dobjs/base.obj`, released CC0 in 2020) but is a sexless neutral
+base with no hair, and its hair assets need MakeHuman itself to fit; the
+"CC0" female bodies on AI-model sites are generated, not measured, and the
+Sketchfab base meshes carry no stated licence. More to the point, a
+replacement shell would put a measured organ set (the VHF's own organs,
+mammary glands included) inside a body that is not hers, and the layers
+would stop registering by construction. Decision: keep the HRA skin and say
+whose body it is — the coverage note now reads "the whole-body skin surface
+is the Visible Human Female (a 59-year-old woman) as the HRA reconstructed
+it". The male is Z-Anatomy's idealised body; the contrast is between two
+real sources, and the page says so.
+
+**69.3 Labels for every part (3-D).** The 60 organ pins are replaced by a
+per-layer LABEL SET (`labelGroups` in `src/lib/anatomy.ts`, `buildLabels` in
+`BodyViewer.tsx`): every structure group of the labelled layer — the nodes
+sharing one normalised name, the stage's own rule (side and "— part eN"
+stripped) — gets a label at the centre of its union bounding box, side-merged
+("Humerus" once) unless the two sides' boxes sit apart by more than 5 cm and
+60 % of their width ("Humerus (left)" / "(right)"). Density follows the zoom:
+a label is a candidate when the structure's visible blob would span at
+least 14 px on screen (20 px on phones) — the blob is the square root of
+the structure's visible pixel area in the diagram ID pass (6x.5), scaled by
+the camera distance, so a rib cage outranks a ligament of the same length
+and structures never seen from outside fall back to a third of their box;
+candidates on the far side of the body axis are dropped; the rest are ranked
+by that size (entries with a site organ entry ×1.3, the open organ's parts
+×2.5, front-facing ×1.2) and placed greedily without overlaps up to 40
+labels (18 on phones), so at rest the major parts are named and zooming in
+names progressively everything. The layout runs at most every 90 ms and
+only after the camera moved; positions are projected every frame. A search
+box ("Find a structure…") bypasses the density rule and shows every match
+(up to 80); the selected structure's label is always shown. Phones keep the
+round-12 pattern: dots, one tap expands, a second opens. Clicking a label or
+a structure opens the card: the site's organ entry when one exists (opened
+below, as before), else the Wikipedia extract from
+`data/anatomy/structures-wiki.json` (the anatomy_structures stage; keyed by
+the normalised name, rendered verbatim with the article title linked and
+"CC BY-SA 4.0"; a `broader` entry is introduced as "No article for this
+structure itself; Wikipedia on X, which it is part of / the kind of
+structure it is"), else "No free description found for this structure".
+The 0.9 MB descriptions file is fetched on the first pick. The side panel
+gains a collapsible "Structures in this layer" index (count, how many
+fitted, a filter box, up to 400 rows; a row selects the group in the model
+and moves the depth to its layer). Also on this pass: fasciae, bursae,
+sheaths, aponeuroses, retinacula and the skeleton's membranes are drawn at
+35 % opacity so the muscles and ribs read beneath them (the round-12 muscles
+layer was a cream fascia envelope on both sexes); a pick prefers an opaque
+structure under the pointer to a translucent sheet.
+
+**69.4 Full screen.** A "Full screen" button on the stage (next to Reset
+view). The frame that goes full screen (`frameRef`, `.anatomy-fs-frame`)
+mirrors the globe's §53.3 pattern exactly: the native Fullscreen API where
+`document.fullscreenEnabled`, else — iOS Safari — the CSS pseudo-fullscreen
+(`position: fixed; inset: 0`, the page's scroll locked, safe-area insets
+padded). In both, the frame is a column: a top bar (Done, Male/Female,
+Labels, the search box on desktops), the viewer stretched, and a bottom bar
+with the picked-structure card (scrollable, capped at 30 vh) and the depth
+chips and see-through toggle. Escape leaves either mode (the browser's own
+Esc for native, a keydown handler for the pseudo mode and for synthetic
+keys), Done leaves, and Back leaves: entering pushes one history entry, so
+the phone's back gesture pops it and the popstate handler exits. The scroll
+position is captured BEFORE the request (native fullscreen zeroes it) and
+restored after the frame is back in flow (a frame later and again at 120 ms,
+after the popstate's own restoration). Verified headless on desktop and
+Pixel 7 (native fullscreen in both; `after: {native:false, pseudo:false}`).
+
+**69.5 Diagrams rendered from the models.** `scripts/render-anatomy-diagrams.mjs`
+(`npm run build:anatomy-diagrams`): a tiny static server serves
+node_modules/three and the model files to a Playwright Chromium page
+(headless; Playwright and sharp were already devDependencies — no new
+dependency), which loads each layer of each sex with GLTFLoader + the
+meshopt decoder, frames it with ONE orthographic camera per sex (the union
+box of all six layers, 3 % padding, 1600 px tall; male 624 px wide, female
+915 px — her arms are spread), draws it with the viewer's materials on a
+transparent ground from the front and from the back, and renders an ID pass
+(every mesh a flat 24-bit colour, read back) that tallies each structure's
+visible pixels, centroid and bounding box in that layer alone. Outputs:
+24 WebP images (`data/anatomy/diagrams/<sex>-<layer>-<front|back>.webp`,
+quality 80, alpha 90) — male 0.79 MB, female 0.88 MB, 1.67 MB in all, the
+largest 140 kB — and `diagrams.json` (0.54 MB: camera boxes, per-image
+bytes/sha256/size, the sha256 of every model file rendered, and the anchor
+tables `[px, cx, cy, x0, y0, x1, y1]` per visible structure). The tab
+(`DiagramStage.tsx`, "Diagrams → Layered body") stacks the images skeleton →
+nerves → organs → vessels → muscles → skin with the same depth control,
+see-through (22 % opacity on the layer looked at), Male/Female and
+Front/Back toggles, wheel/pinch/button zoom to 8× with drag-pan (a native
+non-passive wheel listener; touch-action pan-y until zoomed), and an SVG
+label overlay: on desktops the labels sit in two margins with leader lines
+to the visible-pixel centroid, packed top to bottom (20 px rows) and pulled
+back up when they run off the bottom; on phones they are dots on the body.
+Density by zoom as in 3-D (a structure is a candidate once its visible blob
+spans 20 px, 26 on phones; up to two columns of rows, 18 dots on phones;
+search shows every match). A structure hidden from the current side has no
+anchor and no label there, and the note under the diagram says to turn the
+body or use 3-D. Clicks (label, or a tap within 28 px of a visible anchor)
+open the same card as the 3-D. The round-7 OpenStax figures remain as
+"Diagrams → Source figures", credited as before. The images register by
+construction (one camera per sex; `check:anatomy` fails if any image of a
+sex differs in size) and are gated: file, bytes, sha256, WebP magic, height,
+per-image (700 kB) and per-sex (5 MB) budgets, an anchor table per layer ×
+view naming only that layer's structures with at least one visible, and —
+the reason the manifest records model sha256s — every image must have been
+rendered from the model files the manifest ships NOW, so a model rebuild
+without a re-render fails the gate.
+
+**69.6 Gates and sizes.** `check:anatomy` grew: every fitted structure is
+accounted for by a supplement's count; a partial female layer must carry a
+supplement; a layer with supplements must say "fitted" in its note; each
+supplement lists what was omitted and why; the region-fit source carries its
+maps and the share-alike NOTICE; plus the diagrams gate above. PASS: 3-D
+models 31.44 MB across both sexes, 6,747 named structures, 55 of 60 entries
+reachable; diagrams 1.67 MB. `npm run typecheck` clean; `npm run build`:
+three.js stays in the OrbitControls chunk (589 kB / 149 kB gzip, unchanged),
+BodyViewer 85 kB / 27 kB, AnatomyPage 47 kB / 15 kB (was 27 kB; the Diagram
+stage and index live in the page chunk); `etl\run.py --only anatomy` passes
+(a FULL cached run before the data commit remains the lead's step). First
+load of the built route per sex (vite preview, uncompressed,
+`.scratch/anatomy-r13-bytes.mjs` → `anatomy-r13-bytes.txt`): male 15.9 MB
+(1.35 MB JS, 1.46 MB JSON incl. the 0.54 MB diagrams index that the 3-D
+labels use for their visible-area ranking, 10.88 MB of GLBs after the
+0.39 MB skin, all six layers 0.5 s after the canvas on a desktop); female
+25.7 MB (20.56 MB of GLBs, the fitted supplements included; structure index
+0.85 MB; 0.8 s); the Diagrams tab adds 0.41–0.45 MB (six WebPs of the
+current view). The 1.9 MB of "images" in both is the integumentary panel's
+skin-layers.svg, as in round 12. Pages gzips the JS and JSON; the GLBs are
+already meshopt-compressed.
+
+**69.7 UI UX Pro Max.** Consulted (`search.py --domain ux`): "Focus States —
+keyboard focus, including controls inside a modal, needs a visible
+indicator" (taken: every full-screen control keeps the site's focus ring);
+"Focus Not Obscured — offset sticky UI, dismiss or move persistent overlays"
+(taken: the full-screen bars are in flow above and below the viewer, never
+over it; the picked card is capped and scrollable); "Gesture Conflicts —
+avoid horizontal swipe on main content, don't override system gestures"
+(taken: the diagram is touch-action pan-y until zoomed, so the page scrolls
+over it; Back leaves full screen instead of being trapped); "Image
+Optimization — appropriate size and format (WebP)" (taken); "Text Reflow"
+(labels are content-sized, never clipped boxes). The label density rule
+(major parts at rest, everything on zoom, search as the escape hatch) is
+the map's LABEL_GROWTH pattern from §53 applied to a body.
+
+**69.8 Verification.** Headed-style Playwright (`.scratch/anatomy-r13-shots.mjs`,
+`.scratch/shots-r13/`): every layer × sex in 3-D on desktop (1280×900) and
+Pixel 7, zoomed labels, search, a label pick opening a Wikipedia description
+(scapula: no organ entry), the index filter and pick, full screen and exit
+on both, the Diagrams tab per sex and layer, back view, zoomed diagram, a
+diagram label pick, the Source figures sub-tab; close-ups by the render
+harness (`--shot`): female feet raw vs shipped, male feet, female face with
+fitted hair, female skin over fitted muscles and vessels (arms inside after
+the three-segment fit), a hand close-up (the known finger limit), the
+fitted skeleton alone and with organs. Zero console errors (the one "passive
+listener" error found in the first pass was the diagram's wheel handler,
+fixed).
+
+**69.9 Open items.** (1) The fitted hand is rigid (the male's straight
+fingers vs her splayed ones) — per-finger landmarks would fix it. (2) A
+BVH (three-mesh-bvh) would make picks on the female vessels + fitted layers
+(2.1 M triangles) instant; today ~100 ms. (3) The diagram's label columns
+could carry the leader lines through a simple crossing-minimising sort.
+(4) CLAUDE.md's Anatomy bullet and README need the round-13 lines (notes
+file). (5) The female L6 vertebra is not matched to anything male (none
+exists); the male L5–S1 disc sits inside it.
+
+Files touched: `scripts/build-anatomy-models.mjs` (region field, three-segment
+limbs, name matching, supplements per layer, fit report),
+`scripts/render-anatomy-diagrams.mjs` (new), `scripts/check-anatomy.mjs`
+(fitted + diagrams gates), `src/lib/anatomy.ts` (label groups, the stage's
+name normalisation, wiki and diagram types/loaders), `src/routes/AnatomyPage.tsx`
+(picked card with descriptions, structure index, Diagrams sub-tabs, labels
+state), `src/components/anatomy/BodyViewer.tsx` (label sets, density,
+translucent sheets, hair colour), `BodyStage.tsx` (full screen, labels
+toggle, search, coverage note), `DiagramStage.tsx` (new), `anatomy.css`,
+`package.json` (`build:anatomy-diagrams` script; no new devDependency),
+`data/anatomy/models/**` (6 new female supplement GLBs, manifest,
+structures-female.json; male files byte-identical), `data/anatomy/diagrams/**`
+(new: 24 WebP + diagrams.json), `data/anatomy/anatomy.json` and
+`data/manifest.json` (by `--only anatomy`). Scratch: `anatomy-r13-*.mjs/.py`,
+`anatomy-fit-report.md`, `shots-r13/`, this draft, `anatomy-notes-r13.md`.
+
+**69.10 Follow-up (2026-09-20, the same day): the female's feet and hands, protrusions, hair, full-screen refit, label ranking.** Seven defects read off the round's own screenshots.
+
+*Feet and hands are now the male model's, fitted.* "The source is warped" was not an answer to "fix the feet", so the HRA skin is CUT and the male Terminologia Anatomica skin regions are fitted in — the same way the skeleton was, with the same limb maps the fitted bones use, so skin, bones, vessels and muscles below the cut share one pose and one fit by construction. Per leg the cut is a horizontal plane just above the ankle patches (male y 0.135 mapped through the leg similarity: female y −0.663 both sides); per arm it is mid-forearm (male y 0.98 through the forearm similarity: female y 0.157) — a first cut nearer the wrist ran through the female's raised thumb and the back of her hand, where the skin lies almost in the plane and no ring exists. The HRA skin loses every face whose three corners lie in a replaced zone (70,134 of 382,640) and the straddling faces' in-zone corners are lifted onto the plane (466), so the rim is planar and no notch opens; the fitted patches (foot, leg, hand and forearm classes: 70 patches, plus the 6 hair regions = 76 in `female-skin-fitted.glb`, 0.28 MB) lose faces wholly above the plane and their last 6 cm are tapered radially onto the HRA cut ring (72 angular bins, the OUTER radius per bin so points caught inside the outline do not shrink it; 2,023 rim vertices tapered), so the seam closes. The seam remains visible as a faint ring — a labelled boundary, not a gap — and the coverage note says: "the skin is the Visible Human Female ... unreshaped, above the ankles and the distal forearms; fitted from the male model and labelled so: the feet and ankles and the hands and wrists (the Visible Human Female's feet are deformed in the source and her hands are posed unlike the fitted hand bones)". Every foot and hand patch is `fitted: 'male'`, dashed-framed as a label, and its card says so. The manifest's skin supplement records the planes, taper, rim counts and the cut (`skinReplacement`).
+
+*Protrusions.* (a) In the viewer and in the diagram stack, when the depth is the outermost layer and see-through is off, the deeper layers are not drawn at all — inside an opaque skin they are invisible, and only the slivers of a fitted muscle or vessel poking through showed (`layerTarget` in BodyViewer; the image stack in DiagramStage). (b) In the builder, every fitted vertex outside the female skin is pulled back inside it: an inside test on a 1 cm column grid (ray parity along z against the uncut HRA skin — 5,538 columns, 0 with odd parity, so the skin is closed) and, for a vertex outside, a move to 3 mm inside along the direction to its nearest skin vertex (6 or 12 mm when 3 is still outside), skipping the replaced foot and hand zones and the skin layer. Moved: skeleton 3,251 (318 unresolved), nerves 2,023 (244), organs 2 (20), vessels 6,795 (959), muscles 15,977 (1,710) — recorded per supplement as `clampedInsideSkin`. The unresolved ones sit in thin places (finger webs, the ear) where no 12 mm inward point is inside; with (a) they never show through a closed skin.
+
+*Hair.* The pubic patch, eyebrows and eyelashes are flat: every vertex is projected to its nearest skin vertex and set 1.5 mm outside it (1,781 vertices), so they lie on the skin; the head cap keeps its volume and is shifted as a whole only if no vertex touches the scalp (none needed: shift 0). Verified in close-up: the pubic hair sits on the mons, the eyebrows on the brow.
+
+*Full-screen camera.* On entering or leaving full screen the camera distance is refitted to the new stage exactly as Reset view fits it (`fitDistance(state, true)`), keeping the rotation and target; on an ordinary resize the reader's zoom ratio relative to the fit is kept. Measured after entering: desktop stage 1280×585, distance 3.304 = fit 3.304 (was 5.0 before the fix); Pixel 7 412×410, 3.304 = fit. `zoomToCursor` is on, so the wheel and pinch zoom toward the pointer (the feet, a hand), not the body's centre.
+
+*Label ranking.* A curated priority per layer (`labelPriority` in `src/lib/anatomy.ts`): tier 0 = the major parts (skeleton: skull bones, mandible, vertebrae, clavicle, scapula, sternum, ribs, humerus, radius, ulna, carpals and metacarpals, hip bone/ilium/ischium/pubis, sacrum, femur, patella, tibia, fibula, tarsals and metatarsals; muscles: deltoid, pectoralis major, biceps, triceps, rectus abdominis, obliques, latissimus, trapezius, gluteus maximus, quadriceps/rectus femoris, hamstrings, gastrocnemius, tibialis anterior, sternocleidomastoid, masseter and the rest of the list, and any Z-Anatomy head or part that NAMES one of them; organs: every organ entry; vessels: heart, aorta, venae cavae, carotid, jugular, subclavian, femoral, spleen, thymus and the main limb vessels; nerves: cerebrum, cerebellum, brainstem, cord, plexuses, sciatic, median, ulnar, femoral, vagus; skin: the TA2 regions); tier 2 = a sub-part (spongy/compact bone, cortex, a ligament, membrane, cartilage, segment, branch, tendon, head/body/tail of ...) which never ranks ahead of a whole structure; tier 1 = the rest. Ranking is forced → tier → visible area, and tier-0 items pass half the size threshold. The HRA's bone-tissue nodes ("Pubis spongy bone", "Ilium compact bone") merge into their bone ("Pubis", "Ilium") for labels and the index. Side pairs: each pair also carries a merged "(left/right)" record; when the two side labels would collide on screen the merged one stands in, otherwise the pair's labels read away from each other (the left-on-screen one flipped to read leftward), so a pair never overlaps. Display names are normalised across the sexes ("Femur (right)", never "Right femur"); the Wikipedia key stays the model's original name.
+
+*Phone diagram.* The hint no longer sits under the +/− buttons: on compact widths it is a line below the diagram box.
+
+Verification (`.scratch/shots-r13/`, both viewports): `*-female-skin`, `*-female-skin-side` (drag 90°), `*-female-closeup-feet/hands/face`, `desktop-fullscreen` (body fills the stage), `*-diagram-female-skin` (no protrusions), harness close-ups `skin4-hand.png`, `skin4-ankle-seam.png`, `skin4-front.png`, `skin3-feet.png`; zero console errors. Sizes: female 20.67 MB (skin 0.50 + skin-fitted 0.28; the fitted skeleton/nerves/vessels/muscles unchanged in count, ±2 kB from the clamp), 3,482 structures; male byte-identical; diagrams 1.69 MB (male 0.80, female 0.89), diagrams.json 0.55 MB; first load male 15.9 MB / female 25.8 MB uncompressed; AnatomyPage 54 kB / 17 kB gzip, BodyViewer 87 kB / 28 kB. Gates: typecheck, check:anatomy (PASS), build, `etl\run.py --only anatomy`.
+
+Known limits after the follow-up: the fitted hand is still rigid (the male's finger pose), now with matching skin so nothing pokes through; the seams at the ankle and mid-forearm read as faint rings; the arm cut is at mid-forearm rather than the wrist for the reason above, so 9 cm of the female forearm is the male's (the taper blends it into her fatter forearm).
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

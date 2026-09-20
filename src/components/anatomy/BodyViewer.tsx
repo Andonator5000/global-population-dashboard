@@ -562,6 +562,9 @@ export default function BodyViewer({
             const other = byKey.get(otherKey)
             flip = other !== undefined && c.x < other.x
           }
+          // A label that would run off the right edge of the stage reads to
+          // the left of its dot instead (a long name on a phone).
+          if (!flip && c.x + width > w - 4 && c.x - width >= 0) flip = true
           const box = flip ? { x0: c.x - width, y0: c.y - 14, x1: c.x + 12, y1: c.y + 14 } : { x0: c.x - 12, y0: c.y - 14, x1: c.x + width, y1: c.y + 14 }
           if (!c.forced && boxes.some((b) => box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0)) continue
           boxes.push(box)
