@@ -1,6 +1,6 @@
 {
   "name": "encyclopedia-andranika",
-  "description": "Encyclopedia Andranika — a static reference atlas of world data and human history, fed by a versioned ETL pipeline with provenance on every figure.",
+  "description": "Encyclopedia Andranika \u2014 a static reference atlas of world data and human history, fed by a versioned ETL pipeline with provenance on every figure.",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -24,7 +24,8 @@
     "flags": "node scripts/extract-flag-colors.mjs",
     "palette": "node scripts/build-map-palette.mjs",
     "check:icons": "node scripts/check-icon-coverage.mjs --strict",
-    "icons": "node scripts/fetch-icons.mjs"
+    "icons": "node scripts/fetch-icons.mjs",
+    "build:anatomy-models": "node --max-old-space-size=8192 scripts/build-anatomy-models.mjs"
   },
   "dependencies": {
     "culori": "^4.0.2",
@@ -46,6 +47,9 @@
     "topojson-client": "^3.1.0"
   },
   "devDependencies": {
+    "@gltf-transform/core": "^4.5.0",
+    "@gltf-transform/extensions": "^4.5.0",
+    "@gltf-transform/functions": "^4.5.0",
     "@tailwindcss/vite": "^4.1.13",
     "@types/d3-array": "^3.2.1",
     "@types/d3-axis": "^3.0.6",
@@ -63,6 +67,8 @@
     "@types/three": "^0.185.4",
     "@types/topojson-client": "^3.1.5",
     "@vitejs/plugin-react": "^5.0.2",
+    "draco3dgltf": "^1.5.7",
+    "meshoptimizer": "^1.2.0",
     "playwright": "^1.55.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.13",

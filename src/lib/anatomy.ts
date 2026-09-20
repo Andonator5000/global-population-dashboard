@@ -57,6 +57,129 @@ export interface AnatomyOrgan {
   function: string
   facts: { label: string; value: string }[]
   source: AnatomySource
+  /** 3-D alias patterns (round 12); resolved to node names by the build script. */
+  mesh?: { match?: string[]; except?: string[]; layer?: string }
+}
+
+// --------------------------------------------------------------------------
+// 3-D body models (round 12, DATA_DECISIONS.md §62). One registered free
+// model per sex, cut into six layers ordered bone -> flesh by
+// scripts/build-anatomy-models.mjs; every structure is a named node and
+// structures-<sex>.json says what it is and which organ entry it opens.
+// --------------------------------------------------------------------------
+
+export type Sex = 'male' | 'female'
+export type LayerId = 'skeleton' | 'nervous' | 'organs' | 'vessels' | 'muscles' | 'skin'
+
+/** Bone to flesh. Index = depth on the peel control. */
+export const LAYER_ORDER: LayerId[] = ['skeleton', 'nervous', 'organs', 'vessels', 'muscles', 'skin']
+
+/** The layer at a depth on the peel control (the skin when out of range). */
+export function layerAt(depth: number): LayerId {
+  return LAYER_ORDER[depth] ?? 'skin'
+}
+
+export interface ModelLayer {
+  id: LayerId
+  label: string
+  file: string
+  bytes: number
+  sha256: string
+  structures: number
+  triangles: number
+  sourceTriangles: number
+  coverage: 'full' | 'partial'
+  note: string
+}
+
+export interface ModelSource {
+  id: string
+  title: string
+  author: string
+  attribution: string | null
+  licence: string
+  licenceUrl: string
+  sourcePage: string
+  upstream?: { title: string; url: string; licence: string }[]
+  doi?: string | null
+  citationOverall?: string | null
+  version?: string
+  pinned?: { repository: string; commit: string }
+  notice?: string
+  files: { file: string; url: string; bytes: number; sha256: string }[]
+}
+
+export interface ModelSex {
+  sex: Sex
+  source: ModelSource
+  layers: ModelLayer[]
+  omitted: { what: string; count: number; why: string }[]
+  totalBytes: number
+  structureCount: number
+}
+
+export interface ModelManifest {
+  version: number
+  note: string
+  budgets: { layerBytes: number; sexBytes: number }
+  layers: { id: LayerId; label: string; order: number }[]
+  encoding: string[]
+  sexes: Record<Sex, ModelSex>
+}
+
+export interface ModelStructure {
+  node: string
+  layer: LayerId
+  name: string
+  latin?: string | null
+  derived?: string
+  hraLabel?: string | null
+  ontology?: string | null
+  system: string | null
+  group: string | null
+  organ: string | null
+  triangles: number
+}
+
+const modelCache = new Map<string, Promise<unknown>>()
+
+function loadJson<T>(path: string): Promise<T> {
+  let hit = modelCache.get(path) as Promise<T> | undefined
+  if (!hit) {
+    hit = fetch(`${DATA_BASE_URL}/${path}`).then((response) => {
+      if (!response.ok) {
+        modelCache.delete(path)
+        throw new Error(`${path}: HTTP ${response.status}`)
+      }
+      return response.json() as Promise<T>
+    })
+    modelCache.set(path, hit)
+  }
+  return hit
+}
+
+export function loadModelManifest(): Promise<ModelManifest> {
+  return loadJson<ModelManifest>('anatomy/models/manifest.json')
+}
+
+export function loadStructures(sex: Sex): Promise<ModelStructure[]> {
+  return loadJson<{ sex: Sex; structures: ModelStructure[] }>(`anatomy/models/structures-${sex}.json`).then(
+    (file) => file.structures,
+  )
+}
+
+export function anatomyModelUrl(file: string): string {
+  return `${DATA_BASE_URL}/${file}`
+}
+
+/** Which of the page's systems a whole layer stands for when nothing is picked. */
+export const LAYER_SYSTEMS: Record<LayerId, string[]> = {
+  skeleton: ['skeletal'],
+  nervous: ['nervous'],
+  organs: ['digestive', 'respiratory', 'urinary', 'reproductive', 'endocrine', 'lymphatic'],
+  vessels: ['circulatory', 'lymphatic'],
+  muscles: ['muscular'],
+  skin: ['integumentary'],
 }
 
 export interface AnatomyCooperation {

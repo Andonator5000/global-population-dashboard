@@ -1,0 +1,355 @@
+/* Anatomy 3-D stage (round 12). Scoped to .anatomy-* — the page imports
+   this file; nothing here touches src/index.css. Colours come from the
+   site's tokens so both themes work. */
+
+.anatomy-stage3d {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.anatomy-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.anatomy-segmented {
+  display: inline-flex;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 2px;
+  background: var(--surface-raised);
+}
+.anatomy-segmented button {
+  min-height: 40px;
+  min-width: 5.5rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.anatomy-segmented button.is-selected {
+  background: var(--control-selected-bg);
+  color: var(--control-selected-text);
+}
+.anatomy-segmented button:focus-visible,
+.anatomy-button:focus-visible,
+.anatomy-chip:focus-visible,
+.anatomy-pin:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.anatomy-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+.anatomy-toggle input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--accent);
+}
+.anatomy-toggle input:disabled + span {
+  opacity: 0.5;
+}
+
+.anatomy-button {
+  min-height: 40px;
+  padding: 0 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface-raised);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.anatomy-depth {
+  display: grid;
+  gap: 0.4rem;
+}
+.anatomy-depth-label {
+  font-size: 0.8125rem;
+}
+.anatomy-depth-hint {
+  color: var(--text-muted);
+}
+.anatomy-slider {
+  width: 100%;
+  max-width: 34rem;
+  height: 44px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.anatomy-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.anatomy-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0 0.85rem 0 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+.anatomy-chip-n {
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  background: var(--surface-sunken);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.anatomy-chip.is-below {
+  border-style: dashed;
+}
+.anatomy-chip.is-active {
+  background: var(--control-selected-bg);
+  color: var(--control-selected-text);
+  border-color: transparent;
+}
+.anatomy-chip.is-active .anatomy-chip-n {
+  background: rgb(0 0 0 / 0.12);
+}
+.anatomy-chip-flag {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.anatomy-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: min(78vh, 46rem);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 30%, var(--surface-raised), var(--surface-sunken));
+}
+.anatomy-frame.is-compact {
+  aspect-ratio: 4 / 5;
+  max-height: 72vh;
+}
+.anatomy-viewer {
+  position: absolute;
+  inset: 0;
+}
+.anatomy-viewer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.anatomy-loading,
+.anatomy-nowebgl {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.anatomy-nowebgl {
+  position: relative;
+  min-height: 12rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: 0.75rem;
+}
+.anatomy-progress {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  max-width: calc(100% - 1.2rem);
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.5rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.anatomy-progress.is-error {
+  color: oklch(45% 0.18 25);
+}
+.anatomy-progress-count {
+  font-variant-numeric: tabular-nums;
+}
+.anatomy-reset {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  min-height: 36px;
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+.anatomy-hint {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Pins: projected each frame; the button's transform is its screen position. */
+.anatomy-pins {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.anatomy-pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: -11px 0 0 -11px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.72rem;
+  line-height: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  will-change: transform;
+}
+.anatomy-pin-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid var(--surface-raised);
+  background: var(--accent);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.25);
+  flex: none;
+  transform: scale(0.55);
+}
+.anatomy-pin-label {
+  display: none;
+  padding: 0.28rem 0.5rem;
+  border-radius: 0.4rem;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  white-space: nowrap;
+  font-weight: 500;
+}
+.anatomy-pin.is-expanded:not(.is-collapsed) .anatomy-pin-label,
+.anatomy-pin.is-active .anatomy-pin-label {
+  display: inline-block;
+}
+.anatomy-pin.is-collapsed .anatomy-pin-dot {
+  opacity: 0.75;
+}
+.anatomy-pin.is-active .anatomy-pin-dot {
+  background: oklch(80% 0.18 85);
+  transform: scale(0.8);
+}
+.anatomy-pin.is-active .anatomy-pin-label {
+  border-color: var(--border-strong);
+}
+.anatomy-pin:hover .anatomy-pin-label {
+  display: inline-block;
+}
+
+.anatomy-coverage,
+.anatomy-credit {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+.anatomy-credit a,
+.anatomy-coverage a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Picked structure card */
+.anatomy-picked {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 0.6rem;
+  background: var(--surface-raised);
+}
+.anatomy-picked h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.anatomy-picked .anatomy-picked-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.anatomy-picked .anatomy-picked-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+/* Tabs above the stage */
+.anatomy-tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: var(--surface-sunken);
+}
+.anatomy-tabs button {
+  min-height: 40px;
+  padding: 0 0.9rem;
+  border: 0;
+  border-radius: 0.45rem;
+  background: transparent;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.anatomy-tabs button[aria-selected='true'] {
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: var(--shadow-card);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anatomy-pin {
+    transition: none;
+  }
+}
