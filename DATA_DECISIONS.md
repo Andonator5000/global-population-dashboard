@@ -5432,7 +5432,7 @@ rotation ref per frame (1.2 ms median measured in the spin capture) and
 from state at rest, and the SVG's own background is transparent on the
 globe so the sky shows through around the ocean disc.
 
-### 68.68 Round 13: every labelled structure in the 3-D body gets a sourced description (2026-09-20)
+## 68. Round 13: every labelled structure in the 3-D body gets a sourced description (2026-09-20)
 
 
 Andy's brief for round 13: clicking a label on the 3-D anatomy must open "the
