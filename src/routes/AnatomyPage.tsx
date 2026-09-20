@@ -1,45 +1,59 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { BodyStage } from '../components/anatomy/BodyStage'
+import { DiagramStage, selectedKeyOf } from '../components/anatomy/DiagramStage'
 import { CollapsibleSources } from '../components/CollapsibleSources'
 import { Unavailable } from '../components/viz/primitives'
 import {
   LAYER_ORDER,
   LAYER_SYSTEMS,
   anatomyImageUrl,
+  labelGroups,
   layerAt,
+  loadDiagrams,
   loadModelManifest,
+  loadStructureWiki,
   loadStructures,
+  displayName,
+  normaliseStructureName,
   useAnatomy,
   type AnatomyFile,
   type AnatomyLayer,
   type AnatomyOrgan,
   type AnatomySystem,
+  type DiagramsFile,
+  type LabelGroup,
   type LayerId,
   type ModelManifest,
   type ModelStructure,
   type Sex,
+  type WikiFile,
 } from '../lib/anatomy'
 
 /**
  * /anatomy — the human body in layers (round 6, DATA_DECISIONS.md §55;
- * round 12, §62: the 3-D body).
+ * round 12, §65: the 3-D body; round 13: complete female layers, labels
+ * for every structure, full screen, diagrams rendered from the models).
  *
  * The page opens on a three-dimensional body — one registered free model
  * per sex (male: Z-Anatomy, CC BY-SA 4.0; female: NIH Human Reference
- * Atlas, CC BY 4.0), cut into six layers ordered bone -> flesh so each
- * sits flush on the one beneath — with a depth control, a Male / Female
- * toggle, orbit and zoom, and clickable structures whose names come from
- * the models themselves (Terminologia Anatomica for the male, the HRA's
- * labels for the female). Picking a structure opens its organ entry in
- * the panel beside the stage; a structure with no entry of its own still
- * says exactly what it is. The "Diagrams" tab keeps the OpenStax layer
- * stage from round 7 (and is the fallback without WebGL).
+ * Atlas, CC BY 4.0, completed with the male structures it lacks, fitted
+ * region by region and marked as fitted), cut into six layers ordered
+ * bone -> flesh so each sits flush on the one beneath — with a depth
+ * control, a Male / Female toggle, orbit and zoom, full screen, and a
+ * label for every named structure group (density follows the zoom, a
+ * search box finds any of them). Picking a structure or a label opens
+ * the site's organ entry when one exists, else the Wikipedia description
+ * the anatomy_structures stage supplies (CC BY-SA 4.0, attributed), else
+ * says plainly that no free description was found. The "Diagrams" tab is
+ * the same body rendered flat from the same models (front and back, the
+ * layers registered by construction), with the same labels and the same
+ * card, and keeps the OpenStax figures as "Source figures".
  *
  * The panel carries that system's description, functions, the systems it
  * works with (a chip jumps to it) and its organs, each opening to its own
- * entry. Below the viewer, the cooperation notes describe how the systems
- * act together, because that is the part a list of organs never conveys.
+ * entry, plus an index of the current layer's structures. Below the
+ * viewer, the cooperation notes describe how the systems act together.
  *
  * Everything shown comes from data/anatomy/; the diagrams are the
  * original Commons files and the models carry their manifest's
@@ -56,8 +70,10 @@ interface View {
 }
 
 type Tab = '3d' | 'diagrams'
+type DiagramSub = 'layers' | 'figures'
 const SEX_KEY = 'anatomy.sex'
 const TAB_KEY = 'anatomy.tab'
+const LABELS_KEY = 'anatomy.labels'
 
 function readHash(): { kind: 'system' | 'organ'; id: string } | null {
   const hash = window.location.hash.replace('#', '')
@@ -117,22 +133,29 @@ export function AnatomyPage() {
 
   // ---- Shared state --------------------------------------------------------
   const [tab, setTab] = useState<Tab>(() => readStored<Tab>(TAB_KEY, ['3d', 'diagrams'], '3d'))
+  const [diagramSub, setDiagramSub] = useState<DiagramSub>('layers')
   const [viewIndex, setViewIndex] = useState(0)
   const [figureIndex, setFigureIndex] = useState(0)
   const [openOrgan, setOpenOrgan] = useState<string | null>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const organRefs = useRef(new Map<string, HTMLElement>())
 
-  // ---- 3-D state -------------------------------------------------------------
+  // ---- 3-D / diagram state -----------------------------------------------------
   const [sex, setSexState] = useState<Sex>(() => readStored<Sex>(SEX_KEY, ['male', 'female'], 'male'))
   const [depth, setDepth] = useState(LAYER_ORDER.length - 1)
   const [seeThrough, setSeeThrough] = useState(false)
+  const [labelsOn, setLabelsOnState] = useState(() => readStored(LABELS_KEY, ['on', 'off'], 'on') === 'on')
+  const [labelQuery, setLabelQuery] = useState('')
   const [selected, setSelected] = useState<ModelStructure | null>(null)
   const [panelSystem, setPanelSystem] = useState<string | null>(null)
   const [manifest, setManifest] = useState<ModelManifest | null>(null)
   const [manifestError, setManifestError] = useState<string | null>(null)
   const [structures, setStructures] = useState<{ sex: Sex; list: ModelStructure[] } | null>(null)
   const [structuresError, setStructuresError] = useState<string | null>(null)
+  const [diagrams, setDiagrams] = useState<DiagramsFile | null>(null)
+  const [diagramsError, setDiagramsError] = useState<string | null>(null)
+  const [wiki, setWiki] = useState<WikiFile | null>(null)
+  const [wikiError, setWikiError] = useState<string | null>(null)
 
   const compact = useMemo(
     () => window.matchMedia('(pointer: coarse) and (max-width: 768px)').matches,
@@ -148,6 +171,13 @@ export function AnatomyPage() {
       })
       .catch((error: unknown) => {
         if (!cancelled) setManifestError(error instanceof Error ? error.message : String(error))
+      })
+    loadDiagrams()
+      .then((data) => {
+        if (!cancelled) setDiagrams(data)
+      })
+      .catch((error: unknown) => {
+        if (!cancelled) setDiagramsError(error instanceof Error ? error.message : String(error))
       })
     return () => {
       cancelled = true
@@ -169,6 +199,22 @@ export function AnatomyPage() {
     }
   }, [sex])
 
+  // The descriptions file (0.9 MB) is fetched the first time something is picked.
+  useEffect(() => {
+    if (!selected || wiki || wikiError) return
+    let cancelled = false
+    loadStructureWiki()
+      .then((data) => {
+        if (!cancelled) setWiki(data)
+      })
+      .catch((error: unknown) => {
+        if (!cancelled) setWikiError(error instanceof Error ? error.message : String(error))
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [selected, wiki, wikiError])
+
   const structureList = structures?.sex === sex ? structures.list : null
 
   const systemsById = useMemo(
@@ -177,10 +223,6 @@ export function AnatomyPage() {
   )
   const organsById = useMemo(
     () => new Map((file?.organs ?? []).map((organ) => [organ.id, organ])),
-    [file],
-  )
-  const organNames = useMemo(
-    () => new Map((file?.organs ?? []).map((organ) => [organ.id, organ.name])),
     [file],
   )
 
@@ -213,6 +255,10 @@ export function AnatomyPage() {
   const chooseTab = (next: Tab) => {
     setTab(next)
     store(TAB_KEY, next)
+  }
+  const setLabelsOn = (value: boolean) => {
+    setLabelsOnState(value)
+    store(LABELS_KEY, value ? 'on' : 'off')
   }
 
   // Deep links: /anatomy#skeleton opens that layer / view, /anatomy#organ-heart
@@ -266,11 +312,13 @@ export function AnatomyPage() {
     }
   }
 
+  const modelTab = tab === '3d' || diagramSub === 'layers'
+
   const jumpToSystem = (systemId: string) => {
     setPanelSystem(systemId)
     setOpenOrgan(null)
     setSelected(null)
-    if (tab === '3d') {
+    if (modelTab) {
       setDepth(layerForSystem(systemId))
       history.replaceState(null, '', `#${systemId}`)
     } else {
@@ -280,14 +328,14 @@ export function AnatomyPage() {
     panelRef.current?.scrollIntoView({ block: 'start', behavior: reducedMotion ? 'auto' : 'smooth' })
   }
 
-  /** Open an organ entry and, in 3-D, move to its layer and light it up. */
+  /** Open an organ entry and, in the model views, move to its layer and light it up. */
   const revealOrgan = (organId: string, options: { fromModel?: boolean } = {}) => {
     const organ = organsById.get(organId)
     if (!organ) return
     setOpenOrgan(organId)
     setPanelSystem(organ.systems[0] ?? null)
     history.replaceState(null, '', `#organ-${organId}`)
-    if (tab === '3d') {
+    if (modelTab) {
       const layer = layerOfOrgan(organId)
       if (layer !== null && !options.fromModel) setDepth(layer)
       if (!options.fromModel) setSelected(null)
@@ -308,10 +356,18 @@ export function AnatomyPage() {
     }
   }
 
+  /** A structure chosen from the index: select it, and move the depth to its layer. */
+  const pickFromIndex = (group: LabelGroup) => {
+    const layer = LAYER_ORDER.indexOf(group.layer)
+    if (layer >= 0 && layer !== depth) setDepth(layer)
+    onPick(group.nodes[0] ?? null)
+  }
+
   const onDepthChange = (next: number) => {
     setDepth(next)
     setSelected(null)
     setOpenOrgan(null)
+    setLabelQuery('')
     const first = LAYER_SYSTEMS[layerAt(next)][0] ?? null
     setPanelSystem(first)
     if (first) history.replaceState(null, '', `#${first}`)
@@ -331,16 +387,32 @@ export function AnatomyPage() {
     }
     return [...ids]
   }, [depth, structureList, systemsById])
-  const system =
-    tab === '3d'
-      ? systemsById.get(panelSystem ?? '') ?? systemsById.get(layerSystems[0] ?? '') ?? null
-      : diagramSystem
+  const system = modelTab
+    ? systemsById.get(panelSystem ?? '') ?? systemsById.get(layerSystems[0] ?? '') ?? null
+    : diagramSystem
   const current = view?.images[figureIndex] ?? view?.images[0] ?? null
   const figuresForSystem = useMemo(
     () => (file && system ? file.figures.filter((f) => f.system === system.id) : []),
     [file, system],
   )
   const selectedOrgan = selected?.organ ? organsById.get(selected.organ) ?? null : null
+  const selectedKey = selectedKeyOf(selected)
+  const layerGroups = useMemo(
+    () => (structureList ? labelGroups(structureList, layerAt(depth)) : []),
+    [structureList, depth],
+  )
+
+  const pickedCard = selected ? (
+    <PickedCard
+      structure={selected}
+      organ={selectedOrgan}
+      systemsById={systemsById}
+      wiki={wiki}
+      wikiError={wikiError}
+      onClear={() => setSelected(null)}
+      onOpenOrgan={selectedOrgan ? () => revealOrgan(selectedOrgan.id, { fromModel: true }) : null}
+    />
+  ) : null
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
@@ -355,11 +427,12 @@ export function AnatomyPage() {
         <p className="mt-2 max-w-3xl text-sm" style={{ color: 'var(--text-muted)' }}>
           The body in layers, from the skeleton out to the skin. Rotate and zoom a
           three-dimensional body, peel it layer by layer, switch between the male and the
-          female model, and click any structure to read what it is; each layer is one or more of
-          the body's systems, and the panel beside the body carries the system's description,
-          its organs and the systems it works with. Descriptions follow OpenStax Anatomy and
-          Physiology 2e and cite their chapter; every model and diagram carries its author and
-          licence.
+          female model, and click any structure or label to read what it is; each layer is one or
+          more of the body's systems, and the panel beside the body carries the system's
+          description, its organs, the systems it works with and an index of the layer's
+          structures. Descriptions follow OpenStax Anatomy and Physiology 2e and cite their
+          chapter, structure descriptions are Wikipedia's (CC BY-SA), and every model and diagram
+          carries its author and licence.
         </p>
       </header>
 
@@ -391,13 +464,23 @@ export function AnatomyPage() {
               </button>
             </div>
             {tab === 'diagrams' && (
+              <div className="anatomy-tabs" role="tablist" aria-label="Diagram source">
+                <button type="button" role="tab" aria-selected={diagramSub === 'layers'} onClick={() => setDiagramSub('layers')}>
+                  Layered body
+                </button>
+                <button type="button" role="tab" aria-selected={diagramSub === 'figures'} onClick={() => setDiagramSub('figures')}>
+                  Source figures
+                </button>
+              </div>
+            )}
+            {tab === 'diagrams' && diagramSub === 'figures' && (
               <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
                 OpenStax Figure 1.4 panels, outer to inner
               </span>
             )}
           </div>
 
-          {tab === 'diagrams' && (
+          {tab === 'diagrams' && diagramSub === 'figures' && (
             <>
               {/* Depth control: the layers in order, outer to inner. */}
               <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -470,17 +553,22 @@ export function AnatomyPage() {
                     manifest={manifest}
                     structures={structureList}
                     structuresError={structuresError}
+                    diagrams={diagrams}
                     sex={sex}
                     onSex={setSex}
                     depth={depth}
                     onDepth={onDepthChange}
                     seeThrough={seeThrough}
                     onSeeThrough={setSeeThrough}
+                    labelsOn={labelsOn}
+                    onLabelsOn={setLabelsOn}
+                    labelQuery={labelQuery}
+                    onLabelQuery={setLabelQuery}
                     selected={selected}
+                    selectedKey={selectedKey}
                     onPick={onPick}
                     highlightOrgan={openOrgan}
-                    organNames={organNames}
-                    onOpenOrgan={(id) => revealOrgan(id, { fromModel: true })}
+                    pickedCard={pickedCard}
                     compact={compact}
                     reducedMotion={reducedMotion}
                   />
@@ -489,6 +577,38 @@ export function AnatomyPage() {
                 ) : (
                   <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
                     Loading the model index…
+                  </p>
+                )}
+              </div>
+            ) : diagramSub === 'layers' ? (
+              <div className="min-w-0 lg:sticky lg:top-4 lg:self-start">
+                {manifest && diagrams ? (
+                  <DiagramStage
+                    diagrams={diagrams}
+                    manifest={manifest}
+                    structures={structureList}
+                    sex={sex}
+                    onSex={setSex}
+                    depth={depth}
+                    onDepth={onDepthChange}
+                    seeThrough={seeThrough}
+                    onSeeThrough={setSeeThrough}
+                    labelsOn={labelsOn}
+                    onLabelsOn={setLabelsOn}
+                    labelQuery={labelQuery}
+                    onLabelQuery={setLabelQuery}
+                    selected={selected}
+                    selectedKey={selectedKey}
+                    onPick={onPick}
+                    highlightOrgan={openOrgan}
+                    compact={compact}
+                    reducedMotion={reducedMotion}
+                  />
+                ) : diagramsError || manifestError ? (
+                  <Unavailable what="the layered diagrams" source="data/anatomy/diagrams" reason={diagramsError ?? manifestError ?? ''} />
+                ) : (
+                  <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                    Loading the diagrams…
                   </p>
                 )}
               </div>
@@ -560,46 +680,10 @@ export function AnatomyPage() {
               )
             )}
 
-            {/* The layer's system, and in 3-D the picked structure. */}
+            {/* The layer's system, and in the model views the picked structure and the index. */}
             <div ref={panelRef} className="min-w-0 scroll-mt-4 space-y-4">
-              {tab === '3d' && selected && (
-                <div className="anatomy-picked" aria-live="polite">
-                  <h3>{selected.name}</h3>
-                  <p className="anatomy-picked-meta m-0">
-                    {selected.latin && <span>{selected.latin} · </span>}
-                    {selected.hraLabel && selected.hraLabel.toLowerCase() !== selected.name.toLowerCase() && (
-                      <span>HRA label: {selected.hraLabel} · </span>
-                    )}
-                    {selected.ontology && <span>{selected.ontology} · </span>}
-                    {selected.system && systemsById.has(selected.system)
-                      ? systemsById.get(selected.system)!.name
-                      : 'system not recorded by the source'}
-                    {selected.group && ` · ${selected.group}`}
-                  </p>
-                  {selected.fitted && (
-                    <p className="m-0 text-xs" style={{ color: 'var(--text-muted)' }}>
-                      Fitted from the male model (Z-Anatomy, CC BY-SA 4.0): the Human Reference Atlas has no
-                      stomach or oesophagus for either sex, so this is the male organ scaled into the female
-                      body between the liver, spleen and pancreas. Its position is indicative, not measured.
-                    </p>
-                  )}
-                  <p className="m-0 text-sm">
-                    {selectedOrgan ? (
-                      <>
-                        Entry: <strong>{selectedOrgan.name}</strong>, opened below.
-                      </>
-                    ) : (
-                      <>Detailed entry not available for this structure; its name and system are as the model records them.</>
-                    )}
-                  </p>
-                  <div className="anatomy-picked-actions">
-                    <button type="button" className="anatomy-button" onClick={() => setSelected(null)}>
-                      Clear selection
-                    </button>
-                  </div>
-                </div>
-              )}
-              {tab === '3d' && layerSystems.length > 1 && (
+              {modelTab && pickedCard}
+              {modelTab && layerSystems.length > 1 && (
                 <div className="flex flex-wrap items-center gap-1.5 text-xs" role="group" aria-label="Systems in this layer">
                   <span style={{ color: 'var(--text-muted)' }}>In this layer:</span>
                   {layerSystems.map((id) => {
@@ -628,6 +712,14 @@ export function AnatomyPage() {
                     )
                   })}
                 </div>
+              )}
+              {modelTab && structureList && (
+                <StructureIndex
+                  groups={layerGroups}
+                  layerLabel={manifest?.layers.find((l) => l.id === layerAt(depth))?.label ?? layerAt(depth)}
+                  selectedKey={selectedKey}
+                  onPick={pickFromIndex}
+                />
               )}
               {system && (
                 <SystemPanel
@@ -763,6 +855,183 @@ export function AnatomyPage() {
         </>
       )}
     </div>
+  )
+}
+
+
+/**
+ * The picked structure: name, source terms, where it belongs, whether it
+ * was fitted from the male model, and its description — the site's organ
+ * entry when one exists (opened in the panel), else the Wikipedia extract
+ * the anatomy_structures stage supplies (verbatim, CC BY-SA 4.0, linked;
+ * a broader article is said to be one), else "no free description found".
+ */
+function PickedCard({
+  structure,
+  organ,
+  systemsById,
+  wiki,
+  wikiError,
+  onClear,
+  onOpenOrgan,
+}: {
+  structure: ModelStructure
+  organ: AnatomyOrgan | null
+  systemsById: Map<string, AnatomySystem>
+  wiki: WikiFile | null
+  wikiError: string | null
+  onClear: () => void
+  onOpenOrgan: (() => void) | null
+}) {
+  const key = normaliseStructureName(structure.name)
+  const entry = wiki?.structures[key] ?? null
+  const licence = wiki?.source.licence ?? 'CC BY-SA 4.0'
+  const licenceUrl = wiki?.source.licenceUrl ?? 'https://creativecommons.org/licenses/by-sa/4.0/'
+  return (
+    <div className="anatomy-picked" aria-live="polite">
+      <h3>{displayName(structure.name)}</h3>
+      <p className="anatomy-picked-meta m-0">
+        {structure.latin && <span>{structure.latin} · </span>}
+        {structure.hraLabel && structure.hraLabel.toLowerCase() !== structure.name.toLowerCase() && (
+          <span>HRA label: {structure.hraLabel} · </span>
+        )}
+        {structure.ontology && <span>{structure.ontology} · </span>}
+        {structure.system && systemsById.has(structure.system)
+          ? systemsById.get(structure.system)!.name
+          : 'system not recorded by the source'}
+        {structure.group && ` · ${structure.group}`}
+      </p>
+      {structure.fitted && (
+        <p className="anatomy-fitted-note">
+          Fitted from the male model (Z-Anatomy, CC BY-SA 4.0): the Human Reference Atlas does not model this
+          structure for the female, so this is the male structure carried into the female body by region
+          (spine, pelvis, femur and tibia, brain, and the skin silhouette as landmarks). Its position is indicative,
+          not measured.
+        </p>
+      )}
+      {organ ? (
+        <p className="m-0 text-sm">
+          Entry: <strong>{organ.name}</strong>
+          {onOpenOrgan ? (
+            <>
+              ,{' '}
+              <button type="button" className="underline underline-offset-2" onClick={onOpenOrgan}>
+                opened below
+              </button>
+              .
+            </>
+          ) : (
+            '.'
+          )}
+        </p>
+      ) : entry && entry.title ? (
+        <>
+          {entry.scope === 'broader' && (
+            <p className="m-0 text-xs" style={{ color: 'var(--text-muted)' }}>
+              No article for this structure itself; Wikipedia on <strong>{entry.title}</strong>
+              {entry.resolvedBy === 'parent' ? ', which it is part of' : ', the kind of structure it is'}:
+            </p>
+          )}
+          <p className="anatomy-desc">{entry.extract}</p>
+          <p className="anatomy-desc-credit">
+            From the Wikipedia article{' '}
+            <a href={entry.url} target="_blank" rel="noreferrer">
+              {entry.title}
+            </a>
+            ,{' '}
+            <a href={licenceUrl} target="_blank" rel="noreferrer">
+              {licence}
+            </a>
+            ; text verbatim.
+          </p>
+        </>
+      ) : wiki || wikiError ? (
+        <p className="m-0 text-sm">
+          No free description found for this structure{entry?.reason ? ` (${entry.reason})` : ''}; its name and
+          system are as the model records them.
+        </p>
+      ) : (
+        <p className="m-0 text-xs" style={{ color: 'var(--text-muted)' }}>
+          Looking up the description…
+        </p>
+      )}
+      <div className="anatomy-picked-actions">
+        <button type="button" className="anatomy-button" onClick={onClear}>
+          Clear selection
+        </button>
+      </div>
+    </div>
+  )
+}
+
+/** The current layer's structures as a collapsible, filterable list; a click selects one in the model. */
+function StructureIndex({
+  groups,
+  layerLabel,
+  selectedKey,
+  onPick,
+}: {
+  groups: LabelGroup[]
+  layerLabel: string
+  selectedKey: string | null
+  onPick: (group: LabelGroup) => void
+}) {
+  const [filter, setFilter] = useState('')
+  const [open, setOpen] = useState(false)
+  const q = filter.trim().toLowerCase()
+  const shown = q ? groups.filter((g) => g.name.toLowerCase().includes(q)) : groups
+  const fitted = groups.filter((g) => g.fitted).length
+  return (
+    <details className="anatomy-index" open={open} onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
+      <summary>
+        <span>
+          Structures in this layer: {layerLabel}
+          <span className="ml-2 font-normal" style={{ color: 'var(--text-muted)' }}>
+            {groups.length.toLocaleString()} named{fitted > 0 ? `, ${fitted.toLocaleString()} fitted from the male model` : ''}
+          </span>
+        </span>
+      </summary>
+      <div className="anatomy-index-body">
+        <label className="anatomy-search" style={{ maxWidth: 'none' }}>
+          <span className="sr-only">Filter the structures</span>
+          <input
+            type="search"
+            value={filter}
+            placeholder={`Filter ${groups.length.toLocaleString()} structures…`}
+            onChange={(event) => setFilter(event.target.value)}
+            aria-label="Filter the structures of this layer"
+          />
+        </label>
+        <ul className="anatomy-index-list" aria-label="Structures">
+          {shown.slice(0, 400).map((group) => (
+            <li key={group.key}>
+              <button
+                type="button"
+                className={group.key === selectedKey ? 'is-active' : ''}
+                aria-pressed={group.key === selectedKey}
+                onClick={() => onPick(group)}
+              >
+                <span>{group.name}</span>
+                <span className="anatomy-index-meta">
+                  {group.nodes.length > 1 ? `${group.nodes.length} parts` : ''}
+                  {group.fitted ? (group.nodes.length > 1 ? ' · fitted' : 'fitted') : ''}
+                </span>
+              </button>
+            </li>
+          ))}
+          {shown.length > 400 && (
+            <li className="px-2 py-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+              {shown.length - 400} more; narrow the filter.
+            </li>
+          )}
+          {shown.length === 0 && (
+            <li className="px-2 py-1 text-xs" style={{ color: 'var(--text-muted)' }}>
+              Nothing in this layer matches.
+            </li>
+          )}
+        </ul>
+      </div>
+    </details>
   )
 }
 

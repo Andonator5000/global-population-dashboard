@@ -199,6 +199,112 @@ else {
   console.log(`  3-D models: ${(modelBytes / 1e6).toFixed(2)} MB across both sexes · ${structureCount.toLocaleString()} named structures · ${resolved.size} of ${file.organs.length} organ entries reachable from a model`)
 }
 
+
+// ---- Round 13: fitted supplements, label sets, rendered diagrams ---------------
+// The female's four partial layers each carry a fitted supplement; every
+// structure marked `fitted` is accounted for by a supplement's structure
+// count; the diagram images exist, hash and fit their budgets, cover every
+// layer x view for both sexes, and were rendered from the model files the
+// manifest ships now (their sha256s must match); every anchor table names
+// only structures of its layer.
+{
+  const models = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf-8')) : null
+  if (models) {
+    for (const sex of ['male', 'female']) {
+      const record = models.sexes?.[sex]
+      const structurePath = join(MODEL_DIR, `structures-${sex}.json`)
+      if (!record || !existsSync(structurePath)) continue
+      const { structures } = JSON.parse(readFileSync(structurePath, 'utf-8'))
+      for (const layer of record.layers ?? []) {
+        const fittedCount = structures.filter((s) => s.layer === layer.id && s.fitted).length
+        const supplementCount = (layer.supplements ?? []).reduce((sum, s) => sum + s.structures, 0)
+        if (fittedCount !== supplementCount) fail(`models ${sex}/${layer.id}: ${fittedCount} fitted structures but the supplements hold ${supplementCount}`)
+        if (sex === 'female' && layer.coverage === 'partial' && supplementCount === 0) fail(`models female/${layer.id}: partial with no fitted supplement`)
+        if (supplementCount > 0 && !/fitted/i.test(layer.note ?? '')) fail(`models ${sex}/${layer.id}: note does not say what is fitted`)
+        for (const extra of layer.supplements ?? []) {
+          if (extra.structures > 0 && !Array.isArray(extra.omitted) && extra.id !== 'organs-fitted') fail(`models ${sex}/${layer.id}/${extra.id}: no omitted list (what was left out and why)`)
+        }
+      }
+      if (sex === 'female') {
+        const fit = (record.supplements ?? []).find((s) => s.id === 'z-anatomy-fitted-region')
+        if (!fit?.fit?.maps?.trunk || !fit?.fit?.maps?.head || !fit?.fit?.maps?.['upperarm.l'] || !fit?.fit?.maps?.['foot.r']) fail('models female: region-fit source lacks its maps (trunk/head/limbs)')
+        if (!fit?.notice || !existsSync(join(DATA_DIR, '..', fit.notice))) fail('models female: region-fit source lacks the share-alike NOTICE')
+      }
+      for (const s of structures) if (s.fitted && s.fitted !== 'male') fail(`models ${sex}: structure ${s.node} fitted from unknown source ${s.fitted}`)
+    }
+  }
+  const DIAGRAM_DIR = join(DATA_DIR, 'diagrams')
+  const diagramsPath = join(DIAGRAM_DIR, 'diagrams.json')
+  if (!existsSync(diagramsPath)) fail('diagrams: diagrams.json missing (run node scripts/render-anatomy-diagrams.mjs)')
+  else if (models) {
+    const diagrams = JSON.parse(readFileSync(diagramsPath, 'utf-8'))
+    const views = diagrams.views ?? ['front', 'back']
+    let diagramBytes = 0
+    for (const sex of ['male', 'female']) {
+      const record = diagrams.sexes?.[sex]
+      if (!record) {
+        fail(`diagrams: no ${sex} images`)
+        continue
+      }
+      const modelRecord = models.sexes[sex]
+      const shipped = new Map()
+      for (const layer of modelRecord.layers) {
+        shipped.set(layer.file, layer.sha256)
+        for (const extra of layer.supplements ?? []) shipped.set(extra.file, extra.sha256)
+      }
+      for (const used of record.modelFiles ?? []) {
+        if (shipped.get(used.file) !== used.sha256) fail(`diagrams ${sex}: rendered from ${used.file} @ ${used.sha256.slice(0, 12)}, the manifest ships ${(shipped.get(used.file) ?? 'nothing').slice(0, 12)} (re-render)`)
+      }
+      for (const file of shipped.keys()) {
+        if (!(record.modelFiles ?? []).some((u) => u.file === file)) fail(`diagrams ${sex}: ${file} was not part of the render`)
+      }
+      const structurePath = join(MODEL_DIR, `structures-${sex}.json`)
+      const structures = existsSync(structurePath) ? JSON.parse(readFileSync(structurePath, 'utf-8')).structures : []
+      const layerOf = new Map(structures.map((s) => [s.node, s.layer]))
+      let total = 0
+      for (const layer of PAGE_LAYERS) {
+        for (const view of views) {
+          const image = (record.images ?? []).find((i) => i.layer === layer && i.view === view)
+          if (!image) {
+            fail(`diagrams ${sex}: no ${layer} ${view} image`)
+            continue
+          }
+          const path = join(DATA_DIR, '..', image.file)
+          if (!existsSync(path)) {
+            fail(`diagrams ${sex}/${layer}/${view}: file missing (${image.file})`)
+            continue
+          }
+          const bytes = readFileSync(path)
+          total += bytes.length
+          if (bytes.length !== image.bytes) fail(`diagrams ${sex}/${layer}/${view}: ${bytes.length} bytes on disk, manifest says ${image.bytes}`)
+          if (createHash('sha256').update(bytes).digest('hex') !== image.sha256) fail(`diagrams ${sex}/${layer}/${view}: sha256 mismatch`)
+          if (bytes.length > (diagrams.budgets?.imageBytes ?? 700_000)) fail(`diagrams ${sex}/${layer}/${view}: over the image budget`)
+          if (bytes.toString('latin1', 0, 4) !== 'RIFF' || bytes.toString('latin1', 8, 12) !== 'WEBP') fail(`diagrams ${sex}/${layer}/${view}: not a WebP`)
+          if (image.height !== diagrams.heightPx) fail(`diagrams ${sex}/${layer}/${view}: height ${image.height}, expected ${diagrams.heightPx}`)
+          const table = record.anchors?.[`${layer}-${view}`]
+          if (!table) fail(`diagrams ${sex}/${layer}/${view}: no anchor table`)
+          else {
+            let visible = 0
+            for (const [node, a] of Object.entries(table)) {
+              if (layerOf.get(node) !== layer) fail(`diagrams ${sex}/${layer}/${view}: anchor for ${node}, which is not in this layer`)
+              if (!Array.isArray(a) || a.length !== 7 || a[0] <= 0) fail(`diagrams ${sex}/${layer}/${view}: malformed anchor for ${node}`)
+              else visible += 1
+            }
+            if (visible === 0) fail(`diagrams ${sex}/${layer}/${view}: no structure visible`)
+          }
+        }
+      }
+      // Every image of a sex and view has the same size (they must register).
+      const sizes = new Set((record.images ?? []).map((i) => `${i.width}x${i.height}`))
+      if (sizes.size !== 1) fail(`diagrams ${sex}: images differ in size (${[...sizes].join(', ')}) and cannot register`)
+      if (total !== record.totalBytes) fail(`diagrams ${sex}: totalBytes ${record.totalBytes} does not match ${total}`)
+      if (total > (diagrams.budgets?.sexBytes ?? 5_000_000)) fail(`diagrams ${sex}: ${(total / 1e6).toFixed(2)} MB over the budget`)
+      diagramBytes += total
+    }
+    console.log(`  diagrams: ${(diagramBytes / 1e6).toFixed(2)} MB of layer images, rendered from the shipped models`)
+  }
+}
+
 if (failures > 0) {
   console.error(`\nFAIL — ${failures} anatomy problem(s).`)
   process.exit(1)
