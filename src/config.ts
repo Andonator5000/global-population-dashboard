@@ -56,7 +56,9 @@ export const MAP_PALETTES = [
 export type MapPaletteKey = (typeof MAP_PALETTES)[number]
 export const DEFAULT_MAP_PALETTE: MapPaletteKey = 'atlas'
 export const MAP_PALETTE_LABELS: Record<MapPaletteKey, string> = {
-  atlas: 'Atlas — restrained flag hues',
+  // Round 12: "restrained" was the 2026-08-29 ruling, and Andy reversed it.
+  // The label follows the palette.
+  atlas: 'Atlas — vivid flag hues',
   paper: 'Paper — near-neutral tints',
   antique: 'Antique — hand-coloured copperplate (Blaeu)',
   pastel: 'Vintage pastel',

@@ -43,13 +43,33 @@ const NONE: ImageryGrade = {
 }
 
 export const IMAGERY_GRADES: Record<MapPaletteKey, ImageryGrade> = {
-  atlas: NONE,
-  paper: { ...NONE, desaturate: 0.4, lift: 0.08 },
+  // Round 12 (Andy: "make the colours of the maps more vibrant"). Atlas is
+  // the default and takes the full lift: +35% chroma and +12% contrast about
+  // mid-grey. Tuned by eye against .scratch/shots/{satellite,terrain}-r12-*
+  // — at +0.50/+0.20 the Sahara and the Australian interior clip to a flat
+  // orange and the Amazon loses its river network, so the numbers stop where
+  // the picture is still a photograph.
+  atlas: { ...NONE, saturate: 0.35, contrast: 0.12 },
+  // The quiet directions get a smaller lift, in character: paper and pastel
+  // gain crispness (contrast) but no chroma — adding saturation to a
+  // direction whose whole point is desaturation would just fight itself.
+  paper: { ...NONE, desaturate: 0.4, lift: 0.08, contrast: 0.06 },
   // The Blaeu sheet's tone (§48): the relief reads as a tinted engraving.
+  // MEASURED from the 1635 scan — unchanged in round 12.
   antique: { ...NONE, sepia: 0.9, lift: 0.06 },
-  pastel: { ...NONE, desaturate: 0.5, lift: 0.22 },
-  // Chart blue, measured from the nautical direction's water.
-  nautical: { ...NONE, desaturate: 0.25, tint: [0.55, 0.7, 0.82], tintAmount: 0.3 },
+  pastel: { ...NONE, desaturate: 0.5, lift: 0.22, contrast: 0.04 },
+  // Chart blue, measured from the nautical direction's water. A printed
+  // chart is crisp, so this one takes contrast and a little chroma back
+  // after its desaturation, which is what makes the tint read as ink.
+  nautical: {
+    ...NONE,
+    desaturate: 0.25,
+    tint: [0.55, 0.7, 0.82],
+    tintAmount: 0.3,
+    saturate: 0.15,
+    contrast: 0.1,
+  },
+  // Colour-blind-safe by construction — never graded.
   mono: { ...NONE, desaturate: 1 },
 }
 

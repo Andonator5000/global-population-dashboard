@@ -60,15 +60,28 @@ const toOklch = converter('oklch')
 
 const THEMES = {
   light: {
-    surface: 'oklch(98% 0.010 235)', // map water
-    stroke: 'oklch(98% 0.010 235)',
-    // 2026-08-29 (Phase 2.4): the maintainer asked for something more
-    // restrained and cohesive than the 0.10-chroma band of 2026-08-15.
-    // Chroma drops to 0.045; the lightness tiers widen to 0.055 steps so the
-    // neighbour separation (dE = dL*100 for same-hue pairs) stays above the
-    // 4.0 floor without leaning on hue at all -- which is also what keeps
-    // the palette legible under every common colour-vision deficiency:
-    // lightness is the one channel CVD never removes.
+    // MUST mirror --map-water in src/index.css. Round 12 gave the flat-map
+    // sea real colour (chroma 0.010 -> 0.028) at all but the same lightness;
+    // it cannot go darker without pushing the top tier through the
+    // fill/water floor (measured: a 96.5%/0.035 sea drops the worst fill to
+    // 1.388, a 94%/0.040 sea to 1.27).
+    surface: 'oklch(97.5% 0.028 232)', // map water
+    stroke: 'oklch(97.5% 0.028 232)',
+    // 2026-08-29 (Phase 2.4) dropped the band from 0.10 to 0.045 chroma on a
+    // restraint ruling. Round 12 (2026-09-19) REVERSES that ruling on Andy's
+    // word -- "make the colours of the maps more vibrant" -- and this is the
+    // default direction, so it takes the full lift: 0.12 light / 0.13 dark.
+    // The band value here is the fallback; DIRECTIONS.atlas carries the
+    // number that is actually used for the default fills.
+    //
+    // The four lightness tiers are UNCHANGED, and that is a measured result,
+    // not an oversight: clampChroma holds L while it walks chroma down for
+    // out-of-gamut hues, so the tier ladder's dE floor (dE = dL*100 for a
+    // same-hue pair) is untouched by the chroma rise. Going from 0.045 to
+    // 0.12 cost the fill/water floor 0.05 (1.49 -> 1.44) and the globe-ocean
+    // floor 0.15 (4.46 -> 4.31), both far inside their gates, so widening
+    // the tiers would have bought nothing and would have changed mono and
+    // the quiet directions, which Andy asked to leave alone.
     chroma: 0.045,
     // The TOP tier is capped at 0.845 because anything lighter drifts too
     // close to the water and drops below the fill/water contrast floor --
@@ -76,8 +89,10 @@ const THEMES = {
     tiers: [0.68, 0.735, 0.79, 0.845],
   },
   dark: {
-    surface: 'oklch(13% 0.010 235)',
-    stroke: 'oklch(13% 0.010 235)',
+    // MUST mirror --map-water (dark) in src/index.css. Round 12: a deeper,
+    // more saturated navy in place of the near-black blue.
+    surface: 'oklch(15% 0.040 245)',
+    stroke: 'oklch(15% 0.040 245)',
     chroma: 0.05,
     tiers: [0.34, 0.4, 0.46, 0.52],
   },
@@ -100,8 +115,15 @@ const THEMES = {
  * the globe ocean (light fills double as the globe's land in both themes).
  */
 const DIRECTIONS = {
-  atlas: { chroma: { light: 0.045, dark: 0.05 }, blendTo: null },
-  paper: { chroma: { light: 0.022, dark: 0.028 }, blendTo: 80 },
+  // Round 12 (2026-09-19): Andy reversed the 2026-08-29 restraint ruling and
+  // asked for vibrant maps. Atlas takes the full lift; paper, pastel and
+  // nautical take roughly half of it (they are the QUIET options and must
+  // stay quieter than atlas, but they were quieter than they needed to be);
+  // antique and mono do not move -- antique is a MEASURED Blaeu sheet and
+  // mono is the colour-blind-safe direction where chroma is zero by
+  // construction. Every number below is through the same three gates.
+  atlas: { chroma: { light: 0.12, dark: 0.13 }, blendTo: null },
+  paper: { chroma: { light: 0.045, dark: 0.052 }, blendTo: 80 },
   // Round-2 §37: additional directions, every one through the same gates.
   // The 4-tier lightness logic is the data channel in ALL of them; hue is
   // identity only, so pulling hues toward a period palette changes the
@@ -128,10 +150,10 @@ const DIRECTIONS = {
   },
   // pastel: the flag hue kept, soft chroma. Tiers are the standard ones —
   // the top-tier/water floor was measured, so no lightening tricks here.
-  pastel: { chroma: { light: 0.032, dark: 0.036 }, blendTo: null },
+  pastel: { chroma: { light: 0.058, dark: 0.065 }, blendTo: null },
   // nautical: everything pulled toward chart-blue over the same tiers.
   nautical: {
-    chroma: { light: 0.03, dark: 0.034 },
+    chroma: { light: 0.055, dark: 0.062 },
     blendTo: 225,
     blendStrength: 0.55,
   },
@@ -174,7 +196,7 @@ const MIN_SURFACE_CONTRAST = 1.35
  * this is what makes "blue land vs blue ocean" confusion impossible: land
  * blues sit tiers of lightness above this.
  */
-const GLOBE_OCEAN = 'oklch(31% 0.06 255)'
+const GLOBE_OCEAN = 'oklch(32% 0.10 248)'
 const MIN_OCEAN_CONTRAST = 2.0
 
 // ---------------------------------------------------------------------------
