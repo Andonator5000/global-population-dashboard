@@ -1060,7 +1060,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       cssHeight: h,
       // Resolved ocean colour: canvas cannot use CSS custom properties.
       oceanFill:
-        getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#0b2740',
+        getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#00355c',
       // Section 51.1: the palette's tone over the imagery.
       grade: IMAGERY_GRADES[paletteDirection],
       // Round 7 (section 57.2): at rest the outlines come from the SAME
@@ -1146,7 +1146,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     ocean: string
     stroke: string
     strokeRgba: [number, number, number, number]
-  }>({ fills: [], ocean: '#0b2740', stroke: '#0b2740', strokeRgba: [1, 1, 1, 0.78] })
+  }>({ fills: [], ocean: '#00355c', stroke: '#00355c', strokeRgba: [1, 1, 1, 0.78] })
 
   useEffect(() => {
     if (!isDragRendering.current) rotationRef.current = rotation
@@ -1218,14 +1218,14 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         return readVar(`--region-${props.continent}`, GLOBE_LAND_NEUTRAL)
       }
       if (!populationByIso3.get(props.iso3)?.available) {
-        return 'oklch(92% 0.003 250)'
+        return readVar('--map-no-data', 'oklch(92% 0.003 250)')
       }
       return readVar(
         `--fill-globe-${paletteDirection}-${props.iso3}`,
         GLOBE_LAND_NEUTRAL,
       )
     })
-    const ocean = readVar('--map-ocean', '#0b2740')
+    const ocean = readVar('--map-ocean', '#00355c')
     // Political frames stroke borders in the ocean colour, as the SVG
     // does; the GL line pass needs it resolved to RGB (section 51).
     const oceanRgb = resolveCssColor(ocean)
@@ -2360,7 +2360,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   const backgroundFill = 'var(--map-space)'
   const landStroke = antiquePolitical ? ANTIQUE.line : 'var(--map-ocean)'
   const landNeutral = GLOBE_LAND_NEUTRAL
-  const noDataFill = antiquePolitical ? ANTIQUE.noData : 'oklch(92% 0.003 250)'
+  const noDataFill = antiquePolitical ? ANTIQUE.noData : 'var(--map-no-data)'
 
   // Continent view (Phase 2.4): each continent is ONE cohesive region --
   // every member takes the continent's region fill, the country strokes

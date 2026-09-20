@@ -147,7 +147,14 @@ export function EntityTable({ rows, year, revision, gdp, note }: EntityTableProp
   return (
     <section
       className="mt-8 rounded-xl border px-5 py-4"
-      style={{ borderColor: 'var(--border)', background: 'var(--surface-raised)' }}
+      style={{
+        borderColor: 'var(--border)',
+        background: 'var(--surface-raised)',
+        // The third raised card takes the same supernova top rule as the
+        // hero and the map card (round 12).
+        borderTopColor: 'var(--supernova)',
+        borderTopWidth: '3px',
+      }}
       id="all-entities"
       aria-labelledby="all-entities-heading"
     >

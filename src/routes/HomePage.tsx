@@ -641,7 +641,7 @@ export function HomePage() {
 
         <span className="hidden text-xs sm:inline" style={{ color: 'var(--text-muted)' }}>
           {projectionKey === 'globe'
-            ? 'Drag to spin the globe; scroll or pinch to zoom.'
+            ? 'Drag to spin the globe; scroll or pinch to zoom; twist with two fingers (or Shift+drag) to turn north.'
             : 'Scroll or pinch to zoom, drag to pan.'}{' '}
           Tab into the map, then use the arrow keys to move between countries
           and Enter to open one.
