@@ -1140,6 +1140,9 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   const frameVelocity = useRef<versor.Quaternion>([1, 0, 0, 0])
   const frameVelocityMs = useRef(16.7)
   const lastMoveAt = useRef(0)
+  /** True when the last drag frame was a twist (roll): its momentum is a
+      roll; otherwise the coast holds gamma exactly as the drag did. */
+  const lastFrameWasRoll = useRef(false)
   const inertiaFrame = useRef<number | null>(null)
   const dragFills = useRef<{
     fills: string[]
@@ -1471,6 +1474,10 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       endDragRender()
       return
     }
+    // A north-held drag's per-frame rotation is not itself roll-free when
+    // repeated (its axis need not lie in the lambda/phi subgroup), so the
+    // coast pins gamma where the finger left it; a twist coasts as a roll.
+    const holdGamma = lastFrameWasRoll.current ? null : rotationRef.current[2]
     if (startAngle > INERTIA_MAX_DEG_PER_FRAME) {
       v = versor.pow(v, INERTIA_MAX_DEG_PER_FRAME / startAngle)
     }
@@ -1484,7 +1491,9 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         versor.pow(v, frames),
         versor.fromEuler(rotationRef.current),
       )
-      writeRotation(versor.toEuler(versor.normalize(q)))
+      const e = versor.toEuler(versor.normalize(q))
+      if (holdGamma !== null) e[2] = holdGamma
+      writeRotation(e)
       drawDragFrame()
       if (versor.angle(v) < INERTIA_STOP_DEG) {
         inertiaFrame.current = null
@@ -1895,6 +1904,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       q1 = versor.multiply(versor.roll((-da * 180) / Math.PI), anchor.q0)
     }
     q1 = versor.normalize(q1)
+    lastFrameWasRoll.current = !(anchor.count === 1 && anchor.g0 && !anchor.roll)
     const prev = versor.fromEuler(rotationRef.current)
     frameVelocity.current = versor.multiply(q1, versor.conjugate(prev))
     const now = performance.now()

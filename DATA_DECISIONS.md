@@ -4063,6 +4063,10 @@ distance. A flick starts at most 15 degrees per frame (a hard flick
 carries the globe well over half a turn and settles in about two
 seconds). A release more than 80 ms after the last movement is a hold,
 not a flick, and gets no momentum: the finger stopped before it lifted.
+A north-held drag's per-frame rotation is not itself roll-free when
+repeated (its axis need not lie in the lambda/phi subgroup; a flick
+left gamma at -1.78 in the smoke test), so the coast pins gamma where
+the finger left it; a twist coasts as a pure roll.
 
 **62.5 The mobile glitches.** Two were found by the round's test scripts
 rather than guessed. (a) Lifting one finger of a pinch continued the
