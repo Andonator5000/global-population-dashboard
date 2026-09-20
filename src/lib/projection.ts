@@ -31,6 +31,13 @@ export const PROJECTION_LABELS: Record<ProjectionKey, string> = {
   globe: 'Globe (3-D)',
 }
 
+/**
+ * Globe orientation as d3's Euler triple [lambda, phi, gamma] in degrees
+ * (round 12, section 62): gamma is the roll about the line of sight, which a
+ * two-finger twist changes so north need not stay at the top of the screen.
+ */
+export type Rotation = [number, number, number]
+
 export function createProjection(key: ProjectionKey): GeoProjection {
   const factory = FACTORIES[key] ?? FACTORIES.equalEarth
   return factory()

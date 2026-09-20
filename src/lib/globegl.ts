@@ -37,6 +37,7 @@ import { geoDistance, type GeoProjection } from 'd3-geo'
 
 import { lowPowerDevice } from './device'
 import { type ImageryGrade } from './mapgrade'
+import type { Rotation } from './projection'
 import {
   loadTerrainMeta,
   terrainTileUrl,
@@ -76,7 +77,8 @@ export interface ImageryView {
   /** Identity of the flat projection, for mesh caching. */
   projectionKey: string
   isGlobe: boolean
-  rotation: [number, number]
+  /** [lambda, phi, gamma] in degrees (round 12: gamma is the roll). */
+  rotation: Rotation
   transform: { x: number; y: number; k: number }
   layout: ImageryLayout
   cssWidth: number
@@ -151,7 +153,7 @@ const VERT_LINE = `#version 300 es
 in vec2 a_lonlat;
 uniform vec3 u_ortho;
 uniform vec2 u_size;
-uniform vec2 u_rot;
+uniform vec3 u_rot;
 out float v_depth;
 void main() {
   float lon = a_lonlat.x + u_rot.x;
@@ -163,8 +165,14 @@ void main() {
   float sp = sin(u_rot.y);
   float xp = x * cp - z * sp;
   float zp = z * cp + x * sp;
+  // Round 12: gamma, the roll about the line of sight (d3 rotate()'s
+  // third angle), applied after phi exactly as d3 does.
+  float cg = cos(u_rot.z);
+  float sg = sin(u_rot.z);
+  float yg = y * cg - zp * sg;
+  float zg = zp * cg + y * sg;
   v_depth = xp;
-  vec2 d = vec2(u_ortho.x + u_ortho.y * y, u_ortho.z - u_ortho.y * zp);
+  vec2 d = vec2(u_ortho.x + u_ortho.y * yg, u_ortho.z - u_ortho.y * zg);
   gl_Position = vec4(d.x / u_size.x * 2.0 - 1.0, 1.0 - d.y / u_size.y * 2.0, 0.0, 1.0);
 }
 `
@@ -189,8 +197,8 @@ uniform int u_isBase;
 /* A, B, C: device_x = A + B*X ; device_y(top-down) = C - B*Y. */
 uniform vec3 u_ortho;
 uniform float u_height;
-/* delta lambda, delta phi (radians): d3 rotate([lambda, phi, 0]). */
-uniform vec2 u_rot;
+/* delta lambda, delta phi, delta gamma (radians): d3 rotate([lambda, phi, gamma]). */
+uniform vec3 u_rot;
 /* lon0, lat0, lon1, lat1 in radians of the texture window. */
 uniform vec4 u_window;
 uniform vec3 u_ocean;
@@ -225,11 +233,17 @@ void main() {
     float xp = sqrt(max(0.0, 1.0 - r2));
     float yp = p.x;
     float zp = p.y;
+    // Undo the roll (gamma) first, then the tilt (phi): the inverse of
+    // d3's rotate([lambda, phi, gamma]), in reverse order.
+    float cg = cos(u_rot.z);
+    float sg = sin(u_rot.z);
+    float y1 = yp * cg + zp * sg;
+    float z1 = zp * cg - yp * sg;
     float cp = cos(u_rot.y);
     float sp = sin(u_rot.y);
-    float x = xp * cp + zp * sp;
-    float z = zp * cp - xp * sp;
-    lon = atan(yp, x) - u_rot.x;
+    float x = xp * cp + z1 * sp;
+    float z = z1 * cp - xp * sp;
+    lon = atan(y1, x) - u_rot.x;
     lat = asin(clamp(z, -1.0, 1.0));
   } else {
     lon = v_lonlat.x;
@@ -843,7 +857,14 @@ export class GlobeGL implements ImageryRenderer {
     const rawLambda = view.rotation[0]
     const lambda = ((((rawLambda + 180) % 360) + 360) % 360) - 180
     const phi = view.rotation[1]
-    gl.uniform2f(loc('u_rot'), (lambda * Math.PI) / 180, (phi * Math.PI) / 180)
+    const rawGamma = view.rotation[2] ?? 0
+    const gamma = ((((rawGamma + 180) % 360) + 360) % 360) - 180
+    gl.uniform3f(
+      loc('u_rot'),
+      (lambda * Math.PI) / 180,
+      (phi * Math.PI) / 180,
+      (gamma * Math.PI) / 180,
+    )
 
     let mesh: FlatMesh | null = null
     if (isGlobe) {
@@ -938,7 +959,12 @@ export class GlobeGL implements ImageryRenderer {
       const sc = view.projection.scale()
       gl.uniform3f(lloc('u_ortho'), ax + b * t[0], b * sc, ay + b * t[1])
       gl.uniform2f(lloc('u_size'), bufferW, bufferH)
-      gl.uniform2f(lloc('u_rot'), (lambda * Math.PI) / 180, (phi * Math.PI) / 180)
+      gl.uniform3f(
+        lloc('u_rot'),
+        (lambda * Math.PI) / 180,
+        (phi * Math.PI) / 180,
+        (gamma * Math.PI) / 180,
+      )
       const c = view.borders.color
       gl.uniform4f(lloc('u_color'), c[0], c[1], c[2], c[3])
       gl.bindBuffer(gl.ARRAY_BUFFER, this.borderBuffer)
