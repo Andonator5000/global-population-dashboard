@@ -5432,6 +5432,220 @@ rotation ref per frame (1.2 ms median measured in the spin capture) and
 from state at rest, and the SVG's own background is transparent on the
 globe so the sky shows through around the ocean disc.
 
+### 68.68 Round 13: every labelled structure in the 3-D body gets a sourced description (2026-09-20)
+
+
+Andy's brief for round 13: clicking a label on the 3-D anatomy must open "the
+description of that part and its function". It did for the sixty editorial
+ORGAN entries (§55) and for nothing else — the two models carry 2,381 distinct
+structure NAMES across 6,747 meshes (the viewer's fitted male organs are in
+the female file now too), and every other click answered "detailed entry not
+available for this structure".
+
+A new ETL stage, `anatomy_structures`, now writes
+`data/anatomy/structures-wiki.json`: one entry per normalised structure name,
+either a sourced description or an explicit reason there is none. The viewer
+reads it by name; the interface note is `.scratch/anatomy-desc-notes.md`.
+
+### 68.1 Source
+
+**English Wikipedia**, through the batched Action API — `prop=extracts&
+exintro=1&explaintext=1&exlimit=20&redirects=1` plus
+`prop=pageprops&ppprop=disambiguation`, twenty titles per request — the same
+pattern as the inventions/dishes blurbs (§27) and the lead images in
+`sources/history.py`. Ontology lookups go to the Wikidata query service.
+
+There is no free, machine-readable prose corpus that covers TA2 at this
+breadth: OpenStax A&P 2e (the source for the organ entries, §55) describes
+organs and systems, not the 690 bones, 847 muscles and 391 arteries the models
+name; UBERON and FMA give definitions for a minority of terms and under
+licences that vary per term; Gray's Anatomy (1918, public domain) is a century
+out of date on nomenclature. Wikipedia covers ~1,300 of these terms directly
+and is CC BY-SA 4.0, which this project already carries elsewhere (the flag
+symbolism blurbs, the 3-D male model itself).
+
+**The extract is the description.** The lead is quoted VERBATIM and trimmed to
+about ninety words at a sentence boundary; nothing is rewritten or summarised,
+and **no "function" line is synthesised** — the brief allowed one only if the
+source states it, and a generated one would be fabrication. Where a lead was
+too short to stand alone (anatomy stubs often are), the sentences under it
+continue it, with section headings dropped; still verbatim.
+
+**Attribution.** Every entry carries the article `title`, its `url` and the
+document carries `source.licence` = CC BY-SA 4.0 with the licence URL. The
+viewer must render the article name, the link and the licence.
+
+### 68.2 The resolution ladder
+
+Structure names are TA2 English (male, Z-Anatomy) or HRA labels (female).
+Everything is keyed by NORMALISED NAME, never by node: the same name occurs
+left and right, in several layers, in both sexes, and the viewer fits male
+meshes into the female set under the same names. Normalisation (the exact
+contract, mirrored in the gate and in the viewer's TypeScript): collapse
+whitespace, then strip a trailing `" (left)"` / `" (right)"` / `" (left, a)"`
+and a trailing `" — part e1"`, repeatedly. Nothing else — no case folding, no
+de-parenthesising of `(VI)`, no trimming of a leading `Left `.
+
+Candidate titles are tried in order; the first that passes the acceptance test
+wins, and the rung is recorded in `resolvedBy`:
+
+| # | rung | what it tries | resolved |
+|---|---|---|---|
+| 1 | `override` | editorial title table, the hard cases | 105 |
+| 2 | `ontology` | HRA ontology id → Wikidata → en sitelink (UBERON via P1554, FMA via P1402) | 163 |
+| 3 | `name` | the normalised name itself | 945 |
+| 4 | `stripped` | leading `Left `/`Right `, trailing `(qualifier)`, wrapping parens removed | 139 |
+| 5 | `singular` | last word singularised | 2 |
+| 6 | `ofthe` | `" of the "` → `" of "` | 0 |
+| | **exact subtotal** | **the article is about this structure** | **1,354** |
+| 7 | `override-broader` | editorial, by family (see §4) | 373 |
+| 8 | `head` | the kind of structure: *Bursa of the piriformis muscle* → **Synovial bursa** | 115 |
+| 9 | `parent` | what it hangs off: *Ascending part of duodenum* → **Duodenum** | 308 |
+| 10 | `shortened` | qualifiers dropped, longest span first: *Upper medial incisor* → **Incisor** | 214 |
+| | **broader subtotal** | **the nearest article that exists, flagged** | **1,010** |
+
+Rungs 1–6 are `"scope": "exact"` (a redirect counts, and `title` records where
+the redirect landed). Rungs 7–10 are `"scope": "broader"` — **the deliberate
+departure from the brief's ladder.** The strict ladder alone described 47% of
+the names: English Wikipedia has no "Bursa of the piriformis muscle", no
+"Costal cartilage of fifth rib", no "Nucleus pulposus C4–C5". The choice was
+between shipping "not available" for half the body or naming the nearest
+article that IS about something and saying so. Broader entries are flagged in
+the data, counted separately, and the viewer is required to word them as
+"no article for this structure; Wikipedia on X, which it is part of". They are
+never passed off as the structure's own entry.
+
+A `head`/`shortened` candidate is only offered when what remains names a KIND
+of structure (nerve, bursa, enthesis, vertebra…) — never a stray adjective:
+the first cut offered "Superior labial" for *Superior labial vein* and
+"Cervical vertebra 3" for *Mammalian cervical vertebra 3*.
+
+### 68.3 Acceptance test — what is refused
+
+A page is accepted only if it exists, is not a disambiguation page
+(`pageprops.disambiguation` or "may refer to"), is not about a CONDITION
+(*Trochanteric bursa* redirects to *Greater trochanteric pain syndrome*), is
+not obviously another subject ("Bursa is a city in Turkey"), mentions an
+anatomical keyword in the first 400 characters, and yields at least twenty
+words. Otherwise the next rung is tried; a name that exhausts the ladder ships
+`{"title": null, "reason": …, "tried": […]}`. **Nothing is guessed.**
+
+Two bugs the test itself had, both caught by spot-reading 30 random extracts —
+which is why the spot-read is part of the procedure and not a formality:
+
+- The keyword net matched substrings, so "appearance" contained "ear" and
+  *Cavity of concha* was described by **Concha**, a Mexican sweet bread. The
+  net now matches on word boundaries with an explicit stem list.
+- The sentence splitter was a `findall` of sentence-like spans, which silently
+  DROPPED any lead whose first full stop is not followed by a space —
+  "A bronchus ( BRONG-kəs; pl.: bronchi…" shipped as ": bronchi, BRONG-ky) is
+  a passage…". It is a `split` now.
+- The reverse redirect map kept ONE origin per target, so when two asked-for
+  titles in a batch landed on the same article (*Cingulate gyrus* and
+  *Cingulate cortex*) one of them mapped to nothing and read exactly like a
+  page that does not exist. It is a multimap now; the fix moved 23 names from
+  a broader article to their own.
+
+Two API constraints worth recording:
+
+- **TextExtracts only answers more than one title when `exintro` is set.** The
+  beyond-the-intro re-read of stub leads therefore goes one title per request;
+  batched, it silently rescued one stub in twenty.
+- A twenty-title response occasionally comes back with an empty extract for a
+  page that answers perfectly on its own (seen on *Cingulate gyrus*). Those are
+  re-asked individually too.
+
+### 68.4 The editorial table
+
+`etl/reference/anatomy_structure_titles.json`, written by
+`etl/reference/build_anatomy_structure_titles.py` from Python literals (never
+hand-edited, like `build_anatomy.py`), holds three things:
+
+- `titles` (109) — exact articles the ladder cannot find: bare terms Wikipedia
+  disambiguates (*Diaphragm* → **Thoracic diaphragm**, *Iris* → **Iris
+  (anatomy)**, *Talus* → **Talus bone**), Z-Anatomy spellings (*Bucinator*),
+  older names (*Free taenia* → **Taenia coli**).
+- `broader` (414) — the nearest article, chosen by hand. Most of it comes from
+  14 FAMILY RULES the builder expands against the names the models carry, so
+  the JSON stays explicit: 105 named lymph-node groups → **Lymph node**, 56
+  bronchi → **Bronchus**, 24 thoracic vertebrae → **Thoracic vertebrae**, 23
+  nuclei pulposi, 21 spinal-cord segments, 20 bronchopulmonary segments, 17
+  bursae, the Couinaud liver segments, the four hypothalamic "regions of HTH",
+  the TA2 skin regions (*Infrascapular region* → **Scapula**).
+- `rejected` (8) — names a person looked for and did not find, with the
+  reason, so the run stops paying for them.
+
+A wrong entry here cannot ship a wrong description: the acceptance test still
+runs, so a bad guess costs coverage, never correctness.
+
+### 68.5 Coverage
+
+**2,364 of 2,381 names described — 99.3%.** 1,354 exact (56.9% of all names),
+1,010 broader (42.4%). Male model 99.3% of its 1,817 names, female 99.5% of
+its 1,946. (Target was 85%, gate floor 80%.)
+
+Getting there: 47% with the brief's strict ladder → 81% adding head/parent/
+shortened → 95% after fixing the ontology queries (a VALUES clause of 300
+literals times the query service out, and the failure was being swallowed;
+chunks are 60 now, and FMA ids go to P1402 — the HRA's 502 ontology terms are
+268 UBERON, 258 FMA and 111 a bare "-") → 99% after two passes of editorial
+families.
+
+**The 17 that remain**, all honest dead ends:
+
+| what | n | example |
+|---|---|---|
+| Allen Human Brain Atlas internal labels | 6 | `Lat_Fis-ant-Vertical`, `Sulcus interm_prim-Jensen`, `Frontal agranular insular cortex area Fl` |
+| Z-Anatomy label artefacts | 2 | `Anterior occipital sulcus*`, `Central canal'` |
+| unnamed cerebral artery branches | 4 | `Temporo-occipital branch`, `Postcentral arterial branch` |
+| bare terms too ambiguous to place | 3 | `Cornua`, `Lateral nucleus`, `Intermediomedial nucleus` |
+| other compounds with no article | 2 | `(Communicating branch of median nerve with ulnar nerve)` |
+
+### 68.6 Gate
+
+`npm run check:anatomy-structures` (`scripts/check-anatomy-structures.mjs`, in
+the `check` chain after `check:anatomy`) re-implements the normalisation and
+fails if: any name in either model has no entry; any entry has neither
+(title + Wikipedia URL + a ≥20-word extract) nor (null + reason); any URL is
+not an `en.wikipedia.org/wiki/` article; any extract reads as a disambiguation
+page; coverage is under 80% overall or per sex; `scope`/`resolvedBy` carry an
+unknown value; or the CC BY-SA licence block is missing. It prints coverage,
+the exact/broader split and the per-rung counts.
+
+Current: **PASS** — 2,364/2,381 (99.3%; male 99.3%, female 99.5%), shortest
+extract 20 words.
+
+### 68.7 Cost, caching and idempotency
+
+218 requests for the whole body (~160 batched extract calls, ~50 single-title
+re-reads, 10 SPARQL chunks); ~7 minutes cold, under a second fully cached. Every call
+is cached under `.cache/anatomy_structures/` by a hash of the request URL —
+content-derived, never positional (§21). A cached re-run reproduces the
+artifact byte for byte apart from `generated` (verified). A SPARQL chunk that
+times out is NOT cached, so the next run retries it; the log records any that
+failed.
+
+### 68.8 Open questions for Andy
+
+1. **Broader entries.** 43% of the names are described by a broader article,
+   flagged and worded as such. If that reads badly on the page, the ladder can
+   stop at rung 6 and 1,031 structures go back to "not available".
+2. **No function line.** Wikipedia's lead often states what a structure does;
+   often it does not. Nothing is synthesised. If a "function" line matters, it
+   would have to be editorial, per structure.
+3. **Images.** Each article has a lead image that could be licence-gated the
+   way `history` does it. Not done.
+
+### 68.9 Resolved at integration
+
+The broader entries stay. An entry that says, in so many words, "no
+article for this structure; Wikipedia on the duodenum, which it is part
+of" tells the reader more than "not available", and the viewer words
+every one of them that way (scope is part of the interface). No
+"function" line is synthesised anywhere: where Wikipedia's lead states
+the function it is in the extract, and where it does not, writing one
+would be fabrication. Article lead images are not used.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
