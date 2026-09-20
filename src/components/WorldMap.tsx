@@ -55,7 +55,8 @@ import {
   type MapPaletteKey,
   type ProjectionKey,
 } from '../config'
-import { createProjection, fitProjection } from '../lib/projection'
+import { createProjection, fitProjection, type Rotation } from '../lib/projection'
+import * as versor from '../lib/versor'
 import type {
   CountryGeometryProperties,
   CountryTopology,
@@ -77,27 +78,36 @@ const VIEW_HEIGHT_COMPACT_GLOBE = 1000
 /** Container widths below this get the phone layout: square globe,
  *  bottom sheet, thumb-sized controls. */
 const COMPACT_MAX_WIDTH = 640
-/** Initial orientation, also what "Reset view" returns to. */
-const INITIAL_ROTATION: [number, number] = [-10, -20]
+/** Initial orientation [lambda, phi, gamma]; the compass returns gamma to 0. */
+const INITIAL_ROTATION: Rotation = [-10, -20, 0]
 
 /**
- * Drag sensitivity in degrees per CSS pixel (round 6, section 54.2).
- * History: 0.25 -> 0.375 -> 0.5625 by two maintainer raises in 2026-08;
- * Andy asked for it back down in round 6 ("I don't need the globe to
- * spin that quickly"). Eased by the square root of the zoom.
+ * Round 12 (section 62): the globe is dragged the way Google Earth is
+ * dragged -- the place under the finger stays under the finger (versor
+ * dragging, src/lib/versor.ts), so there is no degrees-per-pixel constant
+ * any more: the pace is the disc's own geometry, exact at every zoom.
+ * History for the record: 0.25 -> 0.375 -> 0.5625 -> 0.25 -> 0.375 deg/px
+ * over rounds 6-9, each a compromise between "too slow" and "spins like
+ * mad"; the compromise was the wrong model.
+ *
+ * Momentum is the last frame's rotation (a quaternion) applied again each
+ * frame and shrunk by INERTIA_DECAY per 60 Hz frame (time-based, so a
+ * 120 Hz phone coasts the same distance). A flick may start at most
+ * INERTIA_MAX_DEG_PER_FRAME degrees per frame -- a hard flick carries the
+ * globe well over half a turn and settles in about two seconds.
  */
-const DRAG_SENSITIVITY = 0.375
-/** Inertia decay per frame; 0.9 stops a flick in about a second. */
-const INERTIA_DECAY = 0.9
-/**
- * A flick's starting speed is capped, in CSS px per frame, so the fastest
- * spin stays about what Google Earth allows. History: 18 px at 0.25 deg/px
- * (round 7) turned out "way too slow" once the double inertia loop that
- * had made every flick look wild was fixed (section 58); round 9 (section
- * 59.1) settles on 0.375 deg/px and 40 px -- a hard flick carries the globe
- * about half a turn and stops within a second.
- */
-const INERTIA_MAX_PX_PER_FRAME = 40
+const INERTIA_DECAY = 0.93
+const INERTIA_MAX_DEG_PER_FRAME = 15
+/** Below this per-frame angle the coast is over and the rotation commits. */
+const INERTIA_STOP_DEG = 0.02
+/** A release more than this long after the last movement is a hold, not
+    a flick: no momentum. */
+const INERTIA_STALE_MS = 80
+/** Anchors sit just inside the limb: a finger dragged past the edge keeps
+    a stable point to hold on to. Fraction of the disc radius. */
+const DISC_CLAMP = 0.985
+/** A single pointer must move this far (CSS px) before it is a drag. */
+const DRAG_START_PX = 4
 
 /**
  * Keep lambda in [-180, 180). The drag accumulates it without bound (a
@@ -470,7 +480,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
    * Globe orientation: [lambda, phi] in degrees, driven by dragging. A slight
    * initial tilt so the first view is not dead-on the equator/meridian cross.
    */
-  const [rotation, setRotation] = useState<[number, number]>(INITIAL_ROTATION)
+  const [rotation, setRotation] = useState<Rotation>(INITIAL_ROTATION)
   /** Active pointers; the globe rotates only under exactly one. */
   const dragPointers = useRef(new Map<number, { x: number; y: number }>())
   /** Set once a drag moves far enough that the trailing click must not select. */
@@ -606,7 +616,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
 
   const { shapes, sphere, landD, markerPoints, projection } = useMemo(() => {
     const base = createProjection(projectionKey)
-    if (isGlobe) base.rotate([rotation[0], rotation[1], 0])
+    if (isGlobe) base.rotate(rotation)
     const projection = fitProjection(base, viewW, viewH)
     const path = geoPath(projection)
     const viewCenter: [number, number] = [-rotation[0], -rotation[1]]
@@ -704,7 +714,9 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
    */
   const [settledRotation, setSettledRotation] = useState(rotation)
   const rotationSettled =
-    settledRotation[0] === rotation[0] && settledRotation[1] === rotation[1]
+    settledRotation[0] === rotation[0] &&
+    settledRotation[1] === rotation[1] &&
+    settledRotation[2] === rotation[2]
   useEffect(() => {
     const timer = window.setTimeout(() => setSettledRotation(rotation), 160)
     return () => window.clearTimeout(timer)
@@ -1048,7 +1060,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       cssHeight: h,
       // Resolved ocean colour: canvas cannot use CSS custom properties.
       oceanFill:
-        getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#0b2740',
+        getComputedStyle(canvas).getPropertyValue('--map-ocean') || '#00355c',
       // Section 51.1: the palette's tone over the imagery.
       grade: IMAGERY_GRADES[paletteDirection],
       // Round 7 (section 57.2): at rest the outlines come from the SAME
@@ -1120,17 +1132,24 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   // untouched because the SVG they live on never changed, it only sat out
   // the animation.
   const dragCanvasRef = useRef<HTMLCanvasElement | null>(null)
-  const rotationRef = useRef<[number, number]>(rotation)
+  const rotationRef = useRef<Rotation>(rotation)
   const isDragRendering = useRef(false)
   const restoreAfterCommit = useRef(false)
-  const lastFrameDelta = useRef({ dx: 0, dy: 0 })
+  /** The rotation the last drag frame applied (left-composed), and how
+      long that frame was: momentum starts from it (round 12). */
+  const frameVelocity = useRef<versor.Quaternion>([1, 0, 0, 0])
+  const frameVelocityMs = useRef(16.7)
+  const lastMoveAt = useRef(0)
+  /** True when the last drag frame was a twist (roll): its momentum is a
+      roll; otherwise the coast holds gamma exactly as the drag did. */
+  const lastFrameWasRoll = useRef(false)
   const inertiaFrame = useRef<number | null>(null)
   const dragFills = useRef<{
     fills: string[]
     ocean: string
     stroke: string
     strokeRgba: [number, number, number, number]
-  }>({ fills: [], ocean: '#0b2740', stroke: '#0b2740', strokeRgba: [1, 1, 1, 0.78] })
+  }>({ fills: [], ocean: '#00355c', stroke: '#00355c', strokeRgba: [1, 1, 1, 0.78] })
 
   useEffect(() => {
     if (!isDragRendering.current) rotationRef.current = rotation
@@ -1202,14 +1221,14 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         return readVar(`--region-${props.continent}`, GLOBE_LAND_NEUTRAL)
       }
       if (!populationByIso3.get(props.iso3)?.available) {
-        return 'oklch(92% 0.003 250)'
+        return readVar('--map-no-data', 'oklch(92% 0.003 250)')
       }
       return readVar(
         `--fill-globe-${paletteDirection}-${props.iso3}`,
         GLOBE_LAND_NEUTRAL,
       )
     })
-    const ocean = readVar('--map-ocean', '#0b2740')
+    const ocean = readVar('--map-ocean', '#00355c')
     // Political frames stroke borders in the ocean colour, as the SVG
     // does; the GL line pass needs it resolved to RGB (section 51).
     const oceanRgb = resolveCssColor(ocean)
@@ -1285,9 +1304,8 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const [lambda, phi] = rotationRef.current
     const base = createProjection('globe')
-    base.rotate([lambda, phi, 0])
+    base.rotate(rotationRef.current)
     const frameProjection = fitProjection(base, viewW, viewH)
 
     // Satellite imagery keeps tracking the finger: the imagery renderer is
@@ -1379,7 +1397,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     if (!isDragRendering.current) return
     isDragRendering.current = false
     restoreAfterCommit.current = true
-    setRotation([rotationRef.current[0], rotationRef.current[1]])
+    setRotation([rotationRef.current[0], rotationRef.current[1], rotationRef.current[2]])
   }, [])
 
   const cancelInertia = useCallback(() => {
@@ -1404,7 +1422,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     if (svgRef.current) svgRef.current.style.visibility = ''
     if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
     if (!satellite && canvasRef.current) canvasRef.current.style.display = 'none'
-    setRotation([rotationRef.current[0], rotationRef.current[1]])
+    setRotation([rotationRef.current[0], rotationRef.current[1], rotationRef.current[2]])
   }, [cancelInertia, satellite])
 
   /** The zoom behaviour is bound once and closes over nothing reactive;
@@ -1420,8 +1438,21 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     forceEndDragSession()
   }, [baseView, mode, projectionKey, forceEndDragSession])
 
-  /** Momentum after release: the last frame's delta decays at 7% per
-      frame, so the globe has weight. Skipped under reduced motion. */
+  /** Write the orientation ref: lambda and gamma wrapped (section 54.2),
+      phi as the Euler conversion gives it (already within +-90). */
+  const writeRotation = useCallback((next: Rotation) => {
+    rotationRef.current = [
+      wrapLongitude(next[0]),
+      Math.max(-90, Math.min(90, next[1])),
+      wrapLongitude(next[2]),
+    ]
+  }, [])
+
+  /** Momentum after release (round 12, section 62): the last drag frame's
+      rotation, applied again every frame and shrunk by INERTIA_DECAY per
+      60 Hz frame until it is too small to see. Time-based, so the coast
+      covers the same ground at 120 Hz. Skipped under reduced motion, and
+      after a hold (the finger stopped before it lifted). */
   const startInertia = useCallback(() => {
     // Round 8 (section 58.1): a release fires pointerup AND lostpointercapture
     // (and on touch, pointerleave too), and each reached here. Two or three
@@ -1434,26 +1465,37 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     const reduced = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches
-    let { dx, dy } = lastFrameDelta.current
-    if (reduced || Math.hypot(dx, dy) < 3) {
+    // Per 60 Hz frame, whatever the display's rate was.
+    let v = versor.pow(frameVelocity.current, 16.7 / Math.max(4, frameVelocityMs.current))
+    frameVelocity.current = [1, 0, 0, 0]
+    const stale = performance.now() - lastMoveAt.current > INERTIA_STALE_MS
+    const startAngle = versor.angle(v)
+    if (reduced || stale || startAngle < 0.15) {
       endDragRender()
       return
     }
-    const speed = Math.hypot(dx, dy)
-    if (speed > INERTIA_MAX_PX_PER_FRAME) {
-      dx *= INERTIA_MAX_PX_PER_FRAME / speed
-      dy *= INERTIA_MAX_PX_PER_FRAME / speed
+    // A north-held drag's per-frame rotation is not itself roll-free when
+    // repeated (its axis need not lie in the lambda/phi subgroup), so the
+    // coast pins gamma where the finger left it; a twist coasts as a roll.
+    const holdGamma = lastFrameWasRoll.current ? null : rotationRef.current[2]
+    if (startAngle > INERTIA_MAX_DEG_PER_FRAME) {
+      v = versor.pow(v, INERTIA_MAX_DEG_PER_FRAME / startAngle)
     }
-    const step = () => {
-      dx *= INERTIA_DECAY
-      dy *= INERTIA_DECAY
-      const sensitivity = DRAG_SENSITIVITY / Math.sqrt(zoomLevel.current)
-      rotationRef.current = [
-        wrapLongitude(rotationRef.current[0] + dx * sensitivity),
-        Math.max(-90, Math.min(90, rotationRef.current[1] - dy * sensitivity)),
-      ]
+    let last = performance.now()
+    const step = (now: number) => {
+      const dt = Math.max(4, Math.min(50, now - last))
+      last = now
+      const frames = dt / 16.7
+      v = versor.pow(v, Math.pow(INERTIA_DECAY, frames))
+      const q = versor.multiply(
+        versor.pow(v, frames),
+        versor.fromEuler(rotationRef.current),
+      )
+      const e = versor.toEuler(versor.normalize(q))
+      if (holdGamma !== null) e[2] = holdGamma
+      writeRotation(e)
       drawDragFrame()
-      if (Math.hypot(dx, dy) < 0.4) {
+      if (versor.angle(v) < INERTIA_STOP_DEG) {
         inertiaFrame.current = null
         endDragRender()
         return
@@ -1461,7 +1503,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       inertiaFrame.current = requestAnimationFrame(step)
     }
     inertiaFrame.current = requestAnimationFrame(step)
-  }, [drawDragFrame, endDragRender])
+  }, [drawDragFrame, endDragRender, writeRotation])
 
   useEffect(() => () => cancelInertia(), [cancelInertia])
 
@@ -1679,12 +1721,200 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   }, [pseudoFullscreen])
 
   /**
-   * Globe rotation by dragging -- pointer events, so mouse and touch share
-   * one code path. Only exactly one active pointer rotates (a second finger
-   * hands the gesture to d3-zoom's pinch). A drag that actually moved
-   * suppresses the click it releases into, or letting go of the sphere would
-   * open whichever country the pointer happened to stop on.
+   * Globe rotation by dragging (round 12, section 62): versor dragging.
+   *
+   * ONE finger: the place first touched is the anchor; every frame the
+   * globe is rotated so that place sits under the finger now -- exactly
+   * Google Earth's rule, so the pace is right at every zoom and at every
+   * point of the disc by construction, and the motion is 1:1 with the
+   * hand. TWO fingers: the pinch is d3-zoom's (scale, and pan when zoomed
+   * in); the TWIST between them rolls the globe about the line of sight
+   * (gamma), which is how north is turned away from the top of the screen
+   * and back. Every change in the number of fingers re-anchors, so lifting
+   * one finger of a pinch never makes the globe jump to a stale anchor
+   * (one of the "glitches" reported on the phone).
+   *
+   * Mouse and touch share the code path (pointer events). A drag that
+   * actually moved suppresses the click it releases into, or letting go of
+   * the sphere would open whichever country the pointer stopped on.
    */
+  const dragAnchor = useRef<{
+    /** Orientation when the anchor was taken. */
+    q0: versor.Quaternion
+    r0: Rotation
+    /** One finger: the place under it, [lon, lat] in degrees. */
+    g0: [number, number] | null
+    /** Two fingers: the angle between them (radians); Shift+mouse: the
+        angle of the pointer about the disc centre. */
+    a0: number
+    /** True when a single pointer is rolling (Shift held on a mouse/pen). */
+    roll: boolean
+    /** One finger: where it went down (client px), for the drag threshold. */
+    start: [number, number]
+    count: number
+  } | null>(null)
+  const dragFrame = useRef<number | null>(null)
+  const prevFrameAt = useRef(0)
+  /** When each tracked pointer last spoke (down or move), for the
+      lost-capture hatch below. */
+  const lastPointerEventAt = useRef(new Map<number, number>())
+
+  useEffect(
+    () => () => {
+      if (dragFrame.current !== null) cancelAnimationFrame(dragFrame.current)
+    },
+    [],
+  )
+
+  /** Unzoomed view coordinates of a client point (what the fitted
+      projection inverts), through the zoom transform the frames read. */
+  const viewPointOf = useCallback(
+    (clientX: number, clientY: number): [number, number] => {
+      const container = containerRef.current
+      const rect = container?.getBoundingClientRect()
+      if (!container || !rect) return [viewW / 2, viewH / 2]
+      const { scale, offsetX, offsetY } = layoutFor(container.clientWidth, container.clientHeight)
+      const t = transformRef.current
+      return [
+        ((clientX - rect.left - offsetX) / scale - t.x) / t.k,
+        ((clientY - rect.top - offsetY) / scale - t.y) / t.k,
+      ]
+    },
+    [layoutFor, viewW, viewH],
+  )
+
+  /** The fitted globe's disc: centre and radius in view coordinates. */
+  const disc = useMemo(() => {
+    const proj = fitProjection(createProjection('globe'), viewW, viewH)
+    const [cx, cy] = proj.translate()
+    return { cx, cy, r: proj.scale() }
+  }, [viewW, viewH])
+
+  /** A view point clamped to just inside the limb, so a finger past the
+      edge still holds a stable place. */
+  const clampToDisc = useCallback(
+    (view: [number, number]): [number, number] => {
+      const limit = disc.r * DISC_CLAMP
+      const d = Math.hypot(view[0] - disc.cx, view[1] - disc.cy)
+      if (d <= limit) return view
+      return [disc.cx + ((view[0] - disc.cx) * limit) / d, disc.cy + ((view[1] - disc.cy) * limit) / d]
+    },
+    [disc],
+  )
+
+  /** The place [lon, lat] under a view point at a given orientation. */
+  const placeAt = useCallback(
+    (orientation: Rotation, view: [number, number]): [number, number] => {
+      const base = createProjection('globe')
+      base.rotate(orientation)
+      const proj = fitProjection(base, viewW, viewH)
+      const geo = proj.invert?.(clampToDisc(view))
+      if (!geo || !Number.isFinite(geo[0]) || !Number.isFinite(geo[1])) {
+        return [-orientation[0], -orientation[1]]
+      }
+      return [geo[0], geo[1]]
+    },
+    [viewW, viewH, clampToDisc],
+  )
+
+  /** A view point as a unit vector in the view frame (depth toward the
+      viewer, right, up) -- the same frame the imagery shader inverts. */
+  const viewVectorOf = useCallback(
+    (view: [number, number]): versor.Vec3 => {
+      const [x, y] = clampToDisc(view)
+      const px = (x - disc.cx) / disc.r
+      const py = (disc.cy - y) / disc.r
+      return [Math.sqrt(Math.max(0, 1 - px * px - py * py)), px, py]
+    },
+    [disc, clampToDisc],
+  )
+
+  /** Shift held during a mouse/pen drag: roll instead of spin (a mouse
+      has no second finger to twist with). Read at pointerdown. */
+  const shiftRoll = useRef(false)
+
+  /** Angle of a client point about the disc centre (radians, screen). */
+  const angleAboutCentre = useCallback(
+    (clientX: number, clientY: number) => {
+      const [vx, vy] = viewPointOf(clientX, clientY)
+      return Math.atan2(vy - disc.cy, vx - disc.cx)
+    },
+    [viewPointOf, disc],
+  )
+
+  /** (Re)take the anchor from the pointers down right now. */
+  const anchorDrag = useCallback(() => {
+    const pts = [...dragPointers.current.values()]
+    if (pts.length === 0) {
+      dragAnchor.current = null
+      return
+    }
+    const r0: Rotation = [rotationRef.current[0], rotationRef.current[1], rotationRef.current[2]]
+    const q0 = versor.fromEuler(r0)
+    if (pts.length === 1) {
+      const p = pts[0]!
+      if (shiftRoll.current) {
+        dragAnchor.current = {
+          q0, r0, g0: null, a0: angleAboutCentre(p.x, p.y), roll: true, start: [p.x, p.y], count: 1,
+        }
+        return
+      }
+      dragAnchor.current = {
+        q0, r0, g0: placeAt(r0, viewPointOf(p.x, p.y)), a0: 0, roll: false, start: [p.x, p.y], count: 1,
+      }
+      return
+    }
+    const a = pts[0]!
+    const b = pts[1]!
+    dragAnchor.current = {
+      q0, r0, g0: null, a0: Math.atan2(b.y - a.y, b.x - a.x), roll: true, start: [a.x, a.y], count: pts.length,
+    }
+  }, [placeAt, viewPointOf, angleAboutCentre])
+
+  /** One drag frame: orientation from the anchor and the pointers now. */
+  const applyDragFrame = useCallback(() => {
+    const anchor = dragAnchor.current
+    if (!anchor) return
+    const pts = [...dragPointers.current.values()]
+    if (pts.length !== anchor.count) return
+    let q1: versor.Quaternion
+    let reanchor = false
+    if (anchor.count === 1 && anchor.g0 && !anchor.roll) {
+      // North held: the anchor goes under the finger without any roll.
+      const p = pts[0]!
+      const next = versor.withFixedRoll(
+        anchor.g0,
+        viewVectorOf(viewPointOf(p.x, p.y)),
+        anchor.r0[2],
+        [rotationRef.current[0], rotationRef.current[1]],
+      )
+      q1 = versor.fromEuler(next)
+      // Past the pole the solver clamps; re-anchoring there keeps the
+      // finger and the map from disagreeing for the rest of the gesture.
+      reanchor = Math.abs(next[1]) > 89.5
+    } else {
+      const a = pts[0]!
+      const b = pts[1] ?? null
+      const now = b ? Math.atan2(b.y - a.y, b.x - a.x) : angleAboutCentre(a.x, a.y)
+      let da = now - anchor.a0
+      if (da > Math.PI) da -= 2 * Math.PI
+      else if (da < -Math.PI) da += 2 * Math.PI
+      // Screen y points down: a clockwise twist of the fingers is a
+      // positive da, and the globe must turn clockwise with them.
+      q1 = versor.multiply(versor.roll((-da * 180) / Math.PI), anchor.q0)
+    }
+    q1 = versor.normalize(q1)
+    lastFrameWasRoll.current = !(anchor.count === 1 && anchor.g0 && !anchor.roll)
+    const prev = versor.fromEuler(rotationRef.current)
+    frameVelocity.current = versor.multiply(q1, versor.conjugate(prev))
+    const now = performance.now()
+    frameVelocityMs.current = prevFrameAt.current ? Math.min(50, now - prevFrameAt.current) : 16.7
+    prevFrameAt.current = now
+    writeRotation(versor.toEuler(q1))
+    drawDragFrame()
+    if (reanchor) anchorDrag()
+  }, [viewVectorOf, viewPointOf, angleAboutCentre, writeRotation, drawDragFrame, anchorDrag])
+
   const handleGlobePointerDown = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
       // A fresh press is never a leftover drag, so the click suppression
@@ -1698,97 +1928,112 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       // session from wherever the inertia had carried it).
       cancelInertia()
       if (!isGlobe) return
+      frameVelocity.current = [1, 0, 0, 0]
+      prevFrameAt.current = 0
+      shiftRoll.current = event.pointerType !== 'touch' && event.shiftKey
       dragPointers.current.set(event.pointerId, {
         x: event.clientX,
         y: event.clientY,
       })
+      lastPointerEventAt.current.set(event.pointerId, performance.now())
+      anchorDrag()
     },
-    [isGlobe, cancelInertia],
+    [isGlobe, cancelInertia, anchorDrag],
   )
 
   /**
-   * Drag deltas accumulate here and are applied ONCE per animation frame.
-   *
-   * Touch screens deliver pointermove at up to 120-240 Hz; applying each one
-   * through setState forced a full reprojection render per event -- several
-   * renders per painted frame, all but one thrown away. That was the
-   * sluggishness on touch. Batching to requestAnimationFrame renders exactly
-   * once per frame with the summed delta, so the sphere tracks the finger at
-   * the display's own rate.
+   * Pointer positions are recorded as they arrive (up to 120-240 Hz on a
+   * touch screen) and ONE frame is computed per animation frame from the
+   * anchor and the latest positions -- the sphere tracks the finger at the
+   * display's own rate and nothing is thrown away, because the frame is a
+   * function of where the finger IS, not of how it got there.
    */
-  const pendingDrag = useRef({ dx: 0, dy: 0 })
-  const dragFrame = useRef<number | null>(null)
-  const zoomLevel = useRef(1)
-  zoomLevel.current = transform.k
-
-  useEffect(
-    () => () => {
-      if (dragFrame.current !== null) cancelAnimationFrame(dragFrame.current)
-    },
-    [],
-  )
-
   const handleGlobePointerMove = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
       if (!isGlobe) return
       const tracked = dragPointers.current.get(event.pointerId)
-      if (!tracked || dragPointers.current.size !== 1) return
-      const dx = event.clientX - tracked.x
-      const dy = event.clientY - tracked.y
-      if (!dragSuppressesClick.current && Math.hypot(dx, dy) < 4) return
-      if (!dragSuppressesClick.current) {
-        dragSuppressesClick.current = true
-        // From here the gesture is a drag, never a click, so capturing the
-        // pointer costs nothing and keeps the spin alive when the finger
-        // wanders off the svg mid-gesture. Guarded: a pointer can be gone
-        // by the time the frame runs (and synthetic events have no id).
-        try {
-          event.currentTarget.setPointerCapture(event.pointerId)
-        } catch {
-          /* capture is an optimisation, never a requirement */
-        }
-      }
+      if (!tracked) return
       dragPointers.current.set(event.pointerId, {
         x: event.clientX,
         y: event.clientY,
       })
-      pendingDrag.current.dx += dx
-      pendingDrag.current.dy += dy
+      lastPointerEventAt.current.set(event.pointerId, performance.now())
+      const anchor = dragAnchor.current
+      if (!anchor) return
+      if (!dragSuppressesClick.current) {
+        const moved =
+          anchor.count > 1 ||
+          Math.hypot(event.clientX - anchor.start[0], event.clientY - anchor.start[1]) >= DRAG_START_PX
+        if (!moved) return
+        dragSuppressesClick.current = true
+      }
+      // From here the gesture is a drag, never a click, so capturing the
+      // pointer costs nothing and keeps the spin alive when the pointer
+      // wanders off the svg mid-gesture. MOUSE AND PEN ONLY: a touch
+      // pointer is implicitly captured by the element it went down on,
+      // and taking it over fires lostpointercapture on that element in
+      // the middle of the gesture -- which bubbled into the end handler
+      // below and dropped the finger (round 12: the two-finger twist
+      // died after one frame). Guarded: a pointer can be gone by the time
+      // the frame runs (and synthetic events have no id).
+      if (event.pointerType !== 'touch') {
+        try {
+          if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.setPointerCapture(event.pointerId)
+          }
+        } catch {
+          /* capture is an optimisation, never a requirement */
+        }
+      }
+      lastMoveAt.current = performance.now()
       if (dragFrame.current !== null) return
       dragFrame.current = requestAnimationFrame(() => {
         dragFrame.current = null
-        const { dx: fdx, dy: fdy } = pendingDrag.current
-        pendingDrag.current = { dx: 0, dy: 0 }
-        // Round-2 §35: rotation stays in a ref and the frame goes straight
-        // to canvas — React sees nothing until the gesture ends.
+        // Round-2 section 35: rotation stays in a ref and the frame goes
+        // straight to canvas -- React sees nothing until the gesture ends.
         beginDragRender()
-        lastFrameDelta.current = { dx: fdx, dy: fdy }
-        // Degrees per CSS pixel, eased down as the zoom tightens (see
-        // DRAG_SENSITIVITY for the history).
-        const sensitivity = DRAG_SENSITIVITY / Math.sqrt(zoomLevel.current)
-        rotationRef.current = [
-          wrapLongitude(rotationRef.current[0] + fdx * sensitivity),
-          Math.max(
-            -90,
-            Math.min(90, rotationRef.current[1] - fdy * sensitivity),
-          ),
-        ]
-        drawDragFrame()
+        applyDragFrame()
       })
     },
-    [isGlobe, beginDragRender, drawDragFrame],
+    [isGlobe, beginDragRender, applyDragFrame],
   )
 
   const handleGlobePointerEnd = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
+      if (event.type === 'lostpointercapture' && dragPointers.current.has(event.pointerId)) {
+        // Capture moved between elements while the pointer is still down
+        // (a touch's implicit capture handing over, a re-render swapping
+        // the target): not a release. It stays the section 42.1 escape
+        // hatch for a pointer whose release never arrives: if nothing
+        // more is heard from this pointer shortly, it is treated as gone.
+        const id = event.pointerId
+        const seen = lastPointerEventAt.current.get(id) ?? 0
+        window.setTimeout(() => {
+          if (!dragPointers.current.has(id)) return
+          if ((lastPointerEventAt.current.get(id) ?? 0) > seen) return
+          dragPointers.current.delete(id)
+          lastPointerEventAt.current.delete(id)
+          if (dragPointers.current.size > 0) anchorDrag()
+          else {
+            dragAnchor.current = null
+            if (isDragRendering.current) forceEndDragSessionRef.current()
+          }
+        }, 120)
+        return
+      }
       dragPointers.current.delete(event.pointerId)
+      lastPointerEventAt.current.delete(event.pointerId)
+      if (dragPointers.current.size > 0) {
+        // A finger of a pinch lifted: the survivor anchors afresh.
+        anchorDrag()
+        return
+      }
+      dragAnchor.current = null
       // Last finger up while a drag-render session is live: hand off to
       // inertia (which commits the final rotation when it stops).
-      if (dragPointers.current.size === 0 && isDragRendering.current) {
-        startInertia()
-      }
+      if (isDragRendering.current) startInertia()
     },
-    [startInertia],
+    [startInertia, anchorDrag],
   )
 
   // ---- Round-2 §36: country popover --------------------------------------
@@ -1950,8 +2195,8 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       if (!centre) return
       forceEndDragSession()
       setPopover(null)
-      const nextRotation: [number, number] = isGlobe
-        ? [wrapLongitude(-centre[0]), -centre[1]]
+      const nextRotation: Rotation = isGlobe
+        ? [wrapLongitude(-centre[0]), -centre[1], 0]
         : rotation
       if (isGlobe) {
         rotationRef.current = nextRotation
@@ -1960,7 +2205,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       // Fit: project the entity under its new orientation and zoom so it
       // fills about a third of the frame — enough to read its neighbours.
       const base = createProjection(projectionKey)
-      if (isGlobe) base.rotate([nextRotation[0], nextRotation[1], 0])
+      if (isGlobe) base.rotate(nextRotation)
       const projection = fitProjection(base, viewW, viewH)
       let box: [[number, number], [number, number]]
       if (index >= 0) {
@@ -2012,11 +2257,11 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     if (!svg || !behaviour) return
     cancelInertia()
     const t0 = transformRef.current
-    const from: [number, number] = isDragRendering.current ? rotationRef.current : rotation
+    const from: Rotation = isDragRendering.current ? rotationRef.current : rotation
     // The geographic point under the screen centre (falls back to the
     // disc centre when the screen centre is off the sphere).
     const base = createProjection('globe')
-    base.rotate([from[0], from[1], 0])
+    base.rotate(from)
     const proj = fitProjection(base, viewW, viewH)
     const centreView: [number, number] = [
       (viewW / 2 - t0.x) / t0.k,
@@ -2027,12 +2272,17 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       under && Number.isFinite(under[0]) && Number.isFinite(under[1])
         ? under
         : [-from[0], -from[1]]
-    const to: [number, number] = [wrapLongitude(-place[0]), Math.max(-90, Math.min(90, -place[1]))]
+    // Round 12: north up now also means gamma back to 0 -- a two-finger
+    // twist can leave north pointing anywhere, and this is the way back.
+    const to: Rotation = [wrapLongitude(-place[0]), Math.max(-90, Math.min(90, -place[1])), 0]
     // Pan that puts the disc centre at the screen centre at this zoom.
     const t1 = zoomIdentity.translate((viewW / 2) * (1 - t0.k), (viewH / 2) * (1 - t0.k)).scale(t0.k)
-    const dLambda = wrapLongitude(to[0] - from[0])
-    const dPhi = to[1] - from[1]
-    if (Math.abs(dLambda) < 0.01 && Math.abs(dPhi) < 0.01 &&
+    const qFrom = versor.fromEuler(from)
+    const qTo = versor.fromEuler(to)
+    // The one rotation that carries `from` to `to`; eased along it (a
+    // geodesic on the rotation group, no Euler-angle detours).
+    const qPath = versor.multiply(qTo, versor.conjugate(qFrom))
+    if (versor.angle(qPath) < 0.01 &&
         Math.abs(t1.x - t0.x) < 0.5 && Math.abs(t1.y - t0.y) < 0.5) return
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
@@ -2048,7 +2298,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     const step = (now: number) => {
       const t = Math.min(1, (now - started) / duration)
       const eased = 1 - (1 - t) * (1 - t) * (1 - t)
-      rotationRef.current = [wrapLongitude(from[0] + dLambda * eased), from[1] + dPhi * eased]
+      writeRotation(versor.toEuler(versor.multiply(versor.pow(qPath, eased), qFrom)))
       const tx = t0.x + (t1.x - t0.x) * eased
       const ty = t0.y + (t1.y - t0.y) * eased
       transformRef.current = zoomIdentity.translate(tx, ty).scale(t0.k)
@@ -2067,7 +2317,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     inertiaFrame.current = requestAnimationFrame(step)
   }, [
     isGlobe, rotation, viewW, viewH, cancelInertia, forceEndDragSession,
-    beginDragRender, drawDragFrame, endDragRender,
+    beginDragRender, drawDragFrame, endDragRender, writeRotation,
   ])
 
   useImperativeHandle(handleRef, () => ({ flyTo, northUp }), [flyTo, northUp])
@@ -2120,7 +2370,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   const backgroundFill = 'var(--map-space)'
   const landStroke = antiquePolitical ? ANTIQUE.line : 'var(--map-ocean)'
   const landNeutral = GLOBE_LAND_NEUTRAL
-  const noDataFill = antiquePolitical ? ANTIQUE.noData : 'oklch(92% 0.003 250)'
+  const noDataFill = antiquePolitical ? ANTIQUE.noData : 'var(--map-no-data)'
 
   // Continent view (Phase 2.4): each continent is ONE cohesive region --
   // every member takes the continent's region fill, the country strokes
@@ -2469,6 +2719,8 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         }`
       }
       role="group"
+      // The committed orientation, for the gesture test scripts (round 12).
+      data-rotation={isGlobe ? rotation.map((v) => v.toFixed(2)).join(',') : undefined}
       aria-label={
         `World map, ${isGlobe ? 'globe view' : 'equal-area projection'}, ` +
         `${imagery ? `${imagery} base, ` : ''}` +
@@ -2482,8 +2734,9 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       }}
       onPointerLeave={(event) => {
         dragPointers.current.delete(event.pointerId)
-        if (dragPointers.current.size === 0 && isDragRendering.current) {
-          startInertia()
+        if (dragPointers.current.size === 0) {
+          dragAnchor.current = null
+          if (isDragRendering.current) startInertia()
         }
         onHover(null)
         // Keep the popover if the pointer is moving INTO it (to reach its

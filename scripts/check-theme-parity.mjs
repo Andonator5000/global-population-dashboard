@@ -31,6 +31,25 @@ const css = readFileSync(CSS_PATH, 'utf-8')
  * statement that its single declaration is a decision, not an omission.
  */
 const LIGHT_ONLY = new Set([
+  // Round 12 identity pair: a magazine's front is its front. The supernova
+  // yellow and the stark black do not switch with the theme, and neither do
+  // the "on" colours derived from them.
+  '--supernova',
+  '--stark',
+  '--on-supernova',
+  '--on-stark',
+  '--on-stark-muted',
+  '--on-stark-accent',
+  // The per-section nav hues became invariant in round 12: the masthead band
+  // they sit on is stark black in both themes, so the light-surface step
+  // they used to need has no surface to clear any more.
+  '--nav-globaldata',
+  '--nav-history',
+  '--nav-taxonomy',
+  '--nav-evolution',
+  '--nav-space',
+  '--nav-chemistry',
+  '--nav-anatomy',
   '--brand-bg',
   '--brand-text',
   '--history-bg',

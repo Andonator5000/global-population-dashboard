@@ -1,0 +1,464 @@
+{
+  "version": 1,
+  "generatedBy": "scripts/build-anatomy-models.mjs",
+  "note": "One registered free model per sex, split into six layers ordered bone to flesh. Every structure is a named node; structures-<sex>.json maps node -> name, system and the site organ entry it opens. Licences: male CC BY-SA 4.0 (share-alike: these GLBs are adaptations and stay CC BY-SA 4.0), female CC BY 4.0 except the fitted supplement file (stomach and oesophagus from the male model, CC BY-SA 4.0, labelled as fitted). Attribution is rendered on the page per sex.",
+  "budgets": {
+    "layerBytes": 6000000,
+    "sexBytes": 28000000
+  },
+  "layers": [
+    {
+      "id": "skeleton",
+      "label": "Skeleton",
+      "order": 1
+    },
+    {
+      "id": "nervous",
+      "label": "Brain and nerves",
+      "order": 2
+    },
+    {
+      "id": "organs",
+      "label": "Organs and glands",
+      "order": 3
+    },
+    {
+      "id": "vessels",
+      "label": "Heart, vessels and lymph",
+      "order": 4
+    },
+    {
+      "id": "muscles",
+      "label": "Muscles",
+      "order": 5
+    },
+    {
+      "id": "skin",
+      "label": "Skin",
+      "order": 6
+    }
+  ],
+  "encoding": [
+    "EXT_meshopt_compression",
+    "KHR_mesh_quantization"
+  ],
+  "sexes": {
+    "male": {
+      "sex": "male",
+      "source": {
+        "id": "z-anatomy-anatria",
+        "title": "Z-Anatomy male atlas (Terminologia Anatomica 2 nomenclature), GLB export by Anatria3D",
+        "author": "Z-Anatomy / BodyParts3D (DBCLS)",
+        "attribution": "Meshes adapted from Z-Anatomy (CC BY-SA 4.0), itself derived from BodyParts3D / DBCLS (CC BY-SA 2.1 JP). See NOTICE.",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "sourcePage": "https://github.com/Nurkan1/Anatria-3D/tree/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy",
+        "upstream": [
+          {
+            "title": "Z-Anatomy, the libre 3D atlas of anatomy",
+            "url": "https://www.z-anatomy.com/",
+            "licence": "CC BY-SA 4.0"
+          },
+          {
+            "title": "BodyParts3D, Database Center for Life Science (DBCLS), Japan",
+            "url": "https://lifesciencedb.jp/bp3d/",
+            "licence": "CC BY-SA 2.1 JP"
+          }
+        ],
+        "pinned": {
+          "repository": "https://github.com/Nurkan1/Anatria-3D",
+          "commit": "949ac80cc9763539afc48e60b5246132f00468db"
+        },
+        "notice": "anatomy/models/NOTICE-male.txt",
+        "files": [
+          {
+            "file": "skeletal_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/skeletal_male.glb",
+            "bytes": 2823900,
+            "sha256": "b49d71788bfa0b4a3188e2954d59728a699b08ec280e70df1c2a95e13d4b81f8"
+          },
+          {
+            "file": "articular_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/articular_male.glb",
+            "bytes": 1541408,
+            "sha256": "894533f99658c1428dce59e5225f6b1099aaf4720b3cdd7b39ac76cfbb0aec98"
+          },
+          {
+            "file": "nervous_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/nervous_male.glb",
+            "bytes": 8535424,
+            "sha256": "e7a3a2de6c6f098152e3619dd75613531749235cfa9f687d971c8b334a08dcb8"
+          },
+          {
+            "file": "visceral_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/visceral_male.glb",
+            "bytes": 1700280,
+            "sha256": "5b336f2e8964345adcd69b7a31919f059248b11c0ada97851efda5af6a18ebcf"
+          },
+          {
+            "file": "digestive_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/digestive_male.glb",
+            "bytes": 929984,
+            "sha256": "0f6b1ddc17ba93c318910db111322d53a4779b677df1bb24d99dd60c21963a08"
+          },
+          {
+            "file": "respiratory_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/respiratory_male.glb",
+            "bytes": 585232,
+            "sha256": "afc1f18329b877c04d7f27ad4f09e6de0c3c143fcb2ae9ad7fdd4e2dc9261e76"
+          },
+          {
+            "file": "renal_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/renal_male.glb",
+            "bytes": 59040,
+            "sha256": "4a3f95dbf8519a069703817ec63f1e9374d3cb1f0827f7fa1e10cc84bf411db1"
+          },
+          {
+            "file": "reproductive_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/reproductive_male.glb",
+            "bytes": 63600,
+            "sha256": "2402674f2d222589f24b4b32c0f13b85588b5adda5878b2e2c405677d6e1891c"
+          },
+          {
+            "file": "endocrine_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/endocrine_male.glb",
+            "bytes": 39824,
+            "sha256": "44ffd5a7de6731bfd36a83e7806b02c05685cabbae902ef85abb6b1681ae9684"
+          },
+          {
+            "file": "cardiovascular_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/cardiovascular_male.glb",
+            "bytes": 7217588,
+            "sha256": "05f373a294ab809b9a628bc1474a66028642997330fddc553a33d4ac6409b757"
+          },
+          {
+            "file": "lymphatic_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/lymphatic_male.glb",
+            "bytes": 509592,
+            "sha256": "b73830220fb9d67cbf9f30ebc448c88483c1b3bd1c014f49eb10aefa70dfbfbd"
+          },
+          {
+            "file": "muscular_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/muscular_male.glb",
+            "bytes": 11972116,
+            "sha256": "53a004c7b8af38fcbb88d5d1a7ab9dc3f6db2f5bb52188d81c5ddbfb4fb30243"
+          },
+          {
+            "file": "regional_male.glb",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/regional_male.glb",
+            "bytes": 765860,
+            "sha256": "ffb30c89330ad50dac4c352a252e1c1ddaf7c8547c6d726e833308cc082f8680"
+          },
+          {
+            "file": "NOTICE",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/NOTICE",
+            "bytes": 8191,
+            "sha256": "3b2304a2feca5a8304991de8d684b42b3fb77c23a958fa2871fd60de076bfcb4"
+          },
+          {
+            "file": "LICENSE",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/LICENSE",
+            "bytes": 2016,
+            "sha256": "d176d9d00d32ce35b40fd5ffbd8fc732ef1e4f1019d3ca5461bff59385f08d25"
+          },
+          {
+            "file": "manifest.json",
+            "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/manifest.json",
+            "bytes": 1293434,
+            "sha256": "628983219020d9b9b0f14dfbc394c29952cab974fd18871469f6776917755662"
+          }
+        ]
+      },
+      "layers": [
+        {
+          "id": "skeleton",
+          "label": "Skeleton",
+          "file": "anatomy/models/male-skeleton.glb",
+          "bytes": 1700584,
+          "sha256": "32a222e2ac0a5729f54aafa6f83f8c5c28e35e397ff307030a7c19d051b2cf29",
+          "structures": 690,
+          "triangles": 585288,
+          "sourceTriangles": 1060066,
+          "coverage": "full",
+          "note": "bones, cartilages, joints and ligaments"
+        },
+        {
+          "id": "nervous",
+          "label": "Brain and nerves",
+          "file": "anatomy/models/male-nervous.glb",
+          "bytes": 1838788,
+          "sha256": "35bd82b9b579fa197808a912962b4a4d6da38204b41d1b0a3bf5e9044e059b22",
+          "structures": 586,
+          "triangles": 723904,
+          "sourceTriangles": 2410274,
+          "coverage": "full",
+          "note": "brain, spinal cord, cranial and peripheral nerves, sympathetic trunk, eye and ear"
+        },
+        {
+          "id": "organs",
+          "label": "Organs and glands",
+          "file": "anatomy/models/male-organs.glb",
+          "bytes": 1570632,
+          "sha256": "7eed981f1e434a725a060dac2beb129e137d778cfde3c216dc90e23482b1dd95",
+          "structures": 120,
+          "triangles": 428475,
+          "sourceTriangles": 714305,
+          "coverage": "full",
+          "note": "digestive, respiratory, urinary, reproductive and endocrine organs"
+        },
+        {
+          "id": "vessels",
+          "label": "Heart, vessels and lymph",
+          "file": "anatomy/models/male-vessels.glb",
+          "bytes": 3257116,
+          "sha256": "ef95af214217188c7611364f2b7fad17260c44eee6c713281304d5d0d835e45c",
+          "structures": 836,
+          "triangles": 1184679,
+          "sourceTriangles": 3943226,
+          "coverage": "full",
+          "note": "heart, arteries, veins, lymph nodes, spleen and thymus"
+        },
+        {
+          "id": "muscles",
+          "label": "Muscles",
+          "file": "anatomy/models/male-muscles.glb",
+          "bytes": 2126396,
+          "sha256": "f39ba4663f13af1e04c9bc0205a49e05208406b5e88ab1c23a31036ac2df01dc",
+          "structures": 847,
+          "triangles": 863772,
+          "sourceTriangles": 2468747,
+          "coverage": "full",
+          "note": "skeletal muscles, tendons, fascia, bursae and tendon sheaths"
+        },
+        {
+          "id": "skin",
+          "label": "Skin",
+          "file": "anatomy/models/male-skin.glb",
+          "bytes": 386924,
+          "sha256": "133e9cd2f477b99d9d7bfcdd0874ba79efd3676aee3f83e647239e32a9910842",
+          "structures": 256,
+          "triangles": 108103,
+          "sourceTriangles": 135204,
+          "coverage": "full",
+          "note": "the body surface as the regions of Terminologia Anatomica"
+        }
+      ],
+      "omitted": [
+        {
+          "what": "stray duplicate",
+          "count": 380,
+          "why": "a copy of a mesh that Anatria's manifest files under another system (the nervous export carries 278 muscles); kept once, in its own layer"
+        },
+        {
+          "what": "unnamed",
+          "count": 3,
+          "why": "a node whose name is punctuation only (\"????????\" and \"?x\" in cardiovascular_male.glb)"
+        },
+        {
+          "what": "Muscular insertions",
+          "count": 537,
+          "why": "attachment footprints painted on bone (origin/insertion patches), not muscles"
+        }
+      ],
+      "totalBytes": 10880440,
+      "structureCount": 3335
+    },
+    "female": {
+      "sex": "female",
+      "source": {
+        "id": "hra-united-female",
+        "title": "3D Reference Organ Set for United, Female (v1.5)",
+        "author": "Kristen Browne and Heidi Schlehlein, HuBMAP Human Reference Atlas (NIH); after the Visible Human Female (U.S. National Library of Medicine)",
+        "attribution": "Kristen Browne; Heidi Schlehlein. 2023. *3D Reference Organ Set for Female, v1.5.*, https://doi.org/10.48539/HBM352.BTSQ.586. Accessed on December 15, 2023.",
+        "citationOverall": "Kristen Browne, Heidi Schlehlein, Bruce W. Herr II, Ellen Quardokus, Andreas Bueckle, Katy Börner. 2023. [*HuBMAP CCF 3D Reference Object Library*.](https://humanatlas.io/3d-reference-library) Accessed on December 15, 2023.",
+        "doi": "https://doi.org/10.48539/HBM352.BTSQ.586",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourcePage": "https://humanatlas.io/3d-reference-library",
+        "version": "v1.5",
+        "creationDate": "2023-12-15",
+        "publisher": "HuBMAP",
+        "files": [
+          {
+            "file": "3d-vh-f-united-v1.5.glb",
+            "url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.5/assets/3d-vh-f-united.glb",
+            "bytes": 211624968,
+            "sha256": "472567a56896b9b7890508da6501fbf858e56aaa30745365f7a71ade782b529c"
+          },
+          {
+            "file": "united-female-v1.5-metadata.json",
+            "url": "https://cdn.humanatlas.io/digital-objects/ref-organ/united-female/v1.5/metadata.json",
+            "bytes": 8388,
+            "sha256": "a06aea4d28e03b751b87f7f07d5126aacd6c41770a31097f05ecef8b6ead27bc"
+          }
+        ]
+      },
+      "layers": [
+        {
+          "id": "skeleton",
+          "label": "Skeleton",
+          "file": "anatomy/models/female-skeleton.glb",
+          "bytes": 1296292,
+          "sha256": "46ce401a4e85dbafeab3cc4f809edd6b4706c40b5c80581863e6ae2837a8c299",
+          "structures": 91,
+          "triangles": 339576,
+          "sourceTriangles": 565844,
+          "coverage": "partial",
+          "note": "vertebral column, sacrum, pelvis and the bones of the knee only; the HRA models no skull, rib cage or limb bones"
+        },
+        {
+          "id": "nervous",
+          "label": "Brain and nerves",
+          "file": "anatomy/models/female-nervous.glb",
+          "bytes": 2255432,
+          "sha256": "546de798d80a041cbc24c75a21795fa391df43eff8efb111279b02752f62f116",
+          "structures": 362,
+          "triangles": 509756,
+          "sourceTriangles": 1696540,
+          "coverage": "partial",
+          "note": "brain (Allen Human Brain Atlas regions), spinal cord, eyes and the nerves of the eye; no peripheral nerves"
+        },
+        {
+          "id": "organs",
+          "label": "Organs and glands",
+          "file": "anatomy/models/female-organs.glb",
+          "bytes": 2939096,
+          "sha256": "6ca411b1ef7416754282bf73ccf232528125384b0cb8ef1cadb13e9291e51db7",
+          "structures": 286,
+          "triangles": 745810,
+          "sourceTriangles": 2133366,
+          "coverage": "full",
+          "note": "digestive, urinary, respiratory, lymphatic and reproductive organs and the mammary glands; the stomach and oesophagus are fitted from the male model (the HRA has neither for either sex) and are labelled so",
+          "supplements": [
+            {
+              "id": "organs-fitted",
+              "layer": "organs",
+              "file": "anatomy/models/female-organs-fitted.glb",
+              "bytes": 138108,
+              "sha256": "d08137e0607c8214f63a2bf63484ba46f506ed92a65f8eb808ccbb679a0bbb7e",
+              "structures": 3,
+              "triangles": 21320,
+              "sourceTriangles": 35536,
+              "licence": "CC BY-SA 4.0",
+              "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "note": "stomach and oesophagus fitted from the male Z-Anatomy model; position indicative"
+            }
+          ]
+        },
+        {
+          "id": "vessels",
+          "label": "Heart, vessels and lymph",
+          "file": "anatomy/models/female-vessels.glb",
+          "bytes": 899692,
+          "sha256": "27988864df5078c14c4fa73202d38392a79a263d7a59251083033bf89a164ff6",
+          "structures": 124,
+          "triangles": 215964,
+          "sourceTriangles": 480128,
+          "coverage": "partial",
+          "note": "heart and the major blood vessels of the trunk; no lymphatic vessels beyond one lymph node"
+        },
+        {
+          "id": "muscles",
+          "label": "Muscles",
+          "file": "anatomy/models/female-muscles.glb",
+          "bytes": 242300,
+          "sha256": "da2ae100c09da26789186731ccf7d5185659392015f136bcaaaef90345d88a6a",
+          "structures": 16,
+          "triangles": 66414,
+          "sourceTriangles": 110716,
+          "coverage": "partial",
+          "note": "the HRA models only the muscles of the eye and knee; no skeletal musculature"
+        },
+        {
+          "id": "skin",
+          "label": "Skin",
+          "file": "anatomy/models/female-skin.glb",
+          "bytes": 603820,
+          "sha256": "58cec5f75df8c01f0060b01a925014ff5697ba79f61e92d4d700a859c86b5727",
+          "structures": 1,
+          "triangles": 191320,
+          "sourceTriangles": 382640,
+          "coverage": "full",
+          "note": "the whole-body skin surface"
+        }
+      ],
+      "omitted": [
+        {
+          "what": "VH_F_placenta",
+          "count": 8,
+          "why": "the HRA places a term placenta in the uterus; the Visible Human Female was not pregnant and the site's reproductive entry describes the non-pregnant organ"
+        }
+      ],
+      "supplements": [
+        {
+          "id": "z-anatomy-fitted",
+          "title": "Stomach and oesophagus, fitted from the male model",
+          "author": "Z-Anatomy (after BodyParts3D, DBCLS), via the Anatria3D GLB export; fitted into the female body for this site",
+          "licence": "CC BY-SA 4.0",
+          "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "sourcePage": "https://github.com/Nurkan1/Anatria-3D/tree/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy",
+          "upstream": [
+            {
+              "title": "Z-Anatomy, the libre 3D atlas of anatomy",
+              "url": "https://www.z-anatomy.com/",
+              "licence": "CC BY-SA 4.0"
+            },
+            {
+              "title": "BodyParts3D, Database Center for Life Science (DBCLS), Japan",
+              "url": "https://lifesciencedb.jp/bp3d/",
+              "licence": "CC BY-SA 2.1 JP"
+            }
+          ],
+          "pinned": {
+            "repository": "https://github.com/Nurkan1/Anatria-3D",
+            "commit": "949ac80cc9763539afc48e60b5246132f00468db"
+          },
+          "notice": "anatomy/models/NOTICE-male.txt",
+          "why": "the Human Reference Atlas has no stomach or oesophagus for either sex (reference-organ index, 81 objects, checked 2026-09-19)",
+          "fit": {
+            "method": "per-axis affine from the union box of liver, spleen and pancreas in each model; the oesophagus blends from that map at its stomach end to a trachea-aligned map at its top",
+            "scale": [
+              1.1427,
+              1.092,
+              1.0857
+            ],
+            "maleLandmarkBox": {
+              "min": [
+                -0.1147,
+                1.0791,
+                -0.0537
+              ],
+              "max": [
+                0.1139,
+                1.2577,
+                0.0994
+              ]
+            },
+            "femaleLandmarkBox": {
+              "min": [
+                -0.1349,
+                0.2375,
+                -0.1538
+              ],
+              "max": [
+                0.1263,
+                0.4325,
+                0.0124
+              ]
+            }
+          },
+          "files": [
+            {
+              "file": "digestive_male.glb",
+              "url": "https://raw.githubusercontent.com/Nurkan1/Anatria-3D/949ac80cc9763539afc48e60b5246132f00468db/public/anatomy/digestive_male.glb",
+              "bytes": 929984,
+              "sha256": "0f6b1ddc17ba93c318910db111322d53a4779b677df1bb24d99dd60c21963a08"
+            }
+          ]
+        }
+      ],
+      "totalBytes": 8374740,
+      "structureCount": 883
+    }
+  }
+}

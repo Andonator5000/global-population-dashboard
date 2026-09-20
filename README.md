@@ -236,7 +236,7 @@ monthly refresh workflow will not open a pull request unless they pass.
 | `typecheck` | Strict TS, including `exactOptionalPropertyTypes` and `noUncheckedIndexedAccess`. |
 | `check:taxonomy` | Every node has a Wikipedia title or an explicit null, a description with its source (generated ones flagged), and a defined rank; genera chunks complete — §31, §44. |
 | `check:evolution` | Every geologic period is inhabited by at least one sourced event — §32. |
-| `check:anatomy` | Every anatomy system and organ is described, sourced and reachable from a layer; every diagram exists locally and is credited under a free licence. |
+| `check:anatomy` | Every anatomy system and organ is described, sourced and reachable from a layer; every diagram exists locally and is credited under a free licence; the 3-D models (`data/anatomy/models/male-*.glb` are CC BY-SA 4.0 derived works of Z-Anatomy/BodyParts3D, see NOTICE-male.txt; `female-*.glb` CC BY 4.0 from the NIH Human Reference Atlas, except `female-organs-fitted.glb`, the male stomach and oesophagus fitted in under CC BY-SA 4.0 because the HRA has neither, §65.9) are valid, licence-listed, attributed and within budget — §65. |
 | `check:phenomena` | Every phenomenon is categorised, status-flagged, fact-sourced, and its image exists locally, decodes, and carries licence + credit — §46. |
 | `check:chemistry` | All 118 elements carry every required field (or a reasoned null), a photograph or an explicit no-sample flag, and a glossary entry for every property the panel shows — §47. |
 

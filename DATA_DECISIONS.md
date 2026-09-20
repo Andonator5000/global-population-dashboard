@@ -4008,6 +4008,1038 @@ scroll the page on a phone you start the swipe outside the globe — the
 same trade every embedded globe makes, and the one Andy's report asks
 for.
 
+## 62. Round 12: the globe is dragged the way Google Earth is dragged (2026-09-19)
+
+Andy: the 3-D globe "glitches frequently, specifically on mobile. It
+doesn't move smoothly when I use my finger to spin the globe around.
+And it moves too slowly. I want it to be as responsive as Google Earth
+when I use my finger. When I use both fingers, I want to be able to
+change the orientation of the globe, meaning that I want to be able to
+move the North to South if I wish, just as in Google Earth."
+
+**62.1 The model was wrong, not the constant.** Rounds 6-9 tuned a
+degrees-per-pixel constant (0.25 -> 0.375 -> 0.5625 -> 0.25 -> 0.375)
+and a flick cap, each a compromise between "too slow" and "spins like
+mad", because a fixed pace is wrong somewhere on the disc whatever its
+value: near the centre a pixel is a small angle, near the limb a large
+one. Google Earth has no such constant. Its rule is that the place
+under the finger stays under the finger, and that is now the globe's
+rule too: at pointer-down the place under the finger is the anchor,
+and every frame the orientation is solved so the anchor sits under the
+finger now. The pace is the sphere's own geometry, exact at every zoom
+(the solve goes through the zoom transform) and at every point of the
+disc. DRAG_SENSITIVITY and INERTIA_MAX_PX_PER_FRAME are gone.
+
+**62.2 North is held with one finger, turned with two.** Pure versor
+dragging (Bostock/Fil) rolls the globe whenever the finger's path
+curves, which is not what Google Earth does. One-finger drags therefore
+solve for [lambda, phi] with gamma fixed (`versor.withFixedRoll`, a
+closed form: screen-x of the anchor fixes lambda up to a two-way
+choice, then phi is the angle that lifts it to the target; the
+right-way-up candidate nearest the previous orientation wins, and past
+a pole the tilt clamps, so the map stops at the pole as Google Earth's
+does). Two fingers are a pinch for d3-zoom (scale, and pan when zoomed
+in) and a TWIST for the globe: the angle between the fingers rolls the
+globe about the line of sight by the same angle, so north can be turned
+to the side or the bottom of the screen. A mouse has no second finger:
+Shift+drag rolls. The compass (section 59.3) now also returns gamma to
+0, animated along the single rotation from the current orientation to
+the levelled one (a geodesic through quaternion power, not an
+Euler-angle detour).
+
+**62.3 Gamma end to end.** Rotation is the Euler triple [lambda, phi,
+gamma] everywhere: the React state, the drag ref, the d3 projection,
+and the GL shaders. The imagery fragment shader undoes the roll before
+the tilt (the inverse of d3's rotate order) and the outline vertex
+shader applies it after the tilt; lambda and gamma are both wrapped to
+[-180, 180) at every write (section 54.2's precision argument applies
+to gamma too). The view centre stays [-lambda, -phi] whatever gamma is,
+so the tile windows, the culling and the label tests are untouched.
+
+**62.4 Momentum.** The last drag frame's rotation, as a quaternion, is
+applied again each frame and shrunk by 0.93 per 60 Hz frame; time-based
+(quaternion power by dt/16.7), so a 120 Hz phone coasts the same
+distance. A flick starts at most 15 degrees per frame (a hard flick
+carries the globe well over half a turn and settles in about two
+seconds). A release more than 80 ms after the last movement is a hold,
+not a flick, and gets no momentum: the finger stopped before it lifted.
+A north-held drag's per-frame rotation is not itself roll-free when
+repeated (its axis need not lie in the lambda/phi subgroup; a flick
+left gamma at -1.78 in the smoke test), so the coast pins gamma where
+the finger left it; a twist coasts as a pure roll.
+
+**62.5 The mobile glitches.** Two were found by the round's test scripts
+rather than guessed. (a) Lifting one finger of a pinch continued the
+drag from the survivor's STALE position (the one-finger path ignored
+moves while two fingers were down), a visible jump; every change in the
+number of fingers now re-anchors. (b) Taking explicit pointer capture
+of a touch pointer transfers it from the element it went down on
+(touch pointers are implicitly captured there), and Chrome fires
+lostpointercapture on that element in the middle of the gesture; the
+event bubbles into the end handler, which read it as a release -- the
+two-finger twist died after one frame, and a one-finger drag could too.
+Touch pointers are no longer explicitly captured (they do not need it),
+and a lostpointercapture for a pointer that is still down waits 120 ms
+for the pointer to speak again before it counts as gone -- section 42.1's
+escape hatch is kept, just not triggered by a hand-over.
+
+**62.6 Verification.** `.scratch/versor-test.mjs` checks the quaternion
+helpers against d3-geo (Euler round trip, the drag invariant, the roll
+sense, power) to 1e-12; `.scratch/fixedroll-test.mjs` checks the
+fixed-roll solver to 1e-15 on every reachable target; `.scratch/r12-drag.mjs`
+drives a Pixel 7 emulation with CDP touch events against a no-HMR dev
+server (`.scratch/vite.r12.config.ts`, port 5175 -- other agents' edits
+were reloading the page mid-gesture on :5173): the country under the
+finger at the start is under it at the end, a 60-degree twist reads
+gamma -60.00, north-up reads 0.00, no console errors. The committed
+orientation is exposed as `data-rotation` on the svg for these scripts.
+Frame times on the emulated phone: median under 1 ms during drags (the
+GL pass), the ~24 ms outlier is the single React commit at the end.
+
+## 63. Round 12: Supernova Yellow, Stark Black, and vivid maps (2026-09-19)
+
+Andy: *"I want you to make use of the colours Supernova Yellow and Stark black
+in the appearance of the website. Take inspiration from National Geographic
+magazine. Make the colours of the maps more vibrant."*
+
+Two things, deliberately kept separate. The identity pair is **chrome** — the
+masthead, the colophon, rules, frames, focus, selected controls. The map
+vibrancy is a **palette** change, inside the same gates the palette has always
+had. No data visualisation was restyled: the breakdown bars, the eight chart
+series, the periodic-table tints and the timeline era hues are the data
+channel and are untouched.
+
+### 63.1 The two tokens, measured
+
+| token | oklch | sRGB | role |
+| --- | --- | --- | --- |
+| `--supernova` | `oklch(87% 0.178 92)` | `#fecf00` | fill · rule · frame · highlight · text-on-black |
+| `--stark` | `oklch(11% 0 0)` | `#040404` | band · keyline · text-on-yellow |
+| `--on-supernova` | `oklch(11% 0 0)` | `#040404` | text on yellow |
+| `--on-stark` | `oklch(100% 0 0)` | `#ffffff` | text on black |
+| `--on-stark-muted` | `oklch(82% 0 0)` | `#cbcbcb` | tagline, resting nav links |
+| `--on-stark-accent` | `oklch(87% 0.178 92)` | `#fecf00` | yellow **as text**, on black only |
+
+All six are **theme-invariant**: declared once in `:root`, listed in
+`LIGHT_ONLY` in `check-theme-parity.mjs`, and in `INVARIANT` in
+`check-contrast.mjs`. A magazine's front is its front; it does not switch with
+the reader's OS setting.
+
+**Why this yellow.** The brief named the #FFCE00–#FFD100 register. National
+Geographic's own mark is Pantone 116 C, which renders about `#FFCD00`.
+Converting: `#FFCE00` is `oklch(86.9% 0.1777 91.3)`. Rounding that to values a
+person can read and re-derive gives `oklch(87% 0.178 92)`, which converts back
+to `#fecf00` — one unit of red and one of green away from the target, and
+inside the stated register. Rounder-looking candidates were rejected for
+landing outside it: `oklch(86% 0.19 95)` → `#f5ce00` (too olive, R=245),
+`oklch(87% 0.178 91)` → `#ffce18` (the blue channel lifts to 0x18 and it goes
+chalky).
+
+**Measured contrast** (WCAG 2.x relative luminance; all of these are in
+`check-contrast.mjs` and run in both theme passes):
+
+| pair | ratio | floor | verdict |
+| --- | --- | --- | --- |
+| stark black text on supernova | **13.77** | 4.5 | AAA |
+| white text on stark black | **20.46** | 4.5 | AAA |
+| supernova text on stark black | **13.77** | 4.5 | AAA |
+| muted white (82%) on stark black | **11.72** | 4.5 | AAA |
+| supernova rule vs light surface | **1.44** | 1.2 (graphic) | pass as a *mark*, fail as *text* |
+| supernova rule vs dark surface | **12.87** | 1.2 (graphic) | pass |
+| focus ring, stronger band vs surface | **19.88** light / **12.87** dark | 3.0 | pass |
+| nav identity dots vs stark black | 7.87 – 8.76 | 3.0 | pass |
+
+### Where yellow is used
+
+- the masthead border mark (a 3–6px frame, `clamp()`ed)
+- the nav's active underline **and** the active label's text colour — on the
+  black band, where yellow is 13.77
+- the h1 department rule: a 2.5rem × 4px bar under every page title
+- the 3px top rule on raised home-page cards
+- selected segmented-control state (`--control-selected-bg`), with stark black
+  labels, **in both themes**
+- the inner band of the focus ring
+- the colophon's top rule and its `/methodology` link (again, on black)
+- the favicon
+
+### Where yellow is deliberately NOT used
+
+- **as text on any light surface.** 1.44:1. There is no token, class or check
+  that would permit it; `--on-stark-accent` is named for the only ground it is
+  legal on. This is the single rule the system hangs on.
+- **as a bare focus ring.** See 62.2.
+- **on any data mark.** No bar, series, era band, category tint or map fill is
+  yellow-by-identity. A country whose flag hue happens to be yellow still gets
+  a yellow fill, as it always did — that is the flag speaking, not the brand.
+- **as the masthead band's bottom border.** A yellow rule there would sit
+  directly behind the nav's 2px yellow active underline and swallow it; the
+  band separates with a 14%-white hairline instead.
+- **on h2.** See 62.4.
+- **on the map's focus stroke.** See 62.2.
+
+### Where stark black is used
+
+- the masthead band and the colophon band, spanning the page in both themes
+- the outer keyline of the focus ring
+- text on every yellow surface
+- the favicon ground
+- `--brand-bg`, the *primary filled button* role, repointed from the old brand
+  green. Nothing on the site renders one today (every control is an outline or
+  a selected state), so this is a role definition rather than a restyle: the
+  first primary button built lands on black-with-white, not green-with-white.
+
+### 63.2 The focus ring is two bands, and that is not decoration
+
+The brief asked for yellow focus rings. A bare supernova ring on the light
+surface is **1.44:1**, nowhere near the 3:1 WCAG 2.2 asks of a focus
+indicator — it would have been an accessibility downgrade dressed as branding.
+
+The ring is therefore composite: 3px supernova hugging the control (drawn by a
+`box-shadow` inside the outline's offset gap), with a 2px stark keyline
+immediately outside it.
+
+```css
+:focus-visible {
+  outline: 2px solid var(--stark);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--supernova);
+  border-radius: 2px;
+}
+```
+
+Whichever theme is on, one band is doing the work: black is 19.88 on the light
+surface, yellow is 12.87 on the dark one. `check-contrast.mjs` encodes exactly
+that — it checks the *stronger of the two bands* per theme rather than
+pretending both pass everywhere.
+
+**Exception, recorded:** `.map-target:focus-visible` keeps the blue `--accent`
+stroke. Supernova over the light country fills is ~1.4:1, and the keyline that
+rescues the ring elsewhere needs a second stroke, which a single SVG path
+cannot have. The rule also now sets `box-shadow: none`, because the global
+ring's box-shadow does not render on SVG geometry and would otherwise be
+half-drawn.
+
+### 63.3 The masthead becomes a publication front
+
+Round 2 (§34) set the site name as a centred nameplate over a double hairline
+on the page surface. Round 12 keeps the nameplate and puts it where a magazine
+puts it: inside the border mark — a thick supernova rectangle — on a stark
+black band that spans the page **in both themes**.
+
+- The nameplate is set in two lines (`ENCYCLOPEDIA` / `ANDRANIKA`), uppercase
+  Newsreader. Two reasons: the frame then reads as the mark's portrait
+  proportion rather than as a box drawn round a sentence, and the words were
+  always going to wrap on a phone, so they wrap on purpose at every width.
+- Frame border and padding are `clamp()`ed against the viewport, so the mark
+  scales instead of clipping.
+- The tagline is `--on-stark-muted` on the band.
+- **The active section is now yellow** — yellow label plus a 2px yellow
+  underline. `aria-current` is unchanged and the underline still carries the
+  state without colour, so nothing regressed for assistive tech or for a
+  colour-blind reader.
+- The per-section hue survives as a 6px dot beside the label, so the SECTIONS
+  registry still means something. Consequence: the seven `--nav-*` tokens
+  became **theme-invariant at the bright (former dark-mode) step**. The
+  44%-lightness light-mode step existed only to clear the light surface, and
+  the light surface is no longer behind them. They moved from `THEMES` to
+  `INVARIANT` in check-contrast, with the check changed from "3:1 against the
+  surface" to "3:1 against `--stark`" (worst: history at 7.87).
+
+**Phone measurements** (`.scratch/theme-narrow.mjs`, document scrollWidth ==
+viewport width at all three, so nothing overflows):
+
+| viewport | header height before | after | nav link height |
+| --- | --- | --- | --- |
+| 320 | 276px | **257px** | 45.3px |
+| 360 | 276px | **244px** | 45.3px |
+| 390 | 231px | **198px** | 45.3px |
+
+The `<=480px` block tightens the nameplate block's padding, the tagline's size
+and tracking (it fits one line from 360 up), and the nav's *horizontal*
+padding — never its vertical padding, which is the 44px touch target.
+
+### 63.4 Carrying the identity through the site, and the h2 rule that was rejected
+
+The brief offered "a yellow rule under section h2s **or** at the top of raised
+cards". Both were tried; the h2 rule was rejected on inspection.
+
+`h2` is used in this codebase as a **flex-item panel heading** in several
+components — `MapReadout` (the country name beside a continent label),
+`EntityTable` ("ALL ENTITIES" beside an Expand button), `ElementPanel` — where
+a `border-bottom` sizes to the word, not the section, and reads as an
+underlined word rather than a section break.
+
+`h1` has no such problem: it is always a block-level page title. So the
+department rule lives there, in `@layer base`, as a short bar:
+
+```css
+h1::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 4px;
+  margin-top: 0.6rem;
+  background: var(--supernova);
+}
+```
+
+One rule, and every route — `/history`, `/chemistry`, `/taxonomy`, country
+pages, even `/404` — carries the identity without a per-page edit. Verified on
+the /history and /chemistry captures.
+
+The raised home-page cards take a 3px supernova **top** rule, implemented as
+the card's own top border re-coloured and thickened so nothing shifts and the
+rounded corner still clips it. The hero card and the map card have it. The
+year-scrubber card deliberately does not — it is a continuation of the hero
+block, not a new one. The entity-table card lives in `EntityTable.tsx`, outside
+this round's ownership; the exact lines are in `.scratch/theme-notes.md` §7.
+
+The colophon (new, in `App.tsx` below the existing provenance footer): a stark
+black band under a 3px supernova rule, carrying the name in the display serif,
+"Sources on every figure", and a yellow link to `/methodology`.
+
+The favicon is now the mark itself — a supernova portrait rectangle on stark
+black. The old serif "A" on brand green went with the green. A frame survives
+16px where a letterform smears, which is why National Geographic's own mark is
+a rectangle.
+
+**Bug found while doing it:** `public/favicon.svg` has been INVALID XML since
+round 2 (2026-09-05) and the site has been serving a broken icon ever since.
+Its leading comment read "the exact `--brand-bg` token value", and XML forbids
+a double hyphen inside a comment. Rendering the file in a browser produced the
+parse-error page, not an icon:
+
+```
+$ python -c "import xml.etree.ElementTree as ET; ET.parse('favicon.svg')"
+old favicon: INVALID XML -> not well-formed (invalid token): line 2, column 58
+new favicon: parses OK
+```
+
+The replacement names its tokens without the CSS custom-property prefix and
+says so in the file, so the trap is not re-set. Verified rendered:
+`.scratch/shots/r12-favicon-big.png`.
+
+### 63.5 The chroma reversal (this overturns the 2026-08-29 ruling)
+
+**The ruling being reversed.** Phase 2.4, 2026-08-29: "the maintainer asked for
+something more restrained and cohesive than the 0.10-chroma band of
+2026-08-15. Chroma drops to 0.045." Andy has now asked for the opposite. The
+default direction takes the full lift; `MAP_PALETTE_LABELS.atlas` changes from
+"Atlas — restrained flag hues" to "Atlas — vivid flag hues", because a label
+that contradicts the palette is worse than no label.
+
+| direction | chroma before (light/dark) | after | rationale |
+| --- | --- | --- | --- |
+| **atlas** | 0.045 / 0.05 | **0.12 / 0.13** | the default, takes the full lift |
+| paper | 0.022 / 0.028 | 0.045 / 0.052 | quiet, but was quieter than it needed to be |
+| pastel | 0.032 / 0.036 | 0.058 / 0.065 | ditto |
+| nautical | 0.03 / 0.034 | 0.055 / 0.062 | ditto |
+| antique | 0.055 / 0.055 | **unchanged** | MEASURED from the Blaeu 1635 sheet (§48) |
+| mono | 0 / 0 | **unchanged** | colour-blind-safe by construction |
+
+**Gate numbers, before → after** (from `data/flags/map-palette.json`, the
+previous values read out of `git show HEAD:`):
+
+| gate | floor | atlas light before → after | atlas dark before → after |
+| --- | --- | --- | --- |
+| neighbour dE, min | 4.0 | 5.32 → **5.32** | 5.82 → **5.92** |
+| neighbour dE, median | — | 9.75 → **17.79** | 10.74 → **18.05** |
+| pairs below floor | 0 | 0 → **0** | 0 → **0** |
+| min fill/water contrast | 1.35 | 1.49 → **1.43** | 1.67 → **1.57** |
+| min light fill vs globe ocean | 2.0 | 4.46 → **4.15** | (light fills only) |
+| continent regions, min pairwise dE | 4.0 | 5.86 → **5.86** | — |
+
+Every other direction after the change: paper 5.36/5.79, antique 4.75/5.77,
+pastel 5.31/5.76, nautical 5.33/5.86, mono 5.41/5.87 (min dE, light/dark); min
+fill/water 1.47, 3.38, 1.47, 1.47, 1.50 light.
+
+**The four lightness tiers were NOT widened, and that is a measured result.**
+The brief allowed widening "if needed". It was not needed, and widening would
+have cost something. `clampChroma` holds L while walking chroma down for
+out-of-gamut hues, so the tier ladder's dE floor (`dE = dL·100` for a same-hue
+pair) is untouched by the chroma rise — which is why min dE is *identical* at
+5.32 before and after. Isolating the chroma rise (holding the old water and
+ocean), 0.045 → 0.12 cost the fill/water floor 0.05 (1.49 → 1.44) and the
+globe-ocean floor 0.15 (4.46 → 4.31); the rest of the movement in the table
+above is the deepened water and ocean of §63.6, not the chroma. Both are far
+inside their gates either way. Meanwhile the tier
+ladder is shared by every direction (`THEMES.light.tiers`), so widening it
+would have moved **mono**, which Andy asked to leave alone. Swept ladders, for
+the record, all at chroma 0.12 light: `.68/.735/.79/.845` (current) → dE 5.26,
+water 1.44, ocean 4.31; `.64/.71/.78/.845` → 6.29 / 1.44 / 3.68;
+`.58/.67/.755/.84` → 8.27 / 1.47 / 2.88. All pass; none was worth the
+collateral.
+
+The visible result is not in the minimums, which barely moved, but in the
+**median neighbour dE: 9.75 → 17.79 light, 10.74 → 18.05 dark**. Adjacent
+countries are now nearly twice as far apart perceptually, which is what
+"vibrant" means when lightness is still the guaranteed channel.
+
+### 63.6 The water and the ocean
+
+`--map-ocean` (the globe's sea, theme-invariant): `oklch(31% 0.06 255)`
+`#1a314e` → **`oklch(32% 0.10 248)` `#00355c`**. Deeper in hue-saturation, a
+touch lighter in L, which reads as a printed-atlas navy rather than slate.
+Gated both ways and it got *better* on one of them: every light fill clears
+4.15 against it (floor 2.0), and ocean-vs-space rose from 1.58 to **1.64**
+(floor 1.5). Candidates rejected: `oklch(29% 0.10 252)` scored 1.46 against
+space and fails; `oklch(34% 0.11 245)` passes everything but the ocean starts
+competing with the darkest land tier.
+
+`--map-water` (the flat map's sea): light `oklch(98% 0.010 235)` →
+**`oklch(97.5% 0.028 232)`**, dark `oklch(13% 0.010 235)` →
+**`oklch(15% 0.040 245)`**. `--map-land-stroke` follows it in both themes, as
+it always has. The light value **cannot go deeper**, and this is measured, not
+cautious: the top lightness tier sits at 0.845 and the fill/water floor of 1.35
+is the only thing stopping a pale country washing into the sea. Sweep at atlas
+chroma 0.12: a `96.5%/0.035` sea drops the worst fill (a pale green, hue 163,
+top tier) to 1.388; `94%/0.040` → 1.27 **fail**; `92%/0.050` → 1.20 fail;
+`90%/0.060` → 1.13 fail. Depth of colour belongs to the globe ocean, which has
+no such neighbour.
+
+**Recorded honestly:** `--map-water` is currently *not read by the renderer*.
+`WorldMap.tsx:2359` draws the water from `--map-ocean` on the flat map too. The
+token is still declared, still mirrored in `check-contrast.mjs`, and still
+mirrored by `build-map-palette.mjs`'s `THEMES[*].surface` — which makes the
+fill/water gate a *conservative proxy*: what is actually behind a fill is the
+ocean, and that pairing is separately gated at 2.0 (measured 4.15). The
+deepened water keeps the family coherent if the flat map is ever pointed back
+at it. Flagged for the lead in `.scratch/theme-notes.md` §2 along with the
+three stale `#0b2740` fallbacks that still name the old ocean.
+
+### 63.7 Imagery grades
+
+`IMAGERY_GRADES` in `src/lib/mapgrade.ts` — presentation only, outside the
+palette gates (§51.1), never applied to political fills.
+
+| direction | before | after |
+| --- | --- | --- |
+| **atlas** | identity | `saturate 0.35, contrast 0.12` |
+| paper | `desaturate .4, lift .08` | `+ contrast 0.06` |
+| pastel | `desaturate .5, lift .22` | `+ contrast 0.04` |
+| nautical | `desaturate .25, tint, tintAmount .3` | `+ saturate 0.15, contrast 0.10` |
+| antique | `sepia .9, lift .06` | **unchanged** (measured Blaeu tone) |
+| mono | `desaturate 1` | **unchanged** |
+
+Paper and pastel get **contrast only, no chroma**: adding saturation to a
+direction whose whole point is desaturation just makes the grade fight itself.
+Nautical gets a little chroma back after its desaturation, which is what makes
+its blue tint read as ink rather than as fog.
+
+Verified by capture (`.scratch/theme-globe-capture.mjs`, headed Chrome, real
+GPU, same shape as `scripts/globe-spin-capture.mjs` but pointed at :5181
+because :5173 belongs to the lead session). Measured mean saturation over a
+220×130 North-Africa window:
+
+| capture | before | after |
+| --- | --- | --- |
+| satellite / atlas | 0.472 | **0.666** (+41%) |
+| terrain / atlas | 0.179 | **0.238** (+33%) |
+
+Tuned down from a first pass at `saturate 0.50 / contrast 0.20`, where the
+Sahara and the Australian interior clipped to a flat orange and the Amazon lost
+its river network. The numbers stop where the picture is still a photograph.
+The pastel capture confirms the hierarchy holds: pastel is still visibly the
+quiet option beside atlas.
+
+### 63.8 What UI UX Pro Max recommended, and what was taken
+
+`--design-system "reference atlas editorial magazine publication"`, plus
+`--domain style`, `--domain color`, `--domain ux`, `--domain typography`.
+
+**Taken:**
+
+- *Style: Swiss Modernism 2.0* and *editorial-grid-magazine*, whose primary
+  palette is literally "High contrast: Black #000000, White #FFFFFF, accent
+  brand color". That is the structure Andy's two colours already describe, and
+  it is why the design holds together rather than reading as a warning sign:
+  black and white do the work, one accent does the pointing.
+- *exaggerated-minimalism*: "single vibrant accent only". Taken as the
+  discipline behind 62.1's "where it is NOT used" list — one accent, used for
+  one job (state and identity), never a second decorative colour.
+- *Accessibility / Focus States*: "Do: use a visible focus ring on every
+  interactive control. Don't: remove focus outline without replacement." This
+  is what forced 62.2's two-band ring rather than a bare yellow one.
+- *Focus Not Obscured (Minimum), WCAG 2.2 AA, severity High*: checked — the
+  masthead band is **not** sticky/fixed, so a focused control can never be
+  covered by it. No `scroll-padding-top` needed. (If the masthead is ever made
+  sticky, it will need one equal to the band height.)
+- The pre-delivery checklist items were re-verified: no emoji as icons,
+  `cursor: pointer` on controls, 150ms transitions, 4.5:1 light text, visible
+  focus, `prefers-reduced-motion` honoured (the existing block zeroes the new
+  transitions too), and 320/360/390/412/1280 all checked.
+
+**Rejected:**
+
+- *Accent/CTA `#EC4899` (editorial pink)* and the whole "Digital Signage /
+  Kiosk" `#EF4444` palette from `--domain color`. Andy named the accent. The
+  database's accent is a suggestion; the brief is not.
+- *Typography: Libre Bodoni / Public Sans ("Magazine Style")* — the top
+  typography match, and the closest thing to a temptation here, since Bodoni is
+  the magazine face. **Rejected on Andy's standing ruling**: fonts stay
+  Newsreader + Public Sans, self-hosted. It also loads from Google Fonts, which
+  §25 forbids at render time. Newsreader set uppercase at display size does the
+  nameplate job perfectly well.
+- *Minimalist Monochrome Editorial* ("NO UI sans-serif — 100% serif/mono").
+  This is the "data-dense/Fira" suggestion in a new hat, and it was already
+  rejected. Every number on this site is Public Sans with tabular figures.
+- *Pattern: Scroll-Triggered Storytelling* with parallax chapters. Wrong
+  product: this is a reference atlas, not a narrative landing page.
+- *Bauhaus* (`Primary Yellow #F0C020`) — a plausible yellow-and-black route,
+  but its hard shadows and primary red/blue would drag three more colours into
+  a palette that is supposed to have one accent.
+
+### 63.9 Files touched
+
+| file | change |
+| --- | --- |
+| `src/index.css` | the six identity tokens; `--nav-*` made invariant at the bright step; `--map-ocean`, `--map-water`, `--map-land-stroke`, `--control-selected-*`, `--brand-bg/-text`; masthead/nav/colophon/`h1::after`/focus-ring/`.map-settings-panel` rules |
+| `src/App.tsx` | masthead markup (frame, two-line nameplate, nav dots); the colophon band |
+| `src/routes/HomePage.tsx` | supernova top rule on the hero card and the phone map toolbar; `.map-settings-panel` class |
+| `src/config.ts` | `MAP_PALETTE_LABELS.atlas` wording |
+| `src/lib/mapgrade.ts` | `IMAGERY_GRADES` values (§63.7) |
+| `scripts/check-contrast.mjs` | identity pair + nav dots into `INVARIANT`; map/control token values; the stronger-band focus check |
+| `scripts/check-theme-parity.mjs` | 13 tokens added to `LIGHT_ONLY` |
+| `scripts/build-map-palette.mjs` | direction chroma, `THEMES[*].surface/stroke`, `GLOBE_OCEAN` |
+| `src/generated/flag-fills.css` | regenerated (`npm run palette`) |
+| `data/flags/map-palette.json` | regenerated (`npm run palette`) |
+| `public/favicon.svg` | the border mark on stark black |
+| `.scratch/theme-notes.md` | requests for the lead (WorldMap.tsx) |
+| `.scratch/theme-probe.mjs`, `.scratch/theme-palette-probe.mjs`, `.scratch/theme-water-probe.mjs` | the measurements quoted above |
+| `.scratch/theme-shots.mjs`, `.scratch/theme-globe-capture.mjs`, `.scratch/theme-narrow.mjs`, `.scratch/theme-flat.mjs`, `.scratch/theme-crop.mjs`, `.scratch/theme-diff.mjs`, `.scratch/theme-inspect.mjs` | capture and inspection |
+| `.scratch/shots/r12-*`, `.scratch/shots/r12g-*` | the captures |
+
+Not touched, by ownership: `src/components/WorldMap.tsx`, `src/lib/globegl.ts`,
+anything under anatomy, `etl/`, `src/components/EntityTable.tsx`.
+
+### 63.10 Gates
+
+```
+npm run check:theme-parity   PASS  (light 62 tokens, media-dark 35, explicit-dark 35, identical)
+npm run check:contrast       PASS  (all pairs, both themes)
+npm run check:palette        PASS  (6 directions x 2 themes, 325 border pairs each, 0 violations)
+npm run check:equal-area     PASS
+npm run check:polygons       PASS
+npm run typecheck            PASS at the time of this change; see note
+npm run build                PASS  (8.7 s), same note
+```
+
+**Note on typecheck.** `npm run typecheck` and `npm run build` both passed
+clean immediately after these edits. A later run picked up three errors, all in
+`src/components/anatomy/BodyStage.tsx`:
+
+```
+BodyStage.tsx(93,45):  TS2345  'LayerId | undefined' not assignable to 'LayerId'
+BodyStage.tsx(130,42): TS2538  Type 'undefined' cannot be used as an index type
+BodyStage.tsx(219,53): TS2538  Type 'undefined' cannot be used as an index type
+```
+
+That file belongs to the anatomy work running concurrently in this branch and
+is outside this round's ownership. No error names any file touched here, and
+`tsc -b` halts the rest of `npm run check` when it fails — which is why the
+gates above were also run individually.
+
+## 64. Round 12: the civilization filter gets a floor (2026-09-19)
+
+Andy asked for "more events for each of the
+civilizations in the drop-down list". The filter had become the thin part of
+the timeline: 171 of 273 events carried a civilization tag, and half the
+list sat on two, three or four events — enough to populate the dropdown, not
+enough to be worth filtering by. Khmer, Mongol, Celtic and Phoenician
+returned two events each; Aztec, Inca, Norse, Ethiopian and Portuguese three.
+
+### 64.1 What was added
+
+**191 new events, all tagged**, written for this round against
+`etl/reference/history_events.json` (version 4 → 5). The file now holds
+**464 events, 362 of them tagged** with a civilization. No existing event was
+edited, retagged or removed: the round is purely additive, so every §38 and
+§42.5 ruling stands as written.
+
+The target was a floor of ten events per civilization — the point at which
+filtering by one produces a readable timeline rather than a handful of
+scattered dots — with the largest civilizations at twelve to sixteen.
+
+| Civilization | before | after | | Civilization | before | after |
+|---|---:|---:|---|---|---:|---:|
+| Chinese | 15 | 16 | | Armenian | 6 | 10 |
+| Greek | 10 | 14 | | Aztec | 3 | 10 |
+| Indian | 10 | 14 | | Byzantine | 5 | 10 |
+| American | 6 | 13 | | Celtic | 2 | 10 |
+| British | 10 | 13 | | Ethiopian | 3 | 10 |
+| Islamic caliphates | 8 | 13 | | Frankish & HRE | 4 | 10 |
+| Japanese | 7 | 13 | | Hebrew | 4 | 10 |
+| Persian | 7 | 13 | | Inca | 3 | 10 |
+| Roman | 6 | 13 | | Khmer | 2 | 10 |
+| Egyptian | 5 | 12 | | Korean | 4 | 10 |
+| Russian | 7 | 12 | | Mali & Songhai | 5 | 10 |
+| Spanish | 6 | 12 | | Maya | 4 | 10 |
+| Austronesian | 4 | 11 | | Mongol | 2 | 10 |
+| French | 4 | 11 | | Norse | 3 | 10 |
+| Mesopotamian | 6 | 11 | | Phoenician | 2 | 10 |
+| Ottoman | 5 | 11 | | Portuguese | 3 | 10 |
+
+Every one of the 32 tags now clears ten. The smallest are exactly ten, which
+is deliberate: the alternative was padding the thin civilizations with
+second-rank events to match the large ones, and the honest position is that
+an encyclopedia has more to say about Rome than about the Khmer.
+
+### 64.2 Regional and category totals
+
+Region tags (an event may carry several), before → after:
+
+| Region | before | after | | Region | before | after |
+|---|---:|---:|---|---|---:|---:|
+| Europe | 114 | 192 | | Mesoamerica | 14 | 30 |
+| West Asia | 66 | 115 | | Southeast Asia | 15 | 28 |
+| Africa | 54 | 92 | | South America | 13 | 25 |
+| East Asia | 34 | 53 | | Central Asia | 14 | 24 |
+| North America | 33 | 41 | | Global | 24 | 24 |
+| South Asia | 24 | 30 | | Oceania | 8 | 12 |
+
+Europe's share of region tags moves from 27.6% to 28.8% — it went **up**,
+slightly, and that should be said rather than hidden. The cause is
+structural: eleven of the thirty-two tags in the controlled list are
+European polities (Greek, Roman, Byzantine, Celtic, Norse, Frankish & HRE,
+British, French, Spanish, Portuguese, Russian), so raising every tag to a
+floor necessarily adds European events. The counterweight applied
+was to give the non-European tags their full ten and no more filler, and to
+tag events by where they happened: Portuguese expansion carries Africa,
+South Asia and Southeast Asia, not just Europe; Spanish colonial law carries
+Mesoamerica and South America. In proportional terms the strongest growth is
+Mesoamerica (+114%), Southeast Asia (+87%), South America (+92%) and Central
+Asia (+71%).
+
+Categories, before → after: other-discovery 62 → 120, war-conflict 61 → 112,
+invention-technology 43 → 75, rights-document 41 → 69, scientific-discovery
+32 → 41, religion 25 → 38, evolution-prehistory 9 → 9 (untouched; it is not
+a civilization category).
+
+War stays at roughly a quarter of the list, which is about what it was. The
+deliberate effort was to keep it there: every civilization's additions
+include at least one law code, document, building, book, invention or
+religious turning point, not only its battles. Phoenician is the clearest
+case — the obvious eight additions would have been seven wars and a colony,
+so Himera was dropped for glassblowing, and Tyrian purple, Byblos and Gadir
+carry the trade that actually defined the culture.
+
+### 64.3 Editorial choices
+
+- **The tag is a polity or a culture, not a modern nation.** `American`
+  continues to mean the United States, following the six events that already
+  carried it. `Mali & Songhai` is used as the West African Sahel tag, so the
+  Ghana Empire and the trans-Saharan trade sit under it although Ghana
+  predates Mali — the alternative was a new tag for one event.
+- **Spread over the whole timespan.** Each civilization's additions were
+  chosen to reach both ends of its life. Egyptian now runs from the Step
+  Pyramid to Cleopatra; Khmer from Funan to Zhou Daguan; Phoenician from
+  Tyrian purple to the destruction of Carthage; Inca from the kingdom of
+  Cusco to Túpac Amaru II. Where a polity has an end, the end is in the list:
+  Qadisiyyah, Tondibi, the Third Punic War, Nojpetén, Vilcabamba, the
+  dissolution of the Holy Roman Empire, the Carnation Revolution.
+- **One tag per event, chosen by whose history it is.** The Mongol invasions
+  of Japan are tagged Japanese, because that is where the event is
+  remembered and where its consequences fell; the Golden Horde is tagged
+  Mongol rather than Russian for the same reason in reverse.
+- **Timur is tagged Mongol**, and the summary says why — Turco-Mongol, ruling
+  through Chinggisid puppet khans and claiming that legitimacy. It is a
+  stretch of the tag and it is flagged in the text rather than in a note the
+  reader will not see.
+- **Funan is tagged Khmer**, with the summary stating that the relationship
+  between Funan and the later Khmer is disputed.
+- **Contested dates say so, in the summary, at the right precision.** Clovis's
+  baptism (496 to 508), the Allia (390 or 387), Osman's 1299 (a later
+  convention), Qadisiyyah (636 or 637), Gadir's traditional 1100 BCE against
+  ninth-century finds, the settlement of Madagascar, Enheduanna's
+  authorship, the attribution of the Seventeen Articles to Shotoku, and
+  Majapahit's end date are all hedged in words as well as in
+  `datePrecision`.
+- **Three corrections made on the post-merge read-through**, all on new
+  events: Yasodharapura moved from 889 (Yasovarman I's accession) to
+  approximately 900 (the move to the new capital); the West Baray restated as
+  an eleventh-century work begun under Suryavarman I and finished by his
+  successor; Majapahit's 1527 end date marked as disputed.
+
+### 64.4 Sources: what could be verified, and what could not
+
+Every new event carries its English Wikipedia anchor. All 191 `wikipedia`
+values were pushed through the API (`action=query&redirects=1`) and rewritten
+to the canonical title — eleven were redirects and would have resolved to a
+different article, or none, at image time: `Bar Kokhba revolt` →
+`Bar Kokhba Revolt`, `Askia Mohammad I` → `Askia Muhammad I`,
+`Otto I, Holy Roman Emperor` → `Otto the Great`, `Conquest of Ceuta` →
+`Portuguese conquest of Ceuta`, `Later Silla` → `Unified Silla`,
+`Donghak Peasant Revolution` → `Tonghak Peasant Revolution`, `Yasodharapura`
+→ `Yaśodharapura`, `Mongol conquest of the Khwarazmian Empire` → `Mongol
+invasion of the Khwarazmian Empire`, `The Secret History of the Mongols` →
+`Secret History of the Mongols`, `Siege of Baghdad (1258)` → `Siege of
+Baghdad`, `Qhapaq Ñan` → `Inca road system`.
+
+**Britannica was written into every entry as a second source and then taken
+out again.** Britannica answers every automated request from this machine
+with HTTP 403 — Python and curl alike, with a browser user agent, the same
+Cloudflare wall CLAUDE.md records for IFLA. Roughly one request in twenty got
+through, which proves the URLs were right but leaves ~150 of them
+unverifiable. The project's standing rule is that a figure or a link that
+cannot be checked does not ship, so they came out. The same applies to
+loc.gov, the Smithsonian, the British Museum, Corning, teara.govt.nz and
+nzhistory.govt.nz, all 403.
+
+What replaced them, each verified by script (HTTP 200 plus a real article
+title, disambiguation stubs rejected):
+
+- **UNESCO World Heritage** (`whc.unesco.org`) for 21 entries — the Parthenon,
+  Pompeii, Versailles, Lalibela, Gondar, Djenné, Tōdai-ji, Seokguram,
+  Nalanda, the Taj Mahal, Angkor, Sambor Prei Kuk, Ani, Edirne, Tikal,
+  Palenque, the historic centre of Mexico City, Qhapaq Ñan, Byblos, Jelling.
+- **Encyclopaedia Iranica** for six Persian entries.
+- **World History Encyclopedia** for 81 entries where a specific article
+  exists (a handful land on a well-matched parent article — Caracalla for the
+  Antonine Constitution, Leo III for the 717 siege, Vercingetorix for Alesia;
+  each was read to confirm the page is the right topic).
+- **NPS (3), NARA (2) and OSTI (1)** for the American entries.
+
+**300 of 300 shipped source URLs return 200.** 114 of the 191 new events
+carry a second source; the remaining 77 ship the Wikipedia anchor alone,
+which is the same treatment most of the pre-existing 273 events already get.
+
+### 64.5 Images
+
+The `history` stage resolved a free lead image for **178 of 191 new events
+(93%)**; the file as a whole is 431 of 464. Thirteen new events ship without
+one, either because the article has no lead image (Battle of Tondibi, Yam,
+Mit'a, Khmer script, Constitution of Medina, Zhou Daguan, Jayavarman II,
+Seventeen-article constitution, Hanno, Mongol invasion of the Khwarazmian
+Empire) or because the lead image is not free: `gauls-sack-rome` (CC SA 1.0),
+`bar-kokhba-revolt` (Attribution) and `seokguram-bulguksa` (KOGL Type 1) join
+the two pre-existing non-free skips in the manifest warning. No image was
+chased by hand and no licence was stretched.
+
+### 64.6 Considered and rejected
+
+- **Solomon's Temple (c. 960 BCE, Hebrew).** Dating and description rest
+  entirely on the biblical account; nothing of the structure has been
+  excavated. The existing `hebrew-bible-compiled` entry carries the tradition
+  without asserting a building.
+- **The Exodus.** No date can be given that a reader should trust, and an
+  entry with `datePrecision: approximate` would imply there is one.
+- **Necho II's Phoenician circumnavigation of Africa (c. 600 BCE).** One
+  passage in Herodotus, who disbelieved the detail that modern readers find
+  convincing. Too thin to carry a dated entry; Hanno's voyage, which has its
+  own surviving text, was used instead and its reach explicitly left open.
+- **The Yassa, the Mongol law code.** No copy survives; its content is known
+  only through later and mutually contradictory summaries. A
+  `rights-document` entry for a code with no text would misrepresent it. The
+  yam relay was used for the Mongol administrative entry instead.
+- **The Druids.** Everything comes from hostile Roman writers or Irish
+  sources seven centuries later. Not datable, not describable with
+  confidence.
+- **Marco Polo tagged Mongol.** He is Venetian. Tagging a traveller by the
+  empire he visited would turn the civilization filter back into the
+  folksonomy §38 resisted; `pax-mongolica-exchange` already covers the
+  exchange he is evidence of.
+- **Battle of Himera (480 BCE) for Phoenician.** Cut for balance, not
+  accuracy: the Phoenician set was already mostly war, and Himera is better
+  documented from the Greek side than the Carthaginian.
+- **The FAO GIAHS page on chinampas** as a second source for
+  `chinampa-agriculture`: the URL 404s.
+- **The Met's Timeline of Art History essay on trans-Saharan trade**, the
+  Library of Congress items for Urbatagirk and the Piri Reis map, and the
+  Corning Museum's glassblowing article: all 403 or 404 from here, so the
+  three events ship with Wikipedia alone.
+- **Lalibela as the work of one reign.** The entry says "under the Zagwe king
+  Lalibela" rather than dating the eleven churches to his years, because the
+  current view is that they were cut over a longer period and partly reused
+  earlier rock-cut structures.
+
+### 64.7 Mechanics
+
+Additions were written as six Python modules under `.scratch/`
+(`history_additions_r12_a..f.py`), verified by `.scratch/r12_verify.py`
+(schema, kebab-case ids, duplicate ids/titles/articles against the existing
+273, controlled vocabularies, word counts, Wikipedia titles, URL status),
+repaired by `.scratch/r12_fix_sources.py` (canonical titles, second-source
+substitution with verification) and merged by `.scratch/r12_merge.py`, which
+bumps `version` to 5, rewrites the count in `note` and writes the file with
+`ensure_ascii=False`, `indent=2`, a trailing newline and LF endings.
+`.scratch/r12_final_check.py` re-runs the gates against the merged file.
+`etl/sources/history.py` was not touched — the validator has no bug that
+this round found.
+
+## 65. Round 12: Anatomy in three dimensions — one registered free body per sex, bone to flesh (2026-09-19)
+
+Andy's brief: "In the Anatomy page, use your full skills to develop a visual
+representation of the layers of the human body, but bone to flesh. Make sure
+each layer lays flush atop the previous layer. Make sure to add details with
+labels that I can click that will open up descriptions. Use UI UX Pro Max for
+design philosophy. Create a separate Male/Female presentation that I can
+toggle between. Allow me to zoom in and out and rotate the body. Make sure the
+labels of each part of the anatomy are complete and accurate."
+
+The standing rulings apply: every model passes the free-licence gate (PD, CC0,
+CC BY, CC BY-SA; NC/ND refused) with attribution rendered on the page and
+provenance (source URL, author, licence, sha256) in a committed manifest;
+nothing hand-typed where a source exists; anything a source does not provide
+is stated as "not available", never faked.
+
+**65.1 Shape.** `/anatomy` now opens on a three-dimensional body. Six layers
+ordered bone → flesh (skeleton, brain and nerves, organs and glands, heart/
+vessels/lymph, muscles, skin) are cut from ONE model per sex, so every layer
+sits in the same model space at the same pose and scale and the layers
+register — a depth slider and numbered chip list (arrow keys too) show layers
+0..d, with the layer at d the one being looked at; "See through <layer>" draws
+that layer at 22 % opacity so the layer beneath shows through it. A Male /
+Female segmented toggle (persisted in localStorage `anatomy.sex`) swaps the
+model while the camera and depth are kept. Orbit: one finger / left drag
+rotates, pinch / wheel zooms, two-finger / right drag pans (OrbitControls,
+damping on unless prefers-reduced-motion), min/max distance from the body's
+bounding box, a "Reset view" button on the stage. A tap or click that neither
+travelled 6 px nor lasted 600 ms raycasts the visible, non-translucent layers:
+the structure under the pointer is highlighted (emissive), named in a card
+above the panel — name, Latin term (TA2) or HRA label and ontology id, system,
+collection — and, when it maps to one of the sixty organ entries, that entry
+opens in the panel beside the stage; a structure with no entry says "detailed
+entry not available for this structure; its name and system are as the model
+records them". Pins for the entries present in the current layer are projected
+each frame into an HTML overlay (anchor = centre of the union bounding box of
+the entry's meshes; back-facing pins hidden; overlapping labels collapse to
+their dot, hover or the active entry expands them; on phones every pin is a
+dot and one tap expands it, a second opens the entry). The panel follows the
+selection: the picked structure's system, or the layer's first system, with a
+chip row for the other systems a layer holds (the organs layer spans six).
+Deep links keep working and now also drive the 3-D: `#skeleton` moves the
+depth to the skeleton layer, `#organ-heart` opens the heart and moves the
+depth to the layer that holds most of its meshes, lighting them up. The
+round-7 OpenStax layer stage survives as the "Diagrams" tab (persisted,
+`anatomy.tab`) and is the no-WebGL fallback; the cooperation notes and the
+organ index below are unchanged.
+
+**65.2 Sourcing — what exists free, and what was chosen.** Researched 2026-09-19:
+
+- *Anatria-3D* (github.com/Nurkan1/Anatria-3D, code Apache-2.0): thirteen
+  per-system MALE GLBs (37 MB, Draco) exported from **Z-Anatomy** (CC BY-SA
+  4.0, itself derived from BodyParts3D / DBCLS, CC BY-SA 2.1 JP); node names
+  are Terminologia Anatomica 2 English terms, and `manifest.json` gives every
+  node its TA2 Latin term, English name, system and Z-Anatomy collection.
+  Seven partial FEMALE GLBs (264 structures) that Anatria cut from the HRA.
+  No male skin mesh as such — but `regional_male.glb` is Z-Anatomy's
+  "Regions of the body": 256 surface patches that tile the whole skin, named
+  by TA2 region (Anterior region of thigh, Cubital fossa, Helix…).
+- *NIH HuBMAP Human Reference Atlas 3D reference library* (CC BY 4.0):
+  `united-female` v1.5 (211 MB, one GLB, 888 structures) and `united-male`
+  (154 MB) — whole-body skin plus the organs the HRA models. Neither united
+  file holds a full skeleton (only vertebral column, sacrum, pelvis and the
+  bones of the knee), skeletal muscles (only the muscles of the eye and knee)
+  or peripheral nerves. `skin-female` v1.5 and `skin-male` v1.4 exist as
+  separate objects; v1.10 of united-female is 374 MB.
+- *Z-Anatomy* itself ships Blender sources only (no GLB export found); Blender
+  was not installed. *BodyParts3D* is male only, CC BY-SA 2.1 JP, per-part OBJ.
+
+Decision: **male = Z-Anatomy via the Anatria3D GLB export** (CC BY-SA 4.0),
+pinned to commit `949ac80cc9763539afc48e60b5246132f00468db`; **female = HRA
+united-female v1.5** (CC BY 4.0), straight from `cdn.humanatlas.io`, pinned by
+version. One registered source per sex; the two bodies are never mixed — the
+female view never borrows the male skeleton, and says so on the page.
+Licence gate: both on the allow-list; CC BY-SA obliges the derived layer
+files to stay CC BY-SA 4.0 and the licence to be named — the credit line
+under the stage says "simplified and re-encoded for this site, and so also
+CC BY-SA 4.0 (share-alike)", and Anatria's NOTICE (the attribution chain) is
+committed as `data/anatomy/models/NOTICE-male.txt`. The HRA files are not
+merged with the male ones (Anatria's NOTICE warns that combining CC BY
+material into a CC BY-SA work forces share-alike onto it).
+
+What each model contains and lacks:
+
+| layer | male (Z-Anatomy) | female (HRA) |
+|---|---|---|
+| skeleton | 690 structures: bones, cartilages, joints, ligaments, teeth (skeletal + articular files) | 91: vertebral column, sacrum, coccyx, pelvis, femur/tibia/fibula/patella and knee ligaments — **partial** |
+| nervous | 586: brain regions, spinal cord tracts, cranial and peripheral nerves, sympathetic trunk, eye and ear | 362: brain (Allen Human Brain Atlas regions), spinal cord segments, eyes and their nerves — **partial** (no peripheral nerves) |
+| organs | 120: digestive, respiratory, urinary, reproductive, endocrine | 286: digestive (no stomach or oesophagus in the HRA set), urinary, respiratory, lymphatic organs, reproductive, mammary glands |
+| vessels | 836: heart, 391 arteries, 214 veins, lymph nodes, spleen, thymus | 124: heart and the major trunk vessels — **partial** (one lymph node) |
+| muscles | 847: skeletal muscles, tendons, fascia, bursae, sheaths | 16: muscles of the eye and knee — **partial** |
+| skin | 256 TA2 body regions tiling the surface | 1: the whole-body skin |
+
+Omissions, recorded in the manifest with reasons: male "Muscular insertions"
+(537 origin/insertion footprints painted on bone — not muscles), 380 stray
+duplicates (Z-Anatomy's nervous export carries 278 muscle meshes that
+Anatria's manifest files under the muscular system; each mesh is kept once,
+in its own layer; teeth and intervertebral discs likewise appear in two files
+and are kept in the skeleton), 3 nodes whose names are punctuation only
+("????????", "?x"); female: the placenta (8 nodes — the HRA places a term
+placenta in the uterus; the Visible Human Female was not pregnant and the
+site's entry describes the non-pregnant organ). The male skin is anatomically
+complete, genitals included, exactly as Z-Anatomy models it.
+
+**65.3 Pipeline and budgets.** `scripts/build-anatomy-models.mjs` (Node;
+`node --max-old-space-size=8192 scripts/build-anatomy-models.mjs [--male|--female]`):
+downloads each pinned source into `.cache/anatomy3d/` (idempotent), records
+bytes and sha256 of every source file, decodes Draco (draco3dgltf), strips
+materials, UVs and normals (normals are recomputed in the browser, which lets
+the welder merge vertices split only by shading and halves vertex bytes),
+flattens node transforms, assigns nodes to layers (male: by source file, in
+order, first claim wins; female: by the HRA hierarchy's system and group
+nodes, read before flattening), keeps EVERY structure as its own named node,
+simplifies each layer with meshoptimizer to a per-layer ratio and error bound
+(0.3–0.8 of source triangles), quantises positions to 14 bits and writes
+EXT_meshopt_compression GLBs. Decoding in the browser uses three's own
+self-contained meshopt decoder module — nothing is fetched from a third-party
+CDN and no decoder files are hosted. Budgets ≤ 6 MB per layer file and ≤ 28 MB
+per sex are asserted by the script and by `check:anatomy`. Actual bytes:
+
+| file | bytes | structures | triangles (source → shipped) |
+|---|---|---|---|
+| male-skeleton.glb | 1,700,584 | 690 | 1,060,066 → 585,288 |
+| male-nervous.glb | 1,838,788 | 586 | 2,410,274 → 723,904 |
+| male-organs.glb | 1,570,632 | 120 | 714,305 → 428,475 |
+| male-vessels.glb | 3,257,116 | 836 | 3,943,226 → 1,184,679 |
+| male-muscles.glb | 2,126,396 | 847 | 2,468,747 → 863,772 |
+| male-skin.glb | 386,924 | 256 | 135,204 → 108,103 |
+| **male total** | **10,880,440** | 3,335 | |
+| female-skeleton.glb | 1,296,292 | 91 | 565,844 → 339,576 |
+| female-nervous.glb | 2,255,432 | 362 | 1,696,540 → 509,756 |
+| female-organs.glb | 2,939,096 | 286 | 2,133,366 → 745,810 |
+| female-vessels.glb | 899,692 | 124 | 480,128 → 215,964 |
+| female-muscles.glb | 242,300 | 16 | 110,716 → 66,414 |
+| female-skin.glb | 603,820 | 1 | 382,640 → 191,320 |
+| **female total** | **8,236,632** | 880 | |
+
+Outputs: `data/anatomy/models/<sex>-<layer>.glb`, `structures-<sex>.json`
+(every node: name, Latin/HRA label, ontology id, system, collection, organ
+entry, shipped triangles), `manifest.json` (sources with URL/bytes/sha256 per
+file, licence, licence URL, source page, DOI and citation for the HRA,
+upstream chain for Z-Anatomy, per-layer coverage notes, omissions, budgets)
+and `NOTICE-male.txt`. Source provenance: Anatria files by commit (16 files,
+sha256 each); HRA `3d-vh-f-united.glb` v1.5 sha256 `472567a56896…`, its
+metadata.json (citation "Kristen Browne; Heidi Schlehlein. 2023. 3D Reference
+Organ Set for Female, v1.5", DOI 10.48539/HBM352.BTSQ.586).
+
+**65.4 Names and the alias table.** Every structure keeps its source name:
+male from Anatria's manifest (`name_en`, TA2 Latin), or the node name read as
+words when the manifest has none ("Clavicle.l" → "Clavicle (left)"; Z-Anatomy's
+".e1l" tendon-slip parts are shown as "Extensor digitorum — part e1 (left)",
+keeping the source's own suffix rather than guessing what it stands for);
+female from the HRA node's `label` when it is unique in the set, else the node
+name read as words ("VH_F_ilium_compact_bone_L" → "Ilium compact bone (left)",
+because the HRA labels six pelvic meshes "compact bone tissue"), with the HRA
+label and ontology id shown alongside. Which entry a structure opens is an
+EDITORIAL alias table, `MESH` in `etl/reference/build_anatomy.py` (55 of the
+60 organs; bone marrow, capillaries, blood, alveoli and sweat/sebaceous glands
+have no mesh in either model and say so): case-insensitive patterns with
+`except` lists, first organ in ORGANS order wins, plus two layer fallbacks
+(the male skin regions open the skin entry; the male muscles open skeletal
+muscle). The build script resolves the table to node names and writes
+`.scratch/anatomy-alias-report.md`, every organ with the structures that open
+it; the table was iterated against that report until the cross-assignments
+were gone (maxillary vessels out of the skull, cerebellar lobules out of the
+cerebrum, "ophthalmic" no longer matching "HTH", the heart's auricle away from
+the ear, and so on). The report is the verification listing. Structures with
+no entry after resolution: male 17 carpal/tarsal bones and the scapula, 5
+penile/omental structures, 86 fasciae/bursae/sheaths; female 14 mammary and
+peritoneal structures. `check:anatomy` fails if an organ with aliases resolves
+to no node in either model, or a structure names an organ or system that does
+not exist.
+
+**65.5 UI UX Pro Max.** Consulted (`search.py`, domains ux and style):
+"Asset weight — compress and lazy-load 3-D models, never raw meshes" (taken:
+meshopt + quantisation, three.js and the viewer lazy-loaded, layers streamed
+after the first visible one); "Touch spacing — 8 px minimum between targets"
+and "Touch friendly — larger targets on mobile" (taken: 44 px chips and
+toggles with 0.5 rem gaps, 40 px segmented control, pins 22 px hit area);
+"Gesture conflicts — keep vertical scroll primary, avoid horizontal swipes
+on main content" (taken: the canvas is touch-action none only inside the
+stage, the page scrolls normally around it; no swipe carousel — depth is a
+slider plus chips); the "3D & hyperrealism" style card's accessibility
+requirements (text contrast 4.5, keyboard, visible focus, reduced motion —
+taken: arrow keys on the chips, focus rings on every control, damping and
+fades off under prefers-reduced-motion) and its 300–400 ms motion range
+(layer fades 350 ms). Not taken: its navy/gold palette and parallax; the
+stage uses the site's tokens and the layer colours are anatomical.
+
+**65.6 Viewer rules.** Load order skin → skeleton → muscles → vessels → organs
+→ nervous with a visible badge ("Loading skin… · 2 of 6 layers"); the camera
+frames the body from the first loaded layer's bounding box (front view; both
+models face +z). Pixel ratio capped by `canvasPixelRatio()` (1.25 on
+low-power devices). Switching sex disposes every geometry and material of the
+old model; unmount disposes the renderer and controls. Layer fades are
+opacity lerps in the render loop (transparent + no depth write while
+translucent). Picking excludes the translucent layer so a click through the
+see-through skin lands on the muscle beneath. No console errors or warnings
+(the deprecated THREE.Clock was replaced by performance.now).
+
+**65.7 Verification.** `npm run typecheck`, `npm run check:anatomy` (PASS:
+19.12 MB across both sexes, 4,215 named structures, 55 of 60 entries
+reachable), `npm run build` (three.js stays in the shared OrbitControls chunk,
+589 kB / 149 kB gzip, with BodyViewer 82 kB / 26 kB gzip and AnatomyPage 27 kB
+/ 8 kB gzip; index unchanged), `etl\run.py --only anatomy` (reference
+validates with the alias fields). Headed Playwright (`.scratch/anatomy3d-shots.mjs`)
+at 1280×900 and Pixel 7 touch: every layer of both sexes screenshotted and
+read (`.scratch/shots3d/*.png`: `desktop-{skin,skeleton,nerves,organs,vessels,muscles,muscles-xray}`,
+`desktop-female-{skin,skeleton,nerves,organs,vessels}`, the same for
+`pixel7-`, plus `-picked`, `-picked-card`, `-rotated-zoomed`, `-diagrams`,
+`-deeplink-heart`); a click picked "Costal cartilage of eighth rib (right)"
+on desktop and a tap "Interosseous membrane of leg (right)" on the phone, each
+opening its entry; zero console errors. First load of the built route
+(`.scratch/anatomy3d-bytes.mjs` against `vite preview`): 15.3 MB
+uncompressed — 1.32 MB JS, 0.88 MB JSON (structures index 0.74 MB), 10.88 MB
+of male GLBs streamed after the 0.39 MB skin, all six layers in 0.5 s on a
+desktop; Pages gzips the JS and JSON.
+
+**65.8 Open items.** (1) Pins anchor at an entry's union bounding-box
+centre, so a spread entry (male "Skin", "Joints") pins near the pelvis;
+per-mesh anchors or the largest mesh would read better. (2) Raycasting has no
+BVH; a pick on the vessels layer (1.2 M triangles) takes ~50–100 ms on a
+desktop — acceptable, but three-mesh-bvh would make it instant. (3) The female
+model's stomach and oesophagus are absent because the HRA set lacks them;
+the HRA's `skin-male`/`united-male` were not used (no skeleton or muscles).
+(4) A "Frontal / lateral" quick-view set and a search box over the 4,215
+structure names would be the natural next controls. (5) DATA_DECISIONS.md and
+README.md need this section and a line under Anatomy in CLAUDE.md (the lead
+owns those files). (6) No npm script was added for the model build (package.json
+was limited to devDependencies); `build:anatomy-models` would be the obvious
+name.
+
+Files touched: `scripts/build-anatomy-models.mjs` (new), `scripts/check-anatomy.mjs`,
+`etl/reference/build_anatomy.py` (MESH table, `re` import, assertions),
+`etl/reference/anatomy.json` (regenerated), `data/anatomy/anatomy.json` and
+`data/manifest.json` (by `--only anatomy` — a FULL cached run is still needed
+before commit), `data/anatomy/models/**` (new: 12 GLBs, manifest.json,
+structures-male.json, structures-female.json, NOTICE-male.txt),
+`src/lib/anatomy.ts` (model types and loaders, LAYER_ORDER, layerAt,
+LAYER_SYSTEMS), `src/routes/AnatomyPage.tsx` (3-D stage, tabs, selection,
+deep links), `src/components/anatomy/BodyViewer.tsx`, `BodyStage.tsx`,
+`anatomy.css` (new), `package.json` / `package-lock.json` (devDependencies:
+`@gltf-transform/core`, `@gltf-transform/extensions`, `@gltf-transform/functions`
+^4.5.0, `meshoptimizer` ^1.2.0, `draco3dgltf` ^1.5.7). Scratch:
+`.scratch/anatomy3d-shots.mjs`, `anatomy3d-bytes.mjs`, `anatomy3d-pick-debug.mjs`,
+`anatomy-alias-report.md`, `shots3d/`, this draft, `anatomy-notes.md`.
+
+**65.9 The female stomach and oesophagus (2026-09-19, after the PR).**
+Andy: "Fix the issue with the missing stomach and oesophagus." The Human
+Reference Atlas has neither organ for EITHER sex: its reference-organ
+index (81 objects, read from the HRA API on 2026-09-19) runs from the
+mouth to the small and large intestine and skips the two between. So the
+female digestive tract stopped at the duodenum, and no free female mesh
+exists to fill the gap. The fix is the male Z-Anatomy stomach (with its
+mucosa) and oesophagus FITTED into the female body: a per-axis affine
+from the union bounding box of the organs both models share and that the
+stomach sits between -- liver, spleen, pancreas -- and, for the
+oesophagus, a blend from that map at its stomach end to a trachea-aligned
+map at its top, so it runs behind the female trachea and reaches the
+fitted stomach. The builder asserts both models agree on left/right
+(spleen minus liver centre) before fitting. This is the one deliberate
+exception to "never borrow the male model for the female view", and it
+is labelled everywhere it could be mistaken: the structure card says
+"fitted from the male model ... position indicative, not measured"; the
+manifest records the fit (method, scale, landmark boxes) and the reason;
+the credit line under the stage names the supplement and its licence.
+The two ship in their own file (`female-organs-fitted.glb`) so the HRA
+file stays CC BY 4.0 and the supplement is CC BY-SA 4.0 (share-alike,
+NOTICE-male.txt), gated by check:anatomy like every layer file. Found on
+the same pass: the HRA liver's Couinaud segments ("Left anterolateral
+segment") were opening the LUNGS entry through the "(left|right) ...
+segment" pattern; alias resolution now lets an entry claim only
+structures of its own systems, and the liver takes the pattern.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South

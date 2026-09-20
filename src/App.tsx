@@ -35,19 +35,21 @@ export function App() {
         Skip to content
       </a>
 
-      {/* Masthead (round-2 design pass, §34): a centred publication
-          nameplate — serif title, small-caps tagline, double hairline —
-          replacing the earlier left-edge title + coloured pill buttons.
-          The primary nav is an editorial link row whose active state is a
-          2px underline in the section's own hue plus a text-colour step,
-          so hue is never the only signal. */}
-      <header
-        className="border-b"
-        style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
-      >
-        <div className="mx-auto max-w-7xl px-4 pt-5 text-center">
-          <Link to="/" className="masthead-title font-display">
-            Encyclopedia Andranika
+      {/* Masthead (round-2 §34, reworked round 12). A publication front: the
+          nameplate inside the magazine's border mark — a thick supernova
+          rectangle — on a stark black band that spans the page in BOTH
+          themes, with the uppercase nav row on the same band. Active section
+          = supernova text + a 2px supernova underline; the section's own hue
+          survives as the dot beside the label, so identity is kept while the
+          state signal is yellow everywhere. `aria-current` is unchanged, and
+          the underline means colour is never the only carrier. */}
+      <header className="masthead">
+        <div className="masthead-inner mx-auto max-w-7xl px-4 text-center">
+          <Link to="/" className="masthead-frame">
+            <span className="masthead-title font-display">
+              <span className="masthead-title-line">Encyclopedia</span>
+              <span className="masthead-title-line">Andranika</span>
+            </span>
           </Link>
           <p className="masthead-tagline font-sans">
             A reference atlas with a source on every figure
@@ -66,6 +68,7 @@ export function App() {
               className="nav-link font-sans"
               style={{ '--nav-accent': section.accent } as React.CSSProperties}
             >
+              <span className="nav-dot" aria-hidden="true" />
               {section.label}
             </NavLink>
           ))}
@@ -144,6 +147,22 @@ export function App() {
       </main>
 
       <FreshnessPanel />
+
+      {/* Colophon (round 12): the masthead's counterpart at the foot of the
+          page — a stark black band under a supernova rule. It states the one
+          promise the site makes and points at where the promise is kept. The
+          provenance panel above it keeps its own quiet surface. */}
+      <div className="site-colophon">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-baseline justify-between gap-x-6 gap-y-2 px-4 py-5 sm:px-6">
+          <p className="colophon-name font-display">Encyclopedia Andranika</p>
+          <p className="colophon-line font-sans">
+            Sources on every figure ·{' '}
+            <Link to="/methodology" className="colophon-link">
+              Methodology
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

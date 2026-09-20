@@ -20,6 +20,7 @@ import { geoDistance, geoPath, type GeoPermissibleObjects, type GeoProjection } 
 
 import type { ImageryRenderer, ImageryView } from './globegl'
 import { gradeFilter } from './mapgrade'
+import type { Rotation } from './projection'
 
 import {
   loadTerrainMeta,
@@ -180,7 +181,7 @@ export class TerrainRenderer {
   render(
     ctx: CanvasRenderingContext2D,
     projection: GeoProjection,
-    rotation: [number, number],
+    rotation: Rotation,
     transform: ZoomTransform,
     layout: Layout,
     cssWidth: number,

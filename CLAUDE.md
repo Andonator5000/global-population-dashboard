@@ -82,7 +82,13 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   stacked bar is gone. Flag is the hero of the country page with attributed
   Wikipedia symbolism text (CC BY-SA, verbatim, linked).
 - Map palette: six gated directions (atlas default; paper, antique,
-  pastel, nautical, mono), lightness is the data channel in all; the
+  pastel, nautical, mono), lightness is the data channel in all; atlas
+  is VIVID since round 12 (§63.5: chroma 0.12/0.13, Andy's reversal of
+  the 2026-08-29 restraint — do not quietly tone it back down; tiers
+  unchanged, every gate still passes); the globe ocean is the printed-
+  atlas navy oklch(32% 0.10 248) = #00355c (the fallback literal in
+  WorldMap.tsx mirrors it); IMAGERY_GRADES carry saturate/contrast
+  channels (atlas 0.35/0.12); antique and mono stay untouched; the
   antique direction is the measured Blaeu 1635 sheet (§48: parchment sea,
   umber lines, coastline gate instead of the water floor, ANTIQUE
   constants in WorldMap.tsx mirror DIRECTIONS.antique in
@@ -112,10 +118,20 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - Header (round 2, §34): centred publication nameplate + editorial
   uppercase nav from the SECTIONS registry (src/config.ts) — six
   top-level items (Global Data, Human History, Taxonomy, Evolution,
-  Space, Chemistry since round 3 §47, Anatomy since round 6 §55); active state = 2px underline in the section's THEMED --nav-*
-  hue plus a text-colour step. A new section = one registry entry + a
-  --nav-* pair in both themes, mirrored into check-contrast AND declared
-  in both dark blocks (theme parity). /biology/* redirects; don't remove.
+  Space, Chemistry since round 3 §47, Anatomy since round 6 §55).
+  Round 12 (§63): the identity is Supernova Yellow (--supernova
+  oklch(87% 0.178 92)) on Stark Black (--stark oklch(11% 0 0)), after
+  National Geographic — the nameplate sits inside a yellow border mark on
+  a black band in BOTH themes, the nav is on the band, active state =
+  yellow text + 2px yellow underline, the section --nav-* hue is a 6px
+  dot (the --nav-* tokens are theme-invariant at the bright step, gated
+  3:1 against --stark). YELLOW IS NEVER TEXT ON A LIGHT SURFACE (1.44:1);
+  it is a fill, rule, frame, highlight and the focus ring (two bands:
+  yellow + stark keyline). Selected controls are yellow with black text;
+  h1 carries a yellow department bar; the three home cards and the map
+  toolbar a 3px yellow top rule; a black colophon band closes every page.
+  A new section = one registry entry + a --nav-* token, mirrored into
+  check-contrast AND check-theme-parity. /biology/* redirects; don't remove.
 - Sources are COLLAPSED by default site-wide (CollapsibleSources, §34.3);
   method prose lives once on /methodology (§36.4) — figures carry a
   compact source label + MethodInfoLink, never paragraphs of methodology.
@@ -186,7 +202,22 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   1.4 (`panel: {commons, col, row}`, cut by the stage — one pose, one
   scale, so the layers register); other figures are Commons originals
   through the free-licence gate (SVG stays SVG, LF); all credited per
-  image; the `anatomy` stage and check:anatomy gate all of it. Timeline (§54.1): era banners
+  image; the `anatomy` stage and check:anatomy gate all of it. 3-D models
+  (round 12, §65): ONE registered free model per sex — male Z-Anatomy via
+  the Anatria3D GLB export (CC BY-SA 4.0), female NIH HRA united-female
+  v1.5 (CC BY 4.0) — built by `npm run build:anatomy-models`
+  (scripts/build-anatomy-models.mjs, cache .cache/anatomy3d) into
+  data/anatomy/models (never hand-edit); organ↔structure aliases are the
+  `MESH` table in build_anatomy.py; the female skeleton/muscles/nerves are
+  PARTIAL and the page says so — never borrow the male model for the
+  female view, with ONE labelled exception (§65.9): the female stomach
+  and oesophagus are the male organs fitted in (the HRA has neither for
+  either sex), in their own CC BY-SA file (`female-organs-fitted.glb`, a
+  layer `supplements` entry) and marked `fitted` on the structure card;
+  alias resolution is system-gated (an entry claims only structures of
+  its own systems); the share-alike credit line under the stage must name
+  CC BY-SA 4.0; check:anatomy gates GLB validity, licences, attribution
+  and the byte budgets, supplements included. Timeline (§54.1): era banners
   sit above the axis line (z-index) — keep the line drawn behind them.
 - Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
   .json, never data/space/phenomena*; the `phenomena` stage downloads
@@ -225,11 +256,20 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
 - Type: Newsreader (serif) for h1/h2 only, Public Sans for everything else
   incl. every number; both self-hosted under public/fonts, never loaded
   from Google at render time (§25).
-- Globe drag sensitivity is 0.375°/px (DRAG_SENSITIVITY) with a flick
-  cap of 40 px/frame (INERTIA_MAX_PX_PER_FRAME) — settled in §59.1 after
-  0.25/18 proved too slow; change only on Andy's word. The compass is
-  NORTH UP (§59.3): recentre the globe on the place under the screen
-  centre and reset the pan, keep the zoom — never a jump to the default
+- Globe dragging is VERSOR dragging (round 12, §62): the place under the
+  finger stays under the finger — there is NO degrees-per-pixel constant
+  any more (do not reintroduce one); one-finger drags hold north
+  (`versor.withFixedRoll`, gamma fixed), two fingers twist gamma (Shift+
+  mouse drag too), momentum is a quaternion shrunk per 60 Hz frame
+  (INERTIA_DECAY 0.93, 15°/frame cap). Rotation is [lambda, phi, gamma]
+  end to end (React state, refs, d3, BOTH GL shaders). Touch pointers are
+  NEVER explicitly captured (the hand-over fires lostpointercapture
+  mid-gesture); a lostpointercapture on a live pointer waits 120 ms
+  before counting as a release. Verify with `.scratch/r12-drag.mjs`
+  against the no-HMR server (`npx vite --config .scratch/vite.r12.config.ts`,
+  :5175) — the svg exposes `data-rotation`. The compass is
+  NORTH UP (§59.3, §62.2): recentre the globe on the place under the screen
+  centre, reset the pan, return gamma to 0, keep the zoom — never a jump to the default
   view. The globe's touch-action is NONE at every zoom (§61 — pan-y
   made iOS hold, coalesce and cancel spins); only flat maps at world
   zoom keep pan-y. Drag/animation frames read the zoom from transformRef. The
