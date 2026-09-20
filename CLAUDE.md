@@ -202,7 +202,17 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   1.4 (`panel: {commons, col, row}`, cut by the stage — one pose, one
   scale, so the layers register); other figures are Commons originals
   through the free-licence gate (SVG stays SVG, LF); all credited per
-  image; the `anatomy` stage and check:anatomy gate all of it. Timeline (§54.1): era banners
+  image; the `anatomy` stage and check:anatomy gate all of it. 3-D models
+  (round 12, §65): ONE registered free model per sex — male Z-Anatomy via
+  the Anatria3D GLB export (CC BY-SA 4.0), female NIH HRA united-female
+  v1.5 (CC BY 4.0) — built by `npm run build:anatomy-models`
+  (scripts/build-anatomy-models.mjs, cache .cache/anatomy3d) into
+  data/anatomy/models (never hand-edit); organ↔structure aliases are the
+  `MESH` table in build_anatomy.py; the female skeleton/muscles/nerves are
+  PARTIAL and the page says so — never borrow the male model for the
+  female view; the share-alike credit line under the stage must name CC
+  BY-SA 4.0; check:anatomy gates GLB validity, licences, attribution and
+  the byte budgets. Timeline (§54.1): era banners
   sit above the axis line (z-index) — keep the line drawn behind them.
 - Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
   .json, never data/space/phenomena*; the `phenomena` stage downloads

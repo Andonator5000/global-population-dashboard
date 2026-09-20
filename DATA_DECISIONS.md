@@ -4762,6 +4762,253 @@ bumps `version` to 5, rewrites the count in `note` and writes the file with
 `etl/sources/history.py` was not touched — the validator has no bug that
 this round found.
 
+## 65. Round 12: Anatomy in three dimensions — one registered free body per sex, bone to flesh (2026-09-19)
+
+Andy's brief: "In the Anatomy page, use your full skills to develop a visual
+representation of the layers of the human body, but bone to flesh. Make sure
+each layer lays flush atop the previous layer. Make sure to add details with
+labels that I can click that will open up descriptions. Use UI UX Pro Max for
+design philosophy. Create a separate Male/Female presentation that I can
+toggle between. Allow me to zoom in and out and rotate the body. Make sure the
+labels of each part of the anatomy are complete and accurate."
+
+The standing rulings apply: every model passes the free-licence gate (PD, CC0,
+CC BY, CC BY-SA; NC/ND refused) with attribution rendered on the page and
+provenance (source URL, author, licence, sha256) in a committed manifest;
+nothing hand-typed where a source exists; anything a source does not provide
+is stated as "not available", never faked.
+
+**65.1 Shape.** `/anatomy` now opens on a three-dimensional body. Six layers
+ordered bone → flesh (skeleton, brain and nerves, organs and glands, heart/
+vessels/lymph, muscles, skin) are cut from ONE model per sex, so every layer
+sits in the same model space at the same pose and scale and the layers
+register — a depth slider and numbered chip list (arrow keys too) show layers
+0..d, with the layer at d the one being looked at; "See through <layer>" draws
+that layer at 22 % opacity so the layer beneath shows through it. A Male /
+Female segmented toggle (persisted in localStorage `anatomy.sex`) swaps the
+model while the camera and depth are kept. Orbit: one finger / left drag
+rotates, pinch / wheel zooms, two-finger / right drag pans (OrbitControls,
+damping on unless prefers-reduced-motion), min/max distance from the body's
+bounding box, a "Reset view" button on the stage. A tap or click that neither
+travelled 6 px nor lasted 600 ms raycasts the visible, non-translucent layers:
+the structure under the pointer is highlighted (emissive), named in a card
+above the panel — name, Latin term (TA2) or HRA label and ontology id, system,
+collection — and, when it maps to one of the sixty organ entries, that entry
+opens in the panel beside the stage; a structure with no entry says "detailed
+entry not available for this structure; its name and system are as the model
+records them". Pins for the entries present in the current layer are projected
+each frame into an HTML overlay (anchor = centre of the union bounding box of
+the entry's meshes; back-facing pins hidden; overlapping labels collapse to
+their dot, hover or the active entry expands them; on phones every pin is a
+dot and one tap expands it, a second opens the entry). The panel follows the
+selection: the picked structure's system, or the layer's first system, with a
+chip row for the other systems a layer holds (the organs layer spans six).
+Deep links keep working and now also drive the 3-D: `#skeleton` moves the
+depth to the skeleton layer, `#organ-heart` opens the heart and moves the
+depth to the layer that holds most of its meshes, lighting them up. The
+round-7 OpenStax layer stage survives as the "Diagrams" tab (persisted,
+`anatomy.tab`) and is the no-WebGL fallback; the cooperation notes and the
+organ index below are unchanged.
+
+**65.2 Sourcing — what exists free, and what was chosen.** Researched 2026-09-19:
+
+- *Anatria-3D* (github.com/Nurkan1/Anatria-3D, code Apache-2.0): thirteen
+  per-system MALE GLBs (37 MB, Draco) exported from **Z-Anatomy** (CC BY-SA
+  4.0, itself derived from BodyParts3D / DBCLS, CC BY-SA 2.1 JP); node names
+  are Terminologia Anatomica 2 English terms, and `manifest.json` gives every
+  node its TA2 Latin term, English name, system and Z-Anatomy collection.
+  Seven partial FEMALE GLBs (264 structures) that Anatria cut from the HRA.
+  No male skin mesh as such — but `regional_male.glb` is Z-Anatomy's
+  "Regions of the body": 256 surface patches that tile the whole skin, named
+  by TA2 region (Anterior region of thigh, Cubital fossa, Helix…).
+- *NIH HuBMAP Human Reference Atlas 3D reference library* (CC BY 4.0):
+  `united-female` v1.5 (211 MB, one GLB, 888 structures) and `united-male`
+  (154 MB) — whole-body skin plus the organs the HRA models. Neither united
+  file holds a full skeleton (only vertebral column, sacrum, pelvis and the
+  bones of the knee), skeletal muscles (only the muscles of the eye and knee)
+  or peripheral nerves. `skin-female` v1.5 and `skin-male` v1.4 exist as
+  separate objects; v1.10 of united-female is 374 MB.
+- *Z-Anatomy* itself ships Blender sources only (no GLB export found); Blender
+  was not installed. *BodyParts3D* is male only, CC BY-SA 2.1 JP, per-part OBJ.
+
+Decision: **male = Z-Anatomy via the Anatria3D GLB export** (CC BY-SA 4.0),
+pinned to commit `949ac80cc9763539afc48e60b5246132f00468db`; **female = HRA
+united-female v1.5** (CC BY 4.0), straight from `cdn.humanatlas.io`, pinned by
+version. One registered source per sex; the two bodies are never mixed — the
+female view never borrows the male skeleton, and says so on the page.
+Licence gate: both on the allow-list; CC BY-SA obliges the derived layer
+files to stay CC BY-SA 4.0 and the licence to be named — the credit line
+under the stage says "simplified and re-encoded for this site, and so also
+CC BY-SA 4.0 (share-alike)", and Anatria's NOTICE (the attribution chain) is
+committed as `data/anatomy/models/NOTICE-male.txt`. The HRA files are not
+merged with the male ones (Anatria's NOTICE warns that combining CC BY
+material into a CC BY-SA work forces share-alike onto it).
+
+What each model contains and lacks:
+
+| layer | male (Z-Anatomy) | female (HRA) |
+|---|---|---|
+| skeleton | 690 structures: bones, cartilages, joints, ligaments, teeth (skeletal + articular files) | 91: vertebral column, sacrum, coccyx, pelvis, femur/tibia/fibula/patella and knee ligaments — **partial** |
+| nervous | 586: brain regions, spinal cord tracts, cranial and peripheral nerves, sympathetic trunk, eye and ear | 362: brain (Allen Human Brain Atlas regions), spinal cord segments, eyes and their nerves — **partial** (no peripheral nerves) |
+| organs | 120: digestive, respiratory, urinary, reproductive, endocrine | 286: digestive (no stomach or oesophagus in the HRA set), urinary, respiratory, lymphatic organs, reproductive, mammary glands |
+| vessels | 836: heart, 391 arteries, 214 veins, lymph nodes, spleen, thymus | 124: heart and the major trunk vessels — **partial** (one lymph node) |
+| muscles | 847: skeletal muscles, tendons, fascia, bursae, sheaths | 16: muscles of the eye and knee — **partial** |
+| skin | 256 TA2 body regions tiling the surface | 1: the whole-body skin |
+
+Omissions, recorded in the manifest with reasons: male "Muscular insertions"
+(537 origin/insertion footprints painted on bone — not muscles), 380 stray
+duplicates (Z-Anatomy's nervous export carries 278 muscle meshes that
+Anatria's manifest files under the muscular system; each mesh is kept once,
+in its own layer; teeth and intervertebral discs likewise appear in two files
+and are kept in the skeleton), 3 nodes whose names are punctuation only
+("????????", "?x"); female: the placenta (8 nodes — the HRA places a term
+placenta in the uterus; the Visible Human Female was not pregnant and the
+site's entry describes the non-pregnant organ). The male skin is anatomically
+complete, genitals included, exactly as Z-Anatomy models it.
+
+**65.3 Pipeline and budgets.** `scripts/build-anatomy-models.mjs` (Node;
+`node --max-old-space-size=8192 scripts/build-anatomy-models.mjs [--male|--female]`):
+downloads each pinned source into `.cache/anatomy3d/` (idempotent), records
+bytes and sha256 of every source file, decodes Draco (draco3dgltf), strips
+materials, UVs and normals (normals are recomputed in the browser, which lets
+the welder merge vertices split only by shading and halves vertex bytes),
+flattens node transforms, assigns nodes to layers (male: by source file, in
+order, first claim wins; female: by the HRA hierarchy's system and group
+nodes, read before flattening), keeps EVERY structure as its own named node,
+simplifies each layer with meshoptimizer to a per-layer ratio and error bound
+(0.3–0.8 of source triangles), quantises positions to 14 bits and writes
+EXT_meshopt_compression GLBs. Decoding in the browser uses three's own
+self-contained meshopt decoder module — nothing is fetched from a third-party
+CDN and no decoder files are hosted. Budgets ≤ 6 MB per layer file and ≤ 28 MB
+per sex are asserted by the script and by `check:anatomy`. Actual bytes:
+
+| file | bytes | structures | triangles (source → shipped) |
+|---|---|---|---|
+| male-skeleton.glb | 1,700,584 | 690 | 1,060,066 → 585,288 |
+| male-nervous.glb | 1,838,788 | 586 | 2,410,274 → 723,904 |
+| male-organs.glb | 1,570,632 | 120 | 714,305 → 428,475 |
+| male-vessels.glb | 3,257,116 | 836 | 3,943,226 → 1,184,679 |
+| male-muscles.glb | 2,126,396 | 847 | 2,468,747 → 863,772 |
+| male-skin.glb | 386,924 | 256 | 135,204 → 108,103 |
+| **male total** | **10,880,440** | 3,335 | |
+| female-skeleton.glb | 1,296,292 | 91 | 565,844 → 339,576 |
+| female-nervous.glb | 2,255,432 | 362 | 1,696,540 → 509,756 |
+| female-organs.glb | 2,939,096 | 286 | 2,133,366 → 745,810 |
+| female-vessels.glb | 899,692 | 124 | 480,128 → 215,964 |
+| female-muscles.glb | 242,300 | 16 | 110,716 → 66,414 |
+| female-skin.glb | 603,820 | 1 | 382,640 → 191,320 |
+| **female total** | **8,236,632** | 880 | |
+
+Outputs: `data/anatomy/models/<sex>-<layer>.glb`, `structures-<sex>.json`
+(every node: name, Latin/HRA label, ontology id, system, collection, organ
+entry, shipped triangles), `manifest.json` (sources with URL/bytes/sha256 per
+file, licence, licence URL, source page, DOI and citation for the HRA,
+upstream chain for Z-Anatomy, per-layer coverage notes, omissions, budgets)
+and `NOTICE-male.txt`. Source provenance: Anatria files by commit (16 files,
+sha256 each); HRA `3d-vh-f-united.glb` v1.5 sha256 `472567a56896…`, its
+metadata.json (citation "Kristen Browne; Heidi Schlehlein. 2023. 3D Reference
+Organ Set for Female, v1.5", DOI 10.48539/HBM352.BTSQ.586).
+
+**65.4 Names and the alias table.** Every structure keeps its source name:
+male from Anatria's manifest (`name_en`, TA2 Latin), or the node name read as
+words when the manifest has none ("Clavicle.l" → "Clavicle (left)"; Z-Anatomy's
+".e1l" tendon-slip parts are shown as "Extensor digitorum — part e1 (left)",
+keeping the source's own suffix rather than guessing what it stands for);
+female from the HRA node's `label` when it is unique in the set, else the node
+name read as words ("VH_F_ilium_compact_bone_L" → "Ilium compact bone (left)",
+because the HRA labels six pelvic meshes "compact bone tissue"), with the HRA
+label and ontology id shown alongside. Which entry a structure opens is an
+EDITORIAL alias table, `MESH` in `etl/reference/build_anatomy.py` (55 of the
+60 organs; bone marrow, capillaries, blood, alveoli and sweat/sebaceous glands
+have no mesh in either model and say so): case-insensitive patterns with
+`except` lists, first organ in ORGANS order wins, plus two layer fallbacks
+(the male skin regions open the skin entry; the male muscles open skeletal
+muscle). The build script resolves the table to node names and writes
+`.scratch/anatomy-alias-report.md`, every organ with the structures that open
+it; the table was iterated against that report until the cross-assignments
+were gone (maxillary vessels out of the skull, cerebellar lobules out of the
+cerebrum, "ophthalmic" no longer matching "HTH", the heart's auricle away from
+the ear, and so on). The report is the verification listing. Structures with
+no entry after resolution: male 17 carpal/tarsal bones and the scapula, 5
+penile/omental structures, 86 fasciae/bursae/sheaths; female 14 mammary and
+peritoneal structures. `check:anatomy` fails if an organ with aliases resolves
+to no node in either model, or a structure names an organ or system that does
+not exist.
+
+**65.5 UI UX Pro Max.** Consulted (`search.py`, domains ux and style):
+"Asset weight — compress and lazy-load 3-D models, never raw meshes" (taken:
+meshopt + quantisation, three.js and the viewer lazy-loaded, layers streamed
+after the first visible one); "Touch spacing — 8 px minimum between targets"
+and "Touch friendly — larger targets on mobile" (taken: 44 px chips and
+toggles with 0.5 rem gaps, 40 px segmented control, pins 22 px hit area);
+"Gesture conflicts — keep vertical scroll primary, avoid horizontal swipes
+on main content" (taken: the canvas is touch-action none only inside the
+stage, the page scrolls normally around it; no swipe carousel — depth is a
+slider plus chips); the "3D & hyperrealism" style card's accessibility
+requirements (text contrast 4.5, keyboard, visible focus, reduced motion —
+taken: arrow keys on the chips, focus rings on every control, damping and
+fades off under prefers-reduced-motion) and its 300–400 ms motion range
+(layer fades 350 ms). Not taken: its navy/gold palette and parallax; the
+stage uses the site's tokens and the layer colours are anatomical.
+
+**65.6 Viewer rules.** Load order skin → skeleton → muscles → vessels → organs
+→ nervous with a visible badge ("Loading skin… · 2 of 6 layers"); the camera
+frames the body from the first loaded layer's bounding box (front view; both
+models face +z). Pixel ratio capped by `canvasPixelRatio()` (1.25 on
+low-power devices). Switching sex disposes every geometry and material of the
+old model; unmount disposes the renderer and controls. Layer fades are
+opacity lerps in the render loop (transparent + no depth write while
+translucent). Picking excludes the translucent layer so a click through the
+see-through skin lands on the muscle beneath. No console errors or warnings
+(the deprecated THREE.Clock was replaced by performance.now).
+
+**65.7 Verification.** `npm run typecheck`, `npm run check:anatomy` (PASS:
+19.12 MB across both sexes, 4,215 named structures, 55 of 60 entries
+reachable), `npm run build` (three.js stays in the shared OrbitControls chunk,
+589 kB / 149 kB gzip, with BodyViewer 82 kB / 26 kB gzip and AnatomyPage 27 kB
+/ 8 kB gzip; index unchanged), `etl\run.py --only anatomy` (reference
+validates with the alias fields). Headed Playwright (`.scratch/anatomy3d-shots.mjs`)
+at 1280×900 and Pixel 7 touch: every layer of both sexes screenshotted and
+read (`.scratch/shots3d/*.png`: `desktop-{skin,skeleton,nerves,organs,vessels,muscles,muscles-xray}`,
+`desktop-female-{skin,skeleton,nerves,organs,vessels}`, the same for
+`pixel7-`, plus `-picked`, `-picked-card`, `-rotated-zoomed`, `-diagrams`,
+`-deeplink-heart`); a click picked "Costal cartilage of eighth rib (right)"
+on desktop and a tap "Interosseous membrane of leg (right)" on the phone, each
+opening its entry; zero console errors. First load of the built route
+(`.scratch/anatomy3d-bytes.mjs` against `vite preview`): 15.3 MB
+uncompressed — 1.32 MB JS, 0.88 MB JSON (structures index 0.74 MB), 10.88 MB
+of male GLBs streamed after the 0.39 MB skin, all six layers in 0.5 s on a
+desktop; Pages gzips the JS and JSON.
+
+**65.8 Open items.** (1) Pins anchor at an entry's union bounding-box
+centre, so a spread entry (male "Skin", "Joints") pins near the pelvis;
+per-mesh anchors or the largest mesh would read better. (2) Raycasting has no
+BVH; a pick on the vessels layer (1.2 M triangles) takes ~50–100 ms on a
+desktop — acceptable, but three-mesh-bvh would make it instant. (3) The female
+model's stomach and oesophagus are absent because the HRA set lacks them;
+the HRA's `skin-male`/`united-male` were not used (no skeleton or muscles).
+(4) A "Frontal / lateral" quick-view set and a search box over the 4,215
+structure names would be the natural next controls. (5) DATA_DECISIONS.md and
+README.md need this section and a line under Anatomy in CLAUDE.md (the lead
+owns those files). (6) No npm script was added for the model build (package.json
+was limited to devDependencies); `build:anatomy-models` would be the obvious
+name.
+
+Files touched: `scripts/build-anatomy-models.mjs` (new), `scripts/check-anatomy.mjs`,
+`etl/reference/build_anatomy.py` (MESH table, `re` import, assertions),
+`etl/reference/anatomy.json` (regenerated), `data/anatomy/anatomy.json` and
+`data/manifest.json` (by `--only anatomy` — a FULL cached run is still needed
+before commit), `data/anatomy/models/**` (new: 12 GLBs, manifest.json,
+structures-male.json, structures-female.json, NOTICE-male.txt),
+`src/lib/anatomy.ts` (model types and loaders, LAYER_ORDER, layerAt,
+LAYER_SYSTEMS), `src/routes/AnatomyPage.tsx` (3-D stage, tabs, selection,
+deep links), `src/components/anatomy/BodyViewer.tsx`, `BodyStage.tsx`,
+`anatomy.css` (new), `package.json` / `package-lock.json` (devDependencies:
+`@gltf-transform/core`, `@gltf-transform/extensions`, `@gltf-transform/functions`
+^4.5.0, `meshoptimizer` ^1.2.0, `draco3dgltf` ^1.5.7). Scratch:
+`.scratch/anatomy3d-shots.mjs`, `anatomy3d-bytes.mjs`, `anatomy3d-pick-debug.mjs`,
+`anatomy-alias-report.md`, `shots3d/`, this draft, `anatomy-notes.md`.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
