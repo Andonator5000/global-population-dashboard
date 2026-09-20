@@ -883,8 +883,11 @@ def build(refresh: bool) -> tuple[dict[str, Any], dict[str, Any], list[CachedRes
         "normalisation": (
             "key = name with whitespace collapsed, then a trailing \" (left)\" / "
             "\" (right)\" / \" (left, a)\" side suffix and a trailing "
-            "\" \\u2014 part e1\" part suffix stripped repeatedly until neither "
-            "matches. Nothing else is changed."
+            "\" — part e1\" part suffix (em dash U+2014, en dash or hyphen) "
+            "stripped repeatedly until neither matches. Nothing else is "
+            "changed: no case folding, no de-parenthesising, no punctuation "
+            "stripping. See .scratch/anatomy-desc-notes.md for the exact "
+            "regexes in Python and TypeScript."
         ),
         "scopeNote": (
             "scope=\"exact\": the article is about this structure (a redirect "
