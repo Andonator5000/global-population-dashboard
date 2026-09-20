@@ -1965,6 +1965,13 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       // frame anchor afresh under the finger.
       step = versor.pow(step, DRAG_MAX_DEG_PER_FRAME / stepAngle)
       q1 = versor.normalize(versor.multiply(step, prev))
+      if (!lastFrameWasRoll.current) {
+        // The shortened step is not exactly roll-free; north stays held.
+        const e = versor.toEuler(q1)
+        e[2] = anchor.r0[2]
+        q1 = versor.fromEuler(e)
+        step = versor.multiply(q1, versor.conjugate(prev))
+      }
       reanchor = true
     }
     frameVelocity.current = step
