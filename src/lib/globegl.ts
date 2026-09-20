@@ -73,6 +73,8 @@ export interface ImageryView {
   raster?: boolean | undefined
   /** Per-pixel tone over the imagery (never applied to the raster). */
   grade?: ImageryGrade | undefined
+  /** Round 13: atmosphere glow strength outside the limb (0 = none). */
+  glow?: number | undefined
   projection: GeoProjection
   /** Identity of the flat projection, for mesh caching. */
   projectionKey: string
@@ -85,6 +87,33 @@ export interface ImageryView {
   cssHeight: number
   /** Resolved CSS colour for the disc while imagery is still loading. */
   oceanFill: string
+}
+
+/** The atmosphere's colour (round 13): a pale sky blue, shared by the GL
+ *  halo, the SVG ring and the 2-D fallbacks so the views agree. */
+export const GLOW_RGB: [number, number, number] = [0.52, 0.72, 1.0]
+export const GLOW_CSS = 'rgb(133, 184, 255)'
+/** How far the halo reaches, as a fraction of the disc radius. */
+export const GLOW_REACH = 1.2
+
+/** Draw the atmosphere ring on a 2-D canvas in view coordinates (the
+ *  fallback and vector paths); the disc itself is painted over it. */
+export function drawGlowRing(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  r: number,
+  strength = 0.85,
+): void {
+  const gradient = ctx.createRadialGradient(cx, cy, r, cx, cy, r * GLOW_REACH)
+  for (const d of [0, 0.02, 0.04, 0.07, 0.1, 0.14, 0.2]) {
+    const a = Math.exp(-d / 0.06) * (1 - Math.min(1, d / 0.2)) * strength
+    gradient.addColorStop(d / (GLOW_REACH - 1), `rgba(133, 184, 255, ${a.toFixed(3)})`)
+  }
+  ctx.beginPath()
+  ctx.arc(cx, cy, r * GLOW_REACH, 0, Math.PI * 2)
+  ctx.fillStyle = gradient
+  ctx.fill()
 }
 
 export interface ImageryRenderer {
@@ -207,6 +236,9 @@ uniform vec4 u_grade;
 uniform vec3 u_tint;
 /* Round 12: chroma boost and contrast (x, y); 0 = as shot. */
 uniform vec2 u_grade2;
+/* Round 13: atmosphere glow strength (0 = none) and its colour. */
+uniform float u_glow;
+uniform vec3 u_glowColor;
 in vec2 v_lonlat;
 out vec4 o;
 const float PI = 3.141592653589793;
@@ -223,13 +255,26 @@ vec3 grade(vec3 c) {
 }
 void main() {
   float lon; float lat; float alpha = 1.0;
+  // Round 13: the atmosphere -- outside the limb the BASE pass paints a
+  // soft blue halo that fades with distance from the edge (Google Earth's
+  // glow); tile passes draw nothing there. Premultiplied like the rest.
+  vec4 glow = vec4(0.0);
   if (u_globe == 1) {
     vec2 p = vec2((gl_FragCoord.x - u_ortho.x) / u_ortho.y,
                   (u_ortho.z - (u_height - gl_FragCoord.y)) / u_ortho.y);
     float r2 = dot(p, p);
     // Feather the rim over one device pixel.
     alpha = clamp((1.0 - sqrt(r2)) * u_ortho.y + 0.5, 0.0, 1.0);
-    if (alpha <= 0.0) discard;
+    if (u_isBase == 1 && u_glow > 0.0) {
+      float d = max(0.0, sqrt(r2) - 1.0);
+      float g = exp(-d / 0.06) * (1.0 - min(1.0, d / 0.2)) * u_glow;
+      glow = vec4(u_glowColor * g, g);
+    }
+    if (alpha <= 0.0) {
+      if (glow.a <= 0.002) discard;
+      o = glow;
+      return;
+    }
     float xp = sqrt(max(0.0, 1.0 - r2));
     float yp = p.x;
     float zp = p.y;
@@ -249,7 +294,7 @@ void main() {
     lon = v_lonlat.x;
     lat = v_lonlat.y;
   }
-  if (u_hasTex == 0) { o = vec4(u_ocean * alpha, alpha); return; }
+  if (u_hasTex == 0) { o = vec4(u_ocean * alpha, alpha) + glow * (1.0 - alpha); return; }
   // Longitude relative to the window centre, branch cut on the far side.
   float lonC = 0.5 * (u_window.x + u_window.z);
   float rel = lon - lonC;
@@ -273,7 +318,7 @@ void main() {
   if (abs(dxu2) < abs(dx.x)) dx.x = dxu2;
   if (abs(dyu2) < abs(dy.x)) dy.x = dyu2;
   vec3 c = grade(textureGrad(u_tex, uv, dx, dy).rgb);
-  o = vec4(c * alpha, alpha);
+  o = vec4(c * alpha, alpha) + glow * (1.0 - alpha);
 }
 `
 
@@ -464,7 +509,7 @@ export class GlobeGL implements ImageryRenderer {
       for (const u of [
         'u_tex', 'u_globe', 'u_hasTex', 'u_isBase', 'u_ortho', 'u_height',
         'u_rot', 'u_window', 'u_ocean', 'u_affine', 'u_size', 'u_color',
-        'u_grade', 'u_tint', 'u_grade2',
+        'u_grade', 'u_tint', 'u_grade2', 'u_glow', 'u_glowColor',
       ]) {
         map.set(u, gl.getUniformLocation(program, u))
       }
@@ -563,6 +608,12 @@ export class GlobeGL implements ImageryRenderer {
 
   ready(): boolean {
     return this.bases.has(this.basePath)
+  }
+
+  /** True while the GL context is lost (round 13): the map then paints
+   *  its drag frames on the 2-D canvas instead of on a dead context. */
+  isLost(): boolean {
+    return this.lost
   }
 
   attribution(): string | null {
@@ -931,6 +982,8 @@ export class GlobeGL implements ImageryRenderer {
     const tint = grade?.tint ?? [1, 1, 1]
     gl.uniform3f(loc('u_tint'), tint[0], tint[1], tint[2])
     gl.uniform2f(loc('u_grade2'), grade?.saturate ?? 0, grade?.contrast ?? 0)
+    gl.uniform1f(loc('u_glow'), isGlobe ? view.glow ?? 0 : 0)
+    gl.uniform3f(loc('u_glowColor'), GLOW_RGB[0], GLOW_RGB[1], GLOW_RGB[2])
 
     // Pass 1: the world base (or the ocean disc while it loads). With a
     // client raster requested and resident, the raster IS the world and

@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-20T03:07:36+00:00",
+  "generated_at": "2026-09-20T08:57:04+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-20T03:07:36+00:00",
+      "fetched_at": "2026-09-20T08:57:04+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -335,6 +335,17 @@
       "files": [],
       "notes": "Three resolution tiers (2700x1350; 10800x5400 as 8 tiles; 21600x10800 as 32 tiles of 2700 px) fetched as 41 EPSG:4326 WMS windows from tiles.maps.eox.at, each the tile's exact bounds and size, re-encoded as progressive JPEG q72. Polar areas beyond Sentinel-2 coverage are white. Source id kept as 'nasa_blue_marble' so artifact references stay stable; the Blue Marble fallback is SATELLITE_SOURCE=bluemarble."
     },
+    "sky": {
+      "title": "Yale Bright Star Catalogue V/50 + IAU-CSN + d3-celestial",
+      "url": "http://tdc-www.harvard.edu/catalogs/bsc5.html",
+      "licence": "BSC5 public domain; IAU-CSN CC BY 4.0; d3-celestial BSD-3-Clause (per-source detail in data/geo/sky.json)",
+      "fetched_at": "2026-09-20T06:30:11+00:00",
+      "upstream_release": "BSC5 5th revised ed. 1991; d3-celestial b56735c",
+      "vintage": "J2000.0 mean places",
+      "citation": "Hoffleit D., Warren W.H. Jr. (1991) The Bright Star Catalogue, 5th Revised Ed. (ADC/CDS V/50); IAU WGSN Catalog of Star Names; Olaf Frohn, d3-celestial (BSD-3-Clause)",
+      "files": [],
+      "notes": "9096 stars to V 7.96 with B-V colour for 8786 and 341 IAU proper names; 88 constellation figures in 150 polylines. Drawn behind the 3-D globe by src/lib/sky.ts. Stellarium's GPL sky cultures were deliberately not used."
+    },
     "catalogue_of_life": {
       "title": "Catalogue of Life, 2026-08-20 (ChecklistBank)",
       "url": "https://download.checklistbank.org/col/monthly/2026-08-20_coldp.zip",
@@ -632,11 +643,22 @@
       "files": [],
       "notes": "11 systems, 60 organs, 11 whole-body layers, ~7995 words."
     },
+    "anatomy_structures": {
+      "title": "English Wikipedia lead extracts for the 3-D anatomy structures",
+      "url": "https://en.wikipedia.org/w/api.php",
+      "licence": "CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/) — article title and URL carried with every extract",
+      "fetched_at": "2026-09-20T08:32:05+00:00",
+      "upstream_release": null,
+      "vintage": "fetched 2026-09-20",
+      "citation": "English Wikipedia contributors; article titles recorded per structure",
+      "files": [],
+      "notes": "2364 of 2381 normalised structure names described (99.3%), of which 1354 name the structure itself and 1010 name a broader article (flagged scope=broader); resolution by rung {'head': 115, 'name': 945, 'ontology': 163, 'override': 105, 'override-broader': 373, 'parent': 308, 'shortened': 214, 'singular': 2, 'stripped': 139}."
+    },
     "flagcdn": {
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-09-20T03:07:36+00:00",
+      "fetched_at": "2026-09-20T08:57:04+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -1026,6 +1048,14 @@
       "row_count": null,
       "entity_count": null
     },
+    "geo/sky.json": {
+      "description": "The real night sky for the 3-D globe's black surround: J2000 star positions, magnitudes and B-V colours from the Bright Star Catalogue, IAU proper names, and the 88 IAU constellation figures as polylines through star positions.",
+      "sources": [
+        "sky"
+      ],
+      "row_count": 9096,
+      "entity_count": null
+    },
     "biology/taxonomy/tree.json": {
       "description": "Tree of life from the synthetic Life root to family rank, with per-node counts, Wikipedia links, description sources, and contested-placement notes.",
       "sources": [
@@ -1163,6 +1193,14 @@
       "row_count": 15,
       "entity_count": null
     },
+    "anatomy/structures-wiki.json": {
+      "description": "Sourced description for each named structure in the 3-D anatomy models, keyed by normalised name; unresolved names carry a null title and a reason.",
+      "sources": [
+        "anatomy_structures"
+      ],
+      "row_count": 2381,
+      "entity_count": null
+    },
     "flags/map-palette.json": {
       "description": "Normalised map fills, continent accents, and per-entity flag accent colours with AA-safe text steps.",
       "sources": [
@@ -1258,5 +1296,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "ad580600ddcd4b7f2671b9ca34441514322e01a8ad2e34bfa7478390c4a106ac"
+  "content_fingerprint": "77a169a1cfb33a7e7ed1000d618299b166ce1655bb6a4938713009225c9faf38"
 }

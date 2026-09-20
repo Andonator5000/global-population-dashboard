@@ -217,7 +217,26 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   alias resolution is system-gated (an entry claims only structures of
   its own systems); the share-alike credit line under the stage must name
   CC BY-SA 4.0; check:anatomy gates GLB validity, licences, attribution
-  and the byte budgets, supplements included. Timeline (§54.1): era banners
+  and the byte budgets, supplements included. Round 13 (§69): the
+  female's partial layers are COMPLETED by the male structures fitted
+  region-wise (the region field in build-anatomy-models.mjs: spine-
+  matched trunk, brain-box head, bone/skin-landmark limb similarities),
+  shipped as `female-<layer>-fitted.glb` supplements, every such
+  structure `fitted: 'male'` on the card, label and index; a male
+  structure the HRA has by name is never duplicated (femaleEquivalent,
+  NAME_SYNONYMS); fitted vertices outside the female skin are clamped
+  inside; the female skin is the Visible Human Female, unreshaped above
+  the ankles and distal forearms — her feet and hands are the male skin
+  patches fitted and tapered onto the cut rings (her feet are deformed in
+  the source), labelled; labels are per-structure label sets with a
+  curated priority per layer and zoom density (BodyViewer buildLabels);
+  descriptions come from data/anatomy/structures-wiki.json (the
+  anatomy_structures stage, §68, keyed by normaliseStructureName, scope
+  "broader" worded as such); the Diagrams tab is rendered FROM the models
+  by `npm run build:anatomy-diagrams` (one orthographic camera per sex,
+  ID-pass anchors) into data/anatomy/diagrams — re-render after ANY model
+  rebuild, check:anatomy gates the shas; full screen follows WorldMap's
+  frameRef/pseudoFullscreen pattern with a camera refit. Timeline (§54.1): era banners
   sit above the axis line (z-index) — keep the line drawn behind them.
 - Cosmic Phenomena (§46): EDITORIAL — edit etl/reference/cosmic_phenomena
   .json, never data/space/phenomena*; the `phenomena` stage downloads
@@ -265,7 +284,16 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   end to end (React state, refs, d3, BOTH GL shaders). Touch pointers are
   NEVER explicitly captured (the hand-over fires lostpointercapture
   mid-gesture); a lostpointercapture on a live pointer waits 120 ms
-  before counting as a release. Verify with `.scratch/r12-drag.mjs`
+  before counting as a release. Round 13 (§66): a drag frame turns the
+  globe at most DRAG_MAX_DEG_PER_FRAME (8°) and the anchor clamp is 0.95
+  of the radius (the runaway spin near the limb); a lost GL context hands
+  drag frames to the 2-D vector path (`isLost()`); a WATCHDOG force-ends
+  any live session with no pointer, no inertia and no pending frame; the
+  atmosphere halo is one profile (exp(-d/0.06), GLOW_* in globegl.ts)
+  painted by the GL base pass, the SVG ring at rest and the canvas
+  fallbacks — keep them identical. Stress-test with
+  `.scratch/r13-stress.mjs <view> <seed> <steps>` before claiming a
+  phone fix. Verify with `.scratch/r12-drag.mjs`
   against the no-HMR server (`npx vite --config .scratch/vite.r12.config.ts`,
   :5175) — the svg exposes `data-rotation`. The compass is
   NORTH UP (§59.3, §62.2): recentre the globe on the place under the screen

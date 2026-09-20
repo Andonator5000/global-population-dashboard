@@ -8,6 +8,12 @@ import { canvasPixelRatio } from '../../lib/device'
 import {
   LAYER_ORDER,
   anatomyModelUrl,
+  groupNameOf,
+  labelGroups,
+  labelPriority,
+  structureSide,
+  type DiagramsFile,
+  type LabelGroup,
   type LayerId,
   type ModelManifest,
   type ModelStructure,
@@ -15,7 +21,7 @@ import {
 } from '../../lib/anatomy'
 
 /**
- * The 3-D body (round 12, DATA_DECISIONS.md §62).
+ * The 3-D body (round 12, DATA_DECISIONS.md §65; round 13, §66).
  *
  * One registered model per sex, six layers ordered bone -> flesh, every
  * structure its own named mesh. The depth control shows layers 0..depth;
@@ -26,8 +32,18 @@ import {
  * Orbit: one finger / left drag rotates, pinch / wheel zooms, two-finger
  * / right drag pans (OrbitControls with damping). A tap or click that did
  * not drag raycasts the visible, non-translucent layers and reports the
- * structure under the pointer. Pins for the entries of the current layer
- * are projected every frame into an HTML overlay.
+ * structure under the pointer.
+ *
+ * Labels (round 13): every named structure group of the labelled layer
+ * has a label anchored at its bounding-box centre (both sides merged when
+ * they sit together, "Humerus (left)" / "(right)" when apart). Which
+ * labels show depends on the zoom: a label is a candidate when its
+ * structure would span at least LABEL_MIN_PX on screen, candidates are
+ * ranked by that size (entries with a site organ entry first, structures
+ * that the diagram ID pass never sees from outside last) and placed
+ * greedily without overlaps up to a cap, so at rest the major parts of
+ * the layer are named and zooming in names progressively everything. A
+ * search string bypasses the density rule and shows every match.
  *
  * This module is React.lazy-loaded so three.js stays out of the page
  * chunk (the Solar System pattern); the meshopt decoder is three's own
@@ -40,24 +56,34 @@ export interface LoadState {
   error: string | null
 }
 
-export interface Pin {
-  organ: string
+export interface LabelItem {
+  key: string
   label: string
+  group: LabelGroup
+  nodes: string[]
+  organ: string | null
+  /** The structure a click on the label opens. */
+  structure: ModelStructure
 }
 
 interface Props {
   sex: Sex
   manifest: ModelManifest
   structures: ModelStructure[]
+  diagrams: DiagramsFile | null
   depth: number
   seeThrough: boolean
   selectedNode: string | null
+  selectedKey: string | null
   highlightOrgan: string | null
-  organNames: Map<string, string>
+  labelsOn: boolean
+  labelQuery: string
   onPick: (structure: ModelStructure | null) => void
-  onPinOpen: (organ: string) => void
+  onLabelOpen: (structure: ModelStructure) => void
   onLoadState: (state: LoadState) => void
   resetToken: number
+  /** Full screen in or out: the distance is refitted to the new stage, the rotation kept. */
+  fullscreen: boolean
   reducedMotion: boolean
   compact: boolean
 }
@@ -70,6 +96,10 @@ const LOAD_ORDER: LayerId[] = ['skin', 'skeleton', 'muscles', 'vessels', 'organs
 const TRANSLUCENT_OPACITY = 0.22
 const FADE_SECONDS = 0.35
 const FOV = 32
+const LABEL_MIN_PX = { desktop: 14, compact: 20 }
+const LABEL_MAX = { desktop: 40, compact: 18 }
+const LABEL_SEARCH_MAX = 80
+const LAYOUT_INTERVAL_MS = 90
 
 const COLOURS = {
   bone: 0xe6dcc8,
@@ -83,6 +113,7 @@ const COLOURS = {
   fascia: 0xd7cdb8,
   skin: 0xd6a98a,
   skinFemale: 0xd9ad90,
+  hair: 0x4a3626,
   artery: 0xc23b2f,
   vein: 0x3f5fa8,
   heart: 0xa8302a,
@@ -94,6 +125,17 @@ const COLOURS = {
   endocrine: 0xb28ad4,
   liver: 0x8f4a3f,
   other: 0xb9a89a,
+}
+
+/** Fasciae, bursae, sheaths and the like sheet over the muscles: drawn
+    translucent so the muscles read beneath them (round 13). */
+const SHEET = /fascia|bursa|sheath|septum|aponeurosis|retinaculum|iliotibial tract|membrane/
+function baseOpacityFor(structure: ModelStructure): number {
+  const name = structure.name.toLowerCase()
+  if (structure.layer === 'muscles' && SHEET.test(name)) return 0.35
+  // The skeleton's membranes (intercostal, interosseous, obturator) sheet over the bones.
+  if (structure.layer === 'skeleton' && /membrane/.test(name)) return 0.35
+  return 1
 }
 
 function colourFor(structure: ModelStructure): number {
@@ -120,6 +162,8 @@ function colourFor(structure: ModelStructure): number {
       if (/fascia|bursa|sheath|septum/.test(name)) return COLOURS.fascia
       return COLOURS.muscle
     case 'skin':
+      // Z-Anatomy's hair regions are meshes of their own: drawn as hair.
+      if (/hairs? of head|eyebrow|pubic hair|eyelash/.test(name)) return COLOURS.hair
       return COLOURS.skin
     case 'organs':
     default:
@@ -147,13 +191,26 @@ function colourFor(structure: ModelStructure): number {
   }
 }
 
+interface LabelRecord extends LabelItem {
+  /** For a side pair: 'left' | 'right'; for the merged pair label: 'both'. */
+  pair: 'left' | 'right' | 'both' | null
+  /** Priority tier: 0 curated major part, 1 structure, 2 sub-part. */
+  tier: number
+  anchor: THREE.Vector3
+  /** Bounding-box diagonal in metres (the fallback size when the diagram pass never saw it). */
+  size: number
+  /** Visible area in the diagram ID pass as the side of an equivalent square, in
+      metres: the importance a reader perceives (a rib cage outranks a ligament of
+      the same length); null when no diagram data is available. */
+  blob: number | null
+}
+
 interface LayerRecord {
   id: LayerId
   group: THREE.Group
   materials: THREE.MeshStandardMaterial[]
   meshes: THREE.Mesh[]
-  /** Anchor per organ entry: centre of the union box of its meshes. */
-  anchors: Map<string, THREE.Vector3>
+  labels: LabelRecord[]
   box: THREE.Box3
   opacity: number
   target: number
@@ -171,6 +228,33 @@ interface SceneRefs {
   generation: number
   lastFrame: number
   highlighted: THREE.Mesh[]
+  layoutDirty: boolean
+  lastLayout: number
+  shownKeys: string
+  flipped: Set<string>
+}
+
+/** Layer opacity times the material's own (sheets stay translucent). */
+function applyOpacity(material: THREE.MeshStandardMaterial, layerOpacity: number): void {
+  const base = (material.userData.baseOpacity as number | undefined) ?? 1
+  const opacity = layerOpacity * base
+  material.opacity = opacity
+  material.transparent = opacity < 0.999
+  material.depthWrite = base >= 1 && opacity >= 0.999
+}
+
+/**
+ * Opacity target of a layer for a depth: layers deeper than the depth are
+ * hidden; the layer at the depth is translucent in see-through; and under an
+ * OPAQUE skin (the outermost layer, see-through off) the deeper layers are
+ * not drawn at all — they are invisible inside a closed skin, and only the
+ * slivers of a fitted muscle or vessel poking through it would show.
+ */
+function layerTarget(index: number, depth: number, seeThrough: boolean): number {
+  if (index > depth) return 0
+  if (seeThrough && index === depth && depth > 0) return TRANSLUCENT_OPACITY
+  if (!seeThrough && depth === LAYER_ORDER.length - 1 && index < depth) return 0
+  return 1
 }
 
 function disposeLayer(record: LayerRecord): void {
@@ -179,30 +263,91 @@ function disposeLayer(record: LayerRecord): void {
   for (const material of record.materials) material.dispose()
 }
 
+/** The label set of a layer: one per structure group, or one per side when apart. */
+function buildLabels(
+  groups: LabelGroup[],
+  boxes: Map<string, THREE.Box3>,
+  visibility: Map<string, number> | null,
+  metresPerDiagramPixel: number,
+): LabelRecord[] {
+  const out: LabelRecord[] = []
+  const make = (key: string, label: string, group: LabelGroup, nodes: ModelStructure[], pair: LabelRecord['pair'] = null): void => {
+    const box = new THREE.Box3()
+    let px = 0
+    for (const s of nodes) {
+      const b = boxes.get(s.node)
+      if (b) box.union(b)
+      if (visibility) px += visibility.get(s.node) ?? 0
+    }
+    if (box.isEmpty()) return
+    out.push({
+      key,
+      label,
+      group,
+      nodes: nodes.map((s) => s.node),
+      organ: group.organ,
+      structure: nodes[0]!,
+      pair,
+      tier: labelPriority(group.layer, group.name, group.organ),
+      anchor: box.getCenter(new THREE.Vector3()),
+      size: box.getSize(new THREE.Vector3()).length(),
+      blob: visibility ? Math.sqrt(px / 2) * metresPerDiagramPixel : null,
+    })
+  }
+  for (const group of groups) {
+    const left = group.nodes.filter((s) => structureSide(s.name) === 'left')
+    const right = group.nodes.filter((s) => structureSide(s.name) === 'right')
+    const unsided = group.nodes.filter((s) => structureSide(s.name) === null)
+    if (left.length && right.length && unsided.length === 0) {
+      const lb = new THREE.Box3()
+      const rb = new THREE.Box3()
+      for (const s of left) { const b = boxes.get(s.node); if (b) lb.union(b) }
+      for (const s of right) { const b = boxes.get(s.node); if (b) rb.union(b) }
+      if (!lb.isEmpty() && !rb.isEmpty()) {
+        const gap = Math.max(lb.min.x - rb.max.x, rb.min.x - lb.max.x)
+        const width = Math.max(lb.max.x - lb.min.x, rb.max.x - rb.min.x)
+        if (gap > 0.05 && gap > width * 0.6) {
+          make(`${group.key}:left`, `${group.name} (left)`, group, left, 'left')
+          make(`${group.key}:right`, `${group.name} (right)`, group, right, 'right')
+          // The merged form, used when the two would collide on screen.
+          make(`${group.key}:both`, `${group.name} (left/right)`, group, group.nodes, 'both')
+          continue
+        }
+      }
+    }
+    make(group.key, group.name, group, group.nodes)
+  }
+  return out
+}
+
 export default function BodyViewer({
   sex,
   manifest,
   structures,
+  diagrams,
   depth,
   seeThrough,
   selectedNode,
+  selectedKey,
   highlightOrgan,
-  organNames,
+  labelsOn,
+  labelQuery,
   onPick,
-  onPinOpen,
+  onLabelOpen,
   onLoadState,
   resetToken,
+  fullscreen,
   reducedMotion,
   compact,
 }: Props) {
   const mountRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const refs = useRef<SceneRefs | null>(null)
-  const pinElements = useRef(new Map<string, HTMLElement>())
-  const [pins, setPins] = useState<Pin[]>([])
-  const [expandedPin, setExpandedPin] = useState<string | null>(null)
-  const latest = useRef({ depth, seeThrough, onPick, onLoadState, reducedMotion, structures, organNames })
-  latest.current = { depth, seeThrough, onPick, onLoadState, reducedMotion, structures, organNames }
+  const labelElements = useRef(new Map<string, HTMLElement>())
+  const [shown, setShown] = useState<LabelRecord[]>([])
+  const [expanded, setExpanded] = useState<string | null>(null)
+  const latest = useRef({ depth, seeThrough, onPick, onLoadState, reducedMotion, structures, labelsOn, labelQuery, selectedKey, highlightOrgan, compact, diagrams, sex })
+  latest.current = { depth, seeThrough, onPick, onLoadState, reducedMotion, structures, labelsOn, labelQuery, selectedKey, highlightOrgan, compact, diagrams, sex }
 
   // ---- Scene lifetime -----------------------------------------------------
   useEffect(() => {
@@ -229,6 +374,8 @@ export default function BodyViewer({
     controls.rotateSpeed = 0.7
     controls.zoomSpeed = 0.9
     controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN }
+    // Zoom toward the pointer (the feet, a hand), not always the body's centre.
+    controls.zoomToCursor = true
 
     scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8078, 1.6))
     const key = new THREE.DirectionalLight(0xffffff, 2.1)
@@ -247,8 +394,15 @@ export default function BodyViewer({
       generation: 0,
       lastFrame: performance.now(),
       highlighted: [],
+      layoutDirty: true,
+      lastLayout: 0,
+      shownKeys: '',
+      flipped: new Set(),
     }
     refs.current = state
+    controls.addEventListener('change', () => {
+      state.layoutDirty = true
+    })
 
     // Picking: a press that neither travelled nor lingered is a pick.
     let press: { x: number; y: number; t: number; id: number } | null = null
@@ -276,7 +430,9 @@ export default function BodyViewer({
         const record = state.layers.get(id)
         if (record && record.group.visible) candidates.push(record.group)
       })
-      const hit = state.raycaster.intersectObjects(candidates, true)[0]
+      // Prefer an opaque structure under the pointer over a translucent sheet.
+      const hits = state.raycaster.intersectObjects(candidates, true)
+      const hit = hits.find((h) => (((h.object as THREE.Mesh).material as THREE.Material)?.userData.baseOpacity ?? 1) >= 1) ?? hits[0]
       if (!hit) {
         latest.current.onPick(null)
         return
@@ -298,14 +454,20 @@ export default function BodyViewer({
       renderer.setSize(w, h)
       camera.aspect = w / h
       camera.updateProjectionMatrix()
+      // The stage changed size (full screen in or out, a window resize):
+      // refit the distance so the body fills the new stage, keeping the
+      // rotation and the target the reader chose.
+      if (state.framed) fitDistance(state)
+      mount.dataset.stage = `${w}x${h}`
+      state.layoutDirty = true
     }
     const observer = new ResizeObserver(resize)
     observer.observe(mount)
 
-    // Render loop: damping, opacity fades, pin projection.
-    const centre = new THREE.Vector3()
-    const toCamera = new THREE.Vector3()
+    // Render loop: damping, opacity fades, label layout and projection.
     const projected = new THREE.Vector3()
+    const toCamera = new THREE.Vector3()
+    const radial = new THREE.Vector3()
     let frame = 0
     const tick = () => {
       frame = requestAnimationFrame(tick)
@@ -319,62 +481,118 @@ export default function BodyViewer({
           record.opacity = record.opacity < record.target
             ? Math.min(record.target, record.opacity + step)
             : Math.max(record.target, record.opacity - step)
-          const translucent = record.opacity < 0.999
-          for (const material of record.materials) {
-            material.opacity = record.opacity
-            material.transparent = translucent
-            material.depthWrite = !translucent
-            material.needsUpdate = false
-          }
+          for (const material of record.materials) applyOpacity(material, record.opacity)
           record.group.visible = record.opacity > 0.001
         }
       }
       renderer.render(scene, camera)
+      if ((now | 0) % 500 < 20) mount.dataset.cam = `${camera.position.distanceTo(controls.target).toFixed(3)} fit ${((camera.userData.fitDistance as number | undefined) ?? 0).toFixed(3)} aspect ${camera.aspect.toFixed(2)}`
 
-      // Pins: project the current layer's anchors; hide those on the far side.
       const overlay = overlayRef.current
-      const current = state.layers.get(LAYER_ORDER[latest.current.depth] ?? 'skin')
-      if (overlay && current && state.bodyBox) {
-        state.bodyBox.getCenter(centre)
-        toCamera.copy(camera.position).sub(centre).normalize()
-        const w = overlay.clientWidth
-        const h = overlay.clientHeight
-        const radius = state.bodyBox.getSize(new THREE.Vector3()).length() / 2
-        const placed: { element: HTMLElement; x: number; y: number }[] = []
-        for (const [organ, element] of pinElements.current) {
-          const anchor = current.anchors.get(organ)
-          if (!anchor) {
-            element.style.display = 'none'
-            continue
-          }
-          projected.copy(anchor).sub(centre)
-          const facing = projected.dot(toCamera) / Math.max(radius, 1e-6)
-          projected.copy(anchor).project(camera)
-          const visible = facing > -0.12 && projected.z < 1 && Math.abs(projected.x) < 1.05 && Math.abs(projected.y) < 1.05
-          element.style.display = visible ? '' : 'none'
-          if (visible) {
-            const x = ((projected.x + 1) / 2) * w
-            const y = ((1 - projected.y) / 2) * h
-            element.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`
-            placed.push({ element, x, y })
+      const { depth: d, seeThrough: xray, labelsOn: on, labelQuery: query, selectedKey: sel, highlightOrgan: organ, compact: small } = latest.current
+      const labelled = state.layers.get(LAYER_ORDER[xray && d > 0 ? d - 1 : d] ?? 'skin')
+      if (!overlay || !labelled || !state.bodyBox) return
+      const w = overlay.clientWidth
+      const h = overlay.clientHeight
+      const centre = state.bodyBox.getCenter(new THREE.Vector3())
+
+      // Layout (throttled): choose which labels to show for this camera.
+      if (state.layoutDirty && now - state.lastLayout > LAYOUT_INTERVAL_MS) {
+        state.layoutDirty = false
+        state.lastLayout = now
+        const q = query.trim().toLowerCase()
+        const minPx = small ? LABEL_MIN_PX.compact : LABEL_MIN_PX.desktop
+        const cap = q ? LABEL_SEARCH_MAX : small ? LABEL_MAX.compact : LABEL_MAX.desktop
+        const tanHalf = Math.tan((camera.fov * Math.PI) / 360)
+        const candidates: { item: LabelRecord; x: number; y: number; score: number; forced: boolean }[] = []
+        if (on || q || sel || organ) {
+          for (const item of labelled.labels) {
+            const forced = sel !== null && item.group.key === sel
+            const boosted = organ !== null && item.organ === organ
+            if (!on && !q && !forced && !boosted) continue
+            if (q && !item.label.toLowerCase().includes(q) && !forced) continue
+            projected.copy(item.anchor).project(camera)
+            if (projected.z >= 1 || Math.abs(projected.x) > 1.02 || Math.abs(projected.y) > 1.02) continue
+            // Facing: is the anchor on the camera's side of the body's axis at that height?
+            toCamera.copy(camera.position).sub(item.anchor).normalize()
+            radial.set(item.anchor.x - centre.x, 0, item.anchor.z - centre.z)
+            const r = radial.length()
+            const facing = r < 0.03 ? 1 : radial.divideScalar(r).dot(toCamera)
+            if (facing < (q ? -0.55 : -0.2) && !forced) continue
+            const dist = camera.position.distanceTo(item.anchor)
+            // Screen size: the visible blob from the diagram pass where it exists
+            // (what a reader sees), else a third of the bounding box (thin or
+            // hidden structures), both scaled by the camera distance.
+            const pxPerMetre = (h / 2) / (dist * tanHalf)
+            const px = item.blob !== null && item.blob > 0 ? item.blob * pxPerMetre : item.size * 0.33 * pxPerMetre
+            if (!q && !forced && px < minPx * (item.tier === 0 ? 0.5 : 1)) continue
+            const score = px * (item.organ ? 1.3 : 1) * (boosted ? 2.5 : 1) * (facing > 0.3 ? 1.2 : 1)
+            candidates.push({ item, x: ((projected.x + 1) / 2) * w, y: ((1 - projected.y) / 2) * h, score: forced ? Infinity : score, forced })
           }
         }
-        // Declutter: labels are laid out top to bottom; one whose box would
-        // overlap an already placed label collapses to its dot (hover or
-        // the active entry still shows it). Cheap for a few dozen pins.
-        placed.sort((a, b) => a.y - b.y || a.x - b.x)
+        // Rank: forced first, then the curated tier (major parts before
+        // structures before sub-parts), then by size on screen.
+        candidates.sort((a, b) => (a.forced !== b.forced ? (a.forced ? -1 : 1) : a.item.tier !== b.item.tier ? a.item.tier - b.item.tier : b.score - a.score))
+        // Side pairs: the merged "(left/right)" form stands in when the two
+        // would collide on screen; otherwise the pair's labels are laid out
+        // on opposite sides of their anchors so they never overlap.
+        const byKey = new Map(candidates.map((c) => [c.item.key, c]))
+        const skip = new Set<string>()
+        for (const c of candidates) {
+          if (c.item.pair !== 'both') continue
+          const baseKey = c.item.key.slice(0, -':both'.length)
+          const l = byKey.get(`${baseKey}:left`)
+          const r = byKey.get(`${baseKey}:right`)
+          if (l && r) {
+            const collide = Math.abs(l.x - r.x) < c.item.label.length * 6.6 + 40 && Math.abs(l.y - r.y) < 30
+            if (collide) { skip.add(l.item.key); skip.add(r.item.key) } else skip.add(c.item.key)
+          } else skip.add(c.item.key)
+        }
         const boxes: { x0: number; y0: number; x1: number; y1: number }[] = []
-        for (const pin of placed) {
-          const label = pin.element.querySelector<HTMLElement>('.anatomy-pin-label')
-          const width = (label?.offsetWidth || 90) + 30
-          const box = { x0: pin.x - 11, y0: pin.y - 13, x1: pin.x + width, y1: pin.y + 13 }
-          const collides = boxes.some((b) => box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0)
-          const active = pin.element.classList.contains('is-active')
-          if (collides && !active) pin.element.classList.add('is-collapsed')
-          else {
-            pin.element.classList.remove('is-collapsed')
-            boxes.push(box)
+        const chosen: LabelRecord[] = []
+        const flipped = new Set<string>()
+        for (const c of candidates) {
+          if (skip.has(c.item.key)) continue
+          if (chosen.length >= cap && !c.forced) break
+          const width = small && !c.forced ? 22 : c.item.label.length * 6.6 + 34
+          // A pair's two labels face away from each other (text on the outer side).
+          let flip = false
+          if (c.item.pair === 'left' || c.item.pair === 'right') {
+            const otherKey = `${c.item.key.slice(0, c.item.key.lastIndexOf(':'))}:${c.item.pair === 'left' ? 'right' : 'left'}`
+            const other = byKey.get(otherKey)
+            flip = other !== undefined && c.x < other.x
           }
+          // A label that would run off the right edge of the stage reads to
+          // the left of its dot instead (a long name on a phone).
+          if (!flip && c.x + width > w - 4 && c.x - width >= 0) flip = true
+          const box = flip ? { x0: c.x - width, y0: c.y - 14, x1: c.x + 12, y1: c.y + 14 } : { x0: c.x - 12, y0: c.y - 14, x1: c.x + width, y1: c.y + 14 }
+          if (!c.forced && boxes.some((b) => box.x0 < b.x1 && box.x1 > b.x0 && box.y0 < b.y1 && box.y1 > b.y0)) continue
+          boxes.push(box)
+          chosen.push(c.item)
+          if (flip) flipped.add(c.item.key)
+        }
+        const keys = chosen.map((c) => (flipped.has(c.key) ? `${c.key}!` : c.key)).join('|')
+        if (keys !== state.shownKeys) {
+          state.shownKeys = keys
+          state.flipped = flipped
+          setShown(chosen)
+        }
+      }
+
+      // Project the shown labels every frame.
+      for (const [key2, element] of labelElements.current) {
+        const item = labelled.labels.find((l) => l.key === key2)
+        if (!item) {
+          element.style.display = 'none'
+          continue
+        }
+        projected.copy(item.anchor).project(camera)
+        const visible = projected.z < 1 && Math.abs(projected.x) < 1.05 && Math.abs(projected.y) < 1.05
+        element.style.display = visible ? '' : 'none'
+        if (visible) {
+          const x = ((projected.x + 1) / 2) * w
+          const y = ((1 - projected.y) / 2) * h
+          element.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`
         }
       }
     }
@@ -404,7 +622,8 @@ export default function BodyViewer({
     state.layers.clear()
     state.bodyBox = null
     state.highlighted = []
-    setPins([])
+    state.shownKeys = ''
+    setShown([])
     const byNode = new Map(structures.map((s) => [s.node, s]))
     const record = manifest.sexes[sex]
     const loaded: LayerId[] = []
@@ -417,8 +636,8 @@ export default function BodyViewer({
       const layer = record.layers.find((l) => l.id === id)
       if (!layer) return
       report(id)
-      // A layer may carry supplement files under their own licence (round
-      // 12: the female stomach and oesophagus); they draw with the layer.
+      // A layer may carry supplement files under their own licence (the
+      // structures fitted from the male model); they draw with the layer.
       const files = [layer.file, ...(layer.supplements ?? []).map((s) => s.file)]
       const gltfs = await Promise.all(files.map((file) => loader.loadAsync(anatomyModelUrl(file))))
       if (generation !== state.generation) return
@@ -427,7 +646,7 @@ export default function BodyViewer({
       group.name = `${sex}-${id}`
       const materials = new Map<number, THREE.MeshStandardMaterial>()
       const meshes: THREE.Mesh[] = []
-      const organBoxes = new Map<string, THREE.Box3>()
+      const boxes = new Map<string, THREE.Box3>()
       const box = new THREE.Box3()
       group.updateMatrixWorld(true)
       group.traverse((object) => {
@@ -437,10 +656,13 @@ export default function BodyViewer({
         mesh.userData.name = node
         const structure = byNode.get(node)
         const colour = structure ? colourFor(structure) : COLOURS.other
-        let material = materials.get(colour)
+        const baseOpacity = structure ? baseOpacityFor(structure) : 1
+        const materialKey = colour * 2 + (baseOpacity < 1 ? 1 : 0)
+        let material = materials.get(materialKey)
         if (!material) {
           material = new THREE.MeshStandardMaterial({ color: colour, roughness: 0.72, metalness: 0 })
-          materials.set(colour, material)
+          material.userData.baseOpacity = baseOpacity
+          materials.set(materialKey, material)
         }
         mesh.material = material
         mesh.userData.baseMaterial = material
@@ -451,27 +673,33 @@ export default function BodyViewer({
         geometry.computeBoundingSphere()
         const world = geometry.boundingBox!.clone().applyMatrix4(mesh.matrixWorld)
         box.union(world)
-        if (structure?.organ) {
-          const existing = organBoxes.get(structure.organ)
-          if (existing) existing.union(world)
-          else organBoxes.set(structure.organ, world)
-        }
+        const existing = boxes.get(node)
+        if (existing) existing.union(world)
+        else boxes.set(node, world)
         meshes.push(mesh)
       })
-      const anchors = new Map<string, THREE.Vector3>()
-      for (const [organ, organBox] of organBoxes) anchors.set(organ, organBox.getCenter(new THREE.Vector3()))
+      // Visibility hint from the diagram ID pass: seen from the front or back?
+      const dg = latest.current.diagrams?.sexes[sex]
+      let visibility: Map<string, number> | null = null
+      if (dg) {
+        visibility = new Map()
+        for (const view of ['front', 'back']) {
+          const table = dg.anchors[`${id}-${view}`]
+          if (!table) continue
+          for (const [node, a] of Object.entries(table)) visibility.set(node, (visibility.get(node) ?? 0) + a[0])
+        }
+      }
+      const dgBox = dg?.box
+      const metresPerPixel = dg && dgBox ? ((dgBox.max[1]! - dgBox.min[1]!) * 1.03) / (latest.current.diagrams?.heightPx ?? 1600) : 0.001
+      const labels = buildLabels(labelGroups(structures, id), boxes, visibility, metresPerPixel)
       const index = LAYER_ORDER.indexOf(id)
       const { depth: d, seeThrough: xray } = latest.current
-      const target = index > d ? 0 : xray && index === d && d > 0 ? TRANSLUCENT_OPACITY : 1
+      const target = layerTarget(index, d, xray)
       const layerRecord: LayerRecord = {
-        id, group, materials: [...materials.values()], meshes, anchors, box,
+        id, group, materials: [...materials.values()], meshes, labels, box,
         opacity: latest.current.reducedMotion ? target : 0, target,
       }
-      for (const material of layerRecord.materials) {
-        material.opacity = layerRecord.opacity
-        material.transparent = layerRecord.opacity < 0.999
-        material.depthWrite = !material.transparent
-      }
+      for (const material of layerRecord.materials) applyOpacity(material, layerRecord.opacity)
       group.visible = layerRecord.opacity > 0.001
       state.scene.add(group)
       state.layers.set(id, layerRecord)
@@ -479,7 +707,7 @@ export default function BodyViewer({
       else state.bodyBox.union(box)
       if (!state.framed && (id === 'skin' || id === 'skeleton')) frameBody(state)
       loaded.push(id)
-      if (LAYER_ORDER[latest.current.depth] === id) refreshPins(state, latest.current.depth, latest.current.organNames, setPins)
+      state.layoutDirty = true
     }
 
     ;(async () => {
@@ -495,19 +723,27 @@ export default function BodyViewer({
     })()
   }, [sex, manifest, structures])
 
-  // ---- Depth / see-through -------------------------------------------------
+  // ---- Depth / see-through / labels ------------------------------------------
   useEffect(() => {
     const state = refs.current
     if (!state) return
     LAYER_ORDER.forEach((id, index) => {
       const record = state.layers.get(id)
       if (!record) return
-      record.target = index > depth ? 0 : seeThrough && index === depth && depth > 0 ? TRANSLUCENT_OPACITY : 1
+      record.target = layerTarget(index, depth, seeThrough)
       if (record.target > 0) record.group.visible = true
     })
-    refreshPins(state, depth, organNames, setPins)
-    setExpandedPin(null)
-  }, [depth, seeThrough, organNames])
+    state.layoutDirty = true
+    state.lastLayout = 0
+    setExpanded(null)
+  }, [depth, seeThrough])
+
+  useEffect(() => {
+    const state = refs.current
+    if (!state) return
+    state.layoutDirty = true
+    state.lastLayout = 0
+  }, [labelsOn, labelQuery, selectedKey, highlightOrgan])
 
   // ---- Highlight -------------------------------------------------------------
   useEffect(() => {
@@ -515,18 +751,19 @@ export default function BodyViewer({
     if (!state) return
     for (const mesh of state.highlighted) mesh.material = mesh.userData.baseMaterial as THREE.Material
     state.highlighted = []
-    if (!selectedNode && !highlightOrgan) return
+    if (!selectedNode && !highlightOrgan && !selectedKey) return
     for (const record of state.layers.values()) {
       for (const mesh of record.meshes) {
         const structure = mesh.userData.structure as ModelStructure | null
         const node = mesh.userData.name as string
         const isSelected = selectedNode !== null && node === selectedNode
+        const inGroup = selectedKey !== null && structure !== null && `${structure.layer}:${groupNameOf(structure.name)}` === selectedKey
         const inOrgan = highlightOrgan !== null && structure?.organ === highlightOrgan
-        if (!isSelected && !inOrgan) continue
+        if (!isSelected && !inOrgan && !inGroup) continue
         const base = mesh.userData.baseMaterial as THREE.MeshStandardMaterial
         const glow = base.clone()
-        glow.emissive = new THREE.Color(isSelected ? 0xffc83d : 0xffa65c)
-        glow.emissiveIntensity = isSelected ? 0.75 : 0.35
+        glow.emissive = new THREE.Color(isSelected ? 0xffc83d : inGroup ? 0xffd27a : 0xffa65c)
+        glow.emissiveIntensity = isSelected ? 0.75 : inGroup ? 0.5 : 0.35
         mesh.material = glow
         state.highlighted.push(mesh)
       }
@@ -535,7 +772,7 @@ export default function BodyViewer({
       // Materials cloned for the highlight are released when it changes.
       for (const mesh of state.highlighted) (mesh.material as THREE.Material).dispose()
     }
-  }, [selectedNode, highlightOrgan, sex])
+  }, [selectedNode, selectedKey, highlightOrgan, sex])
 
   // ---- Reset view ------------------------------------------------------------
   useEffect(() => {
@@ -545,6 +782,19 @@ export default function BodyViewer({
     frameBody(state)
   }, [resetToken])
 
+  // ---- Full screen in / out: refit the distance to the new stage, keep the rotation
+  const fullscreenSeen = useRef(fullscreen)
+  useEffect(() => {
+    const state = refs.current
+    if (!state || fullscreenSeen.current === fullscreen) return
+    fullscreenSeen.current = fullscreen
+    // The stage resizes a frame later; refit once the observer has measured it.
+    const id = window.setTimeout(() => {
+      if (state.framed && state.bodyBox) fitDistance(state, true)
+    }, 60)
+    return () => window.clearTimeout(id)
+  }, [fullscreen])
+
   useEffect(() => {
     const state = refs.current
     if (state) state.controls.enableDamping = !reducedMotion
@@ -553,30 +803,31 @@ export default function BodyViewer({
   return (
     <div className="anatomy-viewer" ref={mountRef}>
       <div className="anatomy-pins" ref={overlayRef} aria-label="Labels of the current layer">
-        {pins.map((pin) => {
-          const expanded = !compact || expandedPin === pin.organ
+        {shown.map((item) => {
+          const active = (selectedKey !== null && item.group.key === selectedKey) || (highlightOrgan !== null && item.organ === highlightOrgan)
+          const isExpanded = !compact || expanded === item.key || active
           return (
             <button
-              key={pin.organ}
+              key={item.key}
               type="button"
-              className={`anatomy-pin${expanded ? ' is-expanded' : ''}${highlightOrgan === pin.organ ? ' is-active' : ''}`}
+              className={`anatomy-pin${isExpanded ? ' is-expanded' : ''}${active ? ' is-active' : ''}${item.group.fitted ? ' is-fitted' : ''}${refs.current?.flipped.has(item.key) ? ' is-flip' : ''}`}
               ref={(element) => {
-                if (element) pinElements.current.set(pin.organ, element)
-                else pinElements.current.delete(pin.organ)
+                if (element) labelElements.current.set(item.key, element)
+                else labelElements.current.delete(item.key)
               }}
-              aria-label={pin.label}
-              title={pin.label}
+              aria-label={item.group.fitted ? `${item.label} (fitted from the male model)` : item.label}
+              title={item.group.fitted ? `${item.label} (fitted from the male model)` : item.label}
               onClick={(event) => {
                 event.stopPropagation()
-                if (compact && expandedPin !== pin.organ) {
-                  setExpandedPin(pin.organ)
+                if (compact && expanded !== item.key && !active) {
+                  setExpanded(item.key)
                   return
                 }
-                onPinOpen(pin.organ)
+                onLabelOpen(item.structure)
               }}
             >
               <span className="anatomy-pin-dot" aria-hidden="true" />
-              <span className="anatomy-pin-label">{pin.label}</span>
+              <span className="anatomy-pin-label">{item.label}</span>
             </button>
           )
         })}
@@ -585,39 +836,48 @@ export default function BodyViewer({
   )
 }
 
+/** The camera distance at which the body's box fills the stage (height or width, whichever binds). */
+function fitDistanceFor(state: SceneRefs): number {
+  const size = state.bodyBox!.getSize(new THREE.Vector3())
+  const tanHalf = Math.tan((FOV * Math.PI) / 360)
+  const byHeight = size.y / 2 / tanHalf
+  const byWidth = Math.max(size.x, size.z) / 2 / (tanHalf * Math.max(0.2, state.camera.aspect))
+  return Math.max(byHeight, byWidth) * 1.12
+}
+
+/** Refit the distance only: the rotation and target stay. A resize keeps the
+    reader's zoom ratio; full screen in/out (`reset`) refits like Reset view. */
+function fitDistance(state: SceneRefs, reset = false): void {
+  if (!state.bodyBox) return
+  const distance = fitDistanceFor(state)
+  const direction = state.camera.position.clone().sub(state.controls.target)
+  const current = direction.length()
+  if (current < 1e-6) return
+  const previous = (state.camera.userData.fitDistance as number | undefined) ?? current
+  const ratio = reset ? 1 : current / previous
+  state.camera.position.copy(state.controls.target).add(direction.multiplyScalar((distance * ratio) / current))
+  state.camera.userData.fitDistance = distance
+  state.camera.near = distance / 100
+  state.camera.far = distance * 20
+  state.camera.updateProjectionMatrix()
+  state.controls.minDistance = distance * 0.08
+  state.controls.maxDistance = distance * 2.5
+  state.controls.update()
+}
+
 function frameBody(state: SceneRefs): void {
   if (!state.bodyBox) return
-  const size = state.bodyBox.getSize(new THREE.Vector3())
   const centre = state.bodyBox.getCenter(new THREE.Vector3())
-  const height = Math.max(size.y, size.x, size.z)
-  const distance = (height / 2 / Math.tan((FOV * Math.PI) / 360)) * 1.12
+  const distance = fitDistanceFor(state)
+  state.camera.userData.fitDistance = distance
   state.camera.near = distance / 100
   state.camera.far = distance * 20
   state.camera.updateProjectionMatrix()
   state.camera.position.set(centre.x, centre.y, centre.z + distance)
   state.controls.target.copy(centre)
-  state.controls.minDistance = distance * 0.12
+  state.controls.minDistance = distance * 0.08
   state.controls.maxDistance = distance * 2.5
   state.controls.update()
   state.framed = true
-}
-
-function refreshPins(
-  state: SceneRefs,
-  depth: number,
-  organNames: Map<string, string>,
-  setPins: (pins: Pin[]) => void,
-): void {
-  const record = state.layers.get(LAYER_ORDER[depth] ?? 'skin')
-  if (!record) {
-    setPins([])
-    return
-  }
-  const next: Pin[] = []
-  for (const organ of record.anchors.keys()) {
-    const label = organNames.get(organ)
-    if (label) next.push({ organ, label })
-  }
-  next.sort((a, b) => a.label.localeCompare(b.label))
-  setPins(next)
+  state.layoutDirty = true
 }

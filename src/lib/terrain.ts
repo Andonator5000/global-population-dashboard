@@ -19,6 +19,7 @@
 import { geoDistance, geoPath, type GeoPermissibleObjects, type GeoProjection } from 'd3-geo'
 
 import type { ImageryRenderer, ImageryView } from './globegl'
+import { drawGlowRing } from './globegl'
 import { gradeFilter } from './mapgrade'
 import type { Rotation } from './projection'
 
@@ -203,6 +204,10 @@ export class TerrainRenderer {
       dpr * (offsetX + scale * transform.x),
       dpr * (offsetY + scale * transform.y),
     )
+    if (isGlobe) {
+      const t = projection.translate()
+      drawGlowRing(ctx, t[0], t[1], projection.scale())
+    }
     ctx.fillStyle = oceanFill
     try {
       ctx.fill(new Path2D(spherePathD))
