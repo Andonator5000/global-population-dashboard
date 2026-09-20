@@ -746,6 +746,19 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 5: The Integumentary System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "^skin( of body)?$"
+        ],
+        "layer": "skin",
+        "except": [
+          "\\bhairs?\\b",
+          "eyebrow",
+          "eyelash",
+          "nail plate",
+          "perionyx"
+        ]
       }
     },
     {
@@ -769,6 +782,15 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 5: The Integumentary System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/5-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "\\bhairs?\\b",
+          "eyebrow",
+          "eyelash",
+          "nail plate",
+          "perionyx"
+        ]
       }
     },
     {
@@ -815,6 +837,32 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 7: Axial Skeleton",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "^(frontal|parietal|occipital|temporal|sphenoid|ethmoid|zygomatic|nasal|lacrimal|palatine) bone",
+          "^maxilla",
+          "^mandible",
+          "^vomer",
+          "nasal concha",
+          "cells of ethmoid",
+          "sinus of (frontal|sphenoid)",
+          "^hyoid bone",
+          "nasal septal cartilage",
+          "alar cartilage",
+          "^skull",
+          "^cranium"
+        ],
+        "except": [
+          "artery",
+          "arteries",
+          "\\bveins?\\b",
+          "nerve",
+          "nodes",
+          "plexus",
+          "muscle",
+          "region"
+        ]
       }
     },
     {
@@ -838,6 +886,39 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 7: Axial Skeleton",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "^vertebra [CTL]\\d",
+          "^(cervical|thoracic|lumbar) vertebra",
+          "vertebral bone",
+          "^atlas",
+          "^axis \\(C2\\)",
+          "^sacrum",
+          "fused sacrum",
+          "^coccyx",
+          "intervertebral disc",
+          "nucleus pulposus",
+          "(anterior|posterior) longitudinal ligament",
+          "ligamenta flava",
+          "interspinous",
+          "intertransverse",
+          "supraspinous",
+          "nuchal ligament",
+          "sacrococcygeal",
+          "iliolumbar",
+          "vertebral column"
+        ],
+        "except": [
+          "artery",
+          "arteries",
+          "\\bveins?\\b",
+          "nerve",
+          "nodes",
+          "plexus",
+          "muscle",
+          "region"
+        ]
       }
     },
     {
@@ -861,6 +942,26 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 7: Axial Skeleton",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "\\brib\\b",
+          "sternum",
+          "xiphoid",
+          "costal cartilage",
+          "costotransverse",
+          "intercostal membrane",
+          "head of rib"
+        ],
+        "except": [
+          "artery",
+          "arteries",
+          "\\bveins?\\b",
+          "nerve",
+          "nodes",
+          "plexus",
+          "muscle"
+        ]
       }
     },
     {
@@ -879,6 +980,35 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 8: The Appendicular Skeleton",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "^hip bone",
+          "ilium",
+          "ischium",
+          "pubis",
+          "pubic",
+          "interpubic",
+          "sacro-?iliac",
+          "sacrospinous",
+          "sacrotuberous",
+          "obturator membrane",
+          "triradiate",
+          "intercornual",
+          "^pelvis"
+        ],
+        "except": [
+          "artery",
+          "arteries",
+          "\\bveins?\\b",
+          "nerve",
+          "nodes",
+          "plexus",
+          "hairs",
+          "region",
+          "renal pelvis",
+          "muscle"
+        ]
       }
     },
     {
@@ -902,6 +1032,36 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 8: The Appendicular Skeleton",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "^femur",
+          "^tibia",
+          "^fibula",
+          "^humerus",
+          "^radius",
+          "^ulna",
+          "metacarpal bone",
+          "metatarsal bone",
+          "phalanx",
+          "^clavicle",
+          "^(left|right) (femur|tibia|fibula|humerus|radius|ulna|clavicle)$",
+          "condyle of (left |right )?femur",
+          "intercondylar fossa"
+        ],
+        "except": [
+          "artery",
+          "arteries",
+          "\\bveins?\\b",
+          "nerve",
+          "nodes",
+          "plexus",
+          "ligament",
+          "muscle",
+          "cartilage",
+          "patellar surface",
+          "epiphysis"
+        ]
       }
     },
     {
@@ -921,6 +1081,63 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 9: Joints",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/9-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "ligament",
+          "articular capsule",
+          "articular disc",
+          "menisc",
+          "labrum",
+          "zona orbicularis",
+          "frenula capsulae",
+          "oblique cord",
+          "interosseous membrane",
+          "fat pad",
+          "symphysis",
+          "^patella",
+          "^(left|right) patella$",
+          "articular cartilage",
+          "enthesis",
+          "trochlear groove",
+          "patellar surface",
+          "perichondular",
+          "^joint",
+          "joint$"
+        ],
+        "except": [
+          "eyeball",
+          "\\blens\\b",
+          "ovary",
+          "ovarian",
+          "uterus",
+          "uterine",
+          "breast",
+          "liver",
+          "penis",
+          "thyrohyoid",
+          "cricothyroid",
+          "cricopharyngeal",
+          "arteriosum",
+          "of bladder",
+          "suspensory",
+          "broad ligament",
+          "round ligament",
+          "cardinal",
+          "uterosacral",
+          "falciform",
+          "coronary ligament",
+          "triangular ligament",
+          "periodontal",
+          "hepatoduodenal",
+          "gastro",
+          "spleno",
+          "phrenico",
+          "denticulate",
+          "nodes",
+          "ligamentum",
+          "mammary"
+        ]
       }
     },
     {
@@ -973,6 +1190,28 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 10: Muscle Tissue",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "muscle",
+          "^(left|right) (superior|inferior|medial|lateral) (rectus|oblique)$"
+        ],
+        "layer": "muscles",
+        "except": [
+          "ciliary",
+          "papillary",
+          "smooth",
+          "bursa",
+          "fascia",
+          "sheath",
+          "tendon",
+          "aponeurosis",
+          "retinaculum",
+          "^diaphragm$",
+          "of heart",
+          "sphincter",
+          "septum"
+        ]
       }
     },
     {
@@ -992,6 +1231,19 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 11: The Muscular System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "tendon",
+          "aponeurosis",
+          "retinaculum"
+        ],
+        "except": [
+          "sheath",
+          "papillary",
+          "of heart",
+          "tendinous ring"
+        ]
       }
     },
     {
@@ -1016,6 +1268,11 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "^diaphragm$"
+        ]
       }
     },
     {
@@ -1047,6 +1304,35 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "ventricle of brain",
+          "lateral ventricle",
+          "third ventricle",
+          "fourth ventricle",
+          "choroid plexus",
+          "aqueduct",
+          "corpus callosum",
+          "fornix",
+          "falx cerebri",
+          "tentorium",
+          "septum pellucidum",
+          "anterior commissure",
+          "white matter of (forebrain|hindbrain)",
+          "meninges",
+          "dura mater",
+          "arachnoid",
+          "pia mater",
+          "^brain$",
+          "cerebral hemisphere$",
+          "interventricular foramen",
+          "central canal",
+          "^cerebrum$",
+          "optic chiasm",
+          "posterior commissure",
+          "white matter of telencephalon"
+        ]
       }
     },
     {
@@ -1070,6 +1356,120 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "gyrus",
+          "gyri",
+          "sulcus",
+          "lobule",
+          "insula",
+          "operculum",
+          "cuneus",
+          "precuneus",
+          "frontal pole",
+          "temporal pole",
+          "occipital pole",
+          "planum",
+          "caudate",
+          "putamen",
+          "globus pallidus",
+          "pallidum",
+          "claustrum",
+          "accumbens",
+          "amygdal",
+          "hippocamp",
+          "thalamus",
+          "thalamic",
+          "geniculate",
+          "pulvinar",
+          "basal forebrain",
+          "septal nuclei",
+          "stria terminalis",
+          "olfactory",
+          "piriform",
+          "cortex",
+          "internal capsule",
+          "subthalamic",
+          "zona incerta",
+          "habenul",
+          "mammillothalamic",
+          "fusiform",
+          "parahippocampal",
+          "isthmus of cingulate",
+          "rhinal",
+          "subcallosal",
+          "limen",
+          "cingulate",
+          "optic (radiation|tract)",
+          "basal nucleus",
+          "cortical nucleus",
+          "lateral nucleus$",
+          "medial nucleus$",
+          "central nuclear group",
+          "nuclear complex",
+          "nucleus of thalamus",
+          "midline nuclear",
+          "reuniens",
+          "ventral (anterior|lateral|posterior)",
+          "rostral gyrus",
+          "ambiens",
+          "basal ganglia",
+          "corpus striatum",
+          "lentiform",
+          "(frontal|parietal|temporal|occipital) lobe",
+          "cerebral cortex",
+          "^cerebrum",
+          "lat_fis",
+          "lateral fissure",
+          "hippocampal commissure",
+          "sulci",
+          "stria medullaris",
+          "temporal plane"
+        ],
+        "except": [
+          "hypothalam",
+          "\\bHTH\\b",
+          "pineal",
+          "hypophysis",
+          "pituitary",
+          "cerebell",
+          "midbrain",
+          "\\bpons\\b",
+          "pontine",
+          "medulla oblongata",
+          "of medulla",
+          "colliculus",
+          "tegmentum",
+          "red nucleus",
+          "substantia nigra",
+          "olive",
+          "cochlear nucleus",
+          "nucleus of trochlear",
+          "nucleus of vagus",
+          "spinal",
+          "heart",
+          "of lung",
+          "of liver",
+          "skin",
+          "spinothalamic",
+          "spinocerebellar",
+          "artery",
+          "branch",
+          "bursa",
+          "muscle",
+          "auricle",
+          "labial",
+          "intermediolateral",
+          "intermediomedial",
+          "quadrangular lobule",
+          "biventral",
+          "gracile lobule",
+          "semilunar lobule",
+          "\\bcentral lobule",
+          "simple lobule",
+          "\\bvein"
+        ]
       }
     },
     {
@@ -1093,6 +1493,37 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "cerebell",
+          "vermis",
+          "paravermis",
+          "tonsil of cerebellum",
+          "lingula",
+          "flocculus",
+          "dentate nucleus",
+          "culmen",
+          "declive",
+          "folium",
+          "tuber of vermis",
+          "pyramis",
+          "nodule of vermis",
+          "quadrangular lobule",
+          "biventral lobule",
+          "gracile lobule",
+          "semilunar lobule",
+          "central lobule",
+          "simple lobule"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "lingular",
+          "spinocerebellar",
+          "nerve",
+          "paracentral"
+        ]
       }
     },
     {
@@ -1111,6 +1542,46 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "brain ?stem",
+          "midbrain",
+          "\\bpons\\b",
+          "pontine",
+          "medulla oblongata",
+          "of medulla",
+          "colliculus",
+          "tegmentum",
+          "red nucleus",
+          "substantia nigra",
+          "inferior olive",
+          "olivary",
+          "cochlear nucleus",
+          "nucleus of trochlear",
+          "nucleus of vagus",
+          "cerebral peduncle",
+          "crus cerebri",
+          "^pyramid",
+          "pretectal",
+          "reticular formation",
+          "raphe",
+          "locus c",
+          "periaqueductal",
+          "pyramidal part",
+          "vestibular nucle",
+          "salivatory nucleus",
+          "interpeduncular",
+          "base of peduncle",
+          "nucleus of (abducens|facial|hypoglossal|oculomotor)",
+          "nucleus ambiguus",
+          "solitary tract",
+          "^olive$"
+        ],
+        "except": [
+          "artery",
+          "\\bvein"
+        ]
       }
     },
     {
@@ -1138,6 +1609,35 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "spinal cord",
+          "spinal dura",
+          "spinothalamic",
+          "spinocerebellar",
+          "anterior horn",
+          "posterior horn",
+          "cauda equina",
+          "conus medullaris",
+          "filum terminale",
+          "denticulate",
+          "white matter of spinal",
+          "gr[ae]y matter",
+          "corticospinal",
+          "reticulospinal",
+          "vestibulospinal",
+          "fasciculus",
+          "intermediolateral",
+          "intermediomedial",
+          "lateral intermediate substance",
+          "rubrospinal",
+          "spinotectal",
+          "tectospinal",
+          "posterolateral tract",
+          "nucleus proprius",
+          "spinal reticular"
+        ]
       }
     },
     {
@@ -1165,6 +1665,51 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 13: Anatomy of the Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "\\bnerves?\\b",
+          "plexus",
+          "roots of brachial",
+          "trunk of brachial",
+          "cord of brachial",
+          "division of (superior|middle|inferior) trunk",
+          "\\bramus\\b",
+          "\\brami\\b",
+          "spinal ganglion",
+          "dorsal root ganglion",
+          "trigeminal ganglion",
+          "geniculate ganglion",
+          "nerve root",
+          "chorda tympani"
+        ],
+        "except": [
+          "sympathetic",
+          "splanchnic",
+          "hypogastric plexus",
+          "coeliac plexus",
+          "celiac plexus",
+          "cardiac plexus",
+          "pulmonary plexus",
+          "oesophageal plexus",
+          "rami communicantes",
+          "communicating branch(es)? (to|of|with) (the )?sympathetic",
+          "optic nerve",
+          "cochlear nerve",
+          "vestibulocochlear",
+          "nerves of eye",
+          "choroid plexus",
+          "brachiocephalic",
+          "ciliary ganglion",
+          "otic ganglion",
+          "pterygopalatine",
+          "submandibular ganglion",
+          "parasympathetic",
+          "myenteric",
+          "submucosal",
+          "\\benteric\\b",
+          "venous plexus"
+        ]
       }
     },
     {
@@ -1183,6 +1728,33 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 15: The Autonomic Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/15-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "sympathetic",
+          "gangli",
+          "splanchnic",
+          "hypogastric plexus",
+          "coeliac plexus",
+          "celiac plexus",
+          "cardiac plexus",
+          "pulmonary plexus",
+          "oesophageal plexus",
+          "rami communicantes",
+          "grey communicating",
+          "white communicating",
+          "myenteric",
+          "submucosal plexus",
+          "\\benteric\\b"
+        ],
+        "except": [
+          "spinal ganglion",
+          "dorsal root ganglion",
+          "trigeminal ganglion",
+          "geniculate ganglion",
+          "vestibular ganglion",
+          "spiral ganglion"
+        ]
       }
     },
     {
@@ -1206,6 +1778,57 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 14: The Somatic Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "eyeball",
+          "\\beyes?\\b",
+          "retina",
+          "cornea",
+          "\\blens\\b",
+          "\\biris\\b",
+          "sclera",
+          "choroid",
+          "vitreous",
+          "aqueous",
+          "ciliary",
+          "conjunctiva",
+          "optic nerve",
+          "optic disc",
+          "schlemm",
+          "scleral venous",
+          "trabecular meshwork",
+          "pupil",
+          "zonule",
+          "lacrimal",
+          "ocular",
+          "macula",
+          "fovea",
+          "anterior chamber",
+          "posterior chamber",
+          "ora serrata",
+          "suspensory ligament of (eyeball|(left |right )?lens)",
+          "eyelid",
+          "uvea",
+          "hyaloid",
+          "orbit\\b",
+          "bulbar",
+          "tendinous ring",
+          "tarsus",
+          "corneoscleral",
+          "zonul"
+        ],
+        "except": [
+          "region",
+          "eyebrow",
+          "eyelash",
+          "(rectus|oblique)$",
+          "bone",
+          "nodes",
+          "artery",
+          "arteries",
+          "\\bvein"
+        ]
       }
     },
     {
@@ -1229,6 +1852,59 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 14: The Somatic Nervous System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "\\bears?\\b",
+          "cochlea",
+          "auditory",
+          "tympan",
+          "ossicle",
+          "^malleus",
+          "^incus",
+          "^stapes",
+          "vestibul",
+          "semicircular",
+          "auricle",
+          "labyrinth",
+          "eustachian",
+          "pharyngotympanic",
+          "organ of corti",
+          "utricle",
+          "saccule",
+          "helix",
+          "tragus",
+          "concha",
+          "scapha",
+          "intertragic",
+          "triangular fossa",
+          "eminentia",
+          "cymba",
+          "lobule of auricle",
+          "auricular"
+        ],
+        "except": [
+          "of heart",
+          "^(left|right) auricle$",
+          "atrium",
+          "atrial",
+          "auricular region",
+          "auricular nodes",
+          "auricular artery",
+          "auricular vein",
+          "auricular nerve",
+          "nasal concha",
+          "concha bone",
+          "vestibular fold",
+          "vestibule of (vagina|larynx|mouth|nose)",
+          "nodes",
+          "muscle",
+          "ligament$",
+          "posterior auricular groove",
+          "spinal",
+          "vestibular nucle",
+          "chorda"
+        ]
       }
     },
     {
@@ -1248,6 +1924,23 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "hypothalam",
+          "\\bHTH\\b",
+          "region of HTH",
+          "mam+illary",
+          "preoptic",
+          "supraoptic",
+          "tuberal",
+          "median eminence",
+          "^infundibulum$"
+        ],
+        "except": [
+          "uterine",
+          "mammillothalamic"
+        ]
       }
     },
     {
@@ -1271,6 +1964,12 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "hypophysis",
+          "pituitary"
+        ]
       }
     },
     {
@@ -1289,6 +1988,11 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "pineal"
+        ]
       }
     },
     {
@@ -1312,6 +2016,23 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "^thyroid gland",
+          "^thyroid$",
+          "thyroid lobe",
+          "lobe of thyroid",
+          "isthmus of thyroid",
+          "^(left|right) lobe of thyroid"
+        ],
+        "except": [
+          "cartilage",
+          "nodes",
+          "artery",
+          "\\bvein",
+          "thyrohyoid"
+        ]
       }
     },
     {
@@ -1335,6 +2056,15 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "parathyroid"
+        ],
+        "except": [
+          "artery",
+          "\\bvein"
+        ]
       }
     },
     {
@@ -1353,6 +2083,18 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 17: The Endocrine System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "suprarenal gland",
+          "adrenal"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "impression",
+          "plexus"
+        ]
       }
     },
     {
@@ -1377,6 +2119,18 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "pancrea"
+        ],
+        "except": [
+          "nodes",
+          "artery",
+          "\\bvein",
+          "duodenal",
+          "hepatopancreatic"
+        ]
       }
     },
     {
@@ -1401,6 +2155,20 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "ovary",
+          "ovarian"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "ligament",
+          "suspensory",
+          "nerve",
+          "plexus"
+        ]
       }
     },
     {
@@ -1425,6 +2193,25 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "testis",
+          "testes",
+          "testicular",
+          "epididymis",
+          "ductus deferens",
+          "spermatic",
+          "scrotum",
+          "tunica"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "nerve",
+          "region",
+          "plexus"
+        ]
       }
     },
     {
@@ -1457,6 +2244,59 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 19: The Cardiovascular System: The Heart",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/19-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "heart",
+          "atrium",
+          "ventricle",
+          "atrial",
+          "ventricular",
+          "papillary muscle",
+          "leaflet",
+          "valve",
+          "coronary",
+          "cardiac",
+          "myocard",
+          "pericard",
+          "endocard",
+          "epicard",
+          "chordae",
+          "trabeculae carneae",
+          "moderator band",
+          "sinoatrial",
+          "atrioventricular",
+          "interatrial",
+          "interventricular",
+          "fossa ovalis",
+          "conus arteriosus",
+          "aortic sinus",
+          "crista terminalis",
+          "^(left|right) auricle$",
+          "auricle of heart",
+          "circumflex"
+        ],
+        "except": [
+          "lateral ventricle",
+          "third ventricle",
+          "fourth ventricle",
+          "ventricle of brain",
+          "horn of lateral",
+          "atrium of lateral",
+          "body of lateral",
+          "nodes",
+          "plexus",
+          "nerve",
+          "cardiac impression",
+          "region",
+          "ligament",
+          "cardiac notch",
+          "circumflex (scapular|femoral|humeral|iliac|fibular)",
+          "esophag",
+          "oesophag",
+          "atrium of (nose|middle ear)",
+          "ileoc"
+        ]
       }
     },
     {
@@ -1480,6 +2320,44 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 20: The Cardiovascular System: Blood Vessels and Circulation",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "arter",
+          "aorta",
+          "aortic",
+          "trunk$",
+          "brachiocephalic",
+          "c(o)?eliac trunk",
+          "pulmonary trunk",
+          "palmar arch",
+          "plantar arch",
+          "anastomosis",
+          "striate branches",
+          "temporal branch",
+          "temporo-occipital branch",
+          "^branch to"
+        ],
+        "except": [
+          "nodes",
+          "\\bnode\\b",
+          "ligament",
+          "region",
+          "sympathetic",
+          "brachial plexus",
+          "nerve",
+          "sinus",
+          "coronary",
+          "of heart",
+          "lymphatic",
+          "plexus",
+          "aortic hiatus",
+          "aortic valve",
+          "arteriosum",
+          "\\bvein",
+          "hairs",
+          "venous"
+        ]
       }
     },
     {
@@ -1503,6 +2381,42 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 20: The Cardiovascular System: Blood Vessels and Circulation",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/20-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "\\bveins?\\b",
+          "vena",
+          "venous",
+          "sinus$",
+          "sinuses$",
+          "portal",
+          "azygos",
+          "venae"
+        ],
+        "except": [
+          "nodes",
+          "\\bnode\\b",
+          "region",
+          "cavity",
+          "of frontal bone",
+          "of sphenoid bone",
+          "scleral venous",
+          "coronary sinus",
+          "lactiferous",
+          "paranasal",
+          "maxillary sinus",
+          "sinus of",
+          "urogenital",
+          "tarsi",
+          "renal sinus",
+          "carotid sinus",
+          "aortic sinus",
+          "anal sinus",
+          "nerve",
+          "artery",
+          "portal triad",
+          "hepatic portal system"
+        ]
       }
     },
     {
@@ -1571,6 +2485,40 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "nasal",
+          "\\bnose\\b",
+          "pharynx",
+          "pharyngeal",
+          "nasopharyn",
+          "oropharyn",
+          "laryngopharyn",
+          "nostril",
+          "choana",
+          "adenoid",
+          "turbinate",
+          "paranasal"
+        ],
+        "except": [
+          "region",
+          "bone",
+          "cartilage",
+          "artery",
+          "\\bvein",
+          "nerve",
+          "muscle",
+          "tonsil",
+          "nodes",
+          "pharyngotympanic",
+          "concha",
+          "cricopharyngeal",
+          "constrictor",
+          "nasolabial",
+          "septal",
+          "plexus"
+        ]
       }
     },
     {
@@ -1589,6 +2537,40 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "larynx",
+          "laryngeal",
+          "epiglott",
+          "arytenoid",
+          "cricoid",
+          "corniculate",
+          "cuneiform cartilage",
+          "thyroid cartilage",
+          "vocal",
+          "glottis",
+          "thyrohyoid",
+          "cricothyroid",
+          "cricopharyngeal",
+          "quadrangular membrane",
+          "vestibular fold",
+          "ventricle of larynx",
+          "cricoarytenoid",
+          "thyroarytenoid",
+          "aryepiglottic",
+          "hyo-?epiglottic",
+          "laryngeal cartilage"
+        ],
+        "except": [
+          "nerve",
+          "artery",
+          "\\bvein",
+          "nodes",
+          "cuneiform bone",
+          "laryngopharynx",
+          "muscle$"
+        ]
       }
     },
     {
@@ -1612,6 +2594,19 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "trachea",
+          "tracheal",
+          "carina"
+        ],
+        "except": [
+          "bronch",
+          "nodes",
+          "tracheobronchial",
+          "muscle"
+        ]
       }
     },
     {
@@ -1635,6 +2630,18 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "bronch"
+        ],
+        "except": [
+          "nodes",
+          "artery",
+          "\\bvein",
+          "bronchopulmonary segment",
+          "plexus"
+        ]
       }
     },
     {
@@ -1662,6 +2669,27 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 22: The Respiratory System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "lung",
+          "pulmonary segment",
+          "bronchopulmonary",
+          "pleura",
+          "^(left|right) [a-z]+ segment\\d?$",
+          "^hilum( (upper|middle|lower))?$"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "trunk",
+          "nodes",
+          "plexus",
+          "nerve",
+          "ligament",
+          "liver",
+          "intrapulmonary nodes"
+        ]
       }
     },
     {
@@ -1712,6 +2740,29 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "\\bnodes?\\b",
+          "lymph node",
+          "follicle",
+          "paracortex",
+          "medullary cord",
+          "subcapsular sinus",
+          "trabecula of lymph",
+          "capsule of lymph",
+          "hilum of lymph",
+          "lymph node"
+        ],
+        "except": [
+          "nucleus",
+          "nodule",
+          "sinoatrial",
+          "atrioventricular",
+          "hair follicle",
+          "ovarian follicle",
+          "lymphatic vessel"
+        ]
       }
     },
     {
@@ -1735,6 +2786,23 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "lymphatic vessel",
+          "lymphatic trunk",
+          "thoracic duct",
+          "cisterna chyli",
+          "lymphatic duct",
+          "lymph vasculature",
+          "lacteal",
+          "lymphatic"
+        ],
+        "except": [
+          "node",
+          "tissue",
+          "organ"
+        ]
       }
     },
     {
@@ -1758,6 +2826,20 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "spleen",
+          "splenic"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "nodes",
+          "flexure",
+          "ligament",
+          "plexus"
+        ]
       }
     },
     {
@@ -1777,6 +2859,16 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "thymus",
+          "thymic"
+        ],
+        "except": [
+          "artery",
+          "\\bvein"
+        ]
       }
     },
     {
@@ -1795,6 +2887,16 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 21: The Lymphatic and Immune System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/21-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "tonsil",
+          "peyer",
+          "lymphoid"
+        ],
+        "except": [
+          "cerebell"
+        ]
       }
     },
     {
@@ -1822,6 +2924,59 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "\\bmouth\\b",
+          "\\btooth\\b",
+          "\\bteeth\\b",
+          "incisor",
+          "canine",
+          "premolar",
+          "molar",
+          "tongue",
+          "\\blingual\\b",
+          "salivary",
+          "parotid",
+          "submandibular gland",
+          "submandibular duct",
+          "sublingual",
+          "gingiva",
+          "palate",
+          "uvula",
+          "\\blip\\b",
+          "oral cavity",
+          "cheek",
+          "buccal",
+          "dental",
+          "\\bgum\\b",
+          "frenulum"
+        ],
+        "except": [
+          "nodes",
+          "\\bnode\\b",
+          "region",
+          "artery",
+          "\\bvein",
+          "nerve",
+          "triangle",
+          "commissure",
+          "bone",
+          "muscle",
+          "lingula",
+          "gyrus",
+          "sulcus",
+          "tubercle of upper lip",
+          "angle of mouth",
+          "philtrum",
+          "tonsil",
+          "lingual gyrus",
+          "palatine bone",
+          "lingual artery",
+          "canine fossa",
+          "molar gland",
+          "plexus"
+        ]
       }
     },
     {
@@ -1845,6 +3000,21 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "oesophag",
+          "esophag"
+        ],
+        "except": [
+          "nodes",
+          "plexus",
+          "artery",
+          "\\bvein",
+          "hiatus",
+          "nerve",
+          "impression"
+        ]
       }
     },
     {
@@ -1872,6 +3042,33 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "stomach",
+          "gastric",
+          "pylor",
+          "^cardia$",
+          "cardiac orifice",
+          "greater curvature",
+          "lesser curvature",
+          "rugae",
+          "^fundus$"
+        ],
+        "except": [
+          "nodes",
+          "artery",
+          "\\bvein",
+          "nerve",
+          "omentum",
+          "gastrocolic",
+          "impression",
+          "gastro-omental",
+          "plexus",
+          "ligament",
+          "region",
+          "surface of spleen"
+        ]
       }
     },
     {
@@ -1899,6 +3096,29 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "duoden",
+          "jejun",
+          "ileum",
+          "ileal",
+          "small intestine",
+          "small bowel",
+          "mesentery"
+        ],
+        "except": [
+          "nodes",
+          "artery",
+          "\\bvein",
+          "ileocolic",
+          "ileoc(a)?ecal",
+          "pancreaticoduodenal",
+          "hepatoduodenal",
+          "plexus",
+          "hepatopancreatic",
+          "impression"
+        ]
       }
     },
     {
@@ -1922,6 +3142,38 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "colon",
+          "colic",
+          "c(a)?ecum",
+          "appendix",
+          "rectum",
+          "rectal",
+          "\\banal\\b",
+          "\\banus\\b",
+          "taenia",
+          "large intestine",
+          "haustra",
+          "sigmoid",
+          "mesocolon",
+          "meso-?appendix",
+          "ileoc(a)?ecal"
+        ],
+        "except": [
+          "nodes",
+          "artery",
+          "\\bvein",
+          "region",
+          "impression",
+          "plexus",
+          "nerve",
+          "epiploic",
+          "ligament",
+          "sinus",
+          "surface of spleen"
+        ]
       }
     },
     {
@@ -1949,6 +3201,30 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "liver",
+          "hepatic",
+          "caudate lobe",
+          "quadrate lobe",
+          "falciform",
+          "bare area",
+          "hepatis",
+          "segment of liver",
+          "impression of liver",
+          "ligamentum venosum"
+        ],
+        "except": [
+          "duct",
+          "nodes",
+          "artery",
+          "\\bvein",
+          "plexus",
+          "nerve",
+          "flexure",
+          "portal"
+        ]
       }
     },
     {
@@ -1972,6 +3248,28 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 23: The Digestive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "gall ?bladder",
+          "bile duct",
+          "biliary",
+          "hepatic duct",
+          "cystic duct",
+          "hepatopancreatic",
+          "^ampulla$",
+          "ampulla of vater",
+          "sphincter of oddi"
+        ],
+        "except": [
+          "uterine",
+          "nodes",
+          "cystic node",
+          "artery",
+          "\\bvein",
+          "ductus deferens",
+          "nerve"
+        ]
       }
     },
     {
@@ -1999,6 +3297,43 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "kidney",
+          "renal",
+          "nephr",
+          "calyx",
+          "calyces",
+          "renal pelvis",
+          "renal pyramid",
+          "papilla",
+          "renal column",
+          "renal cortex",
+          "renal medulla",
+          "renal sinus",
+          "renal capsule",
+          "upper urinary tract"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "nodes",
+          "impression",
+          "suprarenal",
+          "adrenal",
+          "urethra",
+          "plexus",
+          "nerve",
+          "incisive papilla",
+          "lacrimal papilla",
+          "duodenal papilla",
+          "papilla of tongue",
+          "papillae",
+          "fascia",
+          "ureter",
+          "surface of spleen"
+        ]
       }
     },
     {
@@ -2022,6 +3357,18 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "ureter"
+        ],
+        "except": [
+          "orifice",
+          "artery",
+          "\\bvein",
+          "nerve",
+          "plexus"
+        ]
       }
     },
     {
@@ -2045,6 +3392,26 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "bladder",
+          "vesical",
+          "trigone",
+          "detrusor",
+          "urachus",
+          "ureteral orifice"
+        ],
+        "except": [
+          "gall",
+          "nodes",
+          "artery",
+          "\\bvein",
+          "nerve",
+          "uterovesical",
+          "plexus",
+          "ligament"
+        ]
       }
     },
     {
@@ -2069,6 +3436,19 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 25: The Urinary System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/25-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "urethra",
+          "urethral"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "nerve",
+          "bulbourethral",
+          "nodes"
+        ]
       }
     },
     {
@@ -2092,6 +3472,49 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "uterus",
+          "uterine",
+          "utero",
+          "^cervix",
+          "cervix of uterus",
+          "cervical os",
+          "vagina",
+          "vaginal",
+          "endometri",
+          "myometri",
+          "fallopian",
+          "broad ligament",
+          "round ligament of uterus",
+          "cardinal ligament",
+          "uterosacral",
+          "ovarian ligament",
+          "ligament of (the )?(left |right )?ovary",
+          "suspensory ligament of (left |right )?ovary",
+          "vulva",
+          "clitoris",
+          "labi(a|um) (majus|minus|majora|minora)",
+          "hymen",
+          "fimbria",
+          "^ostium",
+          "cornua",
+          "vestibule of vagina",
+          "rectouterine",
+          "pouch of douglas",
+          "mesosalpinx",
+          "mesovarium",
+          "mesometrium"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "nerve",
+          "nodes",
+          "plexus",
+          "cervical (vertebra|spinal|nodes|ganglion|plexus|part|region|fascia|artery|vein|nerve|branch|segment)"
+        ]
       }
     },
     {
@@ -2110,6 +3533,24 @@
         "title": "OpenStax Anatomy and Physiology 2e, chapter 27: The Reproductive System",
         "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/27-introduction",
         "publisher": "OpenStax (CC BY 4.0)"
+      },
+      "mesh": {
+        "match": [
+          "prostat",
+          "seminal gland",
+          "seminal vesicle",
+          "ejaculatory duct",
+          "bulbourethral",
+          "cowper"
+        ],
+        "except": [
+          "artery",
+          "\\bvein",
+          "nerve",
+          "nodes",
+          "plexus",
+          "urethra"
+        ]
       }
     }
   ],
