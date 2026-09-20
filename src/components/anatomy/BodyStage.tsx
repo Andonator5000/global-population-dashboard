@@ -299,6 +299,20 @@ export function BodyStage({
               </>
             )}
             ; {record.source.author}. Simplified and re-encoded for this site.
+            {record.supplements?.map((extra) => (
+              <span key={extra.id}>
+                {' '}
+                · {extra.title}: {extra.author} ·{' '}
+                <a href={extra.licenceUrl} target="_blank" rel="noreferrer">
+                  {extra.licence}
+                </a>{' '}
+                (share-alike; {extra.why}) ·{' '}
+                <a href={extra.sourcePage} target="_blank" rel="noreferrer">
+                  Anatria3D
+                </a>
+                .
+              </span>
+            ))}
           </>
         )}
       </p>

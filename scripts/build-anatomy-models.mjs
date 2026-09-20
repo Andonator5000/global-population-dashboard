@@ -39,7 +39,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { Document, NodeIO } from '@gltf-transform/core'
+import { Document, NodeIO, getBounds } from '@gltf-transform/core'
 import { ALL_EXTENSIONS } from '@gltf-transform/extensions'
 import { copyToDocument, dedup, flatten, meshopt, prune, simplify, unpartition, weld } from '@gltf-transform/functions'
 import draco3d from 'draco3dgltf'
@@ -135,7 +135,7 @@ const FEMALE_OMIT_GROUPS = {
 const FEMALE_COVERAGE = {
   skeleton: { coverage: 'partial', note: 'vertebral column, sacrum, pelvis and the bones of the knee only; the HRA models no skull, rib cage or limb bones' },
   nervous: { coverage: 'partial', note: 'brain (Allen Human Brain Atlas regions), spinal cord, eyes and the nerves of the eye; no peripheral nerves' },
-  organs: { coverage: 'full', note: 'digestive, urinary, respiratory, lymphatic and reproductive organs and the mammary glands' },
+  organs: { coverage: 'full', note: 'digestive, urinary, respiratory, lymphatic and reproductive organs and the mammary glands; the stomach and oesophagus are fitted from the male model (the HRA has neither for either sex) and are labelled so' },
   vessels: { coverage: 'partial', note: 'heart and the major blood vessels of the trunk; no lymphatic vessels beyond one lymph node' },
   muscles: { coverage: 'partial', note: 'the HRA models only the muscles of the eye and knee; no skeletal musculature' },
   skin: { coverage: 'full', note: 'the whole-body skin surface' },
@@ -236,6 +236,17 @@ function resolveOrgan(aliases, structure) {
   const names = [structure.name, structure.derived].filter((f) => typeof f === 'string' && f).map(strip)
   const fields = structure.hraLabel ? [...names, structure.hraLabel] : names
   const hits = (patterns, set) => patterns.some((re) => set.some((f) => re.test(f)))
+  // Entries of the structure's OWN system (as the source records it) get
+  // the first look: the HRA liver's Couinaud segments were landing on the
+  // lungs through a "(left|right) ... segment" pattern, the kidney cortex
+  // and a lymph node's paracortex on the cerebrum through "cortex". Only
+  // then may any entry claim it -- teeth sit in the skeletal file but
+  // belong to the mouth, the laryngeal cartilages to the larynx, the
+  // ossicles to the ear, the pineal body (a brain region) to the pineal.
+  const own = (alias) => !!structure.system && alias.systems.includes(structure.system)
+  for (const alias of aliases) {
+    if (own(alias) && hits(alias.match, fields) && !hits(alias.except, names)) return alias.id
+  }
   for (const alias of aliases) {
     if (hits(alias.match, fields) && !hits(alias.except, names)) return alias.id
   }
@@ -489,6 +500,14 @@ async function buildFemale(io, aliases) {
   }
   const unclaimed = [...ancestry.keys()].filter((node) => !claimed.has(node)).map((node) => node.getName())
   if (unclaimed.length) log(`female: ${unclaimed.length} nodes in no layer: ${unclaimed.slice(0, 10).join(', ')}`)
+  // Landmark boxes for the fitted supplement (below), measured on this
+  // model's own nodes before they are gone.
+  const landmarks = {
+    liver: unionBox(root.listNodes(), (n) => /liver/i.test(n)),
+    spleen: unionBox(root.listNodes(), (n) => /spleen/i.test(n)),
+    pancreas: unionBox(root.listNodes(), (n) => /pancreas|ucinate/i.test(n) && !/duct/i.test(n)),
+    trachea: unionBox(root.listNodes(), (n) => /^VH_F_trachea$/i.test(n)),
+  }
   const omittedSummary = {}
   for (const item of omitted) omittedSummary[item.reason] = (omittedSummary[item.reason] ?? 0) + 1
   return {
@@ -516,6 +535,192 @@ async function buildFemale(io, aliases) {
       what: reason, count, why: FEMALE_OMIT_GROUPS[reason] ?? reason,
     })),
     structures,
+    landmarks,
+  }
+}
+
+// --------------------------------------------------------------------------
+// Female supplement: stomach and oesophagus, fitted from the male model
+// --------------------------------------------------------------------------
+// The Human Reference Atlas has no stomach and no oesophagus for either
+// sex (its 81-object reference-organ index, checked 2026-09-19), so a
+// female digestive tract would otherwise stop at the duodenum. Andy asked
+// for the two to be present. They are the male Z-Anatomy organs FITTED
+// into the female body: a per-axis affine derived from the organs both
+// models share (liver, spleen, pancreas -- the stomach's neighbours), and
+// for the oesophagus a blend from that map at its stomach end toward the
+// trachea-aligned map at its top, so it runs behind the female trachea
+// and reaches the fitted stomach. They ship in their own file under their
+// own licence (CC BY-SA 4.0, share-alike) and are labelled as fitted
+// wherever they appear: on the structure card, in the manifest, in the
+// credit line. Their position is indicative, not measured.
+const FITTED_NODES = ['Stomach', 'Mucosa of stomach', 'Oesophagus']
+const FITTED_ORGAN = { Stomach: 'stomach', 'Mucosa of stomach': 'stomach', Oesophagus: 'oesophagus' }
+
+function unionBox(nodes, pred) {
+  const min = [Infinity, Infinity, Infinity]
+  const max = [-Infinity, -Infinity, -Infinity]
+  let n = 0
+  for (const node of nodes) {
+    if (!node.getMesh() || !pred(node.getName())) continue
+    const b = getBounds(node)
+    n += 1
+    for (let i = 0; i < 3; i += 1) {
+      min[i] = Math.min(min[i], b.min[i])
+      max[i] = Math.max(max[i], b.max[i])
+    }
+  }
+  if (!n) throw new Error('landmark not found')
+  return { n, min, max }
+}
+const unionOf = (...boxes) => ({
+  min: [0, 1, 2].map((i) => Math.min(...boxes.map((b) => b.min[i]))),
+  max: [0, 1, 2].map((i) => Math.max(...boxes.map((b) => b.max[i]))),
+})
+const centre = (b) => [0, 1, 2].map((i) => (b.min[i] + b.max[i]) / 2)
+
+async function buildFemaleFitted(io, femaleLandmarks, maleStructures) {
+  log('female: fitting the male stomach and oesophagus')
+  const digestive = await io.read(join(CACHE, 'digestive_male.glb'))
+  const respiratory = await io.read(join(CACHE, 'respiratory_male.glb'))
+  const lymphatic = await io.read(join(CACHE, 'lymphatic_male.glb'))
+  await digestive.transform(flatten())
+  const dNodes = digestive.getRoot().listNodes()
+  const male = {
+    liver: unionBox(dNodes, (n) => /liver/i.test(n)),
+    pancreas: unionBox(dNodes, (n) => /^pancreas$/i.test(n)),
+    spleen: unionBox(lymphatic.getRoot().listNodes(), (n) => /^spleen$/i.test(n)),
+    trachea: unionBox(respiratory.getRoot().listNodes(), (n) => /^trachea$/i.test(n)),
+    oesophagus: unionBox(dNodes, (n) => /^oesophagus$/i.test(n)),
+  }
+  const mBox = unionOf(male.liver, male.spleen, male.pancreas)
+  const fBox = unionOf(femaleLandmarks.liver, femaleLandmarks.spleen, femaleLandmarks.pancreas)
+  const scale = [0, 1, 2].map((i) => (fBox.max[i] - fBox.min[i]) / (mBox.max[i] - mBox.min[i]))
+  // Both models: +x is the body's left (the spleen), -z posterior (the
+  // kidneys and spleen), +y up. Asserted, not assumed.
+  const side = (lm) => Math.sign(centre(lm.spleen)[0] - centre(lm.liver)[0])
+  if (side(male) !== side(femaleLandmarks)) throw new Error('models disagree on left/right')
+  const S = (p) => [0, 1, 2].map((i) => fBox.min[i] + (p[i] - mBox.min[i]) * scale[i])
+  const mT = centre(male.trachea)
+  const fT = centre(femaleLandmarks.trachea)
+  const T = (p) => [
+    fT[0] + (p[0] - mT[0]) * scale[0],
+    femaleLandmarks.trachea.max[1] + (p[1] - male.trachea.max[1]) * scale[1],
+    fT[2] + (p[2] - mT[2]) * scale[2],
+  ]
+  const yBot = male.oesophagus.min[1]
+  const yTop = male.oesophagus.max[1]
+  const maps = {
+    Stomach: S,
+    'Mucosa of stomach': S,
+    Oesophagus: (p) => {
+      const t = Math.max(0, Math.min(1, (p[1] - yBot) / (yTop - yBot)))
+      const a = S(p)
+      const b = T(p)
+      return [0, 1, 2].map((i) => a[i] * (1 - t) + b[i] * t)
+    },
+  }
+
+  const picks = dNodes.filter((node) => node.getMesh() && FITTED_NODES.includes(node.getName()))
+  if (picks.length !== FITTED_NODES.length) throw new Error(`fitted nodes: found ${picks.map((n) => n.getName())}`)
+  const out = new Document()
+  out.createBuffer()
+  const scene = out.createScene('female-organs-fitted')
+  const copied = copyToDocument(out, digestive, picks)
+  const structures = []
+  let before = 0
+  for (const src of picks) {
+    const node = copied.get(src)
+    scene.addChild(node)
+    // Bake the node's transform into the vertices, then apply the fit.
+    const world = src.getWorldMatrix()
+    const map = maps[src.getName()]
+    for (const prim of node.getMesh().listPrimitives()) {
+      const acc = prim.getAttribute('POSITION')
+      const arr = Float32Array.from(acc.getArray())
+      for (let i = 0; i < arr.length; i += 3) {
+        const x = arr[i]
+        const y = arr[i + 1]
+        const z = arr[i + 2]
+        const wx = world[0] * x + world[4] * y + world[8] * z + world[12]
+        const wy = world[1] * x + world[5] * y + world[9] * z + world[13]
+        const wz = world[2] * x + world[6] * y + world[10] * z + world[14]
+        const q = map([wx, wy, wz])
+        arr[i] = q[0]
+        arr[i + 1] = q[1]
+        arr[i + 2] = q[2]
+      }
+      acc.setArray(arr)
+    }
+    node.setMatrix([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
+    before += triangleCount(node)
+    const maleEntry = maleStructures.find((s) => s.node === src.getName()) ?? {}
+    structures.push({
+      node: src.getName(),
+      layer: 'organs',
+      name: maleEntry.name ?? src.getName(),
+      latin: maleEntry.latin ?? null,
+      system: 'digestive',
+      group: 'Digestive system',
+      organ: FITTED_ORGAN[src.getName()],
+      fitted: 'male',
+    })
+  }
+  const layer = LAYERS.find((l) => l.id === 'organs')
+  await out.transform(
+    unpartition(),
+    dedup(),
+    prune(),
+    weld(),
+    simplify({ simplifier: MeshoptSimplifier, ratio: layer.ratio.male, error: layer.error }),
+    meshopt({ encoder: MeshoptEncoder, level: 'medium', quantizePosition: 14 }),
+  )
+  const after = new Map(out.getRoot().listNodes().map((node) => [node.getName(), triangleCount(node)]))
+  for (const structure of structures) structure.triangles = after.get(structure.node) ?? 0
+  const bytes = Buffer.from(await io.writeBinary(out))
+  const file = 'female-organs-fitted.glb'
+  writeFileSync(join(OUT, file), bytes)
+  const tris = [...after.values()].reduce((a, b) => a + b, 0)
+  log(`${file}: ${structures.length} structures, ${before.toLocaleString()} -> ${tris.toLocaleString()} triangles, ${(bytes.length / 1e6).toFixed(2)} MB`)
+  const round = (v) => Number(v.toFixed(4))
+  const fit = {
+    method: 'per-axis affine from the union box of liver, spleen and pancreas in each model; the oesophagus blends from that map at its stomach end to a trachea-aligned map at its top',
+    scale: scale.map(round),
+    maleLandmarkBox: { min: mBox.min.map(round), max: mBox.max.map(round) },
+    femaleLandmarkBox: { min: fBox.min.map(round), max: fBox.max.map(round) },
+  }
+  return {
+    supplement: {
+      id: 'organs-fitted',
+      layer: 'organs',
+      file: `anatomy/models/${file}`,
+      bytes: bytes.length,
+      sha256: sha256(bytes),
+      structures: structures.length,
+      triangles: tris,
+      sourceTriangles: before,
+      licence: 'CC BY-SA 4.0',
+      licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      note: 'stomach and oesophagus fitted from the male Z-Anatomy model; position indicative',
+    },
+    source: {
+      id: 'z-anatomy-fitted',
+      title: 'Stomach and oesophagus, fitted from the male model',
+      author: 'Z-Anatomy (after BodyParts3D, DBCLS), via the Anatria3D GLB export; fitted into the female body for this site',
+      licence: 'CC BY-SA 4.0',
+      licenceUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      sourcePage: ANATRIA_PAGE,
+      upstream: [
+        { title: 'Z-Anatomy, the libre 3D atlas of anatomy', url: 'https://www.z-anatomy.com/', licence: 'CC BY-SA 4.0' },
+        { title: 'BodyParts3D, Database Center for Life Science (DBCLS), Japan', url: 'https://lifesciencedb.jp/bp3d/', licence: 'CC BY-SA 2.1 JP' },
+      ],
+      pinned: { repository: 'https://github.com/Nurkan1/Anatria-3D', commit: ANATRIA_COMMIT },
+      notice: 'anatomy/models/NOTICE-male.txt',
+      why: 'the Human Reference Atlas has no stomach or oesophagus for either sex (reference-organ index, 81 objects, checked 2026-09-19)',
+      fit,
+      files: [{ file: 'digestive_male.glb', url: `${ANATRIA_RAW}digestive_male.glb`, bytes: readFileSync(join(CACHE, 'digestive_male.glb')).length, sha256: sha256(readFileSync(join(CACHE, 'digestive_male.glb'))) }],
+    },
+    structures,
   }
 }
 
@@ -536,7 +741,17 @@ async function main() {
   const only = process.argv.includes('--female') ? ['female'] : process.argv.includes('--male') ? ['male'] : ['male', 'female']
   const results = []
   if (only.includes('male')) results.push(await buildMale(io, aliases))
-  if (only.includes('female')) results.push(await buildFemale(io, aliases))
+  if (only.includes('female')) {
+    const female = await buildFemale(io, aliases)
+    const maleStructures = results.find((r) => r.sex === 'male')?.structures
+      ?? JSON.parse(readFileSync(join(OUT, 'structures-male.json'), 'utf-8')).structures
+    const fitted = await buildFemaleFitted(io, female.landmarks, maleStructures)
+    delete female.landmarks
+    female.layers.find((l) => l.id === 'organs').supplements = [fitted.supplement]
+    female.supplements = [fitted.source]
+    female.structures.push(...fitted.structures)
+    results.push(female)
+  }
 
   // Keep the untouched sex from the previous manifest when building one only.
   let previous = null
@@ -547,7 +762,8 @@ async function main() {
     const built = results.find((r) => r.sex === sex)
     if (built) {
       const { structures, ...rest } = built
-      sexes[sex] = { ...rest, totalBytes: rest.layers.reduce((sum, l) => sum + l.bytes, 0), structureCount: structures.length }
+      const layerBytes = (l) => l.bytes + (l.supplements ?? []).reduce((sum, s) => sum + s.bytes, 0)
+      sexes[sex] = { ...rest, totalBytes: rest.layers.reduce((sum, l) => sum + layerBytes(l), 0), structureCount: structures.length }
       writeFileSync(join(OUT, `structures-${sex}.json`), JSON.stringify({ sex, structures }) + '\n')
     } else if (previous?.sexes?.[sex]) {
       sexes[sex] = previous.sexes[sex]
@@ -572,7 +788,7 @@ async function main() {
   const manifest = {
     version: 1,
     generatedBy: 'scripts/build-anatomy-models.mjs',
-    note: 'One registered free model per sex, split into six layers ordered bone to flesh. Every structure is a named node; structures-<sex>.json maps node -> name, system and the site organ entry it opens. Licences: male CC BY-SA 4.0 (share-alike: these GLBs are adaptations and stay CC BY-SA 4.0), female CC BY 4.0. Attribution is rendered on the page per sex.',
+    note: 'One registered free model per sex, split into six layers ordered bone to flesh. Every structure is a named node; structures-<sex>.json maps node -> name, system and the site organ entry it opens. Licences: male CC BY-SA 4.0 (share-alike: these GLBs are adaptations and stay CC BY-SA 4.0), female CC BY 4.0 except the fitted supplement file (stomach and oesophagus from the male model, CC BY-SA 4.0, labelled as fitted). Attribution is rendered on the page per sex.',
     budgets: { layerBytes: LAYER_BUDGET, sexBytes: SEX_BUDGET },
     layers: LAYERS.map(({ id, label }, index) => ({ id, label, order: index + 1 })),
     encoding: ['EXT_meshopt_compression', 'KHR_mesh_quantization'],

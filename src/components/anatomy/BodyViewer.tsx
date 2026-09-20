@@ -417,9 +417,13 @@ export default function BodyViewer({
       const layer = record.layers.find((l) => l.id === id)
       if (!layer) return
       report(id)
-      const gltf = await loader.loadAsync(anatomyModelUrl(layer.file))
+      // A layer may carry supplement files under their own licence (round
+      // 12: the female stomach and oesophagus); they draw with the layer.
+      const files = [layer.file, ...(layer.supplements ?? []).map((s) => s.file)]
+      const gltfs = await Promise.all(files.map((file) => loader.loadAsync(anatomyModelUrl(file))))
       if (generation !== state.generation) return
-      const group = gltf.scene
+      const group = new THREE.Group()
+      for (const gltf of gltfs) group.add(gltf.scene)
       group.name = `${sex}-${id}`
       const materials = new Map<number, THREE.MeshStandardMaterial>()
       const meshes: THREE.Mesh[] = []

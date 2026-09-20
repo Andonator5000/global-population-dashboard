@@ -576,6 +576,13 @@ export function AnatomyPage() {
                       : 'system not recorded by the source'}
                     {selected.group && ` · ${selected.group}`}
                   </p>
+                  {selected.fitted && (
+                    <p className="m-0 text-xs" style={{ color: 'var(--text-muted)' }}>
+                      Fitted from the male model (Z-Anatomy, CC BY-SA 4.0): the Human Reference Atlas has no
+                      stomach or oesophagus for either sex, so this is the male organ scaled into the female
+                      body between the liver, spleen and pancreas. Its position is indicative, not measured.
+                    </p>
+                  )}
                   <p className="m-0 text-sm">
                     {selectedOrgan ? (
                       <>

@@ -90,6 +90,23 @@ export interface ModelLayer {
   sourceTriangles: number
   coverage: 'full' | 'partial'
   note: string
+  /** Extra files drawn with this layer under their own licence (round 12:
+      the female stomach and oesophagus, fitted from the male model). */
+  supplements?: ModelSupplement[]
+}
+
+export interface ModelSupplement {
+  id: string
+  layer: LayerId
+  file: string
+  bytes: number
+  sha256: string
+  structures: number
+  triangles: number
+  sourceTriangles: number
+  licence: string
+  licenceUrl: string
+  note: string
 }
 
 export interface ModelSource {
@@ -106,12 +123,16 @@ export interface ModelSource {
   version?: string
   pinned?: { repository: string; commit: string }
   notice?: string
+  /** Supplement sources only: why the model needed it. */
+  why?: string
   files: { file: string; url: string; bytes: number; sha256: string }[]
 }
 
 export interface ModelSex {
   sex: Sex
   source: ModelSource
+  /** Sources of the layers' supplements, credited beside the model's own. */
+  supplements?: ModelSource[]
   layers: ModelLayer[]
   omitted: { what: string; count: number; why: string }[]
   totalBytes: number
@@ -138,6 +159,8 @@ export interface ModelStructure {
   system: string | null
   group: string | null
   organ: string | null
+  /** Set when the structure was fitted in from the other sex's model. */
+  fitted?: string | null
   triangles: number
 }
 

@@ -140,6 +140,36 @@ else {
         if ((json.buffers ?? []).some((b) => b.uri)) fail(`models ${sex}/${layer.id}: external buffer (must be self-contained)`)
       }
       if (!['full', 'partial'].includes(layer.coverage) || !layer.note) fail(`models ${sex}/${layer.id}: coverage/note missing`)
+      // Supplement files (round 12: the fitted female stomach and
+      // oesophagus) pass the same checks and carry their own licence.
+      for (const extra of layer.supplements ?? []) {
+        const extraPath = join(DATA_DIR, '..', extra.file ?? '')
+        if (!extra.file || !existsSync(extraPath)) {
+          fail(`models ${sex}/${layer.id}/${extra.id}: file missing (${extra.file})`)
+          continue
+        }
+        const eb = readFileSync(extraPath)
+        total += eb.length
+        if (eb.length !== extra.bytes) fail(`models ${sex}/${layer.id}/${extra.id}: ${eb.length} bytes on disk, manifest says ${extra.bytes}`)
+        if (createHash('sha256').update(eb).digest('hex') !== extra.sha256) fail(`models ${sex}/${layer.id}/${extra.id}: sha256 mismatch`)
+        if (eb.length > layerBudget) fail(`models ${sex}/${layer.id}/${extra.id}: over the layer budget`)
+        if (!MODEL_LICENCES.has(extra.licence)) fail(`models ${sex}/${layer.id}/${extra.id}: licence ${extra.licence} not on the allow-list`)
+        if (!extra.note) fail(`models ${sex}/${layer.id}/${extra.id}: note missing`)
+        if (eb.toString('latin1', 0, 4) !== 'glTF' || eb.readUInt32LE(4) !== 2) fail(`models ${sex}/${layer.id}/${extra.id}: not a glTF 2 binary`)
+        else {
+          const jsonLength = eb.readUInt32LE(12)
+          const json = JSON.parse(eb.toString('utf-8', 20, 20 + jsonLength))
+          if (!(json.extensionsUsed ?? []).includes('EXT_meshopt_compression')) fail(`models ${sex}/${layer.id}/${extra.id}: not meshopt-compressed`)
+          if ((json.nodes ?? []).length !== extra.structures) fail(`models ${sex}/${layer.id}/${extra.id}: ${json.nodes?.length} nodes, manifest says ${extra.structures}`)
+        }
+      }
+    }
+    for (const extra of record.supplements ?? []) {
+      for (const field of ['title', 'author', 'licence', 'licenceUrl', 'sourcePage', 'why']) {
+        if (!extra[field]) fail(`models ${sex}: supplement ${extra.id}: ${field} missing`)
+      }
+      if (!MODEL_LICENCES.has(extra.licence)) fail(`models ${sex}: supplement ${extra.id}: licence ${extra.licence} not on the allow-list`)
+      if (extra.notice && !existsSync(join(DATA_DIR, '..', extra.notice))) fail(`models ${sex}: supplement ${extra.id}: NOTICE missing`)
     }
     for (const id of PAGE_LAYERS) if (!ids.has(id)) fail(`models ${sex}: layer ${id} (used by the page) missing`)
     if (total > sexBudget) fail(`models ${sex}: ${(total / 1e6).toFixed(2)} MB over the ${sexBudget / 1e6} MB budget`)
