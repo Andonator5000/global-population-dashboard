@@ -265,7 +265,16 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   end to end (React state, refs, d3, BOTH GL shaders). Touch pointers are
   NEVER explicitly captured (the hand-over fires lostpointercapture
   mid-gesture); a lostpointercapture on a live pointer waits 120 ms
-  before counting as a release. Verify with `.scratch/r12-drag.mjs`
+  before counting as a release. Round 13 (§66): a drag frame turns the
+  globe at most DRAG_MAX_DEG_PER_FRAME (8°) and the anchor clamp is 0.95
+  of the radius (the runaway spin near the limb); a lost GL context hands
+  drag frames to the 2-D vector path (`isLost()`); a WATCHDOG force-ends
+  any live session with no pointer, no inertia and no pending frame; the
+  atmosphere halo is one profile (exp(-d/0.06), GLOW_* in globegl.ts)
+  painted by the GL base pass, the SVG ring at rest and the canvas
+  fallbacks — keep them identical. Stress-test with
+  `.scratch/r13-stress.mjs <view> <seed> <steps>` before claiming a
+  phone fix. Verify with `.scratch/r12-drag.mjs`
   against the no-HMR server (`npx vite --config .scratch/vite.r12.config.ts`,
   :5175) — the svg exposes `data-rotation`. The compass is
   NORTH UP (§59.3, §62.2): recentre the globe on the place under the screen

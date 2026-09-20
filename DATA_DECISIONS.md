@@ -5040,6 +5040,398 @@ segment") were opening the LUNGS entry through the "(left|right) ...
 segment" pattern; alias resolution now lets an entry claim only
 structures of its own systems, and the liver takes the pattern.
 
+## 66. Round 13: the globe -- halo, bounded pace, and two escape hatches (2026-09-20)
+
+Andy: "In the Global Data page, on the global maps, there is an issue. The
+globe disappears. There is also a persistent issue with the globe
+freezing. Fix that. On the 3D Global view, add a slight glow around the
+Earth, just as there is on Google Earth. Also, add a constellation of
+stars in the space background. Aim for accuracy. Run a check of the way
+the globe moves when I use either a mouse cursor or my finger to move it
+around. Make sure it doesn't start spinning rapidly and uncontrollably
+when I am moving the globe around."
+
+**66.1 The runaway spin.** Round 12's exact solve puts the anchor under
+the finger whatever it costs: near the limb a pixel of finger is many
+degrees of globe, and at the clamped edge (0.985 of the radius) a small
+movement asked for a huge turn -- the globe whipped round. Two changes:
+the anchor clamp moves in to 0.95 of the radius, and a single drag frame
+may turn the globe at most 8 degrees (DRAG_MAX_DEG_PER_FRAME); past that
+the frame takes the same rotation shortened and re-anchors under the
+finger, so the globe follows the hand at a bounded pace instead of
+flying. Inside the disc, where the solve asks for a few degrees per
+frame, nothing changes.
+
+**66.2 The globe that disappeared.** A WebGL context lost mid-drag (a
+phone under memory pressure, a backgrounded tab) painted nothing: the
+SVG was hidden for the session and the GL frames were blank. The
+renderer now reports `isLost()`, and a drag frame on a dead context is
+painted by the 2-D vector path (outlines over the ocean disc; for the
+imagery views the disc and outlines, which is degraded but present);
+the context-restore path already re-renders the last view. This is the
+one route to a blank globe the stress test could name; the report may
+also have been the frozen session of 66.3.
+
+**66.3 The freeze, and a watchdog.** No freeze reproduced: the round-13
+stress script (`.scratch/r13-stress.mjs`, sixty random gestures --
+drags, edge drags, flicks, pinches, twists, pinch-then-lift, taps, grab-
+a-spinning-globe, the zoom buttons, the compass -- on a Pixel 7
+emulation, political and satellite) ends every run with the SVG visible
+or a live frame, no context loss, no long task over 500 ms and no
+console error. Section 42.1's rule stands: a drag session that outlives
+its pointer is the frozen globe, and every escape hatch ends one.
+Because a phone can find a route no script has, a watchdog now runs
+while a session is live and force-ends any session with no pointer
+down, no inertia and no pending drag frame -- self-healing within half a
+second by whatever route it happened.
+
+**66.4 The halo.** A soft blue atmosphere outside the limb, as Google
+Earth draws it: the GL base pass paints alpha = 0.85 * exp(-d / 0.06) *
+(1 - d / 0.2) for d = distance outside the limb in disc radii (colour
+rgb(133, 184, 255), premultiplied like the rest); the political globe at
+rest, which is SVG, gets the same profile as a radial-gradient ring
+behind the ocean disc; the 2-D fallback and the deep-zoom vector frames
+paint it on canvas from one shared helper. Measured on the captures: a
+~20 px fade at a 180 px radius in both the SVG and the GL views.
+
+**66.5 The stars.** See section 67 (the real sky behind the Earth).
+
+## 67. Round 13: a real night sky behind the 3-D globe (2026-09-20)
+
+Andy's brief: "On the 3D Global view ... add a constellation of stars in the
+space background. Aim for accuracy."
+
+So: not a particle sprinkle. The black surround (§51.4 — space is black on
+every view and every palette direction) now holds the sky the viewer would
+actually have behind the Earth from that orientation: 9,096 catalogue stars at
+their J2000 positions, drawn at the right relative brightness and the right
+colour, with the 88 IAU constellation figures joining real stars and the IAU
+names on them. The standing rulings apply — nothing hand-typed where a source
+exists, every source cited with its licence, permissive licences only.
+
+This section is the scratch copy written by the sky worker; fold it into
+`DATA_DECISIONS.md` as §66 when the round lands.
+
+---
+
+### 67.1 Sources, and one licence the project must not take
+
+| What | Source | Licence |
+| --- | --- | --- |
+| Stars | Yale **Bright Star Catalogue**, 5th Revised Ed. (Hoffleit & Warren 1991), ADC/CDS **V/50**, via the Harvard TDC copy `bsc5.dat.gz` | **Public domain** |
+| Proper names | **IAU Catalog of Star Names** (IAU-CSN), IAU Division C WGSN | **CC BY 4.0** |
+| Constellation figures and names | **d3-celestial** `constellations.lines.json` + `constellations.json` (Olaf Frohn), pinned to commit `b56735c` | **BSD-3-Clause** |
+
+**The BSC5, not HYG.** The brief allowed HYG v3 as a fallback; it was not
+needed. BSC5 parsed cleanly from its 197-byte fixed-record ASCII (the ADC
+ReadMe's byte offsets are in `_parse_bsc5`), and it is the right catalogue for
+this job for two reasons beyond licence: it is *complete to the naked-eye
+limit and stops there* (9,110 records, V ≈ 7.1), so no magnitude cut is needed
+and nothing that belongs in the sky is missing; and it is the catalogue the
+constellation-figure sets were drawn against, so the figures join stars that
+are actually in the file. HYG v3 is 119,000 rows (33 MB) of which 92 % would
+have been thrown away, and it is CC BY-SA — share-alike on a data file this
+project links into a permissively licensed static site is a needless
+entanglement.
+
+**Not Stellarium.** Stellarium's sky cultures are the best constellation-line
+data in existence and they are **GPL**. This site is permissive and ships its
+data as committed artifacts; taking them would put a copyleft obligation on
+`/data`. d3-celestial's figures are BSD-3-Clause, are the same classical
+figures, and are already the de-facto standard for web star maps.
+`scripts/check-sky.mjs` has an explicit assertion that the constellation
+licence does not match `/gpl|lgpl|agpl|general public licen[cs]e/i`, so this
+cannot be undone by accident.
+
+**Pinned, not `master`.** Both d3-celestial files are fetched from a commit
+SHA. A silent upstream edit to a constellation figure would otherwise change
+`/data` with no commit of ours to explain it.
+
+14 BSC5 records carry a blank position or magnitude — novae, and objects that
+turned out not to exist. They are dropped, not shipped as zeroes (§ the
+standing "absence is not zero" rule). 9,096 stars survive.
+
+### 67.2 The artifact
+
+`data/geo/sky.json`, **255,518 bytes** (250 KB) of the 400 KB budget. Written
+by the new `sky` ETL stage (`etl/sources/sky.py`, registered in `etl/run.py`;
+downloads cached under `.cache/sky/`; summary in `etl/logs/sky.log`).
+
+- **Parallel flat arrays**, not an array of objects: `ra[]`, `dec[]`, `mag[]`,
+  `bv[]`. Objects would have cost ~180 KB in repeated key names alone, and the
+  renderer wants typed arrays anyway.
+- **3 decimals on RA/Dec** (3.6 arcsec). At the globe's ~5.5 px per degree
+  that is a five-hundredth of a pixel; the 4th decimal the brief allowed would
+  only buy bytes. Magnitudes and B-V to 0.01, as published.
+- **Sorted brightest first.** Lets a low-power path stop early without losing
+  the stars that carry the figures.
+- **`bv` is `null`, never 0**, for the 310 stars the catalogue gives no colour
+  for; the renderer draws those neutral white rather than guessing a spectral
+  type.
+- **341 IAU proper names** as `[index, name]` pairs — 333 joined on the
+  IAU-CSN `HR nnnn` designation, 8 on HD. (The IAU list has ~450 entries; the
+  remainder are exoplanet hosts fainter than the BSC.)
+- **88 constellations**, each `{id, name, genitive, rank, centre, lines}`.
+  `lines` is one flattened `[ra, dec, ra, dec, …]` per polyline — 150
+  polylines, 893 vertices total. d3-celestial ships Serpens as two features
+  under one id; merging them is what makes the count 88 rather than 89.
+- `centre` is the **spherical centroid** of the figure's vertices (mean of the
+  unit vectors, re-normalised). Averaging degrees would put Pisces' label in
+  the wrong hemisphere the moment a figure straddles RA 0h.
+- `rank` (1 prominent … 3 faint) is carried through so the renderer knows
+  which label wins a collision.
+
+Magnitude distribution, from `etl/logs/sky.log`: 4 brighter than mag 0, 33 in
+[1,2), 122 in [2,3), 343, 1091, 3419, 4023, 50 fainter than 7.
+
+### 67.3 Projection: stereographic, and why not orthographic
+
+The frame is wide. With the globe drawn at disc radius 460 px in a 1000 px
+frame the corners reach 111° from the view centre, and the brief's own test
+frames span 60–75°. Two candidates:
+
+- **Orthographic** would match the globe's own projection, but it cannot show
+  anything past 90° at all and it squashes everything near the edge into
+  ellipses. Orion in a corner would be a smear.
+- **Stereographic** is *conformal*: small shapes keep their shape and
+  asterisms keep their angles anywhere in the frame, and great circles map to
+  circles so a constellation line is never kinked by the projection.
+
+Stereographic, therefore, and for the plain reason that the whole point is
+recognition and recognition is a matter of shape. It is also what printed star
+atlases use. The price is that scale grows toward the edge; on a black
+surround that reads as the sky opening out around the globe rather than as
+distortion. Implemented as `r = 2 tan(θ/2)` from the view centre, `θ` from the
+dot product with the camera axis.
+
+**Centred on the disc.** The centre of the Earth's disc *is* the direction the
+camera looks, so the sky's centre of projection and the globe's centre are the
+same point. Two things fall out for free: the sky is automatically registered
+to the globe, and the Earth's disc is exactly a circle of radius `disc.r`
+about the projection centre — so **occlusion is one squared-distance test per
+star**, not a polygon clip.
+
+**Handedness.** The screen-right basis vector is `w × v` (view axis cross
+celestial north), which points **west**. An observer inside the celestial
+sphere sees right ascension increase to the **left**; a map of a globe has it
+increase to the right. Getting this wrong mirrors every constellation, which
+is exactly the kind of error that looks fine until someone who knows the sky
+looks at it. `.scratch/sky-orion.png` is the check: Betelgeuse upper-left,
+Rigel lower-right, as in the real sky with north up.
+
+**Field of view.** `fovForDisc(disc, w, h)` returns the angular radius that
+makes the globe occult exactly the celestial hemisphere behind it. The globe
+is orthographic — the view from infinitely far away — and from there the Earth
+hides a full hemisphere, so the disc edge is 90° from the view centre. Fixing
+`disc.r` at 90° gives scale `k = r/2` and `fov = 2·atan(R/r)` for frame
+inscribed radius `R` (92.4° for r = 480 in 1000×1000). That is the
+*physically exact* default; a larger `fov` shows more sky around the globe and
+is a presentation choice, not a data one (see `.scratch/sky-notes.md`).
+
+### 67.4 Magnitude → size and alpha
+
+Radius in CSS px at dpr 1 is **linear in magnitude**:
+
+```
+r(m) = clamp(2.4 − 0.3167·m, 0.36, 3.1)      mag 0 → 2.4 px, mag 6 → 0.5 px
+```
+
+Linear in magnitude is already logarithmic in flux — the mapping every printed
+star atlas uses, because it makes the brightness *order* legible at a glance.
+Mapping the flux ratio instead would draw Sirius 250 times the area of a
+mag-6 star and the sky would be four blobs and a fog. Clamped at both ends so
+Sirius (−1.46) does not run away and the mag-7 tail stays a visible speck.
+
+Alpha fades the faint end as well as shrinking it — `1` to mag 3.5, then
+`1 − 0.19(m − 3.5)` down to 0.34 — so the catalogue's limit is a soft edge
+rather than a visible wall where the data stops. Stars brighter than mag 1.6
+get a radial-gradient halo, which is what a bright star actually does to an
+eye or a lens.
+
+Sub-pixel stars (r < 0.75, i.e. most of them) are drawn with `fillRect`: a
+sub-pixel square and a sub-pixel disc light the same two or three pixels, and
+the rect skips the path machinery.
+
+### 67.5 B–V → colour
+
+Two published steps, no invented palette:
+
+1. **Ballesteros (2012)**: `T = 4600·(1/(0.92(B−V)+1.70) + 1/(0.92(B−V)+0.62))`
+   — B−V to effective temperature, good to a few per cent across the main
+   sequence.
+2. **Blackbody → sRGB**, the standard piecewise fit.
+
+Then mixed **58 % back toward white** (`TINT = 0.42`). That is deliberate and
+it is the physically honest choice: rods do not resolve hue at naked-eye star
+flux, which is why Betelgeuse reads "slightly warm" and not orange. The mix
+keeps Rigel perceptibly cooler than Antares side by side without turning the
+sky into a sweet shop. Worked values: Betelgeuse (B−V 1.85) → 3333 K →
+`rgb(255, 227, 203)`; Rigel (B−V −0.03) → 10,516 K → `rgb(231, 239, 255)`.
+
+Colours are quantised into 22 B−V bins × 12 alpha steps = 264 paint buckets,
+assigned **once at load**. The paint is then ~200 `beginPath`/`fill` pairs
+instead of 9,096 `fillStyle` assignments.
+
+### 67.6 Where the camera looks: `skyCentreForGlobe`
+
+The helper turns the globe's d3 rotation into the RA/Dec/roll of the patch of
+sky the Earth is occulting. Derivation, with every sign stated:
+
+1. `d3.geoRotation([λ, φ, γ])` sends the geographic point `(−λ, −φ)` to the
+   projection centre. The **sub-viewer point** — the place on Earth directly
+   under the camera — is therefore at longitude `−λ`, latitude `−φ`.
+2. The camera looks from there down through the centre of the Earth, so the
+   sky behind the globe is the celestial direction of the **antipode** of the
+   sub-viewer point: longitude `−λ + 180`, latitude `+φ`.
+3. A geographic direction `(lon, lat)` points at `Dec = lat`,
+   `RA = local sidereal time = GMST(date) + lon` — the zenith of a place has
+   the right ascension of its local meridian. Hence
+
+   ```
+   dec = +φ
+   ra  = GMST(date) + 180 − λ          (mod 360)
+   ```
+
+4. `roll = γ`. Positive γ rotates the globe's content **counter-clockwise** on
+   screen (in d3's `rotationPhiGamma` the point's `(y, z)` are rotated by `+γ`
+   about the view axis, which tilts north to screen left), and `render`
+   applies `roll` the same way, so the sky stays glued to the globe through a
+   two-finger twist.
+
+**Precession.** Sidereal time is reckoned from the *true equinox of date*; the
+catalogue's right ascensions are *J2000 mean places*. The general precession
+in RA, `m = 3.07496 s/yr = 0.012812°/yr`, is subtracted from GMST, which
+cancels the declination-independent part of that mismatch — 0.333° by 2026,
+which is about two pixels of sky on a 1000 px globe and would otherwise be a
+systematic lag. What remains is the declination-dependent term
+(`n·sin α·tan δ`, under 0.15° away from the poles) plus nutation and
+aberration, all comfortably under a pixel. No proper motion (the largest,
+Barnard's Star, is not in the BSC; the brightest movers shift < 0.03° since
+J2000).
+
+### The sign-convention test
+
+`.scratch/sky-test.mjs`, run in Node before anything is drawn. The worked
+case the brief asked for:
+
+> At rotation `[0,0,0]` the sub-viewer point is (0° E, 0° N). At **2026-03-20
+> 12:00 UTC** — local noon, two days before the March equinox (14:46 UTC on
+> the 20th) — the Sun, right ascension ≈ 0h, is nearly overhead there. The sky
+> *behind* the Earth is therefore the **anti-solar** direction: RA ≈ 0h + 12h
+> = **12h = 180°**, Dec 0.
+
+Result: `GMST = 23.869 h` (358.03°, i.e. 0h to within 2°), centre
+`RA = 11.847 h`, `Dec = 0.00°`. Within 3° of 12h, as worked out.
+
+The script also asserts, all passing:
+
+| Check | Expected | Got |
+| --- | --- | --- |
+| `λ + 90` lowers centre RA | −90° | −90.0000° |
+| `φ = −30` (viewer over 30° N) gives Dec | −30° | −30 |
+| One solar day advances the centre | +0.9856° (sidereal rate) | +0.9856° |
+| 26 yr of mean precession absorbed | −0.333° | −0.3331° |
+| `fovForDisc(r=480, 1000×1000)` | 92.4° | 92.34° |
+
+### 67.7 Performance
+
+`.scratch/sky-test.mjs`, headless Chromium, 1000×1000 CSS px, 40 renders per
+case. "New view" means a *different* RA/Dec/roll every call, so nothing is
+reused; "unchanged view" exercises the projection cache.
+
+| Case | New view (median / p95) | Unchanged (median / p95) |
+| --- | --- | --- |
+| app scale, disc r 460, dpr 1 | **0.60 / 0.90 ms** | 0.40 / 0.50 ms |
+| app scale, disc r 460, dpr 2 | 0.50 / 0.60 ms | 0.40 / 0.50 ms |
+| worst case, disc r 60 (whole sky drawn), dpr 1 | **1.20 / 1.60 ms** | 1.00 / 1.10 ms |
+
+Budget was ~4 ms; the worst case is 1.6 ms at p95. What buys it:
+
+- Star screen positions are cached on a **view signature** and only
+  re-projected when the view actually changes.
+- Paint buckets are assigned once at load, so the hot loop is contiguous
+  reads out of a `Uint32Array` with one `fillStyle` per bucket.
+- Sub-pixel stars use `fillRect`; the rest are batched into one path per
+  bucket.
+- Occlusion and frame culling happen *during* projection, so a hidden star
+  costs three multiplies and a compare.
+- Constellation lines are densified to 2° great-circle steps once at load
+  (893 vertices → a few thousand), not per frame.
+
+At the app's real disc radius most of the catalogue is behind the Earth, which
+is why the app-scale case is *faster* than the wide-field one.
+
+### 67.8 What the frames show
+
+`node .scratch/sky-test.mjs` writes four PNGs. Read them; they are the real
+acceptance test.
+
+- **`sky-orion.png`** — Orion unmistakable, with Betelgeuse warm-tinted at
+  upper left, Rigel blue-white at lower right, the belt and sword correct, and
+  Taurus, Auriga, Gemini, Canis Major (Sirius), Perseus, Cassiopeia,
+  Andromeda, Aries, Cetus in their right relations. Right ascension increases
+  leftward across the frame (Pisces → Cetus → Aries → Orion), which is the
+  naked-eye handedness.
+- **`sky-plough.png`** — the Plough with its bowl and handle, the handle's arc
+  running down to Arcturus in Boötes exactly as "arc to Arcturus" says, then
+  Virgo with Spica; Leo, Cancer, Hydra, Corvus, Crater, Corona Borealis,
+  Hercules, Draco, Ursa Minor all placed.
+- **`sky-crux.png`** — Crux with the two Centaurus pointers beside it,
+  Scorpius with Antares curving into Sagittarius, the Milky Way's star density
+  visible through Scorpius–Sagittarius–Carina, and Musca, Carina, Vela,
+  Triangulum Australe, Pavo, Apus, Octans around them.
+- **`sky-globe.png`** — app scale. The disc occults everything within 90° and
+  the corners show sky 90–111° from the centre, i.e. the far hemisphere:
+  centred on RA 83° / Dec −5°, Crux (93° away) sits just outside the limb at
+  lower left and Grus and Lacerta at the right. That is the correct answer,
+  and it is the visual proof that the occlusion is angular rather than cosmetic.
+
+### 67.9 Gate
+
+`npm run check:sky` (`scripts/check-sky.mjs`, wired into the `check` chain):
+
+- ≥ 8,000 stars; every RA finite and in [0, 360), every Dec finite and in
+  [−90, 90], every magnitude finite, every B−V a finite number **or an
+  explicit null**; parallel arrays the same length; `stars.count` agrees.
+- Sirius present (brightest ≤ −1) and the catalogue reaches mag 6+.
+- ≥ 100 IAU names, all indices in range; Sirius, Betelgeuse, Rigel, Polaris
+  and Vega present by name.
+- Exactly 88 constellations, unique ids, each with a name, a rank, a valid
+  centroid and ≥ 1 line; every line an even, ≥ 4 long flat coordinate list
+  with every vertex in range; Ori, UMa, Cru, Sco present.
+- Every source block has title, URL, licence and citation; the constellation
+  licence is **not** copyleft.
+- Equinox stated as J2000; file ≤ 400 KB.
+
+Current: `check:sky OK  9096 stars (V −1.46 to 7.96), 341 IAU names, 88
+constellations in 150 polylines, 250 KB of 391 KB`.
+
+### 67.10 Open editorial question for Andy
+
+The **antique** direction is the measured Blaeu 1635 sheet and §57.3/§58.2
+ruled that it carries *no* view-fixed overlay — no grain, no vignette. A
+photographic star field is not a view-fixed overlay (it moves with the globe),
+but it may still fight a 17th-century engraved globe, and the same question
+applies more weakly to `paper`. Worth a look before shipping: suppress the sky
+on `antique`, or halve its opacity there, or leave it. The renderer takes no
+position; it is one call site either way.
+
+### 67.11 Resolved at integration
+
+The field of view is the EXACT one (`fovForDisc`, gain 1). The suggested
+1.5x gain was measured against the app's own stage and painted nothing:
+a wider field shrinks the sky's scale until the disc's edge passes 90
+degrees of sky, and every star still visible then lies behind the Earth
+and is culled. The orthographic globe really does hide half the sky; the
+desktop stage shows it in the margins left and right, the square phone
+stage in a ring and the corners. The antique direction keeps its
+engraved sheet free of the sky (sections 57.3 and 58.2), and the flat
+maps, which have no view direction, never show it. The canvas sits at
+the bottom of the stage stack, is repainted from the drag frames'
+rotation ref per frame (1.2 ms median measured in the spin capture) and
+from state at rest, and the SVG's own background is transparent on the
+globe so the sky shows through around the ocean disc.
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
