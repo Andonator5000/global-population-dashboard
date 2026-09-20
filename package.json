@@ -27,7 +27,8 @@
     "palette": "node scripts/build-map-palette.mjs",
     "check:icons": "node scripts/check-icon-coverage.mjs --strict",
     "icons": "node scripts/fetch-icons.mjs",
-    "build:anatomy-models": "node --max-old-space-size=8192 scripts/build-anatomy-models.mjs"
+    "build:anatomy-models": "node --max-old-space-size=8192 scripts/build-anatomy-models.mjs",
+    "build:anatomy-diagrams": "node scripts/render-anatomy-diagrams.mjs"
   },
   "dependencies": {
     "culori": "^4.0.2",
