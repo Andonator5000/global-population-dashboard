@@ -779,6 +779,19 @@ td {
   overflow-wrap: break-word;
 }
 
+/* Round 14 (Andy's phone report, 2026-10-10): a value and its "%" are one
+   unit and must never land on different lines. This cancels the
+   `overflow-wrap: break-word` that the th/td rule above otherwise inherits
+   into a narrow numeric cell -- without it, break-word treats an unbroken
+   token like "76.26%" as fair game and splits it right at the % sign. Scoped
+   to this one class (src/components/viz/primitives.tsx's <Pct>) rather than
+   loosened on th/td generally, which still needs break-word for long entity
+   and ecoregion names. */
+.nowrap-pct {
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
 /* Interactive affordances (2026-09-05, Phase 2 design pass). Tailwind v4's
    preflight leaves buttons on cursor:default; real controls get the pointer
    back. Section buttons answer hover with a slight brightness lift -- a
