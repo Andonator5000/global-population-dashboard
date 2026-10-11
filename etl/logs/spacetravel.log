@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "eras": 8,
+  "events": 110,
+  "events_with_image": 110,
+  "craft": 71,
+  "craft_by_type": {
+    "rocket": 19,
+    "crewed": 13,
+    "station": 5,
+    "satellite": 8,
+    "probe": 26
+  },
+  "people": 28,
+  "people_with_portrait": 23,
+  "cutaways": 17,
+  "plates": 4,
+  "images": 150,
+  "images_by_source": {
+    "commons": 26,
+    "wikipedia": 124
+  },
+  "image_bytes": 10276011,
+  "rejects": [
+    "person mishin: Wikipedia article 'Vasily Mishin' has no lead image",
+    "person morgan: Wikipedia article 'Mary Sherman Morgan' has no lead image",
+    "S Dhawan official Portrait ISRO.webp: licence 'GODL-India' is not free",
+    "person tom-mueller: Wikipedia article 'Tom Mueller' has no lead image",
+    "person beck: Wikipedia article 'Peter Beck (businessman)' has no lead image"
+  ]
+}

@@ -305,6 +305,7 @@ STAGES: dict[str, Callable[[dict[str, Any]], None]] = {
     "evolution": _simple_stage("evolution", "evolution"),
     "space": _simple_stage("space", "space"),
     "phenomena": _simple_stage("phenomena", "phenomena"),
+    "spacetravel": _simple_stage("spacetravel", "spacetravel"),
     "chemistry": _simple_stage("chemistry", "chemistry"),
     "anatomy": _simple_stage("anatomy", "anatomy"),
     "anatomy_structures": _simple_stage("anatomy_structures", "anatomy_structures"),

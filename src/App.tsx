@@ -17,6 +17,9 @@ import { TaxonomyPage } from './routes/TaxonomyPage'
 // Code-split (round-2 §41): three.js only loads on the pages that use it.
 const SolarSystemPage = lazy(() => import('./routes/SolarSystemPage'))
 const CosmicPhenomenaPage = lazy(() => import('./routes/CosmicPhenomenaPage'))
+// Round 14 (§74): Space Travel — a long page with scale diagrams, cutaways
+// and a 110-event timeline; split so the rest of /space stays light.
+const SpaceTravelPage = lazy(() => import('./routes/SpaceTravelPage'))
 // Round 3 §47: the periodic table (three.js atom model is split again
 // inside the page) and its glossary.
 const PeriodicTablePage = lazy(() => import('./routes/PeriodicTablePage'))
@@ -101,6 +104,16 @@ export function App() {
                 fallback={<p className="p-10 text-sm">Loading…</p>}
               >
                 <CosmicPhenomenaPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/space/travel"
+            element={
+              <Suspense
+                fallback={<p className="p-10 text-sm">Loading Space Travel…</p>}
+              >
+                <SpaceTravelPage />
               </Suspense>
             }
           />
