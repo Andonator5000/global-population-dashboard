@@ -17,14 +17,37 @@ import { useEffect, useState } from 'react'
 import { DATA_BASE_URL } from '../config'
 import type { AsyncState } from './data'
 
+/** Where a picture came from (round 14 §72). Absent = the pre-round-14
+    default: a Wikimedia Commons file reached through Wikidata P18 or the
+    article's lead image. */
+export type ImageSource = 'commons' | 'gbif' | 'inaturalist' | 'phylopic'
+
+/** What the picture IS. Absent = a photograph. A silhouette is NEVER
+    presented as a photograph; the UI labels it on its own chip. */
+export type ImageKind = 'photo' | 'illustration' | 'silhouette'
+
+export const IMAGE_SOURCE_LABEL: Record<ImageSource, string> = {
+  commons: 'Wikimedia Commons',
+  gbif: 'GBIF',
+  inaturalist: 'iNaturalist',
+  phylopic: 'PhyloPic',
+}
+
 export interface TaxonImage {
   url: string
   license: string
   author: string | null
   page: string
   /** Set when the photo is borrowed from a photographed member: the name
-      of that descendant taxon (round-2 representative-photo pass). */
+      of that descendant taxon (round-2 representative-photo pass, and the
+      round-14 ladder when a GBIF occurrence shows a member species). */
   rep?: string
+  src?: ImageSource
+  kind?: ImageKind
+  /** The picture is a COPY of a descendant's, bubbled up by the ETL, not a
+      lookup of this taxon's own (round 14). The app does not render it; it
+      exists so the next ETL run can tell its own picks apart from copies. */
+  bub?: boolean
 }
 
 /** Where a node's description came from (§44.3): the ETL fills them in
@@ -91,6 +114,9 @@ export interface TaxonomyFile {
   extractShards?: number
   extractsRetrieved?: string
   imageNote?: string
+  /** The picture ladder's sources, in order (round 14 §72) — rendered in
+      the collapsed Sources block. */
+  imageSources?: { label: string; url: string; licence: string }[]
   /** §44.5 build facts, for the page's own "how this works" copy. */
   generaFiles?: number
   generaTotal?: number
@@ -467,6 +493,20 @@ export const rankChipStyle = (rank: string): React.CSSProperties => {
   return {
     background: `light-dark(oklch(${light}% ${chroma} ${hue}), oklch(${dark}% ${chroma} ${hue}))`,
     borderColor: `light-dark(oklch(${light - 22}% 0.09 ${hue}), oklch(${dark + 23}% 0.09 ${hue}))`,
+  }
+}
+
+/** The ground and the big initial of the "no free photograph" placeholder
+    (round 14 §72c): the taxon's own rank hue, kept pale enough in light mode
+    and deep enough in dark mode that the muted label on top keeps its
+    contrast. The hue is decoration; the words carry the meaning. */
+export const rankPlaceholderStyle = (
+  rank: string,
+): { background: string; color: string } => {
+  const { hue } = rankInfo(rank)
+  return {
+    background: `light-dark(oklch(93.5% 0.035 ${hue}), oklch(25% 0.035 ${hue}))`,
+    color: `light-dark(oklch(72% 0.09 ${hue}), oklch(45% 0.07 ${hue}))`,
   }
 }
 

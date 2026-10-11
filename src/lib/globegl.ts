@@ -105,10 +105,24 @@ export function drawGlowRing(
   r: number,
   strength = 0.85,
 ): void {
+  // A zero or negative radius is not a gradient (createRadialGradient
+  // throws on a non-finite one); nothing to paint either.
+  if (!Number.isFinite(r) || r <= 0) return
   const gradient = ctx.createRadialGradient(cx, cy, r, cx, cy, r * GLOW_REACH)
   for (const d of [0, 0.02, 0.04, 0.07, 0.1, 0.14, 0.2]) {
     const a = Math.exp(-d / 0.06) * (1 - Math.min(1, d / 0.2)) * strength
-    gradient.addColorStop(d / (GLOW_REACH - 1), `rgba(133, 184, 255, ${a.toFixed(3)})`)
+    // ROUND 14 (section 70.3). The stop offset is d / (GLOW_REACH - 1),
+    // and GLOW_REACH - 1 is 0.19999999999999996 in binary floating point,
+    // so the last stop came out as 1.0000000000000002 and addColorStop
+    // THREW -- taking down every caller of the 2-D glow: the no-WebGL2
+    // fallback's whole render (the map crashed out of its layout effect
+    // and the page lost the globe), the political globe's deep-zoom drag
+    // frames, and the lost-context drag path. A stranded drag session
+    // then left the SVG hidden for ever: the "locked in place" globe.
+    // CLAMP, and never compute a gradient stop from a float difference
+    // again.
+    const offset = Math.min(1, Math.max(0, d / (GLOW_REACH - 1)))
+    gradient.addColorStop(offset, `rgba(133, 184, 255, ${a.toFixed(3)})`)
   }
   ctx.beginPath()
   ctx.arc(cx, cy, r * GLOW_REACH, 0, Math.PI * 2)
@@ -236,6 +250,10 @@ uniform vec4 u_grade;
 uniform vec3 u_tint;
 /* Round 12: chroma boost and contrast (x, y); 0 = as shot. */
 uniform vec2 u_grade2;
+/* Round 14: 0 when every grade channel is zero (the atlas direction), so
+   the per-pixel tone work is skipped entirely instead of being a chain of
+   no-op mixes on every one of six million fragments. */
+uniform int u_hasGrade;
 /* Round 13: atmosphere glow strength (0 = none) and its colour. */
 uniform float u_glow;
 uniform vec3 u_glowColor;
@@ -263,10 +281,15 @@ void main() {
     vec2 p = vec2((gl_FragCoord.x - u_ortho.x) / u_ortho.y,
                   (u_ortho.z - (u_height - gl_FragCoord.y)) / u_ortho.y);
     float r2 = dot(p, p);
+    // Round 14: ONE sqrt for the rim feather and the halo distance (it was
+    // computed twice per fragment), and the halo term is computed only
+    // OUTSIDE the limb -- inside the disc it was evaluating exp() for a
+    // value that the alpha blend below multiplies by zero.
+    float rr = sqrt(r2);
     // Feather the rim over one device pixel.
-    alpha = clamp((1.0 - sqrt(r2)) * u_ortho.y + 0.5, 0.0, 1.0);
-    if (u_isBase == 1 && u_glow > 0.0) {
-      float d = max(0.0, sqrt(r2) - 1.0);
+    alpha = clamp((1.0 - rr) * u_ortho.y + 0.5, 0.0, 1.0);
+    if (u_isBase == 1 && u_glow > 0.0 && rr > 1.0) {
+      float d = rr - 1.0;
       float g = exp(-d / 0.06) * (1.0 - min(1.0, d / 0.2)) * u_glow;
       glow = vec4(u_glowColor * g, g);
     }
@@ -317,7 +340,8 @@ void main() {
   float dyu2 = dFdy(u2);
   if (abs(dxu2) < abs(dx.x)) dx.x = dxu2;
   if (abs(dyu2) < abs(dy.x)) dy.x = dyu2;
-  vec3 c = grade(textureGrad(u_tex, uv, dx, dy).rgb);
+  vec3 c = textureGrad(u_tex, uv, dx, dy).rgb;
+  if (u_hasGrade == 1) c = grade(c);
   o = vec4(c * alpha, alpha) + glow * (1.0 - alpha);
 }
 `
@@ -509,7 +533,7 @@ export class GlobeGL implements ImageryRenderer {
       for (const u of [
         'u_tex', 'u_globe', 'u_hasTex', 'u_isBase', 'u_ortho', 'u_height',
         'u_rot', 'u_window', 'u_ocean', 'u_affine', 'u_size', 'u_color',
-        'u_grade', 'u_tint', 'u_grade2', 'u_glow', 'u_glowColor',
+        'u_grade', 'u_tint', 'u_grade2', 'u_hasGrade', 'u_glow', 'u_glowColor',
       ]) {
         map.set(u, gl.getUniformLocation(program, u))
       }
@@ -587,8 +611,27 @@ export class GlobeGL implements ImageryRenderer {
   setImagery(basePath: string): void {
     if (basePath === this.basePath) return
     this.basePath = basePath
+    // Round 14 (section 70.2): the WORLD BASES stay resident across
+    // Political / Satellite / Terrain switches -- that is section 43.5's
+    // ruling and it is what makes a second switch immediate (0.3 MB each).
+    // The FINE tiles are not: eight 2700-square tiles with mipmaps are
+    // ~310 MB of texture per set, and keeping both sets' tiles meant the
+    // GPU held over half a gigabyte after one Satellite -> Terrain switch,
+    // which is where a context is lost. The inactive set's tiles are
+    // dropped; they are small files and re-upload in a frame.
+    this.evictTilesExcept(basePath)
     this.ensureMeta(basePath)
     if (this.lastView) this.render(this.lastView)
+  }
+
+  /** Delete every resident fine tile that does not belong to `keep`. */
+  private evictTilesExcept(keep: string): void {
+    const prefix = `${keep}/`
+    for (const [key, entry] of [...this.tiles]) {
+      if (key.startsWith(prefix)) continue
+      this.gl.deleteTexture(entry.texture)
+      this.tiles.delete(key)
+    }
   }
 
   prefetch(basePath: string): void {
@@ -865,8 +908,14 @@ export class GlobeGL implements ImageryRenderer {
     const { scale, offsetX, offsetY, dpr } = layout
     const bufferW = Math.round(cssWidth * dpr)
     const bufferH = Math.round(cssHeight * dpr)
-    if (this.canvas.width !== bufferW) this.canvas.width = bufferW
-    if (this.canvas.height !== bufferH) this.canvas.height = bufferH
+    // Both dimensions, and only when one of them actually changed: a
+    // backing-store write reallocates the drawing buffer, so it must never
+    // happen per frame (round 14: the MOTION pixel budget resizes it once
+    // at the start and once at the end of a gesture).
+    if (this.canvas.width !== bufferW || this.canvas.height !== bufferH) {
+      this.canvas.width = bufferW
+      this.canvas.height = bufferH
+    }
     gl.viewport(0, 0, bufferW, bufferH)
     gl.clearColor(0, 0, 0, 0)
     gl.clear(gl.COLOR_BUFFER_BIT)
@@ -947,10 +996,17 @@ export class GlobeGL implements ImageryRenderer {
         // themselves outside the tile's lon/lat window -- eight tiles on
         // screen meant eight full-screen passes of transcendentals, which
         // is what a phone GPU could not keep up with. Scissor each pass to
-        // the tile's projected bounding box (the whole world needs none).
+        // the tile's projected bounding box.
+        //
+        // Round 14 (section 70.2): the WHOLE-WORLD base pass was the one
+        // pass left unscissored, and on a wide frame most of its fragments
+        // are outside the disc and its halo -- 6.35 Mpx of inverse
+        // projection to paint a 0.9 Mpx planet in full screen. It is now
+        // scissored to the disc's bounding box grown by GLOW_REACH, which
+        // is exactly the region the shader does not discard.
         const whole = lon1 - lon0 >= 360
         const box = whole
-          ? null
+          ? this.discScissor(view, ax, ay, b, bufferW, bufferH)
           : this.tileScissor(view, lon0, lat0, lon1, lat1, ax, ay, b, bufferW, bufferH)
         if (box === undefined) return
         if (box) {
@@ -982,6 +1038,11 @@ export class GlobeGL implements ImageryRenderer {
     const tint = grade?.tint ?? [1, 1, 1]
     gl.uniform3f(loc('u_tint'), tint[0], tint[1], tint[2])
     gl.uniform2f(loc('u_grade2'), grade?.saturate ?? 0, grade?.contrast ?? 0)
+    const hasGrade =
+      grade !== null &&
+      (grade.desaturate !== 0 || grade.sepia !== 0 || grade.lift !== 0 ||
+        grade.tintAmount !== 0 || grade.saturate !== 0 || grade.contrast !== 0)
+    gl.uniform1i(loc('u_hasGrade'), hasGrade ? 1 : 0)
     gl.uniform1f(loc('u_glow'), isGlobe ? view.glow ?? 0 : 0)
     gl.uniform3f(loc('u_glowColor'), GLOW_RGB[0], GLOW_RGB[1], GLOW_RGB[2])
 
@@ -1026,6 +1087,34 @@ export class GlobeGL implements ImageryRenderer {
       gl.disableVertexAttribArray(1)
       gl.drawArrays(gl.LINES, 0, this.borderCount)
     }
+  }
+
+  /**
+   * Device-pixel scissor box for the globe's disc plus its atmosphere
+   * halo, clipped to the canvas. `undefined` means nothing is on screen.
+   * The base pass's shader discards every fragment outside this region,
+   * so bounding it costs nothing and saves the whole surround.
+   */
+  private discScissor(
+    view: ImageryView,
+    ax: number,
+    ay: number,
+    b: number,
+    bufferW: number,
+    bufferH: number,
+  ): [number, number, number, number] | undefined {
+    const t = view.projection.translate()
+    const r = view.projection.scale() * GLOW_REACH
+    const x0 = Math.max(0, Math.floor(ax + b * (t[0] - r)) - 1)
+    const x1 = Math.min(bufferW, Math.ceil(ax + b * (t[0] + r)) + 1)
+    const yTop = ay + b * (t[1] - r)
+    const yBottom = ay + b * (t[1] + r)
+    // Device y is top-down; gl.scissor counts from the bottom.
+    const y0 = Math.max(0, Math.floor(bufferH - yBottom) - 1)
+    const y1 = Math.min(bufferH, Math.ceil(bufferH - yTop) + 1)
+    if (!Number.isFinite(x0) || !Number.isFinite(y0)) return undefined
+    if (x1 <= x0 || y1 <= y0) return undefined
+    return [x0, y0, x1 - x0, y1 - y0]
   }
 
   /**

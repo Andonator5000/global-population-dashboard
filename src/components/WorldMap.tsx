@@ -31,7 +31,7 @@ import {
   type DetailCollection,
   type PlacePoint,
 } from '../lib/mapdetail'
-import { canvasPixelRatio } from '../lib/device'
+import { canvasPixelRatio, motionPixelRatio, skyMotionPixelRatio } from '../lib/device'
 import {
   GlobeGL,
   resolveCssColor,
@@ -1168,6 +1168,24 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   // untouched because the SVG they live on never changed, it only sat out
   // the animation.
   const dragCanvasRef = useRef<HTMLCanvasElement | null>(null)
+  /**
+   * ROUND 14 (section 70.1): the GRAB SURFACE.
+   *
+   * Every pointer handler lived on the <svg>, and a drag-render session
+   * sets the svg to `visibility: hidden` for its whole duration -- the
+   * drag AND its inertia. A hidden element is not a hit-test target, so a
+   * press during the coast landed on the inert drag canvas and
+   * `handleGlobePointerDown` (which cancels the inertia and continues the
+   * session) never ran: on Google Earth you can catch a spinning globe,
+   * here you had to wait for it to stop. This transparent overlay carries
+   * the same handlers and is displayed for exactly as long as a session
+   * is live, so the press that catches the globe is handled by the same
+   * code as a press at rest. It sits BELOW the zoom controls (z-10) and
+   * the popover (z-20) in the stacking order, so the chrome stays
+   * clickable mid-spin, and below the svg -- which only matters while the
+   * svg is hidden, which is exactly when this is shown.
+   */
+  const grabRef = useRef<HTMLDivElement | null>(null)
   const rotationRef = useRef<Rotation>(rotation)
   const isDragRendering = useRef(false)
   const restoreAfterCommit = useRef(false)
@@ -1198,18 +1216,28 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     restoreAfterCommit.current = false
     if (svgRef.current) svgRef.current.style.visibility = ''
     if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
+    if (grabRef.current) grabRef.current.style.display = 'none'
     // The GL canvas stood in for the political fills (section 51); at
     // rest the SVG's own background covers the view again.
     if (!satellite && canvasRef.current) canvasRef.current.style.display = 'none'
   }, [rotation, satellite])
 
-  const layoutFor = useCallback((w: number, h: number) => {
+  /**
+   * Stage layout for a canvas render. `motion` asks for the MOTION pixel
+   * budget (round 14, section 70.2): a frame that is being dragged or
+   * coasting is rendered into a smaller backing store and upscaled by
+   * CSS, because every globe fragment runs a per-pixel inverse
+   * projection and full screen at the 1.75 cap is 6.35 megapixels of it.
+   * The settled frame -- the only one anybody reads -- is full
+   * resolution.
+   */
+  const layoutFor = useCallback((w: number, h: number, motion = false) => {
     const scale = Math.min(w / viewW, h / viewH)
     return {
       scale,
       offsetX: (w - viewW * scale) / 2,
       offsetY: (h - viewH * scale) / 2,
-      dpr: canvasPixelRatio(),
+      dpr: motion ? motionPixelRatio(w, h) : canvasPixelRatio(),
     }
   }, [viewW, viewH])
 
@@ -1272,10 +1300,14 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   /** Paint the sky for the current rotation/zoom refs at the given stage
       size. Cheap and idempotent; called per drag frame and at rest. */
   const renderSky = useCallback(
-    (w: number, h: number) => {
+    (w: number, h: number, motion = false) => {
       const sky = skyRef.current
       if (!sky || !showSky || w < 2 || h < 2) return
-      const { scale, offsetX, offsetY } = layoutFor(w, h)
+      const { scale, offsetX, offsetY } = layoutFor(w, h, motion)
+      // The sky gets its OWN motion budget (round 14, section 70.2): it is
+      // the most expensive surface per pixel in the stack and the least
+      // in need of pixels.
+      const dpr = motion ? skyMotionPixelRatio(w, h) : canvasPixelRatio()
       const t = transformRef.current
       const cssDisc = {
         cx: offsetX + scale * (t.x + t.k * disc.cx),
@@ -1285,7 +1317,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       sky.render({
         width: w,
         height: h,
-        dpr: canvasPixelRatio(),
+        dpr,
         disc: cssDisc,
         centre: skyCentreForGlobe(rotationRef.current, skyEpochRef.current),
         fov: fovForDisc(cssDisc, w, h) * SKY_FOV_GAIN,
@@ -1411,113 +1443,158 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     }
   }, [satellite, isGlobe, buildDragFills])
 
+  /** The drag canvas's 2-D context, resolved once per backing store: a
+      drag frame must allocate nothing and call nothing it can avoid. */
+  const dragCtx = useRef<CanvasRenderingContext2D | null>(null)
+  /** Round 14: when a drag or inertia frame last advanced. The watchdog
+      needs it because a frame that THREW left `inertiaFrame` holding the
+      id of the frame that died, which defeated section 66.3's test. */
+  const sessionTickAt = useRef(0)
+  /** A renderer fault is reported once per page, never per frame. */
+  const frameFaultReported = useRef(false)
+
   const drawDragFrame = useCallback(() => {
     // Section 58.1: nothing paints outside a live session -- a stray frame
     // after the commit would move the canvas away from the SVG.
     if (!isDragRendering.current) return
+    sessionTickAt.current = performance.now()
     const container = containerRef.current
     const canvas = dragCanvasRef.current
     if (!container || !canvas) return
     const w = container.clientWidth
     const h = container.clientHeight
     if (w < 2 || h < 2) return
-    const { scale, offsetX, offsetY, dpr } = layoutFor(w, h)
-    const bufferW = Math.round(w * dpr)
-    const bufferH = Math.round(h * dpr)
-    if (canvas.width !== bufferW) canvas.width = bufferW
-    if (canvas.height !== bufferH) canvas.height = bufferH
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    // ROUND 14 (section 70.3). A throw inside a drag frame used to escape
+    // the animation callback: the rotation ref had already advanced, so
+    // the session stayed live, `inertiaFrame` kept the id of the frame
+    // that died, the watchdog's test never became true, and the SVG stayed
+    // `visibility: hidden` behind a canvas nothing would ever paint again
+    // -- the globe "locked in place". A frame may now fail; a SESSION may
+    // not be stranded by it.
+    try {
+      // Round 14 (section 70.2): a MOVING frame is rendered into a smaller
+      // backing store (the motion pixel budget) and upscaled by CSS.
+      const { scale, offsetX, offsetY, dpr } = layoutFor(w, h, true)
 
-    renderSky(w, h)
-    const base = createProjection('globe')
-    base.rotate(rotationRef.current)
-    const frameProjection = fitProjection(base, viewW, viewH)
+      renderSky(w, h, true)
+      const base = createProjection('globe')
+      base.rotate(rotationRef.current)
+      const frameProjection = fitProjection(base, viewW, viewH)
 
-    // Satellite imagery keeps tracking the finger: the imagery renderer is
-    // driven imperatively here, from the SAME rotation ref as the borders
-    // below, because no React render happens mid-drag. Since round 4
-    // (section 51) the POLITICAL globe takes the same path: its fills are
-    // a resident world raster, so a frame is one GPU pass plus the border
-    // lines -- the 250-path canvas repaint below is now only the no-WebGL2
-    // fallback's frame.
-    let glDrawsBorders = false
-    // Round 13: a lost WebGL context painted nothing during a drag -- the
-    // SVG hidden, the GL frames blank: "the globe disappears". A dead
-    // context hands the frame to the 2-D vector path below.
-    const glLost =
-      rendererRef.current !== null &&
-      !(rendererRef.current instanceof Canvas2DImagery) &&
-      (rendererRef.current as { isLost?: () => boolean }).isLost?.() === true
-    const useRaster =
-      !satellite && !glLost && rasterOnGpu.current && transformRef.current.k < RASTER_DRAG_MAX_ZOOM
-    // Political raster frames paint on the GL canvas, which sits under
-    // the hidden SVG; it is shown for exactly those frames and put away
-    // again when the rotation commits (see the restore effect).
-    if (!satellite && canvasRef.current) {
-      canvasRef.current.style.display = useRaster ? 'block' : 'none'
-    }
-    if ((satellite || useRaster) && rendererRef.current && !glLost) {
-      glDrawsBorders = !(rendererRef.current instanceof Canvas2DImagery)
-      rendererRef.current.render({
-        projection: frameProjection,
-        projectionKey: 'globe',
-        isGlobe: true,
-        rotation: rotationRef.current,
-        transform: transformRef.current,
-        layout: { scale, offsetX, offsetY, dpr },
-        cssWidth: w,
-        cssHeight: h,
-        oceanFill: dragFills.current.ocean,
-        raster: useRaster,
-        grade: satellite ? IMAGERY_GRADES[paletteDirection] : undefined,
-        glow: GLOBE_GLOW,
-        borders: glDrawsBorders
-          ? { color: dragFills.current.strokeRgba }
-          : undefined,
-      })
-    }
+      // Satellite imagery keeps tracking the finger: the imagery renderer
+      // is driven imperatively here, from the SAME rotation ref as the
+      // borders below, because no React render happens mid-drag. Since
+      // round 4 (section 51) the POLITICAL globe takes the same path: its
+      // fills are a resident world raster, so a frame is one GPU pass plus
+      // the border lines -- the 250-path canvas repaint below is now only
+      // the deep-zoom and no-WebGL2 fallback's frame.
+      let glDrawsBorders = false
+      // Round 13: a lost WebGL context painted nothing during a drag --
+      // the SVG hidden, the GL frames blank: "the globe disappears". A
+      // dead context hands the frame to the 2-D vector path below.
+      const glLost =
+        rendererRef.current !== null &&
+        !(rendererRef.current instanceof Canvas2DImagery) &&
+        (rendererRef.current as { isLost?: () => boolean }).isLost?.() === true
+      const useRaster =
+        !satellite && !glLost && rasterOnGpu.current && transformRef.current.k < RASTER_DRAG_MAX_ZOOM
+      // Political raster frames paint on the GL canvas, which sits under
+      // the hidden SVG; it is shown for exactly those frames and put away
+      // again when the rotation commits (see the restore effect).
+      if (!satellite && canvasRef.current) {
+        canvasRef.current.style.display = useRaster ? 'block' : 'none'
+      }
+      if ((satellite || useRaster) && rendererRef.current && !glLost) {
+        glDrawsBorders = !(rendererRef.current instanceof Canvas2DImagery)
+        rendererRef.current.render({
+          projection: frameProjection,
+          projectionKey: 'globe',
+          isGlobe: true,
+          rotation: rotationRef.current,
+          transform: transformRef.current,
+          layout: { scale, offsetX, offsetY, dpr },
+          cssWidth: w,
+          cssHeight: h,
+          oceanFill: dragFills.current.ocean,
+          raster: useRaster,
+          grade: satellite ? IMAGERY_GRADES[paletteDirection] : undefined,
+          glow: GLOBE_GLOW,
+          borders: glDrawsBorders
+            ? { color: dragFills.current.strokeRgba }
+            : undefined,
+        })
+      }
 
-    ctx.setTransform(1, 0, 0, 1, 0, 0)
-    ctx.clearRect(0, 0, bufferW, bufferH)
-    // Imagery views: outlines are in the WebGL scene above, painted from
-    // the same rotation in the same frame -- nothing left to draw here.
-    if (glDrawsBorders) return
-    const view = dpr * scale
-    ctx.setTransform(
-      view * transformRef.current.k, 0, 0, view * transformRef.current.k,
-      dpr * (offsetX + scale * transformRef.current.x),
-      dpr * (offsetY + scale * transformRef.current.y),
-    )
-    const path = geoPath(frameProjection, ctx)
-    {
-      const t = frameProjection.translate()
-      drawGlowRing(ctx, t[0], t[1], frameProjection.scale(), GLOBE_GLOW)
-    }
-    if (!satellite || glLost) {
-      ctx.beginPath()
-      path({ type: 'Sphere' } as GeoPermissibleObjects)
-      ctx.fillStyle = dragFills.current.ocean
-      ctx.fill()
-    }
-    ctx.lineJoin = 'round'
-    ctx.lineWidth = (satellite ? 0.75 : 0.5) / transformRef.current.k
-    ctx.strokeStyle = dragFills.current.stroke
-    // Vector frames (deep zoom, or the no-WebGL2 fallback): only the
-    // countries whose lon/lat bounds touch the visible window are
-    // projected. `null` window = whole hemisphere in view = draw all.
-    const culling = visibleLonLatWindow(frameProjection, transformRef.current, w, h, scale, offsetX, offsetY)
-    collection.features.forEach((item, index) => {
-      if (culling && !boundsTouch(staticGeometry[index]!.bounds, culling)) return
-      ctx.beginPath()
-      path(item as unknown as GeoPermissibleObjects)
-      const fill = dragFills.current.fills[index]
-      if (fill && fill !== 'transparent') {
-        ctx.fillStyle = fill
+      // Round 14 (section 70.2): when the GL pass draws the WHOLE frame --
+      // the imagery (or the political raster) and the outlines, from the
+      // same rotation -- this canvas has nothing to paint, and a
+      // full-screen canvas that was sized, cleared and composited for
+      // nothing cost a third 6.35 Mpx layer per frame in full screen. It
+      // stays hidden and untouched. The grab overlay, not this canvas, is
+      // what a hand catches mid-spin (section 70.1).
+      if (glDrawsBorders) {
+        if (canvas.style.display !== 'none') canvas.style.display = 'none'
+        return
+      }
+      if (canvas.style.display !== 'block') canvas.style.display = 'block'
+      const bufferW = Math.round(w * dpr)
+      const bufferH = Math.round(h * dpr)
+      if (canvas.width !== bufferW || canvas.height !== bufferH) {
+        canvas.width = bufferW
+        canvas.height = bufferH
+        dragCtx.current = null
+      }
+      if (!dragCtx.current) dragCtx.current = canvas.getContext('2d')
+      const ctx = dragCtx.current
+      if (!ctx) return
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+      ctx.clearRect(0, 0, bufferW, bufferH)
+      const view = dpr * scale
+      ctx.setTransform(
+        view * transformRef.current.k, 0, 0, view * transformRef.current.k,
+        dpr * (offsetX + scale * transformRef.current.x),
+        dpr * (offsetY + scale * transformRef.current.y),
+      )
+      const path = geoPath(frameProjection, ctx)
+      {
+        const t = frameProjection.translate()
+        drawGlowRing(ctx, t[0], t[1], frameProjection.scale(), GLOBE_GLOW)
+      }
+      if (!satellite || glLost) {
+        ctx.beginPath()
+        path({ type: 'Sphere' } as GeoPermissibleObjects)
+        ctx.fillStyle = dragFills.current.ocean
         ctx.fill()
       }
-      ctx.stroke()
-    })
+      ctx.lineJoin = 'round'
+      ctx.lineWidth = (satellite ? 0.75 : 0.5) / transformRef.current.k
+      ctx.strokeStyle = dragFills.current.stroke
+      // Vector frames (deep zoom, or the no-WebGL2 fallback): only the
+      // countries whose lon/lat bounds touch the visible window are
+      // projected. `null` window = whole hemisphere in view = draw all.
+      const culling = visibleLonLatWindow(frameProjection, transformRef.current, w, h, scale, offsetX, offsetY)
+      collection.features.forEach((item, index) => {
+        if (culling && !boundsTouch(staticGeometry[index]!.bounds, culling)) return
+        ctx.beginPath()
+        path(item as unknown as GeoPermissibleObjects)
+        const fill = dragFills.current.fills[index]
+        if (fill && fill !== 'transparent') {
+          ctx.fillStyle = fill
+          ctx.fill()
+        }
+        ctx.stroke()
+      })
+    } catch (error) {
+      if (!frameFaultReported.current) {
+        frameFaultReported.current = true
+        console.warn(
+          'Globe drag frame failed; ending the gesture rather than freezing the map:',
+          error,
+        )
+      }
+      forceEndDragSessionRef.current()
+    }
   }, [collection, staticGeometry, satellite, layoutFor, paletteDirection, viewW, viewH, renderSky])
 
   /** Round 13 watchdog: a drag session with no pointer down and no
@@ -1529,6 +1606,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   const beginDragRender = useCallback(() => {
     if (isDragRendering.current) return
     isDragRendering.current = true
+    sessionTickAt.current = performance.now()
     if (watchdog.current === null) {
       watchdog.current = window.setInterval(() => {
         if (!isDragRendering.current) {
@@ -1536,17 +1614,42 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
           watchdog.current = null
           return
         }
-        if (dragPointers.current.size === 0 && inertiaFrame.current === null && dragFrame.current === null) {
+        // A pointer is down: the gesture owns the session, however long
+        // the finger rests.
+        if (dragPointers.current.size > 0) return
+        // No pointer. Either nothing is scheduled (section 66.3's case),
+        // or frames have STOPPED ARRIVING although something is scheduled
+        // -- round 14 (section 70.3): a throw inside a frame escaped the
+        // animation callback with `inertiaFrame` still holding the id of
+        // the frame that died, so `inertiaFrame.current === null` was
+        // false for ever and this watchdog never fired. The globe sat
+        // frozen behind the hidden SVG: "locked in place, fullscreen or
+        // not". A session whose frames have stalled is force-ended too.
+        const stalled = performance.now() - sessionTickAt.current > 700
+        if ((inertiaFrame.current === null && dragFrame.current === null) || stalled) {
           forceEndDragSessionRef.current()
         }
-      }, 400)
+      }, 250)
     }
     // The popover would hover over a spinning globe pointing at nothing;
     // one setState here, before frames leave React, is fine.
     setPopover(null)
     buildDragFills()
     if (svgRef.current) svgRef.current.style.visibility = 'hidden'
-    if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'block'
+    // The overlay is the grab surface for the whole session (section
+    // 70.1), including the inertia after the finger lifts.
+    if (grabRef.current) grabRef.current.style.display = 'block'
+    const canvas = dragCanvasRef.current
+    if (canvas) {
+      // Shown and cleared ONCE per session: the first frame may be a GL
+      // frame, which hides this canvas again, and a stale picture of the
+      // last session must never flash in between.
+      canvas.style.display = 'block'
+      const ctx = dragCtx.current ?? canvas.getContext('2d')
+      dragCtx.current = ctx
+      ctx?.setTransform(1, 0, 0, 1, 0, 0)
+      ctx?.clearRect(0, 0, canvas.width, canvas.height)
+    }
   }, [buildDragFills])
 
   const endDragRender = useCallback(() => {
@@ -1577,6 +1680,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     isDragRendering.current = false
     if (svgRef.current) svgRef.current.style.visibility = ''
     if (dragCanvasRef.current) dragCanvasRef.current.style.display = 'none'
+    if (grabRef.current) grabRef.current.style.display = 'none'
     if (!satellite && canvasRef.current) canvasRef.current.style.display = 'none'
     setRotation([rotationRef.current[0], rotationRef.current[1], rotationRef.current[2]])
   }, [cancelInertia, satellite])
@@ -1639,24 +1743,34 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
     }
     let last = performance.now()
     const step = (now: number) => {
-      const dt = Math.max(4, Math.min(50, now - last))
-      last = now
-      const frames = dt / 16.7
-      v = versor.pow(v, Math.pow(INERTIA_DECAY, frames))
-      const q = versor.multiply(
-        versor.pow(v, frames),
-        versor.fromEuler(rotationRef.current),
-      )
-      const e = versor.toEuler(versor.normalize(q))
-      if (holdGamma !== null) e[2] = holdGamma
-      writeRotation(e)
-      drawDragFrame()
-      if (versor.angle(v) < INERTIA_STOP_DEG) {
+      // Round 14 (section 70.3): whatever happens in a coast frame, the
+      // loop either arms the next frame or ends the session. It used to be
+      // possible for a throw to leave `inertiaFrame` holding a dead id,
+      // with the session live and nothing ever to end it.
+      try {
+        const dt = Math.max(4, Math.min(50, now - last))
+        last = now
+        const frames = dt / 16.7
+        v = versor.pow(v, Math.pow(INERTIA_DECAY, frames))
+        const q = versor.multiply(
+          versor.pow(v, frames),
+          versor.fromEuler(rotationRef.current),
+        )
+        const e = versor.toEuler(versor.normalize(q))
+        if (holdGamma !== null) e[2] = holdGamma
+        writeRotation(e)
+        drawDragFrame()
+        if (!isDragRendering.current || versor.angle(v) < INERTIA_STOP_DEG) {
+          inertiaFrame.current = null
+          endDragRender()
+          return
+        }
+        inertiaFrame.current = requestAnimationFrame(step)
+      } catch (error) {
         inertiaFrame.current = null
-        endDragRender()
-        return
+        console.warn('Globe coast frame failed; ending the gesture:', error)
+        forceEndDragSessionRef.current()
       }
-      inertiaFrame.current = requestAnimationFrame(step)
     }
     inertiaFrame.current = requestAnimationFrame(step)
   }, [drawDragFrame, endDragRender, writeRotation])
@@ -2082,7 +2196,10 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   }, [viewVectorOf, viewPointOf, angleAboutCentre, writeRotation, drawDragFrame, anchorDrag])
 
   const handleGlobePointerDown = useCallback(
-    (event: React.PointerEvent<SVGSVGElement>) => {
+    // Element, not SVGSVGElement: these handlers are mounted on the svg AND
+    // on the grab overlay that stands in for it while a session is live
+    // (section 70.1).
+    (event: React.PointerEvent<Element>) => {
       // A fresh press is never a leftover drag, so the click suppression
       // resets on EVERY projection. It used to reset only on the globe
       // path -- spin the globe (flag set true), switch to a flat view, and
@@ -2102,6 +2219,29 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         y: event.clientY,
       })
       lastPointerEventAt.current.set(event.pointerId, performance.now())
+      // ROUND 14 (section 70.1): a press on the GRAB OVERLAY takes pointer
+      // capture immediately, where a press on the svg still waits for the
+      // first move. On the svg the wait is deliberate -- capturing at
+      // pointerdown would make the svg the click target and no country
+      // could be selected (the overlay has no click semantics at all, it
+      // is aria-hidden and a press on it is always a grab). And on the
+      // overlay the wait was harmful: between pointerdown and the first
+      // move, ANY reflow that moves the element out from under the
+      // pointer raises pointerout, React turns it into onPointerLeave,
+      // and section 42.1's escape hatch ended the gesture that had just
+      // caught a coasting globe -- press, globe stops, then it refuses to
+      // follow the hand. Capture makes the element's own geometry
+      // irrelevant for the rest of the gesture. Touch pointers are NEVER
+      // explicitly captured (section 62.5: the hand-over fires
+      // lostpointercapture mid-gesture); they do not need it, being
+      // implicitly captured already.
+      if (event.pointerType !== 'touch' && event.currentTarget === grabRef.current) {
+        try {
+          event.currentTarget.setPointerCapture(event.pointerId)
+        } catch {
+          /* capture is an optimisation, never a requirement */
+        }
+      }
       anchorDrag()
     },
     [isGlobe, cancelInertia, anchorDrag],
@@ -2115,7 +2255,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
    * function of where the finger IS, not of how it got there.
    */
   const handleGlobePointerMove = useCallback(
-    (event: React.PointerEvent<SVGSVGElement>) => {
+    (event: React.PointerEvent<Element>) => {
       if (!isGlobe) return
       const tracked = dragPointers.current.get(event.pointerId)
       if (!tracked) return
@@ -2165,7 +2305,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
   )
 
   const handleGlobePointerEnd = useCallback(
-    (event: React.PointerEvent<SVGSVGElement>) => {
+    (event: React.PointerEvent<Element>) => {
       if (event.type === 'lostpointercapture' && dragPointers.current.has(event.pointerId)) {
         // Capture moved between elements while the pointer is still down
         // (a touch's implicit capture handing over, a re-render swapping
@@ -2200,6 +2340,46 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       if (isDragRendering.current) startInertia()
     },
     [startInertia, anchorDrag],
+  )
+
+  /** A pointer that leaves the globe surface mid-gesture: section 42.1's
+      escape hatch. Shared by the svg and the grab overlay so a release
+      outside either one still ends the session.
+
+      ROUND 14 (section 70.1): a leave whose pointer is STILL PRESSED is
+      not a release, exactly as a `lostpointercapture` on a live pointer
+      is not one (section 62.5). `pointerleave` fires whenever the element
+      stops being under the pointer, and that includes the element moving
+      rather than the pointer -- a layout shift, a fullscreen transition,
+      a device-metrics change -- in the window between `pointerdown` and
+      the first `pointermove`, which is before the drag has taken pointer
+      capture. Ending the gesture there dropped the press that had just
+      caught a coasting globe: the globe stopped and then refused to
+      follow the hand. With a button still down the pointer is kept and
+      the session stays live; the watchdog is the backstop if it never
+      speaks again. With no button down the release really was missed and
+      section 42.1's hatch runs as before. */
+  const handleGlobePointerLeave = useCallback(
+    (event: React.PointerEvent<Element>) => {
+      // A leave whose pointer we still HOLD -- pointer capture is ours, or
+      // a button is still down -- is not a release.
+      if (dragPointers.current.has(event.pointerId)) {
+        let held = false
+        try {
+          held = (event.currentTarget as Element).hasPointerCapture(event.pointerId)
+        } catch {
+          held = false
+        }
+        if (held || event.buttons !== 0) return
+      }
+      dragPointers.current.delete(event.pointerId)
+      lastPointerEventAt.current.delete(event.pointerId)
+      if (dragPointers.current.size === 0) {
+        dragAnchor.current = null
+        if (isDragRendering.current) startInertia()
+      }
+    },
+    [startInertia],
   )
 
   // ---- Round-2 §36: country popover --------------------------------------
@@ -2801,10 +2981,13 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         aria-hidden="true"
       />
       {/* Terrain canvas: BELOW the svg in paint order, so every interactive
-          surface stays untouched SVG. Mounted only in satellite view. */}
+          surface stays untouched SVG. Mounted only in satellite view.
+          `pointer-events-none` since round 14 (section 70.1): these are
+          pictures, and a press on the globe must always reach a handler --
+          the svg at rest, the grab overlay while a session is live. */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 h-full w-full"
+        className="pointer-events-none absolute inset-0 h-full w-full"
         style={{ display: satellite ? 'block' : 'none' }}
         aria-hidden="true"
       />
@@ -2822,12 +3005,40 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
       )}
 
       {/* Drag-frame canvas (round-2 §35): paints the globe while a drag or
-          its inertia is live, standing in for the hidden SVG. Inert. */}
+          its inertia is live, standing in for the hidden SVG. Inert --
+          round 14 (section 70.1): it used to be the top surface during a
+          session WITHOUT any handler, which is why a spinning globe could
+          not be caught. Since round 14 it is also kept hidden whenever the
+          GL pass draws the whole frame (section 70.2). */}
       <canvas
         ref={dragCanvasRef}
-        className="absolute inset-0 h-full w-full"
+        className="pointer-events-none absolute inset-0 h-full w-full"
         style={{ display: 'none' }}
         aria-hidden="true"
+      />
+
+      {/* The grab surface (round 14, section 70.1): transparent, inert to
+          the accessibility tree, displayed only while a drag-render
+          session is live, and carrying exactly the handlers the svg
+          carries -- so catching a coasting globe is the same code path as
+          starting a drag at rest. A wheel over a coasting globe ends the
+          session so the next tick zooms, as Google Earth does. */}
+      <div
+        ref={grabRef}
+        className="absolute inset-0 touch-none"
+        style={{ display: 'none', cursor: 'grabbing' }}
+        aria-hidden="true"
+        onPointerDown={handleGlobePointerDown}
+        onPointerMove={handleGlobePointerMove}
+        onPointerUp={handleGlobePointerEnd}
+        onPointerCancel={handleGlobePointerEnd}
+        onLostPointerCapture={handleGlobePointerEnd}
+        onPointerLeave={handleGlobePointerLeave}
+        onWheel={() => {
+          if (dragPointers.current.size > 0) return
+          cancelInertia()
+          endDragRender()
+        }}
       />
 
       {/* Country popover (round-2 §36): near the cursor/tap point, flipped
@@ -2908,11 +3119,7 @@ export const WorldMap = forwardRef<WorldMapHandle, WorldMapProps>(function World
         cursor: isGlobe ? 'grab' : undefined,
       }}
       onPointerLeave={(event) => {
-        dragPointers.current.delete(event.pointerId)
-        if (dragPointers.current.size === 0) {
-          dragAnchor.current = null
-          if (isDragRendering.current) startInertia()
-        }
+        handleGlobePointerLeave(event)
         onHover(null)
         // Keep the popover if the pointer is moving INTO it (to reach its
         // "More info" link); clear otherwise, unless a tap pinned it.

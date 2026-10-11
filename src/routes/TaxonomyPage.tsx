@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
+import { CollapsibleSources } from '../components/CollapsibleSources'
 import { Unavailable } from '../components/viz/primitives'
 import {
   Chip,
@@ -11,13 +12,15 @@ import {
 } from '../components/taxonomy/bits'
 import { DetailSheet } from '../components/taxonomy/DetailSheet'
 import { RankLegend } from '../components/taxonomy/RankLegend'
-import { TaxonDetail } from '../components/taxonomy/TaxonDetail'
+import { PlateGallery, TaxonPlate } from '../components/taxonomy/TaxonPlate'
 import {
   liveNameSearch,
   loadExtract,
   loadGenera,
   loadLiveChildren,
+  rankAccent,
   rankChipStyle,
+  RANK_SOURCES,
   useTaxonomyTree,
   type LiveSearchHit,
   type TaxonNode,
@@ -25,17 +28,23 @@ import {
 import { capitalizeFirst } from '../lib/format'
 
 /**
- * /taxonomy — the tree of life (Phase 5; presentation rebuilt round-2 §39;
- * on-demand depth, full rank system and the mobile sheet in round 3 §44).
+ * /taxonomy — the tree of life (Phase 5 §31; presentation rebuilt round-2
+ * §39; on-demand depth, full rank system and the mobile sheet in round 3
+ * §44; THE PLATE REDESIGN in round 14 §72).
  *
- * Two views over the same lazily loaded data: the collapsible TREE (a
- * caret button to expand, a name button to select) and a CARD EXPLORER.
- * Depth below family is ON-DEMAND: a family's genera come from its static
- * genera/{id}.json when it is expanded; species under a genus (and
- * anything below) load LIVE from ChecklistBank — the documented render-
- * time exception. Search covers the loaded static index and, when that
- * has no hit, a live Catalogue of Life name search, labelled as live. On
- * small viewports the detail card opens as a bottom sheet.
+ * Round 14 shape, top to bottom: a dateline and the lead paragraph; one
+ * toolbar (search, Tree/Cards, random); THE PLATE — the selected taxon as a
+ * large picture with its lineage, name, description and apparatus, or, when
+ * nothing is selected, six well-known groups as picture cards; then the
+ * EXPLORER, the tree or the card grid, full width, with a picture on every
+ * row; then the rank legend and the collapsed Sources block.
+ *
+ * What did not change: the data flow. The tree ships to family rank, a
+ * family's genera come from its static genera/{id}.json when expanded, and
+ * species under a genus load LIVE from ChecklistBank — the documented
+ * render-time exception. Search covers the loaded static index and, when
+ * that has no hit, a live Catalogue of Life name search, labelled as live.
+ * On small viewports the plate also opens as a bottom sheet (§44.4).
  */
 
 const QUICK_START = [
@@ -487,6 +496,52 @@ export function TaxonomyPage() {
     [ensureChildren],
   )
 
+  /**
+   * The plate sits ABOVE the explorer, so selecting a taxon forty rows down
+   * a desktop tree would change a panel the reader cannot see — the same
+   * complaint §44.4 fixed on phones with the bottom sheet, and the one
+   * thing the old sticky aside did better. If the plate is less than half
+   * in view when the selection changes, bring it to the reader (and honour
+   * prefers-reduced-motion by jumping instead of gliding). On compact
+   * viewports the sheet already does this, so the effect stands down.
+   */
+  const plateRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (selectedId === null || isNarrow) return
+    const element = plateRef.current
+    if (!element) return
+    const box = element.getBoundingClientRect()
+    const shown =
+      Math.min(box.bottom, window.innerHeight) - Math.max(box.top, 0)
+    if (shown > Math.min(box.height, window.innerHeight) * 0.5) return
+    element.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'auto'
+        : 'smooth',
+      block: 'start',
+    })
+  }, [selectedId, isNarrow])
+
+  const quickStart = useMemo(() => {
+    if (!file) return []
+    const wanted = new Map<string, string>(
+      QUICK_START.map(([label, name]) => [name, label]),
+    )
+    const found = new Map<string, TaxonNode>()
+    for (const node of index.byId.values()) {
+      const label = wanted.get(node.name)
+      if (label !== undefined && !found.has(node.name)) found.set(node.name, node)
+      if (found.size === wanted.size) break
+    }
+    return QUICK_START.flatMap(([label, name]) => {
+      const node = found.get(name)
+      return node ? [{ label, node }] : []
+    })
+  }, [file, index])
+
+  /** One tree row: a picture, the name, its rank and counts. The caret
+      alone toggles; the row selects and opens. Rows are >=44px tall and
+      the carets >=44px wide on touch — Andy reads this on a phone. */
   function renderNode(node: TaxonNode, depth: number): React.ReactNode {
     const children = childrenOf(node)
     const expandable = isExpandable(node)
@@ -501,9 +556,8 @@ export function TaxonomyPage() {
     return (
       <li key={node.id || 'root'}>
         <div
-          className="flex items-start rounded"
+          className="tax-row flex items-stretch rounded-sm"
           style={{
-            paddingLeft: `${depth * 18}px`,
             background: isSelected ? 'var(--control-selected-bg)' : 'transparent',
             color: isSelected ? 'var(--control-selected-text)' : 'var(--text)',
           }}
@@ -514,11 +568,11 @@ export function TaxonomyPage() {
             aria-expanded={expandable ? isOpen : undefined}
             aria-label={expandable ? `${isOpen ? 'Collapse' : 'Expand'} ${node.name}` : undefined}
             tabIndex={expandable ? 0 : -1}
-            className="flex w-7 shrink-0 items-center justify-center self-stretch font-sans text-xs"
+            className="flex w-8 shrink-0 items-center justify-center self-stretch font-sans text-xs"
             style={{
-              color: 'var(--text-muted)',
+              color: isSelected ? 'var(--control-selected-text)' : 'var(--text-muted)',
               visibility: expandable ? 'visible' : 'hidden',
-              minHeight: 32,
+              minHeight: 44,
             }}
           >
             <span
@@ -536,61 +590,69 @@ export function TaxonomyPage() {
             type="button"
             onClick={() => activate(node)}
             aria-current={isSelected ? 'true' : undefined}
-            className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-0.5 rounded py-1 pr-1.5 text-left text-sm"
-            style={{ minHeight: 32 }}
+            className="flex min-w-0 flex-1 items-center gap-2.5 rounded-sm py-1 pr-2 text-left text-sm"
+            style={{ minHeight: 44 }}
           >
-            <span className="font-medium">
-              <TaxonName node={node} />
+            <span
+              className="shrink-0 overflow-hidden rounded-sm"
+              style={{ boxShadow: `0 0 0 1px ${rankAccent(node.rank)}` }}
+            >
+              <TaxonThumb node={node} slot="row" />
             </span>
-            {node.common && (
-              <span style={{ color: 'var(--text-muted)' }}>
-                {capitalizeFirst(node.common)}
+            <span className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-0.5">
+              <span className="min-w-0 break-words font-medium">
+                <TaxonName node={node} />
               </span>
-            )}
-            <RankChip rank={node.rank} />
-            {count && (
-              <span
-                className="font-sans text-xs tabular-nums"
-                style={{ color: 'var(--text-muted)' }}
-              >
-                {count}
-              </span>
-            )}
-            {node.note && <Chip tone="flag">contested</Chip>}
-            {node.provisional && <Chip>provisional</Chip>}
-            {node.extinct && <Chip title="Catalogue of Life marks this taxon extinct">extinct</Chip>}
-            {node.truncated && !liveList && <Chip>list capped</Chip>}
-            {node.live && <Chip title="Loaded live from Catalogue of Life">live</Chip>}
-            {node.pending && <Chip title="Wikipedia not looked up yet">not yet enriched</Chip>}
+              {node.common && (
+                <span
+                  style={{
+                    color: isSelected
+                      ? 'var(--control-selected-text)'
+                      : 'var(--text-muted)',
+                  }}
+                >
+                  {capitalizeFirst(node.common)}
+                </span>
+              )}
+              <RankChip rank={node.rank} />
+              {count && (
+                <span
+                  className="font-sans text-xs tabular-nums"
+                  style={{
+                    color: isSelected
+                      ? 'var(--control-selected-text)'
+                      : 'var(--text-muted)',
+                  }}
+                >
+                  {count}
+                </span>
+              )}
+              {node.note && <Chip tone="flag">contested</Chip>}
+              {node.provisional && <Chip>provisional</Chip>}
+              {node.extinct && <Chip title="Catalogue of Life marks this taxon extinct">extinct</Chip>}
+              {node.truncated && !liveList && <Chip>list capped</Chip>}
+              {node.live && <Chip title="Loaded live from Catalogue of Life">live</Chip>}
+              {node.pending && <Chip title="Wikipedia not looked up yet">not yet enriched</Chip>}
+            </span>
           </button>
         </div>
-        {isOpen && (loading || pendingKind) && !error && (
-          <p
-            className="py-1 text-xs"
-            style={{ paddingLeft: `${28 + depth * 18}px`, color: 'var(--text-muted)' }}
-            aria-live="polite"
-          >
-            {pendingKind === 'live' || (loading && liveLoaded.has(node.id) === false && node.gen === undefined)
-              ? 'Loading live from Catalogue of Life…'
-              : 'Loading genera…'}
-          </p>
-        )}
-        {isOpen && error && (
-          <p
-            className="py-1 text-xs"
-            style={{ paddingLeft: `${28 + depth * 18}px`, color: 'var(--text-muted)' }}
-          >
-            {error}
-          </p>
-        )}
-        {isOpen && children.length > 0 && (
-          <ul>
+        {isOpen && (
+          <ul className={`tax-branch${depth >= 7 ? ' tax-branch-flat' : ''}`}>
+            {(loading || pendingKind) && !error && (
+              <li className="py-1.5 pl-2 text-xs" style={{ color: 'var(--text-muted)' }} aria-live="polite">
+                {pendingKind === 'live' || (loading && !liveLoaded.has(node.id) && node.gen === undefined)
+                  ? 'Loading live from Catalogue of Life…'
+                  : 'Loading genera…'}
+              </li>
+            )}
+            {error && (
+              <li className="py-1.5 pl-2 text-xs" style={{ color: 'var(--text-muted)' }}>
+                {error}
+              </li>
+            )}
             {children.map((child) => renderNode(child, depth + 1))}
-            {node.truncated && !liveList && (
-              <li
-                className="py-1 text-xs"
-                style={{ paddingLeft: `${28 + (depth + 1) * 18}px`, color: 'var(--text-muted)' }}
-              >
+            {children.length > 0 && node.truncated && !liveList && (
+              <li className="py-1.5 pl-2 text-xs" style={{ color: 'var(--text-muted)' }}>
                 Static list capped at {children.length}.{' '}
                 <button
                   type="button"
@@ -601,25 +663,19 @@ export function TaxonomyPage() {
                 </button>
               </li>
             )}
-            {node.truncated && liveList && (
-              <li
-                className="py-1 text-xs"
-                style={{ paddingLeft: `${28 + (depth + 1) * 18}px`, color: 'var(--text-muted)' }}
-              >
+            {children.length > 0 && node.truncated && liveList && (
+              <li className="py-1.5 pl-2 text-xs" style={{ color: 'var(--text-muted)' }}>
                 Live list capped at {children.length}; the rest is on the
                 Catalogue of Life record.
               </li>
             )}
+            {!loading && !pendingKind && !error && children.length === 0 && (
+              <li className="py-1.5 pl-2 text-xs" style={{ color: 'var(--text-muted)' }}>
+                No genus-rank children recorded in Catalogue of Life for this
+                taxon.
+              </li>
+            )}
           </ul>
-        )}
-        {isOpen && !loading && !pendingKind && !error && children.length === 0 && (
-          <p
-            className="py-1 text-xs"
-            style={{ paddingLeft: `${28 + depth * 18}px`, color: 'var(--text-muted)' }}
-          >
-            No genus-rank children recorded in Catalogue of Life for this
-            taxon.
-          </p>
         )}
       </li>
     )
@@ -643,9 +699,12 @@ export function TaxonomyPage() {
     }
     return (
       <div>
-        <nav aria-label="Explorer path" className="flex flex-wrap items-center gap-1 text-sm">
+        <nav
+          aria-label="Explorer path"
+          className="tax-rail -mx-1 flex items-center gap-1 overflow-x-auto px-1 pb-1 text-sm"
+        >
           {crumbs.map((node, position) => (
-            <span key={node.id || 'root'} className="flex items-center gap-1">
+            <span key={node.id || 'root'} className="flex shrink-0 items-center gap-1">
               {position > 0 && (
                 <span aria-hidden="true" style={{ color: 'var(--text-muted)' }}>
                   ›
@@ -653,8 +712,8 @@ export function TaxonomyPage() {
               )}
               <button
                 type="button"
-                className="rounded border px-1.5 py-0.5 font-sans text-xs"
-                style={rankChipStyle(node.rank)}
+                className="whitespace-nowrap rounded-sm border px-2 py-1 font-sans text-xs"
+                style={{ ...rankChipStyle(node.rank), color: 'var(--text)', minHeight: 32 }}
                 onClick={() => {
                   setCardRootId(node.id)
                   select(node)
@@ -682,10 +741,11 @@ export function TaxonomyPage() {
             </button>
           </p>
         )}
-        <ul className="mt-3 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 xl:grid-cols-4">
+        <ul className="mt-3 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {children.map((child) => {
             const expandableChild = isExpandable(child)
             const label = countLabel(child)
+            const isSelected = selectedId === child.id
             return (
               <li key={child.id}>
                 <button
@@ -697,23 +757,37 @@ export function TaxonomyPage() {
                       void ensureChildren(child).catch(() => undefined)
                     }
                   }}
-                  className="block w-full rounded-lg border text-left"
+                  className="tax-card block w-full overflow-hidden rounded-sm border text-left"
                   style={{
-                    borderColor:
-                      selectedId === child.id ? 'var(--accent)' : 'var(--border)',
+                    borderColor: isSelected ? 'var(--supernova)' : 'var(--border)',
+                    boxShadow: isSelected ? '0 0 0 2px var(--supernova)' : 'var(--shadow-card)',
                     background: 'var(--surface-raised)',
-                    boxShadow: 'var(--shadow-card)',
                   }}
                 >
-                  <TaxonThumb node={child} size="card" />
+                  <TaxonThumb node={child} slot="card" />
+                  <div
+                    aria-hidden="true"
+                    className="h-[2px] w-full"
+                    style={{ background: rankAccent(child.rank) }}
+                  />
                   <div className="px-2.5 py-2">
-                    <p className="flex flex-wrap items-center gap-1.5 text-sm font-medium">
+                    <p className="truncate text-sm font-medium">
                       <TaxonName node={child} />
-                      <RankChip rank={child.rank} />
-                      {child.live && <Chip>live</Chip>}
                     </p>
-                    <p className="mt-0.5 text-xs" style={{ color: 'var(--text-muted)' }}>
-                      {child.common ? capitalizeFirst(child.common) : (label ?? ' ')}
+                    <p className="mt-0.5 truncate text-xs" style={{ color: 'var(--text-muted)' }}>
+                      {child.common ? capitalizeFirst(child.common) : ' '}
+                    </p>
+                    <p className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                      <RankChip rank={child.rank} />
+                      {label && (
+                        <span
+                          className="font-sans text-[11px] tabular-nums"
+                          style={{ color: 'var(--text-muted)' }}
+                        >
+                          {label}
+                        </span>
+                      )}
+                      {child.live && <Chip>live</Chip>}
                     </p>
                   </div>
                 </button>
@@ -722,7 +796,7 @@ export function TaxonomyPage() {
           })}
           {children.length === 0 && !pendingKind && (
             <li className="col-span-full text-sm" style={{ color: 'var(--text-muted)' }}>
-              No further subdivisions here — see the detail panel.
+              No further subdivisions here — see the plate above.
             </li>
           )}
         </ul>
@@ -730,28 +804,38 @@ export function TaxonomyPage() {
     )
   }
 
-  const detail =
-    file && selected ? (
-      <TaxonDetail
-        node={selected}
-        parent={parentOf(selected)}
-        lineage={lineage}
-        file={file}
-        extract={extract.id === selected.id ? extract.text : null}
-        extractLoading={extract.id === selected.id && extract.loading}
-        onReveal={reveal}
-        onRankInfo={setRankInfo}
-        onLoadLive={loadLiveList}
-        liveLoaded={liveLoaded.has(selected.id)}
-      />
-    ) : null
+  const detailProps =
+    file && selected
+      ? {
+          node: selected,
+          parent: parentOf(selected),
+          lineage,
+          file,
+          extract: extract.id === selected.id ? extract.text : null,
+          extractLoading: extract.id === selected.id && extract.loading,
+          onReveal: reveal,
+          onRankInfo: setRankInfo,
+          onLoadLive: loadLiveList,
+          liveLoaded: liveLoaded.has(selected.id),
+        }
+      : null
+
+  const sourceCount =
+    (file?.imageSources?.length ?? 0) + 4 + RANK_SOURCES.length
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-10">
+    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
       <header>
-        <h1 className="text-2xl font-semibold tracking-tight">Taxonomy</h1>
-        <p className="mt-2 max-w-3xl text-sm" style={{ color: 'var(--text-muted)' }}>
-          The tree of life as recorded by the{' '}
+        <p
+          className="font-sans text-[10px] uppercase tracking-[0.18em]"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          The tree of life
+          {file ? ` · Catalogue of Life, release ${file.release}` : ''}
+        </p>
+        <h1 className="mt-1 tracking-tight">Taxonomy</h1>
+        <p className="mt-3 max-w-3xl text-[0.95rem] leading-relaxed">
+          Every described organism, as the{' '}
           <a
             className="underline underline-offset-2"
             href={file?.col_dataset_url ?? 'https://www.checklistbank.org/'}
@@ -759,15 +843,21 @@ export function TaxonomyPage() {
             rel="noreferrer"
           >
             Catalogue of Life
-          </a>
-          {file ? ` (release ${file.release})` : ''}, from the three domains
-          down to every family, genus and species: genera load when a family
-          is opened
-          {file?.generaTotal ? ` (${compactNumber.format(file.generaTotal)} genera in ${compactNumber.format(file.generaFiles ?? 0)} family files)` : ''}
-          , and species load live from the Catalogue of Life API when a
-          genus is opened. Disputed placements are marked <em>contested</em>{' '}
-          — the tree follows its source rather than settling arguments the
-          source has not settled.
+          </a>{' '}
+          records it: the three domains down to family in one tree,
+          {file?.generaTotal
+            ? ` ${compactNumber.format(file.generaTotal)} genera in ${compactNumber.format(file.generaFiles ?? 0)} family files loaded on demand,`
+            : ''}{' '}
+          and species fetched live when a genus is opened.
+        </p>
+        <p
+          className="mt-1.5 max-w-3xl text-xs leading-snug"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          Disputed placements are marked <em>contested</em> — the tree
+          follows its source rather than settling arguments the source has
+          not settled. Every picture is freely licensed and credited; a
+          taxon with none says so.
         </p>
       </header>
 
@@ -782,215 +872,295 @@ export function TaxonomyPage() {
         </p>
       )}
 
+      {/* `taxonomy-main` wraps everything the bottom sheet makes inert while
+          it is open (§44.4) — it must be the whole page body, not one strip
+          of it. */}
       {file && (
-        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_24rem]">
-          <div id="taxonomy-main">
-            <div className="flex flex-wrap items-center gap-2 text-sm">
-              <fieldset className="flex items-center gap-2">
-                <legend className="sr-only">View</legend>
-                {(['tree', 'cards'] as const).map((value) => (
-                  <button
-                    key={value}
-                    type="button"
-                    aria-pressed={view === value}
-                    onClick={() => {
-                      setView(value)
-                      if (value === 'cards') {
-                        const node = selectedId !== null ? index.byId.get(selectedId) : undefined
-                        setCardRootId(
-                          node && isExpandable(node)
-                            ? node.id
-                            : (index.parents.get(selectedId ?? '') ?? ''),
-                        )
-                      }
-                    }}
-                    className="rounded border px-2.5 py-1"
-                    style={{
-                      borderColor: 'var(--border)',
-                      background: view === value ? 'var(--control-selected-bg)' : 'transparent',
-                      color: view === value ? 'var(--control-selected-text)' : 'inherit',
-                    }}
-                  >
-                    {value === 'tree' ? 'Tree' : 'Cards'}
-                  </button>
-                ))}
-              </fieldset>
-              <label className="min-w-48 flex-1">
-                <span className="sr-only">Search taxa</span>
-                <input
-                  type="search"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search by scientific or common name…"
-                  className="w-full rounded border px-3 py-1.5 text-sm"
-                  style={{
-                    borderColor: 'var(--border)',
-                    background: 'var(--surface-raised)',
-                    color: 'var(--text)',
-                  }}
-                />
-              </label>
-              <button
-                type="button"
-                onClick={randomTaxon}
-                className="rounded border px-2.5 py-1"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                Random taxon
-              </button>
-            </div>
-
-            <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs">
-              <span style={{ color: 'var(--text-muted)' }}>Start from:</span>
-              {QUICK_START.map(([label, name]) => (
+        <div id="taxonomy-main">
+          {/* ---- toolbar ------------------------------------------------ */}
+          <div className="mt-6 flex flex-wrap items-center gap-2 text-sm">
+            <label className="order-first min-w-0 flex-1 basis-full sm:order-none sm:max-w-md sm:basis-72">
+              <span className="sr-only">Search taxa</span>
+              <input
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search by scientific or common name…"
+                className="w-full rounded-sm border px-3 text-sm"
+                style={{
+                  borderColor: 'var(--border-strong)',
+                  background: 'var(--surface-raised)',
+                  color: 'var(--text)',
+                  minHeight: 40,
+                }}
+              />
+            </label>
+            <fieldset className="flex items-center gap-1.5">
+              <legend className="sr-only">View</legend>
+              {(['tree', 'cards'] as const).map((value) => (
                 <button
-                  key={name}
+                  key={value}
                   type="button"
-                  className="rounded border px-1.5 py-0.5 font-sans"
-                  style={{ borderColor: 'var(--border)' }}
+                  aria-pressed={view === value}
                   onClick={() => {
-                    for (const node of index.byId.values()) {
-                      if (node.name === name) {
-                        reveal(node)
-                        break
-                      }
+                    setView(value)
+                    if (value === 'cards') {
+                      const node = selectedId !== null ? index.byId.get(selectedId) : undefined
+                      setCardRootId(
+                        node && isExpandable(node)
+                          ? node.id
+                          : (index.parents.get(selectedId ?? '') ?? ''),
+                      )
                     }
                   }}
+                  className="rounded-sm border px-3"
+                  style={{
+                    borderColor: view === value ? 'var(--supernova)' : 'var(--border-strong)',
+                    background: view === value ? 'var(--control-selected-bg)' : 'transparent',
+                    color: view === value ? 'var(--control-selected-text)' : 'inherit',
+                    minHeight: 40,
+                  }}
                 >
-                  {label}
+                  {value === 'tree' ? 'Tree' : 'Cards'}
                 </button>
               ))}
-            </div>
+            </fieldset>
+            <button
+              type="button"
+              onClick={randomTaxon}
+              className="rounded-sm border px-3"
+              style={{ borderColor: 'var(--border-strong)', minHeight: 40 }}
+            >
+              Random taxon
+            </button>
+          </div>
 
-            <RankLegend
-              rankCounts={rankCounts}
-              rankInfoOpen={rankInfo}
-              onRankInfo={setRankInfo}
-            />
-
-            {results ? (
-              <div className="mt-4">
-                <ul aria-label="Search results">
-                  {results.length === 0 && liveSearch.status !== 'searching' && liveSearch.hits.length === 0 && (
-                    <li className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                      No taxon matches “{query.trim()}” in the loaded tree
-                      {liveSearch.status === 'ready' ? ' or in the live Catalogue of Life search.' : '.'}
-                    </li>
-                  )}
-                  {results.map((node) => (
-                    <li key={node.id}>
-                      <button
-                        type="button"
-                        onClick={() => reveal(node)}
-                        className="flex w-full flex-wrap items-baseline gap-x-2 rounded px-1.5 py-1 text-left text-sm"
-                      >
-                        <span className="font-medium">
-                          <TaxonName node={node} />
-                        </span>
-                        {node.common && (
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            {capitalizeFirst(node.common)}
-                          </span>
-                        )}
-                        <RankChip rank={node.rank} />
-                        <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                          {lineageOf(node)}
-                        </span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                {(liveSearch.status !== 'idle') && (
-                  <section className="mt-3" aria-label="Live Catalogue of Life search">
-                    <h3
-                      className="font-sans text-[10px] font-medium uppercase tracking-widest"
-                      style={{ color: 'var(--text-muted)' }}
-                    >
-                      Live from Catalogue of Life
-                      {liveSearch.status === 'searching' ? ' — searching…' : ''}
-                    </h3>
-                    {liveSearch.status === 'error' && (
-                      <p className="mt-1 text-sm" style={{ color: 'var(--text-muted)' }}>
-                        The live search could not reach ChecklistBank.
-                      </p>
-                    )}
-                    {liveSearch.status === 'ready' && liveSearch.hits.length === 0 && results.length > 0 && (
-                      <p className="mt-1 text-sm" style={{ color: 'var(--text-muted)' }}>
-                        No further matches beyond the loaded tree.
-                      </p>
-                    )}
-                    <ul className="mt-1">
-                      {liveSearch.hits.map((hit) => (
-                        <li key={hit.id}>
-                          <button
-                            type="button"
-                            onClick={() => void revealLive(hit)}
-                            className="flex w-full flex-wrap items-baseline gap-x-2 rounded px-1.5 py-1 text-left text-sm"
-                          >
-                            <span className="font-medium">
-                              {hit.rank === 'species' || hit.rank === 'subspecies' || hit.rank === 'genus' ? (
-                                <i>{hit.name}</i>
-                              ) : (
-                                hit.name
-                              )}
-                            </span>
-                            {hit.common && (
-                              <span style={{ color: 'var(--text-muted)' }}>
-                                {capitalizeFirst(hit.common)}
-                              </span>
-                            )}
-                            <RankChip rank={hit.rank} />
-                            <Chip>live</Chip>
-                            <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                              {hit.classification
-                                .slice(0, -1)
-                                .map((ancestor) => ancestor.name)
-                                .join(' › ')}
-                            </span>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                )}
-              </div>
-            ) : view === 'tree' ? (
-              <ul className="mt-4" aria-label="Tree of life">
-                {renderNode(file.tree, 0)}
-              </ul>
+          {/* ---- the plate ---------------------------------------------- */}
+          <div ref={plateRef} className="mt-5 scroll-mt-4">
+            {detailProps ? (
+              <TaxonPlate layout="plate" {...detailProps} />
             ) : (
-              <div className="mt-4">{renderCards()}</div>
+              <PlateGallery
+                entries={quickStart}
+                onPick={reveal}
+                note={
+                  'Pictures are free-licensed only — the taxon’s own Wikidata or Wikipedia photo first, then its Wikimedia Commons category, then GBIF occurrence media, iNaturalist, and finally a PhyloPic silhouette, always labelled as a silhouette. A taxon with no picture of its own borrows a photographed member’s, labelled “Representative”; a taxon with none at all says so. Nothing here is AI-generated.'
+                }
+              />
             )}
           </div>
 
-          <aside className="hidden lg:block">
+          {/* ---- the explorer ------------------------------------------- */}
+          <section className="mt-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h2 className="font-display text-xl">
+                {results ? 'Search results' : view === 'tree' ? 'The tree' : 'Explorer'}
+              </h2>
+              {!results && (
+                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                  {view === 'tree'
+                    ? 'Tap a caret to open a branch, a name to open its plate.'
+                    : 'Tap a card to go a level deeper.'}
+                </p>
+              )}
+            </div>
             <div
-              className="rounded-xl border px-5 py-5 lg:sticky lg:top-4"
+              className="mt-3 rounded-lg border px-2 py-2 sm:px-4 sm:py-3"
               style={{
                 borderColor: 'var(--border)',
                 background: 'var(--surface-raised)',
                 boxShadow: 'var(--shadow-card)',
               }}
             >
-              {detail ?? (
-                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                  Select a taxon for its photo, description, rank, lineage and
-                  links. {file.imageNote ?? ''}
-                </p>
+              {results ? (
+                <div>
+                  <ul aria-label="Search results" className="list-none p-0">
+                    {results.length === 0 && liveSearch.status !== 'searching' && liveSearch.hits.length === 0 && (
+                      <li className="px-1 py-2 text-sm" style={{ color: 'var(--text-muted)' }}>
+                        No taxon matches “{query.trim()}” in the loaded tree
+                        {liveSearch.status === 'ready' ? ' or in the live Catalogue of Life search.' : '.'}
+                      </li>
+                    )}
+                    {results.map((node) => (
+                      <li key={node.id}>
+                        <button
+                          type="button"
+                          onClick={() => reveal(node)}
+                          className="tax-row flex w-full items-center gap-2.5 rounded-sm px-1 py-1 text-left text-sm"
+                          style={{ minHeight: 44 }}
+                        >
+                          <span
+                            className="shrink-0 overflow-hidden rounded-sm"
+                            style={{ boxShadow: `0 0 0 1px ${rankAccent(node.rank)}` }}
+                          >
+                            <TaxonThumb node={node} slot="row" />
+                          </span>
+                          <span className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
+                            <span className="font-medium">
+                              <TaxonName node={node} />
+                            </span>
+                            {node.common && (
+                              <span style={{ color: 'var(--text-muted)' }}>
+                                {capitalizeFirst(node.common)}
+                              </span>
+                            )}
+                            <RankChip rank={node.rank} />
+                            <span className="truncate text-xs" style={{ color: 'var(--text-muted)' }}>
+                              {lineageOf(node)}
+                            </span>
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  {liveSearch.status !== 'idle' && (
+                    <section className="mt-3" aria-label="Live Catalogue of Life search">
+                      <h3
+                        className="font-sans text-[10px] font-medium uppercase tracking-widest"
+                        style={{ color: 'var(--text-muted)' }}
+                      >
+                        Live from Catalogue of Life
+                        {liveSearch.status === 'searching' ? ' — searching…' : ''}
+                      </h3>
+                      {liveSearch.status === 'error' && (
+                        <p className="mt-1 text-sm" style={{ color: 'var(--text-muted)' }}>
+                          The live search could not reach ChecklistBank.
+                        </p>
+                      )}
+                      {liveSearch.status === 'ready' && liveSearch.hits.length === 0 && results.length > 0 && (
+                        <p className="mt-1 text-sm" style={{ color: 'var(--text-muted)' }}>
+                          No further matches beyond the loaded tree.
+                        </p>
+                      )}
+                      <ul className="mt-1 list-none p-0">
+                        {liveSearch.hits.map((hit) => (
+                          <li key={hit.id}>
+                            <button
+                              type="button"
+                              onClick={() => void revealLive(hit)}
+                              className="tax-row flex w-full flex-wrap items-baseline gap-x-2 rounded-sm px-1.5 py-1 text-left text-sm"
+                              style={{ minHeight: 44 }}
+                            >
+                              <span className="font-medium">
+                                {hit.rank === 'species' || hit.rank === 'subspecies' || hit.rank === 'genus' ? (
+                                  <i>{hit.name}</i>
+                                ) : (
+                                  hit.name
+                                )}
+                              </span>
+                              {hit.common && (
+                                <span style={{ color: 'var(--text-muted)' }}>
+                                  {capitalizeFirst(hit.common)}
+                                </span>
+                              )}
+                              <RankChip rank={hit.rank} />
+                              <Chip>live</Chip>
+                              <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                                {hit.classification
+                                  .slice(0, -1)
+                                  .map((ancestor) => ancestor.name)
+                                  .join(' › ')}
+                              </span>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+                </div>
+              ) : view === 'tree' ? (
+                <ul className="list-none p-0" aria-label="Tree of life">
+                  {renderNode(file.tree, 0)}
+                </ul>
+              ) : (
+                renderCards()
               )}
             </div>
-          </aside>
+          </section>
+
+          {/* ---- rank legend -------------------------------------------- */}
+          <section className="mt-6">
+            <RankLegend
+              rankCounts={rankCounts}
+              rankInfoOpen={rankInfo}
+              onRankInfo={setRankInfo}
+            />
+          </section>
+
+          {/* ---- sources, collapsed ------------------------------------- */}
+          <div className="mt-8">
+            <CollapsibleSources
+              count={sourceCount}
+              label="Sources — the tree, the pictures and the rank system"
+            >
+              <p className="mb-2 max-w-3xl text-xs leading-snug" style={{ color: 'var(--text-muted)' }}>
+                {file.imageNote}
+              </p>
+              <ul className="list-none space-y-1 p-0 text-xs">
+                <li>
+                  <a className="underline underline-offset-2" href={file.col_dataset_url} target="_blank" rel="noreferrer">
+                    {file.source}
+                  </a>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    {' '}· release {file.release} · CC BY 4.0 — the backbone,
+                    the counts and the live species lists
+                  </span>
+                </li>
+                <li>
+                  <a className="underline underline-offset-2" href="https://www.wikidata.org/wiki/Property:P10585" target="_blank" rel="noreferrer">
+                    Wikidata (P10585 Catalogue of Life ID, P225 taxon name)
+                  </a>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    {' '}· CC0 — Wikipedia links, common names, NCBI/OTT ids,
+                    first appearance
+                  </span>
+                </li>
+                <li>
+                  <a className="underline underline-offset-2" href="https://en.wikipedia.org/" target="_blank" rel="noreferrer">
+                    English Wikipedia intro extracts
+                  </a>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    {' '}· CC BY-SA 4.0
+                    {file.extractsRetrieved ? ` · retrieved ${file.extractsRetrieved}` : ''}
+                  </span>
+                </li>
+                {(file.imageSources ?? []).map((source) => (
+                  <li key={source.url}>
+                    <a className="underline underline-offset-2" href={source.url} target="_blank" rel="noreferrer">
+                      {source.label}
+                    </a>
+                    <span style={{ color: 'var(--text-muted)' }}> · {source.licence}</span>
+                  </li>
+                ))}
+                <li>
+                  <a className="underline underline-offset-2" href="https://api.checklistbank.org" target="_blank" rel="noreferrer">
+                    ChecklistBank API (live species lists and name search)
+                  </a>
+                  <span style={{ color: 'var(--text-muted)' }}>
+                    {' '}· CC BY 4.0 · the one render-time fetch on this page
+                  </span>
+                </li>
+                {RANK_SOURCES.map((source) => (
+                  <li key={source.url}>
+                    <a className="underline underline-offset-2" href={source.url} target="_blank" rel="noreferrer">
+                      {source.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </CollapsibleSources>
+          </div>
         </div>
       )}
 
-      {file && selected && (
+      {file && selected && detailProps && (
         <DetailSheet
           open={isNarrow && sheetOpen}
           title={`${selected.rank} · ${selected.name}`}
           rank={selected.rank}
           onClose={() => setSheetOpen(false)}
         >
-          {detail}
+          <TaxonPlate layout="sheet" {...detailProps} />
         </DetailSheet>
       )}
     </div>

@@ -20,6 +20,15 @@
  *   wiki:null), and a non-pending node's wiki/img are real lookups.
  * - Every rank string in the data is one the rank system defines or can
  *   compose (the RANK_LADDER below mirrors ChecklistBank's vocabulary).
+ * - ROUND 14 (§72), the widened picture ladder: every picture carries a
+ *   LICENCE, an ATTRIBUTION slot (author, explicitly null when the source
+ *   names nobody -- the UI renders "Unknown author") and a SOURCE LINK; its
+ *   `src` is one of the four the ladder can use and its `kind` one of the
+ *   three it can produce; a PhyloPic picture is flagged `kind: "silhouette"`
+ *   so the UI can never pass a drawing off as a photograph; and a picture
+ *   bubbled up from a descendant (`bub`) always names that descendant
+ *   (`rep`). The gate also prints coverage so the numbers in the decisions
+ *   record can be re-derived from the artifacts at any time.
  */
 
 import { createHash } from 'node:crypto'
@@ -90,6 +99,63 @@ function rankDefined(rank) {
   )
 }
 
+/** Round 14 §72: the picture contract. */
+const IMAGE_SOURCES = new Set(['commons', 'gbif', 'inaturalist', 'phylopic'])
+const IMAGE_KINDS = new Set(['photo', 'illustration', 'silhouette'])
+const FREE_LICENCE =
+  /^(public domain|cc0|cc by(-sa)?\b)/i
+const imageStats = {
+  total: 0,
+  bySource: {},
+  byKind: {},
+  silhouettes: 0,
+  bubbled: 0,
+  noAuthor: 0,
+}
+
+function checkImage(img, where) {
+  imageStats.total += 1
+  const source = img.src ?? 'commons'
+  const kind = img.kind ?? 'photo'
+  imageStats.bySource[source] = (imageStats.bySource[source] ?? 0) + 1
+  imageStats.byKind[kind] = (imageStats.byKind[kind] ?? 0) + 1
+  if (kind === 'silhouette') imageStats.silhouettes += 1
+  if (img.bub) imageStats.bubbled += 1
+  if (img.author === null || img.author === undefined) imageStats.noAuthor += 1
+
+  if (typeof img.license !== 'string' || img.license.trim() === '') {
+    fail(`${where}: picture has no licence recorded`)
+  } else if (!FREE_LICENCE.test(img.license.trim())) {
+    fail(`${where}: picture licence "${img.license}" is not one of the free licences the gate accepts (public domain / CC0 / CC BY / CC BY-SA)`)
+  }
+  if (typeof img.url !== 'string' || !/^https?:\/\//.test(img.url)) {
+    fail(`${where}: picture has no usable url`)
+  }
+  if (typeof img.page !== 'string' || !/^https?:\/\//.test(img.page)) {
+    fail(`${where}: picture has no source link (page)`)
+  }
+  if (!('author' in img)) {
+    fail(`${where}: picture has no author key — attribution must be explicit, null included`)
+  } else if (img.author !== null && typeof img.author !== 'string') {
+    fail(`${where}: picture author is neither a string nor null`)
+  }
+  if (img.src !== undefined && !IMAGE_SOURCES.has(img.src)) {
+    fail(`${where}: picture src "${img.src}" is not a source the ladder can use`)
+  }
+  if (img.kind !== undefined && !IMAGE_KINDS.has(img.kind)) {
+    fail(`${where}: picture kind "${img.kind}" is not photo/illustration/silhouette`)
+  }
+  if (source === 'phylopic' && kind !== 'silhouette') {
+    fail(`${where}: a PhyloPic picture must be flagged kind:"silhouette" — it is a drawing, never a photograph`)
+  }
+  if (img.rep !== undefined && (typeof img.rep !== 'string' || img.rep === '')) {
+    fail(`${where}: representative picture lacks the name of the taxon it shows`)
+  }
+  if (img.bub && !img.rep) {
+    fail(`${where}: picture is marked as borrowed from a descendant but names none`)
+  }
+}
+
 function checkNode(node, where, kind) {
   if (!node.name || typeof node.name !== 'string') {
     fail(`${where}: node ${node.id ?? '?'} has no name`)
@@ -118,13 +184,8 @@ function checkNode(node, where, kind) {
   }
   if (!('img' in node)) {
     fail(`${where}: ${node.name} (${node.rank}) lacks the img key`)
-  } else if (node.img !== null && !node.img.license) {
-    fail(`${where}: ${node.name} image has no licence recorded`)
-  } else if (
-    node.img?.rep !== undefined &&
-    (typeof node.img.rep !== 'string' || node.img.rep === '')
-  ) {
-    fail(`${where}: ${node.name} representative photo lacks its source name`)
+  } else if (node.img !== null) {
+    checkImage(node.img, `${where}: ${node.name}`)
   }
   // §44.3: a description, with its source recorded.
   const source = node.descSrc
@@ -273,6 +334,23 @@ console.log(
 console.log(
   `  genera descriptions: wikipedia ${generaStats.desc.wikipedia}, wikidata ${generaStats.desc.wikidata}, ` +
     `col ${generaStats.desc.col}, generated ${generaStats.desc.generated} (all flagged)`,
+)
+const byPairs = (record) =>
+  Object.entries(record)
+    .sort((a, b) => b[1] - a[1])
+    .map(([key, count]) => `${key} ${count}`)
+    .join(', ')
+console.log(
+  `  pictures: ${imageStats.total} across tree and genera files — ` +
+    `by source ${byPairs(imageStats.bySource)}; by kind ${byPairs(imageStats.byKind)}; ` +
+    `${imageStats.bubbled} borrowed from a photographed member; ` +
+    `${imageStats.noAuthor} credited "Unknown author" (the source names nobody); ` +
+    `every one carries a free licence and a source link`,
+)
+console.log(
+  `  placeholders: tree ${stats.nodes - stats.withImage} of ${stats.nodes} nodes, ` +
+    `genera files ${generaStats.nodes - generaStats.withImage} of ${generaStats.nodes} ` +
+    `(${generaStats.pending} of those not yet looked up)`,
 )
 
 if (failures > 0) {

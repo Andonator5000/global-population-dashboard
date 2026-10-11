@@ -1,13 +1,18 @@
-import { useMemo, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 
 import { Unavailable } from '../components/viz/primitives'
 import {
   formatMa,
   useEvolutionChart,
   useEvolutionEvents,
+  useEvolutionTree,
   type EvolutionEvent,
   type IcsInterval,
 } from '../lib/evolution'
+
+// Round 14 (section 73): the tree of life through time, code-split so the
+// d3-zoom bundle loads only on this page.
+const TreeOfLife = lazy(() => import('../components/evolution/TreeOfLife'))
 
 /**
  * /evolution — the history of life (Phase 6; round-2 §40 rework).
@@ -170,8 +175,18 @@ function EventCard({ event }: { event: EvolutionEvent }) {
 export function EvolutionPage() {
   const chartState = useEvolutionChart()
   const eventsState = useEvolutionEvents()
+  const treeState = useEvolutionTree()
   const [showEpochNote] = useState(false)
   void showEpochNote
+  const [reducedMotion, setReducedMotion] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const onChange = () => setReducedMotion(media.matches)
+    media.addEventListener('change', onChange)
+    return () => media.removeEventListener('change', onChange)
+  }, [])
 
   const chart = chartState.status === 'ready' ? chartState.data : null
   const eventsFile = eventsState.status === 'ready' ? eventsState.data : null
@@ -334,6 +349,42 @@ export function EvolutionPage() {
           uncertainty the evidence supports.
         </p>
       </header>
+
+      {/* Round 14 (section 73): the tree of life through time. */}
+      <section className="mt-8" aria-labelledby="tree-of-life-heading">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h2 id="tree-of-life-heading" className="m-0 text-xl">
+            The tree of life through time
+          </h2>
+          <p className="m-0 text-xs" style={{ color: 'var(--text-muted)' }}>
+            Four billion years in one picture: where each lineage arose, which died out, and the two
+            mergers that built the complex cell.
+          </p>
+        </div>
+        {treeState.status === 'error' && (
+          <div className="mt-3">
+            <Unavailable what="Tree of life" source="the editorial tree file" />
+          </div>
+        )}
+        {treeState.status === 'loading' && (
+          <p className="mt-3 text-sm" style={{ color: 'var(--text-muted)' }}>
+            Growing the tree…
+          </p>
+        )}
+        {treeState.status === 'ready' && (
+          <Suspense
+            fallback={
+              <p className="mt-3 text-sm" style={{ color: 'var(--text-muted)' }}>
+                Growing the tree…
+              </p>
+            }
+          >
+            <TreeOfLife tree={treeState.data} chart={chart} reducedMotion={reducedMotion} />
+          </Suspense>
+        )}
+      </section>
+
+      <h2 className="mt-10 text-xl">Deep time, period by period</h2>
 
       {/* Round-2 §40.2: how the system works, collapsed by default. */}
       <details

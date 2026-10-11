@@ -189,6 +189,23 @@ export function Section({
   )
 }
 
+/**
+ * A value and its percent sign, locked together so they can never land on
+ * different lines (round 14, Andy's phone report 2026-10-10: "the percentage
+ * symbol is on a separate line from the percentage").
+ *
+ * This is needed even where the format string has no space before the "%" --
+ * a narrow fixed-width numeric column (e.g. a Breakdown row's share figure)
+ * inherits `overflow-wrap: break-word` from the `th, td` rule in index.css
+ * (set there so long entity/ecoregion names can wrap), and break-word will
+ * happily split an unbroken token like "76.26%" rather than let it overflow.
+ * `.nowrap-pct` (index.css) cancels that inheritance locally instead of
+ * loosening the th/td rule everywhere.
+ */
+export function Pct({ children }: { children: ReactNode }) {
+  return <span className="nowrap-pct">{children}</span>
+}
+
 export function StatTile({
   label,
   value,

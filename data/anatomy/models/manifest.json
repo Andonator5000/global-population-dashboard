@@ -222,10 +222,10 @@
           "id": "muscles",
           "label": "Muscles",
           "file": "anatomy/models/male-muscles.glb",
-          "bytes": 2126396,
-          "sha256": "f39ba4663f13af1e04c9bc0205a49e05208406b5e88ab1c23a31036ac2df01dc",
+          "bytes": 2575688,
+          "sha256": "3e88bb2cfae06512fe22e6f08fba2a4b3bc190f3b48897cb420812a298254d1b",
           "structures": 847,
-          "triangles": 863772,
+          "triangles": 1110234,
           "sourceTriangles": 2468747,
           "coverage": "full",
           "note": "skeletal muscles, tendons, fascia, bursae and tendon sheaths"
@@ -234,10 +234,10 @@
           "id": "skin",
           "label": "Skin",
           "file": "anatomy/models/male-skin.glb",
-          "bytes": 386924,
-          "sha256": "133e9cd2f477b99d9d7bfcdd0874ba79efd3676aee3f83e647239e32a9910842",
+          "bytes": 1871816,
+          "sha256": "1322f416f6e01655b459f05ee5f33acdebca7b0f2c489c2f56648308fa160544",
           "structures": 256,
-          "triangles": 108103,
+          "triangles": 135204,
           "sourceTriangles": 135204,
           "coverage": "full",
           "note": "the body surface as the regions of Terminologia Anatomica"
@@ -260,7 +260,7 @@
           "why": "attachment footprints painted on bone (origin/insertion patches), not muscles"
         }
       ],
-      "totalBytes": 10880440,
+      "totalBytes": 12814624,
       "structureCount": 3335
     },
     "female": {
@@ -309,8 +309,8 @@
               "id": "skeleton-fitted",
               "layer": "skeleton",
               "file": "anatomy/models/female-skeleton-fitted.glb",
-              "bytes": 2463596,
-              "sha256": "f6710537804cd84c48a5ea6e1b5289a6fc7056eaa133e1127a0b6e1a13651b69",
+              "bytes": 2463552,
+              "sha256": "56cb7930162b1c94bc8faa80e0d7e419c31765555baa0f312dec2a287cdc4a09",
               "structures": 634,
               "triangles": 521240,
               "sourceTriangles": 521240,
@@ -339,8 +339,8 @@
                 }
               ],
               "clampedInsideSkin": {
-                "moved": 3251,
-                "unresolved": 318,
+                "moved": 3208,
+                "unresolved": 320,
                 "depthMetres": 0.003
               }
             }
@@ -362,8 +362,8 @@
               "id": "nervous-fitted",
               "layer": "nervous",
               "file": "anatomy/models/female-nervous-fitted.glb",
-              "bytes": 1573452,
-              "sha256": "2ca8569e4271eb5a69d4a566024a05545bd819db729cc0f110d138a24e0feed2",
+              "bytes": 1573444,
+              "sha256": "7fa5b46674887704f05261639199583cf38b0d06ef50bb5c058c5eac3a535fff",
               "structures": 271,
               "triangles": 389341,
               "sourceTriangles": 389341,
@@ -439,8 +439,8 @@
                 }
               ],
               "clampedInsideSkin": {
-                "moved": 2023,
-                "unresolved": 244,
+                "moved": 2024,
+                "unresolved": 245,
                 "depthMetres": 0.003
               }
             }
@@ -475,8 +475,8 @@
               "id": "organs-fitted-more",
               "layer": "organs",
               "file": "anatomy/models/female-organs-fitted-more.glb",
-              "bytes": 179024,
-              "sha256": "8c4cf486f40ea9e04e5485bf97b52976d444ede9d9db7453d0d60105c553a494",
+              "bytes": 179040,
+              "sha256": "d81189b2a78679f4254f5025d3f0b49f791608edd1af220ba195328a6443b8fe",
               "structures": 30,
               "triangles": 40694,
               "sourceTriangles": 40694,
@@ -528,8 +528,8 @@
               "id": "vessels-fitted",
               "layer": "vessels",
               "file": "anatomy/models/female-vessels-fitted.glb",
-              "bytes": 4026164,
-              "sha256": "932591b126105866690110283a12632a0fc53519c421c5579d4b2640e1861ff0",
+              "bytes": 4026108,
+              "sha256": "43304224b0904fe82569f21a3512e24be4c12745c7395da40d5d8f02f2473b2b",
               "structures": 755,
               "triangles": 953380,
               "sourceTriangles": 953380,
@@ -594,8 +594,8 @@
                 }
               ],
               "clampedInsideSkin": {
-                "moved": 6795,
-                "unresolved": 959,
+                "moved": 6798,
+                "unresolved": 963,
                 "depthMetres": 0.003
               }
             }
@@ -617,11 +617,11 @@
               "id": "muscles-fitted",
               "layer": "muscles",
               "file": "anatomy/models/female-muscles-fitted.glb",
-              "bytes": 3879228,
-              "sha256": "d65ae9e3e62262b688fb49460ea48d6da7241aabd50f8d875ad3a9e4f4105553",
+              "bytes": 4738188,
+              "sha256": "17acbfce2afde54f4fe7291617053d827e224885ab53762980b70b6cd7204843",
               "structures": 833,
-              "triangles": 851860,
-              "sourceTriangles": 851860,
+              "triangles": 1094910,
+              "sourceTriangles": 1094910,
               "licence": "CC BY-SA 4.0",
               "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
               "note": "833 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
@@ -647,8 +647,8 @@
                 }
               ],
               "clampedInsideSkin": {
-                "moved": 15977,
-                "unresolved": 1710,
+                "moved": 20447,
+                "unresolved": 2212,
                 "depthMetres": 0.003
               }
             }
@@ -659,22 +659,22 @@
           "id": "skin",
           "label": "Skin",
           "file": "anatomy/models/female-skin.glb",
-          "bytes": 495516,
-          "sha256": "6352fa0c7c30a6426b0f43e98b9d3328e08af21a58d4dd8c4542fa478b91985d",
+          "bytes": 1627316,
+          "sha256": "3d7d277ee782d33784f7cdaaee1db80e505be36a20527c5e47f8780833fbaae1",
           "structures": 1,
-          "triangles": 156252,
-          "sourceTriangles": 312506,
+          "triangles": 312974,
+          "sourceTriangles": 312974,
           "coverage": "full",
           "supplements": [
             {
               "id": "skin-fitted",
               "layer": "skin",
               "file": "anatomy/models/female-skin-fitted.glb",
-              "bytes": 282924,
-              "sha256": "574142fb412a277aebc822d262ea413ef11797f9b6e5288e57de7e514e871449",
+              "bytes": 1533048,
+              "sha256": "bb4c50816c82f3e1e368a0b16a3aad33138915b7ecc987b1fa6ba8849c811c59",
               "structures": 76,
-              "triangles": 58166,
-              "sourceTriangles": 58166,
+              "triangles": 232042,
+              "sourceTriangles": 228792,
               "licence": "CC BY-SA 4.0",
               "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
               "note": "76 structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)",
@@ -710,15 +710,40 @@
                     "r": 0.1569740436721501
                   }
                 },
-                "taperMetres": 0.06,
-                "rimVerticesTapered": 2023,
-                "hairVerticesProjected": 1781,
+                "blendMetres": {
+                  "arm": {
+                    "l": 0.10697397513654237,
+                    "r": 0.10697404367215009
+                  },
+                  "leg": {
+                    "l": 0.05,
+                    "r": 0.05
+                  }
+                },
+                "rimVerticesBlended": 11226,
+                "rimNormals": {
+                  "hraRimVertices": 977,
+                  "rimNormalsFromHra": 1086,
+                  "foldedTrianglesRewound": 0,
+                  "smoothedVertices": 10146,
+                  "smoothPasses": 14,
+                  "borderVerticesClosed": 6,
+                  "borderVertices": 856,
+                  "nailsDilated": 40,
+                  "duplicateTrianglesDropped": 0,
+                  "overlappingTrianglesDropped": 0,
+                  "seamStrips": 4,
+                  "seamStripTriangles": 3250
+                },
+                "hairVerticesProjected": 2218,
                 "headHairShiftMetres": {},
                 "patchesEmptied": [],
                 "hraSkinCut": {
                   "dropped": 70134,
-                  "kept": 312506,
-                  "lifted": 466,
+                  "kept": 312974,
+                  "split": 934,
+                  "apronQuads": 0,
+                  "apronMetres": 0,
                   "insideTest": {
                     "columns": 5538,
                     "oddColumns": 0
@@ -1411,7 +1436,7 @@
                 },
                 "scale": [
                   0.8688,
-                  1.0248,
+                  1.0247,
                   1.0768
                 ]
               },
@@ -1746,7 +1771,7 @@
           ]
         }
       ],
-      "totalBytes": 20670824,
+      "totalBytes": 23911616,
       "structureCount": 3482
     }
   }

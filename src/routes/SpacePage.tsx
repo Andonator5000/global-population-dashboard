@@ -14,12 +14,15 @@ export function SpacePage() {
           style={{ color: 'var(--text-muted)' }}
         >
           Beyond Earth, with the same rules as everywhere else on this site:
-          NASA and JPL figures with source and vintage on every number, and
-          scale handled honestly — when a view is not to scale, it says so.
+          NASA, JPL and agency figures with source and vintage on every
+          number, and scale handled honestly — when a view is not to scale,
+          it says so, and when it is, the ruler is printed beside it. Three
+          pages: the Solar System, the universe beyond it, and how we got
+          off the ground.
         </p>
       </header>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <Link
           to="/space/solar-system"
           className="block rounded-xl border px-6 py-6"
@@ -63,6 +66,31 @@ export function SpacePage() {
             quasars, supernovae, galaxies, dark matter and dark energy,
             gravitational waves and the Big Bang — illustrated with NASA
             and ESA imagery, sourced throughout.
+          </p>
+        </Link>
+
+        <Link
+          to="/space/travel"
+          className="block rounded-xl border px-6 py-6"
+          style={{
+            borderColor: 'var(--border)',
+            background: 'var(--surface-raised)',
+          }}
+        >
+          <p
+            className="font-sans text-xs font-medium uppercase tracking-widest"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            Page three
+          </p>
+          <h2 className="mt-1 text-xl">Space Travel</h2>
+          <p className="mt-2 text-sm" style={{ color: 'var(--text-muted)' }}>
+            From Lucian's waterspout to Starship: the idea, the V-2 and its
+            forced labour, Sputnik, Gagarin, Apollo, the stations and
+            shuttles, the robots that went everywhere else, and the present
+            — with launch vehicles, spacecraft, stations and satellites
+            drawn to scale, labelled cutaways, and the people who designed
+            them.
           </p>
         </Link>
       </div>

@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "generated_at": "2026-09-20T08:57:04+00:00",
+  "generated_at": "2026-10-11T05:12:06+00:00",
   "pipeline_version": "0.1.0",
   "editorial_decisions_doc": "DATA_DECISIONS.md",
   "refresh_policy": "Re-run monthly by .github/workflows/refresh-data.yml. A pull request is opened only when content_fingerprint changes; a run that finds nothing new leaves the committed data untouched, so fetched_at reflects when these bytes were retrieved rather than when they were last checked.",
@@ -9,7 +9,7 @@
       "title": "mledoze/countries",
       "url": "https://raw.githubusercontent.com/mledoze/countries/master/countries.json",
       "licence": "ODbL-1.0",
-      "fetched_at": "2026-09-20T08:57:04+00:00",
+      "fetched_at": "2026-10-11T05:12:06+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "mledoze/countries (github.com/mledoze/countries)",
@@ -357,6 +357,28 @@
       "files": [],
       "notes": "Bulk export parsed to family rank (35214 tree nodes, every intermediate rank kept) plus one genera file per family (14196 files, 204480 genera); species load live from ChecklistBank. Descriptions: tree 9088 Wikipedia / 7575 Wikidata / 0 COL / 18551 generated; genera-file nodes 22847 / 19131 / 0 / 215411 (182909 not yet looked up). Contested placements annotated from etl/reference/taxonomy_notes.json."
     },
+    "gbif_occurrence_media": {
+      "title": "GBIF occurrence media (StillImage)",
+      "url": "https://www.gbif.org/occurrence/search?media_type=StillImage",
+      "licence": "per record: CC0 / CC BY / CC BY-SA only",
+      "fetched_at": "2026-09-07T21:08:00+00:00",
+      "upstream_release": null,
+      "vintage": "2026-09-07",
+      "citation": "GBIF.org occurrence search API; media from iNaturalist Research-grade Observations and Observation.org preferred, credited to each record's rightsHolder or creator",
+      "files": [],
+      "notes": "100 taxon pictures on the Taxonomy page, used only where no Wikidata/Wikipedia/Commons photo exists; NC and ND media are never accepted."
+    },
+    "phylopic_taxonomy": {
+      "title": "PhyloPic silhouettes (taxonomy)",
+      "url": "https://www.phylopic.org",
+      "licence": "CC0 / CC BY / CC BY-SA only",
+      "fetched_at": "2026-09-07T21:08:00+00:00",
+      "upstream_release": null,
+      "vintage": "2026-09-07",
+      "citation": "PhyloPic, per-image licences",
+      "files": [],
+      "notes": "187 silhouettes, the last rung of the picture ladder, labelled as silhouettes in the UI and never presented as photographs."
+    },
     "ics_chart": {
       "title": "ICS International Chronostratigraphic Chart (linked data)",
       "url": "https://raw.githubusercontent.com/i-c-stratigraphy/chart/main/chart.ttl",
@@ -372,8 +394,8 @@
       "title": "Evolution timeline (editorial) with PhyloPic and Commons images",
       "url": "https://www.phylopic.org",
       "licence": "Editorial text CC0 (this project); silhouettes CC0/PD (PhyloPic, attributed); photos per-file PD/CC (attributed)",
-      "fetched_at": "2026-09-20T00:51:14+00:00",
-      "upstream_release": "PhyloPic build 557",
+      "fetched_at": "2026-10-10T23:31:07+00:00",
+      "upstream_release": "PhyloPic build 558",
       "vintage": null,
       "citation": "PhyloPic (per-image CC0/PD); Wikimedia Commons (per-file)",
       "files": [],
@@ -444,6 +466,17 @@
       "citation": "NASA Image and Video Library; Wikimedia Commons; per-fact NASA science pages and Wikipedia articles",
       "files": [],
       "notes": "62 entries ({'observed': 54, 'hypothesis': 4, 'theoretical': 4}); images resolved via {'nasaId': 41, 'commons': 12, 'query': 8, 'wikipedia': 1}. Theoretical objects and hypotheses carry a status flag and say so in their own text."
+    },
+    "space_travel": {
+      "title": "Space Travel (editorial) with downloaded NASA/Commons imagery",
+      "url": "https://images.nasa.gov",
+      "licence": "Editorial text CC0 (this project); images NASA media or Commons free licences, credited per item (data/space/travel/manifest.json)",
+      "fetched_at": "2026-10-11T04:18:37+00:00",
+      "upstream_release": null,
+      "vintage": "per figure (each spec and source carries its own year)",
+      "citation": "NASA, NSSDCA, ESA, ISRO, JAXA, CNSA and Wikimedia Commons; per-figure agency pages and Wikipedia articles",
+      "files": [],
+      "notes": "110 events across 8 eras, 71 craft, 28 people, 17 labelled cutaways and 4 scale plates; 150 images resolved via {'commons': 26, 'wikipedia': 124}. Scale diagrams are generated from published dimensions in the reference file, not traced."
     },
     "chemistry_pubchem": {
       "title": "PubChem Periodic Table (NIH/NCBI)",
@@ -658,7 +691,7 @@
       "title": "flagcdn.com flag SVGs",
       "url": "https://flagcdn.com",
       "licence": "Public domain / free to use",
-      "fetched_at": "2026-09-20T08:57:04+00:00",
+      "fetched_at": "2026-10-11T05:12:06+00:00",
       "upstream_release": null,
       "vintage": null,
       "citation": "flagcdn.com",
@@ -1080,6 +1113,14 @@
       "row_count": 27638,
       "entity_count": null
     },
+    "biology/evolution/tree.json": {
+      "description": "Editorial tree of life through time: lineages with sourced origin ages, extinctions, endosymbiosis merges and licence-gated PhyloPic silhouettes.",
+      "sources": [
+        "evolution_events"
+      ],
+      "row_count": 176,
+      "entity_count": null
+    },
     "biology/evolution/chart.json": {
       "description": "ICS chart intervals with ages, errors, and colours.",
       "sources": [
@@ -1143,6 +1184,22 @@
         "cosmic_phenomena"
       ],
       "row_count": 62,
+      "entity_count": null
+    },
+    "space/travel/travel.json": {
+      "description": "Space Travel: eras, events, craft specifications, people, scale-diagram geometry and labelled cutaways.",
+      "sources": [
+        "space_travel"
+      ],
+      "row_count": 110,
+      "entity_count": null
+    },
+    "space/travel/images/": {
+      "description": "Licence-gated images for the Space Travel page (cutaway drawings, event photographs, portraits) with per-image provenance in manifest.json.",
+      "sources": [
+        "space_travel"
+      ],
+      "row_count": 150,
       "entity_count": null
     },
     "chemistry/elements.json": {
@@ -1296,5 +1353,5 @@
     "15 entities have no biome data, mostly small island territories absent from the 50m geometry.",
     "WPP/OWID cross-check: 4 of 1180 comparisons differ materially (TGO). Our figures match the UN WPP source file exactly, so these reflect Our World in Data substituting a different source for those entities, not a defect in our pipeline. See crosscheck_owid.json."
   ],
-  "content_fingerprint": "77a169a1cfb33a7e7ed1000d618299b166ce1655bb6a4938713009225c9faf38"
+  "content_fingerprint": "23568dd91ab33c018f02eb48c13a171e8eb413ce24fd5280ffa4845bee2ded35"
 }

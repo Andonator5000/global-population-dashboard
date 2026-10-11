@@ -75,13 +75,19 @@ const HRA_PAGE = 'https://humanatlas.io/3d-reference-library'
 // Bone -> flesh. `order` is the peel order the viewer uses; `ratio` the
 // simplification target (fraction of triangles kept) per sex; `error` the
 // meshoptimizer error bound as a fraction of each mesh's radius.
+// Round 14: the SKIN ships at full source resolution for both sexes (it is
+// the body a reader looks at; it was the "low-poly" look), with its node
+// transforms baked and smooth normals welded ACROSS the regional patches
+// (bakeSkinNormals below), so the Terminologia Anatomica patch borders no
+// longer show as creases. A simplified skin keeps its patch borders locked
+// (lockBorder) so the weld still finds shared positions.
 const LAYERS = [
   { id: 'skeleton', label: 'Skeleton', ratio: { male: 0.55, female: 0.6 }, error: 0.01 },
   { id: 'nervous', label: 'Brain and nerves', ratio: { male: 0.3, female: 0.3 }, error: 0.03 },
   { id: 'organs', label: 'Organs and glands', ratio: { male: 0.6, female: 0.35 }, error: 0.03 },
   { id: 'vessels', label: 'Heart, vessels and lymph', ratio: { male: 0.3, female: 0.45 }, error: 0.02 },
-  { id: 'muscles', label: 'Muscles', ratio: { male: 0.35, female: 0.6 }, error: 0.015 },
-  { id: 'skin', label: 'Skin', ratio: { male: 0.8, female: 0.5 }, error: 0.01 },
+  { id: 'muscles', label: 'Muscles', ratio: { male: 0.45, female: 0.6 }, error: 0.015 },
+  { id: 'skin', label: 'Skin', ratio: { male: 1, female: 1 }, error: 0.01, smoothNormals: true },
 ]
 
 // Male: which Anatria files feed which layer, in order. A node name claimed
@@ -227,6 +233,171 @@ function stripMaterials(doc) {
 }
 
 // --------------------------------------------------------------------------
+// Round 14: baked transforms and smooth normals welded across patches
+// --------------------------------------------------------------------------
+/** Every mesh node gets its own mesh with the node matrix baked into the
+    positions (a mirrored copy's winding is flipped so it still faces out)
+    and an identity matrix, so that a later pass can treat the whole layer
+    as one point set. */
+function bakeNodeTransforms(doc) {
+  const root = doc.getRoot()
+  const buffer = root.listBuffers()[0]
+  const uses = new Map()
+  for (const node of root.listNodes()) if (node.getMesh()) uses.set(node.getMesh(), (uses.get(node.getMesh()) ?? 0) + 1)
+  for (const node of root.listNodes()) {
+    const mesh = node.getMesh()
+    if (!mesh) continue
+    const m = node.getWorldMatrix()
+    const identity = m.every((v, i) => Math.abs(v - (i % 5 === 0 ? 1 : 0)) < 1e-9)
+    if (identity && uses.get(mesh) === 1) continue
+    const det = m[0] * (m[5] * m[10] - m[9] * m[6]) - m[4] * (m[1] * m[10] - m[9] * m[2]) + m[8] * (m[1] * m[6] - m[5] * m[2])
+    const own = doc.createMesh(mesh.getName())
+    for (const prim of mesh.listPrimitives()) {
+      const arr = Float32Array.from(prim.getAttribute('POSITION').getArray())
+      for (let i = 0; i < arr.length; i += 3) {
+        const x = arr[i], y = arr[i + 1], z = arr[i + 2]
+        arr[i] = m[0] * x + m[4] * y + m[8] * z + m[12]
+        arr[i + 1] = m[1] * x + m[5] * y + m[9] * z + m[13]
+        arr[i + 2] = m[2] * x + m[6] * y + m[10] * z + m[14]
+      }
+      const pos = doc.createAccessor().setType('VEC3').setArray(arr).setBuffer(buffer)
+      const p = doc.createPrimitive().setMode(prim.getMode()).setAttribute('POSITION', pos)
+      const idx = prim.getIndices()
+      if (idx) {
+        const ia = idx.getArray().slice()
+        if (det < 0) for (let i = 0; i + 2 < ia.length; i += 3) { const t = ia[i + 1]; ia[i + 1] = ia[i + 2]; ia[i + 2] = t }
+        p.setIndices(doc.createAccessor().setType('SCALAR').setArray(ia).setBuffer(buffer))
+      }
+      own.addPrimitive(p)
+    }
+    node.setMesh(own)
+    node.setMatrix([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
+    uses.set(mesh, uses.get(mesh) - 1)
+    if (uses.get(mesh) === 0) mesh.dispose()
+  }
+}
+
+/**
+ * Area-weighted vertex normals accumulated by POSITION across every
+ * primitive given (so two patches that share a border vertex get one
+ * normal there, and the border stops reading as a crease). `extra` may
+ * add geometry that contributes to the accumulation without receiving
+ * normals (the HRA skin next to a fitted rim). Returns, per primitive, a
+ * Float32Array of normals in the primitive's vertex order.
+ */
+function weldedNormals(prims, extra = []) {
+  const key = (x, y, z) => `${Math.round(x * 2e4)},${Math.round(y * 2e4)},${Math.round(z * 2e4)}`
+  const acc = new Map()
+  const add = (k, nx, ny, nz) => {
+    const n = acc.get(k)
+    if (n) { n[0] += nx; n[1] += ny; n[2] += nz } else acc.set(k, [nx, ny, nz])
+  }
+  const accumulate = (pos, idx) => {
+    const count = idx ? idx.length : pos.length / 3
+    for (let t = 0; t + 2 < count; t += 3) {
+      const a = (idx ? idx[t] : t) * 3, b = (idx ? idx[t + 1] : t + 1) * 3, c = (idx ? idx[t + 2] : t + 2) * 3
+      const ux = pos[b] - pos[a], uy = pos[b + 1] - pos[a + 1], uz = pos[b + 2] - pos[a + 2]
+      const vx = pos[c] - pos[a], vy = pos[c + 1] - pos[a + 1], vz = pos[c + 2] - pos[a + 2]
+      const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx
+      for (const i of [a, b, c]) add(key(pos[i], pos[i + 1], pos[i + 2]), nx, ny, nz)
+    }
+  }
+  const sets = prims.map((p) => ({ pos: p.pos, idx: p.idx }))
+  for (const s of [...sets, ...extra]) accumulate(s.pos, s.idx)
+  return sets.map(({ pos }) => {
+    const out = new Float32Array(pos.length)
+    for (let i = 0; i < pos.length; i += 3) {
+      const n = acc.get(key(pos[i], pos[i + 1], pos[i + 2])) ?? [0, 1, 0]
+      const l = Math.hypot(n[0], n[1], n[2]) || 1
+      out[i] = n[0] / l; out[i + 1] = n[1] / l; out[i + 2] = n[2] / l
+    }
+    return out
+  })
+}
+
+/** Vertices of different patches within SNAP metres of each other are moved
+    onto one position (the regional skin's patch borders do not all share
+    their vertices exactly; the slits between them read as dark cracks once
+    the normals are smooth). Returns how many vertices moved. */
+const SNAP = 0.001
+function snapAcrossPatches(prims) {
+  const cell = SNAP
+  const grid = new Map()
+  const key = (ix, iy, iz) => `${ix},${iy},${iz}`
+  let moved = 0
+  for (const { pos } of prims) {
+    for (let i = 0; i < pos.length; i += 3) {
+      const ix = Math.floor(pos[i] / cell), iy = Math.floor(pos[i + 1] / cell), iz = Math.floor(pos[i + 2] / cell)
+      let hit = null
+      for (let dx = -1; dx <= 1 && !hit; dx += 1) for (let dy = -1; dy <= 1 && !hit; dy += 1) for (let dz = -1; dz <= 1 && !hit; dz += 1) {
+        const list = grid.get(key(ix + dx, iy + dy, iz + dz))
+        if (!list) continue
+        for (const q of list) {
+          if ((q[0] - pos[i]) ** 2 + (q[1] - pos[i + 1]) ** 2 + (q[2] - pos[i + 2]) ** 2 <= SNAP * SNAP) { hit = q; break }
+        }
+      }
+      if (hit) {
+        if (hit[0] !== pos[i] || hit[1] !== pos[i + 1] || hit[2] !== pos[i + 2]) moved += 1
+        pos[i] = hit[0]; pos[i + 1] = hit[1]; pos[i + 2] = hit[2]
+      } else {
+        const k = key(ix, iy, iz)
+        let list = grid.get(k)
+        if (!list) { list = []; grid.set(k, list) }
+        list.push([pos[i], pos[i + 1], pos[i + 2]])
+      }
+    }
+  }
+  return moved
+}
+
+/**
+ * Round 14: a triangle whose winding opposes the welded normal of its own
+ * corners is folded the wrong way (the regional cuts left 5-10 % such
+ * faces in the digits, nails and ankles; front-side culling turned them
+ * into pinholes and pale dashes along the patch borders). Its winding is
+ * flipped, and the normals are welded again on the repaired mesh.
+ */
+function repairWinding(prims, normals) {
+  let flipped = 0
+  prims.forEach((p, k) => {
+    const { pos, idx } = p
+    const n = normals[k]
+    if (!idx) return
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3
+      const ux = pos[b] - pos[a], uy = pos[b + 1] - pos[a + 1], uz = pos[b + 2] - pos[a + 2]
+      const vx = pos[c] - pos[a], vy = pos[c + 1] - pos[a + 1], vz = pos[c + 2] - pos[a + 2]
+      const fx = uy * vz - uz * vy, fy = uz * vx - ux * vz, fz = ux * vy - uy * vx
+      const nx = n[a] + n[b] + n[c], ny = n[a + 1] + n[b + 1] + n[c + 1], nz = n[a + 2] + n[b + 2] + n[c + 2]
+      if (fx * nx + fy * ny + fz * nz < 0) { const tmp = idx[t + 1]; idx[t + 1] = idx[t + 2]; idx[t + 2] = tmp; flipped += 1 }
+    }
+    if (flipped && p.prim.getIndices().getArray() !== idx) p.prim.getIndices().setArray(idx)
+  })
+  return flipped
+}
+
+/** NORMAL attributes for every primitive of the document, welded across meshes. */
+function bakeSmoothNormals(doc) {
+  const buffer = doc.getRoot().listBuffers()[0]
+  const prims = []
+  for (const mesh of doc.getRoot().listMeshes()) for (const prim of mesh.listPrimitives()) {
+    prims.push({ prim, pos: Float32Array.from(prim.getAttribute('POSITION').getArray()), idx: prim.getIndices()?.getArray() ?? null })
+  }
+  // One patch (the HRA skin) has no borders to snap; snapping its own
+  // split rim vertices onto each other only made slivers.
+  const moved = prims.length > 1 ? snapAcrossPatches(prims) : 0
+  const deduped = { duplicateTrianglesDropped: 0 }
+  const overlapped = { overlappingTrianglesDropped: 0 }
+  const normals = weldedNormals(prims)
+  const flipped = 0
+  prims.forEach(({ prim, pos }, i) => {
+    prim.getAttribute('POSITION').setArray(pos)
+    prim.setAttribute('NORMAL', doc.createAccessor().setType('VEC3').setArray(normals[i]).setBuffer(buffer))
+  })
+  log(`smooth normals over ${prims.length} patches; ${moved} border vertices snapped within ${SNAP * 1000} mm; ${flipped} folded triangles rewound; ${deduped.duplicateTrianglesDropped} duplicate and ${overlapped.overlappingTrianglesDropped} overlapping triangles dropped`)
+}
+
+// --------------------------------------------------------------------------
 // Alias resolution: organ entries -> node names
 // --------------------------------------------------------------------------
 function compileAliases(organs) {
@@ -288,14 +459,17 @@ async function buildLayer(io, sex, layer, picks, options) {
     }
   }
   const before = out.getRoot().listNodes().reduce((sum, node) => sum + triangleCount(node), 0)
-  await out.transform(
-    unpartition(),
-    dedup(),
-    prune(),
-    weld(),
-    simplify({ simplifier: MeshoptSimplifier, ratio: layer.ratio[sex], error: layer.error }),
-    meshopt({ encoder: MeshoptEncoder, level: 'medium', quantizePosition: 14 }),
-  )
+  const ratio = layer.ratio[sex]
+  const steps = [unpartition(), dedup(), prune()]
+  // Round 14: the skin's node transforms are baked (a mirrored pair shares
+  // one mesh under a mirroring matrix; the weld needs one space) and its
+  // normals welded across the patches after the simplification.
+  if (layer.smoothNormals) steps.push(bakeNodeTransforms)
+  steps.push(weld())
+  if (ratio < 1) steps.push(simplify({ simplifier: MeshoptSimplifier, ratio, error: layer.error, lockBorder: Boolean(layer.smoothNormals) }))
+  if (layer.smoothNormals) steps.push(bakeSmoothNormals)
+  steps.push(meshopt({ encoder: MeshoptEncoder, level: 'medium', quantizePosition: 14 }))
+  await out.transform(...steps)
   // Per-structure triangle counts after simplification, for the manifest.
   const after = new Map(out.getRoot().listNodes().map((node) => [node.getName(), triangleCount(node)]))
   for (const structure of structures) structure.triangles = after.get(structure.node) ?? 0
@@ -484,8 +658,16 @@ async function buildFemale(io, aliases) {
   log(`female: inside test over ${insideTest.columns.toLocaleString()} columns (${insideTest.oddColumns} with odd parity), ${insideTest.triangles.toLocaleString()} skin triangles`)
   const planes = skinCutPlanes(maps, maleLm)
   const cut = cutFemaleSkin(skin, planes)
-  log(`female: skin cut at ankles y ${planes.leg.l.toFixed(3)}/${planes.leg.r.toFixed(3)} and forearms y ${planes.arm.l.toFixed(3)}/${planes.arm.r.toFixed(3)}: ${cut.dropped.toLocaleString()} faces removed, ${cut.lifted} rim vertices lifted onto the planes`)
-  const skinAux = { planes, rings: cut.rings, zones: makeZones(planes), inside: insideTest.inside, nearest: nearestSkin, cut: { dropped: cut.dropped, kept: cut.kept, lifted: cut.lifted, insideTest: { columns: insideTest.columns, oddColumns: insideTest.oddColumns } } }
+  log(`female: skin cut at ankles y ${planes.leg.l.toFixed(3)}/${planes.leg.r.toFixed(3)} and forearms y ${planes.arm.l.toFixed(3)}/${planes.arm.r.toFixed(3)}: ${cut.dropped.toLocaleString()} faces removed, ${cut.split} straddling faces split at the planes, ${cut.apron} apron quads hung below the rims`)
+  // Round 14: the fitted limb skin blends onto the HRA skin over the whole
+  // segment below the cut (the plane down to the wrist / the ankle), not a
+  // 6 cm cuff; see blendFittedPatch.
+  const blend = { arm: {}, leg: {} }
+  for (const side of ['l', 'r']) {
+    blend.arm[side] = Math.max(SKIN_BLEND_MIN, planes.arm[side] - FEMALE_SKIN_LANDMARKS.wrist[side][1])
+    blend.leg[side] = Math.max(SKIN_BLEND_MIN, planes.leg[side] - maps[`leg.${side}`].meta.to[1][1])
+  }
+  const skinAux = { planes, rings: cut.rings, blend, cutMesh: cut.mesh, zones: makeZones(planes), inside: insideTest.inside, nearest: nearestSkin, cut: { dropped: cut.dropped, kept: cut.kept, split: cut.split, apronQuads: cut.apron, apronMetres: APRON, insideTest: { columns: insideTest.columns, oddColumns: insideTest.oddColumns } } }
 
   const layers = []
   const structures = []
@@ -1248,6 +1430,13 @@ function selectFitted(layerId, maleStructures, femaleNames, aliases) {
 // skin is nearly horizontal and no ring exists).
 const SKIN_CUT_MALE_Y = { leg: 0.135, arm: 0.98 }
 const SKIN_TAPER = 0.06
+// Round 14: the shortest blend (metres) from the cut plane down a fitted limb.
+const SKIN_BLEND_MIN = 0.05
+const RIM_TUCK = 0
+const RIM_SNAP_MAX = 0.05
+const RIM_INSET = 0
+const APRON = 0
+const APRON_INSET = 0
 const SKIN_ARM_ZONE = { minAbsX: 0.25, minY: -0.2 }
 const CLAMP_DEPTH = 0.003
 const VOXEL = 0.01
@@ -1398,52 +1587,838 @@ function ringAt(pos, y, zoneTest) {
     while (!counts[hi]) hi = (hi + 1) % RING_BINS
     radius[b] = (maxes[lo] + maxes[hi]) / 2
   }
-  const radiusAt = (x, z) => {
-    const a = Math.atan2(z - c[1], x - c[0])
+  const radiusAtAngle = (a) => {
     const f = ((a + Math.PI) / (2 * Math.PI)) * RING_BINS
     const b0 = Math.floor(f) % RING_BINS, b1 = (b0 + 1) % RING_BINS, t = f - Math.floor(f)
     return radius[b0] * (1 - t) + radius[b1] * t
   }
-  return { centre: c, radiusAt, points: pts.length, meanRadius: [...radius].reduce((s, v) => s + v, 0) / RING_BINS }
+  const radiusAt = (x, z) => radiusAtAngle(Math.atan2(z - c[1], x - c[0]))
+  return { centre: c, radiusAt, radiusAtAngle, points: pts.length, meanRadius: [...radius].reduce((s, v) => s + v, 0) / RING_BINS }
 }
 
 /**
- * Cut the HRA skin below the planes (faces whose centroid lies in a zone
- * go; the kept faces' vertices below the plane are lifted onto it so the
- * rim is planar) and return the rings the fitted rims taper to.
+ * Cut the HRA skin below the planes. Round 14: the straddling faces are
+ * SPLIT exactly at the plane (interpolated vertices, shared per edge) —
+ * round 13 dragged their in-zone corners up onto the plane, which left
+ * inverted slivers whose welded normals pointed inward (black specks along
+ * the seam). The rings the fitted limbs blend onto are the exact rim
+ * polygons this produces.
  */
 function cutFemaleSkin(skin, planes) {
-  const { prim, pos, idx } = skin
+  const { prim, idx } = skin
   const zones = makeZones(planes)
+  const pos = Array.from(skin.pos)
   const kept = []
+  const rimPoints = { leg: { l: [], r: [] }, arm: { l: [], r: [] } }
+  const cache = new Map()
   let dropped = 0
-  const inZone = (v) => { const p = [pos[v], pos[v + 1], pos[v + 2]]; return zones.leg(p) !== null || zones.arm(p) !== null }
+  let split = 0
+  const zoneOf = (v) => {
+    const p = [pos[v * 3], pos[v * 3 + 1], pos[v * 3 + 2]]
+    const lz = zones.leg(p)
+    if (lz) return ['leg', lz]
+    const az = zones.arm(p)
+    if (az) return ['arm', az]
+    return null
+  }
+  // i is in the zone (removed), j is kept: the vertex where edge i-j meets the zone's plane.
+  const cut = (i, j, zone) => {
+    const k = i < j ? `${i},${j}` : `${j},${i}`
+    let v = cache.get(k)
+    if (v !== undefined) return v
+    const Y = planes[zone[0]][zone[1]]
+    const a = i * 3, b = j * 3
+    const t = Math.max(0, Math.min(1, (Y - pos[a + 1]) / (pos[b + 1] - pos[a + 1] || 1e-12)))
+    v = pos.length / 3
+    pos.push(pos[a] + (pos[b] - pos[a]) * t, pos[a + 1] + (pos[b + 1] - pos[a + 1]) * t, pos[a + 2] + (pos[b + 2] - pos[a + 2]) * t)
+    rimPoints[zone[0]][zone[1]].push([pos[v * 3], pos[v * 3 + 2]])
+    cache.set(k, v)
+    return v
+  }
   for (let t = 0; t < idx.length; t += 3) {
-    const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3
-    // A face goes only when all three corners are in a zone; a straddling
-    // face stays and its in-zone corners are lifted onto the plane below.
-    if (inZone(a) && inZone(b) && inZone(c)) { dropped += 1; continue }
-    kept.push(idx[t], idx[t + 1], idx[t + 2])
+    const tri = [idx[t], idx[t + 1], idx[t + 2]]
+    const z = tri.map(zoneOf)
+    const n = z.filter(Boolean).length
+    if (n === 3) { dropped += 1; continue }
+    if (n === 0) { kept.push(...tri); continue }
+    split += 1
+    const k = n === 1 ? z.findIndex(Boolean) : z.findIndex((q) => !q)
+    const a = tri[k], b = tri[(k + 1) % 3], c = tri[(k + 2) % 3]
+    if (n === 1) {
+      // a removed; b, c kept: quad b, c, ca, ab
+      const ab = cut(a, b, z[k]), ca = cut(a, c, z[k])
+      kept.push(b, c, ca, b, ca, ab)
+    } else {
+      // a kept; b, c removed: triangle a, ab, ac
+      const ab = cut(b, a, z[(k + 1) % 3]), ac = cut(c, a, z[(k + 2) % 3])
+      kept.push(a, ab, ac)
+    }
   }
-  // Rims: vertices of kept faces that sit below their zone plane are lifted to it.
+  // Round 14: the apron. Every rim edge (an edge between two on-plane
+  // vertices used by one kept triangle) gets a quad hanging APRON below
+  // it, inset APRON_INSET toward the ring centre: the HRA skin overlaps
+  // the fitted band from outside, so the seam is one continuous surface
+  // from every angle and the silhouette is always the HRA's.
+  const onPlaneSet = new Set()
+  for (const v of cache.values()) onPlaneSet.add(v)
+  const rimEdgeDir = new Map()
+  for (let t = 0; t + 2 < kept.length; t += 3) {
+    const tri = [kept[t], kept[t + 1], kept[t + 2]]
+    for (let e = 0; e < 3; e += 1) {
+      const u = tri[e], w = tri[(e + 1) % 3]
+      if (onPlaneSet.has(u) && onPlaneSet.has(w)) rimEdgeDir.set(`${u},${w}`, (rimEdgeDir.get(`${u},${w}`) ?? 0) + 1)
+    }
+  }
+  const lowered = new Map()
+  const centreOf = (v) => {
+    const p = [pos[v * 3], pos[v * 3 + 1], pos[v * 3 + 2]]
+    const lz = zones.leg([p[0], p[1] - 1e-3, p[2]]), az = zones.arm([p[0], p[1] - 1e-3, p[2]])
+    const kind = lz ? 'leg' : 'arm', side = lz ?? az ?? (p[0] >= 0 ? 'l' : 'r')
+    const pts = rimPoints[kind][side]
+    const c = [0, 0]
+    for (const q of pts) { c[0] += q[0]; c[1] += q[1] }
+    return [c[0] / pts.length, c[1] / pts.length]
+  }
+  const lower = (v) => {
+    let w = lowered.get(v)
+    if (w !== undefined) return w
+    const c = centreOf(v)
+    const dx = pos[v * 3] - c[0], dz = pos[v * 3 + 2] - c[1]
+    const l = Math.hypot(dx, dz) || 1
+    w = pos.length / 3
+    pos.push(pos[v * 3] - (dx / l) * APRON_INSET, pos[v * 3 + 1] - APRON, pos[v * 3 + 2] - (dz / l) * APRON_INSET)
+    lowered.set(v, w)
+    return w
+  }
+  let apron = 0
+  for (const [ek, n] of rimEdgeDir) {
+    if (APRON <= 0) break
+    if (n !== 1) continue
+    const [u, w] = ek.split(',').map(Number)
+    if (rimEdgeDir.has(`${w},${u}`)) continue
+    // The kept face runs u -> w; the quad below runs w -> u on that edge.
+    const u2 = lower(u), w2 = lower(w)
+    kept.push(w, u, u2, w, u2, w2)
+    apron += 1
+  }
   const rings = { leg: {}, arm: {} }
-  for (const side of ['l', 'r']) {
-    rings.leg[side] = ringAt(pos, planes.leg[side], (p) => (p[0] >= 0 ? 'l' : 'r') === side)
-    rings.arm[side] = ringAt(pos, planes.arm[side], (p) => Math.abs(p[0]) >= SKIN_ARM_ZONE.minAbsX && p[1] > SKIN_ARM_ZONE.minY && (p[0] >= 0 ? 'l' : 'r') === side)
+  for (const kind of ['leg', 'arm']) for (const side of ['l', 'r']) {
+    rings[kind][side] = ringFromRim(rimPoints[kind][side])
+    // The HRA surface RIM_TUCK above the plane (outer radius per bin of a
+    // thin slab): the fitted rim tucks under it, inset, so it never shows
+    // at the silhouette where the surface narrows above the cut.
+    const Y = planes[kind][side] + RIM_TUCK
+    const positions = Float32Array.from(pos)
+    rings[kind][side].above = ringAt(positions, Y, (q) => (kind === 'leg' ? (q[0] >= 0 ? 'l' : 'r') === side : Math.abs(q[0]) >= SKIN_ARM_ZONE.minAbsX && q[1] > SKIN_ARM_ZONE.minY && (q[0] >= 0 ? 'l' : 'r') === side))
   }
-  const lifted = new Set()
-  for (let i = 0; i < kept.length; i += 1) {
-    const v = kept[i] * 3
-    const p = [pos[v], pos[v + 1], pos[v + 2]]
-    const lz = zones.leg(p), az = zones.arm(p)
-    if (lz) { pos[v + 1] = planes.leg[lz]; lifted.add(kept[i]) }
-    else if (az) { pos[v + 1] = planes.arm[az]; lifted.add(kept[i]) }
+  const positions = Float32Array.from(pos)
+  prim.getAttribute('POSITION').setArray(positions)
+  prim.getIndices().setArray(Uint32Array.from(kept))
+  return { dropped, kept: kept.length / 3, split, apron, rings, mesh: { pos: positions, idx: Uint32Array.from(kept) } }
+}
+
+/**
+ * Round 14: a ring from the vertices that lie ON a cut plane (the rim
+ * polygon itself, not a slab of nearby surface): centre = centroid, radius
+ * by angle interpolated between the rim vertices either side, wrapping.
+ */
+function ringFromRim(points) {
+  if (points.length < 12) throw new Error(`rim ring: only ${points.length} points`)
+  const c = [0, 0]
+  for (const p of points) { c[0] += p[0]; c[1] += p[1] }
+  c[0] /= points.length; c[1] /= points.length
+  // One radius per angle: the outermost vertex within a fine bin, so a
+  // fold in the rim cannot pull the ring inward.
+  const BINS = 360
+  const r = new Float64Array(BINS).fill(0)
+  const has = new Uint8Array(BINS)
+  for (const p of points) {
+    const a = Math.atan2(p[1] - c[1], p[0] - c[0])
+    const b = Math.floor(((a + Math.PI) / (2 * Math.PI)) * BINS) % BINS
+    const d = Math.hypot(p[0] - c[0], p[1] - c[1])
+    if (d > r[b]) r[b] = d
+    has[b] = 1
   }
-  const doc = prim.getAttribute('POSITION').getParent ? null : null
-  void doc
-  prim.getAttribute('POSITION').setArray(pos)
-  prim.getIndices().setArray(kept.length > 65535 ? Uint32Array.from(kept) : Uint32Array.from(kept))
-  return { dropped, kept: kept.length / 3, lifted: lifted.size, rings }
+  const filled = []
+  for (let b = 0; b < BINS; b += 1) if (has[b]) filled.push(b)
+  // Empty bins by interpolation between their filled neighbours (wrapping).
+  const full = new Float64Array(BINS)
+  for (let b = 0; b < BINS; b += 1) {
+    if (has[b]) { full[b] = r[b]; continue }
+    let lo = b, hi = b, dlo = 0, dhi = 0
+    while (!has[lo]) { lo = (lo - 1 + BINS) % BINS; dlo += 1 }
+    while (!has[hi]) { hi = (hi + 1) % BINS; dhi += 1 }
+    full[b] = (r[lo] * dhi + r[hi] * dlo) / (dlo + dhi)
+  }
+  // The blend wants a SMOOTH radius function (a wrinkle in the rim must
+  // not become a ridge down the limb): a circular moving average over
+  // +-8 degrees. The exact polygon is kept for snapping the rim itself.
+  const HALF = 8
+  const smooth = new Float64Array(BINS)
+  for (let b = 0; b < BINS; b += 1) {
+    let sum = 0
+    for (let d = -HALF; d <= HALF; d += 1) sum += full[(b + d + BINS) % BINS]
+    smooth[b] = sum / (2 * HALF + 1)
+  }
+  const radiusAtAngle = (a) => {
+    const f = ((a + Math.PI) / (2 * Math.PI)) * BINS
+    const b0 = ((Math.floor(f) % BINS) + BINS) % BINS, b1 = (b0 + 1) % BINS, t = f - Math.floor(f)
+    return smooth[b0] * (1 - t) + smooth[b1] * t
+  }
+  // Nearest point on the rim polygon (the rim vertices sorted by angle).
+  const sorted = points.map((p) => ({ p, a: Math.atan2(p[1] - c[1], p[0] - c[0]) })).sort((u, v) => u.a - v.a).map((u) => u.p)
+  const nearestOnPolygon = (x, z) => {
+    let best = null, bestD = Infinity
+    for (let i = 0; i < sorted.length; i += 1) {
+      const a = sorted[i], b = sorted[(i + 1) % sorted.length]
+      const dx = b[0] - a[0], dz = b[1] - a[1]
+      const l2 = dx * dx + dz * dz || 1e-12
+      const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (z - a[1]) * dz) / l2))
+      const qx = a[0] + dx * t, qz = a[1] + dz * t
+      const d = (qx - x) ** 2 + (qz - z) ** 2
+      if (d < bestD) { bestD = d; best = [qx, qz] }
+    }
+    return best
+  }
+  const mean = filled.reduce((sum, b) => sum + r[b], 0) / filled.length
+  return { centre: c, radiusAtAngle, nearestOnPolygon, radiusAt: (x, z) => radiusAtAngle(Math.atan2(z - c[1], x - c[0])), points: points.length, meanRadius: mean }
+}
+
+/**
+ * Round 14: midpoint subdivision (each triangle into four, edge midpoints
+ * shared). The Z-Anatomy leg and forearm regions are coarse (2-3 cm
+ * triangles): a blend that is exact at the rim and half-way one vertex
+ * lower read as a kink, so the patches that cross a cut plane are refined
+ * first and the blend varies smoothly along them.
+ */
+function subdivideMidpoint(arr, indices, levels) {
+  let pos = Array.from(arr)
+  let idx = Array.from(indices)
+  for (let level = 0; level < levels; level += 1) {
+    const cache = new Map()
+    const mid = (i, j) => {
+      const k = i < j ? `${i},${j}` : `${j},${i}`
+      let v = cache.get(k)
+      if (v !== undefined) return v
+      v = pos.length / 3
+      pos.push((pos[i * 3] + pos[j * 3]) / 2, (pos[i * 3 + 1] + pos[j * 3 + 1]) / 2, (pos[i * 3 + 2] + pos[j * 3 + 2]) / 2)
+      cache.set(k, v)
+      return v
+    }
+    const next = []
+    for (let t = 0; t < idx.length; t += 3) {
+      const a = idx[t], b = idx[t + 1], c = idx[t + 2]
+      const ab = mid(a, b), bc = mid(b, c), ca = mid(c, a)
+      next.push(a, ab, ca, ab, b, bc, ca, bc, c, ab, bc, ca)
+    }
+    idx = next
+  }
+  return { positions: Float32Array.from(pos), indices: Uint32Array.from(idx) }
+}
+
+/**
+ * Round 14: clip a patch at a horizontal plane, keeping what lies below.
+ * Straddling triangles are SPLIT at the plane (new vertices interpolated
+ * on it, shared per edge), so the rim is the exact outline of the patch at
+ * that height instead of far-above vertices dragged down onto it.
+ */
+function clipPatchAtPlane(arr, indices, Y) {
+  const pos = Array.from(arr)
+  const kept = []
+  const onPlane = []
+  const cache = new Map()
+  const cut = (i, j) => {
+    const k = i < j ? `${i},${j}` : `${j},${i}`
+    let v = cache.get(k)
+    if (v !== undefined) return v
+    const a = i * 3, b = j * 3
+    const t = (Y - pos[a + 1]) / (pos[b + 1] - pos[a + 1])
+    v = pos.length / 3
+    pos.push(pos[a] + (pos[b] - pos[a]) * t, Y, pos[a + 2] + (pos[b + 2] - pos[a + 2]) * t)
+    onPlane.push([pos[v * 3], pos[v * 3 + 2]])
+    cache.set(k, v)
+    return v
+  }
+  for (let t = 0; t < indices.length; t += 3) {
+    const tri = [indices[t], indices[t + 1], indices[t + 2]]
+    const above = tri.map((v) => pos[v * 3 + 1] > Y)
+    const n = above.filter(Boolean).length
+    if (n === 3) continue
+    if (n === 0) { kept.push(...tri); continue }
+    // rotate so that the odd vertex is first
+    const k = n === 1 ? above.indexOf(true) : above.indexOf(false)
+    const a = tri[k], b = tri[(k + 1) % 3], c = tri[(k + 2) % 3]
+    if (n === 1) {
+      // a above; b, c below: quad b, c, ca, ab
+      const ab = cut(a, b), ca = cut(c, a)
+      kept.push(b, c, ca, b, ca, ab)
+    } else {
+      // a below; b, c above: triangle a, ab, ca
+      const ab = cut(a, b), ca = cut(c, a)
+      kept.push(a, ab, ca)
+    }
+  }
+  return { positions: Float32Array.from(pos), indices: Uint32Array.from(kept), rim: onPlane }
+}
+
+/**
+ * Round 14: the fitted limb skin BLENDS onto the HRA skin. The male forearm
+ * and leg are thicker than the Visible Human Female's and sit on a slightly
+ * different axis, so the round-13 taper (the last 6 cm pulled onto the HRA
+ * ring) left a cuff: a step in girth at the cut and a crease. Now every
+ * vertex from the plane down to the wrist / ankle is moved by a blend that
+ * is EXACT at the plane (the male ring's centre and per-bin radius become the
+ * HRA ring's) and fades linearly to the fitted male shape at the far end of
+ * the segment, so the girth changes smoothly along the limb instead of at a
+ * seam. Faces wholly above the plane go; a rim vertex above it is lowered
+ * onto it.
+ */
+function blendFittedPatch(arr, indices, planes, rings, maleRings, blend, cls) {
+  const kind = cls.startsWith('foot') || cls.startsWith('leg') ? 'leg' : 'arm'
+  const side = cls.endsWith('.l') ? 'l' : 'r'
+  const Y = planes[kind][side]
+  const target = rings[kind][side]
+  const source = maleRings[kind][side]
+  const L = blend[kind][side]
+  const kept = []
+  for (let t = 0; t < indices.length; t += 3) {
+    const a = indices[t] * 3, b = indices[t + 1] * 3, c = indices[t + 2] * 3
+    if (arr[a + 1] > Y && arr[b + 1] > Y && arr[c + 1] > Y) continue
+    kept.push(indices[t], indices[t + 1], indices[t + 2])
+  }
+  const used = new Set(kept)
+  let blended = 0
+  for (const vi of used) {
+    const v = vi * 3
+    if (arr[v + 1] > Y) arr[v + 1] = Y
+    const u = Math.max(0, Math.min(1, (arr[v + 1] - (Y - L)) / L))
+    if (u <= 0) continue
+    // Smoothstep: no kink at either end of the blend.
+    const t = u * u * (3 - 2 * u)
+    const dx = arr[v] - source.centre[0], dz = arr[v + 2] - source.centre[1]
+    const r = Math.hypot(dx, dz)
+    if (r < 1e-6) continue
+    const angle = Math.atan2(dz, dx)
+    const rm = source.radiusAtAngle(angle)
+    const rh = target.radiusAtAngle(angle)
+    const s = rm > 1e-6 ? 1 + t * (rh / rm - 1) : 1
+    const cx = target.centre[0] * t + source.centre[0] * (1 - t)
+    const cz = target.centre[1] * t + source.centre[1] * (1 - t)
+    arr[v] = cx + (dx / r) * r * s
+    arr[v + 2] = cz + (dz / r) * r * s
+    // The rim itself lands on the HRA rim polygon, then tucks UNDER the HRA
+    // skin's edge (RIM_TUCK up, RIM_INSET inward): two rims that merely
+    // touch leave pinholes where the two polygons differ by a tenth of a
+    // millimetre; an overlap shows one continuous surface.
+    if (u >= 1 && target.nearestOnPolygon) {
+      const q = target.nearestOnPolygon(arr[v], arr[v + 2])
+      // A snap farther than RIM_SNAP_MAX is onto the wrong fold of the rim
+      // polygon (it tore a V-notch into the left forearm): keep the blend.
+      if (q && Math.hypot(q[0] - arr[v], q[1] - arr[v + 2]) <= RIM_SNAP_MAX) {
+        const ddx = q[0] - target.centre[0], ddz = q[1] - target.centre[1]
+        const dl = Math.hypot(ddx, ddz) || 1
+        arr[v] = q[0] - (ddx / dl) * RIM_INSET
+        arr[v + 2] = q[1] - (ddz / dl) * RIM_INSET
+        arr[v + 1] = Y + RIM_TUCK
+      }
+    }
+    blended += 1
+  }
+  return { kept, tapered: blended }
+}
+
+/**
+ * Round 14: smooth normals for the fitted skin patches, welded across the
+ * patches, and on the cut rims the normal of the nearest HRA rim vertex, so
+ * the shading runs continuously across the seam (the two sides are
+ * separate files and would otherwise each shade their own edge).
+ */
+function bakeFittedSkinNormals(doc, skinAux) {
+  const buffer = doc.getRoot().listBuffers()[0]
+  const prims = []
+  for (const node of doc.getRoot().listNodes()) {
+    const mesh = node.getMesh()
+    if (!mesh) continue
+    for (const prim of mesh.listPrimitives()) {
+      prims.push({ prim, name: node.getName(), pos: prim.getAttribute('POSITION').getArray(), idx: prim.getIndices()?.getArray() ?? null })
+    }
+  }
+  const hra = skinAux.cutMesh
+  const hraNormals = weldedNormals([{ pos: hra.pos, idx: hra.idx }])[0]
+  // HRA rim vertices: on a plane, inside its zone.
+  const rim = []
+  const planes = skinAux.planes
+  for (let i = 0; i < hra.pos.length; i += 3) {
+    const p = [hra.pos[i], hra.pos[i + 1], hra.pos[i + 2]]
+    const kind = skinAux.zones.leg(p) !== null || Math.abs(p[1] - planes.leg.l) < 1e-4 || Math.abs(p[1] - planes.leg.r) < 1e-4 ? 'leg' : 'arm'
+    const side = p[0] >= 0 ? 'l' : 'r'
+    if (Math.abs(p[1] - planes[kind][side]) > 1e-4) continue
+    rim.push([p[0], p[1], p[2], hraNormals[i], hraNormals[i + 1], hraNormals[i + 2]])
+  }
+  for (const p of prims) p.pos = Float32Array.from(p.pos)
+  snapAcrossPatches(prims)
+  const deduped = { duplicateTrianglesDropped: 0 }
+  const overlapped = { overlappingTrianglesDropped: 0 }
+  const dilated = dilateNails(prims)
+  const closed = closePatchBorders(prims, [skinAux.planes.arm.l, skinAux.planes.arm.r, skinAux.planes.leg.l, skinAux.planes.leg.r])
+  const smoothed = smoothBlendZones(prims, skinAux)
+  const rewound = 0
+  const normals = weldedNormals(prims)
+  let overridden = 0
+  prims.forEach(({ prim, pos }, k) => {
+    prim.getAttribute('POSITION').setArray(pos)
+    const n = normals[k]
+    for (let i = 0; i < pos.length; i += 3) {
+      const y = pos[i + 1]
+      const onPlane = [planes.arm.l, planes.arm.r, planes.leg.l, planes.leg.r].some((Y) => Math.abs(y - (Y + RIM_TUCK)) < 1e-4)
+      if (!onPlane) continue
+      let best = null, bestD = 0.02 ** 2
+      for (const r of rim) {
+        const d = (r[0] - pos[i]) ** 2 + (r[1] - y) ** 2 + (r[2] - pos[i + 2]) ** 2
+        if (d < bestD) { bestD = d; best = r }
+      }
+      if (!best) continue
+      n[i] = best[3]; n[i + 1] = best[4]; n[i + 2] = best[5]
+      overridden += 1
+    }
+    prim.setAttribute('NORMAL', doc.createAccessor().setType('VEC3').setArray(n).setBuffer(buffer))
+  })
+  const stitched = stitchSeams(doc, prims, skinAux, hra, hraNormals)
+  return { hraRimVertices: rim.length, rimNormalsFromHra: overridden, foldedTrianglesRewound: rewound, ...smoothed, ...closed, ...dilated, ...deduped, ...overlapped, ...stitched }
+}
+
+/**
+ * Round 14: the seam STRIP. Two separate meshes cannot share vertices, so
+ * however exactly the fitted rim is laid on the HRA rim polygon the two
+ * polylines differ by a tenth of a millimetre between vertices and show
+ * pinholes at close zoom. A strip of triangles zipped between the two
+ * rim loops (sorted by angle about the ring centre, advancing whichever
+ * loop has the smaller next angle) fills those slivers exactly; it lives
+ * in the fitted (CC BY-SA) file as an extra primitive of the first limb
+ * patch of that side, with the HRA rim normals on both edges.
+ */
+function stitchSeams(doc, prims, skinAux, hra, hraNormals) {
+  const buffer = doc.getRoot().listBuffers()[0]
+  const planes = skinAux.planes
+  let strips = 0, triangles = 0
+  for (const kind of ['arm', 'leg']) for (const side of ['l', 'r']) {
+    const Y = planes[kind][side]
+    const inZone = (x, z) => (side === 'l' ? x >= 0 : x < 0) && (kind === 'arm' ? Math.abs(x) >= SKIN_ARM_ZONE.minAbsX : true)
+    // Loop A: HRA rim vertices on this plane, with their normals.
+    const A = []
+    for (let i = 0; i < hra.pos.length; i += 3) {
+      if (Math.abs(hra.pos[i + 1] - Y) > 1e-4 || !inZone(hra.pos[i], hra.pos[i + 2])) continue
+      A.push({ p: [hra.pos[i], Y, hra.pos[i + 2]], n: [hraNormals[i], hraNormals[i + 1], hraNormals[i + 2]] })
+    }
+    // Loop B: fitted rim vertices on this plane (every limb patch of the side).
+    const B = []
+    const seenB = new Set()
+    let host = null
+    for (const pr of prims) {
+      const { pos, name } = pr
+      const nor = pr.prim.getAttribute('NORMAL')?.getArray()
+      for (let i = 0; i < pos.length; i += 3) {
+        if (Math.abs(pos[i + 1] - Y) > 1e-5 || !inZone(pos[i], pos[i + 2])) continue
+        const k = `${Math.round(pos[i] * 2e4)},${Math.round(pos[i + 2] * 2e4)}`
+        if (seenB.has(k)) continue
+        seenB.add(k)
+        B.push({ p: [pos[i], Y, pos[i + 2]], n: nor ? [nor[i], nor[i + 1], nor[i + 2]] : [0, 1, 0] })
+        if (!host && /^Anterior region of (forearm|leg)\./.test(name ?? '')) host = pr
+      }
+    }
+    if (A.length < 12 || B.length < 12 || !host) continue
+    const c = [0, 0]
+    for (const q of A) { c[0] += q.p[0]; c[1] += q.p[2] }
+    c[0] /= A.length; c[1] /= A.length
+    const angle = (q) => Math.atan2(q.p[2] - c[1], q.p[0] - c[0])
+    A.sort((u, v) => angle(u) - angle(v))
+    B.sort((u, v) => angle(u) - angle(v))
+    // Zip: vertices 0..A-1 are A, A..A+B-1 are B.
+    const positions = [], normals = [], index = []
+    for (const q of [...A, ...B]) { positions.push(...q.p); normals.push(...q.n) }
+    const nA = A.length, nB = B.length
+    let i = 0, j = 0
+    const ang = (list, k) => angle(list[k % list.length]) + (k >= list.length ? 2 * Math.PI : 0)
+    while (i < nA || j < nB) {
+      const nextA = i < nA ? ang(A, i + 1) : Infinity
+      const nextB = j < nB ? ang(B, j + 1) : Infinity
+      const a0 = i % nA, b0 = j % nB
+      if (nextA <= nextB) { index.push(a0, b0, (i + 1) % nA); i += 1 } else { index.push(a0, b0, (j + 1) % nB + nA); j += 1 }
+      if (index.length > (nA + nB) * 3 + 6) break
+    }
+    // Outward winding: the strip's face normals must agree with the rim normals.
+    let agree = 0
+    for (let t = 0; t + 2 < index.length; t += 3) {
+      const a = index[t] * 3, b = index[t + 1] * 3, cc = index[t + 2] * 3
+      const ux = positions[b] - positions[a], uy = positions[b + 1] - positions[a + 1], uz = positions[b + 2] - positions[a + 2]
+      const vx = positions[cc] - positions[a], vy = positions[cc + 1] - positions[a + 1], vz = positions[cc + 2] - positions[a + 2]
+      const fx = uy * vz - uz * vy, fy = uz * vx - ux * vz, fz = ux * vy - uy * vx
+      agree += fx * normals[a] + fy * normals[a + 1] + fz * normals[a + 2] >= 0 ? 1 : -1
+    }
+    if (agree < 0) for (let t = 0; t + 2 < index.length; t += 3) { const tmp = index[t + 1]; index[t + 1] = index[t + 2]; index[t + 2] = tmp }
+    // Where a rim folds back on itself the sorted loop zig-zags and a
+    // sliver can face inward: the strip is drawn both ways (a few hundred
+    // triangles), so a wedge is never culled.
+    const n0 = index.length
+    for (let t = 0; t + 2 < n0; t += 3) index.push(index[t], index[t + 2], index[t + 1])
+    // Appended to the host patch's own primitive (a second primitive would
+    // load as a separately named mesh and break the structure anchors).
+    const hostPos = host.prim.getAttribute('POSITION').getArray()
+    const hostNor = host.prim.getAttribute('NORMAL').getArray()
+    const hostIdx = host.prim.getIndices().getArray()
+    const base = hostPos.length / 3
+    const mergedPos = new Float32Array(hostPos.length + positions.length)
+    mergedPos.set(hostPos); mergedPos.set(positions, hostPos.length)
+    const mergedNor = new Float32Array(hostNor.length + normals.length)
+    mergedNor.set(hostNor); mergedNor.set(normals, hostNor.length)
+    const mergedIdx = new Uint32Array(hostIdx.length + index.length)
+    mergedIdx.set(hostIdx); mergedIdx.set(index.map((v) => v + base), hostIdx.length)
+    host.prim.getAttribute('POSITION').setArray(mergedPos)
+    host.prim.getAttribute('NORMAL').setArray(mergedNor)
+    host.prim.getIndices().setArray(mergedIdx)
+    void buffer
+    strips += 1
+    triangles += index.length / 3
+  }
+  return { seamStrips: strips, seamStripTriangles: triangles }
+}
+
+/**
+ * Round 14: close the slits between patches whose borders do not share
+ * vertices (the palm against the digits, the toes against the nails).
+ * Boundary edges (used by one triangle only, once the patches are joined
+ * by position) form each patch's border polyline; a boundary vertex of
+ * the LARGER patch moves onto the nearest border segment of a smaller
+ * patch within BORDER_SNAP, so the big region adapts to the small one
+ * (a digit, a nail) and both borders lie on one curve. Interior vertices
+ * never move; only one side moves, so the two borders cannot swap.
+ */
+const BORDER_SNAP = 0.003
+function closePatchBorders(prims, pinnedY = []) {
+  const key = (x, y, z) => `${Math.round(x * 2e4)},${Math.round(y * 2e4)},${Math.round(z * 2e4)}`
+  const pinned = (y) => pinnedY.some((Y) => Math.abs(y - Y) < 1e-5)
+  const keyAt = (pos, v) => key(pos[v * 3], pos[v * 3 + 1], pos[v * 3 + 2])
+  const edgeUse = new Map()
+  const edgeOwner = new Map()
+  const where = new Map()
+  prims.forEach(({ pos, idx }, patch) => {
+    if (!idx) return
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      const vs = [idx[t], idx[t + 1], idx[t + 2]]
+      const ks = vs.map((v) => keyAt(pos, v))
+      vs.forEach((v, i) => { if (!where.has(ks[i])) where.set(ks[i], [pos[v * 3], pos[v * 3 + 1], pos[v * 3 + 2]]) })
+      for (let e = 0; e < 3; e += 1) {
+        const a = ks[e], b = ks[(e + 1) % 3]
+        const ek = a < b ? `${a}|${b}` : `${b}|${a}`
+        edgeUse.set(ek, (edgeUse.get(ek) ?? 0) + 1)
+        edgeOwner.set(ek, patch)
+      }
+    }
+  })
+  const sizes = prims.map((p) => p.pos.length / 3)
+  const cell = 0.02
+  const gk = (ix, iy, iz) => `${ix},${iy},${iz}`
+  const grid = new Map()
+  const boundaryKeys = new Set()
+  for (const [ek, n] of edgeUse) {
+    if (n !== 1) continue
+    const [ka, kb] = ek.split('|')
+    boundaryKeys.add(ka); boundaryKeys.add(kb)
+    const a = where.get(ka), b = where.get(kb)
+    const seg = { patch: edgeOwner.get(ek), a, b }
+    const g = gk(Math.floor((a[0] + b[0]) / 2 / cell), Math.floor((a[1] + b[1]) / 2 / cell), Math.floor((a[2] + b[2]) / 2 / cell))
+    let list = grid.get(g)
+    if (!list) { list = []; grid.set(g, list) }
+    list.push(seg)
+  }
+  const moves = new Map()
+  prims.forEach(({ pos }, patch) => {
+    const seen = new Set()
+    for (let i = 0; i < pos.length; i += 3) {
+      const k = key(pos[i], pos[i + 1], pos[i + 2])
+      if (!boundaryKeys.has(k) || seen.has(k) || pinned(pos[i + 1])) continue
+      seen.add(k)
+      const p = [pos[i], pos[i + 1], pos[i + 2]]
+      const ix = Math.floor(p[0] / cell), iy = Math.floor(p[1] / cell), iz = Math.floor(p[2] / cell)
+      let best = null, bestD = BORDER_SNAP * BORDER_SNAP
+      for (let dx = -1; dx <= 1; dx += 1) for (let dy = -1; dy <= 1; dy += 1) for (let dz = -1; dz <= 1; dz += 1) {
+        const list = grid.get(gk(ix + dx, iy + dy, iz + dz))
+        if (!list) continue
+        for (const sgm of list) {
+          if (sgm.patch === patch) continue
+          // The larger patch adapts; equal sizes: the higher index adapts.
+          if (sizes[sgm.patch] > sizes[patch] || (sizes[sgm.patch] === sizes[patch] && sgm.patch > patch)) continue
+          const ux = sgm.b[0] - sgm.a[0], uy = sgm.b[1] - sgm.a[1], uz = sgm.b[2] - sgm.a[2]
+          const l2 = ux * ux + uy * uy + uz * uz || 1e-12
+          const t = Math.max(0, Math.min(1, ((p[0] - sgm.a[0]) * ux + (p[1] - sgm.a[1]) * uy + (p[2] - sgm.a[2]) * uz) / l2))
+          const q = [sgm.a[0] + ux * t, sgm.a[1] + uy * t, sgm.a[2] + uz * t]
+          const d = (q[0] - p[0]) ** 2 + (q[1] - p[1]) ** 2 + (q[2] - p[2]) ** 2
+          if (d < bestD) { bestD = d; best = q }
+        }
+      }
+      if (best) moves.set(`${patch}:${k}`, best)
+    }
+  })
+  let moved = 0
+  prims.forEach(({ pos }, patch) => {
+    for (let i = 0; i < pos.length; i += 3) {
+      const target = moves.get(`${patch}:${key(pos[i], pos[i + 1], pos[i + 2])}`)
+      if (!target) continue
+      pos[i] = target[0]; pos[i + 1] = target[1]; pos[i + 2] = target[2]
+      moved += 1
+    }
+  })
+  return { borderVerticesClosed: moved, borderVertices: boundaryKeys.size }
+}
+
+/**
+ * Round 14: where two regional patches OVERLAP (the palm's border row lies
+ * on the digits, a strip of a toe on its neighbour), the overlapping
+ * triangles of the LARGER patch are dropped: a triangle whose centroid
+ * lies within OVERLAP_DIST of a smaller patch's surface, with a parallel
+ * normal, is a double skin that shades as a lighter dash along the seam.
+ * closePatchBorders then pulls the trimmed border onto the other patch.
+ */
+const OVERLAP_DIST = 0.0005
+function dropOverlappingTriangles(prims) {
+  const cell = 0.01
+  const gk = (ix, iy, iz) => `${ix},${iy},${iz}`
+  const grid = new Map()
+  const tris = []
+  const sizes = prims.map((p) => (p.idx ? p.idx.length : 0))
+  prims.forEach(({ pos, idx }, patch) => {
+    if (!idx) return
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3
+      const tri = { patch, t, a: [pos[a], pos[a + 1], pos[a + 2]], b: [pos[b], pos[b + 1], pos[b + 2]], c: [pos[c], pos[c + 1], pos[c + 2]] }
+      const ux = tri.b[0] - tri.a[0], uy = tri.b[1] - tri.a[1], uz = tri.b[2] - tri.a[2]
+      const vx = tri.c[0] - tri.a[0], vy = tri.c[1] - tri.a[1], vz = tri.c[2] - tri.a[2]
+      const n = [uy * vz - uz * vy, uz * vx - ux * vz, ux * vy - uy * vx]
+      const l = Math.hypot(n[0], n[1], n[2]) || 1
+      tri.n = [n[0] / l, n[1] / l, n[2] / l]
+      tri.m = [(tri.a[0] + tri.b[0] + tri.c[0]) / 3, (tri.a[1] + tri.b[1] + tri.c[1]) / 3, (tri.a[2] + tri.b[2] + tri.c[2]) / 3]
+      tris.push(tri)
+      const g = gk(Math.floor(tri.m[0] / cell), Math.floor(tri.m[1] / cell), Math.floor(tri.m[2] / cell))
+      let list = grid.get(g)
+      if (!list) { list = []; grid.set(g, list) }
+      list.push(tri)
+    }
+  })
+  // Closest point on a triangle (Ericson, Real-Time Collision Detection 5.1.5).
+  const closest = (p, a, b, c) => {
+    const ab = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], ac = [c[0] - a[0], c[1] - a[1], c[2] - a[2]], ap = [p[0] - a[0], p[1] - a[1], p[2] - a[2]]
+    const dot = (u, v) => u[0] * v[0] + u[1] * v[1] + u[2] * v[2]
+    const d1 = dot(ab, ap), d2 = dot(ac, ap)
+    if (d1 <= 0 && d2 <= 0) return a
+    const bp = [p[0] - b[0], p[1] - b[1], p[2] - b[2]]
+    const d3 = dot(ab, bp), d4 = dot(ac, bp)
+    if (d3 >= 0 && d4 <= d3) return b
+    const vc = d1 * d4 - d3 * d2
+    if (vc <= 0 && d1 >= 0 && d3 <= 0) { const v = d1 / (d1 - d3); return [a[0] + ab[0] * v, a[1] + ab[1] * v, a[2] + ab[2] * v] }
+    const cp = [p[0] - c[0], p[1] - c[1], p[2] - c[2]]
+    const d5 = dot(ab, cp), d6 = dot(ac, cp)
+    if (d6 >= 0 && d5 <= d6) return c
+    const vb = d5 * d2 - d1 * d6
+    if (vb <= 0 && d2 >= 0 && d6 <= 0) { const w = d2 / (d2 - d6); return [a[0] + ac[0] * w, a[1] + ac[1] * w, a[2] + ac[2] * w] }
+    const va = d3 * d6 - d5 * d4
+    if (va <= 0 && d4 - d3 >= 0 && d5 - d6 >= 0) { const w = (d4 - d3) / ((d4 - d3) + (d5 - d6)); return [b[0] + (c[0] - b[0]) * w, b[1] + (c[1] - b[1]) * w, b[2] + (c[2] - b[2]) * w] }
+    const denom = 1 / (va + vb + vc)
+    const v = vb * denom, w = vc * denom
+    return [a[0] + ab[0] * v + ac[0] * w, a[1] + ab[1] * v + ac[1] * w, a[2] + ab[2] * v + ac[2] * w]
+  }
+  const drop = new Set()
+  for (const tri of tris) {
+    const ix = Math.floor(tri.m[0] / cell), iy = Math.floor(tri.m[1] / cell), iz = Math.floor(tri.m[2] / cell)
+    let hit = false
+    for (let dx = -1; dx <= 1 && !hit; dx += 1) for (let dy = -1; dy <= 1 && !hit; dy += 1) for (let dz = -1; dz <= 1 && !hit; dz += 1) {
+      const list = grid.get(gk(ix + dx, iy + dy, iz + dz))
+      if (!list) continue
+      for (const o of list) {
+        if (o.patch === tri.patch) continue
+        if (sizes[o.patch] > sizes[tri.patch] || (sizes[o.patch] === sizes[tri.patch] && o.patch > tri.patch)) continue
+        if (tri.n[0] * o.n[0] + tri.n[1] * o.n[1] + tri.n[2] * o.n[2] < 0.9) continue
+        const q = closest(tri.m, o.a, o.b, o.c)
+        const d = (q[0] - tri.m[0]) ** 2 + (q[1] - tri.m[1]) ** 2 + (q[2] - tri.m[2]) ** 2
+        if (d < OVERLAP_DIST * OVERLAP_DIST) { hit = true; break }
+      }
+    }
+    if (hit) drop.add(`${tri.patch}:${tri.t}`)
+  }
+  let dropped = 0
+  prims.forEach((p, patch) => {
+    const { idx, prim } = p
+    if (!idx) return
+    const kept = []
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      if (drop.has(`${patch}:${t}`)) { dropped += 1; continue }
+      kept.push(idx[t], idx[t + 1], idx[t + 2])
+    }
+    if (kept.length !== idx.length) {
+      const arr = Uint32Array.from(kept)
+      prim.getIndices().setArray(arr)
+      p.idx = arr
+    }
+  })
+  return { overlappingTrianglesDropped: dropped }
+}
+
+/**
+ * Round 14: a triangle present in two patches (the hair cap over the
+ * scalp regions, the perionyx over the digits) z-fights as speckles; it is
+ * kept in the SMALLER patch (the more specific structure) only.
+ */
+function dropDuplicateTriangles(prims) {
+  const key = (x, y, z) => `${Math.round(x * 1e4)},${Math.round(y * 1e4)},${Math.round(z * 1e4)}`
+  const owners = new Map()
+  const triKey = (pos, idx, t) => [idx[t], idx[t + 1], idx[t + 2]].map((v) => key(pos[v * 3], pos[v * 3 + 1], pos[v * 3 + 2])).sort().join('|')
+  prims.forEach(({ pos, idx }, patch) => {
+    if (!idx) return
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      const k = triKey(pos, idx, t)
+      let o = owners.get(k)
+      if (!o) { o = new Set(); owners.set(k, o) }
+      o.add(patch)
+    }
+  })
+  let dropped = 0
+  const sizes = prims.map((p) => (p.idx ? p.idx.length : 0))
+  prims.forEach((p, patch) => {
+    const { pos, idx, prim } = p
+    if (!idx) return
+    const kept = []
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      const o = owners.get(triKey(pos, idx, t))
+      if (o.size > 1) {
+        let smallest = patch
+        for (const q of o) if (sizes[q] < sizes[smallest] || (sizes[q] === sizes[smallest] && q < smallest)) smallest = q
+        if (smallest !== patch) { dropped += 1; continue }
+      }
+      kept.push(idx[t], idx[t + 1], idx[t + 2])
+    }
+    if (kept.length !== idx.length) {
+      const arr = Uint32Array.from(kept)
+      prim.getIndices().setArray(arr)
+      p.idx = arr
+    }
+  })
+  return { duplicateTrianglesDropped: dropped }
+}
+
+/**
+ * Round 14: the nail plates and perionyx sit in holes of the toe and
+ * finger skin whose rims they do not share; each nail (a connected
+ * component of its patch) is dilated about its centroid and lifted a
+ * little along its normal so it overlaps the rim of its hole.
+ */
+const NAIL = /^(Nail plate|Perionyx)/
+const NAIL_DILATE = 1.05
+const NAIL_LIFT = 0.0003
+function dilateNails(prims) {
+  let components = 0
+  for (const { name, pos, idx } of prims) {
+    if (!NAIL.test(name ?? '') || !idx) continue
+    // Connected components by shared index.
+    const n = pos.length / 3
+    const parent = Int32Array.from({ length: n }, (_, i) => i)
+    const find = (a) => { while (parent[a] !== a) { parent[a] = parent[parent[a]]; a = parent[a] } return a }
+    for (let t = 0; t + 2 < idx.length; t += 3) { const a = find(idx[t]), b = find(idx[t + 1]), c = find(idx[t + 2]); parent[b] = a; parent[c] = a }
+    const groups = new Map()
+    for (let i = 0; i < n; i += 1) { const r = find(i); let g = groups.get(r); if (!g) { g = []; groups.set(r, g) } g.push(i) }
+    // Face normals accumulated per vertex for the lift.
+    const nor = new Float32Array(pos.length)
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3
+      const ux = pos[b] - pos[a], uy = pos[b + 1] - pos[a + 1], uz = pos[b + 2] - pos[a + 2]
+      const vx = pos[c] - pos[a], vy = pos[c + 1] - pos[a + 1], vz = pos[c + 2] - pos[a + 2]
+      const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx
+      for (const i of [a, b, c]) { nor[i] += nx; nor[i + 1] += ny; nor[i + 2] += nz }
+    }
+    for (const g of groups.values()) {
+      if (g.length < 3) continue
+      components += 1
+      const c = [0, 0, 0]
+      for (const i of g) { c[0] += pos[i * 3]; c[1] += pos[i * 3 + 1]; c[2] += pos[i * 3 + 2] }
+      c[0] /= g.length; c[1] /= g.length; c[2] /= g.length
+      for (const i of g) {
+        const o = i * 3
+        const l = Math.hypot(nor[o], nor[o + 1], nor[o + 2]) || 1
+        pos[o] = c[0] + (pos[o] - c[0]) * NAIL_DILATE + (nor[o] / l) * NAIL_LIFT
+        pos[o + 1] = c[1] + (pos[o + 1] - c[1]) * NAIL_DILATE + (nor[o + 1] / l) * NAIL_LIFT
+        pos[o + 2] = c[2] + (pos[o + 2] - c[2]) * NAIL_DILATE + (nor[o + 2] / l) * NAIL_LIFT
+      }
+    }
+  }
+  return { nailsDilated: components }
+}
+
+/**
+ * Round 14: Laplacian smoothing of the fitted limb skin in the blend zones
+ * (the plane down to the wrist / ankle). The Z-Anatomy leg and forearm
+ * regions are coarse prisms; refined and blended onto the round HRA rim
+ * their facets read as ridges down the limb. The vertices of every patch
+ * are joined by position (so a patch border is smoothed like any other
+ * edge), the rim on the plane is pinned, and each pass moves a vertex
+ * half-way to the mean of its neighbours.
+ */
+const SMOOTH_PASSES = 14
+function smoothBlendZones(prims, skinAux) {
+  const key = (x, y, z) => `${Math.round(x * 2e4)},${Math.round(y * 2e4)},${Math.round(z * 2e4)}`
+  const index = new Map() // key -> { pos, refs: [prim, i], nbrs: Set<key>, free }
+  const planes = skinAux.planes
+  const zoneOf = (p) => {
+    if (skinAux.zones.arm(p) !== null) return ['arm', skinAux.zones.arm(p)]
+    if (skinAux.zones.leg(p) !== null) return ['leg', skinAux.zones.leg(p)]
+    return null
+  }
+  for (const prim of prims) {
+    const { pos } = prim
+    for (let i = 0; i < pos.length; i += 3) {
+      const k = key(pos[i], pos[i + 1], pos[i + 2])
+      let e = index.get(k)
+      if (!e) {
+        const p = [pos[i], pos[i + 1], pos[i + 2]]
+        const zone = zoneOf(p)
+        let free = false
+        let weight = 0
+        if (zone) {
+          const Y = planes[zone[0]][zone[1]]
+          const L = skinAux.blend[zone[0]][zone[1]]
+          free = p[1] < Y - 1e-6 && p[1] > Y - L
+          // Full strength mid-band, fading to nothing at the pinned rim
+          // above and at the untouched hand or foot below (no step at
+          // either edge of the band).
+          if (free) weight = 0.5 * Math.min(1, (p[1] - (Y - L)) / (0.25 * L))
+        }
+        e = { pos: p, refs: [], nbrs: new Set(), free, weight }
+        index.set(k, e)
+      }
+      e.refs.push([prim, i])
+    }
+  }
+  for (const prim of prims) {
+    const { pos, idx } = prim
+    if (!idx) continue
+    const kAt = (v) => key(pos[v * 3], pos[v * 3 + 1], pos[v * 3 + 2])
+    for (let t = 0; t + 2 < idx.length; t += 3) {
+      const ks = [kAt(idx[t]), kAt(idx[t + 1]), kAt(idx[t + 2])]
+      for (let a = 0; a < 3; a += 1) for (let b = 0; b < 3; b += 1) if (a !== b) index.get(ks[a]).nbrs.add(ks[b])
+    }
+  }
+  const free = [...index.values()].filter((e) => e.free && e.nbrs.size >= 3)
+  for (let pass = 0; pass < SMOOTH_PASSES; pass += 1) {
+    const next = free.map((e) => {
+      const m = [0, 0, 0]
+      for (const nk of e.nbrs) { const q = index.get(nk).pos; m[0] += q[0]; m[1] += q[1]; m[2] += q[2] }
+      const n = e.nbrs.size
+      return [e.pos[0] + (m[0] / n - e.pos[0]) * e.weight, e.pos[1] + (m[1] / n - e.pos[1]) * e.weight, e.pos[2] + (m[2] / n - e.pos[2]) * e.weight]
+    })
+    free.forEach((e, i) => { e.pos = next[i] })
+  }
+  let moved = 0
+  for (const e of free) {
+    for (const [prim, i] of e.refs) { prim.pos[i] = e.pos[0]; prim.pos[i + 1] = e.pos[1]; prim.pos[i + 2] = e.pos[2]; moved += 1 }
+  }
+  return { smoothedVertices: moved, smoothPasses: SMOOTH_PASSES }
 }
 
 /** For fitted skin patches of the limbs: cut above the plane, taper the rim onto the HRA ring. */
@@ -1494,6 +2469,38 @@ async function buildFemaleFittedLayer(io, layerId, maleStructures, femaleNames, 
   let moved = 0
   const post = { clamped: 0, unresolved: 0, tapered: 0, hairProjected: 0, hairShift: {}, emptied: [] }
   const HAIR_FLAT = /^(Hairs of eyebrow|Eyelashes|Pubic hairs)/
+  // Round 14 (skin only): the fitted MALE rings at the cut planes, measured
+  // over every limb patch of a side together (one patch covers only part of
+  // the circumference), so blendFittedPatch can take them onto the HRA rings.
+  let maleRings = null
+  if (layerId === 'skin') {
+    const limb = { arm: { l: [], r: [] }, leg: { l: [], r: [] } }
+    for (const node of nodes) {
+      const cls = patchClass(node.getName())
+      if (!/^(foot|leg|hand|forearm)\./.test(cls)) continue
+      const kind = /^(foot|leg)\./.test(cls) ? 'leg' : 'arm'
+      const side = cls.endsWith('.l') ? 'l' : 'r'
+      const world = node.getWorldMatrix()
+      for (const prim of node.getMesh().listPrimitives()) {
+        const a = prim.getAttribute('POSITION').getArray()
+        const fitted = new Float32Array(a.length)
+        for (let i = 0; i < a.length; i += 3) {
+          const x = a[i], y = a[i + 1], z = a[i + 2]
+          const w = [world[0] * x + world[4] * y + world[8] * z + world[12], world[1] * x + world[5] * y + world[9] * z + world[13], world[2] * x + world[6] * y + world[10] * z + world[14]]
+          const q = fitPoint(field, maps, w)
+          fitted[i] = q[0]; fitted[i + 1] = q[1]; fitted[i + 2] = q[2]
+        }
+        const idx = prim.getIndices() ? prim.getIndices().getArray() : null
+        if (!idx) continue
+        limb[kind][side].push(...clipPatchAtPlane(fitted, idx, skinAux.planes[kind][side]).rim)
+      }
+    }
+    maleRings = { arm: {}, leg: {} }
+    for (const kind of ['arm', 'leg']) for (const side of ['l', 'r']) {
+      maleRings[kind][side] = ringFromRim(limb[kind][side])
+      log(`skin ${kind}.${side}: male ring radius ${(maleRings[kind][side].meanRadius * 100).toFixed(1)} cm -> HRA ${(skinAux.rings[kind][side].meanRadius * 100).toFixed(1)} cm, blended over ${(skinAux.blend[kind][side] * 100).toFixed(1)} cm`)
+    }
+  }
   for (const node of nodes) {
     const target = copied.get(node)
     scene.addChild(target)
@@ -1508,7 +2515,7 @@ async function buildFemaleFittedLayer(io, layerId, maleStructures, femaleNames, 
     const own = out.createMesh(shared.getName())
     for (const prim of shared.listPrimitives()) {
       const acc = prim.getAttribute('POSITION')
-      const arr = Float32Array.from(acc.getArray())
+      let arr = Float32Array.from(acc.getArray())
       for (let i = 0; i < arr.length; i += 3) {
         const x = arr[i], y = arr[i + 1], z = arr[i + 2]
         const w = [world[0] * x + world[4] * y + world[8] * z + world[12], world[1] * x + world[5] * y + world[9] * z + world[13], world[2] * x + world[6] * y + world[10] * z + world[14]]
@@ -1519,7 +2526,15 @@ async function buildFemaleFittedLayer(io, layerId, maleStructures, femaleNames, 
       let indexAcc = prim.getIndices()
       if (limbPatch) {
         // Feet and hands: cut above the plane, taper the rim onto the HRA ring.
-        const r = cutAndTaperFittedPatch(arr, indexAcc.getArray(), skinAux.planes, skinAux.rings, cls)
+        const limbKind = cls.startsWith('foot') || cls.startsWith('leg') ? 'leg' : 'arm'
+        let source = { positions: arr, indices: indexAcc.getArray() }
+        // Every limb patch of a side is refined alike, so the shared borders
+        // keep matching vertices (a refined leg next to a coarse foot left
+        // T-junctions that opened as a zipper once the band was smoothed).
+        source = subdivideMidpoint(arr, indexAcc.getArray(), 1)
+        const clipped = clipPatchAtPlane(source.positions, source.indices, skinAux.planes[limbKind][cls.endsWith('.l') ? 'l' : 'r'])
+        arr = clipped.positions
+        const r = blendFittedPatch(arr, clipped.indices, skinAux.planes, skinAux.rings, maleRings, skinAux.blend, cls)
         post.tapered += r.tapered
         if (r.kept.length === 0) { indexAcc = null } else {
           indexAcc = out.createAccessor().setType('SCALAR').setArray(Uint32Array.from(r.kept)).setBuffer(out.getRoot().listBuffers()[0])
@@ -1605,6 +2620,7 @@ async function buildFemaleFittedLayer(io, layerId, maleStructures, femaleNames, 
     structures.push({ node: entry.node, layer: layerId, name: entry.name, latin: entry.latin ?? null, system: entry.system, group: entry.group, organ: entry.organ, fitted: 'male' })
   }
   for (const name of post.emptied) omitted.push({ node: name, reason: 'not fitted', why: 'a limb skin patch that lies wholly above the cut plane; the HRA skin covers it' })
+  if (layerId === 'skin') post.rimNormals = bakeFittedSkinNormals(out, skinAux)
   await out.transform(unpartition(), dedup(), prune(), meshopt({ encoder: MeshoptEncoder, level: 'medium', quantizePosition: 14 }))
   const after = new Map(out.getRoot().listNodes().map((node) => [node.getName(), triangleCount(node)]))
   for (const s of structures) s.triangles = after.get(s.node) ?? 0
@@ -1638,7 +2654,7 @@ async function buildFemaleFittedLayer(io, layerId, maleStructures, femaleNames, 
       note: `${structures.length} structures the HRA does not model, fitted from the male Z-Anatomy model by the region field (position indicative)`,
       omitted: [...omitSummary.values()],
       clampedInsideSkin: layerId === 'skin' ? undefined : { moved: post.clamped, unresolved: post.unresolved, depthMetres: CLAMP_DEPTH },
-      skinReplacement: layerId === 'skin' ? { planes: skinAux.planes, taperMetres: SKIN_TAPER, rimVerticesTapered: post.tapered, hairVerticesProjected: post.hairProjected, headHairShiftMetres: post.hairShift, patchesEmptied: post.emptied, hraSkinCut: skinAux.cut } : undefined,
+      skinReplacement: layerId === 'skin' ? { planes: skinAux.planes, blendMetres: skinAux.blend, rimVerticesBlended: post.tapered, rimNormals: post.rimNormals, hairVerticesProjected: post.hairProjected, headHairShiftMetres: post.hairShift, patchesEmptied: post.emptied, hraSkinCut: skinAux.cut } : undefined,
     },
     structures,
     omitted,

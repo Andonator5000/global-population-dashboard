@@ -3,7 +3,7 @@ import { useId, useState, type ReactNode } from 'react'
 import { Icon } from '../Icon'
 import { capitalizeFirst, formatShare } from '../../lib/format'
 import type { BreakdownOther } from '../../types'
-import { OTHER_TOKEN, VintageBadge } from './primitives'
+import { OTHER_TOKEN, Pct, VintageBadge } from './primitives'
 
 /**
  * THE percentage-breakdown pattern for the whole site (2026-08-29, Phase 2.1):
@@ -212,11 +212,13 @@ export function Breakdown({
                     />
                   </span>
                   <span
-                    className="w-14 shrink-0 text-right"
-                    style={{ fontVariantNumeric: 'tabular-nums' }}
+                    className="shrink-0 text-right"
+                    style={{ fontVariantNumeric: 'tabular-nums', minWidth: '2.5rem' }}
                   >
-                    {row.isUpperBound ? '<' : ''}
-                    {formatShare(row.percent)}%
+                    <Pct>
+                      {row.isUpperBound ? '<' : ''}
+                      {formatShare(row.percent)}%
+                    </Pct>
                   </span>
                 </span>
               </td>
