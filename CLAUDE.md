@@ -243,19 +243,57 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   every image through the licence gate (no hotlinks) and check:phenomena
   gates presence, decodability and attribution; status flags
   observed/theoretical/hypothesis are required.
-- Taxonomy (§31, §42.6–7, §44): the tree is NEVER hand-typed — it comes from
-  Catalogue of Life; which families get species depth is editorial
-  (etl/reference/taxonomy_focus.json), and contested placements carry
-  notes from etl/reference/taxonomy_notes.json. Every node has wiki or an
-  explicit null (check:taxonomy gates it). rankDefinition() must cover
-  EVERY rank string in the data (composed prefix definitions — no chip
-  is a dead end); borrowed photos always carry img.rep and render as
-  "Representative: <name>", never passed off as the taxon's own. Depth
-  below family (§44): one genera file per family in data/biology/taxonomy/
-  genera (37 MB, ~14k files), species live from ChecklistBank on expand
-  (documented exception), descSrc on every node with generated summaries
-  flagged; genus Wikipedia enrichment is incremental
-  (TAXONOMY_GENUS_ENRICH_CAP, default 20k per run).
+- Space Travel (§74): EDITORIAL — edit etl/reference/space_travel.json
+  (bump `version`), never data/space/travel/*; the `spacetravel` stage
+  validates it, downloads every image through the free-licence gate (PD,
+  CC0, CC BY, CC BY-SA, Attribution — GODL-India is deliberately NOT on
+  the list) and check:spacetravel gates presence, decodability, licence,
+  attribution AND the scale-diagram arithmetic. THE SCALE DIAGRAMS ARE
+  GENERATED FROM THE DATA: a silhouette's section lengths must sum to its
+  drawn height within 6%, and that height must match a sourced figure
+  within 2% or carry a `heightNote` saying how it was composed (Orion is
+  the only composed one); every drawn craft cites the reference drawing
+  its proportions were checked against — never trace, never resize to fit.
+  A figure a source does not publish is null WITH a reason (GPS IIF is in
+  the catalogue but off the scale plate because Boeing publishes no
+  dimensions). Cutaways are PD NASA/US-government or free Commons drawings
+  with OUR callouts as image fractions; where the source drawing already
+  carries numbers we render a legend keyed to them rather than printing a
+  second set, and we never guess what an unexplained number means. Eras
+  are threads that overlap, not a year axis; each era shows four events
+  with the rest behind a disclosure (110 cards is 98,000 px of phone).
+  Honesty rulings are load-bearing: the V-2's forced labour and ~20,000
+  dead at Mittelbau-Dora, von Braun's SS membership, Arthur Rudolph's
+  record, every fatal accident with its crew named. Facts after mid-2024
+  were verified live on 2026-10-10 and carry a `vintage` line; never
+  guess a launch date.
+- Taxonomy (§31, §42.6–7, §44, §72): the tree is NEVER hand-typed — it
+  comes from Catalogue of Life; which families get species depth is
+  editorial (`etl/reference/taxonomy_focus.json`), and contested
+  placements carry notes from `etl/reference/taxonomy_notes.json`. Every
+  node has wiki or an explicit null (check:taxonomy gates it).
+  `rankDefinition()` must cover EVERY rank string in the data. Depth below
+  family (§44): one genera file per family, species live from
+  ChecklistBank on expand, `descSrc` on every node, genus Wikipedia
+  enrichment incremental (`TAXONOMY_GENUS_ENRICH_CAP`, default 20k).
+  Round 14 (§72): the page is PHOTO-LED — a full-width plate (picture,
+  lineage rail, name in Newsreader, apparatus) above the explorer, a
+  picture on every tree row, a six-up gallery as the resting state.
+  Pictures come from a FIXED LADDER — Wikidata P18, Wikipedia lead image,
+  Wikidata by taxon name (P225), the Commons category, GBIF occurrence
+  media (iNaturalist/Observation.org preferred), iNaturalist open data,
+  then a PhyloPic SILHOUETTE — every rung through the same free-licence
+  gate (PD/CC0/CC BY/CC BY-SA, never NC or ND), incremental at
+  `TAXONOMY_IMAGE_ENRICH_CAP` (default 800 nodes per run), cached by
+  content under `.cache/taxonomy`. A silhouette is ALWAYS labelled a
+  silhouette and never a photograph; a borrowed picture always says
+  "Representative: <name>"; a taxon with nothing shows the designed "No
+  free photograph found" placeholder in its rank colour. NO IMAGE ON THIS
+  PAGE IS AI-GENERATED — generation was asked for and declined (§72.9);
+  if it is ever added it needs a key, a `kind: "generated"` flag and an
+  unmistakable "AI illustration, not a photograph" label.
+  `etl/reference/taxonomy_image_rejects.json` is the person-reviewed deny
+  list; review new picks on a Pillow contact sheet before shipping.
 - Evolution (§32): events are EDITORIAL — edit
   etl/reference/evolution_events.json (bump version), never
   data/biology/evolution/. Summaries state their own uncertainty.
@@ -325,3 +363,74 @@ iNaturalist open-data / TheMealDB) with per-image attribution rendered.
   under .cache/terrain/eox-*); Blue Marble 2004 only via
   SATELLITE_SOURCE=bluemarble. Never switch the imagery to a runtime
   tile server.
+- Round 14 globe (§70): the svg is hidden for the WHOLE of every gesture, so
+  the pointer handlers live on the svg AND on the transparent GRAB
+  OVERLAY shown for the session's duration (handler type
+  `React.PointerEvent<Element>`); every canvas over the globe is
+  `pointer-events-none` — there must never be a visible, hit-testable,
+  handler-less surface over the globe, which is what made a coasting
+  globe uncatchable. The overlay takes pointer capture at POINTERDOWN
+  (the svg still waits for the first move, or country selection breaks),
+  and a `pointerleave` whose pointer is still ours — capture held or a
+  button down — is NOT a release, the same rule §62.5 gives
+  lostpointercapture. Moving frames (drag + inertia) render into a MOTION
+  PIXEL BUDGET (`motionPixelRatio` ~2.0 Mpx desktop / 1.0 low-power,
+  `skyMotionPixelRatio` ~0.7 / 0.35) and are upscaled by CSS; the settled
+  frame is full `canvasPixelRatio()` — never render a moving frame at
+  full resolution, never size/clear/composite the 2-D drag canvas for a
+  frame the GL pass owns, never leave the globe's base GL pass
+  unscissored (`discScissor` bounds it to the disc + halo), and judge
+  globe performance by the rAF-to-rAF INTERVAL, not main-thread ms (it
+  was 172 ms while the callback said 2 ms). Fine imagery tiles of the
+  INACTIVE set are evicted on a view switch (the world bases stay, §43.5);
+  both sets' tiles resident was ~620 MB and is where the context is lost.
+  A drag/inertia frame may FAIL but may never strand a session: both are
+  wrapped in try/catch that force-ends, and the watchdog force-ends a
+  pointerless session whose frames stopped arriving for 700 ms
+  (`sessionTickAt`) — an id in `inertiaFrame` is not evidence of life.
+  `drawGlowRing` clamps its gradient stops (the unclamped
+  `0.2 / (GLOW_REACH - 1)` = 1.0000000000000002 threw and killed the
+  no-WebGL2 fallback, the political deep-zoom frames and every
+  lost-context frame). Verify with `.scratch/r14-globe-grab.mjs <view>
+  <mouse|touch>` (grab a coasting globe) and `.scratch/r14-globe-perf.mjs`
+  (`FULLSCREEN=1`), and `HEADED=1 PORT=… FULLSCREEN=1 node
+  scripts/globe-spin-capture.mjs` now prints the frame interval too.
+- Round 14 evolution (§73): the TREE OF LIFE is editorial — edit
+  `etl/reference/evolution_tree.json` (bump `version`), never
+  `data/biology/evolution/tree.json`; a child's originMa is NEVER older
+  than its parent's (no tolerance), every node has a non-Wikipedia
+  source and an existing Wikipedia title (the stage checks it and
+  aborts), extinct lineages carry extinctMa, endosymbioses are `merges`
+  on the receiving lineage; silhouettes follow the §32.3 PhyloPic
+  ranking; the diagram (src/components/evolution/) is rendered from the
+  data with NO hand-placed coordinates, orders, labels or folds — the
+  axis is piecewise linear (TIME_BREAKS) with the ICS strips showing the
+  compression, the ordering rule is oldest-split-outermost, folds come
+  from the row budget (autoCollapse), labels are collision-resolved and
+  the tip margin is measured; phone = time down the page, in-flow SVG, no
+  horizontal scroll; the stage breaks out of the reading measure from lg.
+  Verify with `.scratch/r14-evolution-shots.mjs` (both themes, both
+  layouts, zero label overlaps) and `.scratch/r14-evolution-interact.mjs`
+  (search, zoom, pan, fit, open-all, keyboard, card fold, phone tap)
+  against a dev server on :5184 before claiming a change.
+- Round 14 percentages (§75): A value and its unit/sign (`%`, `°`, `km²`, ...) are ONE token and
+  must render on one line -- wrap with `.nowrap-pct` / the `<Pct>`
+  helper (`primitives.tsx`) wherever that token sits in a column
+  narrow enough to matter (a fixed-width or `th`/`td`-inherited
+  `overflow-wrap: break-word` cell). Don't give a numeric column a
+  hard `width` once its content is `nowrap` -- overflow will
+  silently overlap the sibling to its left instead of wrapping; use
+  `min-width` and let a flex-1 sibling absorb the slack instead.
+- Round 14 anatomy (§71): the 3-D viewer MERGES each layer into one geometry per
+  material with `aId`/`aHighlight` vertex attributes (never one mesh per
+  structure again), picks and lays out labels from ID passes (1×1 for a
+  click; a ≤360 px pass on camera settle for the plate — visible-pixel
+  anchors, never bounding-box centres), renders on demand with a motion
+  pixel ratio; desktop labels are a two-column plate with leader lines like
+  the Diagrams tab (cap 56), phones keep dots; skins ship at full source
+  resolution with normals welded ACROSS the regional patches
+  (`bakeSmoothNormals`), and the female's fitted limbs are refined one
+  level, clipped exactly at the cut planes, blended onto the HRA rim
+  polygons over the whole segment, Laplacian-smoothed in the band and
+  tucked under the HRA edge (`blendFittedPatch`, `smoothBlendZones`) —
+  measure with `.scratch/r14-anatomy-perf.mjs` before claiming a 3-D fix.

@@ -36,8 +36,10 @@ jobs:
     # The long poles are the biome overlay (~5 minutes locally) and, since
     # Phase 5, the Catalogue of Life traversal (~3,500 API calls, which
     # --refresh re-fetches). Raw downloads run to roughly 350 MB including
-    # the Blue Marble imagery.
-    timeout-minutes: 150
+    # the Blue Marble imagery. Round 14 (DATA_DECISIONS section 72): the
+    # taxonomy picture ladder adds ~45 min at TAXONOMY_IMAGE_ENRICH_CAP=600
+    # (~14 taxa a minute); it is resumable, so a job cut short loses nothing.
+    timeout-minutes: 240
 
     steps:
       - uses: actions/checkout@v4
@@ -81,6 +83,13 @@ jobs:
         run: python etl/run.py --validate-indicators
 
       - name: Run the ETL against live sources
+        env:
+          # Taxonomy picture ladder (DATA_DECISIONS section 72): ~14 taxa a
+          # minute, so 600 is about 45 minutes a month; the candidate store
+          # is written every 100 attempts and published picks replay, so a
+          # job cut short loses nothing. Raise it to 2000 (~2h20) if the
+          # timeout above is raised to 300.
+          TAXONOMY_IMAGE_ENRICH_CAP: '600'
         run: python etl/run.py --refresh
 
       - name: Verify the built artifacts

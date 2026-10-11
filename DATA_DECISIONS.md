@@ -5982,6 +5982,1702 @@ Verification (`.scratch/shots-r13/`, both viewports): `*-female-skin`, `*-female
 
 Known limits after the follow-up: the fitted hand is still rigid (the male's finger pose), now with matching skin so nothing pokes through; the seams at the ankle and mid-forearm read as faint rings; the arm cut is at mid-forearm rather than the wrist for the reason above, so 9 cm of the female forearm is the male's (the taper blends it into her fatter forearm).
 
+## 70. Round 14: the globe -- grab mid-spin, fullscreen frame budget, terrain unlocked (2026-10-10)
+
+Andy, on the Global Data page: "(1) If I use my mouse cursor or my finger
+to move the globe around, I cannot manipulate its direction again until
+the globe stops spinning on its own. On Google Earth I can manipulate the
+direction of the globe while it is still mid-spin. (2) The movement is far
+too sluggish, most noticeably in full screen mode. Satellite view lags
+very much in full screen. (3) On Terrain view, the globe doesn't spin at
+all when I try to move it. It is locked in place, fullscreen or not."
+
+Three reports, and the third turned out to be the second face of a
+one-line arithmetic bug that also explains the freeze Andy has been
+reporting since round 9.
+
+---
+
+### 70.1 Catching a spinning globe
+
+**Symptom.** A flick, then a press: nothing. The globe had to come to rest
+before it would answer the hand again. Google Earth lets you catch it.
+
+**Cause.** Every pointer handler lived on the `<svg>`
+(`onPointerDown/Move/Up/Cancel/LostPointerCapture/Leave`), and a
+drag-render session (section 35) sets that svg to `visibility: hidden`
+for the WHOLE session -- the drag AND the inertia that follows it. A
+`visibility: hidden` element is not a hit-test target, so the press that
+should have caught the coast landed on the surface underneath: the 2-D
+drag canvas, which had no handler of any kind and was not
+`pointer-events: none` either. `handleGlobePointerDown` -- which calls
+`cancelInertia()` and continues the session from wherever the coast had
+carried it, and has done since round 2 -- simply never ran. The code to
+catch the globe was correct and unreachable.
+
+A mouse drag that STARTS at rest keeps working through the hidden svg
+only because `setPointerCapture` was taken on it while it was still
+visible, and capture bypasses hit testing; a touch drag works for the
+same reason (implicit capture on the element the finger went down on).
+Neither helps a NEW press during the coast, which has to be hit-tested.
+
+**Fix.** A dedicated **grab overlay**: a transparent `<div>`, `absolute
+inset-0`, `aria-hidden`, `touch-none`, displayed for exactly as long as a
+drag-render session is live, carrying the same handlers as the svg. The
+handler types widen from `React.PointerEvent<SVGSVGElement>` to
+`React.PointerEvent<Element>`. A press during a coast therefore runs the
+same `handleGlobePointerDown` as a press at rest, cancels the inertia,
+re-anchors under the finger and continues the session; the release
+coasts again. Everything else follows for free, because it is the same
+code path: pointer capture is taken on the overlay for mouse and pen and
+never for touch (section 62.5), the 120 ms `lostpointercapture` rule is
+unchanged, `pointerleave` is now one shared handler used by both
+surfaces, and the overlay is hidden by the same three places that restore
+the svg (the post-commit restore effect, `forceEndDragSession`, and the
+watchdog through it).
+
+An overlay rather than handlers on the canvases, for three reasons: the
+canvases are pictures and are now all `pointer-events: none`, so there is
+exactly ONE pointer target at any moment (the svg at rest, the overlay in
+motion) and no stacking question; the drag canvas can be left hidden
+whenever it has nothing to paint (70.2), which it could not be if it were
+also the grab surface; and the overlay sits BELOW the zoom controls
+(z-10) and the popover (z-20), so the chrome stays clickable mid-spin.
+
+A wheel over the overlay (so, over a coasting globe) ends the session so
+that the next tick zooms, instead of being swallowed as it was before.
+
+**Two things the overlay needed that the svg does not.**
+
+*Pointer capture at `pointerdown`, not at the first move.* On the svg the
+wait is deliberate and must stay: capturing at pointerdown would make the
+svg the click target and no country could ever be selected, so capture is
+taken on the first move, once the gesture is known to be a drag. The
+overlay has no click semantics at all -- it is `aria-hidden`, it has no
+`onClick`, and a press on it is always a grab -- and the wait was actively
+harmful there. Between the `pointerdown` that catches the globe and the
+first `pointermove`, ANY reflow that moves the element out from under the
+pointer raises `pointerout`; React turns that into `onPointerLeave`, and
+section 42.1's escape hatch ended the gesture. The user's experience was:
+press, the globe stops, and then it refuses to follow the hand. Capture
+at pointerdown makes the element's geometry irrelevant for the rest of
+the gesture. Touch pointers are still NEVER explicitly captured (section
+62.5).
+
+*A leave whose pointer we still hold is not a release.* The same rule
+section 62.5 already applies to `lostpointercapture`. `pointerleave` now
+returns early when the pointer is one we are tracking AND either pointer
+capture is ours (`hasPointerCapture`) or a button is still down. With no
+button down and no capture, the release really was missed and section
+42.1's hatch runs exactly as before.
+
+**Measured.** `.scratch/r14-globe-grab.mjs <view> <mouse|touch>`: flick,
+wait 250 ms into the coast, press and HOLD, then redirect while still
+holding. Three assertions: the coast is demonstrably still running when
+the press lands; the press STOPS the globe dead; and the globe then moves
+WHILE the hand moves, not on release.
+
+| view | mouse | touch (Pixel 7, CDP touch points with explicit ids) |
+| --- | --- | --- |
+| political | PASS | PASS |
+| satellite | PASS | PASS |
+| terrain | PASS | PASS |
+
+With the overlay made inert (`NOGRAB=1`, which reproduces round 13) every
+run fails on the second assertion: "it kept spinning under the finger".
+
+**A note on how this is measured, because it cost an afternoon.** "Is the
+globe moving?" is answered by checksumming the 2-D canvases over the map
+through `getImageData` -- the sky canvas is repainted from the same
+rotation ref as every drag and inertia frame, so its pixels are an exact
+witness of whether frames are still arriving. Screenshots CANNOT be used
+inside a held gesture: Playwright's clipped `page.screenshot` changes the
+page's device metrics, Chrome drops pointer capture and raises a boundary
+event with `buttons: 0`, and the harness itself then ends the gesture.
+Every assertion taken across a screenshot was measuring Playwright. (The
+app hardening above came out of chasing it and is worth having on its own
+-- a fullscreen transition or a layout shift can do the same thing to a
+real user -- but the residual failure was the harness.)
+
+**Never reintroduce.** Pointer handlers on the svg ALONE. The svg is
+hidden for the whole of every gesture, so whatever is visible over the
+globe at that moment must carry the handlers, and whatever cannot handle
+them must be `pointer-events: none`. There must never be a visible,
+hit-testable, handler-less surface over the globe. And never treat a
+`pointerleave` as a release while the pointer is still ours -- capture
+held or a button down -- for the same reason section 62.5 gives for
+`lostpointercapture`. Conversely, never take pointer capture at
+`pointerdown` on the SVG: that is what makes country selection work.
+
+---
+
+### 70.2 The fullscreen frame budget
+
+**Symptom.** "Far too sluggish, most noticeably in full screen mode.
+Satellite view lags very much in full screen."
+
+**Cause: fill rate, and the old measurement could not see it.**
+`scripts/globe-spin-capture.mjs` printed main-thread milliseconds inside
+each rAF callback, and rounds 3, 4 and 12 drove that number to about 1 ms
+and kept it there. It was still about 1 ms in full screen. The cost was
+never on the main thread: every globe fragment runs a per-pixel inverse
+orthographic projection (four transcendentals and an anisotropic texture
+fetch), and in full screen on a 2x display the map was asking for
+
+* 1920x1080 CSS at the 1.75 backing-store cap = **3360x1890 = 6.35
+  megapixels**, for the GL imagery pass;
+* the same 6.35 Mpx again for the **sky canvas** (9,096 star discs, 150
+  constellation polylines and the lettering, redrawn per frame);
+* the same 6.35 Mpx again for the **2-D drag canvas**, which in the
+  imagery and political-raster views is sized, cleared and composited
+  and then draws NOTHING (the GL pass owns the frame);
+* and then three 6.35 Mpx layers for the compositor to blend.
+
+The whole-world base pass was also the one GL pass still drawn as an
+unscissored full-screen triangle, although the shader discards
+everything outside the disc and its halo -- in a 1920x1080 frame the
+planet and its glow are about 0.96 Mpx of 2.07.
+
+So the globe-spin capture now prints TWO numbers: main-thread ms per
+callback, and the **rAF-to-rAF interval**, which is the GPU proxy. 16.7 ms
+is 60 fps.
+
+**Measured before** (headed Chrome, real GPU, map's own full screen,
+1920x1080 viewport at deviceScaleFactor 2, during the coast after a
+flick):
+
+| view | main-thread ms (median) | frame interval (median) |
+| --- | --- | --- |
+| political | 2.0 | **172.2 ms (~6 fps)** |
+| satellite | 2.2 | **166.7 ms (~6 fps)** |
+| terrain | 1.5 | **102.3 ms (~10 fps)** |
+
+Embedded at 1200x900 dpr 1 (0.31 Mpx) all three already coasted at
+16.7 ms, which is why no earlier round caught this.
+
+**Fix.** Four changes, in order of what they bought:
+
+1. **A MOTION pixel budget** (`motionPixelRatio` and
+   `skyMotionPixelRatio` in `src/lib/device.ts`). A frame that is being
+   dragged or is coasting is rendered into a backing store bounded by a
+   pixel BUDGET -- ~2.0 Mpx on a desktop, ~1.0 Mpx on a low-power device
+   for the imagery, and ~0.7 / 0.35 Mpx for the sky -- and upscaled by
+   CSS. The settled frame, the only one anyone reads, is still rendered
+   at the full `canvasPixelRatio()` cap. The budget is never above that
+   cap, so a dpr-1 display sees no change at all; it bites exactly where
+   the fill rate does. This is the trade Google Earth makes while the
+   globe is turning.
+2. **The sky gets its own, smaller budget.** Isolated by A/B: the antique
+   direction has no sky (sections 57.3, 58.2), and full-screen satellite
+   coasted at 16.7 ms under antique against 29.3 ms under atlas with the
+   sky at the imagery's budget. The sky is the most expensive surface per
+   pixel in the stack and the least in need of pixels -- it is a
+   backdrop, and it is sharp again the moment the globe settles.
+3. **The 2-D drag canvas is not touched when the GL pass owns the
+   frame.** `drawDragFrame` now decides who is painting BEFORE it sizes
+   or clears anything; in the imagery views and in political below 6x
+   zoom the canvas stays `display: none` for the whole session. One
+   6.35 Mpx layer, its clear and its composite, gone. Its 2-D context is
+   also resolved once per backing store instead of once per frame.
+4. **The base GL pass is scissored to the disc plus its halo**
+   (`discScissor` in globegl.ts), the fragment shader computes the rim
+   `sqrt` once instead of twice, evaluates the halo only outside the
+   limb, and skips the tone grade entirely when every grade channel is
+   zero (`u_hasGrade` -- the atlas direction, which is the default).
+
+**Measured after**, same configuration:
+
+| view | main-thread ms (median) | frame interval (median) | backing store in motion |
+| --- | --- | --- | --- |
+| political | 1.5 | **16.6 ms (60 fps)** | 2.0 Mpx GL + 0.7 Mpx sky |
+| satellite | 1.5 | **16.6 ms (60 fps)** | 2.0 Mpx GL + 0.7 Mpx sky |
+| terrain | 1.5 | **16.7 ms (60 fps)** | 2.0 Mpx GL + 0.7 Mpx sky |
+
+That is 6 to 11 times faster, at 60 fps with headroom, and the same at
+deviceScaleFactor 1 (16.6-16.7 ms). Embedded is unchanged (16.6-16.7 ms
+before and after, 1.3 ms main thread) because at dpr 1 the budget never
+engages. Settled frames are byte-for-byte the same resolution as before:
+3360x1890 in full screen.
+
+**A fifth change, for memory rather than fill:** the imagery renderer now
+drops the INACTIVE set's fine tiles on a view switch
+(`evictTilesExcept`). Section 43.5's ruling is that the world BASES stay
+resident across Political / Satellite / Terrain switches -- 0.3 MB each,
+and that is what makes a second switch immediate. The fine tiles are a
+different matter: eight 2700-square tiles with mipmaps are ~310 MB of
+texture per set, so after one Satellite -> Terrain switch the GPU was
+holding over half a gigabyte of tiles for a view nobody was looking at.
+That is the memory pressure a context is lost under, and 70.3 is what
+happened when one was.
+
+**React renders during a gesture** were counted with a temporary counter
+in the component body (removed before shipping): 0 at rest over three
+seconds, 0 per frame during a drag or a coast. Two renders at the START
+of a gesture -- the hover that precedes the press -- and a handful across
+the commit and the section 60 settle. Section 35's contract holds and no
+per-frame setState has crept back.
+
+**Never reintroduce.** A full-resolution backing store for a MOVING
+frame; a full-screen canvas that is sized, cleared or composited for a
+frame it does not paint; an unscissored full-screen GL pass on the globe;
+a per-frame `getContext`; per-pixel tone work for a grade that is all
+zeros; both imagery sets' fine tiles resident at once. And never judge
+globe performance by main-thread milliseconds alone -- print the frame
+interval, which is the number that was 172 ms while the callback said
+2 ms.
+
+---
+
+### 70.3 Terrain unlocked, and the freeze finally named
+
+**Symptom.** "On Terrain view, the globe doesn't spin at all when I try to
+move it. It is locked in place, fullscreen or not."
+
+**Cause.** `drawGlowRing` (section 66.4, the atmosphere on the 2-D paths)
+computed its gradient stop offsets as `d / (GLOW_REACH - 1)`.
+`GLOW_REACH` is 1.2, and `1.2 - 1` is `0.19999999999999996` in binary
+floating point, so the last stop, `0.2 / 0.19999999999999996`, is
+`1.0000000000000002` -- and `CanvasGradient.addColorStop` THROWS for an
+offset outside [0, 1]. Every call to `drawGlowRing` threw, for everyone,
+on every frame, since round 13.
+
+It has three faces:
+
+* **The no-WebGL2 fallback has been dead since round 13.**
+  `Canvas2DImagery.render` (terrain.ts) calls `drawGlowRing`, so the
+  throw escaped the map's `useLayoutEffect` during React's commit and
+  took the whole map subtree out of the tree. Reproduced by stubbing
+  `getContext('webgl2')` to null: `svg present: 0`, one pageerror, no map
+  at all.
+* **The political globe froze above 6x zoom**, where drag frames leave
+  the raster path and become 2-D vector frames (section 51.2). Twelve
+  pageerrors per gesture in the pre-fix matrix run.
+* **A lost GL context froze the globe in EVERY view**, which is where
+  Terrain comes in. Section 66.2's lost-context path hands the frame to
+  the same 2-D vector path, so it threw too. Reproduced with
+  `WEBGL_lose_context` in terrain view: after a flick,
+  `vis=hidden`, all canvases displayed, rotation stuck, and a second drag
+  could not move it -- "locked in place", exactly, with no way back
+  except a reload.
+
+**Why the throw stranded the session, which is the real damage.** The
+throw escaped the animation callback AFTER the rotation ref had been
+advanced but BEFORE the loop re-armed or ended. `inertiaFrame.current`
+was left holding the id of the frame that had just died, so round 13's
+watchdog -- which force-ends a session with "no pointer down, no inertia
+and no pending drag frame" -- tested `inertiaFrame.current === null`,
+found it false, and never fired. The session outlived its pointer for
+ever, which is section 42.1's frozen globe by a route no script had
+named. This is very probably the freeze Andy has reported in rounds 9,
+10, 12 and 13.
+
+**Why Terrain and not Satellite, for Andy.** Terrain is the view whose
+GPU memory total peaks, because textures stayed resident across switches
+(section 43.5) and his terrain visit came after his satellite one: both
+sets' bases plus both sets' tier-1 tiles. A context lost there, the drag
+threw, the session stranded, and the globe was locked -- in full screen
+or not, because a lost context does not care about the viewport.
+
+**Fix.**
+
+1. `drawGlowRing` clamps every stop offset into [0, 1] and returns early
+   on a non-finite or non-positive radius.
+2. `drawDragFrame` wraps its whole body in try/catch: a frame may fail, a
+   SESSION may not be stranded by it. The catch reports once per page and
+   force-ends the session, which restores the svg -- a one-frame
+   orientation flash beats a dead map, exactly as section 42.1 ruled.
+3. The inertia loop's `step` does the same, and always either arms the
+   next frame or ends the session.
+4. The watchdog no longer trusts `inertiaFrame`: it force-ends a session
+   with no pointer down whose frames have STOPPED ARRIVING for 700 ms
+   (`sessionTickAt`, stamped by every drag and inertia frame), as well as
+   the original condition. Its interval tightens from 400 ms to 250 ms,
+   so any route to a frozen globe self-heals within about a second.
+5. The tile eviction of 70.2 makes the context loss itself much less
+   likely.
+
+**Measured.**
+
+| check | before | after |
+| --- | --- | --- |
+| no-WebGL2 fallback, terrain, flick | map absent from the DOM, 1 pageerror | globe spins, lambda -10 -> 87.45, 0 errors |
+| lost GL context, terrain, flick | `vis=hidden`, rotation stuck, second drag dead | coasts and commits, svg visible, 0 errors |
+| political at 3 wheel steps, drag | 12 pageerrors per gesture | 0 errors |
+| lock matrix, 3 views x 3 palettes x 2 zooms, desktop AND Pixel 7 | 0 locked but 6 error-storms | **0 locked, 0 errors** in all 36 |
+
+**Never reintroduce.** A gradient stop computed from a floating-point
+difference without clamping. A drag or inertia frame that can throw out
+of its animation callback. A watchdog that infers liveness from a
+scheduled-frame id rather than from frames actually arriving. And the
+standing rule, restated: a drag session that outlives its pointer IS the
+frozen globe, so every way a frame can fail must end the session.
+
+---
+
+### 70.4 Found on the way, not fixed here
+
+* The country popover can sit over the disc centre after a gesture, so a
+  press there lands on the popover rather than the globe. Pre-existing
+  and arguably correct, but worth a ruling.
+* The map is not pixel-stable at rest between two screenshots (confirmed
+  with `.scratch/r14-globe-still.mjs`, which takes two frames 350 ms apart
+  with nothing happening and gets different bytes). A WebGL canvas created
+  with `preserveDrawingBuffer: false` is the likely reason. Visual
+  regression on the globe therefore has to compare rendered content, not
+  file bytes.
+* `src/routes/HomePage.tsx` and `LiveCounter` are not the source of
+  mid-gesture renders (measured: 0 WorldMap renders in 3 s at rest), so
+  nothing is needed there.
+
+## 71. Round 14: Anatomy — a responsive 3-D body, plate-style labels, higher-resolution skins, the female limbs repaired (2026-10-10)
+
+Andy's report, verbatim: "On the Anatomy page, the 3-D body view is not as
+responsive as it should be when I try to move it around. Also, there are far
+fewer body part labels on the 3-D body view than on the Diagram view. The
+movement on the 3-D body view is also quite sluggish/laggy. The labels for
+the body parts are not all accurately placed. Review and correct. The
+resolution of the body is also low for both male and female. The female
+anatomy body, both in 3-D body view and in the Diagrams view, is very low
+resolution/low poly. It is also oddly proportioned. The lower arms/wrists
+appear broken. Fix this."
+
+Measurement scripts (all under .scratch/): `r14-anatomy-perf.mjs` (headed
+Chrome, both sexes, three depths, embedded 1280x800 and full screen
+1920x1080 @ dpr 2: draw calls, triangles, rAF callback ms, frame intervals,
+labels shown), `r14-anatomy-shots.mjs` (stage screenshots, a turned camera,
+a click pick, full screen, a Pixel-7 compact run), `r14-anatomy-rimcheck.mjs`
+(the HRA and fitted rims at each cut plane, numerically), and the diagram
+renderer's `--shot` mode for model close-ups (`before-*`, `after*-*` in
+.scratch/r14-anatomy-shots/).
+
+### 71.1 Responsiveness: one draw call per material, render on demand, a motion pixel ratio
+
+**Symptom.** Dragging the body at the muscles depth stuttered on a fast
+desktop and crawled on a phone; full screen was worse.
+
+**Cause (measured, before).** Every structure was its own `THREE.Mesh`:
+3,079 (male) / 3,405 (female) draw calls per frame at the muscles depth,
+14–16 ms of main-thread time per rAF callback just issuing them (the frame
+budget is 16.7 ms), plus a loop that called `renderer.render` every frame
+whether or not anything had changed, a raycast over ~1 M triangles per
+click (the known 50–100 ms vessel-pick stall of §65), and the full
+backing store (3,360×1,680 at dpr 2 full screen) redrawn on every frame of
+a gesture.
+
+**Fix (BodyViewer.tsx, rewritten).**
+- Each layer is MERGED into one `BufferGeometry` per material (colour ×
+  sheet-translucency): 2–4 draw calls for most layers, 23–25 in all at
+  the muscles depth (every deeper layer still drawn beneath it). Two
+  extra vertex attributes carry what the separate meshes used to: `aId`
+  (the structure's integer id, float-exact to 2^24) and `aHighlight`
+  (an emissive RGB per vertex, Uint8 normalised, DynamicDrawUsage). The
+  material is a `MeshStandardMaterial` whose shader is patched in
+  `onBeforeCompile` to add `vHighlight` to `totalEmissiveRadiance`; the
+  selected structure / picked group / highlighted organ are written into
+  the attribute ranges (`applyHighlight`) — no material swaps, no clones.
+  Mirrored male pairs (one mesh under a mirroring node matrix) are baked
+  with their winding flipped so they still face outward.
+- Picking is a 1×1 ID pass: `camera.setViewOffset(w, h, px, py, 1, 1)`,
+  the scene drawn once with the id-to-colour `ShaderMaterial` as
+  `scene.overrideMaterial`, one `readRenderTargetPixels`. Pass one hides
+  the translucent sheets (fasciae), pass two includes them, so an opaque
+  structure under the pointer still wins over a sheet (the §65 rule).
+- The loop renders ON DEMAND: `controls.update()` returning true (damping
+  included), a layer fade, a highlight or label change, a resize, a
+  label layout. At rest nothing is drawn.
+- Motion pixel ratio: while a pointer is down or the camera moved within
+  the last SETTLE_MS (140 ms) the backing store is at `min(1.25, rest)`
+  on a desktop and `min(1, rest)` on a low-power device (device.ts tier);
+  the settled frame returns to `canvasPixelRatio()`. One buffer resize per
+  edge of a gesture.
+- OrbitControls: dampingFactor 0.08 → 0.16, rotateSpeed 0.7 → 0.9 (the
+  old values read as mush on a phone).
+
+**After (same script, same machine, `perf-after3.json`).** Draw calls
+3,079/3,405 → 23/25 at muscles, 256 → 2 at skin, 690/725 → 4 at skeleton.
+Main-thread ms per rAF callback 14–16 → 0.5–0.9 (muscles, every frame of
+the drag drawn: 186–196 of ~195 rAF ticks), 2.8 → 0.5 (skin). Frame
+intervals median 16.7 ms, p90 17.0 ms in every mode; the worst frame of a
+gesture 17–18 ms where it was 50–78 ms (the old relayout spikes). The
+motion backing store in full screen is 2,400×1,200 (1.25×) instead of
+3,360×1,680. Triangles per frame unchanged in kind (4.0 M male / 4.9 M
+female at muscles — every layer beneath is still drawn; the skins grew,
+§71.4). The pins take NO pointer events in the 3-D stage: with 56 labels a
+drag that started on one used to go nowhere; the canvas tests a tap
+against the pins itself (a tap on a label opens it, verified by
+`r14-anatomy-shots.mjs`: "Ascending part of trapezius (right)" → its card).
+
+### 71.2 Label density: a plate, like the Diagrams tab
+
+**Symptom.** 10–20 labels at rest in 3-D against 56 in the Diagrams tab.
+
+**Fix.** On a desktop the 3-D labels are now the same plate as the
+Diagrams tab: two margin columns packed top to bottom at 20 px rows with
+leader lines (`.anatomy-diagram-leaders` reused, an SVG under the pins),
+capped at LABEL_MAX.desktop 56 (90 for a search), ranked forced →
+curated tier → visible area on screen. The columns sit just outside the
+body (`bodyLeft − 14`, `bodyRight + 14` from the ID pass's body bbox);
+a label whose text cannot fit its margin plus 60 % of the body's width is
+skipped (on the narrow embedded stage the long names wait for full
+screen rather than cover the body), and a label near the midline (a
+merged left/right pair, the linea alba) goes to the emptier column. The
+muscle plate drops the word "muscle" from each line (the full name stays
+the title and accessible name). On a phone (compact) the labels remain
+dots on the body that a tap expands, cap 18 → 24, collision boxes 28 px.
+The left-column label CSS (`.anatomy-pin.is-margin-left`, row-reverse,
+translated left of its dot) was missing in round 13 — the Diagrams tab's
+left column had been reading into the image; both tabs now use it.
+
+**After.** Labels at the default camera, desktop embedded 480×624 stage:
+skin 56, muscles 56 (9 before the fit tolerance and the "muscle" drop),
+skeleton 55–56; full screen 56 at every depth; phone 17 dots at muscles
+(cap 24, collision-limited). The Diagrams tab at the same stage: 56.
+
+### 71.3 Label placement: visible-pixel anchors from a live ID pass
+
+**Symptom.** A label could point at empty space or at a hidden part: the
+anchor was the union bounding-box centre (the §65 open item).
+
+**Fix.** When the camera has been still for SETTLE_MS, a low-resolution
+ID pass (long side 360 px desktop / 240 px compact, the visible opaque
+layers only, sheets excluded) is read back and accumulated per structure
+id: pixel count, centroid, bbox, and the body's bbox. For the labelled
+layer: visible area ranks the candidates; a structure with no visible
+pixel is not labelled (unless forced by a selection); a left/right pair
+is two labels when both sides are visible and apart by more than 3 % of
+the pass width, else the merged one; the anchor pixel is the visible
+pixel NEAREST the centroid (a ring or a crescent has its centroid in
+empty space); the 3-D anchor is the structure's own vertex that
+projects nearest that pixel (≤ ANCHOR_SAMPLES 3,000 vertices sampled per
+structure), so the leader follows the body as it turns and the next
+settle re-lays the plate. Cost of a layout on the lead's machine:
+2–6 ms; it never runs during a gesture (the 67–78 ms frame spikes of the
+old per-90-ms relayout are gone: p90 17.2 ms, max 18–19 ms in most
+runs).
+
+### 71.4 Resolution: skins at full source resolution, smooth normals across the patches
+
+**Measured (shipped vs source triangles).** Male skin 108,103 of 135,204
+(ratio 0.8); female skin 156,252 of 312,506 (0.5); male muscles 863,772
+of 2,468,747 (0.35). No GLB carried normals: the viewer computed them per
+mesh, so every border between the Terminologia Anatomica skin REGIONS
+(256 patches on the male, 76 fitted on the female) shaded as a crease —
+the "low-poly / patchwork" look is mostly that, not the triangle count.
+
+**Fix (build-anatomy-models.mjs).**
+- Skin ratio 1.0 for both sexes (male 135,204 tris, 1.88 MB; female
+  312,506 tris, 1.62 MB); male muscles 0.35 → 0.45 (1,110,234 tris,
+  2.58 MB; the female's fitted muscles are the same meshes: 4.74 MB,
+  under the 6 MB layer budget).
+- `bakeNodeTransforms` (every skin node its own mesh, matrix baked,
+  mirrored winding flipped) then `bakeSmoothNormals`: area-weighted
+  normals accumulated BY POSITION across every patch (`weldedNormals`),
+  after `snapAcrossPatches` (vertices of different patches within 1 mm
+  moved onto one position — the regional set does not share every border
+  vertex, and the slits read as dark cracks once the shading is smooth);
+  NORMAL written (quantised to 10 bits by `meshopt()`). A simplified skin
+  would keep its borders locked (`lockBorder`) so the weld still finds
+  them; at ratio 1 nothing is simplified.
+- The viewer uses a GLB's normals when present and computes them only
+  for the layers that ship none.
+
+**Budgets.** Male 10.88 → 12.83 MB; female 20.67 → 23.87 MB (skin 1.62,
+skin-fitted 0.28 → 1.49 MB with the limb refinement of §71.5; the fitted
+muscles 3.88 → 4.74 MB). Diagrams 2.2 → 1.69 MB (smooth skins compress
+better). Both under the
+28 MB per-sex and 6 MB per-layer budgets (unchanged). Phone cost: the
+female over 10 Mbit/s is 19 s (was 16.5 s); the viewer shows the skin
+first and loads the rest in the background as before.
+
+### 71.5 The female limbs: a blended, refined, smoothed seam
+
+**Symptom.** "The lower arms/wrists appear broken": a cuff at mid-forearm
+(a step in girth: the fitted male forearm is 4.4–4.5 cm in radius there,
+the Visible Human Female's 3.4–3.6 cm) and a crease at the ankles (the
+other way round: male 3.2–3.3 cm, HRA 3.8–4.3 cm), plus the patch-border
+creases of §71.4 on the hands and feet.
+
+**Cause.** Round 13 cut both skins at a plane and TAPERED only the last
+6 cm of the male patch radially onto the HRA ring (measured as the outer
+radius per 5° bin of a 12 mm slab of surface); far-above vertices were
+dragged down onto the plane, so the rim was a distorted polygon of
+2–3 cm triangles; each side computed its own normals.
+
+**Fix (build-anatomy-models.mjs, skin layer of the fitted supplement).**
+1. Every limb patch (foot, leg, hand, forearm) is refined ONE level of
+   midpoint subdivision — all alike, so shared borders keep matching
+   vertices (refining the leg but not the foot left T-junctions that
+   opened as a zipper once the band was smoothed).
+2. `clipPatchAtPlane`: straddling triangles are SPLIT at the plane with
+   interpolated vertices, so the rim is the patch's exact outline there.
+3. Rings are the rim polygons themselves (`ringFromRim`: the HRA's lifted
+   rim vertices; the fitted patches' clipped rim from a pre-pass over all
+   limb patches of a side), radius by angle with empty bins interpolated
+   and a ±8° circular moving average — the blend wants a SMOOTH radius
+   function (a wrinkle in the rim must not become a ridge down the limb);
+   the exact polygon is kept for snapping.
+4. `blendFittedPatch`: every vertex from the plane down to the wrist /
+   ankle (`blend` = plane − landmark, ≥ 5 cm: 10.7 cm arms, 5 cm legs) is
+   moved by a smoothstep blend that is exact at the plane (centre and
+   per-angle radius become the HRA ring's) and fades to the fitted male
+   shape at the far end; the rim vertices snap onto the HRA rim polygon
+   and then TUCK under the HRA skin's edge (RIM_TUCK 2.5 mm up,
+   RIM_INSET 0.8 mm in): two rims that merely touch leave pinholes.
+5. `smoothBlendZones`: 14 passes of Laplacian smoothing over the band
+   (all patches joined by position, the rim pinned, the weight fading to
+   zero over the top and bottom quarter of the band so neither edge
+   steps) — the Z-Anatomy leg and forearm regions are coarse prisms whose
+   facets read as ridges once refined and blended onto a round rim.
+6. `bakeFittedSkinNormals`: snapped, welded normals across the fitted
+   patches; on the rim the normal of the nearest HRA rim vertex, so the
+   shading runs continuously across the two files.
+
+**Verified.** `r14-anatomy-rimcheck.mjs`: at every plane the HRA rim and
+the fitted rim agree in x/z extent to 0.1 mm (before the tuck);
+`r14-anatomy-edgecheck.mjs`: the shipped female skin has 0 faces crossing
+a cut plane and 0 boundary edges above one (a 1 mm snap on the single-
+patch HRA skin had made slivers and 68 holes along the rim — the snap now
+runs only on multi-patch layers). Close-ups after9 (forearm, feet, ankle
+at 5 cm): continuous girth, no cuff, no ridges, no zipper, no pinholes.
+
+**Closing pass (the lead's review of the renders).** The forearm cut
+rings still showed a dotted line of pinholes at close zoom, the palm and
+toe patches dashes and pinholes, and the left ankle a notch. What was
+tried and REJECTED (each rebuilt and rendered: `c2`–`c7` sheets in
+r14-anatomy-shots/): tucking the fitted rim up under the HRA edge (it
+poked out at the silhouette), an HRA apron hung below the cut (its edge
+read as a jagged line), dropping duplicate / overlapping triangles
+between patches (0.1 mm keys collide on the refined hands and a crease's
+two walls count as overlap: holes), and rewinding triangles whose winding
+opposes the welded normal (the normal is unreliable at a fold: 9–11 k
+"repairs" tore the toes and wrists). What SHIPS (`c8`/final renders):
+7. `stitchSeams`: a STRIP of triangles zipped between the HRA rim loop
+   and the fitted rim loop (both exactly on the plane, sorted by angle
+   about the ring centre, advancing whichever loop has the smaller next
+   angle, 3,250 triangles over the four seams, drawn both ways so a
+   sliver at a fold is never culled), appended to the first limb patch's
+   own primitive of that side (a second primitive loads as a separately
+   named mesh and breaks the diagram anchors — check:anatomy caught it)
+   with the HRA rim normals on both edges. Two separate files cannot
+   share vertices; this is the only construction that closes the
+   sub-millimetre slivers between two polylines that merely coincide.
+8. `closePatchBorders`: a boundary vertex of the LARGER patch moves onto
+   the nearest border segment of a smaller patch within 3 mm (the hole rim
+   of a toe adapts to its nail; only one side ever moves, so borders cannot
+   swap); vertices on a cut plane are pinned. `dilateNails`: each nail /
+   perionyx component is dilated 1.05 about its centroid and lifted
+   0.3 mm, so it overlaps its hole's rim (the black pinholes on the toes).
+   Smoothing in the band runs at full strength up to the pinned rim and
+   fades only at the bottom (the ankle step).
+
+**Verified (final).** Right forearm seam: closed at 6 cm zoom; ankles
+and feet: closed, the ankle step a faint shading line; toe nails: no
+pinholes. check:anatomy and check:anatomy-structures PASS on the
+re-rendered diagrams.
+
+**What stays (honestly).** One defect survives every variant: a ~4 mm
+V-notch in the fitted band at the LATERAL rim of the left forearm (and a
+2 mm sliver on the right), visible only at ≤ 6 cm zoom — the HRA rim
+polygon folds there and the fitted rim's nearest-polygon snap lands on
+the wrong fold; capping the snap distance did not cure it and regressed
+the right seam, so the cap is off. The pale dashes along the palm/digit
+and dorsum/digit borders are the Z-Anatomy regional cut itself (the male
+model shows them too); they are neither holes (the shipped skin has no
+boundary edge off a cut plane) nor duplicates nor overlaps (both removals
+were tried), and they are sub-millimetre. The hand pose is Z-Anatomy's (fingers spread,
+palms forward); the eyebrow/eyelash patches are flat projections; the
+Visible Human Female's build is the source's (a 59-year-old woman, as the
+HRA reconstructed her) — a CC0 skin (MakeHuman) was NOT substituted: every
+fitted structure of rounds 13–14 is clamped inside THIS skin and the HRA
+organs sit in THIS body, so a reshaped skin would float over or cut
+through them; that would be a new round with a full refit, not a skin
+swap. The page's coverage note says the feet, ankles, hands and wrists are
+fitted and labelled so (unchanged).
+
+### 71.6 Diagrams re-rendered; gates
+
+`npm run build:anatomy-diagrams` re-rendered from the round-14 models
+(check:anatomy gates the model sha256s the diagrams were drawn from); the
+renderer uses the baked normals (it already preferred a GLB's normals).
+`check:anatomy` and `check:anatomy-structures` pass (the fitted structure
+names are byte-identical, so the descriptions still resolve).
+
+### What must never be reintroduced
+
+- One mesh per structure in the viewer (3,000+ draw calls): structures
+  are ranges inside merged geometries, identified by `aId`.
+- A render loop that draws at rest; a raycast pick; a relayout during a
+  gesture (the ID pass runs on settle only).
+- Union-box label anchors: anchors come from the ID pass's visible pixels.
+- Skins without baked, cross-patch normals; a fitted limb taper over a
+  fixed band; T-junction refinement (refine every limb patch alike); a
+  second primitive on a structure's mesh (the loader names it apart and
+  the diagram anchors break); duplicate/overlap/winding "repairs" keyed
+  on quantised positions or welded normals (they open holes).
+
+## 72. Round 14: Taxonomy — the plate redesign and the widened free-photo ladder (2026-10-10)
+
+Andy's request, verbatim: *"The Taxonomy page needs to be overhauled to be
+better visually. There are still many entries that are missing photos
+because you could not find a free photo. If you cannot find a free photo,
+can you review high-quality photos and use them as references to generate
+your own photo of the organisms?"*
+
+Two things, answered separately below: the page was rebuilt around its
+pictures, and the supply of free pictures was widened from a two-rung lookup
+(Wikidata P18, then the Wikipedia lead image) to a seven-rung ladder across
+four sources. The generation request was NOT carried out, and §72.9 records
+why and what it would take instead.
+
+### 72.1 What was wrong with the round-3 page
+
+The page was a tree of text with a 24rem panel beside it. Inside that panel
+the photograph — the thing a taxonomy page exists to show — was a 160px-tall
+`object-cover` crop, the smallest element on the screen; the tree itself
+carried no pictures at all, so 35,214 taxa read as a bulleted list of Latin;
+the landing state was a row of grey text chips and an empty panel saying
+"Select a taxon"; and the card explorer's `h-24 w-full` thumbnails gave a
+different crop to every card. On a phone (Andy's first screen) the whole
+first viewport was prose.
+
+Before/after screenshots at 390x844 and 1280x800, light and dark, in
+`.scratch/r14-taxonomy-shots/`: `before-{phone,desktop}-{light,dark}-*` and
+`after-*` (`-landing`, `-mammals`, `-full` variants), plus
+`after-desktop-cards`, `after-phone-cards`, `after-sources-open`, and the
+two special picture states, `case-silhouette-{light,dark}` and
+`case-nofree-{light,dark}`. They were taken with
+`.scratch/r14-taxonomy-shots.mjs` and looked at, not just filed.
+
+### 72.2 The plate
+
+The page is now, top to bottom:
+
+- a **dateline** (THE TREE OF LIFE · CATALOGUE OF LIFE, RELEASE 2026-08-20),
+  the h1 at its full identity size with the Supernova department bar, a
+  two-sentence lead and one muted line of policy (contested placements;
+  pictures free-licensed and credited, a taxon with none says so);
+- one **toolbar**: search (capped at 28rem so it stops being the page's
+  biggest object), the Tree/Cards segmented control with the yellow selected
+  state, and Random taxon. Every control is >= 40px tall;
+- **THE PLATE** (`src/components/taxonomy/TaxonPlate.tsx`), full content
+  width, a 3px Supernova top rule (the mark the home cards and the map
+  toolbar already carry): a horizontally scrolling **lineage rail** of
+  rank-coloured chips, then the picture — 4:3 while the plate is one
+  column, a taller 4:5 PLATE once it splits in two at lg, with a 3px rank
+  keyline and its `figcaption` credit — beside the name in Newsreader, the common name and
+  authority, the rank chip and flags, the description with its source, four
+  stat tiles (species / genera / taxa beneath / first appearance), the rank
+  definition and the links. On a phone the two columns stack, picture first;
+- **the resting state of the plate** is a six-up gallery of well-known
+  groups (mammals, birds, insects, flowering plants, fungi, bacteria) as
+  picture cards. A page about life now opens with life on it instead of
+  "Select a taxon";
+- **the explorer**, full width, tree or cards. Every tree row carries a 36px
+  picture with a rank-coloured ring, and the branches are drawn with a
+  hairline indent rail instead of accumulating `padding-left`;
+- the rank legend, then the **collapsed Sources block** — new on this page,
+  listing the backbone, Wikidata, Wikipedia, every picture source with its
+  licence rule, the live ChecklistBank API, and the eight rank-system
+  references.
+
+Everything the page did before, it still does: search (static index + live
+ChecklistBank name search, labelled live), the rank legend and full
+glossary, lineage breadcrumbs, the bottom sheet on compact viewports, live
+species expansion from ChecklistBank, descriptions with their `descSrc`
+flag, representative photos labelled "Representative: <name>", the capped-
+list affordances. `.scratch/r14-taxonomy-verify.mjs` asserts all of it (24
+checks, all passing) including the sheet's focus/inert/Escape contract from
+§44.4, no horizontal scroll at 390px, and no interactive control under the
+WCAG 2.5.8 web target size.
+
+One thing the plate layout took away and had to give back: the round-3
+aside was STICKY, so a desktop reader could click a row forty deep and see
+the panel change. With the plate above the explorer that panel is off
+screen, so selecting a taxon now scrolls the plate into view when it is
+less than half visible (and jumps rather than glides under
+prefers-reduced-motion). On compact viewports the bottom sheet already did
+this and the effect stands down.
+
+### 72.3 UI UX Pro Max: what was taken and what was rejected
+
+Consulted `ui-ux-pro-max` for style, ux and typography.
+
+**Taken**
+
+- `editorial-grid-magazine` — asymmetric grid, `figure`/`figcaption`, "images
+  large/impactful", section dividers, print-inspired hierarchy. This is the
+  plate: a 24rem picture column against a flexible text column, the credit
+  as a real figcaption, uppercase tracked labels as rules.
+- UX *Navigation / Breadcrumbs*: "use for sites with 3+ levels of depth". A
+  taxonomy is ten to fifteen levels deep, so the lineage became a primary
+  navigation rail at the top of the plate (and the card explorer's path),
+  not a footnote at the bottom of a panel.
+- UX *Touch / Touch Target Size* ("44pt iOS, 48dp Android, 24 CSS px for
+  web") and *Touch Spacing* (8px minimum). Tree rows and carets are 44px,
+  toolbar controls 40px, interactive rank chips 26px (they are 10px type in
+  a dense legend — the WCAG 2.5.8 web rule, not the native 44pt rule,
+  applies), gaps >= 6px. Asserted in the verify script.
+- UX *Responsive / Image Scaling* and *Performance / Image Optimization*:
+  one aspect ratio per picture slot (`row` 36px square, `card` 4:3,
+  `plate` 4:3 then 4:5 from lg), `object-cover` inside it, `loading="lazy"` and `decoding="async"`
+  on every picture, and Commons files requested at a bucketed 640px rather
+  than full size.
+- UX *Touch / Gesture Conflicts* ("avoid horizontal swipe on main content;
+  vertical scroll primary"): the child cards are a wrapping grid, never a
+  carousel. The only horizontal scroll on the page is the lineage rail,
+  which is chrome, not content — and the tree's indent stops growing after
+  the eighth level on a phone so a fifteen-rank lineage cannot push the
+  page sideways (it was pushing it 33px before that rule).
+
+**Rejected**
+
+- `organic-biophilic` and `nature-distilled` — forest green, terracotta,
+  24px radii, grain overlays. The obvious "nature" styling and exactly what
+  §63 forbids: the identity is Supernova Yellow on Stark Black after
+  National Geographic, and the biology on this page is already carried by
+  the per-rank hues. No new palette was introduced and no new token was
+  added, so `check:contrast` has nothing new to gate.
+- Playfair Display + Inter, Cormorant + Libre Baskerville, and the rest of
+  the font pairings. Type is settled (§25): Newsreader for h1/h2 only,
+  Public Sans everywhere else including every number, both self-hosted.
+- The decorative half of `editorial-grid-magazine`: drop caps, pull quotes,
+  parallax, reveal-on-scroll, page-flip transitions. This is a reference
+  page a reader scans for a name, not a longform article, and motion on a
+  35k-node tree is a phone liability.
+- `srcset`/WebP from the image-optimization guideline. Pictures are
+  hotlinked from Commons, the iNaturalist open-data bucket, GBIF publishers
+  and PhyloPic; we do not control their derivatives. The Commons `?width=`
+  bucket is the only lever and it is used.
+
+### 72.4 The free-photo ladder
+
+`etl/sources/taxonomy.py` now walks a fixed ladder for any taxon that would
+otherwise show a placeholder, stopping at the first accepted candidate.
+Every rung passes the SAME licence gate — public domain, CC0, CC BY or
+CC BY-SA only, never NonCommercial, never NoDerivatives:
+
+1. **Wikidata P18** on the item linked by Catalogue of Life ID (P10585).
+   Pre-existing.
+2. **The English Wikipedia article's lead image**. Pre-existing.
+3. **Wikidata P18 reached by TAXON NAME (P225)**, batched 200 names per
+   SPARQL call with a content-derived cache key (§21). This is the practical
+   form of "synonyms": it catches the items whose P10585 is missing or sits
+   on a synonym. A name claimed by two items with two different pictures is
+   recorded `ambiguous` and never used — *Prunella* the plant must not
+   borrow *Prunella* the bird's photograph.
+4. **The taxon's Wikimedia Commons CATEGORY**, one `generator=categorymembers`
+   call that brings licence, author, description, size and MIME back with
+   the listing. A file must be a raster photograph (`image/jpeg|png|webp`,
+   >= 320x240) under a free licence, and must not read as a map, range,
+   distribution, locator, chart, diagram, cladogram, dendrogram, stamp,
+   coin, logo, coat of arms, specimen label, poster or screenshot. Files
+   whose own name carries the taxon name sort first.
+5. **GBIF occurrence media** — `occurrence/search?mediaType=StillImage`,
+   filtered to the iNaturalist Research-grade and Observation.org datasets
+   first and any publisher second, and to OBSERVATION records only
+   (`HUMAN_OBSERVATION`, `MACHINE_OBSERVATION`, `OBSERVATION`,
+   `LIVING_SPECIMEN` — see §72.6, this is the contact sheet's doing). Only
+   media whose licence normalises to
+   CC0 / CC BY / CC BY-SA are kept; the credit is the media's
+   `rightsHolder`, then `creator`, then the record's `recordedBy`, and a
+   credit with no letters in it (GBIF publishers put internal record ids
+   there) is dropped to the honest "Unknown author". The link is the media's
+   `references` or the GBIF occurrence page. The occurrence's own species
+   becomes the `rep` label, so a family's GBIF picture ships as
+   "Representative: <species>".
+   The name is matched with `species/match?strict=true`, which answers
+   `matchType: NONE, "Multiple equal matches"` for a homonym — exactly the
+   safety we want. Probed 2026-10-10: it also answers `HIGHERRANK` for a
+   perfectly good above-species match (Tetrigidae), and passing its `rank`
+   parameter made it answer *Animalia* for `Panthera`, so the rank is not
+   sent; the canonical name and the returned rank are verified instead.
+6. **iNaturalist open data**, the florafauna stage's pattern, for genus- and
+   species-rank nodes GBIF missed: name AND rank must match the queried
+   taxon exactly (§22's lesson), photos only from the open-data bucket, CC0
+   or CC BY only.
+7. **A PhyloPic silhouette**, last. The licence ranking is evolution.py's
+   (CC0 best, CC BY then CC BY-SA accepted, NC/ND never). It ships
+   `kind: "silhouette"`, renders contained on a plain ground rather than
+   cropped like a photograph, and carries the chip "Silhouette, not a
+   photograph". `check:taxonomy` fails if a PhyloPic picture is not flagged.
+
+**Biodiversity Heritage Library plates were in the brief and are NOT used**:
+`api.biodiversitylibrary.org` requires an API key and this ETL is keyless by
+construction. If a key is ever added, BHL slots in at rung 7 as
+`kind: "illustration"`, clearly labelled as an illustration, PD only.
+
+### 72.5 Caps, caching, incrementality
+
+- `TAXONOMY_IMAGE_ENRICH_CAP` (default `IMAGE_ENRICH_CAP_DEFAULT = 800` in
+  `etl/sources/taxonomy.py`) is how many NEW nodes a run attempts. Each
+  attempt is up to five HTTP calls against four hosts, measured at roughly
+  6 s per node cold, so the cap is the run-length dial. `TAXONOMY_CACHED_ONLY=1`
+  sets it to 0, as it already does for the genus cap.
+- Candidates are chosen by **what a reader actually lands on**: nodes that
+  would still show the placeholder AFTER representative bubbling (a
+  read-only mirror of `_bubble_images`), sorted by rank weight — domain and
+  kingdom highest, then phylum, class, order, family, subfamily, tribe,
+  genus, species — and within a rank by descendant count. A species inside
+  an editorial focus family gets a +25 bonus, so it outranks an ordinary
+  genus: the focus families are destinations (§44.5).
+- Every rung caches on disk under `.cache/taxonomy/` with content-derived
+  keys: `wikidata-name-<sha(batch)>.json`, `commonscat/cat-<sha(name)>.json`,
+  `gbif/match-<sha(url)>.json`, `gbif/occ-<sha(key|scope)>.json`,
+  `inat/`, `phylopic/phylopic-<sha(name)>.json`.
+- The ladder store (`.cache/taxonomy/imageladder-store.json`) keeps the whole
+  CANDIDATE LIST per taxon, not just the winner, and is saved every 100
+  attempts, so a run can be interrupted and resumed and a rejection can be
+  applied offline.
+- Published picks are replayed out of the artifacts at the start of every
+  run (`_previous_ladder_picks`), the same trick `_previous_genera` plays
+  for genus enrichment, so the accumulated coverage survives a cold CI
+  cache. Bubbled copies carry `bub: true` precisely so they are not mistaken
+  for the ladder's own picks on that replay.
+- Consequence for the lead's final run: `TAXONOMY_CACHED_ONLY=1
+  etl\run.py` reproduces this output exactly from `.cache` plus the
+  committed artifacts, with no network calls.
+
+### 72.6 Review method and the deny list
+
+A pick is only as good as the eye that checked it. `.scratch/r14-contact-sheet.py`
+scans the shipped artifacts for ladder picks, samples a seeded random 60,
+downloads each, and composes one PNG with the taxon name, rank, what the
+picture is said to show, the source and the licence printed under each tile
+(Pillow, 6 columns, 260px tiles). Chrome screenshots are no use for this:
+they show the page, not the pixels at a size an eye can judge a name
+against. The sheet and its JSON index are in
+`.scratch/r14-taxonomy-shots/contact-sheet-seed14.{png,json}`.
+
+`etl/reference/taxonomy_image_rejects.json` is the reviewed deny list, the
+same shape of ruling as `currency_image_rejects.json`:
+
+- `urls`: one picture, keyed by its file name or URL tail. The ladder falls
+  through to the next CACHED candidate, so a rejection costs no HTTP calls.
+- `taxa`: a taxon id whose every ladder picture is refused — it keeps the
+  designed placeholder.
+
+**What the first sheet found (seed 14, 60 of 746 picks, 2026-10-10) and
+what it changed.** Two systematic faults, both fixed in the ETL rather than
+patched one row at a time:
+
+1. **Nine of sixty were museum paperwork.** GBIF's `media` on a
+   `PRESERVED_SPECIMEN`, `FOSSIL_SPECIMEN` or `MATERIAL_SAMPLE` record is
+   very often the institution's digitisation of the specimen's *documents* —
+   an accession ledger page (Alluroidida, Cancrisidae, Vaginulinida,
+   Robertinida, Parathuramminida), a herbarium label sheet
+   (Tirisporellales), a slide label (Cytherellidae), a blank card with a
+   scale bar (Calcarisporiellales). They carry no description, so no text
+   filter can see them; the only reliable signal is `basisOfRecord`. The
+   ladder now takes **observations only**. Checked before committing to it:
+   the good microfossil pictures I feared losing (Discorbidae's foram
+   shells, Vaginulinida) are iNaturalist `HUMAN_OBSERVATION` records and
+   survive; what is lost is a handful of genuine museum SEM plates of
+   ostracods, and those taxa now fall through to a labelled silhouette or
+   the honest placeholder — the right answer for a page that promises every
+   picture is verified.
+2. **The silhouettes were invisible on the sheet** — ten black rectangles.
+   That was the sheet's bug (PhyloPic rasters are black on TRANSPARENT and
+   `convert("RGB")` paints the transparent ground black), but it exposed a
+   real one: on the dark theme a black-on-transparent silhouette sat on a
+   near-black surface and could not be seen either. Silhouettes now get
+   their own near-white plate ground in BOTH themes, which is how an atlas
+   prints one anyway, and the contact sheet composites alpha onto white
+   before it draws a tile.
+
+Two individual rejections went into the deny list: Hemiuridae's Commons pick
+was a parasite life-cycle DIAGRAM, and Streptosporangiales' was a culture
+plate photographed through its handwritten lid label. "Life cycle",
+"ledger", "accession", "index card", "folio" and a dozen more joined the
+not-an-organism net at the same time.
+
+The ladder store was then rebuilt from the caches under the new rules
+(`TAXONOMY_IMAGE_LADDER_RESEED=0`, a documented one-run escape hatch for
+exactly this: when the picking rules change, previously PUBLISHED picks must
+be re-derived rather than trusted), and a second sheet reviewed.
+**The second sheet (seed 27, 60 of 620)** was clean of paperwork and the
+silhouettes were legible. Three more faults, each again fixed at source:
+
+- **Notacanthiformes** (spiny eels) was illustrated by `Synbranchiformes.jpg`
+  — a picture of the swamp eels, filed in the wrong Commons category. A
+  Commons category can hold a file NAMED for another taxon, so the ladder
+  now refuses a category file whose first word is itself a suprageneric
+  name (`-iformes`, `-idae`, `-aceae`, `-ales`, `-oidea`, …) that is not
+  this taxon's (`_SUPRAGENERIC_FILE`). A genus or species file name
+  (`Panthera leo.jpg`) is a legitimate member and is kept.
+- **Lecanicephalidea**'s GBIF media pointed at `images.ala.org.au`'s
+  thumbnail proxy, which answers HTTP 403 to every client, a browser
+  user-agent included — a guaranteed broken picture. That host is blocked
+  at source (`_HOTLINK_HOSTILE`), and, because any third-party hotlink can
+  die between monthly runs, `TaxonThumb` now falls back to the designed
+  placeholder on an image error instead of showing the browser's
+  broken-image box.
+- **Nitrososphaeria** got a journal figure whose bottom half is a line
+  chart: denied by url.
+
+The twelve "download failed" tiles on that sheet were the REVIEW SCRIPT
+being rate-limited by upload.wikimedia.org, not dead links: eleven of the
+twelve returned HTTP 200 on a slower retry, and the twelfth was the ALA
+proxy above.
+
+**The third sheet (seed 41, 60 of 619)** was clean apart from one, and that
+one was instructive: **Cirlivirales**, an order of VIRUSES, was illustrated
+by an iNaturalist photograph of bare tree branches, reached through a GBIF
+occurrence of a parrot circovirus. A citizen-science observation of a virus
+is always a picture of its HOST. GBIF classifies these under kingdom
+"Viruses", so the whole viral lineage is now skipped at the GBIF rung and
+viral taxa fall through to a labelled silhouette or the placeholder. The
+picture itself went on the deny list as the worked example, and a
+`TAXONOMY_CACHED_ONLY=1` re-run dropped it with **no HTTP calls at all** —
+which is the offline-rejection property doing its job.
+
+(That rejection also exposed a trap in the deny list's own key: iNaturalist
+URLs all end `medium.jpeg`, so matching on the file name alone would have
+blacklisted every iNaturalist photograph on the site. The key now keeps the
+preceding path segment when the tail is a generic size name, and the
+behaviour is unit-checked.)
+
+Two pictures were looked at hard and KEPT, for the record: Miomoptera, an
+extinct insect order, is illustrated by a labelled wing-venation drawing —
+a diagram in form, but a drawing of the animal's wing and the standard
+figure for a fossil order; and Compsopogonales by a mounted herbarium sheet
+of the alga, which is the specimen itself rather than its paperwork.
+
+### 72.7 The honest "no photograph" state
+
+A taxon with nothing on the ladder gets a designed placeholder, not a blank:
+its own rank colour as the ground, its initial set in Newsreader, and the
+words NO FREE PHOTOGRAPH FOUND. The plate's caption says what was tried:
+"Every free source on the ladder was tried: Wikidata, Wikipedia, Wikimedia
+Commons, GBIF, iNaturalist and PhyloPic. Nothing freely licensed was found
+for this taxon or any member of it." A node that has not been REACHED yet
+(a pending genus, a live-loaded species) says *that* instead — "not looked
+up yet" is a different claim from "nothing exists", and the page has always
+kept them apart.
+
+### 72.8 Coverage, before and after
+
+**One session, 1,600 taxa attempted** (the per-run cap; the ladder is
+incremental by design, so this is one monthly batch's worth, not the end
+state). 704 pictures were applied: **417 Commons** (tiers 3-4), **100 GBIF
+occurrence media**, **187 PhyloPic silhouettes**. Six pictures sit on the
+reviewed deny list.
+
+Coverage is counted the way the page shows it — a node "has a picture" if
+it has its own OR borrows a photographed member's, which is what the reader
+sees:
+
+**tree.json — 35,214 nodes, Life down to family**
+
+| rank | nodes | with a picture, before | after | change | silhouettes | still a placeholder |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| kingdom | 24 | 21 | 23 | +2 | 0 | 1 |
+| phylum | 146 | 93 | 132 | +39 | 16 | 14 |
+| subphylum | 42 | 35 | 40 | +5 | 2 | 2 |
+| class | 471 | 278 | 399 | +121 | 59 | 72 |
+| subclass | 117 | 84 | 104 | +20 | 5 | 13 |
+| infraclass | 26 | 23 | 26 | +3 | 1 | 0 |
+| superorder | 46 | 38 | 44 | +6 | 3 | 2 |
+| order | 1,844 | 990 | 1,352 | +362 | 107 | 492 |
+| suborder | 470 | 269 | 313 | +44 | 11 | 157 |
+| infraorder | 171 | 123 | 136 | +13 | 3 | 35 |
+| parvorder | 36 | 29 | 29 | +0 | 0 | 7 |
+| superfamily | 1,534 | 824 | 842 | +18 | 1 | 692 |
+| family | 14,868 | 4,735 | 4,853 | +118 | 3 | 10,015 |
+| subfamily | 237 | 48 | 48 | +0 | 0 | 189 |
+| tribe | 186 | 55 | 55 | +0 | 0 | 131 |
+| genus | 12,661 | 547 | 547 | +0 | 0 | 12,114 |
+| species | 2,206 | 74 | 74 | +0 | 0 | 2,132 |
+| **all ranks** | **35,214** | **8,333** | **9,092** | **+759** | **215** | **26,122** |
+
+**genera/ — 243,193 nodes below family (182,909 of them not yet looked up at all)**
+
+| rank | nodes | with a picture, before | after | change | silhouettes | still a placeholder |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| subfamily | 7,158 | 2,057 | 2,060 | +3 | 0 | 5,098 |
+| tribe | 5,412 | 1,730 | 1,734 | +4 | 0 | 3,678 |
+| genus | 204,480 | 10,065 | 10,065 | +0 | 0 | 194,415 |
+| species | 24,233 | 2,833 | 2,833 | +0 | 0 | 21,400 |
+| **all ranks** | **243,193** | **17,240** | **17,247** | **+7** | **0** | **225,946** |
+
+
+**Read the tables this way.** The ladder was pointed at the ranks a reader
+browses, and that is exactly where the gain landed: **order +362**,
+**class +121**, **family +118**, **suborder +44**, **phylum +39**. Below
+family almost nothing moved (+7), because 182,909 of those nodes have not
+been looked up AT ALL yet (`pending`, §44.5) and the remainder sit below the
+rank weighting. That is the design, not a shortfall: a genus nobody has
+photographed is a true fact about the world, and the placeholder says so.
+
+Two other numbers worth keeping:
+
+- **215 silhouettes**, every one flagged `kind: "silhouette"` and labelled
+  "Silhouette, not a photograph" in the UI. They are concentrated exactly
+  where no photograph can exist in a citizen-science archive: 59 bacterial
+  and archaeal classes, 107 orders, 16 phyla.
+- **26,339 pictures ship in total** across the tree and the genera files —
+  25,982 Commons, 215 PhyloPic, 142 GBIF — of which 4,932 are borrowed from
+  a photographed member and labelled "Representative", and 1,292 carry
+  "Unknown author" because the source names nobody.
+
+**Reproducibility, proven rather than asserted.** With the ladder store and
+the published artifacts in place, `TAXONOMY_CACHED_ONLY=1
+etl
+un.py --only taxonomy` writes **byte-identical output** — the sha256
+over all 14,229 taxonomy artifacts was `0d30b3ad…` before and after a second
+cached run, with zero HTTP calls (cap 0). The lead's final full cached run
+will reproduce exactly what is committed.
+
+### 72.9 Why no generated pictures, and what it would take
+
+Andy asked for AI-generated pictures where no free photograph exists. They
+are not shipped, for two reasons:
+
+1. **There is no image model in this environment.** The ETL is keyless by
+   construction and no image-generation API key exists here, so nothing
+   could have been generated even if it were wanted.
+2. **It would break a standing invariant.** CLAUDE.md: *"no flora/fauna
+   image ships unverified against its taxon"*. A generated picture cannot be
+   verified against a taxon — there is no specimen, no photographer, no
+   licence and no provenance behind it, and on a page whose entire promise
+   is "a source on every figure" a plausible-looking invented animal is the
+   worst possible failure. It would also poison the rest of the site: these
+   pictures are the same records the Evolution and country pages lean on.
+
+**If the maintainer still wants them**, the smallest honest version is:
+
+- an image-model API key in the workflow secrets (the stage would read it
+  like any other credential and skip generation when absent, so the keyless
+  local build keeps working);
+- generation ONLY for taxa the ladder exhausted, prompted from the taxon's
+  Wikipedia description and its rank, never from a copyrighted reference
+  photograph (using a specific photograph as a reference is a derivative-
+  work question, not just an accuracy one);
+- a new `kind: "generated"` on the image record, gated by
+  `check:taxonomy`, rendered with an unmistakable, non-dismissible label —
+  **"AI illustration, not a photograph"** — in the same slot the silhouette
+  chip now occupies, plus the model name and the date in the credit line;
+- the generated pictures stored as files under `data/`, not hotlinked, so
+  they can be audited and withdrawn;
+- a reviewed allow list, not a deny list: each generated picture reviewed on
+  a contact sheet BEFORE it ships, because an invented animal has no source
+  to fall back on.
+
+The silhouette rung (7) is the honest half of the same idea and is live
+today: a labelled drawing of the group, free-licensed, credited, and never
+called a photograph.
+
+### 72.10 Gates and contract growth
+
+`scripts/check-taxonomy.mjs` grew the picture contract:
+
+- every picture carries a licence, and that licence must match the free set
+  (`public domain` / `cc0` / `cc by` / `cc by-sa`) — a NonCommercial string
+  in the data now fails the build;
+- every picture carries a resolvable `url` and a `page` source link;
+- the `author` KEY must be present, `null` included (the UI renders
+  "Unknown author"), so a missing attribution is a bug rather than a silent
+  omission;
+- `src` must be one of `commons | gbif | inaturalist | phylopic` and `kind`
+  one of `photo | illustration | silhouette`;
+- a PhyloPic picture MUST be `kind: "silhouette"`;
+- a picture marked `bub` must name the descendant it was borrowed from.
+
+The gate also prints the picture census (by source, by kind, borrowed,
+unattributed) and the placeholder counts, so §72.8's numbers can be
+re-derived from the artifacts at any time.
+
+## 73. Round 14: Evolution — the tree of life through time (2026-10-10)
+
+Andy asked for "a visual representation/diagram of how life evolved on
+this planet over time … from the beginning of life on Earth to its
+current state … with branches to demonstrate how life deviated into
+different forms". The Evolution page now opens with that diagram,
+above the ICS banners of §40, which are unchanged.
+
+### 73.1 The data is editorial, dated, and validated like the events
+
+`etl/reference/evolution_tree.json` (version 1) holds **176 lineages**
+(103 tips, 17 extinct), **6 time bands** and a **source library** of 46
+citations. Each lineage is a node with: `name` and `scientific`, its
+`parent`, `originMa` with an `originKind` — `divergence` (molecular
+clock), `fossil` (oldest accepted fossil) or `estimate` (clocks and
+fossils weighed together) — an `ageRange` `[older, younger]` wherever
+the literature disagrees (most nodes carry one), `status` and
+`extinctMa` for the 17 lineages that ended, a `group` (twelve colour
+groups), a one-sentence `summary`, a Wikipedia anchor and `sources` as
+library keys. The two endosymbioses are recorded on the receiving
+lineage as `merges` (`from` the donor lineage, with a label and a
+note): the mitochondrion on Eukaryotes from Alphaproteobacteria, the
+plastid on Archaeplastida from Cyanobacteria.
+
+Dating policy. Divergence ages are TimeTree 5 medians (Kumar et al.
+2022) or the group-specific timetree the field relies on (Betts 2018
+and Moody 2024 for LUCA and the domains; Strassert 2021 and Parfrey
+2011 for eukaryote supergroups; Morris 2018 for land plants; dos Reis
+2015 and Benton 2015 for animals; Misof 2014 for insects; Irisarri 2017
+for jawed vertebrates; Upham 2019 for mammals; Prum 2015 and Field 2020
+for birds; Lutzoni 2018 and Loron 2019 for fungi). First-fossil ages
+cite the describing paper where there is one (Zhu 2022 for the oldest
+complete jawed fishes, Simões 2018 for Megachirella, Hublin 2017 for
+Jebel Irhoud, Villmoare 2015 for Ledi-Geraru, van Eldijk 2018 for the
+Triassic lepidopteran scales, Luo 2011 for Juramaia, Gibson 2018 for
+Bangiomorpha, Tang 2020 for Proterocladus). Where a well-known date is
+contested (flowering plants: 135 Ma pollen vs Triassic clocks; animals:
+Ediacaran fossils vs 850–650 Ma clocks; LUCA) the node carries the
+range and the summary says so. Every node has at least one
+non-Wikipedia source — the gate enforces it.
+
+Topology follows current phylogenomics rather than the textbook of
+1990: the **two-domain tree** (Eukaryotes branch from within the Asgard
+archaea — Spang 2015, Eme 2023), **ctenophores sister to all other
+animals** (Schultz 2023), **turtles with the archosaurs** (Archelosauria),
+**whales inside the even-toed ungulates**, insects inside Pancrustacea.
+Each such placement is stated in the node's summary and in the
+chart's "how to read" copy. A lineage is a *clade* with its own origin;
+paraphyletic grades that readers know by name (pelycosaurs, ostracoderms,
+non-avian theropods) are carried as extinct lineages and named as grades.
+
+Validation (`_validate_tree` in `etl/sources/evolution.py`): unique ids;
+exactly one root; every parent exists; **a child's originMa is never older
+than its parent's — no tolerance**, the file is hand-edited and an
+inversion is an error; extinct lineages carry an `extinctMa` no older
+than their origin, extant ones carry none; `ageRange` brackets `originMa`;
+every group is declared; every source key is in the library; merges
+name real lineages; summaries are 12–60 words; bands are dated and
+sourced. The stage then checks **every Wikipedia title exists** (Action
+API `prop=info`, 50 per call, redirects followed, cache keyed by the
+batch's content — §21) and aborts on a missing article, so a renamed
+page fails the run instead of shipping a dead link. Silhouettes come
+from PhyloPic through the §32.3 ranking (CC0/PD > CC BY > CC BY-SA, never
+NC/ND, attribution stored) with one addition for the tree,
+`prefer_exact`: PhyloPic's name filter is a substring match and "Homo
+sapiens" came back as a CC0 *Homo longi*, so an image whose own name
+equals the hint now outranks a better licence on a different name, and
+the hints were chosen to have exact images (Homo sapiens sapiens, Homo
+ergaster for the erectus grade, Amanita muscaria for the fungi, Corvus
+corax for birds, Chondrus crispus for red algae, Papio anubis for
+primates, Gorilla gorilla for apes); the matched name is printed in the
+card whenever it differs from the lineage's own. The events keep the
+old behaviour. 104 of 107 hinted lineages resolved; the
+three that did not (ammonites, myriapods, crustaceans) are listed in
+`etl/logs/evolution.log` under `tree_unillustrated`.
+
+Output: `data/biology/evolution/tree.json` — nodes with resolved source
+titles/URLs, Wikipedia URLs, images with licence and attribution, the
+bands, the groups, the note. `npm run check:evolution` gates the output
+(one root, ≥120 lineages, chronology, status/kind enums, sourced
+non-Wikipedia, accepted silhouette licences with a source page, both
+merges present, five extinction bands dated and sourced).
+
+### 73.2 The time axis is piecewise linear, and says so
+
+A linear axis for four billion years puts every animal, plant and
+fungus a reader can name into the right-hand sixth of the chart. The
+axis is therefore **piecewise linear between the ICS boundaries**
+(`TIME_BREAKS` in `treeLayout.ts`): 4.0–2.5 Ga takes 14% of the axis,
+2.5 Ga–541 Ma 22%, the Palaeozoic 16%, the Mesozoic 24%, the Cenozoic
+24%. Two things keep this honest: the **ICS eon and era strips** sit
+under the axis in the chart's own CGMW colours (so the compression is
+visible — the Archean strip is a sliver, the Cenozoic a fat block), and
+a caption under the stage states it in words. The axis starts at 4.0 Ga
+(the origin of life, not of the Earth; the Hadean is clipped).
+
+### 73.3 Layout: rows, stems, and one ordering rule
+
+`treeLayout.ts` is pure (no DOM): every visible tip — an extant or
+extinct lineage, or a folded clade — takes one row; a lineage with
+visible children is a **stem** drawn from its origin to its last split,
+lying on the boundary between its children's blocks; each child peels
+off the stem at the child's own origin age through a short cubic elbow
+(26 px) and runs to today, or to its extinction where a perpendicular
+bar ends it. The single ordering rule: **the children of a stem are
+ordered by age with the oldest split outermost, alternating above and
+below** — an earlier split must reach a row farther from the stem, or
+a later split's connector would cross its line. Sibling groups stay
+adjacent as a consequence; no leaf order is typed anywhere.
+
+Folding. Which clades open by default is decided by a **row budget**:
+the stage's height (desktop: 78% of the window, 440–820 px) or width
+(phone) divided by the row pitch, and `autoCollapse` opens the folded
+clade hiding the most lineages while its children still fit. Opening
+costs (children − 1) rows, so chains of single-child clades cost nothing
+and the big radiations open first; a folded tip shows a triangle and
+"+N". The reader can open or fold any clade (tap a folded tip; the card
+offers Expand/Collapse), "Open every clade" shows all 103 tips, "Reset"
+returns to the budget. Nothing is hand-placed.
+
+Labels. Tip labels sit beyond the tip (right margin on desktop, rotated
+below the tip on a phone); the margin is **measured** from the visible
+labels, never a constant. Stem labels ride on their stem line (a halo
+in the surface colour masks the line, as a river label sits on a river)
+and may run on past a short stem along the empty lane between its
+children; a collision pass slides each one right until it clears every
+label already placed (stems and extinct tips) and drops it if it cannot
+clear before the axis ends — the name is still in the card. The
+screenshot script asserts zero overlapping tip labels in every state,
+including "Open every clade".
+
+### 73.4 Interaction and the phone layout
+
+Desktop (stage ≥ 720 px): the SVG is a fixed-height viewport with
+d3-zoom (wheel/pinch 0.35–5×, drag pan, +/−/Fit buttons); the transform
+is written straight to the plot group, no React render per frame.
+Hover or focus highlights the path root → lineage (a supernova glow
+under the branch, other branches at 55%); click or Enter selects and
+fills the card (name, group chip, living/extinct, "Arose … (how the
+date is known; the literature ranges from … to …)", "Died out", the
+merger if any with a link to the donor lineage, summary, branches,
+Expand/Collapse, Wikipedia, every source by title, silhouette
+attribution and licence). The search box matches names and scientific
+names, reveals the path to a folded lineage, selects it and pans to it.
+The breadcrumb walks the ancestry. Every branch is a keyboard-reachable
+`role="button"` with an aria-label stating name, status and origin.
+
+Phone (stage < 720 px): the same layout turned on its side — time runs
+DOWN the page, rows across it at a 17 px pitch, the SVG in flow so the
+page scrolls as usual and **there is no horizontal scroll** (asserted);
+the tree opens folded to the row budget the width allows (~16 rows on a
+390 px phone) and every folded tip opens on tap; when a reader opens
+more rows than the width holds the row pitch tightens first (17 px down
+to 12 px, the rotated 11 px labels' floor) and only beyond that does the
+stage itself scroll sideways, never the page; the card renders below
+the chart. The block breaks out of the reading measure from `lg`
+(`min(100vw − 3rem, 90rem)`) and the card sits beside the chart only
+from `xl`, because a four-billion-year axis needs the width.
+
+Theme and identity: twelve group hues at a fixed mid lightness
+(`--tol-*` in index.css) that clear 3:1 against both surfaces, so no
+light/dark pair is needed; yellow only as the top rule of the stage and
+the path glow, never text; PhyloPic silhouettes are inverted in the dark
+theme. Reduced motion: the component animates nothing.
+
+### 73.5 What must never be hand-placed
+
+No node coordinate, leaf order, label position or default fold is typed
+anywhere — they all derive from the reference file through
+`treeLayout.ts`. To change the picture, edit the reference file (bump
+`version`), run the `evolution` stage, and let the gate check it. Never
+edit `data/biology/evolution/tree.json`.
+
+### 73.6 Known limits
+
+- Three hinted lineages have no free silhouette (ammonites, myriapods,
+  crustaceans); they render as text only, listed in the log.
+- Internal (stem) names are not drawn on the phone layout (22 px
+  columns cannot carry horizontal text); the card's breadcrumb carries
+  the lineage.
+- Dates are the lineage's origin only; the chart does not attempt
+  diversity-through-time (spindle widths) — a future round could read
+  the Catalogue of Life counts from the Taxonomy stage for that.
+- The axis starts at 4.0 Ga; the Hadean and Earth's formation are in the
+  events list below, not in the tree.
+
+## 74. Round 14: Space Travel — the section, its sources, diagrams and people (2026-10-10)
+
+Andy's brief: *"a new page titled Space Travel … the beginnings of space
+travel as a concept in human history, and then the infancy of space
+exploration, satellites, orbital travel, travel to the moon, and up to its
+present date … diagrams of spacecraft, rockets, satellites, and space
+stations … details and information about the people behind their designs
+and creation. This is also a major project."*
+
+`/space/travel` is the Space section's third page (the landing page's card
+grid and intro sentence were updated to say so). It ships 8 eras, 110
+events, 71 craft, 28 people, 17 labelled cutaways and 4 generated scale
+plates drawing 44 of the craft, with 150 licence-gated images served from
+`/data`.
+
+### 74.1 EDITORIAL, like Cosmic Phenomena and /history
+
+The content is one editorial file, `etl/reference/space_travel.json`
+(`version`, bump when editing) — never `data/space/travel/*`. The
+`spacetravel` ETL stage validates it, resolves and downloads every image
+through a free-licence gate, re-encodes it and writes
+`data/space/travel/travel.json`, `data/space/travel/images/*.jpg` and
+`data/space/travel/manifest.json`; `scripts/check-spacetravel.mjs` gates the
+result. This is §46's Cosmic Phenomena pattern with more shapes of content,
+and the same hard rule: **nothing is hotlinked at render time**.
+
+### 74.2 Eras are THREADS, not a partition of the calendar
+
+Eight eras: the idea (c. 160 CE–1933), rockets of war (1932–1946), the first
+satellites (1957–1961), humans in orbit (1961–1966), the Moon (1959–1976),
+stations and shuttles (1971–2022), robotic explorers (1962–present), the
+present (2015–2026). Three of them overlap by construction, because robotic
+exploration, the station era and the commercial present really do run in
+parallel. /history's era axis is a *piecewise linear year scale* (§38); that
+would lie here, so this timeline has no shared pixel scale. It keeps
+/history's visual grammar — full-width banners tinted by a per-era oklch
+hue as a `light-dark()` pair, so text contrast never depends on the hue
+(§42.4) — and drops the axis, stating the overlap in the page's own words.
+
+**Phone length ruling.** 110 event cards is ~98,000 px of scrolling on a
+390 px screen. Each era therefore renders its first four events with a
+"Show the other N events in <era>" control; the sticky era navigation is the
+index. That halves the page to ~47,000 px with nothing hidden from search
+engines' reach or keyboard users (it is a real `aria-expanded` button, not a
+route).
+
+### 74.3 Sourcing policy, and how post-2024 facts were verified
+
+Every figure carries the source actually consulted and its year. Agency
+pages (NASA, NSSDCA, ESA, CNSA, ISRO, JAXA, SpaceX) are preferred; where a
+figure is only tabulated encyclopaedically, the **Wikipedia article that was
+read is cited by name** rather than dressed up as an agency source. That is
+the honest form of a citation we actually used, and it matches the precedent
+of flag symbolism and taxonomy prose.
+
+A figure a source does not publish is `{"v": null, "why": "…"}` and renders
+as *"not available — <reason>"*. Never zero. Live examples: the V-2's
+payload to LEO (it was a missile, not a launcher), Ariane 5 ECA's LEO
+performance (ESA publishes GTO only), Starliner's launch mass (Boeing does
+not publish one), Starship's crew (no crewed configuration has been
+published in detail — SpaceX's "up to 100 people" is an intention), GPS
+Block IIF's dimensions (Boeing publishes mass and design life only — see
+§74.5), and the Vostok descent sphere's pressurised volume.
+
+**The compiler's knowledge cutoff is earlier than this file's vintage.**
+Everything dated after mid-2024 was re-checked against live sources on
+2026-10-10 with web search, and several facts would otherwise have been
+wrong:
+
+| Fact | Checked value |
+|---|---|
+| Artemis II | Launched 1 April 2026, splashdown 10 April 2026; record 252,756 miles from Earth |
+| Artemis III | Restructured February 2026 into a crewed Earth-orbit demonstration (mid-2027); first landing moves to Artemis IV, 2028 |
+| Starship | First orbital flight on flight 14, 28 September 2026, deploying 26 Starlink satellites; returned early at the first checkpoint |
+| New Glenn | NG-1 Jan 2025 (booster lost), NG-2 Nov 2025 (first booster landing), NG-3 19 April 2026 (booster re-flown and landed, upper stage failed); static-fire explosion 28 May 2026 damaged the pad |
+| Falcon 9 reuse | One booster at 37 flights as of 25 August 2026 |
+| ISS | Operations funded to end 2030; SpaceX US Deorbit Vehicle contract June 2024, up to $843 m; deorbit planned January 2031 |
+| Voyagers | Instruments shut down Feb/Mar 2025 and April 2026; Voyager 1 at 25.9 bn km (Nov 2026) |
+| China | Shenzhou 23 launched 24 May 2026 with a planned year-long stay; Long March 10 / Mengzhou / Lanyue in test; crewed landing targeted 2030 |
+| Europa Clipper / Dragonfly | Launched 14 October 2024, Jupiter 2030; Dragonfly launch readiness July 2028 |
+| Chang'e 6 | 1,935.3 g of far-side material returned 25 June 2024 (CNSA's own figure) |
+
+Events whose facts postdate the cutoff carry a `vintage` line rendered on
+the card ("Checked against NASA's own mission pages on 10 October 2026").
+Anything that could not be confirmed live was left out rather than guessed —
+no launch date on this page is an estimate.
+
+### 74.4 The licence ladder for images
+
+Resolution order per item, pinned in the reference file:
+`commons` (an explicit Commons file) → `nasaId` (NASA Image and Video
+Library) → the pinned Wikipedia article's **lead image** through the same
+Commons gate (the default for events and portraits). The gate is §46.2's:
+public domain, CC0, CC BY, CC BY-SA, Attribution — **never NC, never ND**.
+Files are re-encoded to bounded progressive JPEGs (cutaways 1600×1200 q85,
+event photographs 860×650 q80, portraits 560×680 q80) and written with a
+provenance row each.
+
+Outcome: 150 images, 10.28 MB — 111 public domain, 7 CC0, 20 CC BY-SA,
+12 CC BY. 110 of 110 events illustrated; 23 of 28 people with a free
+portrait.
+
+**A cutaway that fails the gate aborts the stage** (the labelled plates are
+the point of the page). An event or portrait that fails is logged and
+renders as an explicit absence, because a Wikipedia lead image can
+legitimately be non-free; `check:spacetravel` holds the floor at *every*
+event illustrated and two thirds of people portrayed.
+
+**GODL-India is not on the free list.** ISRO's own portraits of Satish
+Dhawan and its Chandrayaan-3 and Gaganyaan photographs are released under
+the Government Open Data Licence – India, which our gate does not recognise.
+Rather than widen the gate on a Friday, the affected items were re-pinned to
+PD or CC files where one exists (a NASA portrait of Vikram Sarabhai, a CC BY
+Chandrayaan-3 lander image, a CC BY-SA Gaganyaan infographic). Dhawan has no
+free portrait and his card says so. **If GODL-India is later judged free,
+widening `_FREE_LICENCE` in `etl/sources/spacetravel.py` is the one-line
+change** — it is a deliberate omission, not an oversight.
+
+### 74.5 The scale diagrams are GENERATED, not drawn
+
+This is the core of the brief and the part most easily faked, so the rule is
+explicit: **no silhouette on this page is traced, hand-placed or resized to
+look right.** Each craft carries a `silhouette` in the reference file:
+
+- `axis: "vertical"` — an ordered list of `{s, len, d0, d1}` sections
+  (cone, cyl, taper, sphere, dome) in metres, plus optional `fins`,
+  `wings`, `panels`, `strapOns` and a side-mounted `attached` orbiter. The
+  renderer walks the sections, samples curved shapes, and emits one closed
+  polygon per vehicle.
+- `axis: "span"` — a list of `{s, x, y, w, h, r}` parts in metres around a
+  centre, for stations and satellites drawn broadside.
+
+`check:spacetravel` gates the arithmetic: a vertical silhouette's section
+lengths must sum to its drawn height within 6%, and that drawn height must
+either match a **sourced** published figure within 2% or carry an explicit
+`heightNote` saying how it was composed. The one composed height on the page
+is Orion (3.3 m crew module + 4.0 m European Service Module — no agency
+publishes a stack figure), and the plate says so. Span items work the same
+way with `spanM`/`spanNote`; Sputnik 1's 5.2 m and Vanguard 1's 0.765 m are
+composed from the published sphere diameter plus the published antenna
+lengths, and say so.
+
+Every craft on a plate also cites the **reference drawing its proportions
+were checked against** (`drawing.title` + URL), and the gate fails if one is
+missing. Where a dimension is not published at all — Hubble's solar-array
+extent, for instance — the proportion comes from the cited NASA cutaway and
+the plate note says that is what happened.
+
+Two drawing rulings worth keeping:
+
+1. **Boosters hug the core.** A published "diameter" (R-7's 10.3 m, Soyuz's
+   10.3 m) usually includes flared engine fairings, and a vehicle's widest
+   point is often the payload fairing far above the boosters. Strap-ons are
+   therefore placed against the core's radius *at the boosters' own height*,
+   capped by the published overall width — never floated out at half the
+   published diameter with a gap.
+2. **An orbiter on a stack is a side elevation.** On the launcher plate the
+   Shuttle and Buran are drawn in profile, wings edge-on, because that is
+   what you see; the orbiter's full 23.79 m span is on the crewed-spacecraft
+   plate, where it is drawn nose-up in plan. Capsules are drawn nose-up for
+   the same reason — that is how they launch.
+
+Four plates: launch vehicles (19, V-2 to Starship), crewed spacecraft (13,
+Vostok to Starship), stations (5) and satellites (7). Each carries a metre
+ruler, a 1.75 m adult figure and — on the launcher plate — the Statue of
+Liberty at 46.05 m base-to-torch (NPS). The reference figures' *heights* are
+sourced; their outlines are ours and are labelled as scale references, not
+data. On a phone each plate scrolls sideways inside a framed, focusable
+scroller: `document.documentElement.scrollWidth` never exceeds the viewport
+at 390 px (verified).
+
+**GPS Block IIF is in the catalogue but not on the satellites plate.**
+Boeing publishes its mass and design life but not its dimensions, and a
+spacecraft whose size is not published cannot honestly be drawn to scale.
+The plate note says so.
+
+### 74.6 Cutaways: public-domain drawings, our own callouts
+
+Seventeen cutaways, 14 of them public-domain NASA/US-government engineering
+art (including an FAA Starship drawing), 3 free Commons drawings (Mir,
+Vostok, Tiangong, CC BY-SA). Callout positions live in the reference file as
+**fractions of the image**, rendered as numbered pins over the drawing with
+a legend beneath; the pin and its legend row highlight together.
+
+Three honest sub-rulings, because the drawings differ:
+
+- **Unlabelled drawings get our pins** (Mercury capsule, Soyuz "descent
+  module blank", Salyut 1 from NASA RP-1357, the unlabelled JWST optical
+  layout) — every point is ours.
+- **Already-labelled drawings get explanatory pins, not duplicates** (Apollo
+  CSM, Skylab, the Shuttle orbiter): our numbered points say what the part
+  *meant* for the mission, and the note says the drawing is labelled at
+  source.
+- **A drawing with its own numbering gets a legend, not a second set of
+  numbers.** The Saturn V "cutaway-without-labels" file still carries the
+  artist's numbered arrows 1–13 and lettered stage divisions A–D with
+  printed lengths. We did **not** guess what the thirteen numbers mean. Our
+  legend reads the four lettered divisions, whose printed lengths match the
+  published stage dimensions, and the note states exactly that.
+
+### 74.7 The honesty rulings
+
+- **The V-2 is introduced as a weapon built with slave labour.** The craft
+  summary, the `mittelwerk` event and von Braun's biography all state that
+  the missile was series-produced by concentration-camp prisoners at
+  Mittelwerk, that roughly 20,000 prisoners died building it, and that this
+  is more than it killed when fired. Source: the US Holocaust Memorial
+  Museum's Mittelbau-Dora article.
+- **Von Braun's biography is complete**: Nazi Party 1937, SS 1940 (rising to
+  Sturmbannführer), technical director at Peenemünde, visits to Mittelwerk
+  and requests for skilled prisoner labour, Operation Paperclip, Explorer 1,
+  Marshall, Saturn V. "Both halves of that record are his."
+- **Arthur Rudolph is in the people list on purpose.** The Saturn V's
+  management history cannot be told honestly without the man who ran V-2
+  production at Mittelwerk and who renounced his US citizenship in 1984
+  rather than contest denaturalisation.
+- **Every fatal accident is named with its dead**: Apollo 1 (Grissom, White,
+  Chaffee), Soyuz 1 (Komarov), Soyuz 11 (Dobrovolsky, Volkov, Patsayev, and
+  the pressure-equalisation valve), Challenger and Columbia (all fourteen
+  named, with the Rogers Commission and CAIB finding of the same
+  organisational pattern), the Nedelin catastrophe on Yangel's card.
+  Kalpana Chawla appears by name in the Columbia event rather than as a
+  designer, which is what she was not.
+- **The losing side is covered**: four N1 failures and the destroyed pad, the
+  Soviet denial of a lunar programme until 1989, Mishin inheriting a Moon
+  rocket with no money for a test stand.
+- **Failures in the present are not smoothed over**: Starliner's crewed test
+  flight reclassified in February 2026 as a Type A mishap, New Glenn's
+  second-stage failure and pad explosion, the first Starship flight's
+  crater, Artemis III's restructuring, and the ISS's end date with no
+  commercial successor yet flown.
+- **"The Chief Designer nobody could name"** is its own event: Korolev was
+  a state secret until his obituary.
+
+### 74.8 People
+
+Twenty-eight designers, engineers and builders, chosen for design/creation
+relevance rather than fame: Tsiolkovsky, Goddard, Oberth, Potočnik, Korolev,
+Glushko, Chelomei, Yangel, Mishin, Tikhonravov, Babakin, Kuznetsov, von
+Braun, Rudolph, Faget, Houbolt, Kelly, Low, Mueller, Hamilton, Johnson,
+Mary Sherman Morgan, Qian Xuesen, Sarabhai, Dhawan, Tom Mueller, Shotwell,
+Beck. Each card carries dates, nationality, role, a 50–230-word sourced
+biography, what they are known for, the craft they worked on (linked both
+ways — a craft's "designed and built by" row is the union of its own
+`designers` and anyone who lists it), and a portrait through the licence
+gate. Gwynne Shotwell is included with her contribution stated as an
+operating model rather than a drawing, because that is what it is.
+
+### 74.9 Gates
+
+`npm run check:spacetravel` joins `npm run check` after `check:phenomena`.
+It gates: sources with https URLs on every era, event, craft, person and
+cutaway; value-with-source or null-with-reason on every figure; local,
+decodable, correctly-dimensioned JPEGs with credit, licence and source page
+in both the payload and the manifest; free licences only; no orphan files or
+orphan manifest rows; callout fractions inside the image; the scale-diagram
+arithmetic and the cited reference drawing; and the coverage floors. The
+stage itself refuses to write on 40 classes of reference-file problem (it
+caught a non-https source and would have caught a zero-valued figure).
+
+`npm run typecheck`, `check:contrast` and `check:theme-parity` pass
+unchanged: the page's colours are `light-dark()` pairs on a scoped
+`.st-page` class, so no new `:root` token was added and neither gate's
+duplicated token list had to move.
+
+### 74.10 Caching and the refresh
+
+Every network read goes through `etl.fetch` with a **content-derived** cache
+filename under `.cache/spacetravel` (`sha256(url)[:16]`, never positional —
+§21). After the first run the stage is fully offline-reproducible; a rerun
+is seconds. `space_travel` is recorded as its own manifest source (editorial
+text CC0, images NASA media or Commons free licences per item) with two
+artifacts (`space/travel/travel.json`, `space/travel/images/`).
+
+### 74.11 Known gaps
+
+- Five people have no free portrait anywhere we could find — Vasily Mishin,
+  Mary Sherman Morgan, Satish Dhawan (GODL only), Tom Mueller and Peter Beck
+  — and their cards say so rather than borrowing a face. Treat this like the
+  six leaders without portraits: don't chase them.
+- Several Soviet designers' only free portraits are commemorative **postage
+  stamps** (Glushko, Yangel). They are credited as what they are.
+- The craft catalogue is 71 entries, not a census: it covers what the page
+  talks about. Notable absences include Ariane 6, Vulcan, H-3, the Almaz
+  stations, Buran as its own catalogue entry (it is drawn on the Energia
+  stack and described in an event), and every X-plane.
+- Event images are Wikipedia lead images for 124 of 150 pictures. They are
+  free and credited, but a lead image is an article's choice, not ours; a
+  later pass could pin better NASA library items per event.
+- The timeline has no year axis by design (§74.2). If Andy wants one, it has
+  to be per-era, not global.
+
+## 75. Round 14: a value and its percent sign are one token (2026-10-10)
+
+**Symptom** (Andy, reviewing on his phone): on country pages, the "%"
+sign routinely lands on its own line below the number it belongs to
+("76.26" / "%").
+
+## Method
+
+`.scratch/r14-percent-scan.mjs` (Playwright): opens 12 countries
+(USA, IND, CHN, VAT, SMR, NRU, TUV, DEU, BRA, COD, ARE, PNG) + 3
+continent pages at 5 viewports (360x780@3, 390x844, 412x915, 768x1024,
+1280x800), expands every `<details>` and "Show N more" fold, scrolls
+the full page to force lazy content, then:
+
+1. For every text node containing "%", builds a DOM `Range` over "the
+   digit run immediately before the % + the %" and checks
+   `getClientRects()` for more than one distinct `top` (a hard line
+   break between digits and sign).
+2. For every leaf element whose own text is <=8 chars and matches
+   `/\d\s*%/`, checks whether its rendered box is taller than ~1.5
+   line-heights (catches the wrap even when it lands exactly at a DOM
+   text-node boundary, which the Range check can special-case away).
+3. Confirms `document.documentElement.scrollWidth <= innerWidth` (no
+   sideways scroll introduced by the fix) at every page/viewport.
+
+## Cause found
+
+**One site-wide pattern, one component: `Breakdown.tsx`'s share
+column.**
+
+`src/components/viz/Breakdown.tsx` (the ONE ranked-bar pattern used
+by every composition on the site -- ethnic groups, religions,
+languages, land use, biomes, export/import partners, electricity mix,
+GDP sectors, urban/rural -- via `CompositionBar`/`BiomeBar`) rendered
+each row's share as:
+
+```tsx
+<span className="w-14 shrink-0 text-right" style={{...}}>
+  {row.isUpperBound ? '<' : ''}
+  {formatShare(row.percent)}%
+</span>
+```
+
+Two compounding defects:
+
+- `w-14` is a **fixed** 56px width. Two-decimal shares like
+  "76.26%" / "100.00%" need more than that at `text-sm` tabular
+  figures.
+- That `<span>` sits inside a `<td>`, and `th, td { overflow-wrap:
+  break-word }` (index.css, added so long entity/ecoregion names
+  don't force a table wider than the phone's overflow container) is
+  an **inherited** property -- it silently reached the numeric span
+  too. With no space anywhere in "76.26%", break-word had nowhere
+  "better" to break than right at the digit/% boundary, which is
+  exactly where React had already split it into two DOM text nodes
+  (`{formatShare(...)}`  then literal `%`).
+
+Initial scan (before the fix): **680 breaks**, all `<span
+class="w-14 shrink-0 text-right">` inside `Breakdown.tsx`, spread
+across every viewport (360 through 1280 -- this was never phone-only,
+the fixed-width column was just as broken on desktop, Andy only
+noticed it on the phone because that's where he reads). Every other
+percent site -- `StatTile`/`IndicatorTile` values (`CountryPage.tsx`,
+`ContinentPage.tsx`, `CountryPageExtras.tsx`), the age-pyramid native
+tooltips (`AgePyramid.tsx`) -- measured **zero** breaks at every
+viewport; they were not touched.
+
+## Fix
+
+- `src/components/viz/primitives.tsx`: new `Pct` helper -- a `<span
+  className="nowrap-pct">` wrapper for "a value glued to its %".
+  Documents why `white-space: nowrap` alone isn't enough (the
+  inherited `overflow-wrap: break-word` needs cancelling too).
+- `src/index.css`: new, narrowly-scoped rule directly under the
+  existing `th, td { overflow-wrap: break-word }` (that rule itself
+  is untouched -- it's still needed for long names):
+  ```css
+  .nowrap-pct {
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+  ```
+- `src/components/viz/Breakdown.tsx`: the row's share value now reads
+  ```tsx
+  <span className="shrink-0 text-right" style={{ fontVariantNumeric: 'tabular-nums', minWidth: '2.5rem' }}>
+    <Pct>
+      {row.isUpperBound ? '<' : ''}
+      {formatShare(row.percent)}%
+    </Pct>
+  </span>
+  ```
+  `w-14` (a hard `width`) is gone -- with `white-space: nowrap`, a
+  fixed `width` would have let the now-unbreakable text overflow its
+  box and visually overlap the bar track to its left instead of
+  wrapping. `minWidth: 2.5rem` is a soft floor only (keeps small
+  one-digit shares from collapsing the column to nothing); the
+  sibling bar-track span (`flex-1`) still absorbs all the remaining
+  row width, so every row's value still sits flush against the row's
+  right edge regardless of how wide its own text is -- just no longer
+  a load-bearing fixed column.
+
+## Measured result
+
+Re-ran the scan after the fix: **0 range-breaks, 0 short-element
+wraps, 0 horizontal-scroll pages** across all 5 viewports x 15 pages
+(12 countries + 3 continents). `.scratch/r14-percent-crop-are.png`
+(UAE's Ethnic Groups breakdown, 360px, 2dp shares like "59.40%") spot
+-checked visually: every row's share is one line, right-aligned, no
+overlap with its bar.
+
+`npm run typecheck` -- clean (no errors in owned files; did not touch
+files outside the assignment). `npm run check:contrast` -- all gates
+pass (`.nowrap-pct` carries no color).
+
 ## Resolved questions
 
 - **SGS continent assignment** — resolved 2026-08-10 in favour of South
