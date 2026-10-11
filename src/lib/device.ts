@@ -46,6 +46,56 @@ export function canvasPixelRatio(): number {
   return Math.min(window.devicePixelRatio || 1, cap)
 }
 
+/**
+ * Backing-store pixel ratio for MOTION frames: drag frames and their
+ * inertia (round 14, DATA_DECISIONS.md section 70.2).
+ *
+ * WHY. Every globe frame is a per-pixel inverse projection: four
+ * transcendentals and an anisotropic texture fetch for each fragment of
+ * the disc and its halo. Full screen on a 2x display asked for
+ * 1920x1080 CSS at the 1.75 cap = 3360x1890 = 6.35 MEGAPIXELS per pass,
+ * for the imagery, again for the sky canvas, again for the 2-D drag
+ * canvas's clear, and then three such layers to composite. Measured on
+ * the maintainer's machine: the rAF-to-rAF interval during a coast went
+ * from 16.7 ms embedded to 102-183 ms in full screen while the
+ * main-thread callback stayed under 3 ms. It was pure fill rate.
+ *
+ * WHAT. A moving frame gets a PIXEL BUDGET instead of a pixel ratio: at
+ * most ~2.0 megapixels of backing store on a desktop, ~1.0 on a
+ * low-power device, upscaled by CSS to the element's size. The settled
+ * frame (the one anybody reads) is still rendered at the full cap, so
+ * nothing anyone looks at is softer than before -- this is the same
+ * trade Google Earth makes while the globe is turning.
+ *
+ * Never above `canvasPixelRatio()`: on a dpr-1 display a moving frame
+ * must not be rendered at MORE device pixels than a settled one.
+ */
+export function motionPixelRatio(cssWidth: number, cssHeight: number): number {
+  return budgetedPixelRatio(cssWidth, cssHeight, lowPowerDevice() ? 1.0e6 : 2.0e6)
+}
+
+/**
+ * The same idea for the SKY canvas behind the globe (round 14). Measured
+ * in full screen at 1920x1080 dpr 2, coasting: with the sky drawn at the
+ * imagery's 2.0 Mpx motion budget the frame interval was 29 ms; with the
+ * sky absent (the antique direction, which has no sky) it was 16.7 ms.
+ * The sky is 9,096 star discs, 150 polylines and the constellation
+ * lettering on a 2-D canvas, and it is a BACKDROP: a moving starfield at
+ * two thirds of a megapixel is indistinguishable from a sharp one, and
+ * the settled frame is drawn at the full cap like everything else.
+ */
+export function skyMotionPixelRatio(cssWidth: number, cssHeight: number): number {
+  return budgetedPixelRatio(cssWidth, cssHeight, lowPowerDevice() ? 0.35e6 : 0.7e6)
+}
+
+function budgetedPixelRatio(cssWidth: number, cssHeight: number, budget: number): number {
+  const cap = canvasPixelRatio()
+  const area = Math.max(1, cssWidth * cssHeight)
+  // The 0.5 floor keeps a 4K or 5K frame recognisable rather than letting
+  // the budget drive the picture into a blur.
+  return Math.max(0.5, Math.min(cap, Math.sqrt(budget / area)))
+}
+
 /** Test seam. */
 export function _resetDeviceTierForTest(): void {
   cached = null
