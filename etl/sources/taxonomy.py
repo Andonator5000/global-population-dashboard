@@ -767,6 +767,795 @@ def _describe(
 
 
 # ---------------------------------------------------------------------------
+# The widened free-photo ladder (round 14, §72)
+# ---------------------------------------------------------------------------
+#
+# Before round 14 a taxon had a picture only when its Wikidata item carried
+# P18 or its English Wikipedia article had a lead image -- 8,333 of 35,214
+# tree nodes (2,437 of those borrowed from a photographed member). Everything
+# else showed a placeholder silhouette. Andy asked for the gaps to be filled
+# and, where no free photo exists, for an AI-GENERATED one. Generation is not
+# available here (no image-model key) and an AI picture presented as a
+# photograph of a taxon would break the CLAUDE.md invariant that no
+# flora/fauna image ships unverified against its taxon, so instead the FREE
+# sources were widened into a ladder, tried in this order and stopping at the
+# first accepted candidate:
+#
+#   1. Wikidata P18 on the COL-linked item          (pre-existing)
+#   2. the English Wikipedia article's lead image   (pre-existing)
+#   3. Wikidata P18 reached by TAXON NAME (P225) -- catches the items whose
+#      COL id (P10585) is missing or sits on a synonym; ambiguous names
+#      (two items, two different pictures) are skipped rather than guessed
+#   4. the Wikimedia Commons CATEGORY of the taxon name -- first file that
+#      passes the free-licence gate, is a raster photograph, and does not
+#      read as a map/range/diagram/cladogram/label/stamp
+#   5. GBIF occurrence media (mediaType=StillImage), iNaturalist and
+#      Observation.org research-grade datasets preferred, then any publisher;
+#      only CC0 / CC BY / CC BY-SA media, credited to rightsHolder/creator
+#   6. iNaturalist open data directly (the florafauna stage's pattern), for
+#      genus- and species-rank nodes GBIF missed
+#   7. a PhyloPic SILHOUETTE, labelled as a silhouette and never as a photo
+#      (the licence ranking is evolution.py's: CC0 best, BY/BY-SA accepted,
+#      NC/ND never)
+#
+# Biodiversity Heritage Library plates were in the brief and are NOT used:
+# api.biodiversitylibrary.org requires an API key, and this ETL is keyless by
+# construction. If the maintainer ever adds a key, BHL slots in at tier 7 as
+# `kind: "illustration"`.
+#
+# Everything is cached on disk under .cache/taxonomy with content-derived
+# keys (§21), rate-limited, and INCREMENTAL: each run attempts at most
+# TAXONOMY_IMAGE_ENRICH_CAP nodes (highest ranks and biggest groups first)
+# and the published artifacts replay the accumulated picks, so the monthly
+# refresh keeps going and TAXONOMY_CACHED_ONLY=1 reproduces the same output
+# from the caches with no network at all.
+
+#: Nodes the ladder ATTEMPTS per run. Each attempt is up to five HTTP calls
+#: against four hosts; measured 2026-10-10 at ~14 nodes a minute cold, so 800
+#: is roughly an hour -- the same order as the banknote category walk, and a
+#: sensible ceiling for a local run. The monthly refresh can afford more (see
+#: DATA_DECISIONS §72.12). TAXONOMY_IMAGE_ENRICH_CAP=n overrides;
+#: TAXONOMY_CACHED_ONLY=1 sets it to 0.
+#: (Kept here rather than in etl/config.py so the whole ladder is one file;
+#: moving it beside TAXONOMY_GENUS_ENRICH_CAP would be a tidy follow-up.)
+IMAGE_ENRICH_CAP_DEFAULT = 800
+
+GBIF_API = "https://api.gbif.org/v1"
+#: Research-grade citizen-science datasets whose media are consistently
+#: identified, free-licensed and credited. Tried before any other publisher.
+GBIF_PREFERRED_DATASETS = (
+    "50c9509d-22c7-4a22-a47d-8c48425ef4a7",  # iNaturalist Research-grade
+    "8a863029-f435-446a-821e-275f4f641165",  # Observation.org
+)
+#: GBIF records we take media from. A PRESERVED_SPECIMEN, FOSSIL_SPECIMEN or
+#: MATERIAL_SAMPLE record's "media" is very often the museum's DIGITISATION
+#: of the specimen's paperwork -- a ledger page, an accession card, a slide
+#: label -- not a picture of the organism at all. The 2026-10-10 contact
+#: sheet found nine such scans in a sample of sixty, every one of them from
+#: a specimen-based record (Smithsonian dataset 7e380070 and friends), and
+#: no way to tell them from a good specimen photograph by their metadata:
+#: they carry no description. So the ladder takes OBSERVATIONS only. The
+#: cost is a handful of genuine SEM plates of forams and ostracods; the
+#: gain is that nothing on the page is a photograph of a filing cabinet,
+#: and the taxa that lose out fall through to a labelled silhouette or the
+#: honest placeholder, which is what they should show.
+GBIF_LIVING_BASIS = {
+    "HUMAN_OBSERVATION", "MACHINE_OBSERVATION", "OBSERVATION",
+    "LIVING_SPECIMEN",
+}
+#: GBIF ranks we can pass to /species/match; our rank vocabulary is wider.
+GBIF_RANKS = {
+    "kingdom", "phylum", "class", "order", "family", "genus", "species",
+    "subspecies", "variety", "form",
+}
+LADDER_SLEEP_SECONDS = 0.12
+#: Candidates kept per node (the deny list can reject the first few and the
+#: next one is used WITHOUT a refetch).
+LADDER_CANDIDATES = 5
+
+#: NC and ND are never acceptable; everything else is normalised to a label.
+_LICENCE_NONFREE = re.compile(
+    r"by[-_ ]?nc|non[-_ ]?commercial|by[-_ ]?nd|no[-_ ]?deriv", re.IGNORECASE
+)
+
+#: Files that are not pictures OF the organism. Commons categories are full
+#: of range maps, cladograms, specimen labels and stamps; an occurrence
+#: record's media can be a habitat shot of a signboard.
+_NOT_AN_ORGANISM = re.compile(
+    r"\b(map|maps|range|ranges|distribution|locator|chart|graph|graphs|"
+    r"diagram|diagramm|schematic|infographic|cladogram|phylogeny|"
+    r"phylogenetic|dendrogram|stamp|stamps|postage|coin|coins|banknote|"
+    r"logo|coat of arms|signature|flag|label|labels|plaque|signboard|"
+    r"poster|book cover|title page|frontispiece|handwriting|barcode|"
+    r"screenshot|silhouette|icon|table of|chromosome ideogram|"
+    r"sequence alignment|gel electrophoresis|ledger|register|logbook|"
+    r"accession|index card|catalogue card|catalog card|folio|manuscript|"
+    r"life cycle|lifecycle|field notes|notebook)\b",
+    re.IGNORECASE,
+)
+_RASTER_MIME = {"image/jpeg", "image/png", "image/webp"}
+
+#: Hosts that publish a GBIF media URL and then refuse to serve it to
+#: anything but their own site. images.ala.org.au's thumbnail proxy answers
+#: HTTP 403 to every client we tried, browser user-agent included
+#: (2026-10-10), so a pick from it is a guaranteed broken picture.
+_HOTLINK_HOSTILE = re.compile(r"images\.ala\.org\.au/image/proxyImage", re.IGNORECASE)
+
+#: A Commons category can hold a file NAMED for a different taxon of the
+#: same rank -- Category:Notacanthiformes contains "Synbranchiformes.jpg",
+#: a picture of the swamp eels. A file whose first word is itself a
+#: suprageneric name and is NOT this taxon's name is somebody else's
+#: picture, filed here; a genus or species file name (Panthera leo.jpg) is
+#: a legitimate member and is kept.
+_SUPRAGENERIC_FILE = re.compile(
+    r"^([A-Z][a-z]+(?:iformes|idae|aceae|ales|oidea|inae|idea|ida|ota|"
+    r"phyta|mycota|opsida|phyceae|virales|viridae))"
+)
+
+
+def _canonical_licence(raw: str) -> str | None:
+    """A free-licence label for a GBIF/iNaturalist/PhyloPic licence string or
+    URL, or None when the licence is absent, unknown or NC/ND."""
+    text = " ".join((raw or "").split())
+    if not text:
+        return None
+    # GBIF says "CC_BY_SA_4_0", Commons/CC URLs say "licenses/by-sa/4.0",
+    # iNaturalist says "cc-by". Underscores are word characters, so they are
+    # normalised to hyphens before any \b-anchored match.
+    low = re.sub(r"[_\s]+", "-", text.lower())
+    if _LICENCE_NONFREE.search(low):
+        return None
+    match = re.search(r"(\d)[.-](\d)", low)
+    version = f" {match.group(1)}.{match.group(2)}" if match else ""
+    if "publicdomain/zero" in low or re.search(r"\bcc-?0\b", low):
+        return "CC0 1.0"
+    if "publicdomain/mark" in low or re.search(r"public-?domain|\bpd\b", low):
+        return "Public domain"
+    if re.search(r"\bby-sa\b", low):
+        return f"CC BY-SA{version}"
+    if re.search(r"\bby\b", low):
+        return f"CC BY{version}"
+    return None
+
+
+def _image_text(*parts: Any) -> str:
+    return " ".join(str(part) for part in parts if part).lower()
+
+
+def _clean_credit(raw: Any) -> str | None:
+    """A renderable credit, or None. GBIF publishers put internal record ids
+    in rightsHolder ("-1374429873"); a credit with no letters in it credits
+    nobody, and "Unknown author" is the honest fallback the UI already
+    renders."""
+    text = " ".join(str(raw or "").split())
+    if not text or not re.search(r"[A-Za-z]", text):
+        return None
+    return text[:120]
+
+
+class _Rejects:
+    """etl/reference/taxonomy_image_rejects.json: the reviewed deny list.
+
+    `urls` rejects one picture (the ladder falls through to its next cached
+    candidate); `taxa` rejects every ladder picture for a taxon, so the node
+    keeps the designed placeholder. Commons filenames are accepted in `urls`
+    as well as full URLs, because that is what a reviewer reads off a file
+    page."""
+
+    def __init__(self) -> None:
+        path = config.REFERENCE_DIR / "taxonomy_image_rejects.json"
+        payload = (
+            json.loads(path.read_text("utf-8")) if path.exists() else {}
+        )
+        self.urls = {
+            self._key(url): reason
+            for url, reason in (payload.get("urls") or {}).items()
+        }
+        self.taxa: dict[str, str] = payload.get("taxa") or {}
+
+    @staticmethod
+    def _norm(text: str) -> str:
+        return urllib.parse.unquote(text or "").strip().split("?")[0]             .replace("_", " ").lower()
+
+    @classmethod
+    def _key(cls, url: str) -> str:
+        """The canonical deny-list key for a picture URL.
+
+        A Commons Special:FilePath hotlink and the bare file name are the
+        same picture, so the TAIL is the key. But iNaturalist's tails are
+        all `medium.jpeg`, so for those the key keeps the preceding path
+        segment as well -- a reviewer rejecting one iNaturalist photo must
+        not blacklist every iNaturalist photo on the site."""
+        norm = cls._norm(url)
+        parts = [part for part in norm.split("/") if part]
+        if not parts:
+            return norm
+        tail = parts[-1]
+        if len(parts) > 1 and re.fullmatch(
+            r"(original|large|medium|small|square|thumb)\.\w+", tail
+        ):
+            return "/".join(parts[-2:])
+        return tail
+
+    def rejects(self, record: dict[str, Any]) -> bool:
+        url = record.get("url", "")
+        if self._key(url) in self.urls:
+            return True
+        # A reviewer may paste the whole URL; match that too.
+        return self._norm(url) in self.urls
+
+
+def _ladder_record(
+    *, url: str, licence: str, author: str | None, page: str, source: str,
+    kind: str, rep: str | None,
+) -> dict[str, Any]:
+    record: dict[str, Any] = {
+        "url": url,
+        "license": licence,
+        "author": author or None,
+        "page": page,
+        "src": source,
+        "kind": kind,
+    }
+    if rep:
+        record["rep"] = rep
+    return record
+
+
+# ---- tier 3: Wikidata P18 by taxon name (P225) -----------------------------
+
+_WIKIDATA_NAME_QUERY = """
+SELECT ?name ?article ?image ?common WHERE {{
+  VALUES ?name {{ {values} }}
+  ?item wdt:P225 ?name .
+  OPTIONAL {{
+    ?article schema:about ?item ;
+             schema:isPartOf <https://en.wikipedia.org/> .
+  }}
+  OPTIONAL {{ ?item wdt:P18 ?image . }}
+  OPTIONAL {{ ?item wdt:P1843 ?common . FILTER(LANG(?common) = "en") }}
+}}
+"""
+
+
+def _wikidata_name_batches(
+    names: list[str], *, refresh: bool, store: _Store,
+) -> None:
+    """Taxon NAME -> {wiki, imageFile, common} via P225, for taxa whose COL
+    id is not on any Wikidata item. A name that two items claim with two
+    DIFFERENT pictures is recorded as ambiguous and never used: a homonym
+    across kingdoms (Prunella the plant vs. the bird) must not borrow the
+    other's photo."""
+    missing = sorted({n for n in names if n and n not in store.data})
+    if not missing:
+        return
+    batches = [
+        missing[start:start + WIKIDATA_BATCH]
+        for start in range(0, len(missing), WIKIDATA_BATCH)
+    ]
+    print(f"      wikidata by taxon name: {len(missing)} names in "
+          f"{len(batches)} batches", flush=True)
+    for index, batch in enumerate(batches):
+        values = " ".join(json.dumps(name) for name in batch)
+        query = _WIKIDATA_NAME_QUERY.format(values=values)
+        digest = hashlib.sha256("|".join(batch).encode("utf-8")).hexdigest()[:16]
+        try:
+            response = fetch(
+                f"{config.WIKIDATA_SPARQL}?format=json&query="
+                + urllib.parse.quote(query),
+                refresh=refresh, subdir="taxonomy",
+                filename=f"wikidata-name-{digest}.json", expect_json=True,
+            )
+        except FetchError as exc:
+            print(f"      wikidata-name batch {index + 1} failed: {exc}",
+                  flush=True)
+            continue
+        found: dict[str, dict[str, Any]] = {}
+        for row in response.read_json()["results"]["bindings"]:
+            name = row["name"]["value"]
+            entry = found.setdefault(name, {"images": set()})
+            article = row.get("article", {}).get("value")
+            if article and "wiki" not in entry:
+                entry["wiki"] = urllib.parse.unquote(
+                    article.rsplit("/wiki/", 1)[-1]
+                ).replace("_", " ")
+            common = row.get("common", {}).get("value")
+            if common and "common" not in entry:
+                entry["common"] = common
+            image = row.get("image", {}).get("value")
+            if image:
+                entry["images"].add(
+                    urllib.parse.unquote(image.rsplit("/", 1)[-1]).replace("_", " ")
+                )
+        for name in batch:
+            entry = found.get(name)
+            if not entry:
+                store.data[name] = None
+                continue
+            images = entry.pop("images")
+            record = dict(entry)
+            if len(images) == 1:
+                record["imageFile"] = next(iter(images))
+            elif len(images) > 1:
+                record["ambiguous"] = True
+            store.data[name] = record
+        if (index + 1) % 10 == 0 or index + 1 == len(batches):
+            store.save()
+        if not response.from_cache:
+            time.sleep(0.5)
+    store.save()
+
+
+# ---- tier 4: the Commons category of the taxon name ------------------------
+
+def _commons_category_candidates(
+    name: str, *, refresh: bool,
+) -> list[dict[str, Any]]:
+    """Files in Category:<taxon name> that are free-licensed raster
+    photographs of an organism. One API call per taxon; the generator brings
+    the licence, author, description, size and MIME back with the list, so no
+    second metadata pass is needed."""
+    url = (
+        f"{config.COMMONS_API_URL}?action=query&format=json"
+        f"&generator=categorymembers&gcmtype=file&gcmlimit=50"
+        f"&gcmtitle={urllib.parse.quote('Category:' + name)}"
+        f"&prop=imageinfo&iiprop=extmetadata%7Csize%7Cmime&redirects=1"
+    )
+    digest = hashlib.sha256(name.encode("utf-8")).hexdigest()[:16]
+    try:
+        response = fetch(
+            url, refresh=refresh, subdir="taxonomy/commonscat",
+            filename=f"cat-{digest}.json", expect_json=True,
+        )
+    except FetchError:
+        return []
+    if not response.from_cache:
+        time.sleep(LADDER_SLEEP_SECONDS)
+    pages = (response.read_json().get("query") or {}).get("pages") or {}
+    scored: list[tuple[int, dict[str, Any]]] = []
+    for page in pages.values():
+        title = (page.get("title") or "").removeprefix("File:")
+        info = (page.get("imageinfo") or [{}])[0]
+        if not title or "missing" in page:
+            continue
+        if (info.get("mime") or "") not in _RASTER_MIME:
+            continue
+        width = info.get("width") or 0
+        height = info.get("height") or 0
+        if width < 320 or height < 240:
+            continue
+        meta = info.get("extmetadata") or {}
+        licence = (meta.get("LicenseShortName") or {}).get("value") or ""
+        if not _FREE.search(licence):
+            continue
+        description = commons.strip_html(
+            (meta.get("ImageDescription") or {}).get("value") or ""
+        )
+        categories = (meta.get("Categories") or {}).get("value") or ""
+        if _NOT_AN_ORGANISM.search(_image_text(title, description, categories)):
+            continue
+        named = _SUPRAGENERIC_FILE.match(title)
+        if named and named.group(1).lower() != name.lower():
+            continue
+        author = commons.strip_html(
+            (meta.get("Artist") or {}).get("value") or ""
+        ) or None
+        # A file whose own name carries the taxon name is the safest pick in
+        # a category that also holds habitat and museum shots.
+        score = 0 if name.lower() in title.lower() else 1
+        scored.append((score, _ladder_record(
+            url=commons.image_url_for(title, 640),
+            licence=licence, author=author,
+            page=commons.file_page_for(title),
+            source="commons", kind="photo", rep=None,
+        )))
+    scored.sort(key=lambda pair: pair[0])
+    return [record for _score, record in scored[:LADDER_CANDIDATES]]
+
+
+# ---- tier 5: GBIF occurrence media -----------------------------------------
+
+def _gbif_usage_key(name: str, rank: str, *, refresh: bool) -> int | None:
+    """GBIF usageKey for an EXACT name match, or None.
+
+    Verification notes (probed 2026-10-10): `strict=true` answers
+    matchType NONE with "Multiple equal matches" for a homonym (Prunella,
+    Drosophila) -- exactly the behaviour we want, so a homonym never borrows
+    the other kingdom's photo. It also answers matchType HIGHERRANK for a
+    perfectly good above-species match (Tetrigidae), and passing the `rank`
+    parameter made it answer Animalia for `Panthera`, so the rank is NOT
+    sent -- the canonical name and the returned rank are checked instead.
+    """
+    url = f"{GBIF_API}/species/match?" + urllib.parse.urlencode(
+        {"name": name, "strict": "true"}
+    )
+    digest = hashlib.sha256(url.encode("utf-8")).hexdigest()[:16]
+    try:
+        response = fetch(
+            url, refresh=refresh, subdir="taxonomy/gbif",
+            filename=f"match-{digest}.json", expect_json=True,
+        )
+    except FetchError:
+        return None
+    if not response.from_cache:
+        time.sleep(LADDER_SLEEP_SECONDS)
+    payload = response.read_json()
+    canonical = (payload.get("canonicalName") or "").strip()
+    if canonical.lower() != name.strip().lower():
+        return None
+    matched_rank = (payload.get("rank") or "").lower()
+    if rank in GBIF_RANKS and matched_rank and matched_rank != rank:
+        return None
+    key = payload.get("usageKey")
+    return int(key) if isinstance(key, int) else None
+
+
+def _gbif_media_candidates(
+    taxon_key: int, name: str, *, preferred: bool, refresh: bool,
+) -> list[dict[str, Any]]:
+    params = [
+        ("taxonKey", str(taxon_key)),
+        ("mediaType", "StillImage"),
+        ("limit", "20"),
+    ]
+    if preferred:
+        params.extend(("datasetKey", key) for key in GBIF_PREFERRED_DATASETS)
+    url = f"{GBIF_API}/occurrence/search?" + urllib.parse.urlencode(params)
+    digest = hashlib.sha256(
+        f"{taxon_key}|{'pref' if preferred else 'any'}".encode("utf-8")
+    ).hexdigest()[:16]
+    try:
+        response = fetch(
+            url, refresh=refresh, subdir="taxonomy/gbif",
+            filename=f"occ-{digest}.json", expect_json=True,
+        )
+    except FetchError:
+        return []
+    if not response.from_cache:
+        time.sleep(LADDER_SLEEP_SECONDS)
+    out: list[dict[str, Any]] = []
+    for record in response.read_json().get("results") or []:
+        if (record.get("basisOfRecord") or "") not in GBIF_LIVING_BASIS:
+            continue
+        # A citizen scientist cannot photograph a virus. An occurrence of a
+        # viral taxon is an observation of its HOST -- Cirlivirales came back
+        # as a photograph of bare tree branches, from an iNaturalist record
+        # of a parrot circovirus (contact sheet 2026-10-10, seed 41, tile
+        # 51). GBIF classifies these under kingdom "Viruses"; the whole
+        # lineage is skipped, and viral taxa fall through to a PhyloPic
+        # silhouette or the placeholder.
+        if (record.get("kingdom") or "") == "Viruses":
+            continue
+        organism = (
+            record.get("species")
+            or record.get("acceptedScientificName")
+            or record.get("scientificName")
+            or ""
+        )
+        # Strip the authorship GBIF appends to accepted names.
+        organism = " ".join(organism.split()[:2]) if organism else ""
+        for media in record.get("media") or []:
+            if (media.get("type") or "") != "StillImage":
+                continue
+            image_url = (media.get("identifier") or "").strip()
+            if not image_url.startswith(("http://", "https://")):
+                continue
+            if _HOTLINK_HOSTILE.search(image_url):
+                continue
+            licence = _canonical_licence(media.get("license") or "")
+            if not licence:
+                continue
+            description = _image_text(
+                media.get("title"), media.get("description"),
+                record.get("habitat"),
+            )
+            if _NOT_AN_ORGANISM.search(description):
+                continue
+            if "inaturalist-open-data" in image_url or "static.inaturalist" in image_url:
+                image_url = re.sub(
+                    r"/(original|large)\.(\w+)$", r"/medium.\2", image_url
+                )
+            author = _clean_credit(
+                media.get("rightsHolder") or media.get("creator")
+                or record.get("recordedBy")
+            )
+            page = (
+                media.get("references")
+                or (f"https://www.gbif.org/occurrence/{record['key']}"
+                    if record.get("key") else "")
+            )
+            if not page:
+                continue
+            rep = organism if organism and organism.lower() != name.lower() else None
+            out.append(_ladder_record(
+                url=image_url, licence=licence, author=author, page=page,
+                source="gbif", kind="photo", rep=rep,
+            ))
+            break  # one picture per occurrence; variety beats duplicates
+        if len(out) >= LADDER_CANDIDATES:
+            break
+    return out
+
+
+# ---- tier 6: iNaturalist open data (the florafauna pattern) ----------------
+
+def _inat_candidates(
+    name: str, rank: str, *, refresh: bool,
+) -> list[dict[str, Any]]:
+    """The community's best CC0/CC-BY photo, verified to be the queried
+    taxon (iNaturalist's search is fuzzy -- §22's lesson)."""
+    try:
+        taxa_response = fetch(
+            config.INATURALIST_TAXA_URL.format(query=urllib.parse.quote(name)),
+            refresh=refresh, subdir="taxonomy/inat", expect_json=True,
+        )
+        if not taxa_response.from_cache:
+            time.sleep(config.INATURALIST_THROTTLE_SECONDS)
+        taxa = taxa_response.read_json().get("results") or []
+        if not taxa:
+            return []
+        taxon = taxa[0]
+        if (taxon.get("name") or "").strip().lower() != name.strip().lower():
+            return []
+        if (taxon.get("rank") or "").lower() != rank.lower():
+            return []
+        observations_response = fetch(
+            config.INATURALIST_OBSERVATIONS_URL.format(taxon_id=taxon["id"]),
+            refresh=refresh, subdir="taxonomy/inat", expect_json=True,
+        )
+        if not observations_response.from_cache:
+            time.sleep(config.INATURALIST_THROTTLE_SECONDS)
+        observations = observations_response.read_json().get("results") or []
+    except FetchError:
+        return []
+    out: list[dict[str, Any]] = []
+    for observation in observations:
+        organism = ((observation.get("taxon") or {}).get("name") or "").strip()
+        for photo in observation.get("photos") or []:
+            url = photo.get("url") or ""
+            if "inaturalist-open-data" not in url:
+                continue
+            if not re.search(r"/square\.(\w+)$", url):
+                continue
+            licence = _canonical_licence(photo.get("license_code") or "")
+            if not licence:
+                continue
+            rep = organism if organism and organism.lower() != name.lower() else None
+            out.append(_ladder_record(
+                url=re.sub(r"/square\.(\w+)$", r"/medium.\1", url),
+                licence=licence, author=photo.get("attribution"),
+                page=config.INATURALIST_PHOTO_PAGE.format(photo_id=photo["id"]),
+                source="inaturalist", kind="photo", rep=rep,
+            ))
+            break
+        if len(out) >= LADDER_CANDIDATES:
+            break
+    return out
+
+
+# ---- tier 7: PhyloPic silhouettes (never a photo) --------------------------
+
+def _phylopic_candidates(
+    name: str, *, build: int, refresh: bool,
+) -> list[dict[str, Any]]:
+    digest = hashlib.sha256(name.lower().encode("utf-8")).hexdigest()[:16]
+    try:
+        response = fetch(
+            f"{config.PHYLOPIC_API}/images?build={build}"
+            f"&filter_name={urllib.parse.quote(name.lower())}"
+            f"&page=0&embed_items=true",
+            refresh=refresh, subdir="taxonomy/phylopic",
+            filename=f"phylopic-{digest}.json", expect_json=True,
+        )
+    except FetchError:
+        return []
+    if not response.from_cache:
+        time.sleep(LADDER_SLEEP_SECONDS)
+    items = (response.read_json().get("_embedded") or {}).get("items") or []
+    ranked: list[tuple[int, dict[str, Any]]] = []
+    for item in items:
+        links = item.get("_links") or {}
+        href = ((links.get("license") or {}).get("href") or "").lower()
+        if "nc" in href or "nd" in href:
+            continue
+        if re.search(r"publicdomain/(zero|mark)", href):
+            rank = 0
+        elif "/by/" in href:
+            rank = 1
+        elif "/by-sa/" in href:
+            rank = 2
+        else:
+            continue
+        rasters = links.get("rasterFiles") or []
+        if not rasters:
+            continue
+        raster = rasters[min(len(rasters) - 1, len(rasters) // 2)]
+        uuid = ((links.get("self") or {}).get("href") or "").split("?")[0]
+        uuid = uuid.rsplit("/", 1)[-1]
+        matched = (links.get("self") or {}).get("title") or name
+        ranked.append((rank, _ladder_record(
+            url=raster["href"],
+            licence=_canonical_licence(href) or "CC0 1.0",
+            author=item.get("attribution"),
+            page=f"https://www.phylopic.org/images/{uuid}",
+            source="phylopic", kind="silhouette",
+            rep=matched if matched.lower() != name.lower() else None,
+        )))
+    ranked.sort(key=lambda pair: pair[0])
+    return [record for _rank, record in ranked[:LADDER_CANDIDATES]]
+
+
+# ---- the ladder --------------------------------------------------------------
+
+class _ImageLadder:
+    """Candidate lists per taxon, cached on disk, plus the pick.
+
+    The STORE holds the raw candidate list for every taxon the ladder has
+    attempted ({"tiers": [...], "cands": [...]}), so a pick is a pure
+    function of the cache and the deny list: editing
+    etl/reference/taxonomy_image_rejects.json and re-running (even with
+    TAXONOMY_CACHED_ONLY=1) repicks without one HTTP call."""
+
+    def __init__(self, rejects: _Rejects) -> None:
+        self.store = _Store("imageladder")
+        self.names = _Store("wikiname")
+        self.rejects = rejects
+        self._build: int | None = None
+        self.attempted = 0
+        self.tier_hits: dict[str, int] = {}
+
+    def phylopic_build(self, *, refresh: bool) -> int | None:
+        if self._build is None:
+            try:
+                response = fetch(
+                    f"{config.PHYLOPIC_API}/", refresh=refresh,
+                    subdir="taxonomy", filename="phylopic-root.json",
+                    expect_json=True,
+                )
+                self._build = int(response.read_json()["build"])
+            except (FetchError, KeyError, ValueError):
+                self._build = 0
+        return self._build or None
+
+    def known(self, taxon_id: str) -> bool:
+        return taxon_id in self.store.data
+
+    def pick(self, taxon_id: str) -> dict[str, Any] | None:
+        """The first candidate the reviewer has not rejected."""
+        if taxon_id in self.rejects.taxa:
+            return None
+        entry = self.store.data.get(taxon_id)
+        if not entry:
+            return None
+        for record in entry.get("cands") or []:
+            if not self.rejects.rejects(record):
+                return dict(record)
+        return None
+
+    def attempt(
+        self, node: dict[str, Any], *, refresh: bool,
+        enricher: _Enricher,
+    ) -> None:
+        """Walk the ladder for one node, recording every candidate found."""
+        taxon_id = node["id"]
+        name = node["name"]
+        rank = node.get("rank") or "unranked"
+        candidates: list[dict[str, Any]] = []
+        tiers: list[str] = []
+
+        def keep(found: list[dict[str, Any]]) -> list[dict[str, Any]]:
+            """Reviewed rejections are applied HERE as well as at pick time,
+            so a tier whose every candidate is on the deny list falls through
+            to the next RUNG rather than leaving the taxon with nothing.
+            (pick() filters again, so a rejection added after this run still
+            takes effect offline -- it just cannot reopen a later rung until
+            the taxon is attempted again.)"""
+            return [record for record in found if not self.rejects.rejects(record)]
+
+        # tier 3 -- Wikidata P18 reached by taxon name.
+        entry = self.names.data.get(name)
+        if entry and not entry.get("ambiguous") and entry.get("imageFile"):
+            tiers.append("wikidata-name")
+            meta = enricher.images.data.get(entry["imageFile"])
+            licence = (meta or {}).get("license") or ""
+            if meta and _FREE.search(licence):
+                candidates = keep([_ladder_record(
+                    url=commons.image_url_for(entry["imageFile"], 640),
+                    licence=licence, author=meta.get("author"),
+                    page=commons.file_page_for(entry["imageFile"]),
+                    source="commons", kind="photo", rep=None,
+                )])
+
+        # tier 4 -- the Commons category of the name.
+        if not candidates:
+            tiers.append("commons-category")
+            candidates = keep(_commons_category_candidates(name, refresh=refresh))
+
+        # tier 5 -- GBIF occurrence media, preferred datasets then any.
+        if not candidates:
+            tiers.append("gbif")
+            key = _gbif_usage_key(name, rank, refresh=refresh)
+            if key is not None:
+                candidates = keep(_gbif_media_candidates(
+                    key, name, preferred=True, refresh=refresh,
+                ))
+                if not candidates:
+                    candidates = keep(_gbif_media_candidates(
+                        key, name, preferred=False, refresh=refresh,
+                    ))
+
+        # tier 6 -- iNaturalist directly, for genus/species only.
+        if not candidates and rank in ("genus", "species", "subspecies"):
+            tiers.append("inaturalist")
+            candidates = keep(_inat_candidates(name, rank, refresh=refresh))
+
+        # tier 7 -- a PhyloPic silhouette, labelled as such.
+        if not candidates:
+            build = self.phylopic_build(refresh=refresh)
+            if build:
+                tiers.append("phylopic")
+                candidates = keep(_phylopic_candidates(
+                    name, build=build, refresh=refresh,
+                ))
+
+        self.store.data[taxon_id] = {"tiers": tiers, "cands": candidates}
+        self.attempted += 1
+        if candidates:
+            self.tier_hits[candidates[0]["src"]] = (
+                self.tier_hits.get(candidates[0]["src"], 0) + 1
+            )
+
+    def save(self) -> None:
+        self.store.save()
+        self.names.save()
+
+
+_LADDER_RANK_WEIGHT = {
+    "domain": 95, "realm": 94, "subdomain": 92, "kingdom": 92,
+    "subkingdom": 89, "infrakingdom": 87,
+    "phylum": 86, "subphylum": 83, "infraphylum": 81, "parvphylum": 80,
+    "gigaclass": 79, "megaclass": 79, "superclass": 78, "class": 77,
+    "subclass": 75, "infraclass": 73, "subterclass": 72, "parvclass": 72,
+    "superorder": 69, "order": 70, "suborder": 67, "infraorder": 66,
+    "parvorder": 64, "nanorder": 63,
+    "family": 62, "superfamily": 60, "epifamily": 59,
+    "subfamily": 50, "tribe": 48, "supertribe": 47, "subtribe": 45,
+    "infratribe": 44,
+    "genus": 30, "subgenus": 28,
+    "species": 20, "subspecies": 18,
+}
+#: A species inside an editorial focus family is a destination (§44.5), so it
+#: outranks an ordinary genus.
+_LADDER_FOCUS_BONUS = 25
+
+
+def _ladder_priority(node: dict[str, Any], *, focus: bool) -> tuple[int, int]:
+    weight = _LADDER_RANK_WEIGHT.get(node.get("rank") or "", 40)
+    if focus:
+        weight += _LADDER_FOCUS_BONUS
+    return (-weight, -int(node.get("names") or 0))
+
+
+def _collect_uncovered(
+    node: dict[str, Any],
+    reps: set[str] | None,
+    out: list[dict[str, Any]],
+) -> bool:
+    """Post-order pass mirroring _bubble_images WITHOUT mutating: returns
+    True when this subtree holds any picture, and appends every node that
+    would still show the placeholder to `out`."""
+    covered = bool(node.get("img"))
+    for child in node.get("children") or []:
+        if _collect_uncovered(child, reps, out):
+            covered = True
+    if not covered and reps is not None and node.get("id") in reps:
+        covered = True
+    if not covered and node.get("id") and not node.get("pending"):
+        out.append(node)
+    return covered
+
+
+# ---------------------------------------------------------------------------
 # Representative photos (§42.7)
 # ---------------------------------------------------------------------------
 
@@ -785,7 +1574,7 @@ def _bubble_images(
             best = found
     img = node.get("img")
     if img:
-        clean = {k: v for k, v in img.items() if k != "rep"}
+        clean = {k: v for k, v in img.items() if k not in ("rep", "bub")}
         return (clean, img.get("rep") or node["name"])
     if best is None and reps is not None:
         best = reps.get(node.get("id", ""))
@@ -798,6 +1587,11 @@ def _bubble_images(
         # bubble reaches a non-pending ancestor further up.
         node["img"] = dict(best[0])
         node["img"]["rep"] = best[1]
+        # `bub` = "this picture is a copy of a descendant's, not a lookup of
+        # this taxon's own" (round 14). It is what lets the next run replay
+        # the ladder's OWN picks out of the published artifacts without
+        # mistaking 4,900 bubbled copies for 4,900 ladder results.
+        node["img"]["bub"] = True
         stats["bubbled"] += 1
     return best
 
@@ -807,6 +1601,44 @@ def _bubble_images(
 # ---------------------------------------------------------------------------
 
 _ENRICHMENT_KEYS = ("wiki", "common", "desc", "descSrc", "img", "ncbi", "ott", "firstMa")
+
+#: Image sources the ladder can record. A record with no `src` is a plain
+#: Wikidata-P18/Wikipedia-lead Commons photo (tiers 1-2), the pre-round-14
+#: default, left unmarked so 17k genera-file records do not grow.
+LADDER_SOURCES = ("commons", "gbif", "inaturalist", "phylopic")
+
+
+def _previous_ladder_picks(
+    out_dir: Path, genera_dir: Path,
+) -> dict[str, dict[str, Any]]:
+    """Ladder picks already published, replayed into the store so the
+    accumulated coverage survives a cold .cache (the same trick
+    _previous_genera plays for genus enrichment)."""
+    picks: dict[str, dict[str, Any]] = {}
+
+    def harvest(payload: Any) -> None:
+        for node, _parent in _walk(payload):
+            image = node.get("img")
+            if not node.get("id") or not isinstance(image, dict):
+                continue
+            if image.get("src") in LADDER_SOURCES and not image.get("rep"):
+                picks[node["id"]] = {
+                    key: value for key, value in image.items() if key != "rep"
+                }
+
+    tree_path = out_dir / "tree.json"
+    if tree_path.exists():
+        try:
+            harvest(json.loads(tree_path.read_text("utf-8")).get("tree", {}))
+        except json.JSONDecodeError:
+            pass
+    if genera_dir.exists():
+        for path in genera_dir.glob("*.json"):
+            try:
+                harvest(json.loads(path.read_text("utf-8")))
+            except json.JSONDecodeError:
+                continue
+    return picks
 
 
 def _previous_genera(genera_dir: Path) -> dict[str, dict[str, Any]]:
@@ -826,6 +1658,45 @@ def _previous_genera(genera_dir: Path) -> dict[str, dict[str, Any]]:
                 key: node[key] for key in _ENRICHMENT_KEYS if key in node
             }
     return store
+
+
+def _coverage(nodes_iter) -> dict[str, Any]:  # noqa: ANN001
+    """Picture coverage by rank, for the log: own photo / borrowed from a
+    member / silhouette / still a placeholder."""
+    by_rank: dict[str, dict[str, int]] = {}
+    totals = {"nodes": 0, "own": 0, "rep": 0, "silhouette": 0, "none": 0,
+              "pending": 0}
+    for node in nodes_iter:
+        rank = node.get("rank") or "unranked"
+        bucket = by_rank.setdefault(
+            rank,
+            {"nodes": 0, "own": 0, "rep": 0, "silhouette": 0, "none": 0,
+             "pending": 0},
+        )
+        image = node.get("img")
+        for row in (bucket, totals):
+            row["nodes"] += 1
+            if node.get("pending"):
+                row["pending"] += 1
+            if not image:
+                row["none"] += 1
+            else:
+                if image.get("kind") == "silhouette":
+                    row["silhouette"] += 1
+                if image.get("rep"):
+                    row["rep"] += 1
+                else:
+                    row["own"] += 1
+    # The log is committed and read by people: rank strings carried by a
+    # handful of nodes are rolled up rather than printed one by one.
+    ordered = sorted(by_rank.items(), key=lambda item: -item[1]["nodes"])
+    kept = {rank: row for rank, row in ordered if row["nodes"] >= 20}
+    rest = [row for rank, row in ordered if row["nodes"] < 20]
+    if rest:
+        kept["(other ranks, <20 nodes each)"] = {
+            key: sum(row[key] for row in rest) for key in rest[0]
+        }
+    return {"total": totals, "by_rank": kept}
 
 
 def _dump(path: Path, payload: Any) -> None:
@@ -1078,6 +1949,118 @@ def ingest(
                 genera_stats["with_image"] += 1
             genera_stats[node["descSrc"]] += 1
 
+    # ---- the widened free-photo ladder (§72) --------------------------------
+    rejects = _Rejects()
+    ladder = _ImageLadder(rejects)
+    # Published picks are normally replayed into the store so the accumulated
+    # coverage survives a cold .cache. TAXONOMY_IMAGE_LADDER_RESEED=0 turns
+    # that off for one run: when the PICKING RULES change (round 14 stopped
+    # accepting GBIF specimen-digitisation media after the contact sheet
+    # found museum ledger scans among them), the already-published picks must
+    # be re-derived from the caches rather than trusted. Needs a warm
+    # .cache/taxonomy to be cheap; never set it in CI.
+    reseed = os.environ.get("TAXONOMY_IMAGE_LADDER_RESEED", "1") != "0"
+    previous_picks = (
+        _previous_ladder_picks(out_dir, genera_dir) if reseed else {}
+    )
+    for taxon_id, record in previous_picks.items():
+        if taxon_id not in ladder.store.data:
+            ladder.store.data[taxon_id] = {
+                "tiers": ["published"], "cands": [record],
+            }
+
+    # Which nodes would still show the placeholder after bubbling? Those are
+    # the only ones worth a lookup, and the highest ranks and biggest groups
+    # among them are what a reader actually lands on.
+    uncovered: list[tuple[tuple[int, int], dict[str, Any], bool]] = []
+    family_has_photo: set[str] = set()
+    for family_id, subtree in genera_files.items():
+        # The subtree ROOT is the family, which the tree already carries (and
+        # whose photo is mirrored back onto the file after bubbling) -- walk
+        # its children so the family is not queued twice.
+        found: list[dict[str, Any]] = []
+        covered = bool(subtree.get("img"))
+        for child in subtree.get("children") or []:
+            if _collect_uncovered(child, None, found):
+                covered = True
+        if covered:
+            family_has_photo.add(family_id)
+        is_focus = bool(subtree.get("focus"))
+        for node in found:
+            uncovered.append((_ladder_priority(node, focus=is_focus), node, is_focus))
+    tree_uncovered: list[dict[str, Any]] = []
+    _collect_uncovered(root, family_has_photo, tree_uncovered)
+    for node in tree_uncovered:
+        uncovered.append((_ladder_priority(node, focus=False), node, False))
+    uncovered.sort(key=lambda item: item[0])
+
+    image_cap = IMAGE_ENRICH_CAP_DEFAULT
+    if os.environ.get("TAXONOMY_IMAGE_ENRICH_CAP"):
+        image_cap = int(os.environ["TAXONOMY_IMAGE_ENRICH_CAP"])
+    if os.environ.get("TAXONOMY_CACHED_ONLY") == "1":
+        image_cap = 0
+    pending_attempts = [
+        node for _priority, node, _focus in uncovered
+        if not ladder.known(node["id"])
+    ]
+    attempt_nodes = pending_attempts[:image_cap]
+    if attempt_nodes:
+        # Tier 3 is batched SPARQL, so resolve every name first, then the
+        # Commons licences of the files it found; the per-node walk below
+        # only makes the unbatchable calls.
+        _wikidata_name_batches(
+            [node["name"] for node in attempt_nodes],
+            refresh=refresh, store=ladder.names,
+        )
+        _image_batches(
+            [
+                entry["imageFile"]
+                for node in attempt_nodes
+                if (entry := ladder.names.data.get(node["name"]))
+                and not entry.get("ambiguous") and entry.get("imageFile")
+            ],
+            refresh=refresh, store=enricher.images,
+        )
+    print(f"    photo ladder: {len(uncovered)} nodes would show the "
+          f"placeholder, {len(pending_attempts)} never attempted; trying "
+          f"{len(attempt_nodes)} this run (cap {image_cap}) ...", flush=True)
+    for index, node in enumerate(attempt_nodes):
+        ladder.attempt(node, refresh=refresh, enricher=enricher)
+        if (index + 1) % 100 == 0:
+            ladder.save()
+            print(f"      ...ladder {index + 1}/{len(attempt_nodes)} "
+                  f"(hits {ladder.tier_hits})", flush=True)
+    ladder.save()
+
+    ladder_stats = {
+        "placeholder_nodes_before": len(uncovered),
+        "never_attempted_before": len(pending_attempts),
+        "attempted_this_run": ladder.attempted,
+        "cap_this_run": image_cap,
+        "first_tier_hits_this_run": dict(sorted(ladder.tier_hits.items())),
+        "applied": 0,
+        "by_source": {},
+        "by_kind": {},
+        "rejected_urls": len(rejects.urls),
+        "rejected_taxa": len(rejects.taxa),
+    }
+    for _priority, node, _focus in uncovered:
+        if node.get("img"):
+            continue
+        record = ladder.pick(node["id"])
+        if record is None:
+            continue
+        node["img"] = record
+        ladder_stats["applied"] += 1
+        source = record.get("src") or "commons"
+        kind = record.get("kind") or "photo"
+        ladder_stats["by_source"][source] = (
+            ladder_stats["by_source"].get(source, 0) + 1
+        )
+        ladder_stats["by_kind"][kind] = ladder_stats["by_kind"].get(kind, 0) + 1
+    print(f"    photo ladder: {ladder_stats['applied']} pictures applied "
+          f"({ladder_stats['by_source']})", flush=True)
+
     # Representative photos: genera files first so the family nodes in the
     # main tree can borrow their best member's photo.
     bubble_stats = {"bubbled": 0}
@@ -1128,13 +2111,36 @@ def ingest(
         "extractShards": SHARD_COUNT,
         "extractsRetrieved": dataset_response.fetched_at[:10],
         "imageNote": (
-            "Taxon photos come from Wikimedia Commons (Wikidata P18, or "
-            "the article's lead image), kept only under public-domain or "
-            "CC licences; attribution shows with each. A taxon without "
-            "its own free photo shows a member's, labelled as a "
-            "representative; only taxa with no photographed member at "
-            "all show the placeholder silhouette."
+            "Taxon pictures are FREE-LICENSED ONLY (public domain, CC0, "
+            "CC BY or CC BY-SA — never NonCommercial or NoDerivatives), "
+            "tried in a fixed order: the taxon's Wikidata photo (P18), its "
+            "Wikipedia lead image, a Wikidata photo reached by taxon name, "
+            "the taxon's Wikimedia Commons category, GBIF occurrence media "
+            "(iNaturalist and Observation.org research-grade preferred), "
+            "iNaturalist open data, and finally a PhyloPic silhouette, "
+            "which is always labelled as a silhouette and never as a "
+            "photograph. A taxon with no picture of its own shows a "
+            "photographed member's, labelled “Representative”; a taxon with "
+            "none at all shows a designed placeholder that says so. Every "
+            "picture carries its author, licence and source link. No image "
+            "on this page is AI-generated."
         ),
+        "imageSources": [
+            {"label": "Wikimedia Commons (Wikidata P18, Wikipedia lead "
+                       "images, taxon categories)",
+             "url": "https://commons.wikimedia.org",
+             "licence": "per file: public domain, CC0, CC BY or CC BY-SA"},
+            {"label": "GBIF occurrence media (StillImage), iNaturalist and "
+                       "Observation.org research-grade preferred",
+             "url": "https://www.gbif.org/occurrence/search?media_type=StillImage",
+             "licence": "per record: CC0, CC BY or CC BY-SA"},
+            {"label": "iNaturalist open data photos",
+             "url": "https://www.inaturalist.org",
+             "licence": "CC0 or CC BY"},
+            {"label": "PhyloPic silhouettes (labelled as silhouettes)",
+             "url": "https://www.phylopic.org",
+             "licence": "CC0, CC BY or CC BY-SA"},
+        ],
         "generaFiles": len(genera_files),
         "generaTotal": genera_stats["genera"],
         "generaEnriched": genera_stats["genera_enriched"],
@@ -1157,6 +2163,16 @@ def ingest(
             "genera_files_bytes": total_bytes,
             "genera_largest_file": {"bytes": largest[0], "family": largest[1]},
             "genera": genera_stats,
+            "photo_ladder": ladder_stats,
+            "coverage_tree": _coverage(
+                node for node, _p in _walk(root)
+            ),
+            "coverage_genera": _coverage(
+                node
+                for subtree in genera_files.values()
+                for child in (subtree.get("children") or [])
+                for node, _p in _walk(child)
+            ),
             "genera_enrichment_cap_this_run": cap,
             "genera_looked_up_this_run": len(batch_ids),
             "genera_still_pending_after_run": max(0, len(candidates) - len(batch_ids)),
@@ -1194,6 +2210,60 @@ def ingest(
             f"placements annotated from etl/reference/taxonomy_notes.json."
         ),
     )
+    if ladder_stats["by_source"].get("gbif"):
+        manifest_mod.record_source(
+            manifest,
+            "gbif_occurrence_media",
+            title="GBIF occurrence media (StillImage)",
+            url="https://www.gbif.org/occurrence/search?media_type=StillImage",
+            licence="per record: CC0 / CC BY / CC BY-SA only",
+            fetched_at=bulk_fetched_at,
+            upstream_release=None,
+            vintage=bulk_fetched_at[:10],
+            citation=(
+                "GBIF.org occurrence search API; media from iNaturalist "
+                "Research-grade Observations and Observation.org preferred, "
+                "credited to each record's rightsHolder or creator"
+            ),
+            notes=(
+                f"{ladder_stats['by_source']['gbif']} taxon pictures on the "
+                f"Taxonomy page, used only where no Wikidata/Wikipedia/Commons "
+                f"photo exists; NC and ND media are never accepted."
+            ),
+        )
+    if ladder_stats["by_source"].get("inaturalist"):
+        manifest_mod.record_source(
+            manifest,
+            "inaturalist_taxonomy",
+            title="iNaturalist open-data photos (taxonomy)",
+            url="https://www.inaturalist.org",
+            licence="CC0 / CC BY only",
+            fetched_at=bulk_fetched_at,
+            upstream_release=None,
+            vintage=bulk_fetched_at[:10],
+            citation="iNaturalist research-grade observations, open-data bucket",
+            notes=(
+                f"{ladder_stats['by_source']['inaturalist']} taxon pictures, "
+                f"name-verified against the queried taxon before use."
+            ),
+        )
+    if ladder_stats["by_source"].get("phylopic"):
+        manifest_mod.record_source(
+            manifest,
+            "phylopic_taxonomy",
+            title="PhyloPic silhouettes (taxonomy)",
+            url="https://www.phylopic.org",
+            licence="CC0 / CC BY / CC BY-SA only",
+            fetched_at=bulk_fetched_at,
+            upstream_release=None,
+            vintage=bulk_fetched_at[:10],
+            citation="PhyloPic, per-image licences",
+            notes=(
+                f"{ladder_stats['by_source']['phylopic']} silhouettes, the "
+                f"last rung of the picture ladder, labelled as silhouettes "
+                f"in the UI and never presented as photographs."
+            ),
+        )
     manifest_mod.record_artifact(
         manifest, "biology/taxonomy/tree.json",
         description=(

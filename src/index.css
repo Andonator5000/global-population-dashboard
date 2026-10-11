@@ -998,6 +998,101 @@ dialog.lightbox img {
   }
 }
 
+/* Taxonomy (round 14) -- the plate redesign, DATA_DECISIONS §72.
+   Scoped to the Taxonomy page's own classes; nothing else in this file is
+   touched by it. Four things Tailwind utilities cannot express cleanly:
+   the tree's indent rail, the row/card hover affordance, a plate picture
+   whose ASPECT RATIO changes at a breakpoint, and hiding the horizontal
+   scrollbar on the lineage rail (which must scroll on a phone but must not
+   grow a grey bar under a row of chips). */
+
+/* The branch rail: one hairline per level, so a reader can see which rows
+   belong to which parent without counting indents. The indent is the rail
+   plus a gutter, not an ever-growing padding value. */
+.tax-branch {
+  margin-left: 0.5rem;
+  padding-left: 0.45rem;
+  border-left: 1px solid var(--border);
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .tax-branch {
+    margin-left: 1.15rem;
+    padding-left: 0.65rem;
+  }
+}
+
+/* A lineage is ten or more ranks deep, so the indent STOPS growing past the
+   eighth level on a phone: beyond that the rail already tells the reader
+   where they are, and another 17px per level would push the names off the
+   screen (round 14 — the 390px horizontal-scroll bug). */
+.tax-branch-flat {
+  margin-left: 0;
+  padding-left: 0.45rem;
+}
+
+@media (min-width: 640px) {
+  .tax-branch-flat {
+    margin-left: 0.5rem;
+    padding-left: 0.65rem;
+  }
+}
+
+/* Rows and cards get a quiet hover; the SELECTED state is the yellow fill
+   set inline, so hover must never compete with it. */
+.tax-row:hover {
+  background: var(--surface-sunken);
+}
+
+.tax-row[style*='--control-selected-bg']:hover {
+  background: var(--control-selected-bg);
+}
+
+.tax-card {
+  background: var(--surface-raised);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    border-color 120ms ease;
+}
+
+.tax-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tax-card:hover {
+    transform: none;
+  }
+}
+
+/* The plate's picture is a 4:3 crop while the plate is one column, and a
+   taller 4:5 PLATE once the layout splits in two at lg -- a 4:3 picture in a
+   24rem column left a hand's width of empty paper under it beside a 500px
+   column of text. Portrait is also what an atlas plate is. */
+.tax-plate-img {
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 1024px) {
+  .tax-plate-img {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* The lineage/breadcrumb rail scrolls sideways on a phone (a 12-rank
+   lineage cannot wrap without eating the plate) but shows no scrollbar. */
+.tax-rail {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tax-rail::-webkit-scrollbar {
+  display: none;
+}
+
 /* Evolution tree (round 14) */
 /*
  * The tree of life through time (DATA_DECISIONS section 73). Twelve group

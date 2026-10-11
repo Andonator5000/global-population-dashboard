@@ -14,9 +14,9 @@
     "generated": 18551
   },
   "genera_files": 14196,
-  "genera_files_bytes": 42443300,
+  "genera_files_bytes": 42513533,
   "genera_largest_file": {
-    "bytes": 1857942,
+    "bytes": 1859890,
     "family": "Formicidae"
   },
   "genera": {
@@ -32,6 +32,273 @@
     "generated": 215411,
     "genera_enriched": 21571,
     "genera_with_wiki": 10971
+  },
+  "photo_ladder": {
+    "placeholder_nodes_before": 69925,
+    "never_attempted_before": 68325,
+    "attempted_this_run": 0,
+    "cap_this_run": 0,
+    "first_tier_hits_this_run": {},
+    "applied": 704,
+    "by_source": {
+      "phylopic": 187,
+      "commons": 417,
+      "gbif": 100
+    },
+    "by_kind": {
+      "silhouette": 187,
+      "photo": 517
+    },
+    "rejected_urls": 6,
+    "rejected_taxa": 0
+  },
+  "coverage_tree": {
+    "total": {
+      "nodes": 35214,
+      "own": 6322,
+      "rep": 2770,
+      "silhouette": 215,
+      "none": 26122,
+      "pending": 0
+    },
+    "by_rank": {
+      "family": {
+        "nodes": 14868,
+        "own": 4225,
+        "rep": 628,
+        "silhouette": 3,
+        "none": 10015,
+        "pending": 0
+      },
+      "genus": {
+        "nodes": 12661,
+        "own": 547,
+        "rep": 0,
+        "silhouette": 0,
+        "none": 12114,
+        "pending": 0
+      },
+      "species": {
+        "nodes": 2206,
+        "own": 74,
+        "rep": 0,
+        "silhouette": 0,
+        "none": 2132,
+        "pending": 0
+      },
+      "order": {
+        "nodes": 1844,
+        "own": 749,
+        "rep": 603,
+        "silhouette": 107,
+        "none": 492,
+        "pending": 0
+      },
+      "superfamily": {
+        "nodes": 1534,
+        "own": 294,
+        "rep": 548,
+        "silhouette": 1,
+        "none": 692,
+        "pending": 0
+      },
+      "class": {
+        "nodes": 471,
+        "own": 179,
+        "rep": 220,
+        "silhouette": 59,
+        "none": 72,
+        "pending": 0
+      },
+      "suborder": {
+        "nodes": 470,
+        "own": 132,
+        "rep": 181,
+        "silhouette": 11,
+        "none": 157,
+        "pending": 0
+      },
+      "subfamily": {
+        "nodes": 237,
+        "own": 5,
+        "rep": 43,
+        "silhouette": 0,
+        "none": 189,
+        "pending": 0
+      },
+      "tribe": {
+        "nodes": 186,
+        "own": 2,
+        "rep": 53,
+        "silhouette": 0,
+        "none": 131,
+        "pending": 0
+      },
+      "infraorder": {
+        "nodes": 171,
+        "own": 15,
+        "rep": 121,
+        "silhouette": 3,
+        "none": 35,
+        "pending": 0
+      },
+      "phylum": {
+        "nodes": 146,
+        "own": 47,
+        "rep": 85,
+        "silhouette": 16,
+        "none": 14,
+        "pending": 0
+      },
+      "subclass": {
+        "nodes": 117,
+        "own": 11,
+        "rep": 93,
+        "silhouette": 5,
+        "none": 13,
+        "pending": 0
+      },
+      "superorder": {
+        "nodes": 46,
+        "own": 2,
+        "rep": 42,
+        "silhouette": 3,
+        "none": 2,
+        "pending": 0
+      },
+      "subphylum": {
+        "nodes": 42,
+        "own": 18,
+        "rep": 22,
+        "silhouette": 2,
+        "none": 2,
+        "pending": 0
+      },
+      "parvorder": {
+        "nodes": 36,
+        "own": 0,
+        "rep": 29,
+        "silhouette": 0,
+        "none": 7,
+        "pending": 0
+      },
+      "infraclass": {
+        "nodes": 26,
+        "own": 3,
+        "rep": 23,
+        "silhouette": 1,
+        "none": 0,
+        "pending": 0
+      },
+      "kingdom": {
+        "nodes": 24,
+        "own": 8,
+        "rep": 15,
+        "silhouette": 0,
+        "none": 1,
+        "pending": 0
+      },
+      "unranked": {
+        "nodes": 22,
+        "own": 1,
+        "rep": 1,
+        "silhouette": 0,
+        "none": 20,
+        "pending": 0
+      },
+      "(other ranks, <20 nodes each)": {
+        "nodes": 107,
+        "own": 10,
+        "rep": 63,
+        "silhouette": 4,
+        "none": 34,
+        "pending": 0
+      }
+    }
+  },
+  "coverage_genera": {
+    "total": {
+      "nodes": 243193,
+      "own": 14814,
+      "rep": 2433,
+      "silhouette": 0,
+      "none": 225946,
+      "pending": 182909
+    },
+    "by_rank": {
+      "genus": {
+        "nodes": 204480,
+        "own": 9922,
+        "rep": 143,
+        "silhouette": 0,
+        "none": 194415,
+        "pending": 182909
+      },
+      "species": {
+        "nodes": 24233,
+        "own": 2833,
+        "rep": 0,
+        "silhouette": 0,
+        "none": 21400,
+        "pending": 0
+      },
+      "subfamily": {
+        "nodes": 7158,
+        "own": 1257,
+        "rep": 803,
+        "silhouette": 0,
+        "none": 5098,
+        "pending": 0
+      },
+      "tribe": {
+        "nodes": 5412,
+        "own": 734,
+        "rep": 1000,
+        "silhouette": 0,
+        "none": 3678,
+        "pending": 0
+      },
+      "subtribe": {
+        "nodes": 1552,
+        "own": 68,
+        "rep": 467,
+        "silhouette": 0,
+        "none": 1017,
+        "pending": 0
+      },
+      "subgenus": {
+        "nodes": 266,
+        "own": 0,
+        "rep": 0,
+        "silhouette": 0,
+        "none": 266,
+        "pending": 0
+      },
+      "infratribe": {
+        "nodes": 53,
+        "own": 0,
+        "rep": 5,
+        "silhouette": 0,
+        "none": 48,
+        "pending": 0
+      },
+      "supertribe": {
+        "nodes": 23,
+        "own": 0,
+        "rep": 15,
+        "silhouette": 0,
+        "none": 8,
+        "pending": 0
+      },
+      "(other ranks, <20 nodes each)": {
+        "nodes": 16,
+        "own": 0,
+        "rep": 0,
+        "silhouette": 0,
+        "none": 16,
+        "pending": 0
+      }
+    }
   },
   "genera_enrichment_cap_this_run": 0,
   "genera_looked_up_this_run": 0,
@@ -68,5 +335,5 @@
     "Ursidae",
     "Varanidae"
   ],
-  "seconds": 46
+  "seconds": 59
 }
