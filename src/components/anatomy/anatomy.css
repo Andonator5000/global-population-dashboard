@@ -646,6 +646,38 @@
   }
 }
 
+/* Round 14: a label in the LEFT margin column (3-D plate and Diagrams tab)
+   reads leftward from its dot, so the text stays in the margin and the
+   leader line leaves from the dot at the column. */
+.anatomy-pin.is-margin-left {
+  flex-direction: row-reverse;
+  margin-left: 11px;
+  translate: -100% 0;
+}
+.anatomy-pin.is-margin-left .anatomy-pin-label {
+  margin-right: 0.3rem;
+}
+/* The 3-D stage's leader lines: under the pins, over the canvas. */
+.anatomy-viewer-leaders {
+  width: 100%;
+  height: 100%;
+}
+/* The 3-D stage's pins take no pointer events: a drag that starts on a
+   label still turns the body (the canvas tests taps against the pins
+   itself); keyboard focus and activation are unaffected. */
+.anatomy-viewer .anatomy-pin {
+  pointer-events: none;
+}
+/* A drag that starts on the body must never select the label text. */
+.anatomy-pins,
+.anatomy-pin {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.anatomy-viewer .anatomy-pin {
+  transition: opacity 120ms linear;
+}
+
 /* A side pair's left-on-screen label reads leftward from its dot. */
 .anatomy-pin.is-flip {
   flex-direction: row-reverse;
