@@ -1,0 +1,4198 @@
+{
+ "version": 1,
+ "note": "EDITORIAL (round 14, DATA_DECISIONS section 73): the tree of life through time. Each node is a lineage: originMa is when it split from its sister lineage (originKind divergence/estimate, from molecular clocks such as TimeTree 5) or its oldest accepted fossil (originKind fossil); ageRange is [older, younger] where the literature disagrees; extinct lineages carry extinctMa. A child is never older than its parent. Topology follows current phylogenomics (two-domain tree with Eukaryotes inside Asgard archaea; ctenophores sister to other animals; turtles with archosaurs; whales inside Artiodactyla). merges record endosymbiosis: a lineage joining another. Edit this file and bump version; never edit data/biology/evolution/tree.json.",
+ "root": "luca",
+ "groups": {
+  "bacteria": "Bacteria",
+  "archaea": "Archaea",
+  "protist": "Other eukaryotes",
+  "plant": "Plants and algae",
+  "fungus": "Fungi",
+  "invertebrate": "Other animals",
+  "arthropod": "Arthropods",
+  "fish": "Fishes and early chordates",
+  "amphibian": "Amphibians",
+  "reptile": "Reptiles and dinosaurs",
+  "bird": "Birds",
+  "mammal": "Mammals"
+ },
+ "sourceLibrary": {
+  "timetree": {
+   "title": "TimeTree 5 (Kumar et al. 2022, Mol. Biol. Evol.)",
+   "url": "https://doi.org/10.1093/molbev/msac174"
+  },
+  "betts2018": {
+   "title": "Betts et al. 2018, Nature Ecology & Evolution: integrated genomic and fossil evidence on early life and eukaryote origin",
+   "url": "https://doi.org/10.1038/s41559-018-0644-x"
+  },
+  "moody2024": {
+   "title": "Moody et al. 2024, Nature Ecology & Evolution: the nature of the last universal common ancestor",
+   "url": "https://doi.org/10.1038/s41559-024-02461-1"
+  },
+  "eme2023": {
+   "title": "Eme et al. 2023, Nature: the heimdallarchaeial ancestry of eukaryotes",
+   "url": "https://doi.org/10.1038/s41586-023-06186-2"
+  },
+  "sanchez2017": {
+   "title": "Sanchez-Baracaldo et al. 2017, PNAS: early photosynthetic eukaryotes",
+   "url": "https://doi.org/10.1073/pnas.1620089114"
+  },
+  "parfrey2011": {
+   "title": "Parfrey et al. 2011, PNAS: timing of early eukaryotic diversification",
+   "url": "https://doi.org/10.1073/pnas.1110633108"
+  },
+  "strassert2021": {
+   "title": "Strassert et al. 2021, Nature Communications: a molecular timescale for eukaryote evolution",
+   "url": "https://doi.org/10.1038/s41467-021-22044-z"
+  },
+  "morris2018": {
+   "title": "Morris et al. 2018, PNAS: the timescale of early land plant evolution",
+   "url": "https://doi.org/10.1073/pnas.1719588115"
+  },
+  "dosreis2015": {
+   "title": "dos Reis et al. 2015, Current Biology: uncertainty in the timing of origin of animals",
+   "url": "https://doi.org/10.1016/j.cub.2015.09.066"
+  },
+  "benton2015": {
+   "title": "Benton et al. 2015, Palaeontologia Electronica: constraints on the timescale of animal evolutionary history",
+   "url": "https://doi.org/10.26879/424"
+  },
+  "misof2014": {
+   "title": "Misof et al. 2014, Science: phylogenomics resolves the timing and pattern of insect evolution",
+   "url": "https://doi.org/10.1126/science.1257570"
+  },
+  "lozano2016": {
+   "title": "Lozano-Fernandez et al. 2016, Phil. Trans. R. Soc. B: arthropod terrestrialization",
+   "url": "https://doi.org/10.1098/rstb.2015.0133"
+  },
+  "prum2015": {
+   "title": "Prum et al. 2015, Nature: a comprehensive phylogeny of birds",
+   "url": "https://doi.org/10.1038/nature15697"
+  },
+  "field2020": {
+   "title": "Field et al. 2020, Nature: a Late Cretaceous neornithine (Asteriornis) and the origin of crown birds",
+   "url": "https://doi.org/10.1038/s41586-020-2096-0"
+  },
+  "upham2019": {
+   "title": "Upham et al. 2019, PLOS Biology: inferring the mammal tree",
+   "url": "https://doi.org/10.1371/journal.pbio.3000494"
+  },
+  "schultz2023": {
+   "title": "Schultz et al. 2023, Nature: ancient gene linkages support ctenophores as sister to other animals",
+   "url": "https://doi.org/10.1038/s41586-023-05936-6"
+  },
+  "zhu2022": {
+   "title": "Zhu et al. 2022, Nature: the oldest complete jawed vertebrates from the early Silurian of China",
+   "url": "https://doi.org/10.1038/s41586-022-05136-8"
+  },
+  "irisarri2017": {
+   "title": "Irisarri et al. 2017, Nature Ecology & Evolution: the jawed vertebrate timetree",
+   "url": "https://doi.org/10.1038/s41559-017-0240-5"
+  },
+  "simoes2018": {
+   "title": "Simoes et al. 2018, Nature: the origin of squamates (Megachirella)",
+   "url": "https://doi.org/10.1038/s41586-018-0093-3"
+  },
+  "lutzoni2018": {
+   "title": "Lutzoni et al. 2018, Nature Communications: contemporaneous radiations of fungi and plants",
+   "url": "https://doi.org/10.1038/s41467-018-07849-9"
+  },
+  "loron2019": {
+   "title": "Loron et al. 2019, Nature: early fungi from the Proterozoic (Ourasphaira)",
+   "url": "https://doi.org/10.1038/s41586-019-1217-0"
+  },
+  "gibson2018": {
+   "title": "Gibson et al. 2018, Geology: precise age of Bangiomorpha pubescens",
+   "url": "https://doi.org/10.1130/G39829.1"
+  },
+  "tang2020": {
+   "title": "Tang et al. 2020, Nature Ecology & Evolution: a one-billion-year-old multicellular chlorophyte",
+   "url": "https://doi.org/10.1038/s41559-020-1122-9"
+  },
+  "hublin2017": {
+   "title": "Hublin et al. 2017, Nature: new fossils from Jebel Irhoud and the origin of Homo sapiens",
+   "url": "https://doi.org/10.1038/nature22336"
+  },
+  "villmoare2015": {
+   "title": "Villmoare et al. 2015, Science: early Homo at 2.8 Ma from Ledi-Geraru",
+   "url": "https://doi.org/10.1126/science.aaa1343"
+  },
+  "langergraber2012": {
+   "title": "Langergraber et al. 2012, PNAS: generation times and great ape divergence",
+   "url": "https://doi.org/10.1073/pnas.1211740109"
+  },
+  "luo2011": {
+   "title": "Luo et al. 2011, Nature: a Jurassic eutherian (Juramaia) and the marsupial-placental divergence",
+   "url": "https://doi.org/10.1038/nature10291"
+  },
+  "vaneldijk2018": {
+   "title": "van Eldijk et al. 2018, Science Advances: a Triassic-Jurassic window into the evolution of Lepidoptera",
+   "url": "https://doi.org/10.1126/sciadv.1701568"
+  },
+  "ics": {
+   "title": "International Commission on Stratigraphy, International Chronostratigraphic Chart",
+   "url": "https://stratigraphy.org/chart"
+  },
+  "gumsley2017": {
+   "title": "Gumsley et al. 2017, PNAS: timing and tempo of the Great Oxidation Event",
+   "url": "https://doi.org/10.1073/pnas.1608824114"
+  },
+  "burgess2014": {
+   "title": "Burgess et al. 2014, PNAS: high-precision timeline for Earth's most severe extinction",
+   "url": "https://doi.org/10.1073/pnas.1317692111"
+  },
+  "schulte2010": {
+   "title": "Schulte et al. 2010, Science: the Chicxulub impact and the Cretaceous-Paleogene extinction",
+   "url": "https://doi.org/10.1126/science.1177265"
+  },
+  "marjanovic2007": {
+   "title": "Marjanovic & Laurin 2007, Systematic Biology: fossils, molecules and the origin of lissamphibians",
+   "url": "https://doi.org/10.1080/10635150701397635"
+  },
+  "knoll2014": {
+   "title": "Knoll 2014, Cold Spring Harbor Perspectives: paleobiological perspectives on early eukaryotic evolution",
+   "url": "https://doi.org/10.1101/cshperspect.a016121"
+  },
+  "allwood2006": {
+   "title": "Allwood et al. 2006, Nature: stromatolite reef from the Early Archaean (3.43 Ga)",
+   "url": "https://doi.org/10.1038/nature04764"
+  },
+  "ueno2006": {
+   "title": "Ueno et al. 2006, Nature: evidence from fluid inclusions for microbial methanogenesis at 3.46 Ga",
+   "url": "https://doi.org/10.1038/nature04584"
+  },
+  "erwin2011": {
+   "title": "Erwin et al. 2011, Science: the Cambrian conundrum",
+   "url": "https://doi.org/10.1126/science.1206375"
+  },
+  "near2012": {
+   "title": "Near et al. 2012, PNAS: ray-finned fish phylogeny and timing of diversification",
+   "url": "https://doi.org/10.1073/pnas.1206625109"
+  },
+  "wolfe2019": {
+   "title": "Wolfe et al. 2019, Proc. R. Soc. B: a phylogenomic framework and timescale for decapod crustaceans",
+   "url": "https://doi.org/10.1098/rspb.2019.0079"
+  },
+  "kumar2017": {
+   "title": "Kumar et al. 2017, Mol. Biol. Evol.: TimeTree, a resource for timelines, timetrees and divergence times",
+   "url": "https://doi.org/10.1093/molbev/msx116"
+  },
+  "lee2013": {
+   "title": "Lee et al. 2013, Current Biology: rates of phenotypic and genomic evolution during the Cambrian explosion",
+   "url": "https://doi.org/10.1016/j.cub.2013.07.055"
+  },
+  "sallan2018": {
+   "title": "Sallan et al. 2018, Science: the nearshore cradle of early vertebrate diversification",
+   "url": "https://doi.org/10.1126/science.aar3689"
+  },
+  "coates2017": {
+   "title": "Coates et al. 2017, Nature: an early chondrichthyan and the evolutionary assembly of a shark",
+   "url": "https://doi.org/10.1038/nature20806"
+  },
+  "nesbitt2011": {
+   "title": "Nesbitt 2011, Bulletin of the AMNH: the early evolution of archosaurs",
+   "url": "https://doi.org/10.1206/352.1"
+  },
+  "ford2020": {
+   "title": "Ford & Benson 2020, Nature Ecology & Evolution: the phylogeny of early amniotes",
+   "url": "https://doi.org/10.1038/s41559-019-1047-3"
+  },
+  "brusatte2015": {
+   "title": "Brusatte et al. 2015, Current Biology: the origin and diversification of birds",
+   "url": "https://doi.org/10.1016/j.cub.2015.08.003"
+  },
+  "schopf2018": {
+   "title": "Schopf et al. 2018, PNAS: SIMS analyses of 3.465 Ga microfossils",
+   "url": "https://doi.org/10.1073/pnas.1718063115"
+  },
+  "spang2015": {
+   "title": "Spang et al. 2015, Nature: complex archaea bridging the gap between prokaryotes and eukaryotes",
+   "url": "https://doi.org/10.1038/nature14447"
+  },
+  "brocks2017": {
+   "title": "Brocks et al. 2017, Nature: the rise of algae in Cryogenian oceans",
+   "url": "https://doi.org/10.1038/nature23457"
+  },
+  "wood2019": {
+   "title": "Wood et al. 2019, Nature Ecology & Evolution: integrated records of environmental change and evolution across the Ediacaran-Cambrian",
+   "url": "https://doi.org/10.1038/s41559-019-0821-6"
+  }
+ },
+ "bands": [
+  {
+   "id": "goe",
+   "name": "Great Oxidation Event",
+   "kind": "event",
+   "startMa": 2430,
+   "endMa": 2060,
+   "summary": "Oxygen from cyanobacteria accumulated in the atmosphere for the first time, beginning about 2.43 billion years ago and completing by about 2.06 billion years ago.",
+   "sources": [
+    "gumsley2017"
+   ],
+   "wikipedia": "Great Oxidation Event"
+  },
+  {
+   "id": "ext-ordovician",
+   "name": "End-Ordovician extinction",
+   "kind": "extinction",
+   "startMa": 445,
+   "endMa": 443,
+   "summary": "Glaciation and sea-level fall wiped out about 85 percent of marine species in two pulses; the second of the five great mass extinctions by severity.",
+   "sources": [
+    "ics",
+    "benton2015"
+   ],
+   "wikipedia": "Late Ordovician mass extinction"
+  },
+  {
+   "id": "ext-devonian",
+   "name": "Late Devonian extinction",
+   "kind": "extinction",
+   "startMa": 372,
+   "endMa": 359,
+   "summary": "A drawn-out crisis of reef collapse and ocean anoxia (the Kellwasser and Hangenberg events) that ended the placoderms and most armoured jawless fishes.",
+   "sources": [
+    "ics",
+    "sallan2018"
+   ],
+   "wikipedia": "Late Devonian extinction"
+  },
+  {
+   "id": "ext-permian",
+   "name": "End-Permian extinction",
+   "kind": "extinction",
+   "startMa": 252.0,
+   "endMa": 251.9,
+   "summary": "The Great Dying: Siberian volcanism drove the loss of about 90 percent of marine and 70 percent of land species within about 60,000 years, 251.9 million years ago.",
+   "sources": [
+    "burgess2014",
+    "ics"
+   ],
+   "wikipedia": "Permian-Triassic extinction event"
+  },
+  {
+   "id": "ext-triassic",
+   "name": "End-Triassic extinction",
+   "kind": "extinction",
+   "startMa": 201.4,
+   "endMa": 201.3,
+   "summary": "Volcanism as the Atlantic opened killed off the large pseudosuchian archosaurs and many marine groups, clearing the way for dinosaurs.",
+   "sources": [
+    "ics",
+    "benton2015"
+   ],
+   "wikipedia": "Triassic-Jurassic extinction event"
+  },
+  {
+   "id": "ext-cretaceous",
+   "name": "End-Cretaceous extinction",
+   "kind": "extinction",
+   "startMa": 66.1,
+   "endMa": 66.0,
+   "summary": "The Chicxulub asteroid impact, with Deccan volcanism, ended the non-avian dinosaurs, pterosaurs, ammonites and marine reptiles 66 million years ago.",
+   "sources": [
+    "schulte2010",
+    "ics"
+   ],
+   "wikipedia": "Cretaceous-Paleogene extinction event"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "luca",
+   "name": "Last universal common ancestor",
+   "scientific": "LUCA",
+   "parent": null,
+   "originMa": 4000,
+   "originKind": "estimate",
+   "ageRange": [
+    4200,
+    3800
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "archaea",
+   "wikipedia": "Last universal common ancestor",
+   "phylopic": null,
+   "summary": "The population of cells from which all living things descend: already a complex organism with DNA, ribosomes and hundreds of genes, dated by molecular clocks to roughly 4.2-3.8 billion years ago, within a few hundred million years of Earth's formation.",
+   "sources": [
+    "moody2024",
+    "betts2018"
+   ]
+  },
+  {
+   "id": "bacteria",
+   "name": "Bacteria",
+   "scientific": "Bacteria",
+   "parent": "luca",
+   "originMa": 3800,
+   "originKind": "estimate",
+   "ageRange": [
+    4200,
+    3400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Bacteria",
+   "phylopic": null,
+   "summary": "One of the two primary domains of life; the oldest widely accepted fossils of any organism are 3.4-3.5-billion-year-old stromatolites and microfossils from Western Australia that were almost certainly built by bacteria.",
+   "sources": [
+    "allwood2006",
+    "schopf2018",
+    "betts2018"
+   ]
+  },
+  {
+   "id": "cyanobacteria",
+   "name": "Cyanobacteria",
+   "scientific": "Cyanobacteria",
+   "parent": "bacteria",
+   "originMa": 2700,
+   "originKind": "estimate",
+   "ageRange": [
+    3200,
+    2400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Cyanobacteria",
+   "phylopic": null,
+   "summary": "The inventors of oxygen-producing photosynthesis; their rise is the only plausible driver of the Great Oxidation Event about 2.4 billion years ago, though the lineage itself is probably several hundred million years older.",
+   "sources": [
+    "gumsley2017",
+    "betts2018",
+    "sanchez2017"
+   ]
+  },
+  {
+   "id": "pseudomonadota",
+   "name": "Proteobacteria",
+   "scientific": "Pseudomonadota",
+   "parent": "bacteria",
+   "originMa": 3000,
+   "originKind": "estimate",
+   "ageRange": [
+    3400,
+    2500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Pseudomonadota",
+   "phylopic": null,
+   "summary": "A vast, metabolically diverse phylum of Gram-negative bacteria that includes E. coli, nitrogen fixers, purple photosynthesisers and the ancestors of mitochondria; its age is a molecular-clock estimate, as bacterial fossils rarely preserve diagnostic shapes.",
+   "sources": [
+    "betts2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "alphaproteobacteria",
+   "name": "Alphaproteobacteria",
+   "scientific": "Alphaproteobacteria",
+   "parent": "pseudomonadota",
+   "originMa": 2500,
+   "originKind": "estimate",
+   "ageRange": [
+    3000,
+    2000
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Alphaproteobacteria",
+   "phylopic": null,
+   "summary": "The class that includes Rickettsia and the nitrogen-fixing Rhizobium, and from whose ancestors the mitochondrion descends: every eukaryotic cell carries a domesticated alphaproteobacterium.",
+   "sources": [
+    "betts2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "gammaproteobacteria",
+   "name": "Gammaproteobacteria (E. coli, Vibrio)",
+   "scientific": "Gammaproteobacteria",
+   "parent": "pseudomonadota",
+   "originMa": 2300,
+   "originKind": "estimate",
+   "ageRange": [
+    2800,
+    1800
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Gammaproteobacteria",
+   "phylopic": null,
+   "summary": "The best-studied bacterial class, home to Escherichia coli, Salmonella, Vibrio and Pseudomonas; a molecular-clock estimate places its origin in the late Archean to early Proterozoic.",
+   "sources": [
+    "timetree",
+    "betts2018"
+   ]
+  },
+  {
+   "id": "bacillota",
+   "name": "Firmicutes (Bacillus, Clostridium)",
+   "scientific": "Bacillota",
+   "parent": "bacteria",
+   "originMa": 3000,
+   "originKind": "estimate",
+   "ageRange": [
+    3400,
+    2500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Bacillota",
+   "phylopic": null,
+   "summary": "Thick-walled bacteria including the spore-forming Bacillus and Clostridium and the lactic-acid bacteria of yoghurt and the gut; among the deepest-branching bacterial groups by most genomic analyses.",
+   "sources": [
+    "betts2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "actinomycetota",
+   "name": "Actinobacteria (Streptomyces)",
+   "scientific": "Actinomycetota",
+   "parent": "bacteria",
+   "originMa": 2800,
+   "originKind": "estimate",
+   "ageRange": [
+    3300,
+    2300
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Actinomycetota",
+   "phylopic": null,
+   "summary": "Filamentous soil bacteria that produce most natural antibiotics (Streptomyces) and include Mycobacterium, the agent of tuberculosis; dated only by molecular clocks.",
+   "sources": [
+    "betts2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "spirochaetota",
+   "name": "Spirochaetes",
+   "scientific": "Spirochaetota",
+   "parent": "bacteria",
+   "originMa": 2600,
+   "originKind": "estimate",
+   "ageRange": [
+    3200,
+    2000
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bacteria",
+   "wikipedia": "Spirochaetota",
+   "phylopic": null,
+   "summary": "Corkscrew-shaped bacteria that swim with internal flagella; the group includes the agents of syphilis and Lyme disease and symbionts of termite guts, and its deep age is a clock estimate.",
+   "sources": [
+    "timetree",
+    "betts2018"
+   ]
+  },
+  {
+   "id": "archaea",
+   "name": "Archaea",
+   "scientific": "Archaea",
+   "parent": "luca",
+   "originMa": 3800,
+   "originKind": "estimate",
+   "ageRange": [
+    4200,
+    3400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "archaea",
+   "wikipedia": "Archaea",
+   "phylopic": null,
+   "summary": "The second primary domain: single cells without nuclei but with membranes, enzymes and gene-expression machinery that differ from bacteria; carbon-isotope evidence for methane-producing archaea reaches back 3.46 billion years.",
+   "sources": [
+    "ueno2006",
+    "betts2018",
+    "moody2024"
+   ]
+  },
+  {
+   "id": "euryarchaeota",
+   "name": "Methanogens and halophiles",
+   "scientific": "Euryarchaeota",
+   "parent": "archaea",
+   "originMa": 3400,
+   "originKind": "estimate",
+   "ageRange": [
+    3600,
+    3000
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "archaea",
+   "wikipedia": "Euryarchaeota",
+   "phylopic": null,
+   "summary": "Archaea that make methane in oxygen-free mud, guts and seafloor sediments, and their salt-loving relatives; methanogenesis is among the oldest metabolisms with a geochemical trace.",
+   "sources": [
+    "ueno2006",
+    "betts2018"
+   ]
+  },
+  {
+   "id": "thermoproteota",
+   "name": "Thermophilic archaea (TACK)",
+   "scientific": "Thermoproteota",
+   "parent": "archaea",
+   "originMa": 3200,
+   "originKind": "estimate",
+   "ageRange": [
+    3600,
+    2800
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "archaea",
+   "wikipedia": "Thermoproteota",
+   "phylopic": null,
+   "summary": "Heat- and acid-loving archaea of hot springs and hydrothermal vents, with the ammonia-oxidising Nitrososphaeria of the open ocean; part of the TACK superphylum that sits closest to the eukaryote host lineage.",
+   "sources": [
+    "spang2015",
+    "eme2023"
+   ]
+  },
+  {
+   "id": "asgard",
+   "name": "Asgard archaea",
+   "scientific": "Asgardarchaeota",
+   "parent": "archaea",
+   "originMa": 2800,
+   "originKind": "estimate",
+   "ageRange": [
+    3200,
+    2200
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "archaea",
+   "wikipedia": "Asgard (archaea)",
+   "phylopic": null,
+   "summary": "Discovered in 2015 from deep-sea sediment DNA, these archaea carry proteins once thought unique to eukaryotes; the eukaryote host cell arose from within or beside this group, which is why Eukaryotes branch here in a two-domain tree.",
+   "sources": [
+    "spang2015",
+    "eme2023"
+   ]
+  },
+  {
+   "id": "eukaryota",
+   "name": "Eukaryotes",
+   "scientific": "Eukaryota",
+   "parent": "asgard",
+   "originMa": 1850,
+   "originKind": "estimate",
+   "ageRange": [
+    2100,
+    1600
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Eukaryote",
+   "phylopic": null,
+   "summary": "Cells with a nucleus and mitochondria, formed when an archaeal host took in an alphaproteobacterium that became the mitochondrion; the earliest fossils with eukaryote-grade features are about 1.65 billion years old, and clocks put the common ancestor at roughly 1.8-2.0 billion years.",
+   "sources": [
+    "betts2018",
+    "knoll2014",
+    "strassert2021",
+    "eme2023"
+   ],
+   "merges": [
+    {
+     "from": "alphaproteobacteria",
+     "label": "Mitochondrial endosymbiosis",
+     "note": "An alphaproteobacterium taken up by the archaeal host became the mitochondrion; every eukaryote descends from this merger."
+    }
+   ]
+  },
+  {
+   "id": "discoba",
+   "name": "Euglenids and trypanosomes",
+   "scientific": "Discoba",
+   "parent": "eukaryota",
+   "originMa": 1700,
+   "originKind": "estimate",
+   "ageRange": [
+    1900,
+    1400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Discoba",
+   "phylopic": null,
+   "summary": "Flagellates such as the photosynthetic Euglena and the parasitic trypanosomes that cause sleeping sickness; a deep eukaryote lineage dated only by molecular clocks.",
+   "sources": [
+    "strassert2021",
+    "timetree"
+   ]
+  },
+  {
+   "id": "diaphoretickes",
+   "name": "Plants, algae and SAR",
+   "scientific": "Diaphoretickes",
+   "parent": "eukaryota",
+   "originMa": 1750,
+   "originKind": "estimate",
+   "ageRange": [
+    1950,
+    1500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Diaphoretickes",
+   "phylopic": null,
+   "summary": "The eukaryote supergroup that unites the plant lineage (Archaeplastida) with the SAR clade of diatoms, dinoflagellates and foraminifera; its name means 'diverse'.",
+   "sources": [
+    "strassert2021",
+    "parfrey2011"
+   ]
+  },
+  {
+   "id": "archaeplastida",
+   "name": "Plant lineage (Archaeplastida)",
+   "scientific": "Archaeplastida",
+   "parent": "diaphoretickes",
+   "originMa": 1650,
+   "originKind": "estimate",
+   "ageRange": [
+    1900,
+    1400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Archaeplastida",
+   "phylopic": null,
+   "summary": "Red algae, green algae and land plants, the lineage that gained photosynthesis when an ancestor engulfed a cyanobacterium that became the chloroplast; the fossil red alga Bangiomorpha (1.05 billion years) sets the minimum age.",
+   "sources": [
+    "sanchez2017",
+    "gibson2018",
+    "strassert2021"
+   ],
+   "merges": [
+    {
+     "from": "cyanobacteria",
+     "label": "Plastid endosymbiosis",
+     "note": "A cyanobacterium engulfed by an early Archaeplastida cell became the chloroplast; plants and algae photosynthesise with its descendants."
+    }
+   ]
+  },
+  {
+   "id": "rhodophyta",
+   "name": "Red algae",
+   "scientific": "Rhodophyta",
+   "parent": "archaeplastida",
+   "originMa": 1550,
+   "originKind": "estimate",
+   "ageRange": [
+    1750,
+    1047
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Red algae",
+   "phylopic": "Chondrus crispus",
+   "summary": "Mostly marine seaweeds and coralline algae; Bangiomorpha pubescens, a 1.047-billion-year-old fossil from Arctic Canada, is the oldest taxonomically resolved eukaryote and a red alga.",
+   "sources": [
+    "gibson2018",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "viridiplantae",
+   "name": "Green plants",
+   "scientific": "Viridiplantae",
+   "parent": "archaeplastida",
+   "originMa": 1550,
+   "originKind": "estimate",
+   "ageRange": [
+    1750,
+    1000
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Viridiplantae",
+   "phylopic": null,
+   "summary": "Green algae and land plants, with chlorophyll b and starch stored inside the chloroplast; the billion-year-old seaweed Proterocladus is the oldest green-plant fossil.",
+   "sources": [
+    "tang2020",
+    "strassert2021",
+    "morris2018"
+   ]
+  },
+  {
+   "id": "chlorophyta",
+   "name": "Green algae (Chlorophyta)",
+   "scientific": "Chlorophyta",
+   "parent": "viridiplantae",
+   "originMa": 1200,
+   "originKind": "estimate",
+   "ageRange": [
+    1500,
+    1000
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Chlorophyta",
+   "phylopic": "Chlorophyta",
+   "summary": "Single-celled and seaweed green algae such as Chlamydomonas, Volvox and sea lettuce; a one-billion-year-old multicellular form from North China shows the group was already diversifying then.",
+   "sources": [
+    "tang2020",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "streptophyta",
+   "name": "Charophyte algae and land plants",
+   "scientific": "Streptophyta",
+   "parent": "viridiplantae",
+   "originMa": 1200,
+   "originKind": "estimate",
+   "ageRange": [
+    1500,
+    900
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Streptophyta",
+   "phylopic": null,
+   "summary": "Freshwater green algae such as Chara and Spirogyra together with all land plants, which arose from among them; clocks place the split from other green algae around a billion years ago.",
+   "sources": [
+    "morris2018",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "charophyta",
+   "name": "Charophyte algae (stoneworts)",
+   "scientific": "Charophyta",
+   "parent": "streptophyta",
+   "originMa": 900,
+   "originKind": "estimate",
+   "ageRange": [
+    1100,
+    700
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Charophyta",
+   "phylopic": null,
+   "summary": "Freshwater algae that are the closest living relatives of land plants; stoneworts build calcified stems that fossilise, but the earliest charophyte fossils are Silurian, far younger than the clock age.",
+   "sources": [
+    "morris2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "embryophyta",
+   "name": "Land plants",
+   "scientific": "Embryophyta",
+   "parent": "streptophyta",
+   "originMa": 500,
+   "originKind": "estimate",
+   "ageRange": [
+    515,
+    470
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Embryophyte",
+   "phylopic": "Embryophyta",
+   "summary": "Plants that live on land and protect their embryos: molecular clocks place the origin in the middle Cambrian to early Ordovician, and the oldest fossil spores are about 470 million years old.",
+   "sources": [
+    "morris2018",
+    "lutzoni2018"
+   ]
+  },
+  {
+   "id": "bryophytes",
+   "name": "Mosses, liverworts and hornworts",
+   "scientific": "Bryophyta (sensu lato)",
+   "parent": "embryophyta",
+   "originMa": 480,
+   "originKind": "estimate",
+   "ageRange": [
+    500,
+    450
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Bryophyte",
+   "phylopic": "Bryophyta",
+   "summary": "Small plants without true vascular tissue that still need films of water to reproduce; the oldest land-plant fossils, Ordovician cryptospores, were most likely shed by liverwort-grade plants.",
+   "sources": [
+    "morris2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "tracheophyta",
+   "name": "Vascular plants",
+   "scientific": "Tracheophyta",
+   "parent": "embryophyta",
+   "originMa": 430,
+   "originKind": "fossil",
+   "ageRange": [
+    445,
+    420
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Vascular plant",
+   "phylopic": null,
+   "summary": "Plants with lignified water-conducting tissue, which let them grow tall; Cooksonia, a finger-high Silurian plant from about 433 million years ago, is the oldest widely accepted vascular plant.",
+   "sources": [
+    "morris2018",
+    "lutzoni2018"
+   ]
+  },
+  {
+   "id": "lycophyta",
+   "name": "Clubmosses and quillworts",
+   "scientific": "Lycopodiopsida",
+   "parent": "tracheophyta",
+   "originMa": 420,
+   "originKind": "fossil",
+   "ageRange": [
+    430,
+    410
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Lycophyte",
+   "phylopic": "Lycopodium",
+   "summary": "The oldest surviving vascular-plant lineage: Baragwanathia from the late Silurian of Australia is a clubmoss, and giant tree-sized lycophytes later formed much of the Carboniferous coal.",
+   "sources": [
+    "morris2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "euphyllophyta",
+   "name": "Ferns and seed plants",
+   "scientific": "Euphyllophyta",
+   "parent": "tracheophyta",
+   "originMa": 415,
+   "originKind": "estimate",
+   "ageRange": [
+    430,
+    400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Euphyllophyte",
+   "phylopic": null,
+   "summary": "The lineage with true leaves, uniting ferns and horsetails with all seed plants; it split from the clubmosses in the Silurian or earliest Devonian.",
+   "sources": [
+    "morris2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "ferns",
+   "name": "Ferns and horsetails",
+   "scientific": "Polypodiopsida",
+   "parent": "euphyllophyta",
+   "originMa": 400,
+   "originKind": "fossil",
+   "ageRange": [
+    410,
+    380
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Fern",
+   "phylopic": "Polypodiopsida",
+   "summary": "Spore-bearing plants with large leaves and a free-living fertilised stage; the earliest fern-like plants are early Devonian, and most modern fern families arose only after flowering plants took over the forests.",
+   "sources": [
+    "morris2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "spermatophyta",
+   "name": "Seed plants",
+   "scientific": "Spermatophyta",
+   "parent": "euphyllophyta",
+   "originMa": 385,
+   "originKind": "fossil",
+   "ageRange": [
+    395,
+    365
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Spermatophyte",
+   "phylopic": null,
+   "summary": "Plants that package the embryo with food in a seed, freeing reproduction from water; Runcaria from Belgium (about 385 million years) is a seed precursor and the first true seeds appear in the latest Devonian.",
+   "sources": [
+    "morris2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "conifers",
+   "name": "Conifers",
+   "scientific": "Pinopsida",
+   "parent": "spermatophyta",
+   "originMa": 310,
+   "originKind": "fossil",
+   "ageRange": [
+    320,
+    300
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Conifer",
+   "phylopic": "Pinus",
+   "summary": "Cone-bearing trees such as pines, firs and redwoods; the oldest conifer fossils are late Carboniferous, and the group dominated the world's forests through the Mesozoic.",
+   "sources": [
+    "timetree",
+    "morris2018"
+   ]
+  },
+  {
+   "id": "cycads",
+   "name": "Cycads",
+   "scientific": "Cycadophyta",
+   "parent": "spermatophyta",
+   "originMa": 300,
+   "originKind": "fossil",
+   "ageRange": [
+    320,
+    270
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Cycad",
+   "phylopic": "Cycas",
+   "summary": "Palm-like seed plants with large cones, now about 350 species in the tropics; Crossozamia from the early Permian of China is the oldest unambiguous cycad.",
+   "sources": [
+    "timetree",
+    "morris2018"
+   ]
+  },
+  {
+   "id": "ginkgo",
+   "name": "Ginkgo",
+   "scientific": "Ginkgoales",
+   "parent": "spermatophyta",
+   "originMa": 290,
+   "originKind": "fossil",
+   "ageRange": [
+    300,
+    270
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Ginkgo",
+   "phylopic": "Ginkgo",
+   "summary": "A lineage of broad-leaved seed plants reduced today to a single species, Ginkgo biloba, whose fan-shaped leaves are recognisable in Permian rocks.",
+   "sources": [
+    "timetree",
+    "morris2018"
+   ]
+  },
+  {
+   "id": "angiosperms",
+   "name": "Flowering plants",
+   "scientific": "Angiospermae",
+   "parent": "spermatophyta",
+   "originMa": 135,
+   "originKind": "fossil",
+   "ageRange": [
+    250,
+    130
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Flowering plant",
+   "phylopic": "Magnoliophyta",
+   "summary": "Plants with flowers and fruit, now some 300,000 species; unambiguous angiosperm pollen appears about 135 million years ago in the Early Cretaceous, while molecular clocks suggest a Triassic origin that the fossil record has yet to confirm.",
+   "sources": [
+    "morris2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "monocots",
+   "name": "Monocots (grasses, lilies, palms)",
+   "scientific": "Monocotyledoneae",
+   "parent": "angiosperms",
+   "originMa": 130,
+   "originKind": "estimate",
+   "ageRange": [
+    140,
+    110
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Monocotyledon",
+   "phylopic": "Poaceae",
+   "summary": "Flowering plants with a single seed leaf and parallel-veined leaves: grasses, orchids, lilies and palms; the group split from other angiosperms early in the Cretaceous.",
+   "sources": [
+    "timetree",
+    "morris2018"
+   ]
+  },
+  {
+   "id": "eudicots",
+   "name": "Eudicots (oaks, roses, daisies)",
+   "scientific": "Eudicotyledoneae",
+   "parent": "angiosperms",
+   "originMa": 125,
+   "originKind": "fossil",
+   "ageRange": [
+    135,
+    120
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "plant",
+   "wikipedia": "Eudicots",
+   "phylopic": "Quercus",
+   "summary": "About three-quarters of all flowering plants, defined by pollen with three furrows; such tricolpate pollen first appears about 125 million years ago.",
+   "sources": [
+    "timetree",
+    "morris2018"
+   ]
+  },
+  {
+   "id": "sar",
+   "name": "SAR (stramenopiles, alveolates, rhizarians)",
+   "scientific": "Sar",
+   "parent": "diaphoretickes",
+   "originMa": 1450,
+   "originKind": "estimate",
+   "ageRange": [
+    1700,
+    1200
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "SAR supergroup",
+   "phylopic": null,
+   "summary": "A supergroup of mostly single-celled eukaryotes recognised only from genomes in 2007: brown algae and diatoms, ciliates and dinoflagellates, and the shell-building foraminifera.",
+   "sources": [
+    "strassert2021",
+    "parfrey2011"
+   ]
+  },
+  {
+   "id": "diatoms",
+   "name": "Diatoms",
+   "scientific": "Bacillariophyta",
+   "parent": "sar",
+   "originMa": 190,
+   "originKind": "fossil",
+   "ageRange": [
+    250,
+    190
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Diatom",
+   "phylopic": "Bacillariophyta",
+   "summary": "Glass-shelled algae that fix about a fifth of the planet's carbon; the oldest unambiguous diatom fossils are Early Jurassic, though their silica cells may have evolved earlier.",
+   "sources": [
+    "timetree",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "brown-algae",
+   "name": "Brown algae (kelp)",
+   "scientific": "Phaeophyceae",
+   "parent": "sar",
+   "originMa": 200,
+   "originKind": "estimate",
+   "ageRange": [
+    260,
+    150
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Brown algae",
+   "phylopic": "Phaeophyceae",
+   "summary": "Kelps and rockweeds, the largest protists, whose forests shelter coastal ecosystems; they evolved multicellularity independently of plants and animals, around the Jurassic by clock estimates.",
+   "sources": [
+    "timetree",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "dinoflagellates",
+   "name": "Dinoflagellates",
+   "scientific": "Dinoflagellata",
+   "parent": "sar",
+   "originMa": 240,
+   "originKind": "fossil",
+   "ageRange": [
+    400,
+    230
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Dinoflagellate",
+   "phylopic": "Dinoflagellata",
+   "summary": "Whip-swimming plankton that light the sea with bioluminescence and power coral reefs as symbionts; their resting cysts are common fossils from the Triassic onward.",
+   "sources": [
+    "timetree",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "foraminifera",
+   "name": "Foraminifera",
+   "scientific": "Foraminifera",
+   "parent": "sar",
+   "originMa": 540,
+   "originKind": "fossil",
+   "ageRange": [
+    700,
+    530
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Foraminifera",
+   "phylopic": "Foraminifera",
+   "summary": "Amoeba-like cells that build chambered shells; their fossils date the Cambrian and later rocks so reliably that they are the workhorses of oil-well stratigraphy.",
+   "sources": [
+    "timetree",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "amorphea",
+   "name": "Amoebozoans, fungi and animals",
+   "scientific": "Amorphea",
+   "parent": "eukaryota",
+   "originMa": 1700,
+   "originKind": "estimate",
+   "ageRange": [
+    1900,
+    1400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Amorphea",
+   "phylopic": null,
+   "summary": "The eukaryote supergroup that contains amoebae, fungi and animals; its ancestor was most likely a flagellated cell that fed by engulfing bacteria.",
+   "sources": [
+    "strassert2021",
+    "parfrey2011"
+   ]
+  },
+  {
+   "id": "amoebozoa",
+   "name": "Amoebae and slime moulds",
+   "scientific": "Amoebozoa",
+   "parent": "amorphea",
+   "originMa": 1500,
+   "originKind": "estimate",
+   "ageRange": [
+    1700,
+    1200
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Amoebozoa",
+   "phylopic": "Amoeba",
+   "summary": "Amoeba proteus, the social slime mould Dictyostelium and relatives, which move by flowing pseudopods; dated by molecular clocks, with vase-shaped Tonian microfossils as a possible early record.",
+   "sources": [
+    "strassert2021",
+    "timetree"
+   ]
+  },
+  {
+   "id": "opisthokonta",
+   "name": "Fungi and animals",
+   "scientific": "Opisthokonta",
+   "parent": "amorphea",
+   "originMa": 1300,
+   "originKind": "estimate",
+   "ageRange": [
+    1500,
+    1000
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Opisthokont",
+   "phylopic": null,
+   "summary": "The group named for the single rear flagellum of its swimming cells, as in human sperm and chytrid spores; fungi and animals are each other's closest relatives.",
+   "sources": [
+    "parfrey2011",
+    "strassert2021"
+   ]
+  },
+  {
+   "id": "fungi",
+   "name": "Fungi",
+   "scientific": "Fungi",
+   "parent": "opisthokonta",
+   "originMa": 1050,
+   "originKind": "estimate",
+   "ageRange": [
+    1300,
+    890
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fungus",
+   "wikipedia": "Fungus",
+   "phylopic": "Amanita muscaria",
+   "summary": "Absorptive feeders with chitin walls, from yeasts to mushrooms; Ourasphaira from Arctic Canada (1.01-0.89 billion years) carries chitin and may be the oldest fungus, with unambiguous fungi known from the Ordovician.",
+   "sources": [
+    "loron2019",
+    "lutzoni2018"
+   ]
+  },
+  {
+   "id": "chytrids",
+   "name": "Chytrids",
+   "scientific": "Chytridiomycota",
+   "parent": "fungi",
+   "originMa": 800,
+   "originKind": "estimate",
+   "ageRange": [
+    1000,
+    600
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fungus",
+   "wikipedia": "Chytridiomycota",
+   "phylopic": "Chytridiomycota",
+   "summary": "Mostly aquatic fungi whose spores still swim with a flagellum, a trait the rest of the fungi lost on land; one species is the pathogen devastating frogs worldwide.",
+   "sources": [
+    "lutzoni2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "mucoromycota",
+   "name": "Pin moulds and relatives",
+   "scientific": "Mucoromycota",
+   "parent": "fungi",
+   "originMa": 650,
+   "originKind": "estimate",
+   "ageRange": [
+    800,
+    500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fungus",
+   "wikipedia": "Mucoromycota",
+   "phylopic": null,
+   "summary": "Fast-growing moulds such as Rhizopus on bread, together with the Glomeromycotina that partner with the roots of most land plants, a symbiosis as old as plants on land.",
+   "sources": [
+    "lutzoni2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "dikarya",
+   "name": "Higher fungi",
+   "scientific": "Dikarya",
+   "parent": "fungi",
+   "originMa": 600,
+   "originKind": "estimate",
+   "ageRange": [
+    700,
+    450
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fungus",
+   "wikipedia": "Dikarya",
+   "phylopic": null,
+   "summary": "Fungi whose cells carry two unfused nuclei for part of the life cycle: the sac fungi and the club fungi, together the great majority of described species.",
+   "sources": [
+    "lutzoni2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "ascomycota",
+   "name": "Sac fungi (yeasts, morels, Penicillium)",
+   "scientific": "Ascomycota",
+   "parent": "dikarya",
+   "originMa": 550,
+   "originKind": "estimate",
+   "ageRange": [
+    650,
+    400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fungus",
+   "wikipedia": "Ascomycota",
+   "phylopic": "Saccharomyces cerevisiae",
+   "summary": "The largest fungal phylum: brewer's yeast, Penicillium, morels and truffles, and most lichen fungi; their spores form inside sac-like asci.",
+   "sources": [
+    "lutzoni2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "basidiomycota",
+   "name": "Club fungi (mushrooms, rusts)",
+   "scientific": "Basidiomycota",
+   "parent": "dikarya",
+   "originMa": 550,
+   "originKind": "estimate",
+   "ageRange": [
+    650,
+    400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fungus",
+   "wikipedia": "Basidiomycota",
+   "phylopic": "Agaricus",
+   "summary": "Mushrooms, puffballs, bracket fungi and the rust and smut parasites of crops; their spores form on club-shaped basidia, and the oldest mushroom fossils are Cretaceous amber.",
+   "sources": [
+    "lutzoni2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "choanoflagellates",
+   "name": "Choanoflagellates",
+   "scientific": "Choanoflagellatea",
+   "parent": "opisthokonta",
+   "originMa": 950,
+   "originKind": "estimate",
+   "ageRange": [
+    1100,
+    800
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "protist",
+   "wikipedia": "Choanoflagellate",
+   "phylopic": null,
+   "summary": "Single cells with a collar of tentacles around a flagellum, nearly identical to the feeding cells of sponges; the closest living relatives of animals.",
+   "sources": [
+    "dosreis2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "animalia",
+   "name": "Animals",
+   "scientific": "Metazoa",
+   "parent": "opisthokonta",
+   "originMa": 760,
+   "originKind": "estimate",
+   "ageRange": [
+    850,
+    635
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Animal",
+   "phylopic": null,
+   "summary": "Multicellular eukaryotes that eat other organisms; molecular clocks place the common ancestor of living animals at roughly 850-650 million years ago, a hundred million years or more before the first unambiguous animal fossils of the Ediacaran.",
+   "sources": [
+    "dosreis2015",
+    "benton2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "ctenophora",
+   "name": "Comb jellies",
+   "scientific": "Ctenophora",
+   "parent": "animalia",
+   "originMa": 740,
+   "originKind": "estimate",
+   "ageRange": [
+    800,
+    600
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Ctenophora",
+   "phylopic": "Ctenophora",
+   "summary": "Gelatinous swimmers that row with bands of cilia; chromosome-scale gene linkages published in 2023 support them, rather than sponges, as the sister group of all other animals.",
+   "sources": [
+    "schultz2023",
+    "dosreis2015"
+   ]
+  },
+  {
+   "id": "porifera",
+   "name": "Sponges",
+   "scientific": "Porifera",
+   "parent": "animalia",
+   "originMa": 720,
+   "originKind": "estimate",
+   "ageRange": [
+    800,
+    600
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Sponge",
+   "phylopic": "Porifera",
+   "summary": "Filter-feeders without tissues or nerves, pumping water through their bodies; molecular sponge biomarkers are reported from 635-million-year-old rocks but remain debated.",
+   "sources": [
+    "dosreis2015",
+    "schultz2023"
+   ]
+  },
+  {
+   "id": "cnidaria",
+   "name": "Jellyfish, corals and anemones",
+   "scientific": "Cnidaria",
+   "parent": "animalia",
+   "originMa": 680,
+   "originKind": "estimate",
+   "ageRange": [
+    750,
+    560
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Cnidaria",
+   "phylopic": "Cnidaria",
+   "summary": "Radially symmetrical animals armed with stinging cells; Haootia, a 560-million-year-old Ediacaran fossil with muscle fibres, is the oldest widely accepted cnidarian.",
+   "sources": [
+    "dosreis2015",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "medusozoa",
+   "name": "Jellyfish",
+   "scientific": "Medusozoa",
+   "parent": "cnidaria",
+   "originMa": 600,
+   "originKind": "estimate",
+   "ageRange": [
+    700,
+    540
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Medusozoa",
+   "phylopic": "Aurelia aurita",
+   "summary": "Cnidarians whose life cycle includes a free-swimming medusa; soft-bodied jellyfish impressions are known from the Cambrian, though the lineage is surely older.",
+   "sources": [
+    "dosreis2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "anthozoa",
+   "name": "Corals and sea anemones",
+   "scientific": "Anthozoa",
+   "parent": "cnidaria",
+   "originMa": 600,
+   "originKind": "estimate",
+   "ageRange": [
+    700,
+    540
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Anthozoa",
+   "phylopic": "Anthozoa",
+   "summary": "Polyps that never form a medusa; reef-building stony corals appear in the Triassic, after the Palaeozoic reefs of the extinct tabulate and rugose corals.",
+   "sources": [
+    "dosreis2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "bilateria",
+   "name": "Bilaterians",
+   "scientific": "Bilateria",
+   "parent": "animalia",
+   "originMa": 650,
+   "originKind": "estimate",
+   "ageRange": [
+    700,
+    560
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Bilateria",
+   "phylopic": null,
+   "summary": "Animals with a head end and mirror-image left and right sides, which is almost every familiar animal; Kimberella and the first burrows, about 555 million years old, are the earliest fossil evidence.",
+   "sources": [
+    "dosreis2015",
+    "erwin2011",
+    "wood2019"
+   ]
+  },
+  {
+   "id": "protostomia",
+   "name": "Protostomes",
+   "scientific": "Protostomia",
+   "parent": "bilateria",
+   "originMa": 600,
+   "originKind": "estimate",
+   "ageRange": [
+    650,
+    560
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Protostome",
+   "phylopic": null,
+   "summary": "The bilaterian branch whose embryos form the mouth first; it holds the great majority of animal species, from molluscs and worms to all arthropods.",
+   "sources": [
+    "dosreis2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "lophotrochozoa",
+   "name": "Molluscs, annelids and relatives",
+   "scientific": "Lophotrochozoa",
+   "parent": "protostomia",
+   "originMa": 580,
+   "originKind": "estimate",
+   "ageRange": [
+    640,
+    540
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Lophotrochozoa",
+   "phylopic": null,
+   "summary": "Protostomes with a trochophore larva or a lophophore feeding crown: molluscs, segmented worms, brachiopods and bryozoans, all abundant in the Cambrian explosion.",
+   "sources": [
+    "dosreis2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "mollusca",
+   "name": "Molluscs",
+   "scientific": "Mollusca",
+   "parent": "lophotrochozoa",
+   "originMa": 540,
+   "originKind": "fossil",
+   "ageRange": [
+    560,
+    530
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Mollusca",
+   "phylopic": "Mollusca",
+   "summary": "Soft-bodied animals with a muscular foot and, usually, a shell; shelly molluscs are among the first Cambrian fossils and Kimberella (555 million years) may be a stem mollusc.",
+   "sources": [
+    "benton2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "gastropoda",
+   "name": "Snails and slugs",
+   "scientific": "Gastropoda",
+   "parent": "mollusca",
+   "originMa": 520,
+   "originKind": "fossil",
+   "ageRange": [
+    540,
+    510
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Gastropoda",
+   "phylopic": "Gastropoda",
+   "summary": "The largest mollusc class, on land, in fresh water and in the sea; tiny coiled shells such as Aldanella appear in the early Cambrian.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "bivalvia",
+   "name": "Clams, mussels and oysters",
+   "scientific": "Bivalvia",
+   "parent": "mollusca",
+   "originMa": 520,
+   "originKind": "fossil",
+   "ageRange": [
+    540,
+    510
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Bivalvia",
+   "phylopic": "Bivalvia",
+   "summary": "Two-shelled filter-feeders; Fordilla and Pojetaia from the early Cambrian are the oldest bivalves, and the class flourished after the end-Permian extinction.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "cephalopoda",
+   "name": "Cephalopods",
+   "scientific": "Cephalopoda",
+   "parent": "mollusca",
+   "originMa": 500,
+   "originKind": "fossil",
+   "ageRange": [
+    530,
+    490
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Cephalopod",
+   "phylopic": "Nautilus",
+   "summary": "Molluscs with arms and a jet; Plectronoceras from the late Cambrian of China is the oldest, a small shelled form ancestral to nautiloids, ammonoids and the modern octopus and squid.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "ammonoidea",
+   "name": "Ammonites",
+   "scientific": "Ammonoidea",
+   "parent": "cephalopoda",
+   "originMa": 409,
+   "originKind": "fossil",
+   "ageRange": [
+    415,
+    400
+   ],
+   "status": "extinct",
+   "extinctMa": 66,
+   "group": "invertebrate",
+   "wikipedia": "Ammonoidea",
+   "phylopic": "Ammonitida",
+   "summary": "Coiled-shelled cephalopods that swam the seas for 340 million years and are the classic fossils of the Mesozoic; the last of them died with the non-avian dinosaurs 66 million years ago.",
+   "sources": [
+    "benton2015",
+    "schulte2010"
+   ]
+  },
+  {
+   "id": "coleoidea",
+   "name": "Octopuses, squid and cuttlefish",
+   "scientific": "Coleoidea",
+   "parent": "cephalopoda",
+   "originMa": 330,
+   "originKind": "fossil",
+   "ageRange": [
+    410,
+    290
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Coleoidea",
+   "phylopic": "Octopus",
+   "summary": "Cephalopods that internalised or lost the shell and gained the most complex invertebrate brains; Carboniferous fossils such as Pohlsepia are the earliest candidates.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "annelida",
+   "name": "Segmented worms",
+   "scientific": "Annelida",
+   "parent": "lophotrochozoa",
+   "originMa": 520,
+   "originKind": "fossil",
+   "ageRange": [
+    560,
+    510
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Annelid",
+   "phylopic": "Annelida",
+   "summary": "Earthworms, leeches and the bristle worms of the sea; bristle worms are well preserved in the Cambrian Sirius Passet and Burgess Shale faunas.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "brachiopoda",
+   "name": "Brachiopods",
+   "scientific": "Brachiopoda",
+   "parent": "lophotrochozoa",
+   "originMa": 530,
+   "originKind": "fossil",
+   "ageRange": [
+    550,
+    520
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Brachiopod",
+   "phylopic": "Brachiopoda",
+   "summary": "Two-shelled filter-feeders unrelated to clams, hugely abundant in Palaeozoic seas and reduced to a few hundred species today; shells appear in the early Cambrian.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "ecdysozoa",
+   "name": "Moulting animals",
+   "scientific": "Ecdysozoa",
+   "parent": "protostomia",
+   "originMa": 580,
+   "originKind": "estimate",
+   "ageRange": [
+    640,
+    540
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Ecdysozoa",
+   "phylopic": null,
+   "summary": "Animals that grow by shedding a cuticle: roundworms, velvet worms, tardigrades and the arthropods, which together make up most animal species.",
+   "sources": [
+    "dosreis2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "nematoda",
+   "name": "Roundworms",
+   "scientific": "Nematoda",
+   "parent": "ecdysozoa",
+   "originMa": 550,
+   "originKind": "estimate",
+   "ageRange": [
+    620,
+    450
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Nematode",
+   "phylopic": "Nematoda",
+   "summary": "Unsegmented worms that may be the most numerous animals on Earth, from soil dwellers to the lab model C. elegans; soft-bodied, they have a sparse fossil record and are dated mostly by clocks.",
+   "sources": [
+    "dosreis2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "tardigrada",
+   "name": "Tardigrades",
+   "scientific": "Tardigrada",
+   "parent": "ecdysozoa",
+   "originMa": 530,
+   "originKind": "estimate",
+   "ageRange": [
+    600,
+    500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Tardigrade",
+   "phylopic": "Tardigrada",
+   "summary": "Eight-legged 'water bears' half a millimetre long that survive freezing, vacuum and radiation in a dried state; relatives of the Cambrian lobopodians.",
+   "sources": [
+    "dosreis2015",
+    "lozano2016"
+   ]
+  },
+  {
+   "id": "arthropoda",
+   "name": "Arthropods",
+   "scientific": "Arthropoda",
+   "parent": "ecdysozoa",
+   "originMa": 540,
+   "originKind": "fossil",
+   "ageRange": [
+    560,
+    520
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Arthropod",
+   "phylopic": null,
+   "summary": "Jointed-legged animals with an exoskeleton, by far the most diverse animal phylum; trace fossils from about 537 million years ago and trilobites from 521 million years ago mark their arrival.",
+   "sources": [
+    "benton2015",
+    "lozano2016",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "trilobita",
+   "name": "Trilobites",
+   "scientific": "Trilobita",
+   "parent": "arthropoda",
+   "originMa": 521,
+   "originKind": "fossil",
+   "ageRange": [
+    525,
+    518
+   ],
+   "status": "extinct",
+   "extinctMa": 252,
+   "group": "arthropod",
+   "wikipedia": "Trilobite",
+   "phylopic": "Trilobita",
+   "summary": "Three-lobed armoured arthropods that were the signature animals of the Palaeozoic seas, with over 20,000 species, until the last survivors died in the end-Permian extinction.",
+   "sources": [
+    "benton2015",
+    "burgess2014"
+   ]
+  },
+  {
+   "id": "chelicerata",
+   "name": "Chelicerates",
+   "scientific": "Chelicerata",
+   "parent": "arthropoda",
+   "originMa": 510,
+   "originKind": "fossil",
+   "ageRange": [
+    530,
+    500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Chelicerata",
+   "phylopic": null,
+   "summary": "Arthropods with pincer-like mouthparts and no antennae: spiders, scorpions, mites, horseshoe crabs and the extinct sea scorpions; Sanctacaris from the Burgess Shale is an early member.",
+   "sources": [
+    "lozano2016",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "arachnida",
+   "name": "Spiders, scorpions and mites",
+   "scientific": "Arachnida",
+   "parent": "chelicerata",
+   "originMa": 430,
+   "originKind": "fossil",
+   "ageRange": [
+    445,
+    415
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Arachnid",
+   "phylopic": "Araneae",
+   "summary": "Eight-legged terrestrial chelicerates; Silurian scorpions and the 414-million-year-old trigonotarbid Palaeotarbus are among the first animals on land.",
+   "sources": [
+    "lozano2016",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "xiphosura",
+   "name": "Horseshoe crabs",
+   "scientific": "Xiphosura",
+   "parent": "chelicerata",
+   "originMa": 445,
+   "originKind": "fossil",
+   "ageRange": [
+    470,
+    440
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Horseshoe crab",
+   "phylopic": "Limulus",
+   "summary": "Marine chelicerates whose body plan has barely changed since Lunataspis in the Late Ordovician, 445 million years ago; four species survive.",
+   "sources": [
+    "lozano2016",
+    "timetree"
+   ]
+  },
+  {
+   "id": "mandibulata",
+   "name": "Mandibulates",
+   "scientific": "Mandibulata",
+   "parent": "arthropoda",
+   "originMa": 520,
+   "originKind": "estimate",
+   "ageRange": [
+    540,
+    510
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Mandibulata",
+   "phylopic": null,
+   "summary": "Arthropods with jaws (mandibles): the myriapods, crustaceans and insects; Cambrian fossils such as Yicaris already show crustacean features.",
+   "sources": [
+    "lozano2016",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "myriapoda",
+   "name": "Centipedes and millipedes",
+   "scientific": "Myriapoda",
+   "parent": "mandibulata",
+   "originMa": 430,
+   "originKind": "fossil",
+   "ageRange": [
+    500,
+    415
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Myriapoda",
+   "phylopic": "Scolopendra",
+   "summary": "Many-legged land arthropods; Kampecaris and Pneumodesmus from the Silurian are among the oldest air-breathing animals known.",
+   "sources": [
+    "lozano2016",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "pancrustacea",
+   "name": "Crustaceans and insects",
+   "scientific": "Pancrustacea",
+   "parent": "mandibulata",
+   "originMa": 515,
+   "originKind": "estimate",
+   "ageRange": [
+    535,
+    505
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Pancrustacea",
+   "phylopic": null,
+   "summary": "Genomes show that insects arose from within the crustaceans; together they form Pancrustacea, the most species-rich group of animals.",
+   "sources": [
+    "misof2014",
+    "lozano2016"
+   ]
+  },
+  {
+   "id": "crustacea",
+   "name": "Crustaceans",
+   "scientific": "Crustacea",
+   "parent": "pancrustacea",
+   "originMa": 510,
+   "originKind": "fossil",
+   "ageRange": [
+    530,
+    500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Crustacean",
+   "phylopic": "Malacostraca",
+   "summary": "Mostly aquatic arthropods with two pairs of antennae: crabs, shrimps, barnacles, copepods and krill; Yicaris from the early Cambrian of China is a well-preserved early crustacean.",
+   "sources": [
+    "lozano2016",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "decapoda",
+   "name": "Crabs, lobsters and shrimps",
+   "scientific": "Decapoda",
+   "parent": "crustacea",
+   "originMa": 360,
+   "originKind": "fossil",
+   "ageRange": [
+    400,
+    340
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Decapoda",
+   "phylopic": "Decapoda",
+   "summary": "Ten-legged crustaceans; Palaeopalaemon from the Late Devonian is the oldest decapod, and true crabs appear in the Jurassic.",
+   "sources": [
+    "wolfe2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "insecta",
+   "name": "Insects",
+   "scientific": "Insecta",
+   "parent": "pancrustacea",
+   "originMa": 410,
+   "originKind": "estimate",
+   "ageRange": [
+    480,
+    385
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Insect",
+   "phylopic": "Insecta",
+   "summary": "Six-legged arthropods, over a million described species; Rhyniognatha from about 400 million years ago has insect-like jaws, and a phylogenomic clock places the insect common ancestor in the Early Ordovician.",
+   "sources": [
+    "misof2014",
+    "lozano2016"
+   ]
+  },
+  {
+   "id": "odonata",
+   "name": "Dragonflies and damselflies",
+   "scientific": "Odonata",
+   "parent": "insecta",
+   "originMa": 320,
+   "originKind": "fossil",
+   "ageRange": [
+    330,
+    300
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Odonata",
+   "phylopic": "Odonata",
+   "summary": "Aerial predators with two pairs of independently beating wings; their Carboniferous relatives the griffinflies had wingspans up to 70 centimetres.",
+   "sources": [
+    "misof2014",
+    "timetree"
+   ]
+  },
+  {
+   "id": "coleoptera",
+   "name": "Beetles",
+   "scientific": "Coleoptera",
+   "parent": "insecta",
+   "originMa": 295,
+   "originKind": "fossil",
+   "ageRange": [
+    310,
+    270
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Beetle",
+   "phylopic": "Coleoptera",
+   "summary": "Insects whose forewings hardened into protective cases, the largest order of animals with some 400,000 species; the oldest beetles come from the early Permian.",
+   "sources": [
+    "misof2014",
+    "timetree"
+   ]
+  },
+  {
+   "id": "hymenoptera",
+   "name": "Wasps, bees and ants",
+   "scientific": "Hymenoptera",
+   "parent": "insecta",
+   "originMa": 245,
+   "originKind": "fossil",
+   "ageRange": [
+    280,
+    235
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Hymenoptera",
+   "phylopic": "Hymenoptera",
+   "summary": "Membrane-winged insects, from sawflies to the social bees and ants; the oldest are Triassic sawflies about 245 million years old, and ants appear in Cretaceous amber about 100 million years ago.",
+   "sources": [
+    "misof2014",
+    "timetree"
+   ]
+  },
+  {
+   "id": "diptera",
+   "name": "Flies and mosquitoes",
+   "scientific": "Diptera",
+   "parent": "insecta",
+   "originMa": 245,
+   "originKind": "fossil",
+   "ageRange": [
+    280,
+    235
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Fly",
+   "phylopic": "Diptera",
+   "summary": "Two-winged insects whose hindwings became balancing organs; Grauvogelia from the Middle Triassic is the oldest fly, and mosquitoes appear in the Cretaceous.",
+   "sources": [
+    "misof2014",
+    "timetree"
+   ]
+  },
+  {
+   "id": "lepidoptera",
+   "name": "Butterflies and moths",
+   "scientific": "Lepidoptera",
+   "parent": "insecta",
+   "originMa": 200,
+   "originKind": "fossil",
+   "ageRange": [
+    300,
+    190
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "arthropod",
+   "wikipedia": "Lepidoptera",
+   "phylopic": "Lepidoptera",
+   "summary": "Scale-winged insects; wing scales from the Triassic-Jurassic boundary of Germany (about 201 million years) are the oldest trace, predating flowering plants by some 70 million years.",
+   "sources": [
+    "vaneldijk2018",
+    "misof2014"
+   ]
+  },
+  {
+   "id": "deuterostomia",
+   "name": "Deuterostomes",
+   "scientific": "Deuterostomia",
+   "parent": "bilateria",
+   "originMa": 600,
+   "originKind": "estimate",
+   "ageRange": [
+    650,
+    560
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Deuterostome",
+   "phylopic": null,
+   "summary": "The bilaterian branch whose embryos form the anus first: starfish and their relatives, acorn worms, and the chordates including ourselves.",
+   "sources": [
+    "dosreis2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "echinodermata",
+   "name": "Starfish, urchins and sea cucumbers",
+   "scientific": "Echinodermata",
+   "parent": "deuterostomia",
+   "originMa": 525,
+   "originKind": "fossil",
+   "ageRange": [
+    540,
+    515
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Echinoderm",
+   "phylopic": "Echinodermata",
+   "summary": "Five-fold symmetrical marine animals with calcite skeletons and a water-vascular system; Helicoplacus and the early echinoderms appear in the Cambrian about 525 million years ago.",
+   "sources": [
+    "benton2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "hemichordata",
+   "name": "Acorn worms",
+   "scientific": "Hemichordata",
+   "parent": "deuterostomia",
+   "originMa": 510,
+   "originKind": "fossil",
+   "ageRange": [
+    540,
+    500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "invertebrate",
+   "wikipedia": "Hemichordate",
+   "phylopic": "Hemichordata",
+   "summary": "Burrowing marine worms and the colonial pterobranchs, whose extinct relatives the graptolites are key Palaeozoic index fossils.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "chordata",
+   "name": "Chordates",
+   "scientific": "Chordata",
+   "parent": "deuterostomia",
+   "originMa": 530,
+   "originKind": "fossil",
+   "ageRange": [
+    560,
+    520
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Chordate",
+   "phylopic": null,
+   "summary": "Animals with a notochord, a dorsal nerve cord and gill slits at some stage; Haikouichthys and Myllokunmingia from the 518-million-year-old Chengjiang biota are the oldest.",
+   "sources": [
+    "benton2015",
+    "erwin2011"
+   ]
+  },
+  {
+   "id": "cephalochordata",
+   "name": "Lancelets",
+   "scientific": "Cephalochordata",
+   "parent": "chordata",
+   "originMa": 520,
+   "originKind": "estimate",
+   "ageRange": [
+    540,
+    500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Lancelet",
+   "phylopic": "Branchiostoma",
+   "summary": "Small fish-shaped filter feeders that keep the chordate body plan at its simplest; Pikaia from the Burgess Shale (505 million years) is a likely relative.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "tunicata",
+   "name": "Sea squirts",
+   "scientific": "Tunicata",
+   "parent": "chordata",
+   "originMa": 520,
+   "originKind": "estimate",
+   "ageRange": [
+    540,
+    500
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Tunicate",
+   "phylopic": "Ciona intestinalis",
+   "summary": "Sessile filter-feeders whose tadpole larvae reveal them as chordates and, by genomics, the closest living relatives of vertebrates; Shankouclava from the Cambrian may be the earliest.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "vertebrata",
+   "name": "Vertebrates",
+   "scientific": "Vertebrata",
+   "parent": "chordata",
+   "originMa": 518,
+   "originKind": "fossil",
+   "ageRange": [
+    540,
+    515
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Vertebrate",
+   "phylopic": null,
+   "summary": "Chordates with a skull and a backbone of vertebrae; the oldest, Haikouichthys and Myllokunmingia, are jawless fish from the early Cambrian of China.",
+   "sources": [
+    "benton2015",
+    "sallan2018"
+   ]
+  },
+  {
+   "id": "cyclostomata",
+   "name": "Lampreys and hagfish",
+   "scientific": "Cyclostomata",
+   "parent": "vertebrata",
+   "originMa": 500,
+   "originKind": "estimate",
+   "ageRange": [
+    540,
+    450
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Cyclostomata",
+   "phylopic": "Petromyzon",
+   "summary": "The last living jawless vertebrates, with round sucking mouths; molecular data unite them as a clade, and Priscomyzon, a 360-million-year-old lamprey, shows how little they have changed.",
+   "sources": [
+    "benton2015",
+    "irisarri2017"
+   ]
+  },
+  {
+   "id": "ostracoderms",
+   "name": "Armoured jawless fishes",
+   "scientific": "Ostracodermi",
+   "parent": "vertebrata",
+   "originMa": 470,
+   "originKind": "fossil",
+   "ageRange": [
+    480,
+    460
+   ],
+   "status": "extinct",
+   "extinctMa": 359,
+   "group": "fish",
+   "wikipedia": "Ostracoderm",
+   "phylopic": "Cephalaspis",
+   "summary": "Jawless fish encased in bony armour, such as Sacabambaspis and the Devonian Cephalaspis; they flourished for a hundred million years and vanished at the end of the Devonian.",
+   "sources": [
+    "sallan2018",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "gnathostomata",
+   "name": "Jawed vertebrates",
+   "scientific": "Gnathostomata",
+   "parent": "vertebrata",
+   "originMa": 445,
+   "originKind": "fossil",
+   "ageRange": [
+    465,
+    430
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Gnathostomata",
+   "phylopic": null,
+   "summary": "Vertebrates with jaws, which evolved from the front gill arches; complete jawed fishes from 439 million years ago in Chongqing, China, and Ordovician scales push the origin toward 450 million years.",
+   "sources": [
+    "zhu2022",
+    "sallan2018"
+   ]
+  },
+  {
+   "id": "placodermi",
+   "name": "Placoderms",
+   "scientific": "Placodermi",
+   "parent": "gnathostomata",
+   "originMa": 430,
+   "originKind": "fossil",
+   "ageRange": [
+    440,
+    420
+   ],
+   "status": "extinct",
+   "extinctMa": 359,
+   "group": "fish",
+   "wikipedia": "Placoderm",
+   "phylopic": "Dunkleosteus",
+   "summary": "Armoured jawed fishes including the six-metre Dunkleosteus; they dominated Devonian seas and died out entirely at its end.",
+   "sources": [
+    "zhu2022",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "chondrichthyes",
+   "name": "Sharks, rays and chimaeras",
+   "scientific": "Chondrichthyes",
+   "parent": "gnathostomata",
+   "originMa": 420,
+   "originKind": "fossil",
+   "ageRange": [
+    440,
+    410
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Chondrichthyes",
+   "phylopic": null,
+   "summary": "Jawed fishes with cartilage skeletons and tooth-like scales; the oldest shark-like fishes are early Silurian, and the group has survived every mass extinction since.",
+   "sources": [
+    "coates2017",
+    "zhu2022"
+   ]
+  },
+  {
+   "id": "sharks",
+   "name": "Sharks",
+   "scientific": "Selachimorpha",
+   "parent": "chondrichthyes",
+   "originMa": 200,
+   "originKind": "estimate",
+   "ageRange": [
+    250,
+    190
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Shark",
+   "phylopic": "Selachimorpha",
+   "summary": "Modern sharks (neoselachians) diversified in the Jurassic, though shark-like fishes go back to the Devonian; about 500 living species range from dwarf lanternsharks to the whale shark.",
+   "sources": [
+    "coates2017",
+    "timetree"
+   ]
+  },
+  {
+   "id": "rays",
+   "name": "Rays and skates",
+   "scientific": "Batoidea",
+   "parent": "chondrichthyes",
+   "originMa": 180,
+   "originKind": "fossil",
+   "ageRange": [
+    200,
+    170
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Batoidea",
+   "phylopic": "Batoidea",
+   "summary": "Flattened sharks' relatives with wing-like fins; the oldest ray fossils are Early Jurassic.",
+   "sources": [
+    "timetree",
+    "coates2017"
+   ]
+  },
+  {
+   "id": "osteichthyes",
+   "name": "Bony fishes",
+   "scientific": "Osteichthyes",
+   "parent": "gnathostomata",
+   "originMa": 425,
+   "originKind": "fossil",
+   "ageRange": [
+    440,
+    420
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Osteichthyes",
+   "phylopic": null,
+   "summary": "Jawed vertebrates with bony skeletons, which includes every land vertebrate; Guiyu from the late Silurian of China, 425 million years old, is the oldest articulated bony fish.",
+   "sources": [
+    "zhu2022",
+    "sallan2018"
+   ]
+  },
+  {
+   "id": "actinopterygii",
+   "name": "Ray-finned fishes",
+   "scientific": "Actinopterygii",
+   "parent": "osteichthyes",
+   "originMa": 420,
+   "originKind": "fossil",
+   "ageRange": [
+    425,
+    410
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Actinopterygii",
+   "phylopic": "Actinopterygii",
+   "summary": "Fishes with fins supported by bony rays: more than half of all living vertebrates; scales of Andreolepis from the Silurian are the first record.",
+   "sources": [
+    "near2012",
+    "sallan2018"
+   ]
+  },
+  {
+   "id": "teleostei",
+   "name": "Teleosts",
+   "scientific": "Teleostei",
+   "parent": "actinopterygii",
+   "originMa": 250,
+   "originKind": "estimate",
+   "ageRange": [
+    310,
+    230
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Teleost",
+   "phylopic": "Teleostei",
+   "summary": "The modern ray-finned fishes, from herring and salmon to tuna and seahorses, some 30,000 species; Triassic fossils and clock estimates place their origin between the Carboniferous and the Triassic.",
+   "sources": [
+    "near2012",
+    "timetree"
+   ]
+  },
+  {
+   "id": "sarcopterygii",
+   "name": "Lobe-finned fishes and tetrapods",
+   "scientific": "Sarcopterygii",
+   "parent": "osteichthyes",
+   "originMa": 420,
+   "originKind": "fossil",
+   "ageRange": [
+    425,
+    410
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Sarcopterygii",
+   "phylopic": null,
+   "summary": "Bony fishes with fleshy, limb-like fins, the lineage that walked onto land; Guiyu and Psarolepis from the Silurian are stem sarcopterygians.",
+   "sources": [
+    "zhu2022",
+    "irisarri2017"
+   ]
+  },
+  {
+   "id": "actinistia",
+   "name": "Coelacanths",
+   "scientific": "Actinistia",
+   "parent": "sarcopterygii",
+   "originMa": 410,
+   "originKind": "fossil",
+   "ageRange": [
+    420,
+    400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Coelacanth",
+   "phylopic": "Latimeria",
+   "summary": "Deep-water fishes thought extinct since the Cretaceous until one was caught off South Africa in 1938; the lineage reaches back to the Early Devonian.",
+   "sources": [
+    "irisarri2017",
+    "timetree"
+   ]
+  },
+  {
+   "id": "dipnoi",
+   "name": "Lungfishes",
+   "scientific": "Dipnoi",
+   "parent": "sarcopterygii",
+   "originMa": 410,
+   "originKind": "fossil",
+   "ageRange": [
+    420,
+    400
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "fish",
+   "wikipedia": "Lungfish",
+   "phylopic": "Dipnoi",
+   "summary": "Air-breathing fishes of Africa, South America and Australia, the closest living relatives of land vertebrates; Diabolepis from the Early Devonian is the earliest.",
+   "sources": [
+    "irisarri2017",
+    "timetree"
+   ]
+  },
+  {
+   "id": "tetrapoda",
+   "name": "Tetrapods (four-limbed vertebrates)",
+   "scientific": "Tetrapoda",
+   "parent": "sarcopterygii",
+   "originMa": 375,
+   "originKind": "fossil",
+   "ageRange": [
+    395,
+    360
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "amphibian",
+   "wikipedia": "Tetrapod",
+   "phylopic": null,
+   "summary": "Vertebrates with limbs and digits; Tiktaalik (375 million years), Acanthostega and Ichthyostega record the fish-to-tetrapod transition, and trackways from Poland may push it to 395 million years.",
+   "sources": [
+    "benton2015",
+    "irisarri2017"
+   ]
+  },
+  {
+   "id": "amphibia",
+   "name": "Amphibians",
+   "scientific": "Amphibia",
+   "parent": "tetrapoda",
+   "originMa": 340,
+   "originKind": "estimate",
+   "ageRange": [
+    360,
+    300
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "amphibian",
+   "wikipedia": "Amphibian",
+   "phylopic": null,
+   "summary": "Tetrapods that typically lay eggs in water and breathe partly through the skin; the living groups (frogs, salamanders, caecilians) share a common ancestor whose age is debated between the Carboniferous and the Permian.",
+   "sources": [
+    "marjanovic2007",
+    "irisarri2017"
+   ]
+  },
+  {
+   "id": "temnospondyli",
+   "name": "Temnospondyls",
+   "scientific": "Temnospondyli",
+   "parent": "amphibia",
+   "originMa": 330,
+   "originKind": "fossil",
+   "ageRange": [
+    340,
+    320
+   ],
+   "status": "extinct",
+   "extinctMa": 120,
+   "group": "amphibian",
+   "wikipedia": "Temnospondyli",
+   "phylopic": "Eryops",
+   "summary": "Large flat-headed amphibians such as Eryops and the crocodile-like Mastodonsaurus; the group ran from the Carboniferous to the Early Cretaceous, and living amphibians may descend from among them.",
+   "sources": [
+    "marjanovic2007",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "anura",
+   "name": "Frogs and toads",
+   "scientific": "Anura",
+   "parent": "amphibia",
+   "originMa": 250,
+   "originKind": "fossil",
+   "ageRange": [
+    270,
+    200
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "amphibian",
+   "wikipedia": "Frog",
+   "phylopic": "Anura",
+   "summary": "Tailless jumping amphibians; Triadobatrachus from the Early Triassic of Madagascar, about 250 million years old, is the oldest frog-like fossil.",
+   "sources": [
+    "marjanovic2007",
+    "timetree"
+   ]
+  },
+  {
+   "id": "caudata",
+   "name": "Salamanders and newts",
+   "scientific": "Caudata",
+   "parent": "amphibia",
+   "originMa": 230,
+   "originKind": "estimate",
+   "ageRange": [
+    260,
+    160
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "amphibian",
+   "wikipedia": "Salamander",
+   "phylopic": "Salamandra",
+   "summary": "Tailed amphibians, many able to regrow limbs; Triassurus from the Triassic of Kyrgyzstan is the earliest, with crown salamanders well known from the Jurassic.",
+   "sources": [
+    "marjanovic2007",
+    "timetree"
+   ]
+  },
+  {
+   "id": "gymnophiona",
+   "name": "Caecilians",
+   "scientific": "Gymnophiona",
+   "parent": "amphibia",
+   "originMa": 200,
+   "originKind": "fossil",
+   "ageRange": [
+    250,
+    180
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "amphibian",
+   "wikipedia": "Caecilian",
+   "phylopic": "Gymnophiona",
+   "summary": "Limbless burrowing amphibians of the tropics; Eocaecilia from the Early Jurassic still had tiny legs.",
+   "sources": [
+    "marjanovic2007",
+    "timetree"
+   ]
+  },
+  {
+   "id": "amniota",
+   "name": "Amniotes",
+   "scientific": "Amniota",
+   "parent": "tetrapoda",
+   "originMa": 318,
+   "originKind": "fossil",
+   "ageRange": [
+    335,
+    310
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Amniote",
+   "phylopic": null,
+   "summary": "Tetrapods whose eggs carry their own water in an amnion, freeing them from breeding in ponds: reptiles, birds and mammals; Hylonomus from Nova Scotia, about 312 million years old, is the oldest unquestioned amniote.",
+   "sources": [
+    "ford2020",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "synapsida",
+   "name": "Synapsids",
+   "scientific": "Synapsida",
+   "parent": "amniota",
+   "originMa": 306,
+   "originKind": "fossil",
+   "ageRange": [
+    318,
+    300
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Synapsid",
+   "phylopic": null,
+   "summary": "The amniote branch with a single opening behind each eye, leading to mammals; Archaeothyris from the Late Carboniferous is the oldest known.",
+   "sources": [
+    "ford2020",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "pelycosaurs",
+   "name": "Pelycosaur-grade synapsids (Dimetrodon)",
+   "scientific": "Pelycosauria",
+   "parent": "synapsida",
+   "originMa": 306,
+   "originKind": "fossil",
+   "ageRange": [
+    318,
+    300
+   ],
+   "status": "extinct",
+   "extinctMa": 260,
+   "group": "mammal",
+   "wikipedia": "Pelycosaur",
+   "phylopic": "Dimetrodon",
+   "summary": "Sprawling early synapsids such as the sail-backed Dimetrodon, top predators of the early Permian; they gave way to the therapsids by the middle Permian.",
+   "sources": [
+    "benton2015",
+    "ford2020"
+   ]
+  },
+  {
+   "id": "therapsida",
+   "name": "Therapsids",
+   "scientific": "Therapsida",
+   "parent": "synapsida",
+   "originMa": 275,
+   "originKind": "fossil",
+   "ageRange": [
+    290,
+    270
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Therapsid",
+   "phylopic": "Lystrosaurus",
+   "summary": "More upright, more active synapsids including the dicynodonts and gorgonopsians; they dominated the late Permian, were decimated at its end, and one line became mammals.",
+   "sources": [
+    "benton2015",
+    "burgess2014"
+   ]
+  },
+  {
+   "id": "cynodontia",
+   "name": "Cynodonts",
+   "scientific": "Cynodontia",
+   "parent": "therapsida",
+   "originMa": 260,
+   "originKind": "fossil",
+   "ageRange": [
+    265,
+    255
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Cynodont",
+   "phylopic": "Thrinaxodon",
+   "summary": "Dog-toothed therapsids with differentiated teeth and a secondary palate; Thrinaxodon and its kin survived the end-Permian catastrophe and gave rise to mammals in the Triassic.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "mammalia",
+   "name": "Mammals",
+   "scientific": "Mammaliaformes",
+   "parent": "cynodontia",
+   "originMa": 225,
+   "originKind": "fossil",
+   "ageRange": [
+    230,
+    200
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Mammal",
+   "phylopic": "Mammalia",
+   "summary": "Warm-blooded, fur-covered synapsids that nurse their young; shrew-sized Late Triassic forms such as Brasilodon and Morganucodon, 225-205 million years old, are the first mammaliaforms.",
+   "sources": [
+    "benton2015",
+    "upham2019"
+   ]
+  },
+  {
+   "id": "monotremata",
+   "name": "Monotremes (platypus, echidnas)",
+   "scientific": "Monotremata",
+   "parent": "mammalia",
+   "originMa": 180,
+   "originKind": "estimate",
+   "ageRange": [
+    220,
+    160
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Monotreme",
+   "phylopic": "Ornithorhynchus",
+   "summary": "Egg-laying mammals of Australia and New Guinea; molecular clocks put their split from other living mammals in the Jurassic, and Teinolophos (120 million years) is the oldest fossil.",
+   "sources": [
+    "upham2019",
+    "luo2011"
+   ]
+  },
+  {
+   "id": "theria",
+   "name": "Marsupials and placentals",
+   "scientific": "Theria",
+   "parent": "mammalia",
+   "originMa": 170,
+   "originKind": "estimate",
+   "ageRange": [
+    200,
+    160
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Theria",
+   "phylopic": null,
+   "summary": "Mammals that give birth to live young; the marsupial and placental lines had already separated by 160 million years ago, when Juramaia lived.",
+   "sources": [
+    "luo2011",
+    "upham2019"
+   ]
+  },
+  {
+   "id": "metatheria",
+   "name": "Marsupials",
+   "scientific": "Metatheria",
+   "parent": "theria",
+   "originMa": 160,
+   "originKind": "fossil",
+   "ageRange": [
+    165,
+    125
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Marsupial",
+   "phylopic": "Macropus",
+   "summary": "Mammals whose young complete development in a pouch: kangaroos, koalas, opossums; the lineage is as old as Juramaia's, with Sinodelphys (125 million years) a possible early member.",
+   "sources": [
+    "luo2011",
+    "upham2019"
+   ]
+  },
+  {
+   "id": "eutheria",
+   "name": "Placental mammals",
+   "scientific": "Eutheria",
+   "parent": "theria",
+   "originMa": 160,
+   "originKind": "fossil",
+   "ageRange": [
+    165,
+    125
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Eutheria",
+   "phylopic": null,
+   "summary": "Mammals that nourish the fetus through a placenta; Juramaia from 160-million-year-old Jurassic rocks of China is the oldest eutherian, and the living orders radiated around the end of the Cretaceous.",
+   "sources": [
+    "luo2011",
+    "upham2019"
+   ]
+  },
+  {
+   "id": "xenarthra",
+   "name": "Armadillos, sloths and anteaters",
+   "scientific": "Xenarthra",
+   "parent": "eutheria",
+   "originMa": 90,
+   "originKind": "estimate",
+   "ageRange": [
+    100,
+    65
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Xenarthra",
+   "phylopic": "Dasypus",
+   "summary": "A South American radiation with extra joints in the spine; the extinct giant ground sloths and glyptodonts were among the largest Ice Age mammals.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "afrotheria",
+   "name": "Afrotheres",
+   "scientific": "Afrotheria",
+   "parent": "eutheria",
+   "originMa": 90,
+   "originKind": "estimate",
+   "ageRange": [
+    100,
+    65
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Afrotheria",
+   "phylopic": null,
+   "summary": "Mammals of African origin recognised only through genomics: elephants, manatees, aardvarks, hyraxes, elephant shrews and tenrecs.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "proboscidea",
+   "name": "Elephants and relatives",
+   "scientific": "Proboscidea",
+   "parent": "afrotheria",
+   "originMa": 60,
+   "originKind": "fossil",
+   "ageRange": [
+    62,
+    55
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Proboscidea",
+   "phylopic": "Loxodonta africana",
+   "summary": "Trunked mammals from the fox-sized Eritherium of 60 million years ago through mastodons and mammoths to the three living elephants.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "boreoeutheria",
+   "name": "Northern placentals",
+   "scientific": "Boreoeutheria",
+   "parent": "eutheria",
+   "originMa": 90,
+   "originKind": "estimate",
+   "ageRange": [
+    100,
+    70
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Boreoeutheria",
+   "phylopic": null,
+   "summary": "The placental supergroup that arose in the northern continents and includes most familiar mammals, from bats and whales to rodents and primates.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "laurasiatheria",
+   "name": "Laurasiatheres",
+   "scientific": "Laurasiatheria",
+   "parent": "boreoeutheria",
+   "originMa": 85,
+   "originKind": "estimate",
+   "ageRange": [
+    95,
+    70
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Laurasiatheria",
+   "phylopic": null,
+   "summary": "Named for the ancient northern continent of Laurasia: shrews, hedgehogs, bats, carnivores, hoofed mammals and whales.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "chiroptera",
+   "name": "Bats",
+   "scientific": "Chiroptera",
+   "parent": "laurasiatheria",
+   "originMa": 60,
+   "originKind": "estimate",
+   "ageRange": [
+    70,
+    52
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Bat",
+   "phylopic": "Chiroptera",
+   "summary": "The only flying mammals, about 1,400 species; Onychonycteris from Wyoming, 52 million years old, could fly but had not yet evolved echolocation.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "carnivora",
+   "name": "Carnivorans (cats, dogs, bears, seals)",
+   "scientific": "Carnivora",
+   "parent": "laurasiatheria",
+   "originMa": 55,
+   "originKind": "estimate",
+   "ageRange": [
+    65,
+    45
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Carnivora",
+   "phylopic": "Panthera leo",
+   "summary": "Mammals with shearing carnassial teeth; the civet-like miacids of the Eocene are their stem, and the cat and dog branches had separated by about 42 million years ago.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "cetartiodactyla",
+   "name": "Even-toed ungulates and whales",
+   "scientific": "Cetartiodactyla",
+   "parent": "laurasiatheria",
+   "originMa": 65,
+   "originKind": "estimate",
+   "ageRange": [
+    75,
+    55
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Artiodactyl",
+   "phylopic": null,
+   "summary": "Hoofed mammals bearing weight on two toes together with the whales, which genomics and fossils show evolved from among them, closest to the hippos.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "artiodactyla",
+   "name": "Cattle, deer, pigs, camels and hippos",
+   "scientific": "Artiodactyla (terrestrial)",
+   "parent": "cetartiodactyla",
+   "originMa": 55,
+   "originKind": "fossil",
+   "ageRange": [
+    60,
+    52
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Even-toed ungulate",
+   "phylopic": "Bos taurus",
+   "summary": "The even-toed hoofed mammals on land, from the rabbit-sized Eocene Diacodexis to giraffes and bison.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "cetacea",
+   "name": "Whales, dolphins and porpoises",
+   "scientific": "Cetacea",
+   "parent": "cetartiodactyla",
+   "originMa": 53,
+   "originKind": "fossil",
+   "ageRange": [
+    55,
+    50
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Cetacea",
+   "phylopic": "Cetacea",
+   "summary": "Mammals that returned to the sea; Pakicetus and Himalayacetus from Eocene Pakistan and India, about 53-50 million years old, were wolf-sized waders with whale ears.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "perissodactyla",
+   "name": "Horses, rhinos and tapirs",
+   "scientific": "Perissodactyla",
+   "parent": "laurasiatheria",
+   "originMa": 56,
+   "originKind": "fossil",
+   "ageRange": [
+    60,
+    55
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Odd-toed ungulate",
+   "phylopic": "Equus",
+   "summary": "Odd-toed hoofed mammals; Sifrhippus, a dog-sized horse of 56 million years ago, opens a famously complete fossil record.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "euarchontoglires",
+   "name": "Rodents, rabbits and primates",
+   "scientific": "Euarchontoglires",
+   "parent": "boreoeutheria",
+   "originMa": 85,
+   "originKind": "estimate",
+   "ageRange": [
+    95,
+    70
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Euarchontoglires",
+   "phylopic": null,
+   "summary": "The placental supergroup uniting rodents and rabbits with tree shrews, colugos and primates, which includes humans.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "rodentia",
+   "name": "Rodents",
+   "scientific": "Rodentia",
+   "parent": "euarchontoglires",
+   "originMa": 57,
+   "originKind": "fossil",
+   "ageRange": [
+    65,
+    55
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Rodent",
+   "phylopic": "Rodentia",
+   "summary": "Gnawing mammals with ever-growing incisors, about 40 percent of all mammal species; Tribosphenomys and Paramys from the earliest Eocene are the first.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "lagomorpha",
+   "name": "Rabbits, hares and pikas",
+   "scientific": "Lagomorpha",
+   "parent": "euarchontoglires",
+   "originMa": 53,
+   "originKind": "fossil",
+   "ageRange": [
+    62,
+    48
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Lagomorpha",
+   "phylopic": "Lepus",
+   "summary": "Double-incisored relatives of rodents; Eocene fossils from Asia such as Gomphos record their origin.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "primates",
+   "name": "Primates",
+   "scientific": "Primates",
+   "parent": "euarchontoglires",
+   "originMa": 66,
+   "originKind": "estimate",
+   "ageRange": [
+    80,
+    56
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Primate",
+   "phylopic": "Papio anubis",
+   "summary": "Grasping-handed, forward-eyed mammals of the trees; Purgatorius from the earliest Paleocene (66 million years) may be the first, and true primates such as Teilhardina appear at 56 million years.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "strepsirrhini",
+   "name": "Lemurs and lorises",
+   "scientific": "Strepsirrhini",
+   "parent": "primates",
+   "originMa": 60,
+   "originKind": "estimate",
+   "ageRange": [
+    70,
+    55
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Strepsirrhini",
+   "phylopic": "Lemur catta",
+   "summary": "Wet-nosed primates, today mainly the lemurs of Madagascar and the lorises and galagos of Africa and Asia.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "simiiformes",
+   "name": "Monkeys and apes",
+   "scientific": "Simiiformes",
+   "parent": "primates",
+   "originMa": 45,
+   "originKind": "estimate",
+   "ageRange": [
+    50,
+    40
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Simian",
+   "phylopic": null,
+   "summary": "The anthropoid primates; Eosimias from the Eocene of China, about 45 million years old, is among the earliest.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "platyrrhini",
+   "name": "New World monkeys",
+   "scientific": "Platyrrhini",
+   "parent": "simiiformes",
+   "originMa": 36,
+   "originKind": "estimate",
+   "ageRange": [
+    40,
+    30
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "New World monkey",
+   "phylopic": "Cebus",
+   "summary": "Monkeys of the Americas, many with prehensile tails, descended from African ancestors that crossed the Atlantic; Perupithecus from Peru, about 36 million years old, is the oldest.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "catarrhini",
+   "name": "Old World monkeys and apes",
+   "scientific": "Catarrhini",
+   "parent": "simiiformes",
+   "originMa": 36,
+   "originKind": "estimate",
+   "ageRange": [
+    40,
+    30
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Catarrhini",
+   "phylopic": null,
+   "summary": "Downward-nosed primates of Africa and Asia; the monkey and ape lines diverged about 25-30 million years ago.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "cercopithecoidea",
+   "name": "Old World monkeys",
+   "scientific": "Cercopithecoidea",
+   "parent": "catarrhini",
+   "originMa": 25,
+   "originKind": "estimate",
+   "ageRange": [
+    30,
+    20
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Old World monkey",
+   "phylopic": "Macaca",
+   "summary": "Baboons, macaques, colobus monkeys and langurs; Victoriapithecus from Kenya records the group at about 19 million years.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "hominoidea",
+   "name": "Apes",
+   "scientific": "Hominoidea",
+   "parent": "catarrhini",
+   "originMa": 25,
+   "originKind": "estimate",
+   "ageRange": [
+    30,
+    18
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Ape",
+   "phylopic": "Gorilla gorilla",
+   "summary": "Tailless primates: gibbons, orangutans, gorillas, chimpanzees and humans; Rukwapithecus and Proconsul from East Africa open the record about 25-21 million years ago.",
+   "sources": [
+    "upham2019",
+    "timetree"
+   ]
+  },
+  {
+   "id": "hominini",
+   "name": "Humans and chimpanzees",
+   "scientific": "Hominini",
+   "parent": "hominoidea",
+   "originMa": 7,
+   "originKind": "estimate",
+   "ageRange": [
+    9,
+    6
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Hominini",
+   "phylopic": null,
+   "summary": "The human and chimpanzee lineages parted about 6-9 million years ago; Sahelanthropus from Chad, around 7 million years old, may stand near the split.",
+   "sources": [
+    "langergraber2012",
+    "timetree"
+   ]
+  },
+  {
+   "id": "pan",
+   "name": "Chimpanzees and bonobos",
+   "scientific": "Pan",
+   "parent": "hominini",
+   "originMa": 7,
+   "originKind": "estimate",
+   "ageRange": [
+    9,
+    6
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Pan (genus)",
+   "phylopic": "Pan troglodytes",
+   "summary": "Our closest living relatives, sharing about 98.8 percent of our DNA; the two species separated about one to two million years ago when the Congo River formed a barrier.",
+   "sources": [
+    "langergraber2012",
+    "timetree"
+   ]
+  },
+  {
+   "id": "australopithecus",
+   "name": "Australopithecines",
+   "scientific": "Australopithecus",
+   "parent": "hominini",
+   "originMa": 4.2,
+   "originKind": "fossil",
+   "ageRange": [
+    4.2,
+    3.9
+   ],
+   "status": "extinct",
+   "extinctMa": 2.0,
+   "group": "mammal",
+   "wikipedia": "Australopithecus",
+   "phylopic": "Australopithecus afarensis",
+   "summary": "Small-brained upright walkers of Africa such as 'Lucy' (Au. afarensis, 3.2 million years); the genus spans about 4.2 to 2 million years ago and gave rise to Homo.",
+   "sources": [
+    "villmoare2015",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "homo",
+   "name": "Humans (genus Homo)",
+   "scientific": "Homo",
+   "parent": "hominini",
+   "originMa": 2.8,
+   "originKind": "fossil",
+   "ageRange": [
+    3.0,
+    2.5
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Homo",
+   "phylopic": null,
+   "summary": "Larger-brained, tool-making hominins; a jaw from Ledi-Geraru, Ethiopia, dated to 2.8 million years, is the oldest fossil assigned to the genus.",
+   "sources": [
+    "villmoare2015",
+    "hublin2017"
+   ]
+  },
+  {
+   "id": "homo-erectus",
+   "name": "Homo erectus",
+   "scientific": "Homo erectus",
+   "parent": "homo",
+   "originMa": 1.9,
+   "originKind": "fossil",
+   "ageRange": [
+    2.0,
+    1.8
+   ],
+   "status": "extinct",
+   "extinctMa": 0.11,
+   "group": "mammal",
+   "wikipedia": "Homo erectus",
+   "phylopic": "Homo ergaster",
+   "summary": "The first hominin to leave Africa and to control fire, with a body plan much like ours; it persisted in Java until about 110,000 years ago.",
+   "sources": [
+    "villmoare2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "neanderthals",
+   "name": "Neanderthals",
+   "scientific": "Homo neanderthalensis",
+   "parent": "homo",
+   "originMa": 0.43,
+   "originKind": "fossil",
+   "ageRange": [
+    0.6,
+    0.4
+   ],
+   "status": "extinct",
+   "extinctMa": 0.04,
+   "group": "mammal",
+   "wikipedia": "Neanderthal",
+   "phylopic": "Homo neanderthalensis",
+   "summary": "Stocky, large-brained humans of Ice Age Europe and western Asia who made tools, fire and ornaments; they disappeared about 40,000 years ago but live on in a few percent of most people's genomes.",
+   "sources": [
+    "hublin2017",
+    "timetree"
+   ]
+  },
+  {
+   "id": "homo-sapiens",
+   "name": "Modern humans",
+   "scientific": "Homo sapiens",
+   "parent": "homo",
+   "originMa": 0.315,
+   "originKind": "fossil",
+   "ageRange": [
+    0.35,
+    0.26
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "mammal",
+   "wikipedia": "Homo sapiens",
+   "phylopic": "Homo sapiens sapiens",
+   "summary": "Our own species; skulls from Jebel Irhoud, Morocco, dated to about 315,000 years, are the oldest fossils with modern human features, and all living people descend from African populations.",
+   "sources": [
+    "hublin2017",
+    "langergraber2012"
+   ]
+  },
+  {
+   "id": "sauropsida",
+   "name": "Reptiles (including birds)",
+   "scientific": "Sauropsida",
+   "parent": "amniota",
+   "originMa": 312,
+   "originKind": "fossil",
+   "ageRange": [
+    318,
+    305
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Sauropsida",
+   "phylopic": null,
+   "summary": "The amniote branch leading to all living reptiles and birds; Hylonomus from the Late Carboniferous of Nova Scotia is the oldest.",
+   "sources": [
+    "ford2020",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "parareptilia",
+   "name": "Parareptiles",
+   "scientific": "Parareptilia",
+   "parent": "sauropsida",
+   "originMa": 305,
+   "originKind": "fossil",
+   "ageRange": [
+    312,
+    295
+   ],
+   "status": "extinct",
+   "extinctMa": 201,
+   "group": "reptile",
+   "wikipedia": "Parareptilia",
+   "phylopic": "Scutosaurus",
+   "summary": "An early reptile radiation including the cow-sized pareiasaurs and the lizard-like procolophonids; the last of them died at the end of the Triassic.",
+   "sources": [
+    "ford2020",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "diapsida",
+   "name": "Diapsids",
+   "scientific": "Diapsida",
+   "parent": "sauropsida",
+   "originMa": 302,
+   "originKind": "fossil",
+   "ageRange": [
+    310,
+    295
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Diapsid",
+   "phylopic": null,
+   "summary": "Reptiles with two openings behind each eye: lizards, snakes, crocodiles, dinosaurs and birds; Petrolacosaurus from Kansas, about 302 million years old, is the earliest.",
+   "sources": [
+    "ford2020",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "ichthyosauria",
+   "name": "Ichthyosaurs",
+   "scientific": "Ichthyosauria",
+   "parent": "diapsida",
+   "originMa": 250,
+   "originKind": "fossil",
+   "ageRange": [
+    252,
+    245
+   ],
+   "status": "extinct",
+   "extinctMa": 94,
+   "group": "reptile",
+   "wikipedia": "Ichthyosaur",
+   "phylopic": "Ichthyosaurus",
+   "summary": "Dolphin-shaped marine reptiles that gave birth at sea; they appeared right after the end-Permian extinction and died out in the Late Cretaceous, about 94 million years ago.",
+   "sources": [
+    "benton2015",
+    "timetree"
+   ]
+  },
+  {
+   "id": "sauropterygia",
+   "name": "Plesiosaurs and relatives",
+   "scientific": "Sauropterygia",
+   "parent": "diapsida",
+   "originMa": 248,
+   "originKind": "fossil",
+   "ageRange": [
+    252,
+    240
+   ],
+   "status": "extinct",
+   "extinctMa": 66,
+   "group": "reptile",
+   "wikipedia": "Sauropterygia",
+   "phylopic": "Plesiosaurus",
+   "summary": "Marine reptiles from the Triassic nothosaurs and placodonts to the long-necked plesiosaurs and big-headed pliosaurs, which lasted until the end of the Cretaceous.",
+   "sources": [
+    "benton2015",
+    "schulte2010"
+   ]
+  },
+  {
+   "id": "lepidosauria",
+   "name": "Lepidosaurs",
+   "scientific": "Lepidosauria",
+   "parent": "diapsida",
+   "originMa": 250,
+   "originKind": "estimate",
+   "ageRange": [
+    260,
+    240
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Lepidosauria",
+   "phylopic": null,
+   "summary": "Scaly reptiles that shed their skin: the tuatara and the lizards and snakes; Megachirella from the Middle Triassic shows the group was established by 240 million years ago.",
+   "sources": [
+    "simoes2018",
+    "irisarri2017"
+   ]
+  },
+  {
+   "id": "rhynchocephalia",
+   "name": "Tuatara",
+   "scientific": "Rhynchocephalia",
+   "parent": "lepidosauria",
+   "originMa": 240,
+   "originKind": "fossil",
+   "ageRange": [
+    250,
+    230
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Rhynchocephalia",
+   "phylopic": "Sphenodon",
+   "summary": "A once-widespread Mesozoic group now reduced to a single species on New Zealand islands, the tuatara, with a lineage reaching back to the Triassic.",
+   "sources": [
+    "simoes2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "squamata",
+   "name": "Lizards and snakes",
+   "scientific": "Squamata",
+   "parent": "lepidosauria",
+   "originMa": 240,
+   "originKind": "fossil",
+   "ageRange": [
+    250,
+    230
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Squamata",
+   "phylopic": "Lacertilia",
+   "summary": "The most diverse living reptiles, over 11,000 species; Megachirella wachtleri from the Italian Alps, 240 million years old, is the oldest known squamate.",
+   "sources": [
+    "simoes2018",
+    "irisarri2017"
+   ]
+  },
+  {
+   "id": "mosasauria",
+   "name": "Mosasaurs",
+   "scientific": "Mosasauria",
+   "parent": "squamata",
+   "originMa": 100,
+   "originKind": "fossil",
+   "ageRange": [
+    110,
+    95
+   ],
+   "status": "extinct",
+   "extinctMa": 66,
+   "group": "reptile",
+   "wikipedia": "Mosasaur",
+   "phylopic": "Tylosaurus",
+   "summary": "Lizards that became the top marine predators of the Late Cretaceous, some over 15 metres long; they vanished in the end-Cretaceous extinction.",
+   "sources": [
+    "benton2015",
+    "schulte2010"
+   ]
+  },
+  {
+   "id": "serpentes",
+   "name": "Snakes",
+   "scientific": "Serpentes",
+   "parent": "squamata",
+   "originMa": 167,
+   "originKind": "fossil",
+   "ageRange": [
+    170,
+    100
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Snake",
+   "phylopic": "Serpentes",
+   "summary": "Legless lizards with flexible jaws; Eophis from the Middle Jurassic of England, about 167 million years old, is the oldest snake, and four-legged early snakes persisted into the Cretaceous.",
+   "sources": [
+    "simoes2018",
+    "timetree"
+   ]
+  },
+  {
+   "id": "archelosauria",
+   "name": "Turtles, crocodiles, dinosaurs and birds",
+   "scientific": "Archelosauria",
+   "parent": "diapsida",
+   "originMa": 260,
+   "originKind": "estimate",
+   "ageRange": [
+    270,
+    250
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Archelosauria",
+   "phylopic": null,
+   "summary": "Genomes place turtles as the closest relatives of the archosaurs (crocodiles, dinosaurs and birds), together forming Archelosauria.",
+   "sources": [
+    "irisarri2017",
+    "ford2020"
+   ]
+  },
+  {
+   "id": "testudines",
+   "name": "Turtles and tortoises",
+   "scientific": "Testudines",
+   "parent": "archelosauria",
+   "originMa": 240,
+   "originKind": "fossil",
+   "ageRange": [
+    260,
+    220
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Turtle",
+   "phylopic": "Chelonia mydas",
+   "summary": "Reptiles encased in a shell grown from ribs and vertebrae; Pappochelys (240 million years) and the half-shelled Odontochelys (220 million years) record how the shell was assembled.",
+   "sources": [
+    "irisarri2017",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "archosauria",
+   "name": "Archosaurs",
+   "scientific": "Archosauria",
+   "parent": "archelosauria",
+   "originMa": 250,
+   "originKind": "fossil",
+   "ageRange": [
+    255,
+    245
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Archosaur",
+   "phylopic": null,
+   "summary": "The 'ruling reptiles' that rose after the end-Permian extinction and split, within a few million years, into the crocodile line and the bird line.",
+   "sources": [
+    "nesbitt2011",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "pseudosuchia",
+   "name": "Crocodilians and relatives",
+   "scientific": "Pseudosuchia",
+   "parent": "archosauria",
+   "originMa": 250,
+   "originKind": "fossil",
+   "ageRange": [
+    252,
+    245
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Pseudosuchia",
+   "phylopic": "Crocodylus",
+   "summary": "The crocodile line of archosaurs, which produced armoured aetosaurs and running rauisuchians in the Triassic and today survives as 27 species of crocodiles, alligators and gharials.",
+   "sources": [
+    "nesbitt2011",
+    "irisarri2017"
+   ]
+  },
+  {
+   "id": "avemetatarsalia",
+   "name": "Bird-line archosaurs",
+   "scientific": "Avemetatarsalia",
+   "parent": "archosauria",
+   "originMa": 250,
+   "originKind": "fossil",
+   "ageRange": [
+    252,
+    245
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Avemetatarsalia",
+   "phylopic": null,
+   "summary": "The archosaur branch with ankle joints suited to upright walking: pterosaurs, dinosaurs and birds.",
+   "sources": [
+    "nesbitt2011",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "pterosauria",
+   "name": "Pterosaurs",
+   "scientific": "Pterosauria",
+   "parent": "avemetatarsalia",
+   "originMa": 228,
+   "originKind": "fossil",
+   "ageRange": [
+    235,
+    220
+   ],
+   "status": "extinct",
+   "extinctMa": 66,
+   "group": "reptile",
+   "wikipedia": "Pterosaur",
+   "phylopic": "Pteranodon",
+   "summary": "The first flying vertebrates, with wings of skin stretched from an elongated fourth finger; from sparrow-sized forms to the ten-metre-wingspan Quetzalcoatlus, all died 66 million years ago.",
+   "sources": [
+    "benton2015",
+    "schulte2010"
+   ]
+  },
+  {
+   "id": "dinosauria",
+   "name": "Dinosaurs",
+   "scientific": "Dinosauria",
+   "parent": "avemetatarsalia",
+   "originMa": 233,
+   "originKind": "fossil",
+   "ageRange": [
+    245,
+    230
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Dinosaur",
+   "phylopic": null,
+   "summary": "Upright-walking archosaurs that ruled the land for 165 million years; Eoraptor and Herrerasaurus from Argentina (about 231 million years) are among the first, and Nyasasaurus may push the origin to 243 million years.",
+   "sources": [
+    "benton2015",
+    "nesbitt2011"
+   ]
+  },
+  {
+   "id": "ornithischia",
+   "name": "Bird-hipped dinosaurs (Triceratops, Stegosaurus)",
+   "scientific": "Ornithischia",
+   "parent": "dinosauria",
+   "originMa": 220,
+   "originKind": "fossil",
+   "ageRange": [
+    230,
+    200
+   ],
+   "status": "extinct",
+   "extinctMa": 66,
+   "group": "reptile",
+   "wikipedia": "Ornithischia",
+   "phylopic": "Triceratops",
+   "summary": "Plant-eating dinosaurs with backward-pointing pubic bones: horned ceratopsians, armoured ankylosaurs, plated stegosaurs and duck-billed hadrosaurs, all lost at the end of the Cretaceous.",
+   "sources": [
+    "benton2015",
+    "schulte2010"
+   ]
+  },
+  {
+   "id": "sauropodomorpha",
+   "name": "Long-necked dinosaurs (Brachiosaurus, Diplodocus)",
+   "scientific": "Sauropodomorpha",
+   "parent": "dinosauria",
+   "originMa": 231,
+   "originKind": "fossil",
+   "ageRange": [
+    233,
+    225
+   ],
+   "status": "extinct",
+   "extinctMa": 66,
+   "group": "reptile",
+   "wikipedia": "Sauropodomorpha",
+   "phylopic": "Diplodocus",
+   "summary": "From the small Triassic Eoraptor-grade forms to the largest land animals ever, 30-metre sauropods weighing over 50 tonnes; the lineage ended with the Cretaceous.",
+   "sources": [
+    "benton2015",
+    "schulte2010"
+   ]
+  },
+  {
+   "id": "theropoda",
+   "name": "Theropods",
+   "scientific": "Theropoda",
+   "parent": "dinosauria",
+   "originMa": 231,
+   "originKind": "fossil",
+   "ageRange": [
+    233,
+    225
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "reptile",
+   "wikipedia": "Theropoda",
+   "phylopic": null,
+   "summary": "Mostly meat-eating, two-legged dinosaurs with hollow bones and, in many, feathers; birds are living theropods.",
+   "sources": [
+    "brusatte2015",
+    "benton2015"
+   ]
+  },
+  {
+   "id": "nonavian-theropods",
+   "name": "Non-avian theropods (Tyrannosaurus, Velociraptor)",
+   "scientific": "Theropoda (non-avian)",
+   "parent": "theropoda",
+   "originMa": 231,
+   "originKind": "fossil",
+   "ageRange": [
+    233,
+    225
+   ],
+   "status": "extinct",
+   "extinctMa": 66,
+   "group": "reptile",
+   "wikipedia": "Tyrannosaurus",
+   "phylopic": "Tyrannosaurus rex",
+   "summary": "The predatory dinosaurs from Coelophysis to Tyrannosaurus and the feathered dromaeosaurs; every line except the birds died in the end-Cretaceous extinction.",
+   "sources": [
+    "brusatte2015",
+    "schulte2010"
+   ]
+  },
+  {
+   "id": "aves",
+   "name": "Birds",
+   "scientific": "Avialae",
+   "parent": "theropoda",
+   "originMa": 150,
+   "originKind": "fossil",
+   "ageRange": [
+    165,
+    150
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bird",
+   "wikipedia": "Bird",
+   "phylopic": "Corvus corax",
+   "summary": "Feathered, flying theropods; Archaeopteryx from the Late Jurassic of Germany, about 150 million years old, remains the oldest widely accepted bird, with feathered relatives such as Anchiornis slightly older.",
+   "sources": [
+    "brusatte2015",
+    "prum2015"
+   ]
+  },
+  {
+   "id": "palaeognathae",
+   "name": "Ostriches, emus, kiwi and tinamous",
+   "scientific": "Palaeognathae",
+   "parent": "aves",
+   "originMa": 72,
+   "originKind": "estimate",
+   "ageRange": [
+    85,
+    60
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bird",
+   "wikipedia": "Palaeognathae",
+   "phylopic": "Struthio camelus",
+   "summary": "Birds with an ancient palate structure, mostly flightless giants whose flightlessness evolved several times; their split from all other living birds is a Late Cretaceous clock estimate.",
+   "sources": [
+    "prum2015",
+    "field2020"
+   ]
+  },
+  {
+   "id": "galloanserae",
+   "name": "Fowl: chickens, ducks and geese",
+   "scientific": "Galloanserae",
+   "parent": "aves",
+   "originMa": 68,
+   "originKind": "fossil",
+   "ageRange": [
+    80,
+    66
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bird",
+   "wikipedia": "Galloanserae",
+   "phylopic": "Anas platyrhynchos",
+   "summary": "Landfowl and waterfowl; Asteriornis from Belgium, 66.7 million years old, and Vegavis from Antarctica are the oldest modern-type birds and sit on this branch.",
+   "sources": [
+    "field2020",
+    "prum2015"
+   ]
+  },
+  {
+   "id": "neoaves",
+   "name": "Neoaves (most living birds)",
+   "scientific": "Neoaves",
+   "parent": "aves",
+   "originMa": 66,
+   "originKind": "estimate",
+   "ageRange": [
+    72,
+    60
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bird",
+   "wikipedia": "Neoaves",
+   "phylopic": null,
+   "summary": "About 95 percent of living bird species, from hummingbirds and penguins to eagles and parrots, which radiated explosively in the few million years after the end-Cretaceous extinction.",
+   "sources": [
+    "prum2015",
+    "field2020"
+   ]
+  },
+  {
+   "id": "passeriformes",
+   "name": "Perching birds and songbirds",
+   "scientific": "Passeriformes",
+   "parent": "neoaves",
+   "originMa": 50,
+   "originKind": "estimate",
+   "ageRange": [
+    60,
+    45
+   ],
+   "status": "extant",
+   "extinctMa": null,
+   "group": "bird",
+   "wikipedia": "Passerine",
+   "phylopic": "Passeriformes",
+   "summary": "More than half of all bird species, with a foot built for perching; molecular clocks place their origin in the Eocene, and the oldest fossils are about 55-50 million years old.",
+   "sources": [
+    "prum2015",
+    "timetree"
+   ]
+  }
+ ]
+}

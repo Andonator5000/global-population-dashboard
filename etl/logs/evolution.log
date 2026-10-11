@@ -9,5 +9,15 @@
     "ourasphaira-fungi",
     "animal-molecular-origin",
     "gobe"
-  ]
+  ],
+  "tree_nodes": 176,
+  "tree_leaves": 103,
+  "tree_extinct": 17,
+  "tree_silhouettes": 104,
+  "tree_unillustrated": [
+    "ammonoidea",
+    "myriapoda",
+    "crustacea"
+  ],
+  "tree_bands": 6
 }

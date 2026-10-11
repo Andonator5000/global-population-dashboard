@@ -1,6 +1,6 @@
 """Evolution timeline: ICS chart + editorial events + free illustrations.
 
-Phase 6 (DATA_DECISIONS.md §32). Three ingredients:
+Phase 6 (DATA_DECISIONS.md §32), round 14 (§73). Four ingredients:
 
 1. THE CHART. The International Chronostratigraphic Chart, from the
    commission's own linked-data publication (i-c-stratigraphy/chart,
@@ -20,6 +20,14 @@ Phase 6 (DATA_DECISIONS.md §32). Three ingredients:
    anyway — and, as fallback, the anchor Wikipedia article's lead image
    through the same Commons licence gate the history stage uses. An event
    whose images are all non-free ships without one.
+
+4. THE TREE (round 14, section 73). `etl/reference/evolution_tree.json`
+   is the editorial tree of life through time: ~180 lineages with a
+   sourced origin age each (divergence estimate or oldest fossil), the
+   extinct ones with an end date, endosymbiosis recorded as merges, and
+   PhyloPic silhouettes through the same licence ranking. The stage
+   validates the chronology (a child never predates its parent), checks
+   every Wikipedia anchor exists, and writes tree.json.
 """
 
 from __future__ import annotations
@@ -36,6 +44,10 @@ from ..fetch import CachedResponse, FetchError, fetch
 from . import commons
 
 _SOURCE = config.REFERENCE_DIR / "evolution_events.json"
+# Round 14 (DATA_DECISIONS section 73): the tree of life through time.
+_TREE_SOURCE = config.REFERENCE_DIR / "evolution_tree.json"
+TREE_ORIGIN_KINDS = ("divergence", "fossil", "estimate")
+TREE_STATUSES = ("extant", "extinct")
 
 KINDS = ("event", "organism", "extinction")
 _FREE = re.compile(r"public domain|cc0|cc[- ]by(?![- ]n[cd])|pd-", re.IGNORECASE)
@@ -196,6 +208,7 @@ class _PhylopicBuild:
 
 def _phylopic_silhouette(
     name: str, *, build: _PhylopicBuild, refresh: bool,
+    prefer_exact: bool = False,
 ) -> dict[str, Any] | None:
     """First CC0/public-domain silhouette matching `name`, or None.
 
@@ -206,7 +219,10 @@ def _phylopic_silhouette(
     retried. Anything else still fails loudly. Cache keys derive from the
     query NAME (content), never the build or a running index (§21).
     Attribution is stored even for CC0 — courtesy costs nothing and the
-    site renders it.
+    site renders it. With `prefer_exact` (the round-14 tree) an image
+    whose own name equals the query outranks any other acceptable
+    licence: PhyloPic's name filter is a substring match, and "Homo
+    sapiens" otherwise came back as a CC0 Homo longi.
     """
     def page_for(query: str, renewed: bool = False) -> list[dict[str, Any]]:
         digest = hashlib.sha256(query.lower().encode("utf-8")).hexdigest()[:16]
@@ -231,7 +247,7 @@ def _phylopic_silhouette(
     items = page_for(name)
     if not items and " " in name.strip():
         items = page_for(name.split()[0])
-    best: tuple[int, dict[str, Any]] | None = None
+    best: tuple[tuple[int, int], dict[str, Any]] | None = None
     for item in items:
         links = item.get("_links", {})
         licence = (links.get("license") or {}).get("href", "")
@@ -241,23 +257,265 @@ def _phylopic_silhouette(
         rasters = links.get("rasterFiles") or []
         if not rasters:
             continue
-        if best is not None and rank >= best[0]:
+        title = ((links.get("self") or {}).get("title") or "").strip().lower()
+        exact = 0 if (prefer_exact and title == name.strip().lower()) else 1
+        score = (exact, rank) if prefer_exact else (0, rank)
+        if best is not None and score >= best[0]:
             continue
         # Rasters are listed largest first; the middle size (~512px) is
         # plenty for a detail panel.
         raster = rasters[min(len(rasters) - 1, len(rasters) // 2)]
         uuid = (links.get("self") or {}).get("href", "").split("?")[0]
         uuid = uuid.rsplit("/", 1)[-1]
-        best = (rank, {
+        best = (score, {
             "url": raster["href"],
             "license": licence,
             "attribution": item.get("attribution"),
             "page": f"https://www.phylopic.org/images/{uuid}",
             "matched": (links.get("self") or {}).get("title") or name,
         })
-        if rank == 0:
+        if score == (0, 0):
             break
     return best[1] if best else None
+
+
+
+# --------------------------------------------------------------------------
+# Tree of life (round 14, section 73)
+# --------------------------------------------------------------------------
+
+def _validate_tree(tree: dict[str, Any]) -> list[str]:
+    """Structural and chronological checks on the editorial tree.
+
+    Every node has a parent except the root; a child never originates
+    before its parent (no tolerance -- the reference file is edited by
+    hand and an inversion is an error, not noise); an extinct lineage
+    carries an extinctMa no older than its origin; ageRange brackets
+    originMa; every source key exists in the library; merges name real
+    nodes; summaries are one sentence long (12-60 words).
+    """
+    problems: list[str] = []
+    nodes: list[dict[str, Any]] = tree.get("nodes") or []
+    library = tree.get("sourceLibrary") or {}
+    groups = tree.get("groups") or {}
+    by_id: dict[str, dict[str, Any]] = {}
+    for node in nodes:
+        nid = node.get("id")
+        if not nid or nid in by_id:
+            problems.append(f"duplicate or missing id: {nid!r}")
+            continue
+        by_id[nid] = node
+    root = tree.get("root")
+    if root not in by_id:
+        problems.append(f"root {root!r} is not a node")
+    for nid, node in by_id.items():
+        for key in ("name", "parent", "originMa", "originKind", "status",
+                    "group", "wikipedia", "summary", "sources"):
+            if key not in node:
+                problems.append(f"{nid}: missing {key}")
+        parent = node.get("parent")
+        if nid == root:
+            if parent is not None:
+                problems.append(f"{nid}: the root has a parent")
+        elif parent not in by_id:
+            problems.append(f"{nid}: unknown parent {parent!r}")
+        origin = node.get("originMa")
+        if not isinstance(origin, (int, float)) or origin <= 0 or origin > 4600:
+            problems.append(f"{nid}: originMa {origin!r} out of range")
+        elif parent in by_id and isinstance(by_id[parent].get("originMa"), (int, float)) \
+                and origin > by_id[parent]["originMa"]:
+            problems.append(
+                f"{nid}: originMa {origin} is older than its parent "
+                f"{parent} ({by_id[parent]['originMa']})"
+            )
+        if node.get("originKind") not in TREE_ORIGIN_KINDS:
+            problems.append(f"{nid}: originKind {node.get('originKind')!r}")
+        if node.get("status") not in TREE_STATUSES:
+            problems.append(f"{nid}: status {node.get('status')!r}")
+        extinct = node.get("extinctMa")
+        if node.get("status") == "extinct":
+            if not isinstance(extinct, (int, float)) or extinct < 0 \
+                    or (isinstance(origin, (int, float)) and extinct > origin):
+                problems.append(f"{nid}: extinct lineage without a sane extinctMa")
+        elif extinct is not None:
+            problems.append(f"{nid}: extant lineage carries extinctMa")
+        rng = node.get("ageRange")
+        if rng is not None:
+            if (not isinstance(rng, list) or len(rng) != 2
+                    or not all(isinstance(v, (int, float)) for v in rng)
+                    or not (rng[0] >= origin >= rng[1])):
+                problems.append(f"{nid}: ageRange {rng!r} does not bracket originMa")
+        if node.get("group") not in groups:
+            problems.append(f"{nid}: group {node.get('group')!r} not declared")
+        sources = node.get("sources") or []
+        if not sources:
+            problems.append(f"{nid}: no sources")
+        for key in sources:
+            if key not in library:
+                problems.append(f"{nid}: source {key!r} not in the library")
+        for merge in node.get("merges") or []:
+            if merge.get("from") not in by_id:
+                problems.append(f"{nid}: merge from unknown node {merge.get('from')!r}")
+            if not merge.get("label"):
+                problems.append(f"{nid}: merge without a label")
+        words = len((node.get("summary") or "").split())
+        if not 12 <= words <= 60:
+            problems.append(f"{nid}: summary is {words} words (want 12-60)")
+    for band in tree.get("bands") or []:
+        for key in ("id", "name", "kind", "startMa", "endMa", "summary", "sources"):
+            if key not in band:
+                problems.append(f"band {band.get('id')}: missing {key}")
+        if band.get("kind") not in ("extinction", "event"):
+            problems.append(f"band {band.get('id')}: kind {band.get('kind')!r}")
+        if isinstance(band.get("startMa"), (int, float)) and isinstance(band.get("endMa"), (int, float)) \
+                and band["endMa"] > band["startMa"]:
+            problems.append(f"band {band.get('id')}: endMa after startMa")
+        for key in band.get("sources") or []:
+            if key not in library:
+                problems.append(f"band {band.get('id')}: source {key!r} not in the library")
+    return problems
+
+
+def _check_titles(titles: list[str], *, refresh: bool) -> list[str]:
+    """Titles with no English Wikipedia article (redirects followed).
+
+    Batched through the Action API, 50 per call, cache keyed by the
+    batch's own content (section 21), so a renamed article shows up as
+    a loud failure on the next run rather than a dead link on the page.
+    """
+    missing: list[str] = []
+    ordered = sorted(set(titles))
+    for start in range(0, len(ordered), 50):
+        batch = ordered[start:start + 50]
+        digest = hashlib.sha256("|".join(batch).encode("utf-8")).hexdigest()[:16]
+        url = (
+            f"{config.WIKIPEDIA_API_URL}?action=query&format=json&prop=info"
+            f"&redirects=1&titles={urllib.parse.quote('|'.join(batch))}"
+        )
+        response = fetch(
+            url, refresh=refresh, subdir="evolution",
+            filename=f"wikipedia-exists-{digest}.json", expect_json=True,
+        )
+        payload = response.read_json().get("query", {})
+        norm = {n["from"]: n["to"] for n in payload.get("normalized", [])}
+        redirect = {r["from"]: r["to"] for r in payload.get("redirects", [])}
+        present = {
+            page.get("title") for page in payload.get("pages", {}).values()
+            if "missing" not in page and "invalid" not in page
+        }
+        for title in batch:
+            resolved = norm.get(title, title)
+            resolved = redirect.get(resolved, resolved)
+            if resolved not in present:
+                missing.append(title)
+    return missing
+
+
+def _wiki_url(title: str) -> str:
+    return "https://en.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_"))
+
+
+def _ingest_tree(
+    *, build: _PhylopicBuild, refresh: bool, out_dir: Any, manifest: dict[str, Any],
+) -> dict[str, Any]:
+    tree = json.loads(_TREE_SOURCE.read_text("utf-8"))
+    problems = _validate_tree(tree)
+    if problems:
+        raise FetchError(
+            "evolution_tree.json failed validation:\n  "
+            + "\n  ".join(problems[:30])
+        )
+    nodes: list[dict[str, Any]] = tree["nodes"]
+    bands: list[dict[str, Any]] = tree.get("bands") or []
+    titles = [n["wikipedia"] for n in nodes] + [b["wikipedia"] for b in bands if b.get("wikipedia")]
+    missing = _check_titles(titles, refresh=refresh)
+    if missing:
+        raise FetchError(
+            "evolution_tree.json names Wikipedia articles that do not exist: "
+            + ", ".join(sorted(missing))
+        )
+
+    library = tree["sourceLibrary"]
+
+    def cite(keys: list[str]) -> list[dict[str, str]]:
+        return [{"title": library[k]["title"], "url": library[k]["url"]} for k in keys]
+
+    silhouettes = 0
+    unillustrated: list[str] = []
+    out_nodes: list[dict[str, Any]] = []
+    for node in nodes:
+        record: dict[str, Any] = {
+            "id": node["id"],
+            "name": node["name"],
+            "scientific": node.get("scientific"),
+            "parent": node["parent"],
+            "originMa": node["originMa"],
+            "originKind": node["originKind"],
+            "ageRange": node.get("ageRange"),
+            "status": node["status"],
+            "extinctMa": node.get("extinctMa"),
+            "group": node["group"],
+            "summary": node["summary"].strip(),
+            "wikipedia": _wiki_url(node["wikipedia"]),
+            "sources": cite(node["sources"]),
+            "merges": node.get("merges") or [],
+            "image": None,
+        }
+        if node.get("phylopic"):
+            silhouette = _phylopic_silhouette(
+                node["phylopic"], build=build, refresh=refresh,
+                prefer_exact=True,
+            )
+            if silhouette:
+                record["image"] = {"type": "phylopic", **silhouette}
+                silhouettes += 1
+            else:
+                unillustrated.append(node["id"])
+        out_nodes.append(record)
+    out_bands = []
+    for band in bands:
+        out_band = {k: v for k, v in band.items() if k not in ("sources", "wikipedia")}
+        out_band["sources"] = cite(band["sources"])
+        out_band["wikipedia"] = _wiki_url(band["wikipedia"]) if band.get("wikipedia") else None
+        out_bands.append(out_band)
+    (out_dir / "tree.json").write_text(
+        json.dumps({
+            "source": "editorial",
+            "version": tree.get("version", 1),
+            "note": tree.get("note", ""),
+            "imageNote": (
+                "Silhouettes are PhyloPic images -- CC0/public domain "
+                "preferred, CC BY and CC BY-SA accepted, NC/ND never; "
+                "attribution and licence are rendered with each."
+            ),
+            "root": tree["root"],
+            "groups": tree["groups"],
+            "bands": out_bands,
+            "nodes": out_nodes,
+        }, indent=1, ensure_ascii=False) + "\n",
+        encoding="utf-8", newline="\n",
+    )
+    manifest_mod.record_artifact(
+        manifest, "biology/evolution/tree.json",
+        description=(
+            "Editorial tree of life through time: lineages with sourced "
+            "origin ages, extinctions, endosymbiosis merges and licence-gated "
+            "PhyloPic silhouettes."
+        ),
+        sources=["evolution_events"], row_count=len(out_nodes),
+    )
+    parents = {n["parent"] for n in out_nodes}
+    print(f"    tree: {len(out_nodes)} lineages ({silhouettes} silhouettes, "
+          f"{len(unillustrated)} hinted but without), {len(out_bands)} bands",
+          flush=True)
+    return {
+        "tree_nodes": len(out_nodes),
+        "tree_leaves": sum(1 for n in out_nodes if n["id"] not in parents),
+        "tree_extinct": sum(1 for n in out_nodes if n["status"] == "extinct"),
+        "tree_silhouettes": silhouettes,
+        "tree_unillustrated": unillustrated,
+        "tree_bands": len(out_bands),
+    }
 
 
 # --------------------------------------------------------------------------
@@ -424,6 +682,11 @@ def ingest(
         encoding="utf-8", newline="\n",
     )
 
+    # ---- tree of life (round 14, section 73) ------------------------------
+    tree_stats = _ingest_tree(
+        build=build, refresh=refresh, out_dir=out_dir, manifest=manifest,
+    )
+
     log_dir = config.REPO_ROOT / "etl" / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
     (log_dir / "evolution.log").write_text(
@@ -433,6 +696,7 @@ def ingest(
             "phylopic_silhouettes": silhouettes,
             "commons_lead_images": lead_images,
             "unillustrated": unillustrated,
+            **tree_stats,
         }, indent=2) + "\n",
         encoding="utf-8", newline="\n",
     )
